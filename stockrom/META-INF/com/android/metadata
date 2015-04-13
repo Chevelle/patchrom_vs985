@@ -1,0 +1,3 @@
+post-build=lge/g3_vzw/g3:4.4.2/KVT49L.VS98510B/VS98510B.1403785622:user/release-keys
+post-timestamp=1428582771
+pre-device=vs985
