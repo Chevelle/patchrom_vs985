@@ -52,8 +52,6 @@ local-after-zip:= local-put-to-phone
 
 include $(PORT_BUILD)/porting.mk
 
-PORT_PRODUCT := vs985_chevelle
-
 # To define any local-target
 updater := $(ZIP_DIR)/META-INF/com/google/android/updater-script
 pre_install_data_packages := out/pre_install_apk_pkgname.txt
@@ -67,6 +65,7 @@ local-pre-zip-misc:
 	cp other/boot.img $(ZIP_DIR)/boot.img
 	cp other/installd $(ZIP_DIR)/system/bin/installd
 	cp other/lbesec $(ZIP_DIR)/system/xbin/lbesec
+	cp other/libimageutilities_jni.so $(ZIP_DIR)/system/lib/libimageutilities_jni.so
 	cp other/apns-conf.xml $(ZIP_DIR)/system/etc/apns-conf.xml
 	@echo Remove usless stuff
 	rm -rf $(ZIP_DIR)/system/media/video/*.mp4
