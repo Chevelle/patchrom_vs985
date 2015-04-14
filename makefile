@@ -57,8 +57,6 @@ updater := $(ZIP_DIR)/META-INF/com/google/android/updater-script
 pre_install_data_packages := out/pre_install_apk_pkgname.txt
 local-pre-zip-misc:
 	cp other/build.prop $(ZIP_DIR)/system/build.prop
-	cp other/backuptool.functions $(ZIP_DIR)/system/bin/backuptool.functions
-	cp other/backuptool.sh $(ZIP_DIR)/system/bin/backuptool.sh
 # replace spn
 	cp other/spn-conf.xml $(ZIP_DIR)/system/etc/spn-conf.xml
 # replace kernel
