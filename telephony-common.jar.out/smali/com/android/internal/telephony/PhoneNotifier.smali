@@ -32,7 +32,16 @@
 .method public abstract notifyDataConnectionFailed(Lcom/android/internal/telephony/Phone;Ljava/lang/String;Ljava/lang/String;)V
 .end method
 
+.method public abstract notifyDataConnectionRealTimeInfo(Lcom/android/internal/telephony/Phone;Landroid/telephony/DataConnectionRealTimeInfo;)V
+.end method
+
+.method public abstract notifyDisconnectCause(II)V
+.end method
+
 .method public abstract notifyMessageWaitingChanged(Lcom/android/internal/telephony/Phone;)V
+.end method
+
+.method public abstract notifyOemHookRawEventForSubscriber(I[B)V
 .end method
 
 .method public abstract notifyOtaspChanged(Lcom/android/internal/telephony/Phone;I)V
@@ -41,8 +50,17 @@
 .method public abstract notifyPhoneState(Lcom/android/internal/telephony/Phone;)V
 .end method
 
+.method public abstract notifyPreciseCallState(Lcom/android/internal/telephony/Phone;)V
+.end method
+
+.method public abstract notifyPreciseDataConnectionFailed(Lcom/android/internal/telephony/Phone;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+.end method
+
 .method public abstract notifyServiceState(Lcom/android/internal/telephony/Phone;)V
 .end method
 
 .method public abstract notifySignalStrength(Lcom/android/internal/telephony/Phone;)V
+.end method
+
+.method public abstract notifyVoLteServiceStateChanged(Lcom/android/internal/telephony/Phone;Landroid/telephony/VoLteServiceState;)V
 .end method

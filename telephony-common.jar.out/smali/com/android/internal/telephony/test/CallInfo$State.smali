@@ -61,7 +61,7 @@
     .line 32
     new-instance v0, Lcom/android/internal/telephony/test/CallInfo$State;
 
-    const-string v1, "ACTIVE"
+    const-string/jumbo v1, "ACTIVE"
 
     invoke-direct {v0, v1, v4, v4}, Lcom/android/internal/telephony/test/CallInfo$State;-><init>(Ljava/lang/String;II)V
 
@@ -70,7 +70,7 @@
     .line 33
     new-instance v0, Lcom/android/internal/telephony/test/CallInfo$State;
 
-    const-string v1, "HOLDING"
+    const-string/jumbo v1, "HOLDING"
 
     invoke-direct {v0, v1, v5, v5}, Lcom/android/internal/telephony/test/CallInfo$State;-><init>(Ljava/lang/String;II)V
 
@@ -79,41 +79,43 @@
     .line 34
     new-instance v0, Lcom/android/internal/telephony/test/CallInfo$State;
 
-    const-string v1, "DIALING"
+    const-string/jumbo v1, "DIALING"
 
     invoke-direct {v0, v1, v6, v6}, Lcom/android/internal/telephony/test/CallInfo$State;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lcom/android/internal/telephony/test/CallInfo$State;->DIALING:Lcom/android/internal/telephony/test/CallInfo$State;
 
-    .line 35
     new-instance v0, Lcom/android/internal/telephony/test/CallInfo$State;
 
-    const-string v1, "ALERTING"
+    const-string/jumbo v1, "ALERTING"
 
     invoke-direct {v0, v1, v7, v7}, Lcom/android/internal/telephony/test/CallInfo$State;-><init>(Ljava/lang/String;II)V
 
+    .line 35
     sput-object v0, Lcom/android/internal/telephony/test/CallInfo$State;->ALERTING:Lcom/android/internal/telephony/test/CallInfo$State;
 
-    .line 36
     new-instance v0, Lcom/android/internal/telephony/test/CallInfo$State;
 
-    const-string v1, "INCOMING"
+    const-string/jumbo v1, "INCOMING"
 
     invoke-direct {v0, v1, v8, v8}, Lcom/android/internal/telephony/test/CallInfo$State;-><init>(Ljava/lang/String;II)V
 
+    .line 36
     sput-object v0, Lcom/android/internal/telephony/test/CallInfo$State;->INCOMING:Lcom/android/internal/telephony/test/CallInfo$State;
 
-    .line 37
     new-instance v0, Lcom/android/internal/telephony/test/CallInfo$State;
 
-    const-string v1, "WAITING"
+    const-string/jumbo v1, "WAITING"
 
     const/4 v2, 0x5
 
+    .line 37
     const/4 v3, 0x5
 
+    .line 36
     invoke-direct {v0, v1, v2, v3}, Lcom/android/internal/telephony/test/CallInfo$State;-><init>(Ljava/lang/String;II)V
 
+    .line 37
     sput-object v0, Lcom/android/internal/telephony/test/CallInfo$State;->WAITING:Lcom/android/internal/telephony/test/CallInfo$State;
 
     .line 31
@@ -141,11 +143,11 @@
 
     aput-object v1, v0, v8
 
-    const/4 v1, 0x5
+    sget-object v1, Lcom/android/internal/telephony/test/CallInfo$State;->WAITING:Lcom/android/internal/telephony/test/CallInfo$State;
 
-    sget-object v2, Lcom/android/internal/telephony/test/CallInfo$State;->WAITING:Lcom/android/internal/telephony/test/CallInfo$State;
+    const/4 v2, 0x5
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     sput-object v0, Lcom/android/internal/telephony/test/CallInfo$State;->$VALUES:[Lcom/android/internal/telephony/test/CallInfo$State;
 
@@ -154,14 +156,7 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "value"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "value"    # I
 
     .prologue
     .line 39
@@ -174,7 +169,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/test/CallInfo$State;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 31
@@ -195,12 +190,6 @@
     .prologue
     .line 31
     sget-object v0, Lcom/android/internal/telephony/test/CallInfo$State;->$VALUES:[Lcom/android/internal/telephony/test/CallInfo$State;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/test/CallInfo$State;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/test/CallInfo$State;
 
     return-object v0
 .end method

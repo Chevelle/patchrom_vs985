@@ -10,37 +10,39 @@
 # direct methods
 .method public constructor <init>(Ljava/util/Calendar;)V
     .locals 0
-    .parameter "cal"
+    .param p1, "cal"    # Ljava/util/Calendar;
 
     .prologue
-    .line 204
+    .line 215
     invoke-direct {p0}, Lcom/android/internal/telephony/cat/ResponseData;-><init>()V
 
-    .line 205
+    .line 216
     iput-object p1, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
 
-    .line 206
+    .line 214
     return-void
 .end method
 
 .method private byteToBCD(I)B
-    .locals 2
-    .parameter "value"
+    .locals 3
+    .param p1, "value"    # I
 
     .prologue
-    .line 258
+    const/4 v2, 0x0
+
+    .line 269
     if-gez p1, :cond_0
 
     const/16 v0, 0x63
 
     if-le p1, v0, :cond_0
 
-    .line 259
+    .line 270
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "Err: byteToBCD conversion Value is "
+    const-string/jumbo v1, "Err: byteToBCD conversion Value is "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -50,8 +52,10 @@
 
     move-result-object v0
 
-    const-string v1, " Value has to be between 0 and 99"
+    .line 271
+    const-string/jumbo v1, " Value has to be between 0 and 99"
 
+    .line 270
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -62,13 +66,10 @@
 
     invoke-static {p0, v0}, Lcom/android/internal/telephony/cat/CatLog;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 261
-    const/4 v0, 0x0
+    .line 272
+    return v2
 
-    .line 264
-    :goto_0
-    return v0
-
+    .line 275
     :cond_0
     div-int/lit8 v0, p1, 0xa
 
@@ -80,318 +81,313 @@
 
     int-to-byte v0, v0
 
-    goto :goto_0
+    return v0
 .end method
 
 .method private getTZOffSetByte(J)B
-    .locals 8
-    .parameter "offSetVal"
+    .locals 7
+    .param p1, "offSetVal"    # J
 
     .prologue
-    const/4 v5, 0x1
+    .line 279
+    const-wide/16 v4, 0x0
 
-    .line 268
-    const-wide/16 v6, 0x0
+    cmp-long v4, p1, v4
 
-    cmp-long v6, p1, v6
+    if-gez v4, :cond_0
 
-    if-gez v6, :cond_1
+    const/4 v1, 0x1
 
-    move v2, v5
-
-    .line 276
-    .local v2, isNegative:Z
+    .line 287
+    .local v1, "isNegative":Z
     :goto_0
-    const-wide/32 v6, 0xdbba0
+    const-wide/32 v4, 0xdbba0
 
-    div-long v3, p1, v6
+    div-long v2, p1, v4
 
-    .line 277
-    .local v3, tzOffset:J
-    if-eqz v2, :cond_0
+    .line 288
+    .local v2, "tzOffset":J
+    if-eqz v1, :cond_1
 
-    const/4 v5, -0x1
+    const/4 v4, -0x1
 
-    :cond_0
-    int-to-long v5, v5
+    :goto_1
+    int-to-long v4, v4
 
-    mul-long/2addr v3, v5
+    mul-long/2addr v2, v4
 
-    .line 278
-    long-to-int v5, v3
+    .line 289
+    long-to-int v4, v2
 
-    invoke-direct {p0, v5}, Lcom/android/internal/telephony/cat/DTTZResponseData;->byteToBCD(I)B
+    invoke-direct {p0, v4}, Lcom/android/internal/telephony/cat/DTTZResponseData;->byteToBCD(I)B
 
     move-result v0
 
-    .line 280
-    .local v0, bcdVal:B
-    if-eqz v2, :cond_2
+    .line 291
+    .local v0, "bcdVal":B
+    if-eqz v1, :cond_2
 
-    or-int/lit8 v5, v0, 0x8
+    or-int/lit8 v4, v0, 0x8
 
-    int-to-byte v0, v5
+    int-to-byte v0, v4
 
-    move v1, v0
+    :goto_2
+    int-to-byte v4, v4
 
-    .end local v0           #bcdVal:B
-    .local v1, bcdVal:B
-    :goto_1
-    return v0
+    return v4
 
-    .line 268
-    .end local v1           #bcdVal:B
-    .end local v2           #isNegative:Z
-    .end local v3           #tzOffset:J
-    :cond_1
-    const/4 v2, 0x0
+    .line 279
+    .end local v0    # "bcdVal":B
+    .end local v1    # "isNegative":Z
+    .end local v2    # "tzOffset":J
+    :cond_0
+    const/4 v1, 0x0
 
+    .restart local v1    # "isNegative":Z
     goto :goto_0
 
-    .restart local v0       #bcdVal:B
-    .restart local v2       #isNegative:Z
-    .restart local v3       #tzOffset:J
-    :cond_2
-    move v1, v0
+    .line 288
+    .restart local v2    # "tzOffset":J
+    :cond_1
+    const/4 v4, 0x1
 
-    .line 280
-    .end local v0           #bcdVal:B
-    .restart local v1       #bcdVal:B
     goto :goto_1
+
+    .restart local v0    # "bcdVal":B
+    :cond_2
+    move v4, v0
+
+    .line 291
+    goto :goto_2
 .end method
 
 
 # virtual methods
 .method public format(Ljava/io/ByteArrayOutputStream;)V
-    .locals 14
-    .parameter "buf"
+    .locals 12
+    .param p1, "buf"    # Ljava/io/ByteArrayOutputStream;
 
     .prologue
-    const/4 v13, 0x5
+    const/4 v11, 0x5
 
-    const/4 v11, 0x2
+    const/4 v9, 0x2
 
-    const/4 v10, 0x1
+    const/4 v8, 0x1
 
-    const/4 v12, 0x7
+    const/4 v6, 0x0
 
-    .line 210
-    if-nez p1, :cond_1
+    const/4 v10, 0x7
 
-    .line 255
-    :cond_0
-    return-void
-
-    .line 215
-    :cond_1
-    sget-object v9, Lcom/android/internal/telephony/cat/AppInterface$CommandType;->PROVIDE_LOCAL_INFORMATION:Lcom/android/internal/telephony/cat/AppInterface$CommandType;
-
-    invoke-virtual {v9}, Lcom/android/internal/telephony/cat/AppInterface$CommandType;->value()I
-
-    move-result v9
-
-    or-int/lit16 v5, v9, 0x80
-
-    .line 216
-    .local v5, tag:I
-    invoke-virtual {p1, v5}, Ljava/io/ByteArrayOutputStream;->write(I)V
-
-    .line 218
-    const/16 v9, 0x8
-
-    new-array v2, v9, [B
-
-    .line 220
-    .local v2, data:[B
-    const/4 v9, 0x0
-
-    aput-byte v12, v2, v9
+    .line 221
+    if-nez p1, :cond_0
 
     .line 222
-    iget-object v9, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
-
-    if-nez v9, :cond_2
-
-    .line 223
-    invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
-
-    move-result-object v9
-
-    iput-object v9, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
+    return-void
 
     .line 226
-    :cond_2
-    iget-object v9, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
+    :cond_0
+    sget-object v7, Lcom/android/internal/telephony/cat/AppInterface$CommandType;->PROVIDE_LOCAL_INFORMATION:Lcom/android/internal/telephony/cat/AppInterface$CommandType;
 
-    invoke-virtual {v9, v10}, Ljava/util/Calendar;->get(I)I
+    invoke-virtual {v7}, Lcom/android/internal/telephony/cat/AppInterface$CommandType;->value()I
 
-    move-result v9
+    move-result v7
 
-    rem-int/lit8 v9, v9, 0x64
+    or-int/lit16 v2, v7, 0x80
 
-    invoke-direct {p0, v9}, Lcom/android/internal/telephony/cat/DTTZResponseData;->byteToBCD(I)B
-
-    move-result v9
-
-    aput-byte v9, v2, v10
+    .line 227
+    .local v2, "tag":I
+    invoke-virtual {p1, v2}, Ljava/io/ByteArrayOutputStream;->write(I)V
 
     .line 229
-    iget-object v9, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
+    const/16 v7, 0x8
 
-    invoke-virtual {v9, v11}, Ljava/util/Calendar;->get(I)I
+    new-array v1, v7, [B
 
-    move-result v9
+    .line 231
+    .local v1, "data":[B
+    aput-byte v10, v1, v6
 
-    add-int/lit8 v9, v9, 0x1
+    .line 233
+    iget-object v7, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
 
-    invoke-direct {p0, v9}, Lcom/android/internal/telephony/cat/DTTZResponseData;->byteToBCD(I)B
+    if-nez v7, :cond_1
 
-    move-result v9
-
-    aput-byte v9, v2, v11
-
-    .line 232
-    const/4 v9, 0x3
-
-    iget-object v10, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
-
-    invoke-virtual {v10, v13}, Ljava/util/Calendar;->get(I)I
-
-    move-result v10
-
-    invoke-direct {p0, v10}, Lcom/android/internal/telephony/cat/DTTZResponseData;->byteToBCD(I)B
-
-    move-result v10
-
-    aput-byte v10, v2, v9
-
-    .line 235
-    const/4 v9, 0x4
-
-    iget-object v10, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
-
-    const/16 v11, 0xb
-
-    invoke-virtual {v10, v11}, Ljava/util/Calendar;->get(I)I
-
-    move-result v10
-
-    invoke-direct {p0, v10}, Lcom/android/internal/telephony/cat/DTTZResponseData;->byteToBCD(I)B
-
-    move-result v10
-
-    aput-byte v10, v2, v9
-
-    .line 238
-    iget-object v9, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
-
-    const/16 v10, 0xc
-
-    invoke-virtual {v9, v10}, Ljava/util/Calendar;->get(I)I
-
-    move-result v9
-
-    invoke-direct {p0, v9}, Lcom/android/internal/telephony/cat/DTTZResponseData;->byteToBCD(I)B
-
-    move-result v9
-
-    aput-byte v9, v2, v13
-
-    .line 241
-    const/4 v9, 0x6
-
-    iget-object v10, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
-
-    const/16 v11, 0xd
-
-    invoke-virtual {v10, v11}, Ljava/util/Calendar;->get(I)I
-
-    move-result v10
-
-    invoke-direct {p0, v10}, Lcom/android/internal/telephony/cat/DTTZResponseData;->byteToBCD(I)B
-
-    move-result v10
-
-    aput-byte v10, v2, v9
-
-    .line 243
-    const-string v9, "persist.sys.timezone"
-
-    const-string v10, ""
-
-    invoke-static {v9, v10}, Landroid/os/SystemProperties;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v6
-
-    .line 244
-    .local v6, tz:Ljava/lang/String;
-    invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v9
-
-    if-eqz v9, :cond_3
-
-    .line 245
-    const/4 v9, -0x1
-
-    aput-byte v9, v2, v12
-
-    .line 252
-    :goto_0
-    move-object v0, v2
-
-    .local v0, arr$:[B
-    array-length v4, v0
-
-    .local v4, len$:I
-    const/4 v3, 0x0
-
-    .local v3, i$:I
-    :goto_1
-    if-ge v3, v4, :cond_0
-
-    aget-byte v1, v0, v3
-
-    .line 253
-    .local v1, b:B
-    invoke-virtual {p1, v1}, Ljava/io/ByteArrayOutputStream;->write(I)V
-
-    .line 252
-    add-int/lit8 v3, v3, 0x1
-
-    goto :goto_1
-
-    .line 247
-    .end local v0           #arr$:[B
-    .end local v1           #b:B
-    .end local v3           #i$:I
-    .end local v4           #len$:I
-    :cond_3
-    invoke-static {v6}, Ljava/util/TimeZone;->getTimeZone(Ljava/lang/String;)Ljava/util/TimeZone;
+    .line 234
+    invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
 
     move-result-object v7
 
-    .line 248
-    .local v7, zone:Ljava/util/TimeZone;
-    invoke-virtual {v7}, Ljava/util/TimeZone;->getRawOffset()I
+    iput-object v7, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
 
-    move-result v9
+    .line 237
+    :cond_1
+    iget-object v7, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
 
-    invoke-virtual {v7}, Ljava/util/TimeZone;->getDSTSavings()I
+    invoke-virtual {v7, v8}, Ljava/util/Calendar;->get(I)I
 
-    move-result v10
+    move-result v7
 
-    add-int v8, v9, v10
+    rem-int/lit8 v7, v7, 0x64
+
+    invoke-direct {p0, v7}, Lcom/android/internal/telephony/cat/DTTZResponseData;->byteToBCD(I)B
+
+    move-result v7
+
+    aput-byte v7, v1, v8
+
+    .line 240
+    iget-object v7, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
+
+    invoke-virtual {v7, v9}, Ljava/util/Calendar;->get(I)I
+
+    move-result v7
+
+    add-int/lit8 v7, v7, 0x1
+
+    invoke-direct {p0, v7}, Lcom/android/internal/telephony/cat/DTTZResponseData;->byteToBCD(I)B
+
+    move-result v7
+
+    aput-byte v7, v1, v9
+
+    .line 243
+    iget-object v7, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
+
+    invoke-virtual {v7, v11}, Ljava/util/Calendar;->get(I)I
+
+    move-result v7
+
+    invoke-direct {p0, v7}, Lcom/android/internal/telephony/cat/DTTZResponseData;->byteToBCD(I)B
+
+    move-result v7
+
+    const/4 v8, 0x3
+
+    aput-byte v7, v1, v8
+
+    .line 246
+    iget-object v7, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
+
+    const/16 v8, 0xb
+
+    invoke-virtual {v7, v8}, Ljava/util/Calendar;->get(I)I
+
+    move-result v7
+
+    invoke-direct {p0, v7}, Lcom/android/internal/telephony/cat/DTTZResponseData;->byteToBCD(I)B
+
+    move-result v7
+
+    const/4 v8, 0x4
+
+    aput-byte v7, v1, v8
 
     .line 249
-    .local v8, zoneOffset:I
-    int-to-long v9, v8
+    iget-object v7, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
 
-    invoke-direct {p0, v9, v10}, Lcom/android/internal/telephony/cat/DTTZResponseData;->getTZOffSetByte(J)B
+    const/16 v8, 0xc
 
-    move-result v9
+    invoke-virtual {v7, v8}, Ljava/util/Calendar;->get(I)I
 
-    aput-byte v9, v2, v12
+    move-result v7
+
+    invoke-direct {p0, v7}, Lcom/android/internal/telephony/cat/DTTZResponseData;->byteToBCD(I)B
+
+    move-result v7
+
+    aput-byte v7, v1, v11
+
+    .line 252
+    iget-object v7, p0, Lcom/android/internal/telephony/cat/DTTZResponseData;->mCalendar:Ljava/util/Calendar;
+
+    const/16 v8, 0xd
+
+    invoke-virtual {v7, v8}, Ljava/util/Calendar;->get(I)I
+
+    move-result v7
+
+    invoke-direct {p0, v7}, Lcom/android/internal/telephony/cat/DTTZResponseData;->byteToBCD(I)B
+
+    move-result v7
+
+    const/4 v8, 0x6
+
+    aput-byte v7, v1, v8
+
+    .line 254
+    const-string/jumbo v7, "persist.sys.timezone"
+
+    const-string/jumbo v8, ""
+
+    invoke-static {v7, v8}, Landroid/os/SystemProperties;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 255
+    .local v3, "tz":Ljava/lang/String;
+    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v7
+
+    if-eqz v7, :cond_2
+
+    .line 256
+    const/4 v7, -0x1
+
+    aput-byte v7, v1, v10
+
+    .line 263
+    :goto_0
+    array-length v7, v1
+
+    :goto_1
+    if-ge v6, v7, :cond_3
+
+    aget-byte v0, v1, v6
+
+    .line 264
+    .local v0, "b":B
+    invoke-virtual {p1, v0}, Ljava/io/ByteArrayOutputStream;->write(I)V
+
+    .line 263
+    add-int/lit8 v6, v6, 0x1
+
+    goto :goto_1
+
+    .line 258
+    .end local v0    # "b":B
+    :cond_2
+    invoke-static {v3}, Ljava/util/TimeZone;->getTimeZone(Ljava/lang/String;)Ljava/util/TimeZone;
+
+    move-result-object v4
+
+    .line 259
+    .local v4, "zone":Ljava/util/TimeZone;
+    invoke-virtual {v4}, Ljava/util/TimeZone;->getRawOffset()I
+
+    move-result v7
+
+    invoke-virtual {v4}, Ljava/util/TimeZone;->getDSTSavings()I
+
+    move-result v8
+
+    add-int v5, v7, v8
+
+    .line 260
+    .local v5, "zoneOffset":I
+    int-to-long v8, v5
+
+    invoke-direct {p0, v8, v9}, Lcom/android/internal/telephony/cat/DTTZResponseData;->getTZOffSetByte(J)B
+
+    move-result v7
+
+    aput-byte v7, v1, v10
 
     goto :goto_0
+
+    .line 220
+    .end local v4    # "zone":Ljava/util/TimeZone;
+    .end local v5    # "zoneOffset":I
+    :cond_3
+    return-void
 .end method

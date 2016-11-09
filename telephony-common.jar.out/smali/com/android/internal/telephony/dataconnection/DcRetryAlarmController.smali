@@ -3,6 +3,14 @@
 .source "DcRetryAlarmController.java"
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController$1;
+    }
+.end annotation
+
+
 # static fields
 .field private static final DBG:Z = true
 
@@ -26,17 +34,43 @@
 
 
 # direct methods
+.method static synthetic -get0(Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;)Ljava/lang/String;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mActionRetry:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;)Lcom/android/internal/telephony/dataconnection/DataConnection;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mDc:Lcom/android/internal/telephony/dataconnection/DataConnection;
+
+    return-object v0
+.end method
+
+.method static synthetic -wrap0(Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;Ljava/lang/String;)V
+    .locals 0
+    .param p1, "s"    # Ljava/lang/String;
+
+    .prologue
+    invoke-direct {p0, p1}, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->log(Ljava/lang/String;)V
+
+    return-void
+.end method
+
 .method constructor <init>(Lcom/android/internal/telephony/PhoneBase;Lcom/android/internal/telephony/dataconnection/DataConnection;)V
     .locals 5
-    .parameter "phone"
-    .parameter "dc"
+    .param p1, "phone"    # Lcom/android/internal/telephony/PhoneBase;
+    .param p2, "dc"    # Lcom/android/internal/telephony/dataconnection/DataConnection;
 
     .prologue
     .line 78
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 36
-    const-string v1, "DcRac"
+    const-string/jumbo v1, "DcRac"
 
     iput-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mLogTag:Ljava/lang/String;
 
@@ -67,7 +101,7 @@
 
     move-result-object v1
 
-    const-string v2, "alarm"
+    const-string/jumbo v2, "alarm"
 
     invoke-virtual {v1, v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
@@ -84,7 +118,7 @@
 
     iget-object v2, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mDc:Lcom/android/internal/telephony/dataconnection/DataConnection;
 
-    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-virtual {v2}, Lcom/android/internal/telephony/dataconnection/DataConnection;->getClass()Ljava/lang/Class;
 
     move-result-object v2
 
@@ -96,7 +130,7 @@
 
     move-result-object v1
 
-    const-string v2, "."
+    const-string/jumbo v2, "."
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -112,7 +146,7 @@
 
     move-result-object v1
 
-    const-string v2, ".action_retry"
+    const-string/jumbo v2, ".action_retry"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -130,7 +164,7 @@
     invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
 
     .line 86
-    .local v0, filter:Landroid/content/IntentFilter;
+    .local v0, "filter":Landroid/content/IntentFilter;
     iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mActionRetry:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
@@ -140,7 +174,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "DcRetryAlarmController: register for intent action="
+    const-string/jumbo v2, "DcRetryAlarmController: register for intent action="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -167,67 +201,33 @@
 
     iget-object v2, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mIntentReceiver:Landroid/content/BroadcastReceiver;
 
-    const/4 v3, 0x0
+    iget-object v3, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mDc:Lcom/android/internal/telephony/dataconnection/DataConnection;
 
-    iget-object v4, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mDc:Lcom/android/internal/telephony/dataconnection/DataConnection;
+    invoke-virtual {v3}, Lcom/android/internal/telephony/dataconnection/DataConnection;->getHandler()Landroid/os/Handler;
 
-    invoke-virtual {v4}, Lcom/android/internal/telephony/dataconnection/DataConnection;->getHandler()Landroid/os/Handler;
+    move-result-object v3
 
-    move-result-object v4
+    const/4 v4, 0x0
 
-    invoke-virtual {v1, v2, v0, v3, v4}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
+    invoke-virtual {v1, v2, v0, v4, v3}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
 
-    .line 90
+    .line 78
     return-void
-.end method
-
-.method static synthetic access$000(Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;Ljava/lang/String;)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 35
-    invoke-direct {p0, p1}, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->log(Ljava/lang/String;)V
-
-    return-void
-.end method
-
-.method static synthetic access$100(Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;)Ljava/lang/String;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 35
-    iget-object v0, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mActionRetry:Ljava/lang/String;
-
-    return-object v0
-.end method
-
-.method static synthetic access$200(Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;)Lcom/android/internal/telephony/dataconnection/DataConnection;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 35
-    iget-object v0, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mDc:Lcom/android/internal/telephony/dataconnection/DataConnection;
-
-    return-object v0
 .end method
 
 .method private log(Ljava/lang/String;)V
     .locals 3
-    .parameter "s"
+    .param p1, "s"    # Ljava/lang/String;
 
     .prologue
-    .line 167
+    .line 168
     iget-object v0, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mLogTag:Ljava/lang/String;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "[dcRac] "
+    const-string/jumbo v2, "[dcRac] "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -243,7 +243,7 @@
 
     invoke-static {v0, v1}, Landroid/telephony/Rlog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 168
+    .line 167
     return-void
 .end method
 
@@ -256,7 +256,7 @@
     const/4 v2, 0x0
 
     .line 96
-    const-string v0, "dispose"
+    const-string/jumbo v0, "dispose"
 
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->log(Ljava/lang/String;)V
 
@@ -283,14 +283,14 @@
     .line 101
     iput-object v2, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mActionRetry:Ljava/lang/String;
 
-    .line 102
+    .line 95
     return-void
 .end method
 
 .method getSuggestedRetryTime(Lcom/android/internal/telephony/dataconnection/DataConnection;Landroid/os/AsyncResult;)I
     .locals 4
-    .parameter "dc"
-    .parameter "ar"
+    .param p1, "dc"    # Lcom/android/internal/telephony/dataconnection/DataConnection;
+    .param p2, "ar"    # Landroid/os/AsyncResult;
 
     .prologue
     .line 115
@@ -299,17 +299,17 @@
     check-cast v0, Lcom/android/internal/telephony/dataconnection/DataCallResponse;
 
     .line 116
-    .local v0, response:Lcom/android/internal/telephony/dataconnection/DataCallResponse;
+    .local v0, "response":Lcom/android/internal/telephony/dataconnection/DataCallResponse;
     iget v1, v0, Lcom/android/internal/telephony/dataconnection/DataCallResponse;->suggestedRetryTime:I
 
     .line 117
-    .local v1, retryDelay:I
+    .local v1, "retryDelay":I
     const v2, 0x7fffffff
 
     if-ne v1, v2, :cond_0
 
     .line 118
-    const-string v2, "getSuggestedRetryTime: suggestedRetryTime is MAX_INT, retry NOT needed"
+    const-string/jumbo v2, "getSuggestedRetryTime: suggestedRetryTime is MAX_INT, retry NOT needed"
 
     invoke-direct {p0, v2}, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->log(Ljava/lang/String;)V
 
@@ -322,7 +322,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "getSuggestedRetryTime: "
+    const-string/jumbo v3, "getSuggestedRetryTime: "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -332,7 +332,7 @@
 
     move-result-object v2
 
-    const-string v3, " response="
+    const-string/jumbo v3, " response="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -342,7 +342,7 @@
 
     move-result-object v2
 
-    const-string v3, " dc="
+    const-string/jumbo v3, " dc="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -366,7 +366,7 @@
     if-ltz v1, :cond_1
 
     .line 121
-    const-string v2, "getSuggestedRetryTime: suggestedRetryTime is >= 0 use it"
+    const-string/jumbo v2, "getSuggestedRetryTime: suggestedRetryTime is >= 0 use it"
 
     invoke-direct {p0, v2}, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->log(Ljava/lang/String;)V
 
@@ -397,7 +397,7 @@
 
     .line 127
     :cond_2
-    const-string v2, "getSuggestedRetryTime: retry is needed"
+    const-string/jumbo v2, "getSuggestedRetryTime: retry is needed"
 
     invoke-direct {p0, v2}, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->log(Ljava/lang/String;)V
 
@@ -405,7 +405,7 @@
 
     .line 129
     :cond_3
-    const-string v2, "getSuggestedRetryTime: retry is NOT needed"
+    const-string/jumbo v2, "getSuggestedRetryTime: retry is NOT needed"
 
     invoke-direct {p0, v2}, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->log(Ljava/lang/String;)V
 
@@ -417,9 +417,9 @@
 
 .method public startRetryAlarm(III)V
     .locals 8
-    .parameter "what"
-    .parameter "tag"
-    .parameter "delay"
+    .param p1, "what"    # I
+    .param p2, "tag"    # I
+    .param p3, "delay"    # I
 
     .prologue
     .line 140
@@ -430,22 +430,27 @@
     invoke-direct {v0, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
     .line 141
-    .local v0, intent:Landroid/content/Intent;
-    const-string v2, "what"
+    .local v0, "intent":Landroid/content/Intent;
+    const-string/jumbo v2, "what"
 
     invoke-virtual {v0, v2, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
     .line 142
-    const-string v2, "tag"
+    const-string/jumbo v2, "tag"
 
     invoke-virtual {v0, v2, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 145
+    .line 143
+    const/high16 v2, 0x10000000
+
+    invoke-virtual {v0, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    .line 146
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "startRetryAlarm: next attempt in "
+    const-string/jumbo v3, "startRetryAlarm: next attempt in "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -457,14 +462,16 @@
 
     move-result-object v2
 
-    const-string v3, "s"
+    const-string/jumbo v3, "s"
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    const-string v3, " what="
+    .line 147
+    const-string/jumbo v3, " what="
 
+    .line 146
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -473,8 +480,10 @@
 
     move-result-object v2
 
-    const-string v3, " tag="
+    .line 147
+    const-string/jumbo v3, " tag="
 
+    .line 146
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -489,7 +498,7 @@
 
     invoke-direct {p0, v2}, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->log(Ljava/lang/String;)V
 
-    .line 149
+    .line 150
     iget-object v2, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mPhone:Lcom/android/internal/telephony/PhoneBase;
 
     invoke-virtual {v2}, Lcom/android/internal/telephony/PhoneBase;->getContext()Landroid/content/Context;
@@ -498,18 +507,19 @@
 
     const/4 v3, 0x0
 
-    const/high16 v4, 0x800
+    .line 151
+    const/high16 v4, 0x8000000
 
+    .line 150
     invoke-static {v2, v3, v0, v4}, Landroid/app/PendingIntent;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object v1
 
-    .line 151
-    .local v1, retryIntent:Landroid/app/PendingIntent;
+    .line 152
+    .local v1, "retryIntent":Landroid/app/PendingIntent;
     iget-object v2, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mAlarmManager:Landroid/app/AlarmManager;
 
-    const/4 v3, 0x2
-
+    .line 153
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
     move-result-wide v4
@@ -518,9 +528,12 @@
 
     add-long/2addr v4, v6
 
-    invoke-virtual {v2, v3, v4, v5, v1}, Landroid/app/AlarmManager;->set(IJLandroid/app/PendingIntent;)V
+    .line 152
+    const/4 v3, 0x2
 
-    .line 153
+    invoke-virtual {v2, v3, v4, v5, v1}, Landroid/app/AlarmManager;->setExact(IJLandroid/app/PendingIntent;)V
+
+    .line 139
     return-void
 .end method
 
@@ -528,25 +541,25 @@
     .locals 3
 
     .prologue
-    .line 157
+    .line 158
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 158
-    .local v0, sb:Ljava/lang/StringBuilder;
+    .line 159
+    .local v0, "sb":Ljava/lang/StringBuilder;
     iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcRetryAlarmController;->mLogTag:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, " [dcRac] "
+    const-string/jumbo v2, " [dcRac] "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 159
-    const-string v1, " mPhone="
+    .line 160
+    const-string/jumbo v1, " mPhone="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -556,8 +569,8 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    .line 160
-    const-string v1, " mDc="
+    .line 161
+    const-string/jumbo v1, " mDc="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -567,8 +580,8 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    .line 161
-    const-string v1, " mAlaramManager="
+    .line 162
+    const-string/jumbo v1, " mAlaramManager="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -578,8 +591,8 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    .line 162
-    const-string v1, " mActionRetry="
+    .line 163
+    const-string/jumbo v1, " mActionRetry="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -589,7 +602,7 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 163
+    .line 164
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1

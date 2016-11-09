@@ -9,7 +9,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/android/internal/telephony/cat/Duration$TimeUnit;
+        Lcom/android/internal/telephony/cat/Duration$TimeUnit;,
+        Lcom/android/internal/telephony/cat/Duration$1;
     }
 .end annotation
 
@@ -45,13 +46,14 @@
 
     sput-object v0, Lcom/android/internal/telephony/cat/Duration;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 28
     return-void
 .end method
 
 .method public constructor <init>(ILcom/android/internal/telephony/cat/Duration$TimeUnit;)V
     .locals 0
-    .parameter "timeInterval"
-    .parameter "timeUnit"
+    .param p1, "timeInterval"    # I
+    .param p2, "timeUnit"    # Lcom/android/internal/telephony/cat/Duration$TimeUnit;
 
     .prologue
     .line 51
@@ -63,13 +65,13 @@
     .line 53
     iput-object p2, p0, Lcom/android/internal/telephony/cat/Duration;->timeUnit:Lcom/android/internal/telephony/cat/Duration$TimeUnit;
 
-    .line 54
+    .line 51
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 56
@@ -95,17 +97,15 @@
 
     iput-object v0, p0, Lcom/android/internal/telephony/cat/Duration;->timeUnit:Lcom/android/internal/telephony/cat/Duration$TimeUnit;
 
-    .line 59
+    .line 56
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Lcom/android/internal/telephony/cat/Duration$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Lcom/android/internal/telephony/cat/Duration;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 28
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/cat/Duration;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -125,8 +125,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 63
@@ -143,6 +143,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 65
+    .line 62
     return-void
 .end method

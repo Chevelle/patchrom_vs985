@@ -6,9 +6,14 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/android/internal/telephony/Call$State;
+        Lcom/android/internal/telephony/Call$State;,
+        Lcom/android/internal/telephony/Call$SrvccState;
     }
 .end annotation
+
+
+# static fields
+.field private static synthetic -com_android_internal_telephony_DriverCall$StateSwitchesValues:[I
 
 
 # instance fields
@@ -31,40 +36,292 @@
 
 
 # direct methods
+.method private static synthetic -getcom_android_internal_telephony_DriverCall$StateSwitchesValues()[I
+    .locals 3
+
+    sget-object v0, Lcom/android/internal/telephony/Call;->-com_android_internal_telephony_DriverCall$StateSwitchesValues:[I
+
+    if-eqz v0, :cond_0
+
+    sget-object v0, Lcom/android/internal/telephony/Call;->-com_android_internal_telephony_DriverCall$StateSwitchesValues:[I
+
+    return-object v0
+
+    :cond_0
+    invoke-static {}, Lcom/android/internal/telephony/DriverCall$State;->values()[Lcom/android/internal/telephony/DriverCall$State;
+
+    move-result-object v0
+
+    array-length v0, v0
+
+    new-array v0, v0, [I
+
+    :try_start_0
+    sget-object v1, Lcom/android/internal/telephony/DriverCall$State;->ACTIVE:Lcom/android/internal/telephony/DriverCall$State;
+
+    invoke-virtual {v1}, Lcom/android/internal/telephony/DriverCall$State;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x1
+
+    aput v2, v0, v1
+    :try_end_0
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_5
+
+    :goto_0
+    :try_start_1
+    sget-object v1, Lcom/android/internal/telephony/DriverCall$State;->ALERTING:Lcom/android/internal/telephony/DriverCall$State;
+
+    invoke-virtual {v1}, Lcom/android/internal/telephony/DriverCall$State;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x2
+
+    aput v2, v0, v1
+    :try_end_1
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_4
+
+    :goto_1
+    :try_start_2
+    sget-object v1, Lcom/android/internal/telephony/DriverCall$State;->DIALING:Lcom/android/internal/telephony/DriverCall$State;
+
+    invoke-virtual {v1}, Lcom/android/internal/telephony/DriverCall$State;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x3
+
+    aput v2, v0, v1
+    :try_end_2
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_3
+
+    :goto_2
+    :try_start_3
+    sget-object v1, Lcom/android/internal/telephony/DriverCall$State;->HOLDING:Lcom/android/internal/telephony/DriverCall$State;
+
+    invoke-virtual {v1}, Lcom/android/internal/telephony/DriverCall$State;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x4
+
+    aput v2, v0, v1
+    :try_end_3
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_3 .. :try_end_3} :catch_2
+
+    :goto_3
+    :try_start_4
+    sget-object v1, Lcom/android/internal/telephony/DriverCall$State;->INCOMING:Lcom/android/internal/telephony/DriverCall$State;
+
+    invoke-virtual {v1}, Lcom/android/internal/telephony/DriverCall$State;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x5
+
+    aput v2, v0, v1
+    :try_end_4
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_4 .. :try_end_4} :catch_1
+
+    :goto_4
+    :try_start_5
+    sget-object v1, Lcom/android/internal/telephony/DriverCall$State;->WAITING:Lcom/android/internal/telephony/DriverCall$State;
+
+    invoke-virtual {v1}, Lcom/android/internal/telephony/DriverCall$State;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x6
+
+    aput v2, v0, v1
+    :try_end_5
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_5 .. :try_end_5} :catch_0
+
+    :goto_5
+    sput-object v0, Lcom/android/internal/telephony/Call;->-com_android_internal_telephony_DriverCall$StateSwitchesValues:[I
+
+    return-object v0
+
+    :catch_0
+    move-exception v1
+
+    goto :goto_5
+
+    :catch_1
+    move-exception v1
+
+    goto :goto_4
+
+    :catch_2
+    move-exception v1
+
+    goto :goto_3
+
+    :catch_3
+    move-exception v1
+
+    goto :goto_2
+
+    :catch_4
+    move-exception v1
+
+    goto :goto_1
+
+    :catch_5
+    move-exception v1
+
+    goto :goto_0
+.end method
+
 .method public constructor <init>()V
     .locals 1
 
     .prologue
-    .line 27
+    .line 29
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 28
-    const-string v0, "Call"
+    .line 30
+    const-string/jumbo v0, "Call"
 
     iput-object v0, p0, Lcom/android/internal/telephony/Call;->LOG_TAG:Ljava/lang/String;
 
-    .line 51
+    .line 69
     sget-object v0, Lcom/android/internal/telephony/Call$State;->IDLE:Lcom/android/internal/telephony/Call$State;
 
     iput-object v0, p0, Lcom/android/internal/telephony/Call;->mState:Lcom/android/internal/telephony/Call$State;
 
-    .line 53
+    .line 71
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lcom/android/internal/telephony/Call;->mConnections:Ljava/util/ArrayList;
 
-    .line 61
+    .line 79
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/internal/telephony/Call;->mIsGeneric:Z
 
+    .line 29
     return-void
+.end method
+
+.method public static stateFromDCState(Lcom/android/internal/telephony/DriverCall$State;)Lcom/android/internal/telephony/Call$State;
+    .locals 3
+    .param p0, "dcState"    # Lcom/android/internal/telephony/DriverCall$State;
+
+    .prologue
+    .line 52
+    invoke-static {}, Lcom/android/internal/telephony/Call;->-getcom_android_internal_telephony_DriverCall$StateSwitchesValues()[I
+
+    move-result-object v0
+
+    invoke-virtual {p0}, Lcom/android/internal/telephony/DriverCall$State;->ordinal()I
+
+    move-result v1
+
+    aget v0, v0, v1
+
+    packed-switch v0, :pswitch_data_0
+
+    .line 59
+    new-instance v0, Ljava/lang/RuntimeException;
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v2, "illegal call state:"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 53
+    :pswitch_0
+    sget-object v0, Lcom/android/internal/telephony/Call$State;->ACTIVE:Lcom/android/internal/telephony/Call$State;
+
+    return-object v0
+
+    .line 54
+    :pswitch_1
+    sget-object v0, Lcom/android/internal/telephony/Call$State;->HOLDING:Lcom/android/internal/telephony/Call$State;
+
+    return-object v0
+
+    .line 55
+    :pswitch_2
+    sget-object v0, Lcom/android/internal/telephony/Call$State;->DIALING:Lcom/android/internal/telephony/Call$State;
+
+    return-object v0
+
+    .line 56
+    :pswitch_3
+    sget-object v0, Lcom/android/internal/telephony/Call$State;->ALERTING:Lcom/android/internal/telephony/Call$State;
+
+    return-object v0
+
+    .line 57
+    :pswitch_4
+    sget-object v0, Lcom/android/internal/telephony/Call$State;->INCOMING:Lcom/android/internal/telephony/Call$State;
+
+    return-object v0
+
+    .line 58
+    :pswitch_5
+    sget-object v0, Lcom/android/internal/telephony/Call$State;->WAITING:Lcom/android/internal/telephony/Call$State;
+
+    return-object v0
+
+    .line 52
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_0
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_4
+        :pswitch_5
+    .end packed-switch
 .end method
 
 
 # virtual methods
+.method public getConferenceParticipants()Ljava/util/List;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List",
+            "<",
+            "Landroid/telecom/ConferenceParticipant;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 130
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
 .method public abstract getConnections()Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -81,316 +338,314 @@
     .locals 10
 
     .prologue
-    .line 174
+    .line 200
     const-wide v6, 0x7fffffffffffffffL
 
-    .line 175
-    .local v6, time:J
+    .line 201
+    .local v6, "time":J
     invoke-virtual {p0}, Lcom/android/internal/telephony/Call;->getConnections()Ljava/util/List;
 
     move-result-object v2
 
-    .line 177
-    .local v2, l:Ljava/util/List;,"Ljava/util/List<Lcom/android/internal/telephony/Connection;>;"
+    .line 203
+    .local v2, "l":Ljava/util/List;, "Ljava/util/List<Lcom/android/internal/telephony/Connection;>;"
     invoke-interface {v2}, Ljava/util/List;->size()I
 
     move-result v8
 
     if-nez v8, :cond_0
 
-    .line 178
+    .line 204
     const-wide/16 v8, 0x0
 
-    .line 190
-    :goto_0
     return-wide v8
 
-    .line 181
+    .line 207
     :cond_0
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     invoke-interface {v2}, Ljava/util/List;->size()I
 
     move-result v3
 
-    .local v3, s:I
-    :goto_1
+    .local v3, "s":I
+    :goto_0
     if-ge v1, v3, :cond_2
 
-    .line 182
+    .line 208
     invoke-interface {v2, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lcom/android/internal/telephony/Connection;
 
-    .line 185
-    .local v0, c:Lcom/android/internal/telephony/Connection;
+    .line 211
+    .local v0, "c":Lcom/android/internal/telephony/Connection;
     invoke-virtual {v0}, Lcom/android/internal/telephony/Connection;->getConnectTime()J
 
     move-result-wide v4
 
-    .line 187
-    .local v4, t:J
+    .line 213
+    .local v4, "t":J
     cmp-long v8, v4, v6
 
     if-gez v8, :cond_1
 
     move-wide v6, v4
 
-    .line 181
+    .line 207
     :cond_1
     add-int/lit8 v1, v1, 0x1
 
-    goto :goto_1
-
-    .end local v0           #c:Lcom/android/internal/telephony/Connection;
-    .end local v4           #t:J
-    :cond_2
-    move-wide v8, v6
-
-    .line 190
     goto :goto_0
+
+    .line 216
+    .end local v0    # "c":Lcom/android/internal/telephony/Connection;
+    .end local v4    # "t":J
+    :cond_2
+    return-wide v6
 .end method
 
 .method public getEarliestConnection()Lcom/android/internal/telephony/Connection;
     .locals 10
 
     .prologue
-    .line 124
-    const-wide v7, 0x7fffffffffffffffL
+    .line 150
+    const-wide v8, 0x7fffffffffffffffL
 
-    .line 126
-    .local v7, time:J
+    .line 152
+    .local v8, "time":J
     const/4 v1, 0x0
 
-    .line 128
-    .local v1, earliest:Lcom/android/internal/telephony/Connection;
+    .line 154
+    .local v1, "earliest":Lcom/android/internal/telephony/Connection;
     invoke-virtual {p0}, Lcom/android/internal/telephony/Call;->getConnections()Ljava/util/List;
 
     move-result-object v3
 
-    .line 130
-    .local v3, l:Ljava/util/List;,"Ljava/util/List<Lcom/android/internal/telephony/Connection;>;"
+    .line 156
+    .local v3, "l":Ljava/util/List;, "Ljava/util/List<Lcom/android/internal/telephony/Connection;>;"
     invoke-interface {v3}, Ljava/util/List;->size()I
 
-    move-result v9
+    move-result v5
 
-    if-nez v9, :cond_0
+    if-nez v5, :cond_0
 
-    .line 131
-    const/4 v9, 0x0
+    .line 157
+    const/4 v5, 0x0
 
-    .line 146
-    :goto_0
-    return-object v9
+    return-object v5
 
-    .line 134
+    .line 160
     :cond_0
     const/4 v2, 0x0
 
-    .local v2, i:I
+    .local v2, "i":I
     invoke-interface {v3}, Ljava/util/List;->size()I
 
     move-result v4
 
-    .local v4, s:I
-    :goto_1
+    .end local v1    # "earliest":Lcom/android/internal/telephony/Connection;
+    .local v4, "s":I
+    :goto_0
     if-ge v2, v4, :cond_2
 
-    .line 135
+    .line 161
     invoke-interface {v3, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lcom/android/internal/telephony/Connection;
 
-    .line 138
-    .local v0, c:Lcom/android/internal/telephony/Connection;
+    .line 164
+    .local v0, "c":Lcom/android/internal/telephony/Connection;
     invoke-virtual {v0}, Lcom/android/internal/telephony/Connection;->getCreateTime()J
 
-    move-result-wide v5
+    move-result-wide v6
 
-    .line 140
-    .local v5, t:J
-    cmp-long v9, v5, v7
+    .line 166
+    .local v6, "t":J
+    cmp-long v5, v6, v8
 
-    if-gez v9, :cond_1
+    if-gez v5, :cond_1
 
-    .line 141
+    .line 167
     move-object v1, v0
 
-    .line 142
-    move-wide v7, v5
+    .line 168
+    .local v1, "earliest":Lcom/android/internal/telephony/Connection;
+    move-wide v8, v6
 
-    .line 134
+    .line 160
+    .end local v1    # "earliest":Lcom/android/internal/telephony/Connection;
     :cond_1
     add-int/lit8 v2, v2, 0x1
 
-    goto :goto_1
-
-    .end local v0           #c:Lcom/android/internal/telephony/Connection;
-    .end local v5           #t:J
-    :cond_2
-    move-object v9, v1
-
-    .line 146
     goto :goto_0
+
+    .line 172
+    .end local v0    # "c":Lcom/android/internal/telephony/Connection;
+    .end local v6    # "t":J
+    :cond_2
+    return-object v1
 .end method
 
 .method public getEarliestCreateTime()J
     .locals 10
 
     .prologue
-    .line 152
+    .line 178
     const-wide v6, 0x7fffffffffffffffL
 
-    .line 154
-    .local v6, time:J
+    .line 180
+    .local v6, "time":J
     invoke-virtual {p0}, Lcom/android/internal/telephony/Call;->getConnections()Ljava/util/List;
 
     move-result-object v2
 
-    .line 156
-    .local v2, l:Ljava/util/List;,"Ljava/util/List<Lcom/android/internal/telephony/Connection;>;"
+    .line 182
+    .local v2, "l":Ljava/util/List;, "Ljava/util/List<Lcom/android/internal/telephony/Connection;>;"
     invoke-interface {v2}, Ljava/util/List;->size()I
 
     move-result v8
 
     if-nez v8, :cond_0
 
-    .line 157
+    .line 183
     const-wide/16 v8, 0x0
 
-    .line 169
-    :goto_0
     return-wide v8
 
-    .line 160
+    .line 186
     :cond_0
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     invoke-interface {v2}, Ljava/util/List;->size()I
 
     move-result v3
 
-    .local v3, s:I
-    :goto_1
+    .local v3, "s":I
+    :goto_0
     if-ge v1, v3, :cond_2
 
-    .line 161
+    .line 187
     invoke-interface {v2, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lcom/android/internal/telephony/Connection;
 
-    .line 164
-    .local v0, c:Lcom/android/internal/telephony/Connection;
+    .line 190
+    .local v0, "c":Lcom/android/internal/telephony/Connection;
     invoke-virtual {v0}, Lcom/android/internal/telephony/Connection;->getCreateTime()J
 
     move-result-wide v4
 
-    .line 166
-    .local v4, t:J
+    .line 192
+    .local v4, "t":J
     cmp-long v8, v4, v6
 
     if-gez v8, :cond_1
 
     move-wide v6, v4
 
-    .line 160
+    .line 186
     :cond_1
     add-int/lit8 v1, v1, 0x1
 
-    goto :goto_1
-
-    .end local v0           #c:Lcom/android/internal/telephony/Connection;
-    .end local v4           #t:J
-    :cond_2
-    move-wide v8, v6
-
-    .line 169
     goto :goto_0
+
+    .line 195
+    .end local v0    # "c":Lcom/android/internal/telephony/Connection;
+    .end local v4    # "t":J
+    :cond_2
+    return-wide v6
 .end method
 
 .method public getLatestConnection()Lcom/android/internal/telephony/Connection;
     .locals 10
 
     .prologue
-    .line 210
+    .line 236
     invoke-virtual {p0}, Lcom/android/internal/telephony/Call;->getConnections()Ljava/util/List;
 
     move-result-object v2
 
-    .line 211
-    .local v2, l:Ljava/util/List;,"Ljava/util/List<Lcom/android/internal/telephony/Connection;>;"
+    .line 237
+    .local v2, "l":Ljava/util/List;, "Ljava/util/List<Lcom/android/internal/telephony/Connection;>;"
     invoke-interface {v2}, Ljava/util/List;->size()I
 
-    move-result v9
+    move-result v5
 
-    if-nez v9, :cond_1
+    if-nez v5, :cond_0
 
-    .line 212
-    const/4 v3, 0x0
+    .line 238
+    const/4 v5, 0x0
 
-    .line 227
+    return-object v5
+
+    .line 241
     :cond_0
-    return-object v3
+    const-wide/16 v8, 0x0
 
-    .line 215
-    :cond_1
-    const-wide/16 v7, 0x0
-
-    .line 216
-    .local v7, time:J
+    .line 242
+    .local v8, "time":J
     const/4 v3, 0x0
 
-    .line 217
-    .local v3, latest:Lcom/android/internal/telephony/Connection;
+    .line 243
+    .local v3, "latest":Lcom/android/internal/telephony/Connection;
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     invoke-interface {v2}, Ljava/util/List;->size()I
 
     move-result v4
 
-    .local v4, s:I
+    .end local v3    # "latest":Lcom/android/internal/telephony/Connection;
+    .local v4, "s":I
     :goto_0
-    if-ge v1, v4, :cond_0
+    if-ge v1, v4, :cond_2
 
-    .line 218
+    .line 244
     invoke-interface {v2, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lcom/android/internal/telephony/Connection;
 
-    .line 219
-    .local v0, c:Lcom/android/internal/telephony/Connection;
+    .line 245
+    .local v0, "c":Lcom/android/internal/telephony/Connection;
     invoke-virtual {v0}, Lcom/android/internal/telephony/Connection;->getCreateTime()J
 
-    move-result-wide v5
+    move-result-wide v6
 
-    .line 221
-    .local v5, t:J
-    cmp-long v9, v5, v7
+    .line 247
+    .local v6, "t":J
+    cmp-long v5, v6, v8
 
-    if-lez v9, :cond_2
+    if-lez v5, :cond_1
 
-    .line 222
+    .line 248
     move-object v3, v0
 
-    .line 223
-    move-wide v7, v5
+    .line 249
+    .local v3, "latest":Lcom/android/internal/telephony/Connection;
+    move-wide v8, v6
 
-    .line 217
-    :cond_2
+    .line 243
+    .end local v3    # "latest":Lcom/android/internal/telephony/Connection;
+    :cond_1
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
+
+    .line 253
+    .end local v0    # "c":Lcom/android/internal/telephony/Connection;
+    .end local v6    # "t":J
+    :cond_2
+    return-object v3
 .end method
 
 .method public abstract getPhone()Lcom/android/internal/telephony/Phone;
@@ -400,7 +655,7 @@
     .locals 1
 
     .prologue
-    .line 104
+    .line 122
     iget-object v0, p0, Lcom/android/internal/telephony/Call;->mState:Lcom/android/internal/telephony/Call$State;
 
     return-object v0
@@ -418,7 +673,7 @@
     .locals 4
 
     .prologue
-    .line 249
+    .line 275
     invoke-virtual {p0}, Lcom/android/internal/telephony/Call;->getState()Lcom/android/internal/telephony/Call$State;
 
     move-result-object v1
@@ -429,30 +684,30 @@
 
     if-eqz v1, :cond_0
 
-    .line 251
+    .line 277
     :try_start_0
     invoke-virtual {p0}, Lcom/android/internal/telephony/Call;->hangup()V
     :try_end_0
     .catch Lcom/android/internal/telephony/CallStateException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 256
+    .line 274
     :cond_0
     :goto_0
     return-void
 
-    .line 252
+    .line 278
     :catch_0
     move-exception v0
 
-    .line 253
-    .local v0, ex:Lcom/android/internal/telephony/CallStateException;
-    const-string v1, "Call"
+    .line 279
+    .local v0, "ex":Lcom/android/internal/telephony/CallStateException;
+    const-string/jumbo v1, "Call"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, " hangupIfActive: caught "
+    const-string/jumbo v3, " hangupIfActive: caught "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -473,10 +728,10 @@
 
 .method public hasConnection(Lcom/android/internal/telephony/Connection;)Z
     .locals 1
-    .parameter "c"
+    .param p1, "c"    # Lcom/android/internal/telephony/Connection;
 
     .prologue
-    .line 82
+    .line 100
     invoke-virtual {p1}, Lcom/android/internal/telephony/Connection;->getCall()Lcom/android/internal/telephony/Call;
 
     move-result-object v0
@@ -500,37 +755,37 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 90
+    .line 108
     invoke-virtual {p0}, Lcom/android/internal/telephony/Call;->getConnections()Ljava/util/List;
 
     move-result-object v0
 
-    .line 92
-    .local v0, connections:Ljava/util/List;,"Ljava/util/List<Lcom/android/internal/telephony/Connection;>;"
-    if-nez v0, :cond_1
+    .line 110
+    .local v0, "connections":Ljava/util/List;, "Ljava/util/List<Lcom/android/internal/telephony/Connection;>;"
+    if-nez v0, :cond_0
 
-    .line 96
-    :cond_0
-    :goto_0
+    .line 111
     return v1
 
-    :cond_1
+    .line 114
+    :cond_0
     invoke-interface {v0}, Ljava/util/List;->size()I
 
     move-result v2
 
-    if-lez v2, :cond_0
+    if-lez v2, :cond_1
 
     const/4 v1, 0x1
 
-    goto :goto_0
+    :cond_1
+    return v1
 .end method
 
 .method public isDialingOrAlerting()Z
     .locals 1
 
     .prologue
-    .line 196
+    .line 222
     invoke-virtual {p0}, Lcom/android/internal/telephony/Call;->getState()Lcom/android/internal/telephony/Call$State;
 
     move-result-object v0
@@ -546,7 +801,7 @@
     .locals 1
 
     .prologue
-    .line 235
+    .line 261
     iget-boolean v0, p0, Lcom/android/internal/telephony/Call;->mIsGeneric:Z
 
     return v0
@@ -556,7 +811,7 @@
     .locals 1
 
     .prologue
-    .line 114
+    .line 140
     invoke-virtual {p0}, Lcom/android/internal/telephony/Call;->getState()Lcom/android/internal/telephony/Call$State;
 
     move-result-object v0
@@ -565,15 +820,15 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_0
 
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
     :goto_0
     return v0
 
     :cond_0
-    const/4 v0, 0x0
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method
@@ -585,7 +840,7 @@
     .locals 1
 
     .prologue
-    .line 201
+    .line 227
     invoke-virtual {p0}, Lcom/android/internal/telephony/Call;->getState()Lcom/android/internal/telephony/Call$State;
 
     move-result-object v0
@@ -599,12 +854,12 @@
 
 .method public setGeneric(Z)V
     .locals 0
-    .parameter "generic"
+    .param p1, "generic"    # Z
 
     .prologue
-    .line 242
+    .line 268
     iput-boolean p1, p0, Lcom/android/internal/telephony/Call;->mIsGeneric:Z
 
-    .line 243
+    .line 267
     return-void
 .end method

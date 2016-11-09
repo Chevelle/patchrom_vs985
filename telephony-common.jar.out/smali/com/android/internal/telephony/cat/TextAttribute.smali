@@ -26,18 +26,18 @@
 # direct methods
 .method public constructor <init>(IILcom/android/internal/telephony/cat/TextAlignment;Lcom/android/internal/telephony/cat/FontSize;ZZZZLcom/android/internal/telephony/cat/TextColor;)V
     .locals 0
-    .parameter "start"
-    .parameter "length"
-    .parameter "align"
-    .parameter "size"
-    .parameter "bold"
-    .parameter "italic"
-    .parameter "underlined"
-    .parameter "strikeThrough"
-    .parameter "color"
+    .param p1, "start"    # I
+    .param p2, "length"    # I
+    .param p3, "align"    # Lcom/android/internal/telephony/cat/TextAlignment;
+    .param p4, "size"    # Lcom/android/internal/telephony/cat/FontSize;
+    .param p5, "bold"    # Z
+    .param p6, "italic"    # Z
+    .param p7, "underlined"    # Z
+    .param p8, "strikeThrough"    # Z
+    .param p9, "color"    # Lcom/android/internal/telephony/cat/TextColor;
 
     .prologue
-    .line 38
+    .line 36
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 39
@@ -67,6 +67,6 @@
     .line 47
     iput-object p9, p0, Lcom/android/internal/telephony/cat/TextAttribute;->color:Lcom/android/internal/telephony/cat/TextColor;
 
-    .line 48
+    .line 38
     return-void
 .end method

@@ -41,7 +41,7 @@
 # direct methods
 .method constructor <init>(Lcom/android/internal/telephony/cdma/EriManager;)V
     .locals 3
-    .parameter
+    .param p1, "this$0"    # Lcom/android/internal/telephony/cdma/EriManager;
 
     .prologue
     const/4 v2, 0x0
@@ -67,21 +67,21 @@
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const-string v1, ""
+    const-string/jumbo v1, ""
 
     aput-object v1, v0, v2
 
-    const/4 v1, 0x1
+    const-string/jumbo v1, ""
 
-    const-string v2, ""
+    const/4 v2, 0x1
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x2
+    const-string/jumbo v1, ""
 
-    const-string v2, ""
+    const/4 v2, 0x2
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     iput-object v0, p0, Lcom/android/internal/telephony/cdma/EriManager$EriFile;->mCallPromptId:[Ljava/lang/String;
 
@@ -92,6 +92,6 @@
 
     iput-object v0, p0, Lcom/android/internal/telephony/cdma/EriManager$EriFile;->mRoamIndTable:Ljava/util/HashMap;
 
-    .line 59
+    .line 53
     return-void
 .end method

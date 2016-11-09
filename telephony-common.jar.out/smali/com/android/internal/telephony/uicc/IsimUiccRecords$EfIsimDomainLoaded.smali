@@ -24,10 +24,10 @@
 # direct methods
 .method private constructor <init>(Lcom/android/internal/telephony/uicc/IsimUiccRecords;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/internal/telephony/uicc/IsimUiccRecords;
 
     .prologue
-    .line 163
+    .line 214
     iput-object p1, p0, Lcom/android/internal/telephony/uicc/IsimUiccRecords$EfIsimDomainLoaded;->this$0:Lcom/android/internal/telephony/uicc/IsimUiccRecords;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -35,13 +35,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/android/internal/telephony/uicc/IsimUiccRecords;Lcom/android/internal/telephony/uicc/IsimUiccRecords$1;)V
+.method synthetic constructor <init>(Lcom/android/internal/telephony/uicc/IsimUiccRecords;Lcom/android/internal/telephony/uicc/IsimUiccRecords$EfIsimDomainLoaded;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Lcom/android/internal/telephony/uicc/IsimUiccRecords;
 
     .prologue
-    .line 163
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/uicc/IsimUiccRecords$EfIsimDomainLoaded;-><init>(Lcom/android/internal/telephony/uicc/IsimUiccRecords;)V
 
     return-void
@@ -53,38 +51,32 @@
     .locals 1
 
     .prologue
-    .line 165
-    const-string v0, "EF_ISIM_DOMAIN"
+    .line 216
+    const-string/jumbo v0, "EF_ISIM_DOMAIN"
 
     return-object v0
 .end method
 
 .method public onRecordLoaded(Landroid/os/AsyncResult;)V
     .locals 3
-    .parameter "ar"
+    .param p1, "ar"    # Landroid/os/AsyncResult;
 
     .prologue
-    .line 168
-    iget-object v1, p1, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
-
-    check-cast v1, [B
-
-    move-object v0, v1
+    .line 219
+    iget-object v0, p1, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
     check-cast v0, [B
 
-    .line 169
-    .local v0, data:[B
+    .line 220
+    .local v0, "data":[B
     iget-object v1, p0, Lcom/android/internal/telephony/uicc/IsimUiccRecords$EfIsimDomainLoaded;->this$0:Lcom/android/internal/telephony/uicc/IsimUiccRecords;
 
-    #calls: Lcom/android/internal/telephony/uicc/IsimUiccRecords;->isimTlvToString([B)Ljava/lang/String;
-    invoke-static {v0}, Lcom/android/internal/telephony/uicc/IsimUiccRecords;->access$400([B)Ljava/lang/String;
+    invoke-static {v0}, Lcom/android/internal/telephony/uicc/IsimUiccRecords;->-wrap0([B)Ljava/lang/String;
 
     move-result-object v2
 
-    #setter for: Lcom/android/internal/telephony/uicc/IsimUiccRecords;->mIsimDomain:Ljava/lang/String;
-    invoke-static {v1, v2}, Lcom/android/internal/telephony/uicc/IsimUiccRecords;->access$602(Lcom/android/internal/telephony/uicc/IsimUiccRecords;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v1, v2}, Lcom/android/internal/telephony/uicc/IsimUiccRecords;->-set0(Lcom/android/internal/telephony/uicc/IsimUiccRecords;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 171
+    .line 218
     return-void
 .end method

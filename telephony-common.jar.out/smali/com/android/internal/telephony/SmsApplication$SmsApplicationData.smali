@@ -33,57 +33,56 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;I)V
     .locals 0
-    .parameter "applicationName"
-    .parameter "packageName"
-    .parameter "uid"
+    .param p1, "applicationName"    # Ljava/lang/String;
+    .param p2, "packageName"    # Ljava/lang/String;
+    .param p3, "uid"    # I
 
     .prologue
-    .line 105
+    .line 114
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 106
+    .line 115
     iput-object p1, p0, Lcom/android/internal/telephony/SmsApplication$SmsApplicationData;->mApplicationName:Ljava/lang/String;
 
-    .line 107
+    .line 116
     iput-object p2, p0, Lcom/android/internal/telephony/SmsApplication$SmsApplicationData;->mPackageName:Ljava/lang/String;
 
-    .line 108
+    .line 117
     iput p3, p0, Lcom/android/internal/telephony/SmsApplication$SmsApplicationData;->mUid:I
 
-    .line 109
+    .line 114
     return-void
 .end method
 
 
 # virtual methods
 .method public isComplete()Z
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 101
-    iget-object v0, p0, Lcom/android/internal/telephony/SmsApplication$SmsApplicationData;->mSmsReceiverClass:Ljava/lang/String;
+    const/4 v0, 0x0
 
-    if-eqz v0, :cond_0
+    .line 110
+    iget-object v1, p0, Lcom/android/internal/telephony/SmsApplication$SmsApplicationData;->mSmsReceiverClass:Ljava/lang/String;
 
-    iget-object v0, p0, Lcom/android/internal/telephony/SmsApplication$SmsApplicationData;->mMmsReceiverClass:Ljava/lang/String;
+    if-eqz v1, :cond_0
 
-    if-eqz v0, :cond_0
+    iget-object v1, p0, Lcom/android/internal/telephony/SmsApplication$SmsApplicationData;->mMmsReceiverClass:Ljava/lang/String;
 
-    iget-object v0, p0, Lcom/android/internal/telephony/SmsApplication$SmsApplicationData;->mRespondViaMessageClass:Ljava/lang/String;
+    if-eqz v1, :cond_0
 
-    if-eqz v0, :cond_0
+    .line 111
+    iget-object v1, p0, Lcom/android/internal/telephony/SmsApplication$SmsApplicationData;->mRespondViaMessageClass:Ljava/lang/String;
 
-    iget-object v0, p0, Lcom/android/internal/telephony/SmsApplication$SmsApplicationData;->mSendToClass:Ljava/lang/String;
+    if-eqz v1, :cond_0
 
-    if-eqz v0, :cond_0
+    iget-object v1, p0, Lcom/android/internal/telephony/SmsApplication$SmsApplicationData;->mSendToClass:Ljava/lang/String;
+
+    if-eqz v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
+    .line 110
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method

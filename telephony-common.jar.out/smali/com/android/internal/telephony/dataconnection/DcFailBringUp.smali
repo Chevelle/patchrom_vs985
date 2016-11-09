@@ -12,13 +12,13 @@
 
 .field static final DEFAULT_COUNTER:I = 0x1
 
-.field static final DEFAULT_FAIL_CAUSE:Lcom/android/internal/telephony/dataconnection/DcFailCause; = null
+.field static final DEFAULT_FAIL_CAUSE:Lcom/android/internal/telephony/dataconnection/DcFailCause;
 
 .field static final DEFAULT_SUGGESTED_RETRY_TIME:I = -0x1
 
 .field static final FAIL_CAUSE:Ljava/lang/String; = "fail_cause"
 
-.field static final INTENT_BASE:Ljava/lang/String; = null
+.field static final INTENT_BASE:Ljava/lang/String;
 
 .field private static final LOG_TAG:Ljava/lang/String; = "DcFailBringUp"
 
@@ -56,6 +56,7 @@
 
     sput-object v0, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->DEFAULT_FAIL_CAUSE:Lcom/android/internal/telephony/dataconnection/DcFailCause;
 
+    .line 27
     return-void
 .end method
 
@@ -71,15 +72,15 @@
 
 .method private static log(Ljava/lang/String;)V
     .locals 1
-    .parameter "s"
+    .param p0, "s"    # Ljava/lang/String;
 
     .prologue
     .line 78
-    const-string v0, "DcFailBringUp"
+    const-string/jumbo v0, "DcFailBringUp"
 
     invoke-static {v0, p0}, Landroid/telephony/Rlog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 79
+    .line 77
     return-void
 .end method
 
@@ -87,9 +88,9 @@
 # virtual methods
 .method saveParameters(III)V
     .locals 1
-    .parameter "counter"
-    .parameter "failCause"
-    .parameter "suggestedRetryTime"
+    .param p1, "counter"    # I
+    .param p2, "failCause"    # I
+    .param p3, "suggestedRetryTime"    # I
 
     .prologue
     .line 64
@@ -105,14 +106,14 @@
     .line 66
     iput p3, p0, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->mSuggestedRetryTime:I
 
-    .line 67
+    .line 63
     return-void
 .end method
 
 .method saveParameters(Landroid/content/Intent;Ljava/lang/String;)V
     .locals 2
-    .parameter "intent"
-    .parameter "s"
+    .param p1, "intent"    # Landroid/content/Intent;
+    .param p2, "s"    # Ljava/lang/String;
 
     .prologue
     .line 52
@@ -124,7 +125,7 @@
 
     move-result-object v0
 
-    const-string v1, ".saveParameters: action="
+    const-string/jumbo v1, ".saveParameters: action="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -145,7 +146,7 @@
     invoke-static {v0}, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->log(Ljava/lang/String;)V
 
     .line 53
-    const-string v0, "counter"
+    const-string/jumbo v0, "counter"
 
     const/4 v1, 0x1
 
@@ -155,8 +156,8 @@
 
     iput v0, p0, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->mCounter:I
 
-    .line 54
-    const-string v0, "fail_cause"
+    .line 55
+    const-string/jumbo v0, "fail_cause"
 
     sget-object v1, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->DEFAULT_FAIL_CAUSE:Lcom/android/internal/telephony/dataconnection/DcFailCause;
 
@@ -168,14 +169,15 @@
 
     move-result v0
 
+    .line 54
     invoke-static {v0}, Lcom/android/internal/telephony/dataconnection/DcFailCause;->fromInt(I)Lcom/android/internal/telephony/dataconnection/DcFailCause;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->mFailCause:Lcom/android/internal/telephony/dataconnection/DcFailCause;
 
-    .line 56
-    const-string v0, "suggested_retry_time"
+    .line 57
+    const-string/jumbo v0, "suggested_retry_time"
 
     const/4 v1, -0x1
 
@@ -183,6 +185,7 @@
 
     move-result v0
 
+    .line 56
     iput v0, p0, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->mSuggestedRetryTime:I
 
     .line 59
@@ -194,7 +197,7 @@
 
     move-result-object v0
 
-    const-string v1, ".saveParameters: "
+    const-string/jumbo v1, ".saveParameters: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -210,7 +213,7 @@
 
     invoke-static {v0}, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->log(Ljava/lang/String;)V
 
-    .line 61
+    .line 51
     return-void
 .end method
 
@@ -223,7 +226,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "{mCounter="
+    const-string/jumbo v1, "{mCounter="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -235,32 +238,42 @@
 
     move-result-object v0
 
-    const-string v1, " mFailCause="
+    .line 72
+    const-string/jumbo v1, " mFailCause="
 
+    .line 71
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 72
     iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->mFailCause:Lcom/android/internal/telephony/dataconnection/DcFailCause;
 
+    .line 71
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " mSuggestedRetryTime="
+    .line 73
+    const-string/jumbo v1, " mSuggestedRetryTime="
 
+    .line 71
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 73
     iget v1, p0, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->mSuggestedRetryTime:I
 
+    .line 71
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "}"
+    .line 73
+    const-string/jumbo v1, "}"
 
+    .line 71
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0

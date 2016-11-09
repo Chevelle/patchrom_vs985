@@ -42,7 +42,7 @@
 # direct methods
 .method public constructor <init>([B)V
     .locals 14
-    .parameter "pdu"
+    .param p1, "pdu"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;
@@ -66,7 +66,7 @@
     :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "Illegal PDU"
+    const-string/jumbo v2, "Illegal PDU"
 
     invoke-direct {v0, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -78,7 +78,7 @@
 
     const/16 v2, 0x58
 
-    if-gt v0, v2, :cond_8
+    if-gt v0, v2, :cond_9
 
     .line 103
     const/4 v0, 0x0
@@ -174,7 +174,7 @@
     const/4 v8, 0x1
 
     .line 112
-    .local v8, emergencyUserAlert:Z
+    .local v8, "emergencyUserAlert":Z
     :goto_0
     const/4 v0, 0x5
 
@@ -187,7 +187,7 @@
     const/4 v7, 0x1
 
     .line 113
-    .local v7, activatePopup:Z
+    .local v7, "activatePopup":Z
     :goto_1
     const/4 v0, 0x4
 
@@ -198,7 +198,7 @@
     ushr-int/lit8 v13, v0, 0x1
 
     .line 116
-    .local v13, warningType:I
+    .local v13, "warningType":I
     array-length v0, p1
 
     const/4 v2, 0x6
@@ -206,16 +206,15 @@
     if-le v0, v2, :cond_4
 
     .line 117
-    const/4 v0, 0x6
+    array-length v0, p1
 
-    array-length v2, p1
+    const/4 v2, 0x6
 
-    invoke-static {p1, v0, v2}, Ljava/util/Arrays;->copyOfRange([BII)[B
+    invoke-static {p1, v2, v0}, Ljava/util/Arrays;->copyOfRange([BII)[B
 
     move-result-object v12
 
     .line 121
-    .local v12, warningSecurityInfo:[B
     :goto_2
     new-instance v0, Landroid/telephony/SmsCbEtwsInfo;
 
@@ -228,41 +227,39 @@
 
     iput-object v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mCmasInfo:Landroid/telephony/SmsCbCmasInfo;
 
-    .line 183
-    .end local v7           #activatePopup:Z
-    .end local v8           #emergencyUserAlert:Z
-    .end local v12           #warningSecurityInfo:[B
-    .end local v13           #warningType:I
-    :goto_3
+    .line 124
     return-void
 
     .line 111
+    .end local v7    # "activatePopup":Z
+    .end local v8    # "emergencyUserAlert":Z
+    .end local v13    # "warningType":I
     :cond_2
     const/4 v8, 0x0
 
+    .restart local v8    # "emergencyUserAlert":Z
     goto :goto_0
 
     .line 112
-    .restart local v8       #emergencyUserAlert:Z
     :cond_3
     const/4 v7, 0x0
 
+    .restart local v7    # "activatePopup":Z
     goto :goto_1
 
     .line 119
-    .restart local v7       #activatePopup:Z
-    .restart local v13       #warningType:I
+    .restart local v13    # "warningType":I
     :cond_4
     const/4 v12, 0x0
 
-    .restart local v12       #warningSecurityInfo:[B
+    .local v12, "warningSecurityInfo":[B
     goto :goto_2
 
     .line 127
-    .end local v7           #activatePopup:Z
-    .end local v8           #emergencyUserAlert:Z
-    .end local v12           #warningSecurityInfo:[B
-    .end local v13           #warningType:I
+    .end local v7    # "activatePopup":Z
+    .end local v8    # "emergencyUserAlert":Z
+    .end local v12    # "warningSecurityInfo":[B
+    .end local v13    # "warningType":I
     :cond_5
     const/4 v0, 0x1
 
@@ -287,7 +284,7 @@
     ushr-int/lit8 v11, v0, 0x4
 
     .line 132
-    .local v11, pageIndex:I
+    .local v11, "pageIndex":I
     const/4 v0, 0x5
 
     aget-byte v0, p1, v0
@@ -295,15 +292,14 @@
     and-int/lit8 v10, v0, 0xf
 
     .line 134
-    .local v10, nrOfPages:I
+    .local v10, "nrOfPages":I
     if-eqz v11, :cond_6
 
-    if-eqz v10, :cond_6
-
-    if-le v11, v10, :cond_7
+    if-nez v10, :cond_8
 
     .line 135
     :cond_6
+    :goto_3
     const/4 v11, 0x1
 
     .line 136
@@ -317,14 +313,14 @@
     iput v10, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mNrOfPages:I
 
     .line 165
-    .end local v10           #nrOfPages:I
-    .end local v11           #pageIndex:I
+    .end local v10    # "nrOfPages":I
+    .end local v11    # "pageIndex":I
     :goto_4
     invoke-direct {p0}, Lcom/android/internal/telephony/gsm/SmsCbHeader;->isEtwsMessage()Z
 
     move-result v0
 
-    if-eqz v0, :cond_a
+    if-eqz v0, :cond_b
 
     .line 166
     invoke-direct {p0}, Lcom/android/internal/telephony/gsm/SmsCbHeader;->isEtwsEmergencyUserAlert()Z
@@ -332,19 +328,19 @@
     move-result v8
 
     .line 167
-    .restart local v8       #emergencyUserAlert:Z
+    .local v8, "emergencyUserAlert":Z
     invoke-direct {p0}, Lcom/android/internal/telephony/gsm/SmsCbHeader;->isEtwsPopupAlert()Z
 
     move-result v7
 
     .line 168
-    .restart local v7       #activatePopup:Z
+    .local v7, "activatePopup":Z
     invoke-direct {p0}, Lcom/android/internal/telephony/gsm/SmsCbHeader;->getEtwsWarningType()I
 
     move-result v13
 
     .line 169
-    .restart local v13       #warningType:I
+    .restart local v13    # "warningType":I
     new-instance v0, Landroid/telephony/SmsCbEtwsInfo;
 
     const/4 v2, 0x0
@@ -358,13 +354,25 @@
 
     iput-object v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mCmasInfo:Landroid/telephony/SmsCbCmasInfo;
 
+    .line 93
+    .end local v7    # "activatePopup":Z
+    .end local v8    # "emergencyUserAlert":Z
+    .end local v13    # "warningType":I
+    :goto_5
+    return-void
+
+    .line 134
+    .restart local v10    # "nrOfPages":I
+    .restart local v11    # "pageIndex":I
+    :cond_8
+    if-le v11, v10, :cond_7
+
     goto :goto_3
 
     .line 145
-    .end local v7           #activatePopup:Z
-    .end local v8           #emergencyUserAlert:Z
-    .end local v13           #warningType:I
-    :cond_8
+    .end local v10    # "nrOfPages":I
+    .end local v11    # "pageIndex":I
+    :cond_9
     const/4 v0, 0x2
 
     iput v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mFormat:I
@@ -375,10 +383,10 @@
     aget-byte v9, p1, v0
 
     .line 149
-    .local v9, messageType:I
+    .local v9, "messageType":I
     const/4 v0, 0x1
 
-    if-eq v9, v0, :cond_9
+    if-eq v9, v0, :cond_a
 
     .line 150
     new-instance v0, Ljava/lang/IllegalArgumentException;
@@ -387,7 +395,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Unsupported message type "
+    const-string/jumbo v3, "Unsupported message type "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -406,7 +414,7 @@
     throw v0
 
     .line 153
-    :cond_9
+    :cond_a
     const/4 v0, 0x1
 
     aget-byte v0, p1, v0
@@ -477,13 +485,13 @@
     goto :goto_4
 
     .line 171
-    .end local v9           #messageType:I
-    :cond_a
+    .end local v9    # "messageType":I
+    :cond_b
     invoke-direct {p0}, Lcom/android/internal/telephony/gsm/SmsCbHeader;->isCmasMessage()Z
 
     move-result v0
 
-    if-eqz v0, :cond_b
+    if-eqz v0, :cond_c
 
     .line 172
     invoke-direct {p0}, Lcom/android/internal/telephony/gsm/SmsCbHeader;->getCmasMessageClass()I
@@ -491,25 +499,25 @@
     move-result v1
 
     .line 173
-    .local v1, messageClass:I
+    .local v1, "messageClass":I
     invoke-direct {p0}, Lcom/android/internal/telephony/gsm/SmsCbHeader;->getCmasSeverity()I
 
     move-result v4
 
     .line 174
-    .local v4, severity:I
+    .local v4, "severity":I
     invoke-direct {p0}, Lcom/android/internal/telephony/gsm/SmsCbHeader;->getCmasUrgency()I
 
     move-result v5
 
     .line 175
-    .local v5, urgency:I
+    .local v5, "urgency":I
     invoke-direct {p0}, Lcom/android/internal/telephony/gsm/SmsCbHeader;->getCmasCertainty()I
 
     move-result v6
 
     .line 176
-    .local v6, certainty:I
+    .local v6, "certainty":I
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mEtwsInfo:Landroid/telephony/SmsCbEtwsInfo;
@@ -519,20 +527,22 @@
 
     const/4 v2, -0x1
 
+    .line 178
     const/4 v3, -0x1
 
+    .line 177
     invoke-direct/range {v0 .. v6}, Landroid/telephony/SmsCbCmasInfo;-><init>(IIIIII)V
 
     iput-object v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mCmasInfo:Landroid/telephony/SmsCbCmasInfo;
 
-    goto/16 :goto_3
+    goto :goto_5
 
     .line 180
-    .end local v1           #messageClass:I
-    .end local v4           #severity:I
-    .end local v5           #urgency:I
-    .end local v6           #certainty:I
-    :cond_b
+    .end local v1    # "messageClass":I
+    .end local v4    # "severity":I
+    .end local v5    # "urgency":I
+    .end local v6    # "certainty":I
+    :cond_c
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mEtwsInfo:Landroid/telephony/SmsCbEtwsInfo;
@@ -542,37 +552,36 @@
 
     iput-object v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mCmasInfo:Landroid/telephony/SmsCbCmasInfo;
 
-    goto/16 :goto_3
+    goto/16 :goto_5
 .end method
 
 .method private getCmasCertainty()I
     .locals 1
 
     .prologue
-    .line 386
+    .line 390
     iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 400
+    .line 404
     const/4 v0, -0x1
 
-    :goto_0
     return v0
 
-    .line 391
+    .line 395
     :pswitch_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 
-    .line 397
+    .line 401
     :pswitch_1
     const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 
-    .line 386
+    .line 390
     nop
 
     :pswitch_data_0
@@ -597,72 +606,85 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 325
+    .line 329
+    :pswitch_0
     const/4 v0, -0x1
 
-    :goto_0
     return v0
 
-    .line 298
-    :pswitch_0
+    .line 299
+    :pswitch_1
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 
-    .line 302
-    :pswitch_1
+    .line 303
+    :pswitch_2
     const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 
-    .line 310
-    :pswitch_2
+    .line 311
+    :pswitch_3
     const/4 v0, 0x2
 
-    goto :goto_0
+    return v0
 
-    .line 313
-    :pswitch_3
+    .line 314
+    :pswitch_4
     const/4 v0, 0x3
 
-    goto :goto_0
+    return v0
 
-    .line 316
-    :pswitch_4
+    .line 318
+    :pswitch_5
     const/4 v0, 0x4
 
-    goto :goto_0
-
-    .line 319
-    :pswitch_5
-    const/4 v0, 0x5
-
-    goto :goto_0
+    return v0
 
     .line 322
     :pswitch_6
+    const/4 v0, 0x5
+
+    return v0
+
+    .line 326
+    :pswitch_7
     const/4 v0, 0x6
 
-    goto :goto_0
+    return v0
 
     .line 296
     nop
 
     :pswitch_data_0
     .packed-switch 0x1112
-        :pswitch_0
-        :pswitch_1
         :pswitch_1
         :pswitch_2
         :pswitch_2
-        :pswitch_2
-        :pswitch_2
-        :pswitch_2
-        :pswitch_2
+        :pswitch_3
+        :pswitch_3
+        :pswitch_3
+        :pswitch_3
+        :pswitch_3
         :pswitch_3
         :pswitch_4
         :pswitch_5
         :pswitch_6
+        :pswitch_7
+        :pswitch_1
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_5
+        :pswitch_6
+        :pswitch_7
     .end packed-switch
 .end method
 
@@ -670,30 +692,29 @@
     .locals 1
 
     .prologue
-    .line 336
+    .line 340
     iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 350
+    .line 354
     const/4 v0, -0x1
 
-    :goto_0
     return v0
 
-    .line 341
+    .line 345
     :pswitch_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 
-    .line 347
+    .line 351
     :pswitch_1
     const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 
-    .line 336
+    .line 340
     nop
 
     :pswitch_data_0
@@ -713,30 +734,29 @@
     .locals 1
 
     .prologue
-    .line 361
+    .line 365
     iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 375
+    .line 379
     const/4 v0, -0x1
 
-    :goto_0
     return v0
 
-    .line 366
+    .line 370
     :pswitch_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 
-    .line 372
+    .line 376
     :pswitch_1
     const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 
-    .line 361
+    .line 365
     nop
 
     :pswitch_data_0
@@ -765,53 +785,49 @@
 .end method
 
 .method private isCmasMessage()Z
-    .locals 2
+    .locals 3
 
     .prologue
+    const/4 v0, 0x0
+
     .line 256
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
-    const/16 v1, 0x1112
+    const/16 v2, 0x1112
 
-    if-lt v0, v1, :cond_0
+    if-lt v1, v2, :cond_0
 
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
+    .line 257
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
-    const/16 v1, 0x112f
+    const/16 v2, 0x112f
 
-    if-gt v0, v1, :cond_0
+    if-gt v1, v2, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
+    .line 256
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method private isEtwsEmergencyUserAlert()Z
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v0, 0x0
+
     .line 277
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mSerialNumber:I
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mSerialNumber:I
 
-    and-int/lit16 v0, v0, 0x2000
+    and-int/lit16 v1, v1, 0x2000
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method private isEtwsMessage()Z
@@ -825,8 +841,10 @@
 
     and-int/2addr v0, v1
 
+    .line 232
     const/16 v1, 0x1100
 
+    .line 231
     if-ne v0, v1, :cond_0
 
     const/4 v0, 0x1
@@ -841,25 +859,22 @@
 .end method
 
 .method private isEtwsPopupAlert()Z
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v0, 0x0
+
     .line 267
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mSerialNumber:I
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mSerialNumber:I
 
-    and-int/lit16 v0, v0, 0x1000
+    and-int/lit16 v1, v1, 0x1000
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 
@@ -945,31 +960,30 @@
 .end method
 
 .method isEmergencyMessage()Z
-    .locals 2
+    .locals 3
 
     .prologue
+    const/4 v0, 0x0
+
     .line 222
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
-    const/16 v1, 0x1100
+    const/16 v2, 0x1100
 
-    if-lt v0, v1, :cond_0
+    if-lt v1, v2, :cond_0
 
-    iget v0, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
+    .line 223
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
-    const/16 v1, 0x18ff
+    const/16 v2, 0x18ff
 
-    if-gt v0, v1, :cond_0
+    if-gt v1, v2, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
+    .line 222
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method isEtwsPrimaryNotification()Z
@@ -1020,12 +1034,12 @@
     .locals 2
 
     .prologue
-    .line 406
+    .line 410
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "SmsCbHeader{GS="
+    const-string/jumbo v1, "SmsCbHeader{GS="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1037,80 +1051,100 @@
 
     move-result-object v0
 
-    const-string v1, ", serialNumber=0x"
+    const-string/jumbo v1, ", serialNumber=0x"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 411
     iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mSerialNumber:I
 
     invoke-static {v1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
     move-result-object v1
 
+    .line 410
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", messageIdentifier=0x"
+    .line 412
+    const-string/jumbo v1, ", messageIdentifier=0x"
 
+    .line 410
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 412
     iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mMessageIdentifier:I
 
     invoke-static {v1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
     move-result-object v1
 
+    .line 410
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", DCS=0x"
+    .line 413
+    const-string/jumbo v1, ", DCS=0x"
 
+    .line 410
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 413
     iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mDataCodingScheme:I
 
     invoke-static {v1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
     move-result-object v1
 
+    .line 410
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", page "
+    .line 414
+    const-string/jumbo v1, ", page "
 
+    .line 410
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 414
     iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mPageIndex:I
 
+    .line 410
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " of "
+    .line 414
+    const-string/jumbo v1, " of "
 
+    .line 410
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 414
     iget v1, p0, Lcom/android/internal/telephony/gsm/SmsCbHeader;->mNrOfPages:I
 
+    .line 410
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 414
     const/16 v1, 0x7d
 
+    .line 410
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     move-result-object v0

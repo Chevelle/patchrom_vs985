@@ -21,7 +21,7 @@
 # direct methods
 .method constructor <init>(Lcom/android/internal/telephony/WakeLockStateMachine;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/internal/telephony/WakeLockStateMachine;
 
     .prologue
     .line 111
@@ -36,7 +36,7 @@
 # virtual methods
 .method public processMessage(Landroid/os/Message;)Z
     .locals 4
-    .parameter "msg"
+    .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
     .line 114
@@ -49,7 +49,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "processMessage: unhandled message type "
+    const-string/jumbo v2, "processMessage: unhandled message type "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -66,7 +66,7 @@
     move-result-object v0
 
     .line 122
-    .local v0, errorText:Ljava/lang/String;
+    .local v0, "errorText":Ljava/lang/String;
     sget-boolean v1, Landroid/os/Build;->IS_DEBUGGABLE:Z
 
     if-eqz v1, :cond_0
@@ -79,7 +79,7 @@
     throw v1
 
     .line 116
-    .end local v0           #errorText:Ljava/lang/String;
+    .end local v0    # "errorText":Ljava/lang/String;
     :pswitch_0
     iget-object v2, p0, Lcom/android/internal/telephony/WakeLockStateMachine$DefaultState;->this$0:Lcom/android/internal/telephony/WakeLockStateMachine;
 
@@ -96,7 +96,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "updatePhoneObject: phone="
+    const-string/jumbo v3, "updatePhoneObject: phone="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -106,7 +106,7 @@
 
     iget-object v3, v3, Lcom/android/internal/telephony/WakeLockStateMachine;->mPhone:Lcom/android/internal/telephony/PhoneBase;
 
-    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-virtual {v3}, Lcom/android/internal/telephony/PhoneBase;->getClass()Ljava/lang/Class;
 
     move-result-object v3
 
@@ -131,7 +131,7 @@
     return v1
 
     .line 125
-    .restart local v0       #errorText:Ljava/lang/String;
+    .restart local v0    # "errorText":Ljava/lang/String;
     :cond_0
     iget-object v1, p0, Lcom/android/internal/telephony/WakeLockStateMachine$DefaultState;->this$0:Lcom/android/internal/telephony/WakeLockStateMachine;
 

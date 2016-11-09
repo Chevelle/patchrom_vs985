@@ -10,7 +10,7 @@
 # direct methods
 .method public constructor <init>(I)V
     .locals 0
-    .parameter "id"
+    .param p1, "id"    # I
 
     .prologue
     .line 54
@@ -19,7 +19,7 @@
     .line 55
     iput p1, p0, Lcom/android/internal/telephony/cat/SelectItemResponseData;->mId:I
 
-    .line 56
+    .line 53
     return-void
 .end method
 
@@ -27,7 +27,7 @@
 # virtual methods
 .method public format(Ljava/io/ByteArrayOutputStream;)V
     .locals 2
-    .parameter "buf"
+    .param p1, "buf"    # Ljava/io/ByteArrayOutputStream;
 
     .prologue
     .line 61
@@ -40,7 +40,7 @@
     or-int/lit16 v0, v1, 0x80
 
     .line 62
-    .local v0, tag:I
+    .local v0, "tag":I
     invoke-virtual {p1, v0}, Ljava/io/ByteArrayOutputStream;->write(I)V
 
     .line 63
@@ -53,6 +53,6 @@
 
     invoke-virtual {p1, v1}, Ljava/io/ByteArrayOutputStream;->write(I)V
 
-    .line 65
+    .line 59
     return-void
 .end method

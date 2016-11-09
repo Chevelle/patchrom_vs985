@@ -21,11 +21,11 @@
 # direct methods
 .method constructor <init>(Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;Landroid/os/Handler;)V
     .locals 0
-    .parameter
-    .parameter "x0"
+    .param p1, "this$0"    # Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;
+    .param p2, "$anonymous0"    # Landroid/os/Handler;
 
     .prologue
-    .line 153
+    .line 165
     iput-object p1, p0, Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker$2;->this$0:Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -37,22 +37,21 @@
 # virtual methods
 .method public onChange(Z)V
     .locals 2
-    .parameter "selfChange"
+    .param p1, "selfChange"    # Z
 
     .prologue
-    .line 156
+    .line 168
     iget-object v0, p0, Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker$2;->this$0:Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;
 
-    const-string v1, "Auto time zone state changed"
+    const-string/jumbo v1, "Auto time zone state changed"
 
     invoke-virtual {v0, v1}, Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;->log(Ljava/lang/String;)V
 
-    .line 157
+    .line 169
     iget-object v0, p0, Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker$2;->this$0:Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;
 
-    #calls: Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;->revertToNitzTimeZone()V
-    invoke-static {v0}, Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;->access$100(Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;)V
+    invoke-static {v0}, Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;->-wrap0(Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;)V
 
-    .line 158
+    .line 167
     return-void
 .end method

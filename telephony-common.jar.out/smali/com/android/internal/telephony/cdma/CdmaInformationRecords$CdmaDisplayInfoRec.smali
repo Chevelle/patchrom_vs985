@@ -23,8 +23,8 @@
 # direct methods
 .method public constructor <init>(ILjava/lang/String;)V
     .locals 0
-    .parameter "id"
-    .parameter "alpha"
+    .param p1, "id"    # I
+    .param p2, "alpha"    # Ljava/lang/String;
 
     .prologue
     .line 135
@@ -36,7 +36,7 @@
     .line 137
     iput-object p2, p0, Lcom/android/internal/telephony/cdma/CdmaInformationRecords$CdmaDisplayInfoRec;->alpha:Ljava/lang/String;
 
-    .line 138
+    .line 135
     return-void
 .end method
 
@@ -51,36 +51,44 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "CdmaDisplayInfoRec: { id: "
+    const-string/jumbo v1, "CdmaDisplayInfoRec: { id: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 143
     iget v1, p0, Lcom/android/internal/telephony/cdma/CdmaInformationRecords$CdmaDisplayInfoRec;->id:I
 
     invoke-static {v1}, Lcom/android/internal/telephony/cdma/CdmaInformationRecords;->idToString(I)Ljava/lang/String;
 
     move-result-object v1
 
+    .line 142
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", alpha: "
+    .line 144
+    const-string/jumbo v1, ", alpha: "
 
+    .line 142
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 144
     iget-object v1, p0, Lcom/android/internal/telephony/cdma/CdmaInformationRecords$CdmaDisplayInfoRec;->alpha:Ljava/lang/String;
 
+    .line 142
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " }"
+    .line 145
+    const-string/jumbo v1, " }"
 
+    .line 142
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0

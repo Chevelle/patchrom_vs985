@@ -23,8 +23,8 @@
 # direct methods
 .method constructor <init>(II)V
     .locals 0
-    .parameter "delayTime"
-    .parameter "randomizationTime"
+    .param p1, "delayTime"    # I
+    .param p2, "randomizationTime"    # I
 
     .prologue
     .line 84
@@ -36,6 +36,6 @@
     .line 86
     iput p2, p0, Lcom/android/internal/telephony/RetryManager$RetryRec;->mRandomizationTime:I
 
-    .line 87
+    .line 84
     return-void
 .end method

@@ -10,17 +10,17 @@
 # direct methods
 .method constructor <init>(Lcom/android/internal/telephony/cat/CommandDetails;Lcom/android/internal/telephony/cat/TextMessage;Ljava/lang/String;)V
     .locals 0
-    .parameter "cmdDet"
-    .parameter "textmessage"
-    .parameter "ussdstring"
+    .param p1, "cmdDet"    # Lcom/android/internal/telephony/cat/CommandDetails;
+    .param p2, "textmessage"    # Lcom/android/internal/telephony/cat/TextMessage;
+    .param p3, "ussdstring"    # Ljava/lang/String;
 
     .prologue
-    .line 224
+    .line 244
     invoke-direct {p0, p1, p2}, Lcom/android/internal/telephony/cat/DisplayTextParams;-><init>(Lcom/android/internal/telephony/cat/CommandDetails;Lcom/android/internal/telephony/cat/TextMessage;)V
 
-    .line 225
+    .line 245
     iput-object p3, p0, Lcom/android/internal/telephony/cat/SendUSSDParams;->ussdString:Ljava/lang/String;
 
-    .line 226
+    .line 243
     return-void
 .end method

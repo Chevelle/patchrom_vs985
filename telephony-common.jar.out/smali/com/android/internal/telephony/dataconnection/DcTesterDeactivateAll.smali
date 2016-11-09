@@ -3,6 +3,14 @@
 .source "DcTesterDeactivateAll.java"
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/internal/telephony/dataconnection/DcTesterDeactivateAll$1;
+    }
+.end annotation
+
+
 # static fields
 .field private static final DBG:Z = true
 
@@ -20,23 +28,51 @@
 
 
 # direct methods
+.method static synthetic -get0(Lcom/android/internal/telephony/dataconnection/DcTesterDeactivateAll;)Lcom/android/internal/telephony/dataconnection/DcController;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/internal/telephony/dataconnection/DcTesterDeactivateAll;->mDcc:Lcom/android/internal/telephony/dataconnection/DcController;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Lcom/android/internal/telephony/dataconnection/DcTesterDeactivateAll;)Lcom/android/internal/telephony/PhoneBase;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/internal/telephony/dataconnection/DcTesterDeactivateAll;->mPhone:Lcom/android/internal/telephony/PhoneBase;
+
+    return-object v0
+.end method
+
+.method static synthetic -wrap0(Ljava/lang/String;)V
+    .locals 0
+    .param p0, "s"    # Ljava/lang/String;
+
+    .prologue
+    invoke-static {p0}, Lcom/android/internal/telephony/dataconnection/DcTesterDeactivateAll;->log(Ljava/lang/String;)V
+
+    return-void
+.end method
+
 .method static constructor <clinit>()V
     .locals 1
 
     .prologue
-    .line 41
-    const-string v0, "com.android.internal.telephony.dataconnection.action_deactivate_all"
+    .line 42
+    const-string/jumbo v0, "com.android.internal.telephony.dataconnection.action_deactivate_all"
 
+    .line 41
     sput-object v0, Lcom/android/internal/telephony/dataconnection/DcTesterDeactivateAll;->sActionDcTesterDeactivateAll:Ljava/lang/String;
 
+    .line 34
     return-void
 .end method
 
 .method constructor <init>(Lcom/android/internal/telephony/PhoneBase;Lcom/android/internal/telephony/dataconnection/DcController;Landroid/os/Handler;)V
     .locals 4
-    .parameter "phone"
-    .parameter "dcc"
-    .parameter "handler"
+    .param p1, "phone"    # Lcom/android/internal/telephony/PhoneBase;
+    .param p2, "dcc"    # Lcom/android/internal/telephony/dataconnection/DcController;
+    .param p3, "handler"    # Landroid/os/Handler;
 
     .prologue
     .line 68
@@ -66,7 +102,7 @@
     invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
 
     .line 75
-    .local v0, filter:Landroid/content/IntentFilter;
+    .local v0, "filter":Landroid/content/IntentFilter;
     sget-object v1, Lcom/android/internal/telephony/dataconnection/DcTesterDeactivateAll;->sActionDcTesterDeactivateAll:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
@@ -76,7 +112,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "register for intent action="
+    const-string/jumbo v2, "register for intent action="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -108,7 +144,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "register for intent action="
+    const-string/jumbo v2, "register for intent action="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -141,56 +177,23 @@
 
     invoke-virtual {v1, v2, v0, v3, p3}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
 
-    .line 83
-    .end local v0           #filter:Landroid/content/IntentFilter;
+    .line 68
+    .end local v0    # "filter":Landroid/content/IntentFilter;
     :cond_0
     return-void
 .end method
 
-.method static synthetic access$000(Ljava/lang/String;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 34
-    invoke-static {p0}, Lcom/android/internal/telephony/dataconnection/DcTesterDeactivateAll;->log(Ljava/lang/String;)V
-
-    return-void
-.end method
-
-.method static synthetic access$100(Lcom/android/internal/telephony/dataconnection/DcTesterDeactivateAll;)Lcom/android/internal/telephony/PhoneBase;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 34
-    iget-object v0, p0, Lcom/android/internal/telephony/dataconnection/DcTesterDeactivateAll;->mPhone:Lcom/android/internal/telephony/PhoneBase;
-
-    return-object v0
-.end method
-
-.method static synthetic access$200(Lcom/android/internal/telephony/dataconnection/DcTesterDeactivateAll;)Lcom/android/internal/telephony/dataconnection/DcController;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 34
-    iget-object v0, p0, Lcom/android/internal/telephony/dataconnection/DcTesterDeactivateAll;->mDcc:Lcom/android/internal/telephony/dataconnection/DcController;
-
-    return-object v0
-.end method
-
 .method private static log(Ljava/lang/String;)V
     .locals 1
-    .parameter "s"
+    .param p0, "s"    # Ljava/lang/String;
 
     .prologue
     .line 92
-    const-string v0, "DcTesterDeacativeAll"
+    const-string/jumbo v0, "DcTesterDeacativeAll"
 
     invoke-static {v0, p0}, Landroid/telephony/Rlog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 93
+    .line 91
     return-void
 .end method
 
@@ -216,7 +219,7 @@
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
 
-    .line 89
+    .line 85
     :cond_0
     return-void
 .end method

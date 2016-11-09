@@ -32,6 +32,8 @@
 
 .field public static final enum REJECT:Lcom/android/internal/telephony/Phone$SuppService;
 
+.field public static final enum RESUME:Lcom/android/internal/telephony/Phone$SuppService;
+
 .field public static final enum SEPARATE:Lcom/android/internal/telephony/Phone$SuppService;
 
 .field public static final enum SWITCH:Lcom/android/internal/telephony/Phone$SuppService;
@@ -56,10 +58,10 @@
 
     const/4 v3, 0x0
 
-    .line 66
+    .line 71
     new-instance v0, Lcom/android/internal/telephony/Phone$SuppService;
 
-    const-string v1, "UNKNOWN"
+    const-string/jumbo v1, "UNKNOWN"
 
     invoke-direct {v0, v1, v3}, Lcom/android/internal/telephony/Phone$SuppService;-><init>(Ljava/lang/String;I)V
 
@@ -67,7 +69,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/Phone$SuppService;
 
-    const-string v1, "SWITCH"
+    const-string/jumbo v1, "SWITCH"
 
     invoke-direct {v0, v1, v4}, Lcom/android/internal/telephony/Phone$SuppService;-><init>(Ljava/lang/String;I)V
 
@@ -75,7 +77,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/Phone$SuppService;
 
-    const-string v1, "SEPARATE"
+    const-string/jumbo v1, "SEPARATE"
 
     invoke-direct {v0, v1, v5}, Lcom/android/internal/telephony/Phone$SuppService;-><init>(Ljava/lang/String;I)V
 
@@ -83,7 +85,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/Phone$SuppService;
 
-    const-string v1, "TRANSFER"
+    const-string/jumbo v1, "TRANSFER"
 
     invoke-direct {v0, v1, v6}, Lcom/android/internal/telephony/Phone$SuppService;-><init>(Ljava/lang/String;I)V
 
@@ -91,7 +93,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/Phone$SuppService;
 
-    const-string v1, "CONFERENCE"
+    const-string/jumbo v1, "CONFERENCE"
 
     invoke-direct {v0, v1, v7}, Lcom/android/internal/telephony/Phone$SuppService;-><init>(Ljava/lang/String;I)V
 
@@ -99,7 +101,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/Phone$SuppService;
 
-    const-string v1, "REJECT"
+    const-string/jumbo v1, "REJECT"
 
     const/4 v2, 0x5
 
@@ -109,7 +111,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/Phone$SuppService;
 
-    const-string v1, "HANGUP"
+    const-string/jumbo v1, "HANGUP"
 
     const/4 v2, 0x6
 
@@ -117,8 +119,18 @@
 
     sput-object v0, Lcom/android/internal/telephony/Phone$SuppService;->HANGUP:Lcom/android/internal/telephony/Phone$SuppService;
 
-    .line 65
-    const/4 v0, 0x7
+    new-instance v0, Lcom/android/internal/telephony/Phone$SuppService;
+
+    const-string/jumbo v1, "RESUME"
+
+    const/4 v2, 0x7
+
+    invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/Phone$SuppService;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/android/internal/telephony/Phone$SuppService;->RESUME:Lcom/android/internal/telephony/Phone$SuppService;
+
+    .line 70
+    const/16 v0, 0x8
 
     new-array v0, v0, [Lcom/android/internal/telephony/Phone$SuppService;
 
@@ -142,17 +154,23 @@
 
     aput-object v1, v0, v7
 
-    const/4 v1, 0x5
+    sget-object v1, Lcom/android/internal/telephony/Phone$SuppService;->REJECT:Lcom/android/internal/telephony/Phone$SuppService;
 
-    sget-object v2, Lcom/android/internal/telephony/Phone$SuppService;->REJECT:Lcom/android/internal/telephony/Phone$SuppService;
+    const/4 v2, 0x5
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x6
+    sget-object v1, Lcom/android/internal/telephony/Phone$SuppService;->HANGUP:Lcom/android/internal/telephony/Phone$SuppService;
 
-    sget-object v2, Lcom/android/internal/telephony/Phone$SuppService;->HANGUP:Lcom/android/internal/telephony/Phone$SuppService;
+    const/4 v2, 0x6
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
+
+    sget-object v1, Lcom/android/internal/telephony/Phone$SuppService;->RESUME:Lcom/android/internal/telephony/Phone$SuppService;
+
+    const/4 v2, 0x7
+
+    aput-object v1, v0, v2
 
     sput-object v0, Lcom/android/internal/telephony/Phone$SuppService;->$VALUES:[Lcom/android/internal/telephony/Phone$SuppService;
 
@@ -161,16 +179,9 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
-    .line 65
+    .line 70
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -178,10 +189,10 @@
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/Phone$SuppService;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 65
+    .line 70
     const-class v0, Lcom/android/internal/telephony/Phone$SuppService;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -197,14 +208,8 @@
     .locals 1
 
     .prologue
-    .line 65
+    .line 70
     sget-object v0, Lcom/android/internal/telephony/Phone$SuppService;->$VALUES:[Lcom/android/internal/telephony/Phone$SuppService;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/Phone$SuppService;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/Phone$SuppService;
 
     return-object v0
 .end method

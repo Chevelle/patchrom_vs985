@@ -52,52 +52,52 @@
 
     const/4 v2, 0x0
 
-    .line 1520
+    .line 1650
     new-instance v0, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
 
-    const-string v1, "IDLE"
+    const-string/jumbo v1, "IDLE"
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;->IDLE:Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
 
-    .line 1521
     new-instance v0, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
 
-    const-string v1, "INIT"
+    const-string/jumbo v1, "INIT"
 
     invoke-direct {v0, v1, v3}, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;-><init>(Ljava/lang/String;I)V
 
+    .line 1651
     sput-object v0, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;->INIT:Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
 
-    .line 1522
     new-instance v0, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
 
-    const-string v1, "READ_SPN_3GPP"
+    const-string/jumbo v1, "READ_SPN_3GPP"
 
     invoke-direct {v0, v1, v4}, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;-><init>(Ljava/lang/String;I)V
 
+    .line 1652
     sput-object v0, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;->READ_SPN_3GPP:Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
 
-    .line 1523
     new-instance v0, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
 
-    const-string v1, "READ_SPN_CPHS"
+    const-string/jumbo v1, "READ_SPN_CPHS"
 
     invoke-direct {v0, v1, v5}, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;-><init>(Ljava/lang/String;I)V
 
+    .line 1653
     sput-object v0, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;->READ_SPN_CPHS:Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
 
-    .line 1524
     new-instance v0, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
 
-    const-string v1, "READ_SPN_SHORT_CPHS"
+    const-string/jumbo v1, "READ_SPN_SHORT_CPHS"
 
     invoke-direct {v0, v1, v6}, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;-><init>(Ljava/lang/String;I)V
 
+    .line 1654
     sput-object v0, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;->READ_SPN_SHORT_CPHS:Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
 
-    .line 1519
+    .line 1649
     const/4 v0, 0x5
 
     new-array v0, v0, [Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
@@ -129,16 +129,9 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
-    .line 1519
+    .line 1649
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -146,10 +139,10 @@
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 1519
+    .line 1649
     const-class v0, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -165,14 +158,8 @@
     .locals 1
 
     .prologue
-    .line 1519
+    .line 1649
     sget-object v0, Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;->$VALUES:[Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/uicc/SIMRecords$GetSpnFsmState;
 
     return-object v0
 .end method

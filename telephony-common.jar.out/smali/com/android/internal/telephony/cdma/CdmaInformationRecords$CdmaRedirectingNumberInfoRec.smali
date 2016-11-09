@@ -37,15 +37,15 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;IIIII)V
     .locals 7
-    .parameter "number"
-    .parameter "numberType"
-    .parameter "numberPlan"
-    .parameter "pi"
-    .parameter "si"
-    .parameter "reason"
+    .param p1, "number"    # Ljava/lang/String;
+    .param p2, "numberType"    # I
+    .param p3, "numberPlan"    # I
+    .param p4, "pi"    # I
+    .param p5, "si"    # I
+    .param p6, "reason"    # I
 
     .prologue
-    .line 191
+    .line 190
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 192
@@ -70,7 +70,7 @@
     .line 194
     iput p6, p0, Lcom/android/internal/telephony/cdma/CdmaInformationRecords$CdmaRedirectingNumberInfoRec;->redirectingReason:I
 
-    .line 195
+    .line 191
     return-void
 .end method
 
@@ -85,32 +85,40 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "CdmaNumberInfoRec: { numberInfoRec: "
+    const-string/jumbo v1, "CdmaNumberInfoRec: { numberInfoRec: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 200
     iget-object v1, p0, Lcom/android/internal/telephony/cdma/CdmaInformationRecords$CdmaRedirectingNumberInfoRec;->numberInfoRec:Lcom/android/internal/telephony/cdma/CdmaInformationRecords$CdmaNumberInfoRec;
 
+    .line 199
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", redirectingReason: "
+    .line 201
+    const-string/jumbo v1, ", redirectingReason: "
 
+    .line 199
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 201
     iget v1, p0, Lcom/android/internal/telephony/cdma/CdmaInformationRecords$CdmaRedirectingNumberInfoRec;->redirectingReason:I
 
+    .line 199
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " }"
+    .line 202
+    const-string/jumbo v1, " }"
 
+    .line 199
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0

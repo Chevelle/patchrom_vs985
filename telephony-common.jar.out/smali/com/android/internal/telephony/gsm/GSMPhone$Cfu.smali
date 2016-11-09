@@ -23,19 +23,19 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;Landroid/os/Message;)V
     .locals 0
-    .parameter "cfNumber"
-    .parameter "onComplete"
+    .param p1, "cfNumber"    # Ljava/lang/String;
+    .param p2, "onComplete"    # Landroid/os/Message;
 
     .prologue
-    .line 132
+    .line 138
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 133
+    .line 139
     iput-object p1, p0, Lcom/android/internal/telephony/gsm/GSMPhone$Cfu;->mSetCfNumber:Ljava/lang/String;
 
-    .line 134
+    .line 140
     iput-object p2, p0, Lcom/android/internal/telephony/gsm/GSMPhone$Cfu;->mOnComplete:Landroid/os/Message;
 
-    .line 135
+    .line 138
     return-void
 .end method

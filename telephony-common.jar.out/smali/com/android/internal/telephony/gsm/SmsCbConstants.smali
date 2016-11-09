@@ -18,6 +18,8 @@
 
 .field public static final MESSAGE_ID_CMAS_ALERT_EXERCISE:I = 0x111d
 
+.field public static final MESSAGE_ID_CMAS_ALERT_EXERCISE_LANGUAGE:I = 0x112a
+
 .field public static final MESSAGE_ID_CMAS_ALERT_EXTREME_EXPECTED_LIKELY:I = 0x1116
 
 .field public static final MESSAGE_ID_CMAS_ALERT_EXTREME_EXPECTED_OBSERVED:I = 0x1115
@@ -28,9 +30,15 @@
 
 .field public static final MESSAGE_ID_CMAS_ALERT_OPERATOR_DEFINED_USE:I = 0x111e
 
+.field public static final MESSAGE_ID_CMAS_ALERT_OPERATOR_DEFINED_USE_LANGUAGE:I = 0x112b
+
 .field public static final MESSAGE_ID_CMAS_ALERT_PRESIDENTIAL_LEVEL:I = 0x1112
 
+.field public static final MESSAGE_ID_CMAS_ALERT_PRESIDENTIAL_LEVEL_LANGUAGE:I = 0x111f
+
 .field public static final MESSAGE_ID_CMAS_ALERT_REQUIRED_MONTHLY_TEST:I = 0x111c
+
+.field public static final MESSAGE_ID_CMAS_ALERT_REQUIRED_MONTHLY_TEST_LANGUAGE:I = 0x1129
 
 .field public static final MESSAGE_ID_CMAS_ALERT_SEVERE_EXPECTED_LIKELY:I = 0x111a
 

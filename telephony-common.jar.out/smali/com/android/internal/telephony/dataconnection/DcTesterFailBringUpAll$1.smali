@@ -21,7 +21,7 @@
 # direct methods
 .method constructor <init>(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;
 
     .prologue
     .line 53
@@ -36,8 +36,8 @@
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
     .locals 5
-    .parameter "context"
-    .parameter "intent"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
     const/4 v4, -0x1
@@ -48,14 +48,14 @@
     move-result-object v0
 
     .line 57
-    .local v0, action:Ljava/lang/String;
+    .local v0, "action":Ljava/lang/String;
     iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll$1;->this$0:Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "sIntentReceiver.onReceive: action="
+    const-string/jumbo v3, "sIntentReceiver.onReceive: action="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -69,14 +69,12 @@
 
     move-result-object v2
 
-    #calls: Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->log(Ljava/lang/String;)V
-    invoke-static {v1, v2}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->access$000(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;Ljava/lang/String;)V
+    invoke-static {v1, v2}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->-wrap0(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;Ljava/lang/String;)V
 
     .line 58
     iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll$1;->this$0:Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;
 
-    #getter for: Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->mActionFailBringUp:Ljava/lang/String;
-    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->access$100(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;)Ljava/lang/String;
+    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->-get0(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;)Ljava/lang/String;
 
     move-result-object v1
 
@@ -89,16 +87,15 @@
     .line 59
     iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll$1;->this$0:Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;
 
-    #getter for: Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->mFailBringUp:Lcom/android/internal/telephony/dataconnection/DcFailBringUp;
-    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->access$200(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;)Lcom/android/internal/telephony/dataconnection/DcFailBringUp;
+    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->-get1(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;)Lcom/android/internal/telephony/dataconnection/DcFailBringUp;
 
     move-result-object v1
 
-    const-string v2, "sFailBringUp"
+    const-string/jumbo v2, "sFailBringUp"
 
     invoke-virtual {v1, p2, v2}, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->saveParameters(Landroid/content/Intent;Ljava/lang/String;)V
 
-    .line 74
+    .line 55
     :goto_0
     return-void
 
@@ -106,8 +103,7 @@
     :cond_0
     iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll$1;->this$0:Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;
 
-    #getter for: Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->mPhone:Lcom/android/internal/telephony/PhoneBase;
-    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->access$300(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;)Lcom/android/internal/telephony/PhoneBase;
+    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->-get2(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;)Lcom/android/internal/telephony/PhoneBase;
 
     move-result-object v1
 
@@ -124,28 +120,28 @@
     .line 62
     iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll$1;->this$0:Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;
 
-    const-string v2, "simulate detaching"
+    const-string/jumbo v2, "simulate detaching"
 
-    #calls: Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->log(Ljava/lang/String;)V
-    invoke-static {v1, v2}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->access$000(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;Ljava/lang/String;)V
+    invoke-static {v1, v2}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->-wrap0(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;Ljava/lang/String;)V
 
     .line 63
     iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll$1;->this$0:Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;
 
-    #getter for: Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->mFailBringUp:Lcom/android/internal/telephony/dataconnection/DcFailBringUp;
-    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->access$200(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;)Lcom/android/internal/telephony/dataconnection/DcFailBringUp;
+    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->-get1(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;)Lcom/android/internal/telephony/dataconnection/DcFailBringUp;
 
     move-result-object v1
 
-    const v2, 0x7fffffff
+    .line 64
+    sget-object v2, Lcom/android/internal/telephony/dataconnection/DcFailCause;->LOST_CONNECTION:Lcom/android/internal/telephony/dataconnection/DcFailCause;
 
-    sget-object v3, Lcom/android/internal/telephony/dataconnection/DcFailCause;->LOST_CONNECTION:Lcom/android/internal/telephony/dataconnection/DcFailCause;
+    invoke-virtual {v2}, Lcom/android/internal/telephony/dataconnection/DcFailCause;->getErrorCode()I
 
-    invoke-virtual {v3}, Lcom/android/internal/telephony/dataconnection/DcFailCause;->getErrorCode()I
+    move-result v2
 
-    move-result v3
+    .line 63
+    const v3, 0x7fffffff
 
-    invoke-virtual {v1, v2, v3, v4}, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->saveParameters(III)V
+    invoke-virtual {v1, v3, v2, v4}, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->saveParameters(III)V
 
     goto :goto_0
 
@@ -153,8 +149,7 @@
     :cond_1
     iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll$1;->this$0:Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;
 
-    #getter for: Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->mPhone:Lcom/android/internal/telephony/PhoneBase;
-    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->access$300(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;)Lcom/android/internal/telephony/PhoneBase;
+    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->-get2(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;)Lcom/android/internal/telephony/PhoneBase;
 
     move-result-object v1
 
@@ -171,28 +166,26 @@
     .line 68
     iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll$1;->this$0:Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;
 
-    const-string v2, "simulate attaching"
+    const-string/jumbo v2, "simulate attaching"
 
-    #calls: Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->log(Ljava/lang/String;)V
-    invoke-static {v1, v2}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->access$000(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;Ljava/lang/String;)V
+    invoke-static {v1, v2}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->-wrap0(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;Ljava/lang/String;)V
 
     .line 69
     iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll$1;->this$0:Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;
 
-    #getter for: Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->mFailBringUp:Lcom/android/internal/telephony/dataconnection/DcFailBringUp;
-    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->access$200(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;)Lcom/android/internal/telephony/dataconnection/DcFailBringUp;
+    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->-get1(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;)Lcom/android/internal/telephony/dataconnection/DcFailBringUp;
 
     move-result-object v1
 
-    const/4 v2, 0x0
+    sget-object v2, Lcom/android/internal/telephony/dataconnection/DcFailCause;->NONE:Lcom/android/internal/telephony/dataconnection/DcFailCause;
 
-    sget-object v3, Lcom/android/internal/telephony/dataconnection/DcFailCause;->NONE:Lcom/android/internal/telephony/dataconnection/DcFailCause;
+    invoke-virtual {v2}, Lcom/android/internal/telephony/dataconnection/DcFailCause;->getErrorCode()I
 
-    invoke-virtual {v3}, Lcom/android/internal/telephony/dataconnection/DcFailCause;->getErrorCode()I
+    move-result v2
 
-    move-result v3
+    const/4 v3, 0x0
 
-    invoke-virtual {v1, v2, v3, v4}, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->saveParameters(III)V
+    invoke-virtual {v1, v3, v2, v4}, Lcom/android/internal/telephony/dataconnection/DcFailBringUp;->saveParameters(III)V
 
     goto :goto_0
 
@@ -204,7 +197,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "onReceive: unknown action="
+    const-string/jumbo v3, "onReceive: unknown action="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -218,8 +211,7 @@
 
     move-result-object v2
 
-    #calls: Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->log(Ljava/lang/String;)V
-    invoke-static {v1, v2}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->access$000(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;Ljava/lang/String;)V
+    invoke-static {v1, v2}, Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;->-wrap0(Lcom/android/internal/telephony/dataconnection/DcTesterFailBringUpAll;Ljava/lang/String;)V
 
     goto :goto_0
 .end method

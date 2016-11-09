@@ -47,7 +47,7 @@
     .line 28
     new-instance v0, Lcom/android/internal/telephony/uicc/IccCardStatus$CardState;
 
-    const-string v1, "CARDSTATE_ABSENT"
+    const-string/jumbo v1, "CARDSTATE_ABSENT"
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/uicc/IccCardStatus$CardState;-><init>(Ljava/lang/String;I)V
 
@@ -56,7 +56,7 @@
     .line 29
     new-instance v0, Lcom/android/internal/telephony/uicc/IccCardStatus$CardState;
 
-    const-string v1, "CARDSTATE_PRESENT"
+    const-string/jumbo v1, "CARDSTATE_PRESENT"
 
     invoke-direct {v0, v1, v3}, Lcom/android/internal/telephony/uicc/IccCardStatus$CardState;-><init>(Ljava/lang/String;I)V
 
@@ -65,7 +65,7 @@
     .line 30
     new-instance v0, Lcom/android/internal/telephony/uicc/IccCardStatus$CardState;
 
-    const-string v1, "CARDSTATE_ERROR"
+    const-string/jumbo v1, "CARDSTATE_ERROR"
 
     invoke-direct {v0, v1, v4}, Lcom/android/internal/telephony/uicc/IccCardStatus$CardState;-><init>(Ljava/lang/String;I)V
 
@@ -95,13 +95,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 27
@@ -112,7 +105,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/uicc/IccCardStatus$CardState;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 27
@@ -133,12 +126,6 @@
     .prologue
     .line 27
     sget-object v0, Lcom/android/internal/telephony/uicc/IccCardStatus$CardState;->$VALUES:[Lcom/android/internal/telephony/uicc/IccCardStatus$CardState;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/uicc/IccCardStatus$CardState;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/uicc/IccCardStatus$CardState;
 
     return-object v0
 .end method

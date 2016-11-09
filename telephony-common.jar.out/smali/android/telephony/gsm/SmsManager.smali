@@ -78,7 +78,7 @@
 
     iput-object v0, p0, Landroid/telephony/gsm/SmsManager;->mSmsMgrProxy:Landroid/telephony/SmsManager;
 
-    .line 49
+    .line 47
     return-void
 .end method
 
@@ -111,9 +111,9 @@
 # virtual methods
 .method public final copyMessageToSim([B[BI)Z
     .locals 1
-    .parameter "smsc"
-    .parameter "pdu"
-    .parameter "status"
+    .param p1, "smsc"    # [B
+    .param p2, "pdu"    # [B
+    .param p3, "status"    # I
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
@@ -130,7 +130,7 @@
 
 .method public final deleteMessageFromSim(I)Z
     .locals 1
-    .parameter "messageIndex"
+    .param p1, "messageIndex"    # I
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
@@ -147,7 +147,7 @@
 
 .method public final divideMessage(Ljava/lang/String;)Ljava/util/ArrayList;
     .locals 1
-    .parameter "text"
+    .param p1, "text"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -191,7 +191,11 @@
 
     .prologue
     .line 222
-    invoke-static {}, Landroid/telephony/SmsManager;->getAllMessagesFromIcc()Ljava/util/ArrayList;
+    invoke-static {}, Landroid/telephony/SmsManager;->getDefault()Landroid/telephony/SmsManager;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/telephony/SmsManager;->getAllMessagesFromIcc()Ljava/util/ArrayList;
 
     move-result-object v0
 
@@ -200,12 +204,12 @@
 
 .method public final sendDataMessage(Ljava/lang/String;Ljava/lang/String;S[BLandroid/app/PendingIntent;Landroid/app/PendingIntent;)V
     .locals 7
-    .parameter "destinationAddress"
-    .parameter "scAddress"
-    .parameter "destinationPort"
-    .parameter "data"
-    .parameter "sentIntent"
-    .parameter "deliveryIntent"
+    .param p1, "destinationAddress"    # Ljava/lang/String;
+    .param p2, "scAddress"    # Ljava/lang/String;
+    .param p3, "destinationPort"    # S
+    .param p4, "data"    # [B
+    .param p5, "sentIntent"    # Landroid/app/PendingIntent;
+    .param p6, "deliveryIntent"    # Landroid/app/PendingIntent;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
@@ -227,17 +231,14 @@
 
     invoke-virtual/range {v0 .. v6}, Landroid/telephony/SmsManager;->sendDataMessage(Ljava/lang/String;Ljava/lang/String;S[BLandroid/app/PendingIntent;Landroid/app/PendingIntent;)V
 
-    .line 166
+    .line 163
     return-void
 .end method
 
 .method public final sendMultipartTextMessage(Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;)V
     .locals 6
-    .parameter "destinationAddress"
-    .parameter "scAddress"
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "destinationAddress"    # Ljava/lang/String;
+    .param p2, "scAddress"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -263,9 +264,9 @@
 
     .prologue
     .line 131
-    .local p3, parts:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/String;>;"
-    .local p4, sentIntents:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Landroid/app/PendingIntent;>;"
-    .local p5, deliveryIntents:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Landroid/app/PendingIntent;>;"
+    .local p3, "parts":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
+    .local p4, "sentIntents":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/app/PendingIntent;>;"
+    .local p5, "deliveryIntents":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/app/PendingIntent;>;"
     iget-object v0, p0, Landroid/telephony/gsm/SmsManager;->mSmsMgrProxy:Landroid/telephony/SmsManager;
 
     move-object v1, p1
@@ -280,17 +281,17 @@
 
     invoke-virtual/range {v0 .. v5}, Landroid/telephony/SmsManager;->sendMultipartTextMessage(Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;)V
 
-    .line 133
+    .line 130
     return-void
 .end method
 
 .method public final sendTextMessage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/app/PendingIntent;Landroid/app/PendingIntent;)V
     .locals 6
-    .parameter "destinationAddress"
-    .parameter "scAddress"
-    .parameter "text"
-    .parameter "sentIntent"
-    .parameter "deliveryIntent"
+    .param p1, "destinationAddress"    # Ljava/lang/String;
+    .param p2, "scAddress"    # Ljava/lang/String;
+    .param p3, "text"    # Ljava/lang/String;
+    .param p4, "sentIntent"    # Landroid/app/PendingIntent;
+    .param p5, "deliveryIntent"    # Landroid/app/PendingIntent;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
@@ -310,15 +311,15 @@
 
     invoke-virtual/range {v0 .. v5}, Landroid/telephony/SmsManager;->sendTextMessage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/app/PendingIntent;Landroid/app/PendingIntent;)V
 
-    .line 81
+    .line 78
     return-void
 .end method
 
 .method public final updateMessageOnSim(II[B)Z
     .locals 1
-    .parameter "messageIndex"
-    .parameter "newStatus"
-    .parameter "pdu"
+    .param p1, "messageIndex"    # I
+    .param p2, "newStatus"    # I
+    .param p3, "pdu"    # [B
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 

@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/telephony/SmsCbMessage$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -68,31 +76,33 @@
     .locals 1
 
     .prologue
-    .line 219
+    .line 220
     new-instance v0, Landroid/telephony/SmsCbMessage$1;
 
     invoke-direct {v0}, Landroid/telephony/SmsCbMessage$1;-><init>()V
 
+    .line 219
     sput-object v0, Landroid/telephony/SmsCbMessage;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 64
     return-void
 .end method
 
 .method public constructor <init>(IIILandroid/telephony/SmsCbLocation;ILjava/lang/String;Ljava/lang/String;ILandroid/telephony/SmsCbEtwsInfo;Landroid/telephony/SmsCbCmasInfo;)V
     .locals 0
-    .parameter "messageFormat"
-    .parameter "geographicalScope"
-    .parameter "serialNumber"
-    .parameter "location"
-    .parameter "serviceCategory"
-    .parameter "language"
-    .parameter "body"
-    .parameter "priority"
-    .parameter "etwsWarningInfo"
-    .parameter "cmasWarningInfo"
+    .param p1, "messageFormat"    # I
+    .param p2, "geographicalScope"    # I
+    .param p3, "serialNumber"    # I
+    .param p4, "location"    # Landroid/telephony/SmsCbLocation;
+    .param p5, "serviceCategory"    # I
+    .param p6, "language"    # Ljava/lang/String;
+    .param p7, "body"    # Ljava/lang/String;
+    .param p8, "priority"    # I
+    .param p9, "etwsWarningInfo"    # Landroid/telephony/SmsCbEtwsInfo;
+    .param p10, "cmasWarningInfo"    # Landroid/telephony/SmsCbCmasInfo;
 
     .prologue
-    .line 146
+    .line 144
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 147
@@ -125,13 +135,13 @@
     .line 156
     iput-object p10, p0, Landroid/telephony/SmsCbMessage;->mCmasWarningInfo:Landroid/telephony/SmsCbCmasInfo;
 
-    .line 157
+    .line 146
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 3
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     const/4 v2, 0x0
@@ -201,7 +211,7 @@
     move-result v0
 
     .line 170
-    .local v0, type:I
+    .local v0, "type":I
     packed-switch v0, :pswitch_data_0
 
     .line 184
@@ -211,7 +221,7 @@
     .line 185
     iput-object v2, p0, Landroid/telephony/SmsCbMessage;->mCmasWarningInfo:Landroid/telephony/SmsCbCmasInfo;
 
-    .line 187
+    .line 160
     :goto_0
     return-void
 
@@ -435,7 +445,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "SmsCbMessage{geographicalScope="
+    const-string/jumbo v1, "SmsCbMessage{geographicalScope="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -447,78 +457,101 @@
 
     move-result-object v0
 
-    const-string v1, ", serialNumber="
+    const-string/jumbo v1, ", serialNumber="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 367
     iget v1, p0, Landroid/telephony/SmsCbMessage;->mSerialNumber:I
 
+    .line 366
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", location="
+    .line 367
+    const-string/jumbo v1, ", location="
 
+    .line 366
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 367
     iget-object v1, p0, Landroid/telephony/SmsCbMessage;->mLocation:Landroid/telephony/SmsCbLocation;
 
+    .line 366
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", serviceCategory="
+    .line 367
+    const-string/jumbo v1, ", serviceCategory="
 
+    .line 366
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 368
     iget v1, p0, Landroid/telephony/SmsCbMessage;->mServiceCategory:I
 
+    .line 366
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", language="
+    .line 368
+    const-string/jumbo v1, ", language="
 
+    .line 366
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 368
     iget-object v1, p0, Landroid/telephony/SmsCbMessage;->mLanguage:Ljava/lang/String;
 
+    .line 366
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", body="
+    .line 368
+    const-string/jumbo v1, ", body="
 
+    .line 366
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 368
     iget-object v1, p0, Landroid/telephony/SmsCbMessage;->mBody:Ljava/lang/String;
 
+    .line 366
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", priority="
+    .line 369
+    const-string/jumbo v1, ", priority="
 
+    .line 366
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 369
     iget v1, p0, Landroid/telephony/SmsCbMessage;->mPriority:I
 
+    .line 366
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 370
     iget-object v0, p0, Landroid/telephony/SmsCbMessage;->mEtwsWarningInfo:Landroid/telephony/SmsCbEtwsInfo;
 
     if-eqz v0, :cond_0
@@ -527,7 +560,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, ", "
+    const-string/jumbo v2, ", "
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -547,11 +580,13 @@
 
     move-result-object v0
 
+    .line 366
     :goto_0
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 371
     iget-object v0, p0, Landroid/telephony/SmsCbMessage;->mCmasWarningInfo:Landroid/telephony/SmsCbCmasInfo;
 
     if-eqz v0, :cond_1
@@ -560,7 +595,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, ", "
+    const-string/jumbo v2, ", "
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -580,13 +615,16 @@
 
     move-result-object v0
 
+    .line 366
     :goto_1
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 371
     const/16 v1, 0x7d
 
+    .line 366
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -597,21 +635,23 @@
 
     return-object v0
 
+    .line 370
     :cond_0
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     goto :goto_0
 
+    .line 371
     :cond_1
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     goto :goto_1
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 197
@@ -669,7 +709,7 @@
 
     invoke-virtual {v0, p1, p2}, Landroid/telephony/SmsCbEtwsInfo;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 217
+    .line 196
     :goto_0
     return-void
 

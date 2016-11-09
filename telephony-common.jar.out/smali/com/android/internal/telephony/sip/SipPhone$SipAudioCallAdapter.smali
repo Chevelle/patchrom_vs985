@@ -27,10 +27,10 @@
 # direct methods
 .method private constructor <init>(Lcom/android/internal/telephony/sip/SipPhone;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/internal/telephony/sip/SipPhone;
 
     .prologue
-    .line 988
+    .line 992
     iput-object p1, p0, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->this$0:Lcom/android/internal/telephony/sip/SipPhone;
 
     invoke-direct {p0}, Landroid/net/sip/SipAudioCall$Listener;-><init>()V
@@ -38,13 +38,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/android/internal/telephony/sip/SipPhone;Lcom/android/internal/telephony/sip/SipPhone$1;)V
+.method synthetic constructor <init>(Lcom/android/internal/telephony/sip/SipPhone;Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Lcom/android/internal/telephony/sip/SipPhone;
 
     .prologue
-    .line 988
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;-><init>(Lcom/android/internal/telephony/sip/SipPhone;)V
 
     return-void
@@ -52,15 +50,15 @@
 
 .method private log(Ljava/lang/String;)V
     .locals 1
-    .parameter "s"
+    .param p1, "s"    # Ljava/lang/String;
 
     .prologue
-    .line 1049
-    const-string v0, "SipAudioCallAdapter"
+    .line 1055
+    const-string/jumbo v0, "SipAudioCallAdapter"
 
     invoke-static {v0, p1}, Landroid/telephony/Rlog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1050
+    .line 1054
     return-void
 .end method
 
@@ -68,15 +66,15 @@
 # virtual methods
 .method public onCallBusy(Landroid/net/sip/SipAudioCall;)V
     .locals 2
-    .parameter "call"
+    .param p1, "call"    # Landroid/net/sip/SipAudioCall;
 
     .prologue
-    .line 1004
+    .line 1010
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "onCallBusy: call="
+    const-string/jumbo v1, "onCallBusy: call="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -92,26 +90,29 @@
 
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->log(Ljava/lang/String;)V
 
-    .line 1005
-    sget-object v0, Lcom/android/internal/telephony/Connection$DisconnectCause;->BUSY:Lcom/android/internal/telephony/Connection$DisconnectCause;
+    .line 1011
+    const/4 v0, 0x4
 
-    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onCallEnded(Lcom/android/internal/telephony/Connection$DisconnectCause;)V
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onCallEnded(I)V
 
-    .line 1006
+    .line 1009
     return-void
+.end method
+
+.method protected abstract onCallEnded(I)V
 .end method
 
 .method public onCallEnded(Landroid/net/sip/SipAudioCall;)V
     .locals 2
-    .parameter "call"
+    .param p1, "call"    # Landroid/net/sip/SipAudioCall;
 
     .prologue
-    .line 996
+    .line 1002
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "onCallEnded: call="
+    const-string/jumbo v1, "onCallEnded: call="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -127,44 +128,46 @@
 
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->log(Ljava/lang/String;)V
 
-    .line 997
+    .line 1003
     invoke-virtual {p1}, Landroid/net/sip/SipAudioCall;->isInCall()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    sget-object v0, Lcom/android/internal/telephony/Connection$DisconnectCause;->NORMAL:Lcom/android/internal/telephony/Connection$DisconnectCause;
+    .line 1004
+    const/4 v0, 0x2
 
+    .line 1003
     :goto_0
-    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onCallEnded(Lcom/android/internal/telephony/Connection$DisconnectCause;)V
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onCallEnded(I)V
 
-    .line 1000
+    .line 1001
     return-void
 
-    .line 997
+    .line 1005
     :cond_0
-    sget-object v0, Lcom/android/internal/telephony/Connection$DisconnectCause;->INCOMING_MISSED:Lcom/android/internal/telephony/Connection$DisconnectCause;
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method
 
-.method protected abstract onCallEnded(Lcom/android/internal/telephony/Connection$DisconnectCause;)V
+.method protected abstract onError(I)V
 .end method
 
 .method public onError(Landroid/net/sip/SipAudioCall;ILjava/lang/String;)V
     .locals 2
-    .parameter "call"
-    .parameter "errorCode"
-    .parameter "errorMessage"
+    .param p1, "call"    # Landroid/net/sip/SipAudioCall;
+    .param p2, "errorCode"    # I
+    .param p3, "errorMessage"    # Ljava/lang/String;
 
     .prologue
-    .line 1012
+    .line 1018
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "onError: call="
+    const-string/jumbo v1, "onError: call="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -174,7 +177,7 @@
 
     move-result-object v0
 
-    const-string v1, " code="
+    const-string/jumbo v1, " code="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -188,8 +191,10 @@
 
     move-result-object v0
 
-    const-string v1, ": "
+    .line 1019
+    const-string/jumbo v1, ": "
 
+    .line 1018
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -204,84 +209,84 @@
 
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->log(Ljava/lang/String;)V
 
-    .line 1015
+    .line 1021
     packed-switch p2, :pswitch_data_0
 
-    .line 1044
+    .line 1050
     :pswitch_0
-    sget-object v0, Lcom/android/internal/telephony/Connection$DisconnectCause;->ERROR_UNSPECIFIED:Lcom/android/internal/telephony/Connection$DisconnectCause;
+    const/16 v0, 0x24
 
-    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(Lcom/android/internal/telephony/Connection$DisconnectCause;)V
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(I)V
 
-    .line 1046
+    .line 1016
     :goto_0
     return-void
 
-    .line 1017
-    :pswitch_1
-    sget-object v0, Lcom/android/internal/telephony/Connection$DisconnectCause;->SERVER_UNREACHABLE:Lcom/android/internal/telephony/Connection$DisconnectCause;
-
-    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(Lcom/android/internal/telephony/Connection$DisconnectCause;)V
-
-    goto :goto_0
-
-    .line 1020
-    :pswitch_2
-    sget-object v0, Lcom/android/internal/telephony/Connection$DisconnectCause;->NUMBER_UNREACHABLE:Lcom/android/internal/telephony/Connection$DisconnectCause;
-
-    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(Lcom/android/internal/telephony/Connection$DisconnectCause;)V
-
-    goto :goto_0
-
     .line 1023
+    :pswitch_1
+    const/16 v0, 0x9
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(I)V
+
+    goto :goto_0
+
+    .line 1026
+    :pswitch_2
+    const/16 v0, 0x8
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(I)V
+
+    goto :goto_0
+
+    .line 1029
     :pswitch_3
-    sget-object v0, Lcom/android/internal/telephony/Connection$DisconnectCause;->INVALID_NUMBER:Lcom/android/internal/telephony/Connection$DisconnectCause;
+    const/4 v0, 0x7
 
-    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(Lcom/android/internal/telephony/Connection$DisconnectCause;)V
-
-    goto :goto_0
-
-    .line 1027
-    :pswitch_4
-    sget-object v0, Lcom/android/internal/telephony/Connection$DisconnectCause;->TIMED_OUT:Lcom/android/internal/telephony/Connection$DisconnectCause;
-
-    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(Lcom/android/internal/telephony/Connection$DisconnectCause;)V
-
-    goto :goto_0
-
-    .line 1030
-    :pswitch_5
-    sget-object v0, Lcom/android/internal/telephony/Connection$DisconnectCause;->LOST_SIGNAL:Lcom/android/internal/telephony/Connection$DisconnectCause;
-
-    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(Lcom/android/internal/telephony/Connection$DisconnectCause;)V
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(I)V
 
     goto :goto_0
 
     .line 1033
-    :pswitch_6
-    sget-object v0, Lcom/android/internal/telephony/Connection$DisconnectCause;->INVALID_CREDENTIALS:Lcom/android/internal/telephony/Connection$DisconnectCause;
+    :pswitch_4
+    const/16 v0, 0xd
 
-    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(Lcom/android/internal/telephony/Connection$DisconnectCause;)V
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(I)V
 
     goto :goto_0
 
     .line 1036
-    :pswitch_7
-    sget-object v0, Lcom/android/internal/telephony/Connection$DisconnectCause;->OUT_OF_NETWORK:Lcom/android/internal/telephony/Connection$DisconnectCause;
+    :pswitch_5
+    const/16 v0, 0xe
 
-    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(Lcom/android/internal/telephony/Connection$DisconnectCause;)V
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(I)V
 
     goto :goto_0
 
     .line 1039
-    :pswitch_8
-    sget-object v0, Lcom/android/internal/telephony/Connection$DisconnectCause;->SERVER_ERROR:Lcom/android/internal/telephony/Connection$DisconnectCause;
+    :pswitch_6
+    const/16 v0, 0xa
 
-    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(Lcom/android/internal/telephony/Connection$DisconnectCause;)V
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(I)V
 
     goto :goto_0
 
-    .line 1015
+    .line 1042
+    :pswitch_7
+    const/16 v0, 0xb
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(I)V
+
+    goto :goto_0
+
+    .line 1045
+    :pswitch_8
+    const/16 v0, 0xc
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/sip/SipPhone$SipAudioCallAdapter;->onError(I)V
+
+    goto :goto_0
+
+    .line 1021
     nop
 
     :pswitch_data_0
@@ -298,7 +303,4 @@
         :pswitch_4
         :pswitch_8
     .end packed-switch
-.end method
-
-.method protected abstract onError(Lcom/android/internal/telephony/Connection$DisconnectCause;)V
 .end method

@@ -51,43 +51,54 @@
 
     if-nez v0, :cond_0
 
-    const-string v0, " not active "
+    const-string/jumbo v0, " not active "
 
     :goto_0
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " reason: "
+    .line 37
+    const-string/jumbo v1, " reason: "
 
+    .line 36
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 37
     iget v1, p0, Lcom/android/internal/telephony/CallForwardInfo;->reason:I
 
+    .line 36
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " serviceClass: "
+    .line 38
+    const-string/jumbo v1, " serviceClass: "
 
+    .line 36
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 38
     iget v1, p0, Lcom/android/internal/telephony/CallForwardInfo;->serviceClass:I
 
+    .line 36
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " \""
+    .line 39
+    const-string/jumbo v1, " \""
 
+    .line 36
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 39
     iget-object v1, p0, Lcom/android/internal/telephony/CallForwardInfo;->number:Ljava/lang/String;
 
     iget v2, p0, Lcom/android/internal/telephony/CallForwardInfo;->toa:I
@@ -96,24 +107,31 @@
 
     move-result-object v1
 
+    .line 36
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "\" "
+    .line 39
+    const-string/jumbo v1, "\" "
 
+    .line 36
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 40
     iget v1, p0, Lcom/android/internal/telephony/CallForwardInfo;->timeSeconds:I
 
+    .line 36
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " seconds"
+    .line 40
+    const-string/jumbo v1, " seconds"
 
+    .line 36
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -125,7 +143,7 @@
     return-object v0
 
     :cond_0
-    const-string v0, " active "
+    const-string/jumbo v0, " active "
 
     goto :goto_0
 .end method

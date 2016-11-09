@@ -28,56 +28,45 @@
 
 
 # instance fields
-.field mIso:Ljava/lang/String;
+.field final mIso:Ljava/lang/String;
 
-.field mLanguage:Ljava/lang/String;
+.field final mMcc:I
 
-.field mMcc:I
-
-.field mSmallestDigitsMnc:I
+.field final mSmallestDigitsMnc:I
 
 
 # direct methods
 .method constructor <init>(ILjava/lang/String;I)V
     .locals 1
-    .parameter "mnc"
-    .parameter "iso"
-    .parameter "smallestDigitsMCC"
+    .param p1, "mnc"    # I
+    .param p2, "iso"    # Ljava/lang/String;
+    .param p3, "smallestDigitsMCC"    # I
 
     .prologue
-    .line 54
-    const/4 v0, 0x0
-
-    invoke-direct {p0, p1, p2, p3, v0}, Lcom/android/internal/telephony/MccTable$MccEntry;-><init>(ILjava/lang/String;ILjava/lang/String;)V
-
-    .line 55
-    return-void
-.end method
-
-.method constructor <init>(ILjava/lang/String;ILjava/lang/String;)V
-    .locals 0
-    .parameter "mnc"
-    .parameter "iso"
-    .parameter "smallestDigitsMCC"
-    .parameter "language"
-
-    .prologue
-    .line 57
+    .line 58
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 58
-    iput p1, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mMcc:I
-
     .line 59
-    iput-object p2, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mIso:Ljava/lang/String;
+    if-nez p2, :cond_0
 
     .line 60
-    iput p3, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mSmallestDigitsMnc:I
+    new-instance v0, Ljava/lang/NullPointerException;
 
-    .line 61
-    iput-object p4, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mLanguage:Ljava/lang/String;
+    invoke-direct {v0}, Ljava/lang/NullPointerException;-><init>()V
+
+    throw v0
 
     .line 62
+    :cond_0
+    iput p1, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mMcc:I
+
+    .line 63
+    iput-object p2, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mIso:Ljava/lang/String;
+
+    .line 64
+    iput p3, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mSmallestDigitsMnc:I
+
+    .line 58
     return-void
 .end method
 
@@ -85,10 +74,10 @@
 # virtual methods
 .method public compareTo(Lcom/android/internal/telephony/MccTable$MccEntry;)I
     .locals 2
-    .parameter "o"
+    .param p1, "o"    # Lcom/android/internal/telephony/MccTable$MccEntry;
 
     .prologue
-    .line 68
+    .line 69
     iget v0, p0, Lcom/android/internal/telephony/MccTable$MccEntry;->mMcc:I
 
     iget v1, p1, Lcom/android/internal/telephony/MccTable$MccEntry;->mMcc:I
@@ -100,13 +89,13 @@
 
 .method public bridge synthetic compareTo(Ljava/lang/Object;)I
     .locals 1
-    .parameter "x0"
+    .param p1, "o"    # Ljava/lang/Object;
 
     .prologue
-    .line 46
+    .line 68
     check-cast p1, Lcom/android/internal/telephony/MccTable$MccEntry;
 
-    .end local p1
+    .end local p1    # "o":Ljava/lang/Object;
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/MccTable$MccEntry;->compareTo(Lcom/android/internal/telephony/MccTable$MccEntry;)I
 
     move-result v0

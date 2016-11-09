@@ -49,6 +49,8 @@
 
 .field public static final CONTENT_TYPE:Ljava/lang/String; = "ct_t"
 
+.field public static final CREATOR:Ljava/lang/String; = "creator"
+
 .field public static final DATE:Ljava/lang/String; = "date"
 
 .field public static final DATE_SENT:Ljava/lang/String; = "date_sent"
@@ -111,6 +113,8 @@
 .field public static final MESSAGE_BOX_ALL:I = 0x0
 
 .field public static final MESSAGE_BOX_DRAFTS:I = 0x3
+
+.field public static final MESSAGE_BOX_FAILED:I = 0x5
 
 .field public static final MESSAGE_BOX_INBOX:I = 0x1
 
@@ -235,8 +239,6 @@
     .end annotation
 .end field
 
-.field public static final SIM_ID:Ljava/lang/String; = "sim_id"
-
 .field public static final START:Ljava/lang/String; = "start"
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
@@ -272,6 +274,8 @@
 .field public static final SUBJECT:Ljava/lang/String; = "sub"
 
 .field public static final SUBJECT_CHARSET:Ljava/lang/String; = "sub_cs"
+
+.field public static final SUBSCRIPTION_ID:Ljava/lang/String; = "sub_id"
 
 .field public static final TEXT_ONLY:Ljava/lang/String; = "text_only"
 

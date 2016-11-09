@@ -51,7 +51,7 @@
     .line 33
     new-instance v0, Lcom/android/internal/telephony/cat/Duration$TimeUnit;
 
-    const-string v1, "MINUTE"
+    const-string/jumbo v1, "MINUTE"
 
     invoke-direct {v0, v1, v2, v2}, Lcom/android/internal/telephony/cat/Duration$TimeUnit;-><init>(Ljava/lang/String;II)V
 
@@ -60,7 +60,7 @@
     .line 34
     new-instance v0, Lcom/android/internal/telephony/cat/Duration$TimeUnit;
 
-    const-string v1, "SECOND"
+    const-string/jumbo v1, "SECOND"
 
     invoke-direct {v0, v1, v3, v3}, Lcom/android/internal/telephony/cat/Duration$TimeUnit;-><init>(Ljava/lang/String;II)V
 
@@ -69,7 +69,7 @@
     .line 35
     new-instance v0, Lcom/android/internal/telephony/cat/Duration$TimeUnit;
 
-    const-string v1, "TENTH_SECOND"
+    const-string/jumbo v1, "TENTH_SECOND"
 
     invoke-direct {v0, v1, v4, v4}, Lcom/android/internal/telephony/cat/Duration$TimeUnit;-><init>(Ljava/lang/String;II)V
 
@@ -99,14 +99,7 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "value"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "value"    # I
 
     .prologue
     .line 39
@@ -115,13 +108,13 @@
     .line 40
     iput p3, p0, Lcom/android/internal/telephony/cat/Duration$TimeUnit;->mValue:I
 
-    .line 41
+    .line 39
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/cat/Duration$TimeUnit;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 32
@@ -142,12 +135,6 @@
     .prologue
     .line 32
     sget-object v0, Lcom/android/internal/telephony/cat/Duration$TimeUnit;->$VALUES:[Lcom/android/internal/telephony/cat/Duration$TimeUnit;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/cat/Duration$TimeUnit;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/cat/Duration$TimeUnit;
 
     return-object v0
 .end method

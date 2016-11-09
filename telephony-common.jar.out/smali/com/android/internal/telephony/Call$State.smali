@@ -60,10 +60,10 @@
 
     const/4 v3, 0x0
 
-    .line 33
+    .line 35
     new-instance v0, Lcom/android/internal/telephony/Call$State;
 
-    const-string v1, "IDLE"
+    const-string/jumbo v1, "IDLE"
 
     invoke-direct {v0, v1, v3}, Lcom/android/internal/telephony/Call$State;-><init>(Ljava/lang/String;I)V
 
@@ -71,7 +71,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/Call$State;
 
-    const-string v1, "ACTIVE"
+    const-string/jumbo v1, "ACTIVE"
 
     invoke-direct {v0, v1, v4}, Lcom/android/internal/telephony/Call$State;-><init>(Ljava/lang/String;I)V
 
@@ -79,7 +79,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/Call$State;
 
-    const-string v1, "HOLDING"
+    const-string/jumbo v1, "HOLDING"
 
     invoke-direct {v0, v1, v5}, Lcom/android/internal/telephony/Call$State;-><init>(Ljava/lang/String;I)V
 
@@ -87,7 +87,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/Call$State;
 
-    const-string v1, "DIALING"
+    const-string/jumbo v1, "DIALING"
 
     invoke-direct {v0, v1, v6}, Lcom/android/internal/telephony/Call$State;-><init>(Ljava/lang/String;I)V
 
@@ -95,7 +95,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/Call$State;
 
-    const-string v1, "ALERTING"
+    const-string/jumbo v1, "ALERTING"
 
     invoke-direct {v0, v1, v7}, Lcom/android/internal/telephony/Call$State;-><init>(Ljava/lang/String;I)V
 
@@ -103,7 +103,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/Call$State;
 
-    const-string v1, "INCOMING"
+    const-string/jumbo v1, "INCOMING"
 
     const/4 v2, 0x5
 
@@ -113,7 +113,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/Call$State;
 
-    const-string v1, "WAITING"
+    const-string/jumbo v1, "WAITING"
 
     const/4 v2, 0x6
 
@@ -123,7 +123,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/Call$State;
 
-    const-string v1, "DISCONNECTED"
+    const-string/jumbo v1, "DISCONNECTED"
 
     const/4 v2, 0x7
 
@@ -133,7 +133,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/Call$State;
 
-    const-string v1, "DISCONNECTING"
+    const-string/jumbo v1, "DISCONNECTING"
 
     const/16 v2, 0x8
 
@@ -141,7 +141,7 @@
 
     sput-object v0, Lcom/android/internal/telephony/Call$State;->DISCONNECTING:Lcom/android/internal/telephony/Call$State;
 
-    .line 32
+    .line 34
     const/16 v0, 0x9
 
     new-array v0, v0, [Lcom/android/internal/telephony/Call$State;
@@ -166,29 +166,29 @@
 
     aput-object v1, v0, v7
 
-    const/4 v1, 0x5
+    sget-object v1, Lcom/android/internal/telephony/Call$State;->INCOMING:Lcom/android/internal/telephony/Call$State;
 
-    sget-object v2, Lcom/android/internal/telephony/Call$State;->INCOMING:Lcom/android/internal/telephony/Call$State;
+    const/4 v2, 0x5
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x6
+    sget-object v1, Lcom/android/internal/telephony/Call$State;->WAITING:Lcom/android/internal/telephony/Call$State;
 
-    sget-object v2, Lcom/android/internal/telephony/Call$State;->WAITING:Lcom/android/internal/telephony/Call$State;
+    const/4 v2, 0x6
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x7
+    sget-object v1, Lcom/android/internal/telephony/Call$State;->DISCONNECTED:Lcom/android/internal/telephony/Call$State;
 
-    sget-object v2, Lcom/android/internal/telephony/Call$State;->DISCONNECTED:Lcom/android/internal/telephony/Call$State;
+    const/4 v2, 0x7
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x8
+    sget-object v1, Lcom/android/internal/telephony/Call$State;->DISCONNECTING:Lcom/android/internal/telephony/Call$State;
 
-    sget-object v2, Lcom/android/internal/telephony/Call$State;->DISCONNECTING:Lcom/android/internal/telephony/Call$State;
+    const/16 v2, 0x8
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     sput-object v0, Lcom/android/internal/telephony/Call$State;->$VALUES:[Lcom/android/internal/telephony/Call$State;
 
@@ -197,16 +197,9 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
-    .line 32
+    .line 34
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -214,10 +207,10 @@
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/Call$State;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 32
+    .line 34
     const-class v0, Lcom/android/internal/telephony/Call$State;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -233,14 +226,8 @@
     .locals 1
 
     .prologue
-    .line 32
+    .line 34
     sget-object v0, Lcom/android/internal/telephony/Call$State;->$VALUES:[Lcom/android/internal/telephony/Call$State;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/Call$State;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/Call$State;
 
     return-object v0
 .end method
@@ -248,49 +235,46 @@
 
 # virtual methods
 .method public isAlive()Z
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 36
-    sget-object v0, Lcom/android/internal/telephony/Call$State;->IDLE:Lcom/android/internal/telephony/Call$State;
+    const/4 v0, 0x0
 
-    if-eq p0, v0, :cond_0
+    .line 38
+    sget-object v1, Lcom/android/internal/telephony/Call$State;->IDLE:Lcom/android/internal/telephony/Call$State;
 
-    sget-object v0, Lcom/android/internal/telephony/Call$State;->DISCONNECTED:Lcom/android/internal/telephony/Call$State;
+    if-eq p0, v1, :cond_0
 
-    if-eq p0, v0, :cond_0
+    sget-object v1, Lcom/android/internal/telephony/Call$State;->DISCONNECTED:Lcom/android/internal/telephony/Call$State;
 
-    sget-object v0, Lcom/android/internal/telephony/Call$State;->DISCONNECTING:Lcom/android/internal/telephony/Call$State;
+    if-eq p0, v1, :cond_0
 
-    if-eq p0, v0, :cond_0
+    sget-object v1, Lcom/android/internal/telephony/Call$State;->DISCONNECTING:Lcom/android/internal/telephony/Call$State;
+
+    if-eq p0, v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public isDialing()Z
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 44
-    sget-object v0, Lcom/android/internal/telephony/Call$State;->DIALING:Lcom/android/internal/telephony/Call$State;
-
-    if-eq p0, v0, :cond_0
-
-    sget-object v0, Lcom/android/internal/telephony/Call$State;->ALERTING:Lcom/android/internal/telephony/Call$State;
-
-    if-ne p0, v0, :cond_1
-
-    :cond_0
     const/4 v0, 0x1
 
+    .line 46
+    sget-object v1, Lcom/android/internal/telephony/Call$State;->DIALING:Lcom/android/internal/telephony/Call$State;
+
+    if-eq p0, v1, :cond_0
+
+    sget-object v1, Lcom/android/internal/telephony/Call$State;->ALERTING:Lcom/android/internal/telephony/Call$State;
+
+    if-ne p0, v1, :cond_1
+
+    :cond_0
     :goto_0
     return v0
 
@@ -301,21 +285,21 @@
 .end method
 
 .method public isRinging()Z
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 40
-    sget-object v0, Lcom/android/internal/telephony/Call$State;->INCOMING:Lcom/android/internal/telephony/Call$State;
-
-    if-eq p0, v0, :cond_0
-
-    sget-object v0, Lcom/android/internal/telephony/Call$State;->WAITING:Lcom/android/internal/telephony/Call$State;
-
-    if-ne p0, v0, :cond_1
-
-    :cond_0
     const/4 v0, 0x1
 
+    .line 42
+    sget-object v1, Lcom/android/internal/telephony/Call$State;->INCOMING:Lcom/android/internal/telephony/Call$State;
+
+    if-eq p0, v1, :cond_0
+
+    sget-object v1, Lcom/android/internal/telephony/Call$State;->WAITING:Lcom/android/internal/telephony/Call$State;
+
+    if-ne p0, v1, :cond_1
+
+    :cond_0
     :goto_0
     return v0
 

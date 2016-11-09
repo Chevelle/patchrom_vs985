@@ -4,6 +4,9 @@
 
 
 # virtual methods
+.method public abstract getIsimChallengeResponse(Ljava/lang/String;)Ljava/lang/String;
+.end method
+
 .method public abstract getIsimDomain()Ljava/lang/String;
 .end method
 
@@ -11,4 +14,10 @@
 .end method
 
 .method public abstract getIsimImpu()[Ljava/lang/String;
+.end method
+
+.method public abstract getIsimIst()Ljava/lang/String;
+.end method
+
+.method public abstract getIsimPcscf()[Ljava/lang/String;
 .end method

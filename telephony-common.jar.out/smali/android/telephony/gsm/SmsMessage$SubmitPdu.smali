@@ -39,13 +39,12 @@
     .line 112
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 113
     return-void
 .end method
 
 .method protected constructor <init>(Lcom/android/internal/telephony/SmsMessageBase$SubmitPduBase;)V
     .locals 1
-    .parameter "spb"
+    .param p1, "spb"    # Lcom/android/internal/telephony/SmsMessageBase$SubmitPduBase;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
@@ -63,7 +62,7 @@
 
     iput-object v0, p0, Landroid/telephony/gsm/SmsMessage$SubmitPdu;->encodedScAddress:[B
 
-    .line 122
+    .line 119
     return-void
 .end method
 
@@ -80,34 +79,40 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "SubmitPdu: encodedScAddress = "
+    const-string/jumbo v1, "SubmitPdu: encodedScAddress = "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 129
     iget-object v1, p0, Landroid/telephony/gsm/SmsMessage$SubmitPdu;->encodedScAddress:[B
 
     invoke-static {v1}, Ljava/util/Arrays;->toString([B)Ljava/lang/String;
 
     move-result-object v1
 
+    .line 128
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", encodedMessage = "
+    .line 130
+    const-string/jumbo v1, ", encodedMessage = "
 
+    .line 128
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 131
     iget-object v1, p0, Landroid/telephony/gsm/SmsMessage$SubmitPdu;->encodedMessage:[B
 
     invoke-static {v1}, Ljava/util/Arrays;->toString([B)Ljava/lang/String;
 
     move-result-object v1
 
+    .line 128
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0

@@ -14,13 +14,13 @@
 # direct methods
 .method public constructor <init>([B)V
     .locals 0
-    .parameter "table"
+    .param p1, "table"    # [B
 
     .prologue
     .line 125
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/uicc/IccServiceTable;-><init>([B)V
 
-    .line 126
+    .line 124
     return-void
 .end method
 
@@ -31,7 +31,7 @@
 
     .prologue
     .line 134
-    const-string v0, "UsimServiceTable"
+    const-string/jumbo v0, "UsimServiceTable"
 
     return-object v0
 .end method
@@ -50,7 +50,7 @@
 
 .method public isAvailable(Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;)Z
     .locals 1
-    .parameter "service"
+    .param p1, "service"    # Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
     .prologue
     .line 129

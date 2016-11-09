@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/telephony/SmsCbMessage;
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 223
@@ -55,10 +55,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 220
+    .line 222
     invoke-virtual {p0, p1}, Landroid/telephony/SmsCbMessage$1;->createFromParcel(Landroid/os/Parcel;)Landroid/telephony/SmsCbMessage;
 
     move-result-object v0
@@ -68,7 +68,7 @@
 
 .method public newArray(I)[Landroid/telephony/SmsCbMessage;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 228
@@ -79,10 +79,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 220
+    .line 227
     invoke-virtual {p0, p1}, Landroid/telephony/SmsCbMessage$1;->newArray(I)[Landroid/telephony/SmsCbMessage;
 
     move-result-object v0

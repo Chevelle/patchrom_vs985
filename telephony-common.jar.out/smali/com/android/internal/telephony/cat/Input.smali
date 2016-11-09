@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/internal/telephony/cat/Input$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -57,6 +65,7 @@
 
     sput-object v0, Lcom/android/internal/telephony/cat/Input;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 27
     return-void
 .end method
 
@@ -72,7 +81,7 @@
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 42
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     iput-object v0, p0, Lcom/android/internal/telephony/cat/Input;->text:Ljava/lang/String;
 
@@ -111,13 +120,13 @@
     .line 53
     iput-object v2, p0, Lcom/android/internal/telephony/cat/Input;->duration:Lcom/android/internal/telephony/cat/Duration;
 
-    .line 54
+    .line 41
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 4
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     const/4 v3, 0x0
@@ -245,7 +254,7 @@
 
     iput-object v0, p0, Lcom/android/internal/telephony/cat/Input;->duration:Lcom/android/internal/telephony/cat/Duration;
 
-    .line 69
+    .line 56
     return-void
 
     :cond_0
@@ -285,13 +294,11 @@
     goto :goto_5
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Lcom/android/internal/telephony/cat/Input$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Lcom/android/internal/telephony/cat/Input;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 27
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/cat/Input;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -311,7 +318,7 @@
 
 .method setIcon(Landroid/graphics/Bitmap;)Z
     .locals 1
-    .parameter "Icon"
+    .param p1, "Icon"    # Landroid/graphics/Bitmap;
 
     .prologue
     .line 104
@@ -322,8 +329,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 3
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     const/4 v1, 0x1
@@ -418,7 +425,7 @@
 
     invoke-virtual {p1, v0, v2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
-    .line 90
+    .line 77
     return-void
 
     :cond_0

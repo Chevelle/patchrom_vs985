@@ -34,10 +34,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/internal/telephony/dataconnection/DcTrackerBase;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/internal/telephony/dataconnection/DcTrackerBase;
 
     .prologue
-    .line 263
+    .line 269
     iput-object p1, p0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$1;->this$0:Lcom/android/internal/telephony/dataconnection/DcTrackerBase;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -49,11 +49,11 @@
 # virtual methods
 .method public compare(Lcom/android/internal/telephony/dataconnection/ApnContext;Lcom/android/internal/telephony/dataconnection/ApnContext;)I
     .locals 2
-    .parameter "c1"
-    .parameter "c2"
+    .param p1, "c1"    # Lcom/android/internal/telephony/dataconnection/ApnContext;
+    .param p2, "c2"    # Lcom/android/internal/telephony/dataconnection/ApnContext;
 
     .prologue
-    .line 265
+    .line 271
     iget v0, p2, Lcom/android/internal/telephony/dataconnection/ApnContext;->priority:I
 
     iget v1, p1, Lcom/android/internal/telephony/dataconnection/ApnContext;->priority:I
@@ -65,17 +65,17 @@
 
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
     .locals 1
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "c1"    # Ljava/lang/Object;
+    .param p2, "c2"    # Ljava/lang/Object;
 
     .prologue
-    .line 263
+    .line 270
     check-cast p1, Lcom/android/internal/telephony/dataconnection/ApnContext;
 
-    .end local p1
+    .end local p1    # "c1":Ljava/lang/Object;
     check-cast p2, Lcom/android/internal/telephony/dataconnection/ApnContext;
 
-    .end local p2
+    .end local p2    # "c2":Ljava/lang/Object;
     invoke-virtual {p0, p1, p2}, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$1;->compare(Lcom/android/internal/telephony/dataconnection/ApnContext;Lcom/android/internal/telephony/dataconnection/ApnContext;)I
 
     move-result v0

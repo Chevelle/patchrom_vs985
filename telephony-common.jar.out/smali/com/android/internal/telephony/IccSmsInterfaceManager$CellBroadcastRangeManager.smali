@@ -32,21 +32,23 @@
 # direct methods
 .method constructor <init>(Lcom/android/internal/telephony/IccSmsInterfaceManager;)V
     .locals 1
-    .parameter
+    .param p1, "this$0"    # Lcom/android/internal/telephony/IccSmsInterfaceManager;
 
     .prologue
-    .line 633
+    .line 766
     iput-object p1, p0, Lcom/android/internal/telephony/IccSmsInterfaceManager$CellBroadcastRangeManager;->this$0:Lcom/android/internal/telephony/IccSmsInterfaceManager;
 
     invoke-direct {p0}, Lcom/android/internal/telephony/IntRangeManager;-><init>()V
 
-    .line 634
+    .line 768
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
+    .line 767
     iput-object v0, p0, Lcom/android/internal/telephony/IccSmsInterfaceManager$CellBroadcastRangeManager;->mConfigList:Ljava/util/ArrayList;
 
+    .line 766
     return-void
 .end method
 
@@ -54,16 +56,17 @@
 # virtual methods
 .method protected addRange(IIZ)V
     .locals 7
-    .parameter "startId"
-    .parameter "endId"
-    .parameter "selected"
+    .param p1, "startId"    # I
+    .param p2, "endId"    # I
+    .param p3, "selected"    # Z
 
     .prologue
-    .line 653
+    .line 786
     iget-object v6, p0, Lcom/android/internal/telephony/IccSmsInterfaceManager$CellBroadcastRangeManager;->mConfigList:Ljava/util/ArrayList;
 
     new-instance v0, Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;
 
+    .line 787
     const/4 v3, 0x0
 
     const/16 v4, 0xff
@@ -74,11 +77,12 @@
 
     move v5, p3
 
+    .line 786
     invoke-direct/range {v0 .. v5}, Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;-><init>(IIIIZ)V
 
     invoke-virtual {v6, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 655
+    .line 785
     return-void
 .end method
 
@@ -86,7 +90,7 @@
     .locals 3
 
     .prologue
-    .line 663
+    .line 796
     iget-object v1, p0, Lcom/android/internal/telephony/IccSmsInterfaceManager$CellBroadcastRangeManager;->mConfigList:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->isEmpty()Z
@@ -95,14 +99,12 @@
 
     if-eqz v1, :cond_0
 
-    .line 664
+    .line 797
     const/4 v1, 0x1
 
-    .line 668
-    :goto_0
     return v1
 
-    .line 666
+    .line 800
     :cond_0
     iget-object v1, p0, Lcom/android/internal/telephony/IccSmsInterfaceManager$CellBroadcastRangeManager;->mConfigList:Ljava/util/ArrayList;
 
@@ -120,27 +122,26 @@
 
     check-cast v0, [Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;
 
-    .line 668
-    .local v0, configs:[Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;
+    .line 801
+    .local v0, "configs":[Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;
     iget-object v1, p0, Lcom/android/internal/telephony/IccSmsInterfaceManager$CellBroadcastRangeManager;->this$0:Lcom/android/internal/telephony/IccSmsInterfaceManager;
 
-    #calls: Lcom/android/internal/telephony/IccSmsInterfaceManager;->setCellBroadcastConfig([Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;)Z
-    invoke-static {v1, v0}, Lcom/android/internal/telephony/IccSmsInterfaceManager;->access$100(Lcom/android/internal/telephony/IccSmsInterfaceManager;[Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;)Z
+    invoke-static {v1, v0}, Lcom/android/internal/telephony/IccSmsInterfaceManager;->-wrap1(Lcom/android/internal/telephony/IccSmsInterfaceManager;[Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;)Z
 
     move-result v1
 
-    goto :goto_0
+    return v1
 .end method
 
 .method protected startUpdate()V
     .locals 1
 
     .prologue
-    .line 643
+    .line 776
     iget-object v0, p0, Lcom/android/internal/telephony/IccSmsInterfaceManager$CellBroadcastRangeManager;->mConfigList:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
-    .line 644
+    .line 775
     return-void
 .end method

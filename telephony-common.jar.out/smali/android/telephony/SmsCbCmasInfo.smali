@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/telephony/SmsCbCmasInfo$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CMAS_CATEGORY_CBRNE:I = 0xa
 
@@ -123,20 +131,21 @@
 
     sput-object v0, Landroid/telephony/SmsCbCmasInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 29
     return-void
 .end method
 
 .method public constructor <init>(IIIIII)V
     .locals 0
-    .parameter "messageClass"
-    .parameter "category"
-    .parameter "responseType"
-    .parameter "severity"
-    .parameter "urgency"
-    .parameter "certainty"
+    .param p1, "messageClass"    # I
+    .param p2, "category"    # I
+    .param p3, "responseType"    # I
+    .param p4, "severity"    # I
+    .param p5, "urgency"    # I
+    .param p6, "certainty"    # I
 
     .prologue
-    .line 198
+    .line 197
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 199
@@ -157,13 +166,13 @@
     .line 204
     iput p6, p0, Landroid/telephony/SmsCbCmasInfo;->mCertainty:I
 
-    .line 205
+    .line 198
     return-void
 .end method
 
 .method constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 208
@@ -211,7 +220,7 @@
 
     iput v0, p0, Landroid/telephony/SmsCbCmasInfo;->mCertainty:I
 
-    .line 215
+    .line 208
     return-void
 .end method
 
@@ -296,7 +305,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "SmsCbCmasInfo{messageClass="
+    const-string/jumbo v1, "SmsCbCmasInfo{messageClass="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -308,7 +317,7 @@
 
     move-result-object v0
 
-    const-string v1, ", category="
+    const-string/jumbo v1, ", category="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -320,56 +329,74 @@
 
     move-result-object v0
 
-    const-string v1, ", responseType="
+    .line 284
+    const-string/jumbo v1, ", responseType="
 
+    .line 283
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 284
     iget v1, p0, Landroid/telephony/SmsCbCmasInfo;->mResponseType:I
 
+    .line 283
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", severity="
+    .line 284
+    const-string/jumbo v1, ", severity="
 
+    .line 283
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 284
     iget v1, p0, Landroid/telephony/SmsCbCmasInfo;->mSeverity:I
 
+    .line 283
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", urgency="
+    .line 285
+    const-string/jumbo v1, ", urgency="
 
+    .line 283
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 285
     iget v1, p0, Landroid/telephony/SmsCbCmasInfo;->mUrgency:I
 
+    .line 283
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", certainty="
+    .line 285
+    const-string/jumbo v1, ", certainty="
 
+    .line 283
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 285
     iget v1, p0, Landroid/telephony/SmsCbCmasInfo;->mCertainty:I
 
+    .line 283
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 285
     const/16 v1, 0x7d
 
+    .line 283
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -383,8 +410,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 225
@@ -417,6 +444,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 231
+    .line 224
     return-void
 .end method

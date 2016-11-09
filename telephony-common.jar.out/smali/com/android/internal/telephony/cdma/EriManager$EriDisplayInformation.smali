@@ -27,10 +27,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/internal/telephony/cdma/EriManager;IILjava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter "eriIconIndex"
-    .parameter "eriIconMode"
-    .parameter "eriIconText"
+    .param p1, "this$0"    # Lcom/android/internal/telephony/cdma/EriManager;
+    .param p2, "eriIconIndex"    # I
+    .param p3, "eriIconMode"    # I
+    .param p4, "eriIconText"    # Ljava/lang/String;
 
     .prologue
     .line 67
@@ -47,7 +47,7 @@
     .line 70
     iput-object p4, p0, Lcom/android/internal/telephony/cdma/EriManager$EriDisplayInformation;->mEriIconText:Ljava/lang/String;
 
-    .line 71
+    .line 67
     return-void
 .end method
 
@@ -62,7 +62,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "EriDisplayInformation: { IconIndex: "
+    const-string/jumbo v1, "EriDisplayInformation: { IconIndex: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -74,32 +74,40 @@
 
     move-result-object v0
 
-    const-string v1, " EriIconMode: "
+    const-string/jumbo v1, " EriIconMode: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 82
     iget v1, p0, Lcom/android/internal/telephony/cdma/EriManager$EriDisplayInformation;->mEriIconMode:I
 
+    .line 81
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " EriIconText: "
+    .line 82
+    const-string/jumbo v1, " EriIconText: "
 
+    .line 81
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 82
     iget-object v1, p0, Lcom/android/internal/telephony/cdma/EriManager$EriDisplayInformation;->mEriIconText:Ljava/lang/String;
 
+    .line 81
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " }"
+    .line 82
+    const-string/jumbo v1, " }"
 
+    .line 81
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0

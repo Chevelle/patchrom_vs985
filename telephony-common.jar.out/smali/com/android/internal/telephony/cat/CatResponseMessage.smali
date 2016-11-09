@@ -4,9 +4,13 @@
 
 
 # instance fields
+.field mAddedInfo:[B
+
 .field mAdditionalInfo:I
 
 .field mCmdDet:Lcom/android/internal/telephony/cat/CommandDetails;
+
+.field mEventValue:I
 
 .field mIncludeAdditionalInfo:Z
 
@@ -24,14 +28,14 @@
 # direct methods
 .method public constructor <init>(Lcom/android/internal/telephony/cat/CatCmdMessage;)V
     .locals 3
-    .parameter "cmdMsg"
+    .param p1, "cmdMsg"    # Lcom/android/internal/telephony/cat/CatCmdMessage;
 
     .prologue
     const/4 v2, 0x0
 
     const/4 v1, 0x0
 
-    .line 28
+    .line 31
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 20
@@ -60,12 +64,20 @@
     .line 27
     iput v1, p0, Lcom/android/internal/telephony/cat/CatResponseMessage;->mAdditionalInfo:I
 
+    .line 28
+    const/4 v0, -0x1
+
+    iput v0, p0, Lcom/android/internal/telephony/cat/CatResponseMessage;->mEventValue:I
+
     .line 29
+    iput-object v2, p0, Lcom/android/internal/telephony/cat/CatResponseMessage;->mAddedInfo:[B
+
+    .line 32
     iget-object v0, p1, Lcom/android/internal/telephony/cat/CatCmdMessage;->mCmdDet:Lcom/android/internal/telephony/cat/CommandDetails;
 
     iput-object v0, p0, Lcom/android/internal/telephony/cat/CatResponseMessage;->mCmdDet:Lcom/android/internal/telephony/cat/CommandDetails;
 
-    .line 30
+    .line 31
     return-void
 .end method
 
@@ -75,7 +87,7 @@
     .locals 1
 
     .prologue
-    .line 58
+    .line 66
     iget-object v0, p0, Lcom/android/internal/telephony/cat/CatResponseMessage;->mCmdDet:Lcom/android/internal/telephony/cat/CommandDetails;
 
     return-object v0
@@ -83,77 +95,93 @@
 
 .method public setAdditionalInfo(I)V
     .locals 1
-    .parameter "info"
+    .param p1, "info"    # I
 
     .prologue
-    .line 53
+    .line 61
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/internal/telephony/cat/CatResponseMessage;->mIncludeAdditionalInfo:Z
 
-    .line 54
+    .line 62
     iput p1, p0, Lcom/android/internal/telephony/cat/CatResponseMessage;->mAdditionalInfo:I
 
-    .line 55
+    .line 60
     return-void
 .end method
 
 .method public setConfirmation(Z)V
     .locals 0
-    .parameter "confirm"
+    .param p1, "confirm"    # Z
 
     .prologue
-    .line 49
+    .line 57
     iput-boolean p1, p0, Lcom/android/internal/telephony/cat/CatResponseMessage;->mUsersConfirm:Z
 
-    .line 50
+    .line 56
+    return-void
+.end method
+
+.method public setEventDownload(I[B)V
+    .locals 0
+    .param p1, "event"    # I
+    .param p2, "addedInfo"    # [B
+
+    .prologue
+    .line 48
+    iput p1, p0, Lcom/android/internal/telephony/cat/CatResponseMessage;->mEventValue:I
+
+    .line 49
+    iput-object p2, p0, Lcom/android/internal/telephony/cat/CatResponseMessage;->mAddedInfo:[B
+
+    .line 47
     return-void
 .end method
 
 .method public setInput(Ljava/lang/String;)V
     .locals 0
-    .parameter "input"
+    .param p1, "input"    # Ljava/lang/String;
 
     .prologue
-    .line 41
+    .line 44
     iput-object p1, p0, Lcom/android/internal/telephony/cat/CatResponseMessage;->mUsersInput:Ljava/lang/String;
 
-    .line 42
+    .line 43
     return-void
 .end method
 
 .method public setMenuSelection(I)V
     .locals 0
-    .parameter "selection"
+    .param p1, "selection"    # I
 
     .prologue
-    .line 37
+    .line 40
     iput p1, p0, Lcom/android/internal/telephony/cat/CatResponseMessage;->mUsersMenuSelection:I
 
-    .line 38
+    .line 39
     return-void
 .end method
 
 .method public setResultCode(Lcom/android/internal/telephony/cat/ResultCode;)V
     .locals 0
-    .parameter "resCode"
+    .param p1, "resCode"    # Lcom/android/internal/telephony/cat/ResultCode;
 
     .prologue
-    .line 33
+    .line 36
     iput-object p1, p0, Lcom/android/internal/telephony/cat/CatResponseMessage;->mResCode:Lcom/android/internal/telephony/cat/ResultCode;
 
-    .line 34
+    .line 35
     return-void
 .end method
 
 .method public setYesNo(Z)V
     .locals 0
-    .parameter "yesNo"
+    .param p1, "yesNo"    # Z
 
     .prologue
-    .line 45
+    .line 53
     iput-boolean p1, p0, Lcom/android/internal/telephony/cat/CatResponseMessage;->mUsersYesNoSelection:Z
 
-    .line 46
+    .line 52
     return-void
 .end method

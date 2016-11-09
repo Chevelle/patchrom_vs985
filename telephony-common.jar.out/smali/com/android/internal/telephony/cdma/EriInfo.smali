@@ -32,15 +32,15 @@
 # direct methods
 .method public constructor <init>(IIILjava/lang/String;II)V
     .locals 0
-    .parameter "roamingIndicator"
-    .parameter "iconIndex"
-    .parameter "iconMode"
-    .parameter "eriText"
-    .parameter "callPromptId"
-    .parameter "alertId"
+    .param p1, "roamingIndicator"    # I
+    .param p2, "iconIndex"    # I
+    .param p3, "iconMode"    # I
+    .param p4, "eriText"    # Ljava/lang/String;
+    .param p5, "callPromptId"    # I
+    .param p6, "alertId"    # I
 
     .prologue
-    .line 36
+    .line 35
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 38
@@ -61,6 +61,6 @@
     .line 43
     iput p6, p0, Lcom/android/internal/telephony/cdma/EriInfo;->alertId:I
 
-    .line 44
+    .line 36
     return-void
 .end method

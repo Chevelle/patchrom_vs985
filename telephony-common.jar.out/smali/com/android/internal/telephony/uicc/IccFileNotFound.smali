@@ -11,13 +11,12 @@
     .line 24
     invoke-direct {p0}, Lcom/android/internal/telephony/uicc/IccException;-><init>()V
 
-    .line 26
     return-void
 .end method
 
 .method constructor <init>(I)V
     .locals 2
-    .parameter "ef"
+    .param p1, "ef"    # I
 
     .prologue
     .line 33
@@ -25,7 +24,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "ICC EF Not Found 0x"
+    const-string/jumbo v1, "ICC EF Not Found 0x"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -45,18 +44,18 @@
 
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/uicc/IccException;-><init>(Ljava/lang/String;)V
 
-    .line 34
+    .line 32
     return-void
 .end method
 
 .method constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "s"
+    .param p1, "s"    # Ljava/lang/String;
 
     .prologue
     .line 29
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/uicc/IccException;-><init>(Ljava/lang/String;)V
 
-    .line 30
+    .line 28
     return-void
 .end method

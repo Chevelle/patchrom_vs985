@@ -18,7 +18,7 @@
 
 
 # static fields
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
 
 .field public static final DEFAULT_SORT_ORDER:Ljava/lang/String; = "date DESC"
 
@@ -28,8 +28,8 @@
     .locals 1
 
     .prologue
-    .line 1852
-    const-string v0, "content://mms/outbox"
+    .line 2050
+    const-string/jumbo v0, "content://mms/outbox"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
@@ -37,6 +37,7 @@
 
     sput-object v0, Landroid/provider/Telephony$Mms$Outbox;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 2037
     return-void
 .end method
 
@@ -44,9 +45,8 @@
     .locals 0
 
     .prologue
-    .line 1845
+    .line 2043
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1846
     return-void
 .end method

@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/internal/telephony/InboundSmsHandler;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/internal/telephony/InboundSmsHandler;
 
     .prologue
-    .line 253
+    .line 304
     iput-object p1, p0, Lcom/android/internal/telephony/InboundSmsHandler$StartupState;->this$0:Lcom/android/internal/telephony/InboundSmsHandler;
 
     invoke-direct {p0}, Lcom/android/internal/util/State;-><init>()V
@@ -35,47 +35,73 @@
 
 # virtual methods
 .method public processMessage(Landroid/os/Message;)Z
-    .locals 3
-    .parameter "msg"
+    .locals 4
+    .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
-    const/4 v0, 0x1
+    const/4 v3, 0x1
 
-    .line 256
-    iget v1, p1, Landroid/os/Message;->what:I
+    .line 307
+    iget-object v0, p0, Lcom/android/internal/telephony/InboundSmsHandler$StartupState;->this$0:Lcom/android/internal/telephony/InboundSmsHandler;
 
-    packed-switch v1, :pswitch_data_0
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    .line 271
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v2, "StartupState.processMessage:"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget v2, p1, Landroid/os/Message;->what:I
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lcom/android/internal/telephony/InboundSmsHandler;->log(Ljava/lang/String;)V
+
+    .line 308
+    iget v0, p1, Landroid/os/Message;->what:I
+
+    packed-switch v0, :pswitch_data_0
+
+    .line 324
     :pswitch_0
     const/4 v0, 0x0
 
-    :goto_0
     return v0
 
-    .line 259
+    .line 312
     :pswitch_1
-    iget-object v1, p0, Lcom/android/internal/telephony/InboundSmsHandler$StartupState;->this$0:Lcom/android/internal/telephony/InboundSmsHandler;
+    iget-object v0, p0, Lcom/android/internal/telephony/InboundSmsHandler$StartupState;->this$0:Lcom/android/internal/telephony/InboundSmsHandler;
 
-    #calls: Lcom/android/internal/telephony/InboundSmsHandler;->deferMessage(Landroid/os/Message;)V
-    invoke-static {v1, p1}, Lcom/android/internal/telephony/InboundSmsHandler;->access$000(Lcom/android/internal/telephony/InboundSmsHandler;Landroid/os/Message;)V
+    invoke-static {v0, p1}, Lcom/android/internal/telephony/InboundSmsHandler;->-wrap1(Lcom/android/internal/telephony/InboundSmsHandler;Landroid/os/Message;)V
 
-    goto :goto_0
+    .line 313
+    return v3
 
-    .line 263
+    .line 316
     :pswitch_2
+    iget-object v0, p0, Lcom/android/internal/telephony/InboundSmsHandler$StartupState;->this$0:Lcom/android/internal/telephony/InboundSmsHandler;
+
     iget-object v1, p0, Lcom/android/internal/telephony/InboundSmsHandler$StartupState;->this$0:Lcom/android/internal/telephony/InboundSmsHandler;
 
-    iget-object v2, p0, Lcom/android/internal/telephony/InboundSmsHandler$StartupState;->this$0:Lcom/android/internal/telephony/InboundSmsHandler;
+    iget-object v1, v1, Lcom/android/internal/telephony/InboundSmsHandler;->mIdleState:Lcom/android/internal/telephony/InboundSmsHandler$IdleState;
 
-    iget-object v2, v2, Lcom/android/internal/telephony/InboundSmsHandler;->mIdleState:Lcom/android/internal/telephony/InboundSmsHandler$IdleState;
+    invoke-static {v0, v1}, Lcom/android/internal/telephony/InboundSmsHandler;->-wrap3(Lcom/android/internal/telephony/InboundSmsHandler;Lcom/android/internal/util/IState;)V
 
-    #calls: Lcom/android/internal/telephony/InboundSmsHandler;->transitionTo(Lcom/android/internal/util/IState;)V
-    invoke-static {v1, v2}, Lcom/android/internal/telephony/InboundSmsHandler;->access$100(Lcom/android/internal/telephony/InboundSmsHandler;Lcom/android/internal/util/IState;)V
+    .line 317
+    return v3
 
-    goto :goto_0
+    .line 308
+    nop
 
-    .line 256
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_1
@@ -84,5 +110,7 @@
         :pswitch_0
         :pswitch_0
         :pswitch_2
+        :pswitch_0
+        :pswitch_1
     .end packed-switch
 .end method

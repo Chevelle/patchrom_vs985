@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Lcom/android/internal/telephony/cat/ToneSettings;
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 58
@@ -50,17 +50,17 @@
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p1, v1}, Lcom/android/internal/telephony/cat/ToneSettings;-><init>(Landroid/os/Parcel;Lcom/android/internal/telephony/cat/ToneSettings$1;)V
+    invoke-direct {v0, p1, v1}, Lcom/android/internal/telephony/cat/ToneSettings;-><init>(Landroid/os/Parcel;Lcom/android/internal/telephony/cat/ToneSettings;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 55
+    .line 57
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/cat/ToneSettings$1;->createFromParcel(Landroid/os/Parcel;)Lcom/android/internal/telephony/cat/ToneSettings;
 
     move-result-object v0
@@ -70,7 +70,7 @@
 
 .method public newArray(I)[Lcom/android/internal/telephony/cat/ToneSettings;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 63
@@ -81,10 +81,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 55
+    .line 62
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/cat/ToneSettings$1;->newArray(I)[Lcom/android/internal/telephony/cat/ToneSettings;
 
     move-result-object v0

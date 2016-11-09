@@ -1,5 +1,5 @@
 .class public Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;
-.super Lcom/android/internal/telephony/IIccPhoneBook$Stub;
+.super Ljava/lang/Object;
 .source "IccPhoneBookInterfaceManagerProxy.java"
 
 
@@ -9,32 +9,17 @@
 
 # direct methods
 .method public constructor <init>(Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;)V
-    .locals 1
-    .parameter "iccPhoneBookInterfaceManager"
+    .locals 0
+    .param p1, "iccPhoneBookInterfaceManager"    # Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
 
     .prologue
-    .line 34
-    invoke-direct {p0}, Lcom/android/internal/telephony/IIccPhoneBook$Stub;-><init>()V
+    .line 33
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 35
     iput-object p1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;->mIccPhoneBookInterfaceManager:Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
 
-    .line 36
-    const-string v0, "simphonebook"
-
-    invoke-static {v0}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
-
-    move-result-object v0
-
-    if-nez v0, :cond_0
-
-    .line 37
-    const-string v0, "simphonebook"
-
-    invoke-static {v0, p0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
-
-    .line 39
-    :cond_0
+    .line 34
     return-void
 .end method
 
@@ -42,7 +27,7 @@
 # virtual methods
 .method public getAdnRecordsInEf(I)Ljava/util/List;
     .locals 1
-    .parameter "efid"
+    .param p1, "efid"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I)",
@@ -54,7 +39,7 @@
     .end annotation
 
     .prologue
-    .line 71
+    .line 64
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;->mIccPhoneBookInterfaceManager:Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
 
     invoke-virtual {v0, p1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->getAdnRecordsInEf(I)Ljava/util/List;
@@ -66,10 +51,10 @@
 
 .method public getAdnRecordsSize(I)[I
     .locals 1
-    .parameter "efid"
+    .param p1, "efid"    # I
 
     .prologue
-    .line 66
+    .line 60
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;->mIccPhoneBookInterfaceManager:Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
 
     invoke-virtual {v0, p1}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->getAdnRecordsSize(I)[I
@@ -79,37 +64,28 @@
     return-object v0
 .end method
 
-.method getIccPhoneBookInterfaceManager()Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
-    .locals 1
-
-    .prologue
-    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;->mIccPhoneBookInterfaceManager:Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
-
-    return-object v0
-.end method
-
 .method public setmIccPhoneBookInterfaceManager(Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;)V
     .locals 0
-    .parameter "iccPhoneBookInterfaceManager"
+    .param p1, "iccPhoneBookInterfaceManager"    # Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
 
     .prologue
-    .line 43
+    .line 40
     iput-object p1, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;->mIccPhoneBookInterfaceManager:Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
 
-    .line 44
+    .line 39
     return-void
 .end method
 
 .method public updateAdnRecordsInEfByIndex(ILjava/lang/String;Ljava/lang/String;ILjava/lang/String;)Z
     .locals 6
-    .parameter "efid"
-    .parameter "newTag"
-    .parameter "newPhoneNumber"
-    .parameter "index"
-    .parameter "pin2"
+    .param p1, "efid"    # I
+    .param p2, "newTag"    # Ljava/lang/String;
+    .param p3, "newPhoneNumber"    # Ljava/lang/String;
+    .param p4, "index"    # I
+    .param p5, "pin2"    # Ljava/lang/String;
 
     .prologue
-    .line 60
+    .line 55
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;->mIccPhoneBookInterfaceManager:Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
 
     move v1, p1
@@ -131,15 +107,15 @@
 
 .method public updateAdnRecordsInEfBySearch(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
     .locals 7
-    .parameter "efid"
-    .parameter "oldTag"
-    .parameter "oldPhoneNumber"
-    .parameter "newTag"
-    .parameter "newPhoneNumber"
-    .parameter "pin2"
+    .param p1, "efid"    # I
+    .param p2, "oldTag"    # Ljava/lang/String;
+    .param p3, "oldPhoneNumber"    # Ljava/lang/String;
+    .param p4, "newTag"    # Ljava/lang/String;
+    .param p5, "newPhoneNumber"    # Ljava/lang/String;
+    .param p6, "pin2"    # Ljava/lang/String;
 
     .prologue
-    .line 52
+    .line 48
     iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;->mIccPhoneBookInterfaceManager:Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
 
     move v1, p1

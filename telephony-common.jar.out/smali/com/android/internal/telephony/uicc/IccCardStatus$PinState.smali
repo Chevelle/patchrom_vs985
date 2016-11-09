@@ -57,7 +57,7 @@
     .line 38
     new-instance v0, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;
 
-    const-string v1, "PINSTATE_UNKNOWN"
+    const-string/jumbo v1, "PINSTATE_UNKNOWN"
 
     invoke-direct {v0, v1, v3}, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;-><init>(Ljava/lang/String;I)V
 
@@ -66,7 +66,7 @@
     .line 39
     new-instance v0, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;
 
-    const-string v1, "PINSTATE_ENABLED_NOT_VERIFIED"
+    const-string/jumbo v1, "PINSTATE_ENABLED_NOT_VERIFIED"
 
     invoke-direct {v0, v1, v4}, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;-><init>(Ljava/lang/String;I)V
 
@@ -75,7 +75,7 @@
     .line 40
     new-instance v0, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;
 
-    const-string v1, "PINSTATE_ENABLED_VERIFIED"
+    const-string/jumbo v1, "PINSTATE_ENABLED_VERIFIED"
 
     invoke-direct {v0, v1, v5}, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;-><init>(Ljava/lang/String;I)V
 
@@ -84,7 +84,7 @@
     .line 41
     new-instance v0, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;
 
-    const-string v1, "PINSTATE_DISABLED"
+    const-string/jumbo v1, "PINSTATE_DISABLED"
 
     invoke-direct {v0, v1, v6}, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;-><init>(Ljava/lang/String;I)V
 
@@ -93,7 +93,7 @@
     .line 42
     new-instance v0, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;
 
-    const-string v1, "PINSTATE_ENABLED_BLOCKED"
+    const-string/jumbo v1, "PINSTATE_ENABLED_BLOCKED"
 
     invoke-direct {v0, v1, v7}, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;-><init>(Ljava/lang/String;I)V
 
@@ -102,7 +102,7 @@
     .line 43
     new-instance v0, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;
 
-    const-string v1, "PINSTATE_ENABLED_PERM_BLOCKED"
+    const-string/jumbo v1, "PINSTATE_ENABLED_PERM_BLOCKED"
 
     const/4 v2, 0x5
 
@@ -135,11 +135,11 @@
 
     aput-object v1, v0, v7
 
-    const/4 v1, 0x5
+    sget-object v1, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;->PINSTATE_ENABLED_PERM_BLOCKED:Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;->PINSTATE_ENABLED_PERM_BLOCKED:Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;
+    const/4 v2, 0x5
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     sput-object v0, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;->$VALUES:[Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;
 
@@ -148,13 +148,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 37
@@ -165,7 +158,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 37
@@ -186,12 +179,6 @@
     .prologue
     .line 37
     sget-object v0, Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;->$VALUES:[Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/uicc/IccCardStatus$PinState;
 
     return-object v0
 .end method

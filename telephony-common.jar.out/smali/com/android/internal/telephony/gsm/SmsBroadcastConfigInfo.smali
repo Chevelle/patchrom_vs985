@@ -18,14 +18,14 @@
 # direct methods
 .method public constructor <init>(IIIIZ)V
     .locals 0
-    .parameter "fromId"
-    .parameter "toId"
-    .parameter "fromScheme"
-    .parameter "toScheme"
-    .parameter "selected"
+    .param p1, "fromId"    # I
+    .param p2, "toId"    # I
+    .param p3, "fromScheme"    # I
+    .param p4, "toScheme"    # I
+    .param p5, "selected"    # Z
 
     .prologue
-    .line 48
+    .line 47
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 49
@@ -43,7 +43,7 @@
     .line 53
     iput-boolean p5, p0, Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;->mSelected:Z
 
-    .line 54
+    .line 48
     return-void
 .end method
 
@@ -101,61 +101,61 @@
 
 .method public setFromCodeScheme(I)V
     .locals 0
-    .parameter "fromCodeScheme"
+    .param p1, "fromCodeScheme"    # I
 
     .prologue
     .line 88
     iput p1, p0, Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;->mFromCodeScheme:I
 
-    .line 89
+    .line 87
     return-void
 .end method
 
 .method public setFromServiceId(I)V
     .locals 0
-    .parameter "fromServiceId"
+    .param p1, "fromServiceId"    # I
 
     .prologue
     .line 60
     iput p1, p0, Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;->mFromServiceId:I
 
-    .line 61
+    .line 59
     return-void
 .end method
 
 .method public setSelected(Z)V
     .locals 0
-    .parameter "selected"
+    .param p1, "selected"    # Z
 
     .prologue
     .line 116
     iput-boolean p1, p0, Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;->mSelected:Z
 
-    .line 117
+    .line 115
     return-void
 .end method
 
 .method public setToCodeScheme(I)V
     .locals 0
-    .parameter "toCodeScheme"
+    .param p1, "toCodeScheme"    # I
 
     .prologue
     .line 102
     iput p1, p0, Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;->mToCodeScheme:I
 
-    .line 103
+    .line 101
     return-void
 .end method
 
 .method public setToServiceId(I)V
     .locals 0
-    .parameter "toServiceId"
+    .param p1, "toServiceId"    # I
 
     .prologue
     .line 74
     iput p1, p0, Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;->mToServiceId:I
 
-    .line 75
+    .line 73
     return-void
 .end method
 
@@ -170,14 +170,16 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "SmsBroadcastConfigInfo: Id ["
+    const-string/jumbo v1, "SmsBroadcastConfigInfo: Id ["
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 129
     iget v1, p0, Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;->mFromServiceId:I
 
+    .line 128
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -186,20 +188,26 @@
 
     move-result-object v0
 
+    .line 129
     iget v1, p0, Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;->mToServiceId:I
 
+    .line 128
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "] Code ["
+    .line 129
+    const-string/jumbo v1, "] Code ["
 
+    .line 128
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 130
     iget v1, p0, Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;->mFromCodeScheme:I
 
+    .line 128
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -208,24 +216,30 @@
 
     move-result-object v0
 
+    .line 130
     iget v1, p0, Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;->mToCodeScheme:I
 
+    .line 128
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "] "
+    .line 130
+    const-string/jumbo v1, "] "
 
+    .line 128
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 131
     iget-boolean v0, p0, Lcom/android/internal/telephony/gsm/SmsBroadcastConfigInfo;->mSelected:Z
 
     if-eqz v0, :cond_0
 
-    const-string v0, "ENABLED"
+    const-string/jumbo v0, "ENABLED"
 
+    .line 128
     :goto_0
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -237,8 +251,9 @@
 
     return-object v0
 
+    .line 131
     :cond_0
-    const-string v0, "DISABLED"
+    const-string/jumbo v0, "DISABLED"
 
     goto :goto_0
 .end method

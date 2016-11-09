@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/telephony/SmsCbEtwsInfo$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -53,18 +61,19 @@
 
     sput-object v0, Landroid/telephony/SmsCbEtwsInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 33
     return-void
 .end method
 
 .method public constructor <init>(IZZ[B)V
     .locals 0
-    .parameter "warningType"
-    .parameter "emergencyUserAlert"
-    .parameter "activatePopup"
-    .parameter "warningSecurityInformation"
+    .param p1, "warningType"    # I
+    .param p2, "emergencyUserAlert"    # Z
+    .param p3, "activatePopup"    # Z
+    .param p4, "warningSecurityInformation"    # [B
 
     .prologue
-    .line 73
+    .line 72
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 74
@@ -79,13 +88,13 @@
     .line 77
     iput-object p4, p0, Landroid/telephony/SmsCbEtwsInfo;->mWarningSecurityInformation:[B
 
-    .line 78
+    .line 73
     return-void
 .end method
 
 .method constructor <init>(Landroid/os/Parcel;)V
     .locals 3
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     const/4 v1, 0x1
@@ -131,7 +140,7 @@
 
     iput-object v0, p0, Landroid/telephony/SmsCbEtwsInfo;->mWarningSecurityInformation:[B
 
-    .line 86
+    .line 81
     return-void
 
     :cond_0
@@ -163,6 +172,8 @@
     .locals 3
 
     .prologue
+    const/4 v1, 0x0
+
     const/16 v2, 0x32
 
     .line 175
@@ -178,12 +189,9 @@
 
     .line 176
     :cond_0
-    const/4 v0, 0x0
+    return-object v1
 
     .line 178
-    :goto_0
-    return-object v0
-
     :cond_1
     iget-object v0, p0, Landroid/telephony/SmsCbEtwsInfo;->mWarningSecurityInformation:[B
 
@@ -193,14 +201,16 @@
 
     move-result-object v0
 
-    goto :goto_0
+    return-object v0
 .end method
 
 .method public getPrimaryNotificationTimestamp()J
-    .locals 13
+    .locals 14
 
     .prologue
-    const/4 v11, 0x1
+    const/4 v12, 0x1
+
+    const/4 v11, 0x0
 
     .line 132
     iget-object v9, p0, Landroid/telephony/SmsCbEtwsInfo;->mWarningSecurityInformation:[B
@@ -217,36 +227,32 @@
 
     .line 133
     :cond_0
-    const-wide/16 v9, 0x0
+    const-wide/16 v10, 0x0
 
-    .line 166
-    :goto_0
-    return-wide v9
+    return-wide v10
 
     .line 136
     :cond_1
-    iget-object v9, p0, Landroid/telephony/SmsCbEtwsInfo;->mWarningSecurityInformation:[B
-
-    const/4 v10, 0x0
-
-    aget-byte v9, v9, v10
-
-    invoke-static {v9}, Lcom/android/internal/telephony/uicc/IccUtils;->gsmBcdByteToInt(B)I
-
-    move-result v8
-
-    .line 137
-    .local v8, year:I
     iget-object v9, p0, Landroid/telephony/SmsCbEtwsInfo;->mWarningSecurityInformation:[B
 
     aget-byte v9, v9, v11
 
     invoke-static {v9}, Lcom/android/internal/telephony/uicc/IccUtils;->gsmBcdByteToInt(B)I
 
+    move-result v8
+
+    .line 137
+    .local v8, "year":I
+    iget-object v9, p0, Landroid/telephony/SmsCbEtwsInfo;->mWarningSecurityInformation:[B
+
+    aget-byte v9, v9, v12
+
+    invoke-static {v9}, Lcom/android/internal/telephony/uicc/IccUtils;->gsmBcdByteToInt(B)I
+
     move-result v3
 
     .line 138
-    .local v3, month:I
+    .local v3, "month":I
     iget-object v9, p0, Landroid/telephony/SmsCbEtwsInfo;->mWarningSecurityInformation:[B
 
     const/4 v10, 0x2
@@ -258,7 +264,7 @@
     move-result v0
 
     .line 139
-    .local v0, day:I
+    .local v0, "day":I
     iget-object v9, p0, Landroid/telephony/SmsCbEtwsInfo;->mWarningSecurityInformation:[B
 
     const/4 v10, 0x3
@@ -270,7 +276,7 @@
     move-result v1
 
     .line 140
-    .local v1, hour:I
+    .local v1, "hour":I
     iget-object v9, p0, Landroid/telephony/SmsCbEtwsInfo;->mWarningSecurityInformation:[B
 
     const/4 v10, 0x4
@@ -282,7 +288,7 @@
     move-result v2
 
     .line 141
-    .local v2, minute:I
+    .local v2, "minute":I
     iget-object v9, p0, Landroid/telephony/SmsCbEtwsInfo;->mWarningSecurityInformation:[B
 
     const/4 v10, 0x5
@@ -294,7 +300,7 @@
     move-result v4
 
     .line 148
-    .local v4, second:I
+    .local v4, "second":I
     iget-object v9, p0, Landroid/telephony/SmsCbEtwsInfo;->mWarningSecurityInformation:[B
 
     const/4 v10, 0x6
@@ -302,7 +308,7 @@
     aget-byte v7, v9, v10
 
     .line 151
-    .local v7, tzByte:B
+    .local v7, "tzByte":B
     and-int/lit8 v9, v7, -0x9
 
     int-to-byte v9, v9
@@ -312,21 +318,21 @@
     move-result v6
 
     .line 153
-    .local v6, timezoneOffset:I
+    .local v6, "timezoneOffset":I
     and-int/lit8 v9, v7, 0x8
 
     if-nez v9, :cond_2
 
     .line 155
-    :goto_1
+    :goto_0
     new-instance v5, Landroid/text/format/Time;
 
-    const-string v9, "UTC"
+    const-string/jumbo v9, "UTC"
 
     invoke-direct {v5, v9}, Landroid/text/format/Time;-><init>(Ljava/lang/String;)V
 
     .line 158
-    .local v5, time:Landroid/text/format/Time;
+    .local v5, "time":Landroid/text/format/Time;
     add-int/lit16 v9, v8, 0x7d0
 
     iput v9, v5, Landroid/text/format/Time;->year:I
@@ -349,28 +355,28 @@
     iput v4, v5, Landroid/text/format/Time;->second:I
 
     .line 166
-    invoke-virtual {v5, v11}, Landroid/text/format/Time;->toMillis(Z)J
+    invoke-virtual {v5, v12}, Landroid/text/format/Time;->toMillis(Z)J
 
-    move-result-wide v9
+    move-result-wide v10
 
-    mul-int/lit8 v11, v6, 0xf
+    mul-int/lit8 v9, v6, 0xf
 
-    mul-int/lit8 v11, v11, 0x3c
+    mul-int/lit8 v9, v9, 0x3c
 
-    mul-int/lit16 v11, v11, 0x3e8
+    mul-int/lit16 v9, v9, 0x3e8
 
-    int-to-long v11, v11
+    int-to-long v12, v9
 
-    sub-long/2addr v9, v11
+    sub-long/2addr v10, v12
 
-    goto :goto_0
+    return-wide v10
 
     .line 153
-    .end local v5           #time:Landroid/text/format/Time;
+    .end local v5    # "time":Landroid/text/format/Time;
     :cond_2
     neg-int v6, v6
 
-    goto :goto_1
+    goto :goto_0
 .end method
 
 .method public getWarningType()I
@@ -412,7 +418,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "SmsCbEtwsInfo{warningType="
+    const-string/jumbo v1, "SmsCbEtwsInfo{warningType="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -424,32 +430,40 @@
 
     move-result-object v0
 
-    const-string v1, ", emergencyUserAlert="
+    const-string/jumbo v1, ", emergencyUserAlert="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 184
     iget-boolean v1, p0, Landroid/telephony/SmsCbEtwsInfo;->mEmergencyUserAlert:Z
 
+    .line 183
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", activatePopup="
+    .line 184
+    const-string/jumbo v1, ", activatePopup="
 
+    .line 183
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 184
     iget-boolean v1, p0, Landroid/telephony/SmsCbEtwsInfo;->mActivatePopup:Z
 
+    .line 183
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 184
     const/16 v1, 0x7d
 
+    .line 183
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -463,8 +477,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 3
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     const/4 v1, 0x1
@@ -499,7 +513,7 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByteArray([B)V
 
-    .line 100
+    .line 95
     return-void
 
     :cond_0

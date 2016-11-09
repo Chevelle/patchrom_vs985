@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Lcom/android/internal/telephony/uicc/AdnRecord;
     .locals 6
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 84
@@ -51,31 +51,31 @@
     move-result v1
 
     .line 85
-    .local v1, efid:I
+    .local v1, "efid":I
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v2
 
     .line 86
-    .local v2, recordNumber:I
+    .local v2, "recordNumber":I
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v3
 
     .line 87
-    .local v3, alphaTag:Ljava/lang/String;
+    .local v3, "alphaTag":Ljava/lang/String;
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v4
 
     .line 88
-    .local v4, number:Ljava/lang/String;
+    .local v4, "number":Ljava/lang/String;
     invoke-virtual {p1}, Landroid/os/Parcel;->readStringArray()[Ljava/lang/String;
 
     move-result-object v5
 
     .line 90
-    .local v5, emails:[Ljava/lang/String;
+    .local v5, "emails":[Ljava/lang/String;
     new-instance v0, Lcom/android/internal/telephony/uicc/AdnRecord;
 
     invoke-direct/range {v0 .. v5}, Lcom/android/internal/telephony/uicc/AdnRecord;-><init>(IILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
@@ -85,10 +85,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 75
+    .line 77
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/uicc/AdnRecord$1;->createFromParcel(Landroid/os/Parcel;)Lcom/android/internal/telephony/uicc/AdnRecord;
 
     move-result-object v0
@@ -98,7 +98,7 @@
 
 .method public newArray(I)[Lcom/android/internal/telephony/uicc/AdnRecord;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 95
@@ -109,10 +109,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 75
+    .line 94
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/uicc/AdnRecord$1;->newArray(I)[Lcom/android/internal/telephony/uicc/AdnRecord;
 
     move-result-object v0

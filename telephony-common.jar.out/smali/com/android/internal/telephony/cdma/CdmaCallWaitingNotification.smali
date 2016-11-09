@@ -71,25 +71,28 @@
     .line 38
     iput v0, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->signal:I
 
+    .line 27
     return-void
 .end method
 
 .method public static presentationFromCLIP(I)I
-    .locals 3
-    .parameter "cli"
+    .locals 4
+    .param p0, "cli"    # I
 
     .prologue
+    const/4 v3, 0x3
+
     .line 59
     packed-switch p0, :pswitch_data_0
 
     .line 65
-    const-string v0, "CdmaCallWaitingNotification"
+    const-string/jumbo v0, "CdmaCallWaitingNotification"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Unexpected presentation "
+    const-string/jumbo v2, "Unexpected presentation "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -106,32 +109,25 @@
     invoke-static {v0, v1}, Landroid/telephony/Rlog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 66
-    sget v0, Lcom/android/internal/telephony/PhoneConstants;->PRESENTATION_UNKNOWN:I
-
-    :goto_0
-    return v0
+    return v3
 
     .line 60
     :pswitch_0
-    sget v0, Lcom/android/internal/telephony/PhoneConstants;->PRESENTATION_ALLOWED:I
+    const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 
     .line 61
     :pswitch_1
-    sget v0, Lcom/android/internal/telephony/PhoneConstants;->PRESENTATION_RESTRICTED:I
+    const/4 v0, 0x2
 
-    goto :goto_0
+    return v0
 
     .line 62
     :pswitch_2
-    sget v0, Lcom/android/internal/telephony/PhoneConstants;->PRESENTATION_UNKNOWN:I
-
-    goto :goto_0
+    return v3
 
     .line 59
-    nop
-
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -159,128 +155,168 @@
 
     move-result-object v0
 
-    const-string v1, "Call Waiting Notification  "
+    const-string/jumbo v1, "Call Waiting Notification  "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " number: "
+    .line 44
+    const-string/jumbo v1, " number: "
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 44
     iget-object v1, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->number:Ljava/lang/String;
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " numberPresentation: "
+    .line 45
+    const-string/jumbo v1, " numberPresentation: "
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 45
     iget v1, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->numberPresentation:I
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " name: "
+    .line 46
+    const-string/jumbo v1, " name: "
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 46
     iget-object v1, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->name:Ljava/lang/String;
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " namePresentation: "
+    .line 47
+    const-string/jumbo v1, " namePresentation: "
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 47
     iget v1, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->namePresentation:I
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " numberType: "
+    .line 48
+    const-string/jumbo v1, " numberType: "
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 48
     iget v1, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->numberType:I
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " numberPlan: "
+    .line 49
+    const-string/jumbo v1, " numberPlan: "
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 49
     iget v1, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->numberPlan:I
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " isPresent: "
+    .line 50
+    const-string/jumbo v1, " isPresent: "
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 50
     iget v1, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->isPresent:I
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " signalType: "
+    .line 51
+    const-string/jumbo v1, " signalType: "
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 51
     iget v1, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->signalType:I
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " alertPitch: "
+    .line 52
+    const-string/jumbo v1, " alertPitch: "
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 52
     iget v1, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->alertPitch:I
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " signal: "
+    .line 53
+    const-string/jumbo v1, " signal: "
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 53
     iget v1, p0, Lcom/android/internal/telephony/cdma/CdmaCallWaitingNotification;->signal:I
 
+    .line 43
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0

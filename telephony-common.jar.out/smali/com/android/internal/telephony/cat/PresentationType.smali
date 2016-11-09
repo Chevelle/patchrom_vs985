@@ -35,31 +35,34 @@
 
     const/4 v2, 0x0
 
-    .line 27
+    .line 26
     new-instance v0, Lcom/android/internal/telephony/cat/PresentationType;
 
-    const-string v1, "NOT_SPECIFIED"
+    const-string/jumbo v1, "NOT_SPECIFIED"
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/cat/PresentationType;-><init>(Ljava/lang/String;I)V
 
+    .line 27
     sput-object v0, Lcom/android/internal/telephony/cat/PresentationType;->NOT_SPECIFIED:Lcom/android/internal/telephony/cat/PresentationType;
 
-    .line 29
+    .line 28
     new-instance v0, Lcom/android/internal/telephony/cat/PresentationType;
 
-    const-string v1, "DATA_VALUES"
+    const-string/jumbo v1, "DATA_VALUES"
 
     invoke-direct {v0, v1, v3}, Lcom/android/internal/telephony/cat/PresentationType;-><init>(Ljava/lang/String;I)V
 
+    .line 29
     sput-object v0, Lcom/android/internal/telephony/cat/PresentationType;->DATA_VALUES:Lcom/android/internal/telephony/cat/PresentationType;
 
-    .line 31
+    .line 30
     new-instance v0, Lcom/android/internal/telephony/cat/PresentationType;
 
-    const-string v1, "NAVIGATION_OPTIONS"
+    const-string/jumbo v1, "NAVIGATION_OPTIONS"
 
     invoke-direct {v0, v1, v4}, Lcom/android/internal/telephony/cat/PresentationType;-><init>(Ljava/lang/String;I)V
 
+    .line 31
     sput-object v0, Lcom/android/internal/telephony/cat/PresentationType;->NAVIGATION_OPTIONS:Lcom/android/internal/telephony/cat/PresentationType;
 
     .line 25
@@ -86,13 +89,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 25
@@ -103,7 +99,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/cat/PresentationType;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 25
@@ -124,12 +120,6 @@
     .prologue
     .line 25
     sget-object v0, Lcom/android/internal/telephony/cat/PresentationType;->$VALUES:[Lcom/android/internal/telephony/cat/PresentationType;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/cat/PresentationType;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/cat/PresentationType;
 
     return-object v0
 .end method

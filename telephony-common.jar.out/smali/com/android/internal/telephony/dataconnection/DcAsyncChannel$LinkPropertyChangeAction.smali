@@ -47,7 +47,7 @@
     .line 98
     new-instance v0, Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;
 
-    const-string v1, "NONE"
+    const-string/jumbo v1, "NONE"
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;-><init>(Ljava/lang/String;I)V
 
@@ -55,7 +55,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;
 
-    const-string v1, "CHANGED"
+    const-string/jumbo v1, "CHANGED"
 
     invoke-direct {v0, v1, v3}, Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;-><init>(Ljava/lang/String;I)V
 
@@ -63,7 +63,7 @@
 
     new-instance v0, Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;
 
-    const-string v1, "RESET"
+    const-string/jumbo v1, "RESET"
 
     invoke-direct {v0, v1, v4}, Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;-><init>(Ljava/lang/String;I)V
 
@@ -93,13 +93,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 97
@@ -110,7 +103,7 @@
 
 .method public static fromInt(I)Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;
     .locals 3
-    .parameter "value"
+    .param p0, "value"    # I
 
     .prologue
     .line 101
@@ -125,8 +118,6 @@
     .line 102
     sget-object v0, Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;->NONE:Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;
 
-    .line 106
-    :goto_0
     return-object v0
 
     .line 103
@@ -142,7 +133,7 @@
     .line 104
     sget-object v0, Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;->CHANGED:Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;
 
-    goto :goto_0
+    return-object v0
 
     .line 105
     :cond_1
@@ -157,7 +148,7 @@
     .line 106
     sget-object v0, Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;->RESET:Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;
 
-    goto :goto_0
+    return-object v0
 
     .line 108
     :cond_2
@@ -167,7 +158,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "LinkPropertyChangeAction.fromInt: bad value="
+    const-string/jumbo v2, "LinkPropertyChangeAction.fromInt: bad value="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -188,7 +179,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 97
@@ -209,12 +200,6 @@
     .prologue
     .line 97
     sget-object v0, Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;->$VALUES:[Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/dataconnection/DcAsyncChannel$LinkPropertyChangeAction;
 
     return-object v0
 .end method

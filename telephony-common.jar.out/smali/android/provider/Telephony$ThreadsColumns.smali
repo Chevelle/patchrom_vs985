@@ -18,6 +18,8 @@
 
 
 # static fields
+.field public static final ARCHIVED:Ljava/lang/String; = "archived"
+
 .field public static final DATE:Ljava/lang/String; = "date"
 
 .field public static final ERROR:Ljava/lang/String; = "error"

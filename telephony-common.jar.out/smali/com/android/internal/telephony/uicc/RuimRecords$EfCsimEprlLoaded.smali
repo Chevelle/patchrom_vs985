@@ -24,10 +24,10 @@
 # direct methods
 .method private constructor <init>(Lcom/android/internal/telephony/uicc/RuimRecords;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/internal/telephony/uicc/RuimRecords;
 
     .prologue
-    .line 414
+    .line 445
     iput-object p1, p0, Lcom/android/internal/telephony/uicc/RuimRecords$EfCsimEprlLoaded;->this$0:Lcom/android/internal/telephony/uicc/RuimRecords;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -35,13 +35,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/android/internal/telephony/uicc/RuimRecords;Lcom/android/internal/telephony/uicc/RuimRecords$1;)V
+.method synthetic constructor <init>(Lcom/android/internal/telephony/uicc/RuimRecords;Lcom/android/internal/telephony/uicc/RuimRecords$EfCsimEprlLoaded;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Lcom/android/internal/telephony/uicc/RuimRecords;
 
     .prologue
-    .line 414
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/uicc/RuimRecords$EfCsimEprlLoaded;-><init>(Lcom/android/internal/telephony/uicc/RuimRecords;)V
 
     return-void
@@ -53,23 +51,22 @@
     .locals 1
 
     .prologue
-    .line 417
-    const-string v0, "EF_CSIM_EPRL"
+    .line 448
+    const-string/jumbo v0, "EF_CSIM_EPRL"
 
     return-object v0
 .end method
 
 .method public onRecordLoaded(Landroid/os/AsyncResult;)V
     .locals 1
-    .parameter "ar"
+    .param p1, "ar"    # Landroid/os/AsyncResult;
 
     .prologue
-    .line 421
+    .line 452
     iget-object v0, p0, Lcom/android/internal/telephony/uicc/RuimRecords$EfCsimEprlLoaded;->this$0:Lcom/android/internal/telephony/uicc/RuimRecords;
 
-    #calls: Lcom/android/internal/telephony/uicc/RuimRecords;->onGetCSimEprlDone(Landroid/os/AsyncResult;)V
-    invoke-static {v0, p1}, Lcom/android/internal/telephony/uicc/RuimRecords;->access$700(Lcom/android/internal/telephony/uicc/RuimRecords;Landroid/os/AsyncResult;)V
+    invoke-static {v0, p1}, Lcom/android/internal/telephony/uicc/RuimRecords;->-wrap1(Lcom/android/internal/telephony/uicc/RuimRecords;Landroid/os/AsyncResult;)V
 
-    .line 422
+    .line 451
     return-void
 .end method

@@ -34,31 +34,30 @@
 # direct methods
 .method private constructor <init>(Lcom/android/internal/telephony/ServiceStateTracker;)V
     .locals 1
-    .parameter
+    .param p1, "this$0"    # Lcom/android/internal/telephony/ServiceStateTracker;
 
     .prologue
-    .line 194
+    .line 219
     iput-object p1, p0, Lcom/android/internal/telephony/ServiceStateTracker$CellInfoResult;->this$0:Lcom/android/internal/telephony/ServiceStateTracker;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 196
+    .line 221
     new-instance v0, Ljava/lang/Object;
 
     invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     iput-object v0, p0, Lcom/android/internal/telephony/ServiceStateTracker$CellInfoResult;->lockObj:Ljava/lang/Object;
 
+    .line 219
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/android/internal/telephony/ServiceStateTracker;Lcom/android/internal/telephony/ServiceStateTracker$1;)V
+.method synthetic constructor <init>(Lcom/android/internal/telephony/ServiceStateTracker;Lcom/android/internal/telephony/ServiceStateTracker$CellInfoResult;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Lcom/android/internal/telephony/ServiceStateTracker;
 
     .prologue
-    .line 194
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/ServiceStateTracker$CellInfoResult;-><init>(Lcom/android/internal/telephony/ServiceStateTracker;)V
 
     return-void

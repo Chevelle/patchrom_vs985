@@ -84,18 +84,20 @@
 
     const/4 v3, 0x0
 
-    .line 34
+    .line 35
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
+    .line 34
     sput-object v0, Lcom/android/internal/telephony/WspTypeDecoder;->WELL_KNOWN_MIME_TYPES:Ljava/util/HashMap;
 
-    .line 37
+    .line 38
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
+    .line 37
     sput-object v0, Lcom/android/internal/telephony/WspTypeDecoder;->WELL_KNOWN_PARAMETERS:Ljava/util/HashMap;
 
     .line 44
@@ -105,7 +107,7 @@
 
     move-result-object v1
 
-    const-string v2, "*/*"
+    const-string/jumbo v2, "*/*"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -116,7 +118,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/*"
+    const-string/jumbo v2, "text/*"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -127,7 +129,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/html"
+    const-string/jumbo v2, "text/html"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -138,7 +140,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/plain"
+    const-string/jumbo v2, "text/plain"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -151,7 +153,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/x-hdml"
+    const-string/jumbo v2, "text/x-hdml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -164,7 +166,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/x-ttml"
+    const-string/jumbo v2, "text/x-ttml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -177,7 +179,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/x-vCalendar"
+    const-string/jumbo v2, "text/x-vCalendar"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -188,7 +190,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/x-vCard"
+    const-string/jumbo v2, "text/x-vCard"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -201,7 +203,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/vnd.wap.wml"
+    const-string/jumbo v2, "text/vnd.wap.wml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -214,7 +216,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/vnd.wap.wmlscript"
+    const-string/jumbo v2, "text/vnd.wap.wmlscript"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -227,7 +229,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/vnd.wap.wta-event"
+    const-string/jumbo v2, "text/vnd.wap.wta-event"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -240,7 +242,7 @@
 
     move-result-object v1
 
-    const-string v2, "multipart/*"
+    const-string/jumbo v2, "multipart/*"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -253,7 +255,7 @@
 
     move-result-object v1
 
-    const-string v2, "multipart/mixed"
+    const-string/jumbo v2, "multipart/mixed"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -266,7 +268,7 @@
 
     move-result-object v1
 
-    const-string v2, "multipart/form-data"
+    const-string/jumbo v2, "multipart/form-data"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -279,7 +281,7 @@
 
     move-result-object v1
 
-    const-string v2, "multipart/byterantes"
+    const-string/jumbo v2, "multipart/byterantes"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -292,7 +294,7 @@
 
     move-result-object v1
 
-    const-string v2, "multipart/alternative"
+    const-string/jumbo v2, "multipart/alternative"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -305,7 +307,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/*"
+    const-string/jumbo v2, "application/*"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -318,7 +320,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/java-vm"
+    const-string/jumbo v2, "application/java-vm"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -331,7 +333,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/x-www-form-urlencoded"
+    const-string/jumbo v2, "application/x-www-form-urlencoded"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -344,7 +346,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/x-hdmlc"
+    const-string/jumbo v2, "application/x-hdmlc"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -357,7 +359,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.wmlc"
+    const-string/jumbo v2, "application/vnd.wap.wmlc"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -370,7 +372,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.wmlscriptc"
+    const-string/jumbo v2, "application/vnd.wap.wmlscriptc"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -383,7 +385,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.wta-eventc"
+    const-string/jumbo v2, "application/vnd.wap.wta-eventc"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -396,7 +398,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.uaprof"
+    const-string/jumbo v2, "application/vnd.wap.uaprof"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -409,7 +411,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.wtls-ca-certificate"
+    const-string/jumbo v2, "application/vnd.wap.wtls-ca-certificate"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -422,7 +424,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.wtls-user-certificate"
+    const-string/jumbo v2, "application/vnd.wap.wtls-user-certificate"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -435,7 +437,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/x-x509-ca-cert"
+    const-string/jumbo v2, "application/x-x509-ca-cert"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -448,7 +450,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/x-x509-user-cert"
+    const-string/jumbo v2, "application/x-x509-user-cert"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -461,7 +463,7 @@
 
     move-result-object v1
 
-    const-string v2, "image/*"
+    const-string/jumbo v2, "image/*"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -474,7 +476,7 @@
 
     move-result-object v1
 
-    const-string v2, "image/gif"
+    const-string/jumbo v2, "image/gif"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -487,7 +489,7 @@
 
     move-result-object v1
 
-    const-string v2, "image/jpeg"
+    const-string/jumbo v2, "image/jpeg"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -500,7 +502,7 @@
 
     move-result-object v1
 
-    const-string v2, "image/tiff"
+    const-string/jumbo v2, "image/tiff"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -513,7 +515,7 @@
 
     move-result-object v1
 
-    const-string v2, "image/png"
+    const-string/jumbo v2, "image/png"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -526,7 +528,7 @@
 
     move-result-object v1
 
-    const-string v2, "image/vnd.wap.wbmp"
+    const-string/jumbo v2, "image/vnd.wap.wbmp"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -539,7 +541,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.multipart.*"
+    const-string/jumbo v2, "application/vnd.wap.multipart.*"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -552,7 +554,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.multipart.mixed"
+    const-string/jumbo v2, "application/vnd.wap.multipart.mixed"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -565,7 +567,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.multipart.form-data"
+    const-string/jumbo v2, "application/vnd.wap.multipart.form-data"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -578,7 +580,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.multipart.byteranges"
+    const-string/jumbo v2, "application/vnd.wap.multipart.byteranges"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -591,7 +593,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.multipart.alternative"
+    const-string/jumbo v2, "application/vnd.wap.multipart.alternative"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -604,7 +606,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/xml"
+    const-string/jumbo v2, "application/xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -617,7 +619,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/xml"
+    const-string/jumbo v2, "text/xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -630,7 +632,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.wbxml"
+    const-string/jumbo v2, "application/vnd.wap.wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -643,7 +645,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/x-x968-cross-cert"
+    const-string/jumbo v2, "application/x-x968-cross-cert"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -656,7 +658,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/x-x968-ca-cert"
+    const-string/jumbo v2, "application/x-x968-ca-cert"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -669,7 +671,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/x-x968-user-cert"
+    const-string/jumbo v2, "application/x-x968-user-cert"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -682,7 +684,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/vnd.wap.si"
+    const-string/jumbo v2, "text/vnd.wap.si"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -695,7 +697,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.sic"
+    const-string/jumbo v2, "application/vnd.wap.sic"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -708,7 +710,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/vnd.wap.sl"
+    const-string/jumbo v2, "text/vnd.wap.sl"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -721,7 +723,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.slc"
+    const-string/jumbo v2, "application/vnd.wap.slc"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -734,7 +736,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/vnd.wap.co"
+    const-string/jumbo v2, "text/vnd.wap.co"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -747,7 +749,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.coc"
+    const-string/jumbo v2, "application/vnd.wap.coc"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -760,7 +762,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.multipart.related"
+    const-string/jumbo v2, "application/vnd.wap.multipart.related"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -773,7 +775,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.sia"
+    const-string/jumbo v2, "application/vnd.wap.sia"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -786,7 +788,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/vnd.wap.connectivity-xml"
+    const-string/jumbo v2, "text/vnd.wap.connectivity-xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -799,7 +801,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.connectivity-wbxml"
+    const-string/jumbo v2, "application/vnd.wap.connectivity-wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -812,7 +814,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/pkcs7-mime"
+    const-string/jumbo v2, "application/pkcs7-mime"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -825,7 +827,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.hashed-certificate"
+    const-string/jumbo v2, "application/vnd.wap.hashed-certificate"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -838,7 +840,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.signed-certificate"
+    const-string/jumbo v2, "application/vnd.wap.signed-certificate"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -851,7 +853,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.cert-response"
+    const-string/jumbo v2, "application/vnd.wap.cert-response"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -864,7 +866,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/xhtml+xml"
+    const-string/jumbo v2, "application/xhtml+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -877,7 +879,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/wml+xml"
+    const-string/jumbo v2, "application/wml+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -890,7 +892,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/css"
+    const-string/jumbo v2, "text/css"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -903,7 +905,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.mms-message"
+    const-string/jumbo v2, "application/vnd.wap.mms-message"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -916,7 +918,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.rollover-certificate"
+    const-string/jumbo v2, "application/vnd.wap.rollover-certificate"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -929,7 +931,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.locc+wbxml"
+    const-string/jumbo v2, "application/vnd.wap.locc+wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -942,7 +944,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.loc+xml"
+    const-string/jumbo v2, "application/vnd.wap.loc+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -955,7 +957,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.syncml.dm+wbxml"
+    const-string/jumbo v2, "application/vnd.syncml.dm+wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -968,7 +970,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.syncml.dm+xml"
+    const-string/jumbo v2, "application/vnd.syncml.dm+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -981,7 +983,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.syncml.notification"
+    const-string/jumbo v2, "application/vnd.syncml.notification"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -994,7 +996,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.xhtml+xml"
+    const-string/jumbo v2, "application/vnd.wap.xhtml+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1007,7 +1009,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wv.csp.cir"
+    const-string/jumbo v2, "application/vnd.wv.csp.cir"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1020,7 +1022,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.oma.dd+xml"
+    const-string/jumbo v2, "application/vnd.oma.dd+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1033,7 +1035,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.oma.drm.message"
+    const-string/jumbo v2, "application/vnd.oma.drm.message"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1046,7 +1048,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.oma.drm.content"
+    const-string/jumbo v2, "application/vnd.oma.drm.content"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1059,7 +1061,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.oma.drm.rights+xml"
+    const-string/jumbo v2, "application/vnd.oma.drm.rights+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1072,7 +1074,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.oma.drm.rights+wbxml"
+    const-string/jumbo v2, "application/vnd.oma.drm.rights+wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1085,7 +1087,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wv.csp+xml"
+    const-string/jumbo v2, "application/vnd.wv.csp+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1098,7 +1100,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wv.csp+wbxml"
+    const-string/jumbo v2, "application/vnd.wv.csp+wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1111,7 +1113,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.syncml.ds.notification"
+    const-string/jumbo v2, "application/vnd.syncml.ds.notification"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1124,7 +1126,7 @@
 
     move-result-object v1
 
-    const-string v2, "audio/*"
+    const-string/jumbo v2, "audio/*"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1137,7 +1139,7 @@
 
     move-result-object v1
 
-    const-string v2, "video/*"
+    const-string/jumbo v2, "video/*"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1150,7 +1152,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.oma.dd2+xml"
+    const-string/jumbo v2, "application/vnd.oma.dd2+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1163,7 +1165,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/mikey"
+    const-string/jumbo v2, "application/mikey"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1176,7 +1178,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.oma.dcd"
+    const-string/jumbo v2, "application/vnd.oma.dcd"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1189,7 +1191,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.oma.dcdc"
+    const-string/jumbo v2, "application/vnd.oma.dcdc"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1202,7 +1204,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.uplanet.cacheop-wbxml"
+    const-string/jumbo v2, "application/vnd.uplanet.cacheop-wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1215,7 +1217,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.uplanet.signal"
+    const-string/jumbo v2, "application/vnd.uplanet.signal"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1228,7 +1230,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.uplanet.alert-wbxml"
+    const-string/jumbo v2, "application/vnd.uplanet.alert-wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1241,7 +1243,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.uplanet.list-wbxml"
+    const-string/jumbo v2, "application/vnd.uplanet.list-wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1254,7 +1256,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.uplanet.listcmd-wbxml"
+    const-string/jumbo v2, "application/vnd.uplanet.listcmd-wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1267,7 +1269,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.uplanet.channel-wbxml"
+    const-string/jumbo v2, "application/vnd.uplanet.channel-wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1280,7 +1282,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.uplanet.provisioning-status-uri"
+    const-string/jumbo v2, "application/vnd.uplanet.provisioning-status-uri"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1293,7 +1295,7 @@
 
     move-result-object v1
 
-    const-string v2, "x-wap.multipart/vnd.uplanet.header-set"
+    const-string/jumbo v2, "x-wap.multipart/vnd.uplanet.header-set"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1306,7 +1308,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.uplanet.bearer-choice-wbxml"
+    const-string/jumbo v2, "application/vnd.uplanet.bearer-choice-wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1319,7 +1321,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.phonecom.mmc-wbxml"
+    const-string/jumbo v2, "application/vnd.phonecom.mmc-wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1332,7 +1334,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.nokia.syncset+wbxml"
+    const-string/jumbo v2, "application/vnd.nokia.syncset+wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1345,7 +1347,7 @@
 
     move-result-object v1
 
-    const-string v2, "image/x-up-wpng"
+    const-string/jumbo v2, "image/x-up-wpng"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1358,7 +1360,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/iota.mmc-wbxml"
+    const-string/jumbo v2, "application/iota.mmc-wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1371,7 +1373,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/iota.mmc-xml"
+    const-string/jumbo v2, "application/iota.mmc-xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1384,7 +1386,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.syncml+xml"
+    const-string/jumbo v2, "application/vnd.syncml+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1397,7 +1399,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.syncml+wbxml"
+    const-string/jumbo v2, "application/vnd.syncml+wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1410,7 +1412,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/vnd.wap.emn+xml"
+    const-string/jumbo v2, "text/vnd.wap.emn+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1423,7 +1425,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/calendar"
+    const-string/jumbo v2, "text/calendar"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1436,7 +1438,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.omads-email+xml"
+    const-string/jumbo v2, "application/vnd.omads-email+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1449,7 +1451,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.omads-file+xml"
+    const-string/jumbo v2, "application/vnd.omads-file+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1462,7 +1464,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.omads-folder+xml"
+    const-string/jumbo v2, "application/vnd.omads-folder+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1475,7 +1477,7 @@
 
     move-result-object v1
 
-    const-string v2, "text/directory;profile=vCard"
+    const-string/jumbo v2, "text/directory;profile=vCard"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1488,7 +1490,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wap.emn+wbxml"
+    const-string/jumbo v2, "application/vnd.wap.emn+wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1501,7 +1503,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.nokia.ipdc-purchase-response"
+    const-string/jumbo v2, "application/vnd.nokia.ipdc-purchase-response"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1514,7 +1516,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.motorola.screen3+xml"
+    const-string/jumbo v2, "application/vnd.motorola.screen3+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1527,7 +1529,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.motorola.screen3+gzip"
+    const-string/jumbo v2, "application/vnd.motorola.screen3+gzip"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1540,7 +1542,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.cmcc.setting+wbxml"
+    const-string/jumbo v2, "application/vnd.cmcc.setting+wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1553,7 +1555,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.cmcc.bombing+wbxml"
+    const-string/jumbo v2, "application/vnd.cmcc.bombing+wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1566,7 +1568,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.docomo.pf"
+    const-string/jumbo v2, "application/vnd.docomo.pf"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1579,7 +1581,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.docomo.ub"
+    const-string/jumbo v2, "application/vnd.docomo.ub"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1592,7 +1594,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.omaloc-supl-init"
+    const-string/jumbo v2, "application/vnd.omaloc-supl-init"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1605,7 +1607,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.oma.group-usage-list+xml"
+    const-string/jumbo v2, "application/vnd.oma.group-usage-list+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1618,7 +1620,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/oma-directory+xml"
+    const-string/jumbo v2, "application/oma-directory+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1631,7 +1633,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.docomo.pf2"
+    const-string/jumbo v2, "application/vnd.docomo.pf2"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1644,7 +1646,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.oma.drm.roap-trigger+wbxml"
+    const-string/jumbo v2, "application/vnd.oma.drm.roap-trigger+wbxml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1657,7 +1659,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.sbm.mid2"
+    const-string/jumbo v2, "application/vnd.sbm.mid2"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1670,7 +1672,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.wmf.bootstrap"
+    const-string/jumbo v2, "application/vnd.wmf.bootstrap"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1683,7 +1685,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnc.cmcc.dcd+xml"
+    const-string/jumbo v2, "application/vnc.cmcc.dcd+xml"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1696,7 +1698,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.sbm.cid"
+    const-string/jumbo v2, "application/vnd.sbm.cid"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1709,7 +1711,7 @@
 
     move-result-object v1
 
-    const-string v2, "application/vnd.oma.bcast.provisioningtrigger"
+    const-string/jumbo v2, "application/vnd.oma.bcast.provisioningtrigger"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1720,7 +1722,7 @@
 
     move-result-object v1
 
-    const-string v2, "Q"
+    const-string/jumbo v2, "Q"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1731,7 +1733,7 @@
 
     move-result-object v1
 
-    const-string v2, "Charset"
+    const-string/jumbo v2, "Charset"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1742,7 +1744,7 @@
 
     move-result-object v1
 
-    const-string v2, "Level"
+    const-string/jumbo v2, "Level"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1753,7 +1755,7 @@
 
     move-result-object v1
 
-    const-string v2, "Type"
+    const-string/jumbo v2, "Type"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1764,7 +1766,7 @@
 
     move-result-object v1
 
-    const-string v2, "Differences"
+    const-string/jumbo v2, "Differences"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1777,7 +1779,7 @@
 
     move-result-object v1
 
-    const-string v2, "Padding"
+    const-string/jumbo v2, "Padding"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1790,7 +1792,7 @@
 
     move-result-object v1
 
-    const-string v2, "Type"
+    const-string/jumbo v2, "Type"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1803,7 +1805,7 @@
 
     move-result-object v1
 
-    const-string v2, "Max-Age"
+    const-string/jumbo v2, "Max-Age"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1816,7 +1818,7 @@
 
     move-result-object v1
 
-    const-string v2, "Secure"
+    const-string/jumbo v2, "Secure"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1829,7 +1831,7 @@
 
     move-result-object v1
 
-    const-string v2, "SEC"
+    const-string/jumbo v2, "SEC"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1842,7 +1844,7 @@
 
     move-result-object v1
 
-    const-string v2, "MAC"
+    const-string/jumbo v2, "MAC"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1855,7 +1857,7 @@
 
     move-result-object v1
 
-    const-string v2, "Creation-date"
+    const-string/jumbo v2, "Creation-date"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1868,7 +1870,7 @@
 
     move-result-object v1
 
-    const-string v2, "Modification-date"
+    const-string/jumbo v2, "Modification-date"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1881,7 +1883,7 @@
 
     move-result-object v1
 
-    const-string v2, "Read-date"
+    const-string/jumbo v2, "Read-date"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1894,7 +1896,7 @@
 
     move-result-object v1
 
-    const-string v2, "Size"
+    const-string/jumbo v2, "Size"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1907,7 +1909,7 @@
 
     move-result-object v1
 
-    const-string v2, "Name"
+    const-string/jumbo v2, "Name"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1920,7 +1922,7 @@
 
     move-result-object v1
 
-    const-string v2, "Filename"
+    const-string/jumbo v2, "Filename"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1933,7 +1935,7 @@
 
     move-result-object v1
 
-    const-string v2, "Start"
+    const-string/jumbo v2, "Start"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1946,7 +1948,7 @@
 
     move-result-object v1
 
-    const-string v2, "Start-info"
+    const-string/jumbo v2, "Start-info"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1959,7 +1961,7 @@
 
     move-result-object v1
 
-    const-string v2, "Comment"
+    const-string/jumbo v2, "Comment"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1972,7 +1974,7 @@
 
     move-result-object v1
 
-    const-string v2, "Domain"
+    const-string/jumbo v2, "Domain"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1985,17 +1987,17 @@
 
     move-result-object v1
 
-    const-string v2, "Path"
+    const-string/jumbo v2, "Path"
 
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 193
+    .line 26
     return-void
 .end method
 
 .method public constructor <init>([B)V
     .locals 0
-    .parameter "pdu"
+    .param p1, "pdu"    # [B
 
     .prologue
     .line 206
@@ -2004,39 +2006,39 @@
     .line 207
     iput-object p1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
-    .line 208
+    .line 206
     return-void
 .end method
 
 .method private decodeNoValue(I)Z
-    .locals 2
-    .parameter "startIndex"
+    .locals 3
+    .param p1, "startIndex"    # I
 
     .prologue
-    const/4 v0, 0x1
+    const/4 v2, 0x1
+
+    const/4 v1, 0x0
 
     .line 537
-    iget-object v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
+    iget-object v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
-    aget-byte v1, v1, p1
+    aget-byte v0, v0, p1
 
-    if-nez v1, :cond_0
+    if-nez v0, :cond_0
 
     .line 538
-    iput v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    iput v2, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+
+    .line 539
+    return v2
 
     .line 541
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v1
 .end method
 
 .method private expandWellKnownMimeType()V
-    .locals 3
+    .locals 4
 
     .prologue
     .line 551
@@ -2045,12 +2047,12 @@
     if-nez v1, :cond_0
 
     .line 552
-    iget-wide v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
+    iget-wide v2, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
 
-    long-to-int v0, v1
+    long-to-int v0, v2
 
     .line 553
-    .local v0, binaryContentType:I
+    .local v0, "binaryContentType":I
     sget-object v1, Lcom/android/internal/telephony/WspTypeDecoder;->WELL_KNOWN_MIME_TYPES:Ljava/util/HashMap;
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -2065,60 +2067,56 @@
 
     iput-object v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mStringValue:Ljava/lang/String;
 
-    .line 557
-    .end local v0           #binaryContentType:I
+    .line 550
+    .end local v0    # "binaryContentType":I
     :goto_0
     return-void
 
     .line 555
     :cond_0
-    const-wide/16 v1, -0x1
+    const-wide/16 v2, -0x1
 
-    iput-wide v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
+    iput-wide v2, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
 
     goto :goto_0
 .end method
 
 .method private readContentParameters(III)Z
-    .locals 11
-    .parameter "startIndex"
-    .parameter "leftToRead"
-    .parameter "accumulator"
+    .locals 12
+    .param p1, "startIndex"    # I
+    .param p2, "leftToRead"    # I
+    .param p3, "accumulator"    # I
 
     .prologue
-    const/4 v7, 0x1
+    const/4 v11, 0x1
 
-    const/4 v6, 0x0
-
-    .line 468
-    const/4 v3, 0x0
+    const/4 v10, 0x0
 
     .line 470
-    .local v3, totalRead:I
-    if-lez p2, :cond_7
+    if-lez p2, :cond_8
 
     .line 471
-    iget-object v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
+    iget-object v6, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
-    aget-byte v1, v8, p1
+    aget-byte v1, v6, p1
 
     .line 472
-    .local v1, nextByte:B
+    .local v1, "nextByte":B
     const/4 v4, 0x0
 
     .line 473
-    .local v4, value:Ljava/lang/String;
+    .local v4, "value":Ljava/lang/String;
     const/4 v2, 0x0
 
     .line 474
-    .local v2, param:Ljava/lang/String;
-    and-int/lit16 v8, v1, 0x80
+    .local v2, "param":Ljava/lang/String;
+    and-int/lit16 v6, v1, 0x80
 
-    if-nez v8, :cond_3
+    if-nez v6, :cond_2
 
-    const/16 v8, 0x1f
+    const/16 v6, 0x1f
 
-    if-le v1, v8, :cond_3
+    if-le v1, v6, :cond_2
 
     .line 475
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeTokenText(I)Z
@@ -2127,11 +2125,13 @@
     iget-object v2, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mStringValue:Ljava/lang/String;
 
     .line 477
+    .local v2, "param":Ljava/lang/String;
     iget v6, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
-    add-int/2addr v3, v6
+    add-int/lit8 v3, v6, 0x0
 
     .line 503
+    .local v3, "totalRead":I
     :cond_0
     add-int v6, p1, v3
 
@@ -2139,7 +2139,7 @@
 
     move-result v6
 
-    if-eqz v6, :cond_5
+    if-eqz v6, :cond_6
 
     .line 504
     iget v6, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
@@ -2150,6 +2150,7 @@
     const/4 v4, 0x0
 
     .line 519
+    .end local v4    # "value":Ljava/lang/String;
     :cond_1
     :goto_0
     iget-object v6, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mContentParameters:Ljava/util/HashMap;
@@ -2161,97 +2162,94 @@
 
     sub-int v7, p2, v3
 
+    .line 521
     add-int v8, p3, v3
 
+    .line 520
     invoke-direct {p0, v6, v7, v8}, Lcom/android/internal/telephony/WspTypeDecoder;->readContentParameters(III)Z
 
     move-result v6
 
-    .line 525
-    .end local v1           #nextByte:B
-    .end local v2           #param:Ljava/lang/String;
-    .end local v4           #value:Ljava/lang/String;
-    :cond_2
-    :goto_1
     return v6
 
     .line 479
-    .restart local v1       #nextByte:B
-    .restart local v2       #param:Ljava/lang/String;
-    .restart local v4       #value:Ljava/lang/String;
-    :cond_3
+    .end local v3    # "totalRead":I
+    .local v2, "param":Ljava/lang/String;
+    .restart local v4    # "value":Ljava/lang/String;
+    :cond_2
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeIntegerValue(I)Z
 
-    move-result v8
+    move-result v6
 
-    if-eqz v8, :cond_2
+    if-eqz v6, :cond_5
 
     .line 480
-    iget v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    iget v6, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
-    add-int/2addr v3, v8
+    add-int/lit8 v3, v6, 0x0
 
     .line 481
-    iget-wide v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
+    .restart local v3    # "totalRead":I
+    iget-wide v6, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
 
-    long-to-int v5, v8
+    long-to-int v5, v6
 
     .line 482
-    .local v5, wellKnownParameterValue:I
-    sget-object v8, Lcom/android/internal/telephony/WspTypeDecoder;->WELL_KNOWN_PARAMETERS:Ljava/util/HashMap;
+    .local v5, "wellKnownParameterValue":I
+    sget-object v6, Lcom/android/internal/telephony/WspTypeDecoder;->WELL_KNOWN_PARAMETERS:Ljava/util/HashMap;
 
     invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v9
+    move-result-object v7
 
-    invoke-virtual {v8, v9}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v6, v7}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v2
 
-    .end local v2           #param:Ljava/lang/String;
+    .end local v2    # "param":Ljava/lang/String;
     check-cast v2, Ljava/lang/String;
 
     .line 483
-    .restart local v2       #param:Ljava/lang/String;
-    if-nez v2, :cond_4
+    .local v2, "param":Ljava/lang/String;
+    if-nez v2, :cond_3
 
     .line 484
-    new-instance v8, Ljava/lang/StringBuilder;
+    new-instance v6, Ljava/lang/StringBuilder;
 
-    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v9, "unassigned/0x"
+    const-string/jumbo v7, "unassigned/0x"
 
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v8
+    move-result-object v6
 
-    int-to-long v9, v5
+    int-to-long v8, v5
 
-    invoke-static {v9, v10}, Ljava/lang/Long;->toHexString(J)Ljava/lang/String;
+    invoke-static {v8, v9}, Ljava/lang/Long;->toHexString(J)Ljava/lang/String;
 
-    move-result-object v9
+    move-result-object v7
 
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v8
+    move-result-object v6
 
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v2
 
     .line 487
-    :cond_4
+    :cond_3
     if-nez v5, :cond_0
 
     .line 488
-    add-int v7, p1, v3
+    add-int v6, p1, v3
 
-    invoke-virtual {p0, v7}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeUintvarInteger(I)Z
+    invoke-virtual {p0, v6}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeUintvarInteger(I)Z
 
-    move-result v7
+    move-result v6
 
-    if-eqz v7, :cond_2
+    if-eqz v6, :cond_4
 
     .line 489
     iget v6, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
@@ -2266,6 +2264,7 @@
     move-result-object v4
 
     .line 491
+    .local v4, "value":Ljava/lang/String;
     iget-object v6, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mContentParameters:Ljava/util/HashMap;
 
     invoke-virtual {v6, v2, v4}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -2275,24 +2274,39 @@
 
     sub-int v7, p2, v3
 
+    .line 493
     add-int v8, p3, v3
 
+    .line 492
     invoke-direct {p0, v6, v7, v8}, Lcom/android/internal/telephony/WspTypeDecoder;->readContentParameters(III)Z
 
     move-result v6
 
-    goto :goto_1
+    return v6
+
+    .line 495
+    .local v4, "value":Ljava/lang/String;
+    :cond_4
+    return v10
+
+    .line 499
+    .end local v3    # "totalRead":I
+    .end local v5    # "wellKnownParameterValue":I
+    .local v2, "param":Ljava/lang/String;
+    :cond_5
+    return v10
 
     .line 506
-    .end local v5           #wellKnownParameterValue:I
-    :cond_5
+    .local v2, "param":Ljava/lang/String;
+    .restart local v3    # "totalRead":I
+    :cond_6
     add-int v6, p1, v3
 
     invoke-virtual {p0, v6}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeIntegerValue(I)Z
 
     move-result v6
 
-    if-eqz v6, :cond_6
+    if-eqz v6, :cond_7
 
     .line 507
     iget v6, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
@@ -2305,17 +2319,18 @@
     long-to-int v0, v6
 
     .line 509
-    .local v0, intValue:I
+    .local v0, "intValue":I
     invoke-static {v0}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
 
     move-result-object v4
 
-    .line 510
+    .local v4, "value":Ljava/lang/String;
     goto :goto_0
 
     .line 511
-    .end local v0           #intValue:I
-    :cond_6
+    .end local v0    # "intValue":I
+    .local v4, "value":Ljava/lang/String;
+    :cond_7
     add-int v6, p1, v3
 
     invoke-virtual {p0, v6}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeTokenText(I)Z
@@ -2329,7 +2344,8 @@
     iget-object v4, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mStringValue:Ljava/lang/String;
 
     .line 514
-    const-string v6, "\""
+    .local v4, "value":Ljava/lang/String;
+    const-string/jumbo v6, "\""
 
     invoke-virtual {v4, v6}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
@@ -2338,61 +2354,60 @@
     if-eqz v6, :cond_1
 
     .line 516
-    invoke-virtual {v4, v7}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+    invoke-virtual {v4, v11}, Ljava/lang/String;->substring(I)Ljava/lang/String;
 
     move-result-object v4
 
     goto/16 :goto_0
 
     .line 524
-    .end local v1           #nextByte:B
-    .end local v2           #param:Ljava/lang/String;
-    .end local v4           #value:Ljava/lang/String;
-    :cond_7
+    .end local v1    # "nextByte":B
+    .end local v2    # "param":Ljava/lang/String;
+    .end local v3    # "totalRead":I
+    .end local v4    # "value":Ljava/lang/String;
+    :cond_8
     iput p3, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
-    move v6, v7
-
     .line 525
-    goto/16 :goto_1
+    return v11
 .end method
 
 
 # virtual methods
 .method public decodeConstrainedEncoding(I)Z
-    .locals 2
-    .parameter "startIndex"
+    .locals 1
+    .param p1, "startIndex"    # I
 
     .prologue
-    const/4 v0, 0x1
-
     .line 395
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeShortInteger(I)Z
 
-    move-result v1
+    move-result v0
 
-    if-ne v1, v0, :cond_0
+    if-eqz v0, :cond_0
 
     .line 396
-    const/4 v1, 0x0
+    const/4 v0, 0x0
 
-    iput-object v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mStringValue:Ljava/lang/String;
+    iput-object v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mStringValue:Ljava/lang/String;
 
-    .line 399
-    :goto_0
+    .line 397
+    const/4 v0, 0x1
+
     return v0
 
+    .line 399
     :cond_0
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeExtensionMedia(I)Z
 
     move-result v0
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public decodeContentLength(I)Z
     .locals 1
-    .parameter "startIndex"
+    .param p1, "startIndex"    # I
 
     .prologue
     .line 569
@@ -2405,7 +2420,7 @@
 
 .method public decodeContentLocation(I)Z
     .locals 1
-    .parameter "startIndex"
+    .param p1, "startIndex"    # I
 
     .prologue
     .line 582
@@ -2417,28 +2432,28 @@
 .end method
 
 .method public decodeContentType(I)Z
-    .locals 12
-    .parameter "startIndex"
+    .locals 13
+    .param p1, "startIndex"    # I
 
     .prologue
-    const/4 v1, 0x1
+    const/4 v12, 0x1
 
-    const/4 v8, 0x0
+    const/4 v11, 0x0
 
     .line 417
-    new-instance v9, Ljava/util/HashMap;
+    new-instance v8, Ljava/util/HashMap;
 
-    invoke-direct {v9}, Ljava/util/HashMap;-><init>()V
+    invoke-direct {v8}, Ljava/util/HashMap;-><init>()V
 
-    iput-object v9, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mContentParameters:Ljava/util/HashMap;
+    iput-object v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mContentParameters:Ljava/util/HashMap;
 
     .line 420
     :try_start_0
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeValueLength(I)Z
 
-    move-result v9
+    move-result v8
 
-    if-nez v9, :cond_1
+    if-nez v8, :cond_1
 
     .line 421
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeConstrainedEncoding(I)Z
@@ -2446,55 +2461,54 @@
     move-result v1
 
     .line 422
-    .local v1, found:Z
+    .local v1, "found":Z
     if-eqz v1, :cond_0
 
     .line 423
     invoke-direct {p0}, Lcom/android/internal/telephony/WspTypeDecoder;->expandWellKnownMimeType()V
 
-    .line 463
-    .end local v1           #found:Z
+    .line 425
     :cond_0
-    :goto_0
     return v1
 
     .line 427
+    .end local v1    # "found":Z
     :cond_1
-    iget-wide v9, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
+    iget-wide v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
 
-    long-to-int v2, v9
+    long-to-int v2, v8
 
     .line 428
-    .local v2, headersLength:I
+    .local v2, "headersLength":I
     invoke-virtual {p0}, Lcom/android/internal/telephony/WspTypeDecoder;->getDecodedDataLength()I
 
     move-result v3
 
     .line 429
-    .local v3, mediaPrefixLength:I
-    add-int v9, p1, v3
+    .local v3, "mediaPrefixLength":I
+    add-int v8, p1, v3
 
-    invoke-virtual {p0, v9}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeIntegerValue(I)Z
+    invoke-virtual {p0, v8}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeIntegerValue(I)Z
 
-    move-result v9
+    move-result v8
 
-    if-ne v9, v1, :cond_3
+    if-eqz v8, :cond_3
 
     .line 430
-    iget v9, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    iget v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
-    add-int/2addr v9, v3
+    add-int/2addr v8, v3
 
-    iput v9, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    iput v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
     .line 431
     iget v5, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
     .line 432
-    .local v5, readLength:I
-    const/4 v9, 0x0
+    .local v5, "readLength":I
+    const/4 v8, 0x0
 
-    iput-object v9, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mStringValue:Ljava/lang/String;
+    iput-object v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mStringValue:Ljava/lang/String;
 
     .line 433
     invoke-direct {p0}, Lcom/android/internal/telephony/WspTypeDecoder;->expandWellKnownMimeType()V
@@ -2503,35 +2517,37 @@
     iget-wide v6, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
 
     .line 435
-    .local v6, wellKnownValue:J
+    .local v6, "wellKnownValue":J
     iget-object v4, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mStringValue:Ljava/lang/String;
 
     .line 436
-    .local v4, mimeType:Ljava/lang/String;
+    .local v4, "mimeType":Ljava/lang/String;
+    iget v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+
+    add-int/2addr v8, p1
+
+    .line 437
     iget v9, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
-    add-int/2addr v9, p1
+    sub-int/2addr v9, v3
 
-    iget v10, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    sub-int v9, v2, v9
 
-    sub-int/2addr v10, v3
+    const/4 v10, 0x0
 
-    sub-int v10, v2, v10
+    .line 436
+    invoke-direct {p0, v8, v9, v10}, Lcom/android/internal/telephony/WspTypeDecoder;->readContentParameters(III)Z
 
-    const/4 v11, 0x0
+    move-result v8
 
-    invoke-direct {p0, v9, v10, v11}, Lcom/android/internal/telephony/WspTypeDecoder;->readContentParameters(III)Z
-
-    move-result v9
-
-    if-eqz v9, :cond_2
+    if-eqz v8, :cond_2
 
     .line 438
-    iget v9, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    iget v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
-    add-int/2addr v9, v5
+    add-int/2addr v8, v5
 
-    iput v9, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    iput v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
     .line 439
     iput-wide v6, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
@@ -2539,95 +2555,75 @@
     .line 440
     iput-object v4, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mStringValue:Ljava/lang/String;
 
-    goto :goto_0
-
-    .line 459
-    .end local v2           #headersLength:I
-    .end local v3           #mediaPrefixLength:I
-    .end local v4           #mimeType:Ljava/lang/String;
-    .end local v5           #readLength:I
-    .end local v6           #wellKnownValue:J
-    :catch_0
-    move-exception v0
-
-    .local v0, e:Ljava/lang/ArrayIndexOutOfBoundsException;
-    move v1, v8
-
-    .line 461
-    goto :goto_0
-
-    .end local v0           #e:Ljava/lang/ArrayIndexOutOfBoundsException;
-    .restart local v2       #headersLength:I
-    .restart local v3       #mediaPrefixLength:I
-    .restart local v4       #mimeType:Ljava/lang/String;
-    .restart local v5       #readLength:I
-    .restart local v6       #wellKnownValue:J
-    :cond_2
-    move v1, v8
+    .line 441
+    return v12
 
     .line 443
-    goto :goto_0
+    :cond_2
+    return v11
 
     .line 445
-    .end local v4           #mimeType:Ljava/lang/String;
-    .end local v5           #readLength:I
-    .end local v6           #wellKnownValue:J
+    .end local v4    # "mimeType":Ljava/lang/String;
+    .end local v5    # "readLength":I
+    .end local v6    # "wellKnownValue":J
     :cond_3
-    add-int v9, p1, v3
+    add-int v8, p1, v3
 
-    invoke-virtual {p0, v9}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeExtensionMedia(I)Z
+    invoke-virtual {p0, v8}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeExtensionMedia(I)Z
 
-    move-result v9
+    move-result v8
 
-    if-ne v9, v1, :cond_4
+    if-eqz v8, :cond_4
 
     .line 446
-    iget v9, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    iget v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
-    add-int/2addr v9, v3
+    add-int/2addr v8, v3
 
-    iput v9, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    iput v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
     .line 447
     iget v5, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
     .line 448
-    .restart local v5       #readLength:I
+    .restart local v5    # "readLength":I
     invoke-direct {p0}, Lcom/android/internal/telephony/WspTypeDecoder;->expandWellKnownMimeType()V
 
     .line 449
     iget-wide v6, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
 
     .line 450
-    .restart local v6       #wellKnownValue:J
+    .restart local v6    # "wellKnownValue":J
     iget-object v4, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mStringValue:Ljava/lang/String;
 
     .line 451
-    .restart local v4       #mimeType:Ljava/lang/String;
+    .restart local v4    # "mimeType":Ljava/lang/String;
+    iget v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+
+    add-int/2addr v8, p1
+
+    .line 452
     iget v9, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
-    add-int/2addr v9, p1
+    sub-int/2addr v9, v3
 
-    iget v10, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    sub-int v9, v2, v9
 
-    sub-int/2addr v10, v3
+    const/4 v10, 0x0
 
-    sub-int v10, v2, v10
+    .line 451
+    invoke-direct {p0, v8, v9, v10}, Lcom/android/internal/telephony/WspTypeDecoder;->readContentParameters(III)Z
 
-    const/4 v11, 0x0
+    move-result v8
 
-    invoke-direct {p0, v9, v10, v11}, Lcom/android/internal/telephony/WspTypeDecoder;->readContentParameters(III)Z
-
-    move-result v9
-
-    if-eqz v9, :cond_4
+    if-eqz v8, :cond_4
 
     .line 453
-    iget v9, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    iget v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
-    add-int/2addr v9, v5
+    add-int/2addr v8, v5
 
-    iput v9, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    iput v8, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
     .line 454
     iput-wide v6, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
@@ -2637,31 +2633,43 @@
     :try_end_0
     .catch Ljava/lang/ArrayIndexOutOfBoundsException; {:try_start_0 .. :try_end_0} :catch_0
 
-    goto :goto_0
+    .line 456
+    return v12
 
-    .end local v4           #mimeType:Ljava/lang/String;
-    .end local v5           #readLength:I
-    .end local v6           #wellKnownValue:J
-    :cond_4
-    move v1, v8
+    .line 459
+    .end local v2    # "headersLength":I
+    .end local v3    # "mediaPrefixLength":I
+    .end local v4    # "mimeType":Ljava/lang/String;
+    .end local v5    # "readLength":I
+    .end local v6    # "wellKnownValue":J
+    :catch_0
+    move-exception v0
+
+    .line 461
+    .local v0, "e":Ljava/lang/ArrayIndexOutOfBoundsException;
+    return v11
 
     .line 463
-    goto :goto_0
+    .end local v0    # "e":Ljava/lang/ArrayIndexOutOfBoundsException;
+    .restart local v2    # "headersLength":I
+    .restart local v3    # "mediaPrefixLength":I
+    :cond_4
+    return v11
 .end method
 
 .method public decodeExtensionMedia(I)Z
     .locals 6
-    .parameter "startIndex"
+    .param p1, "startIndex"    # I
 
     .prologue
-    const/4 v2, 0x0
+    const/4 v3, 0x0
 
     .line 369
     move v0, p1
 
     .line 370
-    .local v0, index:I
-    iput v2, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    .local v0, "index":I
+    iput v3, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
     .line 371
     const/4 v3, 0x0
@@ -2674,14 +2682,13 @@
     array-length v1, v3
 
     .line 373
-    .local v1, length:I
+    .local v1, "length":I
     if-ge v0, v1, :cond_0
 
     const/4 v2, 0x1
 
     .line 375
-    .local v2, rtrn:Z
-    :cond_0
+    .local v2, "rtrn":Z
     :goto_0
     if-ge v0, v1, :cond_1
 
@@ -2694,6 +2701,14 @@
     .line 376
     add-int/lit8 v0, v0, 0x1
 
+    goto :goto_0
+
+    .line 373
+    .end local v2    # "rtrn":Z
+    :cond_0
+    const/4 v2, 0x0
+
+    .restart local v2    # "rtrn":Z
     goto :goto_0
 
     .line 379
@@ -2722,36 +2737,38 @@
 .end method
 
 .method public decodeIntegerValue(I)Z
-    .locals 2
-    .parameter "startIndex"
+    .locals 1
+    .param p1, "startIndex"    # I
 
     .prologue
-    const/4 v0, 0x1
-
     .line 304
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeShortInteger(I)Z
 
-    move-result v1
+    move-result v0
 
-    if-ne v1, v0, :cond_0
+    if-eqz v0, :cond_0
 
-    .line 307
-    :goto_0
+    .line 305
+    const/4 v0, 0x1
+
     return v0
 
+    .line 307
     :cond_0
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeLongInteger(I)Z
 
     move-result v0
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public decodeLongInteger(I)Z
-    .locals 6
-    .parameter "startIndex"
+    .locals 7
+    .param p1, "startIndex"    # I
 
     .prologue
+    const/4 v6, 0x1
+
     .line 281
     iget-object v2, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
@@ -2760,7 +2777,7 @@
     and-int/lit16 v1, v2, 0xff
 
     .line 283
-    .local v1, lengthMultiOctet:I
+    .local v1, "lengthMultiOctet":I
     const/16 v2, 0x1e
 
     if-le v1, v2, :cond_0
@@ -2768,8 +2785,6 @@
     .line 284
     const/4 v2, 0x0
 
-    .line 291
-    :goto_0
     return v2
 
     .line 286
@@ -2781,8 +2796,8 @@
     .line 287
     const/4 v0, 0x1
 
-    .local v0, i:I
-    :goto_1
+    .local v0, "i":I
+    :goto_0
     if-gt v0, v1, :cond_1
 
     .line 288
@@ -2809,7 +2824,7 @@
     .line 287
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_1
+    goto :goto_0
 
     .line 290
     :cond_1
@@ -2818,62 +2833,59 @@
     iput v2, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
     .line 291
-    const/4 v2, 0x1
-
-    goto :goto_0
+    return v6
 .end method
 
 .method public decodeShortInteger(I)Z
     .locals 3
-    .parameter "startIndex"
+    .param p1, "startIndex"    # I
 
     .prologue
-    const/4 v0, 0x1
+    const/4 v2, 0x1
+
+    const/4 v1, 0x0
 
     .line 263
-    iget-object v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
+    iget-object v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
-    aget-byte v1, v1, p1
+    aget-byte v0, v0, p1
 
-    and-int/lit16 v1, v1, 0x80
+    and-int/lit16 v0, v0, 0x80
 
-    if-nez v1, :cond_0
+    if-nez v0, :cond_0
 
     .line 264
-    const/4 v0, 0x0
-
-    .line 268
-    :goto_0
-    return v0
+    return v1
 
     .line 266
     :cond_0
-    iget-object v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
+    iget-object v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
-    aget-byte v1, v1, p1
+    aget-byte v0, v0, p1
 
-    and-int/lit8 v1, v1, 0x7f
+    and-int/lit8 v0, v0, 0x7f
 
-    int-to-long v1, v1
+    int-to-long v0, v0
 
-    iput-wide v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
+    iput-wide v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
 
     .line 267
-    iput v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    iput v2, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
-    goto :goto_0
+    .line 268
+    return v2
 .end method
 
 .method public decodeTextString(I)Z
     .locals 5
-    .parameter "startIndex"
+    .param p1, "startIndex"    # I
 
     .prologue
     .line 220
     move v0, p1
 
     .line 221
-    .local v0, index:I
+    .local v0, "index":I
     :goto_0
     iget-object v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
@@ -2943,14 +2955,14 @@
 
 .method public decodeTokenText(I)Z
     .locals 4
-    .parameter "startIndex"
+    .param p1, "startIndex"    # I
 
     .prologue
     .line 243
     move v0, p1
 
     .line 244
-    .local v0, index:I
+    .local v0, "index":I
     :goto_0
     iget-object v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
@@ -2991,20 +3003,22 @@
 .end method
 
 .method public decodeUintvarInteger(I)Z
-    .locals 6
-    .parameter "startIndex"
+    .locals 8
+    .param p1, "startIndex"    # I
 
     .prologue
-    const/4 v5, 0x7
+    const/4 v7, 0x7
+
+    const/4 v6, 0x0
 
     .line 320
     move v0, p1
 
     .line 322
-    .local v0, index:I
-    const-wide/16 v1, 0x0
+    .local v0, "index":I
+    const-wide/16 v2, 0x0
 
-    iput-wide v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
+    iput-wide v2, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
 
     .line 323
     :goto_0
@@ -3024,29 +3038,25 @@
     if-lt v1, v2, :cond_0
 
     .line 325
-    const/4 v1, 0x0
-
-    .line 332
-    :goto_1
-    return v1
+    return v6
 
     .line 327
     :cond_0
-    iget-wide v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
+    iget-wide v2, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
 
-    shl-long/2addr v1, v5
+    shl-long/2addr v2, v7
 
-    iget-object v3, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
+    iget-object v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
-    aget-byte v3, v3, v0
+    aget-byte v1, v1, v0
 
-    and-int/lit8 v3, v3, 0x7f
+    and-int/lit8 v1, v1, 0x7f
 
-    int-to-long v3, v3
+    int-to-long v4, v1
 
-    or-long/2addr v1, v3
+    or-long/2addr v2, v4
 
-    iput-wide v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
+    iput-wide v2, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
 
     .line 328
     add-int/lit8 v0, v0, 0x1
@@ -3055,21 +3065,21 @@
 
     .line 330
     :cond_1
-    iget-wide v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
+    iget-wide v2, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
 
-    shl-long/2addr v1, v5
+    shl-long/2addr v2, v7
 
-    iget-object v3, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
+    iget-object v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
-    aget-byte v3, v3, v0
+    aget-byte v1, v1, v0
 
-    and-int/lit8 v3, v3, 0x7f
+    and-int/lit8 v1, v1, 0x7f
 
-    int-to-long v3, v3
+    int-to-long v4, v1
 
-    or-long/2addr v1, v3
+    or-long/2addr v2, v4
 
-    iput-wide v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
+    iput-wide v2, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
 
     .line 331
     sub-int v1, v0, p1
@@ -3081,106 +3091,106 @@
     .line 332
     const/4 v1, 0x1
 
-    goto :goto_1
+    return v1
 .end method
 
 .method public decodeValueLength(I)Z
     .locals 3
-    .parameter "startIndex"
+    .param p1, "startIndex"    # I
 
     .prologue
-    const/16 v2, 0x1f
+    const/16 v1, 0x1f
 
-    const/4 v0, 0x1
+    const/4 v2, 0x1
 
     .line 345
-    iget-object v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
+    iget-object v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
-    aget-byte v1, v1, p1
+    aget-byte v0, v0, p1
 
-    and-int/lit16 v1, v1, 0xff
+    and-int/lit16 v0, v0, 0xff
 
-    if-le v1, v2, :cond_0
+    if-le v0, v1, :cond_0
 
     .line 346
     const/4 v0, 0x0
 
-    .line 355
-    :goto_0
     return v0
 
     .line 348
     :cond_0
-    iget-object v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
+    iget-object v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
-    aget-byte v1, v1, p1
+    aget-byte v0, v0, p1
 
-    if-ge v1, v2, :cond_1
+    if-ge v0, v1, :cond_1
 
     .line 349
-    iget-object v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
+    iget-object v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
-    aget-byte v1, v1, p1
+    aget-byte v0, v0, p1
 
-    int-to-long v1, v1
+    int-to-long v0, v0
 
-    iput-wide v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
+    iput-wide v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
 
     .line 350
-    iput v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    iput v2, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
-    goto :goto_0
+    .line 355
+    :goto_0
+    return v2
 
     .line 352
     :cond_1
-    add-int/lit8 v1, p1, 0x1
+    add-int/lit8 v0, p1, 0x1
 
-    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeUintvarInteger(I)Z
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeUintvarInteger(I)Z
 
     .line 353
-    iget v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    iget v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
-    add-int/lit8 v1, v1, 0x1
+    add-int/lit8 v0, v0, 0x1
 
-    iput v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
+    iput v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mDataLength:I
 
     goto :goto_0
 .end method
 
 .method public decodeXWapApplicationId(I)Z
-    .locals 2
-    .parameter "startIndex"
+    .locals 1
+    .param p1, "startIndex"    # I
 
     .prologue
-    const/4 v0, 0x1
-
     .line 596
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeIntegerValue(I)Z
 
-    move-result v1
+    move-result v0
 
-    if-ne v1, v0, :cond_0
+    if-eqz v0, :cond_0
 
     .line 597
-    const/4 v1, 0x0
+    const/4 v0, 0x0
 
-    iput-object v1, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mStringValue:Ljava/lang/String;
+    iput-object v0, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mStringValue:Ljava/lang/String;
 
-    .line 600
-    :goto_0
+    .line 598
+    const/4 v0, 0x1
+
     return v0
 
+    .line 600
     :cond_0
     invoke-virtual {p0, p1}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeTextString(I)Z
 
     move-result v0
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public decodeXWapContentURI(I)Z
     .locals 1
-    .parameter "startIndex"
+    .param p1, "startIndex"    # I
 
     .prologue
     .line 677
@@ -3193,7 +3203,7 @@
 
 .method public decodeXWapInitiatorURI(I)Z
     .locals 1
-    .parameter "startIndex"
+    .param p1, "startIndex"    # I
 
     .prologue
     .line 690
@@ -3256,170 +3266,186 @@
 
 .method public seekXWapApplicationId(II)Z
     .locals 8
-    .parameter "startIndex"
-    .parameter "endIndex"
+    .param p1, "startIndex"    # I
+    .param p2, "endIndex"    # I
 
     .prologue
     const/16 v7, 0x1f
 
-    const/4 v4, 0x0
+    const/4 v6, 0x0
 
     .line 613
     move v2, p1
 
     .line 616
-    .local v2, index:I
+    .local v2, "index":I
     move v2, p1
 
     :goto_0
-    if-gt v2, p2, :cond_0
+    if-gt v2, p2, :cond_9
 
     .line 621
     :try_start_0
     invoke-virtual {p0, v2}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeIntegerValue(I)Z
 
-    move-result v5
+    move-result v4
 
-    if-eqz v5, :cond_1
+    if-eqz v4, :cond_0
 
     .line 622
     invoke-virtual {p0}, Lcom/android/internal/telephony/WspTypeDecoder;->getValue32()J
 
-    move-result-wide v5
+    move-result-wide v4
 
-    long-to-int v1, v5
+    long-to-int v1, v4
 
     .line 624
-    .local v1, fieldValue:I
-    const/16 v5, 0x2f
+    .local v1, "fieldValue":I
+    const/16 v4, 0x2f
 
-    if-ne v1, v5, :cond_2
+    if-ne v1, v4, :cond_1
 
     .line 625
-    add-int/lit8 v5, v2, 0x1
+    add-int/lit8 v4, v2, 0x1
 
-    int-to-long v5, v5
+    int-to-long v4, v4
 
-    iput-wide v5, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
+    iput-wide v4, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mUnsigned32bit:J
 
     .line 626
     const/4 v4, 0x1
 
-    .line 664
-    .end local v1           #fieldValue:I
-    :cond_0
-    :goto_1
     return v4
 
     .line 629
-    :cond_1
+    .end local v1    # "fieldValue":I
+    :cond_0
     invoke-virtual {p0, v2}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeTextString(I)Z
 
-    move-result v5
+    move-result v4
 
-    if-eqz v5, :cond_0
+    if-nez v4, :cond_1
+
+    return v6
 
     .line 631
-    :cond_2
+    :cond_1
     invoke-virtual {p0}, Lcom/android/internal/telephony/WspTypeDecoder;->getDecodedDataLength()I
 
-    move-result v5
+    move-result v4
 
-    add-int/2addr v2, v5
+    add-int/2addr v2, v4
 
     .line 632
-    if-gt v2, p2, :cond_0
+    if-le v2, p2, :cond_2
+
+    return v6
 
     .line 645
-    iget-object v5, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
+    :cond_2
+    iget-object v4, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
-    aget-byte v3, v5, v2
+    aget-byte v3, v4, v2
 
     .line 646
-    .local v3, val:B
+    .local v3, "val":B
     if-ltz v3, :cond_3
 
-    const/16 v5, 0x1e
+    const/16 v4, 0x1e
 
-    if-gt v3, v5, :cond_3
+    if-gt v3, v4, :cond_3
 
     .line 647
-    iget-object v5, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
+    iget-object v4, p0, Lcom/android/internal/telephony/WspTypeDecoder;->mWspData:[B
 
-    aget-byte v5, v5, v2
+    aget-byte v4, v4, v2
 
-    add-int/lit8 v5, v5, 0x1
+    add-int/lit8 v4, v4, 0x1
 
-    add-int/2addr v2, v5
+    add-int/2addr v2, v4
 
     goto :goto_0
 
     .line 648
     :cond_3
-    if-ne v3, v7, :cond_4
+    if-ne v3, v7, :cond_6
 
     .line 649
-    add-int/lit8 v5, v2, 0x1
+    add-int/lit8 v4, v2, 0x1
 
-    if-ge v5, p2, :cond_0
+    if-lt v4, p2, :cond_4
+
+    return v6
 
     .line 650
+    :cond_4
     add-int/lit8 v2, v2, 0x1
 
     .line 651
     invoke-virtual {p0, v2}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeUintvarInteger(I)Z
 
-    move-result v5
+    move-result v4
 
-    if-eqz v5, :cond_0
+    if-nez v4, :cond_5
+
+    return v6
 
     .line 652
+    :cond_5
     invoke-virtual {p0}, Lcom/android/internal/telephony/WspTypeDecoder;->getDecodedDataLength()I
 
-    move-result v5
+    move-result v4
 
-    add-int/2addr v2, v5
+    add-int/2addr v2, v4
 
     goto :goto_0
 
     .line 653
-    :cond_4
-    if-ge v7, v3, :cond_5
+    :cond_6
+    if-ge v7, v3, :cond_8
 
-    const/16 v5, 0x7f
+    const/16 v4, 0x7f
 
-    if-gt v3, v5, :cond_5
+    if-gt v3, v4, :cond_8
 
     .line 654
     invoke-virtual {p0, v2}, Lcom/android/internal/telephony/WspTypeDecoder;->decodeTextString(I)Z
 
-    move-result v5
+    move-result v4
 
-    if-eqz v5, :cond_0
+    if-nez v4, :cond_7
+
+    return v6
 
     .line 655
+    :cond_7
     invoke-virtual {p0}, Lcom/android/internal/telephony/WspTypeDecoder;->getDecodedDataLength()I
     :try_end_0
     .catch Ljava/lang/ArrayIndexOutOfBoundsException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result v5
+    move-result v4
 
-    add-int/2addr v2, v5
+    add-int/2addr v2, v4
 
     goto :goto_0
 
     .line 657
-    :cond_5
+    :cond_8
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
     .line 660
-    .end local v3           #val:B
+    .end local v3    # "val":B
     :catch_0
     move-exception v0
 
     .line 662
-    .local v0, e:Ljava/lang/ArrayIndexOutOfBoundsException;
-    goto :goto_1
+    .local v0, "e":Ljava/lang/ArrayIndexOutOfBoundsException;
+    return v6
+
+    .line 664
+    .end local v0    # "e":Ljava/lang/ArrayIndexOutOfBoundsException;
+    :cond_9
+    return v6
 .end method

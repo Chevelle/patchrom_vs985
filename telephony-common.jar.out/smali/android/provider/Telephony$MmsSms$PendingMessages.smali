@@ -18,7 +18,7 @@
 
 
 # static fields
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
 
 .field public static final DUE_TIME:Ljava/lang/String; = "due_time"
 
@@ -36,23 +36,27 @@
 
 .field public static final RETRY_INDEX:Ljava/lang/String; = "retry_index"
 
+.field public static final SUBSCRIPTION_ID:Ljava/lang/String; = "pending_sub_id"
+
 
 # direct methods
 .method static constructor <clinit>()V
     .locals 2
 
     .prologue
-    .line 2154
+    .line 2353
     sget-object v0, Landroid/provider/Telephony$MmsSms;->CONTENT_URI:Landroid/net/Uri;
 
-    const-string v1, "pending"
+    const-string/jumbo v1, "pending"
 
+    .line 2352
     invoke-static {v0, v1}, Landroid/net/Uri;->withAppendedPath(Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
     sput-object v0, Landroid/provider/Telephony$MmsSms$PendingMessages;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 2343
     return-void
 .end method
 
@@ -60,9 +64,8 @@
     .locals 0
 
     .prologue
-    .line 2151
+    .line 2349
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 2152
     return-void
 .end method

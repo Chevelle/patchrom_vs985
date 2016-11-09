@@ -22,9 +22,9 @@
 # direct methods
 .method public constructor <init>([BII)V
     .locals 1
-    .parameter "record"
-    .parameter "offset"
-    .parameter "length"
+    .param p1, "record"    # [B
+    .param p2, "offset"    # I
+    .param p3, "length"    # I
 
     .prologue
     .line 38
@@ -49,7 +49,7 @@
 
     iput-boolean v0, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mHasValidTlvObject:Z
 
-    .line 46
+    .line 38
     return-void
 .end method
 
@@ -57,142 +57,150 @@
     .locals 5
 
     .prologue
-    const/4 v1, 0x0
+    const/4 v4, 0x0
 
     .line 92
     :try_start_0
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mRecord:[B
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mRecord:[B
 
-    iget v3, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurOffset:I
+    iget v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurOffset:I
 
-    aget-byte v2, v2, v3
+    aget-byte v1, v1, v2
 
-    if-eqz v2, :cond_0
+    if-eqz v1, :cond_0
 
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mRecord:[B
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mRecord:[B
 
-    iget v3, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurOffset:I
+    iget v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurOffset:I
 
-    aget-byte v2, v2, v3
+    aget-byte v1, v1, v2
 
-    and-int/lit16 v2, v2, 0xff
+    and-int/lit16 v1, v1, 0xff
 
-    const/16 v3, 0xff
+    const/16 v2, 0xff
 
-    if-ne v2, v3, :cond_1
+    if-ne v1, v2, :cond_1
 
-    .line 115
+    .line 93
     :cond_0
-    :goto_0
-    return v1
+    return v4
 
     .line 96
     :cond_1
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mRecord:[B
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mRecord:[B
 
-    iget v3, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurOffset:I
-
-    add-int/lit8 v3, v3, 0x1
-
-    aget-byte v2, v2, v3
-
-    and-int/lit16 v2, v2, 0xff
-
-    const/16 v3, 0x80
-
-    if-ge v2, v3, :cond_2
-
-    .line 98
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mRecord:[B
-
-    iget v3, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurOffset:I
-
-    add-int/lit8 v3, v3, 0x1
-
-    aget-byte v2, v2, v3
-
-    and-int/lit16 v2, v2, 0xff
-
-    iput v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataLength:I
-
-    .line 99
     iget v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurOffset:I
 
-    add-int/lit8 v2, v2, 0x2
+    add-int/lit8 v2, v2, 0x1
 
-    iput v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataOffset:I
+    aget-byte v1, v1, v2
+
+    and-int/lit16 v1, v1, 0xff
+
+    const/16 v2, 0x80
+
+    if-ge v1, v2, :cond_2
+
+    .line 98
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mRecord:[B
+
+    iget v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurOffset:I
+
+    add-int/lit8 v2, v2, 0x1
+
+    aget-byte v1, v1, v2
+
+    and-int/lit16 v1, v1, 0xff
+
+    iput v1, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataLength:I
+
+    .line 99
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurOffset:I
+
+    add-int/lit8 v1, v1, 0x2
+
+    iput v1, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataOffset:I
     :try_end_0
     .catch Ljava/lang/ArrayIndexOutOfBoundsException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 111
-    :goto_1
-    iget v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataLength:I
+    :goto_0
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataLength:I
 
-    iget v3, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataOffset:I
+    iget v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataOffset:I
+
+    add-int/2addr v1, v2
+
+    iget v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mTlvOffset:I
+
+    iget v3, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mTlvLength:I
 
     add-int/2addr v2, v3
 
-    iget v3, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mTlvOffset:I
+    if-le v1, v2, :cond_4
 
-    iget v4, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mTlvLength:I
-
-    add-int/2addr v3, v4
-
-    if-gt v2, v3, :cond_0
-
-    .line 115
-    const/4 v1, 0x1
-
-    goto :goto_0
+    .line 112
+    return v4
 
     .line 100
     :cond_2
     :try_start_1
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mRecord:[B
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mRecord:[B
 
-    iget v3, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurOffset:I
-
-    add-int/lit8 v3, v3, 0x1
-
-    aget-byte v2, v2, v3
-
-    and-int/lit16 v2, v2, 0xff
-
-    const/16 v3, 0x81
-
-    if-ne v2, v3, :cond_0
-
-    .line 102
-    iget-object v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mRecord:[B
-
-    iget v3, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurOffset:I
-
-    add-int/lit8 v3, v3, 0x2
-
-    aget-byte v2, v2, v3
-
-    and-int/lit16 v2, v2, 0xff
-
-    iput v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataLength:I
-
-    .line 103
     iget v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurOffset:I
 
-    add-int/lit8 v2, v2, 0x3
+    add-int/lit8 v2, v2, 0x1
 
-    iput v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataOffset:I
+    aget-byte v1, v1, v2
+
+    and-int/lit16 v1, v1, 0xff
+
+    const/16 v2, 0x81
+
+    if-ne v1, v2, :cond_3
+
+    .line 102
+    iget-object v1, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mRecord:[B
+
+    iget v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurOffset:I
+
+    add-int/lit8 v2, v2, 0x2
+
+    aget-byte v1, v1, v2
+
+    and-int/lit16 v1, v1, 0xff
+
+    iput v1, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataLength:I
+
+    .line 103
+    iget v1, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurOffset:I
+
+    add-int/lit8 v1, v1, 0x3
+
+    iput v1, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataOffset:I
     :try_end_1
     .catch Ljava/lang/ArrayIndexOutOfBoundsException; {:try_start_1 .. :try_end_1} :catch_0
 
-    goto :goto_1
+    goto :goto_0
 
     .line 107
     :catch_0
     move-exception v0
 
     .line 108
-    .local v0, ex:Ljava/lang/ArrayIndexOutOfBoundsException;
-    goto :goto_0
+    .local v0, "ex":Ljava/lang/ArrayIndexOutOfBoundsException;
+    return v4
+
+    .line 105
+    .end local v0    # "ex":Ljava/lang/ArrayIndexOutOfBoundsException;
+    :cond_3
+    return v4
+
+    .line 115
+    :cond_4
+    const/4 v1, 0x1
+
+    return v1
 .end method
 
 
@@ -206,11 +214,9 @@
 
     if-nez v1, :cond_0
 
-    const/4 v0, 0x0
+    const/4 v1, 0x0
 
-    .line 80
-    :goto_0
-    return-object v0
+    return-object v1
 
     .line 78
     :cond_0
@@ -219,18 +225,19 @@
     new-array v0, v1, [B
 
     .line 79
-    .local v0, ret:[B
+    .local v0, "ret":[B
     iget-object v1, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mRecord:[B
 
     iget v2, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataOffset:I
 
-    const/4 v3, 0x0
+    iget v3, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataLength:I
 
-    iget v4, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mCurDataLength:I
+    const/4 v4, 0x0
 
-    invoke-static {v1, v2, v0, v3, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v1, v2, v0, v4, v3}, Ljava/lang/System;->arraycopy([BI[BII)V
 
-    goto :goto_0
+    .line 80
+    return-object v0
 .end method
 
 .method public getTag()I
@@ -244,10 +251,9 @@
 
     const/4 v0, 0x0
 
-    .line 67
-    :goto_0
     return v0
 
+    .line 67
     :cond_0
     iget-object v0, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mRecord:[B
 
@@ -257,7 +263,7 @@
 
     and-int/lit16 v0, v0, 0xff
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public isValidObject()Z
@@ -281,8 +287,6 @@
 
     const/4 v0, 0x0
 
-    .line 52
-    :goto_0
     return v0
 
     .line 50
@@ -305,5 +309,5 @@
     .line 52
     iget-boolean v0, p0, Lcom/android/internal/telephony/gsm/SimTlv;->mHasValidTlvObject:Z
 
-    goto :goto_0
+    return v0
 .end method

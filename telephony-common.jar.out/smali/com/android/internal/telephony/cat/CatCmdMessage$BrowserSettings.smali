@@ -25,10 +25,10 @@
 # direct methods
 .method public constructor <init>(Lcom/android/internal/telephony/cat/CatCmdMessage;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/internal/telephony/cat/CatCmdMessage;
 
     .prologue
-    .line 40
+    .line 42
     iput-object p1, p0, Lcom/android/internal/telephony/cat/CatCmdMessage$BrowserSettings;->this$0:Lcom/android/internal/telephony/cat/CatCmdMessage;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

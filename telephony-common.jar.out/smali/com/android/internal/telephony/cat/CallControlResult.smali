@@ -46,7 +46,7 @@
     .line 22
     new-instance v0, Lcom/android/internal/telephony/cat/CallControlResult;
 
-    const-string v1, "CALL_CONTROL_NO_CONTROL"
+    const-string/jumbo v1, "CALL_CONTROL_NO_CONTROL"
 
     invoke-direct {v0, v1, v2, v2}, Lcom/android/internal/telephony/cat/CallControlResult;-><init>(Ljava/lang/String;II)V
 
@@ -55,7 +55,7 @@
     .line 23
     new-instance v0, Lcom/android/internal/telephony/cat/CallControlResult;
 
-    const-string v1, "CALL_CONTROL_ALLOWED_NO_MOD"
+    const-string/jumbo v1, "CALL_CONTROL_ALLOWED_NO_MOD"
 
     invoke-direct {v0, v1, v3, v3}, Lcom/android/internal/telephony/cat/CallControlResult;-><init>(Ljava/lang/String;II)V
 
@@ -64,7 +64,7 @@
     .line 24
     new-instance v0, Lcom/android/internal/telephony/cat/CallControlResult;
 
-    const-string v1, "CALL_CONTROL_NOT_ALLOWED"
+    const-string/jumbo v1, "CALL_CONTROL_NOT_ALLOWED"
 
     invoke-direct {v0, v1, v4, v4}, Lcom/android/internal/telephony/cat/CallControlResult;-><init>(Ljava/lang/String;II)V
 
@@ -73,7 +73,7 @@
     .line 25
     new-instance v0, Lcom/android/internal/telephony/cat/CallControlResult;
 
-    const-string v1, "CALL_CONTROL_ALLOWED_WITH_MOD"
+    const-string/jumbo v1, "CALL_CONTROL_ALLOWED_WITH_MOD"
 
     invoke-direct {v0, v1, v5, v5}, Lcom/android/internal/telephony/cat/CallControlResult;-><init>(Ljava/lang/String;II)V
 
@@ -107,14 +107,7 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "value"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "value"    # I
 
     .prologue
     .line 28
@@ -123,61 +116,55 @@
     .line 29
     iput p3, p0, Lcom/android/internal/telephony/cat/CallControlResult;->mValue:I
 
-    .line 30
+    .line 28
     return-void
 .end method
 
 .method public static fromInt(I)Lcom/android/internal/telephony/cat/CallControlResult;
     .locals 5
-    .parameter "value"
+    .param p0, "value"    # I
 
     .prologue
     .line 33
     invoke-static {}, Lcom/android/internal/telephony/cat/CallControlResult;->values()[Lcom/android/internal/telephony/cat/CallControlResult;
 
-    move-result-object v0
+    move-result-object v2
 
-    .local v0, arr$:[Lcom/android/internal/telephony/cat/CallControlResult;
-    array-length v3, v0
+    const/4 v1, 0x0
 
-    .local v3, len$:I
-    const/4 v2, 0x0
+    array-length v3, v2
 
-    .local v2, i$:I
     :goto_0
-    if-ge v2, v3, :cond_1
+    if-ge v1, v3, :cond_1
 
-    aget-object v1, v0, v2
+    aget-object v0, v2, v1
 
     .line 34
-    .local v1, e:Lcom/android/internal/telephony/cat/CallControlResult;
-    iget v4, v1, Lcom/android/internal/telephony/cat/CallControlResult;->mValue:I
+    .local v0, "e":Lcom/android/internal/telephony/cat/CallControlResult;
+    iget v4, v0, Lcom/android/internal/telephony/cat/CallControlResult;->mValue:I
 
     if-ne v4, p0, :cond_0
 
-    .line 38
-    .end local v1           #e:Lcom/android/internal/telephony/cat/CallControlResult;
-    :goto_1
-    return-object v1
+    .line 35
+    return-object v0
 
     .line 33
-    .restart local v1       #e:Lcom/android/internal/telephony/cat/CallControlResult;
     :cond_0
-    add-int/lit8 v2, v2, 0x1
+    add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
     .line 38
-    .end local v1           #e:Lcom/android/internal/telephony/cat/CallControlResult;
+    .end local v0    # "e":Lcom/android/internal/telephony/cat/CallControlResult;
     :cond_1
     const/4 v1, 0x0
 
-    goto :goto_1
+    return-object v1
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/cat/CallControlResult;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 20
@@ -198,12 +185,6 @@
     .prologue
     .line 20
     sget-object v0, Lcom/android/internal/telephony/cat/CallControlResult;->$VALUES:[Lcom/android/internal/telephony/cat/CallControlResult;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/cat/CallControlResult;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/cat/CallControlResult;
 
     return-object v0
 .end method

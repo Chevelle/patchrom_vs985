@@ -25,23 +25,23 @@
 # direct methods
 .method public constructor <init>(Landroid/net/LinkProperties;)V
     .locals 1
-    .parameter "curLp"
+    .param p1, "curLp"    # Landroid/net/LinkProperties;
 
     .prologue
-    .line 277
+    .line 319
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 274
+    .line 316
     sget-object v0, Lcom/android/internal/telephony/dataconnection/DataCallResponse$SetupResult;->SUCCESS:Lcom/android/internal/telephony/dataconnection/DataCallResponse$SetupResult;
 
     iput-object v0, p0, Lcom/android/internal/telephony/dataconnection/DataConnection$UpdateLinkPropertyResult;->setupResult:Lcom/android/internal/telephony/dataconnection/DataCallResponse$SetupResult;
 
-    .line 278
+    .line 320
     iput-object p1, p0, Lcom/android/internal/telephony/dataconnection/DataConnection$UpdateLinkPropertyResult;->oldLp:Landroid/net/LinkProperties;
 
-    .line 279
+    .line 321
     iput-object p1, p0, Lcom/android/internal/telephony/dataconnection/DataConnection$UpdateLinkPropertyResult;->newLp:Landroid/net/LinkProperties;
 
-    .line 280
+    .line 319
     return-void
 .end method

@@ -4,6 +4,8 @@
 
 
 # static fields
+.field public static final CDMA_SMS_RECORD_LENGTH:I = 0xff
+
 .field public static final DF_ADF:Ljava/lang/String; = "7FFF"
 
 .field public static final DF_CDMA:Ljava/lang/String; = "7F25"
@@ -34,6 +36,8 @@
 
 .field public static final EF_CSIM_MDN:I = 0x6f44
 
+.field public static final EF_CSIM_MIPUPP:I = 0x6f4d
+
 .field public static final EF_CSIM_SPN:I = 0x6f41
 
 .field public static final EF_CSP_CPHS:I = 0x6f15
@@ -48,11 +52,17 @@
 
 .field public static final EF_EXT3:I = 0x6f4c
 
+.field public static final EF_EXT5:I = 0x6f4e
+
 .field public static final EF_EXT6:I = 0x6fc8
 
 .field public static final EF_FDN:I = 0x6f3b
 
 .field public static final EF_GID1:I = 0x6f3e
+
+.field public static final EF_GID2:I = 0x6f3f
+
+.field public static final EF_HPLMNWACT:I = 0x6f62
 
 .field public static final EF_ICCID:I = 0x2fe2
 
@@ -65,6 +75,8 @@
 .field public static final EF_INFO_CPHS:I = 0x6f16
 
 .field public static final EF_IST:I = 0x6f07
+
+.field public static final EF_LI:I = 0x6f05
 
 .field public static final EF_MAILBOX_CPHS:I = 0x6f17
 
@@ -84,7 +96,13 @@
 
 .field public static final EF_PL:I = 0x2f05
 
+.field public static final EF_PLMNWACT:I = 0x6f60
+
+.field public static final EF_PLMN_SEL:I = 0x6f30
+
 .field public static final EF_PNN:I = 0x6fc5
+
+.field public static final EF_PSI:I = 0x6fe5
 
 .field public static final EF_RUIM_SPN:I = 0x6f41
 

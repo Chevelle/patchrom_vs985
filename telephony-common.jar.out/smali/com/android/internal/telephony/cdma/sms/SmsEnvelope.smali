@@ -74,6 +74,6 @@
 
     iput v0, p0, Lcom/android/internal/telephony/cdma/sms/SmsEnvelope;->teleService:I
 
-    .line 127
+    .line 125
     return-void
 .end method

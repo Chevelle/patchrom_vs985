@@ -1,5 +1,5 @@
-.class synthetic Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;
-.super Ljava/lang/Object;
+.class Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;
+.super Landroid/telephony/SubscriptionManager$OnSubscriptionsChangedListener;
 .source "DcTrackerBase.java"
 
 
@@ -9,156 +9,106 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x1008
+    accessFlags = 0x0
     name = null
 .end annotation
 
 
-# static fields
-.field static final synthetic $SwitchMap$com$android$internal$telephony$DctConstants$State:[I
+# instance fields
+.field final synthetic this$0:Lcom/android/internal/telephony/dataconnection/DcTrackerBase;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 3
+.method constructor <init>(Lcom/android/internal/telephony/dataconnection/DcTrackerBase;)V
+    .locals 0
+    .param p1, "this$0"    # Lcom/android/internal/telephony/dataconnection/DcTrackerBase;
 
     .prologue
-    .line 1062
-    invoke-static {}, Lcom/android/internal/telephony/DctConstants$State;->values()[Lcom/android/internal/telephony/DctConstants$State;
+    .line 393
+    iput-object p1, p0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->this$0:Lcom/android/internal/telephony/dataconnection/DcTrackerBase;
 
-    move-result-object v0
+    invoke-direct {p0}, Landroid/telephony/SubscriptionManager$OnSubscriptionsChangedListener;-><init>()V
 
-    array-length v0, v0
-
-    new-array v0, v0, [I
-
-    sput-object v0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->$SwitchMap$com$android$internal$telephony$DctConstants$State:[I
-
-    :try_start_0
-    sget-object v0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->$SwitchMap$com$android$internal$telephony$DctConstants$State:[I
-
-    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->IDLE:Lcom/android/internal/telephony/DctConstants$State;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/DctConstants$State;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x1
-
-    aput v2, v0, v1
-    :try_end_0
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_5
-
-    :goto_0
-    :try_start_1
-    sget-object v0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->$SwitchMap$com$android$internal$telephony$DctConstants$State:[I
-
-    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->RETRYING:Lcom/android/internal/telephony/DctConstants$State;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/DctConstants$State;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x2
-
-    aput v2, v0, v1
-    :try_end_1
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_4
-
-    :goto_1
-    :try_start_2
-    sget-object v0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->$SwitchMap$com$android$internal$telephony$DctConstants$State:[I
-
-    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->CONNECTING:Lcom/android/internal/telephony/DctConstants$State;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/DctConstants$State;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x3
-
-    aput v2, v0, v1
-    :try_end_2
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_3
-
-    :goto_2
-    :try_start_3
-    sget-object v0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->$SwitchMap$com$android$internal$telephony$DctConstants$State:[I
-
-    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->SCANNING:Lcom/android/internal/telephony/DctConstants$State;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/DctConstants$State;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x4
-
-    aput v2, v0, v1
-    :try_end_3
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_3 .. :try_end_3} :catch_2
-
-    :goto_3
-    :try_start_4
-    sget-object v0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->$SwitchMap$com$android$internal$telephony$DctConstants$State:[I
-
-    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->CONNECTED:Lcom/android/internal/telephony/DctConstants$State;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/DctConstants$State;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x5
-
-    aput v2, v0, v1
-    :try_end_4
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_4 .. :try_end_4} :catch_1
-
-    :goto_4
-    :try_start_5
-    sget-object v0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->$SwitchMap$com$android$internal$telephony$DctConstants$State:[I
-
-    sget-object v1, Lcom/android/internal/telephony/DctConstants$State;->DISCONNECTING:Lcom/android/internal/telephony/DctConstants$State;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/DctConstants$State;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x6
-
-    aput v2, v0, v1
-    :try_end_5
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_5 .. :try_end_5} :catch_0
-
-    :goto_5
     return-void
+.end method
 
-    :catch_0
-    move-exception v0
 
-    goto :goto_5
+# virtual methods
+.method public onSubscriptionsChanged()V
+    .locals 6
 
-    :catch_1
-    move-exception v0
+    .prologue
+    .line 402
+    iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->this$0:Lcom/android/internal/telephony/dataconnection/DcTrackerBase;
 
-    goto :goto_4
+    iget-object v1, v1, Lcom/android/internal/telephony/dataconnection/DcTrackerBase;->mPhone:Lcom/android/internal/telephony/PhoneBase;
 
-    :catch_2
-    move-exception v0
+    invoke-virtual {v1}, Lcom/android/internal/telephony/PhoneBase;->getSubId()I
 
-    goto :goto_3
+    move-result v0
 
-    :catch_3
-    move-exception v0
+    .line 403
+    .local v0, "subId":I
+    invoke-static {v0}, Landroid/telephony/SubscriptionManager;->isValidSubscriptionId(I)Z
 
-    goto :goto_2
+    move-result v1
 
-    :catch_4
-    move-exception v0
+    if-eqz v1, :cond_1
 
-    goto :goto_1
+    .line 404
+    iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->this$0:Lcom/android/internal/telephony/dataconnection/DcTrackerBase;
 
-    :catch_5
-    move-exception v0
+    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTrackerBase;->-get0(Lcom/android/internal/telephony/dataconnection/DcTrackerBase;)Lcom/android/internal/telephony/dataconnection/DcTrackerBase$DataRoamingSettingObserver;
 
-    goto :goto_0
+    move-result-object v1
+
+    if-eqz v1, :cond_0
+
+    .line 405
+    iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->this$0:Lcom/android/internal/telephony/dataconnection/DcTrackerBase;
+
+    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTrackerBase;->-get0(Lcom/android/internal/telephony/dataconnection/DcTrackerBase;)Lcom/android/internal/telephony/dataconnection/DcTrackerBase$DataRoamingSettingObserver;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$DataRoamingSettingObserver;->unregister()V
+
+    .line 408
+    :cond_0
+    iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->this$0:Lcom/android/internal/telephony/dataconnection/DcTrackerBase;
+
+    new-instance v2, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$DataRoamingSettingObserver;
+
+    iget-object v3, p0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->this$0:Lcom/android/internal/telephony/dataconnection/DcTrackerBase;
+
+    iget-object v4, p0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->this$0:Lcom/android/internal/telephony/dataconnection/DcTrackerBase;
+
+    iget-object v4, v4, Lcom/android/internal/telephony/dataconnection/DcTrackerBase;->mPhone:Lcom/android/internal/telephony/PhoneBase;
+
+    .line 409
+    iget-object v5, p0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->this$0:Lcom/android/internal/telephony/dataconnection/DcTrackerBase;
+
+    iget-object v5, v5, Lcom/android/internal/telephony/dataconnection/DcTrackerBase;->mPhone:Lcom/android/internal/telephony/PhoneBase;
+
+    invoke-virtual {v5}, Lcom/android/internal/telephony/PhoneBase;->getContext()Landroid/content/Context;
+
+    move-result-object v5
+
+    .line 408
+    invoke-direct {v2, v3, v4, v5}, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$DataRoamingSettingObserver;-><init>(Lcom/android/internal/telephony/dataconnection/DcTrackerBase;Landroid/os/Handler;Landroid/content/Context;)V
+
+    invoke-static {v1, v2}, Lcom/android/internal/telephony/dataconnection/DcTrackerBase;->-set0(Lcom/android/internal/telephony/dataconnection/DcTrackerBase;Lcom/android/internal/telephony/dataconnection/DcTrackerBase$DataRoamingSettingObserver;)Lcom/android/internal/telephony/dataconnection/DcTrackerBase$DataRoamingSettingObserver;
+
+    .line 410
+    iget-object v1, p0, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$4;->this$0:Lcom/android/internal/telephony/dataconnection/DcTrackerBase;
+
+    invoke-static {v1}, Lcom/android/internal/telephony/dataconnection/DcTrackerBase;->-get0(Lcom/android/internal/telephony/dataconnection/DcTrackerBase;)Lcom/android/internal/telephony/dataconnection/DcTrackerBase$DataRoamingSettingObserver;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/android/internal/telephony/dataconnection/DcTrackerBase$DataRoamingSettingObserver;->register()V
+
+    .line 399
+    :cond_1
+    return-void
 .end method

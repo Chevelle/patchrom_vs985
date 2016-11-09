@@ -237,7 +237,7 @@
     .line 26
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "PHONEBOOK"
+    const-string/jumbo v1, "PHONEBOOK"
 
     invoke-direct {v0, v1, v3}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
@@ -246,76 +246,76 @@
     .line 27
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "FDN"
+    const-string/jumbo v1, "FDN"
 
     invoke-direct {v0, v1, v4}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->FDN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    .line 28
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "FDN_EXTENSION"
+    const-string/jumbo v1, "FDN_EXTENSION"
 
     invoke-direct {v0, v1, v5}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
+    .line 28
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->FDN_EXTENSION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    .line 29
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "SDN"
+    const-string/jumbo v1, "SDN"
 
     invoke-direct {v0, v1, v6}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
+    .line 29
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SDN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    .line 30
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "SDN_EXTENSION"
+    const-string/jumbo v1, "SDN_EXTENSION"
 
     invoke-direct {v0, v1, v7}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
+    .line 30
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SDN_EXTENSION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    .line 31
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "BDN"
+    const-string/jumbo v1, "BDN"
 
     const/4 v2, 0x5
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
+    .line 31
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->BDN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    .line 32
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "BDN_EXTENSION"
+    const-string/jumbo v1, "BDN_EXTENSION"
 
     const/4 v2, 0x6
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
+    .line 32
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->BDN_EXTENSION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    .line 33
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "OUTGOING_CALL_INFO"
+    const-string/jumbo v1, "OUTGOING_CALL_INFO"
 
     const/4 v2, 0x7
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
+    .line 33
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->OUTGOING_CALL_INFO:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
     .line 34
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "INCOMING_CALL_INFO"
+    const-string/jumbo v1, "INCOMING_CALL_INFO"
 
     const/16 v2, 0x8
 
@@ -326,7 +326,7 @@
     .line 35
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "SM_STORAGE"
+    const-string/jumbo v1, "SM_STORAGE"
 
     const/16 v2, 0x9
 
@@ -337,7 +337,7 @@
     .line 36
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "SM_STATUS_REPORTS"
+    const-string/jumbo v1, "SM_STATUS_REPORTS"
 
     const/16 v2, 0xa
 
@@ -348,7 +348,7 @@
     .line 37
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "SM_SERVICE_PARAMS"
+    const-string/jumbo v1, "SM_SERVICE_PARAMS"
 
     const/16 v2, 0xb
 
@@ -359,7 +359,7 @@
     .line 38
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "ADVICE_OF_CHARGE"
+    const-string/jumbo v1, "ADVICE_OF_CHARGE"
 
     const/16 v2, 0xc
 
@@ -370,7 +370,7 @@
     .line 39
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "CAP_CONFIG_PARAMS_2"
+    const-string/jumbo v1, "CAP_CONFIG_PARAMS_2"
 
     const/16 v2, 0xd
 
@@ -381,7 +381,7 @@
     .line 40
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "CB_MESSAGE_ID"
+    const-string/jumbo v1, "CB_MESSAGE_ID"
 
     const/16 v2, 0xe
 
@@ -392,7 +392,7 @@
     .line 41
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "CB_MESSAGE_ID_RANGES"
+    const-string/jumbo v1, "CB_MESSAGE_ID_RANGES"
 
     const/16 v2, 0xf
 
@@ -403,7 +403,7 @@
     .line 42
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "GROUP_ID_LEVEL_1"
+    const-string/jumbo v1, "GROUP_ID_LEVEL_1"
 
     const/16 v2, 0x10
 
@@ -414,7 +414,7 @@
     .line 43
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "GROUP_ID_LEVEL_2"
+    const-string/jumbo v1, "GROUP_ID_LEVEL_2"
 
     const/16 v2, 0x11
 
@@ -425,7 +425,7 @@
     .line 44
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "SPN"
+    const-string/jumbo v1, "SPN"
 
     const/16 v2, 0x12
 
@@ -433,21 +433,21 @@
 
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SPN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    .line 45
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "USER_PLMN_SELECT"
+    const-string/jumbo v1, "USER_PLMN_SELECT"
 
     const/16 v2, 0x13
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
+    .line 45
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->USER_PLMN_SELECT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
     .line 46
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "MSISDN"
+    const-string/jumbo v1, "MSISDN"
 
     const/16 v2, 0x14
 
@@ -458,7 +458,7 @@
     .line 47
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "IMAGE"
+    const-string/jumbo v1, "IMAGE"
 
     const/16 v2, 0x15
 
@@ -469,7 +469,7 @@
     .line 48
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "LOCALISED_SERVICE_AREAS"
+    const-string/jumbo v1, "LOCALISED_SERVICE_AREAS"
 
     const/16 v2, 0x16
 
@@ -480,7 +480,7 @@
     .line 49
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "EMLPP"
+    const-string/jumbo v1, "EMLPP"
 
     const/16 v2, 0x17
 
@@ -488,21 +488,21 @@
 
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EMLPP:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    .line 50
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "EMLPP_AUTO_ANSWER"
+    const-string/jumbo v1, "EMLPP_AUTO_ANSWER"
 
     const/16 v2, 0x18
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
+    .line 50
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EMLPP_AUTO_ANSWER:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
     .line 51
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "RFU"
+    const-string/jumbo v1, "RFU"
 
     const/16 v2, 0x19
 
@@ -513,7 +513,7 @@
     .line 52
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "GSM_ACCESS"
+    const-string/jumbo v1, "GSM_ACCESS"
 
     const/16 v2, 0x1a
 
@@ -524,7 +524,7 @@
     .line 53
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "DATA_DL_VIA_SMS_PP"
+    const-string/jumbo v1, "DATA_DL_VIA_SMS_PP"
 
     const/16 v2, 0x1b
 
@@ -535,7 +535,7 @@
     .line 54
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "DATA_DL_VIA_SMS_CB"
+    const-string/jumbo v1, "DATA_DL_VIA_SMS_CB"
 
     const/16 v2, 0x1c
 
@@ -546,7 +546,7 @@
     .line 55
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "CALL_CONTROL_BY_USIM"
+    const-string/jumbo v1, "CALL_CONTROL_BY_USIM"
 
     const/16 v2, 0x1d
 
@@ -557,7 +557,7 @@
     .line 56
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "MO_SMS_CONTROL_BY_USIM"
+    const-string/jumbo v1, "MO_SMS_CONTROL_BY_USIM"
 
     const/16 v2, 0x1e
 
@@ -568,7 +568,7 @@
     .line 57
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "RUN_AT_COMMAND"
+    const-string/jumbo v1, "RUN_AT_COMMAND"
 
     const/16 v2, 0x1f
 
@@ -579,7 +579,7 @@
     .line 58
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "IGNORED_1"
+    const-string/jumbo v1, "IGNORED_1"
 
     const/16 v2, 0x20
 
@@ -590,7 +590,7 @@
     .line 59
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "ENABLED_SERVICES_TABLE"
+    const-string/jumbo v1, "ENABLED_SERVICES_TABLE"
 
     const/16 v2, 0x21
 
@@ -601,7 +601,7 @@
     .line 60
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "APN_CONTROL_LIST"
+    const-string/jumbo v1, "APN_CONTROL_LIST"
 
     const/16 v2, 0x22
 
@@ -612,7 +612,7 @@
     .line 61
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "DEPERSONALISATION_CONTROL_KEYS"
+    const-string/jumbo v1, "DEPERSONALISATION_CONTROL_KEYS"
 
     const/16 v2, 0x23
 
@@ -623,7 +623,7 @@
     .line 62
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "COOPERATIVE_NETWORK_LIST"
+    const-string/jumbo v1, "COOPERATIVE_NETWORK_LIST"
 
     const/16 v2, 0x24
 
@@ -634,7 +634,7 @@
     .line 63
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "GSM_SECURITY_CONTEXT"
+    const-string/jumbo v1, "GSM_SECURITY_CONTEXT"
 
     const/16 v2, 0x25
 
@@ -645,7 +645,7 @@
     .line 64
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "CPBCCH_INFO"
+    const-string/jumbo v1, "CPBCCH_INFO"
 
     const/16 v2, 0x26
 
@@ -656,7 +656,7 @@
     .line 65
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "INVESTIGATION_SCAN"
+    const-string/jumbo v1, "INVESTIGATION_SCAN"
 
     const/16 v2, 0x27
 
@@ -667,7 +667,7 @@
     .line 66
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "MEXE"
+    const-string/jumbo v1, "MEXE"
 
     const/16 v2, 0x28
 
@@ -678,7 +678,7 @@
     .line 67
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "OPERATOR_PLMN_SELECT"
+    const-string/jumbo v1, "OPERATOR_PLMN_SELECT"
 
     const/16 v2, 0x29
 
@@ -689,7 +689,7 @@
     .line 68
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "HPLMN_SELECT"
+    const-string/jumbo v1, "HPLMN_SELECT"
 
     const/16 v2, 0x2a
 
@@ -700,7 +700,7 @@
     .line 69
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "EXTENSION_5"
+    const-string/jumbo v1, "EXTENSION_5"
 
     const/16 v2, 0x2b
 
@@ -708,21 +708,21 @@
 
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EXTENSION_5:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    .line 70
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "PLMN_NETWORK_NAME"
+    const-string/jumbo v1, "PLMN_NETWORK_NAME"
 
     const/16 v2, 0x2c
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
+    .line 70
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->PLMN_NETWORK_NAME:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
     .line 71
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "OPERATOR_PLMN_LIST"
+    const-string/jumbo v1, "OPERATOR_PLMN_LIST"
 
     const/16 v2, 0x2d
 
@@ -733,7 +733,7 @@
     .line 72
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "MBDN"
+    const-string/jumbo v1, "MBDN"
 
     const/16 v2, 0x2e
 
@@ -741,43 +741,43 @@
 
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MBDN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    .line 73
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "MWI_STATUS"
+    const-string/jumbo v1, "MWI_STATUS"
 
     const/16 v2, 0x2f
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
+    .line 73
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MWI_STATUS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    .line 74
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "CFI_STATUS"
+    const-string/jumbo v1, "CFI_STATUS"
 
     const/16 v2, 0x30
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
+    .line 74
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CFI_STATUS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    .line 75
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "IGNORED_2"
+    const-string/jumbo v1, "IGNORED_2"
 
     const/16 v2, 0x31
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
+    .line 75
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IGNORED_2:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
     .line 76
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "SERVICE_PROVIDER_DISPLAY_INFO"
+    const-string/jumbo v1, "SERVICE_PROVIDER_DISPLAY_INFO"
 
     const/16 v2, 0x32
 
@@ -788,7 +788,7 @@
     .line 77
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "MMS_NOTIFICATION"
+    const-string/jumbo v1, "MMS_NOTIFICATION"
 
     const/16 v2, 0x33
 
@@ -799,7 +799,7 @@
     .line 78
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "MMS_NOTIFICATION_EXTENSION"
+    const-string/jumbo v1, "MMS_NOTIFICATION_EXTENSION"
 
     const/16 v2, 0x34
 
@@ -807,21 +807,21 @@
 
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MMS_NOTIFICATION_EXTENSION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    .line 79
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "GPRS_CALL_CONTROL_BY_USIM"
+    const-string/jumbo v1, "GPRS_CALL_CONTROL_BY_USIM"
 
     const/16 v2, 0x35
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
+    .line 79
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GPRS_CALL_CONTROL_BY_USIM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
     .line 80
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "MMS_CONNECTIVITY_PARAMS"
+    const-string/jumbo v1, "MMS_CONNECTIVITY_PARAMS"
 
     const/16 v2, 0x36
 
@@ -832,7 +832,7 @@
     .line 81
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "NETWORK_INDICATION_OF_ALERTING"
+    const-string/jumbo v1, "NETWORK_INDICATION_OF_ALERTING"
 
     const/16 v2, 0x37
 
@@ -843,7 +843,7 @@
     .line 82
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "VGCS_GROUP_ID_LIST"
+    const-string/jumbo v1, "VGCS_GROUP_ID_LIST"
 
     const/16 v2, 0x38
 
@@ -854,7 +854,7 @@
     .line 83
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "VBS_GROUP_ID_LIST"
+    const-string/jumbo v1, "VBS_GROUP_ID_LIST"
 
     const/16 v2, 0x39
 
@@ -865,7 +865,7 @@
     .line 84
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "PSEUDONYM"
+    const-string/jumbo v1, "PSEUDONYM"
 
     const/16 v2, 0x3a
 
@@ -876,7 +876,7 @@
     .line 85
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "IWLAN_USER_PLMN_SELECT"
+    const-string/jumbo v1, "IWLAN_USER_PLMN_SELECT"
 
     const/16 v2, 0x3b
 
@@ -887,7 +887,7 @@
     .line 86
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "IWLAN_OPERATOR_PLMN_SELECT"
+    const-string/jumbo v1, "IWLAN_OPERATOR_PLMN_SELECT"
 
     const/16 v2, 0x3c
 
@@ -898,7 +898,7 @@
     .line 87
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "USER_WSID_LIST"
+    const-string/jumbo v1, "USER_WSID_LIST"
 
     const/16 v2, 0x3d
 
@@ -909,7 +909,7 @@
     .line 88
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "OPERATOR_WSID_LIST"
+    const-string/jumbo v1, "OPERATOR_WSID_LIST"
 
     const/16 v2, 0x3e
 
@@ -920,7 +920,7 @@
     .line 89
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "VGCS_SECURITY"
+    const-string/jumbo v1, "VGCS_SECURITY"
 
     const/16 v2, 0x3f
 
@@ -931,7 +931,7 @@
     .line 90
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "VBS_SECURITY"
+    const-string/jumbo v1, "VBS_SECURITY"
 
     const/16 v2, 0x40
 
@@ -942,7 +942,7 @@
     .line 91
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "WLAN_REAUTH_IDENTITY"
+    const-string/jumbo v1, "WLAN_REAUTH_IDENTITY"
 
     const/16 v2, 0x41
 
@@ -953,7 +953,7 @@
     .line 92
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "MM_STORAGE"
+    const-string/jumbo v1, "MM_STORAGE"
 
     const/16 v2, 0x42
 
@@ -964,7 +964,7 @@
     .line 93
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "GBA"
+    const-string/jumbo v1, "GBA"
 
     const/16 v2, 0x43
 
@@ -972,21 +972,21 @@
 
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GBA:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    .line 94
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "MBMS_SECURITY"
+    const-string/jumbo v1, "MBMS_SECURITY"
 
     const/16 v2, 0x44
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;-><init>(Ljava/lang/String;I)V
 
+    .line 94
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MBMS_SECURITY:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
     .line 95
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "DATA_DL_VIA_USSD"
+    const-string/jumbo v1, "DATA_DL_VIA_USSD"
 
     const/16 v2, 0x45
 
@@ -997,7 +997,7 @@
     .line 96
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "EQUIVALENT_HPLMN"
+    const-string/jumbo v1, "EQUIVALENT_HPLMN"
 
     const/16 v2, 0x46
 
@@ -1008,7 +1008,7 @@
     .line 97
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "TERMINAL_PROFILE_AFTER_UICC_ACTIVATION"
+    const-string/jumbo v1, "TERMINAL_PROFILE_AFTER_UICC_ACTIVATION"
 
     const/16 v2, 0x47
 
@@ -1019,7 +1019,7 @@
     .line 98
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "EQUIVALENT_HPLMN_PRESENTATION"
+    const-string/jumbo v1, "EQUIVALENT_HPLMN_PRESENTATION"
 
     const/16 v2, 0x48
 
@@ -1030,7 +1030,7 @@
     .line 99
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "LAST_RPLMN_SELECTION_INDICATION"
+    const-string/jumbo v1, "LAST_RPLMN_SELECTION_INDICATION"
 
     const/16 v2, 0x49
 
@@ -1041,7 +1041,7 @@
     .line 100
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "OMA_BCAST_PROFILE"
+    const-string/jumbo v1, "OMA_BCAST_PROFILE"
 
     const/16 v2, 0x4a
 
@@ -1052,7 +1052,7 @@
     .line 101
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "GBA_LOCAL_KEY_ESTABLISHMENT"
+    const-string/jumbo v1, "GBA_LOCAL_KEY_ESTABLISHMENT"
 
     const/16 v2, 0x4b
 
@@ -1063,7 +1063,7 @@
     .line 102
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "TERMINAL_APPLICATIONS"
+    const-string/jumbo v1, "TERMINAL_APPLICATIONS"
 
     const/16 v2, 0x4c
 
@@ -1074,7 +1074,7 @@
     .line 103
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "SPN_ICON"
+    const-string/jumbo v1, "SPN_ICON"
 
     const/16 v2, 0x4d
 
@@ -1085,7 +1085,7 @@
     .line 104
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "PLMN_NETWORK_NAME_ICON"
+    const-string/jumbo v1, "PLMN_NETWORK_NAME_ICON"
 
     const/16 v2, 0x4e
 
@@ -1096,7 +1096,7 @@
     .line 105
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "USIM_IP_CONNECTION_PARAMS"
+    const-string/jumbo v1, "USIM_IP_CONNECTION_PARAMS"
 
     const/16 v2, 0x4f
 
@@ -1107,7 +1107,7 @@
     .line 106
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "IWLAN_HOME_ID_LIST"
+    const-string/jumbo v1, "IWLAN_HOME_ID_LIST"
 
     const/16 v2, 0x50
 
@@ -1118,7 +1118,7 @@
     .line 107
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "IWLAN_EQUIVALENT_HPLMN_PRESENTATION"
+    const-string/jumbo v1, "IWLAN_EQUIVALENT_HPLMN_PRESENTATION"
 
     const/16 v2, 0x51
 
@@ -1129,7 +1129,7 @@
     .line 108
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "IWLAN_HPLMN_PRIORITY_INDICATION"
+    const-string/jumbo v1, "IWLAN_HPLMN_PRIORITY_INDICATION"
 
     const/16 v2, 0x52
 
@@ -1140,7 +1140,7 @@
     .line 109
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "IWLAN_LAST_REGISTERED_PLMN"
+    const-string/jumbo v1, "IWLAN_LAST_REGISTERED_PLMN"
 
     const/16 v2, 0x53
 
@@ -1151,7 +1151,7 @@
     .line 110
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "EPS_MOBILITY_MANAGEMENT_INFO"
+    const-string/jumbo v1, "EPS_MOBILITY_MANAGEMENT_INFO"
 
     const/16 v2, 0x54
 
@@ -1162,7 +1162,7 @@
     .line 111
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "ALLOWED_CSG_LISTS_AND_INDICATIONS"
+    const-string/jumbo v1, "ALLOWED_CSG_LISTS_AND_INDICATIONS"
 
     const/16 v2, 0x55
 
@@ -1173,7 +1173,7 @@
     .line 112
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "CALL_CONTROL_ON_EPS_PDN_CONNECTION_BY_USIM"
+    const-string/jumbo v1, "CALL_CONTROL_ON_EPS_PDN_CONNECTION_BY_USIM"
 
     const/16 v2, 0x56
 
@@ -1184,7 +1184,7 @@
     .line 113
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "HPLMN_DIRECT_ACCESS"
+    const-string/jumbo v1, "HPLMN_DIRECT_ACCESS"
 
     const/16 v2, 0x57
 
@@ -1195,7 +1195,7 @@
     .line 114
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "ECALL_DATA"
+    const-string/jumbo v1, "ECALL_DATA"
 
     const/16 v2, 0x58
 
@@ -1206,7 +1206,7 @@
     .line 115
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "OPERATOR_CSG_LISTS_AND_INDICATIONS"
+    const-string/jumbo v1, "OPERATOR_CSG_LISTS_AND_INDICATIONS"
 
     const/16 v2, 0x59
 
@@ -1217,7 +1217,7 @@
     .line 116
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "SM_OVER_IP"
+    const-string/jumbo v1, "SM_OVER_IP"
 
     const/16 v2, 0x5a
 
@@ -1228,7 +1228,7 @@
     .line 117
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "CSG_DISPLAY_CONTROL"
+    const-string/jumbo v1, "CSG_DISPLAY_CONTROL"
 
     const/16 v2, 0x5b
 
@@ -1239,7 +1239,7 @@
     .line 118
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "IMS_COMMUNICATION_CONTROL_BY_USIM"
+    const-string/jumbo v1, "IMS_COMMUNICATION_CONTROL_BY_USIM"
 
     const/16 v2, 0x5c
 
@@ -1250,7 +1250,7 @@
     .line 119
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "EXTENDED_TERMINAL_APPLICATIONS"
+    const-string/jumbo v1, "EXTENDED_TERMINAL_APPLICATIONS"
 
     const/16 v2, 0x5d
 
@@ -1261,7 +1261,7 @@
     .line 120
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "UICC_ACCESS_TO_IMS"
+    const-string/jumbo v1, "UICC_ACCESS_TO_IMS"
 
     const/16 v2, 0x5e
 
@@ -1272,7 +1272,7 @@
     .line 121
     new-instance v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    const-string v1, "NAS_CONFIG_BY_USIM"
+    const-string/jumbo v1, "NAS_CONFIG_BY_USIM"
 
     const/16 v2, 0x5f
 
@@ -1305,551 +1305,551 @@
 
     aput-object v1, v0, v7
 
-    const/4 v1, 0x5
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->BDN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->BDN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/4 v2, 0x5
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x6
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->BDN_EXTENSION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->BDN_EXTENSION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/4 v2, 0x6
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x7
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->OUTGOING_CALL_INFO:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->OUTGOING_CALL_INFO:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/4 v2, 0x7
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x8
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->INCOMING_CALL_INFO:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->INCOMING_CALL_INFO:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x8
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x9
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SM_STORAGE:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SM_STORAGE:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x9
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xa
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SM_STATUS_REPORTS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SM_STATUS_REPORTS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0xa
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xb
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SM_SERVICE_PARAMS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SM_SERVICE_PARAMS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0xb
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xc
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->ADVICE_OF_CHARGE:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->ADVICE_OF_CHARGE:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0xc
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xd
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CAP_CONFIG_PARAMS_2:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CAP_CONFIG_PARAMS_2:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0xd
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xe
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CB_MESSAGE_ID:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CB_MESSAGE_ID:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0xe
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xf
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CB_MESSAGE_ID_RANGES:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CB_MESSAGE_ID_RANGES:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0xf
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x10
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GROUP_ID_LEVEL_1:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GROUP_ID_LEVEL_1:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x10
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x11
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GROUP_ID_LEVEL_2:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GROUP_ID_LEVEL_2:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x11
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x12
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SPN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SPN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x12
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x13
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->USER_PLMN_SELECT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->USER_PLMN_SELECT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x13
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x14
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MSISDN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MSISDN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x14
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x15
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IMAGE:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IMAGE:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x15
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x16
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->LOCALISED_SERVICE_AREAS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->LOCALISED_SERVICE_AREAS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x16
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x17
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EMLPP:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EMLPP:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x17
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x18
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EMLPP_AUTO_ANSWER:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EMLPP_AUTO_ANSWER:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x18
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x19
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->RFU:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->RFU:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x19
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x1a
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GSM_ACCESS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GSM_ACCESS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x1a
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x1b
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->DATA_DL_VIA_SMS_PP:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->DATA_DL_VIA_SMS_PP:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x1b
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x1c
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->DATA_DL_VIA_SMS_CB:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->DATA_DL_VIA_SMS_CB:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x1c
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x1d
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CALL_CONTROL_BY_USIM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CALL_CONTROL_BY_USIM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x1d
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x1e
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MO_SMS_CONTROL_BY_USIM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MO_SMS_CONTROL_BY_USIM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x1e
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x1f
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->RUN_AT_COMMAND:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->RUN_AT_COMMAND:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x1f
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x20
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IGNORED_1:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IGNORED_1:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x20
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x21
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->ENABLED_SERVICES_TABLE:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->ENABLED_SERVICES_TABLE:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x21
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x22
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->APN_CONTROL_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->APN_CONTROL_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x22
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x23
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->DEPERSONALISATION_CONTROL_KEYS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->DEPERSONALISATION_CONTROL_KEYS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x23
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x24
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->COOPERATIVE_NETWORK_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->COOPERATIVE_NETWORK_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x24
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x25
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GSM_SECURITY_CONTEXT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GSM_SECURITY_CONTEXT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x25
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x26
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CPBCCH_INFO:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CPBCCH_INFO:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x26
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x27
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->INVESTIGATION_SCAN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->INVESTIGATION_SCAN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x27
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x28
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MEXE:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MEXE:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x28
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x29
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->OPERATOR_PLMN_SELECT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->OPERATOR_PLMN_SELECT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x29
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x2a
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->HPLMN_SELECT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->HPLMN_SELECT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x2a
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x2b
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EXTENSION_5:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EXTENSION_5:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x2b
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x2c
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->PLMN_NETWORK_NAME:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->PLMN_NETWORK_NAME:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x2c
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x2d
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->OPERATOR_PLMN_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->OPERATOR_PLMN_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x2d
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x2e
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MBDN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MBDN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x2e
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x2f
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MWI_STATUS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MWI_STATUS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x2f
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x30
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CFI_STATUS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CFI_STATUS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x30
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x31
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IGNORED_2:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IGNORED_2:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x31
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x32
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SERVICE_PROVIDER_DISPLAY_INFO:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SERVICE_PROVIDER_DISPLAY_INFO:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x32
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x33
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MMS_NOTIFICATION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MMS_NOTIFICATION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x33
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x34
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MMS_NOTIFICATION_EXTENSION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MMS_NOTIFICATION_EXTENSION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x34
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x35
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GPRS_CALL_CONTROL_BY_USIM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GPRS_CALL_CONTROL_BY_USIM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x35
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x36
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MMS_CONNECTIVITY_PARAMS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MMS_CONNECTIVITY_PARAMS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x36
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x37
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->NETWORK_INDICATION_OF_ALERTING:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->NETWORK_INDICATION_OF_ALERTING:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x37
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x38
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->VGCS_GROUP_ID_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->VGCS_GROUP_ID_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x38
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x39
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->VBS_GROUP_ID_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->VBS_GROUP_ID_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x39
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x3a
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->PSEUDONYM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->PSEUDONYM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x3a
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x3b
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IWLAN_USER_PLMN_SELECT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IWLAN_USER_PLMN_SELECT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x3b
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x3c
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IWLAN_OPERATOR_PLMN_SELECT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IWLAN_OPERATOR_PLMN_SELECT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x3c
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x3d
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->USER_WSID_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->USER_WSID_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x3d
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x3e
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->OPERATOR_WSID_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->OPERATOR_WSID_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x3e
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x3f
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->VGCS_SECURITY:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->VGCS_SECURITY:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x3f
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x40
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->VBS_SECURITY:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->VBS_SECURITY:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x40
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x41
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->WLAN_REAUTH_IDENTITY:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->WLAN_REAUTH_IDENTITY:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x41
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x42
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MM_STORAGE:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MM_STORAGE:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x42
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x43
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GBA:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GBA:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x43
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x44
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MBMS_SECURITY:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->MBMS_SECURITY:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x44
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x45
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->DATA_DL_VIA_USSD:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->DATA_DL_VIA_USSD:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x45
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x46
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EQUIVALENT_HPLMN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EQUIVALENT_HPLMN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x46
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x47
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->TERMINAL_PROFILE_AFTER_UICC_ACTIVATION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->TERMINAL_PROFILE_AFTER_UICC_ACTIVATION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x47
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x48
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EQUIVALENT_HPLMN_PRESENTATION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EQUIVALENT_HPLMN_PRESENTATION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x48
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x49
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->LAST_RPLMN_SELECTION_INDICATION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->LAST_RPLMN_SELECTION_INDICATION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x49
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x4a
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->OMA_BCAST_PROFILE:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->OMA_BCAST_PROFILE:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x4a
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x4b
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GBA_LOCAL_KEY_ESTABLISHMENT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->GBA_LOCAL_KEY_ESTABLISHMENT:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x4b
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x4c
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->TERMINAL_APPLICATIONS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->TERMINAL_APPLICATIONS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x4c
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x4d
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SPN_ICON:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SPN_ICON:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x4d
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x4e
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->PLMN_NETWORK_NAME_ICON:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->PLMN_NETWORK_NAME_ICON:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x4e
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x4f
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->USIM_IP_CONNECTION_PARAMS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->USIM_IP_CONNECTION_PARAMS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x4f
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x50
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IWLAN_HOME_ID_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IWLAN_HOME_ID_LIST:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x50
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x51
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IWLAN_EQUIVALENT_HPLMN_PRESENTATION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IWLAN_EQUIVALENT_HPLMN_PRESENTATION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x51
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x52
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IWLAN_HPLMN_PRIORITY_INDICATION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IWLAN_HPLMN_PRIORITY_INDICATION:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x52
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x53
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IWLAN_LAST_REGISTERED_PLMN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IWLAN_LAST_REGISTERED_PLMN:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x53
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x54
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EPS_MOBILITY_MANAGEMENT_INFO:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EPS_MOBILITY_MANAGEMENT_INFO:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x54
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x55
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->ALLOWED_CSG_LISTS_AND_INDICATIONS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->ALLOWED_CSG_LISTS_AND_INDICATIONS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x55
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x56
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CALL_CONTROL_ON_EPS_PDN_CONNECTION_BY_USIM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CALL_CONTROL_ON_EPS_PDN_CONNECTION_BY_USIM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x56
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x57
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->HPLMN_DIRECT_ACCESS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->HPLMN_DIRECT_ACCESS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x57
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x58
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->ECALL_DATA:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->ECALL_DATA:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x58
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x59
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->OPERATOR_CSG_LISTS_AND_INDICATIONS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->OPERATOR_CSG_LISTS_AND_INDICATIONS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x59
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x5a
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SM_OVER_IP:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->SM_OVER_IP:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x5a
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x5b
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CSG_DISPLAY_CONTROL:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->CSG_DISPLAY_CONTROL:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x5b
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x5c
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IMS_COMMUNICATION_CONTROL_BY_USIM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->IMS_COMMUNICATION_CONTROL_BY_USIM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x5c
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x5d
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EXTENDED_TERMINAL_APPLICATIONS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->EXTENDED_TERMINAL_APPLICATIONS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x5d
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x5e
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->UICC_ACCESS_TO_IMS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->UICC_ACCESS_TO_IMS:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x5e
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x5f
+    sget-object v1, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->NAS_CONFIG_BY_USIM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
-    sget-object v2, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->NAS_CONFIG_BY_USIM:Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
+    const/16 v2, 0x5f
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     sput-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->$VALUES:[Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
@@ -1858,13 +1858,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 25
@@ -1875,7 +1868,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 25
@@ -1896,12 +1889,6 @@
     .prologue
     .line 25
     sget-object v0, Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->$VALUES:[Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/uicc/UsimServiceTable$UsimService;
 
     return-object v0
 .end method

@@ -11,6 +11,6 @@
     .line 29
     invoke-direct {p0}, Landroid/util/AndroidException;-><init>()V
 
-    .line 30
+    .line 28
     return-void
 .end method

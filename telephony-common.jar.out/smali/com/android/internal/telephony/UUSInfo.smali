@@ -60,15 +60,15 @@
 
     iput-object v0, p0, Lcom/android/internal/telephony/UUSInfo;->mUusData:[B
 
-    .line 69
+    .line 65
     return-void
 .end method
 
 .method public constructor <init>(II[B)V
     .locals 0
-    .parameter "uusType"
-    .parameter "uusDcs"
-    .parameter "uusData"
+    .param p1, "uusType"    # I
+    .param p2, "uusDcs"    # I
+    .param p3, "uusData"    # [B
 
     .prologue
     .line 71
@@ -83,7 +83,7 @@
     .line 74
     iput-object p3, p0, Lcom/android/internal/telephony/UUSInfo;->mUusData:[B
 
-    .line 75
+    .line 71
     return-void
 .end method
 
@@ -121,36 +121,36 @@
 
 .method public setDcs(I)V
     .locals 0
-    .parameter "uusDcs"
+    .param p1, "uusDcs"    # I
 
     .prologue
     .line 82
     iput p1, p0, Lcom/android/internal/telephony/UUSInfo;->mUusDcs:I
 
-    .line 83
+    .line 81
     return-void
 .end method
 
 .method public setType(I)V
     .locals 0
-    .parameter "uusType"
+    .param p1, "uusType"    # I
 
     .prologue
     .line 90
     iput p1, p0, Lcom/android/internal/telephony/UUSInfo;->mUusType:I
 
-    .line 91
+    .line 89
     return-void
 .end method
 
 .method public setUserData([B)V
     .locals 0
-    .parameter "uusData"
+    .param p1, "uusData"    # [B
 
     .prologue
     .line 98
     iput-object p1, p0, Lcom/android/internal/telephony/UUSInfo;->mUusData:[B
 
-    .line 99
+    .line 97
     return-void
 .end method

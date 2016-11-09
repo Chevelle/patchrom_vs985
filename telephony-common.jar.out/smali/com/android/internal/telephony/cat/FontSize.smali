@@ -42,7 +42,7 @@
     .line 26
     new-instance v0, Lcom/android/internal/telephony/cat/FontSize;
 
-    const-string v1, "NORMAL"
+    const-string/jumbo v1, "NORMAL"
 
     invoke-direct {v0, v1, v2, v2}, Lcom/android/internal/telephony/cat/FontSize;-><init>(Ljava/lang/String;II)V
 
@@ -51,7 +51,7 @@
     .line 27
     new-instance v0, Lcom/android/internal/telephony/cat/FontSize;
 
-    const-string v1, "LARGE"
+    const-string/jumbo v1, "LARGE"
 
     invoke-direct {v0, v1, v3, v3}, Lcom/android/internal/telephony/cat/FontSize;-><init>(Ljava/lang/String;II)V
 
@@ -60,7 +60,7 @@
     .line 28
     new-instance v0, Lcom/android/internal/telephony/cat/FontSize;
 
-    const-string v1, "SMALL"
+    const-string/jumbo v1, "SMALL"
 
     invoke-direct {v0, v1, v4, v4}, Lcom/android/internal/telephony/cat/FontSize;-><init>(Ljava/lang/String;II)V
 
@@ -90,14 +90,7 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "value"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "value"    # I
 
     .prologue
     .line 32
@@ -106,61 +99,55 @@
     .line 33
     iput p3, p0, Lcom/android/internal/telephony/cat/FontSize;->mValue:I
 
-    .line 34
+    .line 32
     return-void
 .end method
 
 .method public static fromInt(I)Lcom/android/internal/telephony/cat/FontSize;
     .locals 5
-    .parameter "value"
+    .param p0, "value"    # I
 
     .prologue
     .line 43
     invoke-static {}, Lcom/android/internal/telephony/cat/FontSize;->values()[Lcom/android/internal/telephony/cat/FontSize;
 
-    move-result-object v0
+    move-result-object v2
 
-    .local v0, arr$:[Lcom/android/internal/telephony/cat/FontSize;
-    array-length v3, v0
+    const/4 v1, 0x0
 
-    .local v3, len$:I
-    const/4 v2, 0x0
+    array-length v3, v2
 
-    .local v2, i$:I
     :goto_0
-    if-ge v2, v3, :cond_1
+    if-ge v1, v3, :cond_1
 
-    aget-object v1, v0, v2
+    aget-object v0, v2, v1
 
     .line 44
-    .local v1, e:Lcom/android/internal/telephony/cat/FontSize;
-    iget v4, v1, Lcom/android/internal/telephony/cat/FontSize;->mValue:I
+    .local v0, "e":Lcom/android/internal/telephony/cat/FontSize;
+    iget v4, v0, Lcom/android/internal/telephony/cat/FontSize;->mValue:I
 
     if-ne v4, p0, :cond_0
 
-    .line 48
-    .end local v1           #e:Lcom/android/internal/telephony/cat/FontSize;
-    :goto_1
-    return-object v1
+    .line 45
+    return-object v0
 
     .line 43
-    .restart local v1       #e:Lcom/android/internal/telephony/cat/FontSize;
     :cond_0
-    add-int/lit8 v2, v2, 0x1
+    add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
     .line 48
-    .end local v1           #e:Lcom/android/internal/telephony/cat/FontSize;
+    .end local v0    # "e":Lcom/android/internal/telephony/cat/FontSize;
     :cond_1
     const/4 v1, 0x0
 
-    goto :goto_1
+    return-object v1
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/cat/FontSize;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 25
@@ -181,12 +168,6 @@
     .prologue
     .line 25
     sget-object v0, Lcom/android/internal/telephony/cat/FontSize;->$VALUES:[Lcom/android/internal/telephony/cat/FontSize;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/cat/FontSize;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/cat/FontSize;
 
     return-object v0
 .end method

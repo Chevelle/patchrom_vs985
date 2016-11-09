@@ -23,64 +23,68 @@
 # direct methods
 .method constructor <init>(Landroid/os/Handler;Landroid/content/Context;Ljava/util/concurrent/atomic/AtomicBoolean;)V
     .locals 1
-    .parameter "handler"
-    .parameter "context"
-    .parameter "enabled"
+    .param p1, "handler"    # Landroid/os/Handler;
+    .param p2, "context"    # Landroid/content/Context;
+    .param p3, "enabled"    # Ljava/util/concurrent/atomic/AtomicBoolean;
 
     .prologue
-    .line 230
+    .line 231
     invoke-direct {p0, p1}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
 
-    .line 231
+    .line 232
     iput-object p2, p0, Lcom/android/internal/telephony/SmsUsageMonitor$SettingsObserver;->mContext:Landroid/content/Context;
 
-    .line 232
+    .line 233
     iput-object p3, p0, Lcom/android/internal/telephony/SmsUsageMonitor$SettingsObserver;->mEnabled:Ljava/util/concurrent/atomic/AtomicBoolean;
 
-    .line 233
+    .line 234
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/android/internal/telephony/SmsUsageMonitor$SettingsObserver;->onChange(Z)V
 
-    .line 234
+    .line 230
     return-void
 .end method
 
 
 # virtual methods
 .method public onChange(Z)V
-    .locals 4
-    .parameter "selfChange"
+    .locals 5
+    .param p1, "selfChange"    # Z
 
     .prologue
     const/4 v0, 0x1
 
-    .line 238
-    iget-object v1, p0, Lcom/android/internal/telephony/SmsUsageMonitor$SettingsObserver;->mEnabled:Ljava/util/concurrent/atomic/AtomicBoolean;
+    const/4 v1, 0x0
 
-    iget-object v2, p0, Lcom/android/internal/telephony/SmsUsageMonitor$SettingsObserver;->mContext:Landroid/content/Context;
+    .line 239
+    iget-object v2, p0, Lcom/android/internal/telephony/SmsUsageMonitor$SettingsObserver;->mEnabled:Ljava/util/concurrent/atomic/AtomicBoolean;
 
-    invoke-virtual {v2}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+    iget-object v3, p0, Lcom/android/internal/telephony/SmsUsageMonitor$SettingsObserver;->mContext:Landroid/content/Context;
 
-    move-result-object v2
+    invoke-virtual {v3}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
-    const-string v3, "sms_short_code_confirmation"
-
-    invoke-static {v2, v3, v0}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    :goto_0
-    invoke-virtual {v1, v0}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
+    move-result-object v3
 
     .line 240
-    return-void
+    const-string/jumbo v4, "sms_short_code_confirmation"
+
+    .line 239
+    invoke-static {v3, v4, v0}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    :goto_0
+    invoke-virtual {v2, v0}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
 
     .line 238
-    :cond_0
-    const/4 v0, 0x0
+    return-void
 
+    :cond_0
+    move v0, v1
+
+    .line 239
     goto :goto_0
 .end method

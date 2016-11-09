@@ -9,32 +9,17 @@
 
 # direct methods
 .method public constructor <init>(Lcom/android/internal/telephony/PhoneSubInfo;)V
-    .locals 1
-    .parameter "phoneSubInfo"
+    .locals 0
+    .param p1, "phoneSubInfo"    # Lcom/android/internal/telephony/PhoneSubInfo;
 
     .prologue
-    .line 28
+    .line 29
     invoke-direct {p0}, Lcom/android/internal/telephony/IPhoneSubInfo$Stub;-><init>()V
 
-    .line 29
+    .line 30
     iput-object p1, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
-    .line 30
-    const-string v0, "iphonesubinfo"
-
-    invoke-static {v0}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
-
-    move-result-object v0
-
-    if-nez v0, :cond_0
-
-    .line 31
-    const-string v0, "iphonesubinfo"
-
-    invoke-static {v0, p0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
-
-    .line 33
-    :cond_0
+    .line 29
     return-void
 .end method
 
@@ -42,17 +27,17 @@
 # virtual methods
 .method protected dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
     .locals 1
-    .parameter "fd"
-    .parameter "pw"
-    .parameter "args"
+    .param p1, "fd"    # Ljava/io/FileDescriptor;
+    .param p2, "pw"    # Ljava/io/PrintWriter;
+    .param p3, "args"    # [Ljava/lang/String;
 
     .prologue
-    .line 150
+    .line 281
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
     invoke-virtual {v0, p1, p2, p3}, Lcom/android/internal/telephony/PhoneSubInfo;->dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
 
-    .line 151
+    .line 280
     return-void
 .end method
 
@@ -60,7 +45,7 @@
     .locals 1
 
     .prologue
-    .line 109
+    .line 115
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
     invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getCompleteVoiceMailNumber()Ljava/lang/String;
@@ -70,56 +55,208 @@
     return-object v0
 .end method
 
-.method public getDeviceId()Ljava/lang/String;
+.method public getCompleteVoiceMailNumberForSubscriber(I)Ljava/lang/String;
     .locals 1
+    .param p1, "subId"    # I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
     .prologue
-    .line 41
+    .line 226
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getDeviceId(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "callingPackage"    # Ljava/lang/String;
+
+    .prologue
+    .line 39
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
-    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getDeviceId()Ljava/lang/String;
+    invoke-virtual {v0, p1}, Lcom/android/internal/telephony/PhoneSubInfo;->getDeviceId(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getDeviceSvn()Ljava/lang/String;
+.method public getDeviceIdForPhone(ILjava/lang/String;)Ljava/lang/String;
     .locals 1
+    .param p1, "phoneId"    # I
+    .param p2, "callingPackage"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
     .prologue
-    .line 46
+    .line 157
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getDeviceSvn(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "callingPackage"    # Ljava/lang/String;
+
+    .prologue
+    .line 52
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
-    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getDeviceSvn()Ljava/lang/String;
+    invoke-virtual {v0, p1}, Lcom/android/internal/telephony/PhoneSubInfo;->getDeviceSvn(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getGroupIdLevel1()Ljava/lang/String;
+.method public getDeviceSvnUsingSubId(ILjava/lang/String;)Ljava/lang/String;
     .locals 1
+    .param p1, "subId"    # I
+    .param p2, "callingPackage"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
     .prologue
-    .line 61
+    .line 169
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getGroupIdLevel1(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "callingPackage"    # Ljava/lang/String;
+
+    .prologue
+    .line 67
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
-    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getGroupIdLevel1()Ljava/lang/String;
+    invoke-virtual {v0, p1}, Lcom/android/internal/telephony/PhoneSubInfo;->getGroupIdLevel1(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getIccSerialNumber()Ljava/lang/String;
+.method public getGroupIdLevel1ForSubscriber(ILjava/lang/String;)Ljava/lang/String;
     .locals 1
+    .param p1, "subId"    # I
+    .param p2, "callingPackage"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
     .prologue
-    .line 69
+    .line 189
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getIccSerialNumber(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "callingPackage"    # Ljava/lang/String;
+
+    .prologue
+    .line 75
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
-    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getIccSerialNumber()Ljava/lang/String;
+    invoke-virtual {v0, p1}, Lcom/android/internal/telephony/PhoneSubInfo;->getIccSerialNumber(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getIccSerialNumberForSubscriber(ILjava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # I
+    .param p2, "callingPackage"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 196
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getIccSimChallengeResponse(IILjava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # I
+    .param p2, "appType"    # I
+    .param p3, "data"    # Ljava/lang/String;
+
+    .prologue
+    .line 276
+    iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
+
+    invoke-virtual {v0, p1, p2, p3}, Lcom/android/internal/telephony/PhoneSubInfo;->getIccSimChallengeResponse(IILjava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getImei(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "callingPackage"    # Ljava/lang/String;
+
+    .prologue
+    .line 43
+    iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
+
+    invoke-virtual {v0, p1}, Lcom/android/internal/telephony/PhoneSubInfo;->getImei(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getImeiForSubscriber(ILjava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # I
+    .param p2, "callingPackage"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 163
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getIsimChallengeResponse(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "nonce"    # Ljava/lang/String;
+
+    .prologue
+    .line 262
+    iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
+
+    invoke-virtual {v0, p1}, Lcom/android/internal/telephony/PhoneSubInfo;->getIsimChallengeResponse(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -130,7 +267,7 @@
     .locals 1
 
     .prologue
-    .line 135
+    .line 141
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
     invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getIsimDomain()Ljava/lang/String;
@@ -144,7 +281,7 @@
     .locals 1
 
     .prologue
-    .line 126
+    .line 132
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
     invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getIsimImpi()Ljava/lang/String;
@@ -158,7 +295,7 @@
     .locals 1
 
     .prologue
-    .line 145
+    .line 151
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
     invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getIsimImpu()[Ljava/lang/String;
@@ -168,98 +305,266 @@
     return-object v0
 .end method
 
-.method public getLine1AlphaTag()Ljava/lang/String;
+.method public getIsimIst()Ljava/lang/String;
     .locals 1
 
     .prologue
-    .line 85
+    .line 241
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
-    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getLine1AlphaTag()Ljava/lang/String;
+    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getIsimIst()Ljava/lang/String;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getLine1Number()Ljava/lang/String;
+.method public getIsimPcscf()[Ljava/lang/String;
     .locals 1
 
     .prologue
-    .line 77
+    .line 251
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
-    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getLine1Number()Ljava/lang/String;
+    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getIsimPcscf()[Ljava/lang/String;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getMsisdn()Ljava/lang/String;
+.method public getLine1AlphaTag(Ljava/lang/String;)Ljava/lang/String;
     .locals 1
+    .param p1, "callingPackage"    # Ljava/lang/String;
 
     .prologue
-    .line 93
+    .line 91
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
-    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getMsisdn()Ljava/lang/String;
+    invoke-virtual {v0, p1}, Lcom/android/internal/telephony/PhoneSubInfo;->getLine1AlphaTag(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getSubscriberId()Ljava/lang/String;
+.method public getLine1AlphaTagForSubscriber(ILjava/lang/String;)Ljava/lang/String;
     .locals 1
+    .param p1, "subId"    # I
+    .param p2, "callingPackage"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
     .prologue
-    .line 54
+    .line 208
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getLine1Number(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "callingPackage"    # Ljava/lang/String;
+
+    .prologue
+    .line 83
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
-    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getSubscriberId()Ljava/lang/String;
+    invoke-virtual {v0, p1}, Lcom/android/internal/telephony/PhoneSubInfo;->getLine1Number(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getVoiceMailAlphaTag()Ljava/lang/String;
+.method public getLine1NumberForSubscriber(ILjava/lang/String;)Ljava/lang/String;
     .locals 1
+    .param p1, "subId"    # I
+    .param p2, "callingPackage"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
     .prologue
-    .line 117
+    .line 202
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getMsisdn(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "callingPackage"    # Ljava/lang/String;
+
+    .prologue
+    .line 99
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
-    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getVoiceMailAlphaTag()Ljava/lang/String;
+    invoke-virtual {v0, p1}, Lcom/android/internal/telephony/PhoneSubInfo;->getMsisdn(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getVoiceMailNumber()Ljava/lang/String;
+.method public getMsisdnForSubscriber(ILjava/lang/String;)Ljava/lang/String;
     .locals 1
+    .param p1, "subId"    # I
+    .param p2, "callingPackage"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
     .prologue
-    .line 101
+    .line 214
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getNai(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "callingPackage"    # Ljava/lang/String;
+
+    .prologue
+    .line 47
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
-    invoke-virtual {v0}, Lcom/android/internal/telephony/PhoneSubInfo;->getVoiceMailNumber()Ljava/lang/String;
+    invoke-virtual {v0, p1}, Lcom/android/internal/telephony/PhoneSubInfo;->getNai(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getNaiForSubscriber(ILjava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # I
+    .param p2, "callingPackage"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 175
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getSubscriberId(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "callingPackage"    # Ljava/lang/String;
+
+    .prologue
+    .line 60
+    iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
+
+    invoke-virtual {v0, p1}, Lcom/android/internal/telephony/PhoneSubInfo;->getSubscriberId(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getSubscriberIdForSubscriber(ILjava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # I
+    .param p2, "callingPackage"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 182
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getVoiceMailAlphaTag(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "callingPackage"    # Ljava/lang/String;
+
+    .prologue
+    .line 123
+    iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
+
+    invoke-virtual {v0, p1}, Lcom/android/internal/telephony/PhoneSubInfo;->getVoiceMailAlphaTag(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getVoiceMailAlphaTagForSubscriber(ILjava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # I
+    .param p2, "callingPackage"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 232
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getVoiceMailNumber(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "callingPackage"    # Ljava/lang/String;
+
+    .prologue
+    .line 107
+    iget-object v0, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
+
+    invoke-virtual {v0, p1}, Lcom/android/internal/telephony/PhoneSubInfo;->getVoiceMailNumber(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getVoiceMailNumberForSubscriber(ILjava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # I
+    .param p2, "callingPackage"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 220
+    const/4 v0, 0x0
 
     return-object v0
 .end method
 
 .method public setmPhoneSubInfo(Lcom/android/internal/telephony/PhoneSubInfo;)V
     .locals 0
-    .parameter "phoneSubInfo"
+    .param p1, "phoneSubInfo"    # Lcom/android/internal/telephony/PhoneSubInfo;
 
     .prologue
-    .line 36
+    .line 34
     iput-object p1, p0, Lcom/android/internal/telephony/PhoneSubInfoProxy;->mPhoneSubInfo:Lcom/android/internal/telephony/PhoneSubInfo;
 
-    .line 37
+    .line 33
     return-void
 .end method

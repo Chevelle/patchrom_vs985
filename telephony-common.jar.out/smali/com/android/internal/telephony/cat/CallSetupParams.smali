@@ -12,21 +12,21 @@
 # direct methods
 .method constructor <init>(Lcom/android/internal/telephony/cat/CommandDetails;Lcom/android/internal/telephony/cat/TextMessage;Lcom/android/internal/telephony/cat/TextMessage;)V
     .locals 0
-    .parameter "cmdDet"
-    .parameter "confirmMsg"
-    .parameter "callMsg"
+    .param p1, "cmdDet"    # Lcom/android/internal/telephony/cat/CommandDetails;
+    .param p2, "confirmMsg"    # Lcom/android/internal/telephony/cat/TextMessage;
+    .param p3, "callMsg"    # Lcom/android/internal/telephony/cat/TextMessage;
 
     .prologue
-    .line 112
+    .line 132
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/cat/CommandParams;-><init>(Lcom/android/internal/telephony/cat/CommandDetails;)V
 
-    .line 113
+    .line 133
     iput-object p2, p0, Lcom/android/internal/telephony/cat/CallSetupParams;->mConfirmMsg:Lcom/android/internal/telephony/cat/TextMessage;
 
-    .line 114
+    .line 134
     iput-object p3, p0, Lcom/android/internal/telephony/cat/CallSetupParams;->mCallMsg:Lcom/android/internal/telephony/cat/TextMessage;
 
-    .line 115
+    .line 131
     return-void
 .end method
 
@@ -34,62 +34,60 @@
 # virtual methods
 .method setIcon(Landroid/graphics/Bitmap;)Z
     .locals 3
-    .parameter "icon"
+    .param p1, "icon"    # Landroid/graphics/Bitmap;
 
     .prologue
-    const/4 v1, 0x1
+    const/4 v2, 0x1
 
-    const/4 v0, 0x0
+    const/4 v1, 0x0
 
-    .line 119
-    if-nez p1, :cond_1
+    .line 139
+    if-nez p1, :cond_0
 
-    .line 129
+    .line 140
+    return v1
+
+    .line 142
     :cond_0
-    :goto_0
-    return v0
+    iget-object v0, p0, Lcom/android/internal/telephony/cat/CallSetupParams;->mConfirmMsg:Lcom/android/internal/telephony/cat/TextMessage;
 
-    .line 122
-    :cond_1
-    iget-object v2, p0, Lcom/android/internal/telephony/cat/CallSetupParams;->mConfirmMsg:Lcom/android/internal/telephony/cat/TextMessage;
+    if-eqz v0, :cond_1
 
-    if-eqz v2, :cond_2
+    iget-object v0, p0, Lcom/android/internal/telephony/cat/CallSetupParams;->mConfirmMsg:Lcom/android/internal/telephony/cat/TextMessage;
 
-    iget-object v2, p0, Lcom/android/internal/telephony/cat/CallSetupParams;->mConfirmMsg:Lcom/android/internal/telephony/cat/TextMessage;
+    iget-object v0, v0, Lcom/android/internal/telephony/cat/TextMessage;->icon:Landroid/graphics/Bitmap;
 
-    iget-object v2, v2, Lcom/android/internal/telephony/cat/TextMessage;->icon:Landroid/graphics/Bitmap;
+    if-nez v0, :cond_1
 
-    if-nez v2, :cond_2
-
-    .line 123
+    .line 143
     iget-object v0, p0, Lcom/android/internal/telephony/cat/CallSetupParams;->mConfirmMsg:Lcom/android/internal/telephony/cat/TextMessage;
 
     iput-object p1, v0, Lcom/android/internal/telephony/cat/TextMessage;->icon:Landroid/graphics/Bitmap;
 
-    move v0, v1
+    .line 144
+    return v2
 
-    .line 124
-    goto :goto_0
+    .line 145
+    :cond_1
+    iget-object v0, p0, Lcom/android/internal/telephony/cat/CallSetupParams;->mCallMsg:Lcom/android/internal/telephony/cat/TextMessage;
 
-    .line 125
-    :cond_2
-    iget-object v2, p0, Lcom/android/internal/telephony/cat/CallSetupParams;->mCallMsg:Lcom/android/internal/telephony/cat/TextMessage;
+    if-eqz v0, :cond_2
 
-    if-eqz v2, :cond_0
+    iget-object v0, p0, Lcom/android/internal/telephony/cat/CallSetupParams;->mCallMsg:Lcom/android/internal/telephony/cat/TextMessage;
 
-    iget-object v2, p0, Lcom/android/internal/telephony/cat/CallSetupParams;->mCallMsg:Lcom/android/internal/telephony/cat/TextMessage;
+    iget-object v0, v0, Lcom/android/internal/telephony/cat/TextMessage;->icon:Landroid/graphics/Bitmap;
 
-    iget-object v2, v2, Lcom/android/internal/telephony/cat/TextMessage;->icon:Landroid/graphics/Bitmap;
+    if-nez v0, :cond_2
 
-    if-nez v2, :cond_0
-
-    .line 126
+    .line 146
     iget-object v0, p0, Lcom/android/internal/telephony/cat/CallSetupParams;->mCallMsg:Lcom/android/internal/telephony/cat/TextMessage;
 
     iput-object p1, v0, Lcom/android/internal/telephony/cat/TextMessage;->icon:Landroid/graphics/Bitmap;
 
-    move v0, v1
+    .line 147
+    return v2
 
-    .line 127
-    goto :goto_0
+    .line 149
+    :cond_2
+    return v1
 .end method

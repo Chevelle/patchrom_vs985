@@ -27,7 +27,7 @@
 
     move-result-object v1
 
-    .local v1, it:Ljava/util/Iterator;,"Ljava/util/Iterator<Lcom/android/internal/telephony/Connection;>;"
+    .local v1, "it":Ljava/util/Iterator;, "Ljava/util/Iterator<Lcom/android/internal/telephony/Connection;>;"
     :cond_0
     :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
@@ -44,7 +44,7 @@
     check-cast v0, Lcom/android/internal/telephony/Connection;
 
     .line 47
-    .local v0, c:Lcom/android/internal/telephony/Connection;
+    .local v0, "c":Lcom/android/internal/telephony/Connection;
     invoke-virtual {v0}, Lcom/android/internal/telephony/Connection;->getState()Lcom/android/internal/telephony/Call$State;
 
     move-result-object v2
@@ -58,7 +58,7 @@
     goto :goto_0
 
     .line 50
-    .end local v0           #c:Lcom/android/internal/telephony/Connection;
+    .end local v0    # "c":Lcom/android/internal/telephony/Connection;
     :cond_1
     iget-object v2, p0, Lcom/android/internal/telephony/sip/SipCallBase;->mConnections:Ljava/util/ArrayList;
 
@@ -72,7 +72,7 @@
 
     invoke-virtual {p0, v2}, Lcom/android/internal/telephony/sip/SipCallBase;->setState(Lcom/android/internal/telephony/Call$State;)V
 
-    .line 51
+    .line 44
     :cond_2
     return-void
 .end method
@@ -142,13 +142,13 @@
 
     move-result-object v0
 
-    const-string v1, ":"
+    const-string/jumbo v1, ":"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    invoke-super {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+    invoke-super {p0}, Lcom/android/internal/telephony/Call;->toString()Ljava/lang/String;
 
     move-result-object v1
 

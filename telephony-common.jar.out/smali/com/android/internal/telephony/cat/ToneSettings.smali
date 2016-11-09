@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/internal/telephony/cat/ToneSettings$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -39,12 +47,13 @@
 
     sput-object v0, Lcom/android/internal/telephony/cat/ToneSettings;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 26
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 3
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     const/4 v2, 0x0
@@ -84,7 +93,7 @@
     :goto_0
     iput-boolean v0, p0, Lcom/android/internal/telephony/cat/ToneSettings;->vibrate:Z
 
-    .line 41
+    .line 37
     return-void
 
     .line 40
@@ -94,13 +103,11 @@
     goto :goto_0
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Lcom/android/internal/telephony/cat/ToneSettings$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Lcom/android/internal/telephony/cat/ToneSettings;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 26
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/cat/ToneSettings;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -108,9 +115,9 @@
 
 .method public constructor <init>(Lcom/android/internal/telephony/cat/Duration;Lcom/android/internal/telephony/cat/Tone;Z)V
     .locals 0
-    .parameter "duration"
-    .parameter "tone"
-    .parameter "vibrate"
+    .param p1, "duration"    # Lcom/android/internal/telephony/cat/Duration;
+    .param p2, "tone"    # Lcom/android/internal/telephony/cat/Tone;
+    .param p3, "vibrate"    # Z
 
     .prologue
     .line 31
@@ -125,7 +132,7 @@
     .line 34
     iput-boolean p3, p0, Lcom/android/internal/telephony/cat/ToneSettings;->vibrate:Z
 
-    .line 35
+    .line 31
     return-void
 .end method
 
@@ -143,8 +150,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 2
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     const/4 v0, 0x0
@@ -169,6 +176,6 @@
     :cond_0
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 53
+    .line 49
     return-void
 .end method

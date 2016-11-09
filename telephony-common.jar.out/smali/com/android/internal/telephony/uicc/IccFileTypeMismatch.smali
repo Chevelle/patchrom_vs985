@@ -11,18 +11,17 @@
     .line 24
     invoke-direct {p0}, Lcom/android/internal/telephony/uicc/IccException;-><init>()V
 
-    .line 26
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "s"
+    .param p1, "s"    # Ljava/lang/String;
 
     .prologue
     .line 29
     invoke-direct {p0, p1}, Lcom/android/internal/telephony/uicc/IccException;-><init>(Ljava/lang/String;)V
 
-    .line 30
+    .line 28
     return-void
 .end method

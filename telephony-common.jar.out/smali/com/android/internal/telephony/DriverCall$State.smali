@@ -57,7 +57,7 @@
     .line 30
     new-instance v0, Lcom/android/internal/telephony/DriverCall$State;
 
-    const-string v1, "ACTIVE"
+    const-string/jumbo v1, "ACTIVE"
 
     invoke-direct {v0, v1, v3}, Lcom/android/internal/telephony/DriverCall$State;-><init>(Ljava/lang/String;I)V
 
@@ -66,7 +66,7 @@
     .line 31
     new-instance v0, Lcom/android/internal/telephony/DriverCall$State;
 
-    const-string v1, "HOLDING"
+    const-string/jumbo v1, "HOLDING"
 
     invoke-direct {v0, v1, v4}, Lcom/android/internal/telephony/DriverCall$State;-><init>(Ljava/lang/String;I)V
 
@@ -75,39 +75,39 @@
     .line 32
     new-instance v0, Lcom/android/internal/telephony/DriverCall$State;
 
-    const-string v1, "DIALING"
+    const-string/jumbo v1, "DIALING"
 
     invoke-direct {v0, v1, v5}, Lcom/android/internal/telephony/DriverCall$State;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/android/internal/telephony/DriverCall$State;->DIALING:Lcom/android/internal/telephony/DriverCall$State;
 
-    .line 33
     new-instance v0, Lcom/android/internal/telephony/DriverCall$State;
 
-    const-string v1, "ALERTING"
+    const-string/jumbo v1, "ALERTING"
 
     invoke-direct {v0, v1, v6}, Lcom/android/internal/telephony/DriverCall$State;-><init>(Ljava/lang/String;I)V
 
+    .line 33
     sput-object v0, Lcom/android/internal/telephony/DriverCall$State;->ALERTING:Lcom/android/internal/telephony/DriverCall$State;
 
-    .line 34
     new-instance v0, Lcom/android/internal/telephony/DriverCall$State;
 
-    const-string v1, "INCOMING"
+    const-string/jumbo v1, "INCOMING"
 
     invoke-direct {v0, v1, v7}, Lcom/android/internal/telephony/DriverCall$State;-><init>(Ljava/lang/String;I)V
 
+    .line 34
     sput-object v0, Lcom/android/internal/telephony/DriverCall$State;->INCOMING:Lcom/android/internal/telephony/DriverCall$State;
 
-    .line 35
     new-instance v0, Lcom/android/internal/telephony/DriverCall$State;
 
-    const-string v1, "WAITING"
+    const-string/jumbo v1, "WAITING"
 
     const/4 v2, 0x5
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/DriverCall$State;-><init>(Ljava/lang/String;I)V
 
+    .line 35
     sput-object v0, Lcom/android/internal/telephony/DriverCall$State;->WAITING:Lcom/android/internal/telephony/DriverCall$State;
 
     .line 29
@@ -135,11 +135,11 @@
 
     aput-object v1, v0, v7
 
-    const/4 v1, 0x5
+    sget-object v1, Lcom/android/internal/telephony/DriverCall$State;->WAITING:Lcom/android/internal/telephony/DriverCall$State;
 
-    sget-object v2, Lcom/android/internal/telephony/DriverCall$State;->WAITING:Lcom/android/internal/telephony/DriverCall$State;
+    const/4 v2, 0x5
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     sput-object v0, Lcom/android/internal/telephony/DriverCall$State;->$VALUES:[Lcom/android/internal/telephony/DriverCall$State;
 
@@ -148,13 +148,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 29
@@ -165,7 +158,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/DriverCall$State;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 29
@@ -186,12 +179,6 @@
     .prologue
     .line 29
     sget-object v0, Lcom/android/internal/telephony/DriverCall$State;->$VALUES:[Lcom/android/internal/telephony/DriverCall$State;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/DriverCall$State;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/DriverCall$State;
 
     return-object v0
 .end method

@@ -6,12 +6,11 @@
 # static fields
 .field public static final ASCII_CR_INDEX:I = 0xd
 
-.field public static final ASCII_MAP:[C = null
+.field public static final ASCII_MAP:[C
 
 .field public static final ASCII_MAP_BASE_INDEX:I = 0x20
 
-#the value of this static final field might be set in the static constructor
-.field public static final ASCII_MAP_MAX_INDEX:I = 0x0
+.field public static final ASCII_MAP_MAX_INDEX:I
 
 .field public static final ASCII_NL_INDEX:I = 0xa
 
@@ -98,7 +97,7 @@
     .line 89
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     sget-object v1, Lcom/android/internal/telephony/cdma/sms/UserData;->ASCII_MAP:[C
 
@@ -144,106 +143,107 @@
 
     sput v1, Lcom/android/internal/telephony/cdma/sms/UserData;->ASCII_MAP_MAX_INDEX:I
 
+    .line 24
     return-void
 
     .line 65
     :array_0
-    .array-data 0x2
-        0x20t 0x0t
-        0x21t 0x0t
-        0x22t 0x0t
-        0x23t 0x0t
-        0x24t 0x0t
-        0x25t 0x0t
-        0x26t 0x0t
-        0x27t 0x0t
-        0x28t 0x0t
-        0x29t 0x0t
-        0x2at 0x0t
-        0x2bt 0x0t
-        0x2ct 0x0t
-        0x2dt 0x0t
-        0x2et 0x0t
-        0x2ft 0x0t
-        0x30t 0x0t
-        0x31t 0x0t
-        0x32t 0x0t
-        0x33t 0x0t
-        0x34t 0x0t
-        0x35t 0x0t
-        0x36t 0x0t
-        0x37t 0x0t
-        0x38t 0x0t
-        0x39t 0x0t
-        0x3at 0x0t
-        0x3bt 0x0t
-        0x3ct 0x0t
-        0x3dt 0x0t
-        0x3et 0x0t
-        0x3ft 0x0t
-        0x40t 0x0t
-        0x41t 0x0t
-        0x42t 0x0t
-        0x43t 0x0t
-        0x44t 0x0t
-        0x45t 0x0t
-        0x46t 0x0t
-        0x47t 0x0t
-        0x48t 0x0t
-        0x49t 0x0t
-        0x4at 0x0t
-        0x4bt 0x0t
-        0x4ct 0x0t
-        0x4dt 0x0t
-        0x4et 0x0t
-        0x4ft 0x0t
-        0x50t 0x0t
-        0x51t 0x0t
-        0x52t 0x0t
-        0x53t 0x0t
-        0x54t 0x0t
-        0x55t 0x0t
-        0x56t 0x0t
-        0x57t 0x0t
-        0x58t 0x0t
-        0x59t 0x0t
-        0x5at 0x0t
-        0x5bt 0x0t
-        0x5ct 0x0t
-        0x5dt 0x0t
-        0x5et 0x0t
-        0x5ft 0x0t
-        0x60t 0x0t
-        0x61t 0x0t
-        0x62t 0x0t
-        0x63t 0x0t
-        0x64t 0x0t
-        0x65t 0x0t
-        0x66t 0x0t
-        0x67t 0x0t
-        0x68t 0x0t
-        0x69t 0x0t
-        0x6at 0x0t
-        0x6bt 0x0t
-        0x6ct 0x0t
-        0x6dt 0x0t
-        0x6et 0x0t
-        0x6ft 0x0t
-        0x70t 0x0t
-        0x71t 0x0t
-        0x72t 0x0t
-        0x73t 0x0t
-        0x74t 0x0t
-        0x75t 0x0t
-        0x76t 0x0t
-        0x77t 0x0t
-        0x78t 0x0t
-        0x79t 0x0t
-        0x7at 0x0t
-        0x7bt 0x0t
-        0x7ct 0x0t
-        0x7dt 0x0t
-        0x7et 0x0t
+    .array-data 2
+        0x20s
+        0x21s
+        0x22s
+        0x23s
+        0x24s
+        0x25s
+        0x26s
+        0x27s
+        0x28s
+        0x29s
+        0x2as
+        0x2bs
+        0x2cs
+        0x2ds
+        0x2es
+        0x2fs
+        0x30s
+        0x31s
+        0x32s
+        0x33s
+        0x34s
+        0x35s
+        0x36s
+        0x37s
+        0x38s
+        0x39s
+        0x3as
+        0x3bs
+        0x3cs
+        0x3ds
+        0x3es
+        0x3fs
+        0x40s
+        0x41s
+        0x42s
+        0x43s
+        0x44s
+        0x45s
+        0x46s
+        0x47s
+        0x48s
+        0x49s
+        0x4as
+        0x4bs
+        0x4cs
+        0x4ds
+        0x4es
+        0x4fs
+        0x50s
+        0x51s
+        0x52s
+        0x53s
+        0x54s
+        0x55s
+        0x56s
+        0x57s
+        0x58s
+        0x59s
+        0x5as
+        0x5bs
+        0x5cs
+        0x5ds
+        0x5es
+        0x5fs
+        0x60s
+        0x61s
+        0x62s
+        0x63s
+        0x64s
+        0x65s
+        0x66s
+        0x67s
+        0x68s
+        0x69s
+        0x6as
+        0x6bs
+        0x6cs
+        0x6ds
+        0x6es
+        0x6fs
+        0x70s
+        0x71s
+        0x72s
+        0x73s
+        0x74s
+        0x75s
+        0x76s
+        0x77s
+        0x78s
+        0x79s
+        0x7as
+        0x7bs
+        0x7cs
+        0x7ds
+        0x7es
     .end array-data
 .end method
 
@@ -259,12 +259,13 @@
 
     iput-boolean v0, p0, Lcom/android/internal/telephony/cdma/sms/UserData;->msgEncodingSet:Z
 
+    .line 24
     return-void
 .end method
 
 .method public static stringToAscii(Ljava/lang/String;)[B
     .locals 7
-    .parameter "str"
+    .param p0, "str"    # Ljava/lang/String;
 
     .prologue
     const/4 v6, -0x1
@@ -275,16 +276,16 @@
     move-result v2
 
     .line 107
-    .local v2, len:I
+    .local v2, "len":I
     new-array v3, v2, [B
 
     .line 108
-    .local v3, result:[B
+    .local v3, "result":[B
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_0
-    if-ge v1, v2, :cond_0
+    if-ge v1, v2, :cond_1
 
     .line 109
     sget-object v4, Lcom/android/internal/telephony/cdma/sms/UserData;->charToAscii:Landroid/util/SparseIntArray;
@@ -298,21 +299,15 @@
     move-result v0
 
     .line 110
-    .local v0, charCode:I
-    if-ne v0, v6, :cond_1
+    .local v0, "charCode":I
+    if-ne v0, v6, :cond_0
 
-    const/4 v3, 0x0
+    const/4 v4, 0x0
 
-    .line 113
-    .end local v0           #charCode:I
-    .end local v3           #result:[B
-    :cond_0
-    return-object v3
+    return-object v4
 
     .line 111
-    .restart local v0       #charCode:I
-    .restart local v3       #result:[B
-    :cond_1
+    :cond_0
     int-to-byte v4, v0
 
     aput-byte v4, v3, v1
@@ -321,6 +316,11 @@
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
+
+    .line 113
+    .end local v0    # "charCode":I
+    :cond_1
+    return-object v3
 .end method
 
 
@@ -335,19 +335,15 @@
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 153
-    .local v0, builder:Ljava/lang/StringBuilder;
-    const-string v1, "UserData "
+    .local v0, "builder":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "UserData "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 154
-    new-instance v1, Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "{ msgEncoding="
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "{ msgEncoding="
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
@@ -364,22 +360,10 @@
     :goto_0
     invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
+    .line 155
+    const-string/jumbo v1, ", msgType="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 155
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, ", msgType="
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -387,22 +371,10 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
+    .line 156
+    const-string/jumbo v1, ", paddingBits="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 156
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, ", paddingBits="
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -410,22 +382,10 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
+    .line 157
+    const-string/jumbo v1, ", numFields="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 157
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, ", numFields="
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -433,22 +393,10 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
+    .line 158
+    const-string/jumbo v1, ", userDataHeader="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 158
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, ", userDataHeader="
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -456,22 +404,10 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
+    .line 159
+    const-string/jumbo v1, ", payload=\'"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 159
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, ", payload=\'"
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -485,26 +421,14 @@
 
     move-result-object v1
 
-    const-string v2, "\'"
+    const-string/jumbo v2, "\'"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 160
-    new-instance v1, Ljava/lang/StringBuilder;
+    const-string/jumbo v1, ", payloadStr=\'"
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, ", payloadStr=\'"
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -514,20 +438,12 @@
 
     move-result-object v1
 
-    const-string v2, "\'"
+    const-string/jumbo v2, "\'"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     .line 161
-    const-string v1, " }"
+    const-string/jumbo v1, " }"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -540,7 +456,7 @@
 
     .line 154
     :cond_0
-    const-string v1, "unset"
+    const-string/jumbo v1, "unset"
 
-    goto/16 :goto_0
+    goto :goto_0
 .end method

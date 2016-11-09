@@ -44,34 +44,34 @@
 
     const/4 v2, 0x0
 
-    .line 31
+    .line 34
     new-instance v0, Lcom/android/internal/telephony/CommandsInterface$RadioState;
 
-    const-string v1, "RADIO_OFF"
+    const-string/jumbo v1, "RADIO_OFF"
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/CommandsInterface$RadioState;-><init>(Ljava/lang/String;I)V
 
     sput-object v0, Lcom/android/internal/telephony/CommandsInterface$RadioState;->RADIO_OFF:Lcom/android/internal/telephony/CommandsInterface$RadioState;
 
-    .line 32
     new-instance v0, Lcom/android/internal/telephony/CommandsInterface$RadioState;
 
-    const-string v1, "RADIO_UNAVAILABLE"
+    const-string/jumbo v1, "RADIO_UNAVAILABLE"
 
     invoke-direct {v0, v1, v3}, Lcom/android/internal/telephony/CommandsInterface$RadioState;-><init>(Ljava/lang/String;I)V
 
+    .line 35
     sput-object v0, Lcom/android/internal/telephony/CommandsInterface$RadioState;->RADIO_UNAVAILABLE:Lcom/android/internal/telephony/CommandsInterface$RadioState;
 
-    .line 33
     new-instance v0, Lcom/android/internal/telephony/CommandsInterface$RadioState;
 
-    const-string v1, "RADIO_ON"
+    const-string/jumbo v1, "RADIO_ON"
 
     invoke-direct {v0, v1, v4}, Lcom/android/internal/telephony/CommandsInterface$RadioState;-><init>(Ljava/lang/String;I)V
 
+    .line 36
     sput-object v0, Lcom/android/internal/telephony/CommandsInterface$RadioState;->RADIO_ON:Lcom/android/internal/telephony/CommandsInterface$RadioState;
 
-    .line 30
+    .line 33
     const/4 v0, 0x3
 
     new-array v0, v0, [Lcom/android/internal/telephony/CommandsInterface$RadioState;
@@ -95,16 +95,9 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
-    .line 30
+    .line 33
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     return-void
@@ -112,10 +105,10 @@
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/CommandsInterface$RadioState;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 30
+    .line 33
     const-class v0, Lcom/android/internal/telephony/CommandsInterface$RadioState;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -131,14 +124,8 @@
     .locals 1
 
     .prologue
-    .line 30
+    .line 33
     sget-object v0, Lcom/android/internal/telephony/CommandsInterface$RadioState;->$VALUES:[Lcom/android/internal/telephony/CommandsInterface$RadioState;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/CommandsInterface$RadioState;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/CommandsInterface$RadioState;
 
     return-object v0
 .end method
@@ -149,7 +136,7 @@
     .locals 1
 
     .prologue
-    .line 40
+    .line 43
     sget-object v0, Lcom/android/internal/telephony/CommandsInterface$RadioState;->RADIO_UNAVAILABLE:Lcom/android/internal/telephony/CommandsInterface$RadioState;
 
     if-eq p0, v0, :cond_0
@@ -169,7 +156,7 @@
     .locals 1
 
     .prologue
-    .line 36
+    .line 39
     sget-object v0, Lcom/android/internal/telephony/CommandsInterface$RadioState;->RADIO_ON:Lcom/android/internal/telephony/CommandsInterface$RadioState;
 
     if-ne p0, v0, :cond_0

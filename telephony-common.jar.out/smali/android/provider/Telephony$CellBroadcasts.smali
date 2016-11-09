@@ -32,7 +32,7 @@
 
 .field public static final CMAS_URGENCY:Ljava/lang/String; = "cmas_urgency"
 
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
 
 .field public static final DEFAULT_SORT_ORDER:Ljava/lang/String; = "date DESC"
 
@@ -56,7 +56,7 @@
 
 .field public static final PLMN:Ljava/lang/String; = "plmn"
 
-.field public static final QUERY_COLUMNS:[Ljava/lang/String; = null
+.field public static final QUERY_COLUMNS:[Ljava/lang/String;
 
 .field public static final SERIAL_NUMBER:Ljava/lang/String; = "serial_number"
 
@@ -72,8 +72,8 @@
     .locals 3
 
     .prologue
-    .line 2428
-    const-string v0, "content://cellbroadcasts"
+    .line 2741
+    const-string/jumbo v0, "content://cellbroadcasts"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
@@ -81,133 +81,155 @@
 
     sput-object v0, Landroid/provider/Telephony$CellBroadcasts;->CONTENT_URI:Landroid/net/Uri;
 
-    .line 2565
+    .line 2878
     const/16 v0, 0x14
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const/4 v1, 0x0
+    .line 2879
+    const-string/jumbo v1, "_id"
 
-    const-string v2, "_id"
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x1
+    .line 2880
+    const-string/jumbo v1, "geo_scope"
 
-    const-string v2, "geo_scope"
+    const/4 v2, 0x1
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x2
+    .line 2881
+    const-string/jumbo v1, "plmn"
 
-    const-string v2, "plmn"
+    const/4 v2, 0x2
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x3
+    .line 2882
+    const-string/jumbo v1, "lac"
 
-    const-string v2, "lac"
+    const/4 v2, 0x3
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x4
+    .line 2883
+    const-string/jumbo v1, "cid"
 
-    const-string v2, "cid"
+    const/4 v2, 0x4
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x5
+    .line 2884
+    const-string/jumbo v1, "serial_number"
 
-    const-string v2, "serial_number"
+    const/4 v2, 0x5
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x6
+    .line 2885
+    const-string/jumbo v1, "service_category"
 
-    const-string v2, "service_category"
+    const/4 v2, 0x6
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x7
+    .line 2886
+    const-string/jumbo v1, "language"
 
-    const-string v2, "language"
+    const/4 v2, 0x7
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x8
+    .line 2887
+    const-string/jumbo v1, "body"
 
-    const-string v2, "body"
+    const/16 v2, 0x8
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x9
+    .line 2888
+    const-string/jumbo v1, "date"
 
-    const-string v2, "date"
+    const/16 v2, 0x9
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xa
+    .line 2889
+    const-string/jumbo v1, "read"
 
-    const-string v2, "read"
+    const/16 v2, 0xa
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xb
+    .line 2890
+    const-string/jumbo v1, "format"
 
-    const-string v2, "format"
+    const/16 v2, 0xb
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xc
+    .line 2891
+    const-string/jumbo v1, "priority"
 
-    const-string v2, "priority"
+    const/16 v2, 0xc
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xd
+    .line 2892
+    const-string/jumbo v1, "etws_warning_type"
 
-    const-string v2, "etws_warning_type"
+    const/16 v2, 0xd
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xe
+    .line 2893
+    const-string/jumbo v1, "cmas_message_class"
 
-    const-string v2, "cmas_message_class"
+    const/16 v2, 0xe
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xf
+    .line 2894
+    const-string/jumbo v1, "cmas_category"
 
-    const-string v2, "cmas_category"
+    const/16 v2, 0xf
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x10
+    .line 2895
+    const-string/jumbo v1, "cmas_response_type"
 
-    const-string v2, "cmas_response_type"
+    const/16 v2, 0x10
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x11
+    .line 2896
+    const-string/jumbo v1, "cmas_severity"
 
-    const-string v2, "cmas_severity"
+    const/16 v2, 0x11
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x12
+    .line 2897
+    const-string/jumbo v1, "cmas_urgency"
 
-    const-string v2, "cmas_urgency"
+    const/16 v2, 0x12
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x13
+    .line 2898
+    const-string/jumbo v1, "cmas_certainty"
 
-    const-string v2, "cmas_certainty"
+    const/16 v2, 0x13
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
+    .line 2878
     sput-object v0, Landroid/provider/Telephony$CellBroadcasts;->QUERY_COLUMNS:[Ljava/lang/String;
 
+    .line 2730
     return-void
 .end method
 
@@ -215,7 +237,7 @@
     .locals 0
 
     .prologue
-    .line 2423
+    .line 2736
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

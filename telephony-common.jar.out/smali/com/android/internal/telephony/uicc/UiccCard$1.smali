@@ -1,14 +1,11 @@
 .class Lcom/android/internal/telephony/uicc/UiccCard$1;
-.super Ljava/lang/Object;
+.super Landroid/os/Handler;
 .source "UiccCard.java"
-
-# interfaces
-.implements Landroid/content/DialogInterface$OnClickListener;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/internal/telephony/uicc/UiccCard;->onIccSwap(Z)V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/android/internal/telephony/uicc/UiccCard;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -24,86 +21,181 @@
 # direct methods
 .method constructor <init>(Lcom/android/internal/telephony/uicc/UiccCard;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/internal/telephony/uicc/UiccCard;
 
     .prologue
-    .line 251
+    .line 425
     iput-object p1, p0, Lcom/android/internal/telephony/uicc/UiccCard$1;->this$0:Lcom/android/internal/telephony/uicc/UiccCard;
 
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Landroid/os/Handler;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onClick(Landroid/content/DialogInterface;I)V
+.method public handleMessage(Landroid/os/Message;)V
     .locals 4
-    .parameter "dialog"
-    .parameter "which"
+    .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
-    .line 254
+    .line 428
+    iget v1, p1, Landroid/os/Message;->what:I
+
+    packed-switch v1, :pswitch_data_0
+
+    .line 453
     iget-object v1, p0, Lcom/android/internal/telephony/uicc/UiccCard$1;->this$0:Lcom/android/internal/telephony/uicc/UiccCard;
 
-    #getter for: Lcom/android/internal/telephony/uicc/UiccCard;->mLock:Ljava/lang/Object;
-    invoke-static {v1}, Lcom/android/internal/telephony/uicc/UiccCard;->access$000(Lcom/android/internal/telephony/uicc/UiccCard;)Ljava/lang/Object;
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v3, "Unknown Event "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    monitor-enter v2
+    iget v3, p1, Landroid/os/Message;->what:I
 
-    .line 255
-    const/4 v1, -0x1
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    if-ne p2, v1, :cond_0
+    move-result-object v2
 
-    .line 256
-    :try_start_0
-    iget-object v1, p0, Lcom/android/internal/telephony/uicc/UiccCard$1;->this$0:Lcom/android/internal/telephony/uicc/UiccCard;
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    const-string v3, "Reboot due to SIM swap"
+    move-result-object v2
 
-    #calls: Lcom/android/internal/telephony/uicc/UiccCard;->log(Ljava/lang/String;)V
-    invoke-static {v1, v3}, Lcom/android/internal/telephony/uicc/UiccCard;->access$100(Lcom/android/internal/telephony/uicc/UiccCard;Ljava/lang/String;)V
+    invoke-static {v1, v2}, Lcom/android/internal/telephony/uicc/UiccCard;->-wrap1(Lcom/android/internal/telephony/uicc/UiccCard;Ljava/lang/String;)V
 
-    .line 257
-    iget-object v1, p0, Lcom/android/internal/telephony/uicc/UiccCard$1;->this$0:Lcom/android/internal/telephony/uicc/UiccCard;
-
-    #getter for: Lcom/android/internal/telephony/uicc/UiccCard;->mContext:Landroid/content/Context;
-    invoke-static {v1}, Lcom/android/internal/telephony/uicc/UiccCard;->access$200(Lcom/android/internal/telephony/uicc/UiccCard;)Landroid/content/Context;
-
-    move-result-object v1
-
-    const-string v3, "power"
-
-    invoke-virtual {v1, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/os/PowerManager;
-
-    .line 259
-    .local v0, pm:Landroid/os/PowerManager;
-    const-string v1, "SIM is added."
-
-    invoke-virtual {v0, v1}, Landroid/os/PowerManager;->reboot(Ljava/lang/String;)V
-
-    .line 261
-    .end local v0           #pm:Landroid/os/PowerManager;
-    :cond_0
-    monitor-exit v2
-
-    .line 262
+    .line 427
+    :goto_0
     return-void
 
-    .line 261
-    :catchall_0
-    move-exception v1
+    .line 430
+    :pswitch_0
+    iget-object v1, p0, Lcom/android/internal/telephony/uicc/UiccCard$1;->this$0:Lcom/android/internal/telephony/uicc/UiccCard;
 
-    monitor-exit v2
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    const/4 v2, 0x0
 
-    throw v1
+    invoke-static {v1, v2}, Lcom/android/internal/telephony/uicc/UiccCard;->-wrap4(Lcom/android/internal/telephony/uicc/UiccCard;Z)V
+
+    goto :goto_0
+
+    .line 433
+    :pswitch_1
+    iget-object v1, p0, Lcom/android/internal/telephony/uicc/UiccCard$1;->this$0:Lcom/android/internal/telephony/uicc/UiccCard;
+
+    const/4 v2, 0x1
+
+    invoke-static {v1, v2}, Lcom/android/internal/telephony/uicc/UiccCard;->-wrap4(Lcom/android/internal/telephony/uicc/UiccCard;Z)V
+
+    goto :goto_0
+
+    .line 441
+    :pswitch_2
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v0, Landroid/os/AsyncResult;
+
+    .line 442
+    .local v0, "ar":Landroid/os/AsyncResult;
+    iget-object v1, v0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    if-eqz v1, :cond_0
+
+    .line 443
+    iget-object v1, p0, Lcom/android/internal/telephony/uicc/UiccCard$1;->this$0:Lcom/android/internal/telephony/uicc/UiccCard;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v3, "Exception: "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    iget-object v3, v0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Lcom/android/internal/telephony/uicc/UiccCard;->-wrap2(Lcom/android/internal/telephony/uicc/UiccCard;Ljava/lang/String;)V
+
+    .line 444
+    iget-object v1, p0, Lcom/android/internal/telephony/uicc/UiccCard$1;->this$0:Lcom/android/internal/telephony/uicc/UiccCard;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v3, "Error in SIM access with exception"
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    iget-object v3, v0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Lcom/android/internal/telephony/uicc/UiccCard;->-wrap0(Lcom/android/internal/telephony/uicc/UiccCard;Ljava/lang/String;)V
+
+    .line 446
+    :cond_0
+    iget-object v1, v0, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
+
+    check-cast v1, Landroid/os/Message;
+
+    iget-object v2, v0, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
+
+    iget-object v3, v0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+
+    invoke-static {v1, v2, v3}, Landroid/os/AsyncResult;->forMessage(Landroid/os/Message;Ljava/lang/Object;Ljava/lang/Throwable;)Landroid/os/AsyncResult;
+
+    .line 447
+    iget-object v1, v0, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
+
+    check-cast v1, Landroid/os/Message;
+
+    invoke-virtual {v1}, Landroid/os/Message;->sendToTarget()V
+
+    goto :goto_0
+
+    .line 450
+    .end local v0    # "ar":Landroid/os/AsyncResult;
+    :pswitch_3
+    iget-object v1, p0, Lcom/android/internal/telephony/uicc/UiccCard$1;->this$0:Lcom/android/internal/telephony/uicc/UiccCard;
+
+    invoke-static {v1}, Lcom/android/internal/telephony/uicc/UiccCard;->-wrap3(Lcom/android/internal/telephony/uicc/UiccCard;)V
+
+    goto :goto_0
+
+    .line 428
+    :pswitch_data_0
+    .packed-switch 0xd
+        :pswitch_0
+        :pswitch_1
+        :pswitch_2
+        :pswitch_2
+        :pswitch_2
+        :pswitch_2
+        :pswitch_2
+        :pswitch_3
+        :pswitch_2
+    .end packed-switch
 .end method

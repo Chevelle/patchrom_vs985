@@ -35,31 +35,34 @@
 
     const/4 v2, 0x0
 
-    .line 27
+    .line 26
     new-instance v0, Lcom/android/internal/telephony/cat/LaunchBrowserMode;
 
-    const-string v1, "LAUNCH_IF_NOT_ALREADY_LAUNCHED"
+    const-string/jumbo v1, "LAUNCH_IF_NOT_ALREADY_LAUNCHED"
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/telephony/cat/LaunchBrowserMode;-><init>(Ljava/lang/String;I)V
 
+    .line 27
     sput-object v0, Lcom/android/internal/telephony/cat/LaunchBrowserMode;->LAUNCH_IF_NOT_ALREADY_LAUNCHED:Lcom/android/internal/telephony/cat/LaunchBrowserMode;
 
-    .line 32
+    .line 28
     new-instance v0, Lcom/android/internal/telephony/cat/LaunchBrowserMode;
 
-    const-string v1, "USE_EXISTING_BROWSER"
+    const-string/jumbo v1, "USE_EXISTING_BROWSER"
 
     invoke-direct {v0, v1, v3}, Lcom/android/internal/telephony/cat/LaunchBrowserMode;-><init>(Ljava/lang/String;I)V
 
+    .line 32
     sput-object v0, Lcom/android/internal/telephony/cat/LaunchBrowserMode;->USE_EXISTING_BROWSER:Lcom/android/internal/telephony/cat/LaunchBrowserMode;
 
-    .line 34
+    .line 33
     new-instance v0, Lcom/android/internal/telephony/cat/LaunchBrowserMode;
 
-    const-string v1, "LAUNCH_NEW_BROWSER"
+    const-string/jumbo v1, "LAUNCH_NEW_BROWSER"
 
     invoke-direct {v0, v1, v4}, Lcom/android/internal/telephony/cat/LaunchBrowserMode;-><init>(Ljava/lang/String;I)V
 
+    .line 34
     sput-object v0, Lcom/android/internal/telephony/cat/LaunchBrowserMode;->LAUNCH_NEW_BROWSER:Lcom/android/internal/telephony/cat/LaunchBrowserMode;
 
     .line 25
@@ -86,13 +89,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 25
@@ -103,7 +99,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Lcom/android/internal/telephony/cat/LaunchBrowserMode;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 25
@@ -124,12 +120,6 @@
     .prologue
     .line 25
     sget-object v0, Lcom/android/internal/telephony/cat/LaunchBrowserMode;->$VALUES:[Lcom/android/internal/telephony/cat/LaunchBrowserMode;
-
-    invoke-virtual {v0}, [Lcom/android/internal/telephony/cat/LaunchBrowserMode;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Lcom/android/internal/telephony/cat/LaunchBrowserMode;
 
     return-object v0
 .end method
