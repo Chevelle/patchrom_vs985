@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/AppOpsService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/AppOpsService;
 
     .prologue
-    .line 74
+    .line 89
     iput-object p1, p0, Lcom/android/server/AppOpsService$1;->this$0:Lcom/android/server/AppOpsService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,12 +41,12 @@
     .locals 4
 
     .prologue
-    .line 76
+    .line 91
     iget-object v2, p0, Lcom/android/server/AppOpsService$1;->this$0:Lcom/android/server/AppOpsService;
 
     monitor-enter v2
 
-    .line 77
+    .line 92
     :try_start_0
     iget-object v1, p0, Lcom/android/server/AppOpsService$1;->this$0:Lcom/android/server/AppOpsService;
 
@@ -54,13 +54,20 @@
 
     iput-boolean v3, v1, Lcom/android/server/AppOpsService;->mWriteScheduled:Z
 
-    .line 78
+    .line 93
+    iget-object v1, p0, Lcom/android/server/AppOpsService$1;->this$0:Lcom/android/server/AppOpsService;
+
+    const/4 v3, 0x0
+
+    iput-boolean v3, v1, Lcom/android/server/AppOpsService;->mFastWriteScheduled:Z
+
+    .line 94
     new-instance v0, Lcom/android/server/AppOpsService$1$1;
 
     invoke-direct {v0, p0}, Lcom/android/server/AppOpsService$1$1;-><init>(Lcom/android/server/AppOpsService$1;)V
 
-    .line 84
-    .local v0, task:Landroid/os/AsyncTask;,"Landroid/os/AsyncTask<Ljava/lang/Void;Ljava/lang/Void;Ljava/lang/Void;>;"
+    .line 100
+    .local v0, "task":Landroid/os/AsyncTask;, "Landroid/os/AsyncTask<Ljava/lang/Void;Ljava/lang/Void;Ljava/lang/Void;>;"
     sget-object v3, Landroid/os/AsyncTask;->THREAD_POOL_EXECUTOR:Ljava/util/concurrent/Executor;
 
     const/4 v1, 0x0
@@ -68,21 +75,20 @@
     check-cast v1, [Ljava/lang/Void;
 
     invoke-virtual {v0, v3, v1}, Landroid/os/AsyncTask;->executeOnExecutor(Ljava/util/concurrent/Executor;[Ljava/lang/Object;)Landroid/os/AsyncTask;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 85
     monitor-exit v2
 
-    .line 86
+    .line 90
     return-void
 
-    .line 85
-    .end local v0           #task:Landroid/os/AsyncTask;,"Landroid/os/AsyncTask<Ljava/lang/Void;Ljava/lang/Void;Ljava/lang/Void;>;"
+    .line 91
+    .end local v0    # "task":Landroid/os/AsyncTask;, "Landroid/os/AsyncTask<Ljava/lang/Void;Ljava/lang/Void;Ljava/lang/Void;>;"
     :catchall_0
     move-exception v1
 
     monitor-exit v2
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method

@@ -23,11 +23,11 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/pm/UserManagerService;I)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/pm/UserManagerService;
+    .param p2, "val$userHandle"    # I
 
     .prologue
-    .line 1029
+    .line 1551
     iput-object p1, p0, Lcom/android/server/pm/UserManagerService$2;->this$0:Lcom/android/server/pm/UserManagerService;
 
     iput p2, p0, Lcom/android/server/pm/UserManagerService$2;->val$userHandle:I
@@ -40,18 +40,20 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 1
-    .parameter "context"
-    .parameter "intent"
+    .locals 2
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 1037
+    .line 1559
     new-instance v0, Lcom/android/server/pm/UserManagerService$2$1;
 
-    invoke-direct {v0, p0}, Lcom/android/server/pm/UserManagerService$2$1;-><init>(Lcom/android/server/pm/UserManagerService$2;)V
+    iget v1, p0, Lcom/android/server/pm/UserManagerService$2;->val$userHandle:I
+
+    invoke-direct {v0, p0, v1}, Lcom/android/server/pm/UserManagerService$2$1;-><init>(Lcom/android/server/pm/UserManagerService$2;I)V
 
     invoke-virtual {v0}, Lcom/android/server/pm/UserManagerService$2$1;->start()V
 
-    .line 1046
+    .line 1553
     return-void
 .end method

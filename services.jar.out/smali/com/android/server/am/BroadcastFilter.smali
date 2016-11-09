@@ -18,12 +18,12 @@
 # direct methods
 .method constructor <init>(Landroid/content/IntentFilter;Lcom/android/server/am/ReceiverList;Ljava/lang/String;Ljava/lang/String;II)V
     .locals 0
-    .parameter "_filter"
-    .parameter "_receiverList"
-    .parameter "_packageName"
-    .parameter "_requiredPermission"
-    .parameter "_owningUid"
-    .parameter "_userId"
+    .param p1, "_filter"    # Landroid/content/IntentFilter;
+    .param p2, "_receiverList"    # Lcom/android/server/am/ReceiverList;
+    .param p3, "_packageName"    # Ljava/lang/String;
+    .param p4, "_requiredPermission"    # Ljava/lang/String;
+    .param p5, "_owningUid"    # I
+    .param p6, "_userId"    # I
 
     .prologue
     .line 35
@@ -44,7 +44,7 @@
     .line 40
     iput p6, p0, Lcom/android/server/am/BroadcastFilter;->owningUserId:I
 
-    .line 41
+    .line 34
     return-void
 .end method
 
@@ -52,8 +52,8 @@
 # virtual methods
 .method public dump(Ljava/io/PrintWriter;Ljava/lang/String;)V
     .locals 1
-    .parameter "pw"
-    .parameter "prefix"
+    .param p1, "pw"    # Ljava/io/PrintWriter;
+    .param p2, "prefix"    # Ljava/lang/String;
 
     .prologue
     .line 44
@@ -68,27 +68,27 @@
 
     invoke-virtual {v0, p1, p2}, Lcom/android/server/am/ReceiverList;->dumpLocal(Ljava/io/PrintWriter;Ljava/lang/String;)V
 
-    .line 46
+    .line 43
     return-void
 .end method
 
 .method public dumpBrief(Ljava/io/PrintWriter;Ljava/lang/String;)V
     .locals 0
-    .parameter "pw"
-    .parameter "prefix"
+    .param p1, "pw"    # Ljava/io/PrintWriter;
+    .param p2, "prefix"    # Ljava/lang/String;
 
     .prologue
     .line 49
     invoke-virtual {p0, p1, p2}, Lcom/android/server/am/BroadcastFilter;->dumpBroadcastFilterState(Ljava/io/PrintWriter;Ljava/lang/String;)V
 
-    .line 50
+    .line 48
     return-void
 .end method
 
 .method dumpBroadcastFilterState(Ljava/io/PrintWriter;Ljava/lang/String;)V
     .locals 1
-    .parameter "pw"
-    .parameter "prefix"
+    .param p1, "pw"    # Ljava/io/PrintWriter;
+    .param p2, "prefix"    # Ljava/lang/String;
 
     .prologue
     .line 58
@@ -99,7 +99,7 @@
     .line 59
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const-string v0, "requiredPermission="
+    const-string/jumbo v0, "requiredPermission="
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
@@ -107,16 +107,16 @@
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 61
+    .line 57
     :cond_0
     return-void
 .end method
 
 .method public dumpInReceiverList(Ljava/io/PrintWriter;Landroid/util/Printer;Ljava/lang/String;)V
     .locals 0
-    .parameter "pw"
-    .parameter "pr"
-    .parameter "prefix"
+    .param p1, "pw"    # Ljava/io/PrintWriter;
+    .param p2, "pr"    # Landroid/util/Printer;
+    .param p3, "prefix"    # Ljava/lang/String;
 
     .prologue
     .line 53
@@ -125,7 +125,7 @@
     .line 54
     invoke-virtual {p0, p1, p3}, Lcom/android/server/am/BroadcastFilter;->dumpBroadcastFilterState(Ljava/io/PrintWriter;Ljava/lang/String;)V
 
-    .line 55
+    .line 52
     return-void
 .end method
 
@@ -139,8 +139,8 @@
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 65
-    .local v0, sb:Ljava/lang/StringBuilder;
-    const-string v1, "BroadcastFilter{"
+    .local v0, "sb":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "BroadcastFilter{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -156,7 +156,7 @@
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 67
-    const-string v1, " u"
+    const-string/jumbo v1, " u"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

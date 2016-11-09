@@ -26,8 +26,8 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/CountryDetectorService$1;Landroid/location/Country;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$1"    # Lcom/android/server/CountryDetectorService$1;
+    .param p2, "val$country"    # Landroid/location/Country;
 
     .prologue
     .line 179
@@ -55,6 +55,6 @@
 
     invoke-virtual {v0, v1}, Lcom/android/server/CountryDetectorService;->notifyReceivers(Landroid/location/Country;)V
 
-    .line 182
+    .line 180
     return-void
 .end method

@@ -24,10 +24,10 @@
 # direct methods
 .method private constructor <init>(Lcom/android/server/location/GpsLocationProvider;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/location/GpsLocationProvider;
 
     .prologue
-    .line 1836
+    .line 2112
     iput-object p1, p0, Lcom/android/server/location/GpsLocationProvider$NetworkLocationListener;->this$0:Lcom/android/server/location/GpsLocationProvider;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -35,13 +35,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/android/server/location/GpsLocationProvider;Lcom/android/server/location/GpsLocationProvider$1;)V
+.method synthetic constructor <init>(Lcom/android/server/location/GpsLocationProvider;Lcom/android/server/location/GpsLocationProvider$NetworkLocationListener;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Lcom/android/server/location/GpsLocationProvider;
 
     .prologue
-    .line 1836
     invoke-direct {p0, p1}, Lcom/android/server/location/GpsLocationProvider$NetworkLocationListener;-><init>(Lcom/android/server/location/GpsLocationProvider;)V
 
     return-void
@@ -51,11 +49,11 @@
 # virtual methods
 .method public onLocationChanged(Landroid/location/Location;)V
     .locals 2
-    .parameter "location"
+    .param p1, "location"    # Landroid/location/Location;
 
     .prologue
-    .line 1840
-    const-string v0, "network"
+    .line 2116
+    const-string/jumbo v0, "network"
 
     invoke-virtual {p1}, Landroid/location/Location;->getProvider()Ljava/lang/String;
 
@@ -67,42 +65,41 @@
 
     if-eqz v0, :cond_0
 
-    .line 1841
+    .line 2117
     iget-object v0, p0, Lcom/android/server/location/GpsLocationProvider$NetworkLocationListener;->this$0:Lcom/android/server/location/GpsLocationProvider;
 
-    #calls: Lcom/android/server/location/GpsLocationProvider;->handleUpdateLocation(Landroid/location/Location;)V
-    invoke-static {v0, p1}, Lcom/android/server/location/GpsLocationProvider;->access$3100(Lcom/android/server/location/GpsLocationProvider;Landroid/location/Location;)V
+    invoke-static {v0, p1}, Lcom/android/server/location/GpsLocationProvider;->-wrap19(Lcom/android/server/location/GpsLocationProvider;Landroid/location/Location;)V
 
-    .line 1843
+    .line 2114
     :cond_0
     return-void
 .end method
 
 .method public onProviderDisabled(Ljava/lang/String;)V
     .locals 0
-    .parameter "provider"
+    .param p1, "provider"    # Ljava/lang/String;
 
     .prologue
-    .line 1849
+    .line 2125
     return-void
 .end method
 
 .method public onProviderEnabled(Ljava/lang/String;)V
     .locals 0
-    .parameter "provider"
+    .param p1, "provider"    # Ljava/lang/String;
 
     .prologue
-    .line 1847
+    .line 2123
     return-void
 .end method
 
 .method public onStatusChanged(Ljava/lang/String;ILandroid/os/Bundle;)V
     .locals 0
-    .parameter "provider"
-    .parameter "status"
-    .parameter "extras"
+    .param p1, "provider"    # Ljava/lang/String;
+    .param p2, "status"    # I
+    .param p3, "extras"    # Landroid/os/Bundle;
 
     .prologue
-    .line 1845
+    .line 2121
     return-void
 .end method

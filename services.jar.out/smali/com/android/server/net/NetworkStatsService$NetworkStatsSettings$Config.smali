@@ -24,10 +24,10 @@
 
 # direct methods
 .method public constructor <init>(JJJ)V
-    .locals 0
-    .parameter "bucketDuration"
-    .parameter "rotateAgeMillis"
-    .parameter "deleteAgeMillis"
+    .locals 1
+    .param p1, "bucketDuration"    # J
+    .param p3, "rotateAgeMillis"    # J
+    .param p5, "deleteAgeMillis"    # J
 
     .prologue
     .line 196
@@ -42,6 +42,6 @@
     .line 199
     iput-wide p5, p0, Lcom/android/server/net/NetworkStatsService$NetworkStatsSettings$Config;->deleteAgeMillis:J
 
-    .line 200
+    .line 196
     return-void
 .end method

@@ -27,28 +27,28 @@
 # direct methods
 .method constructor <init>(Landroid/graphics/Atlas$Type;III)V
     .locals 0
-    .parameter "type"
-    .parameter "width"
-    .parameter "height"
-    .parameter "count"
+    .param p1, "type"    # Landroid/graphics/Atlas$Type;
+    .param p2, "width"    # I
+    .param p3, "height"    # I
+    .param p4, "count"    # I
 
     .prologue
-    .line 635
+    .line 606
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 636
+    .line 607
     iput-object p1, p0, Lcom/android/server/AssetAtlasService$WorkerResult;->type:Landroid/graphics/Atlas$Type;
 
-    .line 637
+    .line 608
     iput p2, p0, Lcom/android/server/AssetAtlasService$WorkerResult;->width:I
 
-    .line 638
+    .line 609
     iput p3, p0, Lcom/android/server/AssetAtlasService$WorkerResult;->height:I
 
-    .line 639
+    .line 610
     iput p4, p0, Lcom/android/server/AssetAtlasService$WorkerResult;->count:I
 
-    .line 640
+    .line 606
     return-void
 .end method
 
@@ -58,42 +58,42 @@
     .locals 4
 
     .prologue
-    .line 644
-    const-string v0, "%s %dx%d"
+    .line 615
+    const-string/jumbo v0, "%s %dx%d"
 
     const/4 v1, 0x3
 
     new-array v1, v1, [Ljava/lang/Object;
 
-    const/4 v2, 0x0
+    iget-object v2, p0, Lcom/android/server/AssetAtlasService$WorkerResult;->type:Landroid/graphics/Atlas$Type;
 
-    iget-object v3, p0, Lcom/android/server/AssetAtlasService$WorkerResult;->type:Landroid/graphics/Atlas$Type;
+    invoke-virtual {v2}, Landroid/graphics/Atlas$Type;->toString()Ljava/lang/String;
 
-    invoke-virtual {v3}, Landroid/graphics/Atlas$Type;->toString()Ljava/lang/String;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x0
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x1
+    iget v2, p0, Lcom/android/server/AssetAtlasService$WorkerResult;->width:I
 
-    iget v3, p0, Lcom/android/server/AssetAtlasService$WorkerResult;->width:I
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x1
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x2
+    iget v2, p0, Lcom/android/server/AssetAtlasService$WorkerResult;->height:I
 
-    iget v3, p0, Lcom/android/server/AssetAtlasService$WorkerResult;->height:I
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x2
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
     invoke-static {v0, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 

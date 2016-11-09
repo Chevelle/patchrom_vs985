@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 1067
+    .line 1931
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,35 +42,33 @@
 # virtual methods
 .method public compare(Lcom/android/server/AlarmManagerService$Alarm;Lcom/android/server/AlarmManagerService$Alarm;)I
     .locals 8
-    .parameter "a1"
-    .parameter "a2"
+    .param p1, "a1"    # Lcom/android/server/AlarmManagerService$Alarm;
+    .param p2, "a2"    # Lcom/android/server/AlarmManagerService$Alarm;
 
     .prologue
     const-wide/16 v6, 0x0
 
-    .line 1069
-    iget-wide v0, p1, Lcom/android/server/AlarmManagerService$Alarm;->when:J
+    .line 1933
+    iget-wide v0, p1, Lcom/android/server/AlarmManagerService$Alarm;->whenElapsed:J
 
-    .line 1070
-    .local v0, when1:J
-    iget-wide v2, p2, Lcom/android/server/AlarmManagerService$Alarm;->when:J
+    .line 1934
+    .local v0, "when1":J
+    iget-wide v2, p2, Lcom/android/server/AlarmManagerService$Alarm;->whenElapsed:J
 
-    .line 1071
-    .local v2, when2:J
+    .line 1935
+    .local v2, "when2":J
     sub-long v4, v0, v2
 
     cmp-long v4, v4, v6
 
     if-lez v4, :cond_0
 
-    .line 1072
+    .line 1936
     const/4 v4, 0x1
 
-    .line 1077
-    :goto_0
     return v4
 
-    .line 1074
+    .line 1938
     :cond_0
     sub-long v4, v0, v2
 
@@ -78,31 +76,31 @@
 
     if-gez v4, :cond_1
 
-    .line 1075
+    .line 1939
     const/4 v4, -0x1
 
-    goto :goto_0
+    return v4
 
-    .line 1077
+    .line 1941
     :cond_1
     const/4 v4, 0x0
 
-    goto :goto_0
+    return v4
 .end method
 
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
     .locals 1
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "a1"    # Ljava/lang/Object;
+    .param p2, "a2"    # Ljava/lang/Object;
 
     .prologue
-    .line 1067
+    .line 1932
     check-cast p1, Lcom/android/server/AlarmManagerService$Alarm;
 
-    .end local p1
+    .end local p1    # "a1":Ljava/lang/Object;
     check-cast p2, Lcom/android/server/AlarmManagerService$Alarm;
 
-    .end local p2
+    .end local p2    # "a2":Ljava/lang/Object;
     invoke-virtual {p0, p1, p2}, Lcom/android/server/AlarmManagerService$IncreasingTimeOrder;->compare(Lcom/android/server/AlarmManagerService$Alarm;Lcom/android/server/AlarmManagerService$Alarm;)I
 
     move-result v0

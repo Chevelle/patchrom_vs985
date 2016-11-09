@@ -3,12 +3,12 @@
 .source "WindowManagerService.java"
 
 # interfaces
-.implements Landroid/view/WindowManagerPolicy$OnKeyguardExitResult;
+.implements Landroid/os/PowerManagerInternal$LowPowerModeListener;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/wm/WindowManagerService;->exitKeyguardSecurely(Landroid/view/IOnKeyguardExitResult;)V
+    value = Lcom/android/server/wm/WindowManagerService;-><init>(Landroid/content/Context;Lcom/android/server/input/InputManagerService;ZZZ)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,20 +20,15 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/server/wm/WindowManagerService;
 
-.field final synthetic val$callback:Landroid/view/IOnKeyguardExitResult;
-
 
 # direct methods
-.method constructor <init>(Lcom/android/server/wm/WindowManagerService;Landroid/view/IOnKeyguardExitResult;)V
+.method constructor <init>(Lcom/android/server/wm/WindowManagerService;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/wm/WindowManagerService;
 
     .prologue
-    .line 5051
+    .line 933
     iput-object p1, p0, Lcom/android/server/wm/WindowManagerService$5;->this$0:Lcom/android/server/wm/WindowManagerService;
-
-    iput-object p2, p0, Lcom/android/server/wm/WindowManagerService$5;->val$callback:Landroid/view/IOnKeyguardExitResult;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -42,26 +37,64 @@
 
 
 # virtual methods
-.method public onKeyguardExitResult(Z)V
-    .locals 1
-    .parameter "success"
+.method public onLowPowerModeChanged(Z)V
+    .locals 3
+    .param p1, "enabled"    # Z
 
     .prologue
-    .line 5055
+    .line 936
+    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$5;->this$0:Lcom/android/server/wm/WindowManagerService;
+
+    iget-object v1, v0, Lcom/android/server/wm/WindowManagerService;->mWindowMap:Ljava/util/HashMap;
+
+    monitor-enter v1
+
+    .line 937
     :try_start_0
-    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$5;->val$callback:Landroid/view/IOnKeyguardExitResult;
+    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$5;->this$0:Lcom/android/server/wm/WindowManagerService;
 
-    invoke-interface {v0, p1}, Landroid/view/IOnKeyguardExitResult;->onKeyguardExitResult(Z)V
+    iget-boolean v0, v0, Lcom/android/server/wm/WindowManagerService;->mAnimationsDisabled:Z
+
+    if-eq v0, p1, :cond_0
+
+    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$5;->this$0:Lcom/android/server/wm/WindowManagerService;
+
+    iget-boolean v0, v0, Lcom/android/server/wm/WindowManagerService;->mAllowAnimationsInLowPowerMode:Z
     :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 5059
+    if-eqz v0, :cond_1
+
+    :cond_0
     :goto_0
+    monitor-exit v1
+
+    .line 935
     return-void
 
-    .line 5056
-    :catch_0
-    move-exception v0
+    .line 938
+    :cond_1
+    :try_start_1
+    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$5;->this$0:Lcom/android/server/wm/WindowManagerService;
+
+    iput-boolean p1, v0, Lcom/android/server/wm/WindowManagerService;->mAnimationsDisabled:Z
+
+    .line 939
+    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$5;->this$0:Lcom/android/server/wm/WindowManagerService;
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v2}, Lcom/android/server/wm/WindowManagerService;->dispatchNewAnimatorScaleLocked(Lcom/android/server/wm/Session;)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
+
+    .line 936
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+
+    throw v0
 .end method

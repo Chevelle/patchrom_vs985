@@ -4,6 +4,9 @@
 
 
 # virtual methods
+.method public abstract onCheckHoldWakeLock(I)Z
+.end method
+
 .method public abstract onDaemonConnected()V
 .end method
 

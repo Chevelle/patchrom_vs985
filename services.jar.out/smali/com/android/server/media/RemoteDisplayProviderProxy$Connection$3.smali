@@ -26,8 +26,8 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/media/RemoteDisplayProviderProxy$Connection;Landroid/media/RemoteDisplayState;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$1"    # Lcom/android/server/media/RemoteDisplayProviderProxy$Connection;
+    .param p2, "val$state"    # Landroid/media/RemoteDisplayState;
 
     .prologue
     .line 407
@@ -55,9 +55,8 @@
 
     iget-object v2, p0, Lcom/android/server/media/RemoteDisplayProviderProxy$Connection$3;->val$state:Landroid/media/RemoteDisplayState;
 
-    #calls: Lcom/android/server/media/RemoteDisplayProviderProxy;->onDisplayStateChanged(Lcom/android/server/media/RemoteDisplayProviderProxy$Connection;Landroid/media/RemoteDisplayState;)V
-    invoke-static {v0, v1, v2}, Lcom/android/server/media/RemoteDisplayProviderProxy;->access$600(Lcom/android/server/media/RemoteDisplayProviderProxy;Lcom/android/server/media/RemoteDisplayProviderProxy$Connection;Landroid/media/RemoteDisplayState;)V
+    invoke-static {v0, v1, v2}, Lcom/android/server/media/RemoteDisplayProviderProxy;->-wrap2(Lcom/android/server/media/RemoteDisplayProviderProxy;Lcom/android/server/media/RemoteDisplayProviderProxy$Connection;Landroid/media/RemoteDisplayState;)V
 
-    .line 411
+    .line 409
     return-void
 .end method

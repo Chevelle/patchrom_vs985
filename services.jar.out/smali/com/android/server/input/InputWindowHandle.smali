@@ -32,8 +32,6 @@
 
 .field public layoutParamsFlags:I
 
-.field public layoutParamsPrivateFlags:I
-
 .field public layoutParamsType:I
 
 .field public name:Ljava/lang/String;
@@ -44,7 +42,7 @@
 
 .field public paused:Z
 
-.field private ptr:I
+.field private ptr:J
 
 .field public scaleFactor:F
 
@@ -58,31 +56,31 @@
 # direct methods
 .method public constructor <init>(Lcom/android/server/input/InputApplicationHandle;Ljava/lang/Object;I)V
     .locals 1
-    .parameter "inputApplicationHandle"
-    .parameter "windowState"
-    .parameter "displayId"
+    .param p1, "inputApplicationHandle"    # Lcom/android/server/input/InputApplicationHandle;
+    .param p2, "windowState"    # Ljava/lang/Object;
+    .param p3, "displayId"    # I
 
     .prologue
-    .line 97
+    .line 95
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 64
+    .line 63
     new-instance v0, Landroid/graphics/Region;
 
     invoke-direct {v0}, Landroid/graphics/Region;-><init>()V
 
     iput-object v0, p0, Lcom/android/server/input/InputWindowHandle;->touchableRegion:Landroid/graphics/Region;
 
-    .line 98
+    .line 97
     iput-object p1, p0, Lcom/android/server/input/InputWindowHandle;->inputApplicationHandle:Lcom/android/server/input/InputApplicationHandle;
 
-    .line 99
+    .line 98
     iput-object p2, p0, Lcom/android/server/input/InputWindowHandle;->windowState:Ljava/lang/Object;
 
-    .line 100
+    .line 99
     iput p3, p0, Lcom/android/server/input/InputWindowHandle;->displayId:I
 
-    .line 101
+    .line 96
     return-void
 .end method
 
@@ -100,23 +98,25 @@
     .end annotation
 
     .prologue
-    .line 106
+    .line 105
     :try_start_0
     invoke-direct {p0}, Lcom/android/server/input/InputWindowHandle;->nativeDispose()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 108
+    .line 107
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 110
+    .line 103
     return-void
 
-    .line 108
+    .line 106
     :catchall_0
     move-exception v0
 
+    .line 107
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
+    .line 106
     throw v0
 .end method

@@ -46,40 +46,40 @@
 
 # direct methods
 .method constructor <init>(Lcom/android/server/Watchdog;Landroid/os/Handler;Ljava/lang/String;J)V
-    .locals 1
-    .parameter
-    .parameter "handler"
-    .parameter "name"
-    .parameter "waitMaxMillis"
+    .locals 2
+    .param p1, "this$0"    # Lcom/android/server/Watchdog;
+    .param p2, "handler"    # Landroid/os/Handler;
+    .param p3, "name"    # Ljava/lang/String;
+    .param p4, "waitMaxMillis"    # J
 
     .prologue
-    .line 104
+    .line 96
     iput-object p1, p0, Lcom/android/server/Watchdog$HandlerChecker;->this$0:Lcom/android/server/Watchdog;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 99
+    .line 91
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mMonitors:Ljava/util/ArrayList;
 
-    .line 105
+    .line 97
     iput-object p2, p0, Lcom/android/server/Watchdog$HandlerChecker;->mHandler:Landroid/os/Handler;
 
-    .line 106
+    .line 98
     iput-object p3, p0, Lcom/android/server/Watchdog$HandlerChecker;->mName:Ljava/lang/String;
 
-    .line 107
+    .line 99
     iput-wide p4, p0, Lcom/android/server/Watchdog$HandlerChecker;->mWaitMax:J
 
-    .line 108
+    .line 100
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mCompleted:Z
 
-    .line 109
+    .line 96
     return-void
 .end method
 
@@ -87,15 +87,15 @@
 # virtual methods
 .method public addMonitor(Lcom/android/server/Watchdog$Monitor;)V
     .locals 1
-    .parameter "monitor"
+    .param p1, "monitor"    # Lcom/android/server/Watchdog$Monitor;
 
     .prologue
-    .line 112
+    .line 104
     iget-object v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mMonitors:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 113
+    .line 103
     return-void
 .end method
 
@@ -103,17 +103,17 @@
     .locals 2
 
     .prologue
-    .line 165
+    .line 157
     iget-object v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mCurrentMonitor:Lcom/android/server/Watchdog$Monitor;
 
     if-nez v0, :cond_0
 
-    .line 166
+    .line 158
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "Blocked in handler on "
+    const-string/jumbo v1, "Blocked in handler on "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -125,7 +125,7 @@
 
     move-result-object v0
 
-    const-string v1, " ("
+    const-string/jumbo v1, " ("
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -143,7 +143,7 @@
 
     move-result-object v0
 
-    const-string v1, ")"
+    const-string/jumbo v1, ")"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -153,16 +153,15 @@
 
     move-result-object v0
 
-    .line 168
-    :goto_0
     return-object v0
 
+    .line 160
     :cond_0
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "Blocked in monitor "
+    const-string/jumbo v1, "Blocked in monitor "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -182,24 +181,31 @@
 
     move-result-object v0
 
-    const-string v1, " on "
+    .line 161
+    const-string/jumbo v1, " on "
 
+    .line 160
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 161
     iget-object v1, p0, Lcom/android/server/Watchdog$HandlerChecker;->mName:Ljava/lang/String;
 
+    .line 160
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " ("
+    .line 161
+    const-string/jumbo v1, " ("
 
+    .line 160
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 161
     invoke-virtual {p0}, Lcom/android/server/Watchdog$HandlerChecker;->getThread()Ljava/lang/Thread;
 
     move-result-object v1
@@ -208,12 +214,15 @@
 
     move-result-object v1
 
+    .line 160
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ")"
+    .line 161
+    const-string/jumbo v1, ")"
 
+    .line 160
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -222,26 +231,24 @@
 
     move-result-object v0
 
-    goto :goto_0
+    return-object v0
 .end method
 
 .method public getCompletionStateLocked()I
     .locals 6
 
     .prologue
-    .line 143
+    .line 135
     iget-boolean v2, p0, Lcom/android/server/Watchdog$HandlerChecker;->mCompleted:Z
 
     if-eqz v2, :cond_0
 
-    .line 144
+    .line 136
     const/4 v2, 0x0
 
-    .line 153
-    :goto_0
     return v2
 
-    .line 146
+    .line 138
     :cond_0
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
@@ -251,8 +258,8 @@
 
     sub-long v0, v2, v4
 
-    .line 147
-    .local v0, latency:J
+    .line 139
+    .local v0, "latency":J
     iget-wide v2, p0, Lcom/android/server/Watchdog$HandlerChecker;->mWaitMax:J
 
     const-wide/16 v4, 0x2
@@ -263,12 +270,12 @@
 
     if-gez v2, :cond_1
 
-    .line 148
+    .line 140
     const/4 v2, 0x1
 
-    goto :goto_0
+    return v2
 
-    .line 149
+    .line 141
     :cond_1
     iget-wide v2, p0, Lcom/android/server/Watchdog$HandlerChecker;->mWaitMax:J
 
@@ -276,23 +283,23 @@
 
     if-gez v2, :cond_2
 
-    .line 150
+    .line 142
     const/4 v2, 0x2
 
-    goto :goto_0
+    return v2
 
-    .line 153
+    .line 145
     :cond_2
     const/4 v2, 0x3
 
-    goto :goto_0
+    return v2
 .end method
 
 .method public getName()Ljava/lang/String;
     .locals 1
 
     .prologue
-    .line 161
+    .line 153
     iget-object v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mName:Ljava/lang/String;
 
     return-object v0
@@ -302,7 +309,7 @@
     .locals 1
 
     .prologue
-    .line 157
+    .line 149
     iget-object v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0}, Landroid/os/Handler;->getLooper()Landroid/os/Looper;
@@ -317,64 +324,61 @@
 .end method
 
 .method public isOverdueLocked()Z
-    .locals 6
+    .locals 8
 
     .prologue
-    .line 139
-    iget-boolean v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mCompleted:Z
+    const/4 v0, 0x0
 
-    if-nez v0, :cond_0
+    .line 131
+    iget-boolean v1, p0, Lcom/android/server/Watchdog$HandlerChecker;->mCompleted:Z
+
+    if-nez v1, :cond_0
 
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
-    move-result-wide v0
+    move-result-wide v2
 
-    iget-wide v2, p0, Lcom/android/server/Watchdog$HandlerChecker;->mStartTime:J
+    iget-wide v4, p0, Lcom/android/server/Watchdog$HandlerChecker;->mStartTime:J
 
-    iget-wide v4, p0, Lcom/android/server/Watchdog$HandlerChecker;->mWaitMax:J
+    iget-wide v6, p0, Lcom/android/server/Watchdog$HandlerChecker;->mWaitMax:J
 
-    add-long/2addr v2, v4
+    add-long/2addr v4, v6
 
-    cmp-long v0, v0, v2
+    cmp-long v1, v2, v4
 
-    if-lez v0, :cond_0
+    if-lez v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public run()V
     .locals 4
 
     .prologue
-    .line 175
+    .line 167
     iget-object v2, p0, Lcom/android/server/Watchdog$HandlerChecker;->mMonitors:Ljava/util/ArrayList;
 
     invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
 
     move-result v1
 
-    .line 176
-    .local v1, size:I
+    .line 168
+    .local v1, "size":I
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-ge v0, v1, :cond_0
 
-    .line 177
+    .line 169
     iget-object v3, p0, Lcom/android/server/Watchdog$HandlerChecker;->this$0:Lcom/android/server/Watchdog;
 
     monitor-enter v3
 
-    .line 178
+    .line 170
     :try_start_0
     iget-object v2, p0, Lcom/android/server/Watchdog$HandlerChecker;->mMonitors:Ljava/util/ArrayList;
 
@@ -385,63 +389,58 @@
     check-cast v2, Lcom/android/server/Watchdog$Monitor;
 
     iput-object v2, p0, Lcom/android/server/Watchdog$HandlerChecker;->mCurrentMonitor:Lcom/android/server/Watchdog$Monitor;
-
-    .line 179
-    monitor-exit v3
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 180
+    monitor-exit v3
+
+    .line 172
     iget-object v2, p0, Lcom/android/server/Watchdog$HandlerChecker;->mCurrentMonitor:Lcom/android/server/Watchdog$Monitor;
 
     invoke-interface {v2}, Lcom/android/server/Watchdog$Monitor;->monitor()V
 
-    .line 176
+    .line 168
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 179
+    .line 169
     :catchall_0
     move-exception v2
 
-    :try_start_1
     monitor-exit v3
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v2
 
-    .line 183
+    .line 175
     :cond_0
     iget-object v3, p0, Lcom/android/server/Watchdog$HandlerChecker;->this$0:Lcom/android/server/Watchdog;
 
     monitor-enter v3
 
-    .line 184
+    .line 176
     const/4 v2, 0x1
 
-    :try_start_2
+    :try_start_1
     iput-boolean v2, p0, Lcom/android/server/Watchdog$HandlerChecker;->mCompleted:Z
 
-    .line 185
+    .line 177
     const/4 v2, 0x0
 
     iput-object v2, p0, Lcom/android/server/Watchdog$HandlerChecker;->mCurrentMonitor:Lcom/android/server/Watchdog$Monitor;
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    .line 186
     monitor-exit v3
 
-    .line 187
+    .line 166
     return-void
 
-    .line 186
+    .line 175
     :catchall_1
     move-exception v2
 
     monitor-exit v3
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
     throw v2
 .end method
@@ -450,14 +449,16 @@
     .locals 2
 
     .prologue
-    .line 116
+    const/4 v1, 0x0
+
+    .line 108
     iget-object v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mMonitors:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
 
     move-result v0
 
-    if-nez v0, :cond_1
+    if-nez v0, :cond_0
 
     iget-object v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mHandler:Landroid/os/Handler;
 
@@ -465,49 +466,54 @@
 
     move-result-object v0
 
-    invoke-virtual {v0}, Landroid/os/Looper;->isIdling()Z
+    invoke-virtual {v0}, Landroid/os/Looper;->getQueue()Landroid/os/MessageQueue;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/os/MessageQueue;->isPolling()Z
 
     move-result v0
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_0
 
-    .line 123
+    .line 115
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mCompleted:Z
 
-    .line 136
-    :cond_0
-    :goto_0
+    .line 116
     return-void
 
-    .line 127
-    :cond_1
+    .line 119
+    :cond_0
     iget-boolean v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mCompleted:Z
 
-    if-eqz v0, :cond_0
+    if-nez v0, :cond_1
 
-    .line 132
-    const/4 v0, 0x0
+    .line 121
+    return-void
 
-    iput-boolean v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mCompleted:Z
+    .line 124
+    :cond_1
+    iput-boolean v1, p0, Lcom/android/server/Watchdog$HandlerChecker;->mCompleted:Z
 
-    .line 133
+    .line 125
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mCurrentMonitor:Lcom/android/server/Watchdog$Monitor;
 
-    .line 134
+    .line 126
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mStartTime:J
 
-    .line 135
+    .line 127
     iget-object v0, p0, Lcom/android/server/Watchdog$HandlerChecker;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, p0}, Landroid/os/Handler;->postAtFrontOfQueue(Ljava/lang/Runnable;)Z
 
-    goto :goto_0
+    .line 107
+    return-void
 .end method

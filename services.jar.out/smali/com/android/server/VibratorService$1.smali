@@ -1,11 +1,14 @@
 .class Lcom/android/server/VibratorService$1;
-.super Landroid/database/ContentObserver;
+.super Ljava/lang/Object;
 .source "VibratorService.java"
+
+# interfaces
+.implements Ljava/lang/Runnable;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/VibratorService;->systemReady()V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/android/server/VibratorService;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -19,33 +22,57 @@
 
 
 # direct methods
-.method constructor <init>(Lcom/android/server/VibratorService;Landroid/os/Handler;)V
+.method constructor <init>(Lcom/android/server/VibratorService;)V
     .locals 0
-    .parameter
-    .parameter "x0"
+    .param p1, "this$0"    # Lcom/android/server/VibratorService;
 
     .prologue
-    .line 163
+    .line 412
     iput-object p1, p0, Lcom/android/server/VibratorService$1;->this$0:Lcom/android/server/VibratorService;
 
-    invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onChange(Z)V
-    .locals 1
-    .parameter "selfChange"
+.method public run()V
+    .locals 2
 
     .prologue
-    .line 166
+    .line 415
     iget-object v0, p0, Lcom/android/server/VibratorService$1;->this$0:Lcom/android/server/VibratorService;
 
-    #calls: Lcom/android/server/VibratorService;->updateInputDeviceVibrators()V
-    invoke-static {v0}, Lcom/android/server/VibratorService;->access$400(Lcom/android/server/VibratorService;)V
+    invoke-static {v0}, Lcom/android/server/VibratorService;->-get2(Lcom/android/server/VibratorService;)Ljava/util/LinkedList;
 
-    .line 167
+    move-result-object v1
+
+    monitor-enter v1
+
+    .line 416
+    :try_start_0
+    iget-object v0, p0, Lcom/android/server/VibratorService$1;->this$0:Lcom/android/server/VibratorService;
+
+    invoke-static {v0}, Lcom/android/server/VibratorService;->-wrap0(Lcom/android/server/VibratorService;)V
+
+    .line 417
+    iget-object v0, p0, Lcom/android/server/VibratorService$1;->this$0:Lcom/android/server/VibratorService;
+
+    invoke-static {v0}, Lcom/android/server/VibratorService;->-wrap2(Lcom/android/server/VibratorService;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit v1
+
+    .line 414
     return-void
+
+    .line 415
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+
+    throw v0
 .end method

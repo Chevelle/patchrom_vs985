@@ -5,7 +5,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/accounts/AccountManagerService;->updateCredentials(Landroid/accounts/IAccountManagerResponse;Landroid/accounts/Account;Ljava/lang/String;ZLandroid/os/Bundle;)V
+    value = Lcom/android/server/accounts/AccountManagerService;->confirmCredentialsAsUser(Landroid/accounts/IAccountManagerResponse;Landroid/accounts/Account;Landroid/os/Bundle;ZI)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -19,43 +19,67 @@
 
 .field final synthetic val$account:Landroid/accounts/Account;
 
-.field final synthetic val$authTokenType:Ljava/lang/String;
-
-.field final synthetic val$loginOptions:Landroid/os/Bundle;
+.field final synthetic val$options:Landroid/os/Bundle;
 
 
 # direct methods
-.method constructor <init>(Lcom/android/server/accounts/AccountManagerService;Lcom/android/server/accounts/AccountManagerService$UserAccounts;Landroid/accounts/IAccountManagerResponse;Ljava/lang/String;ZZLandroid/accounts/Account;Ljava/lang/String;Landroid/os/Bundle;)V
-    .locals 0
-    .parameter
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
-    .parameter "x3"
-    .parameter "x4"
-    .parameter
-    .parameter
-    .parameter
+.method constructor <init>(Lcom/android/server/accounts/AccountManagerService;Lcom/android/server/accounts/AccountManagerService;Lcom/android/server/accounts/AccountManagerService$UserAccounts;Landroid/accounts/IAccountManagerResponse;Ljava/lang/String;ZZLjava/lang/String;ZZLandroid/accounts/Account;Landroid/os/Bundle;)V
+    .locals 11
+    .param p1, "this$0"    # Lcom/android/server/accounts/AccountManagerService;
+    .param p2, "this$0_1"    # Lcom/android/server/accounts/AccountManagerService;
+    .param p3, "$anonymous0"    # Lcom/android/server/accounts/AccountManagerService$UserAccounts;
+    .param p4, "$anonymous1"    # Landroid/accounts/IAccountManagerResponse;
+    .param p5, "$anonymous2"    # Ljava/lang/String;
+    .param p6, "$anonymous3"    # Z
+    .param p7, "$anonymous4"    # Z
+    .param p8, "$anonymous5"    # Ljava/lang/String;
+    .param p9, "$anonymous6"    # Z
+    .param p10, "$anonymous7"    # Z
+    .param p11, "val$account"    # Landroid/accounts/Account;
+    .param p12, "val$options"    # Landroid/os/Bundle;
 
     .prologue
-    .line 1627
-    iput-object p1, p0, Lcom/android/server/accounts/AccountManagerService$9;->this$0:Lcom/android/server/accounts/AccountManagerService;
+    .line 2311
+    iput-object p2, p0, Lcom/android/server/accounts/AccountManagerService$9;->this$0:Lcom/android/server/accounts/AccountManagerService;
 
-    iput-object p7, p0, Lcom/android/server/accounts/AccountManagerService$9;->val$account:Landroid/accounts/Account;
+    move-object/from16 v0, p11
 
-    iput-object p8, p0, Lcom/android/server/accounts/AccountManagerService$9;->val$authTokenType:Ljava/lang/String;
+    iput-object v0, p0, Lcom/android/server/accounts/AccountManagerService$9;->val$account:Landroid/accounts/Account;
 
-    iput-object p9, p0, Lcom/android/server/accounts/AccountManagerService$9;->val$loginOptions:Landroid/os/Bundle;
+    move-object/from16 v0, p12
 
-    invoke-direct/range {p0 .. p6}, Lcom/android/server/accounts/AccountManagerService$Session;-><init>(Lcom/android/server/accounts/AccountManagerService;Lcom/android/server/accounts/AccountManagerService$UserAccounts;Landroid/accounts/IAccountManagerResponse;Ljava/lang/String;ZZ)V
+    iput-object v0, p0, Lcom/android/server/accounts/AccountManagerService$9;->val$options:Landroid/os/Bundle;
 
+    move-object v1, p0
+
+    move-object v2, p1
+
+    move-object v3, p3
+
+    move-object v4, p4
+
+    move-object/from16 v5, p5
+
+    move/from16 v6, p6
+
+    move/from16 v7, p7
+
+    move-object/from16 v8, p8
+
+    move/from16 v9, p9
+
+    move/from16 v10, p10
+
+    invoke-direct/range {v1 .. v10}, Lcom/android/server/accounts/AccountManagerService$Session;-><init>(Lcom/android/server/accounts/AccountManagerService;Lcom/android/server/accounts/AccountManagerService$UserAccounts;Landroid/accounts/IAccountManagerResponse;Ljava/lang/String;ZZLjava/lang/String;ZZ)V
+
+    .line 2313
     return-void
 .end method
 
 
 # virtual methods
 .method public run()V
-    .locals 4
+    .locals 3
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -63,37 +87,25 @@
     .end annotation
 
     .prologue
-    .line 1630
+    .line 2316
     iget-object v0, p0, Lcom/android/server/accounts/AccountManagerService$9;->mAuthenticator:Landroid/accounts/IAccountAuthenticator;
 
     iget-object v1, p0, Lcom/android/server/accounts/AccountManagerService$9;->val$account:Landroid/accounts/Account;
 
-    iget-object v2, p0, Lcom/android/server/accounts/AccountManagerService$9;->val$authTokenType:Ljava/lang/String;
+    iget-object v2, p0, Lcom/android/server/accounts/AccountManagerService$9;->val$options:Landroid/os/Bundle;
 
-    iget-object v3, p0, Lcom/android/server/accounts/AccountManagerService$9;->val$loginOptions:Landroid/os/Bundle;
+    invoke-interface {v0, p0, v1, v2}, Landroid/accounts/IAccountAuthenticator;->confirmCredentials(Landroid/accounts/IAccountAuthenticatorResponse;Landroid/accounts/Account;Landroid/os/Bundle;)V
 
-    invoke-interface {v0, p0, v1, v2, v3}, Landroid/accounts/IAccountAuthenticator;->updateCredentials(Landroid/accounts/IAccountAuthenticatorResponse;Landroid/accounts/Account;Ljava/lang/String;Landroid/os/Bundle;)V
-
-    .line 1631
+    .line 2315
     return-void
 .end method
 
 .method protected toDebugString(J)Ljava/lang/String;
-    .locals 2
-    .parameter "now"
+    .locals 3
+    .param p1, "now"    # J
 
     .prologue
-    .line 1634
-    iget-object v0, p0, Lcom/android/server/accounts/AccountManagerService$9;->val$loginOptions:Landroid/os/Bundle;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Lcom/android/server/accounts/AccountManagerService$9;->val$loginOptions:Landroid/os/Bundle;
-
-    invoke-virtual {v0}, Landroid/os/Bundle;->keySet()Ljava/util/Set;
-
-    .line 1635
-    :cond_0
+    .line 2320
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -106,44 +118,24 @@
 
     move-result-object v0
 
-    const-string v1, ", updateCredentials"
+    const-string/jumbo v1, ", confirmCredentials"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", "
+    .line 2321
+    const-string/jumbo v1, ", "
 
+    .line 2320
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 2321
     iget-object v1, p0, Lcom/android/server/accounts/AccountManagerService$9;->val$account:Landroid/accounts/Account;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, ", authTokenType "
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    iget-object v1, p0, Lcom/android/server/accounts/AccountManagerService$9;->val$authTokenType:Ljava/lang/String;
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, ", loginOptions "
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    iget-object v1, p0, Lcom/android/server/accounts/AccountManagerService$9;->val$loginOptions:Landroid/os/Bundle;
-
+    .line 2320
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v0

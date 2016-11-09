@@ -25,6 +25,10 @@
 
 .field public final packageName:Ljava/lang/String;
 
+.field public proxyPackageName:Ljava/lang/String;
+
+.field public proxyUid:I
+
 .field public rejectTime:J
 
 .field public time:J
@@ -35,24 +39,29 @@
 # direct methods
 .method public constructor <init>(ILjava/lang/String;I)V
     .locals 1
-    .parameter "_uid"
-    .parameter "_packageName"
-    .parameter "_op"
+    .param p1, "_uid"    # I
+    .param p2, "_packageName"    # Ljava/lang/String;
+    .param p3, "_op"    # I
 
     .prologue
-    .line 112
+    .line 153
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 113
+    .line 144
+    const/4 v0, -0x1
+
+    iput v0, p0, Lcom/android/server/AppOpsService$Op;->proxyUid:I
+
+    .line 154
     iput p1, p0, Lcom/android/server/AppOpsService$Op;->uid:I
 
-    .line 114
+    .line 155
     iput-object p2, p0, Lcom/android/server/AppOpsService$Op;->packageName:Ljava/lang/String;
 
-    .line 115
+    .line 156
     iput p3, p0, Lcom/android/server/AppOpsService$Op;->op:I
 
-    .line 116
+    .line 157
     iget v0, p0, Lcom/android/server/AppOpsService$Op;->op:I
 
     invoke-static {v0}, Landroid/app/AppOpsManager;->opToDefaultMode(I)I
@@ -61,6 +70,6 @@
 
     iput v0, p0, Lcom/android/server/AppOpsService$Op;->mode:I
 
-    .line 117
+    .line 153
     return-void
 .end method

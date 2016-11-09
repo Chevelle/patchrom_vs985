@@ -3,12 +3,12 @@
 .source "DreamManagerService.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Lcom/android/internal/util/DumpUtils$Dump;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/dreams/DreamManagerService;->stopDreamLocked()V
+    value = Lcom/android/server/dreams/DreamManagerService;->dumpInternal(Ljava/io/PrintWriter;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/dreams/DreamManagerService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/dreams/DreamManagerService;
 
     .prologue
-    .line 356
+    .line 140
     iput-object p1, p0, Lcom/android/server/dreams/DreamManagerService$4;->this$0:Lcom/android/server/dreams/DreamManagerService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,20 +37,21 @@
 
 
 # virtual methods
-.method public run()V
+.method public dump(Ljava/io/PrintWriter;Ljava/lang/String;)V
     .locals 1
+    .param p1, "pw"    # Ljava/io/PrintWriter;
+    .param p2, "prefix"    # Ljava/lang/String;
 
     .prologue
-    .line 359
+    .line 143
     iget-object v0, p0, Lcom/android/server/dreams/DreamManagerService$4;->this$0:Lcom/android/server/dreams/DreamManagerService;
 
-    #getter for: Lcom/android/server/dreams/DreamManagerService;->mController:Lcom/android/server/dreams/DreamController;
-    invoke-static {v0}, Lcom/android/server/dreams/DreamManagerService;->access$200(Lcom/android/server/dreams/DreamManagerService;)Lcom/android/server/dreams/DreamController;
+    invoke-static {v0}, Lcom/android/server/dreams/DreamManagerService;->-get1(Lcom/android/server/dreams/DreamManagerService;)Lcom/android/server/dreams/DreamController;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lcom/android/server/dreams/DreamController;->stopDream()V
+    invoke-virtual {v0, p1}, Lcom/android/server/dreams/DreamController;->dump(Ljava/io/PrintWriter;)V
 
-    .line 360
+    .line 142
     return-void
 .end method

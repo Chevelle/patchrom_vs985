@@ -15,5 +15,5 @@
 
 
 # virtual methods
-.method public abstract onSyncRequest(Landroid/accounts/Account;IILjava/lang/String;Landroid/os/Bundle;)V
+.method public abstract onSyncRequest(Lcom/android/server/content/SyncStorageEngine$EndPoint;ILandroid/os/Bundle;)V
 .end method

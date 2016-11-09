@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/NetworkTimeUpdateService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/NetworkTimeUpdateService;
 
     .prologue
-    .line 231
+    .line 257
     iput-object p1, p0, Lcom/android/server/NetworkTimeUpdateService$2;->this$0:Lcom/android/server/NetworkTimeUpdateService;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -35,44 +35,19 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 4
-    .parameter "context"
-    .parameter "intent"
+    .locals 3
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 235
+    .line 261
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 236
-    .local v0, action:Ljava/lang/String;
-    const-string v1, "android.intent.action.NETWORK_SET_TIME"
-
-    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    .line 237
-    iget-object v1, p0, Lcom/android/server/NetworkTimeUpdateService$2;->this$0:Lcom/android/server/NetworkTimeUpdateService;
-
-    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
-
-    move-result-wide v2
-
-    #setter for: Lcom/android/server/NetworkTimeUpdateService;->mNitzTimeSetTime:J
-    invoke-static {v1, v2, v3}, Lcom/android/server/NetworkTimeUpdateService;->access$102(Lcom/android/server/NetworkTimeUpdateService;J)J
-
-    .line 241
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 238
-    :cond_1
-    const-string v1, "android.intent.action.NETWORK_SET_TIMEZONE"
+    .line 262
+    .local v0, "action":Ljava/lang/String;
+    const-string/jumbo v1, "android.net.conn.CONNECTIVITY_CHANGE"
 
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -80,15 +55,22 @@
 
     if-eqz v1, :cond_0
 
-    .line 239
+    .line 264
     iget-object v1, p0, Lcom/android/server/NetworkTimeUpdateService$2;->this$0:Lcom/android/server/NetworkTimeUpdateService;
 
-    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
+    invoke-static {v1}, Lcom/android/server/NetworkTimeUpdateService;->-get0(Lcom/android/server/NetworkTimeUpdateService;)Landroid/os/Handler;
 
-    move-result-wide v2
+    move-result-object v1
 
-    #setter for: Lcom/android/server/NetworkTimeUpdateService;->mNitzZoneSetTime:J
-    invoke-static {v1, v2, v3}, Lcom/android/server/NetworkTimeUpdateService;->access$202(Lcom/android/server/NetworkTimeUpdateService;J)J
+    const/4 v2, 0x3
 
-    goto :goto_0
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->obtainMessage(I)Landroid/os/Message;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/os/Message;->sendToTarget()V
+
+    .line 260
+    :cond_0
+    return-void
 .end method

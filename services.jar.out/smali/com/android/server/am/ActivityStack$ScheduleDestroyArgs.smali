@@ -15,33 +15,27 @@
 
 
 # instance fields
-.field final mOomAdj:Z
-
 .field final mOwner:Lcom/android/server/am/ProcessRecord;
 
 .field final mReason:Ljava/lang/String;
 
 
 # direct methods
-.method constructor <init>(Lcom/android/server/am/ProcessRecord;ZLjava/lang/String;)V
+.method constructor <init>(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;)V
     .locals 0
-    .parameter "owner"
-    .parameter "oomAdj"
-    .parameter "reason"
+    .param p1, "owner"    # Lcom/android/server/am/ProcessRecord;
+    .param p2, "reason"    # Ljava/lang/String;
 
     .prologue
-    .line 247
+    .line 262
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 248
+    .line 263
     iput-object p1, p0, Lcom/android/server/am/ActivityStack$ScheduleDestroyArgs;->mOwner:Lcom/android/server/am/ProcessRecord;
 
-    .line 249
-    iput-boolean p2, p0, Lcom/android/server/am/ActivityStack$ScheduleDestroyArgs;->mOomAdj:Z
+    .line 264
+    iput-object p2, p0, Lcom/android/server/am/ActivityStack$ScheduleDestroyArgs;->mReason:Ljava/lang/String;
 
-    .line 250
-    iput-object p3, p0, Lcom/android/server/am/ActivityStack$ScheduleDestroyArgs;->mReason:Ljava/lang/String;
-
-    .line 251
+    .line 262
     return-void
 .end method

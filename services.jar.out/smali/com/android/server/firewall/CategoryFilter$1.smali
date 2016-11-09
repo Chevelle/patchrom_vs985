@@ -17,7 +17,7 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "x0"
+    .param p1, "$anonymous0"    # Ljava/lang/String;
 
     .prologue
     .line 46
@@ -30,7 +30,7 @@
 # virtual methods
 .method public newFilter(Lorg/xmlpull/v1/XmlPullParser;)Lcom/android/server/firewall/Filter;
     .locals 4
-    .parameter "parser"
+    .param p1, "parser"    # Lorg/xmlpull/v1/XmlPullParser;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;,
@@ -42,20 +42,20 @@
     const/4 v3, 0x0
 
     .line 50
-    const-string v1, "name"
+    const-string/jumbo v1, "name"
 
     invoke-interface {p1, v3, v1}, Lorg/xmlpull/v1/XmlPullParser;->getAttributeValue(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
     .line 51
-    .local v0, categoryName:Ljava/lang/String;
+    .local v0, "categoryName":Ljava/lang/String;
     if-nez v0, :cond_0
 
     .line 52
     new-instance v1, Lorg/xmlpull/v1/XmlPullParserException;
 
-    const-string v2, "Category name must be specified."
+    const-string/jumbo v2, "Category name must be specified."
 
     invoke-direct {v1, v2, p1, v3}, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;Lorg/xmlpull/v1/XmlPullParser;Ljava/lang/Throwable;)V
 
@@ -65,7 +65,7 @@
     :cond_0
     new-instance v1, Lcom/android/server/firewall/CategoryFilter;
 
-    invoke-direct {v1, v0, v3}, Lcom/android/server/firewall/CategoryFilter;-><init>(Ljava/lang/String;Lcom/android/server/firewall/CategoryFilter$1;)V
+    invoke-direct {v1, v0, v3}, Lcom/android/server/firewall/CategoryFilter;-><init>(Ljava/lang/String;Lcom/android/server/firewall/CategoryFilter;)V
 
     return-object v1
 .end method

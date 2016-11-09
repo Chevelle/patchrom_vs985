@@ -15,5 +15,5 @@
 
 
 # virtual methods
-.method public abstract onHardKeyboardStatusChange(ZZ)V
+.method public abstract onHardKeyboardStatusChange(Z)V
 .end method

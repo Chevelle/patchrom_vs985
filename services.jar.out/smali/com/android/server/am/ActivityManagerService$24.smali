@@ -1,14 +1,11 @@
 .class Lcom/android/server/am/ActivityManagerService$24;
-.super Ljava/lang/Object;
+.super Landroid/content/IIntentReceiver$Stub;
 .source "ActivityManagerService.java"
-
-# interfaces
-.implements Ljava/lang/Runnable;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/am/ActivityManagerService;->stopUserLocked(ILandroid/app/IStopUserCallback;)I
+    value = Lcom/android/server/am/ActivityManagerService;->startUser(IZ)Z
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,54 +17,67 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/server/am/ActivityManagerService;
 
-.field final synthetic val$callback:Landroid/app/IStopUserCallback;
+.field final synthetic val$foreground:Z
+
+.field final synthetic val$oldUserId:I
 
 .field final synthetic val$userId:I
 
+.field final synthetic val$uss:Lcom/android/server/am/UserState;
+
 
 # direct methods
-.method constructor <init>(Lcom/android/server/am/ActivityManagerService;Landroid/app/IStopUserCallback;I)V
+.method constructor <init>(Lcom/android/server/am/ActivityManagerService;Lcom/android/server/am/UserState;ZII)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/am/ActivityManagerService;
+    .param p2, "val$uss"    # Lcom/android/server/am/UserState;
+    .param p3, "val$foreground"    # Z
+    .param p4, "val$oldUserId"    # I
+    .param p5, "val$userId"    # I
 
     .prologue
-    .line 16368
+    .line 20019
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService$24;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    iput-object p2, p0, Lcom/android/server/am/ActivityManagerService$24;->val$callback:Landroid/app/IStopUserCallback;
+    iput-object p2, p0, Lcom/android/server/am/ActivityManagerService$24;->val$uss:Lcom/android/server/am/UserState;
 
-    iput p3, p0, Lcom/android/server/am/ActivityManagerService$24;->val$userId:I
+    iput-boolean p3, p0, Lcom/android/server/am/ActivityManagerService$24;->val$foreground:Z
 
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p4, p0, Lcom/android/server/am/ActivityManagerService$24;->val$oldUserId:I
+
+    iput p5, p0, Lcom/android/server/am/ActivityManagerService$24;->val$userId:I
+
+    invoke-direct {p0}, Landroid/content/IIntentReceiver$Stub;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public run()V
-    .locals 2
+.method public performReceive(Landroid/content/Intent;ILjava/lang/String;Landroid/os/Bundle;ZZI)V
+    .locals 5
+    .param p1, "intent"    # Landroid/content/Intent;
+    .param p2, "resultCode"    # I
+    .param p3, "data"    # Ljava/lang/String;
+    .param p4, "extras"    # Landroid/os/Bundle;
+    .param p5, "ordered"    # Z
+    .param p6, "sticky"    # Z
+    .param p7, "sendingUser"    # I
 
     .prologue
-    .line 16372
-    :try_start_0
-    iget-object v0, p0, Lcom/android/server/am/ActivityManagerService$24;->val$callback:Landroid/app/IStopUserCallback;
+    .line 20023
+    iget-object v0, p0, Lcom/android/server/am/ActivityManagerService$24;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    iget v1, p0, Lcom/android/server/am/ActivityManagerService$24;->val$userId:I
+    iget-object v1, p0, Lcom/android/server/am/ActivityManagerService$24;->val$uss:Lcom/android/server/am/UserState;
 
-    invoke-interface {v0, v1}, Landroid/app/IStopUserCallback;->userStopped(I)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    iget-boolean v2, p0, Lcom/android/server/am/ActivityManagerService$24;->val$foreground:Z
 
-    .line 16375
-    :goto_0
+    iget v3, p0, Lcom/android/server/am/ActivityManagerService$24;->val$oldUserId:I
+
+    iget v4, p0, Lcom/android/server/am/ActivityManagerService$24;->val$userId:I
+
+    invoke-virtual {v0, v1, v2, v3, v4}, Lcom/android/server/am/ActivityManagerService;->onUserInitialized(Lcom/android/server/am/UserState;ZII)V
+
+    .line 20022
     return-void
-
-    .line 16373
-    :catch_0
-    move-exception v0
-
-    goto :goto_0
 .end method

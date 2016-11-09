@@ -24,7 +24,7 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/media/RemoteDisplayProviderProxy$Connection;)V
     .locals 0
-    .parameter
+    .param p1, "this$1"    # Lcom/android/server/media/RemoteDisplayProviderProxy$Connection;
 
     .prologue
     .line 398
@@ -48,9 +48,8 @@
 
     iget-object v1, p0, Lcom/android/server/media/RemoteDisplayProviderProxy$Connection$2;->this$1:Lcom/android/server/media/RemoteDisplayProviderProxy$Connection;
 
-    #calls: Lcom/android/server/media/RemoteDisplayProviderProxy;->onConnectionDied(Lcom/android/server/media/RemoteDisplayProviderProxy$Connection;)V
-    invoke-static {v0, v1}, Lcom/android/server/media/RemoteDisplayProviderProxy;->access$500(Lcom/android/server/media/RemoteDisplayProviderProxy;Lcom/android/server/media/RemoteDisplayProviderProxy$Connection;)V
+    invoke-static {v0, v1}, Lcom/android/server/media/RemoteDisplayProviderProxy;->-wrap0(Lcom/android/server/media/RemoteDisplayProviderProxy;Lcom/android/server/media/RemoteDisplayProviderProxy$Connection;)V
 
-    .line 402
+    .line 400
     return-void
 .end method

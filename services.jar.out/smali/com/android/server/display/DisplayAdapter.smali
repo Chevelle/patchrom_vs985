@@ -18,6 +18,10 @@
 
 .field public static final DISPLAY_DEVICE_EVENT_REMOVED:I = 0x3
 
+.field private static final NEXT_COLOR_TRANSFORM_ID:Ljava/util/concurrent/atomic/AtomicInteger;
+
+.field private static final NEXT_DISPLAY_MODE_ID:Ljava/util/concurrent/atomic/AtomicInteger;
+
 
 # instance fields
 .field private final mContext:Landroid/content/Context;
@@ -32,44 +36,109 @@
 
 
 # direct methods
-.method public constructor <init>(Lcom/android/server/display/DisplayManagerService$SyncRoot;Landroid/content/Context;Landroid/os/Handler;Lcom/android/server/display/DisplayAdapter$Listener;Ljava/lang/String;)V
-    .locals 0
-    .parameter "syncRoot"
-    .parameter "context"
-    .parameter "handler"
-    .parameter "listener"
-    .parameter "name"
+.method static synthetic -get0(Lcom/android/server/display/DisplayAdapter;)Lcom/android/server/display/DisplayAdapter$Listener;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/DisplayAdapter;->mListener:Lcom/android/server/display/DisplayAdapter$Listener;
+
+    return-object v0
+.end method
+
+.method static constructor <clinit>()V
+    .locals 2
 
     .prologue
-    .line 47
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 48
-    iput-object p1, p0, Lcom/android/server/display/DisplayAdapter;->mSyncRoot:Lcom/android/server/display/DisplayManagerService$SyncRoot;
-
-    .line 49
-    iput-object p2, p0, Lcom/android/server/display/DisplayAdapter;->mContext:Landroid/content/Context;
+    const/4 v1, 0x1
 
     .line 50
-    iput-object p3, p0, Lcom/android/server/display/DisplayAdapter;->mHandler:Landroid/os/Handler;
+    new-instance v0, Ljava/util/concurrent/atomic/AtomicInteger;
 
-    .line 51
-    iput-object p4, p0, Lcom/android/server/display/DisplayAdapter;->mListener:Lcom/android/server/display/DisplayAdapter$Listener;
+    invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicInteger;-><init>(I)V
 
-    .line 52
-    iput-object p5, p0, Lcom/android/server/display/DisplayAdapter;->mName:Ljava/lang/String;
+    sput-object v0, Lcom/android/server/display/DisplayAdapter;->NEXT_DISPLAY_MODE_ID:Ljava/util/concurrent/atomic/AtomicInteger;
 
-    .line 53
+    .line 57
+    new-instance v0, Ljava/util/concurrent/atomic/AtomicInteger;
+
+    invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicInteger;-><init>(I)V
+
+    sput-object v0, Lcom/android/server/display/DisplayAdapter;->NEXT_COLOR_TRANSFORM_ID:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    .line 36
     return-void
 .end method
 
-.method static synthetic access$000(Lcom/android/server/display/DisplayAdapter;)Lcom/android/server/display/DisplayAdapter$Listener;
-    .locals 1
-    .parameter "x0"
+.method public constructor <init>(Lcom/android/server/display/DisplayManagerService$SyncRoot;Landroid/content/Context;Landroid/os/Handler;Lcom/android/server/display/DisplayAdapter$Listener;Ljava/lang/String;)V
+    .locals 0
+    .param p1, "syncRoot"    # Lcom/android/server/display/DisplayManagerService$SyncRoot;
+    .param p2, "context"    # Landroid/content/Context;
+    .param p3, "handler"    # Landroid/os/Handler;
+    .param p4, "listener"    # Lcom/android/server/display/DisplayAdapter$Listener;
+    .param p5, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 34
-    iget-object v0, p0, Lcom/android/server/display/DisplayAdapter;->mListener:Lcom/android/server/display/DisplayAdapter$Listener;
+    .line 60
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 62
+    iput-object p1, p0, Lcom/android/server/display/DisplayAdapter;->mSyncRoot:Lcom/android/server/display/DisplayManagerService$SyncRoot;
+
+    .line 63
+    iput-object p2, p0, Lcom/android/server/display/DisplayAdapter;->mContext:Landroid/content/Context;
+
+    .line 64
+    iput-object p3, p0, Lcom/android/server/display/DisplayAdapter;->mHandler:Landroid/os/Handler;
+
+    .line 65
+    iput-object p4, p0, Lcom/android/server/display/DisplayAdapter;->mListener:Lcom/android/server/display/DisplayAdapter$Listener;
+
+    .line 66
+    iput-object p5, p0, Lcom/android/server/display/DisplayAdapter;->mName:Ljava/lang/String;
+
+    .line 61
+    return-void
+.end method
+
+.method public static createColorTransform(I)Landroid/view/Display$ColorTransform;
+    .locals 2
+    .param p0, "colorTransform"    # I
+
+    .prologue
+    .line 145
+    new-instance v0, Landroid/view/Display$ColorTransform;
+
+    .line 146
+    sget-object v1, Lcom/android/server/display/DisplayAdapter;->NEXT_COLOR_TRANSFORM_ID:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    invoke-virtual {v1}, Ljava/util/concurrent/atomic/AtomicInteger;->getAndIncrement()I
+
+    move-result v1
+
+    .line 145
+    invoke-direct {v0, v1, p0}, Landroid/view/Display$ColorTransform;-><init>(II)V
+
+    return-object v0
+.end method
+
+.method public static createMode(IIF)Landroid/view/Display$Mode;
+    .locals 2
+    .param p0, "width"    # I
+    .param p1, "height"    # I
+    .param p2, "refreshRate"    # F
+
+    .prologue
+    .line 140
+    new-instance v0, Landroid/view/Display$Mode;
+
+    .line 141
+    sget-object v1, Lcom/android/server/display/DisplayAdapter;->NEXT_DISPLAY_MODE_ID:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    invoke-virtual {v1}, Ljava/util/concurrent/atomic/AtomicInteger;->getAndIncrement()I
+
+    move-result v1
+
+    .line 140
+    invoke-direct {v0, v1, p0, p1, p2}, Landroid/view/Display$Mode;-><init>(IIIF)V
 
     return-object v0
 .end method
@@ -78,10 +147,10 @@
 # virtual methods
 .method public dumpLocked(Ljava/io/PrintWriter;)V
     .locals 0
-    .parameter "pw"
+    .param p1, "pw"    # Ljava/io/PrintWriter;
 
     .prologue
-    .line 98
+    .line 111
     return-void
 .end method
 
@@ -89,7 +158,7 @@
     .locals 1
 
     .prologue
-    .line 67
+    .line 81
     iget-object v0, p0, Lcom/android/server/display/DisplayAdapter;->mContext:Landroid/content/Context;
 
     return-object v0
@@ -99,7 +168,7 @@
     .locals 1
 
     .prologue
-    .line 74
+    .line 88
     iget-object v0, p0, Lcom/android/server/display/DisplayAdapter;->mHandler:Landroid/os/Handler;
 
     return-object v0
@@ -109,7 +178,7 @@
     .locals 1
 
     .prologue
-    .line 81
+    .line 95
     iget-object v0, p0, Lcom/android/server/display/DisplayAdapter;->mName:Ljava/lang/String;
 
     return-object v0
@@ -119,7 +188,7 @@
     .locals 1
 
     .prologue
-    .line 60
+    .line 74
     iget-object v0, p0, Lcom/android/server/display/DisplayAdapter;->mSyncRoot:Lcom/android/server/display/DisplayManagerService$SyncRoot;
 
     return-object v0
@@ -129,17 +198,17 @@
     .locals 0
 
     .prologue
-    .line 92
+    .line 105
     return-void
 .end method
 
 .method protected final sendDisplayDeviceEventLocked(Lcom/android/server/display/DisplayDevice;I)V
     .locals 2
-    .parameter "device"
-    .parameter "event"
+    .param p1, "device"    # Lcom/android/server/display/DisplayDevice;
+    .param p2, "event"    # I
 
     .prologue
-    .line 105
+    .line 119
     iget-object v0, p0, Lcom/android/server/display/DisplayAdapter;->mHandler:Landroid/os/Handler;
 
     new-instance v1, Lcom/android/server/display/DisplayAdapter$1;
@@ -148,7 +217,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 111
+    .line 118
     return-void
 .end method
 
@@ -156,7 +225,7 @@
     .locals 2
 
     .prologue
-    .line 117
+    .line 131
     iget-object v0, p0, Lcom/android/server/display/DisplayAdapter;->mHandler:Landroid/os/Handler;
 
     new-instance v1, Lcom/android/server/display/DisplayAdapter$2;
@@ -165,6 +234,6 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 123
+    .line 130
     return-void
 .end method

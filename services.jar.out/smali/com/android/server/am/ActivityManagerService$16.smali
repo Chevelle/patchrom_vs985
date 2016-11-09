@@ -25,13 +25,13 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/am/ActivityManagerService;Ljava/lang/String;Landroid/os/DropBoxManager;Ljava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter "x0"
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/am/ActivityManagerService;
+    .param p2, "$anonymous0"    # Ljava/lang/String;
+    .param p3, "val$dbox"    # Landroid/os/DropBoxManager;
+    .param p4, "val$dropboxTag"    # Ljava/lang/String;
 
     .prologue
-    .line 9791
+    .line 12313
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService$16;->this$0:Lcom/android/server/am/ActivityManagerService;
 
     iput-object p3, p0, Lcom/android/server/am/ActivityManagerService$16;->val$dbox:Landroid/os/DropBoxManager;
@@ -46,71 +46,76 @@
 
 # virtual methods
 .method public run()V
-    .locals 5
+    .locals 6
 
     .prologue
-    .line 9796
-    const-wide/16 v1, 0x1388
+    .line 12318
+    const-wide/16 v2, 0x1388
 
     :try_start_0
-    invoke-static {v1, v2}, Ljava/lang/Thread;->sleep(J)V
+    invoke-static {v2, v3}, Ljava/lang/Thread;->sleep(J)V
     :try_end_0
     .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 9800
+    .line 12322
     :goto_0
-    iget-object v1, p0, Lcom/android/server/am/ActivityManagerService$16;->this$0:Lcom/android/server/am/ActivityManagerService;
+    iget-object v2, p0, Lcom/android/server/am/ActivityManagerService$16;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    #getter for: Lcom/android/server/am/ActivityManagerService;->mStrictModeBuffer:Ljava/lang/StringBuilder;
-    invoke-static {v1}, Lcom/android/server/am/ActivityManagerService;->access$900(Lcom/android/server/am/ActivityManagerService;)Ljava/lang/StringBuilder;
+    invoke-static {v2}, Lcom/android/server/am/ActivityManagerService;->-get4(Lcom/android/server/am/ActivityManagerService;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    monitor-enter v3
+
+    .line 12323
+    :try_start_1
+    iget-object v2, p0, Lcom/android/server/am/ActivityManagerService$16;->this$0:Lcom/android/server/am/ActivityManagerService;
+
+    invoke-static {v2}, Lcom/android/server/am/ActivityManagerService;->-get4(Lcom/android/server/am/ActivityManagerService;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    monitor-enter v2
-
-    .line 9801
-    :try_start_1
-    iget-object v1, p0, Lcom/android/server/am/ActivityManagerService$16;->this$0:Lcom/android/server/am/ActivityManagerService;
-
-    #getter for: Lcom/android/server/am/ActivityManagerService;->mStrictModeBuffer:Ljava/lang/StringBuilder;
-    invoke-static {v1}, Lcom/android/server/am/ActivityManagerService;->access$900(Lcom/android/server/am/ActivityManagerService;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    .line 12324
+    .local v1, "errorReport":Ljava/lang/String;
+    invoke-virtual {v1}, Ljava/lang/String;->length()I
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    move-result-object v0
+    move-result v2
 
-    .line 9802
-    .local v0, errorReport:Ljava/lang/String;
-    invoke-virtual {v0}, Ljava/lang/String;->length()I
+    if-nez v2, :cond_0
 
-    move-result v1
+    monitor-exit v3
 
-    if-nez v1, :cond_0
-
-    .line 9803
-    monitor-exit v2
-
-    .line 9809
-    :goto_1
+    .line 12325
     return-void
 
-    .line 9805
+    .line 12319
+    .end local v1    # "errorReport":Ljava/lang/String;
+    :catch_0
+    move-exception v0
+
+    .local v0, "e":Ljava/lang/InterruptedException;
+    goto :goto_0
+
+    .line 12327
+    .end local v0    # "e":Ljava/lang/InterruptedException;
+    .restart local v1    # "errorReport":Ljava/lang/String;
     :cond_0
-    iget-object v1, p0, Lcom/android/server/am/ActivityManagerService$16;->this$0:Lcom/android/server/am/ActivityManagerService;
+    :try_start_2
+    iget-object v2, p0, Lcom/android/server/am/ActivityManagerService$16;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    #getter for: Lcom/android/server/am/ActivityManagerService;->mStrictModeBuffer:Ljava/lang/StringBuilder;
-    invoke-static {v1}, Lcom/android/server/am/ActivityManagerService;->access$900(Lcom/android/server/am/ActivityManagerService;)Ljava/lang/StringBuilder;
+    invoke-static {v2}, Lcom/android/server/am/ActivityManagerService;->-get4(Lcom/android/server/am/ActivityManagerService;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    const/4 v3, 0x0
+    move-result-object v2
 
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService$16;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    #getter for: Lcom/android/server/am/ActivityManagerService;->mStrictModeBuffer:Ljava/lang/StringBuilder;
-    invoke-static {v4}, Lcom/android/server/am/ActivityManagerService;->access$900(Lcom/android/server/am/ActivityManagerService;)Ljava/lang/StringBuilder;
+    invoke-static {v4}, Lcom/android/server/am/ActivityManagerService;->-get4(Lcom/android/server/am/ActivityManagerService;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
@@ -118,47 +123,39 @@
 
     move-result v4
 
-    invoke-virtual {v1, v3, v4}, Ljava/lang/StringBuilder;->delete(II)Ljava/lang/StringBuilder;
+    const/4 v5, 0x0
 
-    .line 9806
-    iget-object v1, p0, Lcom/android/server/am/ActivityManagerService$16;->this$0:Lcom/android/server/am/ActivityManagerService;
+    invoke-virtual {v2, v5, v4}, Ljava/lang/StringBuilder;->delete(II)Ljava/lang/StringBuilder;
 
-    #getter for: Lcom/android/server/am/ActivityManagerService;->mStrictModeBuffer:Ljava/lang/StringBuilder;
-    invoke-static {v1}, Lcom/android/server/am/ActivityManagerService;->access$900(Lcom/android/server/am/ActivityManagerService;)Ljava/lang/StringBuilder;
+    .line 12328
+    iget-object v2, p0, Lcom/android/server/am/ActivityManagerService$16;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    move-result-object v1
+    invoke-static {v2}, Lcom/android/server/am/ActivityManagerService;->-get4(Lcom/android/server/am/ActivityManagerService;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->trimToSize()V
+    move-result-object v2
 
-    .line 9807
-    monitor-exit v2
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    .line 9808
-    iget-object v1, p0, Lcom/android/server/am/ActivityManagerService$16;->val$dbox:Landroid/os/DropBoxManager;
-
-    iget-object v2, p0, Lcom/android/server/am/ActivityManagerService$16;->val$dropboxTag:Ljava/lang/String;
-
-    invoke-virtual {v1, v2, v0}, Landroid/os/DropBoxManager;->addText(Ljava/lang/String;Ljava/lang/String;)V
-
-    goto :goto_1
-
-    .line 9807
-    .end local v0           #errorReport:Ljava/lang/String;
-    :catchall_0
-    move-exception v1
-
-    :try_start_2
-    monitor-exit v2
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->trimToSize()V
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    throw v1
+    monitor-exit v3
 
-    .line 9797
-    :catch_0
-    move-exception v1
+    .line 12330
+    iget-object v2, p0, Lcom/android/server/am/ActivityManagerService$16;->val$dbox:Landroid/os/DropBoxManager;
 
-    goto :goto_0
+    iget-object v3, p0, Lcom/android/server/am/ActivityManagerService$16;->val$dropboxTag:Ljava/lang/String;
+
+    invoke-virtual {v2, v3, v1}, Landroid/os/DropBoxManager;->addText(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 12315
+    return-void
+
+    .line 12322
+    .end local v1    # "errorReport":Ljava/lang/String;
+    :catchall_0
+    move-exception v2
+
+    monitor-exit v3
+
+    throw v2
 .end method

@@ -28,12 +28,12 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/display/DisplayAdapter;Lcom/android/server/display/DisplayDevice;I)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/display/DisplayAdapter;
+    .param p2, "val$device"    # Lcom/android/server/display/DisplayDevice;
+    .param p3, "val$event"    # I
 
     .prologue
-    .line 105
+    .line 119
     iput-object p1, p0, Lcom/android/server/display/DisplayAdapter$1;->this$0:Lcom/android/server/display/DisplayAdapter;
 
     iput-object p2, p0, Lcom/android/server/display/DisplayAdapter$1;->val$device:Lcom/android/server/display/DisplayDevice;
@@ -51,11 +51,10 @@
     .locals 3
 
     .prologue
-    .line 108
+    .line 122
     iget-object v0, p0, Lcom/android/server/display/DisplayAdapter$1;->this$0:Lcom/android/server/display/DisplayAdapter;
 
-    #getter for: Lcom/android/server/display/DisplayAdapter;->mListener:Lcom/android/server/display/DisplayAdapter$Listener;
-    invoke-static {v0}, Lcom/android/server/display/DisplayAdapter;->access$000(Lcom/android/server/display/DisplayAdapter;)Lcom/android/server/display/DisplayAdapter$Listener;
+    invoke-static {v0}, Lcom/android/server/display/DisplayAdapter;->-get0(Lcom/android/server/display/DisplayAdapter;)Lcom/android/server/display/DisplayAdapter$Listener;
 
     move-result-object v0
 
@@ -65,6 +64,6 @@
 
     invoke-interface {v0, v1, v2}, Lcom/android/server/display/DisplayAdapter$Listener;->onDisplayDeviceEvent(Lcom/android/server/display/DisplayDevice;I)V
 
-    .line 109
+    .line 121
     return-void
 .end method

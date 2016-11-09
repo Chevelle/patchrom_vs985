@@ -21,10 +21,10 @@
 # direct methods
 .method private constructor <init>(Lcom/android/server/search/SearchManagerService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/search/SearchManagerService;
 
     .prologue
-    .line 129
+    .line 133
     iput-object p1, p0, Lcom/android/server/search/SearchManagerService$UserReceiver;->this$0:Lcom/android/server/search/SearchManagerService;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -32,13 +32,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/android/server/search/SearchManagerService;Lcom/android/server/search/SearchManagerService$1;)V
+.method synthetic constructor <init>(Lcom/android/server/search/SearchManagerService;Lcom/android/server/search/SearchManagerService$UserReceiver;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Lcom/android/server/search/SearchManagerService;
 
     .prologue
-    .line 129
     invoke-direct {p0, p1}, Lcom/android/server/search/SearchManagerService$UserReceiver;-><init>(Lcom/android/server/search/SearchManagerService;)V
 
     return-void
@@ -48,14 +46,14 @@
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
     .locals 3
-    .parameter "context"
-    .parameter "intent"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 132
+    .line 136
     iget-object v0, p0, Lcom/android/server/search/SearchManagerService$UserReceiver;->this$0:Lcom/android/server/search/SearchManagerService;
 
-    const-string v1, "android.intent.extra.user_handle"
+    const-string/jumbo v1, "android.intent.extra.user_handle"
 
     const/4 v2, 0x0
 
@@ -63,9 +61,8 @@
 
     move-result v1
 
-    #calls: Lcom/android/server/search/SearchManagerService;->onUserRemoved(I)V
-    invoke-static {v0, v1}, Lcom/android/server/search/SearchManagerService;->access$400(Lcom/android/server/search/SearchManagerService;I)V
+    invoke-static {v0, v1}, Lcom/android/server/search/SearchManagerService;->-wrap1(Lcom/android/server/search/SearchManagerService;I)V
 
-    .line 133
+    .line 135
     return-void
 .end method

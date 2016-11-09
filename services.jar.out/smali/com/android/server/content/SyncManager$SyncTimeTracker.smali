@@ -27,34 +27,33 @@
 # direct methods
 .method private constructor <init>(Lcom/android/server/content/SyncManager;)V
     .locals 2
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/content/SyncManager;
 
     .prologue
-    .line 1732
+    .line 2040
     iput-object p1, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->this$0:Lcom/android/server/content/SyncManager;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1734
+    .line 2042
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mLastWasSyncing:Z
 
-    .line 1736
+    .line 2044
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mWhenSyncStarted:J
 
+    .line 2040
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/android/server/content/SyncManager;Lcom/android/server/content/SyncManager$1;)V
+.method synthetic constructor <init>(Lcom/android/server/content/SyncManager;Lcom/android/server/content/SyncManager$SyncTimeTracker;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Lcom/android/server/content/SyncManager;
 
     .prologue
-    .line 1732
     invoke-direct {p0, p1}, Lcom/android/server/content/SyncManager$SyncTimeTracker;-><init>(Lcom/android/server/content/SyncManager;)V
 
     return-void
@@ -66,9 +65,9 @@
     .locals 6
 
     .prologue
-    .line 1755
     monitor-enter p0
 
+    .line 2063
     :try_start_0
     iget-boolean v2, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mLastWasSyncing:Z
 
@@ -78,21 +77,19 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1758
-    :goto_0
     monitor-exit p0
 
     return-wide v2
 
-    .line 1757
+    .line 2065
     :cond_0
     :try_start_1
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
     move-result-wide v0
 
-    .line 1758
-    .local v0, now:J
+    .line 2066
+    .local v0, "now":J
     iget-wide v2, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mTimeSpentSyncing:J
 
     iget-wide v4, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mWhenSyncStarted:J
@@ -103,10 +100,11 @@
 
     add-long/2addr v2, v4
 
-    goto :goto_0
+    monitor-exit p0
 
-    .line 1755
-    .end local v0           #now:J
+    return-wide v2
+
+    .end local v0    # "now":J
     :catchall_0
     move-exception v2
 
@@ -116,96 +114,94 @@
 .end method
 
 .method public declared-synchronized update()V
-    .locals 7
+    .locals 8
 
     .prologue
-    .line 1742
     monitor-enter p0
 
+    .line 2050
     :try_start_0
-    iget-object v3, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->this$0:Lcom/android/server/content/SyncManager;
+    iget-object v1, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->this$0:Lcom/android/server/content/SyncManager;
 
-    iget-object v3, v3, Lcom/android/server/content/SyncManager;->mActiveSyncContexts:Ljava/util/ArrayList;
+    iget-object v1, v1, Lcom/android/server/content/SyncManager;->mActiveSyncContexts:Ljava/util/ArrayList;
 
-    invoke-virtual {v3}, Ljava/util/ArrayList;->isEmpty()Z
+    invoke-virtual {v1}, Ljava/util/ArrayList;->isEmpty()Z
 
-    move-result v3
+    move-result v1
 
-    if-nez v3, :cond_0
+    if-eqz v1, :cond_0
 
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
-    .line 1743
-    .local v0, isSyncInProgress:Z
+    .line 2051
+    .local v0, "isSyncInProgress":Z
     :goto_0
-    iget-boolean v3, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mLastWasSyncing:Z
+    iget-boolean v1, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mLastWasSyncing:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    if-ne v0, v3, :cond_1
+    if-ne v0, v1, :cond_1
 
-    .line 1751
-    :goto_1
     monitor-exit p0
 
     return-void
 
-    .line 1742
-    .end local v0           #isSyncInProgress:Z
+    .line 2050
+    .end local v0    # "isSyncInProgress":Z
     :cond_0
-    const/4 v0, 0x0
+    const/4 v0, 0x1
 
+    .restart local v0    # "isSyncInProgress":Z
     goto :goto_0
 
-    .line 1744
-    .restart local v0       #isSyncInProgress:Z
+    .line 2052
     :cond_1
     :try_start_1
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
-    move-result-wide v1
+    move-result-wide v2
 
-    .line 1745
-    .local v1, now:J
+    .line 2053
+    .local v2, "now":J
     if-eqz v0, :cond_2
 
-    .line 1746
-    iput-wide v1, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mWhenSyncStarted:J
+    .line 2054
+    iput-wide v2, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mWhenSyncStarted:J
 
-    .line 1750
-    :goto_2
+    .line 2058
+    :goto_1
     iput-boolean v0, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mLastWasSyncing:Z
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    goto :goto_1
-
-    .line 1742
-    .end local v0           #isSyncInProgress:Z
-    .end local v1           #now:J
-    :catchall_0
-    move-exception v3
-
     monitor-exit p0
 
-    throw v3
+    .line 2049
+    return-void
 
-    .line 1748
-    .restart local v0       #isSyncInProgress:Z
-    .restart local v1       #now:J
+    .line 2056
     :cond_2
     :try_start_2
-    iget-wide v3, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mTimeSpentSyncing:J
+    iget-wide v4, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mTimeSpentSyncing:J
 
-    iget-wide v5, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mWhenSyncStarted:J
+    iget-wide v6, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mWhenSyncStarted:J
 
-    sub-long v5, v1, v5
+    sub-long v6, v2, v6
 
-    add-long/2addr v3, v5
+    add-long/2addr v4, v6
 
-    iput-wide v3, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mTimeSpentSyncing:J
+    iput-wide v4, p0, Lcom/android/server/content/SyncManager$SyncTimeTracker;->mTimeSpentSyncing:J
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    goto :goto_2
+    goto :goto_1
+
+    .end local v0    # "isSyncInProgress":Z
+    .end local v2    # "now":J
+    :catchall_0
+    move-exception v1
+
+    monitor-exit p0
+
+    throw v1
 .end method

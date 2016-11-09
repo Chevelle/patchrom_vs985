@@ -18,22 +18,22 @@
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
     .locals 2
-    .parameter "context"
-    .parameter "intent"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
     .line 28
-    const-string v0, "BrickReceiver"
+    const-string/jumbo v0, "BrickReceiver"
 
-    const-string v1, "!!! BRICKING DEVICE !!!"
+    const-string/jumbo v1, "!!! BRICKING DEVICE !!!"
 
     invoke-static {v0, v1}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 29
-    const-string v0, "brick"
+    const-string/jumbo v0, "brick"
 
     invoke-static {v0}, Landroid/os/SystemService;->start(Ljava/lang/String;)V
 
-    .line 30
+    .line 27
     return-void
 .end method

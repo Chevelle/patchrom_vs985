@@ -17,30 +17,30 @@
 # instance fields
 .field public final activeSyncContext:Lcom/android/server/content/SyncManager$ActiveSyncContext;
 
-.field public final syncAdapter:Landroid/content/ISyncAdapter;
+.field public final adapter:Landroid/os/IBinder;
 
 .field final synthetic this$0:Lcom/android/server/content/SyncManager;
 
 
 # direct methods
-.method constructor <init>(Lcom/android/server/content/SyncManager;Lcom/android/server/content/SyncManager$ActiveSyncContext;Landroid/content/ISyncAdapter;)V
+.method constructor <init>(Lcom/android/server/content/SyncManager;Lcom/android/server/content/SyncManager$ActiveSyncContext;Landroid/os/IBinder;)V
     .locals 0
-    .parameter
-    .parameter "activeSyncContext"
-    .parameter "syncAdapter"
+    .param p1, "this$0"    # Lcom/android/server/content/SyncManager;
+    .param p2, "activeSyncContext"    # Lcom/android/server/content/SyncManager$ActiveSyncContext;
+    .param p3, "adapter"    # Landroid/os/IBinder;
 
     .prologue
-    .line 1765
+    .line 2074
     iput-object p1, p0, Lcom/android/server/content/SyncManager$ServiceConnectionData;->this$0:Lcom/android/server/content/SyncManager;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1766
+    .line 2075
     iput-object p2, p0, Lcom/android/server/content/SyncManager$ServiceConnectionData;->activeSyncContext:Lcom/android/server/content/SyncManager$ActiveSyncContext;
 
-    .line 1767
-    iput-object p3, p0, Lcom/android/server/content/SyncManager$ServiceConnectionData;->syncAdapter:Landroid/content/ISyncAdapter;
+    .line 2076
+    iput-object p3, p0, Lcom/android/server/content/SyncManager$ServiceConnectionData;->adapter:Landroid/os/IBinder;
 
-    .line 1768
+    .line 2074
     return-void
 .end method

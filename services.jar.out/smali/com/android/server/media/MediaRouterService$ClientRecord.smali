@@ -40,15 +40,15 @@
 # direct methods
 .method public constructor <init>(Lcom/android/server/media/MediaRouterService;Lcom/android/server/media/MediaRouterService$UserRecord;Landroid/media/IMediaRouterClient;ILjava/lang/String;Z)V
     .locals 0
-    .parameter
-    .parameter "userRecord"
-    .parameter "client"
-    .parameter "pid"
-    .parameter "packageName"
-    .parameter "trusted"
+    .param p1, "this$0"    # Lcom/android/server/media/MediaRouterService;
+    .param p2, "userRecord"    # Lcom/android/server/media/MediaRouterService$UserRecord;
+    .param p3, "client"    # Landroid/media/IMediaRouterClient;
+    .param p4, "pid"    # I
+    .param p5, "packageName"    # Ljava/lang/String;
+    .param p6, "trusted"    # Z
 
     .prologue
-    .line 507
+    .line 506
     iput-object p1, p0, Lcom/android/server/media/MediaRouterService$ClientRecord;->this$0:Lcom/android/server/media/MediaRouterService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -68,7 +68,7 @@
     .line 512
     iput-boolean p6, p0, Lcom/android/server/media/MediaRouterService$ClientRecord;->mTrusted:Z
 
-    .line 513
+    .line 507
     return-void
 .end method
 
@@ -83,7 +83,7 @@
 
     invoke-virtual {v0, p0}, Lcom/android/server/media/MediaRouterService;->clientDied(Lcom/android/server/media/MediaRouterService$ClientRecord;)V
 
-    .line 522
+    .line 520
     return-void
 .end method
 
@@ -102,14 +102,14 @@
 
     invoke-interface {v0, p0, v1}, Landroid/os/IBinder;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient;I)Z
 
-    .line 517
+    .line 515
     return-void
 .end method
 
 .method public dump(Ljava/io/PrintWriter;Ljava/lang/String;)V
     .locals 3
-    .parameter "pw"
-    .parameter "prefix"
+    .param p1, "pw"    # Ljava/io/PrintWriter;
+    .param p2, "prefix"    # Ljava/lang/String;
 
     .prologue
     .line 529
@@ -140,7 +140,7 @@
 
     move-result-object v1
 
-    const-string v2, "  "
+    const-string/jumbo v2, "  "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -151,7 +151,7 @@
     move-result-object v0
 
     .line 532
-    .local v0, indent:Ljava/lang/String;
+    .local v0, "indent":Ljava/lang/String;
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -160,7 +160,7 @@
 
     move-result-object v1
 
-    const-string v2, "mTrusted="
+    const-string/jumbo v2, "mTrusted="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -187,7 +187,7 @@
 
     move-result-object v1
 
-    const-string v2, "mRouteTypes=0x"
+    const-string/jumbo v2, "mRouteTypes=0x"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -218,7 +218,7 @@
 
     move-result-object v1
 
-    const-string v2, "mActiveScan="
+    const-string/jumbo v2, "mActiveScan="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -245,7 +245,7 @@
 
     move-result-object v1
 
-    const-string v2, "mSelectedRouteId="
+    const-string/jumbo v2, "mSelectedRouteId="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -263,7 +263,7 @@
 
     invoke-virtual {p1, v1}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 536
+    .line 528
     return-void
 .end method
 
@@ -300,7 +300,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "Client "
+    const-string/jumbo v1, "Client "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -312,7 +312,7 @@
 
     move-result-object v0
 
-    const-string v1, " (pid "
+    const-string/jumbo v1, " (pid "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -324,7 +324,7 @@
 
     move-result-object v0
 
-    const-string v1, ")"
+    const-string/jumbo v1, ")"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

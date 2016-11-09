@@ -19,18 +19,16 @@
     .locals 0
 
     .prologue
-    .line 546
+    .line 548
     invoke-direct {p0}, Landroid/print/IPrintSpoolerCallbacks$Stub;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/android/server/print/RemotePrintSpooler$1;)V
+.method synthetic constructor <init>(Lcom/android/server/print/RemotePrintSpooler$BasePrintSpoolerServiceCallbacks;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 546
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintSpooler$BasePrintSpoolerServiceCallbacks;-><init>()V
 
     return-void
@@ -40,8 +38,8 @@
 # virtual methods
 .method public onCancelPrintJobResult(ZI)V
     .locals 0
-    .parameter "canceled"
-    .parameter "sequence"
+    .param p1, "canceled"    # Z
+    .param p2, "sequence"    # I
 
     .prologue
     .line 561
@@ -50,8 +48,8 @@
 
 .method public onGetPrintJobInfoResult(Landroid/print/PrintJobInfo;I)V
     .locals 0
-    .parameter "printJob"
-    .parameter "sequence"
+    .param p1, "printJob"    # Landroid/print/PrintJobInfo;
+    .param p2, "sequence"    # I
 
     .prologue
     .line 556
@@ -60,8 +58,7 @@
 
 .method public onGetPrintJobInfosResult(Ljava/util/List;I)V
     .locals 0
-    .parameter
-    .parameter "sequence"
+    .param p2, "sequence"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -74,14 +71,14 @@
 
     .prologue
     .line 551
-    .local p1, printJobIds:Ljava/util/List;,"Ljava/util/List<Landroid/print/PrintJobInfo;>;"
+    .local p1, "printJobIds":Ljava/util/List;, "Ljava/util/List<Landroid/print/PrintJobInfo;>;"
     return-void
 .end method
 
 .method public onSetPrintJobStateResult(ZI)V
     .locals 0
-    .parameter "success"
-    .parameter "sequece"
+    .param p1, "success"    # Z
+    .param p2, "sequece"    # I
 
     .prologue
     .line 566
@@ -90,8 +87,8 @@
 
 .method public onSetPrintJobTagResult(ZI)V
     .locals 0
-    .parameter "success"
-    .parameter "sequence"
+    .param p1, "success"    # Z
+    .param p2, "sequence"    # I
 
     .prologue
     .line 571

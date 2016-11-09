@@ -24,7 +24,7 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/power/WirelessChargerDetector;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/power/WirelessChargerDetector;
 
     .prologue
     .line 349
@@ -44,8 +44,7 @@
     .line 352
     iget-object v0, p0, Lcom/android/server/power/WirelessChargerDetector$2;->this$0:Lcom/android/server/power/WirelessChargerDetector;
 
-    #getter for: Lcom/android/server/power/WirelessChargerDetector;->mLock:Ljava/lang/Object;
-    invoke-static {v0}, Lcom/android/server/power/WirelessChargerDetector;->access$000(Lcom/android/server/power/WirelessChargerDetector;)Ljava/lang/Object;
+    invoke-static {v0}, Lcom/android/server/power/WirelessChargerDetector;->-get0(Lcom/android/server/power/WirelessChargerDetector;)Ljava/lang/Object;
 
     move-result-object v1
 
@@ -55,22 +54,20 @@
     :try_start_0
     iget-object v0, p0, Lcom/android/server/power/WirelessChargerDetector$2;->this$0:Lcom/android/server/power/WirelessChargerDetector;
 
-    #calls: Lcom/android/server/power/WirelessChargerDetector;->finishDetectionLocked()V
-    invoke-static {v0}, Lcom/android/server/power/WirelessChargerDetector;->access$200(Lcom/android/server/power/WirelessChargerDetector;)V
+    invoke-static {v0}, Lcom/android/server/power/WirelessChargerDetector;->-wrap0(Lcom/android/server/power/WirelessChargerDetector;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 354
     monitor-exit v1
 
-    .line 355
+    .line 351
     return-void
 
-    .line 354
+    .line 352
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

@@ -25,26 +25,24 @@
 # direct methods
 .method private constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 1724
+    .line 2032
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1725
+    .line 2033
     iput-object p1, p0, Lcom/android/server/content/SyncManager$AccountSyncStats;->name:Ljava/lang/String;
 
-    .line 1726
+    .line 2032
     return-void
 .end method
 
-.method synthetic constructor <init>(Ljava/lang/String;Lcom/android/server/content/SyncManager$1;)V
+.method synthetic constructor <init>(Ljava/lang/String;Lcom/android/server/content/SyncManager$AccountSyncStats;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 1719
     invoke-direct {p0, p1}, Lcom/android/server/content/SyncManager$AccountSyncStats;-><init>(Ljava/lang/String;)V
 
     return-void

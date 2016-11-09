@@ -15,21 +15,21 @@
 
 
 # instance fields
-.field final synthetic this$0:Lcom/android/server/print/RemotePrintSpooler$GetPrintJobInfoCaller;
+.field final synthetic this$1:Lcom/android/server/print/RemotePrintSpooler$GetPrintJobInfoCaller;
 
 
 # direct methods
 .method constructor <init>(Lcom/android/server/print/RemotePrintSpooler$GetPrintJobInfoCaller;)V
     .locals 1
-    .parameter
+    .param p1, "this$1"    # Lcom/android/server/print/RemotePrintSpooler$GetPrintJobInfoCaller;
 
     .prologue
-    .line 488
-    iput-object p1, p0, Lcom/android/server/print/RemotePrintSpooler$GetPrintJobInfoCaller$1;->this$0:Lcom/android/server/print/RemotePrintSpooler$GetPrintJobInfoCaller;
+    .line 490
+    iput-object p1, p0, Lcom/android/server/print/RemotePrintSpooler$GetPrintJobInfoCaller$1;->this$1:Lcom/android/server/print/RemotePrintSpooler$GetPrintJobInfoCaller;
 
     const/4 v0, 0x0
 
-    invoke-direct {p0, v0}, Lcom/android/server/print/RemotePrintSpooler$BasePrintSpoolerServiceCallbacks;-><init>(Lcom/android/server/print/RemotePrintSpooler$1;)V
+    invoke-direct {p0, v0}, Lcom/android/server/print/RemotePrintSpooler$BasePrintSpoolerServiceCallbacks;-><init>(Lcom/android/server/print/RemotePrintSpooler$BasePrintSpoolerServiceCallbacks;)V
 
     return-void
 .end method
@@ -38,12 +38,12 @@
 # virtual methods
 .method public onGetPrintJobInfoResult(Landroid/print/PrintJobInfo;I)V
     .locals 1
-    .parameter "printJob"
-    .parameter "sequence"
+    .param p1, "printJob"    # Landroid/print/PrintJobInfo;
+    .param p2, "sequence"    # I
 
     .prologue
-    .line 491
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintSpooler$GetPrintJobInfoCaller$1;->this$0:Lcom/android/server/print/RemotePrintSpooler$GetPrintJobInfoCaller;
+    .line 493
+    iget-object v0, p0, Lcom/android/server/print/RemotePrintSpooler$GetPrintJobInfoCaller$1;->this$1:Lcom/android/server/print/RemotePrintSpooler$GetPrintJobInfoCaller;
 
     invoke-virtual {v0, p1, p2}, Lcom/android/server/print/RemotePrintSpooler$GetPrintJobInfoCaller;->onRemoteMethodResult(Ljava/lang/Object;I)V
 

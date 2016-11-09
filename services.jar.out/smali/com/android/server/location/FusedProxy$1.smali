@@ -24,7 +24,7 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/location/FusedProxy;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/location/FusedProxy;
 
     .prologue
     .line 58
@@ -46,14 +46,12 @@
 
     iget-object v1, p0, Lcom/android/server/location/FusedProxy$1;->this$0:Lcom/android/server/location/FusedProxy;
 
-    #getter for: Lcom/android/server/location/FusedProxy;->mLocationHardware:Lcom/android/server/location/FusedLocationHardwareSecure;
-    invoke-static {v1}, Lcom/android/server/location/FusedProxy;->access$000(Lcom/android/server/location/FusedProxy;)Lcom/android/server/location/FusedLocationHardwareSecure;
+    invoke-static {v1}, Lcom/android/server/location/FusedProxy;->-get0(Lcom/android/server/location/FusedProxy;)Lcom/android/server/location/FusedLocationHardwareSecure;
 
     move-result-object v1
 
-    #calls: Lcom/android/server/location/FusedProxy;->bindProvider(Landroid/hardware/location/IFusedLocationHardware;)V
-    invoke-static {v0, v1}, Lcom/android/server/location/FusedProxy;->access$100(Lcom/android/server/location/FusedProxy;Landroid/hardware/location/IFusedLocationHardware;)V
+    invoke-static {v0, v1}, Lcom/android/server/location/FusedProxy;->-wrap0(Lcom/android/server/location/FusedProxy;Landroid/hardware/location/IFusedLocationHardware;)V
 
-    .line 62
+    .line 60
     return-void
 .end method

@@ -17,7 +17,7 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "x0"
+    .param p1, "$anonymous0"    # Ljava/lang/String;
 
     .prologue
     .line 41
@@ -30,7 +30,7 @@
 # virtual methods
 .method public newFilter(Lorg/xmlpull/v1/XmlPullParser;)Lcom/android/server/firewall/Filter;
     .locals 6
-    .parameter "parser"
+    .param p1, "parser"    # Lorg/xmlpull/v1/XmlPullParser;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;,
@@ -45,13 +45,14 @@
     const/4 v0, 0x0
 
     .line 46
-    .local v0, child:Lcom/android/server/firewall/Filter;
+    .local v0, "child":Lcom/android/server/firewall/Filter;
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->getDepth()I
 
     move-result v2
 
     .line 47
-    .local v2, outerDepth:I
+    .end local v0    # "child":Lcom/android/server/firewall/Filter;
+    .local v2, "outerDepth":I
     :goto_0
     invoke-static {p1, v2}, Lcom/android/internal/util/XmlUtils;->nextElementWithin(Lorg/xmlpull/v1/XmlPullParser;I)Z
 
@@ -65,30 +66,34 @@
     move-result-object v1
 
     .line 49
-    .local v1, filter:Lcom/android/server/firewall/Filter;
+    .local v1, "filter":Lcom/android/server/firewall/Filter;
     if-nez v0, :cond_0
 
     .line 50
     move-object v0, v1
 
+    .local v0, "child":Lcom/android/server/firewall/Filter;
     goto :goto_0
 
     .line 52
+    .end local v0    # "child":Lcom/android/server/firewall/Filter;
     :cond_0
     new-instance v3, Lorg/xmlpull/v1/XmlPullParserException;
 
-    const-string v4, "<not> tag can only contain a single child filter."
+    .line 53
+    const-string/jumbo v4, "<not> tag can only contain a single child filter."
 
+    .line 52
     invoke-direct {v3, v4, p1, v5}, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;Lorg/xmlpull/v1/XmlPullParser;Ljava/lang/Throwable;)V
 
     throw v3
 
     .line 56
-    .end local v1           #filter:Lcom/android/server/firewall/Filter;
+    .end local v1    # "filter":Lcom/android/server/firewall/Filter;
     :cond_1
     new-instance v3, Lcom/android/server/firewall/NotFilter;
 
-    invoke-direct {v3, v0, v5}, Lcom/android/server/firewall/NotFilter;-><init>(Lcom/android/server/firewall/Filter;Lcom/android/server/firewall/NotFilter$1;)V
+    invoke-direct {v3, v0, v5}, Lcom/android/server/firewall/NotFilter;-><init>(Lcom/android/server/firewall/Filter;Lcom/android/server/firewall/NotFilter;)V
 
     return-object v3
 .end method

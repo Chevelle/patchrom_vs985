@@ -1,11 +1,14 @@
 .class Lcom/android/server/display/WifiDisplayAdapter$8;
-.super Landroid/content/BroadcastReceiver;
+.super Ljava/lang/Object;
 .source "WifiDisplayAdapter.java"
+
+# interfaces
+.implements Ljava/lang/Runnable;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lcom/android/server/display/WifiDisplayAdapter;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/android/server/display/WifiDisplayAdapter;->requestResumeLocked()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -21,67 +24,42 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/display/WifiDisplayAdapter;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/display/WifiDisplayAdapter;
 
     .prologue
-    .line 527
+    .line 213
     iput-object p1, p0, Lcom/android/server/display/WifiDisplayAdapter$8;->this$0:Lcom/android/server/display/WifiDisplayAdapter;
 
-    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 2
-    .parameter "context"
-    .parameter "intent"
+.method public run()V
+    .locals 1
 
     .prologue
-    .line 530
-    invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
+    .line 216
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayAdapter$8;->this$0:Lcom/android/server/display/WifiDisplayAdapter;
+
+    invoke-static {v0}, Lcom/android/server/display/WifiDisplayAdapter;->-get4(Lcom/android/server/display/WifiDisplayAdapter;)Lcom/android/server/display/WifiDisplayController;
 
     move-result-object v0
 
-    const-string v1, "android.server.display.wfd.DISCONNECT"
-
-    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v0
-
     if-eqz v0, :cond_0
 
-    .line 531
+    .line 217
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayAdapter$8;->this$0:Lcom/android/server/display/WifiDisplayAdapter;
 
-    invoke-virtual {v0}, Lcom/android/server/display/WifiDisplayAdapter;->getSyncRoot()Lcom/android/server/display/DisplayManagerService$SyncRoot;
+    invoke-static {v0}, Lcom/android/server/display/WifiDisplayAdapter;->-get4(Lcom/android/server/display/WifiDisplayAdapter;)Lcom/android/server/display/WifiDisplayController;
 
-    move-result-object v1
+    move-result-object v0
 
-    monitor-enter v1
+    invoke-virtual {v0}, Lcom/android/server/display/WifiDisplayController;->requestResume()V
 
-    .line 532
-    :try_start_0
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayAdapter$8;->this$0:Lcom/android/server/display/WifiDisplayAdapter;
-
-    invoke-virtual {v0}, Lcom/android/server/display/WifiDisplayAdapter;->requestDisconnectLocked()V
-
-    .line 533
-    monitor-exit v1
-
-    .line 535
+    .line 215
     :cond_0
     return-void
-
-    .line 533
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    throw v0
 .end method

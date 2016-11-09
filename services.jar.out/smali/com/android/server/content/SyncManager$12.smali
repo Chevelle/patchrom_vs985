@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/content/SyncManager;->dumpRecentHistory(Ljava/io/PrintWriter;)V
+    value = Lcom/android/server/content/SyncManager;->dumpSyncState(Ljava/io/PrintWriter;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -21,8 +21,10 @@
         "Ljava/lang/Object;",
         "Ljava/util/Comparator",
         "<",
-        "Lcom/android/server/content/SyncManager$AuthoritySyncStats;",
-        ">;"
+        "Landroid/content/pm/RegisteredServicesCache$ServiceInfo",
+        "<",
+        "Landroid/content/SyncAdapterType;",
+        ">;>;"
     }
 .end annotation
 
@@ -34,10 +36,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/content/SyncManager;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/content/SyncManager;
 
     .prologue
-    .line 1470
+    .line 1553
     iput-object p1, p0, Lcom/android/server/content/SyncManager$12;->this$0:Lcom/android/server/content/SyncManager;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -47,53 +49,59 @@
 
 
 # virtual methods
-.method public compare(Lcom/android/server/content/SyncManager$AuthoritySyncStats;Lcom/android/server/content/SyncManager$AuthoritySyncStats;)I
-    .locals 5
-    .parameter "lhs"
-    .parameter "rhs"
+.method public compare(Landroid/content/pm/RegisteredServicesCache$ServiceInfo;Landroid/content/pm/RegisteredServicesCache$ServiceInfo;)I
+    .locals 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/content/pm/RegisteredServicesCache$ServiceInfo",
+            "<",
+            "Landroid/content/SyncAdapterType;",
+            ">;",
+            "Landroid/content/pm/RegisteredServicesCache$ServiceInfo",
+            "<",
+            "Landroid/content/SyncAdapterType;",
+            ">;)I"
+        }
+    .end annotation
 
     .prologue
-    .line 1474
-    iget v1, p2, Lcom/android/server/content/SyncManager$AuthoritySyncStats;->times:I
+    .line 1557
+    .local p1, "lhs":Landroid/content/pm/RegisteredServicesCache$ServiceInfo;, "Landroid/content/pm/RegisteredServicesCache$ServiceInfo<Landroid/content/SyncAdapterType;>;"
+    .local p2, "rhs":Landroid/content/pm/RegisteredServicesCache$ServiceInfo;, "Landroid/content/pm/RegisteredServicesCache$ServiceInfo<Landroid/content/SyncAdapterType;>;"
+    iget-object v0, p1, Landroid/content/pm/RegisteredServicesCache$ServiceInfo;->type:Ljava/lang/Object;
 
-    iget v2, p1, Lcom/android/server/content/SyncManager$AuthoritySyncStats;->times:I
+    check-cast v0, Landroid/content/SyncAdapterType;
 
-    invoke-static {v1, v2}, Ljava/lang/Integer;->compare(II)I
+    iget-object v1, v0, Landroid/content/SyncAdapterType;->authority:Ljava/lang/String;
 
-    move-result v0
+    iget-object v0, p2, Landroid/content/pm/RegisteredServicesCache$ServiceInfo;->type:Ljava/lang/Object;
 
-    .line 1475
-    .local v0, compare:I
-    if-nez v0, :cond_0
+    check-cast v0, Landroid/content/SyncAdapterType;
 
-    .line 1476
-    iget-wide v1, p2, Lcom/android/server/content/SyncManager$AuthoritySyncStats;->elapsedTime:J
+    iget-object v0, v0, Landroid/content/SyncAdapterType;->authority:Ljava/lang/String;
 
-    iget-wide v3, p1, Lcom/android/server/content/SyncManager$AuthoritySyncStats;->elapsedTime:J
-
-    invoke-static {v1, v2, v3, v4}, Ljava/lang/Long;->compare(JJ)I
+    invoke-virtual {v1, v0}, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
 
     move-result v0
 
-    .line 1478
-    :cond_0
     return v0
 .end method
 
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
     .locals 1
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "lhs"    # Ljava/lang/Object;
+    .param p2, "rhs"    # Ljava/lang/Object;
 
     .prologue
-    .line 1470
-    check-cast p1, Lcom/android/server/content/SyncManager$AuthoritySyncStats;
+    .line 1555
+    check-cast p1, Landroid/content/pm/RegisteredServicesCache$ServiceInfo;
 
-    .end local p1
-    check-cast p2, Lcom/android/server/content/SyncManager$AuthoritySyncStats;
+    .end local p1    # "lhs":Ljava/lang/Object;
+    check-cast p2, Landroid/content/pm/RegisteredServicesCache$ServiceInfo;
 
-    .end local p2
-    invoke-virtual {p0, p1, p2}, Lcom/android/server/content/SyncManager$12;->compare(Lcom/android/server/content/SyncManager$AuthoritySyncStats;Lcom/android/server/content/SyncManager$AuthoritySyncStats;)I
+    .end local p2    # "rhs":Ljava/lang/Object;
+    invoke-virtual {p0, p1, p2}, Lcom/android/server/content/SyncManager$12;->compare(Landroid/content/pm/RegisteredServicesCache$ServiceInfo;Landroid/content/pm/RegisteredServicesCache$ServiceInfo;)I
 
     move-result v0
 

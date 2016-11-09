@@ -30,21 +30,37 @@
 
 
 # direct methods
+.method static synthetic -get0(Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;)I
+    .locals 1
+
+    iget v0, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->mAcquisitionCount:I
+
+    return v0
+.end method
+
+.method static synthetic -set0(Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;I)I
+    .locals 0
+
+    iput p1, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->mAcquisitionCount:I
+
+    return p1
+.end method
+
 .method public constructor <init>(Lcom/android/server/am/ContentProviderRecord;Landroid/os/IBinder;)V
     .locals 4
-    .parameter
-    .parameter "token"
+    .param p1, "this$0"    # Lcom/android/server/am/ContentProviderRecord;
+    .param p2, "token"    # Landroid/os/IBinder;
 
     .prologue
-    .line 229
+    .line 240
     iput-object p1, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->this$0:Lcom/android/server/am/ContentProviderRecord;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 230
+    .line 241
     iput-object p2, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->mToken:Landroid/os/IBinder;
 
-    .line 232
+    .line 243
     const/4 v1, 0x0
 
     :try_start_0
@@ -52,23 +68,23 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 236
+    .line 240
     :goto_0
     return-void
 
-    .line 233
+    .line 244
     :catch_0
     move-exception v0
 
-    .line 234
-    .local v0, re:Landroid/os/RemoteException;
-    const-string v1, "ExternalProcessHanldle"
+    .line 245
+    .local v0, "re":Landroid/os/RemoteException;
+    const-string/jumbo v1, "ExternalProcessHanldle"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Couldn\'t register for death for token: "
+    const-string/jumbo v3, "Couldn\'t register for death for token: "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -89,61 +105,20 @@
     goto :goto_0
 .end method
 
-.method static synthetic access$000(Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 223
-    iget v0, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->mAcquisitionCount:I
-
-    return v0
-.end method
-
-.method static synthetic access$008(Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;)I
-    .locals 2
-    .parameter "x0"
-
-    .prologue
-    .line 223
-    iget v0, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->mAcquisitionCount:I
-
-    add-int/lit8 v1, v0, 0x1
-
-    iput v1, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->mAcquisitionCount:I
-
-    return v0
-.end method
-
-.method static synthetic access$010(Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;)I
-    .locals 2
-    .parameter "x0"
-
-    .prologue
-    .line 223
-    iget v0, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->mAcquisitionCount:I
-
-    add-int/lit8 v1, v0, -0x1
-
-    iput v1, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->mAcquisitionCount:I
-
-    return v0
-.end method
-
 
 # virtual methods
 .method public binderDied()V
     .locals 3
 
     .prologue
-    .line 244
+    .line 255
     iget-object v0, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->this$0:Lcom/android/server/am/ContentProviderRecord;
 
     iget-object v1, v0, Lcom/android/server/am/ContentProviderRecord;->service:Lcom/android/server/am/ActivityManagerService;
 
     monitor-enter v1
 
-    .line 245
+    .line 256
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->this$0:Lcom/android/server/am/ContentProviderRecord;
 
@@ -153,6 +128,7 @@
 
     if-eqz v0, :cond_0
 
+    .line 257
     iget-object v0, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->this$0:Lcom/android/server/am/ContentProviderRecord;
 
     iget-object v0, v0, Lcom/android/server/am/ContentProviderRecord;->externalProcessTokenToHandle:Ljava/util/HashMap;
@@ -165,28 +141,26 @@
 
     if-eqz v0, :cond_0
 
-    .line 247
+    .line 258
     iget-object v0, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->this$0:Lcom/android/server/am/ContentProviderRecord;
 
     iget-object v2, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->mToken:Landroid/os/IBinder;
 
-    #calls: Lcom/android/server/am/ContentProviderRecord;->removeExternalProcessHandleInternalLocked(Landroid/os/IBinder;)V
-    invoke-static {v0, v2}, Lcom/android/server/am/ContentProviderRecord;->access$100(Lcom/android/server/am/ContentProviderRecord;Landroid/os/IBinder;)V
+    invoke-static {v0, v2}, Lcom/android/server/am/ContentProviderRecord;->-wrap0(Lcom/android/server/am/ContentProviderRecord;Landroid/os/IBinder;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 249
     :cond_0
     monitor-exit v1
 
-    .line 250
+    .line 254
     return-void
 
-    .line 249
+    .line 255
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
@@ -195,13 +169,13 @@
     .locals 2
 
     .prologue
-    .line 239
+    .line 250
     iget-object v0, p0, Lcom/android/server/am/ContentProviderRecord$ExternalProcessHandle;->mToken:Landroid/os/IBinder;
 
     const/4 v1, 0x0
 
     invoke-interface {v0, p0, v1}, Landroid/os/IBinder;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient;I)Z
 
-    .line 240
+    .line 249
     return-void
 .end method

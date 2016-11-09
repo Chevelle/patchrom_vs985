@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/accounts/AccountManagerService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/accounts/AccountManagerService;
 
     .prologue
-    .line 248
+    .line 283
     iput-object p1, p0, Lcom/android/server/accounts/AccountManagerService$1;->this$0:Lcom/android/server/accounts/AccountManagerService;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -35,17 +35,37 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 1
-    .parameter "context1"
-    .parameter "intent"
+    .locals 3
+    .param p1, "context1"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 251
-    iget-object v0, p0, Lcom/android/server/accounts/AccountManagerService$1;->this$0:Lcom/android/server/accounts/AccountManagerService;
+    .line 288
+    const-string/jumbo v1, "android.intent.extra.REPLACING"
 
-    #calls: Lcom/android/server/accounts/AccountManagerService;->purgeOldGrantsAll()V
-    invoke-static {v0}, Lcom/android/server/accounts/AccountManagerService;->access$000(Lcom/android/server/accounts/AccountManagerService;)V
+    const/4 v2, 0x0
 
-    .line 252
+    invoke-virtual {p2, v1, v2}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    .line 298
+    new-instance v0, Lcom/android/server/accounts/AccountManagerService$1$1;
+
+    invoke-direct {v0, p0}, Lcom/android/server/accounts/AccountManagerService$1$1;-><init>(Lcom/android/server/accounts/AccountManagerService$1;)V
+
+    .line 304
+    .local v0, "r":Ljava/lang/Runnable;
+    new-instance v1, Ljava/lang/Thread;
+
+    invoke-direct {v1, v0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
+
+    invoke-virtual {v1}, Ljava/lang/Thread;->start()V
+
+    .line 285
+    .end local v0    # "r":Ljava/lang/Runnable;
+    :cond_0
     return-void
 .end method

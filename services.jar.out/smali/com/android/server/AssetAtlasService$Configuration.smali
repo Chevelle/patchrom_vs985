@@ -29,13 +29,13 @@
 # direct methods
 .method constructor <init>(Landroid/graphics/Atlas$Type;III)V
     .locals 6
-    .parameter "type"
-    .parameter "width"
-    .parameter "height"
-    .parameter "count"
+    .param p1, "type"    # Landroid/graphics/Atlas$Type;
+    .param p2, "width"    # I
+    .param p3, "height"    # I
+    .param p4, "count"    # I
 
     .prologue
-    .line 607
+    .line 578
     const/4 v5, 0x2
 
     move-object v0, p0
@@ -50,38 +50,38 @@
 
     invoke-direct/range {v0 .. v5}, Lcom/android/server/AssetAtlasService$Configuration;-><init>(Landroid/graphics/Atlas$Type;IIII)V
 
-    .line 608
+    .line 577
     return-void
 .end method
 
 .method constructor <init>(Landroid/graphics/Atlas$Type;IIII)V
     .locals 0
-    .parameter "type"
-    .parameter "width"
-    .parameter "height"
-    .parameter "count"
-    .parameter "flags"
+    .param p1, "type"    # Landroid/graphics/Atlas$Type;
+    .param p2, "width"    # I
+    .param p3, "height"    # I
+    .param p4, "count"    # I
+    .param p5, "flags"    # I
 
     .prologue
-    .line 610
+    .line 581
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 611
+    .line 582
     iput-object p1, p0, Lcom/android/server/AssetAtlasService$Configuration;->type:Landroid/graphics/Atlas$Type;
 
-    .line 612
+    .line 583
     iput p2, p0, Lcom/android/server/AssetAtlasService$Configuration;->width:I
 
-    .line 613
+    .line 584
     iput p3, p0, Lcom/android/server/AssetAtlasService$Configuration;->height:I
 
-    .line 614
+    .line 585
     iput p4, p0, Lcom/android/server/AssetAtlasService$Configuration;->count:I
 
-    .line 615
+    .line 586
     iput p5, p0, Lcom/android/server/AssetAtlasService$Configuration;->flags:I
 
-    .line 616
+    .line 581
     return-void
 .end method
 
@@ -91,7 +91,7 @@
     .locals 2
 
     .prologue
-    .line 620
+    .line 591
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -106,7 +106,7 @@
 
     move-result-object v0
 
-    const-string v1, " ("
+    const-string/jumbo v1, " ("
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -118,7 +118,7 @@
 
     move-result-object v0
 
-    const-string v1, "x"
+    const-string/jumbo v1, "x"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -130,30 +130,36 @@
 
     move-result-object v0
 
-    const-string v1, ") flags=0x"
+    const-string/jumbo v1, ") flags=0x"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 592
     iget v1, p0, Lcom/android/server/AssetAtlasService$Configuration;->flags:I
 
     invoke-static {v1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
     move-result-object v1
 
+    .line 591
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " count="
+    .line 592
+    const-string/jumbo v1, " count="
 
+    .line 591
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 592
     iget v1, p0, Lcom/android/server/AssetAtlasService$Configuration;->count:I
 
+    .line 591
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0

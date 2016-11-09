@@ -3,12 +3,12 @@
 .source "WindowManagerService.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/view/WindowManagerPolicy$OnKeyguardExitResult;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/wm/WindowManagerService;->performLayoutAndPlaceSurfacesLockedInner(Z)V
+    value = Lcom/android/server/wm/WindowManagerService;->exitKeyguardSecurely(Landroid/view/IOnKeyguardExitResult;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,50 +20,20 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/server/wm/WindowManagerService;
 
-.field final synthetic val$client:Landroid/view/IWindow;
-
-.field final synthetic val$contentInsets:Landroid/graphics/Rect;
-
-.field final synthetic val$frame:Landroid/graphics/Rect;
-
-.field final synthetic val$newConfig:Landroid/content/res/Configuration;
-
-.field final synthetic val$overscanInsets:Landroid/graphics/Rect;
-
-.field final synthetic val$reportDraw:Z
-
-.field final synthetic val$visibleInsets:Landroid/graphics/Rect;
+.field final synthetic val$callback:Landroid/view/IOnKeyguardExitResult;
 
 
 # direct methods
-.method constructor <init>(Lcom/android/server/wm/WindowManagerService;Landroid/view/IWindow;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;ZLandroid/content/res/Configuration;)V
+.method constructor <init>(Lcom/android/server/wm/WindowManagerService;Landroid/view/IOnKeyguardExitResult;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/wm/WindowManagerService;
+    .param p2, "val$callback"    # Landroid/view/IOnKeyguardExitResult;
 
     .prologue
-    .line 9335
+    .line 5426
     iput-object p1, p0, Lcom/android/server/wm/WindowManagerService$7;->this$0:Lcom/android/server/wm/WindowManagerService;
 
-    iput-object p2, p0, Lcom/android/server/wm/WindowManagerService$7;->val$client:Landroid/view/IWindow;
-
-    iput-object p3, p0, Lcom/android/server/wm/WindowManagerService$7;->val$frame:Landroid/graphics/Rect;
-
-    iput-object p4, p0, Lcom/android/server/wm/WindowManagerService$7;->val$overscanInsets:Landroid/graphics/Rect;
-
-    iput-object p5, p0, Lcom/android/server/wm/WindowManagerService$7;->val$contentInsets:Landroid/graphics/Rect;
-
-    iput-object p6, p0, Lcom/android/server/wm/WindowManagerService$7;->val$visibleInsets:Landroid/graphics/Rect;
-
-    iput-boolean p7, p0, Lcom/android/server/wm/WindowManagerService$7;->val$reportDraw:Z
-
-    iput-object p8, p0, Lcom/android/server/wm/WindowManagerService$7;->val$newConfig:Landroid/content/res/Configuration;
+    iput-object p2, p0, Lcom/android/server/wm/WindowManagerService$7;->val$callback:Landroid/view/IOnKeyguardExitResult;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -72,37 +42,27 @@
 
 
 # virtual methods
-.method public run()V
-    .locals 7
+.method public onKeyguardExitResult(Z)V
+    .locals 2
+    .param p1, "success"    # Z
 
     .prologue
-    .line 9339
+    .line 5430
     :try_start_0
-    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$7;->val$client:Landroid/view/IWindow;
+    iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$7;->val$callback:Landroid/view/IOnKeyguardExitResult;
 
-    iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$7;->val$frame:Landroid/graphics/Rect;
-
-    iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$7;->val$overscanInsets:Landroid/graphics/Rect;
-
-    iget-object v3, p0, Lcom/android/server/wm/WindowManagerService$7;->val$contentInsets:Landroid/graphics/Rect;
-
-    iget-object v4, p0, Lcom/android/server/wm/WindowManagerService$7;->val$visibleInsets:Landroid/graphics/Rect;
-
-    iget-boolean v5, p0, Lcom/android/server/wm/WindowManagerService$7;->val$reportDraw:Z
-
-    iget-object v6, p0, Lcom/android/server/wm/WindowManagerService$7;->val$newConfig:Landroid/content/res/Configuration;
-
-    invoke-interface/range {v0 .. v6}, Landroid/view/IWindow;->resized(Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;ZLandroid/content/res/Configuration;)V
+    invoke-interface {v1, p1}, Landroid/view/IOnKeyguardExitResult;->onKeyguardExitResult(Z)V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 9344
+    .line 5428
     :goto_0
     return-void
 
-    .line 9341
+    .line 5431
     :catch_0
     move-exception v0
 
+    .local v0, "e":Landroid/os/RemoteException;
     goto :goto_0
 .end method

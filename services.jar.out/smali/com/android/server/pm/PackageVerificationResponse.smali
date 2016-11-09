@@ -12,8 +12,8 @@
 # direct methods
 .method public constructor <init>(II)V
     .locals 0
-    .parameter "code"
-    .parameter "callerUid"
+    .param p1, "code"    # I
+    .param p2, "callerUid"    # I
 
     .prologue
     .line 24
@@ -25,6 +25,6 @@
     .line 26
     iput p2, p0, Lcom/android/server/pm/PackageVerificationResponse;->callerUid:I
 
-    .line 27
+    .line 24
     return-void
 .end method

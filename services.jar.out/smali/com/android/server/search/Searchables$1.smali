@@ -42,8 +42,8 @@
 # virtual methods
 .method public compare(Landroid/content/pm/ResolveInfo;Landroid/content/pm/ResolveInfo;)I
     .locals 4
-    .parameter "lhs"
-    .parameter "rhs"
+    .param p1, "lhs"    # Landroid/content/pm/ResolveInfo;
+    .param p2, "rhs"    # Landroid/content/pm/ResolveInfo;
 
     .prologue
     .line 335
@@ -52,45 +52,31 @@
     .line 336
     const/4 v2, 0x0
 
-    .line 351
-    :goto_0
     return v2
 
     .line 338
     :cond_0
-    #calls: Lcom/android/server/search/Searchables;->isSystemApp(Landroid/content/pm/ResolveInfo;)Z
-    invoke-static {p1}, Lcom/android/server/search/Searchables;->access$000(Landroid/content/pm/ResolveInfo;)Z
+    invoke-static {p1}, Lcom/android/server/search/Searchables;->-wrap0(Landroid/content/pm/ResolveInfo;)Z
 
     move-result v0
 
     .line 339
-    .local v0, lhsSystem:Z
-    #calls: Lcom/android/server/search/Searchables;->isSystemApp(Landroid/content/pm/ResolveInfo;)Z
-    invoke-static {p2}, Lcom/android/server/search/Searchables;->access$000(Landroid/content/pm/ResolveInfo;)Z
+    .local v0, "lhsSystem":Z
+    invoke-static {p2}, Lcom/android/server/search/Searchables;->-wrap0(Landroid/content/pm/ResolveInfo;)Z
 
     move-result v1
 
     .line 341
-    .local v1, rhsSystem:Z
+    .local v1, "rhsSystem":Z
     if-eqz v0, :cond_1
 
-    if-nez v1, :cond_1
-
-    .line 342
-    const/4 v2, -0x1
-
-    goto :goto_0
+    if-eqz v1, :cond_3
 
     .line 343
     :cond_1
     if-eqz v1, :cond_2
 
-    if-nez v0, :cond_2
-
-    .line 344
-    const/4 v2, 0x1
-
-    goto :goto_0
+    if-eqz v0, :cond_4
 
     .line 351
     :cond_2
@@ -100,22 +86,34 @@
 
     sub-int/2addr v2, v3
 
-    goto :goto_0
+    return v2
+
+    .line 342
+    :cond_3
+    const/4 v2, -0x1
+
+    return v2
+
+    .line 344
+    :cond_4
+    const/4 v2, 0x1
+
+    return v2
 .end method
 
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
     .locals 1
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "lhs"    # Ljava/lang/Object;
+    .param p2, "rhs"    # Ljava/lang/Object;
 
     .prologue
-    .line 332
+    .line 334
     check-cast p1, Landroid/content/pm/ResolveInfo;
 
-    .end local p1
+    .end local p1    # "lhs":Ljava/lang/Object;
     check-cast p2, Landroid/content/pm/ResolveInfo;
 
-    .end local p2
+    .end local p2    # "rhs":Ljava/lang/Object;
     invoke-virtual {p0, p1, p2}, Lcom/android/server/search/Searchables$1;->compare(Landroid/content/pm/ResolveInfo;Landroid/content/pm/ResolveInfo;)I
 
     move-result v0

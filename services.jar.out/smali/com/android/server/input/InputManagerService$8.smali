@@ -5,7 +5,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/input/InputManagerService;->registerStylusIconEnabledSettingObserver()V
+    value = Lcom/android/server/input/InputManagerService;->registerShowTouchesSettingObserver()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -21,11 +21,11 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/input/InputManagerService;Landroid/os/Handler;)V
     .locals 0
-    .parameter
-    .parameter "x0"
+    .param p1, "this$0"    # Lcom/android/server/input/InputManagerService;
+    .param p2, "$anonymous0"    # Landroid/os/Handler;
 
     .prologue
-    .line 1142
+    .line 1342
     iput-object p1, p0, Lcom/android/server/input/InputManagerService$8;->this$0:Lcom/android/server/input/InputManagerService;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -37,14 +37,14 @@
 # virtual methods
 .method public onChange(Z)V
     .locals 1
-    .parameter "selfChange"
+    .param p1, "selfChange"    # Z
 
     .prologue
-    .line 1145
+    .line 1345
     iget-object v0, p0, Lcom/android/server/input/InputManagerService$8;->this$0:Lcom/android/server/input/InputManagerService;
 
-    invoke-virtual {v0}, Lcom/android/server/input/InputManagerService;->updateStylusIconEnabledFromSettings()V
+    invoke-virtual {v0}, Lcom/android/server/input/InputManagerService;->updateShowTouchesFromSettings()V
 
-    .line 1146
+    .line 1344
     return-void
 .end method

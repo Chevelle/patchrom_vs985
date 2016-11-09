@@ -24,7 +24,7 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/am/CompatModeDialog;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/am/CompatModeDialog;
 
     .prologue
     .line 65
@@ -39,8 +39,8 @@
 # virtual methods
 .method public onCheckedChanged(Landroid/widget/CompoundButton;Z)V
     .locals 4
-    .parameter "buttonView"
-    .parameter "isChecked"
+    .param p1, "buttonView"    # Landroid/widget/CompoundButton;
+    .param p2, "isChecked"    # Z
 
     .prologue
     .line 68
@@ -58,6 +58,7 @@
 
     iget-object v0, v0, Lcom/android/server/am/ActivityManagerService;->mCompatModePackages:Lcom/android/server/am/CompatModePackages;
 
+    .line 70
     iget-object v2, p0, Lcom/android/server/am/CompatModeDialog$2;->this$0:Lcom/android/server/am/CompatModeDialog;
 
     iget-object v2, v2, Lcom/android/server/am/CompatModeDialog;->mAppInfo:Landroid/content/pm/ApplicationInfo;
@@ -72,26 +73,26 @@
 
     move-result v3
 
+    .line 69
     invoke-virtual {v0, v2, v3}, Lcom/android/server/am/CompatModePackages;->setPackageAskCompatModeLocked(Ljava/lang/String;Z)V
 
     .line 71
     iget-object v0, p0, Lcom/android/server/am/CompatModeDialog$2;->this$0:Lcom/android/server/am/CompatModeDialog;
 
     invoke-virtual {v0}, Lcom/android/server/am/CompatModeDialog;->updateControls()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 72
     monitor-exit v1
 
-    .line 73
+    .line 67
     return-void
 
-    .line 72
+    .line 68
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

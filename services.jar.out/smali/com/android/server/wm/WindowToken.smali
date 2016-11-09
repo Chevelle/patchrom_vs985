@@ -22,8 +22,6 @@
 
 .field final token:Landroid/os/IBinder;
 
-.field waitingToHide:Z
-
 .field waitingToShow:Z
 
 .field final windowType:I
@@ -34,40 +32,40 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/wm/WindowManagerService;Landroid/os/IBinder;IZ)V
     .locals 1
-    .parameter "_service"
-    .parameter "_token"
-    .parameter "type"
-    .parameter "_explicit"
+    .param p1, "_service"    # Lcom/android/server/wm/WindowManagerService;
+    .param p2, "_token"    # Landroid/os/IBinder;
+    .param p3, "type"    # I
+    .param p4, "_explicit"    # Z
 
     .prologue
-    .line 73
+    .line 70
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 50
+    .line 51
     new-instance v0, Lcom/android/server/wm/WindowList;
 
     invoke-direct {v0}, Lcom/android/server/wm/WindowList;-><init>()V
 
     iput-object v0, p0, Lcom/android/server/wm/WindowToken;->windows:Lcom/android/server/wm/WindowList;
 
-    .line 53
+    .line 54
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/server/wm/WindowToken;->paused:Z
 
-    .line 74
+    .line 71
     iput-object p1, p0, Lcom/android/server/wm/WindowToken;->service:Lcom/android/server/wm/WindowManagerService;
 
-    .line 75
+    .line 72
     iput-object p2, p0, Lcom/android/server/wm/WindowToken;->token:Landroid/os/IBinder;
 
-    .line 76
+    .line 73
     iput p3, p0, Lcom/android/server/wm/WindowToken;->windowType:I
 
-    .line 77
+    .line 74
     iput-boolean p4, p0, Lcom/android/server/wm/WindowToken;->explicit:Z
 
-    .line 78
+    .line 70
     return-void
 .end method
 
@@ -75,14 +73,14 @@
 # virtual methods
 .method dump(Ljava/io/PrintWriter;Ljava/lang/String;)V
     .locals 1
-    .parameter "pw"
-    .parameter "prefix"
+    .param p1, "pw"    # Ljava/io/PrintWriter;
+    .param p2, "prefix"    # Ljava/lang/String;
 
     .prologue
-    .line 81
+    .line 88
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const-string v0, "windows="
+    const-string/jumbo v0, "windows="
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
@@ -90,10 +88,10 @@
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/Object;)V
 
-    .line 82
+    .line 89
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const-string v0, "windowType="
+    const-string/jumbo v0, "windowType="
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
@@ -101,8 +99,8 @@
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->print(I)V
 
-    .line 83
-    const-string v0, " hidden="
+    .line 90
+    const-string/jumbo v0, " hidden="
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
@@ -110,8 +108,8 @@
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->print(Z)V
 
-    .line 84
-    const-string v0, " hasVisible="
+    .line 91
+    const-string/jumbo v0, " hasVisible="
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
@@ -119,12 +117,8 @@
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->println(Z)V
 
-    .line 85
+    .line 92
     iget-boolean v0, p0, Lcom/android/server/wm/WindowToken;->waitingToShow:Z
-
-    if-nez v0, :cond_0
-
-    iget-boolean v0, p0, Lcom/android/server/wm/WindowToken;->waitingToHide:Z
 
     if-nez v0, :cond_0
 
@@ -132,11 +126,11 @@
 
     if-eqz v0, :cond_1
 
-    .line 86
+    .line 93
     :cond_0
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const-string v0, "waitingToShow="
+    const-string/jumbo v0, "waitingToShow="
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
@@ -144,17 +138,8 @@
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->print(Z)V
 
-    .line 87
-    const-string v0, " waitingToHide="
-
-    invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
-
-    iget-boolean v0, p0, Lcom/android/server/wm/WindowToken;->waitingToHide:Z
-
-    invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->print(Z)V
-
-    .line 88
-    const-string v0, " sendingToBottom="
+    .line 94
+    const-string/jumbo v0, " sendingToBottom="
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
@@ -162,8 +147,56 @@
 
     invoke-virtual {p1, v0}, Ljava/io/PrintWriter;->print(Z)V
 
-    .line 90
+    .line 87
     :cond_1
+    return-void
+.end method
+
+.method removeAllWindows()V
+    .locals 3
+
+    .prologue
+    .line 78
+    iget-object v2, p0, Lcom/android/server/wm/WindowToken;->windows:Lcom/android/server/wm/WindowList;
+
+    invoke-virtual {v2}, Lcom/android/server/wm/WindowList;->size()I
+
+    move-result v2
+
+    add-int/lit8 v1, v2, -0x1
+
+    .local v1, "winNdx":I
+    :goto_0
+    if-ltz v1, :cond_0
+
+    .line 79
+    iget-object v2, p0, Lcom/android/server/wm/WindowToken;->windows:Lcom/android/server/wm/WindowList;
+
+    invoke-virtual {v2, v1}, Lcom/android/server/wm/WindowList;->get(I)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/server/wm/WindowState;
+
+    .line 82
+    .local v0, "win":Lcom/android/server/wm/WindowState;
+    iget-object v2, v0, Lcom/android/server/wm/WindowState;->mService:Lcom/android/server/wm/WindowManagerService;
+
+    invoke-virtual {v2, v0}, Lcom/android/server/wm/WindowManagerService;->removeWindowLocked(Lcom/android/server/wm/WindowState;)V
+
+    .line 78
+    add-int/lit8 v1, v1, -0x1
+
+    goto :goto_0
+
+    .line 84
+    .end local v0    # "win":Lcom/android/server/wm/WindowState;
+    :cond_0
+    iget-object v2, p0, Lcom/android/server/wm/WindowToken;->windows:Lcom/android/server/wm/WindowList;
+
+    invoke-virtual {v2}, Lcom/android/server/wm/WindowList;->clear()V
+
+    .line 77
     return-void
 .end method
 
@@ -171,23 +204,23 @@
     .locals 2
 
     .prologue
-    .line 94
+    .line 100
     iget-object v1, p0, Lcom/android/server/wm/WindowToken;->stringName:Ljava/lang/String;
 
     if-nez v1, :cond_0
 
-    .line 95
+    .line 101
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 96
-    .local v0, sb:Ljava/lang/StringBuilder;
-    const-string v1, "WindowToken{"
+    .line 102
+    .local v0, "sb":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "WindowToken{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 97
+    .line 103
     invoke-static {p0}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     move-result v1
@@ -198,8 +231,8 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 98
-    const-string v1, " "
+    .line 104
+    const-string/jumbo v1, " "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -211,15 +244,15 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 99
+    .line 105
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, p0, Lcom/android/server/wm/WindowToken;->stringName:Ljava/lang/String;
 
-    .line 101
-    .end local v0           #sb:Ljava/lang/StringBuilder;
+    .line 107
+    .end local v0    # "sb":Ljava/lang/StringBuilder;
     :cond_0
     iget-object v1, p0, Lcom/android/server/wm/WindowToken;->stringName:Ljava/lang/String;
 

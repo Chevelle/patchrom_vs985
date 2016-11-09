@@ -21,7 +21,7 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/media/MediaRouterService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/media/MediaRouterService;
 
     .prologue
     .line 99
@@ -36,8 +36,8 @@
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
     .locals 2
-    .parameter "context"
-    .parameter "intent"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
     .line 102
@@ -45,7 +45,7 @@
 
     move-result-object v0
 
-    const-string v1, "android.intent.action.USER_SWITCHED"
+    const-string/jumbo v1, "android.intent.action.USER_SWITCHED"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -58,7 +58,7 @@
 
     invoke-virtual {v0}, Lcom/android/server/media/MediaRouterService;->switchUser()V
 
-    .line 105
+    .line 101
     :cond_0
     return-void
 .end method

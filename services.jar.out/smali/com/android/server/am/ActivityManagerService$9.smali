@@ -19,13 +19,14 @@
 
 
 # direct methods
-.method constructor <init>(Lcom/android/server/am/ActivityManagerService;)V
+.method constructor <init>(Lcom/android/server/am/ActivityManagerService;Lcom/android/server/am/ActivityManagerService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/am/ActivityManagerService;
+    .param p2, "this$0_1"    # Lcom/android/server/am/ActivityManagerService;
 
     .prologue
-    .line 5636
-    iput-object p1, p0, Lcom/android/server/am/ActivityManagerService$9;->this$0:Lcom/android/server/am/ActivityManagerService;
+    .line 6986
+    iput-object p2, p0, Lcom/android/server/am/ActivityManagerService$9;->this$0:Lcom/android/server/am/ActivityManagerService;
 
     invoke-direct {p0, p1}, Lcom/android/server/am/ActivityManagerService$ForegroundToken;-><init>(Lcom/android/server/am/ActivityManagerService;)V
 
@@ -38,11 +39,11 @@
     .locals 1
 
     .prologue
-    .line 5639
+    .line 6989
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService$9;->this$0:Lcom/android/server/am/ActivityManagerService;
 
     invoke-virtual {v0, p0}, Lcom/android/server/am/ActivityManagerService;->foregroundTokenDied(Lcom/android/server/am/ActivityManagerService$ForegroundToken;)V
 
-    .line 5640
+    .line 6988
     return-void
 .end method

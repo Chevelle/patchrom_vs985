@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/am/ActivityManagerService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/am/ActivityManagerService;
 
     .prologue
-    .line 5679
+    .line 7086
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService$IntentFirewallInterface;->this$0:Lcom/android/server/am/ActivityManagerService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,14 +39,14 @@
 # virtual methods
 .method public checkComponentPermission(Ljava/lang/String;IIIZ)I
     .locals 6
-    .parameter "permission"
-    .parameter "pid"
-    .parameter "uid"
-    .parameter "owningUid"
-    .parameter "exported"
+    .param p1, "permission"    # Ljava/lang/String;
+    .param p2, "pid"    # I
+    .param p3, "uid"    # I
+    .param p4, "owningUid"    # I
+    .param p5, "exported"    # Z
 
     .prologue
-    .line 5683
+    .line 7090
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService$IntentFirewallInterface;->this$0:Lcom/android/server/am/ActivityManagerService;
 
     move-object v1, p1
@@ -70,7 +70,7 @@
     .locals 1
 
     .prologue
-    .line 5689
+    .line 7096
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService$IntentFirewallInterface;->this$0:Lcom/android/server/am/ActivityManagerService;
 
     return-object v0

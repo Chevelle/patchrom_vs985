@@ -23,10 +23,10 @@
 # direct methods
 .method private constructor <init>(Lcom/android/server/input/InputManagerService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/input/InputManagerService;
 
     .prologue
-    .line 1575
+    .line 1766
     iput-object p1, p0, Lcom/android/server/input/InputManagerService$InputFilterHost;->this$0:Lcom/android/server/input/InputManagerService;
 
     invoke-direct {p0}, Landroid/view/IInputFilterHost$Stub;-><init>()V
@@ -34,13 +34,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/android/server/input/InputManagerService;Lcom/android/server/input/InputManagerService$1;)V
+.method synthetic constructor <init>(Lcom/android/server/input/InputManagerService;Lcom/android/server/input/InputManagerService$InputFilterHost;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Lcom/android/server/input/InputManagerService;
 
     .prologue
-    .line 1575
     invoke-direct {p0, p1}, Lcom/android/server/input/InputManagerService$InputFilterHost;-><init>(Lcom/android/server/input/InputManagerService;)V
 
     return-void
@@ -52,86 +50,89 @@
     .locals 1
 
     .prologue
-    .line 1579
+    .line 1770
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/server/input/InputManagerService$InputFilterHost;->mDisconnected:Z
 
-    .line 1580
+    .line 1769
     return-void
 .end method
 
 .method public sendInputEvent(Landroid/view/InputEvent;I)V
-    .locals 8
-    .parameter "event"
-    .parameter "policyFlags"
+    .locals 10
+    .param p1, "event"    # Landroid/view/InputEvent;
+    .param p2, "policyFlags"    # I
 
     .prologue
-    .line 1584
+    .line 1775
     if-nez p1, :cond_0
 
-    .line 1585
+    .line 1776
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "event must not be null"
+    const-string/jumbo v1, "event must not be null"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 1588
+    .line 1779
     :cond_0
     iget-object v0, p0, Lcom/android/server/input/InputManagerService$InputFilterHost;->this$0:Lcom/android/server/input/InputManagerService;
 
-    iget-object v7, v0, Lcom/android/server/input/InputManagerService;->mInputFilterLock:Ljava/lang/Object;
+    iget-object v9, v0, Lcom/android/server/input/InputManagerService;->mInputFilterLock:Ljava/lang/Object;
 
-    monitor-enter v7
+    monitor-enter v9
 
-    .line 1589
+    .line 1780
     :try_start_0
     iget-boolean v0, p0, Lcom/android/server/input/InputManagerService$InputFilterHost;->mDisconnected:Z
 
     if-nez v0, :cond_1
 
-    .line 1590
+    .line 1781
     iget-object v0, p0, Lcom/android/server/input/InputManagerService$InputFilterHost;->this$0:Lcom/android/server/input/InputManagerService;
 
-    #getter for: Lcom/android/server/input/InputManagerService;->mPtr:I
-    invoke-static {v0}, Lcom/android/server/input/InputManagerService;->access$600(Lcom/android/server/input/InputManagerService;)I
+    invoke-static {v0}, Lcom/android/server/input/InputManagerService;->-get0(Lcom/android/server/input/InputManagerService;)J
 
-    move-result v0
+    move-result-wide v0
 
-    const/4 v2, 0x0
+    .line 1783
+    const/high16 v2, 0x4000000
 
+    or-int v8, p2, v2
+
+    .line 1781
     const/4 v3, 0x0
 
     const/4 v4, 0x0
 
     const/4 v5, 0x0
 
-    const/high16 v1, 0x400
+    .line 1782
+    const/4 v6, 0x0
 
-    or-int v6, p2, v1
+    const/4 v7, 0x0
 
-    move-object v1, p1
+    move-object v2, p1
 
-    #calls: Lcom/android/server/input/InputManagerService;->nativeInjectInputEvent(ILandroid/view/InputEvent;IIIII)I
-    invoke-static/range {v0 .. v6}, Lcom/android/server/input/InputManagerService;->access$700(ILandroid/view/InputEvent;IIIII)I
+    .line 1781
+    invoke-static/range {v0 .. v8}, Lcom/android/server/input/InputManagerService;->-wrap1(JLandroid/view/InputEvent;IIIIII)I
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1594
     :cond_1
-    monitor-exit v7
+    monitor-exit v9
 
-    .line 1595
+    .line 1774
     return-void
 
-    .line 1594
+    .line 1779
     :catchall_0
     move-exception v0
 
-    monitor-exit v7
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    monitor-exit v9
 
     throw v0
 .end method

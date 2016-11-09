@@ -1,11 +1,14 @@
 .class Lcom/android/server/BatteryService$8;
-.super Landroid/os/UEventObserver;
+.super Ljava/lang/Object;
 .source "BatteryService.java"
+
+# interfaces
+.implements Ljava/lang/Runnable;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lcom/android/server/BatteryService;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/android/server/BatteryService;->processValuesLocked(Z)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -21,92 +24,47 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/BatteryService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/BatteryService;
 
     .prologue
-    .line 693
+    .line 473
     iput-object p1, p0, Lcom/android/server/BatteryService$8;->this$0:Lcom/android/server/BatteryService;
 
-    invoke-direct {p0}, Landroid/os/UEventObserver;-><init>()V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onUEvent(Landroid/os/UEventObserver$UEvent;)V
+.method public run()V
     .locals 3
-    .parameter "event"
 
     .prologue
-    .line 696
-    const-string v1, "1"
+    .line 476
+    new-instance v0, Landroid/content/Intent;
 
-    const-string v2, "SWITCH_STATE"
+    const-string/jumbo v1, "android.intent.action.BATTERY_OKAY"
 
-    invoke-virtual {p1, v2}, Landroid/os/UEventObserver$UEvent;->get(Ljava/lang/String;)Ljava/lang/String;
+    invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    move-result-object v2
+    .line 477
+    .local v0, "statusIntent":Landroid/content/Intent;
+    const/high16 v1, 0x4000000
 
-    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    const/4 v0, 0x1
-
-    .line 697
-    .local v0, invalidCharger:I
-    :goto_0
+    .line 478
     iget-object v1, p0, Lcom/android/server/BatteryService$8;->this$0:Lcom/android/server/BatteryService;
 
-    #getter for: Lcom/android/server/BatteryService;->mLock:Ljava/lang/Object;
-    invoke-static {v1}, Lcom/android/server/BatteryService;->access$200(Lcom/android/server/BatteryService;)Ljava/lang/Object;
+    invoke-static {v1}, Lcom/android/server/BatteryService;->-get6(Lcom/android/server/BatteryService;)Landroid/content/Context;
 
-    move-result-object v2
+    move-result-object v1
 
-    monitor-enter v2
+    sget-object v2, Landroid/os/UserHandle;->ALL:Landroid/os/UserHandle;
 
-    .line 698
-    :try_start_0
-    iget-object v1, p0, Lcom/android/server/BatteryService$8;->this$0:Lcom/android/server/BatteryService;
+    invoke-virtual {v1, v0, v2}, Landroid/content/Context;->sendBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
 
-    #getter for: Lcom/android/server/BatteryService;->mInvalidCharger:I
-    invoke-static {v1}, Lcom/android/server/BatteryService;->access$300(Lcom/android/server/BatteryService;)I
-
-    move-result v1
-
-    if-eq v1, v0, :cond_0
-
-    .line 699
-    iget-object v1, p0, Lcom/android/server/BatteryService$8;->this$0:Lcom/android/server/BatteryService;
-
-    #setter for: Lcom/android/server/BatteryService;->mInvalidCharger:I
-    invoke-static {v1, v0}, Lcom/android/server/BatteryService;->access$302(Lcom/android/server/BatteryService;I)I
-
-    .line 701
-    :cond_0
-    monitor-exit v2
-
-    .line 702
+    .line 475
     return-void
-
-    .line 696
-    .end local v0           #invalidCharger:I
-    :cond_1
-    const/4 v0, 0x0
-
-    goto :goto_0
-
-    .line 701
-    .restart local v0       #invalidCharger:I
-    :catchall_0
-    move-exception v1
-
-    monitor-exit v2
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    throw v1
 .end method

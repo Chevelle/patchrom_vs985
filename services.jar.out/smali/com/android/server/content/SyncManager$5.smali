@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/content/SyncManager;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/content/SyncManager;
 
     .prologue
-    .line 306
+    .line 351
     iput-object p1, p0, Lcom/android/server/content/SyncManager$5;->this$0:Lcom/android/server/content/SyncManager;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -36,47 +36,43 @@
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
     .locals 4
-    .parameter "context"
-    .parameter "intent"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 309
+    .line 354
     iget-object v1, p0, Lcom/android/server/content/SyncManager$5;->this$0:Lcom/android/server/content/SyncManager;
 
-    #getter for: Lcom/android/server/content/SyncManager;->mDataConnectionIsConnected:Z
-    invoke-static {v1}, Lcom/android/server/content/SyncManager;->access$400(Lcom/android/server/content/SyncManager;)Z
+    invoke-static {v1}, Lcom/android/server/content/SyncManager;->-get9(Lcom/android/server/content/SyncManager;)Z
 
     move-result v0
 
-    .line 313
-    .local v0, wasConnected:Z
+    .line 358
+    .local v0, "wasConnected":Z
     iget-object v1, p0, Lcom/android/server/content/SyncManager$5;->this$0:Lcom/android/server/content/SyncManager;
 
     iget-object v2, p0, Lcom/android/server/content/SyncManager$5;->this$0:Lcom/android/server/content/SyncManager;
 
-    #calls: Lcom/android/server/content/SyncManager;->readDataConnectionState()Z
-    invoke-static {v2}, Lcom/android/server/content/SyncManager;->access$500(Lcom/android/server/content/SyncManager;)Z
+    invoke-static {v2}, Lcom/android/server/content/SyncManager;->-wrap5(Lcom/android/server/content/SyncManager;)Z
 
     move-result v2
 
-    #setter for: Lcom/android/server/content/SyncManager;->mDataConnectionIsConnected:Z
-    invoke-static {v1, v2}, Lcom/android/server/content/SyncManager;->access$402(Lcom/android/server/content/SyncManager;Z)Z
+    invoke-static {v1, v2}, Lcom/android/server/content/SyncManager;->-set1(Lcom/android/server/content/SyncManager;Z)Z
 
-    .line 314
+    .line 359
     iget-object v1, p0, Lcom/android/server/content/SyncManager$5;->this$0:Lcom/android/server/content/SyncManager;
 
-    #getter for: Lcom/android/server/content/SyncManager;->mDataConnectionIsConnected:Z
-    invoke-static {v1}, Lcom/android/server/content/SyncManager;->access$400(Lcom/android/server/content/SyncManager;)Z
+    invoke-static {v1}, Lcom/android/server/content/SyncManager;->-get9(Lcom/android/server/content/SyncManager;)Z
 
     move-result v1
 
     if-eqz v1, :cond_2
 
-    .line 315
+    .line 360
     if-nez v0, :cond_1
 
-    .line 316
-    const-string v1, "SyncManager"
+    .line 361
+    const-string/jumbo v1, "SyncManager"
 
     const/4 v2, 0x2
 
@@ -86,66 +82,58 @@
 
     if-eqz v1, :cond_0
 
-    .line 317
-    const-string v1, "SyncManager"
+    .line 362
+    const-string/jumbo v1, "SyncManager"
 
-    const-string v2, "Reconnection detected: clearing all backoffs"
+    const-string/jumbo v2, "Reconnection detected: clearing all backoffs"
 
     invoke-static {v1, v2}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 319
+    .line 364
     :cond_0
     iget-object v1, p0, Lcom/android/server/content/SyncManager$5;->this$0:Lcom/android/server/content/SyncManager;
 
-    #getter for: Lcom/android/server/content/SyncManager;->mSyncQueue:Lcom/android/server/content/SyncQueue;
-    invoke-static {v1}, Lcom/android/server/content/SyncManager;->access$600(Lcom/android/server/content/SyncManager;)Lcom/android/server/content/SyncQueue;
+    invoke-static {v1}, Lcom/android/server/content/SyncManager;->-get20(Lcom/android/server/content/SyncManager;)Lcom/android/server/content/SyncQueue;
 
     move-result-object v2
 
     monitor-enter v2
 
-    .line 320
+    .line 365
     :try_start_0
     iget-object v1, p0, Lcom/android/server/content/SyncManager$5;->this$0:Lcom/android/server/content/SyncManager;
 
-    #getter for: Lcom/android/server/content/SyncManager;->mSyncStorageEngine:Lcom/android/server/content/SyncStorageEngine;
-    invoke-static {v1}, Lcom/android/server/content/SyncManager;->access$700(Lcom/android/server/content/SyncManager;)Lcom/android/server/content/SyncStorageEngine;
+    invoke-static {v1}, Lcom/android/server/content/SyncManager;->-get22(Lcom/android/server/content/SyncManager;)Lcom/android/server/content/SyncStorageEngine;
 
     move-result-object v1
 
     iget-object v3, p0, Lcom/android/server/content/SyncManager$5;->this$0:Lcom/android/server/content/SyncManager;
 
-    #getter for: Lcom/android/server/content/SyncManager;->mSyncQueue:Lcom/android/server/content/SyncQueue;
-    invoke-static {v3}, Lcom/android/server/content/SyncManager;->access$600(Lcom/android/server/content/SyncManager;)Lcom/android/server/content/SyncQueue;
+    invoke-static {v3}, Lcom/android/server/content/SyncManager;->-get20(Lcom/android/server/content/SyncManager;)Lcom/android/server/content/SyncQueue;
 
     move-result-object v3
 
     invoke-virtual {v1, v3}, Lcom/android/server/content/SyncStorageEngine;->clearAllBackoffsLocked(Lcom/android/server/content/SyncQueue;)V
-
-    .line 321
-    monitor-exit v2
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 323
+    monitor-exit v2
+
+    .line 368
     :cond_1
     iget-object v1, p0, Lcom/android/server/content/SyncManager$5;->this$0:Lcom/android/server/content/SyncManager;
 
-    #calls: Lcom/android/server/content/SyncManager;->sendCheckAlarmsMessage()V
-    invoke-static {v1}, Lcom/android/server/content/SyncManager;->access$100(Lcom/android/server/content/SyncManager;)V
+    invoke-static {v1}, Lcom/android/server/content/SyncManager;->-wrap16(Lcom/android/server/content/SyncManager;)V
 
-    .line 325
+    .line 353
     :cond_2
     return-void
 
-    .line 321
+    .line 364
     :catchall_0
     move-exception v1
 
-    :try_start_1
     monitor-exit v2
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v1
 .end method

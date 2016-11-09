@@ -38,6 +38,7 @@
 
     iput-object v0, p0, Lcom/android/server/wm/TaskGroup;->tokens:Ljava/util/ArrayList;
 
+    .line 23
     return-void
 .end method
 
@@ -52,7 +53,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "id="
+    const-string/jumbo v1, "id="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -64,7 +65,7 @@
 
     move-result-object v0
 
-    const-string v1, " tokens="
+    const-string/jumbo v1, " tokens="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

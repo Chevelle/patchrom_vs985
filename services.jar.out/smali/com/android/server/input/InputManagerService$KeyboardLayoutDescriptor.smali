@@ -27,7 +27,7 @@
     .locals 0
 
     .prologue
-    .line 1598
+    .line 1789
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -35,12 +35,12 @@
 
 .method public static format(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     .locals 2
-    .parameter "packageName"
-    .parameter "receiverName"
-    .parameter "keyboardName"
+    .param p0, "packageName"    # Ljava/lang/String;
+    .param p1, "receiverName"    # Ljava/lang/String;
+    .param p2, "keyboardName"    # Ljava/lang/String;
 
     .prologue
-    .line 1605
+    .line 1796
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -49,7 +49,7 @@
 
     move-result-object v0
 
-    const-string v1, "/"
+    const-string/jumbo v1, "/"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -59,7 +59,7 @@
 
     move-result-object v0
 
-    const-string v1, "/"
+    const-string/jumbo v1, "/"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -77,21 +77,23 @@
 .end method
 
 .method public static parse(Ljava/lang/String;)Lcom/android/server/input/InputManagerService$KeyboardLayoutDescriptor;
-    .locals 6
-    .parameter "descriptor"
+    .locals 8
+    .param p0, "descriptor"    # Ljava/lang/String;
 
     .prologue
-    const/4 v2, 0x0
+    const/4 v7, 0x0
 
-    const/16 v5, 0x2f
+    const/16 v6, 0x2f
 
-    .line 1609
-    invoke-virtual {p0, v5}, Ljava/lang/String;->indexOf(I)I
+    const/4 v5, 0x0
+
+    .line 1800
+    invoke-virtual {p0, v6}, Ljava/lang/String;->indexOf(I)I
 
     move-result v0
 
-    .line 1610
-    .local v0, pos:I
+    .line 1801
+    .local v0, "pos":I
     if-ltz v0, :cond_0
 
     add-int/lit8 v3, v0, 0x1
@@ -102,24 +104,23 @@
 
     if-ne v3, v4, :cond_1
 
-    .line 1622
+    .line 1802
     :cond_0
-    :goto_0
-    return-object v2
+    return-object v7
 
-    .line 1613
+    .line 1804
     :cond_1
     add-int/lit8 v3, v0, 0x1
 
-    invoke-virtual {p0, v5, v3}, Ljava/lang/String;->indexOf(II)I
+    invoke-virtual {p0, v6, v3}, Ljava/lang/String;->indexOf(II)I
 
     move-result v1
 
-    .line 1614
-    .local v1, pos2:I
+    .line 1805
+    .local v1, "pos2":I
     add-int/lit8 v3, v0, 0x2
 
-    if-lt v1, v3, :cond_0
+    if-lt v1, v3, :cond_2
 
     add-int/lit8 v3, v1, 0x1
 
@@ -127,24 +128,27 @@
 
     move-result v4
 
-    if-eq v3, v4, :cond_0
+    if-ne v3, v4, :cond_3
 
-    .line 1618
+    .line 1806
+    :cond_2
+    return-object v7
+
+    .line 1809
+    :cond_3
     new-instance v2, Lcom/android/server/input/InputManagerService$KeyboardLayoutDescriptor;
 
     invoke-direct {v2}, Lcom/android/server/input/InputManagerService$KeyboardLayoutDescriptor;-><init>()V
 
-    .line 1619
-    .local v2, result:Lcom/android/server/input/InputManagerService$KeyboardLayoutDescriptor;
-    const/4 v3, 0x0
-
-    invoke-virtual {p0, v3, v0}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+    .line 1810
+    .local v2, "result":Lcom/android/server/input/InputManagerService$KeyboardLayoutDescriptor;
+    invoke-virtual {p0, v5, v0}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v3
 
     iput-object v3, v2, Lcom/android/server/input/InputManagerService$KeyboardLayoutDescriptor;->packageName:Ljava/lang/String;
 
-    .line 1620
+    .line 1811
     add-int/lit8 v3, v0, 0x1
 
     invoke-virtual {p0, v3, v1}, Ljava/lang/String;->substring(II)Ljava/lang/String;
@@ -153,7 +157,7 @@
 
     iput-object v3, v2, Lcom/android/server/input/InputManagerService$KeyboardLayoutDescriptor;->receiverName:Ljava/lang/String;
 
-    .line 1621
+    .line 1812
     add-int/lit8 v3, v1, 0x1
 
     invoke-virtual {p0, v3}, Ljava/lang/String;->substring(I)Ljava/lang/String;
@@ -162,5 +166,6 @@
 
     iput-object v3, v2, Lcom/android/server/input/InputManagerService$KeyboardLayoutDescriptor;->keyboardLayoutName:Ljava/lang/String;
 
-    goto :goto_0
+    .line 1813
+    return-object v2
 .end method

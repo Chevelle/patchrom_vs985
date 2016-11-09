@@ -24,7 +24,7 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/am/CompatModeDialog;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/am/CompatModeDialog;
 
     .prologue
     .line 52
@@ -39,8 +39,8 @@
 # virtual methods
 .method public onCheckedChanged(Landroid/widget/CompoundButton;Z)V
     .locals 4
-    .parameter "buttonView"
-    .parameter "isChecked"
+    .param p1, "buttonView"    # Landroid/widget/CompoundButton;
+    .param p2, "isChecked"    # Z
 
     .prologue
     .line 55
@@ -58,12 +58,14 @@
 
     iget-object v2, v0, Lcom/android/server/am/ActivityManagerService;->mCompatModePackages:Lcom/android/server/am/CompatModePackages;
 
+    .line 57
     iget-object v0, p0, Lcom/android/server/am/CompatModeDialog$1;->this$0:Lcom/android/server/am/CompatModeDialog;
 
     iget-object v0, v0, Lcom/android/server/am/CompatModeDialog;->mAppInfo:Landroid/content/pm/ApplicationInfo;
 
     iget-object v3, v0, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
 
+    .line 58
     iget-object v0, p0, Lcom/android/server/am/CompatModeDialog$1;->this$0:Lcom/android/server/am/CompatModeDialog;
 
     iget-object v0, v0, Lcom/android/server/am/CompatModeDialog;->mCompatEnabled:Landroid/widget/Switch;
@@ -76,6 +78,7 @@
 
     const/4 v0, 0x1
 
+    .line 56
     :goto_0
     invoke-virtual {v2, v3, v0}, Lcom/android/server/am/CompatModePackages;->setPackageScreenCompatModeLocked(Ljava/lang/String;I)V
 
@@ -83,26 +86,25 @@
     iget-object v0, p0, Lcom/android/server/am/CompatModeDialog$1;->this$0:Lcom/android/server/am/CompatModeDialog;
 
     invoke-virtual {v0}, Lcom/android/server/am/CompatModeDialog;->updateControls()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 61
     monitor-exit v1
 
-    .line 62
+    .line 54
     return-void
 
-    .line 56
+    .line 59
     :cond_0
     const/4 v0, 0x0
 
     goto :goto_0
 
-    .line 61
+    .line 55
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

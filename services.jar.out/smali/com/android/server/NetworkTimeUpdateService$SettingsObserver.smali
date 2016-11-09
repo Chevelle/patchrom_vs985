@@ -23,20 +23,20 @@
 # direct methods
 .method constructor <init>(Landroid/os/Handler;I)V
     .locals 0
-    .parameter "handler"
-    .parameter "msg"
+    .param p1, "handler"    # Landroid/os/Handler;
+    .param p2, "msg"    # I
 
     .prologue
-    .line 293
+    .line 295
     invoke-direct {p0, p1}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
 
-    .line 294
+    .line 296
     iput-object p1, p0, Lcom/android/server/NetworkTimeUpdateService$SettingsObserver;->mHandler:Landroid/os/Handler;
 
-    .line 295
+    .line 297
     iput p2, p0, Lcom/android/server/NetworkTimeUpdateService$SettingsObserver;->mMsg:I
 
-    .line 296
+    .line 294
     return-void
 .end method
 
@@ -44,36 +44,38 @@
 # virtual methods
 .method observe(Landroid/content/Context;)V
     .locals 3
-    .parameter "context"
+    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 299
+    .line 301
     invoke-virtual {p1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v0
 
-    .line 300
-    .local v0, resolver:Landroid/content/ContentResolver;
-    const-string v1, "auto_time"
+    .line 302
+    .local v0, "resolver":Landroid/content/ContentResolver;
+    const-string/jumbo v1, "auto_time"
 
     invoke-static {v1}, Landroid/provider/Settings$Global;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v1
 
+    .line 303
     const/4 v2, 0x0
 
+    .line 302
     invoke-virtual {v0, v1, v2, p0}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 302
+    .line 300
     return-void
 .end method
 
 .method public onChange(Z)V
     .locals 2
-    .parameter "selfChange"
+    .param p1, "selfChange"    # Z
 
     .prologue
-    .line 306
+    .line 308
     iget-object v0, p0, Lcom/android/server/NetworkTimeUpdateService$SettingsObserver;->mHandler:Landroid/os/Handler;
 
     iget v1, p0, Lcom/android/server/NetworkTimeUpdateService$SettingsObserver;->mMsg:I

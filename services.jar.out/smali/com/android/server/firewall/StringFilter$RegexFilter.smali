@@ -21,14 +21,14 @@
 # direct methods
 .method public constructor <init>(Lcom/android/server/firewall/StringFilter$ValueProvider;Ljava/lang/String;)V
     .locals 1
-    .parameter "valueProvider"
-    .parameter "attrValue"
+    .param p1, "valueProvider"    # Lcom/android/server/firewall/StringFilter$ValueProvider;
+    .param p2, "attrValue"    # Ljava/lang/String;
 
     .prologue
     .line 201
     const/4 v0, 0x0
 
-    invoke-direct {p0, p1, v0}, Lcom/android/server/firewall/StringFilter;-><init>(Lcom/android/server/firewall/StringFilter$ValueProvider;Lcom/android/server/firewall/StringFilter$1;)V
+    invoke-direct {p0, p1, v0}, Lcom/android/server/firewall/StringFilter;-><init>(Lcom/android/server/firewall/StringFilter$ValueProvider;Lcom/android/server/firewall/StringFilter;)V
 
     .line 202
     invoke-static {p2}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;)Ljava/util/regex/Pattern;
@@ -37,7 +37,7 @@
 
     iput-object v0, p0, Lcom/android/server/firewall/StringFilter$RegexFilter;->mPattern:Ljava/util/regex/Pattern;
 
-    .line 203
+    .line 200
     return-void
 .end method
 
@@ -45,7 +45,7 @@
 # virtual methods
 .method public matchesValue(Ljava/lang/String;)Z
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # Ljava/lang/String;
 
     .prologue
     .line 207
@@ -60,10 +60,6 @@
     invoke-virtual {v0}, Ljava/util/regex/Matcher;->matches()Z
 
     move-result v0
-
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
 
     :goto_0
     return v0

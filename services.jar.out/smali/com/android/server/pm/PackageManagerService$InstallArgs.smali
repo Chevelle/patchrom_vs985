@@ -15,65 +15,87 @@
 
 
 # instance fields
-.field final flags:I
+.field final abiOverride:Ljava/lang/String;
+
+.field final installFlags:I
+
+.field final installGrantPermissions:[Ljava/lang/String;
 
 .field final installerPackageName:Ljava/lang/String;
 
+.field instructionSets:[Ljava/lang/String;
+
 .field final manifestDigest:Landroid/content/pm/ManifestDigest;
 
-.field final observer:Landroid/content/pm/IPackageInstallObserver;
+.field final move:Lcom/android/server/pm/PackageManagerService$MoveInfo;
 
-.field final packageURI:Landroid/net/Uri;
+.field final observer:Landroid/content/pm/IPackageInstallObserver2;
+
+.field final origin:Lcom/android/server/pm/PackageManagerService$OriginInfo;
 
 .field final user:Landroid/os/UserHandle;
 
+.field final volumeUuid:Ljava/lang/String;
+
 
 # direct methods
-.method constructor <init>(Landroid/net/Uri;Landroid/content/pm/IPackageInstallObserver;ILjava/lang/String;Landroid/content/pm/ManifestDigest;Landroid/os/UserHandle;)V
+.method constructor <init>(Lcom/android/server/pm/PackageManagerService$OriginInfo;Lcom/android/server/pm/PackageManagerService$MoveInfo;Landroid/content/pm/IPackageInstallObserver2;ILjava/lang/String;Ljava/lang/String;Landroid/content/pm/ManifestDigest;Landroid/os/UserHandle;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
     .locals 0
-    .parameter "packageURI"
-    .parameter "observer"
-    .parameter "flags"
-    .parameter "installerPackageName"
-    .parameter "manifestDigest"
-    .parameter "user"
+    .param p1, "origin"    # Lcom/android/server/pm/PackageManagerService$OriginInfo;
+    .param p2, "move"    # Lcom/android/server/pm/PackageManagerService$MoveInfo;
+    .param p3, "observer"    # Landroid/content/pm/IPackageInstallObserver2;
+    .param p4, "installFlags"    # I
+    .param p5, "installerPackageName"    # Ljava/lang/String;
+    .param p6, "volumeUuid"    # Ljava/lang/String;
+    .param p7, "manifestDigest"    # Landroid/content/pm/ManifestDigest;
+    .param p8, "user"    # Landroid/os/UserHandle;
+    .param p9, "instructionSets"    # [Ljava/lang/String;
+    .param p10, "abiOverride"    # Ljava/lang/String;
+    .param p11, "installGrantPermissions"    # [Ljava/lang/String;
 
     .prologue
-    .line 7866
+    .line 11185
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 7867
-    iput-object p1, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->packageURI:Landroid/net/Uri;
+    .line 11189
+    iput-object p1, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->origin:Lcom/android/server/pm/PackageManagerService$OriginInfo;
 
-    .line 7868
-    iput p3, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->flags:I
+    .line 11190
+    iput-object p2, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->move:Lcom/android/server/pm/PackageManagerService$MoveInfo;
 
-    .line 7869
-    iput-object p2, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->observer:Landroid/content/pm/IPackageInstallObserver;
+    .line 11191
+    iput p4, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->installFlags:I
 
-    .line 7870
-    iput-object p4, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->installerPackageName:Ljava/lang/String;
+    .line 11192
+    iput-object p3, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->observer:Landroid/content/pm/IPackageInstallObserver2;
 
-    .line 7871
-    iput-object p5, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->manifestDigest:Landroid/content/pm/ManifestDigest;
+    .line 11193
+    iput-object p5, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->installerPackageName:Ljava/lang/String;
 
-    .line 7872
-    iput-object p6, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->user:Landroid/os/UserHandle;
+    .line 11194
+    iput-object p6, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->volumeUuid:Ljava/lang/String;
 
-    .line 7873
+    .line 11195
+    iput-object p7, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->manifestDigest:Landroid/content/pm/ManifestDigest;
+
+    .line 11196
+    iput-object p8, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->user:Landroid/os/UserHandle;
+
+    .line 11197
+    iput-object p9, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->instructionSets:[Ljava/lang/String;
+
+    .line 11198
+    iput-object p10, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->abiOverride:Ljava/lang/String;
+
+    .line 11199
+    iput-object p11, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->installGrantPermissions:[Ljava/lang/String;
+
+    .line 11188
     return-void
 .end method
 
 
 # virtual methods
-.method abstract checkFreeStorage(Lcom/android/internal/app/IMediaContainerService;)Z
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
 .method abstract cleanUpResourcesLI()V
 .end method
 
@@ -85,15 +107,12 @@
     .end annotation
 .end method
 
-.method abstract createCopyFile()V
-.end method
-
 .method doPostCopy(I)I
     .locals 1
-    .parameter "uid"
+    .param p1, "uid"    # I
 
     .prologue
-    .line 7906
+    .line 11236
     const/4 v0, 0x1
 
     return v0
@@ -109,7 +128,7 @@
     .locals 1
 
     .prologue
-    .line 7895
+    .line 11227
     const/4 v0, 0x1
 
     return v0
@@ -118,13 +137,10 @@
 .method abstract doPreInstall(I)I
 .end method
 
-.method abstract doRename(ILjava/lang/String;Ljava/lang/String;)Z
+.method abstract doRename(ILandroid/content/pm/PackageParser$Package;Ljava/lang/String;)Z
 .end method
 
 .method abstract getCodePath()Ljava/lang/String;
-.end method
-
-.method abstract getNativeLibraryPath()Ljava/lang/String;
 .end method
 
 .method abstract getResourcePath()Ljava/lang/String;
@@ -134,30 +150,46 @@
     .locals 1
 
     .prologue
-    .line 7914
+    .line 11248
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->user:Landroid/os/UserHandle;
 
     return-object v0
 .end method
 
-.method protected isFwdLocked()Z
-    .locals 1
+.method protected isExternalAsec()Z
+    .locals 2
 
     .prologue
-    .line 7910
-    iget v0, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->flags:I
+    const/4 v0, 0x0
 
-    and-int/lit8 v0, v0, 0x1
+    .line 11244
+    iget v1, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->installFlags:I
 
-    if-eqz v0, :cond_0
+    and-int/lit8 v1, v1, 0x8
+
+    if-eqz v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
+    return v0
+.end method
+
+.method protected isFwdLocked()Z
+    .locals 2
+
+    .prologue
     const/4 v0, 0x0
 
-    goto :goto_0
+    .line 11240
+    iget v1, p0, Lcom/android/server/pm/PackageManagerService$InstallArgs;->installFlags:I
+
+    and-int/lit8 v1, v1, 0x1
+
+    if-eqz v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :cond_0
+    return v0
 .end method

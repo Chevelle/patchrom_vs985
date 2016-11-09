@@ -26,24 +26,24 @@
 # direct methods
 .method public constructor <init>(J[I)V
     .locals 1
-    .parameter "bucketDuration"
-    .parameter "uids"
+    .param p1, "bucketDuration"    # J
+    .param p3, "uids"    # [I
 
     .prologue
-    .line 312
+    .line 334
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 313
+    .line 335
     new-instance v0, Lcom/android/server/net/NetworkStatsCollection;
 
     invoke-direct {v0, p1, p2}, Lcom/android/server/net/NetworkStatsCollection;-><init>(J)V
 
     iput-object v0, p0, Lcom/android/server/net/NetworkStatsRecorder$RemoveUidRewriter;->mTemp:Lcom/android/server/net/NetworkStatsCollection;
 
-    .line 314
+    .line 336
     iput-object p3, p0, Lcom/android/server/net/NetworkStatsRecorder$RemoveUidRewriter;->mUids:[I
 
-    .line 315
+    .line 334
     return-void
 .end method
 
@@ -51,7 +51,7 @@
 # virtual methods
 .method public read(Ljava/io/InputStream;)V
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Ljava/io/InputStream;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -59,24 +59,24 @@
     .end annotation
 
     .prologue
-    .line 324
+    .line 346
     iget-object v0, p0, Lcom/android/server/net/NetworkStatsRecorder$RemoveUidRewriter;->mTemp:Lcom/android/server/net/NetworkStatsCollection;
 
     invoke-virtual {v0, p1}, Lcom/android/server/net/NetworkStatsCollection;->read(Ljava/io/InputStream;)V
 
-    .line 325
+    .line 347
     iget-object v0, p0, Lcom/android/server/net/NetworkStatsRecorder$RemoveUidRewriter;->mTemp:Lcom/android/server/net/NetworkStatsCollection;
 
     invoke-virtual {v0}, Lcom/android/server/net/NetworkStatsCollection;->clearDirty()V
 
-    .line 326
+    .line 348
     iget-object v0, p0, Lcom/android/server/net/NetworkStatsRecorder$RemoveUidRewriter;->mTemp:Lcom/android/server/net/NetworkStatsCollection;
 
     iget-object v1, p0, Lcom/android/server/net/NetworkStatsRecorder$RemoveUidRewriter;->mUids:[I
 
     invoke-virtual {v0, v1}, Lcom/android/server/net/NetworkStatsCollection;->removeUids([I)V
 
-    .line 327
+    .line 345
     return-void
 .end method
 
@@ -84,12 +84,12 @@
     .locals 1
 
     .prologue
-    .line 319
+    .line 341
     iget-object v0, p0, Lcom/android/server/net/NetworkStatsRecorder$RemoveUidRewriter;->mTemp:Lcom/android/server/net/NetworkStatsCollection;
 
     invoke-virtual {v0}, Lcom/android/server/net/NetworkStatsCollection;->reset()V
 
-    .line 320
+    .line 340
     return-void
 .end method
 
@@ -97,7 +97,7 @@
     .locals 1
 
     .prologue
-    .line 331
+    .line 353
     iget-object v0, p0, Lcom/android/server/net/NetworkStatsRecorder$RemoveUidRewriter;->mTemp:Lcom/android/server/net/NetworkStatsCollection;
 
     invoke-virtual {v0}, Lcom/android/server/net/NetworkStatsCollection;->isDirty()Z
@@ -109,7 +109,7 @@
 
 .method public write(Ljava/io/OutputStream;)V
     .locals 2
-    .parameter "out"
+    .param p1, "out"    # Ljava/io/OutputStream;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -117,7 +117,7 @@
     .end annotation
 
     .prologue
-    .line 336
+    .line 358
     iget-object v0, p0, Lcom/android/server/net/NetworkStatsRecorder$RemoveUidRewriter;->mTemp:Lcom/android/server/net/NetworkStatsCollection;
 
     new-instance v1, Ljava/io/DataOutputStream;
@@ -126,6 +126,6 @@
 
     invoke-virtual {v0, v1}, Lcom/android/server/net/NetworkStatsCollection;->write(Ljava/io/DataOutputStream;)V
 
-    .line 337
+    .line 357
     return-void
 .end method

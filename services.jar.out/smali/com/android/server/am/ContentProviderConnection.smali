@@ -26,8 +26,8 @@
 # direct methods
 .method public constructor <init>(Lcom/android/server/am/ContentProviderRecord;Lcom/android/server/am/ProcessRecord;)V
     .locals 2
-    .parameter "_provider"
-    .parameter "_client"
+    .param p1, "_provider"    # Lcom/android/server/am/ContentProviderRecord;
+    .param p2, "_client"    # Lcom/android/server/am/ProcessRecord;
 
     .prologue
     .line 42
@@ -46,7 +46,7 @@
 
     iput-wide v0, p0, Lcom/android/server/am/ContentProviderConnection;->createTime:J
 
-    .line 46
+    .line 42
     return-void
 .end method
 
@@ -64,7 +64,7 @@
     invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(I)V
 
     .line 64
-    .local v0, sb:Ljava/lang/StringBuilder;
+    .local v0, "sb":Ljava/lang/StringBuilder;
     invoke-virtual {p0, v0}, Lcom/android/server/am/ContentProviderConnection;->toClientString(Ljava/lang/StringBuilder;)V
 
     .line 65
@@ -77,7 +77,7 @@
 
 .method public toClientString(Ljava/lang/StringBuilder;)V
     .locals 4
-    .parameter "sb"
+    .param p1, "sb"    # Ljava/lang/StringBuilder;
 
     .prologue
     .line 75
@@ -90,7 +90,7 @@
     invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 76
-    const-string v2, " s"
+    const-string/jumbo v2, " s"
 
     invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -100,7 +100,7 @@
     invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 78
-    const-string v2, "/"
+    const-string/jumbo v2, "/"
 
     invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -110,7 +110,7 @@
     invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 80
-    const-string v2, " u"
+    const-string/jumbo v2, " u"
 
     invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -120,7 +120,7 @@
     invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 82
-    const-string v2, "/"
+    const-string/jumbo v2, "/"
 
     invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -135,7 +135,7 @@
     if-eqz v2, :cond_0
 
     .line 85
-    const-string v2, " WAITING"
+    const-string/jumbo v2, " WAITING"
 
     invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -146,7 +146,7 @@
     if-eqz v2, :cond_1
 
     .line 88
-    const-string v2, " DEAD"
+    const-string/jumbo v2, " DEAD"
 
     invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -157,8 +157,8 @@
     move-result-wide v0
 
     .line 91
-    .local v0, nowReal:J
-    const-string v2, " "
+    .local v0, "nowReal":J
+    const-string/jumbo v2, " "
 
     invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -169,7 +169,7 @@
 
     invoke-static {v2, v3, p1}, Landroid/util/TimeUtils;->formatDuration(JLjava/lang/StringBuilder;)V
 
-    .line 93
+    .line 74
     return-void
 .end method
 
@@ -185,7 +185,7 @@
     invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(I)V
 
     .line 58
-    .local v0, sb:Ljava/lang/StringBuilder;
+    .local v0, "sb":Ljava/lang/StringBuilder;
     invoke-virtual {p0, v0}, Lcom/android/server/am/ContentProviderConnection;->toShortString(Ljava/lang/StringBuilder;)V
 
     .line 59
@@ -198,7 +198,7 @@
 
 .method public toShortString(Ljava/lang/StringBuilder;)V
     .locals 1
-    .parameter "sb"
+    .param p1, "sb"    # Ljava/lang/StringBuilder;
 
     .prologue
     .line 69
@@ -211,14 +211,14 @@
     invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 70
-    const-string v0, "->"
+    const-string/jumbo v0, "->"
 
     invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 71
     invoke-virtual {p0, p1}, Lcom/android/server/am/ContentProviderConnection;->toClientString(Ljava/lang/StringBuilder;)V
 
-    .line 72
+    .line 68
     return-void
 .end method
 
@@ -234,8 +234,8 @@
     invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(I)V
 
     .line 50
-    .local v0, sb:Ljava/lang/StringBuilder;
-    const-string v1, "ContentProviderConnection{"
+    .local v0, "sb":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "ContentProviderConnection{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

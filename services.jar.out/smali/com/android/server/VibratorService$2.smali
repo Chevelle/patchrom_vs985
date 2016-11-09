@@ -4,8 +4,8 @@
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/VibratorService;->systemReady()V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/android/server/VibratorService;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/VibratorService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/VibratorService;
 
     .prologue
-    .line 170
+    .line 721
     iput-object p1, p0, Lcom/android/server/VibratorService$2;->this$0:Lcom/android/server/VibratorService;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -35,17 +35,135 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 1
-    .parameter "context"
-    .parameter "intent"
+    .locals 4
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 173
-    iget-object v0, p0, Lcom/android/server/VibratorService$2;->this$0:Lcom/android/server/VibratorService;
+    .line 724
+    invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
-    #calls: Lcom/android/server/VibratorService;->updateInputDeviceVibrators()V
-    invoke-static {v0}, Lcom/android/server/VibratorService;->access$400(Lcom/android/server/VibratorService;)V
+    move-result-object v2
 
-    .line 174
+    const-string/jumbo v3, "android.intent.action.SCREEN_OFF"
+
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_4
+
+    .line 725
+    iget-object v2, p0, Lcom/android/server/VibratorService$2;->this$0:Lcom/android/server/VibratorService;
+
+    invoke-static {v2}, Lcom/android/server/VibratorService;->-get2(Lcom/android/server/VibratorService;)Ljava/util/LinkedList;
+
+    move-result-object v3
+
+    monitor-enter v3
+
+    .line 731
+    :try_start_0
+    iget-object v2, p0, Lcom/android/server/VibratorService$2;->this$0:Lcom/android/server/VibratorService;
+
+    invoke-static {v2}, Lcom/android/server/VibratorService;->-get0(Lcom/android/server/VibratorService;)Lcom/android/server/VibratorService$Vibration;
+
+    move-result-object v2
+
+    if-eqz v2, :cond_0
+
+    .line 732
+    iget-object v2, p0, Lcom/android/server/VibratorService$2;->this$0:Lcom/android/server/VibratorService;
+
+    invoke-static {v2}, Lcom/android/server/VibratorService;->-get0(Lcom/android/server/VibratorService;)Lcom/android/server/VibratorService$Vibration;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Lcom/android/server/VibratorService$Vibration;->isSystemHapticFeedback()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
+
+    .line 737
+    :cond_0
+    :goto_0
+    iget-object v2, p0, Lcom/android/server/VibratorService$2;->this$0:Lcom/android/server/VibratorService;
+
+    invoke-static {v2}, Lcom/android/server/VibratorService;->-get2(Lcom/android/server/VibratorService;)Ljava/util/LinkedList;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/util/LinkedList;->iterator()Ljava/util/Iterator;
+
+    move-result-object v0
+
+    .line 738
+    .local v0, "it":Ljava/util/Iterator;, "Ljava/util/Iterator<Lcom/android/server/VibratorService$Vibration;>;"
+    :cond_1
+    :goto_1
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_3
+
+    .line 739
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/android/server/VibratorService$Vibration;
+
+    .line 740
+    .local v1, "vibration":Lcom/android/server/VibratorService$Vibration;
+    iget-object v2, p0, Lcom/android/server/VibratorService$2;->this$0:Lcom/android/server/VibratorService;
+
+    invoke-static {v2}, Lcom/android/server/VibratorService;->-get0(Lcom/android/server/VibratorService;)Lcom/android/server/VibratorService$Vibration;
+
+    move-result-object v2
+
+    if-eq v1, v2, :cond_1
+
+    .line 741
+    iget-object v2, p0, Lcom/android/server/VibratorService$2;->this$0:Lcom/android/server/VibratorService;
+
+    invoke-static {v2, v1}, Lcom/android/server/VibratorService;->-wrap3(Lcom/android/server/VibratorService;Lcom/android/server/VibratorService$Vibration;)V
+
+    .line 742
+    invoke-interface {v0}, Ljava/util/Iterator;->remove()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    goto :goto_1
+
+    .line 725
+    .end local v0    # "it":Ljava/util/Iterator;, "Ljava/util/Iterator<Lcom/android/server/VibratorService$Vibration;>;"
+    .end local v1    # "vibration":Lcom/android/server/VibratorService$Vibration;
+    :catchall_0
+    move-exception v2
+
+    monitor-exit v3
+
+    throw v2
+
+    .line 733
+    :cond_2
+    :try_start_1
+    iget-object v2, p0, Lcom/android/server/VibratorService$2;->this$0:Lcom/android/server/VibratorService;
+
+    invoke-static {v2}, Lcom/android/server/VibratorService;->-wrap0(Lcom/android/server/VibratorService;)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    goto :goto_0
+
+    .restart local v0    # "it":Ljava/util/Iterator;, "Ljava/util/Iterator<Lcom/android/server/VibratorService$Vibration;>;"
+    :cond_3
+    monitor-exit v3
+
+    .line 723
+    .end local v0    # "it":Ljava/util/Iterator;, "Ljava/util/Iterator<Lcom/android/server/VibratorService$Vibration;>;"
+    :cond_4
     return-void
 .end method

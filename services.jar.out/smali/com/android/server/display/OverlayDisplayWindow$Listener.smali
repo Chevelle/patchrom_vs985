@@ -15,7 +15,10 @@
 
 
 # virtual methods
-.method public abstract onWindowCreated(Landroid/graphics/SurfaceTexture;F)V
+.method public abstract onStateChanged(I)V
+.end method
+
+.method public abstract onWindowCreated(Landroid/graphics/SurfaceTexture;FJI)V
 .end method
 
 .method public abstract onWindowDestroyed()V

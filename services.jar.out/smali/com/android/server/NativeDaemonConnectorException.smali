@@ -12,20 +12,20 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "detailMessage"
+    .param p1, "detailMessage"    # Ljava/lang/String;
 
     .prologue
     .line 30
     invoke-direct {p0, p1}, Ljava/lang/Exception;-><init>(Ljava/lang/String;)V
 
-    .line 31
+    .line 29
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Lcom/android/server/NativeDaemonEvent;)V
     .locals 2
-    .parameter "cmd"
-    .parameter "event"
+    .param p1, "cmd"    # Ljava/lang/String;
+    .param p2, "event"    # Lcom/android/server/NativeDaemonEvent;
 
     .prologue
     .line 38
@@ -33,7 +33,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "command \'"
+    const-string/jumbo v1, "command \'"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -43,7 +43,7 @@
 
     move-result-object v0
 
-    const-string v1, "\' failed with \'"
+    const-string/jumbo v1, "\' failed with \'"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -53,7 +53,7 @@
 
     move-result-object v0
 
-    const-string v1, "\'"
+    const-string/jumbo v1, "\'"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -71,20 +71,20 @@
     .line 40
     iput-object p2, p0, Lcom/android/server/NativeDaemonConnectorException;->mEvent:Lcom/android/server/NativeDaemonEvent;
 
-    .line 41
+    .line 37
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/Throwable;)V
     .locals 0
-    .parameter "detailMessage"
-    .parameter "throwable"
+    .param p1, "detailMessage"    # Ljava/lang/String;
+    .param p2, "throwable"    # Ljava/lang/Throwable;
 
     .prologue
     .line 34
     invoke-direct {p0, p1, p2}, Ljava/lang/Exception;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    .line 35
+    .line 33
     return-void
 .end method
 

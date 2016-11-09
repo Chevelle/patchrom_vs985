@@ -26,11 +26,11 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/input/InputManagerService;[Landroid/hardware/input/KeyboardLayout;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/input/InputManagerService;
+    .param p2, "val$result"    # [Landroid/hardware/input/KeyboardLayout;
 
     .prologue
-    .line 795
+    .line 951
     iput-object p1, p0, Lcom/android/server/input/InputManagerService$6;->this$0:Lcom/android/server/input/InputManagerService;
 
     iput-object p2, p0, Lcom/android/server/input/InputManagerService$6;->val$result:[Landroid/hardware/input/KeyboardLayout;
@@ -42,26 +42,27 @@
 
 
 # virtual methods
-.method public visitKeyboardLayout(Landroid/content/res/Resources;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
+.method public visitKeyboardLayout(Landroid/content/res/Resources;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II)V
     .locals 3
-    .parameter "resources"
-    .parameter "descriptor"
-    .parameter "label"
-    .parameter "collection"
-    .parameter "keyboardLayoutResId"
+    .param p1, "resources"    # Landroid/content/res/Resources;
+    .param p2, "descriptor"    # Ljava/lang/String;
+    .param p3, "label"    # Ljava/lang/String;
+    .param p4, "collection"    # Ljava/lang/String;
+    .param p5, "keyboardLayoutResId"    # I
+    .param p6, "priority"    # I
 
     .prologue
-    .line 799
+    .line 955
     iget-object v0, p0, Lcom/android/server/input/InputManagerService$6;->val$result:[Landroid/hardware/input/KeyboardLayout;
 
-    const/4 v1, 0x0
+    new-instance v1, Landroid/hardware/input/KeyboardLayout;
 
-    new-instance v2, Landroid/hardware/input/KeyboardLayout;
+    invoke-direct {v1, p2, p3, p4, p6}, Landroid/hardware/input/KeyboardLayout;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
 
-    invoke-direct {v2, p2, p3, p4}, Landroid/hardware/input/KeyboardLayout;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    .line 800
+    .line 954
     return-void
 .end method

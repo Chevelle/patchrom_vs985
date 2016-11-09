@@ -1,5 +1,5 @@
 .class Lcom/android/server/net/NetworkPolicyManagerService$1;
-.super Landroid/app/IProcessObserver$Stub;
+.super Landroid/app/IUidObserver$Stub;
 .source "NetworkPolicyManagerService.java"
 
 
@@ -21,83 +21,94 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/net/NetworkPolicyManagerService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/net/NetworkPolicyManagerService;
 
     .prologue
-    .line 407
+    .line 542
     iput-object p1, p0, Lcom/android/server/net/NetworkPolicyManagerService$1;->this$0:Lcom/android/server/net/NetworkPolicyManagerService;
 
-    invoke-direct {p0}, Landroid/app/IProcessObserver$Stub;-><init>()V
+    invoke-direct {p0}, Landroid/app/IUidObserver$Stub;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onForegroundActivitiesChanged(IIZ)V
-    .locals 3
-    .parameter "pid"
-    .parameter "uid"
-    .parameter "foregroundActivities"
-
-    .prologue
-    .line 410
-    iget-object v0, p0, Lcom/android/server/net/NetworkPolicyManagerService$1;->this$0:Lcom/android/server/net/NetworkPolicyManagerService;
-
-    #getter for: Lcom/android/server/net/NetworkPolicyManagerService;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Lcom/android/server/net/NetworkPolicyManagerService;->access$000(Lcom/android/server/net/NetworkPolicyManagerService;)Landroid/os/Handler;
-
-    move-result-object v0
-
-    const/4 v1, 0x3
-
-    invoke-static {p3}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-
-    move-result-object v2
-
-    invoke-virtual {v0, v1, p1, p2, v2}, Landroid/os/Handler;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
-
-    .line 412
-    return-void
-.end method
-
-.method public onImportanceChanged(III)V
-    .locals 0
-    .parameter "pid"
-    .parameter "uid"
-    .parameter "importance"
-
-    .prologue
-    .line 416
-    return-void
-.end method
-
-.method public onProcessDied(II)V
+.method public onUidGone(I)V
     .locals 2
-    .parameter "pid"
-    .parameter "uid"
+    .param p1, "uid"    # I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
     .prologue
-    .line 420
+    .line 550
     iget-object v0, p0, Lcom/android/server/net/NetworkPolicyManagerService$1;->this$0:Lcom/android/server/net/NetworkPolicyManagerService;
 
-    #getter for: Lcom/android/server/net/NetworkPolicyManagerService;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Lcom/android/server/net/NetworkPolicyManagerService;->access$000(Lcom/android/server/net/NetworkPolicyManagerService;)Landroid/os/Handler;
+    iget-object v1, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mRulesLock:Ljava/lang/Object;
 
-    move-result-object v0
+    monitor-enter v1
 
-    const/4 v1, 0x4
+    .line 551
+    :try_start_0
+    iget-object v0, p0, Lcom/android/server/net/NetworkPolicyManagerService$1;->this$0:Lcom/android/server/net/NetworkPolicyManagerService;
 
-    invoke-virtual {v0, v1, p1, p2}, Landroid/os/Handler;->obtainMessage(III)Landroid/os/Message;
+    invoke-virtual {v0, p1}, Lcom/android/server/net/NetworkPolicyManagerService;->removeUidStateLocked(I)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    move-result-object v0
+    monitor-exit v1
 
-    invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
-
-    .line 421
+    .line 549
     return-void
+
+    .line 550
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+
+    throw v0
+.end method
+
+.method public onUidStateChanged(II)V
+    .locals 2
+    .param p1, "uid"    # I
+    .param p2, "procState"    # I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 544
+    iget-object v0, p0, Lcom/android/server/net/NetworkPolicyManagerService$1;->this$0:Lcom/android/server/net/NetworkPolicyManagerService;
+
+    iget-object v1, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mRulesLock:Ljava/lang/Object;
+
+    monitor-enter v1
+
+    .line 545
+    :try_start_0
+    iget-object v0, p0, Lcom/android/server/net/NetworkPolicyManagerService$1;->this$0:Lcom/android/server/net/NetworkPolicyManagerService;
+
+    invoke-virtual {v0, p1, p2}, Lcom/android/server/net/NetworkPolicyManagerService;->updateUidStateLocked(II)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit v1
+
+    .line 543
+    return-void
+
+    .line 544
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+
+    throw v0
 .end method

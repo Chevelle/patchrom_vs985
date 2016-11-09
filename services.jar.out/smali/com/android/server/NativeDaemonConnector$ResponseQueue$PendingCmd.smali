@@ -36,28 +36,29 @@
 # direct methods
 .method public constructor <init>(ILjava/lang/String;)V
     .locals 2
-    .parameter "cmdNum"
-    .parameter "logCmd"
+    .param p1, "cmdNum"    # I
+    .param p2, "logCmd"    # Ljava/lang/String;
 
     .prologue
-    .line 511
+    .line 564
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 491
+    .line 545
     new-instance v0, Ljava/util/concurrent/ArrayBlockingQueue;
 
     const/16 v1, 0xa
 
     invoke-direct {v0, v1}, Ljava/util/concurrent/ArrayBlockingQueue;-><init>(I)V
 
+    .line 544
     iput-object v0, p0, Lcom/android/server/NativeDaemonConnector$ResponseQueue$PendingCmd;->responses:Ljava/util/concurrent/BlockingQueue;
 
-    .line 512
+    .line 565
     iput p1, p0, Lcom/android/server/NativeDaemonConnector$ResponseQueue$PendingCmd;->cmdNum:I
 
-    .line 513
+    .line 566
     iput-object p2, p0, Lcom/android/server/NativeDaemonConnector$ResponseQueue$PendingCmd;->logCmd:Ljava/lang/String;
 
-    .line 514
+    .line 564
     return-void
 .end method

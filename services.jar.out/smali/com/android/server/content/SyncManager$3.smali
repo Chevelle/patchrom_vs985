@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/content/SyncManager;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/content/SyncManager;
 
     .prologue
-    .line 224
+    .line 274
     iput-object p1, p0, Lcom/android/server/content/SyncManager$3;->this$0:Lcom/android/server/content/SyncManager;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -35,49 +35,27 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 11
-    .parameter "context"
-    .parameter "intent"
+    .locals 2
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    const-wide/16 v6, 0x0
-
-    const/4 v1, 0x0
-
-    const/4 v2, -0x1
-
-    .line 227
+    .line 277
     iget-object v0, p0, Lcom/android/server/content/SyncManager$3;->this$0:Lcom/android/server/content/SyncManager;
 
-    #calls: Lcom/android/server/content/SyncManager;->getConnectivityManager()Landroid/net/ConnectivityManager;
-    invoke-static {v0}, Lcom/android/server/content/SyncManager;->access$300(Lcom/android/server/content/SyncManager;)Landroid/net/ConnectivityManager;
+    const/4 v1, 0x1
+
+    invoke-static {v0, v1}, Lcom/android/server/content/SyncManager;->-set0(Lcom/android/server/content/SyncManager;Z)Z
+
+    .line 278
+    iget-object v0, p0, Lcom/android/server/content/SyncManager$3;->this$0:Lcom/android/server/content/SyncManager;
+
+    invoke-static {v0}, Lcom/android/server/content/SyncManager;->-get18(Lcom/android/server/content/SyncManager;)Lcom/android/server/content/SyncManager$SyncHandler;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Landroid/net/ConnectivityManager;->getBackgroundDataSetting()Z
+    invoke-virtual {v0}, Lcom/android/server/content/SyncManager$SyncHandler;->onBootCompleted()V
 
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 228
-    iget-object v0, p0, Lcom/android/server/content/SyncManager$3;->this$0:Lcom/android/server/content/SyncManager;
-
-    new-instance v5, Landroid/os/Bundle;
-
-    invoke-direct {v5}, Landroid/os/Bundle;-><init>()V
-
-    const/4 v10, 0x0
-
-    move v3, v2
-
-    move-object v4, v1
-
-    move-wide v8, v6
-
-    invoke-virtual/range {v0 .. v10}, Lcom/android/server/content/SyncManager;->scheduleSync(Landroid/accounts/Account;IILjava/lang/String;Landroid/os/Bundle;JJZ)V
-
-    .line 234
-    :cond_0
+    .line 276
     return-void
 .end method

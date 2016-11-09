@@ -17,13 +17,13 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;Lcom/android/server/NativeDaemonEvent;)V
     .locals 0
-    .parameter "command"
-    .parameter "event"
+    .param p1, "command"    # Ljava/lang/String;
+    .param p2, "event"    # Lcom/android/server/NativeDaemonEvent;
 
     .prologue
-    .line 439
+    .line 492
     invoke-direct {p0, p1, p2}, Lcom/android/server/NativeDaemonConnectorException;-><init>(Ljava/lang/String;Lcom/android/server/NativeDaemonEvent;)V
 
-    .line 440
+    .line 491
     return-void
 .end method

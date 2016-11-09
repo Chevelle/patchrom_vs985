@@ -68,61 +68,64 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/am/ActivityManagerService;)V
     .locals 1
-    .parameter "am"
+    .param p1, "am"    # Lcom/android/server/am/ActivityManagerService;
 
     .prologue
-    .line 57
+    .line 58
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 47
-    new-instance v0, Ljava/util/HashMap;
-
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
-
-    iput-object v0, p0, Lcom/android/server/am/ProviderMap;->mSingletonByName:Ljava/util/HashMap;
 
     .line 49
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
+    .line 48
+    iput-object v0, p0, Lcom/android/server/am/ProviderMap;->mSingletonByName:Ljava/util/HashMap;
+
+    .line 51
+    new-instance v0, Ljava/util/HashMap;
+
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    .line 50
     iput-object v0, p0, Lcom/android/server/am/ProviderMap;->mSingletonByClass:Ljava/util/HashMap;
-
-    .line 52
-    new-instance v0, Landroid/util/SparseArray;
-
-    invoke-direct {v0}, Landroid/util/SparseArray;-><init>()V
-
-    iput-object v0, p0, Lcom/android/server/am/ProviderMap;->mProvidersByNamePerUser:Landroid/util/SparseArray;
 
     .line 54
     new-instance v0, Landroid/util/SparseArray;
 
     invoke-direct {v0}, Landroid/util/SparseArray;-><init>()V
 
+    .line 53
+    iput-object v0, p0, Lcom/android/server/am/ProviderMap;->mProvidersByNamePerUser:Landroid/util/SparseArray;
+
+    .line 56
+    new-instance v0, Landroid/util/SparseArray;
+
+    invoke-direct {v0}, Landroid/util/SparseArray;-><init>()V
+
+    .line 55
     iput-object v0, p0, Lcom/android/server/am/ProviderMap;->mProvidersByClassPerUser:Landroid/util/SparseArray;
 
-    .line 58
+    .line 59
     iput-object p1, p0, Lcom/android/server/am/ProviderMap;->mAm:Lcom/android/server/am/ActivityManagerService;
 
-    .line 59
+    .line 58
     return-void
 .end method
 
-.method private collectForceStopProvidersLocked(Ljava/lang/String;IZZILjava/util/HashMap;Ljava/util/ArrayList;)Z
-    .locals 4
-    .parameter "name"
-    .parameter "appId"
-    .parameter "doit"
-    .parameter "evenPersistent"
-    .parameter "userId"
-    .parameter
-    .parameter
+.method private collectPackageProvidersLocked(Ljava/lang/String;Ljava/util/Set;ZZLjava/util/HashMap;Ljava/util/ArrayList;)Z
+    .locals 5
+    .param p1, "packageName"    # Ljava/lang/String;
+    .param p3, "doit"    # Z
+    .param p4, "evenPersistent"    # Z
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
             "Ljava/lang/String;",
-            "IZZI",
+            "Ljava/util/Set",
+            "<",
+            "Ljava/lang/String;",
+            ">;ZZ",
             "Ljava/util/HashMap",
             "<",
             "Landroid/content/ComponentName;",
@@ -136,324 +139,369 @@
     .end annotation
 
     .prologue
-    .line 191
-    .local p6, providers:Ljava/util/HashMap;,"Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
-    .local p7, result:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/server/am/ContentProviderRecord;>;"
+    .line 192
+    .local p2, "filterByClasses":Ljava/util/Set;, "Ljava/util/Set<Ljava/lang/String;>;"
+    .local p5, "providers":Ljava/util/HashMap;, "Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
+    .local p6, "result":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ContentProviderRecord;>;"
     const/4 v0, 0x0
 
-    .line 192
-    .local v0, didSomething:Z
-    invoke-virtual {p6}, Ljava/util/HashMap;->values()Ljava/util/Collection;
+    .line 193
+    .local v0, "didSomething":Z
+    invoke-virtual {p5}, Ljava/util/HashMap;->values()Ljava/util/Collection;
 
-    move-result-object v3
+    move-result-object v4
 
-    invoke-interface {v3}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
-
-    move-result-object v1
-
-    .local v1, i$:Ljava/util/Iterator;
-    :cond_0
-    :goto_0
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v4}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
     move-result-object v2
 
-    check-cast v2, Lcom/android/server/am/ContentProviderRecord;
+    .local v2, "provider$iterator":Ljava/util/Iterator;
+    :cond_0
+    :goto_0
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
-    .line 193
-    .local v2, provider:Lcom/android/server/am/ContentProviderRecord;
-    if-eqz p1, :cond_1
+    move-result v4
 
-    iget-object v3, v2, Lcom/android/server/am/ContentProviderRecord;->info:Landroid/content/pm/ProviderInfo;
+    if-eqz v4, :cond_6
 
-    iget-object v3, v3, Landroid/content/pm/ProviderInfo;->packageName:Ljava/lang/String;
-
-    invoke-virtual {v3, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_0
-
-    :cond_1
-    iget-object v3, v2, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
-
-    if-eqz v3, :cond_2
-
-    if-nez p4, :cond_2
-
-    iget-object v3, v2, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
-
-    iget-boolean v3, v3, Lcom/android/server/am/ProcessRecord;->persistent:Z
-
-    if-nez v3, :cond_0
-
-    .line 195
-    :cond_2
-    if-nez p3, :cond_4
-
-    .line 196
-    const/4 v0, 0x1
-
-    .line 202
-    .end local v0           #didSomething:Z
-    .end local v2           #provider:Lcom/android/server/am/ContentProviderRecord;
-    :cond_3
-    return v0
-
-    .line 198
-    .restart local v0       #didSomething:Z
-    .restart local v2       #provider:Lcom/android/server/am/ContentProviderRecord;
-    :cond_4
-    const/4 v0, 0x1
-
-    .line 199
-    invoke-virtual {p7, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    goto :goto_0
-.end method
-
-.method private dumpProvider(Ljava/lang/String;Ljava/io/FileDescriptor;Ljava/io/PrintWriter;Lcom/android/server/am/ContentProviderRecord;[Ljava/lang/String;Z)V
-    .locals 6
-    .parameter "prefix"
-    .parameter "fd"
-    .parameter "pw"
-    .parameter "r"
-    .parameter "args"
-    .parameter "dumpAll"
-
-    .prologue
-    .line 382
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    const-string v4, "  "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v1
 
-    .line 383
-    .local v1, innerPrefix:Ljava/lang/String;
-    iget-object v4, p0, Lcom/android/server/am/ProviderMap;->mAm:Lcom/android/server/am/ActivityManagerService;
+    check-cast v1, Lcom/android/server/am/ContentProviderRecord;
 
-    monitor-enter v4
+    .line 194
+    .local v1, "provider":Lcom/android/server/am/ContentProviderRecord;
+    if-eqz p1, :cond_2
 
-    .line 384
+    .line 195
+    iget-object v4, v1, Lcom/android/server/am/ContentProviderRecord;->info:Landroid/content/pm/ProviderInfo;
+
+    iget-object v4, v4, Landroid/content/pm/ProviderInfo;->packageName:Ljava/lang/String;
+
+    invoke-virtual {v4, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_4
+
+    .line 196
+    if-eqz p2, :cond_3
+
+    .line 197
+    iget-object v4, v1, Lcom/android/server/am/ContentProviderRecord;->name:Landroid/content/ComponentName;
+
+    invoke-virtual {v4}, Landroid/content/ComponentName;->getClassName()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-interface {p2, v4}, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    .line 198
+    :goto_1
+    if-eqz v3, :cond_0
+
+    .line 199
+    iget-object v4, v1, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
+
+    if-eqz v4, :cond_1
+
+    if-nez p4, :cond_1
+
+    iget-object v4, v1, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
+
+    iget-boolean v4, v4, Lcom/android/server/am/ProcessRecord;->persistent:Z
+
+    if-nez v4, :cond_0
+
+    .line 200
+    :cond_1
+    if-nez p3, :cond_5
+
+    .line 201
+    const/4 v4, 0x1
+
+    return v4
+
+    .line 194
+    :cond_2
+    const/4 v3, 0x1
+
+    .local v3, "sameComponent":Z
+    goto :goto_1
+
+    .line 196
+    .end local v3    # "sameComponent":Z
+    :cond_3
+    const/4 v3, 0x1
+
+    .restart local v3    # "sameComponent":Z
+    goto :goto_1
+
+    .line 195
+    .end local v3    # "sameComponent":Z
+    :cond_4
+    const/4 v3, 0x0
+
+    .restart local v3    # "sameComponent":Z
+    goto :goto_1
+
+    .line 203
+    .end local v3    # "sameComponent":Z
+    :cond_5
+    const/4 v0, 0x1
+
+    .line 204
+    invoke-virtual {p6, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    goto :goto_0
+
+    .line 207
+    .end local v1    # "provider":Lcom/android/server/am/ContentProviderRecord;
+    :cond_6
+    return v0
+.end method
+
+.method private dumpProvider(Ljava/lang/String;Ljava/io/FileDescriptor;Ljava/io/PrintWriter;Lcom/android/server/am/ContentProviderRecord;[Ljava/lang/String;Z)V
+    .locals 7
+    .param p1, "prefix"    # Ljava/lang/String;
+    .param p2, "fd"    # Ljava/io/FileDescriptor;
+    .param p3, "pw"    # Ljava/io/PrintWriter;
+    .param p4, "r"    # Lcom/android/server/am/ContentProviderRecord;
+    .param p5, "args"    # [Ljava/lang/String;
+    .param p6, "dumpAll"    # Z
+
+    .prologue
+    .line 390
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    const-string/jumbo v5, "  "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 391
+    .local v2, "innerPrefix":Ljava/lang/String;
+    iget-object v5, p0, Lcom/android/server/am/ProviderMap;->mAm:Lcom/android/server/am/ActivityManagerService;
+
+    monitor-enter v5
+
+    .line 392
     :try_start_0
     invoke-virtual {p3, p1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const-string v3, "PROVIDER "
+    const-string/jumbo v4, "PROVIDER "
 
-    invoke-virtual {p3, v3}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+    invoke-virtual {p3, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 385
+    .line 393
     invoke-virtual {p3, p4}, Ljava/io/PrintWriter;->print(Ljava/lang/Object;)V
 
-    .line 386
-    const-string v3, " pid="
+    .line 394
+    const-string/jumbo v4, " pid="
 
-    invoke-virtual {p3, v3}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+    invoke-virtual {p3, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 387
-    iget-object v3, p4, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
+    .line 395
+    iget-object v4, p4, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
 
-    if-eqz v3, :cond_2
+    if-eqz v4, :cond_2
 
-    iget-object v3, p4, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
+    iget-object v4, p4, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
 
-    iget v3, v3, Lcom/android/server/am/ProcessRecord;->pid:I
+    iget v4, v4, Lcom/android/server/am/ProcessRecord;->pid:I
 
-    invoke-virtual {p3, v3}, Ljava/io/PrintWriter;->println(I)V
+    invoke-virtual {p3, v4}, Ljava/io/PrintWriter;->println(I)V
 
-    .line 389
+    .line 397
     :goto_0
     if-eqz p6, :cond_0
 
-    .line 390
-    const/4 v3, 0x1
+    .line 398
+    const/4 v4, 0x1
 
-    invoke-virtual {p4, p3, v1, v3}, Lcom/android/server/am/ContentProviderRecord;->dump(Ljava/io/PrintWriter;Ljava/lang/String;Z)V
-
-    .line 392
-    :cond_0
-    monitor-exit v4
+    invoke-virtual {p4, p3, v2, v4}, Lcom/android/server/am/ContentProviderRecord;->dump(Ljava/io/PrintWriter;Ljava/lang/String;Z)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 393
-    iget-object v3, p4, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
+    :cond_0
+    monitor-exit v5
 
-    if-eqz v3, :cond_1
+    .line 401
+    iget-object v4, p4, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
 
-    iget-object v3, p4, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
+    if-eqz v4, :cond_1
 
-    iget-object v3, v3, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
+    iget-object v4, p4, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
 
-    if-eqz v3, :cond_1
+    iget-object v4, v4, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
-    .line 394
-    const-string v3, "    Client:"
+    if-eqz v4, :cond_1
 
-    invoke-virtual {p3, v3}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+    .line 402
+    const-string/jumbo v4, "    Client:"
 
-    .line 395
+    invoke-virtual {p3, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+
+    .line 403
     invoke-virtual {p3}, Ljava/io/PrintWriter;->flush()V
 
-    .line 397
+    .line 405
     :try_start_1
-    new-instance v2, Lcom/android/internal/os/TransferPipe;
+    new-instance v3, Lcom/android/internal/os/TransferPipe;
 
-    invoke-direct {v2}, Lcom/android/internal/os/TransferPipe;-><init>()V
+    invoke-direct {v3}, Lcom/android/internal/os/TransferPipe;-><init>()V
     :try_end_1
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
     .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_1
 
-    .line 399
-    .local v2, tp:Lcom/android/internal/os/TransferPipe;
+    .line 407
+    .local v3, "tp":Lcom/android/internal/os/TransferPipe;
     :try_start_2
-    iget-object v3, p4, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
+    iget-object v4, p4, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
 
-    iget-object v3, v3, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
+    iget-object v4, v4, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
-    invoke-virtual {v2}, Lcom/android/internal/os/TransferPipe;->getWriteFd()Landroid/os/ParcelFileDescriptor;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Landroid/os/ParcelFileDescriptor;->getFileDescriptor()Ljava/io/FileDescriptor;
-
-    move-result-object v4
-
-    iget-object v5, p4, Lcom/android/server/am/ContentProviderRecord;->provider:Landroid/content/IContentProvider;
-
-    invoke-interface {v5}, Landroid/content/IContentProvider;->asBinder()Landroid/os/IBinder;
+    .line 408
+    invoke-virtual {v3}, Lcom/android/internal/os/TransferPipe;->getWriteFd()Landroid/os/ParcelFileDescriptor;
 
     move-result-object v5
 
-    invoke-interface {v3, v4, v5, p5}, Landroid/app/IApplicationThread;->dumpProvider(Ljava/io/FileDescriptor;Landroid/os/IBinder;[Ljava/lang/String;)V
+    invoke-virtual {v5}, Landroid/os/ParcelFileDescriptor;->getFileDescriptor()Ljava/io/FileDescriptor;
 
-    .line 401
-    const-string v3, "      "
+    move-result-object v5
 
-    invoke-virtual {v2, v3}, Lcom/android/internal/os/TransferPipe;->setBufferPrefix(Ljava/lang/String;)V
+    iget-object v6, p4, Lcom/android/server/am/ContentProviderRecord;->provider:Landroid/content/IContentProvider;
 
-    .line 404
-    const-wide/16 v3, 0x7d0
+    invoke-interface {v6}, Landroid/content/IContentProvider;->asBinder()Landroid/os/IBinder;
 
-    invoke-virtual {v2, p2, v3, v4}, Lcom/android/internal/os/TransferPipe;->go(Ljava/io/FileDescriptor;J)V
+    move-result-object v6
+
+    .line 407
+    invoke-interface {v4, v5, v6, p5}, Landroid/app/IApplicationThread;->dumpProvider(Ljava/io/FileDescriptor;Landroid/os/IBinder;[Ljava/lang/String;)V
+
+    .line 409
+    const-string/jumbo v4, "      "
+
+    invoke-virtual {v3, v4}, Lcom/android/internal/os/TransferPipe;->setBufferPrefix(Ljava/lang/String;)V
+
+    .line 412
+    const-wide/16 v4, 0x7d0
+
+    invoke-virtual {v3, p2, v4, v5}, Lcom/android/internal/os/TransferPipe;->go(Ljava/io/FileDescriptor;J)V
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 406
+    .line 414
     :try_start_3
-    invoke-virtual {v2}, Lcom/android/internal/os/TransferPipe;->kill()V
+    invoke-virtual {v3}, Lcom/android/internal/os/TransferPipe;->kill()V
     :try_end_3
     .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_0
     .catch Landroid/os/RemoteException; {:try_start_3 .. :try_end_3} :catch_1
 
-    .line 414
-    .end local v2           #tp:Lcom/android/internal/os/TransferPipe;
+    .line 389
+    .end local v3    # "tp":Lcom/android/internal/os/TransferPipe;
     :cond_1
     :goto_1
     return-void
 
-    .line 388
+    .line 396
     :cond_2
     :try_start_4
-    const-string v3, "(not running)"
+    const-string/jumbo v4, "(not running)"
 
-    invoke-virtual {p3, v3}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
-
-    goto :goto_0
-
-    .line 392
-    :catchall_0
-    move-exception v3
-
-    monitor-exit v4
+    invoke-virtual {p3, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_0
 
-    throw v3
+    goto :goto_0
 
-    .line 406
-    .restart local v2       #tp:Lcom/android/internal/os/TransferPipe;
+    .line 391
+    :catchall_0
+    move-exception v4
+
+    monitor-exit v5
+
+    throw v4
+
+    .line 413
+    .restart local v3    # "tp":Lcom/android/internal/os/TransferPipe;
     :catchall_1
-    move-exception v3
+    move-exception v4
 
+    .line 414
     :try_start_5
-    invoke-virtual {v2}, Lcom/android/internal/os/TransferPipe;->kill()V
+    invoke-virtual {v3}, Lcom/android/internal/os/TransferPipe;->kill()V
 
-    throw v3
+    .line 413
+    throw v4
     :try_end_5
     .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_0
     .catch Landroid/os/RemoteException; {:try_start_5 .. :try_end_5} :catch_1
 
-    .line 408
-    .end local v2           #tp:Lcom/android/internal/os/TransferPipe;
+    .line 416
+    .end local v3    # "tp":Lcom/android/internal/os/TransferPipe;
     :catch_0
-    move-exception v0
+    move-exception v1
 
-    .line 409
-    .local v0, ex:Ljava/io/IOException;
-    new-instance v3, Ljava/lang/StringBuilder;
+    .line 417
+    .local v1, "ex":Ljava/io/IOException;
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "      Failure while dumping the provider: "
+    const-string/jumbo v5, "      Failure while dumping the provider: "
 
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v3
+    move-result-object v4
 
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v3
+    move-result-object v4
 
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v4
 
-    invoke-virtual {p3, v3}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+    invoke-virtual {p3, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
     goto :goto_1
 
-    .line 410
-    .end local v0           #ex:Ljava/io/IOException;
+    .line 418
+    .end local v1    # "ex":Ljava/io/IOException;
     :catch_1
     move-exception v0
 
-    .line 411
-    .local v0, ex:Landroid/os/RemoteException;
-    const-string v3, "      Got a RemoteException while dumping the service"
+    .line 419
+    .local v0, "ex":Landroid/os/RemoteException;
+    const-string/jumbo v4, "      Got a RemoteException while dumping the service"
 
-    invoke-virtual {p3, v3}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
+    invoke-virtual {p3, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
     goto :goto_1
 .end method
 
 .method private dumpProvidersByClassLocked(Ljava/io/PrintWriter;ZLjava/lang/String;Ljava/lang/String;ZLjava/util/HashMap;)Z
     .locals 5
-    .parameter "pw"
-    .parameter "dumpAll"
-    .parameter "dumpPackage"
-    .parameter "header"
-    .parameter "needSep"
-    .parameter
+    .param p1, "pw"    # Ljava/io/PrintWriter;
+    .param p2, "dumpAll"    # Z
+    .param p3, "dumpPackage"    # Ljava/lang/String;
+    .param p4, "header"    # Ljava/lang/String;
+    .param p5, "needSep"    # Z
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -471,8 +519,8 @@
     .end annotation
 
     .prologue
-    .line 236
-    .local p6, map:Ljava/util/HashMap;,"Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
+    .line 244
+    .local p6, "map":Ljava/util/HashMap;, "Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
     invoke-virtual {p6}, Ljava/util/HashMap;->entrySet()Ljava/util/Set;
 
     move-result-object v4
@@ -481,12 +529,14 @@
 
     move-result-object v1
 
-    .line 237
-    .local v1, it:Ljava/util/Iterator;,"Ljava/util/Iterator<Ljava/util/Map$Entry<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;>;"
+    .line 245
+    .local v1, "it":Ljava/util/Iterator;, "Ljava/util/Iterator<Ljava/util/Map$Entry<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;>;"
     const/4 v3, 0x0
 
-    .line 238
-    .local v3, written:Z
+    .line 246
+    .end local p4    # "header":Ljava/lang/String;
+    .end local p5    # "needSep":Z
+    .local v3, "written":Z
     :cond_0
     :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
@@ -495,23 +545,23 @@
 
     if-eqz v4, :cond_4
 
-    .line 239
+    .line 247
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Ljava/util/Map$Entry;
 
-    .line 240
-    .local v0, e:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
+    .line 248
+    .local v0, "e":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
     invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
     move-result-object v2
 
     check-cast v2, Lcom/android/server/am/ContentProviderRecord;
 
-    .line 241
-    .local v2, r:Lcom/android/server/am/ContentProviderRecord;
+    .line 249
+    .local v2, "r":Lcom/android/server/am/ContentProviderRecord;
     if-eqz p3, :cond_1
 
     iget-object v4, v2, Lcom/android/server/am/ContentProviderRecord;->appInfo:Landroid/content/pm/ApplicationInfo;
@@ -524,61 +574,60 @@
 
     if-eqz v4, :cond_0
 
-    .line 244
+    .line 252
     :cond_1
     if-eqz p5, :cond_2
 
-    .line 245
-    const-string v4, ""
+    .line 253
+    const-string/jumbo v4, ""
 
     invoke-virtual {p1, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 246
+    .line 254
     const/4 p5, 0x0
 
-    .line 248
+    .line 256
     :cond_2
     if-eqz p4, :cond_3
 
-    .line 249
+    .line 257
     invoke-virtual {p1, p4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 250
+    .line 258
     const/4 p4, 0x0
 
-    .line 252
+    .line 260
     :cond_3
     const/4 v3, 0x1
 
-    .line 253
-    const-string v4, "  * "
+    .line 261
+    const-string/jumbo v4, "  * "
 
     invoke-virtual {p1, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 254
+    .line 262
     invoke-virtual {p1, v2}, Ljava/io/PrintWriter;->println(Ljava/lang/Object;)V
 
-    .line 255
-    const-string v4, "    "
+    .line 263
+    const-string/jumbo v4, "    "
 
     invoke-virtual {v2, p1, v4, p2}, Lcom/android/server/am/ContentProviderRecord;->dump(Ljava/io/PrintWriter;Ljava/lang/String;Z)V
 
     goto :goto_0
 
-    .line 257
-    .end local v0           #e:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
-    .end local v2           #r:Lcom/android/server/am/ContentProviderRecord;
+    .line 265
+    .end local v0    # "e":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
+    .end local v2    # "r":Lcom/android/server/am/ContentProviderRecord;
     :cond_4
     return v3
 .end method
 
 .method private dumpProvidersByNameLocked(Ljava/io/PrintWriter;Ljava/lang/String;Ljava/lang/String;ZLjava/util/HashMap;)Z
     .locals 5
-    .parameter "pw"
-    .parameter "dumpPackage"
-    .parameter "header"
-    .parameter "needSep"
-    .parameter
+    .param p1, "pw"    # Ljava/io/PrintWriter;
+    .param p2, "dumpPackage"    # Ljava/lang/String;
+    .param p3, "header"    # Ljava/lang/String;
+    .param p4, "needSep"    # Z
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -595,8 +644,8 @@
     .end annotation
 
     .prologue
-    .line 262
-    .local p5, map:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;"
+    .line 270
+    .local p5, "map":Ljava/util/HashMap;, "Ljava/util/HashMap<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;"
     invoke-virtual {p5}, Ljava/util/HashMap;->entrySet()Ljava/util/Set;
 
     move-result-object v4
@@ -605,12 +654,14 @@
 
     move-result-object v1
 
-    .line 263
-    .local v1, it:Ljava/util/Iterator;,"Ljava/util/Iterator<Ljava/util/Map$Entry<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;>;"
+    .line 271
+    .local v1, "it":Ljava/util/Iterator;, "Ljava/util/Iterator<Ljava/util/Map$Entry<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;>;"
     const/4 v3, 0x0
 
-    .line 264
-    .local v3, written:Z
+    .line 272
+    .end local p3    # "header":Ljava/lang/String;
+    .end local p4    # "needSep":Z
+    .local v3, "written":Z
     :cond_0
     :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
@@ -619,23 +670,23 @@
 
     if-eqz v4, :cond_4
 
-    .line 265
+    .line 273
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Ljava/util/Map$Entry;
 
-    .line 266
-    .local v0, e:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;"
+    .line 274
+    .local v0, "e":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;"
     invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
     move-result-object v2
 
     check-cast v2, Lcom/android/server/am/ContentProviderRecord;
 
-    .line 267
-    .local v2, r:Lcom/android/server/am/ContentProviderRecord;
+    .line 275
+    .local v2, "r":Lcom/android/server/am/ContentProviderRecord;
     if-eqz p2, :cond_1
 
     iget-object v4, v2, Lcom/android/server/am/ContentProviderRecord;->appInfo:Landroid/content/pm/ApplicationInfo;
@@ -648,38 +699,38 @@
 
     if-eqz v4, :cond_0
 
-    .line 270
+    .line 278
     :cond_1
     if-eqz p4, :cond_2
 
-    .line 271
-    const-string v4, ""
+    .line 279
+    const-string/jumbo v4, ""
 
     invoke-virtual {p1, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 272
+    .line 280
     const/4 p4, 0x0
 
-    .line 274
+    .line 282
     :cond_2
     if-eqz p3, :cond_3
 
-    .line 275
+    .line 283
     invoke-virtual {p1, p3}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 276
+    .line 284
     const/4 p3, 0x0
 
-    .line 278
+    .line 286
     :cond_3
     const/4 v3, 0x1
 
-    .line 279
-    const-string v4, "  "
+    .line 287
+    const-string/jumbo v4, "  "
 
     invoke-virtual {p1, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 280
+    .line 288
     invoke-interface {v0}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
     move-result-object v4
@@ -688,12 +739,12 @@
 
     invoke-virtual {p1, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 281
-    const-string v4, ": "
+    .line 289
+    const-string/jumbo v4, ": "
 
     invoke-virtual {p1, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 282
+    .line 290
     invoke-virtual {v2}, Lcom/android/server/am/ContentProviderRecord;->toShortString()Ljava/lang/String;
 
     move-result-object v4
@@ -702,16 +753,16 @@
 
     goto :goto_0
 
-    .line 284
-    .end local v0           #e:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;"
-    .end local v2           #r:Lcom/android/server/am/ContentProviderRecord;
+    .line 292
+    .end local v0    # "e":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;"
+    .end local v2    # "r":Lcom/android/server/am/ContentProviderRecord;
     :cond_4
     return v3
 .end method
 
 .method private getProvidersByName(I)Ljava/util/HashMap;
     .locals 5
-    .parameter "userId"
+    .param p1, "userId"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I)",
@@ -724,7 +775,7 @@
     .end annotation
 
     .prologue
-    .line 162
+    .line 163
     if-gez p1, :cond_0
 
     new-instance v2, Ljava/lang/IllegalArgumentException;
@@ -733,7 +784,7 @@
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "Bad user "
+    const-string/jumbo v4, "Bad user "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -751,7 +802,7 @@
 
     throw v2
 
-    .line 163
+    .line 164
     :cond_0
     iget-object v2, p0, Lcom/android/server/am/ProviderMap;->mProvidersByNamePerUser:Landroid/util/SparseArray;
 
@@ -761,47 +812,46 @@
 
     check-cast v0, Ljava/util/HashMap;
 
-    .line 164
-    .local v0, map:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;"
+    .line 165
+    .local v0, "map":Ljava/util/HashMap;, "Ljava/util/HashMap<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;"
     if-nez v0, :cond_1
 
-    .line 165
+    .line 166
     new-instance v1, Ljava/util/HashMap;
 
     invoke-direct {v1}, Ljava/util/HashMap;-><init>()V
 
-    .line 166
-    .local v1, newMap:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;"
+    .line 167
+    .local v1, "newMap":Ljava/util/HashMap;, "Ljava/util/HashMap<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;"
     iget-object v2, p0, Lcom/android/server/am/ProviderMap;->mProvidersByNamePerUser:Landroid/util/SparseArray;
 
     invoke-virtual {v2, p1, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 169
-    .end local v1           #newMap:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;"
-    :goto_0
+    .line 168
     return-object v1
 
+    .line 170
+    .end local v1    # "newMap":Ljava/util/HashMap;, "Ljava/util/HashMap<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;"
     :cond_1
-    move-object v1, v0
-
-    goto :goto_0
+    return-object v0
 .end method
 
 
 # virtual methods
-.method collectForceStopProviders(Ljava/lang/String;IZZILjava/util/ArrayList;)Z
-    .locals 10
-    .parameter "name"
-    .parameter "appId"
-    .parameter "doit"
-    .parameter "evenPersistent"
-    .parameter "userId"
-    .parameter
+.method collectPackageProvidersLocked(Ljava/lang/String;Ljava/util/Set;ZZILjava/util/ArrayList;)Z
+    .locals 9
+    .param p1, "packageName"    # Ljava/lang/String;
+    .param p3, "doit"    # Z
+    .param p4, "evenPersistent"    # Z
+    .param p5, "userId"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
             "Ljava/lang/String;",
-            "IZZI",
+            "Ljava/util/Set",
+            "<",
+            "Ljava/lang/String;",
+            ">;ZZI",
             "Ljava/util/ArrayList",
             "<",
             "Lcom/android/server/am/ContentProviderRecord;",
@@ -810,177 +860,187 @@
     .end annotation
 
     .prologue
-    .line 208
-    .local p6, result:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/server/am/ContentProviderRecord;>;"
-    iget-object v6, p0, Lcom/android/server/am/ProviderMap;->mSingletonByClass:Ljava/util/HashMap;
+    .line 213
+    .local p2, "filterByClasses":Ljava/util/Set;, "Ljava/util/Set<Ljava/lang/String;>;"
+    .local p6, "result":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ContentProviderRecord;>;"
+    const/4 v7, 0x0
+
+    .line 214
+    .local v7, "didSomething":Z
+    const/4 v0, -0x1
+
+    if-eq p5, v0, :cond_0
+
+    if-nez p5, :cond_1
+
+    .line 216
+    :cond_0
+    iget-object v5, p0, Lcom/android/server/am/ProviderMap;->mSingletonByClass:Ljava/util/HashMap;
 
     move-object v0, p0
 
     move-object v1, p1
 
-    move v2, p2
+    move-object v2, p2
 
     move v3, p3
 
     move v4, p4
 
-    move v5, p5
+    move-object v6, p6
 
-    move-object/from16 v7, p6
+    .line 215
+    invoke-direct/range {v0 .. v6}, Lcom/android/server/am/ProviderMap;->collectPackageProvidersLocked(Ljava/lang/String;Ljava/util/Set;ZZLjava/util/HashMap;Ljava/util/ArrayList;)Z
 
-    invoke-direct/range {v0 .. v7}, Lcom/android/server/am/ProviderMap;->collectForceStopProvidersLocked(Ljava/lang/String;IZZILjava/util/HashMap;Ljava/util/ArrayList;)Z
+    move-result v7
 
-    move-result v8
+    .line 218
+    .end local v7    # "didSomething":Z
+    :cond_1
+    if-nez p3, :cond_2
 
-    .line 210
-    .local v8, didSomething:Z
-    if-nez p3, :cond_0
+    if-eqz v7, :cond_2
 
-    if-eqz v8, :cond_0
-
-    .line 211
+    .line 219
     const/4 v0, 0x1
 
-    .line 231
-    :goto_0
     return v0
 
-    .line 213
-    :cond_0
+    .line 221
+    :cond_2
     const/4 v0, -0x1
 
-    if-ne p5, v0, :cond_3
+    if-ne p5, v0, :cond_5
 
-    .line 214
-    const/4 v9, 0x0
+    .line 222
+    const/4 v8, 0x0
 
-    .local v9, i:I
-    :goto_1
+    .local v8, "i":I
+    :goto_0
     iget-object v0, p0, Lcom/android/server/am/ProviderMap;->mProvidersByClassPerUser:Landroid/util/SparseArray;
 
     invoke-virtual {v0}, Landroid/util/SparseArray;->size()I
 
     move-result v0
 
-    if-ge v9, v0, :cond_4
-
-    .line 215
-    iget-object v0, p0, Lcom/android/server/am/ProviderMap;->mProvidersByClassPerUser:Landroid/util/SparseArray;
-
-    invoke-virtual {v0, v9}, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
-
-    move-result-object v6
-
-    check-cast v6, Ljava/util/HashMap;
-
-    move-object v0, p0
-
-    move-object v1, p1
-
-    move v2, p2
-
-    move v3, p3
-
-    move v4, p4
-
-    move v5, p5
-
-    move-object/from16 v7, p6
-
-    invoke-direct/range {v0 .. v7}, Lcom/android/server/am/ProviderMap;->collectForceStopProvidersLocked(Ljava/lang/String;IZZILjava/util/HashMap;Ljava/util/ArrayList;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_2
-
-    .line 217
-    if-nez p3, :cond_1
-
-    .line 218
-    const/4 v0, 0x1
-
-    goto :goto_0
-
-    .line 220
-    :cond_1
-    const/4 v8, 0x1
-
-    .line 214
-    :cond_2
-    add-int/lit8 v9, v9, 0x1
-
-    goto :goto_1
+    if-ge v8, v0, :cond_6
 
     .line 224
-    .end local v9           #i:I
-    :cond_3
-    invoke-virtual {p0, p5}, Lcom/android/server/am/ProviderMap;->getProvidersByClass(I)Ljava/util/HashMap;
+    iget-object v0, p0, Lcom/android/server/am/ProviderMap;->mProvidersByClassPerUser:Landroid/util/SparseArray;
 
-    move-result-object v6
+    invoke-virtual {v0, v8}, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
 
-    .line 226
-    .local v6, items:Ljava/util/HashMap;,"Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
-    if-eqz v6, :cond_4
+    move-result-object v5
+
+    check-cast v5, Ljava/util/HashMap;
 
     move-object v0, p0
 
     move-object v1, p1
 
-    move v2, p2
+    move-object v2, p2
 
     move v3, p3
 
     move v4, p4
 
-    move v5, p5
+    move-object v6, p6
 
-    move-object/from16 v7, p6
-
-    .line 227
-    invoke-direct/range {v0 .. v7}, Lcom/android/server/am/ProviderMap;->collectForceStopProvidersLocked(Ljava/lang/String;IZZILjava/util/HashMap;Ljava/util/ArrayList;)Z
+    .line 223
+    invoke-direct/range {v0 .. v6}, Lcom/android/server/am/ProviderMap;->collectPackageProvidersLocked(Ljava/lang/String;Ljava/util/Set;ZZLjava/util/HashMap;Ljava/util/ArrayList;)Z
 
     move-result v0
 
-    or-int/2addr v8, v0
+    if-eqz v0, :cond_4
 
-    .end local v6           #items:Ljava/util/HashMap;,"Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
+    .line 225
+    if-nez p3, :cond_3
+
+    .line 226
+    const/4 v0, 0x1
+
+    return v0
+
+    .line 228
+    :cond_3
+    const/4 v7, 0x1
+
+    .line 222
     :cond_4
-    move v0, v8
+    add-int/lit8 v8, v8, 0x1
 
-    .line 231
     goto :goto_0
+
+    .line 233
+    .end local v8    # "i":I
+    :cond_5
+    invoke-virtual {p0, p5}, Lcom/android/server/am/ProviderMap;->getProvidersByClass(I)Ljava/util/HashMap;
+
+    move-result-object v5
+
+    .line 234
+    .local v5, "items":Ljava/util/HashMap;, "Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
+    if-eqz v5, :cond_6
+
+    move-object v0, p0
+
+    move-object v1, p1
+
+    move-object v2, p2
+
+    move v3, p3
+
+    move v4, p4
+
+    move-object v6, p6
+
+    .line 235
+    invoke-direct/range {v0 .. v6}, Lcom/android/server/am/ProviderMap;->collectPackageProvidersLocked(Ljava/lang/String;Ljava/util/Set;ZZLjava/util/HashMap;Ljava/util/ArrayList;)Z
+
+    move-result v0
+
+    or-int/2addr v7, v0
+
+    .line 239
+    .end local v5    # "items":Ljava/util/HashMap;, "Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
+    :cond_6
+    return v7
 .end method
 
 .method protected dumpProvider(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;Ljava/lang/String;[Ljava/lang/String;IZ)Z
-    .locals 15
-    .parameter "fd"
-    .parameter "pw"
-    .parameter "name"
-    .parameter "args"
-    .parameter "opti"
-    .parameter "dumpAll"
+    .locals 16
+    .param p1, "fd"    # Ljava/io/FileDescriptor;
+    .param p2, "pw"    # Ljava/io/PrintWriter;
+    .param p3, "name"    # Ljava/lang/String;
+    .param p4, "args"    # [Ljava/lang/String;
+    .param p5, "opti"    # I
+    .param p6, "dumpAll"    # Z
 
     .prologue
-    .line 319
+    .line 327
     new-instance v8, Ljava/util/ArrayList;
 
     invoke-direct {v8}, Ljava/util/ArrayList;-><init>()V
 
-    .line 320
-    .local v8, allProviders:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/server/am/ContentProviderRecord;>;"
-    new-instance v13, Ljava/util/ArrayList;
+    .line 328
+    .local v8, "allProviders":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ContentProviderRecord;>;"
+    new-instance v14, Ljava/util/ArrayList;
 
-    invoke-direct {v13}, Ljava/util/ArrayList;-><init>()V
+    invoke-direct {v14}, Ljava/util/ArrayList;-><init>()V
 
-    .line 322
-    .local v13, providers:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/server/am/ContentProviderRecord;>;"
-    iget-object v2, p0, Lcom/android/server/am/ProviderMap;->mAm:Lcom/android/server/am/ActivityManagerService;
+    .line 330
+    .local v14, "providers":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ContentProviderRecord;>;"
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/server/am/ProviderMap;->mAm:Lcom/android/server/am/ActivityManagerService;
 
     monitor-enter v2
 
-    .line 323
+    .line 331
     :try_start_0
-    iget-object v1, p0, Lcom/android/server/am/ProviderMap;->mSingletonByClass:Ljava/util/HashMap;
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/server/am/ProviderMap;->mSingletonByClass:Ljava/util/HashMap;
 
     invoke-virtual {v1}, Ljava/util/HashMap;->values()Ljava/util/Collection;
 
@@ -988,23 +1048,27 @@
 
     invoke-virtual {v8, v1}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
 
-    .line 324
-    const/4 v10, 0x0
+    .line 332
+    const/4 v11, 0x0
 
-    .local v10, i:I
+    .local v11, "i":I
     :goto_0
-    iget-object v1, p0, Lcom/android/server/am/ProviderMap;->mProvidersByClassPerUser:Landroid/util/SparseArray;
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/server/am/ProviderMap;->mProvidersByClassPerUser:Landroid/util/SparseArray;
 
     invoke-virtual {v1}, Landroid/util/SparseArray;->size()I
 
     move-result v1
 
-    if-ge v10, v1, :cond_0
+    if-ge v11, v1, :cond_0
 
-    .line 325
-    iget-object v1, p0, Lcom/android/server/am/ProviderMap;->mProvidersByClassPerUser:Landroid/util/SparseArray;
+    .line 333
+    move-object/from16 v0, p0
 
-    invoke-virtual {v1, v10}, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
+    iget-object v1, v0, Lcom/android/server/am/ProviderMap;->mProvidersByClassPerUser:Landroid/util/SparseArray;
+
+    invoke-virtual {v1, v11}, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
 
     move-result-object v1
 
@@ -1016,14 +1080,14 @@
 
     invoke-virtual {v8, v1}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
 
-    .line 324
-    add-int/lit8 v10, v10, 0x1
+    .line 332
+    add-int/lit8 v11, v11, 0x1
 
     goto :goto_0
 
-    .line 328
+    .line 336
     :cond_0
-    const-string v1, "all"
+    const-string/jumbo v1, "all"
 
     move-object/from16 v0, p3
 
@@ -1033,33 +1097,33 @@
 
     if-eqz v1, :cond_2
 
-    .line 329
-    invoke-virtual {v13, v8}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
-
-    .line 359
-    :cond_1
-    monitor-exit v2
+    .line 337
+    invoke-virtual {v14, v8}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 361
-    invoke-virtual {v13}, Ljava/util/ArrayList;->size()I
+    .end local p3    # "name":Ljava/lang/String;
+    :cond_1
+    monitor-exit v2
+
+    .line 369
+    invoke-virtual {v14}, Ljava/util/ArrayList;->size()I
 
     move-result v1
 
     if-gtz v1, :cond_8
 
-    .line 362
+    .line 370
     const/4 v1, 0x0
 
-    .line 373
-    :goto_1
     return v1
 
-    .line 331
+    .line 339
+    .restart local p3    # "name":Ljava/lang/String;
     :cond_2
     if-eqz p3, :cond_5
 
+    .line 340
     :try_start_1
     invoke-static/range {p3 .. p3}, Landroid/content/ComponentName;->unflattenFromString(Ljava/lang/String;)Landroid/content/ComponentName;
     :try_end_1
@@ -1067,16 +1131,15 @@
 
     move-result-object v9
 
-    .line 333
-    .local v9, componentName:Landroid/content/ComponentName;
-    :goto_2
-    const/4 v12, 0x0
+    .line 341
+    :goto_1
+    const/4 v13, 0x0
 
-    .line 334
-    .local v12, objectId:I
+    .line 342
+    .local v13, "objectId":I
     if-nez v9, :cond_3
 
-    .line 337
+    .line 345
     const/16 v1, 0x10
 
     :try_start_2
@@ -1084,43 +1147,45 @@
 
     invoke-static {v0, v1}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;I)I
     :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
     .catch Ljava/lang/RuntimeException; {:try_start_2 .. :try_end_2} :catch_0
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    move-result v12
+    move-result v13
 
-    .line 338
+    .line 346
     const/16 p3, 0x0
 
-    .line 339
+    .line 347
+    .local p3, "name":Ljava/lang/String;
     const/4 v9, 0x0
 
-    .line 344
+    .line 352
+    .end local p3    # "name":Ljava/lang/String;
     :cond_3
-    :goto_3
-    const/4 v10, 0x0
+    :goto_2
+    const/4 v11, 0x0
 
-    :goto_4
+    :goto_3
     :try_start_3
     invoke-virtual {v8}, Ljava/util/ArrayList;->size()I
 
     move-result v1
 
-    if-ge v10, v1, :cond_1
+    if-ge v11, v1, :cond_1
 
-    .line 345
-    invoke-virtual {v8, v10}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    .line 353
+    invoke-virtual {v8, v11}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
-    move-result-object v14
+    move-result-object v15
 
-    check-cast v14, Lcom/android/server/am/ContentProviderRecord;
+    check-cast v15, Lcom/android/server/am/ContentProviderRecord;
 
-    .line 346
-    .local v14, r1:Lcom/android/server/am/ContentProviderRecord;
+    .line 354
+    .local v15, "r1":Lcom/android/server/am/ContentProviderRecord;
     if-eqz v9, :cond_6
 
-    .line 347
-    iget-object v1, v14, Lcom/android/server/am/ContentProviderRecord;->name:Landroid/content/ComponentName;
+    .line 355
+    iget-object v1, v15, Lcom/android/server/am/ContentProviderRecord;->name:Landroid/content/ComponentName;
 
     invoke-virtual {v1, v9}, Landroid/content/ComponentName;->equals(Ljava/lang/Object;)Z
 
@@ -1128,34 +1193,44 @@
 
     if-eqz v1, :cond_4
 
-    .line 348
-    invoke-virtual {v13, v14}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    .line 356
+    invoke-virtual {v14, v15}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 344
+    .line 352
     :cond_4
-    :goto_5
-    add-int/lit8 v10, v10, 0x1
+    :goto_4
+    add-int/lit8 v11, v11, 0x1
 
-    goto :goto_4
+    goto :goto_3
 
-    .line 331
-    .end local v9           #componentName:Landroid/content/ComponentName;
-    .end local v12           #objectId:I
-    .end local v14           #r1:Lcom/android/server/am/ContentProviderRecord;
+    .line 340
+    .end local v13    # "objectId":I
+    .end local v15    # "r1":Lcom/android/server/am/ContentProviderRecord;
+    .local p3, "name":Ljava/lang/String;
     :cond_5
     const/4 v9, 0x0
 
+    .local v9, "componentName":Landroid/content/ComponentName;
+    goto :goto_1
+
+    .line 348
+    .end local v9    # "componentName":Landroid/content/ComponentName;
+    .restart local v13    # "objectId":I
+    :catch_0
+    move-exception v10
+
+    .local v10, "e":Ljava/lang/RuntimeException;
     goto :goto_2
 
-    .line 350
-    .restart local v9       #componentName:Landroid/content/ComponentName;
-    .restart local v12       #objectId:I
-    .restart local v14       #r1:Lcom/android/server/am/ContentProviderRecord;
+    .line 358
+    .end local v10    # "e":Ljava/lang/RuntimeException;
+    .end local p3    # "name":Ljava/lang/String;
+    .restart local v15    # "r1":Lcom/android/server/am/ContentProviderRecord;
     :cond_6
     if-eqz p3, :cond_7
 
-    .line 351
-    iget-object v1, v14, Lcom/android/server/am/ContentProviderRecord;->name:Landroid/content/ComponentName;
+    .line 359
+    iget-object v1, v15, Lcom/android/server/am/ContentProviderRecord;->name:Landroid/content/ComponentName;
 
     invoke-virtual {v1}, Landroid/content/ComponentName;->flattenToString()Ljava/lang/String;
 
@@ -1169,83 +1244,80 @@
 
     if-eqz v1, :cond_4
 
-    .line 352
-    invoke-virtual {v13, v14}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    .line 360
+    invoke-virtual {v14, v15}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    goto :goto_5
+    goto :goto_4
 
-    .line 359
-    .end local v9           #componentName:Landroid/content/ComponentName;
-    .end local v10           #i:I
-    .end local v12           #objectId:I
-    .end local v14           #r1:Lcom/android/server/am/ContentProviderRecord;
+    .line 330
+    .end local v11    # "i":I
+    .end local v13    # "objectId":I
+    .end local v15    # "r1":Lcom/android/server/am/ContentProviderRecord;
     :catchall_0
     move-exception v1
 
     monitor-exit v2
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     throw v1
 
-    .line 354
-    .restart local v9       #componentName:Landroid/content/ComponentName;
-    .restart local v10       #i:I
-    .restart local v12       #objectId:I
-    .restart local v14       #r1:Lcom/android/server/am/ContentProviderRecord;
+    .line 362
+    .restart local v11    # "i":I
+    .restart local v13    # "objectId":I
+    .restart local v15    # "r1":Lcom/android/server/am/ContentProviderRecord;
     :cond_7
     :try_start_4
-    invoke-static {v14}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
+    invoke-static {v15}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     move-result v1
 
-    if-ne v1, v12, :cond_4
+    if-ne v1, v13, :cond_4
 
-    .line 355
-    invoke-virtual {v13, v14}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    .line 363
+    invoke-virtual {v14, v15}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_0
 
-    goto :goto_5
+    goto :goto_4
 
-    .line 365
-    .end local v9           #componentName:Landroid/content/ComponentName;
-    .end local v12           #objectId:I
-    .end local v14           #r1:Lcom/android/server/am/ContentProviderRecord;
+    .line 373
+    .end local v13    # "objectId":I
+    .end local v15    # "r1":Lcom/android/server/am/ContentProviderRecord;
     :cond_8
+    const/4 v12, 0x0
+
+    .line 374
+    .local v12, "needSep":Z
     const/4 v11, 0x0
 
-    .line 366
-    .local v11, needSep:Z
-    const/4 v10, 0x0
-
-    :goto_6
-    invoke-virtual {v13}, Ljava/util/ArrayList;->size()I
+    :goto_5
+    invoke-virtual {v14}, Ljava/util/ArrayList;->size()I
 
     move-result v1
 
-    if-ge v10, v1, :cond_a
+    if-ge v11, v1, :cond_a
 
-    .line 367
-    if-eqz v11, :cond_9
+    .line 375
+    if-eqz v12, :cond_9
 
-    .line 368
+    .line 376
     invoke-virtual/range {p2 .. p2}, Ljava/io/PrintWriter;->println()V
 
-    .line 370
+    .line 378
     :cond_9
-    const/4 v11, 0x1
+    const/4 v12, 0x1
 
-    .line 371
-    const-string v2, ""
+    .line 379
+    const-string/jumbo v2, ""
 
-    invoke-virtual {v13, v10}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    invoke-virtual {v14, v11}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v5
 
     check-cast v5, Lcom/android/server/am/ContentProviderRecord;
 
-    move-object v1, p0
+    move-object/from16 v1, p0
 
     move-object/from16 v3, p1
 
@@ -1257,39 +1329,30 @@
 
     invoke-direct/range {v1 .. v7}, Lcom/android/server/am/ProviderMap;->dumpProvider(Ljava/lang/String;Ljava/io/FileDescriptor;Ljava/io/PrintWriter;Lcom/android/server/am/ContentProviderRecord;[Ljava/lang/String;Z)V
 
-    .line 366
-    add-int/lit8 v10, v10, 0x1
+    .line 374
+    add-int/lit8 v11, v11, 0x1
 
-    goto :goto_6
+    goto :goto_5
 
-    .line 373
+    .line 381
     :cond_a
     const/4 v1, 0x1
 
-    goto :goto_1
-
-    .line 340
-    .end local v11           #needSep:Z
-    .restart local v9       #componentName:Landroid/content/ComponentName;
-    .restart local v12       #objectId:I
-    :catch_0
-    move-exception v1
-
-    goto :goto_3
+    return v1
 .end method
 
 .method dumpProvidersLocked(Ljava/io/PrintWriter;ZLjava/lang/String;)Z
     .locals 14
-    .parameter "pw"
-    .parameter "dumpAll"
-    .parameter "dumpPackage"
+    .param p1, "pw"    # Ljava/io/PrintWriter;
+    .param p2, "dumpAll"    # Z
+    .param p3, "dumpPackage"    # Ljava/lang/String;
 
     .prologue
-    .line 288
+    .line 296
     const/4 v5, 0x0
 
-    .line 290
-    .local v5, needSep:Z
+    .line 298
+    .local v5, "needSep":Z
     iget-object v0, p0, Lcom/android/server/am/ProviderMap;->mSingletonByClass:Ljava/util/HashMap;
 
     invoke-virtual {v0}, Ljava/util/HashMap;->size()I
@@ -1298,9 +1361,10 @@
 
     if-lez v0, :cond_0
 
-    .line 291
-    const-string v4, "  Published single-user content providers (by class):"
+    .line 300
+    const-string/jumbo v4, "  Published single-user content providers (by class):"
 
+    .line 301
     iget-object v6, p0, Lcom/android/server/am/ProviderMap;->mSingletonByClass:Ljava/util/HashMap;
 
     move-object v0, p0
@@ -1311,17 +1375,17 @@
 
     move-object/from16 v3, p3
 
+    .line 299
     invoke-direct/range {v0 .. v6}, Lcom/android/server/am/ProviderMap;->dumpProvidersByClassLocked(Ljava/io/PrintWriter;ZLjava/lang/String;Ljava/lang/String;ZLjava/util/HashMap;)Z
 
-    move-result v0
+    move-result v5
 
-    or-int/2addr v5, v0
-
-    .line 296
+    .line 304
+    .end local v5    # "needSep":Z
     :cond_0
     const/4 v13, 0x0
 
-    .local v13, i:I
+    .local v13, "i":I
     :goto_0
     iget-object v0, p0, Lcom/android/server/am/ProviderMap;->mProvidersByClassPerUser:Landroid/util/SparseArray;
 
@@ -1331,7 +1395,7 @@
 
     if-ge v13, v0, :cond_1
 
-    .line 297
+    .line 305
     iget-object v0, p0, Lcom/android/server/am/ProviderMap;->mProvidersByClassPerUser:Landroid/util/SparseArray;
 
     invoke-virtual {v0, v13}, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
@@ -1340,13 +1404,13 @@
 
     check-cast v6, Ljava/util/HashMap;
 
-    .line 298
-    .local v6, map:Ljava/util/HashMap;,"Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
+    .line 307
+    .local v6, "map":Ljava/util/HashMap;, "Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "  Published user "
+    const-string/jumbo v1, "  Published user "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1362,8 +1426,10 @@
 
     move-result-object v0
 
-    const-string v1, " content providers (by class):"
+    .line 308
+    const-string/jumbo v1, " content providers (by class):"
 
+    .line 307
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -1380,24 +1446,27 @@
 
     move-object/from16 v3, p3
 
+    .line 306
     invoke-direct/range {v0 .. v6}, Lcom/android/server/am/ProviderMap;->dumpProvidersByClassLocked(Ljava/io/PrintWriter;ZLjava/lang/String;Ljava/lang/String;ZLjava/util/HashMap;)Z
 
     move-result v0
 
     or-int/2addr v5, v0
 
-    .line 296
+    .line 304
+    .local v5, "needSep":Z
     add-int/lit8 v13, v13, 0x1
 
     goto :goto_0
 
-    .line 303
-    .end local v6           #map:Ljava/util/HashMap;,"Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
+    .line 311
+    .end local v5    # "needSep":Z
+    .end local v6    # "map":Ljava/util/HashMap;, "Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
     :cond_1
     if-eqz p2, :cond_2
 
-    .line 304
-    const-string v10, "  Single-user authority to provider mappings:"
+    .line 313
+    const-string/jumbo v10, "  Single-user authority to provider mappings:"
 
     iget-object v12, p0, Lcom/android/server/am/ProviderMap;->mSingletonByName:Ljava/util/HashMap;
 
@@ -1409,13 +1478,15 @@
 
     move v11, v5
 
+    .line 312
     invoke-direct/range {v7 .. v12}, Lcom/android/server/am/ProviderMap;->dumpProvidersByNameLocked(Ljava/io/PrintWriter;Ljava/lang/String;Ljava/lang/String;ZLjava/util/HashMap;)Z
 
     move-result v0
 
     or-int/2addr v5, v0
 
-    .line 307
+    .line 315
+    .restart local v5    # "needSep":Z
     const/4 v13, 0x0
 
     :goto_1
@@ -1427,12 +1498,12 @@
 
     if-ge v13, v0, :cond_2
 
-    .line 308
+    .line 317
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "  User "
+    const-string/jumbo v1, "  User "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1448,8 +1519,10 @@
 
     move-result-object v0
 
-    const-string v1, " authority to provider mappings:"
+    .line 318
+    const-string/jumbo v1, " authority to provider mappings:"
 
+    .line 317
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -1458,6 +1531,7 @@
 
     move-result-object v10
 
+    .line 319
     iget-object v0, p0, Lcom/android/server/am/ProviderMap;->mProvidersByNamePerUser:Landroid/util/SparseArray;
 
     invoke-virtual {v0, v13}, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
@@ -1474,28 +1548,30 @@
 
     move v11, v5
 
+    .line 316
     invoke-direct/range {v7 .. v12}, Lcom/android/server/am/ProviderMap;->dumpProvidersByNameLocked(Ljava/io/PrintWriter;Ljava/lang/String;Ljava/lang/String;ZLjava/util/HashMap;)Z
 
     move-result v0
 
     or-int/2addr v5, v0
 
-    .line 307
+    .line 315
     add-int/lit8 v13, v13, 0x1
 
     goto :goto_1
 
-    .line 314
+    .line 322
+    .end local v5    # "needSep":Z
     :cond_2
     return v5
 .end method
 
 .method getProviderByClass(Landroid/content/ComponentName;)Lcom/android/server/am/ContentProviderRecord;
     .locals 1
-    .parameter "name"
+    .param p1, "name"    # Landroid/content/ComponentName;
 
     .prologue
-    .line 80
+    .line 81
     const/4 v0, -0x1
 
     invoke-virtual {p0, p1, v0}, Lcom/android/server/am/ProviderMap;->getProviderByClass(Landroid/content/ComponentName;I)Lcom/android/server/am/ContentProviderRecord;
@@ -1507,11 +1583,11 @@
 
 .method getProviderByClass(Landroid/content/ComponentName;I)Lcom/android/server/am/ContentProviderRecord;
     .locals 2
-    .parameter "name"
-    .parameter "userId"
+    .param p1, "name"    # Landroid/content/ComponentName;
+    .param p2, "userId"    # I
 
     .prologue
-    .line 88
+    .line 89
     iget-object v1, p0, Lcom/android/server/am/ProviderMap;->mSingletonByClass:Ljava/util/HashMap;
 
     invoke-virtual {v1, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1520,16 +1596,14 @@
 
     check-cast v0, Lcom/android/server/am/ContentProviderRecord;
 
-    .line 89
-    .local v0, record:Lcom/android/server/am/ContentProviderRecord;
+    .line 90
+    .local v0, "record":Lcom/android/server/am/ContentProviderRecord;
     if-eqz v0, :cond_0
 
-    .line 94
-    .end local v0           #record:Lcom/android/server/am/ContentProviderRecord;
-    :goto_0
+    .line 91
     return-object v0
 
-    .restart local v0       #record:Lcom/android/server/am/ContentProviderRecord;
+    .line 95
     :cond_0
     invoke-virtual {p0, p2}, Lcom/android/server/am/ProviderMap;->getProvidersByClass(I)Ljava/util/HashMap;
 
@@ -1541,17 +1615,15 @@
 
     check-cast v1, Lcom/android/server/am/ContentProviderRecord;
 
-    move-object v0, v1
-
-    goto :goto_0
+    return-object v1
 .end method
 
 .method getProviderByName(Ljava/lang/String;)Lcom/android/server/am/ContentProviderRecord;
     .locals 1
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 62
+    .line 63
     const/4 v0, -0x1
 
     invoke-virtual {p0, p1, v0}, Lcom/android/server/am/ProviderMap;->getProviderByName(Ljava/lang/String;I)Lcom/android/server/am/ContentProviderRecord;
@@ -1563,11 +1635,11 @@
 
 .method getProviderByName(Ljava/lang/String;I)Lcom/android/server/am/ContentProviderRecord;
     .locals 2
-    .parameter "name"
-    .parameter "userId"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "userId"    # I
 
     .prologue
-    .line 70
+    .line 71
     iget-object v1, p0, Lcom/android/server/am/ProviderMap;->mSingletonByName:Ljava/util/HashMap;
 
     invoke-virtual {v1, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1576,16 +1648,14 @@
 
     check-cast v0, Lcom/android/server/am/ContentProviderRecord;
 
-    .line 71
-    .local v0, record:Lcom/android/server/am/ContentProviderRecord;
+    .line 72
+    .local v0, "record":Lcom/android/server/am/ContentProviderRecord;
     if-eqz v0, :cond_0
 
-    .line 76
-    .end local v0           #record:Lcom/android/server/am/ContentProviderRecord;
-    :goto_0
+    .line 73
     return-object v0
 
-    .restart local v0       #record:Lcom/android/server/am/ContentProviderRecord;
+    .line 77
     :cond_0
     invoke-direct {p0, p2}, Lcom/android/server/am/ProviderMap;->getProvidersByName(I)Ljava/util/HashMap;
 
@@ -1597,14 +1667,12 @@
 
     check-cast v1, Lcom/android/server/am/ContentProviderRecord;
 
-    move-object v0, v1
-
-    goto :goto_0
+    return-object v1
 .end method
 
 .method getProvidersByClass(I)Ljava/util/HashMap;
     .locals 5
-    .parameter "userId"
+    .param p1, "userId"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I)",
@@ -1617,7 +1685,7 @@
     .end annotation
 
     .prologue
-    .line 174
+    .line 175
     if-gez p1, :cond_0
 
     new-instance v2, Ljava/lang/IllegalArgumentException;
@@ -1626,7 +1694,7 @@
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "Bad user "
+    const-string/jumbo v4, "Bad user "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1644,7 +1712,7 @@
 
     throw v2
 
-    .line 175
+    .line 177
     :cond_0
     iget-object v2, p0, Lcom/android/server/am/ProviderMap;->mProvidersByClassPerUser:Landroid/util/SparseArray;
 
@@ -1654,53 +1722,51 @@
 
     check-cast v0, Ljava/util/HashMap;
 
-    .line 177
-    .local v0, map:Ljava/util/HashMap;,"Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
+    .line 178
+    .local v0, "map":Ljava/util/HashMap;, "Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
     if-nez v0, :cond_1
 
-    .line 178
+    .line 180
     new-instance v1, Ljava/util/HashMap;
 
     invoke-direct {v1}, Ljava/util/HashMap;-><init>()V
 
-    .line 180
-    .local v1, newMap:Ljava/util/HashMap;,"Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
+    .line 181
+    .local v1, "newMap":Ljava/util/HashMap;, "Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
     iget-object v2, p0, Lcom/android/server/am/ProviderMap;->mProvidersByClassPerUser:Landroid/util/SparseArray;
 
     invoke-virtual {v2, p1, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 183
-    .end local v1           #newMap:Ljava/util/HashMap;,"Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
-    :goto_0
+    .line 182
     return-object v1
 
+    .line 184
+    .end local v1    # "newMap":Ljava/util/HashMap;, "Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
     :cond_1
-    move-object v1, v0
-
-    goto :goto_0
+    return-object v0
 .end method
 
 .method putProviderByClass(Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;)V
     .locals 2
-    .parameter "name"
-    .parameter "record"
+    .param p1, "name"    # Landroid/content/ComponentName;
+    .param p2, "record"    # Lcom/android/server/am/ContentProviderRecord;
 
     .prologue
-    .line 115
+    .line 116
     iget-boolean v1, p2, Lcom/android/server/am/ContentProviderRecord;->singleton:Z
 
     if-eqz v1, :cond_0
 
-    .line 116
+    .line 117
     iget-object v1, p0, Lcom/android/server/am/ProviderMap;->mSingletonByClass:Ljava/util/HashMap;
 
     invoke-virtual {v1, p1, p2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 121
+    .line 111
     :goto_0
     return-void
 
-    .line 118
+    .line 119
     :cond_0
     iget-object v1, p2, Lcom/android/server/am/ContentProviderRecord;->appInfo:Landroid/content/pm/ApplicationInfo;
 
@@ -1710,8 +1776,8 @@
 
     move-result v0
 
-    .line 119
-    .local v0, userId:I
+    .line 120
+    .local v0, "userId":I
     invoke-virtual {p0, v0}, Lcom/android/server/am/ProviderMap;->getProvidersByClass(I)Ljava/util/HashMap;
 
     move-result-object v1
@@ -1723,25 +1789,25 @@
 
 .method putProviderByName(Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;)V
     .locals 2
-    .parameter "name"
-    .parameter "record"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "record"    # Lcom/android/server/am/ContentProviderRecord;
 
     .prologue
-    .line 102
+    .line 103
     iget-boolean v1, p2, Lcom/android/server/am/ContentProviderRecord;->singleton:Z
 
     if-eqz v1, :cond_0
 
-    .line 103
+    .line 104
     iget-object v1, p0, Lcom/android/server/am/ProviderMap;->mSingletonByName:Ljava/util/HashMap;
 
     invoke-virtual {v1, p1, p2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 108
+    .line 98
     :goto_0
     return-void
 
-    .line 105
+    .line 106
     :cond_0
     iget-object v1, p2, Lcom/android/server/am/ContentProviderRecord;->appInfo:Landroid/content/pm/ApplicationInfo;
 
@@ -1751,8 +1817,8 @@
 
     move-result v0
 
-    .line 106
-    .local v0, userId:I
+    .line 107
+    .local v0, "userId":I
     invoke-direct {p0, v0}, Lcom/android/server/am/ProviderMap;->getProvidersByName(I)Ljava/util/HashMap;
 
     move-result-object v1
@@ -1764,11 +1830,11 @@
 
 .method removeProviderByClass(Landroid/content/ComponentName;I)V
     .locals 4
-    .parameter "name"
-    .parameter "userId"
+    .param p1, "name"    # Landroid/content/ComponentName;
+    .param p2, "userId"    # I
 
     .prologue
-    .line 143
+    .line 144
     iget-object v1, p0, Lcom/android/server/am/ProviderMap;->mSingletonByClass:Ljava/util/HashMap;
 
     invoke-virtual {v1, p1}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
@@ -1777,17 +1843,17 @@
 
     if-eqz v1, :cond_1
 
-    .line 146
+    .line 147
     iget-object v1, p0, Lcom/android/server/am/ProviderMap;->mSingletonByClass:Ljava/util/HashMap;
 
     invoke-virtual {v1, p1}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 159
+    .line 143
     :cond_0
     :goto_0
     return-void
 
-    .line 148
+    .line 149
     :cond_1
     if-gez p2, :cond_2
 
@@ -1797,7 +1863,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Bad user "
+    const-string/jumbo v3, "Bad user "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1815,24 +1881,24 @@
 
     throw v1
 
-    .line 152
+    .line 153
     :cond_2
     invoke-virtual {p0, p2}, Lcom/android/server/am/ProviderMap;->getProvidersByClass(I)Ljava/util/HashMap;
 
     move-result-object v0
 
-    .line 154
-    .local v0, map:Ljava/util/HashMap;,"Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
+    .line 155
+    .local v0, "map":Ljava/util/HashMap;, "Ljava/util/HashMap<Landroid/content/ComponentName;Lcom/android/server/am/ContentProviderRecord;>;"
     invoke-virtual {v0, p1}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 155
+    .line 156
     invoke-virtual {v0}, Ljava/util/HashMap;->size()I
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    .line 156
+    .line 157
     iget-object v1, p0, Lcom/android/server/am/ProviderMap;->mProvidersByClassPerUser:Landroid/util/SparseArray;
 
     invoke-virtual {v1, p2}, Landroid/util/SparseArray;->remove(I)V
@@ -1842,11 +1908,11 @@
 
 .method removeProviderByName(Ljava/lang/String;I)V
     .locals 4
-    .parameter "name"
-    .parameter "userId"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "userId"    # I
 
     .prologue
-    .line 124
+    .line 125
     iget-object v1, p0, Lcom/android/server/am/ProviderMap;->mSingletonByName:Ljava/util/HashMap;
 
     invoke-virtual {v1, p1}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
@@ -1855,17 +1921,17 @@
 
     if-eqz v1, :cond_1
 
-    .line 127
+    .line 128
     iget-object v1, p0, Lcom/android/server/am/ProviderMap;->mSingletonByName:Ljava/util/HashMap;
 
     invoke-virtual {v1, p1}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 140
+    .line 124
     :cond_0
     :goto_0
     return-void
 
-    .line 129
+    .line 130
     :cond_1
     if-gez p2, :cond_2
 
@@ -1875,7 +1941,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Bad user "
+    const-string/jumbo v3, "Bad user "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1893,24 +1959,24 @@
 
     throw v1
 
-    .line 133
+    .line 134
     :cond_2
     invoke-direct {p0, p2}, Lcom/android/server/am/ProviderMap;->getProvidersByName(I)Ljava/util/HashMap;
 
     move-result-object v0
 
-    .line 135
-    .local v0, map:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;"
+    .line 136
+    .local v0, "map":Ljava/util/HashMap;, "Ljava/util/HashMap<Ljava/lang/String;Lcom/android/server/am/ContentProviderRecord;>;"
     invoke-virtual {v0, p1}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 136
+    .line 137
     invoke-virtual {v0}, Ljava/util/HashMap;->size()I
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    .line 137
+    .line 138
     iget-object v1, p0, Lcom/android/server/am/ProviderMap;->mProvidersByNamePerUser:Landroid/util/SparseArray;
 
     invoke-virtual {v1, p2}, Landroid/util/SparseArray;->remove(I)V

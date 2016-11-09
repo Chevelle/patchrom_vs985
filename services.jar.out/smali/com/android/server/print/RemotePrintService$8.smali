@@ -26,11 +26,11 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/print/RemotePrintService;Ljava/util/List;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/print/RemotePrintService;
 
     .prologue
-    .line 385
+    .line 381
+    .local p2, "val$printerIds":Ljava/util/List;, "Ljava/util/List<Landroid/print/PrinterId;>;"
     iput-object p1, p0, Lcom/android/server/print/RemotePrintService$8;->this$0:Lcom/android/server/print/RemotePrintService;
 
     iput-object p2, p0, Lcom/android/server/print/RemotePrintService$8;->val$printerIds:Ljava/util/List;
@@ -46,14 +46,13 @@
     .locals 2
 
     .prologue
-    .line 388
+    .line 384
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService$8;->this$0:Lcom/android/server/print/RemotePrintService;
 
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService$8;->val$printerIds:Ljava/util/List;
 
-    #calls: Lcom/android/server/print/RemotePrintService;->handleValidatePrinters(Ljava/util/List;)V
-    invoke-static {v0, v1}, Lcom/android/server/print/RemotePrintService;->access$800(Lcom/android/server/print/RemotePrintService;Ljava/util/List;)V
+    invoke-static {v0, v1}, Lcom/android/server/print/RemotePrintService;->-wrap12(Lcom/android/server/print/RemotePrintService;Ljava/util/List;)V
 
-    .line 389
+    .line 383
     return-void
 .end method

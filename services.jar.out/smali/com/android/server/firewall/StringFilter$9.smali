@@ -17,7 +17,7 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "x0"
+    .param p1, "$anonymous0"    # Ljava/lang/String;
 
     .prologue
     .line 315
@@ -30,18 +30,20 @@
 # virtual methods
 .method public getValue(Landroid/content/ComponentName;Landroid/content/Intent;Ljava/lang/String;)Ljava/lang/String;
     .locals 2
-    .parameter "resolvedComponent"
-    .parameter "intent"
-    .parameter "resolvedType"
+    .param p1, "resolvedComponent"    # Landroid/content/ComponentName;
+    .param p2, "intent"    # Landroid/content/Intent;
+    .param p3, "resolvedType"    # Ljava/lang/String;
 
     .prologue
+    const/4 v1, 0x0
+
     .line 319
     invoke-virtual {p2}, Landroid/content/Intent;->getData()Landroid/net/Uri;
 
     move-result-object v0
 
     .line 320
-    .local v0, data:Landroid/net/Uri;
+    .local v0, "data":Landroid/net/Uri;
     if-eqz v0, :cond_0
 
     .line 321
@@ -49,12 +51,9 @@
 
     move-result-object v1
 
-    .line 323
-    :goto_0
     return-object v1
 
+    .line 323
     :cond_0
-    const/4 v1, 0x0
-
-    goto :goto_0
+    return-object v1
 .end method

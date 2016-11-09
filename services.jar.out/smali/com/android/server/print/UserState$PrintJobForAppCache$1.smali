@@ -28,12 +28,12 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/print/UserState$PrintJobForAppCache;Landroid/os/IBinder;I)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$1"    # Lcom/android/server/print/UserState$PrintJobForAppCache;
+    .param p2, "val$creator"    # Landroid/os/IBinder;
+    .param p3, "val$appId"    # I
 
     .prologue
-    .line 1525
+    .line 1573
     iput-object p1, p0, Lcom/android/server/print/UserState$PrintJobForAppCache$1;->this$1:Lcom/android/server/print/UserState$PrintJobForAppCache;
 
     iput-object p2, p0, Lcom/android/server/print/UserState$PrintJobForAppCache$1;->val$creator:Landroid/os/IBinder;
@@ -51,51 +51,48 @@
     .locals 3
 
     .prologue
-    .line 1528
+    .line 1576
     iget-object v0, p0, Lcom/android/server/print/UserState$PrintJobForAppCache$1;->val$creator:Landroid/os/IBinder;
 
     const/4 v1, 0x0
 
     invoke-interface {v0, p0, v1}, Landroid/os/IBinder;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient;I)Z
 
-    .line 1529
+    .line 1577
     iget-object v0, p0, Lcom/android/server/print/UserState$PrintJobForAppCache$1;->this$1:Lcom/android/server/print/UserState$PrintJobForAppCache;
 
     iget-object v0, v0, Lcom/android/server/print/UserState$PrintJobForAppCache;->this$0:Lcom/android/server/print/UserState;
 
-    #getter for: Lcom/android/server/print/UserState;->mLock:Ljava/lang/Object;
-    invoke-static {v0}, Lcom/android/server/print/UserState;->access$600(Lcom/android/server/print/UserState;)Ljava/lang/Object;
+    invoke-static {v0}, Lcom/android/server/print/UserState;->-get2(Lcom/android/server/print/UserState;)Ljava/lang/Object;
 
     move-result-object v1
 
     monitor-enter v1
 
-    .line 1530
+    .line 1578
     :try_start_0
     iget-object v0, p0, Lcom/android/server/print/UserState$PrintJobForAppCache$1;->this$1:Lcom/android/server/print/UserState$PrintJobForAppCache;
 
-    #getter for: Lcom/android/server/print/UserState$PrintJobForAppCache;->mPrintJobsForRunningApp:Landroid/util/SparseArray;
-    invoke-static {v0}, Lcom/android/server/print/UserState$PrintJobForAppCache;->access$2000(Lcom/android/server/print/UserState$PrintJobForAppCache;)Landroid/util/SparseArray;
+    invoke-static {v0}, Lcom/android/server/print/UserState$PrintJobForAppCache;->-get0(Lcom/android/server/print/UserState$PrintJobForAppCache;)Landroid/util/SparseArray;
 
     move-result-object v0
 
     iget v2, p0, Lcom/android/server/print/UserState$PrintJobForAppCache$1;->val$appId:I
 
     invoke-virtual {v0, v2}, Landroid/util/SparseArray;->remove(I)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1531
     monitor-exit v1
 
-    .line 1532
+    .line 1575
     return-void
 
-    .line 1531
+    .line 1577
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

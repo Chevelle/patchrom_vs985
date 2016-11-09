@@ -1,4 +1,4 @@
-.class Lcom/android/server/AlarmManagerService$WakeupEvent;
+.class final Lcom/android/server/AlarmManagerService$WakeupEvent;
 .super Ljava/lang/Object;
 .source "AlarmManagerService.java"
 
@@ -9,7 +9,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x18
     name = "WakeupEvent"
 .end annotation
 
@@ -17,36 +17,31 @@
 # instance fields
 .field public action:Ljava/lang/String;
 
-.field final synthetic this$0:Lcom/android/server/AlarmManagerService;
-
 .field public uid:I
 
 .field public when:J
 
 
 # direct methods
-.method public constructor <init>(Lcom/android/server/AlarmManagerService;JILjava/lang/String;)V
-    .locals 0
-    .parameter
-    .parameter "theTime"
-    .parameter "theUid"
-    .parameter "theAction"
+.method public constructor <init>(JILjava/lang/String;)V
+    .locals 1
+    .param p1, "theTime"    # J
+    .param p3, "theUid"    # I
+    .param p4, "theAction"    # Ljava/lang/String;
 
     .prologue
-    .line 121
-    iput-object p1, p0, Lcom/android/server/AlarmManagerService$WakeupEvent;->this$0:Lcom/android/server/AlarmManagerService;
-
+    .line 312
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 122
-    iput-wide p2, p0, Lcom/android/server/AlarmManagerService$WakeupEvent;->when:J
+    .line 313
+    iput-wide p1, p0, Lcom/android/server/AlarmManagerService$WakeupEvent;->when:J
 
-    .line 123
-    iput p4, p0, Lcom/android/server/AlarmManagerService$WakeupEvent;->uid:I
+    .line 314
+    iput p3, p0, Lcom/android/server/AlarmManagerService$WakeupEvent;->uid:I
 
-    .line 124
-    iput-object p5, p0, Lcom/android/server/AlarmManagerService$WakeupEvent;->action:Ljava/lang/String;
+    .line 315
+    iput-object p4, p0, Lcom/android/server/AlarmManagerService$WakeupEvent;->action:Ljava/lang/String;
 
-    .line 125
+    .line 312
     return-void
 .end method

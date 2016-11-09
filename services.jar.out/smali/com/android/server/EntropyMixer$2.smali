@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/EntropyMixer;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/EntropyMixer;
 
     .prologue
-    .line 77
+    .line 86
     iput-object p1, p0, Lcom/android/server/EntropyMixer$2;->this$0:Lcom/android/server/EntropyMixer;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -36,16 +36,15 @@
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
     .locals 1
-    .parameter "context"
-    .parameter "intent"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 80
+    .line 89
     iget-object v0, p0, Lcom/android/server/EntropyMixer$2;->this$0:Lcom/android/server/EntropyMixer;
 
-    #calls: Lcom/android/server/EntropyMixer;->writeEntropy()V
-    invoke-static {v0}, Lcom/android/server/EntropyMixer;->access$000(Lcom/android/server/EntropyMixer;)V
+    invoke-static {v0}, Lcom/android/server/EntropyMixer;->-wrap2(Lcom/android/server/EntropyMixer;)V
 
-    .line 81
+    .line 88
     return-void
 .end method

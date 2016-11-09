@@ -21,20 +21,20 @@
 # direct methods
 .method public constructor <init>(Lcom/android/server/dreams/DreamManagerService;Landroid/os/Looper;)V
     .locals 2
-    .parameter
-    .parameter "looper"
+    .param p1, "this$0"    # Lcom/android/server/dreams/DreamManagerService;
+    .param p2, "looper"    # Landroid/os/Looper;
 
     .prologue
-    .line 421
+    .line 503
     iput-object p1, p0, Lcom/android/server/dreams/DreamManagerService$DreamHandler;->this$0:Lcom/android/server/dreams/DreamManagerService;
 
-    .line 422
+    .line 504
     const/4 v0, 0x0
 
     const/4 v1, 0x1
 
     invoke-direct {p0, p2, v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;Landroid/os/Handler$Callback;Z)V
 
-    .line 423
+    .line 503
     return-void
 .end method

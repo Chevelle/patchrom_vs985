@@ -21,7 +21,7 @@
         "Ljava/lang/Object;",
         "Ljava/util/Comparator",
         "<",
-        "Lcom/android/server/content/SyncManager$AccountSyncStats;",
+        "Lcom/android/server/content/SyncManager$AuthoritySyncStats;",
         ">;"
     }
 .end annotation
@@ -34,10 +34,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/content/SyncManager;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/content/SyncManager;
 
     .prologue
-    .line 1514
+    .line 1756
     iput-object p1, p0, Lcom/android/server/content/SyncManager$13;->this$0:Lcom/android/server/content/SyncManager;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -47,53 +47,53 @@
 
 
 # virtual methods
-.method public compare(Lcom/android/server/content/SyncManager$AccountSyncStats;Lcom/android/server/content/SyncManager$AccountSyncStats;)I
-    .locals 5
-    .parameter "lhs"
-    .parameter "rhs"
+.method public compare(Lcom/android/server/content/SyncManager$AuthoritySyncStats;Lcom/android/server/content/SyncManager$AuthoritySyncStats;)I
+    .locals 6
+    .param p1, "lhs"    # Lcom/android/server/content/SyncManager$AuthoritySyncStats;
+    .param p2, "rhs"    # Lcom/android/server/content/SyncManager$AuthoritySyncStats;
 
     .prologue
-    .line 1518
-    iget v1, p2, Lcom/android/server/content/SyncManager$AccountSyncStats;->times:I
+    .line 1760
+    iget v1, p2, Lcom/android/server/content/SyncManager$AuthoritySyncStats;->times:I
 
-    iget v2, p1, Lcom/android/server/content/SyncManager$AccountSyncStats;->times:I
+    iget v2, p1, Lcom/android/server/content/SyncManager$AuthoritySyncStats;->times:I
 
     invoke-static {v1, v2}, Ljava/lang/Integer;->compare(II)I
 
     move-result v0
 
-    .line 1519
-    .local v0, compare:I
+    .line 1761
+    .local v0, "compare":I
     if-nez v0, :cond_0
 
-    .line 1520
-    iget-wide v1, p2, Lcom/android/server/content/SyncManager$AccountSyncStats;->elapsedTime:J
+    .line 1762
+    iget-wide v2, p2, Lcom/android/server/content/SyncManager$AuthoritySyncStats;->elapsedTime:J
 
-    iget-wide v3, p1, Lcom/android/server/content/SyncManager$AccountSyncStats;->elapsedTime:J
+    iget-wide v4, p1, Lcom/android/server/content/SyncManager$AuthoritySyncStats;->elapsedTime:J
 
-    invoke-static {v1, v2, v3, v4}, Ljava/lang/Long;->compare(JJ)I
+    invoke-static {v2, v3, v4, v5}, Ljava/lang/Long;->compare(JJ)I
 
     move-result v0
 
-    .line 1522
+    .line 1764
     :cond_0
     return v0
 .end method
 
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
     .locals 1
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "lhs"    # Ljava/lang/Object;
+    .param p2, "rhs"    # Ljava/lang/Object;
 
     .prologue
-    .line 1514
-    check-cast p1, Lcom/android/server/content/SyncManager$AccountSyncStats;
+    .line 1758
+    check-cast p1, Lcom/android/server/content/SyncManager$AuthoritySyncStats;
 
-    .end local p1
-    check-cast p2, Lcom/android/server/content/SyncManager$AccountSyncStats;
+    .end local p1    # "lhs":Ljava/lang/Object;
+    check-cast p2, Lcom/android/server/content/SyncManager$AuthoritySyncStats;
 
-    .end local p2
-    invoke-virtual {p0, p1, p2}, Lcom/android/server/content/SyncManager$13;->compare(Lcom/android/server/content/SyncManager$AccountSyncStats;Lcom/android/server/content/SyncManager$AccountSyncStats;)I
+    .end local p2    # "rhs":Ljava/lang/Object;
+    invoke-virtual {p0, p1, p2}, Lcom/android/server/content/SyncManager$13;->compare(Lcom/android/server/content/SyncManager$AuthoritySyncStats;Lcom/android/server/content/SyncManager$AuthoritySyncStats;)I
 
     move-result v0
 

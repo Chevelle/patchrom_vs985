@@ -1,11 +1,11 @@
 .class Lcom/android/server/am/ActivityManagerService$3;
-.super Landroid/os/Handler;
+.super Ljava/lang/Thread;
 .source "ActivityManagerService.java"
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lcom/android/server/am/ActivityManagerService;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/android/server/am/ActivityManagerService;-><init>(Landroid/content/Context;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -19,258 +19,151 @@
 
 
 # direct methods
-.method constructor <init>(Lcom/android/server/am/ActivityManagerService;Landroid/os/Looper;)V
+.method constructor <init>(Lcom/android/server/am/ActivityManagerService;Ljava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter "x0"
+    .param p1, "this$0"    # Lcom/android/server/am/ActivityManagerService;
+    .param p2, "$anonymous0"    # Ljava/lang/String;
 
     .prologue
-    .line 1677
+    .line 2405
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService$3;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    invoke-direct {p0, p2}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+    invoke-direct {p0, p2}, Ljava/lang/Thread;-><init>(Ljava/lang/String;)V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public handleMessage(Landroid/os/Message;)V
-    .locals 17
-    .parameter "msg"
+.method public run()V
+    .locals 12
 
     .prologue
-    .line 1680
-    move-object/from16 v0, p1
-
-    iget v1, v0, Landroid/os/Message;->what:I
-
-    packed-switch v1, :pswitch_data_0
-
-    .line 1730
+    .line 2411
     :goto_0
-    return-void
+    :try_start_0
+    monitor-enter p0
+    :try_end_0
+    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1682
-    :pswitch_0
-    const/4 v8, 0x0
-
-    .local v8, i:I
-    const/4 v9, 0x0
-
-    .line 1683
-    .local v9, num:I
+    .line 2412
+    :try_start_1
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
-    move-result-wide v13
+    move-result-wide v6
 
-    .line 1684
-    .local v13, start:J
-    const/4 v1, 0x1
+    .line 2413
+    .local v6, "now":J
+    iget-object v8, p0, Lcom/android/server/am/ActivityManagerService$3;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    new-array v15, v1, [J
+    iget-object v8, v8, Lcom/android/server/am/ActivityManagerService;->mLastCpuTime:Ljava/util/concurrent/atomic/AtomicLong;
 
-    .line 1689
-    .local v15, tmp:[J
+    invoke-virtual {v8}, Ljava/util/concurrent/atomic/AtomicLong;->get()J
+
+    move-result-wide v8
+
+    const-wide/32 v10, 0xfffffff
+
+    add-long/2addr v8, v10
+
+    sub-long v2, v8, v6
+
+    .line 2414
+    .local v2, "nextCpuDelay":J
+    iget-object v8, p0, Lcom/android/server/am/ActivityManagerService$3;->this$0:Lcom/android/server/am/ActivityManagerService;
+
+    iget-wide v8, v8, Lcom/android/server/am/ActivityManagerService;->mLastWriteTime:J
+
+    const-wide/32 v10, 0x1b7740
+
+    add-long/2addr v8, v10
+
+    sub-long v4, v8, v6
+
+    .line 2417
+    .local v4, "nextWriteDelay":J
+    cmp-long v8, v4, v2
+
+    if-gez v8, :cond_0
+
+    .line 2418
+    move-wide v2, v4
+
+    .line 2420
     :cond_0
-    :goto_1
-    move-object/from16 v0, p0
+    const-wide/16 v8, 0x0
 
-    iget-object v4, v0, Lcom/android/server/am/ActivityManagerService$3;->this$0:Lcom/android/server/am/ActivityManagerService;
+    cmp-long v8, v2, v8
 
-    monitor-enter v4
+    if-lez v8, :cond_1
 
-    .line 1690
-    :try_start_0
-    move-object/from16 v0, p0
+    .line 2421
+    iget-object v8, p0, Lcom/android/server/am/ActivityManagerService$3;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    iget-object v1, v0, Lcom/android/server/am/ActivityManagerService$3;->this$0:Lcom/android/server/am/ActivityManagerService;
+    iget-object v8, v8, Lcom/android/server/am/ActivityManagerService;->mProcessCpuMutexFree:Ljava/util/concurrent/atomic/AtomicBoolean;
 
-    iget-object v1, v1, Lcom/android/server/am/ActivityManagerService;->mPendingPssProcesses:Ljava/util/ArrayList;
+    const/4 v9, 0x1
 
-    invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
+    invoke-virtual {v8, v9}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
 
-    move-result v1
-
-    if-lt v8, v1, :cond_1
-
-    .line 1693
-    move-object/from16 v0, p0
-
-    iget-object v1, v0, Lcom/android/server/am/ActivityManagerService$3;->this$0:Lcom/android/server/am/ActivityManagerService;
-
-    iget-object v1, v1, Lcom/android/server/am/ActivityManagerService;->mPendingPssProcesses:Ljava/util/ArrayList;
-
-    invoke-virtual {v1}, Ljava/util/ArrayList;->clear()V
-
-    .line 1694
-    monitor-exit v4
-
-    goto :goto_0
-
-    .line 1705
-    :catchall_0
-    move-exception v1
-
-    monitor-exit v4
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    throw v1
-
-    .line 1696
-    :cond_1
-    :try_start_1
-    move-object/from16 v0, p0
-
-    iget-object v1, v0, Lcom/android/server/am/ActivityManagerService$3;->this$0:Lcom/android/server/am/ActivityManagerService;
-
-    iget-object v1, v1, Lcom/android/server/am/ActivityManagerService;->mPendingPssProcesses:Ljava/util/ArrayList;
-
-    invoke-virtual {v1, v8}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v11
-
-    check-cast v11, Lcom/android/server/am/ProcessRecord;
-
-    .line 1697
-    .local v11, proc:Lcom/android/server/am/ProcessRecord;
-    iget v12, v11, Lcom/android/server/am/ProcessRecord;->pssProcState:I
-
-    .line 1698
-    .local v12, procState:I
-    iget-object v1, v11, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
-
-    if-eqz v1, :cond_4
-
-    iget v1, v11, Lcom/android/server/am/ProcessRecord;->setProcState:I
-
-    if-ne v12, v1, :cond_4
-
-    .line 1699
-    iget v10, v11, Lcom/android/server/am/ProcessRecord;->pid:I
-
-    .line 1704
-    .local v10, pid:I
-    :goto_2
-    add-int/lit8 v8, v8, 0x1
-
-    .line 1705
-    monitor-exit v4
+    .line 2422
+    invoke-virtual {p0, v2, v3}, Lcom/android/server/am/ActivityManagerService$3;->wait(J)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 1706
-    if-eqz v11, :cond_0
-
-    .line 1707
-    invoke-static {v10, v15}, Landroid/os/Debug;->getPss(I[J)J
-
-    move-result-wide v2
-
-    .line 1708
-    .local v2, pss:J
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/server/am/ActivityManagerService$3;->this$0:Lcom/android/server/am/ActivityManagerService;
-
-    move-object/from16 v16, v0
-
-    monitor-enter v16
-
-    .line 1709
+    :cond_1
     :try_start_2
-    iget-object v1, v11, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
+    monitor-exit p0
+    :try_end_2
+    .catch Ljava/lang/InterruptedException; {:try_start_2 .. :try_end_2} :catch_1
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_0
 
-    if-eqz v1, :cond_3
+    .line 2427
+    .end local v2    # "nextCpuDelay":J
+    .end local v4    # "nextWriteDelay":J
+    .end local v6    # "now":J
+    :goto_1
+    :try_start_3
+    iget-object v8, p0, Lcom/android/server/am/ActivityManagerService$3;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    iget v1, v11, Lcom/android/server/am/ProcessRecord;->setProcState:I
+    invoke-virtual {v8}, Lcom/android/server/am/ActivityManagerService;->updateCpuStatsNow()V
+    :try_end_3
+    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_0
 
-    if-ne v1, v12, :cond_3
+    goto :goto_0
 
-    iget v1, v11, Lcom/android/server/am/ProcessRecord;->pid:I
+    .line 2428
+    :catch_0
+    move-exception v0
 
-    if-ne v1, v10, :cond_3
+    .line 2429
+    .local v0, "e":Ljava/lang/Exception;
+    const-string/jumbo v8, "ActivityManager"
 
-    .line 1711
-    add-int/lit8 v9, v9, 0x1
+    const-string/jumbo v9, "Unexpected exception collecting process stats"
 
-    .line 1712
-    invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
+    invoke-static {v8, v9, v0}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    move-result-wide v4
+    goto :goto_0
 
-    iput-wide v4, v11, Lcom/android/server/am/ProcessRecord;->lastPssTime:J
+    .line 2411
+    .end local v0    # "e":Ljava/lang/Exception;
+    :catchall_0
+    move-exception v8
 
-    .line 1713
-    iget-object v1, v11, Lcom/android/server/am/ProcessRecord;->baseProcessTracker:Lcom/android/internal/app/ProcessStats$ProcessState;
+    :try_start_4
+    monitor-exit p0
 
-    const/4 v4, 0x0
+    throw v8
+    :try_end_4
+    .catch Ljava/lang/InterruptedException; {:try_start_4 .. :try_end_4} :catch_1
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_0
 
-    aget-wide v4, v15, v4
-
-    const/4 v6, 0x1
-
-    iget-object v7, v11, Lcom/android/server/am/ProcessRecord;->pkgList:Landroid/util/ArrayMap;
-
-    invoke-virtual/range {v1 .. v7}, Lcom/android/internal/app/ProcessStats$ProcessState;->addPss(JJZLandroid/util/ArrayMap;)V
-
-    .line 1717
-    iget-wide v4, v11, Lcom/android/server/am/ProcessRecord;->initialIdlePss:J
-
-    const-wide/16 v6, 0x0
-
-    cmp-long v1, v4, v6
-
-    if-nez v1, :cond_2
-
-    .line 1718
-    iput-wide v2, v11, Lcom/android/server/am/ProcessRecord;->initialIdlePss:J
-
-    .line 1720
-    :cond_2
-    iput-wide v2, v11, Lcom/android/server/am/ProcessRecord;->lastPss:J
-
-    .line 1721
-    const/16 v1, 0x9
-
-    if-lt v12, v1, :cond_3
-
-    .line 1722
-    iput-wide v2, v11, Lcom/android/server/am/ProcessRecord;->lastCachedPss:J
-
-    .line 1725
-    :cond_3
-    monitor-exit v16
-
-    goto :goto_1
-
-    :catchall_1
+    .line 2425
+    :catch_1
     move-exception v1
 
-    monitor-exit v16
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_1
-
-    throw v1
-
-    .line 1701
-    .end local v2           #pss:J
-    .end local v10           #pid:I
-    :cond_4
-    const/4 v11, 0x0
-
-    .line 1702
-    const/4 v10, 0x0
-
-    .restart local v10       #pid:I
-    goto :goto_2
-
-    .line 1680
-    nop
-
-    :pswitch_data_0
-    .packed-switch 0x1
-        :pswitch_0
-    .end packed-switch
+    .local v1, "e":Ljava/lang/InterruptedException;
+    goto :goto_1
 .end method

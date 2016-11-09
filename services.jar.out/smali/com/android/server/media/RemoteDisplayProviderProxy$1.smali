@@ -24,7 +24,7 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/media/RemoteDisplayProviderProxy;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/media/RemoteDisplayProviderProxy;
 
     .prologue
     .line 310
@@ -46,14 +46,12 @@
 
     const/4 v1, 0x0
 
-    #setter for: Lcom/android/server/media/RemoteDisplayProviderProxy;->mScheduledDisplayStateChangedCallback:Z
-    invoke-static {v0, v1}, Lcom/android/server/media/RemoteDisplayProviderProxy;->access$002(Lcom/android/server/media/RemoteDisplayProviderProxy;Z)Z
+    invoke-static {v0, v1}, Lcom/android/server/media/RemoteDisplayProviderProxy;->-set0(Lcom/android/server/media/RemoteDisplayProviderProxy;Z)Z
 
     .line 314
     iget-object v0, p0, Lcom/android/server/media/RemoteDisplayProviderProxy$1;->this$0:Lcom/android/server/media/RemoteDisplayProviderProxy;
 
-    #getter for: Lcom/android/server/media/RemoteDisplayProviderProxy;->mDisplayStateCallback:Lcom/android/server/media/RemoteDisplayProviderProxy$Callback;
-    invoke-static {v0}, Lcom/android/server/media/RemoteDisplayProviderProxy;->access$100(Lcom/android/server/media/RemoteDisplayProviderProxy;)Lcom/android/server/media/RemoteDisplayProviderProxy$Callback;
+    invoke-static {v0}, Lcom/android/server/media/RemoteDisplayProviderProxy;->-get1(Lcom/android/server/media/RemoteDisplayProviderProxy;)Lcom/android/server/media/RemoteDisplayProviderProxy$Callback;
 
     move-result-object v0
 
@@ -62,23 +60,23 @@
     .line 315
     iget-object v0, p0, Lcom/android/server/media/RemoteDisplayProviderProxy$1;->this$0:Lcom/android/server/media/RemoteDisplayProviderProxy;
 
-    #getter for: Lcom/android/server/media/RemoteDisplayProviderProxy;->mDisplayStateCallback:Lcom/android/server/media/RemoteDisplayProviderProxy$Callback;
-    invoke-static {v0}, Lcom/android/server/media/RemoteDisplayProviderProxy;->access$100(Lcom/android/server/media/RemoteDisplayProviderProxy;)Lcom/android/server/media/RemoteDisplayProviderProxy$Callback;
+    invoke-static {v0}, Lcom/android/server/media/RemoteDisplayProviderProxy;->-get1(Lcom/android/server/media/RemoteDisplayProviderProxy;)Lcom/android/server/media/RemoteDisplayProviderProxy$Callback;
 
     move-result-object v0
 
+    .line 316
     iget-object v1, p0, Lcom/android/server/media/RemoteDisplayProviderProxy$1;->this$0:Lcom/android/server/media/RemoteDisplayProviderProxy;
 
     iget-object v2, p0, Lcom/android/server/media/RemoteDisplayProviderProxy$1;->this$0:Lcom/android/server/media/RemoteDisplayProviderProxy;
 
-    #getter for: Lcom/android/server/media/RemoteDisplayProviderProxy;->mDisplayState:Landroid/media/RemoteDisplayState;
-    invoke-static {v2}, Lcom/android/server/media/RemoteDisplayProviderProxy;->access$200(Lcom/android/server/media/RemoteDisplayProviderProxy;)Landroid/media/RemoteDisplayState;
+    invoke-static {v2}, Lcom/android/server/media/RemoteDisplayProviderProxy;->-get0(Lcom/android/server/media/RemoteDisplayProviderProxy;)Landroid/media/RemoteDisplayState;
 
     move-result-object v2
 
+    .line 315
     invoke-interface {v0, v1, v2}, Lcom/android/server/media/RemoteDisplayProviderProxy$Callback;->onDisplayStateChanged(Lcom/android/server/media/RemoteDisplayProviderProxy;Landroid/media/RemoteDisplayState;)V
 
-    .line 318
+    .line 312
     :cond_0
     return-void
 .end method

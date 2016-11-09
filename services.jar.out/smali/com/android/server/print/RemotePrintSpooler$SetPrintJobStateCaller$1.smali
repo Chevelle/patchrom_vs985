@@ -15,21 +15,21 @@
 
 
 # instance fields
-.field final synthetic this$0:Lcom/android/server/print/RemotePrintSpooler$SetPrintJobStateCaller;
+.field final synthetic this$1:Lcom/android/server/print/RemotePrintSpooler$SetPrintJobStateCaller;
 
 
 # direct methods
 .method constructor <init>(Lcom/android/server/print/RemotePrintSpooler$SetPrintJobStateCaller;)V
     .locals 1
-    .parameter
+    .param p1, "this$1"    # Lcom/android/server/print/RemotePrintSpooler$SetPrintJobStateCaller;
 
     .prologue
-    .line 509
-    iput-object p1, p0, Lcom/android/server/print/RemotePrintSpooler$SetPrintJobStateCaller$1;->this$0:Lcom/android/server/print/RemotePrintSpooler$SetPrintJobStateCaller;
+    .line 511
+    iput-object p1, p0, Lcom/android/server/print/RemotePrintSpooler$SetPrintJobStateCaller$1;->this$1:Lcom/android/server/print/RemotePrintSpooler$SetPrintJobStateCaller;
 
     const/4 v0, 0x0
 
-    invoke-direct {p0, v0}, Lcom/android/server/print/RemotePrintSpooler$BasePrintSpoolerServiceCallbacks;-><init>(Lcom/android/server/print/RemotePrintSpooler$1;)V
+    invoke-direct {p0, v0}, Lcom/android/server/print/RemotePrintSpooler$BasePrintSpoolerServiceCallbacks;-><init>(Lcom/android/server/print/RemotePrintSpooler$BasePrintSpoolerServiceCallbacks;)V
 
     return-void
 .end method
@@ -38,12 +38,12 @@
 # virtual methods
 .method public onSetPrintJobStateResult(ZI)V
     .locals 2
-    .parameter "success"
-    .parameter "sequence"
+    .param p1, "success"    # Z
+    .param p2, "sequence"    # I
 
     .prologue
-    .line 512
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintSpooler$SetPrintJobStateCaller$1;->this$0:Lcom/android/server/print/RemotePrintSpooler$SetPrintJobStateCaller;
+    .line 514
+    iget-object v0, p0, Lcom/android/server/print/RemotePrintSpooler$SetPrintJobStateCaller$1;->this$1:Lcom/android/server/print/RemotePrintSpooler$SetPrintJobStateCaller;
 
     invoke-static {p1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 

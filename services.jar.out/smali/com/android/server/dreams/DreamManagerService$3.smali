@@ -1,14 +1,11 @@
 .class Lcom/android/server/dreams/DreamManagerService$3;
-.super Ljava/lang/Object;
+.super Landroid/content/BroadcastReceiver;
 .source "DreamManagerService.java"
-
-# interfaces
-.implements Ljava/lang/Runnable;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/dreams/DreamManagerService;->startDreamLocked(Landroid/content/ComponentName;ZI)V
+    value = Lcom/android/server/dreams/DreamManagerService;->onBootPhase(I)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,65 +17,58 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/server/dreams/DreamManagerService;
 
-.field final synthetic val$isTest:Z
-
-.field final synthetic val$name:Landroid/content/ComponentName;
-
-.field final synthetic val$newToken:Landroid/os/Binder;
-
-.field final synthetic val$userId:I
-
 
 # direct methods
-.method constructor <init>(Lcom/android/server/dreams/DreamManagerService;Landroid/os/Binder;Landroid/content/ComponentName;ZI)V
+.method constructor <init>(Lcom/android/server/dreams/DreamManagerService;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/dreams/DreamManagerService;
 
     .prologue
-    .line 342
+    .line 113
     iput-object p1, p0, Lcom/android/server/dreams/DreamManagerService$3;->this$0:Lcom/android/server/dreams/DreamManagerService;
 
-    iput-object p2, p0, Lcom/android/server/dreams/DreamManagerService$3;->val$newToken:Landroid/os/Binder;
-
-    iput-object p3, p0, Lcom/android/server/dreams/DreamManagerService$3;->val$name:Landroid/content/ComponentName;
-
-    iput-boolean p4, p0, Lcom/android/server/dreams/DreamManagerService$3;->val$isTest:Z
-
-    iput p5, p0, Lcom/android/server/dreams/DreamManagerService$3;->val$userId:I
-
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public run()V
-    .locals 5
+.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+    .locals 3
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 345
+    .line 116
     iget-object v0, p0, Lcom/android/server/dreams/DreamManagerService$3;->this$0:Lcom/android/server/dreams/DreamManagerService;
 
-    #getter for: Lcom/android/server/dreams/DreamManagerService;->mController:Lcom/android/server/dreams/DreamController;
-    invoke-static {v0}, Lcom/android/server/dreams/DreamManagerService;->access$200(Lcom/android/server/dreams/DreamManagerService;)Lcom/android/server/dreams/DreamController;
+    invoke-static {v0}, Lcom/android/server/dreams/DreamManagerService;->-get5(Lcom/android/server/dreams/DreamManagerService;)Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object v1
 
-    iget-object v1, p0, Lcom/android/server/dreams/DreamManagerService$3;->val$newToken:Landroid/os/Binder;
+    monitor-enter v1
 
-    iget-object v2, p0, Lcom/android/server/dreams/DreamManagerService$3;->val$name:Landroid/content/ComponentName;
+    .line 117
+    :try_start_0
+    iget-object v0, p0, Lcom/android/server/dreams/DreamManagerService$3;->this$0:Lcom/android/server/dreams/DreamManagerService;
 
-    iget-boolean v3, p0, Lcom/android/server/dreams/DreamManagerService$3;->val$isTest:Z
+    const/4 v2, 0x0
 
-    iget v4, p0, Lcom/android/server/dreams/DreamManagerService$3;->val$userId:I
+    invoke-static {v0, v2}, Lcom/android/server/dreams/DreamManagerService;->-wrap18(Lcom/android/server/dreams/DreamManagerService;Z)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    invoke-virtual {v0, v1, v2, v3, v4}, Lcom/android/server/dreams/DreamController;->startDream(Landroid/os/Binder;Landroid/content/ComponentName;ZI)V
+    monitor-exit v1
 
-    .line 346
+    .line 115
     return-void
+
+    .line 116
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+
+    throw v0
 .end method

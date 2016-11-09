@@ -1,108 +1,125 @@
-.class final Lcom/android/server/wm/WindowManagerService$2;
-.super Ljava/lang/Object;
+.class Lcom/android/server/wm/WindowManagerService$2;
+.super Landroid/view/WindowManagerInternal$AppTransitionListener;
 .source "WindowManagerService.java"
-
-# interfaces
-.implements Ljava/lang/Runnable;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/wm/WindowManagerService;->main(Landroid/content/Context;Lcom/android/server/power/PowerManagerService;Lcom/android/server/display/DisplayManagerService;Lcom/android/server/input/InputManagerService;Landroid/os/Handler;ZZZ)Lcom/android/server/wm/WindowManagerService;
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/android/server/wm/WindowManagerService;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x8
+    accessFlags = 0x0
     name = null
 .end annotation
 
 
 # instance fields
-.field final synthetic val$context:Landroid/content/Context;
-
-.field final synthetic val$dm:Lcom/android/server/display/DisplayManagerService;
-
-.field final synthetic val$haveInputMethods:Z
-
-.field final synthetic val$holder:[Lcom/android/server/wm/WindowManagerService;
-
-.field final synthetic val$im:Lcom/android/server/input/InputManagerService;
-
-.field final synthetic val$onlyCore:Z
-
-.field final synthetic val$pm:Lcom/android/server/power/PowerManagerService;
-
-.field final synthetic val$showBootMsgs:Z
+.field final synthetic this$0:Lcom/android/server/wm/WindowManagerService;
 
 
 # direct methods
-.method constructor <init>([Lcom/android/server/wm/WindowManagerService;Landroid/content/Context;Lcom/android/server/power/PowerManagerService;Lcom/android/server/display/DisplayManagerService;Lcom/android/server/input/InputManagerService;ZZZ)V
+.method constructor <init>(Lcom/android/server/wm/WindowManagerService;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/wm/WindowManagerService;
 
     .prologue
-    .line 714
-    iput-object p1, p0, Lcom/android/server/wm/WindowManagerService$2;->val$holder:[Lcom/android/server/wm/WindowManagerService;
+    .line 843
+    iput-object p1, p0, Lcom/android/server/wm/WindowManagerService$2;->this$0:Lcom/android/server/wm/WindowManagerService;
 
-    iput-object p2, p0, Lcom/android/server/wm/WindowManagerService$2;->val$context:Landroid/content/Context;
-
-    iput-object p3, p0, Lcom/android/server/wm/WindowManagerService$2;->val$pm:Lcom/android/server/power/PowerManagerService;
-
-    iput-object p4, p0, Lcom/android/server/wm/WindowManagerService$2;->val$dm:Lcom/android/server/display/DisplayManagerService;
-
-    iput-object p5, p0, Lcom/android/server/wm/WindowManagerService$2;->val$im:Lcom/android/server/input/InputManagerService;
-
-    iput-boolean p6, p0, Lcom/android/server/wm/WindowManagerService$2;->val$haveInputMethods:Z
-
-    iput-boolean p7, p0, Lcom/android/server/wm/WindowManagerService$2;->val$showBootMsgs:Z
-
-    iput-boolean p8, p0, Lcom/android/server/wm/WindowManagerService$2;->val$onlyCore:Z
-
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Landroid/view/WindowManagerInternal$AppTransitionListener;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public run()V
-    .locals 11
+.method public onAppTransitionFinishedLocked(Landroid/os/IBinder;)V
+    .locals 5
+    .param p1, "token"    # Landroid/os/IBinder;
 
     .prologue
-    .line 717
-    iget-object v9, p0, Lcom/android/server/wm/WindowManagerService$2;->val$holder:[Lcom/android/server/wm/WindowManagerService;
+    const/4 v4, 0x0
 
-    const/4 v10, 0x0
+    .line 847
+    iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$2;->this$0:Lcom/android/server/wm/WindowManagerService;
 
-    new-instance v0, Lcom/android/server/wm/WindowManagerService;
+    invoke-virtual {v2, p1}, Lcom/android/server/wm/WindowManagerService;->findAppWindowToken(Landroid/os/IBinder;)Lcom/android/server/wm/AppWindowToken;
 
-    iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$2;->val$context:Landroid/content/Context;
+    move-result-object v0
 
-    iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$2;->val$pm:Lcom/android/server/power/PowerManagerService;
+    .line 848
+    .local v0, "atoken":Lcom/android/server/wm/AppWindowToken;
+    if-nez v0, :cond_0
 
-    iget-object v3, p0, Lcom/android/server/wm/WindowManagerService$2;->val$dm:Lcom/android/server/display/DisplayManagerService;
-
-    iget-object v4, p0, Lcom/android/server/wm/WindowManagerService$2;->val$im:Lcom/android/server/input/InputManagerService;
-
-    iget-boolean v5, p0, Lcom/android/server/wm/WindowManagerService$2;->val$haveInputMethods:Z
-
-    iget-boolean v6, p0, Lcom/android/server/wm/WindowManagerService$2;->val$showBootMsgs:Z
-
-    iget-boolean v7, p0, Lcom/android/server/wm/WindowManagerService$2;->val$onlyCore:Z
-
-    const/4 v8, 0x0
-
-    invoke-direct/range {v0 .. v8}, Lcom/android/server/wm/WindowManagerService;-><init>(Landroid/content/Context;Lcom/android/server/power/PowerManagerService;Lcom/android/server/display/DisplayManagerService;Lcom/android/server/input/InputManagerService;ZZZLcom/android/server/wm/WindowManagerService$1;)V
-
-    aput-object v0, v9, v10
-
-    .line 719
+    .line 849
     return-void
+
+    .line 851
+    :cond_0
+    iget-boolean v2, v0, Lcom/android/server/wm/AppWindowToken;->mLaunchTaskBehind:Z
+
+    if-eqz v2, :cond_2
+
+    .line 853
+    :try_start_0
+    iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$2;->this$0:Lcom/android/server/wm/WindowManagerService;
+
+    iget-object v2, v2, Lcom/android/server/wm/WindowManagerService;->mActivityManager:Landroid/app/IActivityManager;
+
+    iget-object v3, v0, Lcom/android/server/wm/AppWindowToken;->token:Landroid/os/IBinder;
+
+    invoke-interface {v2, v3}, Landroid/app/IActivityManager;->notifyLaunchTaskBehindComplete(Landroid/os/IBinder;)V
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_1
+
+    .line 856
+    :goto_0
+    iput-boolean v4, v0, Lcom/android/server/wm/AppWindowToken;->mLaunchTaskBehind:Z
+
+    .line 846
+    :cond_1
+    :goto_1
+    return-void
+
+    .line 858
+    :cond_2
+    invoke-virtual {v0}, Lcom/android/server/wm/AppWindowToken;->updateReportedVisibilityLocked()V
+
+    .line 859
+    iget-boolean v2, v0, Lcom/android/server/wm/AppWindowToken;->mEnteringAnimation:Z
+
+    if-eqz v2, :cond_1
+
+    .line 860
+    iput-boolean v4, v0, Lcom/android/server/wm/AppWindowToken;->mEnteringAnimation:Z
+
+    .line 862
+    :try_start_1
+    iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$2;->this$0:Lcom/android/server/wm/WindowManagerService;
+
+    iget-object v2, v2, Lcom/android/server/wm/WindowManagerService;->mActivityManager:Landroid/app/IActivityManager;
+
+    iget-object v3, v0, Lcom/android/server/wm/AppWindowToken;->token:Landroid/os/IBinder;
+
+    invoke-interface {v2, v3}, Landroid/app/IActivityManager;->notifyEnterAnimationComplete(Landroid/os/IBinder;)V
+    :try_end_1
+    .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0
+
+    goto :goto_1
+
+    .line 863
+    :catch_0
+    move-exception v1
+
+    .local v1, "e":Landroid/os/RemoteException;
+    goto :goto_1
+
+    .line 854
+    .end local v1    # "e":Landroid/os/RemoteException;
+    :catch_1
+    move-exception v1
+
+    .restart local v1    # "e":Landroid/os/RemoteException;
+    goto :goto_0
 .end method

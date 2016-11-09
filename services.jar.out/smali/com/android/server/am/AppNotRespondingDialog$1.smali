@@ -21,7 +21,7 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/am/AppNotRespondingDialog;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/am/AppNotRespondingDialog;
 
     .prologue
     .line 105
@@ -36,23 +36,24 @@
 # virtual methods
 .method public handleMessage(Landroid/os/Message;)V
     .locals 8
-    .parameter "msg"
+    .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
-    iget-object v3, p0, Lcom/android/server/am/AppNotRespondingDialog$1;->this$0:Lcom/android/server/am/AppNotRespondingDialog;
-
-    invoke-static {v3}, Lcom/android/server/am/Injector$AppNotRespondingDialogHook;->sendAnrErrorReport(Lcom/android/server/am/AppNotRespondingDialog;)V
-
+    .line 107
     const/4 v1, 0x0
 
-    .local v1, appErrorIntent:Landroid/content/Intent;
+    .line 108
+    .local v1, "appErrorIntent":Landroid/content/Intent;
     iget v3, p1, Landroid/os/Message;->what:I
 
     packed-switch v3, :pswitch_data_0
 
+    .line 134
+    .end local v1    # "appErrorIntent":Landroid/content/Intent;
     :goto_0
     if-eqz v1, :cond_0
 
+    .line 136
     :try_start_0
     iget-object v3, p0, Lcom/android/server/am/AppNotRespondingDialog$1;->this$0:Lcom/android/server/am/AppNotRespondingDialog;
 
@@ -64,24 +65,23 @@
     :try_end_0
     .catch Landroid/content/ActivityNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 141
+    .line 106
     :cond_0
     :goto_1
     return-void
 
     .line 111
+    .restart local v1    # "appErrorIntent":Landroid/content/Intent;
     :pswitch_0
     iget-object v3, p0, Lcom/android/server/am/AppNotRespondingDialog$1;->this$0:Lcom/android/server/am/AppNotRespondingDialog;
 
-    #getter for: Lcom/android/server/am/AppNotRespondingDialog;->mService:Lcom/android/server/am/ActivityManagerService;
-    invoke-static {v3}, Lcom/android/server/am/AppNotRespondingDialog;->access$100(Lcom/android/server/am/AppNotRespondingDialog;)Lcom/android/server/am/ActivityManagerService;
+    invoke-static {v3}, Lcom/android/server/am/AppNotRespondingDialog;->-get1(Lcom/android/server/am/AppNotRespondingDialog;)Lcom/android/server/am/ActivityManagerService;
 
     move-result-object v3
 
     iget-object v4, p0, Lcom/android/server/am/AppNotRespondingDialog$1;->this$0:Lcom/android/server/am/AppNotRespondingDialog;
 
-    #getter for: Lcom/android/server/am/AppNotRespondingDialog;->mProc:Lcom/android/server/am/ProcessRecord;
-    invoke-static {v4}, Lcom/android/server/am/AppNotRespondingDialog;->access$000(Lcom/android/server/am/AppNotRespondingDialog;)Lcom/android/server/am/ProcessRecord;
+    invoke-static {v4}, Lcom/android/server/am/AppNotRespondingDialog;->-get0(Lcom/android/server/am/AppNotRespondingDialog;)Lcom/android/server/am/ProcessRecord;
 
     move-result-object v4
 
@@ -95,8 +95,7 @@
     :pswitch_1
     iget-object v3, p0, Lcom/android/server/am/AppNotRespondingDialog$1;->this$0:Lcom/android/server/am/AppNotRespondingDialog;
 
-    #getter for: Lcom/android/server/am/AppNotRespondingDialog;->mService:Lcom/android/server/am/ActivityManagerService;
-    invoke-static {v3}, Lcom/android/server/am/AppNotRespondingDialog;->access$100(Lcom/android/server/am/AppNotRespondingDialog;)Lcom/android/server/am/ActivityManagerService;
+    invoke-static {v3}, Lcom/android/server/am/AppNotRespondingDialog;->-get1(Lcom/android/server/am/AppNotRespondingDialog;)Lcom/android/server/am/ActivityManagerService;
 
     move-result-object v4
 
@@ -106,13 +105,12 @@
     :try_start_1
     iget-object v3, p0, Lcom/android/server/am/AppNotRespondingDialog$1;->this$0:Lcom/android/server/am/AppNotRespondingDialog;
 
-    #getter for: Lcom/android/server/am/AppNotRespondingDialog;->mProc:Lcom/android/server/am/ProcessRecord;
-    invoke-static {v3}, Lcom/android/server/am/AppNotRespondingDialog;->access$000(Lcom/android/server/am/AppNotRespondingDialog;)Lcom/android/server/am/ProcessRecord;
+    invoke-static {v3}, Lcom/android/server/am/AppNotRespondingDialog;->-get0(Lcom/android/server/am/AppNotRespondingDialog;)Lcom/android/server/am/ProcessRecord;
 
     move-result-object v0
 
     .line 119
-    .local v0, app:Lcom/android/server/am/ProcessRecord;
+    .local v0, "app":Lcom/android/server/am/ProcessRecord;
     iget v3, p1, Landroid/os/Message;->what:I
 
     const/4 v5, 0x3
@@ -122,22 +120,24 @@
     .line 120
     iget-object v3, p0, Lcom/android/server/am/AppNotRespondingDialog$1;->this$0:Lcom/android/server/am/AppNotRespondingDialog;
 
-    #getter for: Lcom/android/server/am/AppNotRespondingDialog;->mService:Lcom/android/server/am/ActivityManagerService;
-    invoke-static {v3}, Lcom/android/server/am/AppNotRespondingDialog;->access$100(Lcom/android/server/am/AppNotRespondingDialog;)Lcom/android/server/am/ActivityManagerService;
+    invoke-static {v3}, Lcom/android/server/am/AppNotRespondingDialog;->-get1(Lcom/android/server/am/AppNotRespondingDialog;)Lcom/android/server/am/ActivityManagerService;
 
     move-result-object v3
 
+    .line 121
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    move-result-wide v5
+    move-result-wide v6
 
-    const/4 v7, 0x0
+    const/4 v5, 0x0
 
-    invoke-virtual {v3, v0, v5, v6, v7}, Lcom/android/server/am/ActivityManagerService;->createAppErrorIntentLocked(Lcom/android/server/am/ProcessRecord;JLandroid/app/ApplicationErrorReport$CrashInfo;)Landroid/content/Intent;
+    .line 120
+    invoke-virtual {v3, v0, v6, v7, v5}, Lcom/android/server/am/ActivityManagerService;->createAppErrorIntentLocked(Lcom/android/server/am/ProcessRecord;JLandroid/app/ApplicationErrorReport$CrashInfo;)Landroid/content/Intent;
 
     move-result-object v1
 
     .line 124
+    .end local v1    # "appErrorIntent":Landroid/content/Intent;
     :cond_1
     const/4 v3, 0x0
 
@@ -164,27 +164,26 @@
     :cond_2
     iget-object v3, p0, Lcom/android/server/am/AppNotRespondingDialog$1;->this$0:Lcom/android/server/am/AppNotRespondingDialog;
 
-    #getter for: Lcom/android/server/am/AppNotRespondingDialog;->mService:Lcom/android/server/am/ActivityManagerService;
-    invoke-static {v3}, Lcom/android/server/am/AppNotRespondingDialog;->access$100(Lcom/android/server/am/AppNotRespondingDialog;)Lcom/android/server/am/ActivityManagerService;
+    invoke-static {v3}, Lcom/android/server/am/AppNotRespondingDialog;->-get1(Lcom/android/server/am/AppNotRespondingDialog;)Lcom/android/server/am/ActivityManagerService;
 
     move-result-object v3
 
     iget-object v3, v3, Lcom/android/server/am/ActivityManagerService;->mServices:Lcom/android/server/am/ActiveServices;
 
     invoke-virtual {v3, v0}, Lcom/android/server/am/ActiveServices;->scheduleServiceTimeoutLocked(Lcom/android/server/am/ProcessRecord;)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 130
     monitor-exit v4
 
     goto :goto_0
 
-    .end local v0           #app:Lcom/android/server/am/ProcessRecord;
+    .line 116
+    .end local v0    # "app":Lcom/android/server/am/ProcessRecord;
     :catchall_0
     move-exception v3
 
     monitor-exit v4
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v3
 
@@ -193,10 +192,10 @@
     move-exception v2
 
     .line 138
-    .local v2, e:Landroid/content/ActivityNotFoundException;
-    const-string v3, "AppNotRespondingDialog"
+    .local v2, "e":Landroid/content/ActivityNotFoundException;
+    const-string/jumbo v3, "AppNotRespondingDialog"
 
-    const-string v4, "bug report receiver dissappeared"
+    const-string/jumbo v4, "bug report receiver dissappeared"
 
     invoke-static {v3, v4, v2}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 

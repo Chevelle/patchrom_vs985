@@ -21,7 +21,7 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/am/AppWaitingForDebuggerDialog;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/am/AppWaitingForDebuggerDialog;
 
     .prologue
     .line 64
@@ -36,7 +36,7 @@
 # virtual methods
 .method public handleMessage(Landroid/os/Message;)V
     .locals 3
-    .parameter "msg"
+    .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
     .line 66
@@ -44,7 +44,7 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 72
+    .line 65
     :goto_0
     return-void
 

@@ -21,10 +21,10 @@
 # direct methods
 .method private constructor <init>(Lcom/android/server/search/SearchManagerService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/search/SearchManagerService;
 
     .prologue
-    .line 115
+    .line 119
     iput-object p1, p0, Lcom/android/server/search/SearchManagerService$BootCompletedReceiver;->this$0:Lcom/android/server/search/SearchManagerService;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -32,13 +32,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/android/server/search/SearchManagerService;Lcom/android/server/search/SearchManagerService$1;)V
+.method synthetic constructor <init>(Lcom/android/server/search/SearchManagerService;Lcom/android/server/search/SearchManagerService$BootCompletedReceiver;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Lcom/android/server/search/SearchManagerService;
 
     .prologue
-    .line 115
     invoke-direct {p0, p1}, Lcom/android/server/search/SearchManagerService$BootCompletedReceiver;-><init>(Lcom/android/server/search/SearchManagerService;)V
 
     return-void
@@ -48,17 +46,17 @@
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
     .locals 1
-    .parameter "context"
-    .parameter "intent"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 118
+    .line 122
     new-instance v0, Lcom/android/server/search/SearchManagerService$BootCompletedReceiver$1;
 
     invoke-direct {v0, p0}, Lcom/android/server/search/SearchManagerService$BootCompletedReceiver$1;-><init>(Lcom/android/server/search/SearchManagerService$BootCompletedReceiver;)V
 
     invoke-virtual {v0}, Lcom/android/server/search/SearchManagerService$BootCompletedReceiver$1;->start()V
 
-    .line 126
+    .line 121
     return-void
 .end method

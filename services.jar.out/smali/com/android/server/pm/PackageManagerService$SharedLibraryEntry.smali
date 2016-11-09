@@ -1,4 +1,4 @@
-.class final Lcom/android/server/pm/PackageManagerService$SharedLibraryEntry;
+.class public final Lcom/android/server/pm/PackageManagerService$SharedLibraryEntry;
 .super Ljava/lang/Object;
 .source "PackageManagerService.java"
 
@@ -9,33 +9,33 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x18
+    accessFlags = 0x19
     name = "SharedLibraryEntry"
 .end annotation
 
 
 # instance fields
-.field final apk:Ljava/lang/String;
+.field public final apk:Ljava/lang/String;
 
-.field final path:Ljava/lang/String;
+.field public final path:Ljava/lang/String;
 
 
 # direct methods
 .method constructor <init>(Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
-    .parameter "_path"
-    .parameter "_apk"
+    .param p1, "_path"    # Ljava/lang/String;
+    .param p2, "_apk"    # Ljava/lang/String;
 
     .prologue
-    .line 363
+    .line 519
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 364
+    .line 520
     iput-object p1, p0, Lcom/android/server/pm/PackageManagerService$SharedLibraryEntry;->path:Ljava/lang/String;
 
-    .line 365
+    .line 521
     iput-object p2, p0, Lcom/android/server/pm/PackageManagerService$SharedLibraryEntry;->apk:Ljava/lang/String;
 
-    .line 366
+    .line 519
     return-void
 .end method

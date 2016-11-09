@@ -33,9 +33,6 @@
 .method public abstract getPollInterval()J
 .end method
 
-.method public abstract getReportXtOverDev()Z
-.end method
-
 .method public abstract getSampleEnabled()Z
 .end method
 

@@ -1,4 +1,4 @@
-.class Lcom/android/server/wm/WindowManagerService$3;
+.class final Lcom/android/server/wm/WindowManagerService$3;
 .super Ljava/lang/Object;
 .source "WindowManagerService.java"
 
@@ -8,27 +8,52 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/wm/WindowManagerService;->initPolicy(Landroid/os/Handler;)V
+    value = Lcom/android/server/wm/WindowManagerService;->main(Landroid/content/Context;Lcom/android/server/input/InputManagerService;ZZZ)Lcom/android/server/wm/WindowManagerService;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x8
     name = null
 .end annotation
 
 
 # instance fields
-.field final synthetic this$0:Lcom/android/server/wm/WindowManagerService;
+.field final synthetic val$context:Landroid/content/Context;
+
+.field final synthetic val$haveInputMethods:Z
+
+.field final synthetic val$holder:[Lcom/android/server/wm/WindowManagerService;
+
+.field final synthetic val$im:Lcom/android/server/input/InputManagerService;
+
+.field final synthetic val$onlyCore:Z
+
+.field final synthetic val$showBootMsgs:Z
 
 
 # direct methods
-.method constructor <init>(Lcom/android/server/wm/WindowManagerService;)V
+.method constructor <init>([Lcom/android/server/wm/WindowManagerService;Landroid/content/Context;Lcom/android/server/input/InputManagerService;ZZZ)V
     .locals 0
-    .parameter
+    .param p1, "val$holder"    # [Lcom/android/server/wm/WindowManagerService;
+    .param p2, "val$context"    # Landroid/content/Context;
+    .param p3, "val$im"    # Lcom/android/server/input/InputManagerService;
+    .param p4, "val$haveInputMethods"    # Z
+    .param p5, "val$showBootMsgs"    # Z
+    .param p6, "val$onlyCore"    # Z
 
     .prologue
-    .line 725
-    iput-object p1, p0, Lcom/android/server/wm/WindowManagerService$3;->this$0:Lcom/android/server/wm/WindowManagerService;
+    .line 875
+    iput-object p1, p0, Lcom/android/server/wm/WindowManagerService$3;->val$holder:[Lcom/android/server/wm/WindowManagerService;
+
+    iput-object p2, p0, Lcom/android/server/wm/WindowManagerService$3;->val$context:Landroid/content/Context;
+
+    iput-object p3, p0, Lcom/android/server/wm/WindowManagerService$3;->val$im:Lcom/android/server/input/InputManagerService;
+
+    iput-boolean p4, p0, Lcom/android/server/wm/WindowManagerService$3;->val$haveInputMethods:Z
+
+    iput-boolean p5, p0, Lcom/android/server/wm/WindowManagerService$3;->val$showBootMsgs:Z
+
+    iput-boolean p6, p0, Lcom/android/server/wm/WindowManagerService$3;->val$onlyCore:Z
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -38,54 +63,34 @@
 
 # virtual methods
 .method public run()V
-    .locals 4
+    .locals 8
 
     .prologue
-    .line 728
-    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+    .line 878
+    iget-object v7, p0, Lcom/android/server/wm/WindowManagerService$3;->val$holder:[Lcom/android/server/wm/WindowManagerService;
 
-    move-result-object v0
+    new-instance v0, Lcom/android/server/wm/WindowManagerService;
 
-    invoke-static {}, Landroid/os/Looper;->myLooper()Landroid/os/Looper;
+    iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$3;->val$context:Landroid/content/Context;
 
-    move-result-object v1
+    iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$3;->val$im:Lcom/android/server/input/InputManagerService;
 
-    invoke-static {v0, v1}, Lcom/android/internal/view/WindowManagerPolicyThread;->set(Ljava/lang/Thread;Landroid/os/Looper;)V
+    .line 879
+    iget-boolean v3, p0, Lcom/android/server/wm/WindowManagerService$3;->val$haveInputMethods:Z
 
-    .line 730
-    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$3;->this$0:Lcom/android/server/wm/WindowManagerService;
+    iget-boolean v4, p0, Lcom/android/server/wm/WindowManagerService$3;->val$showBootMsgs:Z
 
-    iget-object v0, v0, Lcom/android/server/wm/WindowManagerService;->mPolicy:Landroid/view/WindowManagerPolicy;
+    iget-boolean v5, p0, Lcom/android/server/wm/WindowManagerService$3;->val$onlyCore:Z
 
-    iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$3;->this$0:Lcom/android/server/wm/WindowManagerService;
+    .line 878
+    const/4 v6, 0x0
 
-    iget-object v1, v1, Lcom/android/server/wm/WindowManagerService;->mContext:Landroid/content/Context;
+    invoke-direct/range {v0 .. v6}, Lcom/android/server/wm/WindowManagerService;-><init>(Landroid/content/Context;Lcom/android/server/input/InputManagerService;ZZZLcom/android/server/wm/WindowManagerService;)V
 
-    iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$3;->this$0:Lcom/android/server/wm/WindowManagerService;
+    const/4 v1, 0x0
 
-    iget-object v3, p0, Lcom/android/server/wm/WindowManagerService$3;->this$0:Lcom/android/server/wm/WindowManagerService;
+    aput-object v0, v7, v1
 
-    invoke-interface {v0, v1, v2, v3}, Landroid/view/WindowManagerPolicy;->init(Landroid/content/Context;Landroid/view/IWindowManager;Landroid/view/WindowManagerPolicy$WindowManagerFuncs;)V
-
-    .line 731
-    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$3;->this$0:Lcom/android/server/wm/WindowManagerService;
-
-    iget-object v0, v0, Lcom/android/server/wm/WindowManagerService;->mAnimator:Lcom/android/server/wm/WindowAnimator;
-
-    iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$3;->this$0:Lcom/android/server/wm/WindowManagerService;
-
-    iget-object v1, v1, Lcom/android/server/wm/WindowManagerService;->mPolicy:Landroid/view/WindowManagerPolicy;
-
-    invoke-interface {v1}, Landroid/view/WindowManagerPolicy;->getAboveUniverseLayer()I
-
-    move-result v1
-
-    mul-int/lit16 v1, v1, 0x2710
-
-    add-int/lit16 v1, v1, 0x3e8
-
-    iput v1, v0, Lcom/android/server/wm/WindowAnimator;->mAboveUniverseLayer:I
-
-    .line 734
+    .line 877
     return-void
 .end method

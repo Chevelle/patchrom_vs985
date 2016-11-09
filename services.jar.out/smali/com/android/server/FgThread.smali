@@ -1,5 +1,5 @@
 .class public final Lcom/android/server/FgThread;
-.super Landroid/os/HandlerThread;
+.super Lcom/android/server/ServiceThread;
 .source "FgThread.java"
 
 
@@ -11,17 +11,19 @@
 
 # direct methods
 .method private constructor <init>()V
-    .locals 2
+    .locals 3
 
     .prologue
-    .line 35
-    const-string v0, "android.fg"
+    .line 34
+    const-string/jumbo v0, "android.fg"
 
     const/4 v1, 0x0
 
-    invoke-direct {p0, v0, v1}, Landroid/os/HandlerThread;-><init>(Ljava/lang/String;I)V
+    const/4 v2, 0x1
 
-    .line 36
+    invoke-direct {p0, v0, v1, v2}, Lcom/android/server/ServiceThread;-><init>(Ljava/lang/String;IZ)V
+
+    .line 33
     return-void
 .end method
 
@@ -29,24 +31,24 @@
     .locals 2
 
     .prologue
-    .line 39
+    .line 38
     sget-object v0, Lcom/android/server/FgThread;->sInstance:Lcom/android/server/FgThread;
 
     if-nez v0, :cond_0
 
-    .line 40
+    .line 39
     new-instance v0, Lcom/android/server/FgThread;
 
     invoke-direct {v0}, Lcom/android/server/FgThread;-><init>()V
 
     sput-object v0, Lcom/android/server/FgThread;->sInstance:Lcom/android/server/FgThread;
 
-    .line 41
+    .line 40
     sget-object v0, Lcom/android/server/FgThread;->sInstance:Lcom/android/server/FgThread;
 
     invoke-virtual {v0}, Lcom/android/server/FgThread;->start()V
 
-    .line 42
+    .line 41
     new-instance v0, Landroid/os/Handler;
 
     sget-object v1, Lcom/android/server/FgThread;->sInstance:Lcom/android/server/FgThread;
@@ -59,21 +61,43 @@
 
     sput-object v0, Lcom/android/server/FgThread;->sHandler:Landroid/os/Handler;
 
-    .line 43
-    sget-object v0, Lcom/android/server/FgThread;->sHandler:Landroid/os/Handler;
-
-    new-instance v1, Lcom/android/server/FgThread$1;
-
-    invoke-direct {v1}, Lcom/android/server/FgThread$1;-><init>()V
-
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
-
-    .line 50
+    .line 37
     :cond_0
     return-void
 .end method
 
 .method public static get()Lcom/android/server/FgThread;
+    .locals 2
+
+    .prologue
+    .line 46
+    const-class v1, Lcom/android/server/UiThread;
+
+    monitor-enter v1
+
+    .line 47
+    :try_start_0
+    invoke-static {}, Lcom/android/server/FgThread;->ensureThreadLocked()V
+
+    .line 48
+    sget-object v0, Lcom/android/server/FgThread;->sInstance:Lcom/android/server/FgThread;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit v1
+
+    return-object v0
+
+    .line 46
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+
+    throw v0
+.end method
+
+.method public static getHandler()Landroid/os/Handler;
     .locals 2
 
     .prologue
@@ -87,50 +111,19 @@
     invoke-static {}, Lcom/android/server/FgThread;->ensureThreadLocked()V
 
     .line 55
-    sget-object v0, Lcom/android/server/FgThread;->sInstance:Lcom/android/server/FgThread;
-
-    monitor-exit v1
-
-    return-object v0
-
-    .line 56
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    throw v0
-.end method
-
-.method public static getHandler()Landroid/os/Handler;
-    .locals 2
-
-    .prologue
-    .line 60
-    const-class v1, Lcom/android/server/UiThread;
-
-    monitor-enter v1
-
-    .line 61
-    :try_start_0
-    invoke-static {}, Lcom/android/server/FgThread;->ensureThreadLocked()V
-
-    .line 62
     sget-object v0, Lcom/android/server/FgThread;->sHandler:Landroid/os/Handler;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit v1
 
     return-object v0
 
-    .line 63
+    .line 53
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

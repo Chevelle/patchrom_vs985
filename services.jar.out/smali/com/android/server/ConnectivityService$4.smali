@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/ConnectivityService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/ConnectivityService;
 
     .prologue
-    .line 2297
+    .line 3549
     iput-object p1, p0, Lcom/android/server/ConnectivityService$4;->this$0:Lcom/android/server/ConnectivityService;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -35,31 +35,66 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 1
-    .parameter "context"
-    .parameter "intent"
+    .locals 4
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 2302
-    iget-object v0, p0, Lcom/android/server/ConnectivityService$4;->this$0:Lcom/android/server/ConnectivityService;
+    const/16 v3, -0x2710
 
-    invoke-virtual {v0}, Lcom/android/server/ConnectivityService;->updateLockdownVpn()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 2303
-    iget-object v0, p0, Lcom/android/server/ConnectivityService$4;->this$0:Lcom/android/server/ConnectivityService;
-
-    #getter for: Lcom/android/server/ConnectivityService;->mContext:Landroid/content/Context;
-    invoke-static {v0}, Lcom/android/server/ConnectivityService;->access$1100(Lcom/android/server/ConnectivityService;)Landroid/content/Context;
+    .line 3552
+    invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    invoke-virtual {v0, p0}, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
+    .line 3553
+    .local v0, "action":Ljava/lang/String;
+    const-string/jumbo v2, "android.intent.extra.user_handle"
 
-    .line 2305
-    :cond_0
+    invoke-virtual {p2, v2, v3}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
+
+    move-result v1
+
+    .line 3554
+    .local v1, "userId":I
+    if-ne v1, v3, :cond_0
+
     return-void
+
+    .line 3556
+    :cond_0
+    const-string/jumbo v2, "android.intent.action.USER_STARTING"
+
+    invoke-virtual {v2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
+
+    .line 3557
+    iget-object v2, p0, Lcom/android/server/ConnectivityService$4;->this$0:Lcom/android/server/ConnectivityService;
+
+    invoke-static {v2, v1}, Lcom/android/server/ConnectivityService;->-wrap20(Lcom/android/server/ConnectivityService;I)V
+
+    .line 3551
+    :cond_1
+    :goto_0
+    return-void
+
+    .line 3558
+    :cond_2
+    const-string/jumbo v2, "android.intent.action.USER_STOPPING"
+
+    invoke-virtual {v2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1
+
+    .line 3559
+    iget-object v2, p0, Lcom/android/server/ConnectivityService$4;->this$0:Lcom/android/server/ConnectivityService;
+
+    invoke-static {v2, v1}, Lcom/android/server/ConnectivityService;->-wrap21(Lcom/android/server/ConnectivityService;I)V
+
+    goto :goto_0
 .end method

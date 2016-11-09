@@ -17,15 +17,20 @@
 # instance fields
 .field final synthetic this$1:Lcom/android/server/pm/UserManagerService$2;
 
+.field final synthetic val$userHandle:I
+
 
 # direct methods
-.method constructor <init>(Lcom/android/server/pm/UserManagerService$2;)V
+.method constructor <init>(Lcom/android/server/pm/UserManagerService$2;I)V
     .locals 0
-    .parameter
+    .param p1, "this$1"    # Lcom/android/server/pm/UserManagerService$2;
+    .param p2, "val$userHandle"    # I
 
     .prologue
-    .line 1037
+    .line 1559
     iput-object p1, p0, Lcom/android/server/pm/UserManagerService$2$1;->this$1:Lcom/android/server/pm/UserManagerService$2;
+
+    iput p2, p0, Lcom/android/server/pm/UserManagerService$2$1;->val$userHandle:I
 
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
 
@@ -38,26 +43,24 @@
     .locals 4
 
     .prologue
-    .line 1039
+    .line 1561
     iget-object v0, p0, Lcom/android/server/pm/UserManagerService$2$1;->this$1:Lcom/android/server/pm/UserManagerService$2;
 
     iget-object v0, v0, Lcom/android/server/pm/UserManagerService$2;->this$0:Lcom/android/server/pm/UserManagerService;
 
-    #getter for: Lcom/android/server/pm/UserManagerService;->mInstallLock:Ljava/lang/Object;
-    invoke-static {v0}, Lcom/android/server/pm/UserManagerService;->access$000(Lcom/android/server/pm/UserManagerService;)Ljava/lang/Object;
+    invoke-static {v0}, Lcom/android/server/pm/UserManagerService;->-get0(Lcom/android/server/pm/UserManagerService;)Ljava/lang/Object;
 
     move-result-object v1
 
     monitor-enter v1
 
-    .line 1040
+    .line 1562
     :try_start_0
     iget-object v0, p0, Lcom/android/server/pm/UserManagerService$2$1;->this$1:Lcom/android/server/pm/UserManagerService$2;
 
     iget-object v0, v0, Lcom/android/server/pm/UserManagerService$2;->this$0:Lcom/android/server/pm/UserManagerService;
 
-    #getter for: Lcom/android/server/pm/UserManagerService;->mPackagesLock:Ljava/lang/Object;
-    invoke-static {v0}, Lcom/android/server/pm/UserManagerService;->access$100(Lcom/android/server/pm/UserManagerService;)Ljava/lang/Object;
+    invoke-static {v0}, Lcom/android/server/pm/UserManagerService;->-get1(Lcom/android/server/pm/UserManagerService;)Ljava/lang/Object;
 
     move-result-object v2
 
@@ -65,52 +68,44 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 1041
+    .line 1563
     :try_start_1
     iget-object v0, p0, Lcom/android/server/pm/UserManagerService$2$1;->this$1:Lcom/android/server/pm/UserManagerService$2;
 
     iget-object v0, v0, Lcom/android/server/pm/UserManagerService$2;->this$0:Lcom/android/server/pm/UserManagerService;
 
-    iget-object v3, p0, Lcom/android/server/pm/UserManagerService$2$1;->this$1:Lcom/android/server/pm/UserManagerService$2;
+    iget v3, p0, Lcom/android/server/pm/UserManagerService$2$1;->val$userHandle:I
 
-    iget v3, v3, Lcom/android/server/pm/UserManagerService$2;->val$userHandle:I
-
-    #calls: Lcom/android/server/pm/UserManagerService;->removeUserStateLocked(I)V
-    invoke-static {v0, v3}, Lcom/android/server/pm/UserManagerService;->access$200(Lcom/android/server/pm/UserManagerService;I)V
-
-    .line 1042
-    monitor-exit v2
+    invoke-static {v0, v3}, Lcom/android/server/pm/UserManagerService;->-wrap0(Lcom/android/server/pm/UserManagerService;I)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 1043
     :try_start_2
-    monitor-exit v1
+    monitor-exit v2
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 1044
+    monitor-exit v1
+
+    .line 1560
     return-void
 
-    .line 1042
+    .line 1562
     :catchall_0
     move-exception v0
 
     :try_start_3
     monitor-exit v2
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    :try_start_4
     throw v0
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
-    .line 1043
+    .line 1561
     :catchall_1
     move-exception v0
 
     monitor-exit v1
-    :try_end_4
-    .catchall {:try_start_4 .. :try_end_4} :catchall_1
 
     throw v0
 .end method

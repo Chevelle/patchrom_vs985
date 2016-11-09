@@ -38,7 +38,7 @@
     .locals 0
 
     .prologue
-    .line 23
+    .line 22
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -47,421 +47,433 @@
 
 # virtual methods
 .method public calculateTwilight(JDD)V
-    .locals 25
-    .parameter "time"
-    .parameter "latiude"
-    .parameter "longitude"
+    .locals 29
+    .param p1, "time"    # J
+    .param p3, "latiude"    # D
+    .param p5, "longitude"    # D
 
     .prologue
-    .line 72
-    const-wide v19, 0xdc6d62da00L
+    .line 71
+    const-wide v22, 0xdc6d62da00L
 
-    sub-long v19, p1, v19
+    sub-long v22, p1, v22
 
-    move-wide/from16 v0, v19
+    move-wide/from16 v0, v22
 
     long-to-float v0, v0
 
-    move/from16 v19, v0
+    move/from16 v22, v0
 
-    const v20, 0x4ca4cb80
+    const v23, 0x4ca4cb80    # 8.64E7f
 
-    div-float v7, v19, v20
+    div-float v8, v22, v23
 
-    .line 75
-    .local v7, daysSince2000:F
-    const v19, 0x40c7ae92
+    .line 74
+    .local v8, "daysSince2000":F
+    const v22, 0x3c8ceb25
 
-    const v20, 0x3c8ceb25
+    mul-float v22, v22, v8
 
-    mul-float v20, v20, v7
+    const v23, 0x40c7ae92
 
-    add-float v11, v19, v20
+    add-float v12, v23, v22
+
+    .line 77
+    .local v12, "meanAnomaly":F
+    float-to-double v0, v12
+
+    move-wide/from16 v22, v0
+
+    float-to-double v0, v12
+
+    move-wide/from16 v24, v0
+
+    invoke-static/range {v24 .. v25}, Ljava/lang/Math;->sin(D)D
+
+    move-result-wide v24
+
+    const-wide v26, 0x3fa11c5fc0000000L    # 0.03341960161924362
+
+    mul-double v24, v24, v26
+
+    add-double v22, v22, v24
 
     .line 78
-    .local v11, meanAnomaly:F
-    const v19, 0x3d08e2fe
+    const/high16 v24, 0x40000000    # 2.0f
 
-    invoke-static {v11}, Landroid/util/FloatMath;->sin(F)F
+    mul-float v24, v24, v12
 
-    move-result v20
+    move/from16 v0, v24
 
-    mul-float v19, v19, v20
+    float-to-double v0, v0
 
-    add-float v19, v19, v11
+    move-wide/from16 v24, v0
 
-    const v20, 0x39b702d8
+    invoke-static/range {v24 .. v25}, Ljava/lang/Math;->sin(D)D
 
-    const/high16 v21, 0x4000
+    move-result-wide v24
 
-    mul-float v21, v21, v11
+    .line 77
+    const-wide v26, 0x3f36e05b00000000L    # 3.4906598739326E-4
 
-    invoke-static/range {v21 .. v21}, Landroid/util/FloatMath;->sin(F)F
+    mul-double v24, v24, v26
 
-    move-result v21
+    add-double v22, v22, v24
 
-    mul-float v20, v20, v21
+    .line 78
+    const/high16 v24, 0x40400000    # 3.0f
 
-    add-float v19, v19, v20
+    mul-float v24, v24, v12
 
-    const v20, 0x36afb0e6
+    move/from16 v0, v24
 
-    const/high16 v21, 0x4040
+    float-to-double v0, v0
 
-    mul-float v21, v21, v11
+    move-wide/from16 v24, v0
 
-    invoke-static/range {v21 .. v21}, Landroid/util/FloatMath;->sin(F)F
+    invoke-static/range {v24 .. v25}, Ljava/lang/Math;->sin(D)D
 
-    move-result v21
+    move-result-wide v24
 
-    mul-float v20, v20, v21
+    const-wide v26, 0x3ed5f61cc0000000L    # 5.236000106378924E-6
 
-    add-float v18, v19, v20
+    mul-double v24, v24, v26
 
-    .line 82
-    .local v18, trueAnomaly:F
-    const v19, 0x3fe5f6c3
+    .line 77
+    add-double v20, v22, v24
 
-    add-float v19, v19, v18
+    .line 81
+    .local v20, "trueAnomaly":D
+    const-wide v22, 0x3ffcbed85e1ce332L    # 1.796593063
 
-    const v20, 0x40490fdb
+    add-double v22, v22, v20
 
-    add-float v15, v19, v20
+    const-wide v24, 0x400921fb54442d18L    # Math.PI
 
-    .line 85
-    .local v15, solarLng:F
+    add-double v16, v22, v24
+
+    .line 84
+    .local v16, "solarLng":D
     move-wide/from16 v0, p5
 
     neg-double v0, v0
 
-    move-wide/from16 v19, v0
+    move-wide/from16 v22, v0
 
-    const-wide v21, 0x4076800000000000L
+    const-wide v24, 0x4076800000000000L    # 360.0
 
-    div-double v3, v19, v21
+    div-double v4, v22, v24
+
+    .line 85
+    .local v4, "arcLongitude":D
+    const v22, 0x3a6bedfa    # 9.0E-4f
+
+    sub-float v22, v8, v22
+
+    move/from16 v0, v22
+
+    float-to-double v0, v0
+
+    move-wide/from16 v22, v0
+
+    sub-double v22, v22, v4
+
+    invoke-static/range {v22 .. v23}, Ljava/lang/Math;->round(D)J
+
+    move-result-wide v22
+
+    move-wide/from16 v0, v22
+
+    long-to-float v13, v0
 
     .line 86
-    .local v3, arcLongitude:D
-    const v19, 0x3a6bedfa
+    .local v13, "n":F
+    const v22, 0x3a6bedfa    # 9.0E-4f
 
-    sub-float v19, v7, v19
+    add-float v22, v22, v13
 
-    move/from16 v0, v19
+    move/from16 v0, v22
 
     float-to-double v0, v0
 
-    move-wide/from16 v19, v0
+    move-wide/from16 v22, v0
 
-    sub-double v19, v19, v3
+    add-double v22, v22, v4
 
-    invoke-static/range {v19 .. v20}, Ljava/lang/Math;->round(D)J
+    float-to-double v0, v12
 
-    move-result-wide v19
+    move-wide/from16 v24, v0
 
-    move-wide/from16 v0, v19
+    invoke-static/range {v24 .. v25}, Ljava/lang/Math;->sin(D)D
 
-    long-to-float v12, v0
+    move-result-wide v24
+
+    const-wide v26, 0x3f75b573eab367a1L    # 0.0053
+
+    mul-double v24, v24, v26
+
+    add-double v22, v22, v24
 
     .line 87
-    .local v12, n:F
-    const v19, 0x3a6bedfa
+    const-wide/high16 v24, 0x4000000000000000L    # 2.0
 
-    add-float v19, v19, v12
+    mul-double v24, v24, v16
 
-    move/from16 v0, v19
+    invoke-static/range {v24 .. v25}, Ljava/lang/Math;->sin(D)D
 
-    float-to-double v0, v0
+    move-result-wide v24
 
-    move-wide/from16 v19, v0
+    const-wide v26, -0x4083bcd35a858794L    # -0.0069
 
-    add-double v19, v19, v3
+    mul-double v24, v24, v26
 
-    const v21, 0x3badab9f
+    .line 86
+    add-double v18, v22, v24
 
-    invoke-static {v11}, Landroid/util/FloatMath;->sin(F)F
+    .line 90
+    .local v18, "solarTransitJ2000":D
+    invoke-static/range {v16 .. v17}, Ljava/lang/Math;->sin(D)D
 
-    move-result v22
+    move-result-wide v22
 
-    mul-float v21, v21, v22
+    const-wide v24, 0x3fda31a380000000L    # 0.4092797040939331
 
-    move/from16 v0, v21
+    invoke-static/range {v24 .. v25}, Ljava/lang/Math;->sin(D)D
 
-    float-to-double v0, v0
+    move-result-wide v24
 
-    move-wide/from16 v21, v0
+    mul-double v22, v22, v24
 
-    add-double v19, v19, v21
+    invoke-static/range {v22 .. v23}, Ljava/lang/Math;->asin(D)D
 
-    const v21, -0x441de69b
+    move-result-wide v14
 
-    const/high16 v22, 0x4000
+    .line 92
+    .local v14, "solarDec":D
+    const-wide v22, 0x3f91df46a0000000L    # 0.01745329238474369
 
-    mul-float v22, v22, v15
+    mul-double v10, p3, v22
 
-    invoke-static/range {v22 .. v22}, Landroid/util/FloatMath;->sin(F)F
+    .line 94
+    .local v10, "latRad":D
+    const-wide v22, -0x4045311600000000L    # -0.10471975803375244
 
-    move-result v22
+    invoke-static/range {v22 .. v23}, Ljava/lang/Math;->sin(D)D
 
-    mul-float v21, v21, v22
+    move-result-wide v22
 
-    move/from16 v0, v21
+    invoke-static {v10, v11}, Ljava/lang/Math;->sin(D)D
 
-    float-to-double v0, v0
-
-    move-wide/from16 v21, v0
-
-    add-double v16, v19, v21
-
-    .line 91
-    .local v16, solarTransitJ2000:D
-    invoke-static {v15}, Landroid/util/FloatMath;->sin(F)F
-
-    move-result v19
-
-    const v20, 0x3ed18d1c
-
-    invoke-static/range {v20 .. v20}, Landroid/util/FloatMath;->sin(F)F
-
-    move-result v20
-
-    mul-float v19, v19, v20
-
-    move/from16 v0, v19
-
-    float-to-double v0, v0
-
-    move-wide/from16 v19, v0
-
-    invoke-static/range {v19 .. v20}, Ljava/lang/Math;->asin(D)D
-
-    move-result-wide v13
-
-    .line 93
-    .local v13, solarDec:D
-    const-wide v19, 0x3f91df46a0000000L
-
-    mul-double v9, p3, v19
+    move-result-wide v24
 
     .line 95
-    .local v9, latRad:D
-    const v19, -0x422988b0
+    invoke-static {v14, v15}, Ljava/lang/Math;->sin(D)D
 
-    invoke-static/range {v19 .. v19}, Landroid/util/FloatMath;->sin(F)F
+    move-result-wide v26
 
-    move-result v19
+    .line 94
+    mul-double v24, v24, v26
 
-    move/from16 v0, v19
+    sub-double v22, v22, v24
 
-    float-to-double v0, v0
+    .line 95
+    invoke-static {v10, v11}, Ljava/lang/Math;->cos(D)D
 
-    move-wide/from16 v19, v0
+    move-result-wide v24
 
-    invoke-static {v9, v10}, Ljava/lang/Math;->sin(D)D
+    invoke-static {v14, v15}, Ljava/lang/Math;->cos(D)D
 
-    move-result-wide v21
+    move-result-wide v26
 
-    invoke-static {v13, v14}, Ljava/lang/Math;->sin(D)D
+    mul-double v24, v24, v26
 
-    move-result-wide v23
+    .line 94
+    div-double v6, v22, v24
 
-    mul-double v21, v21, v23
+    .line 98
+    .local v6, "cosHourAngle":D
+    const-wide/high16 v22, 0x3ff0000000000000L    # 1.0
 
-    sub-double v19, v19, v21
+    cmpl-double v22, v6, v22
 
-    invoke-static {v9, v10}, Ljava/lang/Math;->cos(D)D
-
-    move-result-wide v21
-
-    invoke-static {v13, v14}, Ljava/lang/Math;->cos(D)D
-
-    move-result-wide v23
-
-    mul-double v21, v21, v23
-
-    div-double v5, v19, v21
+    if-ltz v22, :cond_0
 
     .line 99
-    .local v5, cosHourAngle:D
-    const-wide/high16 v19, 0x3ff0
+    const/16 v22, 0x1
 
-    cmpl-double v19, v5, v19
+    move/from16 v0, v22
 
-    if-ltz v19, :cond_0
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lcom/android/server/TwilightCalculator;->mState:I
 
     .line 100
-    const/16 v19, 0x1
+    const-wide/16 v22, -0x1
 
-    move/from16 v0, v19
+    move-wide/from16 v0, v22
 
-    move-object/from16 v1, p0
+    move-object/from16 v2, p0
 
-    iput v0, v1, Lcom/android/server/TwilightCalculator;->mState:I
+    iput-wide v0, v2, Lcom/android/server/TwilightCalculator;->mSunset:J
 
     .line 101
-    const-wide/16 v19, -0x1
+    const-wide/16 v22, -0x1
 
-    move-wide/from16 v0, v19
-
-    move-object/from16 v2, p0
-
-    iput-wide v0, v2, Lcom/android/server/TwilightCalculator;->mSunset:J
-
-    .line 102
-    const-wide/16 v19, -0x1
-
-    move-wide/from16 v0, v19
+    move-wide/from16 v0, v22
 
     move-object/from16 v2, p0
 
     iput-wide v0, v2, Lcom/android/server/TwilightCalculator;->mSunrise:J
 
-    .line 121
-    :goto_0
+    .line 102
     return-void
 
-    .line 104
+    .line 103
     :cond_0
-    const-wide/high16 v19, -0x4010
+    const-wide/high16 v22, -0x4010000000000000L    # -1.0
 
-    cmpg-double v19, v5, v19
+    cmpg-double v22, v6, v22
 
-    if-gtz v19, :cond_1
+    if-gtz v22, :cond_1
 
-    .line 105
-    const/16 v19, 0x0
+    .line 104
+    const/16 v22, 0x0
 
-    move/from16 v0, v19
+    move/from16 v0, v22
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/server/TwilightCalculator;->mState:I
 
-    .line 106
-    const-wide/16 v19, -0x1
+    .line 105
+    const-wide/16 v22, -0x1
 
-    move-wide/from16 v0, v19
+    move-wide/from16 v0, v22
 
     move-object/from16 v2, p0
 
     iput-wide v0, v2, Lcom/android/server/TwilightCalculator;->mSunset:J
+
+    .line 106
+    const-wide/16 v22, -0x1
+
+    move-wide/from16 v0, v22
+
+    move-object/from16 v2, p0
+
+    iput-wide v0, v2, Lcom/android/server/TwilightCalculator;->mSunrise:J
 
     .line 107
-    const-wide/16 v19, -0x1
+    return-void
 
-    move-wide/from16 v0, v19
-
-    move-object/from16 v2, p0
-
-    iput-wide v0, v2, Lcom/android/server/TwilightCalculator;->mSunrise:J
-
-    goto :goto_0
-
-    .line 111
+    .line 110
     :cond_1
-    invoke-static {v5, v6}, Ljava/lang/Math;->acos(D)D
+    invoke-static {v6, v7}, Ljava/lang/Math;->acos(D)D
 
-    move-result-wide v19
+    move-result-wide v22
 
-    const-wide v21, 0x401921fb54442d18L
+    const-wide v24, 0x401921fb54442d18L    # 6.283185307179586
 
-    div-double v19, v19, v21
+    div-double v22, v22, v24
 
-    move-wide/from16 v0, v19
+    move-wide/from16 v0, v22
 
-    double-to-float v8, v0
+    double-to-float v9, v0
 
-    .line 113
-    .local v8, hourAngle:F
-    float-to-double v0, v8
+    .line 112
+    .local v9, "hourAngle":F
+    float-to-double v0, v9
 
-    move-wide/from16 v19, v0
+    move-wide/from16 v22, v0
 
-    add-double v19, v19, v16
+    add-double v22, v22, v18
 
-    const-wide v21, 0x4194997000000000L
+    const-wide v24, 0x4194997000000000L    # 8.64E7
 
-    mul-double v19, v19, v21
+    mul-double v22, v22, v24
 
-    invoke-static/range {v19 .. v20}, Ljava/lang/Math;->round(D)J
+    invoke-static/range {v22 .. v23}, Ljava/lang/Math;->round(D)J
 
-    move-result-wide v19
+    move-result-wide v22
 
-    const-wide v21, 0xdc6d62da00L
+    const-wide v24, 0xdc6d62da00L
 
-    add-long v19, v19, v21
+    add-long v22, v22, v24
 
-    move-wide/from16 v0, v19
+    move-wide/from16 v0, v22
 
     move-object/from16 v2, p0
 
     iput-wide v0, v2, Lcom/android/server/TwilightCalculator;->mSunset:J
 
-    .line 114
-    float-to-double v0, v8
+    .line 113
+    float-to-double v0, v9
 
-    move-wide/from16 v19, v0
+    move-wide/from16 v22, v0
 
-    sub-double v19, v16, v19
+    sub-double v22, v18, v22
 
-    const-wide v21, 0x4194997000000000L
+    const-wide v24, 0x4194997000000000L    # 8.64E7
 
-    mul-double v19, v19, v21
+    mul-double v22, v22, v24
 
-    invoke-static/range {v19 .. v20}, Ljava/lang/Math;->round(D)J
+    invoke-static/range {v22 .. v23}, Ljava/lang/Math;->round(D)J
 
-    move-result-wide v19
+    move-result-wide v22
 
-    const-wide v21, 0xdc6d62da00L
+    const-wide v24, 0xdc6d62da00L
 
-    add-long v19, v19, v21
+    add-long v22, v22, v24
 
-    move-wide/from16 v0, v19
+    move-wide/from16 v0, v22
 
     move-object/from16 v2, p0
 
     iput-wide v0, v2, Lcom/android/server/TwilightCalculator;->mSunrise:J
 
-    .line 116
+    .line 115
     move-object/from16 v0, p0
 
     iget-wide v0, v0, Lcom/android/server/TwilightCalculator;->mSunrise:J
 
-    move-wide/from16 v19, v0
+    move-wide/from16 v22, v0
 
-    cmp-long v19, v19, p1
+    cmp-long v22, v22, p1
 
-    if-gez v19, :cond_2
+    if-gez v22, :cond_2
 
     move-object/from16 v0, p0
 
     iget-wide v0, v0, Lcom/android/server/TwilightCalculator;->mSunset:J
 
-    move-wide/from16 v19, v0
+    move-wide/from16 v22, v0
 
-    cmp-long v19, v19, p1
+    cmp-long v22, v22, p1
 
-    if-lez v19, :cond_2
+    if-lez v22, :cond_2
 
-    .line 117
-    const/16 v19, 0x0
+    .line 116
+    const/16 v22, 0x0
 
-    move/from16 v0, v19
+    move/from16 v0, v22
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/server/TwilightCalculator;->mState:I
 
-    goto/16 :goto_0
+    .line 70
+    :goto_0
+    return-void
 
-    .line 119
+    .line 118
     :cond_2
-    const/16 v19, 0x1
+    const/16 v22, 0x1
 
-    move/from16 v0, v19
+    move/from16 v0, v22
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/server/TwilightCalculator;->mState:I
 
-    goto/16 :goto_0
+    goto :goto_0
 .end method

@@ -10,7 +10,7 @@
 # direct methods
 .method protected constructor <init>(Ljava/lang/String;)V
     .locals 1
-    .parameter "tag"
+    .param p1, "tag"    # Ljava/lang/String;
 
     .prologue
     .line 27
@@ -30,7 +30,7 @@
     :cond_0
     iput-object p1, p0, Lcom/android/server/firewall/FilterFactory;->mTag:Ljava/lang/String;
 
-    .line 32
+    .line 27
     return-void
 .end method
 

@@ -28,8 +28,8 @@
 # direct methods
 .method public constructor <init>(Lcom/android/server/CountryDetectorService;Landroid/location/ICountryListener;)V
     .locals 1
-    .parameter
-    .parameter "listener"
+    .param p1, "this$0"    # Lcom/android/server/CountryDetectorService;
+    .param p2, "listener"    # Landroid/location/ICountryListener;
 
     .prologue
     .line 54
@@ -47,7 +47,7 @@
 
     iput-object v0, p0, Lcom/android/server/CountryDetectorService$Receiver;->mKey:Landroid/os/IBinder;
 
-    .line 57
+    .line 54
     return-void
 .end method
 
@@ -62,16 +62,15 @@
 
     iget-object v1, p0, Lcom/android/server/CountryDetectorService$Receiver;->mKey:Landroid/os/IBinder;
 
-    #calls: Lcom/android/server/CountryDetectorService;->removeListener(Landroid/os/IBinder;)V
-    invoke-static {v0, v1}, Lcom/android/server/CountryDetectorService;->access$000(Lcom/android/server/CountryDetectorService;Landroid/os/IBinder;)V
+    invoke-static {v0, v1}, Lcom/android/server/CountryDetectorService;->-wrap0(Lcom/android/server/CountryDetectorService;Landroid/os/IBinder;)V
 
-    .line 61
+    .line 59
     return-void
 .end method
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 2
-    .parameter "otherObj"
+    .param p1, "otherObj"    # Ljava/lang/Object;
 
     .prologue
     .line 65
@@ -84,22 +83,21 @@
 
     check-cast p1, Lcom/android/server/CountryDetectorService$Receiver;
 
-    .end local p1
+    .end local p1    # "otherObj":Ljava/lang/Object;
     iget-object v1, p1, Lcom/android/server/CountryDetectorService$Receiver;->mKey:Landroid/os/IBinder;
 
     invoke-virtual {v0, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
-    .line 68
-    :goto_0
     return v0
 
-    .restart local p1
+    .line 68
+    .restart local p1    # "otherObj":Ljava/lang/Object;
     :cond_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public getListener()Landroid/location/ICountryListener;

@@ -17,3 +17,6 @@
 # virtual methods
 .method public abstract notifyWiredAccessoryChanged(JII)V
 .end method
+
+.method public abstract systemReady()V
+.end method

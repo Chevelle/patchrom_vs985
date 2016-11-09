@@ -1,25 +1,32 @@
-.class final Lcom/android/server/SystemServer$1;
+.class Lcom/android/server/SystemServer$1;
 .super Ljava/util/TimerTask;
 .source "SystemServer.java"
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/SystemServer;->main([Ljava/lang/String;)V
+    value = Lcom/android/server/SystemServer;->run()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x8
+    accessFlags = 0x0
     name = null
 .end annotation
 
 
+# instance fields
+.field final synthetic this$0:Lcom/android/server/SystemServer;
+
+
 # direct methods
-.method constructor <init>()V
+.method constructor <init>(Lcom/android/server/SystemServer;)V
     .locals 0
+    .param p1, "this$0"    # Lcom/android/server/SystemServer;
 
     .prologue
-    .line 1191
+    .line 235
+    iput-object p1, p0, Lcom/android/server/SystemServer$1;->this$0:Lcom/android/server/SystemServer;
+
     invoke-direct {p0}, Ljava/util/TimerTask;-><init>()V
 
     return-void
@@ -31,13 +38,13 @@
     .locals 2
 
     .prologue
-    .line 1194
-    const-string v0, "system_server"
+    .line 238
+    const-string/jumbo v0, "system_server"
 
     const/4 v1, 0x0
 
     invoke-static {v0, v1}, Lcom/android/internal/os/SamplingProfilerIntegration;->writeSnapshot(Ljava/lang/String;Landroid/content/pm/PackageInfo;)V
 
-    .line 1195
+    .line 237
     return-void
 .end method

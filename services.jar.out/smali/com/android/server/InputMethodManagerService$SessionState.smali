@@ -9,7 +9,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x8
     name = "SessionState"
 .end annotation
 
@@ -23,37 +23,32 @@
 
 .field session:Lcom/android/internal/view/IInputMethodSession;
 
-.field final synthetic this$0:Lcom/android/server/InputMethodManagerService;
-
 
 # direct methods
-.method constructor <init>(Lcom/android/server/InputMethodManagerService;Lcom/android/server/InputMethodManagerService$ClientState;Lcom/android/internal/view/IInputMethod;Lcom/android/internal/view/IInputMethodSession;Landroid/view/InputChannel;)V
+.method constructor <init>(Lcom/android/server/InputMethodManagerService$ClientState;Lcom/android/internal/view/IInputMethod;Lcom/android/internal/view/IInputMethodSession;Landroid/view/InputChannel;)V
     .locals 0
-    .parameter
-    .parameter "_client"
-    .parameter "_method"
-    .parameter "_session"
-    .parameter "_channel"
+    .param p1, "_client"    # Lcom/android/server/InputMethodManagerService$ClientState;
+    .param p2, "_method"    # Lcom/android/internal/view/IInputMethod;
+    .param p3, "_session"    # Lcom/android/internal/view/IInputMethodSession;
+    .param p4, "_channel"    # Landroid/view/InputChannel;
 
     .prologue
-    .line 223
-    iput-object p1, p0, Lcom/android/server/InputMethodManagerService$SessionState;->this$0:Lcom/android/server/InputMethodManagerService;
-
+    .line 245
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 224
-    iput-object p2, p0, Lcom/android/server/InputMethodManagerService$SessionState;->client:Lcom/android/server/InputMethodManagerService$ClientState;
+    .line 247
+    iput-object p1, p0, Lcom/android/server/InputMethodManagerService$SessionState;->client:Lcom/android/server/InputMethodManagerService$ClientState;
 
-    .line 225
-    iput-object p3, p0, Lcom/android/server/InputMethodManagerService$SessionState;->method:Lcom/android/internal/view/IInputMethod;
+    .line 248
+    iput-object p2, p0, Lcom/android/server/InputMethodManagerService$SessionState;->method:Lcom/android/internal/view/IInputMethod;
 
-    .line 226
-    iput-object p4, p0, Lcom/android/server/InputMethodManagerService$SessionState;->session:Lcom/android/internal/view/IInputMethodSession;
+    .line 249
+    iput-object p3, p0, Lcom/android/server/InputMethodManagerService$SessionState;->session:Lcom/android/internal/view/IInputMethodSession;
 
-    .line 227
-    iput-object p5, p0, Lcom/android/server/InputMethodManagerService$SessionState;->channel:Landroid/view/InputChannel;
+    .line 250
+    iput-object p4, p0, Lcom/android/server/InputMethodManagerService$SessionState;->channel:Landroid/view/InputChannel;
 
-    .line 228
+    .line 246
     return-void
 .end method
 
@@ -63,12 +58,12 @@
     .locals 2
 
     .prologue
-    .line 213
+    .line 236
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "SessionState{uid "
+    const-string/jumbo v1, "SessionState{uid "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -82,7 +77,7 @@
 
     move-result-object v0
 
-    const-string v1, " pid "
+    const-string/jumbo v1, " pid "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -96,60 +91,76 @@
 
     move-result-object v0
 
-    const-string v1, " method "
+    .line 237
+    const-string/jumbo v1, " method "
 
+    .line 236
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 238
     iget-object v1, p0, Lcom/android/server/InputMethodManagerService$SessionState;->method:Lcom/android/internal/view/IInputMethod;
 
     invoke-static {v1}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     move-result v1
 
+    .line 237
     invoke-static {v1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
     move-result-object v1
 
+    .line 236
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " session "
+    .line 239
+    const-string/jumbo v1, " session "
 
+    .line 236
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 240
     iget-object v1, p0, Lcom/android/server/InputMethodManagerService$SessionState;->session:Lcom/android/internal/view/IInputMethodSession;
 
     invoke-static {v1}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     move-result v1
 
+    .line 239
     invoke-static {v1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
     move-result-object v1
 
+    .line 236
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " channel "
+    .line 241
+    const-string/jumbo v1, " channel "
 
+    .line 236
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 241
     iget-object v1, p0, Lcom/android/server/InputMethodManagerService$SessionState;->channel:Landroid/view/InputChannel;
 
+    .line 236
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "}"
+    .line 242
+    const-string/jumbo v1, "}"
 
+    .line 236
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0

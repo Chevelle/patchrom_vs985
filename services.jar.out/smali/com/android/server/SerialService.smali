@@ -12,7 +12,7 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 2
-    .parameter "context"
+    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
     .line 31
@@ -26,15 +26,17 @@
 
     move-result-object v0
 
-    const v1, 0x1070018
+    .line 34
+    const v1, 0x107001b
 
+    .line 33
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/server/SerialService;->mSerialPorts:[Ljava/lang/String;
 
-    .line 35
+    .line 31
     return-void
 .end method
 
@@ -50,7 +52,7 @@
     .line 38
     iget-object v4, p0, Lcom/android/server/SerialService;->mContext:Landroid/content/Context;
 
-    const-string v5, "android.permission.SERIAL_PORT"
+    const-string/jumbo v5, "android.permission.SERIAL_PORT"
 
     const/4 v6, 0x0
 
@@ -62,10 +64,10 @@
     invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
 
     .line 41
-    .local v2, ports:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/String;>;"
+    .local v2, "ports":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     iget-object v4, p0, Lcom/android/server/SerialService;->mSerialPorts:[Ljava/lang/String;
 
@@ -79,7 +81,7 @@
     aget-object v1, v4, v0
 
     .line 43
-    .local v1, path:Ljava/lang/String;
+    .local v1, "path":Ljava/lang/String;
     new-instance v4, Ljava/io/File;
 
     invoke-direct {v4, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
@@ -100,7 +102,7 @@
     goto :goto_0
 
     .line 47
-    .end local v1           #path:Ljava/lang/String;
+    .end local v1    # "path":Ljava/lang/String;
     :cond_1
     invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
 
@@ -109,7 +111,7 @@
     new-array v3, v4, [Ljava/lang/String;
 
     .line 48
-    .local v3, result:[Ljava/lang/String;
+    .local v3, "result":[Ljava/lang/String;
     invoke-virtual {v2, v3}, Ljava/util/ArrayList;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
 
     .line 49
@@ -118,13 +120,13 @@
 
 .method public openSerialPort(Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     .locals 4
-    .parameter "path"
+    .param p1, "path"    # Ljava/lang/String;
 
     .prologue
     .line 53
     iget-object v1, p0, Lcom/android/server/SerialService;->mContext:Landroid/content/Context;
 
-    const-string v2, "android.permission.SERIAL_PORT"
+    const-string/jumbo v2, "android.permission.SERIAL_PORT"
 
     const/4 v3, 0x0
 
@@ -133,7 +135,7 @@
     .line 54
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     iget-object v1, p0, Lcom/android/server/SerialService;->mSerialPorts:[Ljava/lang/String;
 
@@ -173,7 +175,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Invalid serial port "
+    const-string/jumbo v3, "Invalid serial port "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

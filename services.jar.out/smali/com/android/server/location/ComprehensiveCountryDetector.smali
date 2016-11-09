@@ -3,6 +3,14 @@
 .source "ComprehensiveCountryDetector.java"
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/server/location/ComprehensiveCountryDetector$1;
+    }
+.end annotation
+
+
 # static fields
 .field static final DEBUG:Z = false
 
@@ -57,42 +65,113 @@
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;)V
+.method static synthetic -get0(Lcom/android/server/location/ComprehensiveCountryDetector;)I
     .locals 1
-    .parameter "context"
+
+    iget v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mCountServiceStateChanges:I
+
+    return v0
+.end method
+
+.method static synthetic -get1(Lcom/android/server/location/ComprehensiveCountryDetector;)I
+    .locals 1
+
+    iget v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTotalCountServiceStateChanges:I
+
+    return v0
+.end method
+
+.method static synthetic -set0(Lcom/android/server/location/ComprehensiveCountryDetector;I)I
+    .locals 0
+
+    iput p1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mCountServiceStateChanges:I
+
+    return p1
+.end method
+
+.method static synthetic -set1(Lcom/android/server/location/ComprehensiveCountryDetector;Landroid/location/Country;)Landroid/location/Country;
+    .locals 0
+
+    iput-object p1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mCountryFromLocation:Landroid/location/Country;
+
+    return-object p1
+.end method
+
+.method static synthetic -set2(Lcom/android/server/location/ComprehensiveCountryDetector;I)I
+    .locals 0
+
+    iput p1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTotalCountServiceStateChanges:I
+
+    return p1
+.end method
+
+.method static synthetic -wrap0(Lcom/android/server/location/ComprehensiveCountryDetector;ZZ)Landroid/location/Country;
+    .locals 1
+    .param p1, "notifyChange"    # Z
+    .param p2, "startLocationBasedDetection"    # Z
 
     .prologue
-    .line 145
+    invoke-direct {p0, p1, p2}, Lcom/android/server/location/ComprehensiveCountryDetector;->detectCountry(ZZ)Landroid/location/Country;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static synthetic -wrap1(Lcom/android/server/location/ComprehensiveCountryDetector;)Z
+    .locals 1
+
+    invoke-direct {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->isNetworkCountryCodeAvailable()Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap2(Lcom/android/server/location/ComprehensiveCountryDetector;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->stopLocationBasedDetector()V
+
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/content/Context;)V
+    .locals 1
+    .param p1, "context"    # Landroid/content/Context;
+
+    .prologue
+    .line 144
     invoke-direct {p0, p1}, Lcom/android/server/location/CountryDetectorBase;-><init>(Landroid/content/Context;)V
 
-    .line 80
+    .line 79
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStopped:Z
 
-    .line 88
+    .line 87
     new-instance v0, Ljava/util/concurrent/ConcurrentLinkedQueue;
 
     invoke-direct {v0}, Ljava/util/concurrent/ConcurrentLinkedQueue;-><init>()V
 
     iput-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mDebugLogs:Ljava/util/concurrent/ConcurrentLinkedQueue;
 
-    .line 101
+    .line 100
     new-instance v0, Ljava/lang/Object;
 
     invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     iput-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mObject:Ljava/lang/Object;
 
-    .line 133
+    .line 132
     new-instance v0, Lcom/android/server/location/ComprehensiveCountryDetector$1;
 
     invoke-direct {v0, p0}, Lcom/android/server/location/ComprehensiveCountryDetector$1;-><init>(Lcom/android/server/location/ComprehensiveCountryDetector;)V
 
     iput-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationBasedCountryDetectionListener:Landroid/location/CountryListener;
 
-    .line 146
-    const-string v0, "phone"
+    .line 145
+    const-string/jumbo v0, "phone"
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
@@ -102,110 +181,28 @@
 
     iput-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTelephonyManager:Landroid/telephony/TelephonyManager;
 
-    .line 147
+    .line 143
     return-void
-.end method
-
-.method static synthetic access$002(Lcom/android/server/location/ComprehensiveCountryDetector;Landroid/location/Country;)Landroid/location/Country;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 59
-    iput-object p1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mCountryFromLocation:Landroid/location/Country;
-
-    return-object p1
-.end method
-
-.method static synthetic access$100(Lcom/android/server/location/ComprehensiveCountryDetector;ZZ)Landroid/location/Country;
-    .locals 1
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
-
-    .prologue
-    .line 59
-    invoke-direct {p0, p1, p2}, Lcom/android/server/location/ComprehensiveCountryDetector;->detectCountry(ZZ)Landroid/location/Country;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method static synthetic access$200(Lcom/android/server/location/ComprehensiveCountryDetector;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 59
-    invoke-direct {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->stopLocationBasedDetector()V
-
-    return-void
-.end method
-
-.method static synthetic access$308(Lcom/android/server/location/ComprehensiveCountryDetector;)I
-    .locals 2
-    .parameter "x0"
-
-    .prologue
-    .line 59
-    iget v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mCountServiceStateChanges:I
-
-    add-int/lit8 v1, v0, 0x1
-
-    iput v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mCountServiceStateChanges:I
-
-    return v0
-.end method
-
-.method static synthetic access$408(Lcom/android/server/location/ComprehensiveCountryDetector;)I
-    .locals 2
-    .parameter "x0"
-
-    .prologue
-    .line 59
-    iget v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTotalCountServiceStateChanges:I
-
-    add-int/lit8 v1, v0, 0x1
-
-    iput v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTotalCountServiceStateChanges:I
-
-    return v0
-.end method
-
-.method static synthetic access$500(Lcom/android/server/location/ComprehensiveCountryDetector;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 59
-    invoke-direct {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->isNetworkCountryCodeAvailable()Z
-
-    move-result v0
-
-    return v0
 .end method
 
 .method private addToLogs(Landroid/location/Country;)V
     .locals 2
-    .parameter "country"
+    .param p1, "country"    # Landroid/location/Country;
 
     .prologue
-    .line 189
+    .line 188
     if-nez p1, :cond_0
 
-    .line 209
-    :goto_0
+    .line 189
     return-void
 
-    .line 195
+    .line 194
     :cond_0
     iget-object v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mObject:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 196
+    .line 195
     :try_start_0
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLastCountryAddedToLogs:Landroid/location/Country;
 
@@ -214,37 +211,28 @@
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLastCountryAddedToLogs:Landroid/location/Country;
 
     invoke-virtual {v0, p1}, Landroid/location/Country;->equals(Ljava/lang/Object;)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result v0
 
     if-eqz v0, :cond_1
 
-    .line 197
     monitor-exit v1
 
-    goto :goto_0
+    .line 196
+    return-void
 
-    .line 200
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    throw v0
-
-    .line 199
+    .line 198
     :cond_1
     :try_start_1
     iput-object p1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLastCountryAddedToLogs:Landroid/location/Country;
-
-    .line 200
-    monitor-exit v1
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 202
+    monitor-exit v1
+
+    .line 201
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mDebugLogs:Ljava/util/concurrent/ConcurrentLinkedQueue;
 
     invoke-virtual {v0}, Ljava/util/concurrent/ConcurrentLinkedQueue;->size()I
@@ -255,51 +243,59 @@
 
     if-lt v0, v1, :cond_2
 
-    .line 203
+    .line 202
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mDebugLogs:Ljava/util/concurrent/ConcurrentLinkedQueue;
 
     invoke-virtual {v0}, Ljava/util/concurrent/ConcurrentLinkedQueue;->poll()Ljava/lang/Object;
 
-    .line 208
+    .line 207
     :cond_2
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mDebugLogs:Ljava/util/concurrent/ConcurrentLinkedQueue;
 
     invoke-virtual {v0, p1}, Ljava/util/concurrent/ConcurrentLinkedQueue;->add(Ljava/lang/Object;)Z
 
-    goto :goto_0
+    .line 187
+    return-void
+
+    .line 194
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+
+    throw v0
 .end method
 
 .method private declared-synchronized cancelLocationRefresh()V
     .locals 1
 
     .prologue
-    .line 430
     monitor-enter p0
 
+    .line 429
     :try_start_0
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationRefreshTimer:Ljava/util/Timer;
 
     if-eqz v0, :cond_0
 
-    .line 431
+    .line 430
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationRefreshTimer:Ljava/util/Timer;
 
     invoke-virtual {v0}, Ljava/util/Timer;->cancel()V
 
-    .line 432
+    .line 431
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationRefreshTimer:Ljava/util/Timer;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 434
     :cond_0
     monitor-exit p0
 
+    .line 428
     return-void
 
-    .line 430
     :catchall_0
     move-exception v0
 
@@ -310,17 +306,17 @@
 
 .method private detectCountry(ZZ)Landroid/location/Country;
     .locals 3
-    .parameter "notifyChange"
-    .parameter "startLocationBasedDetection"
+    .param p1, "notifyChange"    # Z
+    .param p2, "startLocationBasedDetection"    # Z
 
     .prologue
-    .line 272
+    .line 271
     invoke-direct {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->getCountry()Landroid/location/Country;
 
     move-result-object v0
 
-    .line 273
-    .local v0, country:Landroid/location/Country;
+    .line 272
+    .local v0, "country":Landroid/location/Country;
     iget-object v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mCountry:Landroid/location/Country;
 
     if-eqz v1, :cond_0
@@ -334,15 +330,15 @@
     :goto_0
     invoke-virtual {p0, v1, v0, p1, p2}, Lcom/android/server/location/ComprehensiveCountryDetector;->runAfterDetectionAsync(Landroid/location/Country;Landroid/location/Country;ZZ)V
 
-    .line 275
+    .line 274
     iput-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mCountry:Landroid/location/Country;
 
-    .line 276
+    .line 275
     iget-object v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mCountry:Landroid/location/Country;
 
     return-object v1
 
-    .line 273
+    .line 272
     :cond_0
     iget-object v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mCountry:Landroid/location/Country;
 
@@ -353,46 +349,47 @@
     .locals 1
 
     .prologue
-    .line 170
+    .line 169
     const/4 v0, 0x0
 
-    .line 171
-    .local v0, result:Landroid/location/Country;
+    .line 170
+    .local v0, "result":Landroid/location/Country;
     invoke-virtual {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->getNetworkBasedCountry()Landroid/location/Country;
 
     move-result-object v0
 
-    .line 172
+    .line 171
+    .local v0, "result":Landroid/location/Country;
     if-nez v0, :cond_0
 
-    .line 173
+    .line 172
     invoke-virtual {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->getLastKnownLocationBasedCountry()Landroid/location/Country;
 
     move-result-object v0
 
-    .line 175
+    .line 174
     :cond_0
     if-nez v0, :cond_1
 
-    .line 176
+    .line 175
     invoke-virtual {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->getSimBasedCountry()Landroid/location/Country;
 
     move-result-object v0
 
-    .line 178
+    .line 177
     :cond_1
     if-nez v0, :cond_2
 
-    .line 179
+    .line 178
     invoke-virtual {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->getLocaleCountry()Landroid/location/Country;
 
     move-result-object v0
 
-    .line 181
+    .line 180
     :cond_2
     invoke-direct {p0, v0}, Lcom/android/server/location/ComprehensiveCountryDetector;->addToLogs(Landroid/location/Country;)V
 
-    .line 182
+    .line 181
     return-object v0
 .end method
 
@@ -402,15 +399,15 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 214
+    .line 213
     iget-object v2, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTelephonyManager:Landroid/telephony/TelephonyManager;
 
     invoke-virtual {v2}, Landroid/telephony/TelephonyManager;->getPhoneType()I
 
     move-result v0
 
-    .line 216
-    .local v0, phoneType:I
+    .line 215
+    .local v0, "phoneType":I
     if-ne v0, v1, :cond_0
 
     :goto_0
@@ -424,41 +421,45 @@
 
 .method private notifyIfCountryChanged(Landroid/location/Country;Landroid/location/Country;)V
     .locals 1
-    .parameter "country"
-    .parameter "detectedCountry"
+    .param p1, "country"    # Landroid/location/Country;
+    .param p2, "detectedCountry"    # Landroid/location/Country;
 
     .prologue
-    .line 395
-    if-eqz p2, :cond_1
+    .line 394
+    if-eqz p2, :cond_0
 
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mListener:Landroid/location/CountryListener;
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_0
 
-    if-eqz p1, :cond_0
+    .line 395
+    if-eqz p1, :cond_1
 
     invoke-virtual {p1, p2}, Landroid/location/Country;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-nez v0, :cond_1
+    if-eqz v0, :cond_1
 
-    .line 400
+    .line 393
     :cond_0
+    :goto_0
+    return-void
+
+    .line 399
+    :cond_1
     invoke-virtual {p0, p2}, Lcom/android/server/location/ComprehensiveCountryDetector;->notifyListener(Landroid/location/Country;)V
 
-    .line 402
-    :cond_1
-    return-void
+    goto :goto_0
 .end method
 
 .method private declared-synchronized scheduleLocationRefresh()V
     .locals 4
 
     .prologue
-    .line 408
     monitor-enter p0
 
+    .line 407
     :try_start_0
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationRefreshTimer:Ljava/util/Timer;
     :try_end_0
@@ -466,13 +467,11 @@
 
     if-eqz v0, :cond_0
 
-    .line 424
-    :goto_0
     monitor-exit p0
 
     return-void
 
-    .line 413
+    .line 412
     :cond_0
     :try_start_1
     new-instance v0, Ljava/util/Timer;
@@ -481,22 +480,26 @@
 
     iput-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationRefreshTimer:Ljava/util/Timer;
 
-    .line 414
+    .line 413
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationRefreshTimer:Ljava/util/Timer;
 
     new-instance v1, Lcom/android/server/location/ComprehensiveCountryDetector$3;
 
     invoke-direct {v1, p0}, Lcom/android/server/location/ComprehensiveCountryDetector$3;-><init>(Lcom/android/server/location/ComprehensiveCountryDetector;)V
 
+    .line 422
     const-wide/32 v2, 0x5265c00
 
+    .line 413
     invoke-virtual {v0, v1, v2, v3}, Ljava/util/Timer;->schedule(Ljava/util/TimerTask;J)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    goto :goto_0
+    monitor-exit p0
 
-    .line 408
+    .line 406
+    return-void
+
     :catchall_0
     move-exception v0
 
@@ -507,12 +510,12 @@
 
 .method private declared-synchronized startLocationBasedDetector(Landroid/location/CountryListener;)V
     .locals 1
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/location/CountryListener;
 
     .prologue
-    .line 359
     monitor-enter p0
 
+    .line 358
     :try_start_0
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationBasedCountryDetector:Lcom/android/server/location/CountryDetectorBase;
     :try_end_0
@@ -520,13 +523,12 @@
 
     if-eqz v0, :cond_0
 
-    .line 369
-    :goto_0
     monitor-exit p0
 
+    .line 359
     return-void
 
-    .line 366
+    .line 365
     :cond_0
     :try_start_1
     invoke-virtual {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->createLocationBasedCountryDetector()Lcom/android/server/location/CountryDetectorBase;
@@ -535,21 +537,23 @@
 
     iput-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationBasedCountryDetector:Lcom/android/server/location/CountryDetectorBase;
 
-    .line 367
+    .line 366
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationBasedCountryDetector:Lcom/android/server/location/CountryDetectorBase;
 
     invoke-virtual {v0, p1}, Lcom/android/server/location/CountryDetectorBase;->setCountryListener(Landroid/location/CountryListener;)V
 
-    .line 368
+    .line 367
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationBasedCountryDetector:Lcom/android/server/location/CountryDetectorBase;
 
     invoke-virtual {v0}, Lcom/android/server/location/CountryDetectorBase;->detectCountry()Landroid/location/Country;
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    goto :goto_0
+    monitor-exit p0
 
-    .line 359
+    .line 357
+    return-void
+
     :catchall_0
     move-exception v0
 
@@ -562,33 +566,32 @@
     .locals 1
 
     .prologue
-    .line 376
     monitor-enter p0
 
+    .line 375
     :try_start_0
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationBasedCountryDetector:Lcom/android/server/location/CountryDetectorBase;
 
     if-eqz v0, :cond_0
 
-    .line 377
+    .line 376
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationBasedCountryDetector:Lcom/android/server/location/CountryDetectorBase;
 
     invoke-virtual {v0}, Lcom/android/server/location/CountryDetectorBase;->stop()V
 
-    .line 378
+    .line 377
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationBasedCountryDetector:Lcom/android/server/location/CountryDetectorBase;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 380
     :cond_0
     monitor-exit p0
 
+    .line 370
     return-void
 
-    .line 376
     :catchall_0
     move-exception v0
 
@@ -603,22 +606,22 @@
     .locals 3
 
     .prologue
-    .line 437
     monitor-enter p0
 
+    .line 436
     :try_start_0
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mPhoneStateListener:Landroid/telephony/PhoneStateListener;
 
     if-nez v0, :cond_0
 
-    .line 438
+    .line 437
     new-instance v0, Lcom/android/server/location/ComprehensiveCountryDetector$4;
 
     invoke-direct {v0, p0}, Lcom/android/server/location/ComprehensiveCountryDetector$4;-><init>(Lcom/android/server/location/ComprehensiveCountryDetector;)V
 
     iput-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mPhoneStateListener:Landroid/telephony/PhoneStateListener;
 
-    .line 452
+    .line 451
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTelephonyManager:Landroid/telephony/TelephonyManager;
 
     iget-object v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mPhoneStateListener:Landroid/telephony/PhoneStateListener;
@@ -629,13 +632,12 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 454
     :cond_0
     monitor-exit p0
 
+    .line 435
     return-void
 
-    .line 437
     :catchall_0
     move-exception v0
 
@@ -648,7 +650,7 @@
     .locals 2
 
     .prologue
-    .line 383
+    .line 382
     new-instance v0, Lcom/android/server/location/LocationBasedCountryDetector;
 
     iget-object v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mContext:Landroid/content/Context;
@@ -664,12 +666,12 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 152
+    .line 151
     iget-boolean v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStopped:Z
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_0
 
-    const/4 v0, 0x1
+    move v0, v1
 
     :goto_0
     invoke-direct {p0, v1, v0}, Lcom/android/server/location/ComprehensiveCountryDetector;->detectCountry(ZZ)Landroid/location/Country;
@@ -679,7 +681,7 @@
     return-object v0
 
     :cond_0
-    move v0, v1
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method
@@ -688,7 +690,7 @@
     .locals 1
 
     .prologue
-    .line 237
+    .line 236
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mCountryFromLocation:Landroid/location/Country;
 
     return-object v0
@@ -698,16 +700,18 @@
     .locals 4
 
     .prologue
-    .line 256
+    const/4 v1, 0x0
+
+    .line 255
     invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
 
     move-result-object v0
 
-    .line 257
-    .local v0, defaultLocale:Ljava/util/Locale;
+    .line 256
+    .local v0, "defaultLocale":Ljava/util/Locale;
     if-eqz v0, :cond_0
 
-    .line 258
+    .line 257
     new-instance v1, Landroid/location/Country;
 
     invoke-virtual {v0}, Ljava/util/Locale;->getCountry()Ljava/lang/String;
@@ -718,99 +722,97 @@
 
     invoke-direct {v1, v2, v3}, Landroid/location/Country;-><init>(Ljava/lang/String;I)V
 
-    .line 260
-    :goto_0
     return-object v1
 
+    .line 259
     :cond_0
-    const/4 v1, 0x0
-
-    goto :goto_0
+    return-object v1
 .end method
 
 .method protected getNetworkBasedCountry()Landroid/location/Country;
     .locals 3
 
     .prologue
-    .line 223
+    .line 222
     const/4 v0, 0x0
 
-    .line 224
-    .local v0, countryIso:Ljava/lang/String;
+    .line 223
+    .local v0, "countryIso":Ljava/lang/String;
     invoke-direct {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->isNetworkCountryCodeAvailable()Z
 
     move-result v1
 
     if-eqz v1, :cond_0
 
-    .line 225
+    .line 224
     iget-object v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTelephonyManager:Landroid/telephony/TelephonyManager;
 
     invoke-virtual {v1}, Landroid/telephony/TelephonyManager;->getNetworkCountryIso()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 226
+    .line 225
+    .local v0, "countryIso":Ljava/lang/String;
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    .line 227
+    .line 226
     new-instance v1, Landroid/location/Country;
 
     const/4 v2, 0x0
 
     invoke-direct {v1, v0, v2}, Landroid/location/Country;-><init>(Ljava/lang/String;I)V
 
-    .line 230
-    :goto_0
     return-object v1
 
+    .line 229
+    .end local v0    # "countryIso":Ljava/lang/String;
     :cond_0
     const/4 v1, 0x0
 
-    goto :goto_0
+    return-object v1
 .end method
 
 .method protected getSimBasedCountry()Landroid/location/Country;
     .locals 3
 
     .prologue
-    .line 244
+    .line 243
     const/4 v0, 0x0
 
-    .line 245
-    .local v0, countryIso:Ljava/lang/String;
+    .line 244
+    .local v0, "countryIso":Ljava/lang/String;
     iget-object v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTelephonyManager:Landroid/telephony/TelephonyManager;
 
     invoke-virtual {v1}, Landroid/telephony/TelephonyManager;->getSimCountryIso()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 246
+    .line 245
+    .local v0, "countryIso":Ljava/lang/String;
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    .line 247
+    .line 246
     new-instance v1, Landroid/location/Country;
 
     const/4 v2, 0x2
 
     invoke-direct {v1, v0, v2}, Landroid/location/Country;-><init>(Ljava/lang/String;I)V
 
-    .line 249
-    :goto_0
     return-object v1
 
+    .line 248
     :cond_0
     const/4 v1, 0x0
 
-    goto :goto_0
+    return-object v1
 .end method
 
 .method protected isAirplaneModeOff()Z
@@ -826,8 +828,9 @@
 
     move-result-object v1
 
-    const-string v2, "airplane_mode_on"
+    const-string/jumbo v2, "airplane_mode_on"
 
+    .line 386
     invoke-static {v1, v2, v0}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
 
     move-result v1
@@ -844,7 +847,7 @@
     .locals 1
 
     .prologue
-    .line 464
+    .line 463
     invoke-static {}, Landroid/location/Geocoder;->isPresent()Z
 
     move-result v0
@@ -856,15 +859,15 @@
     .locals 3
 
     .prologue
-    .line 457
     monitor-enter p0
 
+    .line 456
     :try_start_0
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mPhoneStateListener:Landroid/telephony/PhoneStateListener;
 
     if-eqz v0, :cond_0
 
-    .line 458
+    .line 457
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTelephonyManager:Landroid/telephony/TelephonyManager;
 
     iget-object v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mPhoneStateListener:Landroid/telephony/PhoneStateListener;
@@ -873,20 +876,19 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/telephony/TelephonyManager;->listen(Landroid/telephony/PhoneStateListener;I)V
 
-    .line 459
+    .line 458
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mPhoneStateListener:Landroid/telephony/PhoneStateListener;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 461
     :cond_0
     monitor-exit p0
 
+    .line 455
     return-void
 
-    .line 457
     :catchall_0
     move-exception v0
 
@@ -897,39 +899,43 @@
 
 .method runAfterDetection(Landroid/location/Country;Landroid/location/Country;ZZ)V
     .locals 2
-    .parameter "country"
-    .parameter "detectedCountry"
-    .parameter "notifyChange"
-    .parameter "startLocationBasedDetection"
+    .param p1, "country"    # Landroid/location/Country;
+    .param p2, "detectedCountry"    # Landroid/location/Country;
+    .param p3, "notifyChange"    # Z
+    .param p4, "startLocationBasedDetection"    # Z
 
     .prologue
     const/4 v1, 0x1
 
-    .line 315
+    .line 314
     if-eqz p3, :cond_0
 
-    .line 316
+    .line 315
     invoke-direct {p0, p1, p2}, Lcom/android/server/location/ComprehensiveCountryDetector;->notifyIfCountryChanged(Landroid/location/Country;Landroid/location/Country;)V
 
-    .line 328
+    .line 327
     :cond_0
     if-eqz p4, :cond_2
 
     if-eqz p2, :cond_1
 
+    .line 328
     invoke-virtual {p2}, Landroid/location/Country;->getSource()I
 
     move-result v0
 
     if-le v0, v1, :cond_2
 
+    .line 329
     :cond_1
     invoke-virtual {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->isAirplaneModeOff()Z
 
     move-result v0
 
+    .line 327
     if-eqz v0, :cond_2
 
+    .line 329
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mListener:Landroid/location/CountryListener;
 
     if-eqz v0, :cond_2
@@ -938,36 +944,38 @@
 
     move-result v0
 
+    .line 327
     if-eqz v0, :cond_2
 
-    .line 337
+    .line 336
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mLocationBasedCountryDetectionListener:Landroid/location/CountryListener;
 
     invoke-direct {p0, v0}, Lcom/android/server/location/ComprehensiveCountryDetector;->startLocationBasedDetector(Landroid/location/CountryListener;)V
 
-    .line 339
+    .line 338
     :cond_2
     if-eqz p2, :cond_3
 
+    .line 339
     invoke-virtual {p2}, Landroid/location/Country;->getSource()I
 
     move-result v0
 
     if-lt v0, v1, :cond_4
 
-    .line 346
+    .line 345
     :cond_3
     invoke-direct {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->scheduleLocationRefresh()V
 
-    .line 353
+    .line 313
     :goto_0
     return-void
 
-    .line 350
+    .line 349
     :cond_4
     invoke-direct {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->cancelLocationRefresh()V
 
-    .line 351
+    .line 350
     invoke-direct {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->stopLocationBasedDetector()V
 
     goto :goto_0
@@ -975,13 +983,13 @@
 
 .method protected runAfterDetectionAsync(Landroid/location/Country;Landroid/location/Country;ZZ)V
     .locals 7
-    .parameter "country"
-    .parameter "detectedCountry"
-    .parameter "notifyChange"
-    .parameter "startLocationBasedDetection"
+    .param p1, "country"    # Landroid/location/Country;
+    .param p2, "detectedCountry"    # Landroid/location/Country;
+    .param p3, "notifyChange"    # Z
+    .param p4, "startLocationBasedDetection"    # Z
 
     .prologue
-    .line 284
+    .line 283
     iget-object v6, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mHandler:Landroid/os/Handler;
 
     new-instance v0, Lcom/android/server/location/ComprehensiveCountryDetector$2;
@@ -1000,85 +1008,85 @@
 
     invoke-virtual {v6, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 291
+    .line 282
     return-void
 .end method
 
 .method public setCountryListener(Landroid/location/CountryListener;)V
-    .locals 5
-    .parameter "listener"
+    .locals 6
+    .param p1, "listener"    # Landroid/location/CountryListener;
 
     .prologue
-    const/4 v3, 0x0
+    const/4 v4, 0x0
 
-    .line 295
+    .line 294
     iget-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mListener:Landroid/location/CountryListener;
 
-    .line 296
-    .local v0, prevListener:Landroid/location/CountryListener;
+    .line 295
+    .local v0, "prevListener":Landroid/location/CountryListener;
     iput-object p1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mListener:Landroid/location/CountryListener;
 
-    .line 297
+    .line 296
     iget-object v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mListener:Landroid/location/CountryListener;
 
     if-nez v1, :cond_1
 
-    .line 299
+    .line 298
     invoke-virtual {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->removePhoneStateListener()V
 
-    .line 300
+    .line 299
     invoke-direct {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->stopLocationBasedDetector()V
 
-    .line 301
+    .line 300
     invoke-direct {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->cancelLocationRefresh()V
 
-    .line 302
+    .line 301
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
-    move-result-wide v1
+    move-result-wide v2
 
-    iput-wide v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStopTime:J
+    iput-wide v2, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStopTime:J
 
-    .line 303
-    iget-wide v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTotalTime:J
+    .line 302
+    iget-wide v2, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTotalTime:J
 
-    iget-wide v3, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStopTime:J
+    iget-wide v4, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStopTime:J
 
-    add-long/2addr v1, v3
+    add-long/2addr v2, v4
 
-    iput-wide v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTotalTime:J
+    iput-wide v2, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTotalTime:J
 
-    .line 311
+    .line 293
     :cond_0
     :goto_0
     return-void
 
-    .line 304
+    .line 303
     :cond_1
     if-nez v0, :cond_0
 
-    .line 305
+    .line 304
     invoke-virtual {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->addPhoneStateListener()V
 
-    .line 306
+    .line 305
     const/4 v1, 0x1
 
-    invoke-direct {p0, v3, v1}, Lcom/android/server/location/ComprehensiveCountryDetector;->detectCountry(ZZ)Landroid/location/Country;
+    invoke-direct {p0, v4, v1}, Lcom/android/server/location/ComprehensiveCountryDetector;->detectCountry(ZZ)Landroid/location/Country;
 
-    .line 307
+    .line 306
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
-    move-result-wide v1
+    move-result-wide v2
 
-    iput-wide v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStartTime:J
+    iput-wide v2, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStartTime:J
+
+    .line 307
+    const-wide/16 v2, 0x0
+
+    iput-wide v2, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStopTime:J
 
     .line 308
-    const-wide/16 v1, 0x0
-
-    iput-wide v1, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStopTime:J
-
-    .line 309
-    iput v3, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mCountServiceStateChanges:I
+    iput v4, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mCountServiceStateChanges:I
 
     goto :goto_0
 .end method
@@ -1087,33 +1095,33 @@
     .locals 2
 
     .prologue
-    .line 158
-    const-string v0, "CountryDetector"
+    .line 157
+    const-string/jumbo v0, "CountryDetector"
 
-    const-string v1, "Stop the detector."
+    const-string/jumbo v1, "Stop the detector."
 
     invoke-static {v0, v1}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 159
+    .line 158
     invoke-direct {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->cancelLocationRefresh()V
 
-    .line 160
+    .line 159
     invoke-virtual {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->removePhoneStateListener()V
 
-    .line 161
+    .line 160
     invoke-direct {p0}, Lcom/android/server/location/ComprehensiveCountryDetector;->stopLocationBasedDetector()V
 
-    .line 162
+    .line 161
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mListener:Landroid/location/CountryListener;
 
-    .line 163
+    .line 162
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStopped:Z
 
-    .line 164
+    .line 155
     return-void
 .end method
 
@@ -1121,77 +1129,61 @@
     .locals 12
 
     .prologue
-    .line 469
+    .line 468
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
-    move-result-wide v3
+    move-result-wide v4
+
+    .line 469
+    .local v4, "currentTime":J
+    const-wide/16 v2, 0x0
 
     .line 470
-    .local v3, currentTime:J
-    const-wide/16 v1, 0x0
-
-    .line 471
-    .local v1, currentSessionLength:J
+    .local v2, "currentSessionLength":J
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 472
-    .local v6, sb:Ljava/lang/StringBuilder;
-    const-string v7, "ComprehensiveCountryDetector{"
+    .line 471
+    .local v6, "sb":Ljava/lang/StringBuilder;
+    const-string/jumbo v7, "ComprehensiveCountryDetector{"
 
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 474
-    iget-wide v7, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStopTime:J
+    .line 473
+    iget-wide v8, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStopTime:J
 
-    const-wide/16 v9, 0x0
+    const-wide/16 v10, 0x0
 
-    cmp-long v7, v7, v9
+    cmp-long v7, v8, v10
 
     if-nez v7, :cond_0
 
+    .line 474
+    iget-wide v8, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStartTime:J
+
+    sub-long v2, v4, v8
+
     .line 475
-    iget-wide v7, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mStartTime:J
-
-    sub-long v1, v3, v7
-
-    .line 476
-    new-instance v7, Ljava/lang/StringBuilder;
-
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v8, "timeRunning="
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    invoke-virtual {v7, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    const-string v8, ", "
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v7
+    const-string/jumbo v7, "timeRunning="
 
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 481
-    :goto_0
-    new-instance v7, Ljava/lang/StringBuilder;
+    move-result-object v7
 
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-virtual {v7, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    const-string v8, "totalCountServiceStateChanges="
+    move-result-object v7
+
+    const-string/jumbo v8, ", "
 
     invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 480
+    :goto_0
+    const-string/jumbo v7, "totalCountServiceStateChanges="
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v7
 
@@ -1201,26 +1193,14 @@
 
     move-result-object v7
 
-    const-string v8, ", "
+    const-string/jumbo v8, ", "
 
     invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v7
+    .line 481
+    const-string/jumbo v7, "currentCountServiceStateChanges="
 
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 482
-    new-instance v7, Ljava/lang/StringBuilder;
-
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v8, "currentCountServiceStateChanges="
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v7
 
@@ -1230,111 +1210,75 @@
 
     move-result-object v7
 
-    const-string v8, ", "
+    const-string/jumbo v8, ", "
 
     invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v7
+    .line 482
+    const-string/jumbo v7, "totalTime="
 
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 483
-    new-instance v7, Ljava/lang/StringBuilder;
-
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v8, "totalTime="
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v7
 
     iget-wide v8, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mTotalTime:J
 
-    add-long/2addr v8, v1
+    add-long/2addr v8, v2
 
     invoke-virtual {v7, v8, v9}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     move-result-object v7
 
-    const-string v8, ", "
+    const-string/jumbo v8, ", "
 
     invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v7
+    .line 483
+    const-string/jumbo v7, "currentTime="
 
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v7
+
+    invoke-virtual {v7, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    const-string/jumbo v8, ", "
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
     .line 484
-    new-instance v7, Ljava/lang/StringBuilder;
-
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v8, "currentTime="
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    invoke-virtual {v7, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    const-string v8, ", "
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v7
+    const-string/jumbo v7, "countries="
 
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 485
-    const-string v7, "countries="
-
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 486
     iget-object v7, p0, Lcom/android/server/location/ComprehensiveCountryDetector;->mDebugLogs:Ljava/util/concurrent/ConcurrentLinkedQueue;
 
-    invoke-virtual {v7}, Ljava/util/concurrent/ConcurrentLinkedQueue;->iterator()Ljava/util/Iterator;
+    invoke-interface {v7}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
-    move-result-object v5
+    move-result-object v1
 
-    .local v5, i$:Ljava/util/Iterator;
+    .local v1, "country$iterator":Ljava/util/Iterator;
     :goto_1
-    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v7
 
     if-eqz v7, :cond_1
 
-    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/location/Country;
 
-    .line 487
-    .local v0, country:Landroid/location/Country;
-    new-instance v7, Ljava/lang/StringBuilder;
+    .line 486
+    .local v0, "country":Landroid/location/Country;
+    const-string/jumbo v7, "\n   "
 
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v8, "\n   "
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v7
 
@@ -1344,27 +1288,15 @@
 
     invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     goto :goto_1
 
-    .line 479
-    .end local v0           #country:Landroid/location/Country;
-    .end local v5           #i$:Ljava/util/Iterator;
+    .line 478
+    .end local v0    # "country":Landroid/location/Country;
+    .end local v1    # "country$iterator":Ljava/util/Iterator;
     :cond_0
-    new-instance v7, Ljava/lang/StringBuilder;
+    const-string/jumbo v7, "lastRunTimeLength="
 
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v8, "lastRunTimeLength="
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v7
 
@@ -1378,28 +1310,20 @@
 
     move-result-object v7
 
-    const-string v8, ", "
+    const-string/jumbo v8, ", "
 
     invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     goto/16 :goto_0
 
-    .line 489
-    .restart local v5       #i$:Ljava/util/Iterator;
+    .line 488
+    .restart local v1    # "country$iterator":Ljava/util/Iterator;
     :cond_1
-    const-string v7, "}"
+    const-string/jumbo v7, "}"
 
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 490
+    .line 489
     invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v7

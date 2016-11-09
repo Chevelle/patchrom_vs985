@@ -21,11 +21,11 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/NsdService$NsdStateMachine;Landroid/os/Handler;)V
     .locals 0
-    .parameter
-    .parameter "x0"
+    .param p1, "this$1"    # Lcom/android/server/NsdService$NsdStateMachine;
+    .param p2, "$anonymous0"    # Landroid/os/Handler;
 
     .prologue
-    .line 122
+    .line 116
     iput-object p1, p0, Lcom/android/server/NsdService$NsdStateMachine$1;->this$1:Lcom/android/server/NsdService$NsdStateMachine;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -37,28 +37,26 @@
 # virtual methods
 .method public onChange(Z)V
     .locals 2
-    .parameter "selfChange"
+    .param p1, "selfChange"    # Z
 
     .prologue
-    .line 125
+    .line 119
     iget-object v0, p0, Lcom/android/server/NsdService$NsdStateMachine$1;->this$1:Lcom/android/server/NsdService$NsdStateMachine;
 
     iget-object v0, v0, Lcom/android/server/NsdService$NsdStateMachine;->this$0:Lcom/android/server/NsdService;
 
-    #calls: Lcom/android/server/NsdService;->isNsdEnabled()Z
-    invoke-static {v0}, Lcom/android/server/NsdService;->access$100(Lcom/android/server/NsdService;)Z
+    invoke-static {v0}, Lcom/android/server/NsdService;->-wrap2(Lcom/android/server/NsdService;)Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 126
+    .line 120
     iget-object v0, p0, Lcom/android/server/NsdService$NsdStateMachine$1;->this$1:Lcom/android/server/NsdService$NsdStateMachine;
 
     iget-object v0, v0, Lcom/android/server/NsdService$NsdStateMachine;->this$0:Lcom/android/server/NsdService;
 
-    #getter for: Lcom/android/server/NsdService;->mNsdStateMachine:Lcom/android/server/NsdService$NsdStateMachine;
-    invoke-static {v0}, Lcom/android/server/NsdService;->access$200(Lcom/android/server/NsdService;)Lcom/android/server/NsdService$NsdStateMachine;
+    invoke-static {v0}, Lcom/android/server/NsdService;->-get4(Lcom/android/server/NsdService;)Lcom/android/server/NsdService$NsdStateMachine;
 
     move-result-object v0
 
@@ -66,18 +64,17 @@
 
     invoke-virtual {v0, v1}, Lcom/android/server/NsdService$NsdStateMachine;->sendMessage(I)V
 
-    .line 130
+    .line 118
     :goto_0
     return-void
 
-    .line 128
+    .line 122
     :cond_0
     iget-object v0, p0, Lcom/android/server/NsdService$NsdStateMachine$1;->this$1:Lcom/android/server/NsdService$NsdStateMachine;
 
     iget-object v0, v0, Lcom/android/server/NsdService$NsdStateMachine;->this$0:Lcom/android/server/NsdService;
 
-    #getter for: Lcom/android/server/NsdService;->mNsdStateMachine:Lcom/android/server/NsdService$NsdStateMachine;
-    invoke-static {v0}, Lcom/android/server/NsdService;->access$200(Lcom/android/server/NsdService;)Lcom/android/server/NsdService$NsdStateMachine;
+    invoke-static {v0}, Lcom/android/server/NsdService;->-get4(Lcom/android/server/NsdService;)Lcom/android/server/NsdService$NsdStateMachine;
 
     move-result-object v0
 

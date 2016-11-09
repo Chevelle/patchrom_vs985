@@ -6,6 +6,14 @@
 .implements Lcom/android/server/firewall/Filter;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/server/firewall/CategoryFilter$1;
+    }
+.end annotation
+
+
 # static fields
 .field private static final ATTR_NAME:Ljava/lang/String; = "name"
 
@@ -24,18 +32,19 @@
     .line 46
     new-instance v0, Lcom/android/server/firewall/CategoryFilter$1;
 
-    const-string v1, "category"
+    const-string/jumbo v1, "category"
 
     invoke-direct {v0, v1}, Lcom/android/server/firewall/CategoryFilter$1;-><init>(Ljava/lang/String;)V
 
     sput-object v0, Lcom/android/server/firewall/CategoryFilter;->FACTORY:Lcom/android/server/firewall/FilterFactory;
 
+    .line 27
     return-void
 .end method
 
 .method private constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "categoryName"
+    .param p1, "categoryName"    # Ljava/lang/String;
 
     .prologue
     .line 32
@@ -44,17 +53,15 @@
     .line 33
     iput-object p1, p0, Lcom/android/server/firewall/CategoryFilter;->mCategoryName:Ljava/lang/String;
 
-    .line 34
+    .line 32
     return-void
 .end method
 
-.method synthetic constructor <init>(Ljava/lang/String;Lcom/android/server/firewall/CategoryFilter$1;)V
+.method synthetic constructor <init>(Ljava/lang/String;Lcom/android/server/firewall/CategoryFilter;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "categoryName"    # Ljava/lang/String;
 
     .prologue
-    .line 27
     invoke-direct {p0, p1}, Lcom/android/server/firewall/CategoryFilter;-><init>(Ljava/lang/String;)V
 
     return-void
@@ -64,13 +71,13 @@
 # virtual methods
 .method public matches(Lcom/android/server/firewall/IntentFirewall;Landroid/content/ComponentName;Landroid/content/Intent;IILjava/lang/String;I)Z
     .locals 2
-    .parameter "ifw"
-    .parameter "resolvedComponent"
-    .parameter "intent"
-    .parameter "callerUid"
-    .parameter "callerPid"
-    .parameter "resolvedType"
-    .parameter "receivingUid"
+    .param p1, "ifw"    # Lcom/android/server/firewall/IntentFirewall;
+    .param p2, "resolvedComponent"    # Landroid/content/ComponentName;
+    .param p3, "intent"    # Landroid/content/Intent;
+    .param p4, "callerUid"    # I
+    .param p5, "callerPid"    # I
+    .param p6, "resolvedType"    # Ljava/lang/String;
+    .param p7, "receivingUid"    # I
 
     .prologue
     .line 39
@@ -79,16 +86,15 @@
     move-result-object v0
 
     .line 40
-    .local v0, categories:Ljava/util/Set;,"Ljava/util/Set<Ljava/lang/String;>;"
+    .local v0, "categories":Ljava/util/Set;, "Ljava/util/Set<Ljava/lang/String;>;"
     if-nez v0, :cond_0
 
     .line 41
     const/4 v1, 0x0
 
-    .line 43
-    :goto_0
     return v1
 
+    .line 43
     :cond_0
     iget-object v1, p0, Lcom/android/server/firewall/CategoryFilter;->mCategoryName:Ljava/lang/String;
 
@@ -96,5 +102,5 @@
 
     move-result v1
 
-    goto :goto_0
+    return v1
 .end method

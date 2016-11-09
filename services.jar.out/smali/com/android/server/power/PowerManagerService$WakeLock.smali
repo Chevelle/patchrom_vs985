@@ -18,7 +18,11 @@
 
 
 # instance fields
+.field public mDisabled:Z
+
 .field public mFlags:I
+
+.field public mHistoryTag:Ljava/lang/String;
 
 .field public final mLock:Landroid/os/IBinder;
 
@@ -38,50 +42,53 @@
 
 
 # direct methods
-.method public constructor <init>(Lcom/android/server/power/PowerManagerService;Landroid/os/IBinder;ILjava/lang/String;Ljava/lang/String;Landroid/os/WorkSource;II)V
+.method public constructor <init>(Lcom/android/server/power/PowerManagerService;Landroid/os/IBinder;ILjava/lang/String;Ljava/lang/String;Landroid/os/WorkSource;Ljava/lang/String;II)V
     .locals 1
-    .parameter
-    .parameter "lock"
-    .parameter "flags"
-    .parameter "tag"
-    .parameter "packageName"
-    .parameter "workSource"
-    .parameter "ownerUid"
-    .parameter "ownerPid"
+    .param p1, "this$0"    # Lcom/android/server/power/PowerManagerService;
+    .param p2, "lock"    # Landroid/os/IBinder;
+    .param p3, "flags"    # I
+    .param p4, "tag"    # Ljava/lang/String;
+    .param p5, "packageName"    # Ljava/lang/String;
+    .param p6, "workSource"    # Landroid/os/WorkSource;
+    .param p7, "historyTag"    # Ljava/lang/String;
+    .param p8, "ownerUid"    # I
+    .param p9, "ownerPid"    # I
 
     .prologue
-    .line 2562
+    .line 3033
     iput-object p1, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->this$0:Lcom/android/server/power/PowerManagerService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 2563
+    .line 3035
     iput-object p2, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mLock:Landroid/os/IBinder;
 
-    .line 2564
+    .line 3036
     iput p3, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mFlags:I
 
-    .line 2565
+    .line 3037
     iput-object p4, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mTag:Ljava/lang/String;
 
-    .line 2566
+    .line 3038
     iput-object p5, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mPackageName:Ljava/lang/String;
 
-    .line 2567
-    #calls: Lcom/android/server/power/PowerManagerService;->copyWorkSource(Landroid/os/WorkSource;)Landroid/os/WorkSource;
-    invoke-static {p6}, Lcom/android/server/power/PowerManagerService;->access$2200(Landroid/os/WorkSource;)Landroid/os/WorkSource;
+    .line 3039
+    invoke-static {p6}, Lcom/android/server/power/PowerManagerService;->-wrap0(Landroid/os/WorkSource;)Landroid/os/WorkSource;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mWorkSource:Landroid/os/WorkSource;
 
-    .line 2568
-    iput p7, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerUid:I
+    .line 3040
+    iput-object p7, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mHistoryTag:Ljava/lang/String;
 
-    .line 2569
-    iput p8, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerPid:I
+    .line 3041
+    iput p8, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerUid:I
 
-    .line 2570
+    .line 3042
+    iput p9, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerPid:I
+
+    .line 3034
     return-void
 .end method
 
@@ -89,20 +96,20 @@
     .locals 3
 
     .prologue
-    .line 2638
-    const-string v0, ""
+    .line 3117
+    const-string/jumbo v0, ""
 
-    .line 2639
-    .local v0, result:Ljava/lang/String;
+    .line 3118
+    .local v0, "result":Ljava/lang/String;
     iget v1, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mFlags:I
 
-    const/high16 v2, 0x1000
+    const/high16 v2, 0x10000000
 
     and-int/2addr v1, v2
 
     if-eqz v1, :cond_0
 
-    .line 2640
+    .line 3119
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -111,7 +118,7 @@
 
     move-result-object v1
 
-    const-string v2, " ACQUIRE_CAUSES_WAKEUP"
+    const-string/jumbo v2, " ACQUIRE_CAUSES_WAKEUP"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -121,17 +128,17 @@
 
     move-result-object v0
 
-    .line 2642
+    .line 3121
     :cond_0
     iget v1, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mFlags:I
 
-    const/high16 v2, 0x2000
+    const/high16 v2, 0x20000000
 
     and-int/2addr v1, v2
 
     if-eqz v1, :cond_1
 
-    .line 2643
+    .line 3122
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -140,7 +147,7 @@
 
     move-result-object v1
 
-    const-string v2, " ON_AFTER_RELEASE"
+    const-string/jumbo v2, " ON_AFTER_RELEASE"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -150,7 +157,7 @@
 
     move-result-object v0
 
-    .line 2645
+    .line 3124
     :cond_1
     return-object v0
 .end method
@@ -159,7 +166,7 @@
     .locals 2
 
     .prologue
-    .line 2621
+    .line 3096
     iget v0, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mFlags:I
 
     const v1, 0xffff
@@ -168,43 +175,54 @@
 
     sparse-switch v0, :sswitch_data_0
 
-    .line 2633
-    const-string v0, "???                           "
+    .line 3112
+    const-string/jumbo v0, "???                           "
 
-    :goto_0
     return-object v0
 
-    .line 2623
+    .line 3098
     :sswitch_0
-    const-string v0, "FULL_WAKE_LOCK                "
+    const-string/jumbo v0, "FULL_WAKE_LOCK                "
 
-    goto :goto_0
+    return-object v0
 
-    .line 2625
+    .line 3100
     :sswitch_1
-    const-string v0, "SCREEN_BRIGHT_WAKE_LOCK       "
+    const-string/jumbo v0, "SCREEN_BRIGHT_WAKE_LOCK       "
 
-    goto :goto_0
+    return-object v0
 
-    .line 2627
+    .line 3102
     :sswitch_2
-    const-string v0, "SCREEN_DIM_WAKE_LOCK          "
+    const-string/jumbo v0, "SCREEN_DIM_WAKE_LOCK          "
 
-    goto :goto_0
+    return-object v0
 
-    .line 2629
+    .line 3104
     :sswitch_3
-    const-string v0, "PARTIAL_WAKE_LOCK             "
+    const-string/jumbo v0, "PARTIAL_WAKE_LOCK             "
 
-    goto :goto_0
+    return-object v0
 
-    .line 2631
+    .line 3106
     :sswitch_4
-    const-string v0, "PROXIMITY_SCREEN_OFF_WAKE_LOCK"
+    const-string/jumbo v0, "PROXIMITY_SCREEN_OFF_WAKE_LOCK"
 
-    goto :goto_0
+    return-object v0
 
-    .line 2621
+    .line 3108
+    :sswitch_5
+    const-string/jumbo v0, "DOZE_WAKE_LOCK                "
+
+    return-object v0
+
+    .line 3110
+    :sswitch_6
+    const-string/jumbo v0, "DRAW_WAKE_LOCK                "
+
+    return-object v0
+
+    .line 3096
     nop
 
     :sswitch_data_0
@@ -214,6 +232,8 @@
         0xa -> :sswitch_1
         0x1a -> :sswitch_0
         0x20 -> :sswitch_4
+        0x40 -> :sswitch_5
+        0x80 -> :sswitch_6
     .end sparse-switch
 .end method
 
@@ -223,69 +243,72 @@
     .locals 1
 
     .prologue
-    .line 2574
+    .line 3047
     iget-object v0, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->this$0:Lcom/android/server/power/PowerManagerService;
 
-    #calls: Lcom/android/server/power/PowerManagerService;->handleWakeLockDeath(Lcom/android/server/power/PowerManagerService$WakeLock;)V
-    invoke-static {v0, p0}, Lcom/android/server/power/PowerManagerService;->access$2300(Lcom/android/server/power/PowerManagerService;Lcom/android/server/power/PowerManagerService$WakeLock;)V
+    invoke-static {v0, p0}, Lcom/android/server/power/PowerManagerService;->-wrap19(Lcom/android/server/power/PowerManagerService;Lcom/android/server/power/PowerManagerService$WakeLock;)V
 
-    .line 2575
+    .line 3046
     return-void
 .end method
 
 .method public hasSameProperties(ILjava/lang/String;Landroid/os/WorkSource;II)Z
-    .locals 1
-    .parameter "flags"
-    .parameter "tag"
-    .parameter "workSource"
-    .parameter "ownerUid"
-    .parameter "ownerPid"
+    .locals 2
+    .param p1, "flags"    # I
+    .param p2, "tag"    # Ljava/lang/String;
+    .param p3, "workSource"    # Landroid/os/WorkSource;
+    .param p4, "ownerUid"    # I
+    .param p5, "ownerPid"    # I
 
     .prologue
-    .line 2579
-    iget v0, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mFlags:I
+    const/4 v0, 0x0
 
-    if-ne v0, p1, :cond_0
+    .line 3052
+    iget v1, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mFlags:I
 
-    iget-object v0, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mTag:Ljava/lang/String;
+    if-ne v1, p1, :cond_0
 
-    invoke-virtual {v0, p2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    .line 3053
+    iget-object v1, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mTag:Ljava/lang/String;
 
-    move-result v0
+    invoke-virtual {v1, p2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    if-eqz v0, :cond_0
+    move-result v1
 
+    .line 3052
+    if-eqz v1, :cond_0
+
+    .line 3054
     invoke-virtual {p0, p3}, Lcom/android/server/power/PowerManagerService$WakeLock;->hasSameWorkSource(Landroid/os/WorkSource;)Z
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_0
+    .line 3052
+    if-eqz v1, :cond_0
 
-    iget v0, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerUid:I
+    .line 3055
+    iget v1, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerUid:I
 
-    if-ne v0, p4, :cond_0
+    if-ne v1, p4, :cond_0
 
-    iget v0, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerPid:I
+    .line 3056
+    iget v1, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerPid:I
 
-    if-ne v0, p5, :cond_0
+    if-ne v1, p5, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
+    .line 3052
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public hasSameWorkSource(Landroid/os/WorkSource;)Z
     .locals 1
-    .parameter "workSource"
+    .param p1, "workSource"    # Landroid/os/WorkSource;
 
     .prologue
-    .line 2606
+    .line 3080
     iget-object v0, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mWorkSource:Landroid/os/WorkSource;
 
     invoke-static {v0, p1}, Llibcore/util/Objects;->equal(Ljava/lang/Object;Ljava/lang/Object;)Z
@@ -299,7 +322,7 @@
     .locals 2
 
     .prologue
-    .line 2615
+    .line 3089
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -312,70 +335,105 @@
 
     move-result-object v0
 
-    const-string v1, " \'"
+    .line 3090
+    const-string/jumbo v1, " \'"
 
+    .line 3089
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 3090
     iget-object v1, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mTag:Ljava/lang/String;
 
+    .line 3089
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "\'"
+    .line 3090
+    const-string/jumbo v1, "\'"
 
+    .line 3089
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 3090
     invoke-direct {p0}, Lcom/android/server/power/PowerManagerService$WakeLock;->getLockFlagsString()Ljava/lang/String;
 
     move-result-object v1
 
+    .line 3089
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    .line 3090
+    iget-boolean v0, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mDisabled:Z
+
+    if-eqz v0, :cond_0
+
+    const-string/jumbo v0, " DISABLED"
+
+    .line 3089
+    :goto_0
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    .line 3091
+    const-string/jumbo v1, " (uid="
+
+    .line 3089
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " (uid="
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
+    .line 3091
     iget v1, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerUid:I
 
+    .line 3089
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", pid="
+    .line 3091
+    const-string/jumbo v1, ", pid="
 
+    .line 3089
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 3091
     iget v1, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerPid:I
 
+    .line 3089
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", ws="
+    .line 3091
+    const-string/jumbo v1, ", ws="
 
+    .line 3089
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 3091
     iget-object v1, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mWorkSource:Landroid/os/WorkSource;
 
+    .line 3089
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ")"
+    .line 3091
+    const-string/jumbo v1, ")"
 
+    .line 3089
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -385,19 +443,26 @@
     move-result-object v0
 
     return-object v0
+
+    .line 3090
+    :cond_0
+    const-string/jumbo v0, ""
+
+    goto :goto_0
 .end method
 
-.method public updateProperties(ILjava/lang/String;Ljava/lang/String;Landroid/os/WorkSource;II)V
+.method public updateProperties(ILjava/lang/String;Ljava/lang/String;Landroid/os/WorkSource;Ljava/lang/String;II)V
     .locals 3
-    .parameter "flags"
-    .parameter "tag"
-    .parameter "packageName"
-    .parameter "workSource"
-    .parameter "ownerUid"
-    .parameter "ownerPid"
+    .param p1, "flags"    # I
+    .param p2, "tag"    # Ljava/lang/String;
+    .param p3, "packageName"    # Ljava/lang/String;
+    .param p4, "workSource"    # Landroid/os/WorkSource;
+    .param p5, "historyTag"    # Ljava/lang/String;
+    .param p6, "ownerUid"    # I
+    .param p7, "ownerPid"    # I
 
     .prologue
-    .line 2588
+    .line 3061
     iget-object v0, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mPackageName:Ljava/lang/String;
 
     invoke-virtual {v0, p3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -406,27 +471,31 @@
 
     if-nez v0, :cond_0
 
-    .line 2589
+    .line 3062
     new-instance v0, Ljava/lang/IllegalStateException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Existing wake lock package name changed: "
+    const-string/jumbo v2, "Existing wake lock package name changed: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 3063
     iget-object v2, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mPackageName:Ljava/lang/String;
 
+    .line 3062
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, " to "
+    .line 3063
+    const-string/jumbo v2, " to "
 
+    .line 3062
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -443,76 +512,37 @@
 
     throw v0
 
-    .line 2592
+    .line 3065
     :cond_0
     iget v0, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerUid:I
 
-    if-eq v0, p5, :cond_1
+    if-eq v0, p6, :cond_1
 
-    .line 2593
+    .line 3066
     new-instance v0, Ljava/lang/IllegalStateException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Existing wake lock uid changed: "
+    const-string/jumbo v2, "Existing wake lock uid changed: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 3067
     iget v2, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerUid:I
 
+    .line 3066
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, " to "
+    .line 3067
+    const-string/jumbo v2, " to "
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    .line 2596
-    :cond_1
-    iget v0, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerPid:I
-
-    if-eq v0, p6, :cond_2
-
-    .line 2597
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "Existing wake lock pid changed: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    iget v2, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerPid:I
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string v2, " to "
-
+    .line 3066
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -529,33 +559,82 @@
 
     throw v0
 
-    .line 2600
+    .line 3069
+    :cond_1
+    iget v0, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerPid:I
+
+    if-eq v0, p7, :cond_2
+
+    .line 3070
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v2, "Existing wake lock pid changed: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    .line 3071
+    iget v2, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mOwnerPid:I
+
+    .line 3070
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    .line 3071
+    const-string/jumbo v2, " to "
+
+    .line 3070
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p7}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 3073
     :cond_2
     iput p1, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mFlags:I
 
-    .line 2601
+    .line 3074
     iput-object p2, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mTag:Ljava/lang/String;
 
-    .line 2602
+    .line 3075
     invoke-virtual {p0, p4}, Lcom/android/server/power/PowerManagerService$WakeLock;->updateWorkSource(Landroid/os/WorkSource;)V
 
-    .line 2603
+    .line 3076
+    iput-object p5, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mHistoryTag:Ljava/lang/String;
+
+    .line 3060
     return-void
 .end method
 
 .method public updateWorkSource(Landroid/os/WorkSource;)V
     .locals 1
-    .parameter "workSource"
+    .param p1, "workSource"    # Landroid/os/WorkSource;
 
     .prologue
-    .line 2610
-    #calls: Lcom/android/server/power/PowerManagerService;->copyWorkSource(Landroid/os/WorkSource;)Landroid/os/WorkSource;
-    invoke-static {p1}, Lcom/android/server/power/PowerManagerService;->access$2200(Landroid/os/WorkSource;)Landroid/os/WorkSource;
+    .line 3084
+    invoke-static {p1}, Lcom/android/server/power/PowerManagerService;->-wrap0(Landroid/os/WorkSource;)Landroid/os/WorkSource;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/server/power/PowerManagerService$WakeLock;->mWorkSource:Landroid/os/WorkSource;
 
-    .line 2611
+    .line 3083
     return-void
 .end method

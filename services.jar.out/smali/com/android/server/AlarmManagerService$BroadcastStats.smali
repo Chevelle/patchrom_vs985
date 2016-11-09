@@ -9,7 +9,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x1a
+    accessFlags = 0x18
     name = "BroadcastStats"
 .end annotation
 
@@ -19,16 +19,12 @@
 
 .field count:I
 
-.field final filterStats:Ljava/util/HashMap;
+.field final filterStats:Landroid/util/ArrayMap;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/HashMap",
-            "<",
-            "Landroid/util/Pair",
+            "Landroid/util/ArrayMap",
             "<",
             "Ljava/lang/String;",
-            "Landroid/content/ComponentName;",
-            ">;",
             "Lcom/android/server/AlarmManagerService$FilterStats;",
             ">;"
         }
@@ -36,6 +32,8 @@
 .end field
 
 .field final mPackageName:Ljava/lang/String;
+
+.field final mUid:I
 
 .field nesting:I
 
@@ -45,24 +43,28 @@
 
 
 # direct methods
-.method constructor <init>(Ljava/lang/String;)V
+.method constructor <init>(ILjava/lang/String;)V
     .locals 1
-    .parameter "packageName"
+    .param p1, "uid"    # I
+    .param p2, "packageName"    # Ljava/lang/String;
 
     .prologue
-    .line 457
+    .line 781
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 454
-    new-instance v0, Ljava/util/HashMap;
+    .line 779
+    new-instance v0, Landroid/util/ArrayMap;
 
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+    invoke-direct {v0}, Landroid/util/ArrayMap;-><init>()V
 
-    iput-object v0, p0, Lcom/android/server/AlarmManagerService$BroadcastStats;->filterStats:Ljava/util/HashMap;
+    iput-object v0, p0, Lcom/android/server/AlarmManagerService$BroadcastStats;->filterStats:Landroid/util/ArrayMap;
 
-    .line 458
-    iput-object p1, p0, Lcom/android/server/AlarmManagerService$BroadcastStats;->mPackageName:Ljava/lang/String;
+    .line 782
+    iput p1, p0, Lcom/android/server/AlarmManagerService$BroadcastStats;->mUid:I
 
-    .line 459
+    .line 783
+    iput-object p2, p0, Lcom/android/server/AlarmManagerService$BroadcastStats;->mPackageName:Ljava/lang/String;
+
+    .line 781
     return-void
 .end method

@@ -15,34 +15,34 @@
 
 
 # instance fields
-.field public final label:Ljava/lang/String;
-
 .field public networkCount:I
 
 .field public final timeout:I
 
+.field public final type:I
+
 
 # direct methods
-.method constructor <init>(ILjava/lang/String;)V
+.method constructor <init>(II)V
     .locals 1
-    .parameter "timeout"
-    .parameter "label"
+    .param p1, "timeout"    # I
+    .param p2, "type"    # I
 
     .prologue
-    .line 177
+    .line 241
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 178
+    .line 242
     iput p1, p0, Lcom/android/server/NetworkManagementService$IdleTimerParams;->timeout:I
 
-    .line 179
-    iput-object p2, p0, Lcom/android/server/NetworkManagementService$IdleTimerParams;->label:Ljava/lang/String;
+    .line 243
+    iput p2, p0, Lcom/android/server/NetworkManagementService$IdleTimerParams;->type:I
 
-    .line 180
+    .line 244
     const/4 v0, 0x1
 
     iput v0, p0, Lcom/android/server/NetworkManagementService$IdleTimerParams;->networkCount:I
 
-    .line 181
+    .line 241
     return-void
 .end method

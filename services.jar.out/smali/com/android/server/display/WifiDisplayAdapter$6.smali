@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/display/WifiDisplayAdapter;->requestResumeLocked()V
+    value = Lcom/android/server/display/WifiDisplayAdapter;->requestConnectLocked(Ljava/lang/String;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,15 +20,20 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/server/display/WifiDisplayAdapter;
 
+.field final synthetic val$address:Ljava/lang/String;
+
 
 # direct methods
-.method constructor <init>(Lcom/android/server/display/WifiDisplayAdapter;)V
+.method constructor <init>(Lcom/android/server/display/WifiDisplayAdapter;Ljava/lang/String;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/display/WifiDisplayAdapter;
+    .param p2, "val$address"    # Ljava/lang/String;
 
     .prologue
-    .line 225
+    .line 183
     iput-object p1, p0, Lcom/android/server/display/WifiDisplayAdapter$6;->this$0:Lcom/android/server/display/WifiDisplayAdapter;
+
+    iput-object p2, p0, Lcom/android/server/display/WifiDisplayAdapter$6;->val$address:Ljava/lang/String;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -38,30 +43,30 @@
 
 # virtual methods
 .method public run()V
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 228
+    .line 186
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayAdapter$6;->this$0:Lcom/android/server/display/WifiDisplayAdapter;
 
-    #getter for: Lcom/android/server/display/WifiDisplayAdapter;->mDisplayController:Lcom/android/server/display/WifiDisplayController;
-    invoke-static {v0}, Lcom/android/server/display/WifiDisplayAdapter;->access$000(Lcom/android/server/display/WifiDisplayAdapter;)Lcom/android/server/display/WifiDisplayController;
+    invoke-static {v0}, Lcom/android/server/display/WifiDisplayAdapter;->-get4(Lcom/android/server/display/WifiDisplayAdapter;)Lcom/android/server/display/WifiDisplayController;
 
     move-result-object v0
 
     if-eqz v0, :cond_0
 
-    .line 229
+    .line 187
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayAdapter$6;->this$0:Lcom/android/server/display/WifiDisplayAdapter;
 
-    #getter for: Lcom/android/server/display/WifiDisplayAdapter;->mDisplayController:Lcom/android/server/display/WifiDisplayController;
-    invoke-static {v0}, Lcom/android/server/display/WifiDisplayAdapter;->access$000(Lcom/android/server/display/WifiDisplayAdapter;)Lcom/android/server/display/WifiDisplayController;
+    invoke-static {v0}, Lcom/android/server/display/WifiDisplayAdapter;->-get4(Lcom/android/server/display/WifiDisplayAdapter;)Lcom/android/server/display/WifiDisplayController;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lcom/android/server/display/WifiDisplayController;->requestResume()V
+    iget-object v1, p0, Lcom/android/server/display/WifiDisplayAdapter$6;->val$address:Ljava/lang/String;
 
-    .line 231
+    invoke-virtual {v0, v1}, Lcom/android/server/display/WifiDisplayController;->requestConnect(Ljava/lang/String;)V
+
+    .line 185
     :cond_0
     return-void
 .end method

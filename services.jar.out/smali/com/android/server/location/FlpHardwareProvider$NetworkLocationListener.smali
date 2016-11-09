@@ -24,10 +24,10 @@
 # direct methods
 .method private constructor <init>(Lcom/android/server/location/FlpHardwareProvider;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/location/FlpHardwareProvider;
 
     .prologue
-    .line 367
+    .line 476
     iput-object p1, p0, Lcom/android/server/location/FlpHardwareProvider$NetworkLocationListener;->this$0:Lcom/android/server/location/FlpHardwareProvider;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -35,13 +35,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/android/server/location/FlpHardwareProvider;Lcom/android/server/location/FlpHardwareProvider$1;)V
+.method synthetic constructor <init>(Lcom/android/server/location/FlpHardwareProvider;Lcom/android/server/location/FlpHardwareProvider$NetworkLocationListener;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Lcom/android/server/location/FlpHardwareProvider;
 
     .prologue
-    .line 367
     invoke-direct {p0, p1}, Lcom/android/server/location/FlpHardwareProvider$NetworkLocationListener;-><init>(Lcom/android/server/location/FlpHardwareProvider;)V
 
     return-void
@@ -51,11 +49,11 @@
 # virtual methods
 .method public onLocationChanged(Landroid/location/Location;)V
     .locals 2
-    .parameter "location"
+    .param p1, "location"    # Landroid/location/Location;
 
     .prologue
-    .line 370
-    const-string v0, "network"
+    .line 480
+    const-string/jumbo v0, "network"
 
     invoke-virtual {p1}, Landroid/location/Location;->getProvider()Ljava/lang/String;
 
@@ -67,52 +65,51 @@
 
     if-eqz v0, :cond_0
 
+    .line 481
     invoke-virtual {p1}, Landroid/location/Location;->hasAccuracy()Z
 
     move-result v0
 
-    if-nez v0, :cond_1
+    if-eqz v0, :cond_0
 
-    .line 378
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 377
-    :cond_1
+    .line 486
     iget-object v0, p0, Lcom/android/server/location/FlpHardwareProvider$NetworkLocationListener;->this$0:Lcom/android/server/location/FlpHardwareProvider;
 
-    #calls: Lcom/android/server/location/FlpHardwareProvider;->nativeInjectLocation(Landroid/location/Location;)V
-    invoke-static {v0, p1}, Lcom/android/server/location/FlpHardwareProvider;->access$1800(Lcom/android/server/location/FlpHardwareProvider;Landroid/location/Location;)V
+    invoke-static {v0, p1}, Lcom/android/server/location/FlpHardwareProvider;->-wrap10(Lcom/android/server/location/FlpHardwareProvider;Landroid/location/Location;)V
 
-    goto :goto_0
+    .line 478
+    return-void
+
+    .line 483
+    :cond_0
+    return-void
 .end method
 
 .method public onProviderDisabled(Ljava/lang/String;)V
     .locals 0
-    .parameter "provider"
+    .param p1, "provider"    # Ljava/lang/String;
 
     .prologue
-    .line 387
+    .line 496
     return-void
 .end method
 
 .method public onProviderEnabled(Ljava/lang/String;)V
     .locals 0
-    .parameter "provider"
+    .param p1, "provider"    # Ljava/lang/String;
 
     .prologue
-    .line 384
+    .line 493
     return-void
 .end method
 
 .method public onStatusChanged(Ljava/lang/String;ILandroid/os/Bundle;)V
     .locals 0
-    .parameter "provider"
-    .parameter "status"
-    .parameter "extras"
+    .param p1, "provider"    # Ljava/lang/String;
+    .param p2, "status"    # I
+    .param p3, "extras"    # Landroid/os/Bundle;
 
     .prologue
-    .line 381
+    .line 490
     return-void
 .end method

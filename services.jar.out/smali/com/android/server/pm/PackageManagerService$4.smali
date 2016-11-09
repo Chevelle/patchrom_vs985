@@ -1,38 +1,50 @@
-.class final Lcom/android/server/pm/PackageManagerService$4;
+.class Lcom/android/server/pm/PackageManagerService$4;
 .super Ljava/lang/Object;
 .source "PackageManagerService.java"
 
 # interfaces
-.implements Ljava/util/Comparator;
+.implements Ljava/lang/Runnable;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lcom/android/server/pm/PackageManagerService;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/android/server/pm/PackageManagerService;->freeStorageAndNotify(Ljava/lang/String;JLandroid/content/pm/IPackageDataObserver;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x8
+    accessFlags = 0x0
     name = null
 .end annotation
 
-.annotation system Ldalvik/annotation/Signature;
-    value = {
-        "Ljava/lang/Object;",
-        "Ljava/util/Comparator",
-        "<",
-        "Landroid/content/pm/ProviderInfo;",
-        ">;"
-    }
-.end annotation
+
+# instance fields
+.field final synthetic this$0:Lcom/android/server/pm/PackageManagerService;
+
+.field final synthetic val$freeStorageSize:J
+
+.field final synthetic val$observer:Landroid/content/pm/IPackageDataObserver;
+
+.field final synthetic val$volumeUuid:Ljava/lang/String;
 
 
 # direct methods
-.method constructor <init>()V
-    .locals 0
+.method constructor <init>(Lcom/android/server/pm/PackageManagerService;Ljava/lang/String;JLandroid/content/pm/IPackageDataObserver;)V
+    .locals 1
+    .param p1, "this$0"    # Lcom/android/server/pm/PackageManagerService;
+    .param p2, "val$volumeUuid"    # Ljava/lang/String;
+    .param p3, "val$freeStorageSize"    # J
+    .param p5, "val$observer"    # Landroid/content/pm/IPackageDataObserver;
 
     .prologue
-    .line 6292
+    .line 2965
+    iput-object p1, p0, Lcom/android/server/pm/PackageManagerService$4;->this$0:Lcom/android/server/pm/PackageManagerService;
+
+    iput-object p2, p0, Lcom/android/server/pm/PackageManagerService$4;->val$volumeUuid:Ljava/lang/String;
+
+    iput-wide p3, p0, Lcom/android/server/pm/PackageManagerService$4;->val$freeStorageSize:J
+
+    iput-object p5, p0, Lcom/android/server/pm/PackageManagerService$4;->val$observer:Landroid/content/pm/IPackageDataObserver;
+
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -40,57 +52,103 @@
 
 
 # virtual methods
-.method public compare(Landroid/content/pm/ProviderInfo;Landroid/content/pm/ProviderInfo;)I
-    .locals 3
-    .parameter "p1"
-    .parameter "p2"
+.method public run()V
+    .locals 8
 
     .prologue
-    .line 6294
-    iget v0, p1, Landroid/content/pm/ProviderInfo;->initOrder:I
+    const/4 v2, 0x0
 
-    .line 6295
-    .local v0, v1:I
-    iget v1, p2, Landroid/content/pm/ProviderInfo;->initOrder:I
+    .line 2967
+    iget-object v3, p0, Lcom/android/server/pm/PackageManagerService$4;->this$0:Lcom/android/server/pm/PackageManagerService;
 
-    .line 6296
-    .local v1, v2:I
-    if-le v0, v1, :cond_0
+    iget-object v3, v3, Lcom/android/server/pm/PackageManagerService;->mHandler:Lcom/android/server/pm/PackageManagerService$PackageHandler;
 
-    const/4 v2, -0x1
+    invoke-virtual {v3, p0}, Lcom/android/server/pm/PackageManagerService$PackageHandler;->removeCallbacks(Ljava/lang/Runnable;)V
 
-    :goto_0
-    return v2
+    .line 2968
+    const/4 v1, -0x1
+
+    .line 2969
+    .local v1, "retCode":I
+    iget-object v3, p0, Lcom/android/server/pm/PackageManagerService$4;->this$0:Lcom/android/server/pm/PackageManagerService;
+
+    iget-object v3, v3, Lcom/android/server/pm/PackageManagerService;->mInstallLock:Ljava/lang/Object;
+
+    monitor-enter v3
+
+    .line 2970
+    :try_start_0
+    iget-object v4, p0, Lcom/android/server/pm/PackageManagerService$4;->this$0:Lcom/android/server/pm/PackageManagerService;
+
+    iget-object v4, v4, Lcom/android/server/pm/PackageManagerService;->mInstaller:Lcom/android/server/pm/Installer;
+
+    iget-object v5, p0, Lcom/android/server/pm/PackageManagerService$4;->val$volumeUuid:Ljava/lang/String;
+
+    iget-wide v6, p0, Lcom/android/server/pm/PackageManagerService$4;->val$freeStorageSize:J
+
+    invoke-virtual {v4, v5, v6, v7}, Lcom/android/server/pm/Installer;->freeCache(Ljava/lang/String;J)I
+
+    move-result v1
+
+    .line 2971
+    if-gez v1, :cond_0
+
+    .line 2972
+    const-string/jumbo v4, "PackageManager"
+
+    const-string/jumbo v5, "Couldn\'t clear application caches"
+
+    invoke-static {v4, v5}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     :cond_0
-    if-ge v0, v1, :cond_1
+    monitor-exit v3
+
+    .line 2975
+    iget-object v3, p0, Lcom/android/server/pm/PackageManagerService$4;->val$observer:Landroid/content/pm/IPackageDataObserver;
+
+    if-eqz v3, :cond_2
+
+    .line 2977
+    :try_start_1
+    iget-object v3, p0, Lcom/android/server/pm/PackageManagerService$4;->val$observer:Landroid/content/pm/IPackageDataObserver;
+
+    if-ltz v1, :cond_1
 
     const/4 v2, 0x1
 
-    goto :goto_0
-
     :cond_1
-    const/4 v2, 0x0
+    const/4 v4, 0x0
+
+    invoke-interface {v3, v4, v2}, Landroid/content/pm/IPackageDataObserver;->onRemoveCompleted(Ljava/lang/String;Z)V
+    :try_end_1
+    .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0
+
+    .line 2966
+    :cond_2
+    :goto_0
+    return-void
+
+    .line 2969
+    :catchall_0
+    move-exception v2
+
+    monitor-exit v3
+
+    throw v2
+
+    .line 2978
+    :catch_0
+    move-exception v0
+
+    .line 2979
+    .local v0, "e":Landroid/os/RemoteException;
+    const-string/jumbo v2, "PackageManager"
+
+    const-string/jumbo v3, "RemoveException when invoking call back"
+
+    invoke-static {v2, v3}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_0
-.end method
-
-.method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
-    .locals 1
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 6292
-    check-cast p1, Landroid/content/pm/ProviderInfo;
-
-    .end local p1
-    check-cast p2, Landroid/content/pm/ProviderInfo;
-
-    .end local p2
-    invoke-virtual {p0, p1, p2}, Lcom/android/server/pm/PackageManagerService$4;->compare(Landroid/content/pm/ProviderInfo;Landroid/content/pm/ProviderInfo;)I
-
-    move-result v0
-
-    return v0
 .end method

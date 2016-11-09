@@ -25,22 +25,22 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/content/SyncManager;Lcom/android/server/content/SyncManager$ActiveSyncContext;Landroid/content/SyncResult;)V
     .locals 0
-    .parameter
-    .parameter "syncContext"
-    .parameter "syncResult"
+    .param p1, "this$0"    # Lcom/android/server/content/SyncManager;
+    .param p2, "syncContext"    # Lcom/android/server/content/SyncManager$ActiveSyncContext;
+    .param p3, "syncResult"    # Landroid/content/SyncResult;
 
     .prologue
-    .line 804
+    .line 1009
     iput-object p1, p0, Lcom/android/server/content/SyncManager$SyncHandlerMessagePayload;->this$0:Lcom/android/server/content/SyncManager;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 805
+    .line 1011
     iput-object p2, p0, Lcom/android/server/content/SyncManager$SyncHandlerMessagePayload;->activeSyncContext:Lcom/android/server/content/SyncManager$ActiveSyncContext;
 
-    .line 806
+    .line 1012
     iput-object p3, p0, Lcom/android/server/content/SyncManager$SyncHandlerMessagePayload;->syncResult:Landroid/content/SyncResult;
 
-    .line 807
+    .line 1010
     return-void
 .end method

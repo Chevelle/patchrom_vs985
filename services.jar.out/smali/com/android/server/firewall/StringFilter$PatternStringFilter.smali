@@ -21,14 +21,14 @@
 # direct methods
 .method public constructor <init>(Lcom/android/server/firewall/StringFilter$ValueProvider;Ljava/lang/String;)V
     .locals 2
-    .parameter "valueProvider"
-    .parameter "attrValue"
+    .param p1, "valueProvider"    # Lcom/android/server/firewall/StringFilter$ValueProvider;
+    .param p2, "attrValue"    # Ljava/lang/String;
 
     .prologue
     .line 187
     const/4 v0, 0x0
 
-    invoke-direct {p0, p1, v0}, Lcom/android/server/firewall/StringFilter;-><init>(Lcom/android/server/firewall/StringFilter$ValueProvider;Lcom/android/server/firewall/StringFilter$1;)V
+    invoke-direct {p0, p1, v0}, Lcom/android/server/firewall/StringFilter;-><init>(Lcom/android/server/firewall/StringFilter$ValueProvider;Lcom/android/server/firewall/StringFilter;)V
 
     .line 188
     new-instance v0, Landroid/os/PatternMatcher;
@@ -39,7 +39,7 @@
 
     iput-object v0, p0, Lcom/android/server/firewall/StringFilter$PatternStringFilter;->mPattern:Landroid/os/PatternMatcher;
 
-    .line 189
+    .line 186
     return-void
 .end method
 
@@ -47,7 +47,7 @@
 # virtual methods
 .method public matchesValue(Ljava/lang/String;)Z
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # Ljava/lang/String;
 
     .prologue
     .line 193
@@ -58,10 +58,6 @@
     invoke-virtual {v0, p1}, Landroid/os/PatternMatcher;->match(Ljava/lang/String;)Z
 
     move-result v0
-
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
 
     :goto_0
     return v0

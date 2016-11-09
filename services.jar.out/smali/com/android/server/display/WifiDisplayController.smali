@@ -9,7 +9,11 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/android/server/display/WifiDisplayController$Listener;
+        Lcom/android/server/display/WifiDisplayController$Listener;,
+        Lcom/android/server/display/WifiDisplayController$1;,
+        Lcom/android/server/display/WifiDisplayController$2;,
+        Lcom/android/server/display/WifiDisplayController$3;,
+        Lcom/android/server/display/WifiDisplayController$4;
     }
 .end annotation
 
@@ -118,11 +122,416 @@
 
 
 # direct methods
+.method static synthetic -get0(Lcom/android/server/display/WifiDisplayController;)Ljava/util/ArrayList;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mAvailableWifiDisplayPeers:Ljava/util/ArrayList;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Lcom/android/server/display/WifiDisplayController;)Landroid/net/wifi/p2p/WifiP2pDevice;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mCancelingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    return-object v0
+.end method
+
+.method static synthetic -get10(Lcom/android/server/display/WifiDisplayController;)Landroid/os/Handler;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mHandler:Landroid/os/Handler;
+
+    return-object v0
+.end method
+
+.method static synthetic -get11(Lcom/android/server/display/WifiDisplayController;)Lcom/android/server/display/WifiDisplayController$Listener;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mListener:Lcom/android/server/display/WifiDisplayController$Listener;
+
+    return-object v0
+.end method
+
+.method static synthetic -get12(Lcom/android/server/display/WifiDisplayController;)Landroid/media/RemoteDisplay;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mRemoteDisplay:Landroid/media/RemoteDisplay;
+
+    return-object v0
+.end method
+
+.method static synthetic -get13(Lcom/android/server/display/WifiDisplayController;)Z
+    .locals 1
+
+    iget-boolean v0, p0, Lcom/android/server/display/WifiDisplayController;->mRemoteDisplayConnected:Z
+
+    return v0
+.end method
+
+.method static synthetic -get14(Lcom/android/server/display/WifiDisplayController;)Ljava/lang/Runnable;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mRtspTimeout:Ljava/lang/Runnable;
+
+    return-object v0
+.end method
+
+.method static synthetic -get15(Lcom/android/server/display/WifiDisplayController;)Landroid/net/wifi/p2p/WifiP2pDevice;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mThisDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    return-object v0
+.end method
+
+.method static synthetic -get16(Lcom/android/server/display/WifiDisplayController;)Z
+    .locals 1
+
+    iget-boolean v0, p0, Lcom/android/server/display/WifiDisplayController;->mWfdEnabling:Z
+
+    return v0
+.end method
+
+.method static synthetic -get17(Lcom/android/server/display/WifiDisplayController;)Z
+    .locals 1
+
+    iget-boolean v0, p0, Lcom/android/server/display/WifiDisplayController;->mWifiDisplayCertMode:Z
+
+    return v0
+.end method
+
+.method static synthetic -get2(Lcom/android/server/display/WifiDisplayController;)Landroid/net/wifi/p2p/WifiP2pDevice;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    return-object v0
+.end method
+
+.method static synthetic -get3(Lcom/android/server/display/WifiDisplayController;)Landroid/net/wifi/p2p/WifiP2pGroup;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDeviceGroupInfo:Landroid/net/wifi/p2p/WifiP2pGroup;
+
+    return-object v0
+.end method
+
+.method static synthetic -get4(Lcom/android/server/display/WifiDisplayController;)Landroid/net/wifi/p2p/WifiP2pDevice;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    return-object v0
+.end method
+
+.method static synthetic -get5(Lcom/android/server/display/WifiDisplayController;)I
+    .locals 1
+
+    iget v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectionRetriesLeft:I
+
+    return v0
+.end method
+
+.method static synthetic -get6(Lcom/android/server/display/WifiDisplayController;)Ljava/lang/Runnable;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectionTimeout:Ljava/lang/Runnable;
+
+    return-object v0
+.end method
+
+.method static synthetic -get7(Lcom/android/server/display/WifiDisplayController;)Landroid/net/wifi/p2p/WifiP2pDevice;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    return-object v0
+.end method
+
+.method static synthetic -get8(Lcom/android/server/display/WifiDisplayController;)Landroid/net/wifi/p2p/WifiP2pDevice;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mDisconnectingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    return-object v0
+.end method
+
+.method static synthetic -get9(Lcom/android/server/display/WifiDisplayController;)Z
+    .locals 1
+
+    iget-boolean v0, p0, Lcom/android/server/display/WifiDisplayController;->mDiscoverPeersInProgress:Z
+
+    return v0
+.end method
+
+.method static synthetic -set0(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/net/wifi/p2p/WifiP2pDevice;
+    .locals 0
+
+    iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mCancelingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    return-object p1
+.end method
+
+.method static synthetic -set1(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/net/wifi/p2p/WifiP2pDevice;
+    .locals 0
+
+    iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    return-object p1
+.end method
+
+.method static synthetic -set10(Lcom/android/server/display/WifiDisplayController;Z)Z
+    .locals 0
+
+    iput-boolean p1, p0, Lcom/android/server/display/WifiDisplayController;->mWfdEnabling:Z
+
+    return p1
+.end method
+
+.method static synthetic -set2(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pGroup;)Landroid/net/wifi/p2p/WifiP2pGroup;
+    .locals 0
+
+    iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDeviceGroupInfo:Landroid/net/wifi/p2p/WifiP2pGroup;
+
+    return-object p1
+.end method
+
+.method static synthetic -set3(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/net/wifi/p2p/WifiP2pDevice;
+    .locals 0
+
+    iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mConnectingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    return-object p1
+.end method
+
+.method static synthetic -set4(Lcom/android/server/display/WifiDisplayController;I)I
+    .locals 0
+
+    iput p1, p0, Lcom/android/server/display/WifiDisplayController;->mConnectionRetriesLeft:I
+
+    return p1
+.end method
+
+.method static synthetic -set5(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/net/wifi/p2p/WifiP2pDevice;
+    .locals 0
+
+    iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    return-object p1
+.end method
+
+.method static synthetic -set6(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/net/wifi/p2p/WifiP2pDevice;
+    .locals 0
+
+    iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mDisconnectingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    return-object p1
+.end method
+
+.method static synthetic -set7(Lcom/android/server/display/WifiDisplayController;Z)Z
+    .locals 0
+
+    iput-boolean p1, p0, Lcom/android/server/display/WifiDisplayController;->mRemoteDisplayConnected:Z
+
+    return p1
+.end method
+
+.method static synthetic -set8(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/net/wifi/p2p/WifiP2pDevice;
+    .locals 0
+
+    iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mThisDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    return-object p1
+.end method
+
+.method static synthetic -set9(Lcom/android/server/display/WifiDisplayController;Z)Z
+    .locals 0
+
+    iput-boolean p1, p0, Lcom/android/server/display/WifiDisplayController;->mWfdEnabled:Z
+
+    return p1
+.end method
+
+.method static synthetic -wrap0(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pGroup;I)Landroid/hardware/display/WifiDisplaySessionInfo;
+    .locals 1
+    .param p1, "info"    # Landroid/net/wifi/p2p/WifiP2pGroup;
+    .param p2, "session"    # I
+
+    .prologue
+    invoke-direct {p0, p1, p2}, Lcom/android/server/display/WifiDisplayController;->getSessionInfo(Landroid/net/wifi/p2p/WifiP2pGroup;I)Landroid/hardware/display/WifiDisplaySessionInfo;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static synthetic -wrap1(Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/hardware/display/WifiDisplay;
+    .locals 1
+    .param p0, "device"    # Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    .prologue
+    invoke-static {p0}, Lcom/android/server/display/WifiDisplayController;->createWifiDisplay(Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/hardware/display/WifiDisplay;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static synthetic -wrap10(Lcom/android/server/display/WifiDisplayController;Z)V
+    .locals 0
+    .param p1, "enabled"    # Z
+
+    .prologue
+    invoke-direct {p0, p1}, Lcom/android/server/display/WifiDisplayController;->handleStateChanged(Z)V
+
+    return-void
+.end method
+
+.method static synthetic -wrap11(Lcom/android/server/display/WifiDisplayController;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->reportFeatureState()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap12(Lcom/android/server/display/WifiDisplayController;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->requestPeers()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap13(Lcom/android/server/display/WifiDisplayController;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->retryConnection()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap14(Lcom/android/server/display/WifiDisplayController;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->tryDiscoverPeers()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap15(Lcom/android/server/display/WifiDisplayController;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateConnection()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap16(Lcom/android/server/display/WifiDisplayController;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateScanState()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap17(Lcom/android/server/display/WifiDisplayController;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateSettings()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap2(Landroid/net/wifi/p2p/WifiP2pDevice;)Z
+    .locals 1
+    .param p0, "device"    # Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    .prologue
+    invoke-static {p0}, Lcom/android/server/display/WifiDisplayController;->isWifiDisplay(Landroid/net/wifi/p2p/WifiP2pDevice;)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap3(Landroid/net/wifi/p2p/WifiP2pGroup;)Ljava/lang/String;
+    .locals 1
+    .param p0, "group"    # Landroid/net/wifi/p2p/WifiP2pGroup;
+
+    .prologue
+    invoke-static {p0}, Lcom/android/server/display/WifiDisplayController;->describeWifiP2pGroup(Landroid/net/wifi/p2p/WifiP2pGroup;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static synthetic -wrap4(Lcom/android/server/display/WifiDisplayController;Landroid/hardware/display/WifiDisplay;Landroid/view/Surface;III)V
+    .locals 0
+    .param p1, "display"    # Landroid/hardware/display/WifiDisplay;
+    .param p2, "surface"    # Landroid/view/Surface;
+    .param p3, "width"    # I
+    .param p4, "height"    # I
+    .param p5, "flags"    # I
+
+    .prologue
+    invoke-direct/range {p0 .. p5}, Lcom/android/server/display/WifiDisplayController;->advertiseDisplay(Landroid/hardware/display/WifiDisplay;Landroid/view/Surface;III)V
+
+    return-void
+.end method
+
+.method static synthetic -wrap5(Lcom/android/server/display/WifiDisplayController;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->disconnect()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap6(Lcom/android/server/display/WifiDisplayController;Landroid/net/NetworkInfo;)V
+    .locals 0
+    .param p1, "networkInfo"    # Landroid/net/NetworkInfo;
+
+    .prologue
+    invoke-direct {p0, p1}, Lcom/android/server/display/WifiDisplayController;->handleConnectionChanged(Landroid/net/NetworkInfo;)V
+
+    return-void
+.end method
+
+.method static synthetic -wrap7(Lcom/android/server/display/WifiDisplayController;Z)V
+    .locals 0
+    .param p1, "timeoutOccurred"    # Z
+
+    .prologue
+    invoke-direct {p0, p1}, Lcom/android/server/display/WifiDisplayController;->handleConnectionFailure(Z)V
+
+    return-void
+.end method
+
+.method static synthetic -wrap8(Lcom/android/server/display/WifiDisplayController;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->handlePeersChanged()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap9(Lcom/android/server/display/WifiDisplayController;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->handleScanResults()V
+
+    return-void
+.end method
+
 .method public constructor <init>(Landroid/content/Context;Landroid/os/Handler;Lcom/android/server/display/WifiDisplayController$Listener;)V
     .locals 7
-    .parameter "context"
-    .parameter "handler"
-    .parameter "listener"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "handler"    # Landroid/os/Handler;
+    .param p3, "listener"    # Lcom/android/server/display/WifiDisplayController$Listener;
 
     .prologue
     const/4 v6, 0x0
@@ -132,11 +541,12 @@
     .line 163
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 106
+    .line 107
     new-instance v3, Ljava/util/ArrayList;
 
     invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
 
+    .line 106
     iput-object v3, p0, Lcom/android/server/display/WifiDisplayController;->mAvailableWifiDisplayPeers:Ljava/util/ArrayList;
 
     .line 159
@@ -145,30 +555,30 @@
     iput v3, p0, Lcom/android/server/display/WifiDisplayController;->mWifiDisplayWpsConfig:I
 
     .line 890
-    new-instance v3, Lcom/android/server/display/WifiDisplayController$16;
+    new-instance v3, Lcom/android/server/display/WifiDisplayController$1;
 
-    invoke-direct {v3, p0}, Lcom/android/server/display/WifiDisplayController$16;-><init>(Lcom/android/server/display/WifiDisplayController;)V
+    invoke-direct {v3, p0}, Lcom/android/server/display/WifiDisplayController$1;-><init>(Lcom/android/server/display/WifiDisplayController;)V
 
     iput-object v3, p0, Lcom/android/server/display/WifiDisplayController;->mDiscoverPeers:Ljava/lang/Runnable;
 
     .line 897
-    new-instance v3, Lcom/android/server/display/WifiDisplayController$17;
+    new-instance v3, Lcom/android/server/display/WifiDisplayController$2;
 
-    invoke-direct {v3, p0}, Lcom/android/server/display/WifiDisplayController$17;-><init>(Lcom/android/server/display/WifiDisplayController;)V
+    invoke-direct {v3, p0}, Lcom/android/server/display/WifiDisplayController$2;-><init>(Lcom/android/server/display/WifiDisplayController;)V
 
     iput-object v3, p0, Lcom/android/server/display/WifiDisplayController;->mConnectionTimeout:Ljava/lang/Runnable;
 
     .line 909
-    new-instance v3, Lcom/android/server/display/WifiDisplayController$18;
+    new-instance v3, Lcom/android/server/display/WifiDisplayController$3;
 
-    invoke-direct {v3, p0}, Lcom/android/server/display/WifiDisplayController$18;-><init>(Lcom/android/server/display/WifiDisplayController;)V
+    invoke-direct {v3, p0}, Lcom/android/server/display/WifiDisplayController$3;-><init>(Lcom/android/server/display/WifiDisplayController;)V
 
     iput-object v3, p0, Lcom/android/server/display/WifiDisplayController;->mRtspTimeout:Ljava/lang/Runnable;
 
     .line 1053
-    new-instance v3, Lcom/android/server/display/WifiDisplayController$21;
+    new-instance v3, Lcom/android/server/display/WifiDisplayController$4;
 
-    invoke-direct {v3, p0}, Lcom/android/server/display/WifiDisplayController$21;-><init>(Lcom/android/server/display/WifiDisplayController;)V
+    invoke-direct {v3, p0}, Lcom/android/server/display/WifiDisplayController$4;-><init>(Lcom/android/server/display/WifiDisplayController;)V
 
     iput-object v3, p0, Lcom/android/server/display/WifiDisplayController;->mWifiP2pReceiver:Landroid/content/BroadcastReceiver;
 
@@ -182,7 +592,7 @@
     iput-object p3, p0, Lcom/android/server/display/WifiDisplayController;->mListener:Lcom/android/server/display/WifiDisplayController$Listener;
 
     .line 168
-    const-string v3, "wifip2p"
+    const-string/jumbo v3, "wifip2p"
 
     invoke-virtual {p1, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
@@ -211,23 +621,23 @@
     invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
 
     .line 172
-    .local v0, intentFilter:Landroid/content/IntentFilter;
-    const-string v3, "android.net.wifi.p2p.STATE_CHANGED"
+    .local v0, "intentFilter":Landroid/content/IntentFilter;
+    const-string/jumbo v3, "android.net.wifi.p2p.STATE_CHANGED"
 
     invoke-virtual {v0, v3}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
     .line 173
-    const-string v3, "android.net.wifi.p2p.PEERS_CHANGED"
+    const-string/jumbo v3, "android.net.wifi.p2p.PEERS_CHANGED"
 
     invoke-virtual {v0, v3}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
     .line 174
-    const-string v3, "android.net.wifi.p2p.CONNECTION_STATE_CHANGE"
+    const-string/jumbo v3, "android.net.wifi.p2p.CONNECTION_STATE_CHANGE"
 
     invoke-virtual {v0, v3}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
     .line 175
-    const-string v3, "android.net.wifi.p2p.THIS_DEVICE_CHANGED"
+    const-string/jumbo v3, "android.net.wifi.p2p.THIS_DEVICE_CHANGED"
 
     invoke-virtual {v0, v3}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
@@ -239,42 +649,45 @@
     invoke-virtual {p1, v3, v0, v6, v4}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
 
     .line 178
-    new-instance v2, Lcom/android/server/display/WifiDisplayController$1;
+    new-instance v2, Lcom/android/server/display/WifiDisplayController$5;
 
     iget-object v3, p0, Lcom/android/server/display/WifiDisplayController;->mHandler:Landroid/os/Handler;
 
-    invoke-direct {v2, p0, v3}, Lcom/android/server/display/WifiDisplayController$1;-><init>(Lcom/android/server/display/WifiDisplayController;Landroid/os/Handler;)V
+    invoke-direct {v2, p0, v3}, Lcom/android/server/display/WifiDisplayController$5;-><init>(Lcom/android/server/display/WifiDisplayController;Landroid/os/Handler;)V
 
     .line 185
-    .local v2, settingsObserver:Landroid/database/ContentObserver;
+    .local v2, "settingsObserver":Landroid/database/ContentObserver;
     iget-object v3, p0, Lcom/android/server/display/WifiDisplayController;->mContext:Landroid/content/Context;
 
     invoke-virtual {v3}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v1
 
-    .line 186
-    .local v1, resolver:Landroid/content/ContentResolver;
-    const-string v3, "wifi_display_on"
+    .line 187
+    .local v1, "resolver":Landroid/content/ContentResolver;
+    const-string/jumbo v3, "wifi_display_on"
 
+    .line 186
     invoke-static {v3}, Landroid/provider/Settings$Global;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v3
 
     invoke-virtual {v1, v3, v5, v2}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
+
+    .line 189
+    const-string/jumbo v3, "wifi_display_certification_on"
 
     .line 188
-    const-string v3, "wifi_display_certification_on"
-
     invoke-static {v3}, Landroid/provider/Settings$Global;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v3
 
     invoke-virtual {v1, v3, v5, v2}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 190
-    const-string v3, "wifi_display_wps_config"
+    .line 191
+    const-string/jumbo v3, "wifi_display_wps_config"
 
+    .line 190
     invoke-static {v3}, Landroid/provider/Settings$Global;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v3
@@ -284,567 +697,17 @@
     .line 192
     invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateSettings()V
 
-    .line 193
+    .line 163
     return-void
-.end method
-
-.method static synthetic access$000(Lcom/android/server/display/WifiDisplayController;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateSettings()V
-
-    return-void
-.end method
-
-.method static synthetic access$100(Lcom/android/server/display/WifiDisplayController;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-boolean v0, p0, Lcom/android/server/display/WifiDisplayController;->mWfdEnabling:Z
-
-    return v0
-.end method
-
-.method static synthetic access$1000(Lcom/android/server/display/WifiDisplayController;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->handleScanResults()V
-
-    return-void
-.end method
-
-.method static synthetic access$102(Lcom/android/server/display/WifiDisplayController;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 71
-    iput-boolean p1, p0, Lcom/android/server/display/WifiDisplayController;->mWfdEnabling:Z
-
-    return p1
-.end method
-
-.method static synthetic access$1100(Lcom/android/server/display/WifiDisplayController;)Landroid/net/wifi/p2p/WifiP2pDevice;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mDisconnectingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1102(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/net/wifi/p2p/WifiP2pDevice;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 71
-    iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mDisconnectingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-
-    return-object p1
-.end method
-
-.method static synthetic access$1200(Lcom/android/server/display/WifiDisplayController;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateConnection()V
-
-    return-void
-.end method
-
-.method static synthetic access$1300(Lcom/android/server/display/WifiDisplayController;)Landroid/net/wifi/p2p/WifiP2pDevice;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mCancelingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1302(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/net/wifi/p2p/WifiP2pDevice;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 71
-    iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mCancelingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-
-    return-object p1
-.end method
-
-.method static synthetic access$1400(Lcom/android/server/display/WifiDisplayController;)Ljava/lang/Runnable;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectionTimeout:Ljava/lang/Runnable;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1500(Lcom/android/server/display/WifiDisplayController;)Landroid/os/Handler;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mHandler:Landroid/os/Handler;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1600(Lcom/android/server/display/WifiDisplayController;)Landroid/net/wifi/p2p/WifiP2pDevice;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1602(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/net/wifi/p2p/WifiP2pDevice;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 71
-    iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mConnectingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-
-    return-object p1
-.end method
-
-.method static synthetic access$1700(Lcom/android/server/display/WifiDisplayController;Z)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 71
-    invoke-direct {p0, p1}, Lcom/android/server/display/WifiDisplayController;->handleConnectionFailure(Z)V
-
-    return-void
-.end method
-
-.method static synthetic access$1800(Lcom/android/server/display/WifiDisplayController;)Landroid/net/wifi/p2p/WifiP2pDevice;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1802(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/net/wifi/p2p/WifiP2pDevice;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 71
-    iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-
-    return-object p1
-.end method
-
-.method static synthetic access$1900(Lcom/android/server/display/WifiDisplayController;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-boolean v0, p0, Lcom/android/server/display/WifiDisplayController;->mRemoteDisplayConnected:Z
-
-    return v0
-.end method
-
-.method static synthetic access$1902(Lcom/android/server/display/WifiDisplayController;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 71
-    iput-boolean p1, p0, Lcom/android/server/display/WifiDisplayController;->mRemoteDisplayConnected:Z
-
-    return p1
-.end method
-
-.method static synthetic access$2000(Lcom/android/server/display/WifiDisplayController;)Ljava/lang/Runnable;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mRtspTimeout:Ljava/lang/Runnable;
-
-    return-object v0
-.end method
-
-.method static synthetic access$202(Lcom/android/server/display/WifiDisplayController;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 71
-    iput-boolean p1, p0, Lcom/android/server/display/WifiDisplayController;->mWfdEnabled:Z
-
-    return p1
-.end method
-
-.method static synthetic access$2100(Lcom/android/server/display/WifiDisplayController;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-boolean v0, p0, Lcom/android/server/display/WifiDisplayController;->mWifiDisplayCertMode:Z
-
-    return v0
-.end method
-
-.method static synthetic access$2200(Lcom/android/server/display/WifiDisplayController;)Landroid/net/wifi/p2p/WifiP2pGroup;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDeviceGroupInfo:Landroid/net/wifi/p2p/WifiP2pGroup;
-
-    return-object v0
-.end method
-
-.method static synthetic access$2202(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pGroup;)Landroid/net/wifi/p2p/WifiP2pGroup;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 71
-    iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDeviceGroupInfo:Landroid/net/wifi/p2p/WifiP2pGroup;
-
-    return-object p1
-.end method
-
-.method static synthetic access$2300(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pGroup;I)Landroid/hardware/display/WifiDisplaySessionInfo;
-    .locals 1
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
-
-    .prologue
-    .line 71
-    invoke-direct {p0, p1, p2}, Lcom/android/server/display/WifiDisplayController;->getSessionInfo(Landroid/net/wifi/p2p/WifiP2pGroup;I)Landroid/hardware/display/WifiDisplaySessionInfo;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method static synthetic access$2400(Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/hardware/display/WifiDisplay;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    invoke-static {p0}, Lcom/android/server/display/WifiDisplayController;->createWifiDisplay(Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/hardware/display/WifiDisplay;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method static synthetic access$2500(Lcom/android/server/display/WifiDisplayController;Landroid/hardware/display/WifiDisplay;Landroid/view/Surface;III)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
-    .parameter "x3"
-    .parameter "x4"
-    .parameter "x5"
-
-    .prologue
-    .line 71
-    invoke-direct/range {p0 .. p5}, Lcom/android/server/display/WifiDisplayController;->advertiseDisplay(Landroid/hardware/display/WifiDisplay;Landroid/view/Surface;III)V
-
-    return-void
-.end method
-
-.method static synthetic access$2600(Lcom/android/server/display/WifiDisplayController;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->disconnect()V
-
-    return-void
-.end method
-
-.method static synthetic access$2700(Landroid/net/wifi/p2p/WifiP2pGroup;)Ljava/lang/String;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    invoke-static {p0}, Lcom/android/server/display/WifiDisplayController;->describeWifiP2pGroup(Landroid/net/wifi/p2p/WifiP2pGroup;)Ljava/lang/String;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method static synthetic access$2800(Lcom/android/server/display/WifiDisplayController;)Landroid/net/wifi/p2p/WifiP2pDevice;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-
-    return-object v0
-.end method
-
-.method static synthetic access$2802(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/net/wifi/p2p/WifiP2pDevice;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 71
-    iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-
-    return-object p1
-.end method
-
-.method static synthetic access$2900(Lcom/android/server/display/WifiDisplayController;)Landroid/net/wifi/p2p/WifiP2pDevice;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mThisDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-
-    return-object v0
-.end method
-
-.method static synthetic access$2902(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/net/wifi/p2p/WifiP2pDevice;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 71
-    iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mThisDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-
-    return-object p1
-.end method
-
-.method static synthetic access$300(Lcom/android/server/display/WifiDisplayController;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->reportFeatureState()V
-
-    return-void
-.end method
-
-.method static synthetic access$3000(Lcom/android/server/display/WifiDisplayController;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->tryDiscoverPeers()V
-
-    return-void
-.end method
-
-.method static synthetic access$3100(Lcom/android/server/display/WifiDisplayController;)Landroid/media/RemoteDisplay;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mRemoteDisplay:Landroid/media/RemoteDisplay;
-
-    return-object v0
-.end method
-
-.method static synthetic access$3200(Lcom/android/server/display/WifiDisplayController;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectionRetriesLeft:I
-
-    return v0
-.end method
-
-.method static synthetic access$3220(Lcom/android/server/display/WifiDisplayController;I)I
-    .locals 1
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 71
-    iget v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectionRetriesLeft:I
-
-    sub-int/2addr v0, p1
-
-    iput v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectionRetriesLeft:I
-
-    return v0
-.end method
-
-.method static synthetic access$3300(Lcom/android/server/display/WifiDisplayController;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->retryConnection()V
-
-    return-void
-.end method
-
-.method static synthetic access$3400(Lcom/android/server/display/WifiDisplayController;Z)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 71
-    invoke-direct {p0, p1}, Lcom/android/server/display/WifiDisplayController;->handleStateChanged(Z)V
-
-    return-void
-.end method
-
-.method static synthetic access$3500(Lcom/android/server/display/WifiDisplayController;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->handlePeersChanged()V
-
-    return-void
-.end method
-
-.method static synthetic access$3600(Lcom/android/server/display/WifiDisplayController;Landroid/net/NetworkInfo;)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 71
-    invoke-direct {p0, p1}, Lcom/android/server/display/WifiDisplayController;->handleConnectionChanged(Landroid/net/NetworkInfo;)V
-
-    return-void
-.end method
-
-.method static synthetic access$400(Lcom/android/server/display/WifiDisplayController;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateScanState()V
-
-    return-void
-.end method
-
-.method static synthetic access$500(Lcom/android/server/display/WifiDisplayController;)Lcom/android/server/display/WifiDisplayController$Listener;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mListener:Lcom/android/server/display/WifiDisplayController$Listener;
-
-    return-object v0
-.end method
-
-.method static synthetic access$600(Lcom/android/server/display/WifiDisplayController;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-boolean v0, p0, Lcom/android/server/display/WifiDisplayController;->mDiscoverPeersInProgress:Z
-
-    return v0
-.end method
-
-.method static synthetic access$700(Lcom/android/server/display/WifiDisplayController;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->requestPeers()V
-
-    return-void
-.end method
-
-.method static synthetic access$800(Lcom/android/server/display/WifiDisplayController;)Ljava/util/ArrayList;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mAvailableWifiDisplayPeers:Ljava/util/ArrayList;
-
-    return-object v0
-.end method
-
-.method static synthetic access$900(Landroid/net/wifi/p2p/WifiP2pDevice;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 71
-    invoke-static {p0}, Lcom/android/server/display/WifiDisplayController;->isWifiDisplay(Landroid/net/wifi/p2p/WifiP2pDevice;)Z
-
-    move-result v0
-
-    return v0
 .end method
 
 .method private advertiseDisplay(Landroid/hardware/display/WifiDisplay;Landroid/view/Surface;III)V
     .locals 10
-    .parameter "display"
-    .parameter "surface"
-    .parameter "width"
-    .parameter "height"
-    .parameter "flags"
+    .param p1, "display"    # Landroid/hardware/display/WifiDisplay;
+    .param p2, "surface"    # Landroid/view/Surface;
+    .param p3, "width"    # I
+    .param p4, "height"    # I
+    .param p5, "flags"    # I
 
     .prologue
     .line 947
@@ -856,32 +719,22 @@
 
     if-eqz v0, :cond_0
 
+    .line 948
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplaySurface:Landroid/view/Surface;
 
-    if-ne v0, p2, :cond_0
-
-    iget v0, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplayWidth:I
-
-    if-ne v0, p3, :cond_0
-
-    iget v0, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplayHeight:I
-
-    if-ne v0, p4, :cond_0
-
-    iget v0, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplayFlags:I
-
-    if-eq v0, p5, :cond_1
+    if-eq v0, p2, :cond_2
 
     .line 952
     :cond_0
+    :goto_0
     iget-object v4, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplay:Landroid/hardware/display/WifiDisplay;
 
     .line 953
-    .local v4, oldDisplay:Landroid/hardware/display/WifiDisplay;
+    .local v4, "oldDisplay":Landroid/hardware/display/WifiDisplay;
     iget-object v2, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplaySurface:Landroid/view/Surface;
 
     .line 955
-    .local v2, oldSurface:Landroid/view/Surface;
+    .local v2, "oldSurface":Landroid/view/Surface;
     iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplay:Landroid/hardware/display/WifiDisplay;
 
     .line 956
@@ -899,7 +752,7 @@
     .line 961
     iget-object v9, p0, Lcom/android/server/display/WifiDisplayController;->mHandler:Landroid/os/Handler;
 
-    new-instance v0, Lcom/android/server/display/WifiDisplayController$20;
+    new-instance v0, Lcom/android/server/display/WifiDisplayController$21;
 
     move-object v1, p0
 
@@ -913,15 +766,33 @@
 
     move v8, p5
 
-    invoke-direct/range {v0 .. v8}, Lcom/android/server/display/WifiDisplayController$20;-><init>(Lcom/android/server/display/WifiDisplayController;Landroid/view/Surface;Landroid/view/Surface;Landroid/hardware/display/WifiDisplay;Landroid/hardware/display/WifiDisplay;III)V
+    invoke-direct/range {v0 .. v8}, Lcom/android/server/display/WifiDisplayController$21;-><init>(Lcom/android/server/display/WifiDisplayController;Landroid/view/Surface;Landroid/view/Surface;Landroid/hardware/display/WifiDisplay;Landroid/hardware/display/WifiDisplay;III)V
 
     invoke-virtual {v9, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 985
-    .end local v2           #oldSurface:Landroid/view/Surface;
-    .end local v4           #oldDisplay:Landroid/hardware/display/WifiDisplay;
+    .line 946
+    .end local v2    # "oldSurface":Landroid/view/Surface;
+    .end local v4    # "oldDisplay":Landroid/hardware/display/WifiDisplay;
     :cond_1
     return-void
+
+    .line 949
+    :cond_2
+    iget v0, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplayWidth:I
+
+    if-ne v0, p3, :cond_0
+
+    .line 950
+    iget v0, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplayHeight:I
+
+    if-ne v0, p4, :cond_0
+
+    .line 951
+    iget v0, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplayFlags:I
+
+    if-eq v0, p5, :cond_1
+
+    goto :goto_0
 .end method
 
 .method private computeFeatureState()I
@@ -936,10 +807,9 @@
     .line 355
     const/4 v0, 0x1
 
-    .line 357
-    :goto_0
     return v0
 
+    .line 357
     :cond_0
     iget-boolean v0, p0, Lcom/android/server/display/WifiDisplayController;->mWifiDisplayOnSetting:Z
 
@@ -947,8 +817,10 @@
 
     const/4 v0, 0x3
 
-    goto :goto_0
+    :goto_0
+    return v0
 
+    .line 358
     :cond_1
     const/4 v0, 0x2
 
@@ -957,14 +829,15 @@
 
 .method private connect(Landroid/net/wifi/p2p/WifiP2pDevice;)V
     .locals 3
-    .parameter "device"
+    .param p1, "device"    # Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .prologue
     .line 512
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_0
 
+    .line 513
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     iget-object v0, v0, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceAddress:Ljava/lang/String;
@@ -974,20 +847,16 @@
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v0
-
-    if-nez v0, :cond_1
-
-    .line 541
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 521
-    :cond_1
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     if-eqz v0, :cond_2
 
+    .line 521
+    :cond_0
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    if-eqz v0, :cond_1
+
+    .line 522
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     iget-object v0, v0, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceAddress:Ljava/lang/String;
@@ -998,33 +867,31 @@
 
     move-result v0
 
-    if-nez v0, :cond_2
-
-    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_3
 
     .line 532
-    :cond_2
+    :cond_1
     iget-boolean v0, p0, Lcom/android/server/display/WifiDisplayController;->mWfdEnabled:Z
 
-    if-nez v0, :cond_3
+    if-nez v0, :cond_4
 
     .line 533
-    const-string v0, "WifiDisplayController"
+    const-string/jumbo v0, "WifiDisplayController"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Ignoring request to connect to Wifi display because the  feature is currently disabled: "
+    const-string/jumbo v2, "Ignoring request to connect to Wifi display because the  feature is currently disabled: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 534
     iget-object v2, p1, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceName:Ljava/lang/String;
 
+    .line 533
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -1035,10 +902,24 @@
 
     invoke-static {v0, v1}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_0
+    .line 535
+    return-void
+
+    .line 518
+    :cond_2
+    return-void
+
+    .line 523
+    :cond_3
+    iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+
+    if-nez v0, :cond_1
+
+    .line 529
+    return-void
 
     .line 538
-    :cond_3
+    :cond_4
     iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .line 539
@@ -1049,12 +930,13 @@
     .line 540
     invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateConnection()V
 
-    goto :goto_0
+    .line 511
+    return-void
 .end method
 
 .method private static createWifiDisplay(Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/hardware/display/WifiDisplay;
     .locals 7
-    .parameter "device"
+    .param p0, "device"    # Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .prologue
     .line 1049
@@ -1064,18 +946,22 @@
 
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceName:Ljava/lang/String;
 
-    const/4 v3, 0x0
+    .line 1050
+    iget-object v3, p0, Landroid/net/wifi/p2p/WifiP2pDevice;->wfdInfo:Landroid/net/wifi/p2p/WifiP2pWfdInfo;
 
-    const/4 v4, 0x1
-
-    iget-object v5, p0, Landroid/net/wifi/p2p/WifiP2pDevice;->wfdInfo:Landroid/net/wifi/p2p/WifiP2pWfdInfo;
-
-    invoke-virtual {v5}, Landroid/net/wifi/p2p/WifiP2pWfdInfo;->isSessionAvailable()Z
+    invoke-virtual {v3}, Landroid/net/wifi/p2p/WifiP2pWfdInfo;->isSessionAvailable()Z
 
     move-result v5
 
+    .line 1049
+    const/4 v3, 0x0
+
+    .line 1050
+    const/4 v4, 0x1
+
     const/4 v6, 0x0
 
+    .line 1049
     invoke-direct/range {v0 .. v6}, Landroid/hardware/display/WifiDisplay;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZ)V
 
     return-object v0
@@ -1083,7 +969,7 @@
 
 .method private static describeWifiP2pDevice(Landroid/net/wifi/p2p/WifiP2pDevice;)Ljava/lang/String;
     .locals 3
-    .parameter "device"
+    .param p0, "device"    # Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .prologue
     .line 1041
@@ -1105,14 +991,14 @@
     return-object v0
 
     :cond_0
-    const-string v0, "null"
+    const-string/jumbo v0, "null"
 
     goto :goto_0
 .end method
 
 .method private static describeWifiP2pGroup(Landroid/net/wifi/p2p/WifiP2pGroup;)Ljava/lang/String;
     .locals 3
-    .parameter "group"
+    .param p0, "group"    # Landroid/net/wifi/p2p/WifiP2pGroup;
 
     .prologue
     .line 1045
@@ -1134,7 +1020,7 @@
     return-object v0
 
     :cond_0
-    const-string v0, "null"
+    const-string/jumbo v0, "null"
 
     goto :goto_0
 .end method
@@ -1151,43 +1037,43 @@
     .line 545
     invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateConnection()V
 
-    .line 546
+    .line 543
     return-void
 .end method
 
 .method private static getInterfaceAddress(Landroid/net/wifi/p2p/WifiP2pGroup;)Ljava/net/Inet4Address;
     .locals 8
-    .parameter "info"
+    .param p0, "info"    # Landroid/net/wifi/p2p/WifiP2pGroup;
 
     .prologue
-    const/4 v4, 0x0
+    const/4 v7, 0x0
 
     .line 1000
     :try_start_0
     invoke-virtual {p0}, Landroid/net/wifi/p2p/WifiP2pGroup;->getInterface()Ljava/lang/String;
 
-    move-result-object v5
+    move-result-object v4
 
-    invoke-static {v5}, Ljava/net/NetworkInterface;->getByName(Ljava/lang/String;)Ljava/net/NetworkInterface;
+    invoke-static {v4}, Ljava/net/NetworkInterface;->getByName(Ljava/lang/String;)Ljava/net/NetworkInterface;
     :try_end_0
     .catch Ljava/net/SocketException; {:try_start_0 .. :try_end_0} :catch_0
 
     move-result-object v3
 
     .line 1007
-    .local v3, iface:Ljava/net/NetworkInterface;
+    .local v3, "iface":Ljava/net/NetworkInterface;
     invoke-virtual {v3}, Ljava/net/NetworkInterface;->getInetAddresses()Ljava/util/Enumeration;
 
     move-result-object v1
 
     .line 1008
-    .local v1, addrs:Ljava/util/Enumeration;,"Ljava/util/Enumeration<Ljava/net/InetAddress;>;"
+    .local v1, "addrs":Ljava/util/Enumeration;, "Ljava/util/Enumeration<Ljava/net/InetAddress;>;"
     :cond_0
     invoke-interface {v1}, Ljava/util/Enumeration;->hasMoreElements()Z
 
-    move-result v5
+    move-result v4
 
-    if-eqz v5, :cond_1
+    if-eqz v4, :cond_1
 
     .line 1009
     invoke-interface {v1}, Ljava/util/Enumeration;->nextElement()Ljava/lang/Object;
@@ -1197,110 +1083,110 @@
     check-cast v0, Ljava/net/InetAddress;
 
     .line 1010
-    .local v0, addr:Ljava/net/InetAddress;
-    instance-of v5, v0, Ljava/net/Inet4Address;
+    .local v0, "addr":Ljava/net/InetAddress;
+    instance-of v4, v0, Ljava/net/Inet4Address;
 
-    if-eqz v5, :cond_0
+    if-eqz v4, :cond_0
 
     .line 1011
     check-cast v0, Ljava/net/Inet4Address;
 
-    .line 1017
-    .end local v0           #addr:Ljava/net/InetAddress;
-    .end local v1           #addrs:Ljava/util/Enumeration;,"Ljava/util/Enumeration<Ljava/net/InetAddress;>;"
-    .end local v3           #iface:Ljava/net/NetworkInterface;
-    :goto_0
+    .end local v0    # "addr":Ljava/net/InetAddress;
     return-object v0
 
     .line 1001
+    .end local v1    # "addrs":Ljava/util/Enumeration;, "Ljava/util/Enumeration<Ljava/net/InetAddress;>;"
+    .end local v3    # "iface":Ljava/net/NetworkInterface;
     :catch_0
     move-exception v2
 
     .line 1002
-    .local v2, ex:Ljava/net/SocketException;
-    const-string v5, "WifiDisplayController"
+    .local v2, "ex":Ljava/net/SocketException;
+    const-string/jumbo v4, "WifiDisplayController"
 
-    new-instance v6, Ljava/lang/StringBuilder;
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v7, "Could not obtain address of network interface "
+    const-string/jumbo v6, "Could not obtain address of network interface "
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v6
+    move-result-object v5
 
+    .line 1003
     invoke-virtual {p0}, Landroid/net/wifi/p2p/WifiP2pGroup;->getInterface()Ljava/lang/String;
 
-    move-result-object v7
-
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     move-result-object v6
 
-    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    .line 1002
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v6
+    move-result-object v5
 
-    invoke-static {v5, v6, v2}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-object v0, v4
+    move-result-object v5
+
+    invoke-static {v4, v5, v2}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     .line 1004
-    goto :goto_0
+    return-object v7
 
     .line 1015
-    .end local v2           #ex:Ljava/net/SocketException;
-    .restart local v1       #addrs:Ljava/util/Enumeration;,"Ljava/util/Enumeration<Ljava/net/InetAddress;>;"
-    .restart local v3       #iface:Ljava/net/NetworkInterface;
+    .end local v2    # "ex":Ljava/net/SocketException;
+    .restart local v1    # "addrs":Ljava/util/Enumeration;, "Ljava/util/Enumeration<Ljava/net/InetAddress;>;"
+    .restart local v3    # "iface":Ljava/net/NetworkInterface;
     :cond_1
-    const-string v5, "WifiDisplayController"
+    const-string/jumbo v4, "WifiDisplayController"
 
-    new-instance v6, Ljava/lang/StringBuilder;
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v7, "Could not obtain address of network interface "
+    const-string/jumbo v6, "Could not obtain address of network interface "
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v6
+    move-result-object v5
 
+    .line 1016
     invoke-virtual {p0}, Landroid/net/wifi/p2p/WifiP2pGroup;->getInterface()Ljava/lang/String;
 
-    move-result-object v7
-
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     move-result-object v6
 
-    const-string v7, " because it had no IPv4 addresses."
+    .line 1015
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v5
 
-    move-result-object v6
+    .line 1016
+    const-string/jumbo v6, " because it had no IPv4 addresses."
 
-    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    .line 1015
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v6
+    move-result-object v5
 
-    invoke-static {v5, v6}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-object v0, v4
+    move-result-object v5
+
+    invoke-static {v4, v5}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 1017
-    goto :goto_0
+    return-object v7
 .end method
 
 .method private static getPortNumber(Landroid/net/wifi/p2p/WifiP2pDevice;)I
     .locals 2
-    .parameter "device"
+    .param p0, "device"    # Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .prologue
     .line 1021
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceName:Ljava/lang/String;
 
-    const-string v1, "DIRECT-"
+    const-string/jumbo v1, "DIRECT-"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
@@ -1308,44 +1194,43 @@
 
     if-eqz v0, :cond_0
 
+    .line 1022
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceName:Ljava/lang/String;
 
-    const-string v1, "Broadcom"
+    const-string/jumbo v1, "Broadcom"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
 
     move-result v0
 
+    .line 1021
     if-eqz v0, :cond_0
 
     .line 1024
     const/16 v0, 0x216a
 
-    .line 1026
-    :goto_0
     return v0
 
+    .line 1026
     :cond_0
     const/16 v0, 0x1c44
 
-    goto :goto_0
+    return v0
 .end method
 
 .method private getSessionInfo(Landroid/net/wifi/p2p/WifiP2pGroup;I)Landroid/hardware/display/WifiDisplaySessionInfo;
     .locals 7
-    .parameter "info"
-    .parameter "session"
+    .param p1, "info"    # Landroid/net/wifi/p2p/WifiP2pGroup;
+    .param p2, "session"    # I
 
     .prologue
+    const/4 v1, 0x0
+
     .line 789
     if-nez p1, :cond_0
 
     .line 790
-    const/4 v0, 0x0
-
-    .line 802
-    :goto_0
-    return-object v0
+    return-object v1
 
     .line 792
     :cond_0
@@ -1354,9 +1239,10 @@
     move-result-object v6
 
     .line 793
-    .local v6, addr:Ljava/net/Inet4Address;
+    .local v6, "addr":Ljava/net/Inet4Address;
     new-instance v0, Landroid/hardware/display/WifiDisplaySessionInfo;
 
+    .line 794
     invoke-virtual {p1}, Landroid/net/wifi/p2p/WifiP2pGroup;->getOwner()Landroid/net/wifi/p2p/WifiP2pDevice;
 
     move-result-object v1
@@ -1371,11 +1257,12 @@
 
     move-result v1
 
-    if-nez v1, :cond_1
+    if-eqz v1, :cond_1
 
-    const/4 v1, 0x1
+    const/4 v1, 0x0
 
-    :goto_1
+    .line 796
+    :goto_0
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -1390,7 +1277,7 @@
 
     move-result-object v2
 
-    const-string v3, " "
+    const-string/jumbo v3, " "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1408,43 +1295,49 @@
 
     move-result-object v3
 
+    .line 797
     invoke-virtual {p1}, Landroid/net/wifi/p2p/WifiP2pGroup;->getPassphrase()Ljava/lang/String;
 
     move-result-object v4
 
+    .line 798
     if-eqz v6, :cond_2
 
     invoke-virtual {v6}, Ljava/net/Inet4Address;->getHostAddress()Ljava/lang/String;
 
     move-result-object v5
 
-    :goto_2
+    :goto_1
     move v2, p2
 
+    .line 793
     invoke-direct/range {v0 .. v5}, Landroid/hardware/display/WifiDisplaySessionInfo;-><init>(ZILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 802
-    .local v0, sessionInfo:Landroid/hardware/display/WifiDisplaySessionInfo;
+    .local v0, "sessionInfo":Landroid/hardware/display/WifiDisplaySessionInfo;
+    return-object v0
+
+    .line 794
+    .end local v0    # "sessionInfo":Landroid/hardware/display/WifiDisplaySessionInfo;
+    :cond_1
+    const/4 v1, 0x1
+
     goto :goto_0
 
-    .line 793
-    .end local v0           #sessionInfo:Landroid/hardware/display/WifiDisplaySessionInfo;
-    :cond_1
-    const/4 v1, 0x0
+    .line 798
+    :cond_2
+    const-string/jumbo v5, ""
 
     goto :goto_1
-
-    :cond_2
-    const-string v5, ""
-
-    goto :goto_2
 .end method
 
 .method private handleConnectionChanged(Landroid/net/NetworkInfo;)V
     .locals 3
-    .parameter "networkInfo"
+    .param p1, "networkInfo"    # Landroid/net/NetworkInfo;
 
     .prologue
+    const/4 v1, 0x0
+
     .line 817
     iput-object p1, p0, Lcom/android/server/display/WifiDisplayController;->mNetworkInfo:Landroid/net/NetworkInfo;
 
@@ -1474,22 +1367,20 @@
 
     iget-object v1, p0, Lcom/android/server/display/WifiDisplayController;->mWifiP2pChannel:Landroid/net/wifi/p2p/WifiP2pManager$Channel;
 
-    new-instance v2, Lcom/android/server/display/WifiDisplayController$15;
+    new-instance v2, Lcom/android/server/display/WifiDisplayController$19;
 
-    invoke-direct {v2, p0}, Lcom/android/server/display/WifiDisplayController$15;-><init>(Lcom/android/server/display/WifiDisplayController;)V
+    invoke-direct {v2, p0}, Lcom/android/server/display/WifiDisplayController$19;-><init>(Lcom/android/server/display/WifiDisplayController;)V
 
     invoke-virtual {v0, v1, v2}, Landroid/net/wifi/p2p/WifiP2pManager;->requestGroupInfo(Landroid/net/wifi/p2p/WifiP2pManager$Channel;Landroid/net/wifi/p2p/WifiP2pManager$GroupInfoListener;)V
 
-    .line 888
+    .line 816
     :cond_1
     :goto_0
     return-void
 
     .line 874
     :cond_2
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDeviceGroupInfo:Landroid/net/wifi/p2p/WifiP2pGroup;
+    iput-object v1, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDeviceGroupInfo:Landroid/net/wifi/p2p/WifiP2pGroup;
 
     .line 877
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
@@ -1517,60 +1408,64 @@
 .end method
 
 .method private handleConnectionFailure(Z)V
-    .locals 5
-    .parameter "timeoutOccurred"
+    .locals 6
+    .param p1, "timeoutOccurred"    # Z
 
     .prologue
+    const/4 v1, 0x0
+
     .line 923
-    const-string v1, "WifiDisplayController"
+    const-string/jumbo v2, "WifiDisplayController"
 
-    const-string v2, "Wifi display connection failed!"
+    const-string/jumbo v3, "Wifi display connection failed!"
 
-    invoke-static {v1, v2}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v2, v3}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 925
-    iget-object v1, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+    iget-object v2, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
-    if-eqz v1, :cond_0
+    if-eqz v2, :cond_0
 
     .line 926
-    iget v1, p0, Lcom/android/server/display/WifiDisplayController;->mConnectionRetriesLeft:I
+    iget v2, p0, Lcom/android/server/display/WifiDisplayController;->mConnectionRetriesLeft:I
 
-    if-lez v1, :cond_2
+    if-lez v2, :cond_2
 
     .line 927
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .line 928
-    .local v0, oldDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-    iget-object v3, p0, Lcom/android/server/display/WifiDisplayController;->mHandler:Landroid/os/Handler;
+    .local v0, "oldDevice":Landroid/net/wifi/p2p/WifiP2pDevice;
+    iget-object v2, p0, Lcom/android/server/display/WifiDisplayController;->mHandler:Landroid/os/Handler;
 
-    new-instance v4, Lcom/android/server/display/WifiDisplayController$19;
+    new-instance v3, Lcom/android/server/display/WifiDisplayController$20;
 
-    invoke-direct {v4, p0, v0}, Lcom/android/server/display/WifiDisplayController$19;-><init>(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)V
+    invoke-direct {v3, p0, v0}, Lcom/android/server/display/WifiDisplayController$20;-><init>(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)V
 
+    .line 938
     if-eqz p1, :cond_1
 
-    const-wide/16 v1, 0x0
-
     :goto_0
-    invoke-virtual {v3, v4, v1, v2}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+    int-to-long v4, v1
 
-    .line 943
-    .end local v0           #oldDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .line 928
+    invoke-virtual {v2, v3, v4, v5}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    .line 922
+    .end local v0    # "oldDevice":Landroid/net/wifi/p2p/WifiP2pDevice;
     :cond_0
     :goto_1
     return-void
 
-    .line 928
-    .restart local v0       #oldDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .line 938
+    .restart local v0    # "oldDevice":Landroid/net/wifi/p2p/WifiP2pDevice;
     :cond_1
-    const-wide/16 v1, 0x1f4
+    const/16 v1, 0x1f4
 
     goto :goto_0
 
     .line 940
-    .end local v0           #oldDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .end local v0    # "oldDevice":Landroid/net/wifi/p2p/WifiP2pDevice;
     :cond_2
     invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->disconnect()V
 
@@ -1584,7 +1479,7 @@
     .line 813
     invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->requestPeers()V
 
-    .line 814
+    .line 810
     return-void
 .end method
 
@@ -1595,13 +1490,13 @@
     .line 486
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mHandler:Landroid/os/Handler;
 
-    new-instance v1, Lcom/android/server/display/WifiDisplayController$10;
+    new-instance v1, Lcom/android/server/display/WifiDisplayController$14;
 
-    invoke-direct {v1, p0}, Lcom/android/server/display/WifiDisplayController$10;-><init>(Lcom/android/server/display/WifiDisplayController;)V
+    invoke-direct {v1, p0}, Lcom/android/server/display/WifiDisplayController$14;-><init>(Lcom/android/server/display/WifiDisplayController;)V
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 492
+    .line 485
     return-void
 .end method
 
@@ -1617,7 +1512,7 @@
     move-result v0
 
     .line 470
-    .local v0, count:I
+    .local v0, "count":I
     sget-object v4, Landroid/hardware/display/WifiDisplay;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v4, v0}, Landroid/os/Parcelable$Creator;->newArray(I)[Ljava/lang/Object;
@@ -1627,10 +1522,10 @@
     check-cast v2, [Landroid/hardware/display/WifiDisplay;
 
     .line 471
-    .local v2, displays:[Landroid/hardware/display/WifiDisplay;
+    .local v2, "displays":[Landroid/hardware/display/WifiDisplay;
     const/4 v3, 0x0
 
-    .local v3, i:I
+    .local v3, "i":I
     :goto_0
     if-ge v3, v0, :cond_0
 
@@ -1644,7 +1539,7 @@
     check-cast v1, Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .line 473
-    .local v1, device:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .local v1, "device":Landroid/net/wifi/p2p/WifiP2pDevice;
     invoke-static {v1}, Lcom/android/server/display/WifiDisplayController;->createWifiDisplay(Landroid/net/wifi/p2p/WifiP2pDevice;)Landroid/hardware/display/WifiDisplay;
 
     move-result-object v4
@@ -1660,17 +1555,17 @@
     goto :goto_0
 
     .line 477
-    .end local v1           #device:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .end local v1    # "device":Landroid/net/wifi/p2p/WifiP2pDevice;
     :cond_0
     iget-object v4, p0, Lcom/android/server/display/WifiDisplayController;->mHandler:Landroid/os/Handler;
 
-    new-instance v5, Lcom/android/server/display/WifiDisplayController$9;
+    new-instance v5, Lcom/android/server/display/WifiDisplayController$13;
 
-    invoke-direct {v5, p0, v2}, Lcom/android/server/display/WifiDisplayController$9;-><init>(Lcom/android/server/display/WifiDisplayController;[Landroid/hardware/display/WifiDisplay;)V
+    invoke-direct {v5, p0, v2}, Lcom/android/server/display/WifiDisplayController$13;-><init>(Lcom/android/server/display/WifiDisplayController;[Landroid/hardware/display/WifiDisplay;)V
 
     invoke-virtual {v4, v5}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 483
+    .line 468
     return-void
 .end method
 
@@ -1681,19 +1576,19 @@
     .line 460
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mHandler:Landroid/os/Handler;
 
-    new-instance v1, Lcom/android/server/display/WifiDisplayController$8;
+    new-instance v1, Lcom/android/server/display/WifiDisplayController$12;
 
-    invoke-direct {v1, p0}, Lcom/android/server/display/WifiDisplayController$8;-><init>(Lcom/android/server/display/WifiDisplayController;)V
+    invoke-direct {v1, p0}, Lcom/android/server/display/WifiDisplayController$12;-><init>(Lcom/android/server/display/WifiDisplayController;)V
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 466
+    .line 459
     return-void
 .end method
 
 .method private handleStateChanged(Z)V
     .locals 0
-    .parameter "enabled"
+    .param p1, "enabled"    # Z
 
     .prologue
     .line 806
@@ -1702,13 +1597,13 @@
     .line 807
     invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateWfdEnableState()V
 
-    .line 808
+    .line 805
     return-void
 .end method
 
 .method private static isPrimarySinkDeviceType(I)Z
     .locals 2
-    .parameter "deviceType"
+    .param p0, "deviceType"    # I
 
     .prologue
     const/4 v0, 0x1
@@ -1716,14 +1611,17 @@
     .line 1036
     if-eq p0, v0, :cond_0
 
+    .line 1037
     const/4 v1, 0x3
 
     if-ne p0, v1, :cond_1
 
+    .line 1036
     :cond_0
     :goto_0
     return v0
 
+    .line 1037
     :cond_1
     const/4 v0, 0x0
 
@@ -1732,7 +1630,7 @@
 
 .method private static isWifiDisplay(Landroid/net/wifi/p2p/WifiP2pDevice;)Z
     .locals 1
-    .parameter "device"
+    .param p0, "device"    # Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .prologue
     .line 1030
@@ -1740,14 +1638,17 @@
 
     if-eqz v0, :cond_0
 
+    .line 1031
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pDevice;->wfdInfo:Landroid/net/wifi/p2p/WifiP2pWfdInfo;
 
     invoke-virtual {v0}, Landroid/net/wifi/p2p/WifiP2pWfdInfo;->isWfdEnabled()Z
 
     move-result v0
 
+    .line 1030
     if-eqz v0, :cond_0
 
+    .line 1032
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pDevice;->wfdInfo:Landroid/net/wifi/p2p/WifiP2pWfdInfo;
 
     invoke-virtual {v0}, Landroid/net/wifi/p2p/WifiP2pWfdInfo;->getDeviceType()I
@@ -1758,10 +1659,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
-
+    .line 1030
     :goto_0
     return v0
 
@@ -1773,25 +1671,28 @@
 
 .method private readvertiseDisplay(Landroid/hardware/display/WifiDisplay;)V
     .locals 6
-    .parameter "display"
+    .param p1, "display"    # Landroid/hardware/display/WifiDisplay;
 
     .prologue
     .line 992
     iget-object v2, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplaySurface:Landroid/view/Surface;
 
+    .line 993
     iget v3, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplayWidth:I
 
     iget v4, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplayHeight:I
 
+    .line 994
     iget v5, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplayFlags:I
 
     move-object v0, p0
 
     move-object v1, p1
 
+    .line 992
     invoke-direct/range {v0 .. v5}, Lcom/android/server/display/WifiDisplayController;->advertiseDisplay(Landroid/hardware/display/WifiDisplay;Landroid/view/Surface;III)V
 
-    .line 995
+    .line 991
     return-void
 .end method
 
@@ -1805,16 +1706,16 @@
     move-result v0
 
     .line 345
-    .local v0, featureState:I
+    .local v0, "featureState":I
     iget-object v1, p0, Lcom/android/server/display/WifiDisplayController;->mHandler:Landroid/os/Handler;
 
-    new-instance v2, Lcom/android/server/display/WifiDisplayController$4;
+    new-instance v2, Lcom/android/server/display/WifiDisplayController$8;
 
-    invoke-direct {v2, p0, v0}, Lcom/android/server/display/WifiDisplayController$4;-><init>(Lcom/android/server/display/WifiDisplayController;I)V
+    invoke-direct {v2, p0, v0}, Lcom/android/server/display/WifiDisplayController$8;-><init>(Lcom/android/server/display/WifiDisplayController;I)V
 
     invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 351
+    .line 343
     return-void
 .end method
 
@@ -1827,13 +1728,13 @@
 
     iget-object v1, p0, Lcom/android/server/display/WifiDisplayController;->mWifiP2pChannel:Landroid/net/wifi/p2p/WifiP2pManager$Channel;
 
-    new-instance v2, Lcom/android/server/display/WifiDisplayController$7;
+    new-instance v2, Lcom/android/server/display/WifiDisplayController$11;
 
-    invoke-direct {v2, p0}, Lcom/android/server/display/WifiDisplayController$7;-><init>(Lcom/android/server/display/WifiDisplayController;)V
+    invoke-direct {v2, p0}, Lcom/android/server/display/WifiDisplayController$11;-><init>(Lcom/android/server/display/WifiDisplayController;)V
 
     invoke-virtual {v0, v1, v2}, Landroid/net/wifi/p2p/WifiP2pManager;->requestPeers(Landroid/net/wifi/p2p/WifiP2pManager$Channel;Landroid/net/wifi/p2p/WifiP2pManager$PeerListListener;)V
 
-    .line 457
+    .line 433
     return-void
 .end method
 
@@ -1853,7 +1754,7 @@
     .line 553
     invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateConnection()V
 
-    .line 554
+    .line 548
     return-void
 .end method
 
@@ -1866,13 +1767,13 @@
 
     iget-object v1, p0, Lcom/android/server/display/WifiDisplayController;->mWifiP2pChannel:Landroid/net/wifi/p2p/WifiP2pManager$Channel;
 
-    new-instance v2, Lcom/android/server/display/WifiDisplayController$6;
+    new-instance v2, Lcom/android/server/display/WifiDisplayController$10;
 
-    invoke-direct {v2, p0}, Lcom/android/server/display/WifiDisplayController$6;-><init>(Lcom/android/server/display/WifiDisplayController;)V
+    invoke-direct {v2, p0}, Lcom/android/server/display/WifiDisplayController$10;-><init>(Lcom/android/server/display/WifiDisplayController;)V
 
     invoke-virtual {v0, v1, v2}, Landroid/net/wifi/p2p/WifiP2pManager;->stopPeerDiscovery(Landroid/net/wifi/p2p/WifiP2pManager$Channel;Landroid/net/wifi/p2p/WifiP2pManager$ActionListener;)V
 
-    .line 431
+    .line 415
     return-void
 .end method
 
@@ -1885,9 +1786,9 @@
 
     iget-object v1, p0, Lcom/android/server/display/WifiDisplayController;->mWifiP2pChannel:Landroid/net/wifi/p2p/WifiP2pManager$Channel;
 
-    new-instance v2, Lcom/android/server/display/WifiDisplayController$5;
+    new-instance v2, Lcom/android/server/display/WifiDisplayController$9;
 
-    invoke-direct {v2, p0}, Lcom/android/server/display/WifiDisplayController$5;-><init>(Lcom/android/server/display/WifiDisplayController;)V
+    invoke-direct {v2, p0}, Lcom/android/server/display/WifiDisplayController$9;-><init>(Lcom/android/server/display/WifiDisplayController;)V
 
     invoke-virtual {v0, v1, v2}, Landroid/net/wifi/p2p/WifiP2pManager;->discoverPeers(Landroid/net/wifi/p2p/WifiP2pManager$Channel;Landroid/net/wifi/p2p/WifiP2pManager$ActionListener;)V
 
@@ -1900,7 +1801,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    .line 413
+    .line 387
     return-void
 .end method
 
@@ -1912,7 +1813,6 @@
 
     const/4 v3, 0x0
 
-    .line 988
     move-object v0, p0
 
     move-object v2, v1
@@ -1921,9 +1821,10 @@
 
     move v5, v3
 
+    .line 988
     invoke-direct/range {v0 .. v5}, Lcom/android/server/display/WifiDisplayController;->advertiseDisplay(Landroid/hardware/display/WifiDisplay;Landroid/view/Surface;III)V
 
-    .line 989
+    .line 987
     return-void
 .end method
 
@@ -1933,9 +1834,9 @@
     .prologue
     const/4 v14, 0x1
 
-    const/4 v2, 0x0
-
     const/4 v3, 0x0
+
+    const/4 v2, 0x0
 
     .line 564
     invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateScanState()V
@@ -1952,13 +1853,13 @@
     if-eq v0, v4, :cond_0
 
     .line 569
-    const-string v0, "WifiDisplayController"
+    const-string/jumbo v0, "WifiDisplayController"
 
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v5, "Stopped listening for RTSP connection on "
+    const-string/jumbo v5, "Stopped listening for RTSP connection on "
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1970,16 +1871,20 @@
 
     move-result-object v4
 
-    const-string v5, " from Wifi display: "
+    .line 570
+    const-string/jumbo v5, " from Wifi display: "
 
+    .line 569
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
+    .line 570
     iget-object v5, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     iget-object v5, v5, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceName:Ljava/lang/String;
 
+    .line 569
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
@@ -2023,33 +1928,31 @@
     :cond_0
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mDisconnectingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_1
 
-    .line 786
-    :cond_1
-    :goto_0
+    .line 586
     return-void
 
     .line 588
-    :cond_2
+    :cond_1
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
-    if-eqz v0, :cond_3
+    if-eqz v0, :cond_2
 
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     iget-object v4, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
-    if-eq v0, v4, :cond_3
+    if-eq v0, v4, :cond_2
 
     .line 589
-    const-string v0, "WifiDisplayController"
+    const-string/jumbo v0, "WifiDisplayController"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "Disconnecting from Wifi display: "
+    const-string/jumbo v4, "Disconnecting from Wifi display: "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2087,27 +1990,32 @@
     iget-object v10, p0, Lcom/android/server/display/WifiDisplayController;->mDisconnectingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .line 597
-    .local v10, oldDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .local v10, "oldDevice":Landroid/net/wifi/p2p/WifiP2pDevice;
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mWifiP2pManager:Landroid/net/wifi/p2p/WifiP2pManager;
 
     iget-object v2, p0, Lcom/android/server/display/WifiDisplayController;->mWifiP2pChannel:Landroid/net/wifi/p2p/WifiP2pManager$Channel;
 
-    new-instance v3, Lcom/android/server/display/WifiDisplayController$11;
+    new-instance v3, Lcom/android/server/display/WifiDisplayController$15;
 
-    invoke-direct {v3, p0, v10}, Lcom/android/server/display/WifiDisplayController$11;-><init>(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)V
+    invoke-direct {v3, p0, v10}, Lcom/android/server/display/WifiDisplayController$15;-><init>(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)V
 
     invoke-virtual {v0, v2, v3}, Landroid/net/wifi/p2p/WifiP2pManager;->removeGroup(Landroid/net/wifi/p2p/WifiP2pManager$Channel;Landroid/net/wifi/p2p/WifiP2pManager$ActionListener;)V
 
-    goto :goto_0
+    .line 618
+    return-void
 
     .line 623
-    .end local v10           #oldDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
-    :cond_3
+    .end local v10    # "oldDevice":Landroid/net/wifi/p2p/WifiP2pDevice;
+    :cond_2
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mCancelingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
-    if-nez v0, :cond_1
+    if-eqz v0, :cond_3
+
+    .line 624
+    return-void
 
     .line 626
+    :cond_3
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     if-eqz v0, :cond_4
@@ -2119,13 +2027,13 @@
     if-eq v0, v4, :cond_4
 
     .line 627
-    const-string v0, "WifiDisplayController"
+    const-string/jumbo v0, "WifiDisplayController"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "Canceling connection to Wifi display: "
+    const-string/jumbo v4, "Canceling connection to Wifi display: "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2167,21 +2075,22 @@
     iget-object v10, p0, Lcom/android/server/display/WifiDisplayController;->mCancelingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .line 635
-    .restart local v10       #oldDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .restart local v10    # "oldDevice":Landroid/net/wifi/p2p/WifiP2pDevice;
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mWifiP2pManager:Landroid/net/wifi/p2p/WifiP2pManager;
 
     iget-object v2, p0, Lcom/android/server/display/WifiDisplayController;->mWifiP2pChannel:Landroid/net/wifi/p2p/WifiP2pManager$Channel;
 
-    new-instance v3, Lcom/android/server/display/WifiDisplayController$12;
+    new-instance v3, Lcom/android/server/display/WifiDisplayController$16;
 
-    invoke-direct {v3, p0, v10}, Lcom/android/server/display/WifiDisplayController$12;-><init>(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)V
+    invoke-direct {v3, p0, v10}, Lcom/android/server/display/WifiDisplayController$16;-><init>(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)V
 
     invoke-virtual {v0, v2, v3}, Landroid/net/wifi/p2p/WifiP2pManager;->cancelConnect(Landroid/net/wifi/p2p/WifiP2pManager$Channel;Landroid/net/wifi/p2p/WifiP2pManager$ActionListener;)V
 
-    goto/16 :goto_0
+    .line 656
+    return-void
 
     .line 661
-    .end local v10           #oldDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .end local v10    # "oldDevice":Landroid/net/wifi/p2p/WifiP2pDevice;
     :cond_4
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
@@ -2207,7 +2116,8 @@
     :cond_5
     invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->unadvertiseDisplay()V
 
-    goto/16 :goto_0
+    .line 666
+    return-void
 
     .line 670
     :cond_6
@@ -2220,13 +2130,13 @@
     if-nez v0, :cond_a
 
     .line 671
-    const-string v0, "WifiDisplayController"
+    const-string/jumbo v0, "WifiDisplayController"
 
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v5, "Connecting to Wifi display: "
+    const-string/jumbo v5, "Connecting to Wifi display: "
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2257,13 +2167,13 @@
     invoke-direct {v7}, Landroid/net/wifi/p2p/WifiP2pConfig;-><init>()V
 
     .line 675
-    .local v7, config:Landroid/net/wifi/p2p/WifiP2pConfig;
+    .local v7, "config":Landroid/net/wifi/p2p/WifiP2pConfig;
     new-instance v13, Landroid/net/wifi/WpsInfo;
 
     invoke-direct {v13}, Landroid/net/wifi/WpsInfo;-><init>()V
 
     .line 676
-    .local v13, wps:Landroid/net/wifi/WpsInfo;
+    .local v13, "wps":Landroid/net/wifi/WpsInfo;
     iget v0, p0, Lcom/android/server/display/WifiDisplayController;->mWifiDisplayWpsConfig:I
 
     const/4 v4, 0x4
@@ -2276,7 +2186,7 @@
     iput v0, v13, Landroid/net/wifi/WpsInfo;->setup:I
 
     .line 686
-    :goto_1
+    :goto_0
     iput-object v13, v7, Landroid/net/wifi/p2p/WifiP2pConfig;->wps:Landroid/net/wifi/WpsInfo;
 
     .line 687
@@ -2296,7 +2206,7 @@
 
     move-result-object v1
 
-    .local v1, display:Landroid/hardware/display/WifiDisplay;
+    .local v1, "display":Landroid/hardware/display/WifiDisplay;
     move-object v0, p0
 
     move v4, v3
@@ -2310,22 +2220,23 @@
     iget-object v9, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .line 695
-    .local v9, newDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .local v9, "newDevice":Landroid/net/wifi/p2p/WifiP2pDevice;
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mWifiP2pManager:Landroid/net/wifi/p2p/WifiP2pManager;
 
     iget-object v2, p0, Lcom/android/server/display/WifiDisplayController;->mWifiP2pChannel:Landroid/net/wifi/p2p/WifiP2pManager$Channel;
 
-    new-instance v3, Lcom/android/server/display/WifiDisplayController$13;
+    new-instance v3, Lcom/android/server/display/WifiDisplayController$17;
 
-    invoke-direct {v3, p0, v9}, Lcom/android/server/display/WifiDisplayController$13;-><init>(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)V
+    invoke-direct {v3, p0, v9}, Lcom/android/server/display/WifiDisplayController$17;-><init>(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)V
 
     invoke-virtual {v0, v2, v7, v3}, Landroid/net/wifi/p2p/WifiP2pManager;->connect(Landroid/net/wifi/p2p/WifiP2pManager$Channel;Landroid/net/wifi/p2p/WifiP2pConfig;Landroid/net/wifi/p2p/WifiP2pManager$ActionListener;)V
 
-    goto/16 :goto_0
+    .line 716
+    return-void
 
     .line 678
-    .end local v1           #display:Landroid/hardware/display/WifiDisplay;
-    .end local v9           #newDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .end local v1    # "display":Landroid/hardware/display/WifiDisplay;
+    .end local v9    # "newDevice":Landroid/net/wifi/p2p/WifiP2pDevice;
     :cond_7
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectingDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
@@ -2338,7 +2249,7 @@
     .line 679
     iput v3, v13, Landroid/net/wifi/WpsInfo;->setup:I
 
-    goto :goto_1
+    goto :goto_0
 
     .line 680
     :cond_8
@@ -2355,25 +2266,25 @@
 
     iput v0, v13, Landroid/net/wifi/WpsInfo;->setup:I
 
-    goto :goto_1
+    goto :goto_0
 
     .line 684
     :cond_9
     iput v14, v13, Landroid/net/wifi/WpsInfo;->setup:I
 
-    goto :goto_1
+    goto :goto_0
 
     .line 720
-    .end local v7           #config:Landroid/net/wifi/p2p/WifiP2pConfig;
-    .end local v13           #wps:Landroid/net/wifi/WpsInfo;
+    .end local v7    # "config":Landroid/net/wifi/p2p/WifiP2pConfig;
+    .end local v13    # "wps":Landroid/net/wifi/WpsInfo;
     :cond_a
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_c
 
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mRemoteDisplay:Landroid/media/RemoteDisplay;
 
-    if-nez v0, :cond_1
+    if-nez v0, :cond_c
 
     .line 721
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDeviceGroupInfo:Landroid/net/wifi/p2p/WifiP2pGroup;
@@ -2383,26 +2294,28 @@
     move-result-object v6
 
     .line 722
-    .local v6, addr:Ljava/net/Inet4Address;
+    .local v6, "addr":Ljava/net/Inet4Address;
     if-nez v6, :cond_b
 
     .line 723
-    const-string v0, "WifiDisplayController"
+    const-string/jumbo v0, "WifiDisplayController"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "Failed to get local interface address for communicating with Wifi display: "
+    const-string/jumbo v4, "Failed to get local interface address for communicating with Wifi display: "
 
     invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
+    .line 724
     iget-object v4, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     iget-object v4, v4, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceName:Ljava/lang/String;
 
+    .line 723
     invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -2416,7 +2329,8 @@
     .line 725
     invoke-direct {p0, v3}, Lcom/android/server/display/WifiDisplayController;->handleConnectionFailure(Z)V
 
-    goto/16 :goto_0
+    .line 726
+    return-void
 
     .line 729
     :cond_b
@@ -2428,7 +2342,7 @@
     iget-object v10, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .line 732
-    .restart local v10       #oldDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .restart local v10    # "oldDevice":Landroid/net/wifi/p2p/WifiP2pDevice;
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     invoke-static {v0}, Lcom/android/server/display/WifiDisplayController;->getPortNumber(Landroid/net/wifi/p2p/WifiP2pDevice;)I
@@ -2436,7 +2350,7 @@
     move-result v11
 
     .line 733
-    .local v11, port:I
+    .local v11, "port":I
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -2449,7 +2363,7 @@
 
     move-result-object v0
 
-    const-string v2, ":"
+    const-string/jumbo v2, ":"
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2464,17 +2378,17 @@
     move-result-object v8
 
     .line 734
-    .local v8, iface:Ljava/lang/String;
+    .local v8, "iface":Ljava/lang/String;
     iput-object v8, p0, Lcom/android/server/display/WifiDisplayController;->mRemoteDisplayInterface:Ljava/lang/String;
 
     .line 736
-    const-string v0, "WifiDisplayController"
+    const-string/jumbo v0, "WifiDisplayController"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Listening for RTSP connection on "
+    const-string/jumbo v3, "Listening for RTSP connection on "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2484,16 +2398,20 @@
 
     move-result-object v2
 
-    const-string v3, " from Wifi display: "
+    .line 737
+    const-string/jumbo v3, " from Wifi display: "
 
+    .line 736
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
+    .line 737
     iget-object v3, p0, Lcom/android/server/display/WifiDisplayController;->mConnectedDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     iget-object v3, v3, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceName:Ljava/lang/String;
 
+    .line 736
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -2505,13 +2423,21 @@
     invoke-static {v0, v2}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 739
-    new-instance v0, Lcom/android/server/display/WifiDisplayController$14;
+    new-instance v0, Lcom/android/server/display/WifiDisplayController$18;
 
-    invoke-direct {v0, p0, v10}, Lcom/android/server/display/WifiDisplayController$14;-><init>(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)V
+    invoke-direct {v0, p0, v10}, Lcom/android/server/display/WifiDisplayController$18;-><init>(Lcom/android/server/display/WifiDisplayController;Landroid/net/wifi/p2p/WifiP2pDevice;)V
 
+    .line 778
     iget-object v2, p0, Lcom/android/server/display/WifiDisplayController;->mHandler:Landroid/os/Handler;
 
-    invoke-static {v8, v0, v2}, Landroid/media/RemoteDisplay;->listen(Ljava/lang/String;Landroid/media/RemoteDisplay$Listener;Landroid/os/Handler;)Landroid/media/RemoteDisplay;
+    iget-object v3, p0, Lcom/android/server/display/WifiDisplayController;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v3}, Landroid/content/Context;->getOpPackageName()Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 739
+    invoke-static {v8, v0, v2, v3}, Landroid/media/RemoteDisplay;->listen(Ljava/lang/String;Landroid/media/RemoteDisplay$Listener;Landroid/os/Handler;Ljava/lang/String;)Landroid/media/RemoteDisplay;
 
     move-result-object v0
 
@@ -2520,43 +2446,55 @@
     .line 781
     iget-boolean v0, p0, Lcom/android/server/display/WifiDisplayController;->mWifiDisplayCertMode:Z
 
-    if-eqz v0, :cond_c
+    if-eqz v0, :cond_d
 
+    .line 782
     const/16 v12, 0x78
 
     .line 784
-    .local v12, rtspTimeout:I
-    :goto_2
+    .local v12, "rtspTimeout":I
+    :goto_1
     iget-object v0, p0, Lcom/android/server/display/WifiDisplayController;->mHandler:Landroid/os/Handler;
 
     iget-object v2, p0, Lcom/android/server/display/WifiDisplayController;->mRtspTimeout:Ljava/lang/Runnable;
 
     mul-int/lit16 v3, v12, 0x3e8
 
-    int-to-long v3, v3
+    int-to-long v4, v3
 
-    invoke-virtual {v0, v2, v3, v4}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+    invoke-virtual {v0, v2, v4, v5}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    goto/16 :goto_0
-
-    .line 781
-    .end local v12           #rtspTimeout:I
+    .line 561
+    .end local v6    # "addr":Ljava/net/Inet4Address;
+    .end local v8    # "iface":Ljava/lang/String;
+    .end local v10    # "oldDevice":Landroid/net/wifi/p2p/WifiP2pDevice;
+    .end local v11    # "port":I
+    .end local v12    # "rtspTimeout":I
     :cond_c
+    return-void
+
+    .line 782
+    .restart local v6    # "addr":Ljava/net/Inet4Address;
+    .restart local v8    # "iface":Ljava/lang/String;
+    .restart local v10    # "oldDevice":Landroid/net/wifi/p2p/WifiP2pDevice;
+    .restart local v11    # "port":I
+    :cond_d
     const/16 v12, 0x1e
 
-    goto :goto_2
+    .restart local v12    # "rtspTimeout":I
+    goto :goto_1
 .end method
 
 .method private updateDesiredDevice(Landroid/net/wifi/p2p/WifiP2pDevice;)V
     .locals 2
-    .parameter "device"
+    .param p1, "device"    # Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .prologue
     .line 497
     iget-object v0, p1, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceAddress:Ljava/lang/String;
 
     .line 498
-    .local v0, address:Ljava/lang/String;
+    .local v0, "address":Ljava/lang/String;
     iget-object v1, p0, Lcom/android/server/display/WifiDisplayController;->mDesiredDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     if-eqz v1, :cond_0
@@ -2581,6 +2519,7 @@
 
     if-eqz v1, :cond_0
 
+    .line 505
     iget-object v1, p0, Lcom/android/server/display/WifiDisplayController;->mAdvertisedDisplay:Landroid/hardware/display/WifiDisplay;
 
     invoke-virtual {v1}, Landroid/hardware/display/WifiDisplay;->getDeviceAddress()Ljava/lang/String;
@@ -2591,6 +2530,7 @@
 
     move-result v1
 
+    .line 504
     if-eqz v1, :cond_0
 
     .line 506
@@ -2602,7 +2542,7 @@
 
     invoke-direct {p0, v1}, Lcom/android/server/display/WifiDisplayController;->readvertiseDisplay(Landroid/hardware/display/WifiDisplay;)V
 
-    .line 509
+    .line 494
     :cond_0
     return-void
 .end method
@@ -2630,9 +2570,9 @@
     if-nez v0, :cond_0
 
     .line 364
-    const-string v0, "WifiDisplayController"
+    const-string/jumbo v0, "WifiDisplayController"
 
-    const-string v1, "Starting Wifi display scan."
+    const-string/jumbo v1, "Starting Wifi display scan."
 
     invoke-static {v0, v1}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -2647,7 +2587,7 @@
     .line 367
     invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->tryDiscoverPeers()V
 
-    .line 385
+    .line 361
     :cond_0
     :goto_0
     return-void
@@ -2678,9 +2618,9 @@
 
     .line 378
     :cond_2
-    const-string v0, "WifiDisplayController"
+    const-string/jumbo v0, "WifiDisplayController"
 
-    const-string v1, "Stopping Wifi display scan."
+    const-string/jumbo v1, "Stopping Wifi display scan."
 
     invoke-static {v0, v1}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -2715,10 +2655,11 @@
 
     move-result-object v0
 
-    .line 197
-    .local v0, resolver:Landroid/content/ContentResolver;
-    const-string v1, "wifi_display_on"
+    .line 198
+    .local v0, "resolver":Landroid/content/ContentResolver;
+    const-string/jumbo v1, "wifi_display_on"
 
+    .line 197
     invoke-static {v0, v1, v3}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
 
     move-result v1
@@ -2730,9 +2671,10 @@
     :goto_0
     iput-boolean v1, p0, Lcom/android/server/display/WifiDisplayController;->mWifiDisplayOnSetting:Z
 
-    .line 199
-    const-string v1, "wifi_display_certification_on"
+    .line 200
+    const-string/jumbo v1, "wifi_display_certification_on"
 
+    .line 199
     invoke-static {v0, v1, v3}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
 
     move-result v1
@@ -2750,9 +2692,10 @@
 
     if-eqz v1, :cond_0
 
-    .line 204
-    const-string v1, "wifi_display_wps_config"
+    .line 205
+    const-string/jumbo v1, "wifi_display_wps_config"
 
+    .line 204
     invoke-static {v0, v1, v4}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
 
     move-result v1
@@ -2763,7 +2706,7 @@
     :cond_0
     invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateWfdEnableState()V
 
-    .line 209
+    .line 195
     return-void
 
     :cond_1
@@ -2790,11 +2733,11 @@
     .line 280
     iget-boolean v1, p0, Lcom/android/server/display/WifiDisplayController;->mWifiDisplayOnSetting:Z
 
-    if-eqz v1, :cond_1
+    if-eqz v1, :cond_2
 
     iget-boolean v1, p0, Lcom/android/server/display/WifiDisplayController;->mWifiP2pEnabled:Z
 
-    if-eqz v1, :cond_1
+    if-eqz v1, :cond_2
 
     .line 282
     iget-boolean v1, p0, Lcom/android/server/display/WifiDisplayController;->mWfdEnabled:Z
@@ -2803,9 +2746,15 @@
 
     iget-boolean v1, p0, Lcom/android/server/display/WifiDisplayController;->mWfdEnabling:Z
 
-    if-nez v1, :cond_0
+    if-eqz v1, :cond_1
+
+    .line 279
+    :cond_0
+    :goto_0
+    return-void
 
     .line 283
+    :cond_1
     iput-boolean v2, p0, Lcom/android/server/display/WifiDisplayController;->mWfdEnabling:Z
 
     .line 285
@@ -2814,7 +2763,7 @@
     invoke-direct {v0}, Landroid/net/wifi/p2p/WifiP2pWfdInfo;-><init>()V
 
     .line 286
-    .local v0, wfdInfo:Landroid/net/wifi/p2p/WifiP2pWfdInfo;
+    .local v0, "wfdInfo":Landroid/net/wifi/p2p/WifiP2pWfdInfo;
     invoke-virtual {v0, v2}, Landroid/net/wifi/p2p/WifiP2pWfdInfo;->setWfdEnabled(Z)V
 
     .line 287
@@ -2838,36 +2787,33 @@
 
     iget-object v2, p0, Lcom/android/server/display/WifiDisplayController;->mWifiP2pChannel:Landroid/net/wifi/p2p/WifiP2pManager$Channel;
 
-    new-instance v3, Lcom/android/server/display/WifiDisplayController$2;
+    new-instance v3, Lcom/android/server/display/WifiDisplayController$6;
 
-    invoke-direct {v3, p0}, Lcom/android/server/display/WifiDisplayController$2;-><init>(Lcom/android/server/display/WifiDisplayController;)V
+    invoke-direct {v3, p0}, Lcom/android/server/display/WifiDisplayController$6;-><init>(Lcom/android/server/display/WifiDisplayController;)V
 
     invoke-virtual {v1, v2, v0, v3}, Landroid/net/wifi/p2p/WifiP2pManager;->setWFDInfo(Landroid/net/wifi/p2p/WifiP2pManager$Channel;Landroid/net/wifi/p2p/WifiP2pWfdInfo;Landroid/net/wifi/p2p/WifiP2pManager$ActionListener;)V
 
-    .line 341
-    .end local v0           #wfdInfo:Landroid/net/wifi/p2p/WifiP2pWfdInfo;
-    :cond_0
-    :goto_0
-    return-void
+    goto :goto_0
 
     .line 316
-    :cond_1
+    .end local v0    # "wfdInfo":Landroid/net/wifi/p2p/WifiP2pWfdInfo;
+    :cond_2
     iget-boolean v1, p0, Lcom/android/server/display/WifiDisplayController;->mWfdEnabled:Z
 
-    if-nez v1, :cond_2
+    if-nez v1, :cond_3
 
     iget-boolean v1, p0, Lcom/android/server/display/WifiDisplayController;->mWfdEnabling:Z
 
-    if-eqz v1, :cond_3
+    if-eqz v1, :cond_4
 
     .line 317
-    :cond_2
+    :cond_3
     new-instance v0, Landroid/net/wifi/p2p/WifiP2pWfdInfo;
 
     invoke-direct {v0}, Landroid/net/wifi/p2p/WifiP2pWfdInfo;-><init>()V
 
     .line 318
-    .restart local v0       #wfdInfo:Landroid/net/wifi/p2p/WifiP2pWfdInfo;
+    .restart local v0    # "wfdInfo":Landroid/net/wifi/p2p/WifiP2pWfdInfo;
     invoke-virtual {v0, v4}, Landroid/net/wifi/p2p/WifiP2pWfdInfo;->setWfdEnabled(Z)V
 
     .line 319
@@ -2875,15 +2821,15 @@
 
     iget-object v2, p0, Lcom/android/server/display/WifiDisplayController;->mWifiP2pChannel:Landroid/net/wifi/p2p/WifiP2pManager$Channel;
 
-    new-instance v3, Lcom/android/server/display/WifiDisplayController$3;
+    new-instance v3, Lcom/android/server/display/WifiDisplayController$7;
 
-    invoke-direct {v3, p0}, Lcom/android/server/display/WifiDisplayController$3;-><init>(Lcom/android/server/display/WifiDisplayController;)V
+    invoke-direct {v3, p0}, Lcom/android/server/display/WifiDisplayController$7;-><init>(Lcom/android/server/display/WifiDisplayController;)V
 
     invoke-virtual {v1, v2, v0, v3}, Landroid/net/wifi/p2p/WifiP2pManager;->setWFDInfo(Landroid/net/wifi/p2p/WifiP2pManager$Channel;Landroid/net/wifi/p2p/WifiP2pWfdInfo;Landroid/net/wifi/p2p/WifiP2pManager$ActionListener;)V
 
     .line 335
-    .end local v0           #wfdInfo:Landroid/net/wifi/p2p/WifiP2pWfdInfo;
-    :cond_3
+    .end local v0    # "wfdInfo":Landroid/net/wifi/p2p/WifiP2pWfdInfo;
+    :cond_4
     iput-boolean v4, p0, Lcom/android/server/display/WifiDisplayController;->mWfdEnabling:Z
 
     .line 336
@@ -2903,9 +2849,10 @@
 
 
 # virtual methods
-.method public dump(Ljava/io/PrintWriter;)V
+.method public dump(Ljava/io/PrintWriter;Ljava/lang/String;)V
     .locals 4
-    .parameter "pw"
+    .param p1, "pw"    # Ljava/io/PrintWriter;
+    .param p2, "prefix"    # Ljava/lang/String;
 
     .prologue
     .line 213
@@ -2913,7 +2860,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mWifiDisplayOnSetting="
+    const-string/jumbo v3, "mWifiDisplayOnSetting="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2936,7 +2883,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mWifiP2pEnabled="
+    const-string/jumbo v3, "mWifiP2pEnabled="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2959,7 +2906,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mWfdEnabled="
+    const-string/jumbo v3, "mWfdEnabled="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2982,7 +2929,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mWfdEnabling="
+    const-string/jumbo v3, "mWfdEnabling="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3005,7 +2952,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mNetworkInfo="
+    const-string/jumbo v3, "mNetworkInfo="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3028,7 +2975,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mScanRequested="
+    const-string/jumbo v3, "mScanRequested="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3051,7 +2998,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mDiscoverPeersInProgress="
+    const-string/jumbo v3, "mDiscoverPeersInProgress="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3074,7 +3021,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mDesiredDevice="
+    const-string/jumbo v3, "mDesiredDevice="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3101,7 +3048,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mConnectingDisplay="
+    const-string/jumbo v3, "mConnectingDisplay="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3128,7 +3075,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mDisconnectingDisplay="
+    const-string/jumbo v3, "mDisconnectingDisplay="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3155,7 +3102,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mCancelingDisplay="
+    const-string/jumbo v3, "mCancelingDisplay="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3182,7 +3129,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mConnectedDevice="
+    const-string/jumbo v3, "mConnectedDevice="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3209,7 +3156,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mConnectionRetriesLeft="
+    const-string/jumbo v3, "mConnectionRetriesLeft="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3232,7 +3179,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mRemoteDisplay="
+    const-string/jumbo v3, "mRemoteDisplay="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3255,7 +3202,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mRemoteDisplayInterface="
+    const-string/jumbo v3, "mRemoteDisplayInterface="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3278,7 +3225,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mRemoteDisplayConnected="
+    const-string/jumbo v3, "mRemoteDisplayConnected="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3301,7 +3248,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mAdvertisedDisplay="
+    const-string/jumbo v3, "mAdvertisedDisplay="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3324,7 +3271,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mAdvertisedDisplaySurface="
+    const-string/jumbo v3, "mAdvertisedDisplaySurface="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3347,7 +3294,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mAdvertisedDisplayWidth="
+    const-string/jumbo v3, "mAdvertisedDisplayWidth="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3370,7 +3317,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mAdvertisedDisplayHeight="
+    const-string/jumbo v3, "mAdvertisedDisplayHeight="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3393,7 +3340,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mAdvertisedDisplayFlags="
+    const-string/jumbo v3, "mAdvertisedDisplayFlags="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3416,7 +3363,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mAvailableWifiDisplayPeers: size="
+    const-string/jumbo v3, "mAvailableWifiDisplayPeers: size="
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3441,11 +3388,11 @@
     .line 236
     iget-object v2, p0, Lcom/android/server/display/WifiDisplayController;->mAvailableWifiDisplayPeers:Ljava/util/ArrayList;
 
-    invoke-virtual {v2}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
+    invoke-interface {v2}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
-    .local v1, i$:Ljava/util/Iterator;
+    .local v1, "device$iterator":Ljava/util/Iterator;
     :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
@@ -3460,12 +3407,12 @@
     check-cast v0, Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .line 237
-    .local v0, device:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .local v0, "device":Landroid/net/wifi/p2p/WifiP2pDevice;
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "  "
+    const-string/jumbo v3, "  "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3487,25 +3434,25 @@
 
     goto :goto_0
 
-    .line 239
-    .end local v0           #device:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .line 212
+    .end local v0    # "device":Landroid/net/wifi/p2p/WifiP2pDevice;
     :cond_0
     return-void
 .end method
 
 .method public requestConnect(Ljava/lang/String;)V
     .locals 3
-    .parameter "address"
+    .param p1, "address"    # Ljava/lang/String;
 
     .prologue
     .line 256
     iget-object v2, p0, Lcom/android/server/display/WifiDisplayController;->mAvailableWifiDisplayPeers:Ljava/util/ArrayList;
 
-    invoke-virtual {v2}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
+    invoke-interface {v2}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
-    .local v1, i$:Ljava/util/Iterator;
+    .local v1, "device$iterator":Ljava/util/Iterator;
     :cond_0
     :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
@@ -3521,7 +3468,7 @@
     check-cast v0, Landroid/net/wifi/p2p/WifiP2pDevice;
 
     .line 257
-    .local v0, device:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .local v0, "device":Landroid/net/wifi/p2p/WifiP2pDevice;
     iget-object v2, v0, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceAddress:Ljava/lang/String;
 
     invoke-virtual {v2, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -3535,8 +3482,8 @@
 
     goto :goto_0
 
-    .line 261
-    .end local v0           #device:Landroid/net/wifi/p2p/WifiP2pDevice;
+    .line 255
+    .end local v0    # "device":Landroid/net/wifi/p2p/WifiP2pDevice;
     :cond_1
     return-void
 .end method
@@ -3548,7 +3495,7 @@
     .line 276
     invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->disconnect()V
 
-    .line 277
+    .line 275
     return-void
 .end method
 
@@ -3566,7 +3513,7 @@
 
     invoke-virtual {v0}, Landroid/media/RemoteDisplay;->pause()V
 
-    .line 267
+    .line 263
     :cond_0
     return-void
 .end method
@@ -3585,7 +3532,7 @@
 
     invoke-virtual {v0}, Landroid/media/RemoteDisplay;->resume()V
 
-    .line 273
+    .line 269
     :cond_0
     return-void
 .end method
@@ -3607,7 +3554,7 @@
     .line 244
     invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateScanState()V
 
-    .line 246
+    .line 241
     :cond_0
     return-void
 .end method
@@ -3629,7 +3576,7 @@
     .line 251
     invoke-direct {p0}, Lcom/android/server/display/WifiDisplayController;->updateScanState()V
 
-    .line 253
+    .line 248
     :cond_0
     return-void
 .end method

@@ -27,12 +27,28 @@
 
 
 # direct methods
+.method static synthetic -get0(Lcom/android/server/CertBlacklister$BlacklistObserver;)Ljava/lang/String;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/CertBlacklister$BlacklistObserver;->mPath:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Lcom/android/server/CertBlacklister$BlacklistObserver;)Ljava/io/File;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/CertBlacklister$BlacklistObserver;->mTmpDir:Ljava/io/File;
+
+    return-object v0
+.end method
+
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentResolver;)V
     .locals 2
-    .parameter "key"
-    .parameter "name"
-    .parameter "path"
-    .parameter "cr"
+    .param p1, "key"    # Ljava/lang/String;
+    .param p2, "name"    # Ljava/lang/String;
+    .param p3, "path"    # Ljava/lang/String;
+    .param p4, "cr"    # Landroid/content/ContentResolver;
 
     .prologue
     .line 58
@@ -65,30 +81,8 @@
     .line 63
     iput-object p4, p0, Lcom/android/server/CertBlacklister$BlacklistObserver;->mContentResolver:Landroid/content/ContentResolver;
 
-    .line 64
+    .line 57
     return-void
-.end method
-
-.method static synthetic access$000(Lcom/android/server/CertBlacklister$BlacklistObserver;)Ljava/io/File;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 49
-    iget-object v0, p0, Lcom/android/server/CertBlacklister$BlacklistObserver;->mTmpDir:Ljava/io/File;
-
-    return-object v0
-.end method
-
-.method static synthetic access$100(Lcom/android/server/CertBlacklister$BlacklistObserver;)Ljava/lang/String;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 49
-    iget-object v0, p0, Lcom/android/server/CertBlacklister$BlacklistObserver;->mPath:Ljava/lang/String;
-
-    return-object v0
 .end method
 
 .method private writeBlacklist()V
@@ -98,13 +92,13 @@
     .line 77
     new-instance v0, Lcom/android/server/CertBlacklister$BlacklistObserver$1;
 
-    const-string v1, "BlacklistUpdater"
+    const-string/jumbo v1, "BlacklistUpdater"
 
     invoke-direct {v0, p0, v1}, Lcom/android/server/CertBlacklister$BlacklistObserver$1;-><init>(Lcom/android/server/CertBlacklister$BlacklistObserver;Ljava/lang/String;)V
 
     invoke-virtual {v0}, Lcom/android/server/CertBlacklister$BlacklistObserver$1;->start()V
 
-    .line 106
+    .line 76
     return-void
 .end method
 
@@ -128,7 +122,7 @@
 
 .method public onChange(Z)V
     .locals 0
-    .parameter "selfChange"
+    .param p1, "selfChange"    # Z
 
     .prologue
     .line 68
@@ -137,6 +131,6 @@
     .line 69
     invoke-direct {p0}, Lcom/android/server/CertBlacklister$BlacklistObserver;->writeBlacklist()V
 
-    .line 70
+    .line 67
     return-void
 .end method

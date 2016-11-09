@@ -24,13 +24,16 @@
 .method public abstract interceptKeyBeforeDispatching(Lcom/android/server/input/InputWindowHandle;Landroid/view/KeyEvent;I)J
 .end method
 
-.method public abstract interceptKeyBeforeQueueing(Landroid/view/KeyEvent;IZ)I
+.method public abstract interceptKeyBeforeQueueing(Landroid/view/KeyEvent;I)I
 .end method
 
-.method public abstract interceptMotionBeforeQueueingWhenScreenOff(I)I
+.method public abstract interceptMotionBeforeQueueingNonInteractive(JI)I
 .end method
 
 .method public abstract notifyANR(Lcom/android/server/input/InputApplicationHandle;Lcom/android/server/input/InputWindowHandle;Ljava/lang/String;)J
+.end method
+
+.method public abstract notifyCameraLensCoverSwitchChanged(JZ)V
 .end method
 
 .method public abstract notifyConfigurationChanged()V

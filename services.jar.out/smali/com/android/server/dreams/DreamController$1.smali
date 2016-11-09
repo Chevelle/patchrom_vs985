@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/dreams/DreamController;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/dreams/DreamController;
 
     .prologue
-    .line 64
+    .line 72
     iput-object p1, p0, Lcom/android/server/dreams/DreamController$1;->this$0:Lcom/android/server/dreams/DreamController;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,11 +41,10 @@
     .locals 2
 
     .prologue
-    .line 67
+    .line 75
     iget-object v0, p0, Lcom/android/server/dreams/DreamController$1;->this$0:Lcom/android/server/dreams/DreamController;
 
-    #getter for: Lcom/android/server/dreams/DreamController;->mCurrentDream:Lcom/android/server/dreams/DreamController$DreamRecord;
-    invoke-static {v0}, Lcom/android/server/dreams/DreamController;->access$000(Lcom/android/server/dreams/DreamController;)Lcom/android/server/dreams/DreamController$DreamRecord;
+    invoke-static {v0}, Lcom/android/server/dreams/DreamController;->-get0(Lcom/android/server/dreams/DreamController;)Lcom/android/server/dreams/DreamController$DreamRecord;
 
     move-result-object v0
 
@@ -53,8 +52,7 @@
 
     iget-object v0, p0, Lcom/android/server/dreams/DreamController$1;->this$0:Lcom/android/server/dreams/DreamController;
 
-    #getter for: Lcom/android/server/dreams/DreamController;->mCurrentDream:Lcom/android/server/dreams/DreamController$DreamRecord;
-    invoke-static {v0}, Lcom/android/server/dreams/DreamController;->access$000(Lcom/android/server/dreams/DreamController;)Lcom/android/server/dreams/DreamController$DreamRecord;
+    invoke-static {v0}, Lcom/android/server/dreams/DreamController;->-get0(Lcom/android/server/dreams/DreamController;)Lcom/android/server/dreams/DreamController$DreamRecord;
 
     move-result-object v0
 
@@ -64,28 +62,33 @@
 
     iget-object v0, p0, Lcom/android/server/dreams/DreamController$1;->this$0:Lcom/android/server/dreams/DreamController;
 
-    #getter for: Lcom/android/server/dreams/DreamController;->mCurrentDream:Lcom/android/server/dreams/DreamController$DreamRecord;
-    invoke-static {v0}, Lcom/android/server/dreams/DreamController;->access$000(Lcom/android/server/dreams/DreamController;)Lcom/android/server/dreams/DreamController$DreamRecord;
+    invoke-static {v0}, Lcom/android/server/dreams/DreamController;->-get0(Lcom/android/server/dreams/DreamController;)Lcom/android/server/dreams/DreamController$DreamRecord;
 
     move-result-object v0
 
     iget-boolean v0, v0, Lcom/android/server/dreams/DreamController$DreamRecord;->mConnected:Z
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_1
 
-    .line 68
-    const-string v0, "DreamController"
+    .line 74
+    :cond_0
+    :goto_0
+    return-void
 
-    const-string v1, "Bound dream did not connect in the time allotted"
+    .line 76
+    :cond_1
+    const-string/jumbo v0, "DreamController"
+
+    const-string/jumbo v1, "Bound dream did not connect in the time allotted"
 
     invoke-static {v0, v1}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 69
+    .line 77
     iget-object v0, p0, Lcom/android/server/dreams/DreamController$1;->this$0:Lcom/android/server/dreams/DreamController;
 
-    invoke-virtual {v0}, Lcom/android/server/dreams/DreamController;->stopDream()V
+    const/4 v1, 0x1
 
-    .line 71
-    :cond_0
-    return-void
+    invoke-virtual {v0, v1}, Lcom/android/server/dreams/DreamController;->stopDream(Z)V
+
+    goto :goto_0
 .end method

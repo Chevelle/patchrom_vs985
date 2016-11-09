@@ -3,7 +3,7 @@
 .source "UiModeManagerService.java"
 
 # interfaces
-.implements Lcom/android/server/TwilightService$TwilightListener;
+.implements Lcom/android/server/twilight/TwilightListener;
 
 
 # annotations
@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/UiModeManagerService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/UiModeManagerService;
 
     .prologue
-    .line 146
+    .line 150
     iput-object p1, p0, Lcom/android/server/UiModeManagerService$4;->this$0:Lcom/android/server/UiModeManagerService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,12 +41,11 @@
     .locals 1
 
     .prologue
-    .line 149
+    .line 153
     iget-object v0, p0, Lcom/android/server/UiModeManagerService$4;->this$0:Lcom/android/server/UiModeManagerService;
 
-    #calls: Lcom/android/server/UiModeManagerService;->updateTwilight()V
-    invoke-static {v0}, Lcom/android/server/UiModeManagerService;->access$500(Lcom/android/server/UiModeManagerService;)V
+    invoke-virtual {v0}, Lcom/android/server/UiModeManagerService;->updateTwilight()V
 
-    .line 150
+    .line 152
     return-void
 .end method

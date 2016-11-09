@@ -10,13 +10,13 @@
 
 .field public name:Ljava/lang/String;
 
-.field private ptr:I
+.field private ptr:J
 
 
 # direct methods
 .method public constructor <init>(Ljava/lang/Object;)V
     .locals 0
-    .parameter "appWindowToken"
+    .param p1, "appWindowToken"    # Ljava/lang/Object;
 
     .prologue
     .line 42
@@ -25,7 +25,7 @@
     .line 43
     iput-object p1, p0, Lcom/android/server/input/InputApplicationHandle;->appWindowToken:Ljava/lang/Object;
 
-    .line 44
+    .line 42
     return-void
 .end method
 
@@ -52,14 +52,16 @@
     .line 51
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 53
+    .line 47
     return-void
 
-    .line 51
+    .line 50
     :catchall_0
     move-exception v0
 
+    .line 51
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
+    .line 50
     throw v0
 .end method

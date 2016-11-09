@@ -40,8 +40,8 @@
 # direct methods
 .method public constructor <init>(Lcom/android/server/media/MediaRouterService;I)V
     .locals 1
-    .parameter
-    .parameter "userId"
+    .param p1, "this$0"    # Lcom/android/server/media/MediaRouterService;
+    .param p2, "userId"    # I
 
     .prologue
     .line 555
@@ -66,16 +66,16 @@
 
     iput-object v0, p0, Lcom/android/server/media/MediaRouterService$UserRecord;->mHandler:Lcom/android/server/media/MediaRouterService$UserHandler;
 
-    .line 558
+    .line 555
     return-void
 .end method
 
 
 # virtual methods
 .method public dump(Ljava/io/PrintWriter;Ljava/lang/String;)V
-    .locals 7
-    .parameter "pw"
-    .parameter "prefix"
+    .locals 8
+    .param p1, "pw"    # Ljava/io/PrintWriter;
+    .param p2, "prefix"    # Ljava/lang/String;
 
     .prologue
     .line 561
@@ -106,7 +106,7 @@
 
     move-result-object v3
 
-    const-string v4, "  "
+    const-string/jumbo v4, "  "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -117,7 +117,7 @@
     move-result-object v2
 
     .line 564
-    .local v2, indent:Ljava/lang/String;
+    .local v2, "indent":Ljava/lang/String;
     iget-object v3, p0, Lcom/android/server/media/MediaRouterService$UserRecord;->mClientRecords:Ljava/util/ArrayList;
 
     invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
@@ -125,13 +125,13 @@
     move-result v0
 
     .line 565
-    .local v0, clientCount:I
+    .local v0, "clientCount":I
     if-eqz v0, :cond_0
 
     .line 566
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_0
     if-ge v1, v0, :cond_1
 
@@ -152,7 +152,7 @@
     goto :goto_0
 
     .line 570
-    .end local v1           #i:I
+    .end local v1    # "i":I
     :cond_0
     new-instance v3, Ljava/lang/StringBuilder;
 
@@ -162,7 +162,7 @@
 
     move-result-object v3
 
-    const-string v4, "<no clients>"
+    const-string/jumbo v4, "<no clients>"
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -184,7 +184,7 @@
 
     move-result-object v3
 
-    const-string v4, "State"
+    const-string/jumbo v4, "State"
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -205,7 +205,7 @@
 
     move-result-object v3
 
-    const-string v4, "mTrustedState="
+    const-string/jumbo v4, "mTrustedState="
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -232,7 +232,7 @@
 
     move-result-object v3
 
-    const-string v4, "mUntrustedState="
+    const-string/jumbo v4, "mUntrustedState="
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -257,9 +257,11 @@
 
     invoke-direct {v4, p0, p1, v2}, Lcom/android/server/media/MediaRouterService$UserRecord$1;-><init>(Lcom/android/server/media/MediaRouterService$UserRecord;Ljava/io/PrintWriter;Ljava/lang/String;)V
 
-    const-wide/16 v5, 0x3e8
+    .line 582
+    const-wide/16 v6, 0x3e8
 
-    invoke-virtual {v3, v4, v5, v6}, Lcom/android/server/media/MediaRouterService$UserHandler;->runWithScissors(Ljava/lang/Runnable;J)Z
+    .line 577
+    invoke-virtual {v3, v4, v6, v7}, Lcom/android/server/media/MediaRouterService$UserHandler;->runWithScissors(Ljava/lang/Runnable;J)Z
 
     move-result v3
 
@@ -274,7 +276,7 @@
 
     move-result-object v3
 
-    const-string v4, "<could not dump handler state>"
+    const-string/jumbo v4, "<could not dump handler state>"
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -286,7 +288,7 @@
 
     invoke-virtual {p1, v3}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 585
+    .line 560
     :cond_2
     return-void
 .end method
@@ -300,7 +302,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "User "
+    const-string/jumbo v1, "User "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

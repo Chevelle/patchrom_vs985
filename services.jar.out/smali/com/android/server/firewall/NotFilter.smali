@@ -6,6 +6,14 @@
 .implements Lcom/android/server/firewall/Filter;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/server/firewall/NotFilter$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final FACTORY:Lcom/android/server/firewall/FilterFactory;
 
@@ -22,18 +30,19 @@
     .line 41
     new-instance v0, Lcom/android/server/firewall/NotFilter$1;
 
-    const-string v1, "not"
+    const-string/jumbo v1, "not"
 
     invoke-direct {v0, v1}, Lcom/android/server/firewall/NotFilter$1;-><init>(Ljava/lang/String;)V
 
     sput-object v0, Lcom/android/server/firewall/NotFilter;->FACTORY:Lcom/android/server/firewall/FilterFactory;
 
+    .line 27
     return-void
 .end method
 
 .method private constructor <init>(Lcom/android/server/firewall/Filter;)V
     .locals 0
-    .parameter "child"
+    .param p1, "child"    # Lcom/android/server/firewall/Filter;
 
     .prologue
     .line 30
@@ -42,17 +51,15 @@
     .line 31
     iput-object p1, p0, Lcom/android/server/firewall/NotFilter;->mChild:Lcom/android/server/firewall/Filter;
 
-    .line 32
+    .line 30
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/android/server/firewall/Filter;Lcom/android/server/firewall/NotFilter$1;)V
+.method synthetic constructor <init>(Lcom/android/server/firewall/Filter;Lcom/android/server/firewall/NotFilter;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "child"    # Lcom/android/server/firewall/Filter;
 
     .prologue
-    .line 27
     invoke-direct {p0, p1}, Lcom/android/server/firewall/NotFilter;-><init>(Lcom/android/server/firewall/Filter;)V
 
     return-void
@@ -62,13 +69,13 @@
 # virtual methods
 .method public matches(Lcom/android/server/firewall/IntentFirewall;Landroid/content/ComponentName;Landroid/content/Intent;IILjava/lang/String;I)Z
     .locals 8
-    .parameter "ifw"
-    .parameter "resolvedComponent"
-    .parameter "intent"
-    .parameter "callerUid"
-    .parameter "callerPid"
-    .parameter "resolvedType"
-    .parameter "receivingUid"
+    .param p1, "ifw"    # Lcom/android/server/firewall/IntentFirewall;
+    .param p2, "resolvedComponent"    # Landroid/content/ComponentName;
+    .param p3, "intent"    # Landroid/content/Intent;
+    .param p4, "callerUid"    # I
+    .param p5, "callerPid"    # I
+    .param p6, "resolvedType"    # Ljava/lang/String;
+    .param p7, "receivingUid"    # I
 
     .prologue
     .line 37
@@ -92,15 +99,15 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_0
 
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
     :goto_0
     return v0
 
     :cond_0
-    const/4 v0, 0x0
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method

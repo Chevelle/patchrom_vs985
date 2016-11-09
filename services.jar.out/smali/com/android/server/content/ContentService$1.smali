@@ -36,11 +36,11 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/content/ContentService;Landroid/util/SparseIntArray;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/content/ContentService;
+    .param p2, "val$pidCounts"    # Landroid/util/SparseIntArray;
 
     .prologue
-    .line 108
+    .line 112
     iput-object p1, p0, Lcom/android/server/content/ContentService$1;->this$0:Lcom/android/server/content/ContentService;
 
     iput-object p2, p0, Lcom/android/server/content/ContentService$1;->val$pidCounts:Landroid/util/SparseIntArray;
@@ -54,11 +54,11 @@
 # virtual methods
 .method public compare(Ljava/lang/Integer;Ljava/lang/Integer;)I
     .locals 4
-    .parameter "lhs"
-    .parameter "rhs"
+    .param p1, "lhs"    # Ljava/lang/Integer;
+    .param p2, "rhs"    # Ljava/lang/Integer;
 
     .prologue
-    .line 111
+    .line 115
     iget-object v2, p0, Lcom/android/server/content/ContentService$1;->val$pidCounts:Landroid/util/SparseIntArray;
 
     invoke-virtual {p1}, Ljava/lang/Integer;->intValue()I
@@ -69,8 +69,8 @@
 
     move-result v0
 
-    .line 112
-    .local v0, lc:I
+    .line 116
+    .local v0, "lc":I
     iget-object v2, p0, Lcom/android/server/content/ContentService$1;->val$pidCounts:Landroid/util/SparseIntArray;
 
     invoke-virtual {p2}, Ljava/lang/Integer;->intValue()I
@@ -81,46 +81,44 @@
 
     move-result v1
 
-    .line 113
-    .local v1, rc:I
+    .line 117
+    .local v1, "rc":I
     if-ge v0, v1, :cond_0
 
-    .line 114
+    .line 118
     const/4 v2, 0x1
 
-    .line 118
-    :goto_0
     return v2
 
-    .line 115
+    .line 119
     :cond_0
     if-le v0, v1, :cond_1
 
-    .line 116
+    .line 120
     const/4 v2, -0x1
 
-    goto :goto_0
+    return v2
 
-    .line 118
+    .line 122
     :cond_1
     const/4 v2, 0x0
 
-    goto :goto_0
+    return v2
 .end method
 
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
     .locals 1
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "lhs"    # Ljava/lang/Object;
+    .param p2, "rhs"    # Ljava/lang/Object;
 
     .prologue
-    .line 108
+    .line 114
     check-cast p1, Ljava/lang/Integer;
 
-    .end local p1
+    .end local p1    # "lhs":Ljava/lang/Object;
     check-cast p2, Ljava/lang/Integer;
 
-    .end local p2
+    .end local p2    # "rhs":Ljava/lang/Object;
     invoke-virtual {p0, p1, p2}, Lcom/android/server/content/ContentService$1;->compare(Ljava/lang/Integer;Ljava/lang/Integer;)I
 
     move-result v0

@@ -24,27 +24,33 @@
 
 
 # instance fields
+.field public final isPrivileged:Z
+
 .field public final packageName:Ljava/lang/String;
 
-.field public final uid:I
+.field public final uidState:Lcom/android/server/AppOpsService$UidState;
 
 
 # direct methods
-.method public constructor <init>(Ljava/lang/String;I)V
+.method public constructor <init>(Ljava/lang/String;Lcom/android/server/AppOpsService$UidState;Z)V
     .locals 0
-    .parameter "_packageName"
-    .parameter "_uid"
+    .param p1, "_packageName"    # Ljava/lang/String;
+    .param p2, "_uidState"    # Lcom/android/server/AppOpsService$UidState;
+    .param p3, "_isPrivileged"    # Z
 
     .prologue
-    .line 96
+    .line 134
     invoke-direct {p0}, Landroid/util/SparseArray;-><init>()V
 
-    .line 97
+    .line 135
     iput-object p1, p0, Lcom/android/server/AppOpsService$Ops;->packageName:Ljava/lang/String;
 
-    .line 98
-    iput p2, p0, Lcom/android/server/AppOpsService$Ops;->uid:I
+    .line 136
+    iput-object p2, p0, Lcom/android/server/AppOpsService$Ops;->uidState:Lcom/android/server/AppOpsService$UidState;
 
-    .line 99
+    .line 137
+    iput-boolean p3, p0, Lcom/android/server/AppOpsService$Ops;->isPrivileged:Z
+
+    .line 134
     return-void
 .end method

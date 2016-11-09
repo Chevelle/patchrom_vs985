@@ -14,83 +14,128 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/pm/PackageSetting;)V
     .locals 1
-    .parameter "orig"
+    .param p1, "orig"    # Lcom/android/server/pm/PackageSetting;
 
     .prologue
-    .line 43
+    .line 46
     invoke-direct {p0, p1}, Lcom/android/server/pm/PackageSettingBase;-><init>(Lcom/android/server/pm/PackageSettingBase;)V
 
-    .line 45
+    .line 48
     iget v0, p1, Lcom/android/server/pm/PackageSetting;->appId:I
 
     iput v0, p0, Lcom/android/server/pm/PackageSetting;->appId:I
 
-    .line 46
+    .line 49
     iget-object v0, p1, Lcom/android/server/pm/PackageSetting;->pkg:Landroid/content/pm/PackageParser$Package;
 
     iput-object v0, p0, Lcom/android/server/pm/PackageSetting;->pkg:Landroid/content/pm/PackageParser$Package;
 
-    .line 47
+    .line 50
     iget-object v0, p1, Lcom/android/server/pm/PackageSetting;->sharedUser:Lcom/android/server/pm/SharedUserSetting;
 
     iput-object v0, p0, Lcom/android/server/pm/PackageSetting;->sharedUser:Lcom/android/server/pm/SharedUserSetting;
 
-    .line 48
+    .line 45
     return-void
 .end method
 
-.method constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Ljava/io/File;Ljava/lang/String;II)V
+.method constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Ljava/io/File;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;III)V
     .locals 0
-    .parameter "name"
-    .parameter "realName"
-    .parameter "codePath"
-    .parameter "resourcePath"
-    .parameter "nativeLibraryPathString"
-    .parameter "pVersionCode"
-    .parameter "pkgFlags"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "realName"    # Ljava/lang/String;
+    .param p3, "codePath"    # Ljava/io/File;
+    .param p4, "resourcePath"    # Ljava/io/File;
+    .param p5, "legacyNativeLibraryPathString"    # Ljava/lang/String;
+    .param p6, "primaryCpuAbiString"    # Ljava/lang/String;
+    .param p7, "secondaryCpuAbiString"    # Ljava/lang/String;
+    .param p8, "cpuAbiOverrideString"    # Ljava/lang/String;
+    .param p9, "pVersionCode"    # I
+    .param p10, "pkgFlags"    # I
+    .param p11, "privateFlags"    # I
 
     .prologue
-    .line 34
-    invoke-direct/range {p0 .. p7}, Lcom/android/server/pm/PackageSettingBase;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Ljava/io/File;Ljava/lang/String;II)V
-
     .line 36
+    invoke-direct/range {p0 .. p11}, Lcom/android/server/pm/PackageSettingBase;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Ljava/io/File;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;III)V
+
+    .line 35
     return-void
 .end method
 
 
 # virtual methods
-.method public getGids()[I
+.method public getPermissionsState()Lcom/android/server/pm/PermissionsState;
     .locals 1
 
     .prologue
-    .line 58
+    .line 61
     iget-object v0, p0, Lcom/android/server/pm/PackageSetting;->sharedUser:Lcom/android/server/pm/SharedUserSetting;
 
     if-eqz v0, :cond_0
 
+    .line 62
     iget-object v0, p0, Lcom/android/server/pm/PackageSetting;->sharedUser:Lcom/android/server/pm/SharedUserSetting;
 
-    iget-object v0, v0, Lcom/android/server/pm/SharedUserSetting;->gids:[I
+    invoke-virtual {v0}, Lcom/android/server/pm/SharedUserSetting;->getPermissionsState()Lcom/android/server/pm/PermissionsState;
 
+    move-result-object v0
+
+    .line 61
     :goto_0
     return-object v0
 
+    .line 63
     :cond_0
-    iget-object v0, p0, Lcom/android/server/pm/PackageSetting;->gids:[I
+    invoke-super {p0}, Lcom/android/server/pm/PackageSettingBase;->getPermissionsState()Lcom/android/server/pm/PermissionsState;
+
+    move-result-object v0
 
     goto :goto_0
+.end method
+
+.method public isForwardLocked()Z
+    .locals 2
+
+    .prologue
+    const/4 v0, 0x0
+
+    .line 71
+    iget v1, p0, Lcom/android/server/pm/PackageSetting;->pkgPrivateFlags:I
+
+    and-int/lit8 v1, v1, 0x4
+
+    if-eqz v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :cond_0
+    return v0
 .end method
 
 .method public isPrivileged()Z
     .locals 2
 
     .prologue
-    .line 62
-    iget v0, p0, Lcom/android/server/pm/PackageSetting;->pkgFlags:I
+    const/4 v0, 0x0
 
-    const/high16 v1, 0x4000
+    .line 67
+    iget v1, p0, Lcom/android/server/pm/PackageSetting;->pkgPrivateFlags:I
 
-    and-int/2addr v0, v1
+    and-int/lit8 v1, v1, 0x8
+
+    if-eqz v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :cond_0
+    return v0
+.end method
+
+.method public isSharedUser()Z
+    .locals 1
+
+    .prologue
+    .line 79
+    iget-object v0, p0, Lcom/android/server/pm/PackageSetting;->sharedUser:Lcom/android/server/pm/SharedUserSetting;
 
     if-eqz v0, :cond_0
 
@@ -105,21 +150,41 @@
     goto :goto_0
 .end method
 
+.method public isSystem()Z
+    .locals 2
+
+    .prologue
+    const/4 v0, 0x0
+
+    .line 75
+    iget v1, p0, Lcom/android/server/pm/PackageSetting;->pkgFlags:I
+
+    and-int/lit8 v1, v1, 0x1
+
+    if-eqz v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :cond_0
+    return v0
+.end method
+
 .method public toString()Ljava/lang/String;
     .locals 2
 
     .prologue
-    .line 52
+    .line 55
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "PackageSetting{"
+    const-string/jumbo v1, "PackageSetting{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 56
     invoke-static {p0}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     move-result v1
@@ -128,36 +193,47 @@
 
     move-result-object v1
 
+    .line 55
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " "
+    .line 57
+    const-string/jumbo v1, " "
 
+    .line 55
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 57
     iget-object v1, p0, Lcom/android/server/pm/PackageSetting;->name:Ljava/lang/String;
 
+    .line 55
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "/"
+    .line 57
+    const-string/jumbo v1, "/"
 
+    .line 55
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 57
     iget v1, p0, Lcom/android/server/pm/PackageSetting;->appId:I
 
+    .line 55
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "}"
+    .line 57
+    const-string/jumbo v1, "}"
 
+    .line 55
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0

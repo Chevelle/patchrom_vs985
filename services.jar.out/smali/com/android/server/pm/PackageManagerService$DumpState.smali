@@ -15,7 +15,13 @@
 
 
 # static fields
+.field public static final DUMP_DOMAIN_PREFERRED:I = 0x8000
+
 .field public static final DUMP_FEATURES:I = 0x2
+
+.field public static final DUMP_INSTALLS:I = 0x2000
+
+.field public static final DUMP_INTENT_FILTER_VERIFIERS:I = 0x4000
 
 .field public static final DUMP_KEYSETS:I = 0x800
 
@@ -39,6 +45,8 @@
 
 .field public static final DUMP_VERIFIERS:I = 0x100
 
+.field public static final DUMP_VERSION:I = 0x1000
+
 .field public static final OPTION_SHOW_FILTERS:I = 0x1
 
 
@@ -57,7 +65,7 @@
     .locals 0
 
     .prologue
-    .line 10514
+    .line 15037
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -69,7 +77,7 @@
     .locals 1
 
     .prologue
-    .line 10584
+    .line 15100
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mSharedUser:Lcom/android/server/pm/SharedUserSetting;
 
     return-object v0
@@ -79,137 +87,139 @@
     .locals 1
 
     .prologue
-    .line 10576
+    .line 15092
     iget-boolean v0, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mTitlePrinted:Z
 
     return v0
 .end method
 
 .method public isDumping(I)Z
-    .locals 2
-    .parameter "type"
+    .locals 3
+    .param p1, "type"    # I
 
     .prologue
     const/4 v0, 0x1
 
-    .line 10550
-    iget v1, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mTypes:I
+    const/4 v1, 0x0
 
-    if-nez v1, :cond_1
+    .line 15066
+    iget v2, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mTypes:I
 
-    const/16 v1, 0x400
+    if-nez v2, :cond_0
 
-    if-eq p1, v1, :cond_1
+    const/16 v2, 0x400
 
-    .line 10554
+    if-eq p1, v2, :cond_0
+
+    .line 15067
+    return v0
+
+    .line 15070
     :cond_0
+    iget v2, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mTypes:I
+
+    and-int/2addr v2, p1
+
+    if-eqz v2, :cond_1
+
     :goto_0
     return v0
 
     :cond_1
-    iget v1, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mTypes:I
-
-    and-int/2addr v1, p1
-
-    if-nez v1, :cond_0
-
-    const/4 v0, 0x0
+    move v0, v1
 
     goto :goto_0
 .end method
 
 .method public isOptionEnabled(I)Z
-    .locals 1
-    .parameter "option"
+    .locals 2
+    .param p1, "option"    # I
 
     .prologue
-    .line 10562
-    iget v0, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mOptions:I
+    const/4 v0, 0x0
 
-    and-int/2addr v0, p1
+    .line 15078
+    iget v1, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mOptions:I
 
-    if-eqz v0, :cond_0
+    and-int/2addr v1, p1
+
+    if-eqz v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public onTitlePrinted()Z
     .locals 2
 
     .prologue
-    .line 10570
+    .line 15086
     iget-boolean v0, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mTitlePrinted:Z
 
-    .line 10571
-    .local v0, printed:Z
+    .line 15087
+    .local v0, "printed":Z
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mTitlePrinted:Z
 
-    .line 10572
+    .line 15088
     return v0
 .end method
 
 .method public setDump(I)V
     .locals 1
-    .parameter "type"
+    .param p1, "type"    # I
 
     .prologue
-    .line 10558
+    .line 15074
     iget v0, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mTypes:I
 
     or-int/2addr v0, p1
 
     iput v0, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mTypes:I
 
-    .line 10559
+    .line 15073
     return-void
 .end method
 
 .method public setOptionEnabled(I)V
     .locals 1
-    .parameter "option"
+    .param p1, "option"    # I
 
     .prologue
-    .line 10566
+    .line 15082
     iget v0, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mOptions:I
 
     or-int/2addr v0, p1
 
     iput v0, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mOptions:I
 
-    .line 10567
+    .line 15081
     return-void
 .end method
 
 .method public setSharedUser(Lcom/android/server/pm/SharedUserSetting;)V
     .locals 0
-    .parameter "user"
+    .param p1, "user"    # Lcom/android/server/pm/SharedUserSetting;
 
     .prologue
-    .line 10588
+    .line 15104
     iput-object p1, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mSharedUser:Lcom/android/server/pm/SharedUserSetting;
 
-    .line 10589
+    .line 15103
     return-void
 .end method
 
 .method public setTitlePrinted(Z)V
     .locals 0
-    .parameter "enabled"
+    .param p1, "enabled"    # Z
 
     .prologue
-    .line 10580
+    .line 15096
     iput-boolean p1, p0, Lcom/android/server/pm/PackageManagerService$DumpState;->mTitlePrinted:Z
 
-    .line 10581
+    .line 15095
     return-void
 .end method

@@ -34,10 +34,10 @@
 # direct methods
 .method private constructor <init>(Lcom/android/server/net/NetworkStatsService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/net/NetworkStatsService;
 
     .prologue
-    .line 1242
+    .line 1320
     iput-object p1, p0, Lcom/android/server/net/NetworkStatsService$DropBoxNonMonotonicObserver;->this$0:Lcom/android/server/net/NetworkStatsService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -45,13 +45,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Lcom/android/server/net/NetworkStatsService;Lcom/android/server/net/NetworkStatsService$1;)V
+.method synthetic constructor <init>(Lcom/android/server/net/NetworkStatsService;Lcom/android/server/net/NetworkStatsService$DropBoxNonMonotonicObserver;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Lcom/android/server/net/NetworkStatsService;
 
     .prologue
-    .line 1242
     invoke-direct {p0, p1}, Lcom/android/server/net/NetworkStatsService$DropBoxNonMonotonicObserver;-><init>(Lcom/android/server/net/NetworkStatsService;)V
 
     return-void
@@ -61,16 +59,16 @@
 # virtual methods
 .method public bridge synthetic foundNonMonotonic(Landroid/net/NetworkStats;ILandroid/net/NetworkStats;ILjava/lang/Object;)V
     .locals 6
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
-    .parameter "x3"
-    .parameter "x4"
+    .param p1, "left"    # Landroid/net/NetworkStats;
+    .param p2, "leftIndex"    # I
+    .param p3, "right"    # Landroid/net/NetworkStats;
+    .param p4, "rightIndex"    # I
+    .param p5, "cookie"    # Ljava/lang/Object;
 
     .prologue
-    .line 1242
     move-object v5, p5
 
+    .line 1322
     check-cast v5, Ljava/lang/String;
 
     move-object v0, p0
@@ -90,36 +88,32 @@
 
 .method public foundNonMonotonic(Landroid/net/NetworkStats;ILandroid/net/NetworkStats;ILjava/lang/String;)V
     .locals 5
-    .parameter "left"
-    .parameter "leftIndex"
-    .parameter "right"
-    .parameter "rightIndex"
-    .parameter "cookie"
+    .param p1, "left"    # Landroid/net/NetworkStats;
+    .param p2, "leftIndex"    # I
+    .param p3, "right"    # Landroid/net/NetworkStats;
+    .param p4, "rightIndex"    # I
+    .param p5, "cookie"    # Ljava/lang/String;
 
     .prologue
     const/16 v4, 0xa
 
-    .line 1246
-    const-string v2, "NetworkStats"
+    .line 1324
+    const-string/jumbo v2, "NetworkStats"
 
-    const-string v3, "found non-monotonic values; saving to dropbox"
+    const-string/jumbo v3, "found non-monotonic values; saving to dropbox"
 
     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1249
+    .line 1327
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 1250
-    .local v0, builder:Ljava/lang/StringBuilder;
-    new-instance v2, Ljava/lang/StringBuilder;
+    .line 1328
+    .local v0, "builder":Ljava/lang/StringBuilder;
+    const-string/jumbo v2, "found non-monotonic "
 
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, "found non-monotonic "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
@@ -127,7 +121,7 @@
 
     move-result-object v2
 
-    const-string v3, " values at left["
+    const-string/jumbo v3, " values at left["
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -137,8 +131,10 @@
 
     move-result-object v2
 
-    const-string v3, "] - right["
+    .line 1329
+    const-string/jumbo v3, "] - right["
 
+    .line 1328
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -147,20 +143,14 @@
 
     move-result-object v2
 
-    const-string v3, "]\n"
+    .line 1329
+    const-string/jumbo v3, "]\n"
 
+    .line 1328
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 1252
-    const-string v2, "left="
+    .line 1330
+    const-string/jumbo v2, "left="
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -172,8 +162,8 @@
 
     invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 1253
-    const-string v2, "right="
+    .line 1331
+    const-string/jumbo v2, "right="
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -185,25 +175,26 @@
 
     invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 1255
+    .line 1333
     iget-object v2, p0, Lcom/android/server/net/NetworkStatsService$DropBoxNonMonotonicObserver;->this$0:Lcom/android/server/net/NetworkStatsService;
 
-    #getter for: Lcom/android/server/net/NetworkStatsService;->mContext:Landroid/content/Context;
-    invoke-static {v2}, Lcom/android/server/net/NetworkStatsService;->access$1300(Lcom/android/server/net/NetworkStatsService;)Landroid/content/Context;
+    invoke-static {v2}, Lcom/android/server/net/NetworkStatsService;->-get0(Lcom/android/server/net/NetworkStatsService;)Landroid/content/Context;
 
     move-result-object v2
 
-    const-string v3, "dropbox"
+    .line 1334
+    const-string/jumbo v3, "dropbox"
 
+    .line 1333
     invoke-virtual {v2, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v1
 
     check-cast v1, Landroid/os/DropBoxManager;
 
-    .line 1257
-    .local v1, dropBox:Landroid/os/DropBoxManager;
-    const-string v2, "netstats_error"
+    .line 1335
+    .local v1, "dropBox":Landroid/os/DropBoxManager;
+    const-string/jumbo v2, "netstats_error"
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -211,6 +202,6 @@
 
     invoke-virtual {v1, v2, v3}, Landroid/os/DropBoxManager;->addText(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1258
+    .line 1323
     return-void
 .end method

@@ -21,13 +21,13 @@
 
 .field public static final DnsProxyQueryResult:I = 0xde
 
-.field public static final GetMarkResult:I = 0xe1
-
 .field public static final InterfaceAddressChange:I = 0x266
 
 .field public static final InterfaceChange:I = 0x258
 
 .field public static final InterfaceClassActivity:I = 0x265
+
+.field public static final InterfaceDnsServerInfo:I = 0x267
 
 .field public static final InterfaceGetCfgResult:I = 0xd5
 
@@ -41,7 +41,11 @@
 
 .field public static final QuotaCounterResult:I = 0xdc
 
+.field public static final RouteChange:I = 0x268
+
 .field public static final SoftapStatusResult:I = 0xd6
+
+.field public static final StrictCleartext:I = 0x269
 
 .field public static final TetherDnsFwdTgtListResult:I = 0x70
 
@@ -63,10 +67,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/NetworkManagementService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/NetworkManagementService;
 
     .prologue
-    .line 116
+    .line 147
     iput-object p1, p0, Lcom/android/server/NetworkManagementService$NetdResponseCode;->this$0:Lcom/android/server/NetworkManagementService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

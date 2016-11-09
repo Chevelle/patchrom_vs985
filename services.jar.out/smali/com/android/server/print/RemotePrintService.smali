@@ -9,10 +9,10 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/android/server/print/RemotePrintService$RemotePrintServiceClient;,
-        Lcom/android/server/print/RemotePrintService$MyHandler;,
+        Lcom/android/server/print/RemotePrintService$PrintServiceCallbacks;,
         Lcom/android/server/print/RemotePrintService$RemoteServiceConneciton;,
-        Lcom/android/server/print/RemotePrintService$PrintServiceCallbacks;
+        Lcom/android/server/print/RemotePrintService$MyHandler;,
+        Lcom/android/server/print/RemotePrintService$RemotePrintServiceClient;
     }
 .end annotation
 
@@ -89,16 +89,276 @@
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;Landroid/content/ComponentName;ILcom/android/server/print/RemotePrintSpooler;Lcom/android/server/print/RemotePrintService$PrintServiceCallbacks;)V
-    .locals 2
-    .parameter "context"
-    .parameter "componentName"
-    .parameter "userId"
-    .parameter "spooler"
-    .parameter "callbacks"
+.method static synthetic -get0(Lcom/android/server/print/RemotePrintService;)Z
+    .locals 1
+
+    iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mBinding:Z
+
+    return v0
+.end method
+
+.method static synthetic -get1(Lcom/android/server/print/RemotePrintService;)Lcom/android/server/print/RemotePrintService$PrintServiceCallbacks;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mCallbacks:Lcom/android/server/print/RemotePrintService$PrintServiceCallbacks;
+
+    return-object v0
+.end method
+
+.method static synthetic -get10(Lcom/android/server/print/RemotePrintService;)Lcom/android/server/print/RemotePrintService$RemotePrintServiceClient;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mPrintServiceClient:Lcom/android/server/print/RemotePrintService$RemotePrintServiceClient;
+
+    return-object v0
+.end method
+
+.method static synthetic -get11(Lcom/android/server/print/RemotePrintService;)Landroid/content/ServiceConnection;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mServiceConnection:Landroid/content/ServiceConnection;
+
+    return-object v0
+.end method
+
+.method static synthetic -get12(Lcom/android/server/print/RemotePrintService;)Z
+    .locals 1
+
+    iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mServiceDied:Z
+
+    return v0
+.end method
+
+.method static synthetic -get13(Lcom/android/server/print/RemotePrintService;)Lcom/android/server/print/RemotePrintSpooler;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mSpooler:Lcom/android/server/print/RemotePrintSpooler;
+
+    return-object v0
+.end method
+
+.method static synthetic -get14(Lcom/android/server/print/RemotePrintService;)Ljava/util/List;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
+
+    return-object v0
+.end method
+
+.method static synthetic -get2(Lcom/android/server/print/RemotePrintService;)Landroid/content/ComponentName;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mComponentName:Landroid/content/ComponentName;
+
+    return-object v0
+.end method
+
+.method static synthetic -get3(Lcom/android/server/print/RemotePrintService;)Landroid/content/Context;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mContext:Landroid/content/Context;
+
+    return-object v0
+.end method
+
+.method static synthetic -get4(Lcom/android/server/print/RemotePrintService;)Z
+    .locals 1
+
+    iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mDestroyed:Z
+
+    return v0
+.end method
+
+.method static synthetic -get5(Lcom/android/server/print/RemotePrintService;)Ljava/util/List;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mDiscoveryPriorityList:Ljava/util/List;
+
+    return-object v0
+.end method
+
+.method static synthetic -get6(Lcom/android/server/print/RemotePrintService;)Z
+    .locals 1
+
+    iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mHasActivePrintJobs:Z
+
+    return v0
+.end method
+
+.method static synthetic -get7(Lcom/android/server/print/RemotePrintService;)Z
+    .locals 1
+
+    iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mHasPrinterDiscoverySession:Z
+
+    return v0
+.end method
+
+.method static synthetic -get8(Lcom/android/server/print/RemotePrintService;)Ljava/util/List;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mPendingCommands:Ljava/util/List;
+
+    return-object v0
+.end method
+
+.method static synthetic -get9(Lcom/android/server/print/RemotePrintService;)Landroid/printservice/IPrintService;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
+
+    return-object v0
+.end method
+
+.method static synthetic -set0(Lcom/android/server/print/RemotePrintService;Z)Z
+    .locals 0
+
+    iput-boolean p1, p0, Lcom/android/server/print/RemotePrintService;->mBinding:Z
+
+    return p1
+.end method
+
+.method static synthetic -set1(Lcom/android/server/print/RemotePrintService;Landroid/printservice/IPrintService;)Landroid/printservice/IPrintService;
+    .locals 0
+
+    iput-object p1, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
+
+    return-object p1
+.end method
+
+.method static synthetic -set2(Lcom/android/server/print/RemotePrintService;Z)Z
+    .locals 0
+
+    iput-boolean p1, p0, Lcom/android/server/print/RemotePrintService;->mServiceDied:Z
+
+    return p1
+.end method
+
+.method static synthetic -wrap0(Lcom/android/server/print/RemotePrintService;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureUnbound()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap1(Lcom/android/server/print/RemotePrintService;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->handleBinderDied()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap10(Lcom/android/server/print/RemotePrintService;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->handleStopPrinterDiscovery()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap11(Lcom/android/server/print/RemotePrintService;Landroid/print/PrinterId;)V
+    .locals 0
+    .param p1, "printerId"    # Landroid/print/PrinterId;
 
     .prologue
-    .line 101
+    invoke-direct {p0, p1}, Lcom/android/server/print/RemotePrintService;->handleStopPrinterStateTracking(Landroid/print/PrinterId;)V
+
+    return-void
+.end method
+
+.method static synthetic -wrap12(Lcom/android/server/print/RemotePrintService;Ljava/util/List;)V
+    .locals 0
+    .param p1, "printerIds"    # Ljava/util/List;
+
+    .prologue
+    invoke-direct {p0, p1}, Lcom/android/server/print/RemotePrintService;->handleValidatePrinters(Ljava/util/List;)V
+
+    return-void
+.end method
+
+.method static synthetic -wrap2(Lcom/android/server/print/RemotePrintService;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->handleCreatePrinterDiscoverySession()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap3(Lcom/android/server/print/RemotePrintService;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->handleDestroyPrinterDiscoverySession()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap4(Lcom/android/server/print/RemotePrintService;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->handleDestroy()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap5(Lcom/android/server/print/RemotePrintService;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->handleOnAllPrintJobsHandled()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap6(Lcom/android/server/print/RemotePrintService;Landroid/print/PrintJobInfo;)V
+    .locals 0
+    .param p1, "printJob"    # Landroid/print/PrintJobInfo;
+
+    .prologue
+    invoke-direct {p0, p1}, Lcom/android/server/print/RemotePrintService;->handleOnPrintJobQueued(Landroid/print/PrintJobInfo;)V
+
+    return-void
+.end method
+
+.method static synthetic -wrap7(Lcom/android/server/print/RemotePrintService;Landroid/print/PrintJobInfo;)V
+    .locals 0
+    .param p1, "printJob"    # Landroid/print/PrintJobInfo;
+
+    .prologue
+    invoke-direct {p0, p1}, Lcom/android/server/print/RemotePrintService;->handleRequestCancelPrintJob(Landroid/print/PrintJobInfo;)V
+
+    return-void
+.end method
+
+.method static synthetic -wrap8(Lcom/android/server/print/RemotePrintService;Ljava/util/List;)V
+    .locals 0
+    .param p1, "priorityList"    # Ljava/util/List;
+
+    .prologue
+    invoke-direct {p0, p1}, Lcom/android/server/print/RemotePrintService;->handleStartPrinterDiscovery(Ljava/util/List;)V
+
+    return-void
+.end method
+
+.method static synthetic -wrap9(Lcom/android/server/print/RemotePrintService;Landroid/print/PrinterId;)V
+    .locals 0
+    .param p1, "printerId"    # Landroid/print/PrinterId;
+
+    .prologue
+    invoke-direct {p0, p1}, Lcom/android/server/print/RemotePrintService;->handleStartPrinterStateTracking(Landroid/print/PrinterId;)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Landroid/content/ComponentName;ILcom/android/server/print/RemotePrintSpooler;Lcom/android/server/print/RemotePrintService$PrintServiceCallbacks;)V
+    .locals 2
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "componentName"    # Landroid/content/ComponentName;
+    .param p3, "userId"    # I
+    .param p4, "spooler"    # Lcom/android/server/print/RemotePrintSpooler;
+    .param p5, "callbacks"    # Lcom/android/server/print/RemotePrintService$PrintServiceCallbacks;
+
+    .prologue
+    .line 100
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 70
@@ -113,7 +373,7 @@
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p0, v1}, Lcom/android/server/print/RemotePrintService$RemoteServiceConneciton;-><init>(Lcom/android/server/print/RemotePrintService;Lcom/android/server/print/RemotePrintService$1;)V
+    invoke-direct {v0, p0, v1}, Lcom/android/server/print/RemotePrintService$RemoteServiceConneciton;-><init>(Lcom/android/server/print/RemotePrintService;Lcom/android/server/print/RemotePrintService$RemoteServiceConneciton;)V
 
     iput-object v0, p0, Lcom/android/server/print/RemotePrintService;->mServiceConnection:Landroid/content/ServiceConnection;
 
@@ -163,367 +423,15 @@
 
     iput-object v0, p0, Lcom/android/server/print/RemotePrintService;->mPrintServiceClient:Lcom/android/server/print/RemotePrintService$RemotePrintServiceClient;
 
-    .line 110
-    return-void
-.end method
-
-.method static synthetic access$100(Lcom/android/server/print/RemotePrintService;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->handleOnAllPrintJobsHandled()V
-
-    return-void
-.end method
-
-.method static synthetic access$1000(Lcom/android/server/print/RemotePrintService;Landroid/print/PrinterId;)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 52
-    invoke-direct {p0, p1}, Lcom/android/server/print/RemotePrintService;->handleStopPrinterStateTracking(Landroid/print/PrinterId;)V
-
-    return-void
-.end method
-
-.method static synthetic access$1100(Lcom/android/server/print/RemotePrintService;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mDestroyed:Z
-
-    return v0
-.end method
-
-.method static synthetic access$1200(Lcom/android/server/print/RemotePrintService;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mBinding:Z
-
-    return v0
-.end method
-
-.method static synthetic access$1202(Lcom/android/server/print/RemotePrintService;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 52
-    iput-boolean p1, p0, Lcom/android/server/print/RemotePrintService;->mBinding:Z
-
-    return p1
-.end method
-
-.method static synthetic access$1300(Lcom/android/server/print/RemotePrintService;)Landroid/content/ServiceConnection;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mServiceConnection:Landroid/content/ServiceConnection;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1400(Lcom/android/server/print/RemotePrintService;)Landroid/content/Context;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mContext:Landroid/content/Context;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1500(Lcom/android/server/print/RemotePrintService;)Landroid/printservice/IPrintService;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1502(Lcom/android/server/print/RemotePrintService;Landroid/printservice/IPrintService;)Landroid/printservice/IPrintService;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 52
-    iput-object p1, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
-
-    return-object p1
-.end method
-
-.method static synthetic access$1600(Lcom/android/server/print/RemotePrintService;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->handleBinderDied()V
-
-    return-void
-.end method
-
-.method static synthetic access$1700(Lcom/android/server/print/RemotePrintService;)Lcom/android/server/print/RemotePrintService$RemotePrintServiceClient;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mPrintServiceClient:Lcom/android/server/print/RemotePrintService$RemotePrintServiceClient;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1800(Lcom/android/server/print/RemotePrintService;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mServiceDied:Z
-
-    return v0
-.end method
-
-.method static synthetic access$1802(Lcom/android/server/print/RemotePrintService;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 52
-    iput-boolean p1, p0, Lcom/android/server/print/RemotePrintService;->mServiceDied:Z
-
-    return p1
-.end method
-
-.method static synthetic access$1900(Lcom/android/server/print/RemotePrintService;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mHasPrinterDiscoverySession:Z
-
-    return v0
-.end method
-
-.method static synthetic access$200(Lcom/android/server/print/RemotePrintService;Landroid/print/PrintJobInfo;)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 52
-    invoke-direct {p0, p1}, Lcom/android/server/print/RemotePrintService;->handleRequestCancelPrintJob(Landroid/print/PrintJobInfo;)V
-
-    return-void
-.end method
-
-.method static synthetic access$2000(Lcom/android/server/print/RemotePrintService;)Ljava/util/List;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mDiscoveryPriorityList:Ljava/util/List;
-
-    return-object v0
-.end method
-
-.method static synthetic access$2100(Lcom/android/server/print/RemotePrintService;)Ljava/util/List;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
-
-    return-object v0
-.end method
-
-.method static synthetic access$2200(Lcom/android/server/print/RemotePrintService;)Ljava/util/List;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mPendingCommands:Ljava/util/List;
-
-    return-object v0
-.end method
-
-.method static synthetic access$2300(Lcom/android/server/print/RemotePrintService;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mHasActivePrintJobs:Z
-
-    return v0
-.end method
-
-.method static synthetic access$2400(Lcom/android/server/print/RemotePrintService;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureUnbound()V
-
-    return-void
-.end method
-
-.method static synthetic access$2500(Lcom/android/server/print/RemotePrintService;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->handleDestroy()V
-
-    return-void
-.end method
-
-.method static synthetic access$2600(Lcom/android/server/print/RemotePrintService;)Landroid/content/ComponentName;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mComponentName:Landroid/content/ComponentName;
-
-    return-object v0
-.end method
-
-.method static synthetic access$2700(Lcom/android/server/print/RemotePrintService;)Lcom/android/server/print/RemotePrintSpooler;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mSpooler:Lcom/android/server/print/RemotePrintSpooler;
-
-    return-object v0
-.end method
-
-.method static synthetic access$2800(Lcom/android/server/print/RemotePrintService;)Lcom/android/server/print/RemotePrintService$PrintServiceCallbacks;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mCallbacks:Lcom/android/server/print/RemotePrintService$PrintServiceCallbacks;
-
-    return-object v0
-.end method
-
-.method static synthetic access$300(Lcom/android/server/print/RemotePrintService;Landroid/print/PrintJobInfo;)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 52
-    invoke-direct {p0, p1}, Lcom/android/server/print/RemotePrintService;->handleOnPrintJobQueued(Landroid/print/PrintJobInfo;)V
-
-    return-void
-.end method
-
-.method static synthetic access$400(Lcom/android/server/print/RemotePrintService;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->handleCreatePrinterDiscoverySession()V
-
-    return-void
-.end method
-
-.method static synthetic access$500(Lcom/android/server/print/RemotePrintService;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->handleDestroyPrinterDiscoverySession()V
-
-    return-void
-.end method
-
-.method static synthetic access$600(Lcom/android/server/print/RemotePrintService;Ljava/util/List;)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 52
-    invoke-direct {p0, p1}, Lcom/android/server/print/RemotePrintService;->handleStartPrinterDiscovery(Ljava/util/List;)V
-
-    return-void
-.end method
-
-.method static synthetic access$700(Lcom/android/server/print/RemotePrintService;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 52
-    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->handleStopPrinterDiscovery()V
-
-    return-void
-.end method
-
-.method static synthetic access$800(Lcom/android/server/print/RemotePrintService;Ljava/util/List;)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 52
-    invoke-direct {p0, p1}, Lcom/android/server/print/RemotePrintService;->handleValidatePrinters(Ljava/util/List;)V
-
-    return-void
-.end method
-
-.method static synthetic access$900(Lcom/android/server/print/RemotePrintService;Landroid/print/PrinterId;)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 52
-    invoke-direct {p0, p1}, Lcom/android/server/print/RemotePrintService;->handleStartPrinterStateTracking(Landroid/print/PrinterId;)V
-
+    .line 101
     return-void
 .end method
 
 .method private ensureBound()V
-    .locals 6
+    .locals 5
 
     .prologue
-    const/4 v5, 0x1
-
-    .line 493
+    .line 502
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
 
     move-result v0
@@ -534,129 +442,138 @@
 
     if-eqz v0, :cond_1
 
-    .line 502
+    .line 503
     :cond_0
-    :goto_0
     return-void
 
-    .line 499
+    .line 508
     :cond_1
-    iput-boolean v5, p0, Lcom/android/server/print/RemotePrintService;->mBinding:Z
+    const/4 v0, 0x1
 
-    .line 500
+    iput-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mBinding:Z
+
+    .line 509
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mContext:Landroid/content/Context;
 
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mIntent:Landroid/content/Intent;
 
     iget-object v2, p0, Lcom/android/server/print/RemotePrintService;->mServiceConnection:Landroid/content/ServiceConnection;
 
+    .line 511
     new-instance v3, Landroid/os/UserHandle;
 
     iget v4, p0, Lcom/android/server/print/RemotePrintService;->mUserId:I
 
     invoke-direct {v3, v4}, Landroid/os/UserHandle;-><init>(I)V
 
-    invoke-virtual {v0, v1, v2, v5, v3}, Landroid/content/Context;->bindServiceAsUser(Landroid/content/Intent;Landroid/content/ServiceConnection;ILandroid/os/UserHandle;)Z
+    .line 510
+    const v4, 0x4000001
 
-    goto :goto_0
+    .line 509
+    invoke-virtual {v0, v1, v2, v4, v3}, Landroid/content/Context;->bindServiceAsUser(Landroid/content/Intent;Landroid/content/ServiceConnection;ILandroid/os/UserHandle;)Z
+
+    .line 501
+    return-void
 .end method
 
 .method private ensureUnbound()V
-    .locals 4
+    .locals 5
 
     .prologue
+    const/4 v4, 0x0
+
     const/4 v3, 0x0
+
+    .line 515
+    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    iget-boolean v1, p0, Lcom/android/server/print/RemotePrintService;->mBinding:Z
+
+    if-eqz v1, :cond_2
+
+    .line 521
+    :cond_0
+    iput-boolean v3, p0, Lcom/android/server/print/RemotePrintService;->mBinding:Z
+
+    .line 522
+    iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPendingCommands:Ljava/util/List;
+
+    invoke-interface {v1}, Ljava/util/List;->clear()V
+
+    .line 523
+    iput-boolean v3, p0, Lcom/android/server/print/RemotePrintService;->mHasActivePrintJobs:Z
+
+    .line 524
+    iput-boolean v3, p0, Lcom/android/server/print/RemotePrintService;->mHasPrinterDiscoverySession:Z
+
+    .line 525
+    iput-object v4, p0, Lcom/android/server/print/RemotePrintService;->mDiscoveryPriorityList:Ljava/util/List;
+
+    .line 526
+    iput-object v4, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
+
+    .line 527
+    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    .line 529
+    :try_start_0
+    iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
 
     const/4 v2, 0x0
 
-    .line 505
-    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
-
-    move-result v0
-
-    if-nez v0, :cond_1
-
-    iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mBinding:Z
-
-    if-nez v0, :cond_1
-
-    .line 527
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 511
-    :cond_1
-    iput-boolean v2, p0, Lcom/android/server/print/RemotePrintService;->mBinding:Z
-
-    .line 512
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mPendingCommands:Ljava/util/List;
-
-    invoke-interface {v0}, Ljava/util/List;->clear()V
-
-    .line 513
-    iput-boolean v2, p0, Lcom/android/server/print/RemotePrintService;->mHasActivePrintJobs:Z
-
-    .line 514
-    iput-boolean v2, p0, Lcom/android/server/print/RemotePrintService;->mHasPrinterDiscoverySession:Z
-
-    .line 515
-    iput-object v3, p0, Lcom/android/server/print/RemotePrintService;->mDiscoveryPriorityList:Ljava/util/List;
-
-    .line 516
-    iput-object v3, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
-
-    .line 517
-    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 519
-    :try_start_0
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
-
-    const/4 v1, 0x0
-
-    invoke-interface {v0, v1}, Landroid/printservice/IPrintService;->setClient(Landroid/printservice/IPrintServiceClient;)V
+    invoke-interface {v1, v2}, Landroid/printservice/IPrintService;->setClient(Landroid/printservice/IPrintServiceClient;)V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 523
-    :goto_1
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
+    .line 533
+    :goto_0
+    iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
 
-    invoke-interface {v0}, Landroid/printservice/IPrintService;->asBinder()Landroid/os/IBinder;
+    invoke-interface {v1}, Landroid/printservice/IPrintService;->asBinder()Landroid/os/IBinder;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-interface {v0, p0, v2}, Landroid/os/IBinder;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient;I)Z
+    invoke-interface {v1, p0, v3}, Landroid/os/IBinder;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient;I)Z
 
-    .line 524
-    iput-object v3, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
+    .line 534
+    iput-object v4, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
 
-    .line 525
-    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mContext:Landroid/content/Context;
+    .line 535
+    iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mContext:Landroid/content/Context;
 
-    iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mServiceConnection:Landroid/content/ServiceConnection;
+    iget-object v2, p0, Lcom/android/server/print/RemotePrintService;->mServiceConnection:Landroid/content/ServiceConnection;
 
-    invoke-virtual {v0, v1}, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V
+    invoke-virtual {v1, v2}, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V
 
-    goto :goto_0
+    .line 514
+    :cond_1
+    return-void
 
-    .line 520
+    .line 516
+    :cond_2
+    return-void
+
+    .line 530
     :catch_0
     move-exception v0
 
-    goto :goto_1
+    .local v0, "re":Landroid/os/RemoteException;
+    goto :goto_0
 .end method
 
 .method private handleBinderDied()V
     .locals 2
 
     .prologue
-    .line 157
+    .line 149
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
 
     invoke-interface {v0}, Landroid/printservice/IPrintService;->asBinder()Landroid/os/IBinder;
@@ -667,22 +584,22 @@
 
     invoke-interface {v0, p0, v1}, Landroid/os/IBinder;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient;I)Z
 
-    .line 158
+    .line 150
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
 
-    .line 159
+    .line 151
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mServiceDied:Z
 
-    .line 160
+    .line 152
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mCallbacks:Lcom/android/server/print/RemotePrintService$PrintServiceCallbacks;
 
     invoke-interface {v0, p0}, Lcom/android/server/print/RemotePrintService$PrintServiceCallbacks;->onServiceDied(Lcom/android/server/print/RemotePrintService;)V
 
-    .line 161
+    .line 148
     return-void
 .end method
 
@@ -690,25 +607,25 @@
     .locals 3
 
     .prologue
-    .line 256
+    .line 248
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->throwIfDestroyed()V
 
-    .line 257
+    .line 249
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/android/server/print/RemotePrintService;->mHasPrinterDiscoverySession:Z
 
-    .line 258
+    .line 250
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    .line 259
+    .line 251
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureBound()V
 
-    .line 260
+    .line 252
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPendingCommands:Ljava/util/List;
 
     new-instance v2, Lcom/android/server/print/RemotePrintService$4;
@@ -717,11 +634,11 @@
 
     invoke-interface {v1, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 276
+    .line 247
     :goto_0
     return-void
 
-    .line 271
+    .line 263
     :cond_0
     :try_start_0
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
@@ -732,15 +649,15 @@
 
     goto :goto_0
 
-    .line 272
+    .line 264
     :catch_0
     move-exception v0
 
-    .line 273
-    .local v0, re:Landroid/os/RemoteException;
-    const-string v1, "RemotePrintService"
+    .line 265
+    .local v0, "re":Landroid/os/RemoteException;
+    const-string/jumbo v1, "RemotePrintService"
 
-    const-string v2, "Error creating printer dicovery session."
+    const-string/jumbo v2, "Error creating printer discovery session."
 
     invoke-static {v1, v2, v0}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
@@ -748,95 +665,42 @@
 .end method
 
 .method private handleDestroy()V
-    .locals 5
+    .locals 1
 
     .prologue
     .line 121
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->throwIfDestroyed()V
 
     .line 124
-    iget-object v3, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
-
-    if-eqz v3, :cond_1
-
-    .line 125
-    iget-object v3, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
-
-    invoke-interface {v3}, Ljava/util/List;->size()I
-
-    move-result v2
-
-    .line 126
-    .local v2, trackedPrinterCount:I
-    const/4 v0, 0x0
-
-    .local v0, i:I
-    :goto_0
-    if-ge v0, v2, :cond_1
+    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->stopTrackingAllPrinters()V
 
     .line 127
-    iget-object v3, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
+    iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mDiscoveryPriorityList:Ljava/util/List;
 
-    invoke-interface {v3, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Landroid/print/PrinterId;
+    if-eqz v0, :cond_0
 
     .line 128
-    .local v1, printerId:Landroid/print/PrinterId;
-    invoke-virtual {v1}, Landroid/print/PrinterId;->getServiceName()Landroid/content/ComponentName;
-
-    move-result-object v3
-
-    iget-object v4, p0, Lcom/android/server/print/RemotePrintService;->mComponentName:Landroid/content/ComponentName;
-
-    invoke-virtual {v3, v4}, Landroid/content/ComponentName;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_0
-
-    .line 129
-    invoke-direct {p0, v1}, Lcom/android/server/print/RemotePrintService;->handleStopPrinterStateTracking(Landroid/print/PrinterId;)V
-
-    .line 126
-    :cond_0
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_0
-
-    .line 135
-    .end local v0           #i:I
-    .end local v1           #printerId:Landroid/print/PrinterId;
-    .end local v2           #trackedPrinterCount:I
-    :cond_1
-    iget-object v3, p0, Lcom/android/server/print/RemotePrintService;->mDiscoveryPriorityList:Ljava/util/List;
-
-    if-eqz v3, :cond_2
-
-    .line 136
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->handleStopPrinterDiscovery()V
 
-    .line 140
-    :cond_2
-    iget-boolean v3, p0, Lcom/android/server/print/RemotePrintService;->mHasPrinterDiscoverySession:Z
+    .line 132
+    :cond_0
+    iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mHasPrinterDiscoverySession:Z
 
-    if-eqz v3, :cond_3
+    if-eqz v0, :cond_1
 
-    .line 141
+    .line 133
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->handleDestroyPrinterDiscoverySession()V
 
-    .line 145
-    :cond_3
+    .line 137
+    :cond_1
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureUnbound()V
 
-    .line 148
-    const/4 v3, 0x1
+    .line 140
+    const/4 v0, 0x1
 
-    iput-boolean v3, p0, Lcom/android/server/print/RemotePrintService;->mDestroyed:Z
+    iput-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mDestroyed:Z
 
-    .line 149
+    .line 120
     return-void
 .end method
 
@@ -844,43 +708,35 @@
     .locals 3
 
     .prologue
-    .line 283
+    .line 275
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->throwIfDestroyed()V
 
-    .line 284
+    .line 276
     const/4 v1, 0x0
 
     iput-boolean v1, p0, Lcom/android/server/print/RemotePrintService;->mHasPrinterDiscoverySession:Z
 
-    .line 285
+    .line 277
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
 
     move-result v1
 
-    if-nez v1, :cond_2
+    if-nez v1, :cond_3
 
-    .line 288
+    .line 280
     iget-boolean v1, p0, Lcom/android/server/print/RemotePrintService;->mServiceDied:Z
 
-    if-eqz v1, :cond_1
+    if-eqz v1, :cond_0
 
     iget-boolean v1, p0, Lcom/android/server/print/RemotePrintService;->mHasActivePrintJobs:Z
 
-    if-nez v1, :cond_1
+    if-eqz v1, :cond_2
 
-    .line 289
-    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureUnbound()V
-
-    .line 314
+    .line 284
     :cond_0
-    :goto_0
-    return-void
-
-    .line 292
-    :cond_1
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureBound()V
 
-    .line 293
+    .line 285
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPendingCommands:Ljava/util/List;
 
     new-instance v2, Lcom/android/server/print/RemotePrintService$5;
@@ -889,10 +745,20 @@
 
     invoke-interface {v1, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    goto :goto_0
+    .line 274
+    :cond_1
+    :goto_0
+    return-void
 
-    .line 304
+    .line 281
     :cond_2
+    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureUnbound()V
+
+    .line 282
+    return-void
+
+    .line 296
+    :cond_3
     :try_start_0
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
 
@@ -900,26 +766,26 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 310
+    .line 302
     :goto_1
     iget-boolean v1, p0, Lcom/android/server/print/RemotePrintService;->mHasActivePrintJobs:Z
 
-    if-nez v1, :cond_0
+    if-nez v1, :cond_1
 
-    .line 311
+    .line 303
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureUnbound()V
 
     goto :goto_0
 
-    .line 305
+    .line 297
     :catch_0
     move-exception v0
 
-    .line 306
-    .local v0, re:Landroid/os/RemoteException;
-    const-string v1, "RemotePrintService"
+    .line 298
+    .local v0, "re":Landroid/os/RemoteException;
+    const-string/jumbo v1, "RemotePrintService"
 
-    const-string v2, "Error destroying printer dicovery session."
+    const-string/jumbo v2, "Error destroying printer dicovery session."
 
     invoke-static {v1, v2, v0}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
@@ -930,43 +796,35 @@
     .locals 2
 
     .prologue
-    .line 168
+    .line 160
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->throwIfDestroyed()V
 
-    .line 169
+    .line 161
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mHasActivePrintJobs:Z
 
-    .line 170
+    .line 162
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
 
     move-result v0
 
-    if-nez v0, :cond_2
+    if-nez v0, :cond_3
 
-    .line 173
+    .line 165
     iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mServiceDied:Z
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_0
 
     iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mHasPrinterDiscoverySession:Z
 
-    if-nez v0, :cond_1
+    if-eqz v0, :cond_2
 
-    .line 174
-    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureUnbound()V
-
-    .line 194
+    .line 169
     :cond_0
-    :goto_0
-    return-void
-
-    .line 177
-    :cond_1
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureBound()V
 
-    .line 178
+    .line 170
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mPendingCommands:Ljava/util/List;
 
     new-instance v1, Lcom/android/server/print/RemotePrintService$1;
@@ -975,15 +833,25 @@
 
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    goto :goto_0
+    .line 159
+    :cond_1
+    :goto_0
+    return-void
 
-    .line 190
+    .line 166
     :cond_2
+    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureUnbound()V
+
+    .line 167
+    return-void
+
+    .line 182
+    :cond_3
     iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mHasPrinterDiscoverySession:Z
 
-    if-nez v0, :cond_0
+    if-nez v0, :cond_1
 
-    .line 191
+    .line 183
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureUnbound()V
 
     goto :goto_0
@@ -991,28 +859,28 @@
 
 .method private handleOnPrintJobQueued(Landroid/print/PrintJobInfo;)V
     .locals 3
-    .parameter "printJob"
+    .param p1, "printJob"    # Landroid/print/PrintJobInfo;
 
     .prologue
-    .line 229
+    .line 221
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->throwIfDestroyed()V
 
-    .line 230
+    .line 222
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/android/server/print/RemotePrintService;->mHasActivePrintJobs:Z
 
-    .line 231
+    .line 223
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    .line 232
+    .line 224
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureBound()V
 
-    .line 233
+    .line 225
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPendingCommands:Ljava/util/List;
 
     new-instance v2, Lcom/android/server/print/RemotePrintService$3;
@@ -1021,11 +889,11 @@
 
     invoke-interface {v1, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 249
+    .line 220
     :goto_0
     return-void
 
-    .line 244
+    .line 236
     :cond_0
     :try_start_0
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
@@ -1036,15 +904,15 @@
 
     goto :goto_0
 
-    .line 245
+    .line 237
     :catch_0
     move-exception v0
 
-    .line 246
-    .local v0, re:Landroid/os/RemoteException;
-    const-string v1, "RemotePrintService"
+    .line 238
+    .local v0, "re":Landroid/os/RemoteException;
+    const-string/jumbo v1, "RemotePrintService"
 
-    const-string v2, "Error announcing queued pring job."
+    const-string/jumbo v2, "Error announcing queued pring job."
 
     invoke-static {v1, v2, v0}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
@@ -1053,23 +921,23 @@
 
 .method private handleRequestCancelPrintJob(Landroid/print/PrintJobInfo;)V
     .locals 3
-    .parameter "printJob"
+    .param p1, "printJob"    # Landroid/print/PrintJobInfo;
 
     .prologue
-    .line 202
+    .line 194
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->throwIfDestroyed()V
 
-    .line 203
+    .line 195
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    .line 204
+    .line 196
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureBound()V
 
-    .line 205
+    .line 197
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPendingCommands:Ljava/util/List;
 
     new-instance v2, Lcom/android/server/print/RemotePrintService$2;
@@ -1078,11 +946,11 @@
 
     invoke-interface {v1, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 221
+    .line 193
     :goto_0
     return-void
 
-    .line 216
+    .line 208
     :cond_0
     :try_start_0
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
@@ -1093,15 +961,15 @@
 
     goto :goto_0
 
-    .line 217
+    .line 209
     :catch_0
     move-exception v0
 
-    .line 218
-    .local v0, re:Landroid/os/RemoteException;
-    const-string v1, "RemotePrintService"
+    .line 210
+    .local v0, "re":Landroid/os/RemoteException;
+    const-string/jumbo v1, "RemotePrintService"
 
-    const-string v2, "Error canceling a pring job."
+    const-string/jumbo v2, "Error canceling a pring job."
 
     invoke-static {v1, v2, v0}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
@@ -1110,7 +978,6 @@
 
 .method private handleStartPrinterDiscovery(Ljava/util/List;)V
     .locals 3
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -1122,26 +989,26 @@
     .end annotation
 
     .prologue
-    .line 322
-    .local p1, priorityList:Ljava/util/List;,"Ljava/util/List<Landroid/print/PrinterId;>;"
+    .line 314
+    .local p1, "priorityList":Ljava/util/List;, "Ljava/util/List<Landroid/print/PrinterId;>;"
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->throwIfDestroyed()V
 
-    .line 324
+    .line 316
     new-instance v1, Ljava/util/ArrayList;
 
     invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v1, p0, Lcom/android/server/print/RemotePrintService;->mDiscoveryPriorityList:Ljava/util/List;
 
-    .line 325
+    .line 317
     if-eqz p1, :cond_0
 
-    .line 326
+    .line 318
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mDiscoveryPriorityList:Ljava/util/List;
 
     invoke-interface {v1, p1}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z
 
-    .line 328
+    .line 320
     :cond_0
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
 
@@ -1149,10 +1016,10 @@
 
     if-nez v1, :cond_1
 
-    .line 329
+    .line 321
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureBound()V
 
-    .line 330
+    .line 322
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPendingCommands:Ljava/util/List;
 
     new-instance v2, Lcom/android/server/print/RemotePrintService$6;
@@ -1161,11 +1028,11 @@
 
     invoke-interface {v1, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 346
+    .line 313
     :goto_0
     return-void
 
-    .line 341
+    .line 333
     :cond_1
     :try_start_0
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
@@ -1176,15 +1043,15 @@
 
     goto :goto_0
 
-    .line 342
+    .line 334
     :catch_0
     move-exception v0
 
-    .line 343
-    .local v0, re:Landroid/os/RemoteException;
-    const-string v1, "RemotePrintService"
+    .line 335
+    .local v0, "re":Landroid/os/RemoteException;
+    const-string/jumbo v1, "RemotePrintService"
 
-    const-string v2, "Error starting printer dicovery."
+    const-string/jumbo v2, "Error starting printer dicovery."
 
     invoke-static {v1, v2, v0}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
@@ -1193,41 +1060,41 @@
 
 .method private handleStartPrinterStateTracking(Landroid/print/PrinterId;)V
     .locals 3
-    .parameter "printerId"
+    .param p1, "printerId"    # Landroid/print/PrinterId;
 
     .prologue
-    .line 409
+    .line 405
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->throwIfDestroyed()V
 
-    .line 411
+    .line 407
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
 
     if-nez v1, :cond_0
 
-    .line 412
+    .line 408
     new-instance v1, Ljava/util/ArrayList;
 
     invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v1, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
 
-    .line 414
+    .line 410
     :cond_0
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
 
     invoke-interface {v1, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 415
+    .line 411
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
 
     move-result v1
 
     if-nez v1, :cond_1
 
-    .line 416
+    .line 412
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureBound()V
 
-    .line 417
+    .line 413
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPendingCommands:Ljava/util/List;
 
     new-instance v2, Lcom/android/server/print/RemotePrintService$9;
@@ -1236,11 +1103,11 @@
 
     invoke-interface {v1, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 433
+    .line 404
     :goto_0
     return-void
 
-    .line 428
+    .line 424
     :cond_1
     :try_start_0
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
@@ -1251,15 +1118,15 @@
 
     goto :goto_0
 
-    .line 429
+    .line 425
     :catch_0
     move-exception v0
 
-    .line 430
-    .local v0, re:Landroid/os/RemoteException;
-    const-string v1, "RemotePrintService"
+    .line 426
+    .local v0, "re":Landroid/os/RemoteException;
+    const-string/jumbo v1, "RemotePrintService"
 
-    const-string v2, "Error requesting start printer tracking."
+    const-string/jumbo v2, "Error requesting start printer tracking."
 
     invoke-static {v1, v2, v0}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
@@ -1270,25 +1137,25 @@
     .locals 3
 
     .prologue
-    .line 353
+    .line 345
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->throwIfDestroyed()V
 
-    .line 355
+    .line 347
     const/4 v1, 0x0
 
     iput-object v1, p0, Lcom/android/server/print/RemotePrintService;->mDiscoveryPriorityList:Ljava/util/List;
 
-    .line 356
+    .line 348
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    .line 357
+    .line 349
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureBound()V
 
-    .line 358
+    .line 350
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPendingCommands:Ljava/util/List;
 
     new-instance v2, Lcom/android/server/print/RemotePrintService$7;
@@ -1297,12 +1164,15 @@
 
     invoke-interface {v1, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 374
+    .line 344
     :goto_0
     return-void
 
-    .line 369
+    .line 362
     :cond_0
+    invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->stopTrackingAllPrinters()V
+
+    .line 365
     :try_start_0
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
 
@@ -1312,15 +1182,15 @@
 
     goto :goto_0
 
-    .line 370
+    .line 366
     :catch_0
     move-exception v0
 
-    .line 371
-    .local v0, re:Landroid/os/RemoteException;
-    const-string v1, "RemotePrintService"
+    .line 367
+    .local v0, "re":Landroid/os/RemoteException;
+    const-string/jumbo v1, "RemotePrintService"
 
-    const-string v2, "Error stopping printer dicovery."
+    const-string/jumbo v2, "Error stopping printer discovery."
 
     invoke-static {v1, v2, v0}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
@@ -1329,16 +1199,18 @@
 
 .method private handleStopPrinterStateTracking(Landroid/print/PrinterId;)V
     .locals 3
-    .parameter "printerId"
+    .param p1, "printerId"    # Landroid/print/PrinterId;
 
     .prologue
-    .line 441
+    const/4 v2, 0x0
+
+    .line 437
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->throwIfDestroyed()V
 
-    .line 443
+    .line 439
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
 
-    if-eqz v1, :cond_0
+    if-eqz v1, :cond_1
 
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
 
@@ -1346,40 +1218,32 @@
 
     move-result v1
 
-    if-nez v1, :cond_1
+    if-eqz v1, :cond_1
 
-    .line 467
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 446
-    :cond_1
+    .line 442
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
 
     invoke-interface {v1}, Ljava/util/List;->isEmpty()Z
 
     move-result v1
 
-    if-eqz v1, :cond_2
+    if-eqz v1, :cond_0
 
-    .line 447
-    const/4 v1, 0x0
+    .line 443
+    iput-object v2, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
 
-    iput-object v1, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
-
-    .line 449
-    :cond_2
+    .line 445
+    :cond_0
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
 
     move-result v1
 
-    if-nez v1, :cond_3
+    if-nez v1, :cond_2
 
-    .line 450
+    .line 446
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureBound()V
 
-    .line 451
+    .line 447
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPendingCommands:Ljava/util/List;
 
     new-instance v2, Lcom/android/server/print/RemotePrintService$10;
@@ -1388,10 +1252,16 @@
 
     invoke-interface {v1, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    goto :goto_0
+    .line 436
+    :goto_0
+    return-void
 
-    .line 462
-    :cond_3
+    .line 440
+    :cond_1
+    return-void
+
+    .line 458
+    :cond_2
     :try_start_0
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
 
@@ -1401,15 +1271,15 @@
 
     goto :goto_0
 
-    .line 463
+    .line 459
     :catch_0
     move-exception v0
 
-    .line 464
-    .local v0, re:Landroid/os/RemoteException;
-    const-string v1, "RemotePrintService"
+    .line 460
+    .local v0, "re":Landroid/os/RemoteException;
+    const-string/jumbo v1, "RemotePrintService"
 
-    const-string v2, "Error requesting stop printer tracking."
+    const-string/jumbo v2, "Error requesting stop printer tracking."
 
     invoke-static {v1, v2, v0}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
@@ -1418,7 +1288,6 @@
 
 .method private handleValidatePrinters(Ljava/util/List;)V
     .locals 3
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -1430,21 +1299,21 @@
     .end annotation
 
     .prologue
-    .line 382
-    .local p1, printerIds:Ljava/util/List;,"Ljava/util/List<Landroid/print/PrinterId;>;"
+    .line 378
+    .local p1, "printerIds":Ljava/util/List;, "Ljava/util/List<Landroid/print/PrinterId;>;"
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->throwIfDestroyed()V
 
-    .line 383
+    .line 379
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    .line 384
+    .line 380
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->ensureBound()V
 
-    .line 385
+    .line 381
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPendingCommands:Ljava/util/List;
 
     new-instance v2, Lcom/android/server/print/RemotePrintService$8;
@@ -1453,11 +1322,11 @@
 
     invoke-interface {v1, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 401
+    .line 377
     :goto_0
     return-void
 
-    .line 396
+    .line 392
     :cond_0
     :try_start_0
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
@@ -1468,15 +1337,15 @@
 
     goto :goto_0
 
-    .line 397
+    .line 393
     :catch_0
     move-exception v0
 
-    .line 398
-    .local v0, re:Landroid/os/RemoteException;
-    const-string v1, "RemotePrintService"
+    .line 394
+    .local v0, "re":Landroid/os/RemoteException;
+    const-string/jumbo v1, "RemotePrintService"
 
-    const-string v2, "Error requesting printers validation."
+    const-string/jumbo v2, "Error requesting printers validation."
 
     invoke-static {v1, v2, v0}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
@@ -1487,7 +1356,7 @@
     .locals 1
 
     .prologue
-    .line 489
+    .line 498
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mPrintService:Landroid/printservice/IPrintService;
 
     if-eqz v0, :cond_0
@@ -1503,25 +1372,91 @@
     goto :goto_0
 .end method
 
+.method private stopTrackingAllPrinters()V
+    .locals 5
+
+    .prologue
+    .line 466
+    iget-object v3, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
+
+    if-nez v3, :cond_0
+
+    .line 467
+    return-void
+
+    .line 469
+    :cond_0
+    iget-object v3, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
+
+    invoke-interface {v3}, Ljava/util/List;->size()I
+
+    move-result v2
+
+    .line 470
+    .local v2, "trackedPrinterCount":I
+    add-int/lit8 v0, v2, -0x1
+
+    .local v0, "i":I
+    :goto_0
+    if-ltz v0, :cond_2
+
+    .line 471
+    iget-object v3, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
+
+    invoke-interface {v3, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/print/PrinterId;
+
+    .line 472
+    .local v1, "printerId":Landroid/print/PrinterId;
+    invoke-virtual {v1}, Landroid/print/PrinterId;->getServiceName()Landroid/content/ComponentName;
+
+    move-result-object v3
+
+    iget-object v4, p0, Lcom/android/server/print/RemotePrintService;->mComponentName:Landroid/content/ComponentName;
+
+    invoke-virtual {v3, v4}, Landroid/content/ComponentName;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_1
+
+    .line 473
+    invoke-direct {p0, v1}, Lcom/android/server/print/RemotePrintService;->handleStopPrinterStateTracking(Landroid/print/PrinterId;)V
+
+    .line 470
+    :cond_1
+    add-int/lit8 v0, v0, -0x1
+
+    goto :goto_0
+
+    .line 465
+    .end local v1    # "printerId":Landroid/print/PrinterId;
+    :cond_2
+    return-void
+.end method
+
 .method private throwIfDestroyed()V
     .locals 2
 
     .prologue
-    .line 530
+    .line 540
     iget-boolean v0, p0, Lcom/android/server/print/RemotePrintService;->mDestroyed:Z
 
     if-eqz v0, :cond_0
 
-    .line 531
+    .line 541
     new-instance v0, Ljava/lang/IllegalStateException;
 
-    const-string v1, "Cannot interact with a destroyed service"
+    const-string/jumbo v1, "Cannot interact with a destroyed service"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 533
+    .line 539
     :cond_0
     return-void
 .end method
@@ -1532,14 +1467,14 @@
     .locals 2
 
     .prologue
-    .line 153
+    .line 145
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0xc
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 154
+    .line 144
     return-void
 .end method
 
@@ -1547,14 +1482,14 @@
     .locals 2
 
     .prologue
-    .line 252
+    .line 244
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mHandler:Landroid/os/Handler;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 253
+    .line 243
     return-void
 .end method
 
@@ -1569,7 +1504,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 118
+    .line 116
     return-void
 .end method
 
@@ -1577,33 +1512,33 @@
     .locals 2
 
     .prologue
-    .line 279
+    .line 271
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mHandler:Landroid/os/Handler;
 
     const/4 v1, 0x2
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 280
+    .line 270
     return-void
 .end method
 
 .method public dump(Ljava/io/PrintWriter;Ljava/lang/String;)V
     .locals 3
-    .parameter "pw"
-    .parameter "prefix"
+    .param p1, "pw"    # Ljava/io/PrintWriter;
+    .param p2, "prefix"    # Ljava/lang/String;
 
     .prologue
-    .line 470
-    const-string v0, "  "
+    .line 479
+    const-string/jumbo v0, "  "
 
-    .line 471
-    .local v0, tab:Ljava/lang/String;
+    .line 480
+    .local v0, "tab":Ljava/lang/String;
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
 
-    const-string v2, "service:"
+    const-string/jumbo v2, "service:"
 
     invoke-virtual {v1, v2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
@@ -1611,7 +1546,7 @@
 
     invoke-virtual {v1}, Ljava/io/PrintWriter;->println()V
 
-    .line 472
+    .line 481
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
@@ -1620,25 +1555,27 @@
 
     move-result-object v1
 
-    const-string v2, "componentName="
+    const-string/jumbo v2, "componentName="
 
     invoke-virtual {v1, v2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
 
+    .line 482
     iget-object v2, p0, Lcom/android/server/print/RemotePrintService;->mComponentName:Landroid/content/ComponentName;
 
     invoke-virtual {v2}, Landroid/content/ComponentName;->flattenToString()Ljava/lang/String;
 
     move-result-object v2
 
+    .line 481
     invoke-virtual {v1, v2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
 
     invoke-virtual {v1}, Ljava/io/PrintWriter;->println()V
 
-    .line 474
+    .line 483
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
@@ -1647,25 +1584,27 @@
 
     move-result-object v1
 
-    const-string v2, "destroyed="
+    const-string/jumbo v2, "destroyed="
 
     invoke-virtual {v1, v2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
 
+    .line 484
     iget-boolean v2, p0, Lcom/android/server/print/RemotePrintService;->mDestroyed:Z
 
     invoke-static {v2}, Ljava/lang/String;->valueOf(Z)Ljava/lang/String;
 
     move-result-object v2
 
+    .line 483
     invoke-virtual {v1, v2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
 
     invoke-virtual {v1}, Ljava/io/PrintWriter;->println()V
 
-    .line 476
+    .line 485
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
@@ -1674,12 +1613,13 @@
 
     move-result-object v1
 
-    const-string v2, "bound="
+    const-string/jumbo v2, "bound="
 
     invoke-virtual {v1, v2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
 
+    .line 486
     invoke-direct {p0}, Lcom/android/server/print/RemotePrintService;->isBound()Z
 
     move-result v2
@@ -1688,13 +1628,14 @@
 
     move-result-object v2
 
+    .line 485
     invoke-virtual {v1, v2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
 
     invoke-virtual {v1}, Ljava/io/PrintWriter;->println()V
 
-    .line 478
+    .line 487
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
@@ -1703,25 +1644,27 @@
 
     move-result-object v1
 
-    const-string v2, "hasDicoverySession="
+    const-string/jumbo v2, "hasDicoverySession="
 
     invoke-virtual {v1, v2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
 
+    .line 488
     iget-boolean v2, p0, Lcom/android/server/print/RemotePrintService;->mHasPrinterDiscoverySession:Z
 
     invoke-static {v2}, Ljava/lang/String;->valueOf(Z)Ljava/lang/String;
 
     move-result-object v2
 
+    .line 487
     invoke-virtual {v1, v2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
 
     invoke-virtual {v1}, Ljava/io/PrintWriter;->println()V
 
-    .line 480
+    .line 489
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
@@ -1730,25 +1673,27 @@
 
     move-result-object v1
 
-    const-string v2, "hasActivePrintJobs="
+    const-string/jumbo v2, "hasActivePrintJobs="
 
     invoke-virtual {v1, v2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
 
+    .line 490
     iget-boolean v2, p0, Lcom/android/server/print/RemotePrintService;->mHasActivePrintJobs:Z
 
     invoke-static {v2}, Ljava/lang/String;->valueOf(Z)Ljava/lang/String;
 
     move-result-object v2
 
+    .line 489
     invoke-virtual {v1, v2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
 
     invoke-virtual {v1}, Ljava/io/PrintWriter;->println()V
 
-    .line 482
+    .line 491
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
@@ -1757,12 +1702,13 @@
 
     move-result-object v1
 
-    const-string v2, "isDiscoveringPrinters="
+    const-string/jumbo v2, "isDiscoveringPrinters="
 
     invoke-virtual {v1, v2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v2
 
+    .line 492
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mDiscoveryPriorityList:Ljava/util/List;
 
     if-eqz v1, :cond_0
@@ -1774,13 +1720,14 @@
 
     move-result-object v1
 
+    .line 491
     invoke-virtual {v2, v1}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
 
     invoke-virtual {v1}, Ljava/io/PrintWriter;->println()V
 
-    .line 484
+    .line 493
     invoke-virtual {p1, p2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v1
@@ -1789,12 +1736,13 @@
 
     move-result-object v1
 
-    const-string v2, "trackedPrinters="
+    const-string/jumbo v2, "trackedPrinters="
 
     invoke-virtual {v1, v2}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
     move-result-object v2
 
+    .line 494
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService;->mTrackedPrinterList:Ljava/util/List;
 
     if-eqz v1, :cond_1
@@ -1805,21 +1753,22 @@
 
     move-result-object v1
 
+    .line 493
     :goto_1
     invoke-virtual {v2, v1}, Ljava/io/PrintWriter;->append(Ljava/lang/CharSequence;)Ljava/io/PrintWriter;
 
-    .line 486
+    .line 478
     return-void
 
-    .line 482
+    .line 492
     :cond_0
     const/4 v1, 0x0
 
     goto :goto_0
 
-    .line 484
+    .line 494
     :cond_1
-    const-string v1, "null"
+    const-string/jumbo v1, "null"
 
     goto :goto_1
 .end method
@@ -1838,23 +1787,23 @@
     .locals 2
 
     .prologue
-    .line 164
+    .line 156
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0x8
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 165
+    .line 155
     return-void
 .end method
 
 .method public onPrintJobQueued(Landroid/print/PrintJobInfo;)V
     .locals 2
-    .parameter "printJob"
+    .param p1, "printJob"    # Landroid/print/PrintJobInfo;
 
     .prologue
-    .line 224
+    .line 216
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0xa
@@ -1865,16 +1814,16 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 226
+    .line 215
     return-void
 .end method
 
 .method public onRequestCancelPrintJob(Landroid/print/PrintJobInfo;)V
     .locals 2
-    .parameter "printJob"
+    .param p1, "printJob"    # Landroid/print/PrintJobInfo;
 
     .prologue
-    .line 197
+    .line 189
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0x9
@@ -1885,13 +1834,12 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 199
+    .line 188
     return-void
 .end method
 
 .method public startPrinterDiscovery(Ljava/util/List;)V
     .locals 2
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -1903,8 +1851,8 @@
     .end annotation
 
     .prologue
-    .line 317
-    .local p1, priorityList:Ljava/util/List;,"Ljava/util/List<Landroid/print/PrinterId;>;"
+    .line 309
+    .local p1, "priorityList":Ljava/util/List;, "Ljava/util/List<Landroid/print/PrinterId;>;"
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mHandler:Landroid/os/Handler;
 
     const/4 v1, 0x3
@@ -1915,16 +1863,16 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 319
+    .line 308
     return-void
 .end method
 
 .method public startPrinterStateTracking(Landroid/print/PrinterId;)V
     .locals 2
-    .parameter "printerId"
+    .param p1, "printerId"    # Landroid/print/PrinterId;
 
     .prologue
-    .line 404
+    .line 400
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mHandler:Landroid/os/Handler;
 
     const/4 v1, 0x6
@@ -1935,7 +1883,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 406
+    .line 399
     return-void
 .end method
 
@@ -1943,23 +1891,23 @@
     .locals 2
 
     .prologue
-    .line 349
+    .line 341
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mHandler:Landroid/os/Handler;
 
     const/4 v1, 0x4
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 350
+    .line 340
     return-void
 .end method
 
 .method public stopPrinterStateTracking(Landroid/print/PrinterId;)V
     .locals 2
-    .parameter "printerId"
+    .param p1, "printerId"    # Landroid/print/PrinterId;
 
     .prologue
-    .line 436
+    .line 432
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mHandler:Landroid/os/Handler;
 
     const/4 v1, 0x7
@@ -1970,13 +1918,12 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 438
+    .line 431
     return-void
 .end method
 
 .method public validatePrinters(Ljava/util/List;)V
     .locals 2
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -1988,8 +1935,8 @@
     .end annotation
 
     .prologue
-    .line 377
-    .local p1, printerIds:Ljava/util/List;,"Ljava/util/List<Landroid/print/PrinterId;>;"
+    .line 373
+    .local p1, "printerIds":Ljava/util/List;, "Ljava/util/List<Landroid/print/PrinterId;>;"
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService;->mHandler:Landroid/os/Handler;
 
     const/4 v1, 0x5
@@ -2000,6 +1947,6 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 379
+    .line 372
     return-void
 .end method

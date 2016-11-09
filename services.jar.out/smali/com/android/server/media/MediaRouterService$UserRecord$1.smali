@@ -28,9 +28,9 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/media/MediaRouterService$UserRecord;Ljava/io/PrintWriter;Ljava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$1"    # Lcom/android/server/media/MediaRouterService$UserRecord;
+    .param p2, "val$pw"    # Ljava/io/PrintWriter;
+    .param p3, "val$indent"    # Ljava/lang/String;
 
     .prologue
     .line 577
@@ -62,6 +62,6 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/android/server/media/MediaRouterService$UserHandler;->dump(Ljava/io/PrintWriter;Ljava/lang/String;)V
 
-    .line 581
+    .line 579
     return-void
 .end method

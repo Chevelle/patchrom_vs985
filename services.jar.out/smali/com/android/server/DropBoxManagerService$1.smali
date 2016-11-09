@@ -21,7 +21,7 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/DropBoxManagerService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/DropBoxManagerService;
 
     .prologue
     .line 103
@@ -35,15 +35,15 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 3
-    .parameter "context"
-    .parameter "intent"
+    .locals 4
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
     .line 106
     if-eqz p2, :cond_0
 
-    const-string v0, "android.intent.action.BOOT_COMPLETED"
+    const-string/jumbo v0, "android.intent.action.BOOT_COMPLETED"
 
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
@@ -60,21 +60,18 @@
 
     const/4 v1, 0x1
 
-    #setter for: Lcom/android/server/DropBoxManagerService;->mBooted:Z
-    invoke-static {v0, v1}, Lcom/android/server/DropBoxManagerService;->access$002(Lcom/android/server/DropBoxManagerService;Z)Z
+    invoke-static {v0, v1}, Lcom/android/server/DropBoxManagerService;->-set0(Lcom/android/server/DropBoxManagerService;Z)Z
 
-    .line 127
-    :goto_0
+    .line 108
     return-void
 
     .line 112
     :cond_0
     iget-object v0, p0, Lcom/android/server/DropBoxManagerService$1;->this$0:Lcom/android/server/DropBoxManagerService;
 
-    const-wide/16 v1, 0x0
+    const-wide/16 v2, 0x0
 
-    #setter for: Lcom/android/server/DropBoxManagerService;->mCachedQuotaUptimeMillis:J
-    invoke-static {v0, v1, v2}, Lcom/android/server/DropBoxManagerService;->access$102(Lcom/android/server/DropBoxManagerService;J)J
+    invoke-static {v0, v2, v3}, Lcom/android/server/DropBoxManagerService;->-set1(Lcom/android/server/DropBoxManagerService;J)J
 
     .line 117
     new-instance v0, Lcom/android/server/DropBoxManagerService$1$1;
@@ -83,5 +80,6 @@
 
     invoke-virtual {v0}, Lcom/android/server/DropBoxManagerService$1$1;->start()V
 
-    goto :goto_0
+    .line 105
+    return-void
 .end method

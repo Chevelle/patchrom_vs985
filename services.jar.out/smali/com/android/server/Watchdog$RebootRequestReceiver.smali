@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/Watchdog;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/Watchdog;
 
     .prologue
-    .line 190
+    .line 182
     iput-object p1, p0, Lcom/android/server/Watchdog$RebootRequestReceiver;->this$0:Lcom/android/server/Watchdog;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -36,14 +36,14 @@
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
     .locals 3
-    .parameter "c"
-    .parameter "intent"
+    .param p1, "c"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 193
-    const-string v0, "nowait"
-
     const/4 v1, 0x0
+
+    .line 185
+    const-string/jumbo v0, "nowait"
 
     invoke-virtual {p2, v0, v1}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
 
@@ -51,26 +51,25 @@
 
     if-eqz v0, :cond_0
 
-    .line 194
+    .line 186
     iget-object v0, p0, Lcom/android/server/Watchdog$RebootRequestReceiver;->this$0:Lcom/android/server/Watchdog;
 
-    const-string v1, "Received ACTION_REBOOT broadcast"
+    const-string/jumbo v1, "Received ACTION_REBOOT broadcast"
 
     invoke-virtual {v0, v1}, Lcom/android/server/Watchdog;->rebootSystem(Ljava/lang/String;)V
 
-    .line 198
-    :goto_0
+    .line 187
     return-void
 
-    .line 197
+    .line 189
     :cond_0
-    const-string v0, "Watchdog"
+    const-string/jumbo v0, "Watchdog"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Unsupported ACTION_REBOOT broadcast: "
+    const-string/jumbo v2, "Unsupported ACTION_REBOOT broadcast: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -86,5 +85,6 @@
 
     invoke-static {v0, v1}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_0
+    .line 184
+    return-void
 .end method

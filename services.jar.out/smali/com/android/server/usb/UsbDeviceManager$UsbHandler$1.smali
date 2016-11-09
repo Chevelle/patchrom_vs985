@@ -1,11 +1,11 @@
 .class Lcom/android/server/usb/UsbDeviceManager$UsbHandler$1;
-.super Landroid/content/BroadcastReceiver;
+.super Landroid/database/ContentObserver;
 .source "UsbDeviceManager.java"
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lcom/android/server/usb/UsbDeviceManager$UsbHandler;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/android/server/usb/UsbDeviceManager$UsbHandler;-><init>(Lcom/android/server/usb/UsbDeviceManager;Landroid/os/Looper;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -19,41 +19,32 @@
 
 
 # direct methods
-.method constructor <init>(Lcom/android/server/usb/UsbDeviceManager$UsbHandler;)V
+.method constructor <init>(Lcom/android/server/usb/UsbDeviceManager$UsbHandler;Landroid/os/Handler;)V
     .locals 0
-    .parameter
+    .param p1, "this$1"    # Lcom/android/server/usb/UsbDeviceManager$UsbHandler;
+    .param p2, "$anonymous0"    # Landroid/os/Handler;
 
     .prologue
-    .line 320
+    .line 353
     iput-object p1, p0, Lcom/android/server/usb/UsbDeviceManager$UsbHandler$1;->this$1:Lcom/android/server/usb/UsbDeviceManager$UsbHandler;
 
-    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
+    invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 2
-    .parameter "context"
-    .parameter "intent"
+.method public onChange(Z)V
+    .locals 1
+    .param p1, "selfChange"    # Z
 
     .prologue
-    .line 324
+    .line 355
     iget-object v0, p0, Lcom/android/server/usb/UsbDeviceManager$UsbHandler$1;->this$1:Lcom/android/server/usb/UsbDeviceManager$UsbHandler;
 
-    iget-object v0, v0, Lcom/android/server/usb/UsbDeviceManager$UsbHandler;->this$0:Lcom/android/server/usb/UsbDeviceManager;
+    invoke-static {v0}, Lcom/android/server/usb/UsbDeviceManager$UsbHandler;->-wrap0(Lcom/android/server/usb/UsbDeviceManager$UsbHandler;)V
 
-    #getter for: Lcom/android/server/usb/UsbDeviceManager;->mHandler:Lcom/android/server/usb/UsbDeviceManager$UsbHandler;
-    invoke-static {v0}, Lcom/android/server/usb/UsbDeviceManager;->access$100(Lcom/android/server/usb/UsbDeviceManager;)Lcom/android/server/usb/UsbDeviceManager$UsbHandler;
-
-    move-result-object v0
-
-    const/4 v1, 0x4
-
-    invoke-virtual {v0, v1}, Lcom/android/server/usb/UsbDeviceManager$UsbHandler;->sendEmptyMessage(I)Z
-
-    .line 325
+    .line 354
     return-void
 .end method

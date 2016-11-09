@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/location/FlpHardwareProvider;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/location/FlpHardwareProvider;
 
     .prologue
-    .line 321
+    .line 430
     iput-object p1, p0, Lcom/android/server/location/FlpHardwareProvider$2;->this$0:Lcom/android/server/location/FlpHardwareProvider;
 
     invoke-direct {p0}, Landroid/location/IFusedGeofenceHardware$Stub;-><init>()V
@@ -36,16 +36,15 @@
 # virtual methods
 .method public addGeofences([Landroid/hardware/location/GeofenceHardwareRequestParcelable;)V
     .locals 1
-    .parameter "geofenceRequestsArray"
+    .param p1, "geofenceRequestsArray"    # [Landroid/hardware/location/GeofenceHardwareRequestParcelable;
 
     .prologue
-    .line 329
+    .line 438
     iget-object v0, p0, Lcom/android/server/location/FlpHardwareProvider$2;->this$0:Lcom/android/server/location/FlpHardwareProvider;
 
-    #calls: Lcom/android/server/location/FlpHardwareProvider;->nativeAddGeofences([Landroid/hardware/location/GeofenceHardwareRequestParcelable;)V
-    invoke-static {v0, p1}, Lcom/android/server/location/FlpHardwareProvider;->access$1300(Lcom/android/server/location/FlpHardwareProvider;[Landroid/hardware/location/GeofenceHardwareRequestParcelable;)V
+    invoke-static {v0, p1}, Lcom/android/server/location/FlpHardwareProvider;->-wrap6(Lcom/android/server/location/FlpHardwareProvider;[Landroid/hardware/location/GeofenceHardwareRequestParcelable;)V
 
-    .line 330
+    .line 437
     return-void
 .end method
 
@@ -53,11 +52,10 @@
     .locals 1
 
     .prologue
-    .line 324
+    .line 433
     iget-object v0, p0, Lcom/android/server/location/FlpHardwareProvider$2;->this$0:Lcom/android/server/location/FlpHardwareProvider;
 
-    #calls: Lcom/android/server/location/FlpHardwareProvider;->nativeIsGeofencingSupported()Z
-    invoke-static {v0}, Lcom/android/server/location/FlpHardwareProvider;->access$1200(Lcom/android/server/location/FlpHardwareProvider;)Z
+    invoke-static {v0}, Lcom/android/server/location/FlpHardwareProvider;->-wrap2(Lcom/android/server/location/FlpHardwareProvider;)Z
 
     move-result v0
 
@@ -66,15 +64,15 @@
 
 .method public modifyGeofenceOptions(IIIIII)V
     .locals 7
-    .parameter "geofenceId"
-    .parameter "lastTransition"
-    .parameter "monitorTransitions"
-    .parameter "notificationResponsiveness"
-    .parameter "unknownTimer"
-    .parameter "sourcesToUse"
+    .param p1, "geofenceId"    # I
+    .param p2, "lastTransition"    # I
+    .param p3, "monitorTransitions"    # I
+    .param p4, "notificationResponsiveness"    # I
+    .param p5, "unknownTimer"    # I
+    .param p6, "sourcesToUse"    # I
 
     .prologue
-    .line 354
+    .line 463
     iget-object v0, p0, Lcom/android/server/location/FlpHardwareProvider$2;->this$0:Lcom/android/server/location/FlpHardwareProvider;
 
     move v1, p1
@@ -89,55 +87,51 @@
 
     move v6, p6
 
-    #calls: Lcom/android/server/location/FlpHardwareProvider;->nativeModifyGeofenceOption(IIIIII)V
-    invoke-static/range {v0 .. v6}, Lcom/android/server/location/FlpHardwareProvider;->access$1700(Lcom/android/server/location/FlpHardwareProvider;IIIIII)V
+    invoke-static/range {v0 .. v6}, Lcom/android/server/location/FlpHardwareProvider;->-wrap11(Lcom/android/server/location/FlpHardwareProvider;IIIIII)V
 
-    .line 361
+    .line 462
     return-void
 .end method
 
 .method public pauseMonitoringGeofence(I)V
     .locals 1
-    .parameter "geofenceId"
+    .param p1, "geofenceId"    # I
 
     .prologue
-    .line 339
+    .line 448
     iget-object v0, p0, Lcom/android/server/location/FlpHardwareProvider$2;->this$0:Lcom/android/server/location/FlpHardwareProvider;
 
-    #calls: Lcom/android/server/location/FlpHardwareProvider;->nativePauseGeofence(I)V
-    invoke-static {v0, p1}, Lcom/android/server/location/FlpHardwareProvider;->access$1500(Lcom/android/server/location/FlpHardwareProvider;I)V
+    invoke-static {v0, p1}, Lcom/android/server/location/FlpHardwareProvider;->-wrap12(Lcom/android/server/location/FlpHardwareProvider;I)V
 
-    .line 340
+    .line 447
     return-void
 .end method
 
 .method public removeGeofences([I)V
     .locals 1
-    .parameter "geofenceIds"
+    .param p1, "geofenceIds"    # [I
 
     .prologue
-    .line 334
+    .line 443
     iget-object v0, p0, Lcom/android/server/location/FlpHardwareProvider$2;->this$0:Lcom/android/server/location/FlpHardwareProvider;
 
-    #calls: Lcom/android/server/location/FlpHardwareProvider;->nativeRemoveGeofences([I)V
-    invoke-static {v0, p1}, Lcom/android/server/location/FlpHardwareProvider;->access$1400(Lcom/android/server/location/FlpHardwareProvider;[I)V
+    invoke-static {v0, p1}, Lcom/android/server/location/FlpHardwareProvider;->-wrap13(Lcom/android/server/location/FlpHardwareProvider;[I)V
 
-    .line 335
+    .line 442
     return-void
 .end method
 
 .method public resumeMonitoringGeofence(II)V
     .locals 1
-    .parameter "geofenceId"
-    .parameter "monitorTransitions"
+    .param p1, "geofenceId"    # I
+    .param p2, "monitorTransitions"    # I
 
     .prologue
-    .line 344
+    .line 453
     iget-object v0, p0, Lcom/android/server/location/FlpHardwareProvider$2;->this$0:Lcom/android/server/location/FlpHardwareProvider;
 
-    #calls: Lcom/android/server/location/FlpHardwareProvider;->nativeResumeGeofence(II)V
-    invoke-static {v0, p1, p2}, Lcom/android/server/location/FlpHardwareProvider;->access$1600(Lcom/android/server/location/FlpHardwareProvider;II)V
+    invoke-static {v0, p1, p2}, Lcom/android/server/location/FlpHardwareProvider;->-wrap15(Lcom/android/server/location/FlpHardwareProvider;II)V
 
-    .line 345
+    .line 452
     return-void
 .end method

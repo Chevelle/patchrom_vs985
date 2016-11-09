@@ -32,30 +32,27 @@
 
 .field final synthetic this$1:Lcom/android/server/accessibility/ScreenMagnifier$MagnificationController;
 
-.field final synthetic val$this$0:Lcom/android/server/accessibility/ScreenMagnifier;
-
 
 # direct methods
-.method constructor <init>(Lcom/android/server/accessibility/ScreenMagnifier$MagnificationController;Lcom/android/server/accessibility/ScreenMagnifier;)V
+.method constructor <init>(Lcom/android/server/accessibility/ScreenMagnifier$MagnificationController;)V
     .locals 1
-    .parameter
-    .parameter
+    .param p1, "this$1"    # Lcom/android/server/accessibility/ScreenMagnifier$MagnificationController;
 
     .prologue
-    .line 969
+    .line 965
     iput-object p1, p0, Lcom/android/server/accessibility/ScreenMagnifier$MagnificationController$1;->this$1:Lcom/android/server/accessibility/ScreenMagnifier$MagnificationController;
-
-    iput-object p2, p0, Lcom/android/server/accessibility/ScreenMagnifier$MagnificationController$1;->val$this$0:Lcom/android/server/accessibility/ScreenMagnifier;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 970
+    .line 967
     invoke-static {}, Landroid/view/MagnificationSpec;->obtain()Landroid/view/MagnificationSpec;
 
     move-result-object v0
 
+    .line 966
     iput-object v0, p0, Lcom/android/server/accessibility/ScreenMagnifier$MagnificationController$1;->mTempTransformationSpec:Landroid/view/MagnificationSpec;
 
+    .line 965
     return-void
 .end method
 
@@ -63,18 +60,19 @@
 # virtual methods
 .method public evaluate(FLandroid/view/MagnificationSpec;Landroid/view/MagnificationSpec;)Landroid/view/MagnificationSpec;
     .locals 4
-    .parameter "fraction"
-    .parameter "fromSpec"
-    .parameter "toSpec"
+    .param p1, "fraction"    # F
+    .param p2, "fromSpec"    # Landroid/view/MagnificationSpec;
+    .param p3, "toSpec"    # Landroid/view/MagnificationSpec;
 
     .prologue
-    .line 975
+    .line 971
     iget-object v0, p0, Lcom/android/server/accessibility/ScreenMagnifier$MagnificationController$1;->mTempTransformationSpec:Landroid/view/MagnificationSpec;
 
-    .line 976
-    .local v0, result:Landroid/view/MagnificationSpec;
+    .line 972
+    .local v0, "result":Landroid/view/MagnificationSpec;
     iget v1, p2, Landroid/view/MagnificationSpec;->scale:F
 
+    .line 973
     iget v2, p3, Landroid/view/MagnificationSpec;->scale:F
 
     iget v3, p2, Landroid/view/MagnificationSpec;->scale:F
@@ -83,11 +81,12 @@
 
     mul-float/2addr v2, p1
 
+    .line 972
     add-float/2addr v1, v2
 
     iput v1, v0, Landroid/view/MagnificationSpec;->scale:F
 
-    .line 978
+    .line 974
     iget v1, p2, Landroid/view/MagnificationSpec;->offsetX:F
 
     iget v2, p3, Landroid/view/MagnificationSpec;->offsetX:F
@@ -102,7 +101,7 @@
 
     iput v1, v0, Landroid/view/MagnificationSpec;->offsetX:F
 
-    .line 980
+    .line 976
     iget v1, p2, Landroid/view/MagnificationSpec;->offsetY:F
 
     iget v2, p3, Landroid/view/MagnificationSpec;->offsetY:F
@@ -117,24 +116,24 @@
 
     iput v1, v0, Landroid/view/MagnificationSpec;->offsetY:F
 
-    .line 982
+    .line 978
     return-object v0
 .end method
 
 .method public bridge synthetic evaluate(FLjava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
+    .param p1, "fraction"    # F
+    .param p2, "fromSpec"    # Ljava/lang/Object;
+    .param p3, "toSpec"    # Ljava/lang/Object;
 
     .prologue
     .line 969
     check-cast p2, Landroid/view/MagnificationSpec;
 
-    .end local p2
+    .end local p2    # "fromSpec":Ljava/lang/Object;
     check-cast p3, Landroid/view/MagnificationSpec;
 
-    .end local p3
+    .end local p3    # "toSpec":Ljava/lang/Object;
     invoke-virtual {p0, p1, p2, p3}, Lcom/android/server/accessibility/ScreenMagnifier$MagnificationController$1;->evaluate(FLandroid/view/MagnificationSpec;Landroid/view/MagnificationSpec;)Landroid/view/MagnificationSpec;
 
     move-result-object v0

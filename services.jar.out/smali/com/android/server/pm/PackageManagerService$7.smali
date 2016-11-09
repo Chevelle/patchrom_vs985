@@ -3,12 +3,12 @@
 .source "PackageManagerService.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Ljava/util/Comparator;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/pm/PackageManagerService;->deletePackageAsUser(Ljava/lang/String;Landroid/content/pm/IPackageDeleteObserver;II)V
+    value = Lcom/android/server/pm/PackageManagerService;->createIdmapForPackagePairLI(Landroid/content/pm/PackageParser$Package;Landroid/content/pm/PackageParser$Package;)Z
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -16,39 +16,29 @@
     name = null
 .end annotation
 
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/Object;",
+        "Ljava/util/Comparator",
+        "<",
+        "Landroid/content/pm/PackageParser$Package;",
+        ">;"
+    }
+.end annotation
+
 
 # instance fields
 .field final synthetic this$0:Lcom/android/server/pm/PackageManagerService;
 
-.field final synthetic val$flags:I
-
-.field final synthetic val$observer:Landroid/content/pm/IPackageDeleteObserver;
-
-.field final synthetic val$packageName:Ljava/lang/String;
-
-.field final synthetic val$userId:I
-
 
 # direct methods
-.method constructor <init>(Lcom/android/server/pm/PackageManagerService;Ljava/lang/String;IILandroid/content/pm/IPackageDeleteObserver;)V
+.method constructor <init>(Lcom/android/server/pm/PackageManagerService;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/pm/PackageManagerService;
 
     .prologue
-    .line 9228
+    .line 5629
     iput-object p1, p0, Lcom/android/server/pm/PackageManagerService$7;->this$0:Lcom/android/server/pm/PackageManagerService;
-
-    iput-object p2, p0, Lcom/android/server/pm/PackageManagerService$7;->val$packageName:Ljava/lang/String;
-
-    iput p3, p0, Lcom/android/server/pm/PackageManagerService$7;->val$userId:I
-
-    iput p4, p0, Lcom/android/server/pm/PackageManagerService$7;->val$flags:I
-
-    iput-object p5, p0, Lcom/android/server/pm/PackageManagerService$7;->val$observer:Landroid/content/pm/IPackageDeleteObserver;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -57,63 +47,38 @@
 
 
 # virtual methods
-.method public run()V
-    .locals 6
+.method public compare(Landroid/content/pm/PackageParser$Package;Landroid/content/pm/PackageParser$Package;)I
+    .locals 2
+    .param p1, "p1"    # Landroid/content/pm/PackageParser$Package;
+    .param p2, "p2"    # Landroid/content/pm/PackageParser$Package;
 
     .prologue
-    .line 9230
-    iget-object v2, p0, Lcom/android/server/pm/PackageManagerService$7;->this$0:Lcom/android/server/pm/PackageManagerService;
+    .line 5631
+    iget v0, p1, Landroid/content/pm/PackageParser$Package;->mOverlayPriority:I
 
-    iget-object v2, v2, Lcom/android/server/pm/PackageManagerService;->mHandler:Lcom/android/server/pm/PackageManagerService$PackageHandler;
+    iget v1, p2, Landroid/content/pm/PackageParser$Package;->mOverlayPriority:I
 
-    invoke-virtual {v2, p0}, Lcom/android/server/pm/PackageManagerService$PackageHandler;->removeCallbacks(Ljava/lang/Runnable;)V
+    sub-int/2addr v0, v1
 
-    .line 9231
-    iget-object v2, p0, Lcom/android/server/pm/PackageManagerService$7;->this$0:Lcom/android/server/pm/PackageManagerService;
+    return v0
+.end method
 
-    iget-object v3, p0, Lcom/android/server/pm/PackageManagerService$7;->val$packageName:Ljava/lang/String;
+.method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
+    .locals 1
+    .param p1, "p1"    # Ljava/lang/Object;
+    .param p2, "p2"    # Ljava/lang/Object;
 
-    iget v4, p0, Lcom/android/server/pm/PackageManagerService$7;->val$userId:I
+    .prologue
+    .line 5630
+    check-cast p1, Landroid/content/pm/PackageParser$Package;
 
-    iget v5, p0, Lcom/android/server/pm/PackageManagerService$7;->val$flags:I
+    .end local p1    # "p1":Ljava/lang/Object;
+    check-cast p2, Landroid/content/pm/PackageParser$Package;
 
-    #calls: Lcom/android/server/pm/PackageManagerService;->deletePackageX(Ljava/lang/String;II)I
-    invoke-static {v2, v3, v4, v5}, Lcom/android/server/pm/PackageManagerService;->access$4100(Lcom/android/server/pm/PackageManagerService;Ljava/lang/String;II)I
+    .end local p2    # "p2":Ljava/lang/Object;
+    invoke-virtual {p0, p1, p2}, Lcom/android/server/pm/PackageManagerService$7;->compare(Landroid/content/pm/PackageParser$Package;Landroid/content/pm/PackageParser$Package;)I
 
-    move-result v1
+    move-result v0
 
-    .line 9232
-    .local v1, returnCode:I
-    iget-object v2, p0, Lcom/android/server/pm/PackageManagerService$7;->val$observer:Landroid/content/pm/IPackageDeleteObserver;
-
-    if-eqz v2, :cond_0
-
-    .line 9234
-    :try_start_0
-    iget-object v2, p0, Lcom/android/server/pm/PackageManagerService$7;->val$observer:Landroid/content/pm/IPackageDeleteObserver;
-
-    iget-object v3, p0, Lcom/android/server/pm/PackageManagerService$7;->val$packageName:Ljava/lang/String;
-
-    invoke-interface {v2, v3, v1}, Landroid/content/pm/IPackageDeleteObserver;->packageDeleted(Ljava/lang/String;I)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 9239
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 9235
-    :catch_0
-    move-exception v0
-
-    .line 9236
-    .local v0, e:Landroid/os/RemoteException;
-    const-string v2, "PackageManager"
-
-    const-string v3, "Observer no longer exists."
-
-    invoke-static {v2, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_0
+    return v0
 .end method

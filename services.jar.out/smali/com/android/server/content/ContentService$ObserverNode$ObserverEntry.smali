@@ -26,7 +26,7 @@
 
 .field public final pid:I
 
-.field final synthetic this$0:Lcom/android/server/content/ContentService$ObserverNode;
+.field final synthetic this$1:Lcom/android/server/content/ContentService$ObserverNode;
 
 .field public final uid:I
 
@@ -34,41 +34,49 @@
 
 
 # direct methods
+.method static synthetic -get0(Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;)I
+    .locals 1
+
+    iget v0, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->userHandle:I
+
+    return v0
+.end method
+
 .method public constructor <init>(Lcom/android/server/content/ContentService$ObserverNode;Landroid/database/IContentObserver;ZLjava/lang/Object;III)V
     .locals 3
-    .parameter
-    .parameter "o"
-    .parameter "n"
-    .parameter "observersLock"
-    .parameter "_uid"
-    .parameter "_pid"
-    .parameter "_userHandle"
+    .param p1, "this$1"    # Lcom/android/server/content/ContentService$ObserverNode;
+    .param p2, "o"    # Landroid/database/IContentObserver;
+    .param p3, "n"    # Z
+    .param p4, "observersLock"    # Ljava/lang/Object;
+    .param p5, "_uid"    # I
+    .param p6, "_pid"    # I
+    .param p7, "_userHandle"    # I
 
     .prologue
-    .line 752
-    iput-object p1, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->this$0:Lcom/android/server/content/ContentService$ObserverNode;
+    .line 956
+    iput-object p1, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->this$1:Lcom/android/server/content/ContentService$ObserverNode;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 753
+    .line 958
     iput-object p4, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->observersLock:Ljava/lang/Object;
 
-    .line 754
+    .line 959
     iput-object p2, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->observer:Landroid/database/IContentObserver;
 
-    .line 755
+    .line 960
     iput p5, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->uid:I
 
-    .line 756
+    .line 961
     iput p6, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->pid:I
 
-    .line 757
+    .line 962
     iput p7, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->userHandle:I
 
-    .line 758
+    .line 963
     iput-boolean p3, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->notifyForDescendants:Z
 
-    .line 760
+    .line 965
     :try_start_0
     iget-object v1, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->observer:Landroid/database/IContentObserver;
 
@@ -82,30 +90,19 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 764
+    .line 957
     :goto_0
     return-void
 
-    .line 761
+    .line 966
     :catch_0
     move-exception v0
 
-    .line 762
-    .local v0, e:Landroid/os/RemoteException;
+    .line 967
+    .local v0, "e":Landroid/os/RemoteException;
     invoke-virtual {p0}, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->binderDied()V
 
     goto :goto_0
-.end method
-
-.method static synthetic access$100(Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 743
-    iget v0, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->userHandle:I
-
-    return v0
 .end method
 
 
@@ -114,99 +111,100 @@
     .locals 3
 
     .prologue
-    .line 767
+    .line 972
     iget-object v1, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->observersLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 768
+    .line 973
     :try_start_0
-    iget-object v0, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->this$0:Lcom/android/server/content/ContentService$ObserverNode;
+    iget-object v0, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->this$1:Lcom/android/server/content/ContentService$ObserverNode;
 
     iget-object v2, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->observer:Landroid/database/IContentObserver;
 
     invoke-virtual {v0, v2}, Lcom/android/server/content/ContentService$ObserverNode;->removeObserverLocked(Landroid/database/IContentObserver;)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 769
     monitor-exit v1
 
-    .line 770
+    .line 971
     return-void
 
-    .line 769
+    .line 972
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public dumpLocked(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/util/SparseIntArray;)V
-    .locals 2
-    .parameter "fd"
-    .parameter "pw"
-    .parameter "args"
-    .parameter "name"
-    .parameter "prefix"
-    .parameter "pidCounts"
+    .locals 3
+    .param p1, "fd"    # Ljava/io/FileDescriptor;
+    .param p2, "pw"    # Ljava/io/PrintWriter;
+    .param p3, "args"    # [Ljava/lang/String;
+    .param p4, "name"    # Ljava/lang/String;
+    .param p5, "prefix"    # Ljava/lang/String;
+    .param p6, "pidCounts"    # Landroid/util/SparseIntArray;
 
     .prologue
-    .line 774
-    iget v0, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->pid:I
+    const/4 v0, 0x0
 
+    .line 979
     iget v1, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->pid:I
 
-    invoke-virtual {p6, v1}, Landroid/util/SparseIntArray;->get(I)I
+    iget v2, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->pid:I
 
-    move-result v1
+    invoke-virtual {p6, v2}, Landroid/util/SparseIntArray;->get(I)I
 
-    add-int/lit8 v1, v1, 0x1
+    move-result v2
 
-    invoke-virtual {p6, v0, v1}, Landroid/util/SparseIntArray;->put(II)V
+    add-int/lit8 v2, v2, 0x1
 
-    .line 775
+    invoke-virtual {p6, v1, v2}, Landroid/util/SparseIntArray;->put(II)V
+
+    .line 980
     invoke-virtual {p2, p5}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
     invoke-virtual {p2, p4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const-string v0, ": pid="
+    const-string/jumbo v1, ": pid="
 
-    invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+    invoke-virtual {p2, v1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 776
-    iget v0, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->pid:I
+    .line 981
+    iget v1, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->pid:I
 
-    invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->print(I)V
+    invoke-virtual {p2, v1}, Ljava/io/PrintWriter;->print(I)V
 
-    const-string v0, " uid="
+    const-string/jumbo v1, " uid="
 
-    invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+    invoke-virtual {p2, v1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 777
-    iget v0, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->uid:I
+    .line 982
+    iget v1, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->uid:I
 
-    invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->print(I)V
+    invoke-virtual {p2, v1}, Ljava/io/PrintWriter;->print(I)V
 
-    const-string v0, " user="
+    const-string/jumbo v1, " user="
 
-    invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+    invoke-virtual {p2, v1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 778
-    iget v0, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->userHandle:I
+    .line 983
+    iget v1, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->userHandle:I
 
-    invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->print(I)V
+    invoke-virtual {p2, v1}, Ljava/io/PrintWriter;->print(I)V
 
-    const-string v0, " target="
+    const-string/jumbo v1, " target="
 
-    invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+    invoke-virtual {p2, v1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 779
-    iget-object v0, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->observer:Landroid/database/IContentObserver;
+    .line 985
+    iget-object v1, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->observer:Landroid/database/IContentObserver;
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
     iget-object v0, p0, Lcom/android/server/content/ContentService$ObserverNode$ObserverEntry;->observer:Landroid/database/IContentObserver;
 
@@ -214,7 +212,8 @@
 
     move-result-object v0
 
-    :goto_0
+    .line 984
+    :cond_0
     invoke-static {v0}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     move-result v0
@@ -225,12 +224,6 @@
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 781
+    .line 978
     return-void
-
-    .line 779
-    :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
 .end method

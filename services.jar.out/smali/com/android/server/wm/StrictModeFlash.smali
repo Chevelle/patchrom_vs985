@@ -23,12 +23,12 @@
 
 # direct methods
 .method public constructor <init>(Landroid/view/Display;Landroid/view/SurfaceSession;)V
-    .locals 9
-    .parameter "display"
-    .parameter "session"
+    .locals 10
+    .param p1, "display"    # Landroid/view/Display;
+    .param p2, "session"    # Landroid/view/SurfaceSession;
 
     .prologue
-    const/4 v8, 0x1
+    const/4 v9, 0x1
 
     .line 41
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -49,12 +49,13 @@
     const/4 v7, 0x0
 
     .line 44
-    .local v7, ctrl:Landroid/view/SurfaceControl;
+    .local v7, "ctrl":Landroid/view/SurfaceControl;
     :try_start_0
     new-instance v0, Landroid/view/SurfaceControl;
 
-    const-string v2, "StrictModeFlash"
+    const-string/jumbo v2, "StrictModeFlash"
 
+    .line 45
     const/4 v3, 0x1
 
     const/4 v4, 0x1
@@ -65,16 +66,17 @@
 
     move-object v1, p2
 
+    .line 44
     invoke-direct/range {v0 .. v6}, Landroid/view/SurfaceControl;-><init>(Landroid/view/SurfaceSession;Ljava/lang/String;IIII)V
     :try_end_0
     .catch Landroid/view/Surface$OutOfResourcesException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 46
-    .end local v7           #ctrl:Landroid/view/SurfaceControl;
-    .local v0, ctrl:Landroid/view/SurfaceControl;
+    .local v0, "ctrl":Landroid/view/SurfaceControl;
     :try_start_1
     invoke-virtual {p1}, Landroid/view/Display;->getLayerStack()I
 
+    .end local v7    # "ctrl":Landroid/view/SurfaceControl;
     move-result v1
 
     invoke-virtual {v0, v1}, Landroid/view/SurfaceControl;->setLayerStack(I)V
@@ -106,164 +108,175 @@
     iput-object v0, p0, Lcom/android/server/wm/StrictModeFlash;->mSurfaceControl:Landroid/view/SurfaceControl;
 
     .line 54
-    iput-boolean v8, p0, Lcom/android/server/wm/StrictModeFlash;->mDrawNeeded:Z
+    iput-boolean v9, p0, Lcom/android/server/wm/StrictModeFlash;->mDrawNeeded:Z
 
-    .line 55
+    .line 41
     return-void
 
     .line 51
-    .end local v0           #ctrl:Landroid/view/SurfaceControl;
-    .restart local v7       #ctrl:Landroid/view/SurfaceControl;
+    .end local v0    # "ctrl":Landroid/view/SurfaceControl;
+    .restart local v7    # "ctrl":Landroid/view/SurfaceControl;
     :catch_0
-    move-exception v1
+    move-exception v8
 
+    .local v8, "e":Landroid/view/Surface$OutOfResourcesException;
     move-object v0, v7
 
-    .end local v7           #ctrl:Landroid/view/SurfaceControl;
-    .restart local v0       #ctrl:Landroid/view/SurfaceControl;
+    .restart local v0    # "ctrl":Landroid/view/SurfaceControl;
     goto :goto_0
 
+    .end local v7    # "ctrl":Landroid/view/SurfaceControl;
+    .end local v8    # "e":Landroid/view/Surface$OutOfResourcesException;
     :catch_1
-    move-exception v1
+    move-exception v8
 
+    .restart local v8    # "e":Landroid/view/Surface$OutOfResourcesException;
     goto :goto_0
 .end method
 
 .method private drawIfNeeded()V
-    .locals 9
+    .locals 11
 
     .prologue
-    const/16 v8, 0x14
+    const/16 v10, 0x14
 
-    const/high16 v7, -0x1
+    const/high16 v9, -0x10000
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
     .line 58
-    iget-boolean v4, p0, Lcom/android/server/wm/StrictModeFlash;->mDrawNeeded:Z
+    iget-boolean v6, p0, Lcom/android/server/wm/StrictModeFlash;->mDrawNeeded:Z
 
-    if-nez v4, :cond_1
+    if-nez v6, :cond_0
 
-    .line 90
-    :cond_0
-    :goto_0
+    .line 59
     return-void
 
     .line 61
-    :cond_1
-    iput-boolean v6, p0, Lcom/android/server/wm/StrictModeFlash;->mDrawNeeded:Z
+    :cond_0
+    iput-boolean v8, p0, Lcom/android/server/wm/StrictModeFlash;->mDrawNeeded:Z
 
     .line 62
     iget v3, p0, Lcom/android/server/wm/StrictModeFlash;->mLastDW:I
 
     .line 63
-    .local v3, dw:I
+    .local v3, "dw":I
     iget v1, p0, Lcom/android/server/wm/StrictModeFlash;->mLastDH:I
 
     .line 65
-    .local v1, dh:I
+    .local v1, "dh":I
     new-instance v2, Landroid/graphics/Rect;
 
-    invoke-direct {v2, v6, v6, v3, v1}, Landroid/graphics/Rect;-><init>(IIII)V
+    invoke-direct {v2, v8, v8, v3, v1}, Landroid/graphics/Rect;-><init>(IIII)V
 
     .line 66
-    .local v2, dirty:Landroid/graphics/Rect;
+    .local v2, "dirty":Landroid/graphics/Rect;
     const/4 v0, 0x0
 
     .line 68
-    .local v0, c:Landroid/graphics/Canvas;
+    .local v0, "c":Landroid/graphics/Canvas;
     :try_start_0
-    iget-object v4, p0, Lcom/android/server/wm/StrictModeFlash;->mSurface:Landroid/view/Surface;
+    iget-object v6, p0, Lcom/android/server/wm/StrictModeFlash;->mSurface:Landroid/view/Surface;
 
-    invoke-virtual {v4, v2}, Landroid/view/Surface;->lockCanvas(Landroid/graphics/Rect;)Landroid/graphics/Canvas;
+    invoke-virtual {v6, v2}, Landroid/view/Surface;->lockCanvas(Landroid/graphics/Rect;)Landroid/graphics/Canvas;
     :try_end_0
-    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_1
-    .catch Landroid/view/Surface$OutOfResourcesException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Landroid/view/Surface$OutOfResourcesException; {:try_start_0 .. :try_end_0} :catch_1
 
     move-result-object v0
 
     .line 72
-    :goto_1
-    if-eqz v0, :cond_0
+    .end local v0    # "c":Landroid/graphics/Canvas;
+    :goto_0
+    if-nez v0, :cond_1
+
+    .line 73
+    return-void
 
     .line 77
-    new-instance v4, Landroid/graphics/Rect;
+    :cond_1
+    new-instance v6, Landroid/graphics/Rect;
 
-    invoke-direct {v4, v6, v6, v3, v8}, Landroid/graphics/Rect;-><init>(IIII)V
+    invoke-direct {v6, v8, v8, v3, v10}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    sget-object v5, Landroid/graphics/Region$Op;->REPLACE:Landroid/graphics/Region$Op;
+    sget-object v7, Landroid/graphics/Region$Op;->REPLACE:Landroid/graphics/Region$Op;
 
-    invoke-virtual {v0, v4, v5}, Landroid/graphics/Canvas;->clipRect(Landroid/graphics/Rect;Landroid/graphics/Region$Op;)Z
+    invoke-virtual {v0, v6, v7}, Landroid/graphics/Canvas;->clipRect(Landroid/graphics/Rect;Landroid/graphics/Region$Op;)Z
 
     .line 78
-    invoke-virtual {v0, v7}, Landroid/graphics/Canvas;->drawColor(I)V
+    invoke-virtual {v0, v9}, Landroid/graphics/Canvas;->drawColor(I)V
 
     .line 80
-    new-instance v4, Landroid/graphics/Rect;
+    new-instance v6, Landroid/graphics/Rect;
 
-    invoke-direct {v4, v6, v6, v8, v1}, Landroid/graphics/Rect;-><init>(IIII)V
+    invoke-direct {v6, v8, v8, v10, v1}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    sget-object v5, Landroid/graphics/Region$Op;->REPLACE:Landroid/graphics/Region$Op;
+    sget-object v7, Landroid/graphics/Region$Op;->REPLACE:Landroid/graphics/Region$Op;
 
-    invoke-virtual {v0, v4, v5}, Landroid/graphics/Canvas;->clipRect(Landroid/graphics/Rect;Landroid/graphics/Region$Op;)Z
+    invoke-virtual {v0, v6, v7}, Landroid/graphics/Canvas;->clipRect(Landroid/graphics/Rect;Landroid/graphics/Region$Op;)Z
 
     .line 81
-    invoke-virtual {v0, v7}, Landroid/graphics/Canvas;->drawColor(I)V
+    invoke-virtual {v0, v9}, Landroid/graphics/Canvas;->drawColor(I)V
 
     .line 83
-    new-instance v4, Landroid/graphics/Rect;
+    new-instance v6, Landroid/graphics/Rect;
 
-    add-int/lit8 v5, v3, -0x14
+    add-int/lit8 v7, v3, -0x14
 
-    invoke-direct {v4, v5, v6, v3, v1}, Landroid/graphics/Rect;-><init>(IIII)V
+    invoke-direct {v6, v7, v8, v3, v1}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    sget-object v5, Landroid/graphics/Region$Op;->REPLACE:Landroid/graphics/Region$Op;
+    sget-object v7, Landroid/graphics/Region$Op;->REPLACE:Landroid/graphics/Region$Op;
 
-    invoke-virtual {v0, v4, v5}, Landroid/graphics/Canvas;->clipRect(Landroid/graphics/Rect;Landroid/graphics/Region$Op;)Z
+    invoke-virtual {v0, v6, v7}, Landroid/graphics/Canvas;->clipRect(Landroid/graphics/Rect;Landroid/graphics/Region$Op;)Z
 
     .line 84
-    invoke-virtual {v0, v7}, Landroid/graphics/Canvas;->drawColor(I)V
+    invoke-virtual {v0, v9}, Landroid/graphics/Canvas;->drawColor(I)V
 
     .line 86
-    new-instance v4, Landroid/graphics/Rect;
+    new-instance v6, Landroid/graphics/Rect;
 
-    add-int/lit8 v5, v1, -0x14
+    add-int/lit8 v7, v1, -0x14
 
-    invoke-direct {v4, v6, v5, v3, v1}, Landroid/graphics/Rect;-><init>(IIII)V
+    invoke-direct {v6, v8, v7, v3, v1}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    sget-object v5, Landroid/graphics/Region$Op;->REPLACE:Landroid/graphics/Region$Op;
+    sget-object v7, Landroid/graphics/Region$Op;->REPLACE:Landroid/graphics/Region$Op;
 
-    invoke-virtual {v0, v4, v5}, Landroid/graphics/Canvas;->clipRect(Landroid/graphics/Rect;Landroid/graphics/Region$Op;)Z
+    invoke-virtual {v0, v6, v7}, Landroid/graphics/Canvas;->clipRect(Landroid/graphics/Rect;Landroid/graphics/Region$Op;)Z
 
     .line 87
-    invoke-virtual {v0, v7}, Landroid/graphics/Canvas;->drawColor(I)V
+    invoke-virtual {v0, v9}, Landroid/graphics/Canvas;->drawColor(I)V
 
     .line 89
-    iget-object v4, p0, Lcom/android/server/wm/StrictModeFlash;->mSurface:Landroid/view/Surface;
+    iget-object v6, p0, Lcom/android/server/wm/StrictModeFlash;->mSurface:Landroid/view/Surface;
 
-    invoke-virtual {v4, v0}, Landroid/view/Surface;->unlockCanvasAndPost(Landroid/graphics/Canvas;)V
+    invoke-virtual {v6, v0}, Landroid/view/Surface;->unlockCanvasAndPost(Landroid/graphics/Canvas;)V
 
+    .line 57
+    return-void
+
+    .line 69
+    .restart local v0    # "c":Landroid/graphics/Canvas;
+    :catch_0
+    move-exception v5
+
+    .local v5, "e":Ljava/lang/IllegalArgumentException;
     goto :goto_0
 
     .line 70
-    :catch_0
-    move-exception v4
-
-    goto :goto_1
-
-    .line 69
+    .end local v5    # "e":Ljava/lang/IllegalArgumentException;
     :catch_1
     move-exception v4
 
-    goto :goto_1
+    .local v4, "e":Landroid/view/Surface$OutOfResourcesException;
+    goto :goto_0
 .end method
 
 
 # virtual methods
 .method positionSurface(II)V
     .locals 1
-    .parameter "dw"
-    .parameter "dh"
+    .param p1, "dw"    # I
+    .param p2, "dh"    # I
 
     .prologue
     .line 107
@@ -275,8 +288,7 @@
 
     if-ne v0, p2, :cond_0
 
-    .line 114
-    :goto_0
+    .line 108
     return-void
 
     .line 110
@@ -296,12 +308,13 @@
 
     iput-boolean v0, p0, Lcom/android/server/wm/StrictModeFlash;->mDrawNeeded:Z
 
-    goto :goto_0
+    .line 106
+    return-void
 .end method
 
 .method public setVisibility(Z)V
     .locals 1
-    .parameter "on"
+    .param p1, "on"    # Z
 
     .prologue
     .line 95
@@ -309,8 +322,7 @@
 
     if-nez v0, :cond_0
 
-    .line 104
-    :goto_0
+    .line 96
     return-void
 
     .line 98
@@ -325,7 +337,9 @@
 
     invoke-virtual {v0}, Landroid/view/SurfaceControl;->show()V
 
-    goto :goto_0
+    .line 94
+    :goto_0
+    return-void
 
     .line 102
     :cond_1

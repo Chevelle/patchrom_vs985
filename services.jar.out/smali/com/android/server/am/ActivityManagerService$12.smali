@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/am/ActivityManagerService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/am/ActivityManagerService;
 
     .prologue
-    .line 8979
+    .line 11416
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService$12;->this$0:Lcom/android/server/am/ActivityManagerService;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -36,43 +36,43 @@
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
     .locals 2
-    .parameter "context"
-    .parameter "intent"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 8982
-    const-string v0, "ActivityManager"
+    .line 11419
+    const-string/jumbo v0, "ActivityManager"
 
-    const-string v1, "Shutting down activity manager..."
+    const-string/jumbo v1, "Shutting down activity manager..."
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 8983
+    .line 11420
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService$12;->this$0:Lcom/android/server/am/ActivityManagerService;
 
     const/16 v1, 0x2710
 
     invoke-virtual {v0, v1}, Lcom/android/server/am/ActivityManagerService;->shutdown(I)Z
 
-    .line 8984
-    const-string v0, "ActivityManager"
+    .line 11421
+    const-string/jumbo v0, "ActivityManager"
 
-    const-string v1, "Shutdown complete, restarting!"
+    const-string/jumbo v1, "Shutdown complete, restarting!"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 8985
+    .line 11422
     invoke-static {}, Landroid/os/Process;->myPid()I
 
     move-result v0
 
     invoke-static {v0}, Landroid/os/Process;->killProcess(I)V
 
-    .line 8986
+    .line 11423
     const/16 v0, 0xa
 
     invoke-static {v0}, Ljava/lang/System;->exit(I)V
 
-    .line 8987
+    .line 11417
     return-void
 .end method

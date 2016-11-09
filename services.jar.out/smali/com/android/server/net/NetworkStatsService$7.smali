@@ -1,6 +1,9 @@
 .class Lcom/android/server/net/NetworkStatsService$7;
-.super Landroid/content/BroadcastReceiver;
+.super Ljava/lang/Object;
 .source "NetworkStatsService.java"
+
+# interfaces
+.implements Landroid/os/Handler$Callback;
 
 
 # annotations
@@ -21,55 +24,73 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/net/NetworkStatsService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/net/NetworkStatsService;
 
     .prologue
-    .line 785
+    .line 1278
     iput-object p1, p0, Lcom/android/server/net/NetworkStatsService$7;->this$0:Lcom/android/server/net/NetworkStatsService;
 
-    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 2
-    .parameter "context"
-    .parameter "intent"
+.method public handleMessage(Landroid/os/Message;)Z
+    .locals 3
+    .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
-    .line 789
-    iget-object v0, p0, Lcom/android/server/net/NetworkStatsService$7;->this$0:Lcom/android/server/net/NetworkStatsService;
+    const/4 v2, 0x1
 
-    #getter for: Lcom/android/server/net/NetworkStatsService;->mStatsLock:Ljava/lang/Object;
-    invoke-static {v0}, Lcom/android/server/net/NetworkStatsService;->access$100(Lcom/android/server/net/NetworkStatsService;)Ljava/lang/Object;
+    .line 1281
+    iget v1, p1, Landroid/os/Message;->what:I
 
-    move-result-object v1
+    packed-switch v1, :pswitch_data_0
 
-    monitor-enter v1
+    .line 1296
+    const/4 v1, 0x0
 
-    .line 790
-    :try_start_0
-    iget-object v0, p0, Lcom/android/server/net/NetworkStatsService$7;->this$0:Lcom/android/server/net/NetworkStatsService;
+    return v1
 
-    #calls: Lcom/android/server/net/NetworkStatsService;->shutdownLocked()V
-    invoke-static {v0}, Lcom/android/server/net/NetworkStatsService;->access$1200(Lcom/android/server/net/NetworkStatsService;)V
+    .line 1283
+    :pswitch_0
+    iget v0, p1, Landroid/os/Message;->arg1:I
 
-    .line 791
-    monitor-exit v1
+    .line 1284
+    .local v0, "flags":I
+    iget-object v1, p0, Lcom/android/server/net/NetworkStatsService$7;->this$0:Lcom/android/server/net/NetworkStatsService;
 
-    .line 792
-    return-void
+    invoke-static {v1, v0}, Lcom/android/server/net/NetworkStatsService;->-wrap4(Lcom/android/server/net/NetworkStatsService;I)V
 
-    .line 791
-    :catchall_0
-    move-exception v0
+    .line 1285
+    return v2
 
-    monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    .line 1288
+    .end local v0    # "flags":I
+    :pswitch_1
+    iget-object v1, p0, Lcom/android/server/net/NetworkStatsService$7;->this$0:Lcom/android/server/net/NetworkStatsService;
 
-    throw v0
+    invoke-static {v1}, Lcom/android/server/net/NetworkStatsService;->-wrap9(Lcom/android/server/net/NetworkStatsService;)V
+
+    .line 1289
+    return v2
+
+    .line 1292
+    :pswitch_2
+    iget-object v1, p0, Lcom/android/server/net/NetworkStatsService$7;->this$0:Lcom/android/server/net/NetworkStatsService;
+
+    invoke-static {v1}, Lcom/android/server/net/NetworkStatsService;->-wrap5(Lcom/android/server/net/NetworkStatsService;)V
+
+    .line 1293
+    return v2
+
+    .line 1281
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_0
+        :pswitch_1
+        :pswitch_2
+    .end packed-switch
 .end method

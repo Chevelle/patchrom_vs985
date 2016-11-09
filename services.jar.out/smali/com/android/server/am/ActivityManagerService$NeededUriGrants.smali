@@ -17,7 +17,7 @@
     value = {
         "Ljava/util/ArrayList",
         "<",
-        "Landroid/net/Uri;",
+        "Lcom/android/server/am/ActivityManagerService$GrantUri;",
         ">;"
     }
 .end annotation
@@ -34,23 +34,23 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter "targetPkg"
-    .parameter "targetUid"
-    .parameter "flags"
+    .param p1, "targetPkg"    # Ljava/lang/String;
+    .param p2, "targetUid"    # I
+    .param p3, "flags"    # I
 
     .prologue
-    .line 6102
+    .line 7574
     invoke-direct {p0}, Ljava/util/ArrayList;-><init>()V
 
-    .line 6103
+    .line 7575
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService$NeededUriGrants;->targetPkg:Ljava/lang/String;
 
-    .line 6104
+    .line 7576
     iput p2, p0, Lcom/android/server/am/ActivityManagerService$NeededUriGrants;->targetUid:I
 
-    .line 6105
+    .line 7577
     iput p3, p0, Lcom/android/server/am/ActivityManagerService$NeededUriGrants;->flags:I
 
-    .line 6106
+    .line 7574
     return-void
 .end method

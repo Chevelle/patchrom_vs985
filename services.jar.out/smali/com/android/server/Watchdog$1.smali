@@ -25,13 +25,13 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/Watchdog;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;)V
     .locals 0
-    .parameter
-    .parameter "x0"
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/Watchdog;
+    .param p2, "$anonymous0"    # Ljava/lang/String;
+    .param p3, "val$subject"    # Ljava/lang/String;
+    .param p4, "val$stack"    # Ljava/io/File;
 
     .prologue
-    .line 425
+    .line 438
     iput-object p1, p0, Lcom/android/server/Watchdog$1;->this$0:Lcom/android/server/Watchdog;
 
     iput-object p3, p0, Lcom/android/server/Watchdog$1;->val$subject:Ljava/lang/String;
@@ -51,15 +51,17 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 427
+    .line 440
     iget-object v0, p0, Lcom/android/server/Watchdog$1;->this$0:Lcom/android/server/Watchdog;
 
     iget-object v0, v0, Lcom/android/server/Watchdog;->mActivity:Lcom/android/server/am/ActivityManagerService;
 
-    const-string v1, "watchdog"
+    .line 441
+    const-string/jumbo v1, "watchdog"
 
-    const-string v3, "system_server"
+    const-string/jumbo v3, "system_server"
 
+    .line 442
     iget-object v6, p0, Lcom/android/server/Watchdog$1;->val$subject:Ljava/lang/String;
 
     iget-object v8, p0, Lcom/android/server/Watchdog$1;->val$stack:Ljava/io/File;
@@ -72,8 +74,9 @@
 
     move-object v9, v2
 
+    .line 440
     invoke-virtual/range {v0 .. v9}, Lcom/android/server/am/ActivityManagerService;->addErrorToDropBox(Ljava/lang/String;Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Lcom/android/server/am/ActivityRecord;Lcom/android/server/am/ActivityRecord;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Landroid/app/ApplicationErrorReport$CrashInfo;)V
 
-    .line 430
+    .line 439
     return-void
 .end method

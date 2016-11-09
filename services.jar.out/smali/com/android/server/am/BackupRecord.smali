@@ -28,12 +28,12 @@
 # direct methods
 .method constructor <init>(Lcom/android/internal/os/BatteryStatsImpl$Uid$Pkg$Serv;Landroid/content/pm/ApplicationInfo;I)V
     .locals 0
-    .parameter "_agentStats"
-    .parameter "_appInfo"
-    .parameter "_backupMode"
+    .param p1, "_agentStats"    # Lcom/android/internal/os/BatteryStatsImpl$Uid$Pkg$Serv;
+    .param p2, "_appInfo"    # Landroid/content/pm/ApplicationInfo;
+    .param p3, "_backupMode"    # I
 
     .prologue
-    .line 40
+    .line 39
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 41
@@ -45,7 +45,7 @@
     .line 43
     iput p3, p0, Lcom/android/server/am/BackupRecord;->backupMode:I
 
-    .line 44
+    .line 40
     return-void
 .end method
 
@@ -65,8 +65,6 @@
     .line 48
     iget-object v1, p0, Lcom/android/server/am/BackupRecord;->stringName:Ljava/lang/String;
 
-    .line 56
-    :goto_0
     return-object v1
 
     .line 50
@@ -78,13 +76,14 @@
     invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(I)V
 
     .line 51
-    .local v0, sb:Ljava/lang/StringBuilder;
-    const-string v1, "BackupRecord{"
+    .local v0, "sb":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "BackupRecord{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 52
     invoke-static {p0}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     move-result v2
@@ -93,6 +92,7 @@
 
     move-result-object v2
 
+    .line 51
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -101,10 +101,12 @@
 
     move-result-object v1
 
+    .line 53
     iget-object v2, p0, Lcom/android/server/am/BackupRecord;->appInfo:Landroid/content/pm/ApplicationInfo;
 
     iget-object v2, v2, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
 
+    .line 51
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -113,10 +115,12 @@
 
     move-result-object v1
 
+    .line 54
     iget-object v2, p0, Lcom/android/server/am/BackupRecord;->appInfo:Landroid/content/pm/ApplicationInfo;
 
     iget-object v2, v2, Landroid/content/pm/ApplicationInfo;->name:Ljava/lang/String;
 
+    .line 51
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -125,16 +129,20 @@
 
     move-result-object v1
 
+    .line 55
     iget-object v2, p0, Lcom/android/server/am/BackupRecord;->appInfo:Landroid/content/pm/ApplicationInfo;
 
     iget-object v2, v2, Landroid/content/pm/ApplicationInfo;->backupAgentName:Ljava/lang/String;
 
+    .line 51
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 55
     const/16 v2, 0x7d
 
+    .line 51
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     .line 56
@@ -144,5 +152,5 @@
 
     iput-object v1, p0, Lcom/android/server/am/BackupRecord;->stringName:Ljava/lang/String;
 
-    goto :goto_0
+    return-object v1
 .end method

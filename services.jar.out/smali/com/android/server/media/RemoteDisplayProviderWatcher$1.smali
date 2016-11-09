@@ -21,7 +21,7 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/media/RemoteDisplayProviderWatcher;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/media/RemoteDisplayProviderWatcher;
 
     .prologue
     .line 198
@@ -36,25 +36,25 @@
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
     .locals 3
-    .parameter "context"
-    .parameter "intent"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
     .line 201
-    invoke-static {}, Lcom/android/server/media/RemoteDisplayProviderWatcher;->access$000()Z
+    invoke-static {}, Lcom/android/server/media/RemoteDisplayProviderWatcher;->-get0()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
     .line 202
-    const-string v0, "RemoteDisplayProvider"
+    const-string/jumbo v0, "RemoteDisplayProvider"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Received package manager broadcast: "
+    const-string/jumbo v2, "Received package manager broadcast: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -74,9 +74,8 @@
     :cond_0
     iget-object v0, p0, Lcom/android/server/media/RemoteDisplayProviderWatcher$1;->this$0:Lcom/android/server/media/RemoteDisplayProviderWatcher;
 
-    #calls: Lcom/android/server/media/RemoteDisplayProviderWatcher;->scanPackages()V
-    invoke-static {v0}, Lcom/android/server/media/RemoteDisplayProviderWatcher;->access$100(Lcom/android/server/media/RemoteDisplayProviderWatcher;)V
+    invoke-static {v0}, Lcom/android/server/media/RemoteDisplayProviderWatcher;->-wrap0(Lcom/android/server/media/RemoteDisplayProviderWatcher;)V
 
-    .line 205
+    .line 200
     return-void
 .end method

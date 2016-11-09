@@ -22,7 +22,7 @@
     .locals 0
 
     .prologue
-    .line 610
+    .line 793
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -32,29 +32,29 @@
 # virtual methods
 .method public compare(Ljava/lang/Object;Ljava/lang/Object;)I
     .locals 3
-    .parameter "o1"
-    .parameter "o2"
+    .param p1, "o1"    # Ljava/lang/Object;
+    .param p2, "o2"    # Ljava/lang/Object;
 
     .prologue
-    .line 612
+    .line 795
     check-cast p1, Landroid/content/IntentFilter;
 
-    .end local p1
+    .end local p1    # "o1":Ljava/lang/Object;
     invoke-virtual {p1}, Landroid/content/IntentFilter;->getPriority()I
 
     move-result v0
 
-    .line 613
-    .local v0, q1:I
+    .line 796
+    .local v0, "q1":I
     check-cast p2, Landroid/content/IntentFilter;
 
-    .end local p2
+    .end local p2    # "o2":Ljava/lang/Object;
     invoke-virtual {p2}, Landroid/content/IntentFilter;->getPriority()I
 
     move-result v1
 
-    .line 614
-    .local v1, q2:I
+    .line 797
+    .local v1, "q2":I
     if-le v0, v1, :cond_0
 
     const/4 v2, -0x1

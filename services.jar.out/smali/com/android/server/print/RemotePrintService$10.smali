@@ -26,11 +26,11 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/print/RemotePrintService;Landroid/print/PrinterId;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/print/RemotePrintService;
+    .param p2, "val$printerId"    # Landroid/print/PrinterId;
 
     .prologue
-    .line 451
+    .line 447
     iput-object p1, p0, Lcom/android/server/print/RemotePrintService$10;->this$0:Lcom/android/server/print/RemotePrintService;
 
     iput-object p2, p0, Lcom/android/server/print/RemotePrintService$10;->val$printerId:Landroid/print/PrinterId;
@@ -46,14 +46,13 @@
     .locals 2
 
     .prologue
-    .line 454
+    .line 450
     iget-object v0, p0, Lcom/android/server/print/RemotePrintService$10;->this$0:Lcom/android/server/print/RemotePrintService;
 
     iget-object v1, p0, Lcom/android/server/print/RemotePrintService$10;->val$printerId:Landroid/print/PrinterId;
 
-    #calls: Lcom/android/server/print/RemotePrintService;->handleStopPrinterStateTracking(Landroid/print/PrinterId;)V
-    invoke-static {v0, v1}, Lcom/android/server/print/RemotePrintService;->access$1000(Lcom/android/server/print/RemotePrintService;Landroid/print/PrinterId;)V
+    invoke-static {v0, v1}, Lcom/android/server/print/RemotePrintService;->-wrap11(Lcom/android/server/print/RemotePrintService;Landroid/print/PrinterId;)V
 
-    .line 455
+    .line 449
     return-void
 .end method

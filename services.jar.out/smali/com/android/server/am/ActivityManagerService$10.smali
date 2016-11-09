@@ -34,15 +34,15 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/am/ActivityManagerService;Lcom/android/server/am/ProcessRecord;Lcom/android/server/am/ActivityRecord;Lcom/android/server/am/ActivityRecord;ZLjava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/am/ActivityManagerService;
+    .param p2, "val$proc"    # Lcom/android/server/am/ProcessRecord;
+    .param p3, "val$activity"    # Lcom/android/server/am/ActivityRecord;
+    .param p4, "val$parent"    # Lcom/android/server/am/ActivityRecord;
+    .param p5, "val$aboveSystem"    # Z
+    .param p6, "val$annotation"    # Ljava/lang/String;
 
     .prologue
-    .line 8622
+    .line 10796
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService$10;->this$0:Lcom/android/server/am/ActivityManagerService;
 
     iput-object p2, p0, Lcom/android/server/am/ActivityManagerService$10;->val$proc:Lcom/android/server/am/ProcessRecord;
@@ -66,7 +66,7 @@
     .locals 6
 
     .prologue
-    .line 8625
+    .line 10799
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService$10;->this$0:Lcom/android/server/am/ActivityManagerService;
 
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService$10;->val$proc:Lcom/android/server/am/ProcessRecord;
@@ -81,6 +81,6 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/android/server/am/ActivityManagerService;->appNotResponding(Lcom/android/server/am/ProcessRecord;Lcom/android/server/am/ActivityRecord;Lcom/android/server/am/ActivityRecord;ZLjava/lang/String;)V
 
-    .line 8626
+    .line 10798
     return-void
 .end method

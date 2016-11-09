@@ -19,7 +19,6 @@
     .line 37
     invoke-direct {p0}, Landroid/os/ISchedulingPolicyService$Stub;-><init>()V
 
-    .line 38
     return-void
 .end method
 
@@ -27,72 +26,74 @@
 # virtual methods
 .method public requestPriority(III)I
     .locals 6
-    .parameter "pid"
-    .parameter "tid"
-    .parameter "prio"
+    .param p1, "pid"    # I
+    .param p2, "tid"    # I
+    .param p3, "prio"    # I
 
     .prologue
-    const/4 v2, 0x3
+    const/4 v1, 0x3
 
     const/4 v5, 0x1
 
-    const/4 v1, -0x1
+    const/4 v4, -0x1
 
     .line 48
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
-    move-result v3
+    move-result v2
 
-    const/16 v4, 0x3f5
+    const/16 v3, 0x3f5
 
-    if-ne v3, v4, :cond_0
+    if-ne v2, v3, :cond_0
 
-    if-lt p3, v5, :cond_0
+    if-ge p3, v5, :cond_1
 
-    if-gt p3, v2, :cond_0
+    .line 50
+    :cond_0
+    return v4
+
+    .line 49
+    :cond_1
+    if-gt p3, v1, :cond_0
 
     invoke-static {p2}, Landroid/os/Process;->getThreadGroupLeader(I)I
 
-    move-result v3
+    move-result v2
 
-    if-eq v3, p1, :cond_1
-
-    .line 61
-    :cond_0
-    :goto_0
-    return v1
+    if-ne v2, p1, :cond_0
 
     .line 54
-    :cond_1
     :try_start_0
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
-    move-result v3
+    move-result v2
 
-    if-ne v3, p1, :cond_2
+    if-ne v2, p1, :cond_2
 
-    const/4 v2, 0x4
+    .line 55
+    const/4 v1, 0x4
 
+    .line 54
     :cond_2
-    invoke-static {p2, v2}, Landroid/os/Process;->setThreadGroup(II)V
+    invoke-static {p2, v1}, Landroid/os/Process;->setThreadGroup(II)V
 
     .line 57
-    const/4 v2, 0x1
+    const/4 v1, 0x1
 
-    invoke-static {p2, v2, p3}, Landroid/os/Process;->setThreadScheduler(III)V
+    invoke-static {p2, v1, p3}, Landroid/os/Process;->setThreadScheduler(III)V
     :try_end_0
     .catch Ljava/lang/RuntimeException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 61
     const/4 v1, 0x0
 
-    goto :goto_0
+    return v1
 
     .line 58
     :catch_0
     move-exception v0
 
     .line 59
-    .local v0, e:Ljava/lang/RuntimeException;
-    goto :goto_0
+    .local v0, "e":Ljava/lang/RuntimeException;
+    return v4
 .end method

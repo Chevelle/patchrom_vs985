@@ -34,11 +34,11 @@
 # direct methods
 .method constructor <init>(Lcom/android/server/print/UserState;Landroid/print/PrintJobInfo;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/print/UserState;
+    .param p2, "val$printJob"    # Landroid/print/PrintJobInfo;
 
     .prologue
-    .line 187
+    .line 189
     iput-object p1, p0, Lcom/android/server/print/UserState$1;->this$0:Lcom/android/server/print/UserState;
 
     iput-object p2, p0, Lcom/android/server/print/UserState$1;->val$printJob:Landroid/print/PrintJobInfo;
@@ -52,13 +52,13 @@
 # virtual methods
 .method protected bridge synthetic doInBackground([Ljava/lang/Object;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "params"    # [Ljava/lang/Object;
 
     .prologue
-    .line 187
+    .line 191
     check-cast p1, [Ljava/lang/Void;
 
-    .end local p1
+    .end local p1    # "params":[Ljava/lang/Object;
     invoke-virtual {p0, p1}, Lcom/android/server/print/UserState$1;->doInBackground([Ljava/lang/Void;)Ljava/lang/Void;
 
     move-result-object v0
@@ -68,14 +68,13 @@
 
 .method protected varargs doInBackground([Ljava/lang/Void;)Ljava/lang/Void;
     .locals 2
-    .parameter "params"
+    .param p1, "params"    # [Ljava/lang/Void;
 
     .prologue
-    .line 190
+    .line 192
     iget-object v0, p0, Lcom/android/server/print/UserState$1;->this$0:Lcom/android/server/print/UserState;
 
-    #getter for: Lcom/android/server/print/UserState;->mSpooler:Lcom/android/server/print/RemotePrintSpooler;
-    invoke-static {v0}, Lcom/android/server/print/UserState;->access$100(Lcom/android/server/print/UserState;)Lcom/android/server/print/RemotePrintSpooler;
+    invoke-static {v0}, Lcom/android/server/print/UserState;->-get4(Lcom/android/server/print/UserState;)Lcom/android/server/print/RemotePrintSpooler;
 
     move-result-object v0
 
@@ -83,7 +82,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/server/print/RemotePrintSpooler;->createPrintJob(Landroid/print/PrintJobInfo;)V
 
-    .line 191
+    .line 193
     const/4 v0, 0x0
 
     return-object v0

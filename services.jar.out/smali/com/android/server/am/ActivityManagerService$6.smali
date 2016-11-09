@@ -1,14 +1,11 @@
 .class Lcom/android/server/am/ActivityManagerService$6;
-.super Ljava/lang/Object;
+.super Landroid/content/BroadcastReceiver;
 .source "ActivityManagerService.java"
-
-# interfaces
-.implements Ljava/lang/Runnable;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/am/ActivityManagerService;->showLaunchWarningLocked(Lcom/android/server/am/ActivityRecord;Lcom/android/server/am/ActivityRecord;)V
+    value = Lcom/android/server/am/ActivityManagerService;->finishBooting()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,87 +17,122 @@
 # instance fields
 .field final synthetic this$0:Lcom/android/server/am/ActivityManagerService;
 
-.field final synthetic val$cur:Lcom/android/server/am/ActivityRecord;
-
-.field final synthetic val$next:Lcom/android/server/am/ActivityRecord;
-
 
 # direct methods
-.method constructor <init>(Lcom/android/server/am/ActivityManagerService;Lcom/android/server/am/ActivityRecord;Lcom/android/server/am/ActivityRecord;)V
+.method constructor <init>(Lcom/android/server/am/ActivityManagerService;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Lcom/android/server/am/ActivityManagerService;
 
     .prologue
-    .line 4123
+    .line 6377
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService$6;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    iput-object p2, p0, Lcom/android/server/am/ActivityManagerService$6;->val$cur:Lcom/android/server/am/ActivityRecord;
-
-    iput-object p3, p0, Lcom/android/server/am/ActivityManagerService$6;->val$next:Lcom/android/server/am/ActivityRecord;
-
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public run()V
-    .locals 6
+.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+    .locals 15
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 4126
-    iget-object v2, p0, Lcom/android/server/am/ActivityManagerService$6;->this$0:Lcom/android/server/am/ActivityManagerService;
+    .line 6380
+    const-string/jumbo v1, "android.intent.extra.PACKAGES"
 
-    monitor-enter v2
+    move-object/from16 v0, p2
 
-    .line 4127
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->getStringArrayExtra(Ljava/lang/String;)[Ljava/lang/String;
+
+    move-result-object v11
+
+    .line 6381
+    .local v11, "pkgs":[Ljava/lang/String;
+    if-eqz v11, :cond_1
+
+    .line 6382
+    const/4 v1, 0x0
+
+    array-length v13, v11
+
+    move v12, v1
+
+    :goto_0
+    if-ge v12, v13, :cond_1
+
+    aget-object v2, v11, v12
+
+    .line 6383
+    .local v2, "pkg":Ljava/lang/String;
+    iget-object v14, p0, Lcom/android/server/am/ActivityManagerService$6;->this$0:Lcom/android/server/am/ActivityManagerService;
+
+    monitor-enter v14
+
+    .line 6384
     :try_start_0
-    new-instance v0, Lcom/android/server/am/LaunchWarningWindow;
-
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService$6;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    iget-object v1, v1, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
+    .line 6385
+    const-string/jumbo v10, "query restart"
 
-    iget-object v3, p0, Lcom/android/server/am/ActivityManagerService$6;->val$cur:Lcom/android/server/am/ActivityRecord;
+    .line 6384
+    const/4 v3, -0x1
 
-    iget-object v4, p0, Lcom/android/server/am/ActivityManagerService$6;->val$next:Lcom/android/server/am/ActivityRecord;
+    const/4 v4, 0x0
 
-    invoke-direct {v0, v1, v3, v4}, Lcom/android/server/am/LaunchWarningWindow;-><init>(Landroid/content/Context;Lcom/android/server/am/ActivityRecord;Lcom/android/server/am/ActivityRecord;)V
+    const/4 v5, 0x0
 
-    .line 4128
-    .local v0, d:Landroid/app/Dialog;
-    invoke-virtual {v0}, Landroid/app/Dialog;->show()V
+    const/4 v6, 0x0
 
-    .line 4129
-    iget-object v1, p0, Lcom/android/server/am/ActivityManagerService$6;->this$0:Lcom/android/server/am/ActivityManagerService;
+    const/4 v7, 0x0
 
-    iget-object v1, v1, Lcom/android/server/am/ActivityManagerService;->mHandler:Landroid/os/Handler;
+    const/4 v8, 0x0
 
-    new-instance v3, Lcom/android/server/am/ActivityManagerService$6$1;
+    .line 6385
+    const/4 v9, 0x0
 
-    invoke-direct {v3, p0, v0}, Lcom/android/server/am/ActivityManagerService$6$1;-><init>(Lcom/android/server/am/ActivityManagerService$6;Landroid/app/Dialog;)V
+    .line 6384
+    invoke-static/range {v1 .. v10}, Lcom/android/server/am/ActivityManagerService;->-wrap1(Lcom/android/server/am/ActivityManagerService;Ljava/lang/String;IZZZZZILjava/lang/String;)Z
 
-    const-wide/16 v4, 0xfa0
+    move-result v1
 
-    invoke-virtual {v1, v3, v4, v5}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+    if-eqz v1, :cond_0
 
-    .line 4138
-    monitor-exit v2
+    .line 6386
+    const/4 v1, -0x1
 
-    .line 4139
-    return-void
-
-    .line 4138
-    .end local v0           #d:Landroid/app/Dialog;
-    :catchall_0
-    move-exception v1
-
-    monitor-exit v2
+    invoke-virtual {p0, v1}, Lcom/android/server/am/ActivityManagerService$6;->setResultCode(I)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
+    monitor-exit v14
+
+    .line 6387
+    return-void
+
+    :cond_0
+    monitor-exit v14
+
+    .line 6382
+    add-int/lit8 v1, v12, 0x1
+
+    move v12, v1
+
+    goto :goto_0
+
+    .line 6383
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v14
+
     throw v1
+
+    .line 6379
+    .end local v2    # "pkg":Ljava/lang/String;
+    :cond_1
+    return-void
 .end method

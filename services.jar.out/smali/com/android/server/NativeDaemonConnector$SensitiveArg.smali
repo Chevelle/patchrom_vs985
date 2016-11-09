@@ -21,16 +21,16 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/Object;)V
     .locals 0
-    .parameter "arg"
+    .param p1, "arg"    # Ljava/lang/Object;
 
     .prologue
-    .line 222
+    .line 270
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 223
+    .line 271
     iput-object p1, p0, Lcom/android/server/NativeDaemonConnector$SensitiveArg;->mArg:Ljava/lang/Object;
 
-    .line 224
+    .line 270
     return-void
 .end method
 
@@ -40,7 +40,7 @@
     .locals 1
 
     .prologue
-    .line 228
+    .line 276
     iget-object v0, p0, Lcom/android/server/NativeDaemonConnector$SensitiveArg;->mArg:Ljava/lang/Object;
 
     invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
