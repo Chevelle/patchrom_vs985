@@ -15,11 +15,11 @@
 # direct methods
 .method constructor <init>(Landroid/speech/tts/TextToSpeechService$UtteranceProgressDispatcher;Ljava/lang/Object;)V
     .locals 0
-    .parameter "dispatcher"
-    .parameter "callerIdentity"
+    .param p1, "dispatcher"    # Landroid/speech/tts/TextToSpeechService$UtteranceProgressDispatcher;
+    .param p2, "callerIdentity"    # Ljava/lang/Object;
 
     .prologue
-    .line 12
+    .line 11
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 13
@@ -28,7 +28,7 @@
     .line 14
     iput-object p2, p0, Landroid/speech/tts/PlaybackQueueItem;->mCallerIdentity:Ljava/lang/Object;
 
-    .line 15
+    .line 12
     return-void
 .end method
 
@@ -57,5 +57,5 @@
 .method public abstract run()V
 .end method
 
-.method abstract stop(Z)V
+.method abstract stop(I)V
 .end method

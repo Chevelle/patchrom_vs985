@@ -25,34 +25,33 @@
 
 
 # direct methods
-.method public constructor <init>(Landroid/speech/tts/TextToSpeechService;Ljava/lang/Object;IILandroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+.method public constructor <init>(Landroid/speech/tts/TextToSpeechService;Ljava/lang/Object;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter "callerIdentity"
-    .parameter "callerUid"
-    .parameter "callerPid"
-    .parameter "params"
-    .parameter "language"
-    .parameter "country"
-    .parameter "variant"
+    .param p1, "this$0"    # Landroid/speech/tts/TextToSpeechService;
+    .param p2, "callerIdentity"    # Ljava/lang/Object;
+    .param p3, "callerUid"    # I
+    .param p4, "callerPid"    # I
+    .param p5, "language"    # Ljava/lang/String;
+    .param p6, "country"    # Ljava/lang/String;
+    .param p7, "variant"    # Ljava/lang/String;
 
     .prologue
-    .line 753
+    .line 1128
     iput-object p1, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->this$0:Landroid/speech/tts/TextToSpeechService;
 
-    .line 754
-    invoke-direct/range {p0 .. p5}, Landroid/speech/tts/TextToSpeechService$SpeechItem;-><init>(Landroid/speech/tts/TextToSpeechService;Ljava/lang/Object;IILandroid/os/Bundle;)V
+    .line 1130
+    invoke-direct {p0, p1, p2, p3, p4}, Landroid/speech/tts/TextToSpeechService$SpeechItem;-><init>(Landroid/speech/tts/TextToSpeechService;Ljava/lang/Object;II)V
 
-    .line 755
-    iput-object p6, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->mLanguage:Ljava/lang/String;
+    .line 1131
+    iput-object p5, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->mLanguage:Ljava/lang/String;
 
-    .line 756
-    iput-object p7, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->mCountry:Ljava/lang/String;
+    .line 1132
+    iput-object p6, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->mCountry:Ljava/lang/String;
 
-    .line 757
-    iput-object p8, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->mVariant:Ljava/lang/String;
+    .line 1133
+    iput-object p7, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->mVariant:Ljava/lang/String;
 
-    .line 758
+    .line 1129
     return-void
 .end method
 
@@ -62,59 +61,35 @@
     .locals 1
 
     .prologue
-    .line 762
+    .line 1138
     const/4 v0, 0x1
 
     return v0
 .end method
 
-.method protected playImpl()I
-    .locals 5
+.method protected playImpl()V
+    .locals 4
 
     .prologue
-    .line 767
-    iget-object v1, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->this$0:Landroid/speech/tts/TextToSpeechService;
+    .line 1143
+    iget-object v0, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->this$0:Landroid/speech/tts/TextToSpeechService;
 
-    iget-object v2, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->mLanguage:Ljava/lang/String;
+    iget-object v1, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->mLanguage:Ljava/lang/String;
 
-    iget-object v3, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->mCountry:Ljava/lang/String;
+    iget-object v2, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->mCountry:Ljava/lang/String;
 
-    iget-object v4, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->mVariant:Ljava/lang/String;
+    iget-object v3, p0, Landroid/speech/tts/TextToSpeechService$LoadLanguageItem;->mVariant:Ljava/lang/String;
 
-    invoke-virtual {v1, v2, v3, v4}, Landroid/speech/tts/TextToSpeechService;->onLoadLanguage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v0, v1, v2, v3}, Landroid/speech/tts/TextToSpeechService;->onLoadLanguage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
 
-    move-result v0
-
-    .line 768
-    .local v0, result:I
-    if-eqz v0, :cond_0
-
-    const/4 v1, 0x1
-
-    if-eq v0, v1, :cond_0
-
-    const/4 v1, 0x2
-
-    if-ne v0, v1, :cond_1
-
-    .line 771
-    :cond_0
-    const/4 v1, 0x0
-
-    .line 773
-    :goto_0
-    return v1
-
-    :cond_1
-    const/4 v1, -0x1
-
-    goto :goto_0
+    .line 1142
+    return-void
 .end method
 
 .method protected stopImpl()V
     .locals 0
 
     .prologue
-    .line 779
+    .line 1147
     return-void
 .end method

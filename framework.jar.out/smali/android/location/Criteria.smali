@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/location/Criteria$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final ACCURACY_COARSE:I = 0x2
 
@@ -17,7 +25,7 @@
 
 .field public static final ACCURACY_MEDIUM:I = 0x2
 
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -58,17 +66,91 @@
 
 
 # direct methods
+.method static synthetic -set0(Landroid/location/Criteria;Z)Z
+    .locals 0
+
+    iput-boolean p1, p0, Landroid/location/Criteria;->mAltitudeRequired:Z
+
+    return p1
+.end method
+
+.method static synthetic -set1(Landroid/location/Criteria;I)I
+    .locals 0
+
+    iput p1, p0, Landroid/location/Criteria;->mBearingAccuracy:I
+
+    return p1
+.end method
+
+.method static synthetic -set2(Landroid/location/Criteria;Z)Z
+    .locals 0
+
+    iput-boolean p1, p0, Landroid/location/Criteria;->mBearingRequired:Z
+
+    return p1
+.end method
+
+.method static synthetic -set3(Landroid/location/Criteria;Z)Z
+    .locals 0
+
+    iput-boolean p1, p0, Landroid/location/Criteria;->mCostAllowed:Z
+
+    return p1
+.end method
+
+.method static synthetic -set4(Landroid/location/Criteria;I)I
+    .locals 0
+
+    iput p1, p0, Landroid/location/Criteria;->mHorizontalAccuracy:I
+
+    return p1
+.end method
+
+.method static synthetic -set5(Landroid/location/Criteria;I)I
+    .locals 0
+
+    iput p1, p0, Landroid/location/Criteria;->mPowerRequirement:I
+
+    return p1
+.end method
+
+.method static synthetic -set6(Landroid/location/Criteria;I)I
+    .locals 0
+
+    iput p1, p0, Landroid/location/Criteria;->mSpeedAccuracy:I
+
+    return p1
+.end method
+
+.method static synthetic -set7(Landroid/location/Criteria;Z)Z
+    .locals 0
+
+    iput-boolean p1, p0, Landroid/location/Criteria;->mSpeedRequired:Z
+
+    return p1
+.end method
+
+.method static synthetic -set8(Landroid/location/Criteria;I)I
+    .locals 0
+
+    iput p1, p0, Landroid/location/Criteria;->mVerticalAccuracy:I
+
+    return p1
+.end method
+
 .method static constructor <clinit>()V
     .locals 1
 
     .prologue
-    .line 327
+    .line 328
     new-instance v0, Landroid/location/Criteria$1;
 
     invoke-direct {v0}, Landroid/location/Criteria$1;-><init>()V
 
+    .line 327
     sput-object v0, Landroid/location/Criteria;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 28
     return-void
 .end method
 
@@ -114,7 +196,7 @@
 
 .method public constructor <init>(Landroid/location/Criteria;)V
     .locals 1
-    .parameter "criteria"
+    .param p1, "criteria"    # Landroid/location/Criteria;
 
     .prologue
     const/4 v0, 0x0
@@ -194,157 +276,50 @@
 
     iput-boolean v0, p0, Landroid/location/Criteria;->mCostAllowed:Z
 
-    .line 115
+    .line 105
     return-void
-.end method
-
-.method static synthetic access$002(Landroid/location/Criteria;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 28
-    iput p1, p0, Landroid/location/Criteria;->mHorizontalAccuracy:I
-
-    return p1
-.end method
-
-.method static synthetic access$102(Landroid/location/Criteria;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 28
-    iput p1, p0, Landroid/location/Criteria;->mVerticalAccuracy:I
-
-    return p1
-.end method
-
-.method static synthetic access$202(Landroid/location/Criteria;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 28
-    iput p1, p0, Landroid/location/Criteria;->mSpeedAccuracy:I
-
-    return p1
-.end method
-
-.method static synthetic access$302(Landroid/location/Criteria;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 28
-    iput p1, p0, Landroid/location/Criteria;->mBearingAccuracy:I
-
-    return p1
-.end method
-
-.method static synthetic access$402(Landroid/location/Criteria;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 28
-    iput p1, p0, Landroid/location/Criteria;->mPowerRequirement:I
-
-    return p1
-.end method
-
-.method static synthetic access$502(Landroid/location/Criteria;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 28
-    iput-boolean p1, p0, Landroid/location/Criteria;->mAltitudeRequired:Z
-
-    return p1
-.end method
-
-.method static synthetic access$602(Landroid/location/Criteria;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 28
-    iput-boolean p1, p0, Landroid/location/Criteria;->mBearingRequired:Z
-
-    return p1
-.end method
-
-.method static synthetic access$702(Landroid/location/Criteria;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 28
-    iput-boolean p1, p0, Landroid/location/Criteria;->mSpeedRequired:Z
-
-    return p1
-.end method
-
-.method static synthetic access$802(Landroid/location/Criteria;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 28
-    iput-boolean p1, p0, Landroid/location/Criteria;->mCostAllowed:Z
-
-    return p1
 .end method
 
 .method private static accuracyToString(I)Ljava/lang/String;
     .locals 1
-    .parameter "accuracy"
+    .param p0, "accuracy"    # I
 
     .prologue
     .line 384
     packed-switch p0, :pswitch_data_0
 
     .line 394
-    const-string v0, "???"
+    const-string/jumbo v0, "???"
 
-    :goto_0
     return-object v0
 
     .line 386
     :pswitch_0
-    const-string v0, "---"
+    const-string/jumbo v0, "---"
 
-    goto :goto_0
+    return-object v0
 
     .line 388
     :pswitch_1
-    const-string v0, "HIGH"
+    const-string/jumbo v0, "HIGH"
 
-    goto :goto_0
+    return-object v0
 
     .line 390
     :pswitch_2
-    const-string v0, "MEDIUM"
+    const-string/jumbo v0, "MEDIUM"
 
-    goto :goto_0
+    return-object v0
 
     .line 392
     :pswitch_3
-    const-string v0, "LOW"
+    const-string/jumbo v0, "LOW"
 
-    goto :goto_0
+    return-object v0
 
     .line 384
+    nop
+
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -356,43 +331,44 @@
 
 .method private static powerToString(I)Ljava/lang/String;
     .locals 1
-    .parameter "power"
+    .param p0, "power"    # I
 
     .prologue
     .line 369
     packed-switch p0, :pswitch_data_0
 
     .line 379
-    const-string v0, "???"
+    const-string/jumbo v0, "???"
 
-    :goto_0
     return-object v0
 
     .line 371
     :pswitch_0
-    const-string v0, "NO_REQ"
+    const-string/jumbo v0, "NO_REQ"
 
-    goto :goto_0
+    return-object v0
 
     .line 373
     :pswitch_1
-    const-string v0, "LOW"
+    const-string/jumbo v0, "LOW"
 
-    goto :goto_0
+    return-object v0
 
     .line 375
     :pswitch_2
-    const-string v0, "MEDIUM"
+    const-string/jumbo v0, "MEDIUM"
 
-    goto :goto_0
+    return-object v0
 
     .line 377
     :pswitch_3
-    const-string v0, "HIGH"
+    const-string/jumbo v0, "HIGH"
 
-    goto :goto_0
+    return-object v0
 
     .line 369
+    nop
+
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -428,14 +404,13 @@
     .line 239
     const/4 v0, 0x1
 
-    .line 241
-    :goto_0
     return v0
 
+    .line 241
     :cond_0
     const/4 v0, 0x2
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public getBearingAccuracy()I
@@ -530,7 +505,7 @@
 
 .method public setAccuracy(I)V
     .locals 3
-    .parameter "accuracy"
+    .param p1, "accuracy"    # I
 
     .prologue
     const/4 v1, 0x1
@@ -550,7 +525,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "accuracy="
+    const-string/jumbo v2, "accuracy="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -577,7 +552,7 @@
 
     iput v0, p0, Landroid/location/Criteria;->mHorizontalAccuracy:I
 
-    .line 230
+    .line 221
     :goto_0
     return-void
 
@@ -590,19 +565,19 @@
 
 .method public setAltitudeRequired(Z)V
     .locals 0
-    .parameter "altitudeRequired"
+    .param p1, "altitudeRequired"    # Z
 
     .prologue
     .line 284
     iput-boolean p1, p0, Landroid/location/Criteria;->mAltitudeRequired:Z
 
-    .line 285
+    .line 283
     return-void
 .end method
 
 .method public setBearingAccuracy(I)V
     .locals 3
-    .parameter "accuracy"
+    .param p1, "accuracy"    # I
 
     .prologue
     .line 198
@@ -620,7 +595,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "accuracy="
+    const-string/jumbo v2, "accuracy="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -642,37 +617,37 @@
     :cond_1
     iput p1, p0, Landroid/location/Criteria;->mBearingAccuracy:I
 
-    .line 202
+    .line 197
     return-void
 .end method
 
 .method public setBearingRequired(Z)V
     .locals 0
-    .parameter "bearingRequired"
+    .param p1, "bearingRequired"    # Z
 
     .prologue
     .line 316
     iput-boolean p1, p0, Landroid/location/Criteria;->mBearingRequired:Z
 
-    .line 317
+    .line 315
     return-void
 .end method
 
 .method public setCostAllowed(Z)V
     .locals 0
-    .parameter "costAllowed"
+    .param p1, "costAllowed"    # Z
 
     .prologue
     .line 269
     iput-boolean p1, p0, Landroid/location/Criteria;->mCostAllowed:Z
 
-    .line 270
+    .line 268
     return-void
 .end method
 
 .method public setHorizontalAccuracy(I)V
     .locals 3
-    .parameter "accuracy"
+    .param p1, "accuracy"    # I
 
     .prologue
     .line 126
@@ -690,7 +665,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "accuracy="
+    const-string/jumbo v2, "accuracy="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -712,13 +687,13 @@
     :cond_1
     iput p1, p0, Landroid/location/Criteria;->mHorizontalAccuracy:I
 
-    .line 130
+    .line 125
     return-void
 .end method
 
 .method public setPowerRequirement(I)V
     .locals 3
-    .parameter "level"
+    .param p1, "level"    # I
 
     .prologue
     .line 251
@@ -736,7 +711,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "level="
+    const-string/jumbo v2, "level="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -758,13 +733,13 @@
     :cond_1
     iput p1, p0, Landroid/location/Criteria;->mPowerRequirement:I
 
-    .line 255
+    .line 250
     return-void
 .end method
 
 .method public setSpeedAccuracy(I)V
     .locals 3
-    .parameter "accuracy"
+    .param p1, "accuracy"    # I
 
     .prologue
     .line 174
@@ -782,7 +757,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "accuracy="
+    const-string/jumbo v2, "accuracy="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -804,25 +779,25 @@
     :cond_1
     iput p1, p0, Landroid/location/Criteria;->mSpeedAccuracy:I
 
-    .line 178
+    .line 173
     return-void
 .end method
 
 .method public setSpeedRequired(Z)V
     .locals 0
-    .parameter "speedRequired"
+    .param p1, "speedRequired"    # Z
 
     .prologue
     .line 300
     iput-boolean p1, p0, Landroid/location/Criteria;->mSpeedRequired:Z
 
-    .line 301
+    .line 299
     return-void
 .end method
 
 .method public setVerticalAccuracy(I)V
     .locals 3
-    .parameter "accuracy"
+    .param p1, "accuracy"    # I
 
     .prologue
     .line 150
@@ -840,7 +815,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "accuracy="
+    const-string/jumbo v2, "accuracy="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -862,7 +837,7 @@
     :cond_1
     iput p1, p0, Landroid/location/Criteria;->mVerticalAccuracy:I
 
-    .line 154
+    .line 149
     return-void
 .end method
 
@@ -876,8 +851,8 @@
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 401
-    .local v0, s:Ljava/lang/StringBuilder;
-    const-string v1, "Criteria[power="
+    .local v0, "s":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "Criteria[power="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -892,7 +867,7 @@
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 402
-    const-string v1, " acc="
+    const-string/jumbo v1, " acc="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -921,8 +896,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 3
-    .parameter "parcel"
-    .parameter "flags"
+    .param p1, "parcel"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     const/4 v1, 0x1
@@ -992,7 +967,7 @@
     :goto_3
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 366
+    .line 356
     return-void
 
     :cond_0

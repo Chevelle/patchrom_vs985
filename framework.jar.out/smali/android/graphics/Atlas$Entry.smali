@@ -15,8 +15,6 @@
 
 
 # instance fields
-.field public rotated:Z
-
 .field public x:I
 
 .field public y:I

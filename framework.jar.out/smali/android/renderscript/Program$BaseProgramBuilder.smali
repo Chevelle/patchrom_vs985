@@ -43,7 +43,7 @@
 # direct methods
 .method protected constructor <init>(Landroid/renderscript/RenderScript;)V
     .locals 3
-    .parameter "rs"
+    .param p1, "rs"    # Landroid/renderscript/RenderScript;
 
     .prologue
     const/4 v2, 0x0
@@ -93,7 +93,7 @@
 
     iput-object v0, p0, Landroid/renderscript/Program$BaseProgramBuilder;->mTextureNames:[Ljava/lang/String;
 
-    .line 226
+    .line 215
     return-void
 .end method
 
@@ -101,7 +101,7 @@
 # virtual methods
 .method public addConstant(Landroid/renderscript/Type;)Landroid/renderscript/Program$BaseProgramBuilder;
     .locals 2
-    .parameter "t"
+    .param p1, "t"    # Landroid/renderscript/Type;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;
@@ -119,7 +119,7 @@
     .line 311
     new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
 
-    const-string v1, "Max input count exceeded."
+    const-string/jumbo v1, "Max input count exceeded."
 
     invoke-direct {v0, v1}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -140,7 +140,7 @@
     .line 314
     new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
 
-    const-string v1, "Complex elements not allowed."
+    const-string/jumbo v1, "Complex elements not allowed."
 
     invoke-direct {v0, v1}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -167,7 +167,7 @@
 
 .method public addTexture(Landroid/renderscript/Program$TextureType;)Landroid/renderscript/Program$BaseProgramBuilder;
     .locals 2
-    .parameter "texType"
+    .param p1, "texType"    # Landroid/renderscript/Program$TextureType;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;
@@ -180,7 +180,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "Tex"
+    const-string/jumbo v1, "Tex"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -204,8 +204,8 @@
 
 .method public addTexture(Landroid/renderscript/Program$TextureType;Ljava/lang/String;)Landroid/renderscript/Program$BaseProgramBuilder;
     .locals 2
-    .parameter "texType"
-    .parameter "texName"
+    .param p1, "texType"    # Landroid/renderscript/Program$TextureType;
+    .param p2, "texName"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;
@@ -223,7 +223,7 @@
     .line 345
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "Max texture count exceeded."
+    const-string/jumbo v1, "Max texture count exceeded."
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -281,7 +281,7 @@
 
 .method protected initProgram(Landroid/renderscript/Program;)V
     .locals 4
-    .parameter "p"
+    .param p1, "p"    # Landroid/renderscript/Program;
 
     .prologue
     const/4 v3, 0x0
@@ -371,98 +371,98 @@
 
     invoke-static {v0, v3, v1, v3, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 365
+    .line 353
     return-void
 .end method
 
 .method public setShader(Landroid/content/res/Resources;I)Landroid/renderscript/Program$BaseProgramBuilder;
-    .locals 10
-    .parameter "resources"
-    .parameter "resourceID"
+    .locals 11
+    .param p1, "resources"    # Landroid/content/res/Resources;
+    .param p2, "resourceID"    # I
 
     .prologue
     .line 250
     invoke-virtual {p1, p2}, Landroid/content/res/Resources;->openRawResource(I)Ljava/io/InputStream;
 
-    move-result-object v4
+    move-result-object v5
 
     .line 253
-    .local v4, is:Ljava/io/InputStream;
-    const/16 v7, 0x400
+    .local v5, "is":Ljava/io/InputStream;
+    const/16 v8, 0x400
 
     :try_start_0
-    new-array v5, v7, [B
+    new-array v6, v8, [B
 
     .line 254
-    .local v5, str:[B
-    const/4 v6, 0x0
+    .local v6, "str":[B
+    const/4 v7, 0x0
 
     .line 256
-    .local v6, strLength:I
+    .local v7, "strLength":I
     :goto_0
-    array-length v7, v5
+    array-length v8, v6
 
-    sub-int v1, v7, v6
+    sub-int v1, v8, v7
 
     .line 257
-    .local v1, bytesLeft:I
+    .local v1, "bytesLeft":I
     if-nez v1, :cond_0
 
     .line 258
-    array-length v7, v5
+    array-length v8, v6
 
-    mul-int/lit8 v7, v7, 0x2
+    mul-int/lit8 v8, v8, 0x2
 
-    new-array v0, v7, [B
+    new-array v0, v8, [B
 
     .line 259
-    .local v0, buf2:[B
-    const/4 v7, 0x0
+    .local v0, "buf2":[B
+    array-length v8, v6
 
-    const/4 v8, 0x0
+    const/4 v9, 0x0
 
-    array-length v9, v5
+    const/4 v10, 0x0
 
-    invoke-static {v5, v7, v0, v8, v9}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v6, v9, v0, v10, v8}, Ljava/lang/System;->arraycopy([BI[BII)V
 
     .line 260
-    move-object v5, v0
+    move-object v6, v0
 
     .line 261
-    array-length v7, v5
+    array-length v8, v6
 
-    sub-int v1, v7, v6
+    sub-int v1, v8, v7
 
     .line 263
-    .end local v0           #buf2:[B
+    .end local v0    # "buf2":[B
     :cond_0
-    invoke-virtual {v4, v5, v6, v1}, Ljava/io/InputStream;->read([BII)I
+    invoke-virtual {v5, v6, v7, v1}, Ljava/io/InputStream;->read([BII)I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result v2
 
     .line 264
-    .local v2, bytesRead:I
+    .local v2, "bytesRead":I
     if-gtz v2, :cond_1
 
     .line 270
     :try_start_1
-    invoke-virtual {v4}, Ljava/io/InputStream;->close()V
+    invoke-virtual {v5}, Ljava/io/InputStream;->close()V
     :try_end_1
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
 
     .line 277
     :try_start_2
-    new-instance v7, Ljava/lang/String;
+    new-instance v8, Ljava/lang/String;
 
-    const/4 v8, 0x0
+    const-string/jumbo v9, "UTF-8"
 
-    const-string v9, "UTF-8"
+    const/4 v10, 0x0
 
-    invoke-direct {v7, v5, v8, v6, v9}, Ljava/lang/String;-><init>([BIILjava/lang/String;)V
+    invoke-direct {v8, v6, v10, v7, v9}, Ljava/lang/String;-><init>([BIILjava/lang/String;)V
 
-    iput-object v7, p0, Landroid/renderscript/Program$BaseProgramBuilder;->mShader:Ljava/lang/String;
+    iput-object v8, p0, Landroid/renderscript/Program$BaseProgramBuilder;->mShader:Ljava/lang/String;
     :try_end_2
     .catch Ljava/io/UnsupportedEncodingException; {:try_start_2 .. :try_end_2} :catch_1
 
@@ -472,23 +472,24 @@
 
     .line 267
     :cond_1
-    add-int/2addr v6, v2
+    add-int/2addr v7, v2
 
-    .line 268
     goto :goto_0
 
-    .line 270
-    .end local v1           #bytesLeft:I
-    .end local v2           #bytesRead:I
-    .end local v5           #str:[B
-    .end local v6           #strLength:I
+    .line 269
+    .end local v1    # "bytesLeft":I
+    .end local v2    # "bytesRead":I
+    .end local v6    # "str":[B
+    .end local v7    # "strLength":I
     :catchall_0
-    move-exception v7
+    move-exception v8
 
+    .line 270
     :try_start_3
-    invoke-virtual {v4}, Ljava/io/InputStream;->close()V
+    invoke-virtual {v5}, Ljava/io/InputStream;->close()V
 
-    throw v7
+    .line 269
+    throw v8
     :try_end_3
     .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_0
 
@@ -497,36 +498,36 @@
     move-exception v3
 
     .line 273
-    .local v3, e:Ljava/io/IOException;
-    new-instance v7, Landroid/content/res/Resources$NotFoundException;
+    .local v3, "e":Ljava/io/IOException;
+    new-instance v8, Landroid/content/res/Resources$NotFoundException;
 
-    invoke-direct {v7}, Landroid/content/res/Resources$NotFoundException;-><init>()V
+    invoke-direct {v8}, Landroid/content/res/Resources$NotFoundException;-><init>()V
 
-    throw v7
+    throw v8
 
     .line 278
-    .end local v3           #e:Ljava/io/IOException;
-    .restart local v1       #bytesLeft:I
-    .restart local v2       #bytesRead:I
-    .restart local v5       #str:[B
-    .restart local v6       #strLength:I
+    .end local v3    # "e":Ljava/io/IOException;
+    .restart local v1    # "bytesLeft":I
+    .restart local v2    # "bytesRead":I
+    .restart local v6    # "str":[B
+    .restart local v7    # "strLength":I
     :catch_1
-    move-exception v3
+    move-exception v4
 
     .line 279
-    .local v3, e:Ljava/io/UnsupportedEncodingException;
-    const-string v7, "RenderScript shader creation"
+    .local v4, "e":Ljava/io/UnsupportedEncodingException;
+    const-string/jumbo v8, "RenderScript shader creation"
 
-    const-string v8, "Could not decode shader string"
+    const-string/jumbo v9, "Could not decode shader string"
 
-    invoke-static {v7, v8}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v8, v9}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_1
 .end method
 
 .method public setShader(Ljava/lang/String;)Landroid/renderscript/Program$BaseProgramBuilder;
     .locals 0
-    .parameter "s"
+    .param p1, "s"    # Ljava/lang/String;
 
     .prologue
     .line 235

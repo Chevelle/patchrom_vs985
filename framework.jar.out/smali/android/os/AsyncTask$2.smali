@@ -28,16 +28,15 @@
 # direct methods
 .method constructor <init>(Landroid/os/AsyncTask;)V
     .locals 1
-    .parameter
 
     .prologue
-    .line 282
-    .local p0, this:Landroid/os/AsyncTask$2;,"Landroid/os/AsyncTask.2;"
+    .line 289
+    .local p1, "this$0":Landroid/os/AsyncTask;, "Landroid/os/AsyncTask<TParams;TProgress;TResult;>;"
     iput-object p1, p0, Landroid/os/AsyncTask$2;->this$0:Landroid/os/AsyncTask;
 
     const/4 v0, 0x0
 
-    invoke-direct {p0, v0}, Landroid/os/AsyncTask$WorkerRunnable;-><init>(Landroid/os/AsyncTask$1;)V
+    invoke-direct {p0, v0}, Landroid/os/AsyncTask$WorkerRunnable;-><init>(Landroid/os/AsyncTask$WorkerRunnable;)V
 
     return-void
 .end method
@@ -59,39 +58,41 @@
     .end annotation
 
     .prologue
-    .line 284
-    .local p0, this:Landroid/os/AsyncTask$2;,"Landroid/os/AsyncTask.2;"
-    iget-object v0, p0, Landroid/os/AsyncTask$2;->this$0:Landroid/os/AsyncTask;
+    .line 291
+    iget-object v1, p0, Landroid/os/AsyncTask$2;->this$0:Landroid/os/AsyncTask;
 
-    #getter for: Landroid/os/AsyncTask;->mTaskInvoked:Ljava/util/concurrent/atomic/AtomicBoolean;
-    invoke-static {v0}, Landroid/os/AsyncTask;->access$300(Landroid/os/AsyncTask;)Ljava/util/concurrent/atomic/AtomicBoolean;
+    invoke-static {v1}, Landroid/os/AsyncTask;->-get0(Landroid/os/AsyncTask;)Ljava/util/concurrent/atomic/AtomicBoolean;
 
-    move-result-object v0
+    move-result-object v1
 
-    const/4 v1, 0x1
+    const/4 v2, 0x1
 
-    invoke-virtual {v0, v1}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
+    invoke-virtual {v1, v2}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
 
-    .line 286
-    const/16 v0, 0xa
+    .line 293
+    const/16 v1, 0xa
 
-    invoke-static {v0}, Landroid/os/Process;->setThreadPriority(I)V
+    invoke-static {v1}, Landroid/os/Process;->setThreadPriority(I)V
 
-    .line 288
-    iget-object v0, p0, Landroid/os/AsyncTask$2;->this$0:Landroid/os/AsyncTask;
-
+    .line 295
     iget-object v1, p0, Landroid/os/AsyncTask$2;->this$0:Landroid/os/AsyncTask;
 
     iget-object v2, p0, Landroid/os/AsyncTask$2;->mParams:[Ljava/lang/Object;
 
     invoke-virtual {v1, v2}, Landroid/os/AsyncTask;->doInBackground([Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v1
-
-    #calls: Landroid/os/AsyncTask;->postResult(Ljava/lang/Object;)Ljava/lang/Object;
-    invoke-static {v0, v1}, Landroid/os/AsyncTask;->access$400(Landroid/os/AsyncTask;Ljava/lang/Object;)Ljava/lang/Object;
-
     move-result-object v0
 
-    return-object v0
+    .line 296
+    .local v0, "result":Ljava/lang/Object;, "TResult;"
+    invoke-static {}, Landroid/os/Binder;->flushPendingCommands()V
+
+    .line 297
+    iget-object v1, p0, Landroid/os/AsyncTask$2;->this$0:Landroid/os/AsyncTask;
+
+    invoke-static {v1, v0}, Landroid/os/AsyncTask;->-wrap0(Landroid/os/AsyncTask;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    return-object v1
 .end method

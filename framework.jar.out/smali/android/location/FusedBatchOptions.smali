@@ -9,8 +9,9 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/location/FusedBatchOptions$SourceTechnologies;,
         Landroid/location/FusedBatchOptions$BatchFlags;,
-        Landroid/location/FusedBatchOptions$SourceTechnologies;
+        Landroid/location/FusedBatchOptions$1;
     }
 .end annotation
 
@@ -35,6 +36,8 @@
 
 .field private volatile mPeriodInNS:J
 
+.field private volatile mSmallestDisplacementMeters:F
+
 .field private volatile mSourcesToUse:I
 
 
@@ -43,13 +46,15 @@
     .locals 1
 
     .prologue
-    .line 105
+    .line 117
     new-instance v0, Landroid/location/FusedBatchOptions$1;
 
     invoke-direct {v0}, Landroid/location/FusedBatchOptions$1;-><init>()V
 
+    .line 116
     sput-object v0, Landroid/location/FusedBatchOptions;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 26
     return-void
 .end method
 
@@ -78,7 +83,12 @@
 
     iput-wide v0, p0, Landroid/location/FusedBatchOptions;->mMaxPowerAllocationInMW:D
 
-    .line 97
+    .line 34
+    const/4 v0, 0x0
+
+    iput v0, p0, Landroid/location/FusedBatchOptions;->mSmallestDisplacementMeters:F
+
+    .line 26
     return-void
 .end method
 
@@ -88,7 +98,7 @@
     .locals 1
 
     .prologue
-    .line 125
+    .line 137
     const/4 v0, 0x0
 
     return v0
@@ -98,7 +108,7 @@
     .locals 1
 
     .prologue
-    .line 82
+    .line 92
     iget v0, p0, Landroid/location/FusedBatchOptions;->mFlags:I
 
     return v0
@@ -108,7 +118,7 @@
     .locals 2
 
     .prologue
-    .line 42
+    .line 44
     iget-wide v0, p0, Landroid/location/FusedBatchOptions;->mMaxPowerAllocationInMW:D
 
     return-wide v0
@@ -118,126 +128,130 @@
     .locals 2
 
     .prologue
-    .line 50
+    .line 52
     iget-wide v0, p0, Landroid/location/FusedBatchOptions;->mPeriodInNS:J
 
     return-wide v0
+.end method
+
+.method public getSmallestDisplacementMeters()F
+    .locals 1
+
+    .prologue
+    .line 60
+    iget v0, p0, Landroid/location/FusedBatchOptions;->mSmallestDisplacementMeters:F
+
+    return v0
 .end method
 
 .method public getSourcesToUse()I
     .locals 1
 
     .prologue
-    .line 66
+    .line 76
     iget v0, p0, Landroid/location/FusedBatchOptions;->mSourcesToUse:I
 
     return v0
 .end method
 
 .method public isFlagSet(I)Z
-    .locals 1
-    .parameter "flag"
+    .locals 2
+    .param p1, "flag"    # I
 
     .prologue
-    .line 78
-    iget v0, p0, Landroid/location/FusedBatchOptions;->mFlags:I
+    const/4 v0, 0x0
 
-    and-int/2addr v0, p1
+    .line 88
+    iget v1, p0, Landroid/location/FusedBatchOptions;->mFlags:I
 
-    if-eqz v0, :cond_0
+    and-int/2addr v1, p1
+
+    if-eqz v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public isSourceToUseSet(I)Z
-    .locals 1
-    .parameter "source"
+    .locals 2
+    .param p1, "source"    # I
 
     .prologue
-    .line 62
-    iget v0, p0, Landroid/location/FusedBatchOptions;->mSourcesToUse:I
+    const/4 v0, 0x0
 
-    and-int/2addr v0, p1
+    .line 72
+    iget v1, p0, Landroid/location/FusedBatchOptions;->mSourcesToUse:I
 
-    if-eqz v0, :cond_0
+    and-int/2addr v1, p1
+
+    if-eqz v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public resetFlag(I)V
     .locals 2
-    .parameter "flag"
+    .param p1, "flag"    # I
 
     .prologue
-    .line 74
+    .line 84
     iget v0, p0, Landroid/location/FusedBatchOptions;->mFlags:I
 
-    xor-int/lit8 v1, p1, -0x1
+    not-int v1, p1
 
     and-int/2addr v0, v1
 
     iput v0, p0, Landroid/location/FusedBatchOptions;->mFlags:I
 
-    .line 75
+    .line 83
     return-void
 .end method
 
 .method public resetSourceToUse(I)V
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # I
 
     .prologue
-    .line 58
+    .line 68
     iget v0, p0, Landroid/location/FusedBatchOptions;->mSourcesToUse:I
 
-    xor-int/lit8 v1, p1, -0x1
+    not-int v1, p1
 
     and-int/2addr v0, v1
 
     iput v0, p0, Landroid/location/FusedBatchOptions;->mSourcesToUse:I
 
-    .line 59
+    .line 67
     return-void
 .end method
 
 .method public setFlag(I)V
     .locals 1
-    .parameter "flag"
+    .param p1, "flag"    # I
 
     .prologue
-    .line 70
+    .line 80
     iget v0, p0, Landroid/location/FusedBatchOptions;->mFlags:I
 
     or-int/2addr v0, p1
 
     iput v0, p0, Landroid/location/FusedBatchOptions;->mFlags:I
 
-    .line 71
+    .line 79
     return-void
 .end method
 
 .method public setMaxPowerAllocationInMW(D)V
-    .locals 0
-    .parameter "value"
+    .locals 1
+    .param p1, "value"    # D
 
     .prologue
-    .line 38
+    .line 40
     iput-wide p1, p0, Landroid/location/FusedBatchOptions;->mMaxPowerAllocationInMW:D
 
     .line 39
@@ -245,59 +259,76 @@
 .end method
 
 .method public setPeriodInNS(J)V
-    .locals 0
-    .parameter "value"
+    .locals 1
+    .param p1, "value"    # J
 
     .prologue
-    .line 46
+    .line 48
     iput-wide p1, p0, Landroid/location/FusedBatchOptions;->mPeriodInNS:J
 
     .line 47
     return-void
 .end method
 
-.method public setSourceToUse(I)V
-    .locals 1
-    .parameter "source"
+.method public setSmallestDisplacementMeters(F)V
+    .locals 0
+    .param p1, "value"    # F
 
     .prologue
-    .line 54
+    .line 56
+    iput p1, p0, Landroid/location/FusedBatchOptions;->mSmallestDisplacementMeters:F
+
+    .line 55
+    return-void
+.end method
+
+.method public setSourceToUse(I)V
+    .locals 1
+    .param p1, "source"    # I
+
+    .prologue
+    .line 64
     iget v0, p0, Landroid/location/FusedBatchOptions;->mSourcesToUse:I
 
     or-int/2addr v0, p1
 
     iput v0, p0, Landroid/location/FusedBatchOptions;->mSourcesToUse:I
 
-    .line 55
+    .line 63
     return-void
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 2
-    .parameter "parcel"
-    .parameter "flags"
+    .param p1, "parcel"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 130
+    .line 142
     iget-wide v0, p0, Landroid/location/FusedBatchOptions;->mMaxPowerAllocationInMW:D
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeDouble(D)V
 
-    .line 131
+    .line 143
     iget-wide v0, p0, Landroid/location/FusedBatchOptions;->mPeriodInNS:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 132
+    .line 144
     iget v0, p0, Landroid/location/FusedBatchOptions;->mSourcesToUse:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 133
+    .line 145
     iget v0, p0, Landroid/location/FusedBatchOptions;->mFlags:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 134
+    .line 146
+    iget v0, p0, Landroid/location/FusedBatchOptions;->mSmallestDisplacementMeters:F
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeFloat(F)V
+
+    .line 141
     return-void
 .end method

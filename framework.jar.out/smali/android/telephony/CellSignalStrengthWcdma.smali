@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/telephony/CellSignalStrengthWcdma$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -40,13 +48,15 @@
     .locals 1
 
     .prologue
-    .line 216
+    .line 217
     new-instance v0, Landroid/telephony/CellSignalStrengthWcdma$1;
 
     invoke-direct {v0}, Landroid/telephony/CellSignalStrengthWcdma$1;-><init>()V
 
+    .line 216
     sput-object v0, Landroid/telephony/CellSignalStrengthWcdma;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 26
     return-void
 .end method
 
@@ -60,14 +70,14 @@
     .line 44
     invoke-virtual {p0}, Landroid/telephony/CellSignalStrengthWcdma;->setDefaultValues()V
 
-    .line 45
+    .line 43
     return-void
 .end method
 
 .method public constructor <init>(II)V
     .locals 0
-    .parameter "ss"
-    .parameter "ber"
+    .param p1, "ss"    # I
+    .param p2, "ber"    # I
 
     .prologue
     .line 52
@@ -76,13 +86,13 @@
     .line 53
     invoke-virtual {p0, p1, p2}, Landroid/telephony/CellSignalStrengthWcdma;->initialize(II)V
 
-    .line 54
+    .line 52
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 202
@@ -102,17 +112,15 @@
 
     iput v0, p0, Landroid/telephony/CellSignalStrengthWcdma;->mBitErrorRate:I
 
-    .line 206
+    .line 202
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/telephony/CellSignalStrengthWcdma$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/telephony/CellSignalStrengthWcdma;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 26
     invoke-direct {p0, p1}, Landroid/telephony/CellSignalStrengthWcdma;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -120,7 +128,7 @@
 
 .method public constructor <init>(Landroid/telephony/CellSignalStrengthWcdma;)V
     .locals 0
-    .parameter "s"
+    .param p1, "s"    # Landroid/telephony/CellSignalStrengthWcdma;
 
     .prologue
     .line 63
@@ -129,21 +137,21 @@
     .line 64
     invoke-virtual {p0, p1}, Landroid/telephony/CellSignalStrengthWcdma;->copyFrom(Landroid/telephony/CellSignalStrengthWcdma;)V
 
-    .line 65
+    .line 63
     return-void
 .end method
 
 .method private static log(Ljava/lang/String;)V
     .locals 1
-    .parameter "s"
+    .param p0, "s"    # Ljava/lang/String;
 
     .prologue
     .line 233
-    const-string v0, "CellSignalStrengthWcdma"
+    const-string/jumbo v0, "CellSignalStrengthWcdma"
 
     invoke-static {v0, p0}, Landroid/telephony/Rlog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 234
+    .line 232
     return-void
 .end method
 
@@ -153,7 +161,7 @@
     .locals 1
 
     .prologue
-    .line 26
+    .line 92
     invoke-virtual {p0}, Landroid/telephony/CellSignalStrengthWcdma;->copy()Landroid/telephony/CellSignalStrengthWcdma;
 
     move-result-object v0
@@ -175,7 +183,7 @@
 
 .method protected copyFrom(Landroid/telephony/CellSignalStrengthWcdma;)V
     .locals 1
-    .parameter "s"
+    .param p1, "s"    # Landroid/telephony/CellSignalStrengthWcdma;
 
     .prologue
     .line 84
@@ -188,7 +196,7 @@
 
     iput v0, p0, Landroid/telephony/CellSignalStrengthWcdma;->mBitErrorRate:I
 
-    .line 86
+    .line 83
     return-void
 .end method
 
@@ -204,7 +212,7 @@
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 6
-    .parameter "o"
+    .param p1, "o"    # Ljava/lang/Object;
 
     .prologue
     const/4 v3, 0x0
@@ -220,42 +228,41 @@
     .catch Ljava/lang/ClassCastException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 173
-    .local v2, s:Landroid/telephony/CellSignalStrengthWcdma;
-    if-nez p1, :cond_1
+    .local v2, "s":Landroid/telephony/CellSignalStrengthWcdma;
+    if-nez p1, :cond_0
 
-    .line 177
-    .end local v2           #s:Landroid/telephony/CellSignalStrengthWcdma;
-    :cond_0
-    :goto_0
+    .line 174
     return v3
 
     .line 169
+    .end local v2    # "s":Landroid/telephony/CellSignalStrengthWcdma;
     :catch_0
     move-exception v1
 
     .line 170
-    .local v1, ex:Ljava/lang/ClassCastException;
-    goto :goto_0
+    .local v1, "ex":Ljava/lang/ClassCastException;
+    return v3
 
     .line 177
-    .end local v1           #ex:Ljava/lang/ClassCastException;
-    .restart local v2       #s:Landroid/telephony/CellSignalStrengthWcdma;
-    :cond_1
+    .end local v1    # "ex":Ljava/lang/ClassCastException;
+    .restart local v2    # "s":Landroid/telephony/CellSignalStrengthWcdma;
+    :cond_0
     iget v4, p0, Landroid/telephony/CellSignalStrengthWcdma;->mSignalStrength:I
 
     iget v5, v2, Landroid/telephony/CellSignalStrengthWcdma;->mSignalStrength:I
 
-    if-ne v4, v5, :cond_0
+    if-ne v4, v5, :cond_1
 
     iget v4, p0, Landroid/telephony/CellSignalStrengthWcdma;->mBitErrorRate:I
 
     iget v5, v2, Landroid/telephony/CellSignalStrengthWcdma;->mBitErrorRate:I
 
-    if-ne v4, v5, :cond_0
+    if-ne v4, v5, :cond_1
 
     const/4 v3, 0x1
 
-    goto :goto_0
+    :cond_1
+    return v3
 .end method
 
 .method public getAsuLevel()I
@@ -266,30 +273,30 @@
     iget v0, p0, Landroid/telephony/CellSignalStrengthWcdma;->mSignalStrength:I
 
     .line 154
-    .local v0, level:I
+    .local v0, "level":I
     return v0
 .end method
 
 .method public getDbm()I
-    .locals 5
+    .locals 4
 
     .prologue
-    const v3, 0x7fffffff
-
     .line 131
     iget v2, p0, Landroid/telephony/CellSignalStrengthWcdma;->mSignalStrength:I
 
     .line 132
-    .local v2, level:I
-    const/16 v4, 0x63
+    .local v2, "level":I
+    const/16 v3, 0x63
 
-    if-ne v2, v4, :cond_0
+    if-ne v2, v3, :cond_0
 
-    move v0, v3
+    const v0, 0x7fffffff
 
     .line 133
-    .local v0, asu:I
+    .local v0, "asu":I
     :goto_0
+    const v3, 0x7fffffff
+
     if-eq v0, v3, :cond_1
 
     .line 134
@@ -298,24 +305,24 @@
     add-int/lit8 v1, v3, -0x71
 
     .line 139
-    .local v1, dBm:I
+    .local v1, "dBm":I
     :goto_1
     return v1
 
-    .end local v0           #asu:I
-    .end local v1           #dBm:I
+    .line 132
+    .end local v0    # "asu":I
+    .end local v1    # "dBm":I
     :cond_0
     move v0, v2
 
-    .line 132
+    .restart local v0    # "asu":I
     goto :goto_0
 
     .line 136
-    .restart local v0       #asu:I
     :cond_1
     const v1, 0x7fffffff
 
-    .restart local v1       #dBm:I
+    .restart local v1    # "dBm":I
     goto :goto_1
 .end method
 
@@ -327,7 +334,7 @@
     iget v0, p0, Landroid/telephony/CellSignalStrengthWcdma;->mSignalStrength:I
 
     .line 115
-    .local v0, asu:I
+    .local v0, "asu":I
     const/4 v2, 0x2
 
     if-le v0, v2, :cond_0
@@ -340,12 +347,12 @@
     const/4 v1, 0x0
 
     .line 121
-    .local v1, level:I
+    .local v1, "level":I
     :goto_0
     return v1
 
     .line 116
-    .end local v1           #level:I
+    .end local v1    # "level":I
     :cond_1
     const/16 v2, 0xc
 
@@ -353,11 +360,11 @@
 
     const/4 v1, 0x4
 
-    .restart local v1       #level:I
+    .restart local v1    # "level":I
     goto :goto_0
 
     .line 117
-    .end local v1           #level:I
+    .end local v1    # "level":I
     :cond_2
     const/16 v2, 0x8
 
@@ -365,11 +372,11 @@
 
     const/4 v1, 0x3
 
-    .restart local v1       #level:I
+    .restart local v1    # "level":I
     goto :goto_0
 
     .line 118
-    .end local v1           #level:I
+    .end local v1    # "level":I
     :cond_3
     const/4 v2, 0x5
 
@@ -377,44 +384,40 @@
 
     const/4 v1, 0x2
 
-    .restart local v1       #level:I
+    .restart local v1    # "level":I
     goto :goto_0
 
     .line 119
-    .end local v1           #level:I
+    .end local v1    # "level":I
     :cond_4
     const/4 v1, 0x1
 
-    .restart local v1       #level:I
+    .restart local v1    # "level":I
     goto :goto_0
 .end method
 
 .method public hashCode()I
-    .locals 3
+    .locals 2
 
     .prologue
-    .line 159
-    const/16 v0, 0x1f
-
     .line 160
-    .local v0, primeNum:I
-    iget v1, p0, Landroid/telephony/CellSignalStrengthWcdma;->mSignalStrength:I
+    iget v0, p0, Landroid/telephony/CellSignalStrengthWcdma;->mSignalStrength:I
 
-    mul-int/2addr v1, v0
+    mul-int/lit8 v0, v0, 0x1f
 
-    iget v2, p0, Landroid/telephony/CellSignalStrengthWcdma;->mBitErrorRate:I
+    iget v1, p0, Landroid/telephony/CellSignalStrengthWcdma;->mBitErrorRate:I
 
-    mul-int/2addr v2, v0
+    mul-int/lit8 v1, v1, 0x1f
 
-    add-int/2addr v1, v2
+    add-int/2addr v0, v1
 
-    return v1
+    return v0
 .end method
 
 .method public initialize(II)V
     .locals 0
-    .parameter "ss"
-    .parameter "ber"
+    .param p1, "ss"    # I
+    .param p2, "ber"    # I
 
     .prologue
     .line 76
@@ -423,7 +426,7 @@
     .line 77
     iput p2, p0, Landroid/telephony/CellSignalStrengthWcdma;->mBitErrorRate:I
 
-    .line 78
+    .line 75
     return-void
 .end method
 
@@ -439,7 +442,7 @@
     .line 100
     iput v0, p0, Landroid/telephony/CellSignalStrengthWcdma;->mBitErrorRate:I
 
-    .line 101
+    .line 98
     return-void
 .end method
 
@@ -452,26 +455,32 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "CellSignalStrengthWcdma: ss="
+    const-string/jumbo v1, "CellSignalStrengthWcdma: ss="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 186
     iget v1, p0, Landroid/telephony/CellSignalStrengthWcdma;->mSignalStrength:I
 
+    .line 185
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " ber="
+    .line 187
+    const-string/jumbo v1, " ber="
 
+    .line 185
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 187
     iget v1, p0, Landroid/telephony/CellSignalStrengthWcdma;->mBitErrorRate:I
 
+    .line 185
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -485,8 +494,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 194
@@ -499,6 +508,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 196
+    .line 192
     return-void
 .end method

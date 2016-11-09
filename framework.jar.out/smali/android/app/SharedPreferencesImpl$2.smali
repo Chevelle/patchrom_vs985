@@ -28,12 +28,12 @@
 # direct methods
 .method constructor <init>(Landroid/app/SharedPreferencesImpl;Landroid/app/SharedPreferencesImpl$MemoryCommitResult;Ljava/lang/Runnable;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/app/SharedPreferencesImpl;
+    .param p2, "val$mcr"    # Landroid/app/SharedPreferencesImpl$MemoryCommitResult;
+    .param p3, "val$postWriteRunnable"    # Ljava/lang/Runnable;
 
     .prologue
-    .line 508
+    .line 512
     iput-object p1, p0, Landroid/app/SharedPreferencesImpl$2;->this$0:Landroid/app/SharedPreferencesImpl;
 
     iput-object p2, p0, Landroid/app/SharedPreferencesImpl$2;->val$mcr:Landroid/app/SharedPreferencesImpl$MemoryCommitResult;
@@ -51,79 +51,75 @@
     .locals 3
 
     .prologue
-    .line 510
+    .line 514
     iget-object v0, p0, Landroid/app/SharedPreferencesImpl$2;->this$0:Landroid/app/SharedPreferencesImpl;
 
-    #getter for: Landroid/app/SharedPreferencesImpl;->mWritingToDiskLock:Ljava/lang/Object;
-    invoke-static {v0}, Landroid/app/SharedPreferencesImpl;->access$700(Landroid/app/SharedPreferencesImpl;)Ljava/lang/Object;
+    invoke-static {v0}, Landroid/app/SharedPreferencesImpl;->-get3(Landroid/app/SharedPreferencesImpl;)Ljava/lang/Object;
 
     move-result-object v1
 
     monitor-enter v1
 
-    .line 511
+    .line 515
     :try_start_0
     iget-object v0, p0, Landroid/app/SharedPreferencesImpl$2;->this$0:Landroid/app/SharedPreferencesImpl;
 
     iget-object v2, p0, Landroid/app/SharedPreferencesImpl$2;->val$mcr:Landroid/app/SharedPreferencesImpl$MemoryCommitResult;
 
-    #calls: Landroid/app/SharedPreferencesImpl;->writeToFile(Landroid/app/SharedPreferencesImpl$MemoryCommitResult;)V
-    invoke-static {v0, v2}, Landroid/app/SharedPreferencesImpl;->access$800(Landroid/app/SharedPreferencesImpl;Landroid/app/SharedPreferencesImpl$MemoryCommitResult;)V
-
-    .line 512
-    monitor-exit v1
+    invoke-static {v0, v2}, Landroid/app/SharedPreferencesImpl;->-wrap2(Landroid/app/SharedPreferencesImpl;Landroid/app/SharedPreferencesImpl$MemoryCommitResult;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 513
+    monitor-exit v1
+
+    .line 517
     iget-object v1, p0, Landroid/app/SharedPreferencesImpl$2;->this$0:Landroid/app/SharedPreferencesImpl;
 
     monitor-enter v1
 
-    .line 514
+    .line 518
     :try_start_1
     iget-object v0, p0, Landroid/app/SharedPreferencesImpl$2;->this$0:Landroid/app/SharedPreferencesImpl;
 
-    invoke-static {v0}, Landroid/app/SharedPreferencesImpl;->access$310(Landroid/app/SharedPreferencesImpl;)I
+    invoke-static {v0}, Landroid/app/SharedPreferencesImpl;->-get0(Landroid/app/SharedPreferencesImpl;)I
 
-    .line 515
-    monitor-exit v1
+    move-result v2
+
+    add-int/lit8 v2, v2, -0x1
+
+    invoke-static {v0, v2}, Landroid/app/SharedPreferencesImpl;->-set0(Landroid/app/SharedPreferencesImpl;I)I
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    .line 516
+    monitor-exit v1
+
+    .line 520
     iget-object v0, p0, Landroid/app/SharedPreferencesImpl$2;->val$postWriteRunnable:Ljava/lang/Runnable;
 
     if-eqz v0, :cond_0
 
-    .line 517
+    .line 521
     iget-object v0, p0, Landroid/app/SharedPreferencesImpl$2;->val$postWriteRunnable:Ljava/lang/Runnable;
 
     invoke-interface {v0}, Ljava/lang/Runnable;->run()V
 
-    .line 519
+    .line 513
     :cond_0
     return-void
 
-    .line 512
+    .line 514
     :catchall_0
     move-exception v0
 
-    :try_start_2
     monitor-exit v1
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     throw v0
 
-    .line 515
+    .line 517
     :catchall_1
     move-exception v0
 
-    :try_start_3
     monitor-exit v1
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
     throw v0
 .end method

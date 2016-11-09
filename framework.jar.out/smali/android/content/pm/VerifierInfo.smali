@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/content/pm/VerifierInfo$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -30,19 +38,21 @@
     .locals 1
 
     .prologue
-    .line 73
+    .line 74
     new-instance v0, Landroid/content/pm/VerifierInfo$1;
 
     invoke-direct {v0}, Landroid/content/pm/VerifierInfo$1;-><init>()V
 
+    .line 73
     sput-object v0, Landroid/content/pm/VerifierInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 30
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 57
@@ -64,17 +74,15 @@
 
     iput-object v0, p0, Landroid/content/pm/VerifierInfo;->publicKey:Ljava/security/PublicKey;
 
-    .line 60
+    .line 57
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/content/pm/VerifierInfo$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/content/pm/VerifierInfo;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 30
     invoke-direct {p0, p1}, Landroid/content/pm/VerifierInfo;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -82,8 +90,8 @@
 
 .method public constructor <init>(Ljava/lang/String;Ljava/security/PublicKey;)V
     .locals 2
-    .parameter "packageName"
-    .parameter "publicKey"
+    .param p1, "packageName"    # Ljava/lang/String;
+    .param p2, "publicKey"    # Ljava/security/PublicKey;
 
     .prologue
     .line 46
@@ -128,7 +136,7 @@
     .line 54
     iput-object p2, p0, Landroid/content/pm/VerifierInfo;->publicKey:Ljava/security/PublicKey;
 
-    .line 55
+    .line 46
     return-void
 .end method
 
@@ -146,8 +154,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 69
@@ -160,6 +168,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeSerializable(Ljava/io/Serializable;)V
 
-    .line 71
+    .line 68
     return-void
 .end method

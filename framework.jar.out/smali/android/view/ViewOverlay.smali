@@ -18,8 +18,8 @@
 # direct methods
 .method constructor <init>(Landroid/content/Context;Landroid/view/View;)V
     .locals 1
-    .parameter "context"
-    .parameter "hostView"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "hostView"    # Landroid/view/View;
 
     .prologue
     .line 48
@@ -32,7 +32,7 @@
 
     iput-object v0, p0, Landroid/view/ViewOverlay;->mOverlayViewGroup:Landroid/view/ViewOverlay$OverlayViewGroup;
 
-    .line 50
+    .line 48
     return-void
 .end method
 
@@ -40,7 +40,7 @@
 # virtual methods
 .method public add(Landroid/graphics/drawable/Drawable;)V
     .locals 1
-    .parameter "drawable"
+    .param p1, "drawable"    # Landroid/graphics/drawable/Drawable;
 
     .prologue
     .line 71
@@ -48,7 +48,7 @@
 
     invoke-virtual {v0, p1}, Landroid/view/ViewOverlay$OverlayViewGroup;->add(Landroid/graphics/drawable/Drawable;)V
 
-    .line 72
+    .line 70
     return-void
 .end method
 
@@ -61,7 +61,7 @@
 
     invoke-virtual {v0}, Landroid/view/ViewOverlay$OverlayViewGroup;->clear()V
 
-    .line 89
+    .line 87
     return-void
 .end method
 
@@ -91,7 +91,7 @@
 
 .method public remove(Landroid/graphics/drawable/Drawable;)V
     .locals 1
-    .parameter "drawable"
+    .param p1, "drawable"    # Landroid/graphics/drawable/Drawable;
 
     .prologue
     .line 81
@@ -99,6 +99,6 @@
 
     invoke-virtual {v0, p1}, Landroid/view/ViewOverlay$OverlayViewGroup;->remove(Landroid/graphics/drawable/Drawable;)V
 
-    .line 82
+    .line 80
     return-void
 .end method

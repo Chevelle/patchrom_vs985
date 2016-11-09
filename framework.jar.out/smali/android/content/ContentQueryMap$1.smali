@@ -21,8 +21,8 @@
 # direct methods
 .method constructor <init>(Landroid/content/ContentQueryMap;Landroid/os/Handler;)V
     .locals 0
-    .parameter
-    .parameter "x0"
+    .param p1, "this$0"    # Landroid/content/ContentQueryMap;
+    .param p2, "$anonymous0"    # Landroid/os/Handler;
 
     .prologue
     .line 98
@@ -37,7 +37,7 @@
 # virtual methods
 .method public onChange(Z)V
     .locals 2
-    .parameter "selfChange"
+    .param p1, "selfChange"    # Z
 
     .prologue
     .line 104
@@ -54,7 +54,7 @@
 
     invoke-virtual {v0}, Landroid/content/ContentQueryMap;->requery()V
 
-    .line 109
+    .line 100
     :goto_0
     return-void
 
@@ -64,8 +64,7 @@
 
     const/4 v1, 0x1
 
-    #setter for: Landroid/content/ContentQueryMap;->mDirty:Z
-    invoke-static {v0, v1}, Landroid/content/ContentQueryMap;->access$002(Landroid/content/ContentQueryMap;Z)Z
+    invoke-static {v0, v1}, Landroid/content/ContentQueryMap;->-set0(Landroid/content/ContentQueryMap;Z)Z
 
     goto :goto_0
 .end method

@@ -36,15 +36,14 @@
     .line 89
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 90
     return-void
 .end method
 
 .method constructor <init>(Landroid/content/pm/PackageManager;Landroid/content/pm/ResolveInfo;Landroid/app/LauncherActivity$IconResizer;)V
     .locals 2
-    .parameter "pm"
-    .parameter "resolveInfo"
-    .parameter "resizer"
+    .param p1, "pm"    # Landroid/content/pm/PackageManager;
+    .param p2, "resolveInfo"    # Landroid/content/pm/ResolveInfo;
+    .param p3, "resizer"    # Landroid/app/LauncherActivity$IconResizer;
 
     .prologue
     .line 73
@@ -64,7 +63,7 @@
     iget-object v0, p2, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
     .line 77
-    .local v0, ci:Landroid/content/pm/ComponentInfo;
+    .local v0, "ci":Landroid/content/pm/ComponentInfo;
     if-nez v0, :cond_0
 
     iget-object v0, p2, Landroid/content/pm/ResolveInfo;->serviceInfo:Landroid/content/pm/ServiceInfo;
@@ -112,6 +111,6 @@
 
     iput-object v1, p0, Landroid/app/LauncherActivity$ListItem;->className:Ljava/lang/String;
 
-    .line 87
+    .line 73
     return-void
 .end method

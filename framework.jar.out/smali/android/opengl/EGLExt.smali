@@ -21,7 +21,7 @@
     .line 34
     invoke-static {}, Landroid/opengl/EGLExt;->_nativeClassInit()V
 
-    .line 35
+    .line 24
     return-void
 .end method
 

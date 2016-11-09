@@ -42,43 +42,41 @@
     .locals 1
 
     .prologue
-    .line 21
+    .line 20
     invoke-direct {p0}, Landroid/os/Binder;-><init>()V
 
     .line 22
-    const-string v0, "android.print.IPrintSpoolerCallbacks"
+    const-string/jumbo v0, "android.print.IPrintSpoolerCallbacks"
 
     invoke-virtual {p0, p0, v0}, Landroid/print/IPrintSpoolerCallbacks$Stub;->attachInterface(Landroid/os/IInterface;Ljava/lang/String;)V
 
-    .line 23
+    .line 20
     return-void
 .end method
 
 .method public static asInterface(Landroid/os/IBinder;)Landroid/print/IPrintSpoolerCallbacks;
     .locals 2
-    .parameter "obj"
+    .param p0, "obj"    # Landroid/os/IBinder;
 
     .prologue
+    const/4 v1, 0x0
+
     .line 30
     if-nez p0, :cond_0
 
     .line 31
-    const/4 v0, 0x0
-
-    .line 37
-    :goto_0
-    return-object v0
+    return-object v1
 
     .line 33
     :cond_0
-    const-string v1, "android.print.IPrintSpoolerCallbacks"
+    const-string/jumbo v1, "android.print.IPrintSpoolerCallbacks"
 
     invoke-interface {p0, v1}, Landroid/os/IBinder;->queryLocalInterface(Ljava/lang/String;)Landroid/os/IInterface;
 
     move-result-object v0
 
     .line 34
-    .local v0, iin:Landroid/os/IInterface;
+    .local v0, "iin":Landroid/os/IInterface;
     if-eqz v0, :cond_1
 
     instance-of v1, v0, Landroid/print/IPrintSpoolerCallbacks;
@@ -88,16 +86,17 @@
     .line 35
     check-cast v0, Landroid/print/IPrintSpoolerCallbacks;
 
-    goto :goto_0
+    .end local v0    # "iin":Landroid/os/IInterface;
+    return-object v0
 
     .line 37
+    .restart local v0    # "iin":Landroid/os/IInterface;
     :cond_1
-    new-instance v0, Landroid/print/IPrintSpoolerCallbacks$Stub$Proxy;
+    new-instance v1, Landroid/print/IPrintSpoolerCallbacks$Stub$Proxy;
 
-    .end local v0           #iin:Landroid/os/IInterface;
-    invoke-direct {v0, p0}, Landroid/print/IPrintSpoolerCallbacks$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
+    invoke-direct {v1, p0}, Landroid/print/IPrintSpoolerCallbacks$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
 
-    goto :goto_0
+    return-object v1
 .end method
 
 
@@ -111,11 +110,11 @@
 .end method
 
 .method public onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    .locals 5
-    .parameter "code"
-    .parameter "data"
-    .parameter "reply"
-    .parameter "flags"
+    .locals 6
+    .param p1, "code"    # I
+    .param p2, "data"    # Landroid/os/Parcel;
+    .param p3, "reply"    # Landroid/os/Parcel;
+    .param p4, "flags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -123,9 +122,7 @@
     .end annotation
 
     .prologue
-    const/4 v0, 0x0
-
-    const/4 v3, 0x1
+    const/4 v5, 0x1
 
     .line 45
     sparse-switch p1, :sswitch_data_0
@@ -133,22 +130,22 @@
     .line 108
     invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    move-result v3
+    move-result v4
 
-    :goto_0
-    return v3
+    return v4
 
     .line 49
     :sswitch_0
-    const-string v4, "android.print.IPrintSpoolerCallbacks"
+    const-string/jumbo v4, "android.print.IPrintSpoolerCallbacks"
 
     invoke-virtual {p3, v4}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    goto :goto_0
+    .line 50
+    return v5
 
     .line 54
     :sswitch_1
-    const-string v4, "android.print.IPrintSpoolerCallbacks"
+    const-string/jumbo v4, "android.print.IPrintSpoolerCallbacks"
 
     invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
@@ -160,22 +157,23 @@
     move-result-object v1
 
     .line 58
-    .local v1, _arg0:Ljava/util/List;,"Ljava/util/List<Landroid/print/PrintJobInfo;>;"
+    .local v1, "_arg0":Ljava/util/List;, "Ljava/util/List<Landroid/print/PrintJobInfo;>;"
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
-    move-result v2
+    move-result v3
 
     .line 59
-    .local v2, _arg1:I
-    invoke-virtual {p0, v1, v2}, Landroid/print/IPrintSpoolerCallbacks$Stub;->onGetPrintJobInfosResult(Ljava/util/List;I)V
+    .local v3, "_arg1":I
+    invoke-virtual {p0, v1, v3}, Landroid/print/IPrintSpoolerCallbacks$Stub;->onGetPrintJobInfosResult(Ljava/util/List;I)V
 
-    goto :goto_0
+    .line 60
+    return v5
 
     .line 64
-    .end local v1           #_arg0:Ljava/util/List;,"Ljava/util/List<Landroid/print/PrintJobInfo;>;"
-    .end local v2           #_arg1:I
+    .end local v1    # "_arg0":Ljava/util/List;, "Ljava/util/List<Landroid/print/PrintJobInfo;>;"
+    .end local v3    # "_arg1":I
     :sswitch_2
-    const-string v4, "android.print.IPrintSpoolerCallbacks"
+    const-string/jumbo v4, "android.print.IPrintSpoolerCallbacks"
 
     invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
@@ -186,26 +184,35 @@
 
     if-eqz v4, :cond_0
 
-    move v0, v3
+    const/4 v2, 0x1
 
     .line 68
-    .local v0, _arg0:Z
-    :cond_0
+    .local v2, "_arg0":Z
+    :goto_0
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
-    move-result v2
+    move-result v3
 
     .line 69
-    .restart local v2       #_arg1:I
-    invoke-virtual {p0, v0, v2}, Landroid/print/IPrintSpoolerCallbacks$Stub;->onCancelPrintJobResult(ZI)V
+    .restart local v3    # "_arg1":I
+    invoke-virtual {p0, v2, v3}, Landroid/print/IPrintSpoolerCallbacks$Stub;->onCancelPrintJobResult(ZI)V
 
+    .line 70
+    return v5
+
+    .line 66
+    .end local v2    # "_arg0":Z
+    .end local v3    # "_arg1":I
+    :cond_0
+    const/4 v2, 0x0
+
+    .restart local v2    # "_arg0":Z
     goto :goto_0
 
     .line 74
-    .end local v0           #_arg0:Z
-    .end local v2           #_arg1:I
+    .end local v2    # "_arg0":Z
     :sswitch_3
-    const-string v4, "android.print.IPrintSpoolerCallbacks"
+    const-string/jumbo v4, "android.print.IPrintSpoolerCallbacks"
 
     invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
@@ -216,26 +223,35 @@
 
     if-eqz v4, :cond_1
 
-    move v0, v3
+    const/4 v2, 0x1
 
     .line 78
-    .restart local v0       #_arg0:Z
-    :cond_1
+    .restart local v2    # "_arg0":Z
+    :goto_1
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
-    move-result v2
+    move-result v3
 
     .line 79
-    .restart local v2       #_arg1:I
-    invoke-virtual {p0, v0, v2}, Landroid/print/IPrintSpoolerCallbacks$Stub;->onSetPrintJobStateResult(ZI)V
+    .restart local v3    # "_arg1":I
+    invoke-virtual {p0, v2, v3}, Landroid/print/IPrintSpoolerCallbacks$Stub;->onSetPrintJobStateResult(ZI)V
 
-    goto :goto_0
+    .line 80
+    return v5
+
+    .line 76
+    .end local v2    # "_arg0":Z
+    .end local v3    # "_arg1":I
+    :cond_1
+    const/4 v2, 0x0
+
+    .restart local v2    # "_arg0":Z
+    goto :goto_1
 
     .line 84
-    .end local v0           #_arg0:Z
-    .end local v2           #_arg1:I
+    .end local v2    # "_arg0":Z
     :sswitch_4
-    const-string v4, "android.print.IPrintSpoolerCallbacks"
+    const-string/jumbo v4, "android.print.IPrintSpoolerCallbacks"
 
     invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
@@ -246,26 +262,35 @@
 
     if-eqz v4, :cond_2
 
-    move v0, v3
+    const/4 v2, 0x1
 
     .line 88
-    .restart local v0       #_arg0:Z
-    :cond_2
+    .restart local v2    # "_arg0":Z
+    :goto_2
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
-    move-result v2
+    move-result v3
 
     .line 89
-    .restart local v2       #_arg1:I
-    invoke-virtual {p0, v0, v2}, Landroid/print/IPrintSpoolerCallbacks$Stub;->onSetPrintJobTagResult(ZI)V
+    .restart local v3    # "_arg1":I
+    invoke-virtual {p0, v2, v3}, Landroid/print/IPrintSpoolerCallbacks$Stub;->onSetPrintJobTagResult(ZI)V
 
-    goto :goto_0
+    .line 90
+    return v5
+
+    .line 86
+    .end local v2    # "_arg0":Z
+    .end local v3    # "_arg1":I
+    :cond_2
+    const/4 v2, 0x0
+
+    .restart local v2    # "_arg0":Z
+    goto :goto_2
 
     .line 94
-    .end local v0           #_arg0:Z
-    .end local v2           #_arg1:I
+    .end local v2    # "_arg0":Z
     :sswitch_5
-    const-string v4, "android.print.IPrintSpoolerCallbacks"
+    const-string/jumbo v4, "android.print.IPrintSpoolerCallbacks"
 
     invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
@@ -286,28 +311,29 @@
     check-cast v0, Landroid/print/PrintJobInfo;
 
     .line 103
-    .local v0, _arg0:Landroid/print/PrintJobInfo;
-    :goto_1
+    :goto_3
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
-    move-result v2
+    move-result v3
 
     .line 104
-    .restart local v2       #_arg1:I
-    invoke-virtual {p0, v0, v2}, Landroid/print/IPrintSpoolerCallbacks$Stub;->onGetPrintJobInfoResult(Landroid/print/PrintJobInfo;I)V
+    .restart local v3    # "_arg1":I
+    invoke-virtual {p0, v0, v3}, Landroid/print/IPrintSpoolerCallbacks$Stub;->onGetPrintJobInfoResult(Landroid/print/PrintJobInfo;I)V
 
-    goto :goto_0
+    .line 105
+    return v5
 
     .line 100
-    .end local v0           #_arg0:Landroid/print/PrintJobInfo;
-    .end local v2           #_arg1:I
+    .end local v3    # "_arg1":I
     :cond_3
     const/4 v0, 0x0
 
-    .restart local v0       #_arg0:Landroid/print/PrintJobInfo;
-    goto :goto_1
+    .local v0, "_arg0":Landroid/print/PrintJobInfo;
+    goto :goto_3
 
     .line 45
+    nop
+
     :sswitch_data_0
     .sparse-switch
         0x1 -> :sswitch_1

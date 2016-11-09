@@ -8,7 +8,7 @@
     .locals 0
 
     .prologue
-    .line 26
+    .line 28
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -18,37 +18,37 @@
 # virtual methods
 .method public onUpdate(ILjava/lang/String;)V
     .locals 0
-    .parameter "nowBeingRestored"
-    .parameter "currentPackage"
+    .param p1, "nowBeingRestored"    # I
+    .param p2, "currentPackage"    # Ljava/lang/String;
 
     .prologue
-    .line 65
+    .line 67
     return-void
 .end method
 
 .method public restoreFinished(I)V
     .locals 0
-    .parameter "error"
+    .param p1, "error"    # I
 
     .prologue
-    .line 75
+    .line 77
     return-void
 .end method
 
 .method public restoreSetsAvailable([Landroid/app/backup/RestoreSet;)V
     .locals 0
-    .parameter "result"
+    .param p1, "result"    # [Landroid/app/backup/RestoreSet;
 
     .prologue
-    .line 40
+    .line 42
     return-void
 .end method
 
 .method public restoreStarting(I)V
     .locals 0
-    .parameter "numPackages"
+    .param p1, "numPackages"    # I
 
     .prologue
-    .line 49
+    .line 51
     return-void
 .end method

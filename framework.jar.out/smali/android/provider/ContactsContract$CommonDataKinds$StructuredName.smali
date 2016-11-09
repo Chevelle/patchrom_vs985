@@ -4,6 +4,7 @@
 
 # interfaces
 .implements Landroid/provider/ContactsContract$DataColumnsWithJoins;
+.implements Landroid/provider/ContactsContract$ContactCounts;
 
 
 # annotations
@@ -48,7 +49,7 @@
     .locals 0
 
     .prologue
-    .line 5246
+    .line 5580
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

@@ -15,7 +15,7 @@
 
 
 # virtual methods
-.method public abstract send(ILandroid/content/Intent;Ljava/lang/String;Landroid/content/IIntentReceiver;Ljava/lang/String;)I
+.method public abstract send(ILandroid/content/Intent;Ljava/lang/String;Landroid/content/IIntentReceiver;Ljava/lang/String;Landroid/os/Bundle;)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

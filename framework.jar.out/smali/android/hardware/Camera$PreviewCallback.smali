@@ -13,6 +13,9 @@
     name = "PreviewCallback"
 .end annotation
 
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
 
 # virtual methods
 .method public abstract onPreviewFrame([BLandroid/hardware/Camera;)V

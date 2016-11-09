@@ -15,7 +15,7 @@
 
 
 # virtual methods
-.method public abstract cancel()V
+.method public abstract finish()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -23,7 +23,7 @@
     .end annotation
 .end method
 
-.method public abstract finish()V
+.method public abstract kill(Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

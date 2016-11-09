@@ -49,82 +49,90 @@
 
     const/4 v3, 0x0
 
-    .line 28
+    .line 24
     new-instance v0, Landroid/util/JsonScope;
 
-    const-string v1, "EMPTY_ARRAY"
+    const-string/jumbo v1, "EMPTY_ARRAY"
 
     invoke-direct {v0, v1, v3}, Landroid/util/JsonScope;-><init>(Ljava/lang/String;I)V
 
+    .line 28
     sput-object v0, Landroid/util/JsonScope;->EMPTY_ARRAY:Landroid/util/JsonScope;
 
-    .line 34
+    .line 30
     new-instance v0, Landroid/util/JsonScope;
 
-    const-string v1, "NONEMPTY_ARRAY"
+    const-string/jumbo v1, "NONEMPTY_ARRAY"
 
     invoke-direct {v0, v1, v4}, Landroid/util/JsonScope;-><init>(Ljava/lang/String;I)V
 
+    .line 34
     sput-object v0, Landroid/util/JsonScope;->NONEMPTY_ARRAY:Landroid/util/JsonScope;
 
-    .line 40
+    .line 36
     new-instance v0, Landroid/util/JsonScope;
 
-    const-string v1, "EMPTY_OBJECT"
+    const-string/jumbo v1, "EMPTY_OBJECT"
 
     invoke-direct {v0, v1, v5}, Landroid/util/JsonScope;-><init>(Ljava/lang/String;I)V
 
+    .line 40
     sput-object v0, Landroid/util/JsonScope;->EMPTY_OBJECT:Landroid/util/JsonScope;
 
-    .line 46
+    .line 42
     new-instance v0, Landroid/util/JsonScope;
 
-    const-string v1, "DANGLING_NAME"
+    const-string/jumbo v1, "DANGLING_NAME"
 
     invoke-direct {v0, v1, v6}, Landroid/util/JsonScope;-><init>(Ljava/lang/String;I)V
 
+    .line 46
     sput-object v0, Landroid/util/JsonScope;->DANGLING_NAME:Landroid/util/JsonScope;
 
-    .line 52
+    .line 48
     new-instance v0, Landroid/util/JsonScope;
 
-    const-string v1, "NONEMPTY_OBJECT"
+    const-string/jumbo v1, "NONEMPTY_OBJECT"
 
     invoke-direct {v0, v1, v7}, Landroid/util/JsonScope;-><init>(Ljava/lang/String;I)V
 
+    .line 52
     sput-object v0, Landroid/util/JsonScope;->NONEMPTY_OBJECT:Landroid/util/JsonScope;
 
-    .line 57
+    .line 54
     new-instance v0, Landroid/util/JsonScope;
 
-    const-string v1, "EMPTY_DOCUMENT"
+    const-string/jumbo v1, "EMPTY_DOCUMENT"
 
     const/4 v2, 0x5
 
     invoke-direct {v0, v1, v2}, Landroid/util/JsonScope;-><init>(Ljava/lang/String;I)V
 
+    .line 57
     sput-object v0, Landroid/util/JsonScope;->EMPTY_DOCUMENT:Landroid/util/JsonScope;
 
-    .line 62
+    .line 59
     new-instance v0, Landroid/util/JsonScope;
 
-    const-string v1, "NONEMPTY_DOCUMENT"
+    const-string/jumbo v1, "NONEMPTY_DOCUMENT"
 
     const/4 v2, 0x6
 
     invoke-direct {v0, v1, v2}, Landroid/util/JsonScope;-><init>(Ljava/lang/String;I)V
 
+    .line 62
     sput-object v0, Landroid/util/JsonScope;->NONEMPTY_DOCUMENT:Landroid/util/JsonScope;
 
-    .line 67
+    .line 64
     new-instance v0, Landroid/util/JsonScope;
 
-    const-string v1, "CLOSED"
+    const-string/jumbo v1, "CLOSED"
 
     const/4 v2, 0x7
 
     invoke-direct {v0, v1, v2}, Landroid/util/JsonScope;-><init>(Ljava/lang/String;I)V
 
+    .line 67
     sput-object v0, Landroid/util/JsonScope;->CLOSED:Landroid/util/JsonScope;
 
     .line 22
@@ -152,23 +160,23 @@
 
     aput-object v1, v0, v7
 
-    const/4 v1, 0x5
+    sget-object v1, Landroid/util/JsonScope;->EMPTY_DOCUMENT:Landroid/util/JsonScope;
 
-    sget-object v2, Landroid/util/JsonScope;->EMPTY_DOCUMENT:Landroid/util/JsonScope;
+    const/4 v2, 0x5
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x6
+    sget-object v1, Landroid/util/JsonScope;->NONEMPTY_DOCUMENT:Landroid/util/JsonScope;
 
-    sget-object v2, Landroid/util/JsonScope;->NONEMPTY_DOCUMENT:Landroid/util/JsonScope;
+    const/4 v2, 0x6
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x7
+    sget-object v1, Landroid/util/JsonScope;->CLOSED:Landroid/util/JsonScope;
 
-    sget-object v2, Landroid/util/JsonScope;->CLOSED:Landroid/util/JsonScope;
+    const/4 v2, 0x7
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     sput-object v0, Landroid/util/JsonScope;->$VALUES:[Landroid/util/JsonScope;
 
@@ -177,13 +185,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 22
@@ -194,7 +195,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Landroid/util/JsonScope;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 22
@@ -215,12 +216,6 @@
     .prologue
     .line 22
     sget-object v0, Landroid/util/JsonScope;->$VALUES:[Landroid/util/JsonScope;
-
-    invoke-virtual {v0}, [Landroid/util/JsonScope;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/util/JsonScope;
 
     return-object v0
 .end method

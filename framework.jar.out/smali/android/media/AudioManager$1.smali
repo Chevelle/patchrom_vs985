@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Landroid/media/AudioManager;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/media/AudioManager;
 
     .prologue
-    .line 1984
+    .line 2162
     iput-object p1, p0, Landroid/media/AudioManager$1;->this$0:Landroid/media/AudioManager;
 
     invoke-direct {p0}, Landroid/media/IAudioFocusDispatcher$Stub;-><init>()V
@@ -36,15 +36,14 @@
 # virtual methods
 .method public dispatchAudioFocusChange(ILjava/lang/String;)V
     .locals 2
-    .parameter "focusChange"
-    .parameter "id"
+    .param p1, "focusChange"    # I
+    .param p2, "id"    # Ljava/lang/String;
 
     .prologue
-    .line 1987
+    .line 2165
     iget-object v1, p0, Landroid/media/AudioManager$1;->this$0:Landroid/media/AudioManager;
 
-    #getter for: Landroid/media/AudioManager;->mAudioFocusEventHandlerDelegate:Landroid/media/AudioManager$FocusEventHandlerDelegate;
-    invoke-static {v1}, Landroid/media/AudioManager;->access$200(Landroid/media/AudioManager;)Landroid/media/AudioManager$FocusEventHandlerDelegate;
+    invoke-static {v1}, Landroid/media/AudioManager;->-get1(Landroid/media/AudioManager;)Landroid/media/AudioManager$FocusEventHandlerDelegate;
 
     move-result-object v1
 
@@ -56,12 +55,11 @@
 
     move-result-object v0
 
-    .line 1988
-    .local v0, m:Landroid/os/Message;
+    .line 2166
+    .local v0, "m":Landroid/os/Message;
     iget-object v1, p0, Landroid/media/AudioManager$1;->this$0:Landroid/media/AudioManager;
 
-    #getter for: Landroid/media/AudioManager;->mAudioFocusEventHandlerDelegate:Landroid/media/AudioManager$FocusEventHandlerDelegate;
-    invoke-static {v1}, Landroid/media/AudioManager;->access$200(Landroid/media/AudioManager;)Landroid/media/AudioManager$FocusEventHandlerDelegate;
+    invoke-static {v1}, Landroid/media/AudioManager;->-get1(Landroid/media/AudioManager;)Landroid/media/AudioManager$FocusEventHandlerDelegate;
 
     move-result-object v1
 
@@ -71,6 +69,6 @@
 
     invoke-virtual {v1, v0}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 1989
+    .line 2164
     return-void
 .end method

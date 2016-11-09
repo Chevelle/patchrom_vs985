@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 236
+    .line 235
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 237
     iput-object p1, p0, Landroid/accounts/IAccountAuthenticator$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 238
+    .line 235
     return-void
 .end method
 
@@ -41,11 +41,11 @@
 # virtual methods
 .method public addAccount(Landroid/accounts/IAccountAuthenticatorResponse;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Landroid/os/Bundle;)V
     .locals 5
-    .parameter "response"
-    .parameter "accountType"
-    .parameter "authTokenType"
-    .parameter "requiredFeatures"
-    .parameter "options"
+    .param p1, "response"    # Landroid/accounts/IAccountAuthenticatorResponse;
+    .param p2, "accountType"    # Ljava/lang/String;
+    .param p3, "authTokenType"    # Ljava/lang/String;
+    .param p4, "requiredFeatures"    # [Ljava/lang/String;
+    .param p5, "options"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -61,9 +61,9 @@
     move-result-object v0
 
     .line 254
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.accounts.IAccountAuthenticator"
+    const-string/jumbo v2, "android.accounts.IAccountAuthenticator"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -116,7 +116,7 @@
     .line 269
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 271
+    .line 250
     return-void
 
     .line 264
@@ -130,20 +130,22 @@
 
     goto :goto_0
 
-    .line 269
+    .line 268
     :catchall_0
     move-exception v1
 
+    .line 269
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 268
     throw v1
 .end method
 
 .method public addAccountFromCredentials(Landroid/accounts/IAccountAuthenticatorResponse;Landroid/accounts/Account;Landroid/os/Bundle;)V
     .locals 5
-    .parameter "response"
-    .parameter "account"
-    .parameter "accountCredentials"
+    .param p1, "response"    # Landroid/accounts/IAccountAuthenticatorResponse;
+    .param p2, "account"    # Landroid/accounts/Account;
+    .param p3, "accountCredentials"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -159,9 +161,9 @@
     move-result-object v0
 
     .line 469
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.accounts.IAccountAuthenticator"
+    const-string/jumbo v2, "android.accounts.IAccountAuthenticator"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -219,7 +221,7 @@
     .line 488
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 490
+    .line 465
     return-void
 
     .line 476
@@ -233,12 +235,14 @@
 
     goto :goto_0
 
-    .line 488
+    .line 487
     :catchall_0
     move-exception v1
 
+    .line 488
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 487
     throw v1
 
     .line 483
@@ -265,9 +269,9 @@
 
 .method public confirmCredentials(Landroid/accounts/IAccountAuthenticatorResponse;Landroid/accounts/Account;Landroid/os/Bundle;)V
     .locals 5
-    .parameter "response"
-    .parameter "account"
-    .parameter "options"
+    .param p1, "response"    # Landroid/accounts/IAccountAuthenticatorResponse;
+    .param p2, "account"    # Landroid/accounts/Account;
+    .param p3, "options"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -283,9 +287,9 @@
     move-result-object v0
 
     .line 279
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.accounts.IAccountAuthenticator"
+    const-string/jumbo v2, "android.accounts.IAccountAuthenticator"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -343,7 +347,7 @@
     .line 298
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 300
+    .line 275
     return-void
 
     .line 286
@@ -357,12 +361,14 @@
 
     goto :goto_0
 
-    .line 298
+    .line 297
     :catchall_0
     move-exception v1
 
+    .line 298
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 297
     throw v1
 
     .line 293
@@ -379,8 +385,8 @@
 
 .method public editProperties(Landroid/accounts/IAccountAuthenticatorResponse;Ljava/lang/String;)V
     .locals 5
-    .parameter "response"
-    .parameter "accountType"
+    .param p1, "response"    # Landroid/accounts/IAccountAuthenticatorResponse;
+    .param p2, "accountType"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -396,9 +402,9 @@
     move-result-object v0
 
     .line 384
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.accounts.IAccountAuthenticator"
+    const-string/jumbo v2, "android.accounts.IAccountAuthenticator"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -431,22 +437,24 @@
     .line 390
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 392
+    .line 380
     return-void
 
-    .line 390
+    .line 389
     :catchall_0
     move-exception v1
 
+    .line 390
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 389
     throw v1
 .end method
 
 .method public getAccountCredentialsForCloning(Landroid/accounts/IAccountAuthenticatorResponse;Landroid/accounts/Account;)V
     .locals 5
-    .parameter "response"
-    .parameter "account"
+    .param p1, "response"    # Landroid/accounts/IAccountAuthenticatorResponse;
+    .param p2, "account"    # Landroid/accounts/Account;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -462,9 +470,9 @@
     move-result-object v0
 
     .line 446
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.accounts.IAccountAuthenticator"
+    const-string/jumbo v2, "android.accounts.IAccountAuthenticator"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -508,7 +516,7 @@
     .line 458
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 460
+    .line 442
     return-void
 
     .line 453
@@ -522,19 +530,21 @@
 
     goto :goto_0
 
-    .line 458
+    .line 457
     :catchall_0
     move-exception v1
 
+    .line 458
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 457
     throw v1
 .end method
 
 .method public getAccountRemovalAllowed(Landroid/accounts/IAccountAuthenticatorResponse;Landroid/accounts/Account;)V
     .locals 5
-    .parameter "response"
-    .parameter "account"
+    .param p1, "response"    # Landroid/accounts/IAccountAuthenticatorResponse;
+    .param p2, "account"    # Landroid/accounts/Account;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -550,9 +560,9 @@
     move-result-object v0
 
     .line 424
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.accounts.IAccountAuthenticator"
+    const-string/jumbo v2, "android.accounts.IAccountAuthenticator"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -596,7 +606,7 @@
     .line 436
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 438
+    .line 420
     return-void
 
     .line 431
@@ -610,21 +620,23 @@
 
     goto :goto_0
 
-    .line 436
+    .line 435
     :catchall_0
     move-exception v1
 
+    .line 436
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 435
     throw v1
 .end method
 
 .method public getAuthToken(Landroid/accounts/IAccountAuthenticatorResponse;Landroid/accounts/Account;Ljava/lang/String;Landroid/os/Bundle;)V
     .locals 5
-    .parameter "response"
-    .parameter "account"
-    .parameter "authTokenType"
-    .parameter "options"
+    .param p1, "response"    # Landroid/accounts/IAccountAuthenticatorResponse;
+    .param p2, "account"    # Landroid/accounts/Account;
+    .param p3, "authTokenType"    # Ljava/lang/String;
+    .param p4, "options"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -640,9 +652,9 @@
     move-result-object v0
 
     .line 308
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.accounts.IAccountAuthenticator"
+    const-string/jumbo v2, "android.accounts.IAccountAuthenticator"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -703,7 +715,7 @@
     .line 328
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 330
+    .line 304
     return-void
 
     .line 315
@@ -717,12 +729,14 @@
 
     goto :goto_0
 
-    .line 328
+    .line 327
     :catchall_0
     move-exception v1
 
+    .line 328
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 327
     throw v1
 
     .line 323
@@ -739,8 +753,8 @@
 
 .method public getAuthTokenLabel(Landroid/accounts/IAccountAuthenticatorResponse;Ljava/lang/String;)V
     .locals 5
-    .parameter "response"
-    .parameter "authTokenType"
+    .param p1, "response"    # Landroid/accounts/IAccountAuthenticatorResponse;
+    .param p2, "authTokenType"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -756,9 +770,9 @@
     move-result-object v0
 
     .line 338
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.accounts.IAccountAuthenticator"
+    const-string/jumbo v2, "android.accounts.IAccountAuthenticator"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -791,15 +805,17 @@
     .line 344
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 346
+    .line 334
     return-void
 
-    .line 344
+    .line 343
     :catchall_0
     move-exception v1
 
+    .line 344
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 343
     throw v1
 .end method
 
@@ -808,16 +824,16 @@
 
     .prologue
     .line 245
-    const-string v0, "android.accounts.IAccountAuthenticator"
+    const-string/jumbo v0, "android.accounts.IAccountAuthenticator"
 
     return-object v0
 .end method
 
 .method public hasFeatures(Landroid/accounts/IAccountAuthenticatorResponse;Landroid/accounts/Account;[Ljava/lang/String;)V
     .locals 5
-    .parameter "response"
-    .parameter "account"
-    .parameter "features"
+    .param p1, "response"    # Landroid/accounts/IAccountAuthenticatorResponse;
+    .param p2, "account"    # Landroid/accounts/Account;
+    .param p3, "features"    # [Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -833,9 +849,9 @@
     move-result-object v0
 
     .line 401
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.accounts.IAccountAuthenticator"
+    const-string/jumbo v2, "android.accounts.IAccountAuthenticator"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -882,7 +898,7 @@
     .line 414
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 416
+    .line 397
     return-void
 
     .line 408
@@ -896,21 +912,23 @@
 
     goto :goto_0
 
-    .line 414
+    .line 413
     :catchall_0
     move-exception v1
 
+    .line 414
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 413
     throw v1
 .end method
 
 .method public updateCredentials(Landroid/accounts/IAccountAuthenticatorResponse;Landroid/accounts/Account;Ljava/lang/String;Landroid/os/Bundle;)V
     .locals 5
-    .parameter "response"
-    .parameter "account"
-    .parameter "authTokenType"
-    .parameter "options"
+    .param p1, "response"    # Landroid/accounts/IAccountAuthenticatorResponse;
+    .param p2, "account"    # Landroid/accounts/Account;
+    .param p3, "authTokenType"    # Ljava/lang/String;
+    .param p4, "options"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -926,9 +944,9 @@
     move-result-object v0
 
     .line 354
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.accounts.IAccountAuthenticator"
+    const-string/jumbo v2, "android.accounts.IAccountAuthenticator"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -989,7 +1007,7 @@
     .line 374
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 376
+    .line 350
     return-void
 
     .line 361
@@ -1003,12 +1021,14 @@
 
     goto :goto_0
 
-    .line 374
+    .line 373
     :catchall_0
     move-exception v1
 
+    .line 374
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 373
     throw v1
 
     .line 369

@@ -22,9 +22,9 @@
 # direct methods
 .method public constructor <init>(I[BI)V
     .locals 3
-    .parameter "statusCode"
-    .parameter "convertedData"
-    .parameter "offset"
+    .param p1, "statusCode"    # I
+    .param p2, "convertedData"    # [B
+    .param p3, "offset"    # I
 
     .prologue
     .line 68
@@ -44,7 +44,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Unsupported status code: "
+    const-string/jumbo v2, "Unsupported status code: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -72,13 +72,13 @@
     .line 75
     iput p3, p0, Landroid/drm/DrmConvertedStatus;->offset:I
 
-    .line 76
+    .line 68
     return-void
 .end method
 
 .method private isValidStatusCode(I)Z
     .locals 2
-    .parameter "statusCode"
+    .param p1, "statusCode"    # I
 
     .prologue
     const/4 v0, 0x1
@@ -86,19 +86,22 @@
     .line 79
     if-eq p1, v0, :cond_0
 
+    .line 80
     const/4 v1, 0x2
-
-    if-eq p1, v1, :cond_0
-
-    const/4 v1, 0x3
 
     if-ne p1, v1, :cond_1
 
+    .line 79
     :cond_0
     :goto_0
     return v0
 
+    .line 81
     :cond_1
+    const/4 v1, 0x3
+
+    if-eq p1, v1, :cond_0
+
     const/4 v0, 0x0
 
     goto :goto_0

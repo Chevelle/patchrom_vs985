@@ -3,6 +3,11 @@
 .source "Metadata.java"
 
 
+# annotations
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
+
 # static fields
 .field public static final ALBUM:I = 0x8
 
@@ -58,7 +63,7 @@
 
 .field public static final LONG_VAL:I = 0x4
 
-.field public static final MATCH_ALL:Ljava/util/Set; = null
+.field public static final MATCH_ALL:Ljava/util/Set;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/util/Set",
@@ -69,7 +74,7 @@
     .end annotation
 .end field
 
-.field public static final MATCH_NONE:Ljava/util/Set; = null
+.field public static final MATCH_NONE:Ljava/util/Set;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/util/Set",
@@ -160,6 +165,7 @@
 
     sput-object v0, Landroid/media/Metadata;->MATCH_ALL:Ljava/util/Set;
 
+    .line 45
     return-void
 .end method
 
@@ -170,11 +176,12 @@
     .line 266
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 260
+    .line 261
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
+    .line 260
     iput-object v0, p0, Landroid/media/Metadata;->mKeyToPosMap:Ljava/util/HashMap;
 
     .line 266
@@ -182,10 +189,12 @@
 .end method
 
 .method private checkMetadataId(I)Z
-    .locals 3
-    .parameter "val"
+    .locals 4
+    .param p1, "val"    # I
 
     .prologue
+    const/4 v3, 0x0
+
     .line 525
     if-lez p1, :cond_0
 
@@ -199,13 +208,13 @@
 
     .line 526
     :cond_0
-    const-string v0, "media.Metadata"
+    const-string/jumbo v0, "media.Metadata"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Invalid metadata ID "
+    const-string/jumbo v2, "Invalid metadata ID "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -222,22 +231,19 @@
     invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 527
-    const/4 v0, 0x0
+    return v3
 
     .line 529
-    :goto_0
-    return v0
-
     :cond_1
     const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 .end method
 
 .method private checkType(II)V
     .locals 5
-    .parameter "key"
-    .parameter "expectedType"
+    .param p1, "key"    # I
+    .param p2, "expectedType"    # I
 
     .prologue
     .line 536
@@ -258,7 +264,7 @@
     move-result v0
 
     .line 538
-    .local v0, pos:I
+    .local v0, "pos":I
     iget-object v2, p0, Landroid/media/Metadata;->mParcel:Landroid/os/Parcel;
 
     invoke-virtual {v2, v0}, Landroid/os/Parcel;->setDataPosition(I)V
@@ -271,7 +277,7 @@
     move-result v1
 
     .line 541
-    .local v1, type:I
+    .local v1, "type":I
     if-eq v1, p2, :cond_0
 
     .line 542
@@ -281,7 +287,7 @@
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "Wrong type "
+    const-string/jumbo v4, "Wrong type "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -291,7 +297,7 @@
 
     move-result-object v3
 
-    const-string v4, " but got "
+    const-string/jumbo v4, " but got "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -309,7 +315,7 @@
 
     throw v2
 
-    .line 544
+    .line 535
     :cond_0
     return-void
 .end method
@@ -345,29 +351,31 @@
 .end method
 
 .method private scanAllRecords(Landroid/os/Parcel;I)Z
-    .locals 10
-    .parameter "parcel"
-    .parameter "bytesLeft"
+    .locals 11
+    .param p1, "parcel"    # Landroid/os/Parcel;
+    .param p2, "bytesLeft"    # I
 
     .prologue
-    const/16 v9, 0xc
+    const/16 v10, 0xc
+
+    const/4 v9, 0x0
 
     .line 293
     const/4 v3, 0x0
 
     .line 294
-    .local v3, recCount:I
+    .local v3, "recCount":I
     const/4 v0, 0x0
 
     .line 296
-    .local v0, error:Z
+    .local v0, "error":Z
     iget-object v6, p0, Landroid/media/Metadata;->mKeyToPosMap:Ljava/util/HashMap;
 
     invoke-virtual {v6}, Ljava/util/HashMap;->clear()V
 
     .line 297
     :goto_0
-    if-le p2, v9, :cond_0
+    if-le p2, v10, :cond_0
 
     .line 298
     invoke-virtual {p1}, Landroid/os/Parcel;->dataPosition()I
@@ -375,19 +383,19 @@
     move-result v5
 
     .line 300
-    .local v5, start:I
+    .local v5, "start":I
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v4
 
     .line 302
-    .local v4, size:I
-    if-gt v4, v9, :cond_2
+    .local v4, "size":I
+    if-gt v4, v10, :cond_2
 
     .line 303
-    const-string v6, "media.Metadata"
+    const-string/jumbo v6, "media.Metadata"
 
-    const-string v7, "Record is too short"
+    const-string/jumbo v7, "Record is too short"
 
     invoke-static {v6, v7}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -395,8 +403,8 @@
     const/4 v0, 0x1
 
     .line 340
-    .end local v4           #size:I
-    .end local v5           #start:I
+    .end local v4    # "size":I
+    .end local v5    # "start":I
     :cond_0
     :goto_1
     if-nez p2, :cond_1
@@ -405,13 +413,13 @@
 
     .line 341
     :cond_1
-    const-string v6, "media.Metadata"
+    const-string/jumbo v6, "media.Metadata"
 
     new-instance v7, Ljava/lang/StringBuilder;
 
     invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v8, "Ran out of data or error on record "
+    const-string/jumbo v8, "Ran out of data or error on record "
 
     invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -433,22 +441,18 @@
     invoke-virtual {v6}, Ljava/util/HashMap;->clear()V
 
     .line 343
-    const/4 v6, 0x0
-
-    .line 345
-    :goto_2
-    return v6
+    return v9
 
     .line 309
-    .restart local v4       #size:I
-    .restart local v5       #start:I
+    .restart local v4    # "size":I
+    .restart local v5    # "start":I
     :cond_2
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     .line 310
-    .local v1, metadataId:I
+    .local v1, "metadataId":I
     invoke-direct {p0, v1}, Landroid/media/Metadata;->checkMetadataId(I)Z
 
     move-result v6
@@ -476,9 +480,9 @@
     if-eqz v6, :cond_4
 
     .line 319
-    const-string v6, "media.Metadata"
+    const-string/jumbo v6, "media.Metadata"
 
-    const-string v7, "Duplicate metadata ID found"
+    const-string/jumbo v7, "Duplicate metadata ID found"
 
     invoke-static {v6, v7}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -512,7 +516,7 @@
     move-result v2
 
     .line 328
-    .local v2, metadataType:I
+    .local v2, "metadataType":I
     if-lez v2, :cond_5
 
     const/4 v6, 0x7
@@ -521,13 +525,13 @@
 
     .line 329
     :cond_5
-    const-string v6, "media.Metadata"
+    const-string/jumbo v6, "media.Metadata"
 
     new-instance v7, Ljava/lang/StringBuilder;
 
     invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v8, "Invalid metadata type "
+    const-string/jumbo v8, "Invalid metadata type "
 
     invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -561,25 +565,24 @@
     .line 337
     add-int/lit8 v3, v3, 0x1
 
-    .line 338
     goto/16 :goto_0
 
     .line 345
-    .end local v1           #metadataId:I
-    .end local v2           #metadataType:I
-    .end local v4           #size:I
-    .end local v5           #start:I
+    .end local v1    # "metadataId":I
+    .end local v2    # "metadataType":I
+    .end local v4    # "size":I
+    .end local v5    # "start":I
     :cond_7
     const/4 v6, 0x1
 
-    goto :goto_2
+    return v6
 .end method
 
 
 # virtual methods
 .method public getBoolean(I)Z
     .locals 2
-    .parameter "key"
+    .param p1, "key"    # I
 
     .prologue
     const/4 v0, 0x1
@@ -609,7 +612,7 @@
 
 .method public getByteArray(I)[B
     .locals 1
-    .parameter "key"
+    .param p1, "key"    # I
 
     .prologue
     .line 477
@@ -629,7 +632,7 @@
 
 .method public getDate(I)Ljava/util/Date;
     .locals 6
-    .parameter "key"
+    .param p1, "key"    # I
 
     .prologue
     .line 485
@@ -642,19 +645,19 @@
 
     invoke-virtual {v5}, Landroid/os/Parcel;->readLong()J
 
-    move-result-wide v1
+    move-result-wide v2
 
     .line 487
-    .local v1, timeSinceEpoch:J
+    .local v2, "timeSinceEpoch":J
     iget-object v5, p0, Landroid/media/Metadata;->mParcel:Landroid/os/Parcel;
 
     invoke-virtual {v5}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v1
 
     .line 489
-    .local v3, timeZone:Ljava/lang/String;
-    invoke-virtual {v3}, Ljava/lang/String;->length()I
+    .local v1, "timeZone":Ljava/lang/String;
+    invoke-virtual {v1}, Ljava/lang/String;->length()I
 
     move-result v5
 
@@ -663,39 +666,37 @@
     .line 490
     new-instance v5, Ljava/util/Date;
 
-    invoke-direct {v5, v1, v2}, Ljava/util/Date;-><init>(J)V
+    invoke-direct {v5, v2, v3}, Ljava/util/Date;-><init>(J)V
 
-    .line 496
-    :goto_0
     return-object v5
 
     .line 492
     :cond_0
-    invoke-static {v3}, Ljava/util/TimeZone;->getTimeZone(Ljava/lang/String;)Ljava/util/TimeZone;
+    invoke-static {v1}, Ljava/util/TimeZone;->getTimeZone(Ljava/lang/String;)Ljava/util/TimeZone;
 
     move-result-object v4
 
     .line 493
-    .local v4, tz:Ljava/util/TimeZone;
+    .local v4, "tz":Ljava/util/TimeZone;
     invoke-static {v4}, Ljava/util/Calendar;->getInstance(Ljava/util/TimeZone;)Ljava/util/Calendar;
 
     move-result-object v0
 
     .line 495
-    .local v0, cal:Ljava/util/Calendar;
-    invoke-virtual {v0, v1, v2}, Ljava/util/Calendar;->setTimeInMillis(J)V
+    .local v0, "cal":Ljava/util/Calendar;
+    invoke-virtual {v0, v2, v3}, Ljava/util/Calendar;->setTimeInMillis(J)V
 
     .line 496
     invoke-virtual {v0}, Ljava/util/Calendar;->getTime()Ljava/util/Date;
 
     move-result-object v5
 
-    goto :goto_0
+    return-object v5
 .end method
 
 .method public getDouble(I)D
     .locals 2
-    .parameter "key"
+    .param p1, "key"    # I
 
     .prologue
     .line 469
@@ -715,7 +716,7 @@
 
 .method public getInt(I)I
     .locals 1
-    .parameter "key"
+    .param p1, "key"    # I
 
     .prologue
     .line 443
@@ -735,7 +736,7 @@
 
 .method public getLong(I)J
     .locals 2
-    .parameter "key"
+    .param p1, "key"    # I
 
     .prologue
     .line 459
@@ -755,7 +756,7 @@
 
 .method public getString(I)Ljava/lang/String;
     .locals 1
-    .parameter "key"
+    .param p1, "key"    # I
 
     .prologue
     .line 435
@@ -775,7 +776,7 @@
 
 .method public has(I)Z
     .locals 3
-    .parameter "metadataId"
+    .param p1, "metadataId"    # I
 
     .prologue
     .line 421
@@ -792,7 +793,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Invalid key: "
+    const-string/jumbo v2, "Invalid key: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -850,50 +851,49 @@
 
 .method public parse(Landroid/os/Parcel;)Z
     .locals 7
-    .parameter "parcel"
+    .param p1, "parcel"    # Landroid/os/Parcel;
 
     .prologue
-    const/16 v5, 0x8
+    const/16 v4, 0x8
 
-    const/4 v3, 0x0
+    const/4 v6, 0x0
 
     .line 378
     invoke-virtual {p1}, Landroid/os/Parcel;->dataAvail()I
 
-    move-result v4
+    move-result v3
 
-    if-ge v4, v5, :cond_0
+    if-ge v3, v4, :cond_0
 
     .line 379
-    const-string v4, "media.Metadata"
+    const-string/jumbo v3, "media.Metadata"
 
-    new-instance v5, Ljava/lang/StringBuilder;
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v6, "Not enough data "
+    const-string/jumbo v5, "Not enough data "
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v4
 
     invoke-virtual {p1}, Landroid/os/Parcel;->dataAvail()I
 
-    move-result v6
+    move-result v5
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v4
 
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v5
+    move-result-object v4
 
-    invoke-static {v4, v5}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 407
-    :goto_0
-    return v3
+    .line 380
+    return v6
 
     .line 383
     :cond_0
@@ -902,75 +902,76 @@
     move-result v1
 
     .line 384
-    .local v1, pin:I
+    .local v1, "pin":I
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v2
 
     .line 387
-    .local v2, size:I
+    .local v2, "size":I
     invoke-virtual {p1}, Landroid/os/Parcel;->dataAvail()I
 
-    move-result v4
+    move-result v3
 
-    add-int/lit8 v4, v4, 0x4
+    add-int/lit8 v3, v3, 0x4
 
-    if-lt v4, v2, :cond_1
+    if-lt v3, v2, :cond_1
 
-    if-ge v2, v5, :cond_2
+    if-ge v2, v4, :cond_2
 
     .line 388
     :cond_1
-    const-string v4, "media.Metadata"
+    const-string/jumbo v3, "media.Metadata"
 
-    new-instance v5, Ljava/lang/StringBuilder;
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v6, "Bad size "
+    const-string/jumbo v5, "Bad size "
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v4
 
-    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v4
 
-    const-string v6, " avail "
+    const-string/jumbo v5, " avail "
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v4
 
     invoke-virtual {p1}, Landroid/os/Parcel;->dataAvail()I
 
-    move-result v6
+    move-result v5
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v4
 
-    const-string v6, " position "
+    const-string/jumbo v5, " position "
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v4
 
-    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v4
 
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v5
+    move-result-object v4
 
-    invoke-static {v4, v5}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 389
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->setDataPosition(I)V
 
-    goto :goto_0
+    .line 390
+    return v6
 
     .line 394
     :cond_2
@@ -979,57 +980,59 @@
     move-result v0
 
     .line 395
-    .local v0, kShouldBeMetaMarker:I
-    const v4, 0x4d455441
+    .local v0, "kShouldBeMetaMarker":I
+    const v3, 0x4d455441    # 2.06914576E8f
 
-    if-eq v0, v4, :cond_3
+    if-eq v0, v3, :cond_3
 
     .line 396
-    const-string v4, "media.Metadata"
+    const-string/jumbo v3, "media.Metadata"
 
-    new-instance v5, Ljava/lang/StringBuilder;
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v6, "Marker missing "
+    const-string/jumbo v5, "Marker missing "
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v4
 
     invoke-static {v0}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
-    move-result-object v6
-
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     move-result-object v5
 
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v4
 
-    invoke-static {v4, v5}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 397
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->setDataPosition(I)V
 
-    goto :goto_0
+    .line 398
+    return v6
 
     .line 402
     :cond_3
-    add-int/lit8 v4, v2, -0x8
+    add-int/lit8 v3, v2, -0x8
 
-    invoke-direct {p0, p1, v4}, Landroid/media/Metadata;->scanAllRecords(Landroid/os/Parcel;I)Z
+    invoke-direct {p0, p1, v3}, Landroid/media/Metadata;->scanAllRecords(Landroid/os/Parcel;I)Z
 
-    move-result v4
+    move-result v3
 
-    if-nez v4, :cond_4
+    if-nez v3, :cond_4
 
     .line 403
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->setDataPosition(I)V
 
-    goto :goto_0
+    .line 404
+    return v6
 
     .line 406
     :cond_4
@@ -1038,5 +1041,5 @@
     .line 407
     const/4 v3, 0x1
 
-    goto/16 :goto_0
+    return v3
 .end method

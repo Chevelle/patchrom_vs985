@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 77
+    .line 76
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 78
     iput-object p1, p0, Landroid/hardware/ISerialManager$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 79
+    .line 76
     return-void
 .end method
 
@@ -54,7 +54,7 @@
 
     .prologue
     .line 86
-    const-string v0, "android.hardware.ISerialManager"
+    const-string/jumbo v0, "android.hardware.ISerialManager"
 
     return-object v0
 .end method
@@ -74,15 +74,15 @@
     move-result-object v0
 
     .line 92
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 95
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.hardware.ISerialManager"
+    const-string/jumbo v3, "android.hardware.ISerialManager"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -106,7 +106,7 @@
     move-result-object v2
 
     .line 101
-    .local v2, _result:[Ljava/lang/String;
+    .local v2, "_result":[Ljava/lang/String;
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 102
@@ -115,22 +115,24 @@
     .line 104
     return-object v2
 
-    .line 101
-    .end local v2           #_result:[Ljava/lang/String;
+    .line 100
+    .end local v2    # "_result":[Ljava/lang/String;
     :catchall_0
     move-exception v3
 
+    .line 101
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 102
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 100
     throw v3
 .end method
 
 .method public openSerialPort(Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     .locals 6
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -144,15 +146,15 @@
     move-result-object v0
 
     .line 110
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 113
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.hardware.ISerialManager"
+    const-string/jumbo v3, "android.hardware.ISerialManager"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -190,7 +192,6 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 125
-    .local v2, _result:Landroid/os/ParcelFileDescriptor;
     :goto_0
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
@@ -201,22 +202,23 @@
     return-object v2
 
     .line 121
-    .end local v2           #_result:Landroid/os/ParcelFileDescriptor;
     :cond_0
     const/4 v2, 0x0
 
-    .restart local v2       #_result:Landroid/os/ParcelFileDescriptor;
+    .local v2, "_result":Landroid/os/ParcelFileDescriptor;
     goto :goto_0
 
-    .line 125
-    .end local v2           #_result:Landroid/os/ParcelFileDescriptor;
+    .line 124
+    .end local v2    # "_result":Landroid/os/ParcelFileDescriptor;
     :catchall_0
     move-exception v3
 
+    .line 125
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 126
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 124
     throw v3
 .end method

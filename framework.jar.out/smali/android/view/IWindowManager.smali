@@ -15,7 +15,7 @@
 
 
 # virtual methods
-.method public abstract addAppToken(ILandroid/view/IApplicationToken;IIIZZII)V
+.method public abstract addAppToken(ILandroid/view/IApplicationToken;IIIZZIIZZ)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -47,6 +47,14 @@
     .end annotation
 .end method
 
+.method public abstract clearWindowContentFrameStats(Landroid/os/IBinder;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract closeSystemDialogs(Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -64,6 +72,14 @@
 .end method
 
 .method public abstract dismissKeyguard()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract enableScreenIfNeeded()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -135,31 +151,7 @@
     .end annotation
 .end method
 
-.method public abstract getBlurBitmapBackground(I)Landroid/graphics/Bitmap;
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getColorFromTopBottomApplication()[I
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getCompatibleMagnificationSpecForWindow(Landroid/os/IBinder;)Landroid/view/MagnificationSpec;
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getFocusedWindowToken()Landroid/os/IBinder;
+.method public abstract getCurrentAnimatorScale()F
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -207,23 +199,7 @@
     .end annotation
 .end method
 
-.method public abstract getScaledScreenshotFromApplications()Landroid/graphics/Bitmap;
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getScreenshotFromApplications()Landroid/graphics/Bitmap;
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getWindowFrame(Landroid/os/IBinder;Landroid/graphics/Rect;)V
+.method public abstract getWindowContentFrameStats(Landroid/os/IBinder;)Landroid/view/WindowContentFrameStats;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -295,6 +271,14 @@
     .end annotation
 .end method
 
+.method public abstract keyguardGoingAway(ZZ)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract lockNow(Landroid/os/Bundle;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -303,7 +287,7 @@
     .end annotation
 .end method
 
-.method public abstract openSession(Lcom/android/internal/view/IInputMethodClient;Lcom/android/internal/view/IInputContext;)Landroid/view/IWindowSession;
+.method public abstract openSession(Landroid/view/IWindowSessionCallback;Lcom/android/internal/view/IInputMethodClient;Lcom/android/internal/view/IInputContext;)Landroid/view/IWindowSession;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -312,6 +296,30 @@
 .end method
 
 .method public abstract overridePendingAppTransition(Ljava/lang/String;IILandroid/os/IRemoteCallback;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract overridePendingAppTransitionAspectScaledThumb(Landroid/graphics/Bitmap;IIIILandroid/os/IRemoteCallback;Z)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract overridePendingAppTransitionClipReveal(IIII)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract overridePendingAppTransitionInPlace(Ljava/lang/String;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -383,6 +391,14 @@
     .end annotation
 .end method
 
+.method public abstract requestAssistScreenshot(Lcom/android/internal/app/IAssistScreenshotReceiver;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract resumeKeyDispatching(Landroid/os/IBinder;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -391,23 +407,7 @@
     .end annotation
 .end method
 
-.method public abstract screenshotApplications(Landroid/os/IBinder;IIIZ)Landroid/graphics/Bitmap;
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract sendActionColorBroadcast(II)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract sendAppColorBroadcast(I)V
+.method public abstract screenshotApplications(Landroid/os/IBinder;III)Landroid/graphics/Bitmap;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -431,14 +431,6 @@
     .end annotation
 .end method
 
-.method public abstract setAppGroupId(Landroid/os/IBinder;I)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
 .method public abstract setAppOrientation(Landroid/view/IApplicationToken;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -448,6 +440,14 @@
 .end method
 
 .method public abstract setAppStartingWindow(Landroid/os/IBinder;Ljava/lang/String;ILandroid/content/res/CompatibilityInfo;Ljava/lang/CharSequence;IIIILandroid/os/IBinder;Z)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setAppTask(Landroid/os/IBinder;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -495,6 +495,14 @@
     .end annotation
 .end method
 
+.method public abstract setForcedDisplayScalingMode(II)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract setForcedDisplaySize(III)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -504,30 +512,6 @@
 .end method
 
 .method public abstract setInTouchMode(Z)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setInputFilter(Landroid/view/IInputFilter;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setMagnificationCallbacks(Landroid/view/IMagnificationCallbacks;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setMagnificationSpec(Landroid/view/MagnificationSpec;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -551,7 +535,7 @@
     .end annotation
 .end method
 
-.method public abstract setStrictModeVisualIndicatorPreference(Ljava/lang/String;)V
+.method public abstract setScreenCaptureDisabled(IZ)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -559,7 +543,7 @@
     .end annotation
 .end method
 
-.method public abstract setTouchExplorationEnabled(Z)V
+.method public abstract setStrictModeVisualIndicatorPreference(Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -648,14 +632,6 @@
 .end method
 
 .method public abstract updateRotation(ZZ)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract waitForWindowDrawn(Landroid/os/IBinder;Landroid/os/IRemoteCallback;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

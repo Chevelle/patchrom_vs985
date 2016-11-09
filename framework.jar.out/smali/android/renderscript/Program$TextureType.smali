@@ -47,7 +47,7 @@
     .line 48
     new-instance v0, Landroid/renderscript/Program$TextureType;
 
-    const-string v1, "TEXTURE_2D"
+    const-string/jumbo v1, "TEXTURE_2D"
 
     invoke-direct {v0, v1, v2, v2}, Landroid/renderscript/Program$TextureType;-><init>(Ljava/lang/String;II)V
 
@@ -56,7 +56,7 @@
     .line 49
     new-instance v0, Landroid/renderscript/Program$TextureType;
 
-    const-string v1, "TEXTURE_CUBE"
+    const-string/jumbo v1, "TEXTURE_CUBE"
 
     invoke-direct {v0, v1, v3, v3}, Landroid/renderscript/Program$TextureType;-><init>(Ljava/lang/String;II)V
 
@@ -82,14 +82,7 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "id"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "id"    # I
 
     .prologue
     .line 52
@@ -98,13 +91,13 @@
     .line 53
     iput p3, p0, Landroid/renderscript/Program$TextureType;->mID:I
 
-    .line 54
+    .line 52
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/renderscript/Program$TextureType;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 47
@@ -125,12 +118,6 @@
     .prologue
     .line 47
     sget-object v0, Landroid/renderscript/Program$TextureType;->$VALUES:[Landroid/renderscript/Program$TextureType;
-
-    invoke-virtual {v0}, [Landroid/renderscript/Program$TextureType;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/renderscript/Program$TextureType;
 
     return-object v0
 .end method

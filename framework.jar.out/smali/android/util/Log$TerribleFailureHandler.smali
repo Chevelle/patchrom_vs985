@@ -15,5 +15,5 @@
 
 
 # virtual methods
-.method public abstract onTerribleFailure(Ljava/lang/String;Landroid/util/Log$TerribleFailure;)V
+.method public abstract onTerribleFailure(Ljava/lang/String;Landroid/util/Log$TerribleFailure;Z)V
 .end method

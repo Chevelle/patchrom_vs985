@@ -22,6 +22,9 @@
 .field public inDither:Z
 
 .field public inInputShareable:Z
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public inJustDecodeBounds:Z
 
@@ -34,6 +37,9 @@
 .field public inPremultiplied:Z
 
 .field public inPurgeable:Z
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public inSampleSize:I
 
@@ -80,7 +86,7 @@
     .line 46
     iput-boolean v1, p0, Landroid/graphics/BitmapFactory$Options;->inPremultiplied:Z
 
-    .line 47
+    .line 43
     return-void
 .end method
 
@@ -93,14 +99,14 @@
     .locals 1
 
     .prologue
-    .line 355
+    .line 370
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/graphics/BitmapFactory$Options;->mCancel:Z
 
-    .line 356
+    .line 371
     invoke-direct {p0}, Landroid/graphics/BitmapFactory$Options;->requestCancel()V
 
-    .line 357
+    .line 369
     return-void
 .end method

@@ -3,7 +3,7 @@
 .source "ActivityThread.java"
 
 # interfaces
-.implements Landroid/content/ComponentCallbacks2;
+.implements Ljava/lang/Runnable;
 
 
 # annotations
@@ -20,15 +20,20 @@
 # instance fields
 .field final synthetic this$0:Landroid/app/ActivityThread;
 
+.field final synthetic val$mgr:Landroid/app/IActivityManager;
+
 
 # direct methods
-.method constructor <init>(Landroid/app/ActivityThread;)V
+.method constructor <init>(Landroid/app/ActivityThread;Landroid/app/IActivityManager;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/app/ActivityThread;
+    .param p2, "val$mgr"    # Landroid/app/IActivityManager;
 
     .prologue
-    .line 4892
+    .line 5255
     iput-object p1, p0, Landroid/app/ActivityThread$2;->this$0:Landroid/app/ActivityThread;
+
+    iput-object p2, p0, Landroid/app/ActivityThread$2;->val$mgr:Landroid/app/IActivityManager;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -37,100 +42,86 @@
 
 
 # virtual methods
-.method public onConfigurationChanged(Landroid/content/res/Configuration;)V
-    .locals 3
-    .parameter "newConfig"
+.method public run()V
+    .locals 10
 
     .prologue
-    .line 4895
-    iget-object v0, p0, Landroid/app/ActivityThread$2;->this$0:Landroid/app/ActivityThread;
+    .line 5257
+    iget-object v6, p0, Landroid/app/ActivityThread$2;->this$0:Landroid/app/ActivityThread;
 
-    #getter for: Landroid/app/ActivityThread;->mResourcesManager:Landroid/app/ResourcesManager;
-    invoke-static {v0}, Landroid/app/ActivityThread;->access$200(Landroid/app/ActivityThread;)Landroid/app/ResourcesManager;
+    iget-boolean v6, v6, Landroid/app/ActivityThread;->mSomeActivitiesChanged:Z
 
-    move-result-object v1
+    if-nez v6, :cond_0
 
-    monitor-enter v1
+    .line 5258
+    return-void
 
-    .line 4899
-    :try_start_0
-    iget-object v0, p0, Landroid/app/ActivityThread$2;->this$0:Landroid/app/ActivityThread;
-
-    #getter for: Landroid/app/ActivityThread;->mResourcesManager:Landroid/app/ResourcesManager;
-    invoke-static {v0}, Landroid/app/ActivityThread;->access$200(Landroid/app/ActivityThread;)Landroid/app/ResourcesManager;
-
-    move-result-object v0
-
-    const/4 v2, 0x0
-
-    invoke-virtual {v0, p1, v2}, Landroid/app/ResourcesManager;->applyConfigurationToResourcesLocked(Landroid/content/res/Configuration;Landroid/content/res/CompatibilityInfo;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    .line 4902
-    iget-object v0, p0, Landroid/app/ActivityThread$2;->this$0:Landroid/app/ActivityThread;
-
-    iget-object v0, v0, Landroid/app/ActivityThread;->mPendingConfiguration:Landroid/content/res/Configuration;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Landroid/app/ActivityThread$2;->this$0:Landroid/app/ActivityThread;
-
-    iget-object v0, v0, Landroid/app/ActivityThread;->mPendingConfiguration:Landroid/content/res/Configuration;
-
-    invoke-virtual {v0, p1}, Landroid/content/res/Configuration;->isOtherSeqNewer(Landroid/content/res/Configuration;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    .line 4904
+    .line 5260
     :cond_0
-    iget-object v0, p0, Landroid/app/ActivityThread$2;->this$0:Landroid/app/ActivityThread;
+    invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
 
-    iput-object p1, v0, Landroid/app/ActivityThread;->mPendingConfiguration:Landroid/content/res/Configuration;
+    move-result-object v5
 
-    .line 4906
-    iget-object v0, p0, Landroid/app/ActivityThread$2;->this$0:Landroid/app/ActivityThread;
+    .line 5261
+    .local v5, "runtime":Ljava/lang/Runtime;
+    invoke-virtual {v5}, Ljava/lang/Runtime;->maxMemory()J
 
-    const/16 v2, 0x76
+    move-result-wide v0
 
-    #calls: Landroid/app/ActivityThread;->sendMessage(ILjava/lang/Object;)V
-    invoke-static {v0, v2, p1}, Landroid/app/ActivityThread;->access$400(Landroid/app/ActivityThread;ILjava/lang/Object;)V
+    .line 5262
+    .local v0, "dalvikMax":J
+    invoke-virtual {v5}, Ljava/lang/Runtime;->totalMemory()J
 
-    .line 4909
-    :cond_1
-    monitor-exit v1
+    move-result-wide v6
 
-    .line 4910
-    return-void
+    invoke-virtual {v5}, Ljava/lang/Runtime;->freeMemory()J
 
-    .line 4909
-    :catchall_0
-    move-exception v0
+    move-result-wide v8
 
-    monitor-exit v1
+    sub-long v2, v6, v8
+
+    .line 5263
+    .local v2, "dalvikUsed":J
+    const-wide/16 v6, 0x3
+
+    mul-long/2addr v6, v0
+
+    const-wide/16 v8, 0x4
+
+    div-long/2addr v6, v8
+
+    cmp-long v6, v2, v6
+
+    if-lez v6, :cond_1
+
+    .line 5267
+    iget-object v6, p0, Landroid/app/ActivityThread$2;->this$0:Landroid/app/ActivityThread;
+
+    const/4 v7, 0x0
+
+    iput-boolean v7, v6, Landroid/app/ActivityThread;->mSomeActivitiesChanged:Z
+
+    .line 5269
+    :try_start_0
+    iget-object v6, p0, Landroid/app/ActivityThread$2;->val$mgr:Landroid/app/IActivityManager;
+
+    iget-object v7, p0, Landroid/app/ActivityThread$2;->this$0:Landroid/app/ActivityThread;
+
+    iget-object v7, v7, Landroid/app/ActivityThread;->mAppThread:Landroid/app/ActivityThread$ApplicationThread;
+
+    invoke-interface {v6, v7}, Landroid/app/IActivityManager;->releaseSomeActivities(Landroid/app/IApplicationThread;)V
     :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    throw v0
-.end method
-
-.method public onLowMemory()V
-    .locals 0
-
-    .prologue
-    .line 4913
+    .line 5256
+    :cond_1
+    :goto_0
     return-void
-.end method
 
-.method public onTrimMemory(I)V
-    .locals 0
-    .parameter "level"
+    .line 5270
+    :catch_0
+    move-exception v4
 
-    .prologue
-    .line 4916
-    return-void
+    .local v4, "e":Landroid/os/RemoteException;
+    goto :goto_0
 .end method

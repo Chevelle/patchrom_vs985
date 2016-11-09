@@ -14,7 +14,7 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 1
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
     .line 29
@@ -30,14 +30,14 @@
 
     iput v0, p0, Landroid/os/HandlerThread;->mPriority:I
 
-    .line 31
+    .line 28
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;I)V
     .locals 1
-    .parameter "name"
-    .parameter "priority"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "priority"    # I
 
     .prologue
     .line 40
@@ -51,86 +51,79 @@
     .line 41
     iput p2, p0, Landroid/os/HandlerThread;->mPriority:I
 
-    .line 42
+    .line 39
     return-void
 .end method
 
 
 # virtual methods
 .method public getLooper()Landroid/os/Looper;
-    .locals 1
+    .locals 3
 
     .prologue
+    const/4 v2, 0x0
+
     .line 72
     invoke-virtual {p0}, Landroid/os/HandlerThread;->isAlive()Z
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_0
 
     .line 73
-    const/4 v0, 0x0
-
-    .line 85
-    :goto_0
-    return-object v0
+    return-object v2
 
     .line 77
     :cond_0
     monitor-enter p0
 
     .line 78
-    :goto_1
+    :goto_0
     :try_start_0
     invoke-virtual {p0}, Landroid/os/HandlerThread;->isAlive()Z
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_1
+    if-eqz v1, :cond_1
 
-    iget-object v0, p0, Landroid/os/HandlerThread;->mLooper:Landroid/os/Looper;
+    iget-object v1, p0, Landroid/os/HandlerThread;->mLooper:Landroid/os/Looper;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    if-nez v0, :cond_1
+    if-nez v1, :cond_1
 
     .line 80
     :try_start_1
-    invoke-virtual {p0}, Ljava/lang/Object;->wait()V
+    invoke-virtual {p0}, Landroid/os/HandlerThread;->wait()V
     :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
     .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    goto :goto_1
+    goto :goto_0
 
     .line 81
     :catch_0
     move-exception v0
 
-    goto :goto_1
-
-    .line 84
-    :cond_1
-    :try_start_2
-    monitor-exit p0
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
-    .line 85
-    iget-object v0, p0, Landroid/os/HandlerThread;->mLooper:Landroid/os/Looper;
-
+    .local v0, "e":Ljava/lang/InterruptedException;
     goto :goto_0
 
-    .line 84
-    :catchall_0
-    move-exception v0
-
-    :try_start_3
+    .end local v0    # "e":Ljava/lang/InterruptedException;
+    :cond_1
     monitor-exit p0
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    throw v0
+    .line 85
+    iget-object v1, p0, Landroid/os/HandlerThread;->mLooper:Landroid/os/Looper;
+
+    return-object v1
+
+    .line 77
+    :catchall_0
+    move-exception v1
+
+    monitor-exit p0
+
+    throw v1
 .end method
 
 .method public getThreadId()I
@@ -147,7 +140,7 @@
     .locals 0
 
     .prologue
-    .line 49
+    .line 48
     return-void
 .end method
 
@@ -161,7 +154,7 @@
     move-result-object v0
 
     .line 109
-    .local v0, looper:Landroid/os/Looper;
+    .local v0, "looper":Landroid/os/Looper;
     if-eqz v0, :cond_0
 
     .line 110
@@ -170,14 +163,13 @@
     .line 111
     const/4 v1, 0x1
 
-    .line 113
-    :goto_0
     return v1
 
+    .line 113
     :cond_0
     const/4 v1, 0x0
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public quitSafely()Z
@@ -190,7 +182,7 @@
     move-result-object v0
 
     .line 136
-    .local v0, looper:Landroid/os/Looper;
+    .local v0, "looper":Landroid/os/Looper;
     if-eqz v0, :cond_0
 
     .line 137
@@ -199,14 +191,13 @@
     .line 138
     const/4 v1, 0x1
 
-    .line 140
-    :goto_0
     return v1
 
+    .line 140
     :cond_0
     const/4 v1, 0x0
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public run()V
@@ -235,12 +226,11 @@
     iput-object v0, p0, Landroid/os/HandlerThread;->mLooper:Landroid/os/Looper;
 
     .line 57
-    invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
-
-    .line 58
-    monitor-exit p0
+    invoke-virtual {p0}, Landroid/os/HandlerThread;->notifyAll()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit p0
 
     .line 59
     iget v0, p0, Landroid/os/HandlerThread;->mPriority:I
@@ -258,17 +248,14 @@
 
     iput v0, p0, Landroid/os/HandlerThread;->mTid:I
 
-    .line 63
+    .line 52
     return-void
 
-    .line 58
+    .line 55
     :catchall_0
     move-exception v0
 
-    :try_start_1
     monitor-exit p0
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v0
 .end method

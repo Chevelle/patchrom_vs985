@@ -25,7 +25,7 @@
     .locals 0
 
     .prologue
-    .line 434
+    .line 833
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -34,20 +34,50 @@
 
 # virtual methods
 .method public getData()[B
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 439
+    .line 840
+    iget-object v0, p0, Landroid/media/MediaDrm$ProvisionRequest;->mData:[B
+
+    if-nez v0, :cond_0
+
+    .line 844
+    new-instance v0, Ljava/lang/RuntimeException;
+
+    const-string/jumbo v1, "ProvisionRequest is not initialized"
+
+    invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 846
+    :cond_0
     iget-object v0, p0, Landroid/media/MediaDrm$ProvisionRequest;->mData:[B
 
     return-object v0
 .end method
 
 .method public getDefaultUrl()Ljava/lang/String;
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 446
+    .line 857
+    iget-object v0, p0, Landroid/media/MediaDrm$ProvisionRequest;->mDefaultUrl:Ljava/lang/String;
+
+    if-nez v0, :cond_0
+
+    .line 861
+    new-instance v0, Ljava/lang/RuntimeException;
+
+    const-string/jumbo v1, "ProvisionRequest is not initialized"
+
+    invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 863
+    :cond_0
     iget-object v0, p0, Landroid/media/MediaDrm$ProvisionRequest;->mDefaultUrl:Ljava/lang/String;
 
     return-object v0

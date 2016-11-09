@@ -3,12 +3,12 @@
 .source "SearchDialog.java"
 
 # interfaces
-.implements Landroid/view/View$OnClickListener;
+.implements Landroid/widget/SearchView$OnCloseListener;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/app/SearchDialog;->createContentView()V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroid/app/SearchDialog;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/app/SearchDialog;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/app/SearchDialog;
 
     .prologue
-    .line 178
+    .line 666
     iput-object p1, p0, Landroid/app/SearchDialog$2;->this$0:Landroid/app/SearchDialog;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,16 +37,16 @@
 
 
 # virtual methods
-.method public onClick(Landroid/view/View;)V
+.method public onClose()Z
     .locals 1
-    .parameter "v"
 
     .prologue
-    .line 181
+    .line 669
     iget-object v0, p0, Landroid/app/SearchDialog$2;->this$0:Landroid/app/SearchDialog;
 
-    invoke-virtual {v0}, Landroid/app/SearchDialog;->dismiss()V
+    invoke-static {v0}, Landroid/app/SearchDialog;->-wrap0(Landroid/app/SearchDialog;)Z
 
-    .line 182
-    return-void
+    move-result v0
+
+    return v0
 .end method

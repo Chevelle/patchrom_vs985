@@ -14,12 +14,18 @@
 .end annotation
 
 
+# static fields
+.field public static final loaderror:I = 0x1100000
+
+.field public static final nodomain:I = 0x1100001
+
+
 # direct methods
 .method public constructor <init>()V
     .locals 0
 
     .prologue
-    .line 11282
+    .line 13920
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

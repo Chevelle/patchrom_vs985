@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 290
+    .line 300
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,10 +42,10 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/text/style/SuggestionSpan;
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 293
+    .line 303
     new-instance v0, Landroid/text/style/SuggestionSpan;
 
     invoke-direct {v0, p1}, Landroid/text/style/SuggestionSpan;-><init>(Landroid/os/Parcel;)V
@@ -55,10 +55,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 290
+    .line 302
     invoke-virtual {p0, p1}, Landroid/text/style/SuggestionSpan$1;->createFromParcel(Landroid/os/Parcel;)Landroid/text/style/SuggestionSpan;
 
     move-result-object v0
@@ -68,10 +68,10 @@
 
 .method public newArray(I)[Landroid/text/style/SuggestionSpan;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 298
+    .line 308
     new-array v0, p1, [Landroid/text/style/SuggestionSpan;
 
     return-object v0
@@ -79,10 +79,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 290
+    .line 307
     invoke-virtual {p0, p1}, Landroid/text/style/SuggestionSpan$1;->newArray(I)[Landroid/text/style/SuggestionSpan;
 
     move-result-object v0

@@ -3,6 +3,14 @@
 .source "MergeCursor.java"
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/database/MergeCursor$1;
+    }
+.end annotation
+
+
 # instance fields
 .field private mCursor:Landroid/database/Cursor;
 
@@ -14,10 +22,10 @@
 # direct methods
 .method public constructor <init>([Landroid/database/Cursor;)V
     .locals 3
-    .parameter "cursors"
+    .param p1, "cursors"    # [Landroid/database/Cursor;
 
     .prologue
-    .line 43
+    .line 42
     invoke-direct {p0}, Landroid/database/AbstractCursor;-><init>()V
 
     .line 27
@@ -40,7 +48,7 @@
     .line 47
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     iget-object v1, p0, Landroid/database/MergeCursor;->mCursors:[Landroid/database/Cursor;
 
@@ -73,7 +81,7 @@
 
     goto :goto_1
 
-    .line 52
+    .line 42
     :cond_1
     return-void
 .end method
@@ -90,10 +98,10 @@
     array-length v1, v2
 
     .line 173
-    .local v1, length:I
+    .local v1, "length":I
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-ge v0, v1, :cond_1
 
@@ -124,7 +132,7 @@
     :cond_1
     invoke-super {p0}, Landroid/database/AbstractCursor;->close()V
 
-    .line 178
+    .line 171
     return-void
 .end method
 
@@ -138,10 +146,10 @@
     array-length v1, v2
 
     .line 162
-    .local v1, length:I
+    .local v1, "length":I
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-ge v0, v1, :cond_1
 
@@ -169,13 +177,13 @@
     :cond_1
     invoke-super {p0}, Landroid/database/AbstractCursor;->deactivate()V
 
-    .line 168
+    .line 159
     return-void
 .end method
 
 .method public getBlob(I)[B
     .locals 1
-    .parameter "column"
+    .param p1, "column"    # I
 
     .prologue
     .line 145
@@ -204,16 +212,15 @@
 
     move-result-object v0
 
-    .line 154
-    :goto_0
     return-object v0
 
+    .line 154
     :cond_0
     const/4 v0, 0x0
 
     new-array v0, v0, [Ljava/lang/String;
 
-    goto :goto_0
+    return-object v0
 .end method
 
 .method public getCount()I
@@ -224,16 +231,16 @@
     const/4 v0, 0x0
 
     .line 58
-    .local v0, count:I
+    .local v0, "count":I
     iget-object v3, p0, Landroid/database/MergeCursor;->mCursors:[Landroid/database/Cursor;
 
     array-length v2, v3
 
     .line 59
-    .local v2, length:I
+    .local v2, "length":I
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_0
     if-ge v1, v2, :cond_1
 
@@ -268,7 +275,7 @@
 
 .method public getDouble(I)D
     .locals 2
-    .parameter "column"
+    .param p1, "column"    # I
 
     .prologue
     .line 128
@@ -283,7 +290,7 @@
 
 .method public getFloat(I)F
     .locals 1
-    .parameter "column"
+    .param p1, "column"    # I
 
     .prologue
     .line 122
@@ -298,7 +305,7 @@
 
 .method public getInt(I)I
     .locals 1
-    .parameter "column"
+    .param p1, "column"    # I
 
     .prologue
     .line 110
@@ -313,7 +320,7 @@
 
 .method public getLong(I)J
     .locals 2
-    .parameter "column"
+    .param p1, "column"    # I
 
     .prologue
     .line 116
@@ -328,7 +335,7 @@
 
 .method public getShort(I)S
     .locals 1
-    .parameter "column"
+    .param p1, "column"    # I
 
     .prologue
     .line 104
@@ -343,7 +350,7 @@
 
 .method public getString(I)Ljava/lang/String;
     .locals 1
-    .parameter "column"
+    .param p1, "column"    # I
 
     .prologue
     .line 98
@@ -358,7 +365,7 @@
 
 .method public getType(I)I
     .locals 1
-    .parameter "column"
+    .param p1, "column"    # I
 
     .prologue
     .line 133
@@ -373,7 +380,7 @@
 
 .method public isNull(I)Z
     .locals 1
-    .parameter "column"
+    .param p1, "column"    # I
 
     .prologue
     .line 139
@@ -388,29 +395,29 @@
 
 .method public onMove(II)Z
     .locals 6
-    .parameter "oldPosition"
-    .parameter "newPosition"
+    .param p1, "oldPosition"    # I
+    .param p2, "newPosition"    # I
 
     .prologue
-    .line 71
     const/4 v4, 0x0
 
+    .line 71
     iput-object v4, p0, Landroid/database/MergeCursor;->mCursor:Landroid/database/Cursor;
 
     .line 72
     const/4 v0, 0x0
 
     .line 73
-    .local v0, cursorStartPos:I
+    .local v0, "cursorStartPos":I
     iget-object v4, p0, Landroid/database/MergeCursor;->mCursors:[Landroid/database/Cursor;
 
     array-length v2, v4
 
     .line 74
-    .local v2, length:I
+    .local v2, "length":I
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_0
     if-ge v1, v2, :cond_1
 
@@ -463,11 +470,12 @@
 
     move-result v3
 
-    .line 92
-    :goto_2
+    .line 90
+    .local v3, "ret":Z
     return v3
 
     .line 84
+    .end local v3    # "ret":Z
     :cond_2
     iget-object v4, p0, Landroid/database/MergeCursor;->mCursors:[Landroid/database/Cursor;
 
@@ -483,14 +491,14 @@
 
     .line 92
     :cond_3
-    const/4 v3, 0x0
+    const/4 v4, 0x0
 
-    goto :goto_2
+    return v4
 .end method
 
 .method public registerContentObserver(Landroid/database/ContentObserver;)V
     .locals 3
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/ContentObserver;
 
     .prologue
     .line 182
@@ -499,10 +507,10 @@
     array-length v1, v2
 
     .line 183
-    .local v1, length:I
+    .local v1, "length":I
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-ge v0, v1, :cond_1
 
@@ -526,14 +534,14 @@
 
     goto :goto_0
 
-    .line 188
+    .line 181
     :cond_1
     return-void
 .end method
 
 .method public registerDataSetObserver(Landroid/database/DataSetObserver;)V
     .locals 3
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/DataSetObserver;
 
     .prologue
     .line 201
@@ -542,10 +550,10 @@
     array-length v1, v2
 
     .line 202
-    .local v1, length:I
+    .local v1, "length":I
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-ge v0, v1, :cond_1
 
@@ -569,7 +577,7 @@
 
     goto :goto_0
 
-    .line 207
+    .line 200
     :cond_1
     return-void
 .end method
@@ -584,10 +592,10 @@
     array-length v1, v2
 
     .line 223
-    .local v1, length:I
+    .local v1, "length":I
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-ge v0, v1, :cond_2
 
@@ -619,19 +627,18 @@
     .line 229
     const/4 v2, 0x0
 
-    .line 233
-    :goto_1
     return v2
 
+    .line 233
     :cond_2
     const/4 v2, 0x1
 
-    goto :goto_1
+    return v2
 .end method
 
 .method public unregisterContentObserver(Landroid/database/ContentObserver;)V
     .locals 3
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/ContentObserver;
 
     .prologue
     .line 191
@@ -640,10 +647,10 @@
     array-length v1, v2
 
     .line 192
-    .local v1, length:I
+    .local v1, "length":I
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-ge v0, v1, :cond_1
 
@@ -667,14 +674,14 @@
 
     goto :goto_0
 
-    .line 197
+    .line 190
     :cond_1
     return-void
 .end method
 
 .method public unregisterDataSetObserver(Landroid/database/DataSetObserver;)V
     .locals 3
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/DataSetObserver;
 
     .prologue
     .line 211
@@ -683,10 +690,10 @@
     array-length v1, v2
 
     .line 212
-    .local v1, length:I
+    .local v1, "length":I
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-ge v0, v1, :cond_1
 
@@ -710,7 +717,7 @@
 
     goto :goto_0
 
-    .line 217
+    .line 210
     :cond_1
     return-void
 .end method

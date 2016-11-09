@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 69
+    .line 68
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 70
     iput-object p1, p0, Landroid/media/IAudioRoutesObserver$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 71
+    .line 68
     return-void
 .end method
 
@@ -51,7 +51,7 @@
 
 .method public dispatchAudioRoutesChanged(Landroid/media/AudioRoutesInfo;)V
     .locals 5
-    .parameter "newRoutes"
+    .param p1, "newRoutes"    # Landroid/media/AudioRoutesInfo;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -65,9 +65,9 @@
     move-result-object v0
 
     .line 84
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.media.IAudioRoutesObserver"
+    const-string/jumbo v1, "android.media.IAudioRoutesObserver"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -101,7 +101,7 @@
     .line 95
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 97
+    .line 80
     return-void
 
     .line 90
@@ -115,12 +115,14 @@
 
     goto :goto_0
 
-    .line 95
+    .line 94
     :catchall_0
     move-exception v1
 
+    .line 95
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 94
     throw v1
 .end method
 
@@ -129,7 +131,7 @@
 
     .prologue
     .line 78
-    const-string v0, "android.media.IAudioRoutesObserver"
+    const-string/jumbo v0, "android.media.IAudioRoutesObserver"
 
     return-object v0
 .end method

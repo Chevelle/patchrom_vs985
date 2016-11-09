@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 65
+    .line 64
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 66
     iput-object p1, p0, Landroid/app/ISearchManagerCallback$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 67
+    .line 64
     return-void
 .end method
 
@@ -54,7 +54,7 @@
 
     .prologue
     .line 74
-    const-string v0, "android.app.ISearchManagerCallback"
+    const-string/jumbo v0, "android.app.ISearchManagerCallback"
 
     return-object v0
 .end method
@@ -74,9 +74,9 @@
     move-result-object v0
 
     .line 91
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.app.ISearchManagerCallback"
+    const-string/jumbo v1, "android.app.ISearchManagerCallback"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -96,15 +96,17 @@
     .line 95
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 97
+    .line 87
     return-void
 
-    .line 95
+    .line 94
     :catchall_0
     move-exception v1
 
+    .line 95
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 94
     throw v1
 .end method
 
@@ -123,9 +125,9 @@
     move-result-object v0
 
     .line 80
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.app.ISearchManagerCallback"
+    const-string/jumbo v1, "android.app.ISearchManagerCallback"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -145,14 +147,16 @@
     .line 84
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 86
+    .line 76
     return-void
 
-    .line 84
+    .line 83
     :catchall_0
     move-exception v1
 
+    .line 84
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 83
     throw v1
 .end method

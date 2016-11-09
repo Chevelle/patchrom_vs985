@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 114
+    .line 113
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 115
     iput-object p1, p0, Landroid/print/IPrintSpoolerCallbacks$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 116
+    .line 113
     return-void
 .end method
 
@@ -54,15 +54,15 @@
 
     .prologue
     .line 123
-    const-string v0, "android.print.IPrintSpoolerCallbacks"
+    const-string/jumbo v0, "android.print.IPrintSpoolerCallbacks"
 
     return-object v0
 .end method
 
 .method public onCancelPrintJobResult(ZI)V
     .locals 5
-    .parameter "canceled"
-    .parameter "sequence"
+    .param p1, "canceled"    # Z
+    .param p2, "sequence"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -78,9 +78,9 @@
     move-result-object v0
 
     .line 142
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.print.IPrintSpoolerCallbacks"
+    const-string/jumbo v2, "android.print.IPrintSpoolerCallbacks"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -109,7 +109,7 @@
     .line 148
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 150
+    .line 138
     return-void
 
     .line 143
@@ -118,19 +118,21 @@
 
     goto :goto_0
 
-    .line 148
+    .line 147
     :catchall_0
     move-exception v1
 
+    .line 148
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 147
     throw v1
 .end method
 
 .method public onGetPrintJobInfoResult(Landroid/print/PrintJobInfo;I)V
     .locals 5
-    .parameter "printJob"
-    .parameter "sequence"
+    .param p1, "printJob"    # Landroid/print/PrintJobInfo;
+    .param p2, "sequence"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -144,9 +146,9 @@
     move-result-object v0
 
     .line 181
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.print.IPrintSpoolerCallbacks"
+    const-string/jumbo v1, "android.print.IPrintSpoolerCallbacks"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -183,7 +185,7 @@
     .line 193
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 195
+    .line 177
     return-void
 
     .line 187
@@ -197,19 +199,20 @@
 
     goto :goto_0
 
-    .line 193
+    .line 192
     :catchall_0
     move-exception v1
 
+    .line 193
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 192
     throw v1
 .end method
 
 .method public onGetPrintJobInfosResult(Ljava/util/List;I)V
     .locals 5
-    .parameter
-    .parameter "sequence"
+    .param p2, "sequence"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -228,15 +231,15 @@
 
     .prologue
     .line 127
-    .local p1, printJob:Ljava/util/List;,"Ljava/util/List<Landroid/print/PrintJobInfo;>;"
+    .local p1, "printJob":Ljava/util/List;, "Ljava/util/List<Landroid/print/PrintJobInfo;>;"
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
     .line 129
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.print.IPrintSpoolerCallbacks"
+    const-string/jumbo v1, "android.print.IPrintSpoolerCallbacks"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -262,22 +265,24 @@
     .line 135
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 137
+    .line 125
     return-void
 
-    .line 135
+    .line 134
     :catchall_0
     move-exception v1
 
+    .line 135
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 134
     throw v1
 .end method
 
 .method public onSetPrintJobStateResult(ZI)V
     .locals 5
-    .parameter "success"
-    .parameter "sequence"
+    .param p1, "success"    # Z
+    .param p2, "sequence"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -293,9 +298,9 @@
     move-result-object v0
 
     .line 155
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.print.IPrintSpoolerCallbacks"
+    const-string/jumbo v2, "android.print.IPrintSpoolerCallbacks"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -324,7 +329,7 @@
     .line 161
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 163
+    .line 151
     return-void
 
     .line 156
@@ -333,19 +338,21 @@
 
     goto :goto_0
 
-    .line 161
+    .line 160
     :catchall_0
     move-exception v1
 
+    .line 161
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 160
     throw v1
 .end method
 
 .method public onSetPrintJobTagResult(ZI)V
     .locals 5
-    .parameter "success"
-    .parameter "sequence"
+    .param p1, "success"    # Z
+    .param p2, "sequence"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -361,9 +368,9 @@
     move-result-object v0
 
     .line 168
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.print.IPrintSpoolerCallbacks"
+    const-string/jumbo v2, "android.print.IPrintSpoolerCallbacks"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -392,7 +399,7 @@
     .line 174
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 176
+    .line 164
     return-void
 
     .line 169
@@ -401,11 +408,13 @@
 
     goto :goto_0
 
-    .line 174
+    .line 173
     :catchall_0
     move-exception v1
 
+    .line 174
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 173
     throw v1
 .end method

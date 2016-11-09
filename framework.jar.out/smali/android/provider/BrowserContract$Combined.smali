@@ -20,7 +20,7 @@
 
 
 # static fields
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
 
 .field public static final IS_BOOKMARK:Ljava/lang/String; = "bookmark"
 
@@ -33,7 +33,7 @@
     .line 676
     sget-object v0, Landroid/provider/BrowserContract;->AUTHORITY_URI:Landroid/net/Uri;
 
-    const-string v1, "combined"
+    const-string/jumbo v1, "combined"
 
     invoke-static {v0, v1}, Landroid/net/Uri;->withAppendedPath(Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;
 
@@ -41,6 +41,7 @@
 
     sput-object v0, Landroid/provider/BrowserContract$Combined;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 667
     return-void
 .end method
 

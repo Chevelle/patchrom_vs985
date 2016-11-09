@@ -22,18 +22,16 @@
     .locals 0
 
     .prologue
-    .line 1705
+    .line 1883
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/app/Instrumentation$1;)V
+.method synthetic constructor <init>(Landroid/app/Instrumentation$EmptyRunnable;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 1705
     invoke-direct {p0}, Landroid/app/Instrumentation$EmptyRunnable;-><init>()V
 
     return-void
@@ -45,6 +43,6 @@
     .locals 0
 
     .prologue
-    .line 1707
+    .line 1884
     return-void
 .end method

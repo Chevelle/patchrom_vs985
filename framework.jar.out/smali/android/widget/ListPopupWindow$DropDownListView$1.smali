@@ -26,10 +26,10 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "x0"
+    .param p1, "$anonymous0"    # Ljava/lang/String;
 
     .prologue
-    .line 1384
+    .line 1506
     invoke-direct {p0, p1}, Landroid/util/IntProperty;-><init>(Ljava/lang/String;)V
 
     return-void
@@ -39,10 +39,10 @@
 # virtual methods
 .method public get(Landroid/graphics/drawable/Drawable;)Ljava/lang/Integer;
     .locals 1
-    .parameter "object"
+    .param p1, "object"    # Landroid/graphics/drawable/Drawable;
 
     .prologue
-    .line 1392
+    .line 1514
     invoke-virtual {p1}, Landroid/graphics/drawable/Drawable;->getAlpha()I
 
     move-result v0
@@ -56,13 +56,13 @@
 
 .method public bridge synthetic get(Ljava/lang/Object;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "object"    # Ljava/lang/Object;
 
     .prologue
-    .line 1384
+    .line 1513
     check-cast p1, Landroid/graphics/drawable/Drawable;
 
-    .end local p1
+    .end local p1    # "object":Ljava/lang/Object;
     invoke-virtual {p0, p1}, Landroid/widget/ListPopupWindow$DropDownListView$1;->get(Landroid/graphics/drawable/Drawable;)Ljava/lang/Integer;
 
     move-result-object v0
@@ -72,27 +72,27 @@
 
 .method public setValue(Landroid/graphics/drawable/Drawable;I)V
     .locals 0
-    .parameter "object"
-    .parameter "value"
+    .param p1, "object"    # Landroid/graphics/drawable/Drawable;
+    .param p2, "value"    # I
 
     .prologue
-    .line 1387
+    .line 1509
     invoke-virtual {p1, p2}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 1388
+    .line 1508
     return-void
 .end method
 
 .method public bridge synthetic setValue(Ljava/lang/Object;I)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "object"    # Ljava/lang/Object;
+    .param p2, "value"    # I
 
     .prologue
-    .line 1384
+    .line 1508
     check-cast p1, Landroid/graphics/drawable/Drawable;
 
-    .end local p1
+    .end local p1    # "object":Ljava/lang/Object;
     invoke-virtual {p0, p1, p2}, Landroid/widget/ListPopupWindow$DropDownListView$1;->setValue(Landroid/graphics/drawable/Drawable;I)V
 
     return-void

@@ -1,11 +1,11 @@
 .class Landroid/accounts/AccountManager$1;
-.super Landroid/accounts/AccountManager$Future2Task;
+.super Landroid/content/BroadcastReceiver;
 .source "AccountManager.java"
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/accounts/AccountManager;->getAuthTokenLabel(Ljava/lang/String;Ljava/lang/String;Landroid/accounts/AccountManagerCallback;Landroid/os/Handler;)Landroid/accounts/AccountManagerFuture;
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroid/accounts/AccountManager;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -13,131 +13,117 @@
     name = null
 .end annotation
 
-.annotation system Ldalvik/annotation/Signature;
-    value = {
-        "Landroid/accounts/AccountManager$Future2Task",
-        "<",
-        "Ljava/lang/String;",
-        ">;"
-    }
-.end annotation
-
 
 # instance fields
 .field final synthetic this$0:Landroid/accounts/AccountManager;
 
-.field final synthetic val$accountType:Ljava/lang/String;
-
-.field final synthetic val$authTokenType:Ljava/lang/String;
-
 
 # direct methods
-.method constructor <init>(Landroid/accounts/AccountManager;Landroid/os/Handler;Landroid/accounts/AccountManagerCallback;Ljava/lang/String;Ljava/lang/String;)V
+.method constructor <init>(Landroid/accounts/AccountManager;)V
     .locals 0
-    .parameter
-    .parameter "x0"
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/accounts/AccountManager;
 
     .prologue
-    .line 488
-    .local p3, x1:Landroid/accounts/AccountManagerCallback;,"Landroid/accounts/AccountManagerCallback<Ljava/lang/String;>;"
+    .line 2489
     iput-object p1, p0, Landroid/accounts/AccountManager$1;->this$0:Landroid/accounts/AccountManager;
 
-    iput-object p4, p0, Landroid/accounts/AccountManager$1;->val$accountType:Ljava/lang/String;
-
-    iput-object p5, p0, Landroid/accounts/AccountManager$1;->val$authTokenType:Ljava/lang/String;
-
-    invoke-direct {p0, p1, p2, p3}, Landroid/accounts/AccountManager$Future2Task;-><init>(Landroid/accounts/AccountManager;Landroid/os/Handler;Landroid/accounts/AccountManagerCallback;)V
+    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public bridge synthetic bundleToResult(Landroid/os/Bundle;)Ljava/lang/Object;
-    .locals 1
-    .parameter "x0"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/accounts/AuthenticatorException;
-        }
-    .end annotation
+.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+    .locals 7
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 488
-    invoke-virtual {p0, p1}, Landroid/accounts/AccountManager$1;->bundleToResult(Landroid/os/Bundle;)Ljava/lang/String;
+    .line 2491
+    iget-object v3, p0, Landroid/accounts/AccountManager$1;->this$0:Landroid/accounts/AccountManager;
+
+    invoke-virtual {v3}, Landroid/accounts/AccountManager;->getAccounts()[Landroid/accounts/Account;
 
     move-result-object v0
 
-    return-object v0
-.end method
+    .line 2493
+    .local v0, "accounts":[Landroid/accounts/Account;
+    iget-object v3, p0, Landroid/accounts/AccountManager$1;->this$0:Landroid/accounts/AccountManager;
 
-.method public bundleToResult(Landroid/os/Bundle;)Ljava/lang/String;
-    .locals 2
-    .parameter "bundle"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/accounts/AuthenticatorException;
-        }
-    .end annotation
+    invoke-static {v3}, Landroid/accounts/AccountManager;->-get0(Landroid/accounts/AccountManager;)Ljava/util/HashMap;
 
-    .prologue
-    .line 495
-    const-string v0, "authTokenLabelKey"
+    move-result-object v5
 
-    invoke-virtual {p1, v0}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
+    monitor-enter v5
 
-    move-result v0
+    .line 2495
+    :try_start_0
+    iget-object v3, p0, Landroid/accounts/AccountManager$1;->this$0:Landroid/accounts/AccountManager;
 
-    if-nez v0, :cond_0
+    invoke-static {v3}, Landroid/accounts/AccountManager;->-get0(Landroid/accounts/AccountManager;)Ljava/util/HashMap;
 
-    .line 496
-    new-instance v0, Landroid/accounts/AuthenticatorException;
+    move-result-object v3
 
-    const-string/jumbo v1, "no result in response"
+    invoke-virtual {v3}, Ljava/util/HashMap;->entrySet()Ljava/util/Set;
 
-    invoke-direct {v0, v1}, Landroid/accounts/AuthenticatorException;-><init>(Ljava/lang/String;)V
+    move-result-object v3
 
-    throw v0
+    .line 2494
+    invoke-interface {v3}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
-    .line 498
+    move-result-object v2
+
+    .local v2, "entry$iterator":Ljava/util/Iterator;
+    :goto_0
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/util/Map$Entry;
+
+    .line 2496
+    .local v1, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Landroid/accounts/OnAccountsUpdateListener;Landroid/os/Handler;>;"
+    iget-object v6, p0, Landroid/accounts/AccountManager$1;->this$0:Landroid/accounts/AccountManager;
+
+    invoke-interface {v1}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Landroid/os/Handler;
+
+    invoke-interface {v1}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Landroid/accounts/OnAccountsUpdateListener;
+
+    invoke-static {v6, v3, v4, v0}, Landroid/accounts/AccountManager;->-wrap3(Landroid/accounts/AccountManager;Landroid/os/Handler;Landroid/accounts/OnAccountsUpdateListener;[Landroid/accounts/Account;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    goto :goto_0
+
+    .line 2493
+    .end local v1    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Landroid/accounts/OnAccountsUpdateListener;Landroid/os/Handler;>;"
+    .end local v2    # "entry$iterator":Ljava/util/Iterator;
+    :catchall_0
+    move-exception v3
+
+    monitor-exit v5
+
+    throw v3
+
+    .restart local v2    # "entry$iterator":Ljava/util/Iterator;
     :cond_0
-    const-string v0, "authTokenLabelKey"
+    monitor-exit v5
 
-    invoke-virtual {p1, v0}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method public doWork()V
-    .locals 4
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-
-    .prologue
-    .line 490
-    iget-object v0, p0, Landroid/accounts/AccountManager$1;->this$0:Landroid/accounts/AccountManager;
-
-    #getter for: Landroid/accounts/AccountManager;->mService:Landroid/accounts/IAccountManager;
-    invoke-static {v0}, Landroid/accounts/AccountManager;->access$000(Landroid/accounts/AccountManager;)Landroid/accounts/IAccountManager;
-
-    move-result-object v0
-
-    iget-object v1, p0, Landroid/accounts/AccountManager$1;->mResponse:Landroid/accounts/IAccountManagerResponse;
-
-    iget-object v2, p0, Landroid/accounts/AccountManager$1;->val$accountType:Ljava/lang/String;
-
-    iget-object v3, p0, Landroid/accounts/AccountManager$1;->val$authTokenType:Ljava/lang/String;
-
-    invoke-interface {v0, v1, v2, v3}, Landroid/accounts/IAccountManager;->getAuthTokenLabel(Landroid/accounts/IAccountManagerResponse;Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 491
+    .line 2490
     return-void
 .end method

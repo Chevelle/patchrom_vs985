@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 492
+    .line 601
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,25 +42,25 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/app/IActivityManager$WaitResult;
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 495
+    .line 604
     new-instance v0, Landroid/app/IActivityManager$WaitResult;
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p1, v1}, Landroid/app/IActivityManager$WaitResult;-><init>(Landroid/os/Parcel;Landroid/app/IActivityManager$1;)V
+    invoke-direct {v0, p1, v1}, Landroid/app/IActivityManager$WaitResult;-><init>(Landroid/os/Parcel;Landroid/app/IActivityManager$WaitResult;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 492
+    .line 603
     invoke-virtual {p0, p1}, Landroid/app/IActivityManager$WaitResult$1;->createFromParcel(Landroid/os/Parcel;)Landroid/app/IActivityManager$WaitResult;
 
     move-result-object v0
@@ -70,10 +70,10 @@
 
 .method public newArray(I)[Landroid/app/IActivityManager$WaitResult;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 500
+    .line 609
     new-array v0, p1, [Landroid/app/IActivityManager$WaitResult;
 
     return-object v0
@@ -81,10 +81,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 492
+    .line 608
     invoke-virtual {p0, p1}, Landroid/app/IActivityManager$WaitResult$1;->newArray(I)[Landroid/app/IActivityManager$WaitResult;
 
     move-result-object v0

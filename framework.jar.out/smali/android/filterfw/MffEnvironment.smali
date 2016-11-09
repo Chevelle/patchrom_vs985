@@ -10,7 +10,7 @@
 # direct methods
 .method protected constructor <init>(Landroid/filterfw/core/FrameManager;)V
     .locals 1
-    .parameter "frameManager"
+    .param p1, "frameManager"    # Landroid/filterfw/core/FrameManager;
 
     .prologue
     .line 43
@@ -22,11 +22,11 @@
     .line 46
     new-instance p1, Landroid/filterfw/core/CachedFrameManager;
 
-    .end local p1
+    .end local p1    # "frameManager":Landroid/filterfw/core/FrameManager;
     invoke-direct {p1}, Landroid/filterfw/core/CachedFrameManager;-><init>()V
 
     .line 50
-    .restart local p1
+    .restart local p1    # "frameManager":Landroid/filterfw/core/FrameManager;
     :cond_0
     new-instance v0, Landroid/filterfw/core/FilterContext;
 
@@ -39,7 +39,7 @@
 
     invoke-virtual {v0, p1}, Landroid/filterfw/core/FilterContext;->setFrameManager(Landroid/filterfw/core/FrameManager;)V
 
-    .line 53
+    .line 43
     return-void
 .end method
 
@@ -57,7 +57,7 @@
     move-result-object v0
 
     .line 86
-    .local v0, glEnv:Landroid/filterfw/core/GLEnvironment;
+    .local v0, "glEnv":Landroid/filterfw/core/GLEnvironment;
     if-eqz v0, :cond_0
 
     .line 87
@@ -69,14 +69,14 @@
 
     invoke-virtual {v1}, Landroid/filterfw/core/GLEnvironment;->activate()V
 
-    .line 91
+    .line 84
     return-void
 
     .line 89
     :cond_0
     new-instance v1, Ljava/lang/NullPointerException;
 
-    const-string v2, "No GLEnvironment in place to activate!"
+    const-string/jumbo v2, "No GLEnvironment in place to activate!"
 
     invoke-direct {v1, v2}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
@@ -93,13 +93,13 @@
     invoke-direct {v0}, Landroid/filterfw/core/GLEnvironment;-><init>()V
 
     .line 75
-    .local v0, glEnvironment:Landroid/filterfw/core/GLEnvironment;
+    .local v0, "glEnvironment":Landroid/filterfw/core/GLEnvironment;
     invoke-virtual {v0}, Landroid/filterfw/core/GLEnvironment;->initWithNewContext()V
 
     .line 76
     invoke-virtual {p0, v0}, Landroid/filterfw/MffEnvironment;->setGLEnvironment(Landroid/filterfw/core/GLEnvironment;)V
 
-    .line 77
+    .line 73
     return-void
 .end method
 
@@ -115,7 +115,7 @@
     move-result-object v0
 
     .line 100
-    .local v0, glEnv:Landroid/filterfw/core/GLEnvironment;
+    .local v0, "glEnv":Landroid/filterfw/core/GLEnvironment;
     if-eqz v0, :cond_0
 
     .line 101
@@ -127,14 +127,14 @@
 
     invoke-virtual {v1}, Landroid/filterfw/core/GLEnvironment;->deactivate()V
 
-    .line 105
+    .line 98
     return-void
 
     .line 103
     :cond_0
     new-instance v1, Ljava/lang/NullPointerException;
 
-    const-string v2, "No GLEnvironment in place to deactivate!"
+    const-string/jumbo v2, "No GLEnvironment in place to deactivate!"
 
     invoke-direct {v1, v2}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
@@ -153,7 +153,7 @@
 
 .method public setGLEnvironment(Landroid/filterfw/core/GLEnvironment;)V
     .locals 1
-    .parameter "glEnvironment"
+    .param p1, "glEnvironment"    # Landroid/filterfw/core/GLEnvironment;
 
     .prologue
     .line 67
@@ -161,6 +161,6 @@
 
     invoke-virtual {v0, p1}, Landroid/filterfw/core/FilterContext;->initGLEnvironment(Landroid/filterfw/core/GLEnvironment;)V
 
-    .line 68
+    .line 66
     return-void
 .end method

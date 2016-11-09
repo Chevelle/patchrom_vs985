@@ -6,22 +6,22 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/provider/BrowserContract$Settings;,
-        Landroid/provider/BrowserContract$Combined;,
-        Landroid/provider/BrowserContract$ImageMappings;,
-        Landroid/provider/BrowserContract$Images;,
-        Landroid/provider/BrowserContract$SyncState;,
-        Landroid/provider/BrowserContract$Searches;,
-        Landroid/provider/BrowserContract$History;,
-        Landroid/provider/BrowserContract$Accounts;,
-        Landroid/provider/BrowserContract$Bookmarks;,
-        Landroid/provider/BrowserContract$ImageMappingColumns;,
-        Landroid/provider/BrowserContract$HistoryColumns;,
-        Landroid/provider/BrowserContract$ImageColumns;,
-        Landroid/provider/BrowserContract$CommonColumns;,
-        Landroid/provider/BrowserContract$SyncColumns;,
+        Landroid/provider/BrowserContract$BaseSyncColumns;,
         Landroid/provider/BrowserContract$ChromeSyncColumns;,
-        Landroid/provider/BrowserContract$BaseSyncColumns;
+        Landroid/provider/BrowserContract$SyncColumns;,
+        Landroid/provider/BrowserContract$CommonColumns;,
+        Landroid/provider/BrowserContract$ImageColumns;,
+        Landroid/provider/BrowserContract$HistoryColumns;,
+        Landroid/provider/BrowserContract$ImageMappingColumns;,
+        Landroid/provider/BrowserContract$Bookmarks;,
+        Landroid/provider/BrowserContract$Accounts;,
+        Landroid/provider/BrowserContract$History;,
+        Landroid/provider/BrowserContract$Searches;,
+        Landroid/provider/BrowserContract$SyncState;,
+        Landroid/provider/BrowserContract$Images;,
+        Landroid/provider/BrowserContract$ImageMappings;,
+        Landroid/provider/BrowserContract$Combined;,
+        Landroid/provider/BrowserContract$Settings;
     }
 .end annotation
 
@@ -29,7 +29,7 @@
 # static fields
 .field public static final AUTHORITY:Ljava/lang/String; = "com.android.browser"
 
-.field public static final AUTHORITY_URI:Landroid/net/Uri; = null
+.field public static final AUTHORITY_URI:Landroid/net/Uri;
 
 .field public static final CALLER_IS_SYNCADAPTER:Ljava/lang/String; = "caller_is_syncadapter"
 
@@ -42,7 +42,7 @@
 
     .prologue
     .line 49
-    const-string v0, "content://com.android.browser"
+    const-string/jumbo v0, "content://com.android.browser"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
@@ -50,6 +50,7 @@
 
     sput-object v0, Landroid/provider/BrowserContract;->AUTHORITY_URI:Landroid/net/Uri;
 
+    .line 44
     return-void
 .end method
 
@@ -60,6 +61,5 @@
     .line 44
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 690
     return-void
 .end method

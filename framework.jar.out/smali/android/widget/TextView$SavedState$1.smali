@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 8915
+    .line 9870
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,25 +42,25 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/widget/TextView$SavedState;
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 8917
+    .line 9872
     new-instance v0, Landroid/widget/TextView$SavedState;
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p1, v1}, Landroid/widget/TextView$SavedState;-><init>(Landroid/os/Parcel;Landroid/widget/TextView$1;)V
+    invoke-direct {v0, p1, v1}, Landroid/widget/TextView$SavedState;-><init>(Landroid/os/Parcel;Landroid/widget/TextView$SavedState;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 8915
+    .line 9871
     invoke-virtual {p0, p1}, Landroid/widget/TextView$SavedState$1;->createFromParcel(Landroid/os/Parcel;)Landroid/widget/TextView$SavedState;
 
     move-result-object v0
@@ -70,10 +70,10 @@
 
 .method public newArray(I)[Landroid/widget/TextView$SavedState;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 8921
+    .line 9876
     new-array v0, p1, [Landroid/widget/TextView$SavedState;
 
     return-object v0
@@ -81,10 +81,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 8915
+    .line 9875
     invoke-virtual {p0, p1}, Landroid/widget/TextView$SavedState$1;->newArray(I)[Landroid/widget/TextView$SavedState;
 
     move-result-object v0

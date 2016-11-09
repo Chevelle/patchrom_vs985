@@ -1,9 +1,6 @@
 .class Landroid/widget/FastScroller$2;
-.super Ljava/lang/Object;
+.super Landroid/animation/AnimatorListenerAdapter;
 .source "FastScroller.java"
-
-# interfaces
-.implements Ljava/lang/Runnable;
 
 
 # annotations
@@ -24,31 +21,46 @@
 # direct methods
 .method constructor <init>(Landroid/widget/FastScroller;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/FastScroller;
 
     .prologue
-    .line 233
+    .line 240
     iput-object p1, p0, Landroid/widget/FastScroller$2;->this$0:Landroid/widget/FastScroller;
 
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Landroid/animation/AnimatorListenerAdapter;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public run()V
+.method public onAnimationEnd(Landroid/animation/Animator;)V
     .locals 2
+    .param p1, "animation"    # Landroid/animation/Animator;
 
     .prologue
-    .line 236
+    .line 243
+    iget-object v1, p0, Landroid/widget/FastScroller$2;->this$0:Landroid/widget/FastScroller;
+
     iget-object v0, p0, Landroid/widget/FastScroller$2;->this$0:Landroid/widget/FastScroller;
 
-    const/4 v1, 0x0
+    invoke-static {v0}, Landroid/widget/FastScroller;->-get0(Landroid/widget/FastScroller;)Z
 
-    #calls: Landroid/widget/FastScroller;->setState(I)V
-    invoke-static {v0, v1}, Landroid/widget/FastScroller;->access$600(Landroid/widget/FastScroller;I)V
+    move-result v0
 
-    .line 237
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x0
+
+    :goto_0
+    invoke-static {v1, v0}, Landroid/widget/FastScroller;->-set0(Landroid/widget/FastScroller;Z)Z
+
+    .line 242
     return-void
+
+    .line 243
+    :cond_0
+    const/4 v0, 0x1
+
+    goto :goto_0
 .end method

@@ -6,11 +6,11 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/app/ActionBar$LayoutParams;,
-        Landroid/app/ActionBar$TabListener;,
-        Landroid/app/ActionBar$Tab;,
+        Landroid/app/ActionBar$OnNavigationListener;,
         Landroid/app/ActionBar$OnMenuVisibilityListener;,
-        Landroid/app/ActionBar$OnNavigationListener;
+        Landroid/app/ActionBar$Tab;,
+        Landroid/app/ActionBar$TabListener;,
+        Landroid/app/ActionBar$LayoutParams;
     }
 .end annotation
 
@@ -40,10 +40,9 @@
     .locals 0
 
     .prologue
-    .line 59
+    .line 94
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1003
     return-void
 .end method
 
@@ -64,13 +63,52 @@
 .method public abstract addTab(Landroid/app/ActionBar$Tab;Z)V
 .end method
 
+.method public collapseActionView()Z
+    .locals 1
+
+    .prologue
+    .line 1066
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public dispatchMenuVisibilityChanged(Z)V
+    .locals 0
+    .param p1, "visible"    # Z
+
+    .prologue
+    .line 1036
+    return-void
+.end method
+
 .method public abstract getCustomView()Landroid/view/View;
 .end method
 
 .method public abstract getDisplayOptions()I
 .end method
 
+.method public getElevation()F
+    .locals 1
+
+    .prologue
+    .line 1020
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
 .method public abstract getHeight()I
+.end method
+
+.method public getHideOffset()I
+    .locals 1
+
+    .prologue
+    .line 977
+    const/4 v0, 0x0
+
+    return v0
 .end method
 
 .method public abstract getNavigationItemCount()I
@@ -98,7 +136,7 @@
     .locals 1
 
     .prologue
-    .line 686
+    .line 845
     const/4 v0, 0x0
 
     return-object v0
@@ -110,6 +148,26 @@
 .method public abstract hide()V
 .end method
 
+.method public invalidateOptionsMenu()Z
+    .locals 1
+
+    .prologue
+    .line 1051
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public isHideOnContentScrollEnabled()Z
+    .locals 1
+
+    .prologue
+    .line 964
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
 .method public abstract isShowing()Z
 .end method
 
@@ -117,13 +175,55 @@
     .locals 1
 
     .prologue
-    .line 695
+    .line 854
     const/4 v0, 0x0
 
     return v0
 .end method
 
 .method public abstract newTab()Landroid/app/ActionBar$Tab;
+.end method
+
+.method public onConfigurationChanged(Landroid/content/res/Configuration;)V
+    .locals 0
+    .param p1, "config"    # Landroid/content/res/Configuration;
+
+    .prologue
+    .line 1032
+    return-void
+.end method
+
+.method public onKeyShortcut(ILandroid/view/KeyEvent;)Z
+    .locals 1
+    .param p1, "keyCode"    # I
+    .param p2, "event"    # Landroid/view/KeyEvent;
+
+    .prologue
+    .line 1061
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public onMenuKeyEvent(Landroid/view/KeyEvent;)Z
+    .locals 1
+    .param p1, "event"    # Landroid/view/KeyEvent;
+
+    .prologue
+    .line 1056
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public openOptionsMenu()Z
+    .locals 1
+
+    .prologue
+    .line 1046
+    const/4 v0, 0x0
+
+    return v0
 .end method
 
 .method public abstract removeAllTabs()V
@@ -153,6 +253,15 @@
 .method public abstract setCustomView(Landroid/view/View;Landroid/app/ActionBar$LayoutParams;)V
 .end method
 
+.method public setDefaultDisplayHomeAsUpEnabled(Z)V
+    .locals 0
+    .param p1, "enabled"    # Z
+
+    .prologue
+    .line 1024
+    return-void
+.end method
+
 .method public abstract setDisplayHomeAsUpEnabled(Z)V
 .end method
 
@@ -174,48 +283,118 @@
 .method public abstract setDisplayUseLogoEnabled(Z)V
 .end method
 
-.method public setHomeActionContentDescription(I)V
-    .locals 0
-    .parameter "resId"
+.method public setElevation(F)V
+    .locals 2
+    .param p1, "elevation"    # F
 
     .prologue
-    .line 775
+    .line 1005
+    const/4 v0, 0x0
+
+    cmpl-float v0, p1, v0
+
+    if-eqz v0, :cond_0
+
+    .line 1006
+    new-instance v0, Ljava/lang/UnsupportedOperationException;
+
+    const-string/jumbo v1, "Setting a non-zero elevation is not supported in this action bar configuration."
+
+    invoke-direct {v0, v1}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 1004
+    :cond_0
+    return-void
+.end method
+
+.method public setHideOffset(I)V
+    .locals 2
+    .param p1, "offset"    # I
+
+    .prologue
+    .line 990
+    if-eqz p1, :cond_0
+
+    .line 991
+    new-instance v0, Ljava/lang/UnsupportedOperationException;
+
+    const-string/jumbo v1, "Setting an explicit action bar hide offset is not supported in this action bar configuration."
+
+    invoke-direct {v0, v1}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 989
+    :cond_0
+    return-void
+.end method
+
+.method public setHideOnContentScrollEnabled(Z)V
+    .locals 2
+    .param p1, "hideOnContentScroll"    # Z
+
+    .prologue
+    .line 950
+    if-eqz p1, :cond_0
+
+    .line 951
+    new-instance v0, Ljava/lang/UnsupportedOperationException;
+
+    const-string/jumbo v1, "Hide on content scroll is not supported in this action bar configuration."
+
+    invoke-direct {v0, v1}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 949
+    :cond_0
+    return-void
+.end method
+
+.method public setHomeActionContentDescription(I)V
+    .locals 0
+    .param p1, "resId"    # I
+
+    .prologue
+    .line 934
     return-void
 .end method
 
 .method public setHomeActionContentDescription(Ljava/lang/CharSequence;)V
     .locals 0
-    .parameter "description"
+    .param p1, "description"    # Ljava/lang/CharSequence;
 
     .prologue
-    .line 755
+    .line 914
     return-void
 .end method
 
 .method public setHomeAsUpIndicator(I)V
     .locals 0
-    .parameter "resId"
+    .param p1, "resId"    # I
 
     .prologue
-    .line 736
+    .line 895
     return-void
 .end method
 
 .method public setHomeAsUpIndicator(Landroid/graphics/drawable/Drawable;)V
     .locals 0
-    .parameter "indicator"
+    .param p1, "indicator"    # Landroid/graphics/drawable/Drawable;
 
     .prologue
-    .line 715
+    .line 874
     return-void
 .end method
 
 .method public setHomeButtonEnabled(Z)V
     .locals 0
-    .parameter "enabled"
+    .param p1, "enabled"    # Z
 
     .prologue
-    .line 675
+    .line 834
     return-void
 .end method
 
@@ -240,21 +419,30 @@
 .method public abstract setSelectedNavigationItem(I)V
 .end method
 
-.method public setSplitBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
+.method public setShowHideAnimationEnabled(Z)V
     .locals 0
-    .parameter "d"
+    .param p1, "enabled"    # Z
 
     .prologue
-    .line 452
+    .line 1028
+    return-void
+.end method
+
+.method public setSplitBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
+    .locals 0
+    .param p1, "d"    # Landroid/graphics/drawable/Drawable;
+
+    .prologue
+    .line 540
     return-void
 .end method
 
 .method public setStackedBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
     .locals 0
-    .parameter "d"
+    .param p1, "d"    # Landroid/graphics/drawable/Drawable;
 
     .prologue
-    .line 442
+    .line 530
     return-void
 .end method
 
@@ -270,5 +458,25 @@
 .method public abstract setTitle(Ljava/lang/CharSequence;)V
 .end method
 
+.method public setWindowTitle(Ljava/lang/CharSequence;)V
+    .locals 0
+    .param p1, "title"    # Ljava/lang/CharSequence;
+
+    .prologue
+    .line 1070
+    return-void
+.end method
+
 .method public abstract show()V
+.end method
+
+.method public startActionMode(Landroid/view/ActionMode$Callback;)Landroid/view/ActionMode;
+    .locals 1
+    .param p1, "callback"    # Landroid/view/ActionMode$Callback;
+
+    .prologue
+    .line 1041
+    const/4 v0, 0x0
+
+    return-object v0
 .end method

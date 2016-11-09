@@ -21,11 +21,10 @@
 # direct methods
 .method constructor <init>(Landroid/content/pm/RegisteredServicesCache;)V
     .locals 0
-    .parameter
 
     .prologue
-    .line 143
-    .local p0, this:Landroid/content/pm/RegisteredServicesCache$1;,"Landroid/content/pm/RegisteredServicesCache.1;"
+    .line 202
+    .local p1, "this$0":Landroid/content/pm/RegisteredServicesCache;, "Landroid/content/pm/RegisteredServicesCache<TV;>;"
     iput-object p1, p0, Landroid/content/pm/RegisteredServicesCache$1;->this$0:Landroid/content/pm/RegisteredServicesCache;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -37,35 +36,33 @@
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
     .locals 3
-    .parameter "context"
-    .parameter "intent"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .local p0, this:Landroid/content/pm/RegisteredServicesCache$1;,"Landroid/content/pm/RegisteredServicesCache.1;"
     const/4 v2, -0x1
 
-    .line 146
-    const-string v1, "android.intent.extra.UID"
+    .line 205
+    const-string/jumbo v1, "android.intent.extra.UID"
 
     invoke-virtual {p2, v1, v2}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
 
     move-result v0
 
-    .line 147
-    .local v0, uid:I
+    .line 206
+    .local v0, "uid":I
     if-eq v0, v2, :cond_0
 
-    .line 148
+    .line 207
     iget-object v1, p0, Landroid/content/pm/RegisteredServicesCache$1;->this$0:Landroid/content/pm/RegisteredServicesCache;
 
     invoke-static {v0}, Landroid/os/UserHandle;->getUserId(I)I
 
     move-result v2
 
-    #calls: Landroid/content/pm/RegisteredServicesCache;->generateServicesMap(I)V
-    invoke-static {v1, v2}, Landroid/content/pm/RegisteredServicesCache;->access$100(Landroid/content/pm/RegisteredServicesCache;I)V
+    invoke-static {v1, p2, v2}, Landroid/content/pm/RegisteredServicesCache;->-wrap0(Landroid/content/pm/RegisteredServicesCache;Landroid/content/Intent;I)V
 
-    .line 150
+    .line 204
     :cond_0
     return-void
 .end method

@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/telephony/CellIdentityLte$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -40,13 +48,15 @@
     .locals 1
 
     .prologue
-    .line 185
+    .line 186
     new-instance v0, Landroid/telephony/CellIdentityLte$1;
 
     invoke-direct {v0}, Landroid/telephony/CellIdentityLte$1;-><init>()V
 
+    .line 185
     sput-object v0, Landroid/telephony/CellIdentityLte;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 28
     return-void
 .end method
 
@@ -56,62 +66,62 @@
     .prologue
     const v0, 0x7fffffff
 
-    .line 45
+    .line 47
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 46
+    .line 48
     iput v0, p0, Landroid/telephony/CellIdentityLte;->mMcc:I
 
-    .line 47
+    .line 49
     iput v0, p0, Landroid/telephony/CellIdentityLte;->mMnc:I
 
-    .line 48
+    .line 50
     iput v0, p0, Landroid/telephony/CellIdentityLte;->mCi:I
 
-    .line 49
+    .line 51
     iput v0, p0, Landroid/telephony/CellIdentityLte;->mPci:I
 
-    .line 50
+    .line 52
     iput v0, p0, Landroid/telephony/CellIdentityLte;->mTac:I
 
-    .line 51
+    .line 47
     return-void
 .end method
 
 .method public constructor <init>(IIIII)V
     .locals 0
-    .parameter "mcc"
-    .parameter "mnc"
-    .parameter "ci"
-    .parameter "pci"
-    .parameter "tac"
+    .param p1, "mcc"    # I
+    .param p2, "mnc"    # I
+    .param p3, "ci"    # I
+    .param p4, "pci"    # I
+    .param p5, "tac"    # I
 
     .prologue
-    .line 63
+    .line 65
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 64
+    .line 66
     iput p1, p0, Landroid/telephony/CellIdentityLte;->mMcc:I
 
-    .line 65
+    .line 67
     iput p2, p0, Landroid/telephony/CellIdentityLte;->mMnc:I
 
-    .line 66
+    .line 68
     iput p3, p0, Landroid/telephony/CellIdentityLte;->mCi:I
 
-    .line 67
+    .line 69
     iput p4, p0, Landroid/telephony/CellIdentityLte;->mPci:I
 
-    .line 68
+    .line 70
     iput p5, p0, Landroid/telephony/CellIdentityLte;->mTac:I
 
-    .line 69
+    .line 65
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 174
@@ -152,17 +162,15 @@
 
     iput v0, p0, Landroid/telephony/CellIdentityLte;->mTac:I
 
-    .line 181
+    .line 174
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/telephony/CellIdentityLte$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/telephony/CellIdentityLte;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 26
     invoke-direct {p0, p1}, Landroid/telephony/CellIdentityLte;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -170,52 +178,52 @@
 
 .method private constructor <init>(Landroid/telephony/CellIdentityLte;)V
     .locals 1
-    .parameter "cid"
+    .param p1, "cid"    # Landroid/telephony/CellIdentityLte;
 
     .prologue
-    .line 71
+    .line 73
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 72
+    .line 74
     iget v0, p1, Landroid/telephony/CellIdentityLte;->mMcc:I
 
     iput v0, p0, Landroid/telephony/CellIdentityLte;->mMcc:I
 
-    .line 73
+    .line 75
     iget v0, p1, Landroid/telephony/CellIdentityLte;->mMnc:I
 
     iput v0, p0, Landroid/telephony/CellIdentityLte;->mMnc:I
 
-    .line 74
+    .line 76
     iget v0, p1, Landroid/telephony/CellIdentityLte;->mCi:I
 
     iput v0, p0, Landroid/telephony/CellIdentityLte;->mCi:I
 
-    .line 75
+    .line 77
     iget v0, p1, Landroid/telephony/CellIdentityLte;->mPci:I
 
     iput v0, p0, Landroid/telephony/CellIdentityLte;->mPci:I
 
-    .line 76
+    .line 78
     iget v0, p1, Landroid/telephony/CellIdentityLte;->mTac:I
 
     iput v0, p0, Landroid/telephony/CellIdentityLte;->mTac:I
 
-    .line 77
+    .line 73
     return-void
 .end method
 
 .method private static log(Ljava/lang/String;)V
     .locals 1
-    .parameter "s"
+    .param p0, "s"    # Ljava/lang/String;
 
     .prologue
     .line 202
-    const-string v0, "CellIdentityLte"
+    const-string/jumbo v0, "CellIdentityLte"
 
     invoke-static {v0, p0}, Landroid/telephony/Rlog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 203
+    .line 201
     return-void
 .end method
 
@@ -225,7 +233,7 @@
     .locals 1
 
     .prologue
-    .line 80
+    .line 82
     new-instance v0, Landroid/telephony/CellIdentityLte;
 
     invoke-direct {v0, p0}, Landroid/telephony/CellIdentityLte;-><init>(Landroid/telephony/CellIdentityLte;)V
@@ -244,75 +252,85 @@
 .end method
 
 .method public equals(Ljava/lang/Object;)Z
-    .locals 6
-    .parameter "other"
+    .locals 5
+    .param p1, "other"    # Ljava/lang/Object;
 
     .prologue
-    const/4 v3, 0x0
+    const/4 v1, 0x1
+
+    const/4 v2, 0x0
 
     .line 127
-    invoke-super {p0, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    if-ne p0, p1, :cond_0
 
-    move-result v4
+    .line 128
+    return v1
 
-    if-eqz v4, :cond_0
+    .line 131
+    :cond_0
+    instance-of v3, p1, Landroid/telephony/CellIdentityLte;
 
-    .line 129
-    :try_start_0
+    if-nez v3, :cond_1
+
+    .line 132
+    return v2
+
+    :cond_1
     move-object v0, p1
 
+    .line 135
     check-cast v0, Landroid/telephony/CellIdentityLte;
 
-    move-object v2, v0
+    .line 136
+    .local v0, "o":Landroid/telephony/CellIdentityLte;
+    iget v3, p0, Landroid/telephony/CellIdentityLte;->mMcc:I
 
-    .line 130
-    .local v2, o:Landroid/telephony/CellIdentityLte;
-    iget v4, p0, Landroid/telephony/CellIdentityLte;->mMcc:I
+    iget v4, v0, Landroid/telephony/CellIdentityLte;->mMcc:I
 
-    iget v5, v2, Landroid/telephony/CellIdentityLte;->mMcc:I
+    if-ne v3, v4, :cond_3
 
-    if-ne v4, v5, :cond_0
+    .line 137
+    iget v3, p0, Landroid/telephony/CellIdentityLte;->mMnc:I
 
-    iget v4, p0, Landroid/telephony/CellIdentityLte;->mMnc:I
+    iget v4, v0, Landroid/telephony/CellIdentityLte;->mMnc:I
 
-    iget v5, v2, Landroid/telephony/CellIdentityLte;->mMnc:I
+    if-ne v3, v4, :cond_3
 
-    if-ne v4, v5, :cond_0
+    .line 138
+    iget v3, p0, Landroid/telephony/CellIdentityLte;->mCi:I
 
-    iget v4, p0, Landroid/telephony/CellIdentityLte;->mCi:I
+    iget v4, v0, Landroid/telephony/CellIdentityLte;->mCi:I
 
-    iget v5, v2, Landroid/telephony/CellIdentityLte;->mCi:I
-
-    if-ne v4, v5, :cond_0
-
-    iget v4, p0, Landroid/telephony/CellIdentityLte;->mPci:I
-
-    iget v5, v2, Landroid/telephony/CellIdentityLte;->mCi:I
-
-    if-ne v4, v5, :cond_0
-
-    iget v4, p0, Landroid/telephony/CellIdentityLte;->mTac:I
-
-    iget v5, v2, Landroid/telephony/CellIdentityLte;->mTac:I
-    :try_end_0
-    .catch Ljava/lang/ClassCastException; {:try_start_0 .. :try_end_0} :catch_0
-
-    if-ne v4, v5, :cond_0
-
-    const/4 v3, 0x1
+    if-ne v3, v4, :cond_3
 
     .line 139
-    .end local v2           #o:Landroid/telephony/CellIdentityLte;
-    :cond_0
-    :goto_0
-    return v3
+    iget v3, p0, Landroid/telephony/CellIdentityLte;->mPci:I
 
-    .line 135
-    :catch_0
-    move-exception v1
+    iget v4, v0, Landroid/telephony/CellIdentityLte;->mPci:I
+
+    if-ne v3, v4, :cond_3
+
+    .line 140
+    iget v3, p0, Landroid/telephony/CellIdentityLte;->mTac:I
+
+    iget v4, v0, Landroid/telephony/CellIdentityLte;->mTac:I
+
+    if-ne v3, v4, :cond_2
 
     .line 136
-    .local v1, e:Ljava/lang/ClassCastException;
+    :goto_0
+    return v1
+
+    :cond_2
+    move v1, v2
+
+    .line 140
+    goto :goto_0
+
+    :cond_3
+    move v1, v2
+
+    .line 136
     goto :goto_0
 .end method
 
@@ -320,7 +338,7 @@
     .locals 1
 
     .prologue
-    .line 101
+    .line 103
     iget v0, p0, Landroid/telephony/CellIdentityLte;->mCi:I
 
     return v0
@@ -330,7 +348,7 @@
     .locals 1
 
     .prologue
-    .line 87
+    .line 89
     iget v0, p0, Landroid/telephony/CellIdentityLte;->mMcc:I
 
     return v0
@@ -340,7 +358,7 @@
     .locals 1
 
     .prologue
-    .line 94
+    .line 96
     iget v0, p0, Landroid/telephony/CellIdentityLte;->mMnc:I
 
     return v0
@@ -350,7 +368,7 @@
     .locals 1
 
     .prologue
-    .line 108
+    .line 110
     iget v0, p0, Landroid/telephony/CellIdentityLte;->mPci:I
 
     return v0
@@ -360,7 +378,7 @@
     .locals 1
 
     .prologue
-    .line 115
+    .line 117
     iget v0, p0, Landroid/telephony/CellIdentityLte;->mTac:I
 
     return v0
@@ -370,40 +388,66 @@
     .locals 3
 
     .prologue
-    .line 120
-    const/16 v0, 0x1f
+    .line 122
+    const/4 v0, 0x5
 
-    .line 121
-    .local v0, primeNum:I
+    new-array v0, v0, [Ljava/lang/Object;
+
     iget v1, p0, Landroid/telephony/CellIdentityLte;->mMcc:I
 
-    mul-int/2addr v1, v0
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    iget v2, p0, Landroid/telephony/CellIdentityLte;->mMnc:I
+    move-result-object v1
 
-    mul-int/2addr v2, v0
+    const/4 v2, 0x0
 
-    add-int/2addr v1, v2
+    aput-object v1, v0, v2
 
-    iget v2, p0, Landroid/telephony/CellIdentityLte;->mCi:I
+    iget v1, p0, Landroid/telephony/CellIdentityLte;->mMnc:I
 
-    mul-int/2addr v2, v0
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    add-int/2addr v1, v2
+    move-result-object v1
 
-    iget v2, p0, Landroid/telephony/CellIdentityLte;->mPci:I
+    const/4 v2, 0x1
 
-    mul-int/2addr v2, v0
+    aput-object v1, v0, v2
 
-    add-int/2addr v1, v2
+    iget v1, p0, Landroid/telephony/CellIdentityLte;->mCi:I
 
-    iget v2, p0, Landroid/telephony/CellIdentityLte;->mTac:I
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    mul-int/2addr v2, v0
+    move-result-object v1
 
-    add-int/2addr v1, v2
+    const/4 v2, 0x2
 
-    return v1
+    aput-object v1, v0, v2
+
+    iget v1, p0, Landroid/telephony/CellIdentityLte;->mPci:I
+
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    const/4 v2, 0x3
+
+    aput-object v1, v0, v2
+
+    iget v1, p0, Landroid/telephony/CellIdentityLte;->mTac:I
+
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    const/4 v2, 0x4
+
+    aput-object v1, v0, v2
+
+    invoke-static {v0}, Ljava/util/Objects;->hash([Ljava/lang/Object;)I
+
+    move-result v0
+
+    return v0
 .end method
 
 .method public toString()Ljava/lang/String;
@@ -413,13 +457,13 @@
     .line 145
     new-instance v0, Ljava/lang/StringBuilder;
 
-    const-string v1, "CellIdentityLte:{"
+    const-string/jumbo v1, "CellIdentityLte:{"
 
     invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
     .line 146
-    .local v0, sb:Ljava/lang/StringBuilder;
-    const-string v1, " mMcc="
+    .local v0, "sb":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, " mMcc="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -428,7 +472,7 @@
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 147
-    const-string v1, " mMnc="
+    const-string/jumbo v1, " mMnc="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -437,7 +481,7 @@
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 148
-    const-string v1, " mCi="
+    const-string/jumbo v1, " mCi="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -446,7 +490,7 @@
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 149
-    const-string v1, " mPci="
+    const-string/jumbo v1, " mPci="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -455,7 +499,7 @@
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 150
-    const-string v1, " mTac="
+    const-string/jumbo v1, " mTac="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -478,8 +522,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 166
@@ -507,6 +551,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 171
+    .line 164
     return-void
 .end method

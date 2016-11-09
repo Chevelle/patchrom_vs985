@@ -22,7 +22,7 @@
     .locals 0
 
     .prologue
-    .line 101
+    .line 104
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -31,36 +31,38 @@
 
 # virtual methods
 .method public final acceptMatch(Ljava/lang/CharSequence;II)Z
-    .locals 3
-    .parameter "s"
-    .parameter "start"
-    .parameter "end"
+    .locals 4
+    .param p1, "s"    # Ljava/lang/CharSequence;
+    .param p2, "start"    # I
+    .param p3, "end"    # I
 
     .prologue
-    const/4 v0, 0x1
+    const/4 v3, 0x1
 
-    .line 103
-    if-nez p2, :cond_1
+    const/4 v2, 0x0
 
-    .line 111
-    :cond_0
-    :goto_0
-    return v0
+    .line 106
+    if-nez p2, :cond_0
 
     .line 107
+    return v3
+
+    .line 110
+    :cond_0
+    add-int/lit8 v0, p2, -0x1
+
+    invoke-interface {p1, v0}, Ljava/lang/CharSequence;->charAt(I)C
+
+    move-result v0
+
+    const/16 v1, 0x40
+
+    if-ne v0, v1, :cond_1
+
+    .line 111
+    return v2
+
+    .line 114
     :cond_1
-    add-int/lit8 v1, p2, -0x1
-
-    invoke-interface {p1, v1}, Ljava/lang/CharSequence;->charAt(I)C
-
-    move-result v1
-
-    const/16 v2, 0x40
-
-    if-ne v1, v2, :cond_0
-
-    .line 108
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v3
 .end method

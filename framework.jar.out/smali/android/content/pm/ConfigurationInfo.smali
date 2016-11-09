@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/content/pm/ConfigurationInfo$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -42,13 +50,15 @@
     .locals 1
 
     .prologue
-    .line 116
+    .line 117
     new-instance v0, Landroid/content/pm/ConfigurationInfo$1;
 
     invoke-direct {v0}, Landroid/content/pm/ConfigurationInfo$1;-><init>()V
 
+    .line 116
     sput-object v0, Landroid/content/pm/ConfigurationInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 27
     return-void
 .end method
 
@@ -64,13 +74,13 @@
 
     iput v0, p0, Landroid/content/pm/ConfigurationInfo;->reqInputFeatures:I
 
-    .line 84
+    .line 83
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/pm/ConfigurationInfo;)V
     .locals 1
-    .parameter "orig"
+    .param p1, "orig"    # Landroid/content/pm/ConfigurationInfo;
 
     .prologue
     .line 86
@@ -106,13 +116,13 @@
 
     iput v0, p0, Landroid/content/pm/ConfigurationInfo;->reqGlEsVersion:I
 
-    .line 92
+    .line 86
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 126
@@ -158,17 +168,15 @@
 
     iput v0, p0, Landroid/content/pm/ConfigurationInfo;->reqGlEsVersion:I
 
-    .line 132
+    .line 126
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/content/pm/ConfigurationInfo$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/content/pm/ConfigurationInfo;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 27
     invoke-direct {p0, p1}, Landroid/content/pm/ConfigurationInfo;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -193,14 +201,14 @@
     .line 141
     iget v2, p0, Landroid/content/pm/ConfigurationInfo;->reqGlEsVersion:I
 
-    const/high16 v3, -0x1
+    const/high16 v3, -0x10000
 
     and-int/2addr v2, v3
 
     shr-int/lit8 v0, v2, 0x10
 
     .line 142
-    .local v0, major:I
+    .local v0, "major":I
     iget v2, p0, Landroid/content/pm/ConfigurationInfo;->reqGlEsVersion:I
 
     const v3, 0xffff
@@ -208,7 +216,7 @@
     and-int v1, v2, v3
 
     .line 143
-    .local v1, minor:I
+    .local v1, "minor":I
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -221,7 +229,7 @@
 
     move-result-object v2
 
-    const-string v3, "."
+    const-string/jumbo v3, "."
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -251,12 +259,13 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "ConfigurationInfo{"
+    const-string/jumbo v1, "ConfigurationInfo{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 96
     invoke-static {p0}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     move-result v1
@@ -265,72 +274,95 @@
 
     move-result-object v1
 
+    .line 95
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " touchscreen = "
+    .line 97
+    const-string/jumbo v1, " touchscreen = "
 
+    .line 95
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 97
     iget v1, p0, Landroid/content/pm/ConfigurationInfo;->reqTouchScreen:I
 
+    .line 95
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " inputMethod = "
+    .line 98
+    const-string/jumbo v1, " inputMethod = "
 
+    .line 95
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 98
     iget v1, p0, Landroid/content/pm/ConfigurationInfo;->reqKeyboardType:I
 
+    .line 95
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " navigation = "
+    .line 99
+    const-string/jumbo v1, " navigation = "
 
+    .line 95
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 99
     iget v1, p0, Landroid/content/pm/ConfigurationInfo;->reqNavigation:I
 
+    .line 95
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " reqInputFeatures = "
+    .line 100
+    const-string/jumbo v1, " reqInputFeatures = "
 
+    .line 95
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 100
     iget v1, p0, Landroid/content/pm/ConfigurationInfo;->reqInputFeatures:I
 
+    .line 95
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " reqGlEsVersion = "
+    .line 101
+    const-string/jumbo v1, " reqGlEsVersion = "
 
+    .line 95
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 101
     iget v1, p0, Landroid/content/pm/ConfigurationInfo;->reqGlEsVersion:I
 
+    .line 95
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 101
     const-string/jumbo v1, "}"
 
+    .line 95
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -344,8 +376,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "parcelableFlags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "parcelableFlags"    # I
 
     .prologue
     .line 109
@@ -373,6 +405,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 114
+    .line 108
     return-void
 .end method

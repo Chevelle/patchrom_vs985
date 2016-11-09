@@ -9,7 +9,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x18
+    accessFlags = 0x1a
     name = "ResourceName"
 .end annotation
 
@@ -23,43 +23,43 @@
 # direct methods
 .method constructor <init>(Landroid/content/pm/ApplicationInfo;I)V
     .locals 1
-    .parameter "aInfo"
-    .parameter "_iconId"
+    .param p1, "aInfo"    # Landroid/content/pm/ApplicationInfo;
+    .param p2, "_iconId"    # I
 
     .prologue
-    .line 918
+    .line 1211
     iget-object v0, p1, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
 
     invoke-direct {p0, v0, p2}, Landroid/app/ApplicationPackageManager$ResourceName;-><init>(Ljava/lang/String;I)V
 
-    .line 919
+    .line 1210
     return-void
 .end method
 
 .method constructor <init>(Landroid/content/pm/ComponentInfo;I)V
     .locals 1
-    .parameter "cInfo"
-    .parameter "_iconId"
+    .param p1, "cInfo"    # Landroid/content/pm/ComponentInfo;
+    .param p2, "_iconId"    # I
 
     .prologue
-    .line 922
+    .line 1215
     iget-object v0, p1, Landroid/content/pm/ComponentInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
     iget-object v0, v0, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
 
     invoke-direct {p0, v0, p2}, Landroid/app/ApplicationPackageManager$ResourceName;-><init>(Ljava/lang/String;I)V
 
-    .line 923
+    .line 1214
     return-void
 .end method
 
 .method constructor <init>(Landroid/content/pm/ResolveInfo;I)V
     .locals 1
-    .parameter "rInfo"
-    .parameter "_iconId"
+    .param p1, "rInfo"    # Landroid/content/pm/ResolveInfo;
+    .param p2, "_iconId"    # I
 
     .prologue
-    .line 926
+    .line 1219
     iget-object v0, p1, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
     iget-object v0, v0, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
@@ -68,26 +68,26 @@
 
     invoke-direct {p0, v0, p2}, Landroid/app/ApplicationPackageManager$ResourceName;-><init>(Ljava/lang/String;I)V
 
-    .line 927
+    .line 1218
     return-void
 .end method
 
 .method constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter "_packageName"
-    .parameter "_iconId"
+    .param p1, "_packageName"    # Ljava/lang/String;
+    .param p2, "_iconId"    # I
 
     .prologue
-    .line 912
+    .line 1205
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 913
+    .line 1206
     iput-object p1, p0, Landroid/app/ApplicationPackageManager$ResourceName;->packageName:Ljava/lang/String;
 
-    .line 914
+    .line 1207
     iput p2, p0, Landroid/app/ApplicationPackageManager$ResourceName;->iconId:I
 
-    .line 915
+    .line 1205
     return-void
 .end method
 
@@ -95,26 +95,23 @@
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
     .locals 5
-    .parameter "o"
+    .param p1, "o"    # Ljava/lang/Object;
 
     .prologue
-    const/4 v1, 0x1
+    const/4 v2, 0x1
 
-    const/4 v2, 0x0
+    const/4 v1, 0x0
 
-    .line 931
-    if-ne p0, p1, :cond_1
+    .line 1224
+    if-ne p0, p1, :cond_0
 
-    .line 937
+    return v2
+
+    .line 1225
     :cond_0
-    :goto_0
-    return v1
+    if-eqz p1, :cond_1
 
-    .line 932
-    :cond_1
-    if-eqz p1, :cond_2
-
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-virtual {p0}, Landroid/app/ApplicationPackageManager$ResourceName;->getClass()Ljava/lang/Class;
 
     move-result-object v3
 
@@ -122,37 +119,34 @@
 
     move-result-object v4
 
-    if-eq v3, v4, :cond_3
+    if-eq v3, v4, :cond_2
+
+    :cond_1
+    return v1
 
     :cond_2
-    move v1, v2
-
-    goto :goto_0
-
-    :cond_3
     move-object v0, p1
 
-    .line 934
+    .line 1227
     check-cast v0, Landroid/app/ApplicationPackageManager$ResourceName;
 
-    .line 936
-    .local v0, that:Landroid/app/ApplicationPackageManager$ResourceName;
+    .line 1229
+    .local v0, "that":Landroid/app/ApplicationPackageManager$ResourceName;
     iget v3, p0, Landroid/app/ApplicationPackageManager$ResourceName;->iconId:I
 
     iget v4, v0, Landroid/app/ApplicationPackageManager$ResourceName;->iconId:I
 
-    if-eq v3, v4, :cond_4
+    if-eq v3, v4, :cond_3
 
-    move v1, v2
+    return v1
 
-    goto :goto_0
-
-    .line 937
-    :cond_4
+    .line 1230
+    :cond_3
     iget-object v3, p0, Landroid/app/ApplicationPackageManager$ResourceName;->packageName:Ljava/lang/String;
 
     if-eqz v3, :cond_6
 
+    .line 1231
     iget-object v3, p0, Landroid/app/ApplicationPackageManager$ResourceName;->packageName:Ljava/lang/String;
 
     iget-object v4, v0, Landroid/app/ApplicationPackageManager$ResourceName;->packageName:Ljava/lang/String;
@@ -161,17 +155,21 @@
 
     move-result v3
 
-    if-nez v3, :cond_0
+    if-eqz v3, :cond_5
 
-    :cond_5
+    :cond_4
     move v1, v2
 
-    goto :goto_0
+    .line 1230
+    :cond_5
+    :goto_0
+    return v1
 
+    .line 1231
     :cond_6
     iget-object v3, v0, Landroid/app/ApplicationPackageManager$ResourceName;->packageName:Ljava/lang/String;
 
-    if-nez v3, :cond_5
+    if-eqz v3, :cond_4
 
     goto :goto_0
 .end method
@@ -180,22 +178,22 @@
     .locals 3
 
     .prologue
-    .line 945
+    .line 1238
     iget-object v1, p0, Landroid/app/ApplicationPackageManager$ResourceName;->packageName:Ljava/lang/String;
 
     invoke-virtual {v1}, Ljava/lang/String;->hashCode()I
 
     move-result v0
 
-    .line 946
-    .local v0, result:I
+    .line 1239
+    .local v0, "result":I
     mul-int/lit8 v1, v0, 0x1f
 
     iget v2, p0, Landroid/app/ApplicationPackageManager$ResourceName;->iconId:I
 
     add-int v0, v1, v2
 
-    .line 947
+    .line 1240
     return v0
 .end method
 
@@ -203,7 +201,7 @@
     .locals 2
 
     .prologue
-    .line 952
+    .line 1245
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -220,7 +218,7 @@
 
     move-result-object v0
 
-    const-string v1, " / "
+    const-string/jumbo v1, " / "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

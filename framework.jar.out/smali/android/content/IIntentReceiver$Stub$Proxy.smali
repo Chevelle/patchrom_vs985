@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 89
+    .line 88
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 90
     iput-object p1, p0, Landroid/content/IIntentReceiver$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 91
+    .line 88
     return-void
 .end method
 
@@ -54,20 +54,20 @@
 
     .prologue
     .line 98
-    const-string v0, "android.content.IIntentReceiver"
+    const-string/jumbo v0, "android.content.IIntentReceiver"
 
     return-object v0
 .end method
 
 .method public performReceive(Landroid/content/Intent;ILjava/lang/String;Landroid/os/Bundle;ZZI)V
     .locals 5
-    .parameter "intent"
-    .parameter "resultCode"
-    .parameter "data"
-    .parameter "extras"
-    .parameter "ordered"
-    .parameter "sticky"
-    .parameter "sendingUser"
+    .param p1, "intent"    # Landroid/content/Intent;
+    .param p2, "resultCode"    # I
+    .param p3, "data"    # Ljava/lang/String;
+    .param p4, "extras"    # Landroid/os/Bundle;
+    .param p5, "ordered"    # Z
+    .param p6, "sticky"    # Z
+    .param p7, "sendingUser"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -85,9 +85,9 @@
     move-result-object v0
 
     .line 104
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.content.IIntentReceiver"
+    const-string/jumbo v3, "android.content.IIntentReceiver"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -158,7 +158,7 @@
     .line 127
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 129
+    .line 100
     return-void
 
     .line 110
@@ -172,12 +172,14 @@
 
     goto :goto_0
 
-    .line 127
+    .line 126
     :catchall_0
     move-exception v1
 
+    .line 127
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 126
     throw v1
 
     .line 119

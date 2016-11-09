@@ -520,7 +520,7 @@
 
 .method public static isAbstractObject(I)Z
     .locals 1
-    .parameter "format"
+    .param p0, "format"    # I
 
     .prologue
     .line 280
@@ -529,14 +529,13 @@
     .line 292
     const/4 v0, 0x0
 
-    :goto_0
     return v0
 
     .line 290
     :sswitch_0
     const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 
     .line 280
     nop

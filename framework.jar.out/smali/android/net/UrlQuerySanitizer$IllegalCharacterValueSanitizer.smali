@@ -44,8 +44,7 @@
 
 .field public static final LT_OK:I = 0x20
 
-#the value of this static final field might be set in the static constructor
-.field private static final MIN_SCRIPT_PREFIX_LENGTH:I = 0x0
+.field private static final MIN_SCRIPT_PREFIX_LENGTH:I
 
 .field public static final NON_7_BIT_ASCII_OK:I = 0x4
 
@@ -79,8 +78,8 @@
     .locals 2
 
     .prologue
-    .line 275
-    const-string v0, "javascript:"
+    .line 276
+    const-string/jumbo v0, "javascript:"
 
     invoke-virtual {v0}, Ljava/lang/String;->length()I
 
@@ -92,33 +91,35 @@
 
     move-result v1
 
+    .line 275
     invoke-static {v0, v1}, Ljava/lang/Math;->min(II)I
 
     move-result v0
 
     sput v0, Landroid/net/UrlQuerySanitizer$IllegalCharacterValueSanitizer;->MIN_SCRIPT_PREFIX_LENGTH:I
 
+    .line 118
     return-void
 .end method
 
 .method public constructor <init>(I)V
     .locals 0
-    .parameter "flags"
+    .param p1, "flags"    # I
 
     .prologue
-    .line 284
+    .line 283
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 285
     iput p1, p0, Landroid/net/UrlQuerySanitizer$IllegalCharacterValueSanitizer;->mFlags:I
 
-    .line 286
+    .line 284
     return-void
 .end method
 
 .method private characterIsLegal(C)Z
     .locals 3
-    .parameter "c"
+    .param p1, "c"    # C
 
     .prologue
     const/4 v0, 0x1
@@ -131,24 +132,13 @@
     .line 403
     const/16 v2, 0x20
 
-    if-lt p1, v2, :cond_0
+    if-lt p1, v2, :cond_a
 
     const/16 v2, 0x7f
 
-    if-lt p1, v2, :cond_1
+    if-ge p1, v2, :cond_a
 
     :cond_0
-    const/16 v2, 0x80
-
-    if-lt p1, v2, :cond_2
-
-    iget v2, p0, Landroid/net/UrlQuerySanitizer$IllegalCharacterValueSanitizer;->mFlags:I
-
-    and-int/lit8 v2, v2, 0x4
-
-    if-eqz v2, :cond_2
-
-    :cond_1
     :goto_0
     return v0
 
@@ -158,11 +148,15 @@
 
     and-int/lit8 v2, v2, 0x1
 
-    if-nez v2, :cond_1
+    if-eqz v2, :cond_1
 
+    :goto_1
+    return v0
+
+    :cond_1
     move v0, v1
 
-    goto :goto_0
+    goto :goto_1
 
     .line 395
     :sswitch_1
@@ -170,11 +164,15 @@
 
     and-int/lit8 v2, v2, 0x2
 
-    if-nez v2, :cond_1
+    if-eqz v2, :cond_2
 
+    :goto_2
+    return v0
+
+    :cond_2
     move v0, v1
 
-    goto :goto_0
+    goto :goto_2
 
     .line 396
     :sswitch_2
@@ -182,11 +180,15 @@
 
     and-int/lit8 v2, v2, 0x8
 
-    if-nez v2, :cond_1
+    if-eqz v2, :cond_3
 
+    :goto_3
+    return v0
+
+    :cond_3
     move v0, v1
 
-    goto :goto_0
+    goto :goto_3
 
     .line 397
     :sswitch_3
@@ -194,11 +196,15 @@
 
     and-int/lit8 v2, v2, 0x10
 
-    if-nez v2, :cond_1
+    if-eqz v2, :cond_4
 
+    :goto_4
+    return v0
+
+    :cond_4
     move v0, v1
 
-    goto :goto_0
+    goto :goto_4
 
     .line 398
     :sswitch_4
@@ -206,11 +212,15 @@
 
     and-int/lit8 v2, v2, 0x20
 
-    if-nez v2, :cond_1
+    if-eqz v2, :cond_5
 
+    :goto_5
+    return v0
+
+    :cond_5
     move v0, v1
 
-    goto :goto_0
+    goto :goto_5
 
     .line 399
     :sswitch_5
@@ -218,11 +228,15 @@
 
     and-int/lit8 v2, v2, 0x40
 
-    if-nez v2, :cond_1
+    if-eqz v2, :cond_6
 
+    :goto_6
+    return v0
+
+    :cond_6
     move v0, v1
 
-    goto :goto_0
+    goto :goto_6
 
     .line 400
     :sswitch_6
@@ -230,11 +244,15 @@
 
     and-int/lit16 v2, v2, 0x80
 
-    if-nez v2, :cond_1
+    if-eqz v2, :cond_7
 
+    :goto_7
+    return v0
+
+    :cond_7
     move v0, v1
 
-    goto :goto_0
+    goto :goto_7
 
     .line 401
     :sswitch_7
@@ -242,11 +260,15 @@
 
     and-int/lit16 v2, v2, 0x100
 
-    if-nez v2, :cond_1
+    if-eqz v2, :cond_8
 
+    :goto_8
+    return v0
+
+    :cond_8
     move v0, v1
 
-    goto :goto_0
+    goto :goto_8
 
     .line 402
     :sswitch_8
@@ -254,19 +276,36 @@
 
     and-int/lit16 v2, v2, 0x200
 
-    if-nez v2, :cond_1
+    if-eqz v2, :cond_9
 
+    :goto_9
+    return v0
+
+    :cond_9
     move v0, v1
 
-    goto :goto_0
+    goto :goto_9
 
-    :cond_2
+    .line 404
+    :cond_a
+    const/16 v2, 0x80
+
+    if-lt p1, v2, :cond_b
+
+    iget v2, p0, Landroid/net/UrlQuerySanitizer$IllegalCharacterValueSanitizer;->mFlags:I
+
+    and-int/lit8 v2, v2, 0x4
+
+    if-nez v2, :cond_0
+
+    :cond_b
     move v0, v1
 
-    .line 403
     goto :goto_0
 
     .line 392
+    nop
+
     :sswitch_data_0
     .sparse-switch
         0x0 -> :sswitch_8
@@ -287,7 +326,7 @@
 
 .method private isWhitespace(C)Z
     .locals 1
-    .parameter "c"
+    .param p1, "c"    # C
 
     .prologue
     .line 372
@@ -296,14 +335,13 @@
     .line 381
     const/4 v0, 0x0
 
-    :goto_0
     return v0
 
     .line 379
     :sswitch_0
     const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 
     .line 372
     nop
@@ -321,14 +359,14 @@
 
 .method private trimWhitespace(Ljava/lang/String;)Ljava/lang/String;
     .locals 4
-    .parameter "value"
+    .param p1, "value"    # Ljava/lang/String;
 
     .prologue
     .line 351
     const/4 v2, 0x0
 
     .line 352
-    .local v2, start:I
+    .local v2, "start":I
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
     move-result v3
@@ -336,11 +374,11 @@
     add-int/lit8 v1, v3, -0x1
 
     .line 353
-    .local v1, last:I
+    .local v1, "last":I
     move v0, v1
 
     .line 354
-    .local v0, end:I
+    .local v0, "end":I
     :goto_0
     if-gt v2, v0, :cond_0
 
@@ -385,37 +423,33 @@
 
     if-ne v0, v1, :cond_2
 
-    .line 363
-    .end local p1
-    :goto_2
+    .line 361
     return-object p1
 
-    .restart local p1
+    .line 363
     :cond_2
     add-int/lit8 v3, v0, 0x1
 
     invoke-virtual {p1, v2, v3}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v3
 
-    goto :goto_2
+    return-object v3
 .end method
 
 
 # virtual methods
 .method public sanitize(Ljava/lang/String;)Ljava/lang/String;
     .locals 6
-    .parameter "value"
+    .param p1, "value"    # Ljava/lang/String;
 
     .prologue
+    const/4 v5, 0x0
+
     .line 303
     if-nez p1, :cond_0
 
     .line 304
-    const/4 v5, 0x0
-
-    .line 339
-    :goto_0
     return-object v5
 
     .line 306
@@ -425,7 +459,7 @@
     move-result v3
 
     .line 307
-    .local v3, length:I
+    .local v3, "length":I
     iget v5, p0, Landroid/net/UrlQuerySanitizer$IllegalCharacterValueSanitizer;->mFlags:I
 
     and-int/lit16 v5, v5, 0x400
@@ -445,8 +479,8 @@
     move-result-object v0
 
     .line 310
-    .local v0, asLower:Ljava/lang/String;
-    const-string v5, "javascript:"
+    .local v0, "asLower":Ljava/lang/String;
+    const-string/jumbo v5, "javascript:"
 
     invoke-virtual {v0, v5}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
@@ -454,22 +488,24 @@
 
     if-nez v5, :cond_1
 
+    .line 311
     const-string/jumbo v5, "vbscript:"
 
     invoke-virtual {v0, v5}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
     move-result v5
 
+    .line 310
     if-eqz v5, :cond_2
 
     .line 312
     :cond_1
-    const-string v5, ""
+    const-string/jumbo v5, ""
 
-    goto :goto_0
+    return-object v5
 
     .line 319
-    .end local v0           #asLower:Ljava/lang/String;
+    .end local v0    # "asLower":Ljava/lang/String;
     :cond_2
     iget v5, p0, Landroid/net/UrlQuerySanitizer$IllegalCharacterValueSanitizer;->mFlags:I
 
@@ -494,11 +530,11 @@
     invoke-direct {v4, v3}, Ljava/lang/StringBuilder;-><init>(I)V
 
     .line 327
-    .local v4, stringBuilder:Ljava/lang/StringBuilder;
+    .local v4, "stringBuilder":Ljava/lang/StringBuilder;
     const/4 v2, 0x0
 
-    .local v2, i:I
-    :goto_1
+    .local v2, "i":I
+    :goto_0
     if-ge v2, v3, :cond_6
 
     .line 328
@@ -507,7 +543,7 @@
     move-result v1
 
     .line 329
-    .local v1, c:C
+    .local v1, "c":C
     invoke-direct {p0, v1}, Landroid/net/UrlQuerySanitizer$IllegalCharacterValueSanitizer;->characterIsLegal(C)Z
 
     move-result v5
@@ -525,27 +561,30 @@
     const/16 v1, 0x20
 
     .line 337
+    .end local v1    # "c":C
     :cond_4
-    :goto_2
+    :goto_1
     invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     .line 327
     add-int/lit8 v2, v2, 0x1
 
-    goto :goto_1
+    goto :goto_0
 
     .line 334
+    .restart local v1    # "c":C
     :cond_5
     const/16 v1, 0x5f
 
-    goto :goto_2
+    .local v1, "c":C
+    goto :goto_1
 
     .line 339
-    .end local v1           #c:C
+    .end local v1    # "c":C
     :cond_6
     invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v5
 
-    goto :goto_0
+    return-object v5
 .end method

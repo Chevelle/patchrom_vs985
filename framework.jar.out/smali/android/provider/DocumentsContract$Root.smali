@@ -35,9 +35,13 @@
 
 .field public static final FLAG_EMPTY:I = 0x10000
 
+.field public static final FLAG_HAS_SETTINGS:I = 0x40000
+
 .field public static final FLAG_LOCAL_ONLY:I = 0x2
 
 .field public static final FLAG_SUPPORTS_CREATE:I = 0x1
+
+.field public static final FLAG_SUPPORTS_IS_CHILD:I = 0x10
 
 .field public static final FLAG_SUPPORTS_RECENTS:I = 0x4
 
@@ -51,9 +55,8 @@
     .locals 0
 
     .prologue
-    .line 309
+    .line 346
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 310
     return-void
 .end method

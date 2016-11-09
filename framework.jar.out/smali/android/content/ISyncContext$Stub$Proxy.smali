@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 77
+    .line 76
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 78
     iput-object p1, p0, Landroid/content/ISyncContext$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 79
+    .line 76
     return-void
 .end method
 
@@ -54,14 +54,14 @@
 
     .prologue
     .line 86
-    const-string v0, "android.content.ISyncContext"
+    const-string/jumbo v0, "android.content.ISyncContext"
 
     return-object v0
 .end method
 
 .method public onFinished(Landroid/content/SyncResult;)V
     .locals 5
-    .parameter "result"
+    .param p1, "result"    # Landroid/content/SyncResult;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -75,15 +75,15 @@
     move-result-object v0
 
     .line 114
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 116
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.content.ISyncContext"
+    const-string/jumbo v2, "android.content.ISyncContext"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -121,7 +121,7 @@
     .line 129
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 131
+    .line 111
     return-void
 
     .line 122
@@ -135,15 +135,17 @@
 
     goto :goto_0
 
-    .line 128
+    .line 127
     :catchall_0
     move-exception v2
 
+    .line 128
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 129
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 127
     throw v2
 .end method
 
@@ -162,15 +164,15 @@
     move-result-object v0
 
     .line 96
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 98
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.content.ISyncContext"
+    const-string/jumbo v2, "android.content.ISyncContext"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -194,17 +196,19 @@
     .line 104
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 106
+    .line 93
     return-void
 
-    .line 103
+    .line 102
     :catchall_0
     move-exception v2
 
+    .line 103
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 104
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 102
     throw v2
 .end method

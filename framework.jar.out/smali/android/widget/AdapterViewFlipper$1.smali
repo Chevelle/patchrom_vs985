@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Landroid/widget/AdapterViewFlipper;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/AdapterViewFlipper;
 
     .prologue
-    .line 77
+    .line 84
     iput-object p1, p0, Landroid/widget/AdapterViewFlipper$1;->this$0:Landroid/widget/AdapterViewFlipper;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -36,20 +36,20 @@
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
     .locals 4
-    .parameter "context"
-    .parameter "intent"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
     const/4 v3, 0x0
 
-    .line 80
+    .line 87
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 81
-    .local v0, action:Ljava/lang/String;
-    const-string v1, "android.intent.action.SCREEN_OFF"
+    .line 88
+    .local v0, "action":Ljava/lang/String;
+    const-string/jumbo v1, "android.intent.action.SCREEN_OFF"
 
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -57,26 +57,24 @@
 
     if-eqz v1, :cond_1
 
-    .line 82
+    .line 89
     iget-object v1, p0, Landroid/widget/AdapterViewFlipper$1;->this$0:Landroid/widget/AdapterViewFlipper;
 
-    #setter for: Landroid/widget/AdapterViewFlipper;->mUserPresent:Z
-    invoke-static {v1, v3}, Landroid/widget/AdapterViewFlipper;->access$002(Landroid/widget/AdapterViewFlipper;Z)Z
+    invoke-static {v1, v3}, Landroid/widget/AdapterViewFlipper;->-set0(Landroid/widget/AdapterViewFlipper;Z)Z
 
-    .line 83
+    .line 90
     iget-object v1, p0, Landroid/widget/AdapterViewFlipper$1;->this$0:Landroid/widget/AdapterViewFlipper;
 
-    #calls: Landroid/widget/AdapterViewFlipper;->updateRunning()V
-    invoke-static {v1}, Landroid/widget/AdapterViewFlipper;->access$100(Landroid/widget/AdapterViewFlipper;)V
+    invoke-static {v1}, Landroid/widget/AdapterViewFlipper;->-wrap0(Landroid/widget/AdapterViewFlipper;)V
 
-    .line 88
+    .line 86
     :cond_0
     :goto_0
     return-void
 
-    .line 84
+    .line 91
     :cond_1
-    const-string v1, "android.intent.action.USER_PRESENT"
+    const-string/jumbo v1, "android.intent.action.USER_PRESENT"
 
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -84,19 +82,17 @@
 
     if-eqz v1, :cond_0
 
-    .line 85
+    .line 92
     iget-object v1, p0, Landroid/widget/AdapterViewFlipper$1;->this$0:Landroid/widget/AdapterViewFlipper;
 
     const/4 v2, 0x1
 
-    #setter for: Landroid/widget/AdapterViewFlipper;->mUserPresent:Z
-    invoke-static {v1, v2}, Landroid/widget/AdapterViewFlipper;->access$002(Landroid/widget/AdapterViewFlipper;Z)Z
+    invoke-static {v1, v2}, Landroid/widget/AdapterViewFlipper;->-set0(Landroid/widget/AdapterViewFlipper;Z)Z
 
-    .line 86
+    .line 93
     iget-object v1, p0, Landroid/widget/AdapterViewFlipper$1;->this$0:Landroid/widget/AdapterViewFlipper;
 
-    #calls: Landroid/widget/AdapterViewFlipper;->updateRunning(Z)V
-    invoke-static {v1, v3}, Landroid/widget/AdapterViewFlipper;->access$200(Landroid/widget/AdapterViewFlipper;Z)V
+    invoke-static {v1, v3}, Landroid/widget/AdapterViewFlipper;->-wrap1(Landroid/widget/AdapterViewFlipper;Z)V
 
     goto :goto_0
 .end method

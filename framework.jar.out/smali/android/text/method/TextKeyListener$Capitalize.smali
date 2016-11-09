@@ -51,7 +51,7 @@
     .line 208
     new-instance v0, Landroid/text/method/TextKeyListener$Capitalize;
 
-    const-string v1, "NONE"
+    const-string/jumbo v1, "NONE"
 
     invoke-direct {v0, v1, v2}, Landroid/text/method/TextKeyListener$Capitalize;-><init>(Ljava/lang/String;I)V
 
@@ -59,7 +59,7 @@
 
     new-instance v0, Landroid/text/method/TextKeyListener$Capitalize;
 
-    const-string v1, "SENTENCES"
+    const-string/jumbo v1, "SENTENCES"
 
     invoke-direct {v0, v1, v3}, Landroid/text/method/TextKeyListener$Capitalize;-><init>(Ljava/lang/String;I)V
 
@@ -67,7 +67,7 @@
 
     new-instance v0, Landroid/text/method/TextKeyListener$Capitalize;
 
-    const-string v1, "WORDS"
+    const-string/jumbo v1, "WORDS"
 
     invoke-direct {v0, v1, v4}, Landroid/text/method/TextKeyListener$Capitalize;-><init>(Ljava/lang/String;I)V
 
@@ -75,7 +75,7 @@
 
     new-instance v0, Landroid/text/method/TextKeyListener$Capitalize;
 
-    const-string v1, "CHARACTERS"
+    const-string/jumbo v1, "CHARACTERS"
 
     invoke-direct {v0, v1, v5}, Landroid/text/method/TextKeyListener$Capitalize;-><init>(Ljava/lang/String;I)V
 
@@ -109,13 +109,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 207
@@ -126,7 +119,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Landroid/text/method/TextKeyListener$Capitalize;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 207
@@ -147,12 +140,6 @@
     .prologue
     .line 207
     sget-object v0, Landroid/text/method/TextKeyListener$Capitalize;->$VALUES:[Landroid/text/method/TextKeyListener$Capitalize;
-
-    invoke-virtual {v0}, [Landroid/text/method/TextKeyListener$Capitalize;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/text/method/TextKeyListener$Capitalize;
 
     return-object v0
 .end method

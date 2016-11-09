@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/filterpacks/videosrc/MediaSource;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/filterpacks/videosrc/MediaSource;
 
     .prologue
-    .line 556
+    .line 548
     iput-object p1, p0, Landroid/filterpacks/videosrc/MediaSource$3;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,53 +39,50 @@
 # virtual methods
 .method public onCompletion(Landroid/media/MediaPlayer;)V
     .locals 3
-    .parameter "mp"
+    .param p1, "mp"    # Landroid/media/MediaPlayer;
 
     .prologue
-    .line 558
+    .line 550
     iget-object v0, p0, Landroid/filterpacks/videosrc/MediaSource$3;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
-    #getter for: Landroid/filterpacks/videosrc/MediaSource;->mLogVerbose:Z
-    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->access$000(Landroid/filterpacks/videosrc/MediaSource;)Z
+    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->-get1(Landroid/filterpacks/videosrc/MediaSource;)Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    const-string v0, "MediaSource"
+    const-string/jumbo v0, "MediaSource"
 
-    const-string v1, "MediaPlayer has completed playback"
+    const-string/jumbo v1, "MediaPlayer has completed playback"
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 559
+    .line 551
     :cond_0
     iget-object v1, p0, Landroid/filterpacks/videosrc/MediaSource$3;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
     monitor-enter v1
 
-    .line 560
+    .line 552
     :try_start_0
     iget-object v0, p0, Landroid/filterpacks/videosrc/MediaSource$3;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
     const/4 v2, 0x1
 
-    #setter for: Landroid/filterpacks/videosrc/MediaSource;->mCompleted:Z
-    invoke-static {v0, v2}, Landroid/filterpacks/videosrc/MediaSource;->access$702(Landroid/filterpacks/videosrc/MediaSource;Z)Z
+    invoke-static {v0, v2}, Landroid/filterpacks/videosrc/MediaSource;->-set0(Landroid/filterpacks/videosrc/MediaSource;Z)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 561
     monitor-exit v1
 
-    .line 562
+    .line 549
     return-void
 
-    .line 561
+    .line 551
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

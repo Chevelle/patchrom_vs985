@@ -31,18 +31,16 @@
     .locals 0
 
     .prologue
-    .line 66
+    .line 63
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/renderscript/Font$1;)V
+.method synthetic constructor <init>(Landroid/renderscript/Font$FontFamily;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 66
     invoke-direct {p0}, Landroid/renderscript/Font$FontFamily;-><init>()V
 
     return-void

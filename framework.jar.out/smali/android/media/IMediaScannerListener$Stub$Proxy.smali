@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 70
+    .line 69
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 71
     iput-object p1, p0, Landroid/media/IMediaScannerListener$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 72
+    .line 69
     return-void
 .end method
 
@@ -54,15 +54,15 @@
 
     .prologue
     .line 79
-    const-string v0, "android.media.IMediaScannerListener"
+    const-string/jumbo v0, "android.media.IMediaScannerListener"
 
     return-object v0
 .end method
 
 .method public scanCompleted(Ljava/lang/String;Landroid/net/Uri;)V
     .locals 5
-    .parameter "path"
-    .parameter "uri"
+    .param p1, "path"    # Ljava/lang/String;
+    .param p2, "uri"    # Landroid/net/Uri;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -76,9 +76,9 @@
     move-result-object v0
 
     .line 91
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.media.IMediaScannerListener"
+    const-string/jumbo v1, "android.media.IMediaScannerListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -115,7 +115,7 @@
     .line 103
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 105
+    .line 87
     return-void
 
     .line 98
@@ -129,11 +129,13 @@
 
     goto :goto_0
 
-    .line 103
+    .line 102
     :catchall_0
     move-exception v1
 
+    .line 103
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 102
     throw v1
 .end method

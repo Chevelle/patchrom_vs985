@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 53
+    .line 52
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 54
     iput-object p1, p0, Landroid/hardware/ICameraClient$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 55
+    .line 52
     return-void
 .end method
 
@@ -54,7 +54,7 @@
 
     .prologue
     .line 62
-    const-string v0, "android.hardware.ICameraClient"
+    const-string/jumbo v0, "android.hardware.ICameraClient"
 
     return-object v0
 .end method

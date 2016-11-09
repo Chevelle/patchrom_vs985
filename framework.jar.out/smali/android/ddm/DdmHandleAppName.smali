@@ -17,7 +17,7 @@
 
     .prologue
     .line 31
-    const-string v0, "APNM"
+    const-string/jumbo v0, "APNM"
 
     invoke-static {v0}, Landroid/ddm/DdmHandleAppName;->type(Ljava/lang/String;)I
 
@@ -26,7 +26,7 @@
     sput v0, Landroid/ddm/DdmHandleAppName;->CHUNK_APNM:I
 
     .line 33
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     sput-object v0, Landroid/ddm/DdmHandleAppName;->mAppName:Ljava/lang/String;
 
@@ -37,6 +37,7 @@
 
     sput-object v0, Landroid/ddm/DdmHandleAppName;->mInstance:Landroid/ddm/DdmHandleAppName;
 
+    .line 29
     return-void
 .end method
 
@@ -70,27 +71,29 @@
 
 .method private static sendAPNM(Ljava/lang/String;I)V
     .locals 3
-    .parameter "appName"
-    .parameter "userId"
+    .param p0, "appName"    # Ljava/lang/String;
+    .param p1, "userId"    # I
 
     .prologue
-    .line 93
+    .line 95
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v2
 
     mul-int/lit8 v2, v2, 0x2
 
+    .line 94
     add-int/lit8 v2, v2, 0x4
 
     add-int/lit8 v2, v2, 0x4
 
+    .line 93
     invoke-static {v2}, Ljava/nio/ByteBuffer;->allocate(I)Ljava/nio/ByteBuffer;
 
     move-result-object v1
 
     .line 97
-    .local v1, out:Ljava/nio/ByteBuffer;
+    .local v1, "out":Ljava/nio/ByteBuffer;
     sget-object v2, Lorg/apache/harmony/dalvik/ddmc/ChunkHandler;->CHUNK_ORDER:Ljava/nio/ByteOrder;
 
     invoke-virtual {v1, v2}, Ljava/nio/ByteBuffer;->order(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
@@ -116,17 +119,17 @@
     invoke-direct {v0, v2, v1}, Lorg/apache/harmony/dalvik/ddmc/Chunk;-><init>(ILjava/nio/ByteBuffer;)V
 
     .line 103
-    .local v0, chunk:Lorg/apache/harmony/dalvik/ddmc/Chunk;
+    .local v0, "chunk":Lorg/apache/harmony/dalvik/ddmc/Chunk;
     invoke-static {v0}, Lorg/apache/harmony/dalvik/ddmc/DdmServer;->sendChunk(Lorg/apache/harmony/dalvik/ddmc/Chunk;)V
 
-    .line 104
+    .line 89
     return-void
 .end method
 
 .method public static setAppName(Ljava/lang/String;I)V
     .locals 1
-    .parameter "name"
-    .parameter "userId"
+    .param p0, "name"    # Ljava/lang/String;
+    .param p1, "userId"    # I
 
     .prologue
     .line 73
@@ -138,9 +141,8 @@
 
     if-nez v0, :cond_1
 
-    .line 80
+    .line 74
     :cond_0
-    :goto_0
     return-void
 
     .line 76
@@ -150,7 +152,8 @@
     .line 79
     invoke-static {p0, p1}, Landroid/ddm/DdmHandleAppName;->sendAPNM(Ljava/lang/String;I)V
 
-    goto :goto_0
+    .line 72
+    return-void
 .end method
 
 
@@ -173,7 +176,7 @@
 
 .method public handleChunk(Lorg/apache/harmony/dalvik/ddmc/Chunk;)Lorg/apache/harmony/dalvik/ddmc/Chunk;
     .locals 1
-    .parameter "request"
+    .param p1, "request"    # Lorg/apache/harmony/dalvik/ddmc/Chunk;
 
     .prologue
     .line 62

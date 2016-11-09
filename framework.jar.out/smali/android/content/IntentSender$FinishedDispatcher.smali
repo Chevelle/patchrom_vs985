@@ -36,9 +36,9 @@
 # direct methods
 .method constructor <init>(Landroid/content/IntentSender;Landroid/content/IntentSender$OnFinished;Landroid/os/Handler;)V
     .locals 0
-    .parameter "pi"
-    .parameter "who"
-    .parameter "handler"
+    .param p1, "pi"    # Landroid/content/IntentSender;
+    .param p2, "who"    # Landroid/content/IntentSender$OnFinished;
+    .param p3, "handler"    # Landroid/os/Handler;
 
     .prologue
     .line 112
@@ -53,7 +53,7 @@
     .line 115
     iput-object p3, p0, Landroid/content/IntentSender$FinishedDispatcher;->mHandler:Landroid/os/Handler;
 
-    .line 116
+    .line 112
     return-void
 .end method
 
@@ -61,13 +61,13 @@
 # virtual methods
 .method public performReceive(Landroid/content/Intent;ILjava/lang/String;Landroid/os/Bundle;ZZI)V
     .locals 1
-    .parameter "intent"
-    .parameter "resultCode"
-    .parameter "data"
-    .parameter "extras"
-    .parameter "serialized"
-    .parameter "sticky"
-    .parameter "sendingUser"
+    .param p1, "intent"    # Landroid/content/Intent;
+    .param p2, "resultCode"    # I
+    .param p3, "data"    # Ljava/lang/String;
+    .param p4, "extras"    # Landroid/os/Bundle;
+    .param p5, "serialized"    # Z
+    .param p6, "sticky"    # Z
+    .param p7, "sendingUser"    # I
 
     .prologue
     .line 119
@@ -90,7 +90,7 @@
     .line 124
     invoke-virtual {p0}, Landroid/content/IntentSender$FinishedDispatcher;->run()V
 
-    .line 128
+    .line 118
     :goto_0
     return-void
 
@@ -116,12 +116,14 @@
 
     iget v3, p0, Landroid/content/IntentSender$FinishedDispatcher;->mResultCode:I
 
+    .line 131
     iget-object v4, p0, Landroid/content/IntentSender$FinishedDispatcher;->mResultData:Ljava/lang/String;
 
     iget-object v5, p0, Landroid/content/IntentSender$FinishedDispatcher;->mResultExtras:Landroid/os/Bundle;
 
+    .line 130
     invoke-interface/range {v0 .. v5}, Landroid/content/IntentSender$OnFinished;->onSendFinished(Landroid/content/IntentSender;Landroid/content/Intent;ILjava/lang/String;Landroid/os/Bundle;)V
 
-    .line 132
+    .line 129
     return-void
 .end method

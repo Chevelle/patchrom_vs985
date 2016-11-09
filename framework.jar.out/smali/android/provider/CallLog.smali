@@ -16,21 +16,25 @@
 
 .field public static final CONTENT_URI:Landroid/net/Uri;
 
+.field private static final LOG_TAG:Ljava/lang/String; = "CallLog"
+
 
 # direct methods
 .method static constructor <clinit>()V
     .locals 1
 
     .prologue
-    .line 42
-    const-string v0, "content://call_log"
+    .line 60
+    const-string/jumbo v0, "content://call_log"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 59
     sput-object v0, Landroid/provider/CallLog;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 51
     return-void
 .end method
 
@@ -38,9 +42,8 @@
     .locals 0
 
     .prologue
-    .line 36
+    .line 51
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 48
     return-void
 .end method

@@ -32,27 +32,27 @@
 # direct methods
 .method public constructor <init>(Landroid/app/Instrumentation;Landroid/app/Activity;II)V
     .locals 0
-    .parameter
-    .parameter "_activity"
-    .parameter "_identifier"
-    .parameter "_flags"
+    .param p1, "this$0"    # Landroid/app/Instrumentation;
+    .param p2, "_activity"    # Landroid/app/Activity;
+    .param p3, "_identifier"    # I
+    .param p4, "_flags"    # I
 
     .prologue
-    .line 752
+    .line 757
     iput-object p1, p0, Landroid/app/Instrumentation$1MenuRunnable;->this$0:Landroid/app/Instrumentation;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 753
+    .line 759
     iput-object p2, p0, Landroid/app/Instrumentation$1MenuRunnable;->activity:Landroid/app/Activity;
 
-    .line 754
+    .line 760
     iput p3, p0, Landroid/app/Instrumentation$1MenuRunnable;->identifier:I
 
-    .line 755
+    .line 761
     iput p4, p0, Landroid/app/Instrumentation$1MenuRunnable;->flags:I
 
-    .line 756
+    .line 758
     return-void
 .end method
 
@@ -62,27 +62,30 @@
     .locals 4
 
     .prologue
-    .line 759
+    .line 765
     iget-object v1, p0, Landroid/app/Instrumentation$1MenuRunnable;->activity:Landroid/app/Activity;
 
     invoke-virtual {v1}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
 
     move-result-object v0
 
-    .line 761
-    .local v0, win:Landroid/view/Window;
-    const/4 v1, 0x0
+    .line 769
+    .local v0, "win":Landroid/view/Window;
+    iget v1, p0, Landroid/app/Instrumentation$1MenuRunnable;->identifier:I
 
-    iget v2, p0, Landroid/app/Instrumentation$1MenuRunnable;->identifier:I
+    .line 770
+    iget v2, p0, Landroid/app/Instrumentation$1MenuRunnable;->flags:I
 
-    iget v3, p0, Landroid/app/Instrumentation$1MenuRunnable;->flags:I
+    .line 768
+    const/4 v3, 0x0
 
-    invoke-virtual {v0, v1, v2, v3}, Landroid/view/Window;->performPanelIdentifierAction(III)Z
+    .line 767
+    invoke-virtual {v0, v3, v1, v2}, Landroid/view/Window;->performPanelIdentifierAction(III)Z
 
     move-result v1
 
     iput-boolean v1, p0, Landroid/app/Instrumentation$1MenuRunnable;->returnValue:Z
 
-    .line 765
+    .line 764
     return-void
 .end method

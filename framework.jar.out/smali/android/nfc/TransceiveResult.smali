@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/nfc/TransceiveResult$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -38,20 +46,22 @@
     .locals 1
 
     .prologue
-    .line 70
+    .line 71
     new-instance v0, Landroid/nfc/TransceiveResult$1;
 
     invoke-direct {v0}, Landroid/nfc/TransceiveResult$1;-><init>()V
 
+    .line 70
     sput-object v0, Landroid/nfc/TransceiveResult;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 29
     return-void
 .end method
 
 .method public constructor <init>(I[B)V
     .locals 0
-    .parameter "result"
-    .parameter "data"
+    .param p1, "result"    # I
+    .param p2, "data"    # [B
 
     .prologue
     .line 38
@@ -63,7 +73,7 @@
     .line 40
     iput-object p2, p0, Landroid/nfc/TransceiveResult;->mResponseData:[B
 
-    .line 41
+    .line 38
     return-void
 .end method
 
@@ -97,7 +107,7 @@
     :pswitch_0
     new-instance v0, Ljava/io/IOException;
 
-    const-string v1, "Transceive failed"
+    const-string/jumbo v1, "Transceive failed"
 
     invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
@@ -113,7 +123,7 @@
     :pswitch_2
     new-instance v0, Landroid/nfc/TagLostException;
 
-    const-string v1, "Tag was lost."
+    const-string/jumbo v1, "Tag was lost."
 
     invoke-direct {v0, v1}, Landroid/nfc/TagLostException;-><init>(Ljava/lang/String;)V
 
@@ -123,13 +133,15 @@
     :pswitch_3
     new-instance v0, Ljava/io/IOException;
 
-    const-string v1, "Transceive length exceeds supported maximum"
+    const-string/jumbo v1, "Transceive length exceeds supported maximum"
 
     invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
     .line 44
+    nop
+
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1
@@ -141,8 +153,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 63
@@ -167,7 +179,7 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByteArray([B)V
 
-    .line 68
+    .line 62
     :cond_0
     return-void
 .end method

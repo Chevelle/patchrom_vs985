@@ -16,11 +16,11 @@
 
 .method public static bidi(I[C[BIZ)I
     .locals 2
-    .parameter "dir"
-    .parameter "chs"
-    .parameter "chInfo"
-    .parameter "n"
-    .parameter "haveInfo"
+    .param p0, "dir"    # I
+    .param p1, "chs"    # [C
+    .param p2, "chInfo"    # [B
+    .param p3, "n"    # I
+    .param p4, "haveInfo"    # Z
 
     .prologue
     .line 28
@@ -42,10 +42,6 @@
 
     array-length v1, p1
 
-    if-lt v1, p3, :cond_2
-
-    array-length v1, p2
-
     if-ge v1, p3, :cond_3
 
     .line 33
@@ -56,8 +52,13 @@
 
     throw v1
 
-    .line 36
+    .line 32
     :cond_3
+    array-length v1, p2
+
+    if-lt v1, p3, :cond_2
+
+    .line 36
     packed-switch p0, :pswitch_data_0
 
     .line 41
@@ -71,7 +72,7 @@
     move-result v0
 
     .line 45
-    .local v0, result:I
+    .local v0, "result":I
     and-int/lit8 v1, v0, 0x1
 
     if-nez v1, :cond_4
@@ -83,7 +84,7 @@
     return v0
 
     .line 37
-    .end local v0           #result:I
+    .end local v0    # "result":I
     :pswitch_1
     const/4 p0, 0x0
 
@@ -108,7 +109,7 @@
     goto :goto_0
 
     .line 45
-    .restart local v0       #result:I
+    .restart local v0    # "result":I
     :cond_4
     const/4 v0, -0x1
 
@@ -127,12 +128,12 @@
 
 .method public static directions(I[BI[CII)Landroid/text/Layout$Directions;
     .locals 23
-    .parameter "dir"
-    .parameter "levels"
-    .parameter "lstart"
-    .parameter "chars"
-    .parameter "cstart"
-    .parameter "len"
+    .param p0, "dir"    # I
+    .param p1, "levels"    # [B
+    .param p2, "lstart"    # I
+    .param p3, "chars"    # [C
+    .param p4, "cstart"    # I
+    .param p5, "len"    # I
 
     .prologue
     .line 63
@@ -141,8 +142,6 @@
     .line 64
     sget-object v21, Landroid/text/Layout;->DIRS_ALL_LEFT_TO_RIGHT:Landroid/text/Layout$Directions;
 
-    .line 176
-    :goto_0
     return-object v21
 
     .line 67
@@ -158,34 +157,34 @@
     const/4 v2, 0x0
 
     .line 68
-    .local v2, baseLevel:I
-    :goto_1
+    .local v2, "baseLevel":I
+    :goto_0
     aget-byte v4, p1, p2
 
     .line 69
-    .local v4, curLevel:I
+    .local v4, "curLevel":I
     move v13, v4
 
     .line 70
-    .local v13, minLevel:I
+    .local v13, "minLevel":I
     const/16 v17, 0x1
 
     .line 71
-    .local v17, runCount:I
+    .local v17, "runCount":I
     add-int/lit8 v7, p2, 0x1
 
-    .local v7, i:I
+    .local v7, "i":I
     add-int v5, p2, p5
 
-    .local v5, e:I
-    :goto_2
+    .local v5, "e":I
+    :goto_1
     if-ge v7, v5, :cond_3
 
     .line 72
     aget-byte v9, p1, v7
 
     .line 73
-    .local v9, level:I
+    .local v9, "level":I
     if-eq v9, v4, :cond_1
 
     .line 74
@@ -198,33 +197,33 @@
     :cond_1
     add-int/lit8 v7, v7, 0x1
 
-    goto :goto_2
+    goto :goto_1
 
     .line 67
-    .end local v2           #baseLevel:I
-    .end local v4           #curLevel:I
-    .end local v5           #e:I
-    .end local v7           #i:I
-    .end local v9           #level:I
-    .end local v13           #minLevel:I
-    .end local v17           #runCount:I
+    .end local v2    # "baseLevel":I
+    .end local v4    # "curLevel":I
+    .end local v5    # "e":I
+    .end local v7    # "i":I
+    .end local v9    # "level":I
+    .end local v13    # "minLevel":I
+    .end local v17    # "runCount":I
     :cond_2
     const/4 v2, 0x1
 
-    goto :goto_1
+    .restart local v2    # "baseLevel":I
+    goto :goto_0
 
     .line 80
-    .restart local v2       #baseLevel:I
-    .restart local v4       #curLevel:I
-    .restart local v5       #e:I
-    .restart local v7       #i:I
-    .restart local v13       #minLevel:I
-    .restart local v17       #runCount:I
+    .restart local v4    # "curLevel":I
+    .restart local v5    # "e":I
+    .restart local v7    # "i":I
+    .restart local v13    # "minLevel":I
+    .restart local v17    # "runCount":I
     :cond_3
     move/from16 v19, p5
 
     .line 81
-    .local v19, visLen:I
+    .local v19, "visLen":I
     and-int/lit8 v21, v4, 0x1
 
     and-int/lit8 v22, v2, 0x1
@@ -247,7 +246,7 @@
     aget-char v3, p3, v21
 
     .line 86
-    .local v3, ch:C
+    .local v3, "ch":C
     const/16 v21, 0xa
 
     move/from16 v0, v21
@@ -258,9 +257,9 @@
     add-int/lit8 v19, v19, -0x1
 
     .line 95
-    .end local v3           #ch:C
+    .end local v3    # "ch":C
     :cond_5
-    :goto_3
+    :goto_2
     add-int/lit8 v19, v19, 0x1
 
     .line 96
@@ -293,10 +292,10 @@
     .line 104
     sget-object v21, Landroid/text/Layout;->DIRS_ALL_RIGHT_TO_LEFT:Landroid/text/Layout$Directions;
 
-    goto :goto_0
+    return-object v21
 
     .line 91
-    .restart local v3       #ch:C
+    .restart local v3    # "ch":C
     :cond_7
     const/16 v21, 0x20
 
@@ -310,14 +309,14 @@
 
     if-eq v3, v0, :cond_4
 
-    goto :goto_3
+    goto :goto_2
 
     .line 106
-    .end local v3           #ch:C
+    .end local v3    # "ch":C
     :cond_8
     sget-object v21, Landroid/text/Layout;->DIRS_ALL_LEFT_TO_RIGHT:Landroid/text/Layout$Directions;
 
-    goto :goto_0
+    return-object v21
 
     .line 109
     :cond_9
@@ -328,23 +327,23 @@
     new-array v8, v0, [I
 
     .line 110
-    .local v8, ld:[I
+    .local v8, "ld":[I
     move v12, v13
 
     .line 111
-    .local v12, maxLevel:I
+    .local v12, "maxLevel":I
     shl-int/lit8 v10, v13, 0x1a
 
     .line 116
-    .local v10, levelBits:I
+    .local v10, "levelBits":I
     const/4 v14, 0x1
 
     .line 117
-    .local v14, n:I
+    .local v14, "n":I
     move/from16 v16, p2
 
     .line 118
-    .local v16, prev:I
+    .local v16, "prev":I
     move v4, v13
 
     .line 119
@@ -354,16 +353,16 @@
 
     move v15, v14
 
-    .end local v14           #n:I
-    .local v15, n:I
-    :goto_4
+    .end local v14    # "n":I
+    .local v15, "n":I
+    :goto_3
     if-ge v7, v5, :cond_c
 
     .line 120
     aget-byte v9, p1, v7
 
     .line 121
-    .restart local v9       #level:I
+    .restart local v9    # "level":I
     if-eq v9, v4, :cond_16
 
     .line 122
@@ -377,11 +376,11 @@
 
     .line 129
     :cond_a
-    :goto_5
+    :goto_4
     add-int/lit8 v14, v15, 0x1
 
-    .end local v15           #n:I
-    .restart local v14       #n:I
+    .end local v15    # "n":I
+    .restart local v14    # "n":I
     sub-int v21, v7, v16
 
     or-int v21, v21, v10
@@ -391,8 +390,8 @@
     .line 130
     add-int/lit8 v15, v14, 0x1
 
-    .end local v14           #n:I
-    .restart local v15       #n:I
+    .end local v14    # "n":I
+    .restart local v15    # "n":I
     sub-int v21, v7, p2
 
     aput v21, v8, v14
@@ -406,16 +405,16 @@
     move v14, v15
 
     .line 119
-    .end local v15           #n:I
-    .restart local v14       #n:I
-    :goto_6
+    .end local v15    # "n":I
+    .restart local v14    # "n":I
+    :goto_5
     add-int/lit8 v7, v7, 0x1
 
     move v15, v14
 
-    .end local v14           #n:I
-    .restart local v15       #n:I
-    goto :goto_4
+    .end local v14    # "n":I
+    .restart local v15    # "n":I
+    goto :goto_3
 
     .line 125
     :cond_b
@@ -424,10 +423,10 @@
     .line 126
     move v13, v9
 
-    goto :goto_5
+    goto :goto_4
 
     .line 135
-    .end local v9           #level:I
+    .end local v9    # "level":I
     :cond_c
     add-int v21, p2, v19
 
@@ -447,8 +446,8 @@
     .line 137
     add-int/lit8 v14, v15, 0x1
 
-    .end local v15           #n:I
-    .restart local v14       #n:I
+    .end local v15    # "n":I
+    .restart local v14    # "n":I
     aput v19, v8, v14
 
     .line 138
@@ -463,7 +462,7 @@
     aput v21, v8, v14
 
     .line 153
-    :goto_7
+    :goto_6
     and-int/lit8 v21, v13, 0x1
 
     move/from16 v0, v21
@@ -479,21 +478,21 @@
     const/16 v18, 0x1
 
     .line 159
-    .local v18, swap:Z
-    :goto_8
+    .local v18, "swap":Z
+    :goto_7
     if-eqz v18, :cond_14
 
     .line 160
     add-int/lit8 v9, v12, -0x1
 
-    .restart local v9       #level:I
-    :goto_9
+    .restart local v9    # "level":I
+    :goto_8
     if-lt v9, v13, :cond_14
 
     .line 161
     const/4 v7, 0x0
 
-    :goto_a
+    :goto_9
     array-length v0, v8
 
     move/from16 v21, v0
@@ -515,7 +514,7 @@
     add-int/lit8 v5, v7, 0x2
 
     .line 164
-    :goto_b
+    :goto_a
     array-length v0, v8
 
     move/from16 v21, v0
@@ -535,17 +534,19 @@
     .line 165
     add-int/lit8 v5, v5, 0x2
 
-    goto :goto_b
+    goto :goto_a
 
     .line 155
-    .end local v9           #level:I
-    .end local v18           #swap:Z
+    .end local v9    # "level":I
+    .end local v18    # "swap":Z
     :cond_d
     const/16 v18, 0x0
 
-    goto :goto_8
+    .restart local v18    # "swap":Z
+    goto :goto_7
 
     .line 157
+    .end local v18    # "swap":Z
     :cond_e
     const/16 v21, 0x1
 
@@ -557,33 +558,32 @@
 
     const/16 v18, 0x1
 
-    .restart local v18       #swap:Z
-    :goto_c
-    goto :goto_8
+    .restart local v18    # "swap":Z
+    goto :goto_7
 
-    .end local v18           #swap:Z
+    .end local v18    # "swap":Z
     :cond_f
     const/16 v18, 0x0
 
-    goto :goto_c
+    .restart local v18    # "swap":Z
+    goto :goto_7
 
     .line 167
-    .restart local v9       #level:I
-    .restart local v18       #swap:Z
+    .restart local v9    # "level":I
     :cond_10
     move v11, v7
 
-    .local v11, low:I
+    .local v11, "low":I
     add-int/lit8 v6, v5, -0x2
 
-    .local v6, hi:I
-    :goto_d
+    .local v6, "hi":I
+    :goto_b
     if-ge v11, v6, :cond_11
 
     .line 168
     aget v20, v8, v11
 
-    .local v20, x:I
+    .local v20, "x":I
     aget v21, v8, v6
 
     aput v21, v8, v11
@@ -612,29 +612,29 @@
 
     add-int/lit8 v6, v6, -0x2
 
-    goto :goto_d
+    goto :goto_b
 
     .line 171
-    .end local v20           #x:I
+    .end local v20    # "x":I
     :cond_11
     add-int/lit8 v7, v5, 0x2
 
     .line 161
-    .end local v6           #hi:I
-    .end local v11           #low:I
+    .end local v6    # "hi":I
+    .end local v11    # "low":I
     :cond_12
     add-int/lit8 v7, v7, 0x2
 
-    goto :goto_a
+    goto :goto_9
 
     .line 160
     :cond_13
     add-int/lit8 v9, v9, -0x1
 
-    goto :goto_9
+    goto :goto_8
 
     .line 176
-    .end local v9           #level:I
+    .end local v9    # "level":I
     :cond_14
     new-instance v21, Landroid/text/Layout$Directions;
 
@@ -642,27 +642,27 @@
 
     invoke-direct {v0, v8}, Landroid/text/Layout$Directions;-><init>([I)V
 
-    goto/16 :goto_0
+    return-object v21
 
-    .end local v14           #n:I
-    .end local v18           #swap:Z
-    .restart local v15       #n:I
+    .end local v14    # "n":I
+    .end local v18    # "swap":Z
+    .restart local v15    # "n":I
     :cond_15
     move v14, v15
 
-    .end local v15           #n:I
-    .restart local v14       #n:I
-    goto :goto_7
+    .end local v15    # "n":I
+    .restart local v14    # "n":I
+    goto :goto_6
 
-    .end local v14           #n:I
-    .restart local v9       #level:I
-    .restart local v15       #n:I
+    .end local v14    # "n":I
+    .restart local v9    # "level":I
+    .restart local v15    # "n":I
     :cond_16
     move v14, v15
 
-    .end local v15           #n:I
-    .restart local v14       #n:I
-    goto/16 :goto_6
+    .end local v15    # "n":I
+    .restart local v14    # "n":I
+    goto/16 :goto_5
 .end method
 
 .method private static native runBidi(I[C[BIZ)I

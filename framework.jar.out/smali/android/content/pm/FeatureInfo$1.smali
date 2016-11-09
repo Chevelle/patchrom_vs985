@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 91
+    .line 90
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,22 +42,22 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/content/pm/FeatureInfo;
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 93
+    .line 92
     new-instance v0, Landroid/content/pm/FeatureInfo;
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p1, v1}, Landroid/content/pm/FeatureInfo;-><init>(Landroid/os/Parcel;Landroid/content/pm/FeatureInfo$1;)V
+    invoke-direct {v0, p1, v1}, Landroid/content/pm/FeatureInfo;-><init>(Landroid/os/Parcel;Landroid/content/pm/FeatureInfo;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 91
@@ -70,10 +70,10 @@
 
 .method public newArray(I)[Landroid/content/pm/FeatureInfo;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 96
+    .line 95
     new-array v0, p1, [Landroid/content/pm/FeatureInfo;
 
     return-object v0
@@ -81,10 +81,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 91
+    .line 94
     invoke-virtual {p0, p1}, Landroid/content/pm/FeatureInfo$1;->newArray(I)[Landroid/content/pm/FeatureInfo;
 
     move-result-object v0

@@ -38,9 +38,33 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/view/OrientationEventListener;)Landroid/view/OrientationListener;
+    .locals 1
+
+    iget-object v0, p0, Landroid/view/OrientationEventListener;->mOldListener:Landroid/view/OrientationListener;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Landroid/view/OrientationEventListener;)I
+    .locals 1
+
+    iget v0, p0, Landroid/view/OrientationEventListener;->mOrientation:I
+
+    return v0
+.end method
+
+.method static synthetic -set0(Landroid/view/OrientationEventListener;I)I
+    .locals 0
+
+    iput p1, p0, Landroid/view/OrientationEventListener;->mOrientation:I
+
+    return p1
+.end method
+
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 1
-    .parameter "context"
+    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
     .line 56
@@ -48,14 +72,14 @@
 
     invoke-direct {p0, p1, v0}, Landroid/view/OrientationEventListener;-><init>(Landroid/content/Context;I)V
 
-    .line 57
+    .line 55
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;I)V
     .locals 2
-    .parameter "context"
-    .parameter "rate"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "rate"    # I
 
     .prologue
     .line 68
@@ -108,43 +132,9 @@
 
     iput-object v0, p0, Landroid/view/OrientationEventListener;->mSensorEventListener:Landroid/hardware/SensorEventListener;
 
-    .line 76
+    .line 68
     :cond_0
     return-void
-.end method
-
-.method static synthetic access$000(Landroid/view/OrientationEventListener;)Landroid/view/OrientationListener;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 30
-    iget-object v0, p0, Landroid/view/OrientationEventListener;->mOldListener:Landroid/view/OrientationListener;
-
-    return-object v0
-.end method
-
-.method static synthetic access$100(Landroid/view/OrientationEventListener;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 30
-    iget v0, p0, Landroid/view/OrientationEventListener;->mOrientation:I
-
-    return v0
-.end method
-
-.method static synthetic access$102(Landroid/view/OrientationEventListener;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 30
-    iput p1, p0, Landroid/view/OrientationEventListener;->mOrientation:I
-
-    return p1
 .end method
 
 
@@ -176,27 +166,23 @@
     .line 102
     iget-object v0, p0, Landroid/view/OrientationEventListener;->mSensor:Landroid/hardware/Sensor;
 
-    if-nez v0, :cond_1
+    if-nez v0, :cond_0
 
     .line 103
-    const-string v0, "OrientationEventListener"
+    const-string/jumbo v0, "OrientationEventListener"
 
-    const-string v1, "Cannot detect sensors. Invalid disable"
+    const-string/jumbo v1, "Cannot detect sensors. Invalid disable"
 
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 111
-    :cond_0
-    :goto_0
+    .line 104
     return-void
 
     .line 106
-    :cond_1
+    :cond_0
     iget-boolean v0, p0, Landroid/view/OrientationEventListener;->mEnabled:Z
 
-    const/4 v1, 0x1
-
-    if-ne v0, v1, :cond_0
+    if-eqz v0, :cond_1
 
     .line 108
     iget-object v0, p0, Landroid/view/OrientationEventListener;->mSensorManager:Landroid/hardware/SensorManager;
@@ -210,7 +196,9 @@
 
     iput-boolean v0, p0, Landroid/view/OrientationEventListener;->mEnabled:Z
 
-    goto :goto_0
+    .line 101
+    :cond_1
+    return-void
 .end method
 
 .method public enable()V
@@ -220,25 +208,23 @@
     .line 87
     iget-object v0, p0, Landroid/view/OrientationEventListener;->mSensor:Landroid/hardware/Sensor;
 
-    if-nez v0, :cond_1
+    if-nez v0, :cond_0
 
     .line 88
-    const-string v0, "OrientationEventListener"
+    const-string/jumbo v0, "OrientationEventListener"
 
-    const-string v1, "Cannot detect sensors. Not enabled"
+    const-string/jumbo v1, "Cannot detect sensors. Not enabled"
 
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 96
-    :cond_0
-    :goto_0
+    .line 89
     return-void
 
     .line 91
-    :cond_1
+    :cond_0
     iget-boolean v0, p0, Landroid/view/OrientationEventListener;->mEnabled:Z
 
-    if-nez v0, :cond_0
+    if-nez v0, :cond_1
 
     .line 93
     iget-object v0, p0, Landroid/view/OrientationEventListener;->mSensorManager:Landroid/hardware/SensorManager;
@@ -256,7 +242,9 @@
 
     iput-boolean v0, p0, Landroid/view/OrientationEventListener;->mEnabled:Z
 
-    goto :goto_0
+    .line 86
+    :cond_1
+    return-void
 .end method
 
 .method public abstract onOrientationChanged(I)V
@@ -264,12 +252,12 @@
 
 .method registerListener(Landroid/view/OrientationListener;)V
     .locals 0
-    .parameter "lis"
+    .param p1, "lis"    # Landroid/view/OrientationListener;
 
     .prologue
     .line 79
     iput-object p1, p0, Landroid/view/OrientationEventListener;->mOldListener:Landroid/view/OrientationListener;
 
-    .line 80
+    .line 78
     return-void
 .end method

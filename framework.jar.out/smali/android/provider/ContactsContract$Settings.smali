@@ -30,7 +30,7 @@
     .locals 2
 
     .prologue
-    .line 7523
+    .line 7937
     sget-object v0, Landroid/provider/ContactsContract;->AUTHORITY_URI:Landroid/net/Uri;
 
     const-string/jumbo v1, "settings"
@@ -39,8 +39,10 @@
 
     move-result-object v0
 
+    .line 7936
     sput-object v0, Landroid/provider/ContactsContract$Settings;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 7926
     return-void
 .end method
 
@@ -48,9 +50,8 @@
     .locals 0
 
     .prologue
-    .line 7517
+    .line 7930
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 7518
     return-void
 .end method

@@ -28,16 +28,17 @@
     .locals 1
 
     .prologue
-    .line 49
+    .line 47
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 53
+    .line 51
     const/4 v0, 0x2
 
     new-array v0, v0, [I
 
     iput-object v0, p0, Landroid/view/AccessibilityIterators$AbstractTextSegmentIterator;->mSegment:[I
 
+    .line 47
     return-void
 .end method
 
@@ -45,54 +46,53 @@
 # virtual methods
 .method protected getRange(II)[I
     .locals 2
-    .parameter "start"
-    .parameter "end"
+    .param p1, "start"    # I
+    .param p2, "end"    # I
 
     .prologue
-    .line 60
+    const/4 v1, 0x0
+
+    .line 58
     if-ltz p1, :cond_0
 
-    if-ltz p2, :cond_0
+    if-gez p2, :cond_1
 
-    if-ne p1, p2, :cond_1
-
-    .line 61
+    .line 59
     :cond_0
     const/4 v0, 0x0
 
-    .line 65
-    :goto_0
     return-object v0
 
-    .line 63
+    .line 58
     :cond_1
-    iget-object v0, p0, Landroid/view/AccessibilityIterators$AbstractTextSegmentIterator;->mSegment:[I
+    if-eq p1, p2, :cond_0
 
-    const/4 v1, 0x0
+    .line 61
+    iget-object v0, p0, Landroid/view/AccessibilityIterators$AbstractTextSegmentIterator;->mSegment:[I
 
     aput p1, v0, v1
 
-    .line 64
+    .line 62
     iget-object v0, p0, Landroid/view/AccessibilityIterators$AbstractTextSegmentIterator;->mSegment:[I
 
     const/4 v1, 0x1
 
     aput p2, v0, v1
 
-    .line 65
+    .line 63
     iget-object v0, p0, Landroid/view/AccessibilityIterators$AbstractTextSegmentIterator;->mSegment:[I
 
-    goto :goto_0
+    return-object v0
 .end method
 
 .method public initialize(Ljava/lang/String;)V
     .locals 0
-    .parameter "text"
+    .param p1, "text"    # Ljava/lang/String;
 
     .prologue
-    .line 56
+    .line 54
     iput-object p1, p0, Landroid/view/AccessibilityIterators$AbstractTextSegmentIterator;->mText:Ljava/lang/String;
 
-    .line 57
+    .line 53
     return-void
 .end method

@@ -6,10 +6,10 @@
 # direct methods
 .method public constructor <init>([FFFF)V
     .locals 2
-    .parameter "direction"
-    .parameter "ambient"
-    .parameter "specular"
-    .parameter "blurRadius"
+    .param p1, "direction"    # [F
+    .param p2, "ambient"    # F
+    .param p3, "specular"    # F
+    .param p4, "blurRadius"    # F
 
     .prologue
     .line 29
@@ -31,15 +31,15 @@
 
     .line 33
     :cond_0
-    invoke-static {p1, p2, p3, p4}, Landroid/graphics/EmbossMaskFilter;->nativeConstructor([FFFF)I
+    invoke-static {p1, p2, p3, p4}, Landroid/graphics/EmbossMaskFilter;->nativeConstructor([FFFF)J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/graphics/EmbossMaskFilter;->native_instance:I
+    iput-wide v0, p0, Landroid/graphics/EmbossMaskFilter;->native_instance:J
 
-    .line 34
+    .line 29
     return-void
 .end method
 
-.method private static native nativeConstructor([FFFF)I
+.method private static native nativeConstructor([FFFF)J
 .end method

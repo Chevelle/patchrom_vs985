@@ -28,48 +28,194 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/hardware/location/GeofenceHardwareImpl$Reaper;)Landroid/hardware/location/IGeofenceHardwareCallback;
+    .locals 1
+
+    iget-object v0, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mCallback:Landroid/hardware/location/IGeofenceHardwareCallback;
+
+    return-object v0
+.end method
+
+.method static synthetic -wrap0(Landroid/hardware/location/GeofenceHardwareImpl$Reaper;)Z
+    .locals 1
+
+    invoke-direct {p0}, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->unlinkToDeath()Z
+
+    move-result v0
+
+    return v0
+.end method
+
 .method constructor <init>(Landroid/hardware/location/GeofenceHardwareImpl;Landroid/hardware/location/IGeofenceHardwareCallback;I)V
     .locals 0
-    .parameter
-    .parameter "c"
-    .parameter "monitoringType"
+    .param p1, "this$0"    # Landroid/hardware/location/GeofenceHardwareImpl;
+    .param p2, "c"    # Landroid/hardware/location/IGeofenceHardwareCallback;
+    .param p3, "monitoringType"    # I
 
     .prologue
-    .line 781
+    .line 844
     iput-object p1, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->this$0:Landroid/hardware/location/GeofenceHardwareImpl;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 782
+    .line 845
     iput-object p2, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mCallback:Landroid/hardware/location/IGeofenceHardwareCallback;
 
-    .line 783
+    .line 846
     iput p3, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitoringType:I
 
-    .line 784
+    .line 844
     return-void
 .end method
 
 .method constructor <init>(Landroid/hardware/location/GeofenceHardwareImpl;Landroid/hardware/location/IGeofenceHardwareMonitorCallback;I)V
     .locals 0
-    .parameter
-    .parameter "c"
-    .parameter "monitoringType"
+    .param p1, "this$0"    # Landroid/hardware/location/GeofenceHardwareImpl;
+    .param p2, "c"    # Landroid/hardware/location/IGeofenceHardwareMonitorCallback;
+    .param p3, "monitoringType"    # I
 
     .prologue
-    .line 786
+    .line 849
     iput-object p1, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->this$0:Landroid/hardware/location/GeofenceHardwareImpl;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 787
+    .line 850
     iput-object p2, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitorCallback:Landroid/hardware/location/IGeofenceHardwareMonitorCallback;
 
-    .line 788
+    .line 851
     iput p3, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitoringType:I
 
-    .line 789
+    .line 849
     return-void
+.end method
+
+.method private binderEquals(Landroid/os/IInterface;Landroid/os/IInterface;)Z
+    .locals 4
+    .param p1, "left"    # Landroid/os/IInterface;
+    .param p2, "right"    # Landroid/os/IInterface;
+
+    .prologue
+    const/4 v0, 0x1
+
+    const/4 v1, 0x0
+
+    .line 896
+    if-nez p1, :cond_1
+
+    .line 897
+    if-nez p2, :cond_0
+
+    :goto_0
+    return v0
+
+    :cond_0
+    move v0, v1
+
+    goto :goto_0
+
+    .line 899
+    :cond_1
+    if-nez p2, :cond_3
+
+    :cond_2
+    :goto_1
+    return v1
+
+    :cond_3
+    invoke-interface {p1}, Landroid/os/IInterface;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v2
+
+    invoke-interface {p2}, Landroid/os/IInterface;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v3
+
+    if-ne v2, v3, :cond_2
+
+    move v1, v0
+
+    goto :goto_1
+.end method
+
+.method private callbackEquals(Landroid/hardware/location/IGeofenceHardwareCallback;)Z
+    .locals 3
+    .param p1, "cb"    # Landroid/hardware/location/IGeofenceHardwareCallback;
+
+    .prologue
+    const/4 v0, 0x0
+
+    .line 916
+    iget-object v1, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mCallback:Landroid/hardware/location/IGeofenceHardwareCallback;
+
+    if-eqz v1, :cond_0
+
+    iget-object v1, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mCallback:Landroid/hardware/location/IGeofenceHardwareCallback;
+
+    invoke-interface {v1}, Landroid/hardware/location/IGeofenceHardwareCallback;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v1
+
+    invoke-interface {p1}, Landroid/hardware/location/IGeofenceHardwareCallback;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v2
+
+    if-ne v1, v2, :cond_0
+
+    const/4 v0, 0x1
+
+    :cond_0
+    return v0
+.end method
+
+.method private unlinkToDeath()Z
+    .locals 2
+
+    .prologue
+    const/4 v1, 0x0
+
+    .line 907
+    iget-object v0, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitorCallback:Landroid/hardware/location/IGeofenceHardwareMonitorCallback;
+
+    if-eqz v0, :cond_0
+
+    .line 908
+    iget-object v0, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitorCallback:Landroid/hardware/location/IGeofenceHardwareMonitorCallback;
+
+    invoke-interface {v0}, Landroid/hardware/location/IGeofenceHardwareMonitorCallback;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-interface {v0, p0, v1}, Landroid/os/IBinder;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient;I)Z
+
+    move-result v0
+
+    return v0
+
+    .line 909
+    :cond_0
+    iget-object v0, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mCallback:Landroid/hardware/location/IGeofenceHardwareCallback;
+
+    if-eqz v0, :cond_1
+
+    .line 910
+    iget-object v0, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mCallback:Landroid/hardware/location/IGeofenceHardwareCallback;
+
+    invoke-interface {v0}, Landroid/hardware/location/IGeofenceHardwareCallback;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v0
+
+    invoke-interface {v0, p0, v1}, Landroid/os/IBinder;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient;I)Z
+
+    move-result v0
+
+    return v0
+
+    .line 912
+    :cond_1
+    const/4 v0, 0x1
+
+    return v0
 .end method
 
 
@@ -78,51 +224,48 @@
     .locals 5
 
     .prologue
-    .line 794
+    .line 857
     iget-object v2, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mCallback:Landroid/hardware/location/IGeofenceHardwareCallback;
 
     if-eqz v2, :cond_1
 
-    .line 795
+    .line 858
     iget-object v2, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->this$0:Landroid/hardware/location/GeofenceHardwareImpl;
 
-    #getter for: Landroid/hardware/location/GeofenceHardwareImpl;->mGeofenceHandler:Landroid/os/Handler;
-    invoke-static {v2}, Landroid/hardware/location/GeofenceHardwareImpl;->access$1000(Landroid/hardware/location/GeofenceHardwareImpl;)Landroid/os/Handler;
+    invoke-static {v2}, Landroid/hardware/location/GeofenceHardwareImpl;->-get3(Landroid/hardware/location/GeofenceHardwareImpl;)Landroid/os/Handler;
 
     move-result-object v2
 
-    const/4 v3, 0x6
+    iget-object v3, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mCallback:Landroid/hardware/location/IGeofenceHardwareCallback;
 
-    iget-object v4, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mCallback:Landroid/hardware/location/IGeofenceHardwareCallback;
+    const/4 v4, 0x6
 
-    invoke-virtual {v2, v3, v4}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
+    invoke-virtual {v2, v4, v3}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
 
     move-result-object v0
 
-    .line 796
-    .local v0, m:Landroid/os/Message;
+    .line 859
+    .local v0, "m":Landroid/os/Message;
     iget v2, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitoringType:I
 
     iput v2, v0, Landroid/os/Message;->arg1:I
 
-    .line 797
+    .line 860
     iget-object v2, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->this$0:Landroid/hardware/location/GeofenceHardwareImpl;
 
-    #getter for: Landroid/hardware/location/GeofenceHardwareImpl;->mGeofenceHandler:Landroid/os/Handler;
-    invoke-static {v2}, Landroid/hardware/location/GeofenceHardwareImpl;->access$1000(Landroid/hardware/location/GeofenceHardwareImpl;)Landroid/os/Handler;
+    invoke-static {v2}, Landroid/hardware/location/GeofenceHardwareImpl;->-get3(Landroid/hardware/location/GeofenceHardwareImpl;)Landroid/os/Handler;
 
     move-result-object v2
 
     invoke-virtual {v2, v0}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 803
-    .end local v0           #m:Landroid/os/Message;
+    .line 866
+    .end local v0    # "m":Landroid/os/Message;
     :cond_0
     :goto_0
     iget-object v2, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->this$0:Landroid/hardware/location/GeofenceHardwareImpl;
 
-    #getter for: Landroid/hardware/location/GeofenceHardwareImpl;->mReaperHandler:Landroid/os/Handler;
-    invoke-static {v2}, Landroid/hardware/location/GeofenceHardwareImpl;->access$1200(Landroid/hardware/location/GeofenceHardwareImpl;)Landroid/os/Handler;
+    invoke-static {v2}, Landroid/hardware/location/GeofenceHardwareImpl;->-get5(Landroid/hardware/location/GeofenceHardwareImpl;)Landroid/os/Handler;
 
     move-result-object v2
 
@@ -132,54 +275,51 @@
 
     move-result-object v1
 
-    .line 804
-    .local v1, reaperMessage:Landroid/os/Message;
+    .line 867
+    .local v1, "reaperMessage":Landroid/os/Message;
     iget-object v2, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->this$0:Landroid/hardware/location/GeofenceHardwareImpl;
 
-    #getter for: Landroid/hardware/location/GeofenceHardwareImpl;->mReaperHandler:Landroid/os/Handler;
-    invoke-static {v2}, Landroid/hardware/location/GeofenceHardwareImpl;->access$1200(Landroid/hardware/location/GeofenceHardwareImpl;)Landroid/os/Handler;
+    invoke-static {v2}, Landroid/hardware/location/GeofenceHardwareImpl;->-get5(Landroid/hardware/location/GeofenceHardwareImpl;)Landroid/os/Handler;
 
     move-result-object v2
 
     invoke-virtual {v2, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 805
+    .line 855
     return-void
 
-    .line 798
-    .end local v1           #reaperMessage:Landroid/os/Message;
+    .line 861
+    .end local v1    # "reaperMessage":Landroid/os/Message;
     :cond_1
     iget-object v2, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitorCallback:Landroid/hardware/location/IGeofenceHardwareMonitorCallback;
 
     if-eqz v2, :cond_0
 
-    .line 799
+    .line 862
     iget-object v2, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->this$0:Landroid/hardware/location/GeofenceHardwareImpl;
 
-    #getter for: Landroid/hardware/location/GeofenceHardwareImpl;->mCallbacksHandler:Landroid/os/Handler;
-    invoke-static {v2}, Landroid/hardware/location/GeofenceHardwareImpl;->access$1100(Landroid/hardware/location/GeofenceHardwareImpl;)Landroid/os/Handler;
+    invoke-static {v2}, Landroid/hardware/location/GeofenceHardwareImpl;->-get2(Landroid/hardware/location/GeofenceHardwareImpl;)Landroid/os/Handler;
 
     move-result-object v2
 
-    const/4 v3, 0x4
+    iget-object v3, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitorCallback:Landroid/hardware/location/IGeofenceHardwareMonitorCallback;
 
-    iget-object v4, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitorCallback:Landroid/hardware/location/IGeofenceHardwareMonitorCallback;
+    const/4 v4, 0x4
 
-    invoke-virtual {v2, v3, v4}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
+    invoke-virtual {v2, v4, v3}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
 
     move-result-object v0
 
-    .line 800
-    .restart local v0       #m:Landroid/os/Message;
+    .line 863
+    .restart local v0    # "m":Landroid/os/Message;
     iget v2, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitoringType:I
 
     iput v2, v0, Landroid/os/Message;->arg1:I
 
-    .line 801
+    .line 864
     iget-object v2, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->this$0:Landroid/hardware/location/GeofenceHardwareImpl;
 
-    #getter for: Landroid/hardware/location/GeofenceHardwareImpl;->mCallbacksHandler:Landroid/os/Handler;
-    invoke-static {v2}, Landroid/hardware/location/GeofenceHardwareImpl;->access$1100(Landroid/hardware/location/GeofenceHardwareImpl;)Landroid/os/Handler;
+    invoke-static {v2}, Landroid/hardware/location/GeofenceHardwareImpl;->-get2(Landroid/hardware/location/GeofenceHardwareImpl;)Landroid/os/Handler;
 
     move-result-object v2
 
@@ -190,55 +330,75 @@
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 5
-    .parameter "obj"
+    .param p1, "obj"    # Ljava/lang/Object;
 
     .prologue
     const/4 v1, 0x1
 
     const/4 v2, 0x0
 
-    .line 818
-    if-nez p1, :cond_1
+    .line 882
+    if-nez p1, :cond_0
 
-    move v1, v2
+    return v2
 
-    .line 822
+    .line 883
     :cond_0
-    :goto_0
+    if-ne p1, p0, :cond_1
+
     return v1
 
-    .line 819
     :cond_1
-    if-eq p1, p0, :cond_0
-
     move-object v0, p1
 
-    .line 821
+    .line 885
     check-cast v0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;
 
-    .line 822
-    .local v0, rhs:Landroid/hardware/location/GeofenceHardwareImpl$Reaper;
+    .line 886
+    .local v0, "rhs":Landroid/hardware/location/GeofenceHardwareImpl$Reaper;
     iget-object v3, v0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mCallback:Landroid/hardware/location/IGeofenceHardwareCallback;
 
     iget-object v4, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mCallback:Landroid/hardware/location/IGeofenceHardwareCallback;
 
-    if-ne v3, v4, :cond_2
+    invoke-direct {p0, v3, v4}, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->binderEquals(Landroid/os/IInterface;Landroid/os/IInterface;)Z
 
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    .line 887
     iget-object v3, v0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitorCallback:Landroid/hardware/location/IGeofenceHardwareMonitorCallback;
 
     iget-object v4, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitorCallback:Landroid/hardware/location/IGeofenceHardwareMonitorCallback;
 
-    if-ne v3, v4, :cond_2
+    invoke-direct {p0, v3, v4}, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->binderEquals(Landroid/os/IInterface;Landroid/os/IInterface;)Z
 
+    move-result v3
+
+    .line 886
+    if-eqz v3, :cond_3
+
+    .line 888
     iget v3, v0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitoringType:I
 
     iget v4, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitoringType:I
 
-    if-eq v3, v4, :cond_0
+    if-ne v3, v4, :cond_2
+
+    .line 886
+    :goto_0
+    return v1
 
     :cond_2
     move v1, v2
 
+    .line 888
+    goto :goto_0
+
+    :cond_3
+    move v1, v2
+
+    .line 886
     goto :goto_0
 .end method
 
@@ -248,16 +408,16 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 809
-    const/16 v0, 0x11
-
-    .line 810
-    .local v0, result:I
+    .line 873
     iget-object v1, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mCallback:Landroid/hardware/location/IGeofenceHardwareCallback;
 
     if-eqz v1, :cond_1
 
     iget-object v1, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mCallback:Landroid/hardware/location/IGeofenceHardwareCallback;
+
+    invoke-interface {v1}, Landroid/hardware/location/IGeofenceHardwareCallback;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/Object;->hashCode()I
 
@@ -266,35 +426,43 @@
     :goto_0
     add-int/lit16 v0, v1, 0x20f
 
-    .line 811
+    .line 874
+    .local v0, "result":I
     mul-int/lit8 v1, v0, 0x1f
 
     iget-object v3, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitorCallback:Landroid/hardware/location/IGeofenceHardwareMonitorCallback;
 
     if-eqz v3, :cond_0
 
+    .line 875
     iget-object v2, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitorCallback:Landroid/hardware/location/IGeofenceHardwareMonitorCallback;
+
+    invoke-interface {v2}, Landroid/hardware/location/IGeofenceHardwareMonitorCallback;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v2
 
     invoke-virtual {v2}, Ljava/lang/Object;->hashCode()I
 
     move-result v2
 
+    .line 874
     :cond_0
     add-int v0, v1, v2
 
-    .line 812
+    .line 876
     mul-int/lit8 v1, v0, 0x1f
 
     iget v2, p0, Landroid/hardware/location/GeofenceHardwareImpl$Reaper;->mMonitoringType:I
 
     add-int v0, v1, v2
 
-    .line 813
+    .line 877
     return v0
 
+    .end local v0    # "result":I
     :cond_1
     move v1, v2
 
-    .line 810
+    .line 873
     goto :goto_0
 .end method

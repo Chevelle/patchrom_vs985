@@ -29,27 +29,27 @@
 # direct methods
 .method constructor <init>(Landroid/app/IActivityManager$ContentProviderHolder;Landroid/app/ActivityThread$ProviderClientRecord;II)V
     .locals 0
-    .parameter "inHolder"
-    .parameter "inClient"
-    .parameter "sCount"
-    .parameter "uCount"
+    .param p1, "inHolder"    # Landroid/app/IActivityManager$ContentProviderHolder;
+    .param p2, "inClient"    # Landroid/app/ActivityThread$ProviderClientRecord;
+    .param p3, "sCount"    # I
+    .param p4, "uCount"    # I
 
     .prologue
-    .line 3105
+    .line 3437
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 3106
+    .line 3439
     iput-object p1, p0, Landroid/app/ActivityThread$ProviderRefCount;->holder:Landroid/app/IActivityManager$ContentProviderHolder;
 
-    .line 3107
+    .line 3440
     iput-object p2, p0, Landroid/app/ActivityThread$ProviderRefCount;->client:Landroid/app/ActivityThread$ProviderClientRecord;
 
-    .line 3108
+    .line 3441
     iput p3, p0, Landroid/app/ActivityThread$ProviderRefCount;->stableCount:I
 
-    .line 3109
+    .line 3442
     iput p4, p0, Landroid/app/ActivityThread$ProviderRefCount;->unstableCount:I
 
-    .line 3110
+    .line 3438
     return-void
 .end method

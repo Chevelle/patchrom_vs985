@@ -45,7 +45,7 @@
 # direct methods
 .method private constructor <init>(Landroid/media/FaceDetector;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/media/FaceDetector;
 
     .prologue
     .line 89
@@ -53,17 +53,14 @@
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 90
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/media/FaceDetector;Landroid/media/FaceDetector$1;)V
+.method synthetic constructor <init>(Landroid/media/FaceDetector;Landroid/media/FaceDetector$Face;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Landroid/media/FaceDetector;
 
     .prologue
-    .line 35
     invoke-direct {p0, p1}, Landroid/media/FaceDetector$Face;-><init>(Landroid/media/FaceDetector;)V
 
     return-void
@@ -93,7 +90,7 @@
 
 .method public getMidPoint(Landroid/graphics/PointF;)V
     .locals 2
-    .parameter "point"
+    .param p1, "point"    # Landroid/graphics/PointF;
 
     .prologue
     .line 60
@@ -103,13 +100,13 @@
 
     invoke-virtual {p1, v0, v1}, Landroid/graphics/PointF;->set(FF)V
 
-    .line 61
+    .line 58
     return-void
 .end method
 
 .method public pose(I)F
     .locals 1
-    .parameter "euler"
+    .param p1, "euler"    # I
 
     .prologue
     .line 79
@@ -118,8 +115,6 @@
     .line 80
     iget v0, p0, Landroid/media/FaceDetector$Face;->mPoseEulerX:F
 
-    .line 84
-    :goto_0
     return v0
 
     .line 81
@@ -131,7 +126,7 @@
     .line 82
     iget v0, p0, Landroid/media/FaceDetector$Face;->mPoseEulerY:F
 
-    goto :goto_0
+    return v0
 
     .line 83
     :cond_1
@@ -142,7 +137,7 @@
     .line 84
     iget v0, p0, Landroid/media/FaceDetector$Face;->mPoseEulerZ:F
 
-    goto :goto_0
+    return v0
 
     .line 85
     :cond_2

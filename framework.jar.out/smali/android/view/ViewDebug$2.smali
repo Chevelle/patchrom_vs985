@@ -34,10 +34,10 @@
 # direct methods
 .method constructor <init>(Landroid/view/View;)V
     .locals 0
-    .parameter
+    .param p1, "val$view"    # Landroid/view/View;
 
     .prologue
-    .line 510
+    .line 531
     iput-object p1, p0, Landroid/view/ViewDebug$2;->val$view:Landroid/view/View;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -47,52 +47,52 @@
 
 .method private forceLayout(Landroid/view/View;)V
     .locals 4
-    .parameter "view"
+    .param p1, "view"    # Landroid/view/View;
 
     .prologue
-    .line 517
+    .line 538
     invoke-virtual {p1}, Landroid/view/View;->forceLayout()V
 
-    .line 518
+    .line 539
     instance-of v3, p1, Landroid/view/ViewGroup;
 
     if-eqz v3, :cond_0
 
     move-object v1, p1
 
-    .line 519
+    .line 540
     check-cast v1, Landroid/view/ViewGroup;
 
-    .line 520
-    .local v1, group:Landroid/view/ViewGroup;
+    .line 541
+    .local v1, "group":Landroid/view/ViewGroup;
     invoke-virtual {v1}, Landroid/view/ViewGroup;->getChildCount()I
 
     move-result v0
 
-    .line 521
-    .local v0, count:I
+    .line 542
+    .local v0, "count":I
     const/4 v2, 0x0
 
-    .local v2, i:I
+    .local v2, "i":I
     :goto_0
     if-ge v2, v0, :cond_0
 
-    .line 522
+    .line 543
     invoke-virtual {v1, v2}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
 
     move-result-object v3
 
     invoke-direct {p0, v3}, Landroid/view/ViewDebug$2;->forceLayout(Landroid/view/View;)V
 
-    .line 521
+    .line 542
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 525
-    .end local v0           #count:I
-    .end local v1           #group:Landroid/view/ViewGroup;
-    .end local v2           #i:I
+    .line 537
+    .end local v0    # "count":I
+    .end local v1    # "group":Landroid/view/ViewGroup;
+    .end local v2    # "i":I
     :cond_0
     return-void
 .end method
@@ -101,13 +101,13 @@
 # virtual methods
 .method public bridge synthetic post([Ljava/lang/Object;)V
     .locals 0
-    .parameter "x0"
+    .param p1, "data"    # [Ljava/lang/Object;
 
     .prologue
-    .line 510
+    .line 552
     check-cast p1, [Ljava/lang/Void;
 
-    .end local p1
+    .end local p1    # "data":[Ljava/lang/Object;
     invoke-virtual {p0, p1}, Landroid/view/ViewDebug$2;->post([Ljava/lang/Void;)V
 
     return-void
@@ -115,10 +115,10 @@
 
 .method public varargs post([Ljava/lang/Void;)V
     .locals 0
-    .parameter "data"
+    .param p1, "data"    # [Ljava/lang/Void;
 
     .prologue
-    .line 532
+    .line 552
     return-void
 .end method
 
@@ -126,7 +126,7 @@
     .locals 1
 
     .prologue
-    .line 510
+    .line 532
     invoke-virtual {p0}, Landroid/view/ViewDebug$2;->pre()[Ljava/lang/Void;
 
     move-result-object v0
@@ -138,12 +138,12 @@
     .locals 1
 
     .prologue
-    .line 512
+    .line 533
     iget-object v0, p0, Landroid/view/ViewDebug$2;->val$view:Landroid/view/View;
 
     invoke-direct {p0, v0}, Landroid/view/ViewDebug$2;->forceLayout(Landroid/view/View;)V
 
-    .line 513
+    .line 534
     const/4 v0, 0x0
 
     return-object v0
@@ -151,13 +151,13 @@
 
 .method public bridge synthetic run([Ljava/lang/Object;)V
     .locals 0
-    .parameter "x0"
+    .param p1, "data"    # [Ljava/lang/Object;
 
     .prologue
-    .line 510
+    .line 548
     check-cast p1, [Ljava/lang/Void;
 
-    .end local p1
+    .end local p1    # "data":[Ljava/lang/Object;
     invoke-virtual {p0, p1}, Landroid/view/ViewDebug$2;->run([Ljava/lang/Void;)V
 
     return-void
@@ -165,10 +165,10 @@
 
 .method public varargs run([Ljava/lang/Void;)V
     .locals 3
-    .parameter "data"
+    .param p1, "data"    # [Ljava/lang/Void;
 
     .prologue
-    .line 528
+    .line 549
     iget-object v0, p0, Landroid/view/ViewDebug$2;->val$view:Landroid/view/View;
 
     iget-object v1, p0, Landroid/view/ViewDebug$2;->val$view:Landroid/view/View;
@@ -181,6 +181,6 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/view/View;->measure(II)V
 
-    .line 529
+    .line 548
     return-void
 .end method

@@ -28,119 +28,159 @@
 
 
 # instance fields
-.field mIndex:I
+.field private mIndex:I
 
-.field private mSatellites:[Landroid/location/GpsSatellite;
+.field private final mSatellites:Landroid/util/SparseArray;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Landroid/util/SparseArray",
+            "<",
+            "Landroid/location/GpsSatellite;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field private final mSatellitesCount:I
 
 .field final synthetic this$0:Landroid/location/GpsStatus;
 
 
 # direct methods
-.method constructor <init>(Landroid/location/GpsStatus;[Landroid/location/GpsSatellite;)V
+.method constructor <init>(Landroid/location/GpsStatus;Landroid/util/SparseArray;)V
     .locals 1
-    .parameter
-    .parameter "satellites"
+    .param p1, "this$0"    # Landroid/location/GpsStatus;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/util/SparseArray",
+            "<",
+            "Landroid/location/GpsSatellite;",
+            ">;)V"
+        }
+    .end annotation
 
     .prologue
-    .line 39
+    .line 43
+    .local p2, "satellites":Landroid/util/SparseArray;, "Landroid/util/SparseArray<Landroid/location/GpsSatellite;>;"
     iput-object p1, p0, Landroid/location/GpsStatus$SatelliteIterator;->this$0:Landroid/location/GpsStatus;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 37
+    .line 41
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/location/GpsStatus$SatelliteIterator;->mIndex:I
 
-    .line 40
-    iput-object p2, p0, Landroid/location/GpsStatus$SatelliteIterator;->mSatellites:[Landroid/location/GpsSatellite;
+    .line 44
+    iput-object p2, p0, Landroid/location/GpsStatus$SatelliteIterator;->mSatellites:Landroid/util/SparseArray;
 
-    .line 41
+    .line 45
+    invoke-virtual {p2}, Landroid/util/SparseArray;->size()I
+
+    move-result v0
+
+    iput v0, p0, Landroid/location/GpsStatus$SatelliteIterator;->mSatellitesCount:I
+
+    .line 43
     return-void
 .end method
 
 
 # virtual methods
 .method public hasNext()Z
-    .locals 2
+    .locals 3
 
     .prologue
-    .line 44
-    iget v0, p0, Landroid/location/GpsStatus$SatelliteIterator;->mIndex:I
-
-    .local v0, i:I
+    .line 49
     :goto_0
-    iget-object v1, p0, Landroid/location/GpsStatus$SatelliteIterator;->mSatellites:[Landroid/location/GpsSatellite;
-
-    array-length v1, v1
-
-    if-ge v0, v1, :cond_1
-
-    .line 45
-    iget-object v1, p0, Landroid/location/GpsStatus$SatelliteIterator;->mSatellites:[Landroid/location/GpsSatellite;
-
-    aget-object v1, v1, v0
-
-    iget-boolean v1, v1, Landroid/location/GpsSatellite;->mValid:Z
-
-    if-eqz v1, :cond_0
-
-    .line 46
-    const/4 v1, 0x1
-
-    .line 49
-    :goto_1
-    return v1
-
-    .line 44
-    :cond_0
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_0
-
-    .line 49
-    :cond_1
-    const/4 v1, 0x0
-
-    goto :goto_1
-.end method
-
-.method public next()Landroid/location/GpsSatellite;
-    .locals 4
-
-    .prologue
-    .line 53
-    :cond_0
     iget v1, p0, Landroid/location/GpsStatus$SatelliteIterator;->mIndex:I
 
-    iget-object v2, p0, Landroid/location/GpsStatus$SatelliteIterator;->mSatellites:[Landroid/location/GpsSatellite;
-
-    array-length v2, v2
+    iget v2, p0, Landroid/location/GpsStatus$SatelliteIterator;->mSatellitesCount:I
 
     if-ge v1, v2, :cond_1
 
-    .line 54
-    iget-object v1, p0, Landroid/location/GpsStatus$SatelliteIterator;->mSatellites:[Landroid/location/GpsSatellite;
+    .line 50
+    iget-object v1, p0, Landroid/location/GpsStatus$SatelliteIterator;->mSatellites:Landroid/util/SparseArray;
 
     iget v2, p0, Landroid/location/GpsStatus$SatelliteIterator;->mIndex:I
 
-    add-int/lit8 v3, v2, 0x1
+    invoke-virtual {v1, v2}, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
 
-    iput v3, p0, Landroid/location/GpsStatus$SatelliteIterator;->mIndex:I
+    move-result-object v0
 
-    aget-object v0, v1, v2
+    check-cast v0, Landroid/location/GpsSatellite;
 
-    .line 55
-    .local v0, satellite:Landroid/location/GpsSatellite;
+    .line 51
+    .local v0, "satellite":Landroid/location/GpsSatellite;
     iget-boolean v1, v0, Landroid/location/GpsSatellite;->mValid:Z
 
     if-eqz v1, :cond_0
 
-    .line 56
+    .line 52
+    const/4 v1, 0x1
+
+    return v1
+
+    .line 49
+    :cond_0
+    iget v1, p0, Landroid/location/GpsStatus$SatelliteIterator;->mIndex:I
+
+    add-int/lit8 v1, v1, 0x1
+
+    iput v1, p0, Landroid/location/GpsStatus$SatelliteIterator;->mIndex:I
+
+    goto :goto_0
+
+    .line 55
+    .end local v0    # "satellite":Landroid/location/GpsSatellite;
+    :cond_1
+    const/4 v1, 0x0
+
+    return v1
+.end method
+
+.method public next()Landroid/location/GpsSatellite;
+    .locals 3
+
+    .prologue
+    .line 59
+    :cond_0
+    iget v1, p0, Landroid/location/GpsStatus$SatelliteIterator;->mIndex:I
+
+    iget v2, p0, Landroid/location/GpsStatus$SatelliteIterator;->mSatellitesCount:I
+
+    if-ge v1, v2, :cond_1
+
+    .line 60
+    iget-object v1, p0, Landroid/location/GpsStatus$SatelliteIterator;->mSatellites:Landroid/util/SparseArray;
+
+    iget v2, p0, Landroid/location/GpsStatus$SatelliteIterator;->mIndex:I
+
+    invoke-virtual {v1, v2}, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/location/GpsSatellite;
+
+    .line 61
+    .local v0, "satellite":Landroid/location/GpsSatellite;
+    iget v1, p0, Landroid/location/GpsStatus$SatelliteIterator;->mIndex:I
+
+    add-int/lit8 v1, v1, 0x1
+
+    iput v1, p0, Landroid/location/GpsStatus$SatelliteIterator;->mIndex:I
+
+    .line 62
+    iget-boolean v1, v0, Landroid/location/GpsSatellite;->mValid:Z
+
+    if-eqz v1, :cond_0
+
+    .line 63
     return-object v0
 
-    .line 59
-    .end local v0           #satellite:Landroid/location/GpsSatellite;
+    .line 66
+    .end local v0    # "satellite":Landroid/location/GpsSatellite;
     :cond_1
     new-instance v1, Ljava/util/NoSuchElementException;
 
@@ -153,7 +193,7 @@
     .locals 1
 
     .prologue
-    .line 34
+    .line 58
     invoke-virtual {p0}, Landroid/location/GpsStatus$SatelliteIterator;->next()Landroid/location/GpsSatellite;
 
     move-result-object v0
@@ -165,7 +205,7 @@
     .locals 1
 
     .prologue
-    .line 63
+    .line 70
     new-instance v0, Ljava/lang/UnsupportedOperationException;
 
     invoke-direct {v0}, Ljava/lang/UnsupportedOperationException;-><init>()V

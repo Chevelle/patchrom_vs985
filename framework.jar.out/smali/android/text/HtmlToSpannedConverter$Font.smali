@@ -23,19 +23,19 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
-    .parameter "color"
-    .parameter "face"
+    .param p1, "color"    # Ljava/lang/String;
+    .param p2, "face"    # Ljava/lang/String;
 
     .prologue
-    .line 832
+    .line 836
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 833
+    .line 837
     iput-object p1, p0, Landroid/text/HtmlToSpannedConverter$Font;->mColor:Ljava/lang/String;
 
-    .line 834
+    .line 838
     iput-object p2, p0, Landroid/text/HtmlToSpannedConverter$Font;->mFace:Ljava/lang/String;
 
-    .line 835
+    .line 836
     return-void
 .end method

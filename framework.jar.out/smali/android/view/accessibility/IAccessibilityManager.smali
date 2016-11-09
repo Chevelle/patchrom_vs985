@@ -67,6 +67,14 @@
     .end annotation
 .end method
 
+.method public abstract getWindowToken(I)Landroid/os/IBinder;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract interrupt(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {

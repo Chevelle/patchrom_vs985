@@ -1,4 +1,4 @@
-.class public Landroid/webkit/WebHistoryItem;
+.class public abstract Landroid/webkit/WebHistoryItem;
 .super Ljava/lang/Object;
 .source "WebHistoryItem.java"
 
@@ -11,37 +11,15 @@
     .locals 0
 
     .prologue
-    .line 32
+    .line 28
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 33
     return-void
 .end method
 
 
 # virtual methods
-.method protected declared-synchronized clone()Landroid/webkit/WebHistoryItem;
-    .locals 1
-
-    .prologue
-    .line 94
-    monitor-enter p0
-
-    :try_start_0
-    new-instance v0, Landroid/webkit/MustOverrideException;
-
-    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
-
-    throw v0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    :catchall_0
-    move-exception v0
-
-    monitor-exit p0
-
-    throw v0
+.method protected abstract clone()Landroid/webkit/WebHistoryItem;
 .end method
 
 .method protected bridge synthetic clone()Ljava/lang/Object;
@@ -53,7 +31,7 @@
     .end annotation
 
     .prologue
-    .line 27
+    .line 78
     invoke-virtual {p0}, Landroid/webkit/WebHistoryItem;->clone()Landroid/webkit/WebHistoryItem;
 
     move-result-object v0
@@ -61,64 +39,19 @@
     return-object v0
 .end method
 
-.method public getFavicon()Landroid/graphics/Bitmap;
-    .locals 1
-
-    .prologue
-    .line 87
-    new-instance v0, Landroid/webkit/MustOverrideException;
-
-    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
-
-    throw v0
+.method public abstract getFavicon()Landroid/graphics/Bitmap;
 .end method
 
-.method public getId()I
-    .locals 1
+.method public abstract getId()I
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
-
-    .prologue
-    .line 45
-    new-instance v0, Landroid/webkit/MustOverrideException;
-
-    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
-
-    throw v0
 .end method
 
-.method public getOriginalUrl()Ljava/lang/String;
-    .locals 1
-
-    .prologue
-    .line 67
-    new-instance v0, Landroid/webkit/MustOverrideException;
-
-    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
-
-    throw v0
+.method public abstract getOriginalUrl()Ljava/lang/String;
 .end method
 
-.method public getTitle()Ljava/lang/String;
-    .locals 1
-
-    .prologue
-    .line 77
-    new-instance v0, Landroid/webkit/MustOverrideException;
-
-    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
-
-    throw v0
+.method public abstract getTitle()Ljava/lang/String;
 .end method
 
-.method public getUrl()Ljava/lang/String;
-    .locals 1
-
-    .prologue
-    .line 57
-    new-instance v0, Landroid/webkit/MustOverrideException;
-
-    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
-
-    throw v0
+.method public abstract getUrl()Ljava/lang/String;
 .end method

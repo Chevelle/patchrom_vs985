@@ -28,9 +28,9 @@
 # direct methods
 .method constructor <init>(Landroid/filterfw/core/SyncRunner;Landroid/filterfw/core/Filter;Landroid/os/ConditionVariable;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/filterfw/core/SyncRunner;
+    .param p2, "val$filterToSchedule"    # Landroid/filterfw/core/Filter;
+    .param p3, "val$conditionToWake"    # Landroid/os/ConditionVariable;
 
     .prologue
     .line 181
@@ -63,6 +63,6 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->open()V
 
-    .line 186
+    .line 183
     return-void
 .end method

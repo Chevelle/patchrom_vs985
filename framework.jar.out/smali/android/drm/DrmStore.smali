@@ -6,11 +6,11 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/drm/DrmStore$RightsStatus;,
-        Landroid/drm/DrmStore$Action;,
-        Landroid/drm/DrmStore$Playback;,
+        Landroid/drm/DrmStore$ConstraintsColumns;,
         Landroid/drm/DrmStore$DrmObjectType;,
-        Landroid/drm/DrmStore$ConstraintsColumns;
+        Landroid/drm/DrmStore$Playback;,
+        Landroid/drm/DrmStore$Action;,
+        Landroid/drm/DrmStore$RightsStatus;
     }
 .end annotation
 

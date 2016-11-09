@@ -23,7 +23,7 @@
     .end annotation
 .end method
 
-.method public abstract createVirtualDisplay(Landroid/os/IBinder;Ljava/lang/String;Ljava/lang/String;IIILandroid/view/Surface;I)I
+.method public abstract createVirtualDisplay(Landroid/hardware/display/IVirtualDisplayCallback;Landroid/media/projection/IMediaProjection;Ljava/lang/String;Ljava/lang/String;IIILandroid/view/Surface;I)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -87,7 +87,7 @@
     .end annotation
 .end method
 
-.method public abstract releaseVirtualDisplay(Landroid/os/IBinder;)V
+.method public abstract releaseVirtualDisplay(Landroid/hardware/display/IVirtualDisplayCallback;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -103,7 +103,31 @@
     .end annotation
 .end method
 
+.method public abstract requestColorTransform(II)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract resizeVirtualDisplay(Landroid/hardware/display/IVirtualDisplayCallback;III)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract resumeWifiDisplay()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setVirtualDisplaySurface(Landroid/hardware/display/IVirtualDisplayCallback;Landroid/view/Surface;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

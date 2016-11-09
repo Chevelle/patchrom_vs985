@@ -6,9 +6,9 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/renderscript/Program$BaseProgramBuilder;,
+        Landroid/renderscript/Program$TextureType;,
         Landroid/renderscript/Program$ProgramParam;,
-        Landroid/renderscript/Program$TextureType;
+        Landroid/renderscript/Program$BaseProgramBuilder;
     }
 .end annotation
 
@@ -40,59 +40,60 @@
 
 
 # direct methods
-.method constructor <init>(ILandroid/renderscript/RenderScript;)V
-    .locals 0
-    .parameter "id"
-    .parameter "rs"
+.method constructor <init>(JLandroid/renderscript/RenderScript;)V
+    .locals 1
+    .param p1, "id"    # J
+    .param p3, "rs"    # Landroid/renderscript/RenderScript;
 
     .prologue
     .line 78
-    invoke-direct {p0, p1, p2}, Landroid/renderscript/BaseObj;-><init>(ILandroid/renderscript/RenderScript;)V
+    invoke-direct {p0, p1, p2, p3}, Landroid/renderscript/BaseObj;-><init>(JLandroid/renderscript/RenderScript;)V
 
-    .line 79
+    .line 77
     return-void
 .end method
 
 
 # virtual methods
 .method public bindConstants(Landroid/renderscript/Allocation;I)V
-    .locals 4
-    .parameter "a"
-    .parameter "slot"
+    .locals 6
+    .param p1, "a"    # Landroid/renderscript/Allocation;
+    .param p2, "slot"    # I
 
     .prologue
     .line 146
     if-ltz p2, :cond_0
 
-    iget-object v1, p0, Landroid/renderscript/Program;->mConstants:[Landroid/renderscript/Type;
+    iget-object v0, p0, Landroid/renderscript/Program;->mConstants:[Landroid/renderscript/Type;
 
-    array-length v1, v1
+    array-length v0, v0
 
-    if-lt p2, v1, :cond_1
+    if-lt p2, v0, :cond_1
 
     .line 147
     :cond_0
-    new-instance v1, Ljava/lang/IllegalArgumentException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "Slot ID out of range."
+    const-string/jumbo v1, "Slot ID out of range."
 
-    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw v1
+    throw v0
 
     .line 149
     :cond_1
     if-eqz p1, :cond_2
 
+    .line 150
     invoke-virtual {p1}, Landroid/renderscript/Allocation;->getType()Landroid/renderscript/Type;
 
-    move-result-object v1
+    move-result-object v0
 
-    iget-object v2, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
+    iget-object v1, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
 
-    invoke-virtual {v1, v2}, Landroid/renderscript/Type;->getID(Landroid/renderscript/RenderScript;)I
+    invoke-virtual {v0, v1}, Landroid/renderscript/Type;->getID(Landroid/renderscript/RenderScript;)J
 
-    move-result v1
+    move-result-wide v0
 
     iget-object v2, p0, Landroid/renderscript/Program;->mConstants:[Landroid/renderscript/Type;
 
@@ -100,59 +101,64 @@
 
     iget-object v3, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
 
-    invoke-virtual {v2, v3}, Landroid/renderscript/Type;->getID(Landroid/renderscript/RenderScript;)I
+    invoke-virtual {v2, v3}, Landroid/renderscript/Type;->getID(Landroid/renderscript/RenderScript;)J
 
-    move-result v2
+    move-result-wide v2
 
-    if-eq v1, v2, :cond_2
+    cmp-long v0, v0, v2
+
+    if-eqz v0, :cond_2
 
     .line 151
-    new-instance v1, Ljava/lang/IllegalArgumentException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "Allocation type does not match slot type."
+    const-string/jumbo v1, "Allocation type does not match slot type."
 
-    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw v1
+    throw v0
 
     .line 153
     :cond_2
     if-eqz p1, :cond_3
 
-    iget-object v1, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
+    iget-object v0, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
 
-    invoke-virtual {p1, v1}, Landroid/renderscript/Allocation;->getID(Landroid/renderscript/RenderScript;)I
+    invoke-virtual {p1, v0}, Landroid/renderscript/Allocation;->getID(Landroid/renderscript/RenderScript;)J
 
-    move-result v0
+    move-result-wide v4
 
     .line 154
-    .local v0, id:I
+    .local v4, "id":J
     :goto_0
+    iget-object v0, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
+
     iget-object v1, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
 
-    iget-object v2, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
+    invoke-virtual {p0, v1}, Landroid/renderscript/Program;->getID(Landroid/renderscript/RenderScript;)J
 
-    invoke-virtual {p0, v2}, Landroid/renderscript/Program;->getID(Landroid/renderscript/RenderScript;)I
+    move-result-wide v1
 
-    move-result v2
+    move v3, p2
 
-    invoke-virtual {v1, v2, p2, v0}, Landroid/renderscript/RenderScript;->nProgramBindConstants(III)V
+    invoke-virtual/range {v0 .. v5}, Landroid/renderscript/RenderScript;->nProgramBindConstants(JIJ)V
 
-    .line 155
+    .line 145
     return-void
 
     .line 153
-    .end local v0           #id:I
+    .end local v4    # "id":J
     :cond_3
-    const/4 v0, 0x0
+    const-wide/16 v4, 0x0
 
+    .restart local v4    # "id":J
     goto :goto_0
 .end method
 
 .method public bindSampler(Landroid/renderscript/Sampler;I)V
-    .locals 3
-    .parameter "vs"
-    .parameter "slot"
+    .locals 6
+    .param p1, "vs"    # Landroid/renderscript/Sampler;
+    .param p2, "slot"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;
@@ -161,65 +167,68 @@
 
     .prologue
     .line 190
-    iget-object v1, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
+    iget-object v0, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
 
-    invoke-virtual {v1}, Landroid/renderscript/RenderScript;->validate()V
+    invoke-virtual {v0}, Landroid/renderscript/RenderScript;->validate()V
 
     .line 191
     if-ltz p2, :cond_0
 
-    iget v1, p0, Landroid/renderscript/Program;->mTextureCount:I
+    iget v0, p0, Landroid/renderscript/Program;->mTextureCount:I
 
-    if-lt p2, v1, :cond_1
+    if-lt p2, v0, :cond_1
 
     .line 192
     :cond_0
-    new-instance v1, Ljava/lang/IllegalArgumentException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "Slot ID out of range."
+    const-string/jumbo v1, "Slot ID out of range."
 
-    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw v1
+    throw v0
 
     .line 195
     :cond_1
     if-eqz p1, :cond_2
 
-    iget-object v1, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
+    iget-object v0, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
 
-    invoke-virtual {p1, v1}, Landroid/renderscript/Sampler;->getID(Landroid/renderscript/RenderScript;)I
+    invoke-virtual {p1, v0}, Landroid/renderscript/Sampler;->getID(Landroid/renderscript/RenderScript;)J
 
-    move-result v0
+    move-result-wide v4
 
     .line 196
-    .local v0, id:I
+    .local v4, "id":J
     :goto_0
+    iget-object v0, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
+
     iget-object v1, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
 
-    iget-object v2, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
+    invoke-virtual {p0, v1}, Landroid/renderscript/Program;->getID(Landroid/renderscript/RenderScript;)J
 
-    invoke-virtual {p0, v2}, Landroid/renderscript/Program;->getID(Landroid/renderscript/RenderScript;)I
+    move-result-wide v1
 
-    move-result v2
+    move v3, p2
 
-    invoke-virtual {v1, v2, p2, v0}, Landroid/renderscript/RenderScript;->nProgramBindSampler(III)V
+    invoke-virtual/range {v0 .. v5}, Landroid/renderscript/RenderScript;->nProgramBindSampler(JIJ)V
 
-    .line 197
+    .line 189
     return-void
 
     .line 195
-    .end local v0           #id:I
+    .end local v4    # "id":J
     :cond_2
-    const/4 v0, 0x0
+    const-wide/16 v4, 0x0
 
+    .restart local v4    # "id":J
     goto :goto_0
 .end method
 
 .method public bindTexture(Landroid/renderscript/Allocation;I)V
-    .locals 3
-    .parameter "va"
-    .parameter "slot"
+    .locals 6
+    .param p1, "va"    # Landroid/renderscript/Allocation;
+    .param p2, "slot"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;
@@ -228,26 +237,26 @@
 
     .prologue
     .line 166
-    iget-object v1, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
+    iget-object v0, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
 
-    invoke-virtual {v1}, Landroid/renderscript/RenderScript;->validate()V
+    invoke-virtual {v0}, Landroid/renderscript/RenderScript;->validate()V
 
     .line 167
     if-ltz p2, :cond_0
 
-    iget v1, p0, Landroid/renderscript/Program;->mTextureCount:I
+    iget v0, p0, Landroid/renderscript/Program;->mTextureCount:I
 
-    if-lt p2, v1, :cond_1
+    if-lt p2, v0, :cond_1
 
     .line 168
     :cond_0
-    new-instance v1, Ljava/lang/IllegalArgumentException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "Slot ID out of range."
+    const-string/jumbo v1, "Slot ID out of range."
 
-    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw v1
+    throw v0
 
     .line 170
     :cond_1
@@ -255,68 +264,72 @@
 
     invoke-virtual {p1}, Landroid/renderscript/Allocation;->getType()Landroid/renderscript/Type;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {v1}, Landroid/renderscript/Type;->hasFaces()Z
+    invoke-virtual {v0}, Landroid/renderscript/Type;->hasFaces()Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_2
+    if-eqz v0, :cond_2
 
-    iget-object v1, p0, Landroid/renderscript/Program;->mTextures:[Landroid/renderscript/Program$TextureType;
+    .line 171
+    iget-object v0, p0, Landroid/renderscript/Program;->mTextures:[Landroid/renderscript/Program$TextureType;
 
-    aget-object v1, v1, p2
+    aget-object v0, v0, p2
 
-    sget-object v2, Landroid/renderscript/Program$TextureType;->TEXTURE_CUBE:Landroid/renderscript/Program$TextureType;
+    sget-object v1, Landroid/renderscript/Program$TextureType;->TEXTURE_CUBE:Landroid/renderscript/Program$TextureType;
 
-    if-eq v1, v2, :cond_2
+    if-eq v0, v1, :cond_2
 
     .line 172
-    new-instance v1, Ljava/lang/IllegalArgumentException;
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "Cannot bind cubemap to 2d texture slot"
+    const-string/jumbo v1, "Cannot bind cubemap to 2d texture slot"
 
-    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw v1
+    throw v0
 
     .line 175
     :cond_2
     if-eqz p1, :cond_3
 
-    iget-object v1, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
+    iget-object v0, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
 
-    invoke-virtual {p1, v1}, Landroid/renderscript/Allocation;->getID(Landroid/renderscript/RenderScript;)I
+    invoke-virtual {p1, v0}, Landroid/renderscript/Allocation;->getID(Landroid/renderscript/RenderScript;)J
 
-    move-result v0
+    move-result-wide v4
 
     .line 176
-    .local v0, id:I
+    .local v4, "id":J
     :goto_0
+    iget-object v0, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
+
     iget-object v1, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
 
-    iget-object v2, p0, Landroid/renderscript/Program;->mRS:Landroid/renderscript/RenderScript;
+    invoke-virtual {p0, v1}, Landroid/renderscript/Program;->getID(Landroid/renderscript/RenderScript;)J
 
-    invoke-virtual {p0, v2}, Landroid/renderscript/Program;->getID(Landroid/renderscript/RenderScript;)I
+    move-result-wide v1
 
-    move-result v2
+    move v3, p2
 
-    invoke-virtual {v1, v2, p2, v0}, Landroid/renderscript/RenderScript;->nProgramBindTexture(III)V
+    invoke-virtual/range {v0 .. v5}, Landroid/renderscript/RenderScript;->nProgramBindTexture(JIJ)V
 
-    .line 177
+    .line 165
     return-void
 
     .line 175
-    .end local v0           #id:I
+    .end local v4    # "id":J
     :cond_3
-    const/4 v0, 0x0
+    const-wide/16 v4, 0x0
 
+    .restart local v4    # "id":J
     goto :goto_0
 .end method
 
 .method public getConstant(I)Landroid/renderscript/Type;
     .locals 2
-    .parameter "slot"
+    .param p1, "slot"    # I
 
     .prologue
     .line 98
@@ -332,7 +345,7 @@
     :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "Slot ID out of range."
+    const-string/jumbo v1, "Slot ID out of range."
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -381,7 +394,7 @@
 
 .method public getTextureName(I)Ljava/lang/String;
     .locals 2
-    .parameter "slot"
+    .param p1, "slot"    # I
 
     .prologue
     .line 131
@@ -395,7 +408,7 @@
     :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "Slot ID out of range."
+    const-string/jumbo v1, "Slot ID out of range."
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -412,7 +425,7 @@
 
 .method public getTextureType(I)Landroid/renderscript/Program$TextureType;
     .locals 2
-    .parameter "slot"
+    .param p1, "slot"    # I
 
     .prologue
     .line 118
@@ -426,7 +439,7 @@
     :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "Slot ID out of range."
+    const-string/jumbo v1, "Slot ID out of range."
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 

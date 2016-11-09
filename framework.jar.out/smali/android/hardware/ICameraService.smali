@@ -39,7 +39,7 @@
     .end annotation
 .end method
 
-.method public abstract connectPro(Landroid/hardware/IProCameraCallbacks;ILjava/lang/String;ILandroid/hardware/camera2/utils/BinderHolder;)I
+.method public abstract connectLegacy(Landroid/hardware/ICameraClient;IILjava/lang/String;ILandroid/hardware/camera2/utils/BinderHolder;)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -63,7 +63,31 @@
     .end annotation
 .end method
 
-.method public abstract getNumberOfCameras()I
+.method public abstract getCameraVendorTagDescriptor(Landroid/hardware/camera2/utils/BinderHolder;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getLegacyParameters(I[Ljava/lang/String;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getNumberOfCameras(I)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract notifySystemEvent(I[I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -72,6 +96,22 @@
 .end method
 
 .method public abstract removeListener(Landroid/hardware/ICameraServiceListener;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setTorchMode(Ljava/lang/String;ZLandroid/os/IBinder;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract supportsCameraApi(II)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

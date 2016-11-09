@@ -37,7 +37,13 @@
 
 .field public static final decelerate_quint:I = 0x10c0005
 
+.field public static final fast_out_linear_in:I = 0x10c000f
+
+.field public static final fast_out_slow_in:I = 0x10c000d
+
 .field public static final linear:I = 0x10c000b
+
+.field public static final linear_out_slow_in:I = 0x10c000e
 
 .field public static final overshoot:I = 0x10c0008
 
@@ -47,7 +53,7 @@
     .locals 0
 
     .prologue
-    .line 11187
+    .line 13816
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

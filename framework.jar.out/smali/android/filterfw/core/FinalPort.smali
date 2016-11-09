@@ -6,16 +6,16 @@
 # direct methods
 .method public constructor <init>(Landroid/filterfw/core/Filter;Ljava/lang/String;Ljava/lang/reflect/Field;Z)V
     .locals 0
-    .parameter "filter"
-    .parameter "name"
-    .parameter "field"
-    .parameter "hasDefault"
+    .param p1, "filter"    # Landroid/filterfw/core/Filter;
+    .param p2, "name"    # Ljava/lang/String;
+    .param p3, "field"    # Ljava/lang/reflect/Field;
+    .param p4, "hasDefault"    # Z
 
     .prologue
     .line 28
     invoke-direct {p0, p1, p2, p3, p4}, Landroid/filterfw/core/FieldPort;-><init>(Landroid/filterfw/core/Filter;Ljava/lang/String;Ljava/lang/reflect/Field;Z)V
 
-    .line 29
+    .line 27
     return-void
 .end method
 
@@ -23,13 +23,13 @@
 # virtual methods
 .method protected declared-synchronized setFieldFrame(Landroid/filterfw/core/Frame;Z)V
     .locals 3
-    .parameter "frame"
-    .parameter "isAssignment"
+    .param p1, "frame"    # Landroid/filterfw/core/Frame;
+    .param p2, "isAssignment"    # Z
 
     .prologue
-    .line 33
     monitor-enter p0
 
+    .line 33
     :try_start_0
     invoke-virtual {p0}, Landroid/filterfw/core/FinalPort;->assertPortIsOpen()V
 
@@ -52,7 +52,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Attempting to modify "
+    const-string/jumbo v2, "Attempting to modify "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -62,7 +62,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -78,7 +78,6 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 33
     :catchall_0
     move-exception v0
 
@@ -98,9 +97,9 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 41
     monitor-exit p0
 
+    .line 32
     return-void
 .end method
 
@@ -113,7 +112,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "final "
+    const-string/jumbo v1, "final "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

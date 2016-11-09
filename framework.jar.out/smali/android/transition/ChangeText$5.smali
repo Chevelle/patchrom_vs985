@@ -25,9 +25,9 @@
 # direct methods
 .method constructor <init>(Landroid/transition/ChangeText;Landroid/widget/TextView;I)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/transition/ChangeText;
+    .param p2, "val$view"    # Landroid/widget/TextView;
+    .param p3, "val$endColor"    # I
 
     .prologue
     .line 249
@@ -46,7 +46,7 @@
 # virtual methods
 .method public onAnimationCancel(Landroid/animation/Animator;)V
     .locals 2
-    .parameter "animation"
+    .param p1, "animation"    # Landroid/animation/Animator;
 
     .prologue
     .line 253
@@ -56,6 +56,6 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 254
+    .line 251
     return-void
 .end method

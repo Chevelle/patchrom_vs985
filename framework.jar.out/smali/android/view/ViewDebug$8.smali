@@ -3,12 +3,12 @@
 .source "ViewDebug.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Ljava/util/concurrent/Callable;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/view/ViewDebug;->invokeViewMethod(Landroid/view/View;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;
+    value = Landroid/view/ViewDebug;->callMethodOnAppropriateTheadBlocking(Ljava/lang/reflect/Method;Ljava/lang/Object;)Ljava/lang/Object;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -16,44 +16,34 @@
     name = null
 .end annotation
 
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/Object;",
+        "Ljava/util/concurrent/Callable",
+        "<",
+        "Ljava/lang/Object;",
+        ">;"
+    }
+.end annotation
+
 
 # instance fields
-.field final synthetic val$args:[Ljava/lang/Object;
-
-.field final synthetic val$exception:Ljava/util/concurrent/atomic/AtomicReference;
-
-.field final synthetic val$latch:Ljava/util/concurrent/CountDownLatch;
-
 .field final synthetic val$method:Ljava/lang/reflect/Method;
-
-.field final synthetic val$result:Ljava/util/concurrent/atomic/AtomicReference;
 
 .field final synthetic val$view:Landroid/view/View;
 
 
 # direct methods
-.method constructor <init>(Ljava/util/concurrent/atomic/AtomicReference;Ljava/lang/reflect/Method;Landroid/view/View;[Ljava/lang/Object;Ljava/util/concurrent/atomic/AtomicReference;Ljava/util/concurrent/CountDownLatch;)V
+.method constructor <init>(Ljava/lang/reflect/Method;Landroid/view/View;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "val$method"    # Ljava/lang/reflect/Method;
+    .param p2, "val$view"    # Landroid/view/View;
 
     .prologue
-    .line 1469
-    iput-object p1, p0, Landroid/view/ViewDebug$8;->val$result:Ljava/util/concurrent/atomic/AtomicReference;
+    .line 1124
+    iput-object p1, p0, Landroid/view/ViewDebug$8;->val$method:Ljava/lang/reflect/Method;
 
-    iput-object p2, p0, Landroid/view/ViewDebug$8;->val$method:Ljava/lang/reflect/Method;
-
-    iput-object p3, p0, Landroid/view/ViewDebug$8;->val$view:Landroid/view/View;
-
-    iput-object p4, p0, Landroid/view/ViewDebug$8;->val$args:[Ljava/lang/Object;
-
-    iput-object p5, p0, Landroid/view/ViewDebug$8;->val$exception:Ljava/util/concurrent/atomic/AtomicReference;
-
-    iput-object p6, p0, Landroid/view/ViewDebug$8;->val$latch:Ljava/util/concurrent/CountDownLatch;
+    iput-object p2, p0, Landroid/view/ViewDebug$8;->val$view:Landroid/view/View;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -62,64 +52,28 @@
 
 
 # virtual methods
-.method public run()V
-    .locals 5
+.method public call()Ljava/lang/Object;
+    .locals 3
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/lang/IllegalAccessException;,
+            Ljava/lang/reflect/InvocationTargetException;
+        }
+    .end annotation
 
     .prologue
-    .line 1473
-    :try_start_0
-    iget-object v1, p0, Landroid/view/ViewDebug$8;->val$result:Ljava/util/concurrent/atomic/AtomicReference;
+    .line 1127
+    iget-object v1, p0, Landroid/view/ViewDebug$8;->val$method:Ljava/lang/reflect/Method;
 
-    iget-object v2, p0, Landroid/view/ViewDebug$8;->val$method:Ljava/lang/reflect/Method;
+    iget-object v2, p0, Landroid/view/ViewDebug$8;->val$view:Landroid/view/View;
 
-    iget-object v3, p0, Landroid/view/ViewDebug$8;->val$view:Landroid/view/View;
+    const/4 v0, 0x0
 
-    iget-object v4, p0, Landroid/view/ViewDebug$8;->val$args:[Ljava/lang/Object;
+    check-cast v0, [Ljava/lang/Object;
 
-    invoke-virtual {v2, v3, v4}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v1, v2, v0}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v0
 
-    invoke-virtual {v1, v2}, Ljava/util/concurrent/atomic/AtomicReference;->set(Ljava/lang/Object;)V
-    :try_end_0
-    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
-
-    .line 1480
-    :goto_0
-    iget-object v1, p0, Landroid/view/ViewDebug$8;->val$latch:Ljava/util/concurrent/CountDownLatch;
-
-    invoke-virtual {v1}, Ljava/util/concurrent/CountDownLatch;->countDown()V
-
-    .line 1481
-    return-void
-
-    .line 1474
-    :catch_0
-    move-exception v0
-
-    .line 1475
-    .local v0, e:Ljava/lang/reflect/InvocationTargetException;
-    iget-object v1, p0, Landroid/view/ViewDebug$8;->val$exception:Ljava/util/concurrent/atomic/AtomicReference;
-
-    invoke-virtual {v0}, Ljava/lang/reflect/InvocationTargetException;->getCause()Ljava/lang/Throwable;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/util/concurrent/atomic/AtomicReference;->set(Ljava/lang/Object;)V
-
-    goto :goto_0
-
-    .line 1476
-    .end local v0           #e:Ljava/lang/reflect/InvocationTargetException;
-    :catch_1
-    move-exception v0
-
-    .line 1477
-    .local v0, e:Ljava/lang/Exception;
-    iget-object v1, p0, Landroid/view/ViewDebug$8;->val$exception:Ljava/util/concurrent/atomic/AtomicReference;
-
-    invoke-virtual {v1, v0}, Ljava/util/concurrent/atomic/AtomicReference;->set(Ljava/lang/Object;)V
-
-    goto :goto_0
+    return-object v0
 .end method

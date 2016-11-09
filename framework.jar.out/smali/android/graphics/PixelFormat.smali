@@ -90,7 +90,7 @@
 
 .method public static formatHasAlpha(I)Z
     .locals 1
-    .parameter "format"
+    .param p0, "format"    # I
 
     .prologue
     .line 123
@@ -100,14 +100,13 @@
     :pswitch_0
     const/4 v0, 0x0
 
-    :goto_0
     return v0
 
     .line 131
     :pswitch_1
     const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 
     .line 123
     nop
@@ -133,8 +132,8 @@
 
 .method public static getPixelFormatInfo(ILandroid/graphics/PixelFormat;)V
     .locals 3
-    .parameter "format"
-    .parameter "info"
+    .param p0, "format"    # I
+    .param p1, "info"    # Landroid/graphics/PixelFormat;
 
     .prologue
     const/16 v0, 0x10
@@ -152,7 +151,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v2, "unkonwon pixel format "
+    const-string/jumbo v2, "unknown pixel format "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -181,7 +180,7 @@
 
     iput v0, p1, Landroid/graphics/PixelFormat;->bytesPerPixel:I
 
-    .line 120
+    .line 84
     :goto_0
     return-void
 
@@ -265,5 +264,36 @@
         :pswitch_0
         :pswitch_0
         :pswitch_5
+    .end packed-switch
+.end method
+
+.method public static isPublicFormat(I)Z
+    .locals 1
+    .param p0, "format"    # I
+
+    .prologue
+    .line 153
+    packed-switch p0, :pswitch_data_0
+
+    .line 161
+    const/4 v0, 0x0
+
+    return v0
+
+    .line 158
+    :pswitch_0
+    const/4 v0, 0x1
+
+    return v0
+
+    .line 153
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
+        :pswitch_0
     .end packed-switch
 .end method

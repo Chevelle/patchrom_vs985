@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 75
+    .line 74
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 76
     iput-object p1, p0, Landroid/location/IGpsStatusProvider$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 77
+    .line 74
     return-void
 .end method
 
@@ -41,7 +41,7 @@
 # virtual methods
 .method public addGpsStatusListener(Landroid/location/IGpsStatusListener;)V
     .locals 5
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/location/IGpsStatusListener;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -49,23 +49,25 @@
     .end annotation
 
     .prologue
+    const/4 v2, 0x0
+
     .line 88
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
     .line 89
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 91
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.location.IGpsStatusProvider"
+    const-string/jumbo v3, "android.location.IGpsStatusProvider"
 
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
     .line 92
     if-eqz p1, :cond_0
@@ -74,7 +76,7 @@
 
     move-result-object v2
 
-    :goto_0
+    :cond_0
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeStrongBinder(Landroid/os/IBinder;)V
 
     .line 93
@@ -97,24 +99,20 @@
     .line 98
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 100
+    .line 86
     return-void
 
-    .line 92
-    :cond_0
-    const/4 v2, 0x0
-
-    goto :goto_0
-
-    .line 97
+    .line 96
     :catchall_0
     move-exception v2
 
+    .line 97
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 98
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 96
     throw v2
 .end method
 
@@ -133,14 +131,14 @@
 
     .prologue
     .line 84
-    const-string v0, "android.location.IGpsStatusProvider"
+    const-string/jumbo v0, "android.location.IGpsStatusProvider"
 
     return-object v0
 .end method
 
 .method public removeGpsStatusListener(Landroid/location/IGpsStatusListener;)V
     .locals 5
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/location/IGpsStatusListener;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -148,23 +146,25 @@
     .end annotation
 
     .prologue
+    const/4 v2, 0x0
+
     .line 103
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
     .line 104
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 106
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.location.IGpsStatusProvider"
+    const-string/jumbo v3, "android.location.IGpsStatusProvider"
 
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
     .line 107
     if-eqz p1, :cond_0
@@ -173,7 +173,7 @@
 
     move-result-object v2
 
-    :goto_0
+    :cond_0
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeStrongBinder(Landroid/os/IBinder;)V
 
     .line 108
@@ -196,23 +196,19 @@
     .line 113
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 115
+    .line 101
     return-void
 
-    .line 107
-    :cond_0
-    const/4 v2, 0x0
-
-    goto :goto_0
-
-    .line 112
+    .line 111
     :catchall_0
     move-exception v2
 
+    .line 112
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 113
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 111
     throw v2
 .end method

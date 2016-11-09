@@ -6,14 +6,13 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/graphics/drawable/LevelListDrawable$1;,
         Landroid/graphics/drawable/LevelListDrawable$LevelListState;
     }
 .end annotation
 
 
 # instance fields
-.field private final mLevelListState:Landroid/graphics/drawable/LevelListDrawable$LevelListState;
+.field private mLevelListState:Landroid/graphics/drawable/LevelListDrawable$LevelListState;
 
 .field private mMutated:Z
 
@@ -25,7 +24,7 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 63
+    .line 65
     invoke-direct {p0, v0, v0}, Landroid/graphics/drawable/LevelListDrawable;-><init>(Landroid/graphics/drawable/LevelListDrawable$LevelListState;Landroid/content/res/Resources;)V
 
     .line 64
@@ -34,44 +33,39 @@
 
 .method private constructor <init>(Landroid/graphics/drawable/LevelListDrawable$LevelListState;Landroid/content/res/Resources;)V
     .locals 2
-    .parameter "state"
-    .parameter "res"
+    .param p1, "state"    # Landroid/graphics/drawable/LevelListDrawable$LevelListState;
+    .param p2, "res"    # Landroid/content/res/Resources;
 
     .prologue
-    .line 212
+    .line 240
     invoke-direct {p0}, Landroid/graphics/drawable/DrawableContainer;-><init>()V
 
-    .line 213
+    .line 241
     new-instance v0, Landroid/graphics/drawable/LevelListDrawable$LevelListState;
 
     invoke-direct {v0, p1, p0, p2}, Landroid/graphics/drawable/LevelListDrawable$LevelListState;-><init>(Landroid/graphics/drawable/LevelListDrawable$LevelListState;Landroid/graphics/drawable/LevelListDrawable;Landroid/content/res/Resources;)V
 
-    .line 214
-    .local v0, as:Landroid/graphics/drawable/LevelListDrawable$LevelListState;
-    iput-object v0, p0, Landroid/graphics/drawable/LevelListDrawable;->mLevelListState:Landroid/graphics/drawable/LevelListDrawable$LevelListState;
-
-    .line 215
+    .line 242
+    .local v0, "as":Landroid/graphics/drawable/LevelListDrawable$LevelListState;
     invoke-virtual {p0, v0}, Landroid/graphics/drawable/LevelListDrawable;->setConstantState(Landroid/graphics/drawable/DrawableContainer$DrawableContainerState;)V
 
-    .line 216
+    .line 243
     invoke-virtual {p0}, Landroid/graphics/drawable/LevelListDrawable;->getLevel()I
 
     move-result v1
 
     invoke-virtual {p0, v1}, Landroid/graphics/drawable/LevelListDrawable;->onLevelChange(I)Z
 
-    .line 217
+    .line 240
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/graphics/drawable/LevelListDrawable$LevelListState;Landroid/content/res/Resources;Landroid/graphics/drawable/LevelListDrawable$1;)V
+.method synthetic constructor <init>(Landroid/graphics/drawable/LevelListDrawable$LevelListState;Landroid/content/res/Resources;Landroid/graphics/drawable/LevelListDrawable;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
+    .param p1, "state"    # Landroid/graphics/drawable/LevelListDrawable$LevelListState;
+    .param p2, "res"    # Landroid/content/res/Resources;
 
     .prologue
-    .line 58
     invoke-direct {p0, p1, p2}, Landroid/graphics/drawable/LevelListDrawable;-><init>(Landroid/graphics/drawable/LevelListDrawable$LevelListState;Landroid/content/res/Resources;)V
 
     return-void
@@ -81,36 +75,81 @@
 # virtual methods
 .method public addLevel(IILandroid/graphics/drawable/Drawable;)V
     .locals 1
-    .parameter "low"
-    .parameter "high"
-    .parameter "drawable"
+    .param p1, "low"    # I
+    .param p2, "high"    # I
+    .param p3, "drawable"    # Landroid/graphics/drawable/Drawable;
 
     .prologue
-    .line 67
+    .line 69
     if-eqz p3, :cond_0
 
-    .line 68
+    .line 70
     iget-object v0, p0, Landroid/graphics/drawable/LevelListDrawable;->mLevelListState:Landroid/graphics/drawable/LevelListDrawable$LevelListState;
 
     invoke-virtual {v0, p1, p2, p3}, Landroid/graphics/drawable/LevelListDrawable$LevelListState;->addLevel(IILandroid/graphics/drawable/Drawable;)V
 
-    .line 70
+    .line 72
     invoke-virtual {p0}, Landroid/graphics/drawable/LevelListDrawable;->getLevel()I
 
     move-result v0
 
     invoke-virtual {p0, v0}, Landroid/graphics/drawable/LevelListDrawable;->onLevelChange(I)Z
 
-    .line 72
+    .line 68
     :cond_0
     return-void
 .end method
 
-.method public inflate(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;)V
+.method public clearMutated()V
+    .locals 1
+
+    .prologue
+    .line 165
+    invoke-super {p0}, Landroid/graphics/drawable/DrawableContainer;->clearMutated()V
+
+    .line 166
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Landroid/graphics/drawable/LevelListDrawable;->mMutated:Z
+
+    .line 164
+    return-void
+.end method
+
+.method bridge synthetic cloneConstantState()Landroid/graphics/drawable/DrawableContainer$DrawableContainerState;
+    .locals 1
+
+    .prologue
+    .line 157
+    invoke-virtual {p0}, Landroid/graphics/drawable/LevelListDrawable;->cloneConstantState()Landroid/graphics/drawable/LevelListDrawable$LevelListState;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method cloneConstantState()Landroid/graphics/drawable/LevelListDrawable$LevelListState;
+    .locals 3
+
+    .prologue
+    .line 158
+    new-instance v0, Landroid/graphics/drawable/LevelListDrawable$LevelListState;
+
+    iget-object v1, p0, Landroid/graphics/drawable/LevelListDrawable;->mLevelListState:Landroid/graphics/drawable/LevelListDrawable$LevelListState;
+
+    const/4 v2, 0x0
+
+    invoke-direct {v0, v1, p0, v2}, Landroid/graphics/drawable/LevelListDrawable$LevelListState;-><init>(Landroid/graphics/drawable/LevelListDrawable$LevelListState;Landroid/graphics/drawable/LevelListDrawable;Landroid/content/res/Resources;)V
+
+    return-object v0
+.end method
+
+.method public inflate(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Landroid/content/res/Resources$Theme;)V
     .locals 11
-    .parameter "r"
-    .parameter "parser"
-    .parameter "attrs"
+    .param p1, "r"    # Landroid/content/res/Resources;
+    .param p2, "parser"    # Lorg/xmlpull/v1/XmlPullParser;
+    .param p3, "attrs"    # Landroid/util/AttributeSet;
+    .param p4, "theme"    # Landroid/content/res/Resources$Theme;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/xmlpull/v1/XmlPullParserException;,
@@ -119,14 +158,14 @@
     .end annotation
 
     .prologue
-    .line 89
-    invoke-super {p0, p1, p2, p3}, Landroid/graphics/drawable/DrawableContainer;->inflate(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;)V
+    .line 90
+    invoke-super {p0, p1, p2, p3, p4}, Landroid/graphics/drawable/DrawableContainer;->inflate(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Landroid/content/res/Resources$Theme;)V
 
-    .line 93
+    .line 94
     const/4 v6, 0x0
 
-    .line 95
-    .local v6, low:I
+    .line 96
+    .local v6, "low":I
     invoke-interface {p2}, Lorg/xmlpull/v1/XmlPullParser;->getDepth()I
 
     move-result v8
@@ -134,43 +173,45 @@
     add-int/lit8 v5, v8, 0x1
 
     .line 98
-    .local v5, innerDepth:I
+    .local v5, "innerDepth":I
     :cond_0
     :goto_0
     invoke-interface {p2}, Lorg/xmlpull/v1/XmlPullParser;->next()I
 
     move-result v7
 
-    .local v7, type:I
+    .local v7, "type":I
     const/4 v8, 0x1
 
     if-eq v7, v8, :cond_5
 
+    .line 99
     invoke-interface {p2}, Lorg/xmlpull/v1/XmlPullParser;->getDepth()I
 
     move-result v1
 
-    .local v1, depth:I
+    .local v1, "depth":I
     if-ge v1, v5, :cond_1
 
+    .line 100
     const/4 v8, 0x3
 
     if-eq v7, v8, :cond_5
 
-    .line 100
+    .line 101
     :cond_1
     const/4 v8, 0x2
 
     if-ne v7, v8, :cond_0
 
-    .line 104
+    .line 105
     if-gt v1, v5, :cond_0
 
     invoke-interface {p2}, Lorg/xmlpull/v1/XmlPullParser;->getName()Ljava/lang/String;
 
     move-result-object v8
 
-    const-string v9, "item"
+    const-string/jumbo v9, "item"
 
     invoke-virtual {v8, v9}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -178,50 +219,54 @@
 
     if-eqz v8, :cond_0
 
-    .line 108
+    .line 110
     sget-object v8, Lcom/android/internal/R$styleable;->LevelListDrawableItem:[I
 
-    invoke-virtual {p1, p3, v8}, Landroid/content/res/Resources;->obtainAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+    .line 109
+    invoke-static {p1, p4, p3, v8}, Landroid/graphics/drawable/LevelListDrawable;->obtainAttributes(Landroid/content/res/Resources;Landroid/content/res/Resources$Theme;Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 111
-    .local v0, a:Landroid/content/res/TypedArray;
+    .line 113
+    .local v0, "a":Landroid/content/res/TypedArray;
     const/4 v8, 0x1
 
     const/4 v9, 0x0
 
+    .line 112
     invoke-virtual {v0, v8, v9}, Landroid/content/res/TypedArray;->getInt(II)I
 
     move-result v6
 
-    .line 113
+    .line 115
     const/4 v8, 0x2
 
     const/4 v9, 0x0
 
+    .line 114
     invoke-virtual {v0, v8, v9}, Landroid/content/res/TypedArray;->getInt(II)I
 
     move-result v4
 
-    .line 115
-    .local v4, high:I
+    .line 117
+    .local v4, "high":I
     const/4 v8, 0x0
 
     const/4 v9, 0x0
 
+    .line 116
     invoke-virtual {v0, v8, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
 
     move-result v3
 
-    .line 118
-    .local v3, drawableRes:I
+    .line 119
+    .local v3, "drawableRes":I
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 120
+    .line 121
     if-gez v4, :cond_2
 
-    .line 121
+    .line 122
     new-instance v8, Lorg/xmlpull/v1/XmlPullParserException;
 
     new-instance v9, Ljava/lang/StringBuilder;
@@ -236,8 +281,10 @@
 
     move-result-object v9
 
-    const-string v10, ": <item> tag requires a \'maxLevel\' attribute"
+    .line 123
+    const-string/jumbo v10, ": <item> tag requires a \'maxLevel\' attribute"
 
+    .line 122
     invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v9
@@ -250,17 +297,17 @@
 
     throw v8
 
-    .line 126
+    .line 127
     :cond_2
     if-eqz v3, :cond_3
 
-    .line 127
-    invoke-virtual {p1, v3}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    .line 128
+    invoke-virtual {p1, v3, p4}, Landroid/content/res/Resources;->getDrawable(ILandroid/content/res/Resources$Theme;)Landroid/graphics/drawable/Drawable;
 
     move-result-object v2
 
-    .line 140
-    .local v2, dr:Landroid/graphics/drawable/Drawable;
+    .line 141
+    .local v2, "dr":Landroid/graphics/drawable/Drawable;
     :goto_1
     iget-object v8, p0, Landroid/graphics/drawable/LevelListDrawable;->mLevelListState:Landroid/graphics/drawable/LevelListDrawable$LevelListState;
 
@@ -268,8 +315,8 @@
 
     goto :goto_0
 
-    .line 129
-    .end local v2           #dr:Landroid/graphics/drawable/Drawable;
+    .line 130
+    .end local v2    # "dr":Landroid/graphics/drawable/Drawable;
     :cond_3
     invoke-interface {p2}, Lorg/xmlpull/v1/XmlPullParser;->next()I
 
@@ -279,14 +326,15 @@
 
     if-eq v7, v8, :cond_3
 
-    .line 131
+    .line 132
     const/4 v8, 0x2
 
     if-eq v7, v8, :cond_4
 
-    .line 132
+    .line 133
     new-instance v8, Lorg/xmlpull/v1/XmlPullParserException;
 
+    .line 134
     new-instance v9, Ljava/lang/StringBuilder;
 
     invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
@@ -299,14 +347,18 @@
 
     move-result-object v9
 
-    const-string v10, ": <item> tag requires a \'drawable\' attribute or "
+    .line 135
+    const-string/jumbo v10, ": <item> tag requires a \'drawable\' attribute or "
 
+    .line 134
     invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v9
 
-    const-string v10, "child tag defining a drawable"
+    .line 136
+    const-string/jumbo v10, "child tag defining a drawable"
 
+    .line 134
     invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v9
@@ -315,25 +367,26 @@
 
     move-result-object v9
 
+    .line 133
     invoke-direct {v8, v9}, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;)V
 
     throw v8
 
-    .line 137
+    .line 138
     :cond_4
-    invoke-static {p1, p2, p3}, Landroid/graphics/drawable/Drawable;->createFromXmlInner(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;)Landroid/graphics/drawable/Drawable;
+    invoke-static {p1, p2, p3, p4}, Landroid/graphics/drawable/Drawable;->createFromXmlInner(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Landroid/content/res/Resources$Theme;)Landroid/graphics/drawable/Drawable;
 
     move-result-object v2
 
-    .restart local v2       #dr:Landroid/graphics/drawable/Drawable;
+    .restart local v2    # "dr":Landroid/graphics/drawable/Drawable;
     goto :goto_1
 
-    .line 143
-    .end local v0           #a:Landroid/content/res/TypedArray;
-    .end local v1           #depth:I
-    .end local v2           #dr:Landroid/graphics/drawable/Drawable;
-    .end local v3           #drawableRes:I
-    .end local v4           #high:I
+    .line 144
+    .end local v0    # "a":Landroid/content/res/TypedArray;
+    .end local v1    # "depth":I
+    .end local v2    # "dr":Landroid/graphics/drawable/Drawable;
+    .end local v3    # "drawableRes":I
+    .end local v4    # "high":I
     :cond_5
     invoke-virtual {p0}, Landroid/graphics/drawable/LevelListDrawable;->getLevel()I
 
@@ -341,15 +394,15 @@
 
     invoke-virtual {p0, v8}, Landroid/graphics/drawable/LevelListDrawable;->onLevelChange(I)Z
 
-    .line 144
+    .line 89
     return-void
 .end method
 
 .method public mutate()Landroid/graphics/drawable/Drawable;
-    .locals 2
+    .locals 1
 
     .prologue
-    .line 148
+    .line 149
     iget-boolean v0, p0, Landroid/graphics/drawable/LevelListDrawable;->mMutated:Z
 
     if-nez v0, :cond_0
@@ -360,43 +413,10 @@
 
     if-ne v0, p0, :cond_0
 
-    .line 149
-    iget-object v1, p0, Landroid/graphics/drawable/LevelListDrawable;->mLevelListState:Landroid/graphics/drawable/LevelListDrawable$LevelListState;
-
-    iget-object v0, p0, Landroid/graphics/drawable/LevelListDrawable;->mLevelListState:Landroid/graphics/drawable/LevelListDrawable$LevelListState;
-
-    #getter for: Landroid/graphics/drawable/LevelListDrawable$LevelListState;->mLows:[I
-    invoke-static {v0}, Landroid/graphics/drawable/LevelListDrawable$LevelListState;->access$000(Landroid/graphics/drawable/LevelListDrawable$LevelListState;)[I
-
-    move-result-object v0
-
-    invoke-virtual {v0}, [I->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [I
-
-    #setter for: Landroid/graphics/drawable/LevelListDrawable$LevelListState;->mLows:[I
-    invoke-static {v1, v0}, Landroid/graphics/drawable/LevelListDrawable$LevelListState;->access$002(Landroid/graphics/drawable/LevelListDrawable$LevelListState;[I)[I
-
     .line 150
-    iget-object v1, p0, Landroid/graphics/drawable/LevelListDrawable;->mLevelListState:Landroid/graphics/drawable/LevelListDrawable$LevelListState;
-
     iget-object v0, p0, Landroid/graphics/drawable/LevelListDrawable;->mLevelListState:Landroid/graphics/drawable/LevelListDrawable$LevelListState;
 
-    #getter for: Landroid/graphics/drawable/LevelListDrawable$LevelListState;->mHighs:[I
-    invoke-static {v0}, Landroid/graphics/drawable/LevelListDrawable$LevelListState;->access$100(Landroid/graphics/drawable/LevelListDrawable$LevelListState;)[I
-
-    move-result-object v0
-
-    invoke-virtual {v0}, [I->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [I
-
-    #setter for: Landroid/graphics/drawable/LevelListDrawable$LevelListState;->mHighs:[I
-    invoke-static {v1, v0}, Landroid/graphics/drawable/LevelListDrawable$LevelListState;->access$102(Landroid/graphics/drawable/LevelListDrawable$LevelListState;[I)[I
+    invoke-static {v0}, Landroid/graphics/drawable/LevelListDrawable$LevelListState;->-wrap0(Landroid/graphics/drawable/LevelListDrawable$LevelListState;)V
 
     .line 151
     const/4 v0, 0x1
@@ -410,35 +430,58 @@
 
 .method protected onLevelChange(I)Z
     .locals 2
-    .parameter "level"
+    .param p1, "level"    # I
 
     .prologue
-    .line 78
+    .line 80
     iget-object v1, p0, Landroid/graphics/drawable/LevelListDrawable;->mLevelListState:Landroid/graphics/drawable/LevelListDrawable$LevelListState;
 
     invoke-virtual {v1, p1}, Landroid/graphics/drawable/LevelListDrawable$LevelListState;->indexOfLevel(I)I
 
     move-result v0
 
-    .line 79
-    .local v0, idx:I
+    .line 81
+    .local v0, "idx":I
     invoke-virtual {p0, v0}, Landroid/graphics/drawable/LevelListDrawable;->selectDrawable(I)Z
 
     move-result v1
 
     if-eqz v1, :cond_0
 
-    .line 80
+    .line 82
     const/4 v1, 0x1
 
-    .line 82
-    :goto_0
     return v1
 
+    .line 84
     :cond_0
     invoke-super {p0, p1}, Landroid/graphics/drawable/DrawableContainer;->onLevelChange(I)Z
 
     move-result v1
 
-    goto :goto_0
+    return v1
+.end method
+
+.method protected setConstantState(Landroid/graphics/drawable/DrawableContainer$DrawableContainerState;)V
+    .locals 1
+    .param p1, "state"    # Landroid/graphics/drawable/DrawableContainer$DrawableContainerState;
+
+    .prologue
+    .line 233
+    invoke-super {p0, p1}, Landroid/graphics/drawable/DrawableContainer;->setConstantState(Landroid/graphics/drawable/DrawableContainer$DrawableContainerState;)V
+
+    .line 235
+    instance-of v0, p1, Landroid/graphics/drawable/LevelListDrawable$LevelListState;
+
+    if-eqz v0, :cond_0
+
+    .line 236
+    check-cast p1, Landroid/graphics/drawable/LevelListDrawable$LevelListState;
+
+    .end local p1    # "state":Landroid/graphics/drawable/DrawableContainer$DrawableContainerState;
+    iput-object p1, p0, Landroid/graphics/drawable/LevelListDrawable;->mLevelListState:Landroid/graphics/drawable/LevelListDrawable$LevelListState;
+
+    .line 232
+    :cond_0
+    return-void
 .end method

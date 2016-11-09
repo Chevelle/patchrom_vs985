@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/content/SyncStats$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -51,6 +59,7 @@
 
     sput-object v0, Landroid/content/SyncStats;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 28
     return-void
 .end method
 
@@ -90,13 +99,13 @@
     .line 105
     iput-wide v0, p0, Landroid/content/SyncStats;->numSkippedEntries:J
 
-    .line 106
+    .line 96
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 108
@@ -165,7 +174,7 @@
 
     iput-wide v0, p0, Landroid/content/SyncStats;->numSkippedEntries:J
 
-    .line 118
+    .line 108
     return-void
 .end method
 
@@ -204,7 +213,7 @@
     .line 150
     iput-wide v0, p0, Landroid/content/SyncStats;->numSkippedEntries:J
 
-    .line 151
+    .line 141
     return-void
 .end method
 
@@ -230,19 +239,19 @@
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 123
-    .local v0, sb:Ljava/lang/StringBuilder;
-    const-string v1, " stats ["
+    .local v0, "sb":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, " stats ["
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 124
-    iget-wide v1, p0, Landroid/content/SyncStats;->numAuthExceptions:J
+    iget-wide v2, p0, Landroid/content/SyncStats;->numAuthExceptions:J
 
-    cmp-long v1, v1, v4
+    cmp-long v1, v2, v4
 
     if-lez v1, :cond_0
 
-    const-string v1, " numAuthExceptions: "
+    const-string/jumbo v1, " numAuthExceptions: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -254,13 +263,13 @@
 
     .line 125
     :cond_0
-    iget-wide v1, p0, Landroid/content/SyncStats;->numIoExceptions:J
+    iget-wide v2, p0, Landroid/content/SyncStats;->numIoExceptions:J
 
-    cmp-long v1, v1, v4
+    cmp-long v1, v2, v4
 
     if-lez v1, :cond_1
 
-    const-string v1, " numIoExceptions: "
+    const-string/jumbo v1, " numIoExceptions: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -272,13 +281,13 @@
 
     .line 126
     :cond_1
-    iget-wide v1, p0, Landroid/content/SyncStats;->numParseExceptions:J
+    iget-wide v2, p0, Landroid/content/SyncStats;->numParseExceptions:J
 
-    cmp-long v1, v1, v4
+    cmp-long v1, v2, v4
 
     if-lez v1, :cond_2
 
-    const-string v1, " numParseExceptions: "
+    const-string/jumbo v1, " numParseExceptions: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -290,14 +299,14 @@
 
     .line 127
     :cond_2
-    iget-wide v1, p0, Landroid/content/SyncStats;->numConflictDetectedExceptions:J
+    iget-wide v2, p0, Landroid/content/SyncStats;->numConflictDetectedExceptions:J
 
-    cmp-long v1, v1, v4
+    cmp-long v1, v2, v4
 
     if-lez v1, :cond_3
 
     .line 128
-    const-string v1, " numConflictDetectedExceptions: "
+    const-string/jumbo v1, " numConflictDetectedExceptions: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -309,13 +318,13 @@
 
     .line 129
     :cond_3
-    iget-wide v1, p0, Landroid/content/SyncStats;->numInserts:J
+    iget-wide v2, p0, Landroid/content/SyncStats;->numInserts:J
 
-    cmp-long v1, v1, v4
+    cmp-long v1, v2, v4
 
     if-lez v1, :cond_4
 
-    const-string v1, " numInserts: "
+    const-string/jumbo v1, " numInserts: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -327,13 +336,13 @@
 
     .line 130
     :cond_4
-    iget-wide v1, p0, Landroid/content/SyncStats;->numUpdates:J
+    iget-wide v2, p0, Landroid/content/SyncStats;->numUpdates:J
 
-    cmp-long v1, v1, v4
+    cmp-long v1, v2, v4
 
     if-lez v1, :cond_5
 
-    const-string v1, " numUpdates: "
+    const-string/jumbo v1, " numUpdates: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -345,13 +354,13 @@
 
     .line 131
     :cond_5
-    iget-wide v1, p0, Landroid/content/SyncStats;->numDeletes:J
+    iget-wide v2, p0, Landroid/content/SyncStats;->numDeletes:J
 
-    cmp-long v1, v1, v4
+    cmp-long v1, v2, v4
 
     if-lez v1, :cond_6
 
-    const-string v1, " numDeletes: "
+    const-string/jumbo v1, " numDeletes: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -363,13 +372,13 @@
 
     .line 132
     :cond_6
-    iget-wide v1, p0, Landroid/content/SyncStats;->numEntries:J
+    iget-wide v2, p0, Landroid/content/SyncStats;->numEntries:J
 
-    cmp-long v1, v1, v4
+    cmp-long v1, v2, v4
 
     if-lez v1, :cond_7
 
-    const-string v1, " numEntries: "
+    const-string/jumbo v1, " numEntries: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -381,13 +390,13 @@
 
     .line 133
     :cond_7
-    iget-wide v1, p0, Landroid/content/SyncStats;->numSkippedEntries:J
+    iget-wide v2, p0, Landroid/content/SyncStats;->numSkippedEntries:J
 
-    cmp-long v1, v1, v4
+    cmp-long v1, v2, v4
 
     if-lez v1, :cond_8
 
-    const-string v1, " numSkippedEntries: "
+    const-string/jumbo v1, " numSkippedEntries: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -399,7 +408,7 @@
 
     .line 134
     :cond_8
-    const-string v1, "]"
+    const-string/jumbo v1, "]"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -413,8 +422,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 2
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 158
@@ -462,6 +471,6 @@
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 167
+    .line 157
     return-void
 .end method

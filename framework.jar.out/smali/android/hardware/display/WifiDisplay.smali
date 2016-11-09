@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/hardware/display/WifiDisplay$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -54,20 +62,21 @@
 
     sput-object v0, Landroid/hardware/display/WifiDisplay;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 32
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZ)V
     .locals 2
-    .parameter "deviceAddress"
-    .parameter "deviceName"
-    .parameter "deviceAlias"
-    .parameter "available"
-    .parameter "canConnect"
-    .parameter "remembered"
+    .param p1, "deviceAddress"    # Ljava/lang/String;
+    .param p2, "deviceName"    # Ljava/lang/String;
+    .param p3, "deviceAlias"    # Ljava/lang/String;
+    .param p4, "available"    # Z
+    .param p5, "canConnect"    # Z
+    .param p6, "remembered"    # Z
 
     .prologue
-    .line 60
+    .line 59
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 61
@@ -76,7 +85,7 @@
     .line 62
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "deviceAddress must not be null"
+    const-string/jumbo v1, "deviceAddress must not be null"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -89,7 +98,7 @@
     .line 65
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "deviceName must not be null"
+    const-string/jumbo v1, "deviceName must not be null"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -114,7 +123,7 @@
     .line 73
     iput-boolean p6, p0, Landroid/hardware/display/WifiDisplay;->mIsRemembered:Z
 
-    .line 74
+    .line 60
     return-void
 .end method
 
@@ -142,12 +151,13 @@
 
 .method public equals(Landroid/hardware/display/WifiDisplay;)Z
     .locals 2
-    .parameter "other"
+    .param p1, "other"    # Landroid/hardware/display/WifiDisplay;
 
     .prologue
     .line 140
     if-eqz p1, :cond_0
 
+    .line 141
     iget-object v0, p0, Landroid/hardware/display/WifiDisplay;->mDeviceAddress:Ljava/lang/String;
 
     iget-object v1, p1, Landroid/hardware/display/WifiDisplay;->mDeviceAddress:Ljava/lang/String;
@@ -156,8 +166,10 @@
 
     move-result v0
 
+    .line 140
     if-eqz v0, :cond_0
 
+    .line 142
     iget-object v0, p0, Landroid/hardware/display/WifiDisplay;->mDeviceName:Ljava/lang/String;
 
     iget-object v1, p1, Landroid/hardware/display/WifiDisplay;->mDeviceName:Ljava/lang/String;
@@ -166,8 +178,10 @@
 
     move-result v0
 
+    .line 140
     if-eqz v0, :cond_0
 
+    .line 143
     iget-object v0, p0, Landroid/hardware/display/WifiDisplay;->mDeviceAlias:Ljava/lang/String;
 
     iget-object v1, p1, Landroid/hardware/display/WifiDisplay;->mDeviceAlias:Ljava/lang/String;
@@ -176,10 +190,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
-
+    .line 140
     :goto_0
     return v0
 
@@ -191,7 +202,7 @@
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 1
-    .parameter "o"
+    .param p1, "o"    # Ljava/lang/Object;
 
     .prologue
     .line 132
@@ -201,18 +212,15 @@
 
     check-cast p1, Landroid/hardware/display/WifiDisplay;
 
-    .end local p1
+    .end local p1    # "o":Ljava/lang/Object;
     invoke-virtual {p0, p1}, Landroid/hardware/display/WifiDisplay;->equals(Landroid/hardware/display/WifiDisplay;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
-
     :goto_0
     return v0
 
+    .restart local p1    # "o":Ljava/lang/Object;
     :cond_0
     const/4 v0, 0x0
 
@@ -271,7 +279,7 @@
 
 .method public hasSameAddress(Landroid/hardware/display/WifiDisplay;)Z
     .locals 2
-    .parameter "other"
+    .param p1, "other"    # Landroid/hardware/display/WifiDisplay;
 
     .prologue
     .line 152
@@ -284,10 +292,6 @@
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v0
-
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
 
     :goto_0
     return v0
@@ -347,7 +351,7 @@
 
     move-result-object v1
 
-    const-string v2, " ("
+    const-string/jumbo v2, " ("
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -359,7 +363,7 @@
 
     move-result-object v1
 
-    const-string v2, ")"
+    const-string/jumbo v2, ")"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -370,7 +374,7 @@
     move-result-object v0
 
     .line 180
-    .local v0, result:Ljava/lang/String;
+    .local v0, "result":Ljava/lang/String;
     iget-object v1, p0, Landroid/hardware/display/WifiDisplay;->mDeviceAlias:Ljava/lang/String;
 
     if-eqz v1, :cond_0
@@ -384,7 +388,7 @@
 
     move-result-object v1
 
-    const-string v2, ", alias "
+    const-string/jumbo v2, ", alias "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -410,7 +414,7 @@
 
     move-result-object v1
 
-    const-string v2, ", isAvailable "
+    const-string/jumbo v2, ", isAvailable "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -422,7 +426,7 @@
 
     move-result-object v1
 
-    const-string v2, ", canConnect "
+    const-string/jumbo v2, ", canConnect "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -434,14 +438,18 @@
 
     move-result-object v1
 
-    const-string v2, ", isRemembered "
+    .line 184
+    const-string/jumbo v2, ", isRemembered "
 
+    .line 183
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 184
     iget-boolean v2, p0, Landroid/hardware/display/WifiDisplay;->mIsRemembered:Z
 
+    .line 183
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -456,8 +464,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 3
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     const/4 v1, 0x1
@@ -507,7 +515,7 @@
     :goto_2
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 169
+    .line 162
     return-void
 
     :cond_0

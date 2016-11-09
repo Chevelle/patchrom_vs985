@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 91
+    .line 89
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,46 +42,46 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/net/wifi/WpsInfo;
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 93
+    .line 91
     new-instance v0, Landroid/net/wifi/WpsInfo;
 
     invoke-direct {v0}, Landroid/net/wifi/WpsInfo;-><init>()V
 
-    .line 94
-    .local v0, config:Landroid/net/wifi/WpsInfo;
+    .line 92
+    .local v0, "config":Landroid/net/wifi/WpsInfo;
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     iput v1, v0, Landroid/net/wifi/WpsInfo;->setup:I
 
-    .line 95
+    .line 93
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, v0, Landroid/net/wifi/WpsInfo;->BSSID:Ljava/lang/String;
 
-    .line 96
+    .line 94
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, v0, Landroid/net/wifi/WpsInfo;->pin:Ljava/lang/String;
 
-    .line 97
+    .line 95
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 91
+    .line 90
     invoke-virtual {p0, p1}, Landroid/net/wifi/WpsInfo$1;->createFromParcel(Landroid/os/Parcel;)Landroid/net/wifi/WpsInfo;
 
     move-result-object v0
@@ -91,10 +91,10 @@
 
 .method public newArray(I)[Landroid/net/wifi/WpsInfo;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 101
+    .line 99
     new-array v0, p1, [Landroid/net/wifi/WpsInfo;
 
     return-object v0
@@ -102,10 +102,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 91
+    .line 98
     invoke-virtual {p0, p1}, Landroid/net/wifi/WpsInfo$1;->newArray(I)[Landroid/net/wifi/WpsInfo;
 
     move-result-object v0

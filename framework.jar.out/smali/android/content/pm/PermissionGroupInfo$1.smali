@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/content/pm/PermissionGroupInfo;
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 117
@@ -50,17 +50,17 @@
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p1, v1}, Landroid/content/pm/PermissionGroupInfo;-><init>(Landroid/os/Parcel;Landroid/content/pm/PermissionGroupInfo$1;)V
+    invoke-direct {v0, p1, v1}, Landroid/content/pm/PermissionGroupInfo;-><init>(Landroid/os/Parcel;Landroid/content/pm/PermissionGroupInfo;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 115
+    .line 116
     invoke-virtual {p0, p1}, Landroid/content/pm/PermissionGroupInfo$1;->createFromParcel(Landroid/os/Parcel;)Landroid/content/pm/PermissionGroupInfo;
 
     move-result-object v0
@@ -70,7 +70,7 @@
 
 .method public newArray(I)[Landroid/content/pm/PermissionGroupInfo;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 120
@@ -81,10 +81,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 115
+    .line 119
     invoke-virtual {p0, p1}, Landroid/content/pm/PermissionGroupInfo$1;->newArray(I)[Landroid/content/pm/PermissionGroupInfo;
 
     move-result-object v0

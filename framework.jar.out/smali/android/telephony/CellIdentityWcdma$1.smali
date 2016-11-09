@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/telephony/CellIdentityWcdma;
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 190
@@ -50,17 +50,17 @@
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p1, v1}, Landroid/telephony/CellIdentityWcdma;-><init>(Landroid/os/Parcel;Landroid/telephony/CellIdentityWcdma$1;)V
+    invoke-direct {v0, p1, v1}, Landroid/telephony/CellIdentityWcdma;-><init>(Landroid/os/Parcel;Landroid/telephony/CellIdentityWcdma;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 187
+    .line 189
     invoke-virtual {p0, p1}, Landroid/telephony/CellIdentityWcdma$1;->createFromParcel(Landroid/os/Parcel;)Landroid/telephony/CellIdentityWcdma;
 
     move-result-object v0
@@ -70,7 +70,7 @@
 
 .method public newArray(I)[Landroid/telephony/CellIdentityWcdma;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 195
@@ -81,10 +81,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 187
+    .line 194
     invoke-virtual {p0, p1}, Landroid/telephony/CellIdentityWcdma$1;->newArray(I)[Landroid/telephony/CellIdentityWcdma;
 
     move-result-object v0

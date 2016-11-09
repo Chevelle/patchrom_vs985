@@ -31,16 +31,16 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/CharSequence;)V
     .locals 0
-    .parameter "s"
+    .param p1, "s"    # Ljava/lang/CharSequence;
 
     .prologue
-    .line 1816
+    .line 1922
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1817
+    .line 1923
     iput-object p1, p0, Landroid/text/Layout$Ellipsizer;->mText:Ljava/lang/CharSequence;
 
-    .line 1818
+    .line 1922
     return-void
 .end method
 
@@ -48,72 +48,72 @@
 # virtual methods
 .method public charAt(I)C
     .locals 4
-    .parameter "off"
+    .param p1, "off"    # I
 
     .prologue
     const/4 v3, 0x0
 
-    .line 1821
+    .line 1927
     const/4 v2, 0x1
 
     invoke-static {v2}, Landroid/text/TextUtils;->obtain(I)[C
 
     move-result-object v0
 
-    .line 1822
-    .local v0, buf:[C
+    .line 1928
+    .local v0, "buf":[C
     add-int/lit8 v2, p1, 0x1
 
     invoke-virtual {p0, p1, v2, v0, v3}, Landroid/text/Layout$Ellipsizer;->getChars(II[CI)V
 
-    .line 1823
+    .line 1929
     aget-char v1, v0, v3
 
-    .line 1825
-    .local v1, ret:C
+    .line 1931
+    .local v1, "ret":C
     invoke-static {v0}, Landroid/text/TextUtils;->recycle([C)V
 
-    .line 1826
+    .line 1932
     return v1
 .end method
 
 .method public getChars(II[CI)V
     .locals 9
-    .parameter "start"
-    .parameter "end"
-    .parameter "dest"
-    .parameter "destoff"
+    .param p1, "start"    # I
+    .param p2, "end"    # I
+    .param p3, "dest"    # [C
+    .param p4, "destoff"    # I
 
     .prologue
-    .line 1830
+    .line 1936
     iget-object v0, p0, Landroid/text/Layout$Ellipsizer;->mLayout:Landroid/text/Layout;
 
     invoke-virtual {v0, p1}, Landroid/text/Layout;->getLineForOffset(I)I
 
     move-result v7
 
-    .line 1831
-    .local v7, line1:I
+    .line 1937
+    .local v7, "line1":I
     iget-object v0, p0, Landroid/text/Layout$Ellipsizer;->mLayout:Landroid/text/Layout;
 
     invoke-virtual {v0, p2}, Landroid/text/Layout;->getLineForOffset(I)I
 
     move-result v8
 
-    .line 1833
-    .local v8, line2:I
+    .line 1939
+    .local v8, "line2":I
     iget-object v0, p0, Landroid/text/Layout$Ellipsizer;->mText:Ljava/lang/CharSequence;
 
     invoke-static {v0, p1, p2, p3, p4}, Landroid/text/TextUtils;->getChars(Ljava/lang/CharSequence;II[CI)V
 
-    .line 1835
+    .line 1941
     move v3, v7
 
-    .local v3, i:I
+    .local v3, "i":I
     :goto_0
     if-gt v3, v8, :cond_0
 
-    .line 1836
+    .line 1942
     iget-object v0, p0, Landroid/text/Layout$Ellipsizer;->mLayout:Landroid/text/Layout;
 
     iget-object v6, p0, Landroid/text/Layout$Ellipsizer;->mMethod:Landroid/text/TextUtils$TruncateAt;
@@ -126,15 +126,14 @@
 
     move v5, p4
 
-    #calls: Landroid/text/Layout;->ellipsize(III[CILandroid/text/TextUtils$TruncateAt;)V
-    invoke-static/range {v0 .. v6}, Landroid/text/Layout;->access$000(Landroid/text/Layout;III[CILandroid/text/TextUtils$TruncateAt;)V
+    invoke-static/range {v0 .. v6}, Landroid/text/Layout;->-wrap0(Landroid/text/Layout;III[CILandroid/text/TextUtils$TruncateAt;)V
 
-    .line 1835
+    .line 1941
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_0
 
-    .line 1838
+    .line 1935
     :cond_0
     return-void
 .end method
@@ -143,7 +142,7 @@
     .locals 1
 
     .prologue
-    .line 1841
+    .line 1947
     iget-object v0, p0, Landroid/text/Layout$Ellipsizer;->mText:Ljava/lang/CharSequence;
 
     invoke-interface {v0}, Ljava/lang/CharSequence;->length()I
@@ -155,22 +154,22 @@
 
 .method public subSequence(II)Ljava/lang/CharSequence;
     .locals 2
-    .parameter "start"
-    .parameter "end"
+    .param p1, "start"    # I
+    .param p2, "end"    # I
 
     .prologue
-    .line 1845
+    .line 1951
     sub-int v1, p2, p1
 
     new-array v0, v1, [C
 
-    .line 1846
-    .local v0, s:[C
+    .line 1952
+    .local v0, "s":[C
     const/4 v1, 0x0
 
     invoke-virtual {p0, p1, p2, v0, v1}, Landroid/text/Layout$Ellipsizer;->getChars(II[CI)V
 
-    .line 1847
+    .line 1953
     new-instance v1, Ljava/lang/String;
 
     invoke-direct {v1, v0}, Ljava/lang/String;-><init>([C)V
@@ -184,22 +183,22 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 1852
+    .line 1958
     invoke-virtual {p0}, Landroid/text/Layout$Ellipsizer;->length()I
 
     move-result v1
 
     new-array v0, v1, [C
 
-    .line 1853
-    .local v0, s:[C
+    .line 1959
+    .local v0, "s":[C
     invoke-virtual {p0}, Landroid/text/Layout$Ellipsizer;->length()I
 
     move-result v1
 
     invoke-virtual {p0, v2, v1, v0, v2}, Landroid/text/Layout$Ellipsizer;->getChars(II[CI)V
 
-    .line 1854
+    .line 1960
     new-instance v1, Ljava/lang/String;
 
     invoke-direct {v1, v0}, Ljava/lang/String;-><init>([C)V

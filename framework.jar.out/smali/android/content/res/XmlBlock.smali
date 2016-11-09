@@ -18,7 +18,7 @@
 # instance fields
 .field private final mAssets:Landroid/content/res/AssetManager;
 
-.field private final mNative:I
+.field private final mNative:J
 
 .field private mOpen:Z
 
@@ -28,10 +28,220 @@
 
 
 # direct methods
-.method constructor <init>(Landroid/content/res/AssetManager;I)V
-    .locals 3
-    .parameter "assets"
-    .parameter "xmlBlock"
+.method static synthetic -get0(Landroid/content/res/XmlBlock;)I
+    .locals 1
+
+    iget v0, p0, Landroid/content/res/XmlBlock;->mOpenCount:I
+
+    return v0
+.end method
+
+.method static synthetic -set0(Landroid/content/res/XmlBlock;I)I
+    .locals 0
+
+    iput p1, p0, Landroid/content/res/XmlBlock;->mOpenCount:I
+
+    return p1
+.end method
+
+.method static synthetic -wrap0(J)I
+    .locals 2
+    .param p0, "state"    # J
+
+    .prologue
+    invoke-static {p0, p1}, Landroid/content/res/XmlBlock;->nativeGetAttributeCount(J)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap1(JI)I
+    .locals 2
+    .param p0, "state"    # J
+    .param p2, "idx"    # I
+
+    .prologue
+    invoke-static {p0, p1, p2}, Landroid/content/res/XmlBlock;->nativeGetAttributeDataType(JI)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap10(J)I
+    .locals 2
+    .param p0, "state"    # J
+
+    .prologue
+    invoke-static {p0, p1}, Landroid/content/res/XmlBlock;->nativeGetLineNumber(J)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap11(J)I
+    .locals 2
+    .param p0, "state"    # J
+
+    .prologue
+    invoke-static {p0, p1}, Landroid/content/res/XmlBlock;->nativeGetNamespace(J)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap12(J)I
+    .locals 2
+    .param p0, "state"    # J
+
+    .prologue
+    invoke-static {p0, p1}, Landroid/content/res/XmlBlock;->nativeGetStyleAttribute(J)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap13(J)I
+    .locals 2
+    .param p0, "state"    # J
+
+    .prologue
+    invoke-static {p0, p1}, Landroid/content/res/XmlBlock;->nativeGetText(J)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap14(Landroid/content/res/XmlBlock;)V
+    .locals 0
+
+    invoke-direct {p0}, Landroid/content/res/XmlBlock;->decOpenCountLocked()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap15(J)V
+    .locals 0
+    .param p0, "state"    # J
+
+    .prologue
+    invoke-static {p0, p1}, Landroid/content/res/XmlBlock;->nativeDestroyParseState(J)V
+
+    return-void
+.end method
+
+.method static synthetic -wrap2(JI)I
+    .locals 2
+    .param p0, "state"    # J
+    .param p2, "idx"    # I
+
+    .prologue
+    invoke-static {p0, p1, p2}, Landroid/content/res/XmlBlock;->nativeGetAttributeData(JI)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap3(JLjava/lang/String;Ljava/lang/String;)I
+    .locals 2
+    .param p0, "state"    # J
+    .param p2, "namespace"    # Ljava/lang/String;
+    .param p3, "name"    # Ljava/lang/String;
+
+    .prologue
+    invoke-static {p0, p1, p2, p3}, Landroid/content/res/XmlBlock;->nativeGetAttributeIndex(JLjava/lang/String;Ljava/lang/String;)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap4(JI)I
+    .locals 2
+    .param p0, "state"    # J
+    .param p2, "idx"    # I
+
+    .prologue
+    invoke-static {p0, p1, p2}, Landroid/content/res/XmlBlock;->nativeGetAttributeName(JI)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap5(JI)I
+    .locals 2
+    .param p0, "state"    # J
+    .param p2, "idx"    # I
+
+    .prologue
+    invoke-static {p0, p1, p2}, Landroid/content/res/XmlBlock;->nativeGetAttributeNamespace(JI)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap6(JI)I
+    .locals 2
+    .param p0, "state"    # J
+    .param p2, "idx"    # I
+
+    .prologue
+    invoke-static {p0, p1, p2}, Landroid/content/res/XmlBlock;->nativeGetAttributeResource(JI)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap7(JI)I
+    .locals 2
+    .param p0, "state"    # J
+    .param p2, "idx"    # I
+
+    .prologue
+    invoke-static {p0, p1, p2}, Landroid/content/res/XmlBlock;->nativeGetAttributeStringValue(JI)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap8(J)I
+    .locals 2
+    .param p0, "state"    # J
+
+    .prologue
+    invoke-static {p0, p1}, Landroid/content/res/XmlBlock;->nativeGetClassAttribute(J)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap9(J)I
+    .locals 2
+    .param p0, "state"    # J
+
+    .prologue
+    invoke-static {p0, p1}, Landroid/content/res/XmlBlock;->nativeGetIdAttribute(J)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method constructor <init>(Landroid/content/res/AssetManager;J)V
+    .locals 4
+    .param p1, "assets"    # Landroid/content/res/AssetManager;
+    .param p2, "xmlBlock"    # J
 
     .prologue
     const/4 v0, 0x1
@@ -49,33 +259,33 @@
     iput-object p1, p0, Landroid/content/res/XmlBlock;->mAssets:Landroid/content/res/AssetManager;
 
     .line 481
-    iput p2, p0, Landroid/content/res/XmlBlock;->mNative:I
+    iput-wide p2, p0, Landroid/content/res/XmlBlock;->mNative:J
 
     .line 482
     new-instance v0, Landroid/content/res/StringBlock;
 
-    invoke-static {p2}, Landroid/content/res/XmlBlock;->nativeGetStringBlock(I)I
+    invoke-static {p2, p3}, Landroid/content/res/XmlBlock;->nativeGetStringBlock(J)J
 
-    move-result v1
+    move-result-wide v2
 
-    const/4 v2, 0x0
+    const/4 v1, 0x0
 
-    invoke-direct {v0, v1, v2}, Landroid/content/res/StringBlock;-><init>(IZ)V
+    invoke-direct {v0, v2, v3, v1}, Landroid/content/res/StringBlock;-><init>(JZ)V
 
     iput-object v0, p0, Landroid/content/res/XmlBlock;->mStrings:Landroid/content/res/StringBlock;
 
-    .line 483
+    .line 479
     return-void
 .end method
 
 .method public constructor <init>([B)V
-    .locals 3
-    .parameter "data"
+    .locals 5
+    .param p1, "data"    # [B
 
     .prologue
     const/4 v0, 0x1
 
-    const/4 v2, 0x0
+    const/4 v4, 0x0
 
     .line 37
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -94,34 +304,34 @@
     .line 39
     array-length v0, p1
 
-    invoke-static {p1, v2, v0}, Landroid/content/res/XmlBlock;->nativeCreate([BII)I
+    invoke-static {p1, v4, v0}, Landroid/content/res/XmlBlock;->nativeCreate([BII)J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/content/res/XmlBlock;->mNative:I
+    iput-wide v0, p0, Landroid/content/res/XmlBlock;->mNative:J
 
     .line 40
     new-instance v0, Landroid/content/res/StringBlock;
 
-    iget v1, p0, Landroid/content/res/XmlBlock;->mNative:I
+    iget-wide v2, p0, Landroid/content/res/XmlBlock;->mNative:J
 
-    invoke-static {v1}, Landroid/content/res/XmlBlock;->nativeGetStringBlock(I)I
+    invoke-static {v2, v3}, Landroid/content/res/XmlBlock;->nativeGetStringBlock(J)J
 
-    move-result v1
+    move-result-wide v2
 
-    invoke-direct {v0, v1, v2}, Landroid/content/res/StringBlock;-><init>(IZ)V
+    invoke-direct {v0, v2, v3, v4}, Landroid/content/res/StringBlock;-><init>(JZ)V
 
     iput-object v0, p0, Landroid/content/res/XmlBlock;->mStrings:Landroid/content/res/StringBlock;
 
-    .line 41
+    .line 37
     return-void
 .end method
 
 .method public constructor <init>([BII)V
-    .locals 3
-    .parameter "data"
-    .parameter "offset"
-    .parameter "size"
+    .locals 4
+    .param p1, "data"    # [B
+    .param p2, "offset"    # I
+    .param p3, "size"    # I
 
     .prologue
     const/4 v0, 0x1
@@ -141,256 +351,29 @@
     iput-object v0, p0, Landroid/content/res/XmlBlock;->mAssets:Landroid/content/res/AssetManager;
 
     .line 45
-    invoke-static {p1, p2, p3}, Landroid/content/res/XmlBlock;->nativeCreate([BII)I
+    invoke-static {p1, p2, p3}, Landroid/content/res/XmlBlock;->nativeCreate([BII)J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/content/res/XmlBlock;->mNative:I
+    iput-wide v0, p0, Landroid/content/res/XmlBlock;->mNative:J
 
     .line 46
     new-instance v0, Landroid/content/res/StringBlock;
 
-    iget v1, p0, Landroid/content/res/XmlBlock;->mNative:I
+    iget-wide v2, p0, Landroid/content/res/XmlBlock;->mNative:J
 
-    invoke-static {v1}, Landroid/content/res/XmlBlock;->nativeGetStringBlock(I)I
+    invoke-static {v2, v3}, Landroid/content/res/XmlBlock;->nativeGetStringBlock(J)J
 
-    move-result v1
+    move-result-wide v2
 
-    const/4 v2, 0x0
+    const/4 v1, 0x0
 
-    invoke-direct {v0, v1, v2}, Landroid/content/res/StringBlock;-><init>(IZ)V
+    invoke-direct {v0, v2, v3, v1}, Landroid/content/res/StringBlock;-><init>(JZ)V
 
     iput-object v0, p0, Landroid/content/res/XmlBlock;->mStrings:Landroid/content/res/StringBlock;
 
-    .line 47
+    .line 43
     return-void
-.end method
-
-.method static synthetic access$008(Landroid/content/res/XmlBlock;)I
-    .locals 2
-    .parameter "x0"
-
-    .prologue
-    .line 34
-    iget v0, p0, Landroid/content/res/XmlBlock;->mOpenCount:I
-
-    add-int/lit8 v1, v0, 0x1
-
-    iput v1, p0, Landroid/content/res/XmlBlock;->mOpenCount:I
-
-    return v0
-.end method
-
-.method static synthetic access$100(I)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 34
-    invoke-static {p0}, Landroid/content/res/XmlBlock;->nativeGetText(I)I
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$1000(ILjava/lang/String;Ljava/lang/String;)I
-    .locals 1
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
-
-    .prologue
-    .line 34
-    invoke-static {p0, p1, p2}, Landroid/content/res/XmlBlock;->nativeGetAttributeIndex(ILjava/lang/String;Ljava/lang/String;)I
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$1100(II)I
-    .locals 1
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 34
-    invoke-static {p0, p1}, Landroid/content/res/XmlBlock;->nativeGetAttributeResource(II)I
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$1200(I)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 34
-    invoke-static {p0}, Landroid/content/res/XmlBlock;->nativeGetIdAttribute(I)I
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$1300(I)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 34
-    invoke-static {p0}, Landroid/content/res/XmlBlock;->nativeGetClassAttribute(I)I
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$1400(I)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 34
-    invoke-static {p0}, Landroid/content/res/XmlBlock;->nativeGetStyleAttribute(I)I
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$1500(I)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 34
-    invoke-static {p0}, Landroid/content/res/XmlBlock;->nativeDestroyParseState(I)V
-
-    return-void
-.end method
-
-.method static synthetic access$1600(Landroid/content/res/XmlBlock;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 34
-    invoke-direct {p0}, Landroid/content/res/XmlBlock;->decOpenCountLocked()V
-
-    return-void
-.end method
-
-.method static synthetic access$200(I)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 34
-    invoke-static {p0}, Landroid/content/res/XmlBlock;->nativeGetLineNumber(I)I
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$300(I)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 34
-    invoke-static {p0}, Landroid/content/res/XmlBlock;->nativeGetNamespace(I)I
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$400(II)I
-    .locals 1
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 34
-    invoke-static {p0, p1}, Landroid/content/res/XmlBlock;->nativeGetAttributeNamespace(II)I
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$500(II)I
-    .locals 1
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 34
-    invoke-static {p0, p1}, Landroid/content/res/XmlBlock;->nativeGetAttributeName(II)I
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$600(I)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 34
-    invoke-static {p0}, Landroid/content/res/XmlBlock;->nativeGetAttributeCount(I)I
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$700(II)I
-    .locals 1
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 34
-    invoke-static {p0, p1}, Landroid/content/res/XmlBlock;->nativeGetAttributeStringValue(II)I
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$800(II)I
-    .locals 1
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 34
-    invoke-static {p0, p1}, Landroid/content/res/XmlBlock;->nativeGetAttributeDataType(II)I
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$900(II)I
-    .locals 1
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 34
-    invoke-static {p0, p1}, Landroid/content/res/XmlBlock;->nativeGetAttributeData(II)I
-
-    move-result v0
-
-    return v0
 .end method
 
 .method private decOpenCountLocked()V
@@ -410,9 +393,9 @@
     if-nez v0, :cond_0
 
     .line 61
-    iget v0, p0, Landroid/content/res/XmlBlock;->mNative:I
+    iget-wide v0, p0, Landroid/content/res/XmlBlock;->mNative:J
 
-    invoke-static {v0}, Landroid/content/res/XmlBlock;->nativeDestroy(I)V
+    invoke-static {v0, v1}, Landroid/content/res/XmlBlock;->nativeDestroy(J)V
 
     .line 62
     iget-object v0, p0, Landroid/content/res/XmlBlock;->mAssets:Landroid/content/res/AssetManager;
@@ -422,78 +405,78 @@
     .line 63
     iget-object v0, p0, Landroid/content/res/XmlBlock;->mAssets:Landroid/content/res/AssetManager;
 
-    invoke-virtual {p0}, Ljava/lang/Object;->hashCode()I
+    invoke-virtual {p0}, Landroid/content/res/XmlBlock;->hashCode()I
 
     move-result v1
 
     invoke-virtual {v0, v1}, Landroid/content/res/AssetManager;->xmlBlockGone(I)V
 
-    .line 66
+    .line 58
     :cond_0
     return-void
 .end method
 
-.method private static final native nativeCreate([BII)I
+.method private static final native nativeCreate([BII)J
 .end method
 
-.method private static final native nativeCreateParseState(I)I
+.method private static final native nativeCreateParseState(J)J
 .end method
 
-.method private static final native nativeDestroy(I)V
+.method private static final native nativeDestroy(J)V
 .end method
 
-.method private static final native nativeDestroyParseState(I)V
+.method private static final native nativeDestroyParseState(J)V
 .end method
 
-.method private static final native nativeGetAttributeCount(I)I
+.method private static final native nativeGetAttributeCount(J)I
 .end method
 
-.method private static final native nativeGetAttributeData(II)I
+.method private static final native nativeGetAttributeData(JI)I
 .end method
 
-.method private static final native nativeGetAttributeDataType(II)I
+.method private static final native nativeGetAttributeDataType(JI)I
 .end method
 
-.method private static final native nativeGetAttributeIndex(ILjava/lang/String;Ljava/lang/String;)I
+.method private static final native nativeGetAttributeIndex(JLjava/lang/String;Ljava/lang/String;)I
 .end method
 
-.method private static final native nativeGetAttributeName(II)I
+.method private static final native nativeGetAttributeName(JI)I
 .end method
 
-.method private static final native nativeGetAttributeNamespace(II)I
+.method private static final native nativeGetAttributeNamespace(JI)I
 .end method
 
-.method private static final native nativeGetAttributeResource(II)I
+.method private static final native nativeGetAttributeResource(JI)I
 .end method
 
-.method private static final native nativeGetAttributeStringValue(II)I
+.method private static final native nativeGetAttributeStringValue(JI)I
 .end method
 
-.method private static final native nativeGetClassAttribute(I)I
+.method private static final native nativeGetClassAttribute(J)I
 .end method
 
-.method private static final native nativeGetIdAttribute(I)I
+.method private static final native nativeGetIdAttribute(J)I
 .end method
 
-.method private static final native nativeGetLineNumber(I)I
+.method private static final native nativeGetLineNumber(J)I
 .end method
 
-.method static final native nativeGetName(I)I
+.method static final native nativeGetName(J)I
 .end method
 
-.method private static final native nativeGetNamespace(I)I
+.method private static final native nativeGetNamespace(J)I
 .end method
 
-.method private static final native nativeGetStringBlock(I)I
+.method private static final native nativeGetStringBlock(J)J
 .end method
 
-.method private static final native nativeGetStyleAttribute(I)I
+.method private static final native nativeGetStyleAttribute(J)I
 .end method
 
-.method private static final native nativeGetText(I)I
+.method private static final native nativeGetText(J)I
 .end method
 
-.method static final native nativeNext(I)I
+.method static final native nativeNext(J)I
 .end method
 
 
@@ -518,21 +501,20 @@
 
     .line 53
     invoke-direct {p0}, Landroid/content/res/XmlBlock;->decOpenCountLocked()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 55
     :cond_0
     monitor-exit p0
 
-    .line 56
+    .line 49
     return-void
 
-    .line 55
+    .line 50
     :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
@@ -549,12 +531,12 @@
     .line 470
     invoke-virtual {p0}, Landroid/content/res/XmlBlock;->close()V
 
-    .line 471
+    .line 469
     return-void
 .end method
 
 .method public newParser()Landroid/content/res/XmlResourceParser;
-    .locals 2
+    .locals 4
 
     .prologue
     .line 69
@@ -562,41 +544,44 @@
 
     .line 70
     :try_start_0
-    iget v0, p0, Landroid/content/res/XmlBlock;->mNative:I
+    iget-wide v0, p0, Landroid/content/res/XmlBlock;->mNative:J
+
+    const-wide/16 v2, 0x0
+
+    cmp-long v0, v0, v2
 
     if-eqz v0, :cond_0
 
     .line 71
     new-instance v0, Landroid/content/res/XmlBlock$Parser;
 
-    iget v1, p0, Landroid/content/res/XmlBlock;->mNative:I
+    iget-wide v2, p0, Landroid/content/res/XmlBlock;->mNative:J
 
-    invoke-static {v1}, Landroid/content/res/XmlBlock;->nativeCreateParseState(I)I
+    invoke-static {v2, v3}, Landroid/content/res/XmlBlock;->nativeCreateParseState(J)J
 
-    move-result v1
+    move-result-wide v2
 
-    invoke-direct {v0, p0, v1, p0}, Landroid/content/res/XmlBlock$Parser;-><init>(Landroid/content/res/XmlBlock;ILandroid/content/res/XmlBlock;)V
+    invoke-direct {v0, p0, v2, v3, p0}, Landroid/content/res/XmlBlock$Parser;-><init>(Landroid/content/res/XmlBlock;JLandroid/content/res/XmlBlock;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit p0
 
-    .line 73
-    :goto_0
     return-object v0
 
+    .line 73
     :cond_0
     const/4 v0, 0x0
 
     monitor-exit p0
 
-    goto :goto_0
+    return-object v0
 
-    .line 74
+    .line 69
     :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

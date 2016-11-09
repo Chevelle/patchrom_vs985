@@ -23,19 +23,40 @@
     }
 .end annotation
 
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
 
 # static fields
 .field public static final CONTENT_ITEM_TYPE:Ljava/lang/String; = "vnd.android.cursor.item/stream_item"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
-.field public static final CONTENT_LIMIT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_LIMIT_URI:Landroid/net/Uri;
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
-.field public static final CONTENT_PHOTO_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_PHOTO_URI:Landroid/net/Uri;
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public static final CONTENT_TYPE:Ljava/lang/String; = "vnd.android.cursor.dir/stream_item"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public static final MAX_ITEMS:Ljava/lang/String; = "max_items"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 
 # direct methods
@@ -43,7 +64,7 @@
     .locals 2
 
     .prologue
-    .line 3258
+    .line 3300
     sget-object v0, Landroid/provider/ContactsContract;->AUTHORITY_URI:Landroid/net/Uri;
 
     const-string/jumbo v1, "stream_items"
@@ -54,7 +75,7 @@
 
     sput-object v0, Landroid/provider/ContactsContract$StreamItems;->CONTENT_URI:Landroid/net/Uri;
 
-    .line 3273
+    .line 3319
     sget-object v0, Landroid/provider/ContactsContract$StreamItems;->CONTENT_URI:Landroid/net/Uri;
 
     const-string/jumbo v1, "photo"
@@ -65,7 +86,7 @@
 
     sput-object v0, Landroid/provider/ContactsContract$StreamItems;->CONTENT_PHOTO_URI:Landroid/net/Uri;
 
-    .line 3279
+    .line 3330
     sget-object v0, Landroid/provider/ContactsContract;->AUTHORITY_URI:Landroid/net/Uri;
 
     const-string/jumbo v1, "stream_items_limit"
@@ -74,18 +95,21 @@
 
     move-result-object v0
 
+    .line 3329
     sput-object v0, Landroid/provider/ContactsContract$StreamItems;->CONTENT_LIMIT_URI:Landroid/net/Uri;
 
+    .line 3281
     return-void
 .end method
 
 .method private constructor <init>()V
     .locals 0
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 3251
+    .line 3289
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 3252
     return-void
 .end method

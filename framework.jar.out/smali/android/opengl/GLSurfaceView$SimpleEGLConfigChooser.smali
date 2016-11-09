@@ -21,8 +21,8 @@
 # direct methods
 .method public constructor <init>(Landroid/opengl/GLSurfaceView;Z)V
     .locals 8
-    .parameter
-    .parameter "withDepthBuffer"
+    .param p1, "this$0"    # Landroid/opengl/GLSurfaceView;
+    .param p2, "withDepthBuffer"    # Z
 
     .prologue
     const/16 v2, 0x8
@@ -50,7 +50,7 @@
 
     invoke-direct/range {v0 .. v7}, Landroid/opengl/GLSurfaceView$ComponentSizeChooser;-><init>(Landroid/opengl/GLSurfaceView;IIIIII)V
 
-    .line 978
+    .line 976
     return-void
 
     :cond_0

@@ -30,7 +30,7 @@
 # direct methods
 .method public constructor <init>(Landroid/print/PrinterDiscoverySession;)V
     .locals 1
-    .parameter "session"
+    .param p1, "session"    # Landroid/print/PrinterDiscoverySession;
 
     .prologue
     .line 292
@@ -43,7 +43,7 @@
 
     iput-object v0, p0, Landroid/print/PrinterDiscoverySession$PrinterDiscoveryObserver;->mWeakSession:Ljava/lang/ref/WeakReference;
 
-    .line 294
+    .line 292
     return-void
 .end method
 
@@ -51,7 +51,7 @@
 # virtual methods
 .method public onPrintersAdded(Landroid/content/pm/ParceledListSlice;)V
     .locals 4
-    .parameter "printers"
+    .param p1, "printers"    # Landroid/content/pm/ParceledListSlice;
 
     .prologue
     .line 299
@@ -64,35 +64,36 @@
     check-cast v0, Landroid/print/PrinterDiscoverySession;
 
     .line 300
-    .local v0, session:Landroid/print/PrinterDiscoverySession;
+    .local v0, "session":Landroid/print/PrinterDiscoverySession;
     if-eqz v0, :cond_0
 
     .line 301
-    #getter for: Landroid/print/PrinterDiscoverySession;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Landroid/print/PrinterDiscoverySession;->access$200(Landroid/print/PrinterDiscoverySession;)Landroid/os/Handler;
+    invoke-static {v0}, Landroid/print/PrinterDiscoverySession;->-get0(Landroid/print/PrinterDiscoverySession;)Landroid/os/Handler;
 
     move-result-object v1
 
-    const/4 v2, 0x1
-
+    .line 302
     invoke-virtual {p1}, Landroid/content/pm/ParceledListSlice;->getList()Ljava/util/List;
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-virtual {v1, v2, v3}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
+    .line 301
+    const/4 v3, 0x1
+
+    invoke-virtual {v1, v3, v2}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
 
     move-result-object v1
 
     invoke-virtual {v1}, Landroid/os/Message;->sendToTarget()V
 
-    .line 304
+    .line 298
     :cond_0
     return-void
 .end method
 
 .method public onPrintersRemoved(Landroid/content/pm/ParceledListSlice;)V
     .locals 4
-    .parameter "printerIds"
+    .param p1, "printerIds"    # Landroid/content/pm/ParceledListSlice;
 
     .prologue
     .line 309
@@ -105,28 +106,29 @@
     check-cast v0, Landroid/print/PrinterDiscoverySession;
 
     .line 310
-    .local v0, session:Landroid/print/PrinterDiscoverySession;
+    .local v0, "session":Landroid/print/PrinterDiscoverySession;
     if-eqz v0, :cond_0
 
     .line 311
-    #getter for: Landroid/print/PrinterDiscoverySession;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Landroid/print/PrinterDiscoverySession;->access$200(Landroid/print/PrinterDiscoverySession;)Landroid/os/Handler;
+    invoke-static {v0}, Landroid/print/PrinterDiscoverySession;->-get0(Landroid/print/PrinterDiscoverySession;)Landroid/os/Handler;
 
     move-result-object v1
 
-    const/4 v2, 0x2
-
+    .line 312
     invoke-virtual {p1}, Landroid/content/pm/ParceledListSlice;->getList()Ljava/util/List;
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-virtual {v1, v2, v3}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
+    .line 311
+    const/4 v3, 0x2
+
+    invoke-virtual {v1, v3, v2}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
 
     move-result-object v1
 
     invoke-virtual {v1}, Landroid/os/Message;->sendToTarget()V
 
-    .line 314
+    .line 308
     :cond_0
     return-void
 .end method

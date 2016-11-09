@@ -30,26 +30,27 @@
     .locals 1
 
     .prologue
-    .line 401
+    .line 405
     const/4 v0, 0x0
 
     sput v0, Landroid/content/res/StringBlock$Height;->sProportion:F
 
+    .line 403
     return-void
 .end method
 
 .method public constructor <init>(I)V
     .locals 0
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 403
+    .line 407
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 404
+    .line 408
     iput p1, p0, Landroid/content/res/StringBlock$Height;->mSize:I
 
-    .line 405
+    .line 407
     return-void
 .end method
 
@@ -57,15 +58,15 @@
 # virtual methods
 .method public chooseHeight(Ljava/lang/CharSequence;IIIILandroid/graphics/Paint$FontMetricsInt;)V
     .locals 8
-    .parameter "text"
-    .parameter "start"
-    .parameter "end"
-    .parameter "spanstartv"
-    .parameter "v"
-    .parameter "fm"
+    .param p1, "text"    # Ljava/lang/CharSequence;
+    .param p2, "start"    # I
+    .param p3, "end"    # I
+    .param p4, "spanstartv"    # I
+    .param p5, "v"    # I
+    .param p6, "fm"    # Landroid/graphics/Paint$FontMetricsInt;
 
     .prologue
-    .line 411
+    .line 415
     const/4 v7, 0x0
 
     move-object v0, p0
@@ -84,31 +85,31 @@
 
     invoke-virtual/range {v0 .. v7}, Landroid/content/res/StringBlock$Height;->chooseHeight(Ljava/lang/CharSequence;IIIILandroid/graphics/Paint$FontMetricsInt;Landroid/text/TextPaint;)V
 
-    .line 412
+    .line 413
     return-void
 .end method
 
 .method public chooseHeight(Ljava/lang/CharSequence;IIIILandroid/graphics/Paint$FontMetricsInt;Landroid/text/TextPaint;)V
     .locals 7
-    .parameter "text"
-    .parameter "start"
-    .parameter "end"
-    .parameter "spanstartv"
-    .parameter "v"
-    .parameter "fm"
-    .parameter "paint"
+    .param p1, "text"    # Ljava/lang/CharSequence;
+    .param p2, "start"    # I
+    .param p3, "end"    # I
+    .param p4, "spanstartv"    # I
+    .param p5, "v"    # I
+    .param p6, "fm"    # Landroid/graphics/Paint$FontMetricsInt;
+    .param p7, "paint"    # Landroid/text/TextPaint;
 
     .prologue
     const/4 v6, 0x0
 
-    .line 417
+    .line 421
     iget v3, p0, Landroid/content/res/StringBlock$Height;->mSize:I
 
-    .line 418
-    .local v3, size:I
+    .line 422
+    .local v3, "size":I
     if-eqz p7, :cond_0
 
-    .line 419
+    .line 423
     int-to-float v4, v3
 
     iget v5, p7, Landroid/text/TextPaint;->density:F
@@ -117,7 +118,7 @@
 
     float-to-int v3, v4
 
-    .line 422
+    .line 426
     :cond_0
     iget v4, p6, Landroid/graphics/Paint$FontMetricsInt;->bottom:I
 
@@ -127,25 +128,25 @@
 
     if-ge v4, v3, :cond_1
 
-    .line 423
+    .line 427
     iget v4, p6, Landroid/graphics/Paint$FontMetricsInt;->bottom:I
 
     sub-int/2addr v4, v3
 
     iput v4, p6, Landroid/graphics/Paint$FontMetricsInt;->top:I
 
-    .line 424
+    .line 428
     iget v4, p6, Landroid/graphics/Paint$FontMetricsInt;->ascent:I
 
     sub-int/2addr v4, v3
 
     iput v4, p6, Landroid/graphics/Paint$FontMetricsInt;->ascent:I
 
-    .line 468
+    .line 420
     :goto_0
     return-void
 
-    .line 426
+    .line 430
     :cond_1
     sget v4, Landroid/content/res/StringBlock$Height;->sProportion:F
 
@@ -155,31 +156,31 @@
 
     if-nez v4, :cond_2
 
-    .line 434
+    .line 438
     new-instance v1, Landroid/graphics/Paint;
 
     invoke-direct {v1}, Landroid/graphics/Paint;-><init>()V
 
-    .line 435
-    .local v1, p:Landroid/graphics/Paint;
-    const/high16 v4, 0x42c8
+    .line 439
+    .local v1, "p":Landroid/graphics/Paint;
+    const/high16 v4, 0x42c80000    # 100.0f
 
     invoke-virtual {v1, v4}, Landroid/graphics/Paint;->setTextSize(F)V
 
-    .line 436
+    .line 440
     new-instance v2, Landroid/graphics/Rect;
 
     invoke-direct {v2}, Landroid/graphics/Rect;-><init>()V
 
-    .line 437
-    .local v2, r:Landroid/graphics/Rect;
-    const-string v4, "ABCDEFG"
+    .line 441
+    .local v2, "r":Landroid/graphics/Rect;
+    const-string/jumbo v4, "ABCDEFG"
 
     const/4 v5, 0x7
 
     invoke-virtual {v1, v4, v6, v5, v2}, Landroid/graphics/Paint;->getTextBounds(Ljava/lang/String;IILandroid/graphics/Rect;)V
 
-    .line 439
+    .line 443
     iget v4, v2, Landroid/graphics/Rect;->top:I
 
     int-to-float v4, v4
@@ -192,9 +193,9 @@
 
     sput v4, Landroid/content/res/StringBlock$Height;->sProportion:F
 
-    .line 442
-    .end local v1           #p:Landroid/graphics/Paint;
-    .end local v2           #r:Landroid/graphics/Rect;
+    .line 446
+    .end local v1    # "p":Landroid/graphics/Paint;
+    .end local v2    # "r":Landroid/graphics/Rect;
     :cond_2
     iget v4, p6, Landroid/graphics/Paint$FontMetricsInt;->top:I
 
@@ -214,22 +215,22 @@
 
     double-to-int v0, v4
 
-    .line 444
-    .local v0, need:I
+    .line 448
+    .local v0, "need":I
     iget v4, p6, Landroid/graphics/Paint$FontMetricsInt;->descent:I
 
     sub-int v4, v3, v4
 
     if-lt v4, v0, :cond_3
 
-    .line 449
+    .line 453
     iget v4, p6, Landroid/graphics/Paint$FontMetricsInt;->bottom:I
 
     sub-int/2addr v4, v3
 
     iput v4, p6, Landroid/graphics/Paint$FontMetricsInt;->top:I
 
-    .line 450
+    .line 454
     iget v4, p6, Landroid/graphics/Paint$FontMetricsInt;->descent:I
 
     sub-int/2addr v4, v3
@@ -238,18 +239,18 @@
 
     goto :goto_0
 
-    .line 451
+    .line 455
     :cond_3
     if-lt v3, v0, :cond_4
 
-    .line 457
+    .line 461
     neg-int v4, v0
 
     iput v4, p6, Landroid/graphics/Paint$FontMetricsInt;->ascent:I
 
     iput v4, p6, Landroid/graphics/Paint$FontMetricsInt;->top:I
 
-    .line 458
+    .line 462
     iget v4, p6, Landroid/graphics/Paint$FontMetricsInt;->top:I
 
     add-int/2addr v4, v3
@@ -260,7 +261,7 @@
 
     goto :goto_0
 
-    .line 464
+    .line 468
     :cond_4
     neg-int v4, v3
 
@@ -268,7 +269,7 @@
 
     iput v4, p6, Landroid/graphics/Paint$FontMetricsInt;->top:I
 
-    .line 465
+    .line 469
     iput v6, p6, Landroid/graphics/Paint$FontMetricsInt;->descent:I
 
     iput v6, p6, Landroid/graphics/Paint$FontMetricsInt;->bottom:I

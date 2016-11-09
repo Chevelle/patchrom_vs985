@@ -15,7 +15,23 @@
 
 
 # virtual methods
-.method public abstract getNetworkPolicies()[Landroid/net/NetworkPolicy;
+.method public abstract addUidPolicy(II)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract factoryReset(Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getNetworkPolicies(Ljava/lang/String;)[Landroid/net/NetworkPolicy;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -79,6 +95,22 @@
     .end annotation
 .end method
 
+.method public abstract removeUidPolicy(II)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setDeviceIdleMode(Z)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract setNetworkPolicies([Landroid/net/NetworkPolicy;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -104,6 +136,14 @@
 .end method
 
 .method public abstract snoozeLimit(Landroid/net/NetworkTemplate;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract snoozeWarning(Landroid/net/NetworkTemplate;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

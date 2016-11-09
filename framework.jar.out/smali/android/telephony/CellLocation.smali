@@ -8,7 +8,7 @@
     .locals 0
 
     .prologue
-    .line 34
+    .line 31
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -18,7 +18,7 @@
     .locals 1
 
     .prologue
-    .line 94
+    .line 91
     invoke-static {}, Landroid/telephony/TelephonyManager;->getDefault()Landroid/telephony/TelephonyManager;
 
     move-result-object v0
@@ -29,29 +29,28 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 100
+    .line 97
     const/4 v0, 0x0
 
-    :goto_0
     return-object v0
 
-    .line 96
+    .line 93
     :pswitch_0
     new-instance v0, Landroid/telephony/cdma/CdmaCellLocation;
 
     invoke-direct {v0}, Landroid/telephony/cdma/CdmaCellLocation;-><init>()V
 
-    goto :goto_0
+    return-object v0
 
-    .line 98
+    .line 95
     :pswitch_1
     new-instance v0, Landroid/telephony/gsm/GsmCellLocation;
 
     invoke-direct {v0}, Landroid/telephony/gsm/GsmCellLocation;-><init>()V
 
-    goto :goto_0
+    return-object v0
 
-    .line 94
+    .line 91
     nop
 
     :pswitch_data_0
@@ -63,10 +62,10 @@
 
 .method public static newFromBundle(Landroid/os/Bundle;)Landroid/telephony/CellLocation;
     .locals 1
-    .parameter "bundle"
+    .param p0, "bundle"    # Landroid/os/Bundle;
 
     .prologue
-    .line 66
+    .line 63
     invoke-static {}, Landroid/telephony/TelephonyManager;->getDefault()Landroid/telephony/TelephonyManager;
 
     move-result-object v0
@@ -77,29 +76,28 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 72
+    .line 69
     const/4 v0, 0x0
 
-    :goto_0
     return-object v0
 
-    .line 68
+    .line 65
     :pswitch_0
     new-instance v0, Landroid/telephony/cdma/CdmaCellLocation;
 
     invoke-direct {v0, p0}, Landroid/telephony/cdma/CdmaCellLocation;-><init>(Landroid/os/Bundle;)V
 
-    goto :goto_0
+    return-object v0
 
-    .line 70
+    .line 67
     :pswitch_1
     new-instance v0, Landroid/telephony/gsm/GsmCellLocation;
 
     invoke-direct {v0, p0}, Landroid/telephony/gsm/GsmCellLocation;-><init>(Landroid/os/Bundle;)V
 
-    goto :goto_0
+    return-object v0
 
-    .line 66
+    .line 63
     nop
 
     :pswitch_data_0
@@ -110,39 +108,40 @@
 .end method
 
 .method public static requestLocationUpdate()V
-    .locals 2
+    .locals 3
 
     .prologue
-    .line 43
+    .line 40
     :try_start_0
-    const-string/jumbo v1, "phone"
+    const-string/jumbo v2, "phone"
 
-    invoke-static {v1}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
+    invoke-static {v2}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
+
+    move-result-object v2
+
+    invoke-static {v2}, Lcom/android/internal/telephony/ITelephony$Stub;->asInterface(Landroid/os/IBinder;)Lcom/android/internal/telephony/ITelephony;
 
     move-result-object v1
 
-    invoke-static {v1}, Lcom/android/internal/telephony/ITelephony$Stub;->asInterface(Landroid/os/IBinder;)Lcom/android/internal/telephony/ITelephony;
+    .line 41
+    .local v1, "phone":Lcom/android/internal/telephony/ITelephony;
+    if-eqz v1, :cond_0
 
-    move-result-object v0
-
-    .line 44
-    .local v0, phone:Lcom/android/internal/telephony/ITelephony;
-    if-eqz v0, :cond_0
-
-    .line 45
-    invoke-interface {v0}, Lcom/android/internal/telephony/ITelephony;->updateServiceLocation()V
+    .line 42
+    invoke-interface {v1}, Lcom/android/internal/telephony/ITelephony;->updateServiceLocation()V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 50
+    .line 38
     :cond_0
     :goto_0
     return-void
 
-    .line 47
+    .line 44
     :catch_0
-    move-exception v1
+    move-exception v0
 
+    .local v0, "ex":Landroid/os/RemoteException;
     goto :goto_0
 .end method
 

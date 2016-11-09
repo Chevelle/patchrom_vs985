@@ -26,11 +26,11 @@
 # direct methods
 .method constructor <init>(Landroid/media/RemoteDisplay;I)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/media/RemoteDisplay;
+    .param p2, "val$error"    # I
 
     .prologue
-    .line 147
+    .line 150
     iput-object p1, p0, Landroid/media/RemoteDisplay$3;->this$0:Landroid/media/RemoteDisplay;
 
     iput p2, p0, Landroid/media/RemoteDisplay$3;->val$error:I
@@ -46,11 +46,10 @@
     .locals 2
 
     .prologue
-    .line 150
+    .line 153
     iget-object v0, p0, Landroid/media/RemoteDisplay$3;->this$0:Landroid/media/RemoteDisplay;
 
-    #getter for: Landroid/media/RemoteDisplay;->mListener:Landroid/media/RemoteDisplay$Listener;
-    invoke-static {v0}, Landroid/media/RemoteDisplay;->access$000(Landroid/media/RemoteDisplay;)Landroid/media/RemoteDisplay$Listener;
+    invoke-static {v0}, Landroid/media/RemoteDisplay;->-get0(Landroid/media/RemoteDisplay;)Landroid/media/RemoteDisplay$Listener;
 
     move-result-object v0
 
@@ -58,6 +57,6 @@
 
     invoke-interface {v0, v1}, Landroid/media/RemoteDisplay$Listener;->onDisplayError(I)V
 
-    .line 151
+    .line 152
     return-void
 .end method

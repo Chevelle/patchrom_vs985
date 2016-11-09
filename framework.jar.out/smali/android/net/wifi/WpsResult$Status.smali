@@ -47,7 +47,7 @@
     .line 29
     new-instance v0, Landroid/net/wifi/WpsResult$Status;
 
-    const-string v1, "SUCCESS"
+    const-string/jumbo v1, "SUCCESS"
 
     invoke-direct {v0, v1, v2}, Landroid/net/wifi/WpsResult$Status;-><init>(Ljava/lang/String;I)V
 
@@ -56,7 +56,7 @@
     .line 30
     new-instance v0, Landroid/net/wifi/WpsResult$Status;
 
-    const-string v1, "FAILURE"
+    const-string/jumbo v1, "FAILURE"
 
     invoke-direct {v0, v1, v3}, Landroid/net/wifi/WpsResult$Status;-><init>(Ljava/lang/String;I)V
 
@@ -65,7 +65,7 @@
     .line 31
     new-instance v0, Landroid/net/wifi/WpsResult$Status;
 
-    const-string v1, "IN_PROGRESS"
+    const-string/jumbo v1, "IN_PROGRESS"
 
     invoke-direct {v0, v1, v4}, Landroid/net/wifi/WpsResult$Status;-><init>(Ljava/lang/String;I)V
 
@@ -95,13 +95,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 28
@@ -112,7 +105,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Landroid/net/wifi/WpsResult$Status;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 28
@@ -133,12 +126,6 @@
     .prologue
     .line 28
     sget-object v0, Landroid/net/wifi/WpsResult$Status;->$VALUES:[Landroid/net/wifi/WpsResult$Status;
-
-    invoke-virtual {v0}, [Landroid/net/wifi/WpsResult$Status;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/net/wifi/WpsResult$Status;
 
     return-object v0
 .end method

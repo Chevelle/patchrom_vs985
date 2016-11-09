@@ -1,11 +1,14 @@
 .class final Landroid/os/StrictMode$5;
-.super Ljava/lang/Thread;
+.super Ljava/lang/Object;
 .source "StrictMode.java"
+
+# interfaces
+.implements Landroid/os/MessageQueue$IdleHandler;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/os/StrictMode;->dropboxViolationAsync(ILandroid/os/StrictMode$ViolationInfo;)V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroid/os/StrictMode;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -14,136 +17,51 @@
 .end annotation
 
 
-# instance fields
-.field final synthetic val$info:Landroid/os/StrictMode$ViolationInfo;
-
-.field final synthetic val$violationMaskSubset:I
-
-
 # direct methods
-.method constructor <init>(Ljava/lang/String;ILandroid/os/StrictMode$ViolationInfo;)V
+.method constructor <init>()V
     .locals 0
-    .parameter "x0"
-    .parameter
-    .parameter
 
     .prologue
-    .line 1400
-    iput p2, p0, Landroid/os/StrictMode$5;->val$violationMaskSubset:I
-
-    iput-object p3, p0, Landroid/os/StrictMode$5;->val$info:Landroid/os/StrictMode$ViolationInfo;
-
-    invoke-direct {p0, p1}, Ljava/lang/Thread;-><init>(Ljava/lang/String;)V
+    .line 1601
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public run()V
+.method public queueIdle()Z
     .locals 6
 
     .prologue
-    .line 1402
-    const/16 v3, 0xa
+    .line 1603
+    invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
-    invoke-static {v3}, Landroid/os/Process;->setThreadPriority(I)V
+    move-result-wide v0
 
-    .line 1404
-    :try_start_0
-    invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
+    .line 1604
+    .local v0, "now":J
+    invoke-static {}, Landroid/os/StrictMode;->-get4()J
 
-    move-result-object v0
+    move-result-wide v2
 
-    .line 1405
-    .local v0, am:Landroid/app/IActivityManager;
-    if-nez v0, :cond_1
+    sub-long v2, v0, v2
 
-    .line 1406
-    const-string v3, "StrictMode"
+    const-wide/16 v4, 0x7530
 
-    const-string v4, "No activity manager; failed to Dropbox violation."
+    cmp-long v2, v2, v4
 
-    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    if-lez v2, :cond_0
 
-    .line 1416
-    .end local v0           #am:Landroid/app/IActivityManager;
-    :goto_0
-    invoke-static {}, Landroid/os/StrictMode;->access$1400()Ljava/util/concurrent/atomic/AtomicInteger;
+    .line 1605
+    invoke-static {v0, v1}, Landroid/os/StrictMode;->-set0(J)J
 
-    move-result-object v3
+    .line 1606
+    invoke-static {}, Landroid/os/StrictMode;->conditionallyCheckInstanceCounts()V
 
-    invoke-virtual {v3}, Ljava/util/concurrent/atomic/AtomicInteger;->decrementAndGet()I
-
-    move-result v2
-
-    .line 1417
-    .local v2, outstanding:I
-    invoke-static {}, Landroid/os/StrictMode;->access$800()Z
-
-    move-result v3
-
-    if-eqz v3, :cond_0
-
-    const-string v3, "StrictMode"
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, "Dropbox complete; in-flight="
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 1418
+    .line 1608
     :cond_0
-    return-void
+    const/4 v2, 0x1
 
-    .line 1408
-    .end local v2           #outstanding:I
-    .restart local v0       #am:Landroid/app/IActivityManager;
-    :cond_1
-    :try_start_1
-    invoke-static {}, Lcom/android/internal/os/RuntimeInit;->getApplicationObject()Landroid/os/IBinder;
-
-    move-result-object v3
-
-    iget v4, p0, Landroid/os/StrictMode$5;->val$violationMaskSubset:I
-
-    iget-object v5, p0, Landroid/os/StrictMode$5;->val$info:Landroid/os/StrictMode$ViolationInfo;
-
-    invoke-interface {v0, v3, v4, v5}, Landroid/app/IActivityManager;->handleApplicationStrictModeViolation(Landroid/os/IBinder;ILandroid/os/StrictMode$ViolationInfo;)V
-    :try_end_1
-    .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0
-
-    goto :goto_0
-
-    .line 1413
-    .end local v0           #am:Landroid/app/IActivityManager;
-    :catch_0
-    move-exception v1
-
-    .line 1414
-    .local v1, e:Landroid/os/RemoteException;
-    const-string v3, "StrictMode"
-
-    const-string v4, "RemoteException handling StrictMode violation"
-
-    invoke-static {v3, v4, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    goto :goto_0
+    return v2
 .end method

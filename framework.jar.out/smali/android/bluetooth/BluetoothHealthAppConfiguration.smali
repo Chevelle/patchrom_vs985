@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/bluetooth/BluetoothHealthAppConfiguration$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -34,20 +42,22 @@
     .locals 1
 
     .prologue
-    .line 141
+    .line 142
     new-instance v0, Landroid/bluetooth/BluetoothHealthAppConfiguration$1;
 
     invoke-direct {v0}, Landroid/bluetooth/BluetoothHealthAppConfiguration$1;-><init>()V
 
+    .line 141
     sput-object v0, Landroid/bluetooth/BluetoothHealthAppConfiguration;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 30
     return-void
 .end method
 
 .method constructor <init>(Ljava/lang/String;I)V
     .locals 1
-    .parameter "name"
-    .parameter "dataType"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "dataType"    # I
 
     .prologue
     .line 43
@@ -69,19 +79,19 @@
 
     iput v0, p0, Landroid/bluetooth/BluetoothHealthAppConfiguration;->mChannelType:I
 
-    .line 48
+    .line 43
     return-void
 .end method
 
 .method constructor <init>(Ljava/lang/String;III)V
     .locals 0
-    .parameter "name"
-    .parameter "dataType"
-    .parameter "role"
-    .parameter "channelType"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "dataType"    # I
+    .param p3, "role"    # I
+    .param p4, "channelType"    # I
 
     .prologue
-    .line 60
+    .line 59
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 61
@@ -96,7 +106,7 @@
     .line 64
     iput p4, p0, Landroid/bluetooth/BluetoothHealthAppConfiguration;->mChannelType:I
 
-    .line 65
+    .line 60
     return-void
 .end method
 
@@ -114,7 +124,7 @@
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 4
-    .parameter "o"
+    .param p1, "o"    # Ljava/lang/Object;
 
     .prologue
     const/4 v1, 0x0
@@ -122,7 +132,7 @@
     .line 69
     instance-of v2, p1, Landroid/bluetooth/BluetoothHealthAppConfiguration;
 
-    if-eqz v2, :cond_0
+    if-eqz v2, :cond_1
 
     move-object v0, p1
 
@@ -130,7 +140,7 @@
     check-cast v0, Landroid/bluetooth/BluetoothHealthAppConfiguration;
 
     .line 72
-    .local v0, config:Landroid/bluetooth/BluetoothHealthAppConfiguration;
+    .local v0, "config":Landroid/bluetooth/BluetoothHealthAppConfiguration;
     iget-object v2, p0, Landroid/bluetooth/BluetoothHealthAppConfiguration;->mName:Ljava/lang/String;
 
     invoke-virtual {v0}, Landroid/bluetooth/BluetoothHealthAppConfiguration;->getName()Ljava/lang/String;
@@ -143,6 +153,7 @@
 
     if-eqz v2, :cond_0
 
+    .line 73
     iget v2, p0, Landroid/bluetooth/BluetoothHealthAppConfiguration;->mDataType:I
 
     invoke-virtual {v0}, Landroid/bluetooth/BluetoothHealthAppConfiguration;->getDataType()I
@@ -151,6 +162,7 @@
 
     if-ne v2, v3, :cond_0
 
+    .line 74
     iget v2, p0, Landroid/bluetooth/BluetoothHealthAppConfiguration;->mRole:I
 
     invoke-virtual {v0}, Landroid/bluetooth/BluetoothHealthAppConfiguration;->getRole()I
@@ -159,6 +171,7 @@
 
     if-ne v2, v3, :cond_0
 
+    .line 75
     iget v2, p0, Landroid/bluetooth/BluetoothHealthAppConfiguration;->mChannelType:I
 
     invoke-virtual {v0}, Landroid/bluetooth/BluetoothHealthAppConfiguration;->getChannelType()I
@@ -169,9 +182,13 @@
 
     const/4 v1, 0x1
 
-    .line 77
-    .end local v0           #config:Landroid/bluetooth/BluetoothHealthAppConfiguration;
+    .line 72
     :cond_0
+    return v1
+
+    .line 77
+    .end local v0    # "config":Landroid/bluetooth/BluetoothHealthAppConfiguration;
+    :cond_1
     return v1
 .end method
 
@@ -219,11 +236,7 @@
     .locals 3
 
     .prologue
-    .line 82
-    const/16 v0, 0x11
-
     .line 83
-    .local v0, result:I
     iget-object v1, p0, Landroid/bluetooth/BluetoothHealthAppConfiguration;->mName:Ljava/lang/String;
 
     if-eqz v1, :cond_0
@@ -238,6 +251,7 @@
     add-int/lit16 v0, v1, 0x20f
 
     .line 84
+    .local v0, "result":I
     mul-int/lit8 v1, v0, 0x1f
 
     iget v2, p0, Landroid/bluetooth/BluetoothHealthAppConfiguration;->mDataType:I
@@ -262,6 +276,7 @@
     return v0
 
     .line 83
+    .end local v0    # "result":I
     :cond_0
     const/4 v1, 0x0
 
@@ -277,7 +292,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "BluetoothHealthAppConfiguration [mName = "
+    const-string/jumbo v1, "BluetoothHealthAppConfiguration [mName = "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -289,44 +304,58 @@
 
     move-result-object v0
 
-    const-string v1, ",mDataType = "
+    .line 93
+    const-string/jumbo v1, ",mDataType = "
 
+    .line 92
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 93
     iget v1, p0, Landroid/bluetooth/BluetoothHealthAppConfiguration;->mDataType:I
 
+    .line 92
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", mRole = "
+    .line 93
+    const-string/jumbo v1, ", mRole = "
 
+    .line 92
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 93
     iget v1, p0, Landroid/bluetooth/BluetoothHealthAppConfiguration;->mRole:I
 
+    .line 92
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ",mChannelType = "
+    .line 93
+    const-string/jumbo v1, ",mChannelType = "
 
+    .line 92
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 94
     iget v1, p0, Landroid/bluetooth/BluetoothHealthAppConfiguration;->mChannelType:I
 
+    .line 92
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "]"
+    .line 94
+    const-string/jumbo v1, "]"
 
+    .line 92
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -340,8 +369,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "out"
-    .parameter "flags"
+    .param p1, "out"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 160
@@ -364,6 +393,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 164
+    .line 159
     return-void
 .end method

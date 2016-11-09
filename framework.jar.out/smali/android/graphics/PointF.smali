@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/graphics/PointF$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -30,13 +38,14 @@
     .locals 1
 
     .prologue
-    .line 134
+    .line 133
     new-instance v0, Landroid/graphics/PointF$1;
 
     invoke-direct {v0}, Landroid/graphics/PointF$1;-><init>()V
 
     sput-object v0, Landroid/graphics/PointF;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 26
     return-void
 .end method
 
@@ -44,7 +53,7 @@
     .locals 0
 
     .prologue
-    .line 31
+    .line 30
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -52,65 +61,65 @@
 
 .method public constructor <init>(FF)V
     .locals 0
-    .parameter "x"
-    .parameter "y"
+    .param p1, "x"    # F
+    .param p2, "y"    # F
 
     .prologue
-    .line 33
+    .line 32
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 34
+    .line 33
     iput p1, p0, Landroid/graphics/PointF;->x:F
 
-    .line 35
+    .line 34
     iput p2, p0, Landroid/graphics/PointF;->y:F
 
-    .line 36
+    .line 32
     return-void
 .end method
 
 .method public constructor <init>(Landroid/graphics/Point;)V
     .locals 1
-    .parameter "p"
+    .param p1, "p"    # Landroid/graphics/Point;
 
     .prologue
-    .line 38
+    .line 37
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 39
+    .line 38
     iget v0, p1, Landroid/graphics/Point;->x:I
 
     int-to-float v0, v0
 
     iput v0, p0, Landroid/graphics/PointF;->x:F
 
-    .line 40
+    .line 39
     iget v0, p1, Landroid/graphics/Point;->y:I
 
     int-to-float v0, v0
 
     iput v0, p0, Landroid/graphics/PointF;->y:F
 
-    .line 41
+    .line 37
     return-void
 .end method
 
 .method public static length(FF)F
-    .locals 2
-    .parameter "x"
-    .parameter "y"
+    .locals 4
+    .param p0, "x"    # F
+    .param p1, "y"    # F
 
     .prologue
-    .line 112
-    mul-float v0, p0, p0
+    .line 111
+    float-to-double v0, p0
 
-    mul-float v1, p1, p1
+    float-to-double v2, p1
 
-    add-float/2addr v0, v1
+    invoke-static {v0, v1, v2, v3}, Ljava/lang/Math;->hypot(DD)D
 
-    invoke-static {v0}, Landroid/util/FloatMath;->sqrt(F)F
+    move-result-wide v0
 
-    move-result v0
+    double-to-float v0, v0
 
     return v0
 .end method
@@ -121,148 +130,138 @@
     .locals 1
 
     .prologue
-    .line 120
+    .line 119
     const/4 v0, 0x0
 
     return v0
 .end method
 
 .method public final equals(FF)Z
-    .locals 1
-    .parameter "x"
-    .parameter "y"
+    .locals 2
+    .param p1, "x"    # F
+    .param p2, "y"    # F
 
     .prologue
-    .line 73
-    iget v0, p0, Landroid/graphics/PointF;->x:F
+    const/4 v0, 0x0
 
-    cmpl-float v0, v0, p1
+    .line 72
+    iget v1, p0, Landroid/graphics/PointF;->x:F
 
-    if-nez v0, :cond_0
+    cmpl-float v1, v1, p1
 
-    iget v0, p0, Landroid/graphics/PointF;->y:F
+    if-nez v1, :cond_0
 
-    cmpl-float v0, v0, p2
+    iget v1, p0, Landroid/graphics/PointF;->y:F
 
-    if-nez v0, :cond_0
+    cmpl-float v1, v1, p2
+
+    if-nez v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 5
-    .parameter "o"
+    .param p1, "o"    # Ljava/lang/Object;
 
     .prologue
-    const/4 v1, 0x1
+    const/4 v4, 0x1
 
-    const/4 v2, 0x0
+    const/4 v3, 0x0
+
+    .line 77
+    if-ne p0, p1, :cond_0
+
+    return v4
 
     .line 78
-    if-ne p0, p1, :cond_1
-
-    .line 86
     :cond_0
-    :goto_0
-    return v1
+    if-eqz p1, :cond_1
 
-    .line 79
-    :cond_1
-    if-eqz p1, :cond_2
+    invoke-virtual {p0}, Landroid/graphics/PointF;->getClass()Ljava/lang/Class;
 
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    move-result-object v3
+    move-result-object v1
 
     invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    move-result-object v4
+    move-result-object v2
 
-    if-eq v3, v4, :cond_3
+    if-eq v1, v2, :cond_2
+
+    :cond_1
+    return v3
 
     :cond_2
-    move v1, v2
-
-    goto :goto_0
-
-    :cond_3
     move-object v0, p1
 
-    .line 81
+    .line 80
     check-cast v0, Landroid/graphics/PointF;
 
+    .line 82
+    .local v0, "pointF":Landroid/graphics/PointF;
+    iget v1, v0, Landroid/graphics/PointF;->x:F
+
+    iget v2, p0, Landroid/graphics/PointF;->x:F
+
+    invoke-static {v1, v2}, Ljava/lang/Float;->compare(FF)I
+
+    move-result v1
+
+    if-eqz v1, :cond_3
+
+    return v3
+
     .line 83
-    .local v0, pointF:Landroid/graphics/PointF;
-    iget v3, v0, Landroid/graphics/PointF;->x:F
+    :cond_3
+    iget v1, v0, Landroid/graphics/PointF;->y:F
 
-    iget v4, p0, Landroid/graphics/PointF;->x:F
+    iget v2, p0, Landroid/graphics/PointF;->y:F
 
-    invoke-static {v3, v4}, Ljava/lang/Float;->compare(FF)I
+    invoke-static {v1, v2}, Ljava/lang/Float;->compare(FF)I
 
-    move-result v3
+    move-result v1
 
-    if-eqz v3, :cond_4
+    if-eqz v1, :cond_4
 
-    move v1, v2
+    return v3
 
-    goto :goto_0
-
-    .line 84
+    .line 85
     :cond_4
-    iget v3, v0, Landroid/graphics/PointF;->y:F
-
-    iget v4, p0, Landroid/graphics/PointF;->y:F
-
-    invoke-static {v3, v4}, Ljava/lang/Float;->compare(FF)I
-
-    move-result v3
-
-    if-eqz v3, :cond_0
-
-    move v1, v2
-
-    goto :goto_0
+    return v4
 .end method
 
 .method public hashCode()I
-    .locals 5
+    .locals 4
 
     .prologue
-    const/4 v1, 0x0
+    const/4 v3, 0x0
 
-    const/4 v4, 0x0
+    .line 90
+    iget v1, p0, Landroid/graphics/PointF;->x:F
 
-    .line 91
-    iget v2, p0, Landroid/graphics/PointF;->x:F
+    cmpl-float v1, v1, v3
 
-    cmpl-float v2, v2, v4
+    if-eqz v1, :cond_0
 
-    if-eqz v2, :cond_1
+    iget v1, p0, Landroid/graphics/PointF;->x:F
 
-    iget v2, p0, Landroid/graphics/PointF;->x:F
-
-    invoke-static {v2}, Ljava/lang/Float;->floatToIntBits(F)I
+    invoke-static {v1}, Ljava/lang/Float;->floatToIntBits(F)I
 
     move-result v0
 
-    .line 92
-    .local v0, result:I
+    .line 91
+    .local v0, "result":I
     :goto_0
     mul-int/lit8 v2, v0, 0x1f
 
-    iget v3, p0, Landroid/graphics/PointF;->y:F
+    iget v1, p0, Landroid/graphics/PointF;->y:F
 
-    cmpl-float v3, v3, v4
+    cmpl-float v1, v1, v3
 
-    if-eqz v3, :cond_0
+    if-eqz v1, :cond_1
 
     iget v1, p0, Landroid/graphics/PointF;->y:F
 
@@ -270,25 +269,32 @@
 
     move-result v1
 
-    :cond_0
+    :goto_1
     add-int v0, v2, v1
 
-    .line 93
+    .line 92
     return v0
 
-    .end local v0           #result:I
-    :cond_1
-    move v0, v1
+    .line 90
+    .end local v0    # "result":I
+    :cond_0
+    const/4 v0, 0x0
+
+    .restart local v0    # "result":I
+    goto :goto_0
 
     .line 91
-    goto :goto_0
+    :cond_1
+    const/4 v1, 0x0
+
+    goto :goto_1
 .end method
 
 .method public final length()F
     .locals 2
 
     .prologue
-    .line 105
+    .line 104
     iget v0, p0, Landroid/graphics/PointF;->x:F
 
     iget v1, p0, Landroid/graphics/PointF;->y:F
@@ -304,103 +310,103 @@
     .locals 1
 
     .prologue
-    .line 60
+    .line 59
     iget v0, p0, Landroid/graphics/PointF;->x:F
 
     neg-float v0, v0
 
     iput v0, p0, Landroid/graphics/PointF;->x:F
 
-    .line 61
+    .line 60
     iget v0, p0, Landroid/graphics/PointF;->y:F
 
     neg-float v0, v0
 
     iput v0, p0, Landroid/graphics/PointF;->y:F
 
-    .line 62
+    .line 58
     return-void
 .end method
 
 .method public final offset(FF)V
     .locals 1
-    .parameter "dx"
-    .parameter "dy"
+    .param p1, "dx"    # F
+    .param p2, "dy"    # F
 
     .prologue
-    .line 65
+    .line 64
     iget v0, p0, Landroid/graphics/PointF;->x:F
 
     add-float/2addr v0, p1
 
     iput v0, p0, Landroid/graphics/PointF;->x:F
 
-    .line 66
+    .line 65
     iget v0, p0, Landroid/graphics/PointF;->y:F
 
     add-float/2addr v0, p2
 
     iput v0, p0, Landroid/graphics/PointF;->y:F
 
-    .line 67
+    .line 63
     return-void
 .end method
 
 .method public readFromParcel(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
+    .line 158
+    invoke-virtual {p1}, Landroid/os/Parcel;->readFloat()F
+
+    move-result v0
+
+    iput v0, p0, Landroid/graphics/PointF;->x:F
+
     .line 159
     invoke-virtual {p1}, Landroid/os/Parcel;->readFloat()F
 
     move-result v0
 
-    iput v0, p0, Landroid/graphics/PointF;->x:F
-
-    .line 160
-    invoke-virtual {p1}, Landroid/os/Parcel;->readFloat()F
-
-    move-result v0
-
     iput v0, p0, Landroid/graphics/PointF;->y:F
 
-    .line 161
+    .line 157
     return-void
 .end method
 
 .method public final set(FF)V
     .locals 0
-    .parameter "x"
-    .parameter "y"
+    .param p1, "x"    # F
+    .param p2, "y"    # F
 
     .prologue
-    .line 47
+    .line 46
     iput p1, p0, Landroid/graphics/PointF;->x:F
 
-    .line 48
+    .line 47
     iput p2, p0, Landroid/graphics/PointF;->y:F
 
-    .line 49
+    .line 45
     return-void
 .end method
 
 .method public final set(Landroid/graphics/PointF;)V
     .locals 1
-    .parameter "p"
+    .param p1, "p"    # Landroid/graphics/PointF;
 
     .prologue
-    .line 55
+    .line 54
     iget v0, p1, Landroid/graphics/PointF;->x:F
 
     iput v0, p0, Landroid/graphics/PointF;->x:F
 
-    .line 56
+    .line 55
     iget v0, p1, Landroid/graphics/PointF;->y:F
 
     iput v0, p0, Landroid/graphics/PointF;->y:F
 
-    .line 57
+    .line 53
     return-void
 .end method
 
@@ -408,12 +414,12 @@
     .locals 2
 
     .prologue
-    .line 98
+    .line 97
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "PointF("
+    const-string/jumbo v1, "PointF("
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -425,7 +431,7 @@
 
     move-result-object v0
 
-    const-string v1, ", "
+    const-string/jumbo v1, ", "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -437,7 +443,7 @@
 
     move-result-object v0
 
-    const-string v1, ")"
+    const-string/jumbo v1, ")"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -452,20 +458,20 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "out"
-    .parameter "flags"
+    .param p1, "out"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 130
+    .line 129
     iget v0, p0, Landroid/graphics/PointF;->x:F
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeFloat(F)V
 
-    .line 131
+    .line 130
     iget v0, p0, Landroid/graphics/PointF;->y:F
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeFloat(F)V
 
-    .line 132
+    .line 128
     return-void
 .end method

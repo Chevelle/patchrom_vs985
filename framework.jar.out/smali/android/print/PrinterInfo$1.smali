@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/print/PrinterInfo;
     .locals 2
-    .parameter "parcel"
+    .param p1, "parcel"    # Landroid/os/Parcel;
 
     .prologue
     .line 327
@@ -50,17 +50,17 @@
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p1, v1}, Landroid/print/PrinterInfo;-><init>(Landroid/os/Parcel;Landroid/print/PrinterInfo$1;)V
+    invoke-direct {v0, p1, v1}, Landroid/print/PrinterInfo;-><init>(Landroid/os/Parcel;Landroid/print/PrinterInfo;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "parcel"    # Landroid/os/Parcel;
 
     .prologue
-    .line 324
+    .line 326
     invoke-virtual {p0, p1}, Landroid/print/PrinterInfo$1;->createFromParcel(Landroid/os/Parcel;)Landroid/print/PrinterInfo;
 
     move-result-object v0
@@ -70,7 +70,7 @@
 
 .method public newArray(I)[Landroid/print/PrinterInfo;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 332
@@ -81,10 +81,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 324
+    .line 331
     invoke-virtual {p0, p1}, Landroid/print/PrinterInfo$1;->newArray(I)[Landroid/print/PrinterInfo;
 
     move-result-object v0

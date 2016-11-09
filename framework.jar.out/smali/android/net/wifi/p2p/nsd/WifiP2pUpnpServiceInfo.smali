@@ -10,7 +10,6 @@
 # direct methods
 .method private constructor <init>(Ljava/util/List;)V
     .locals 0
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -23,17 +22,17 @@
 
     .prologue
     .line 50
-    .local p1, queryList:Ljava/util/List;,"Ljava/util/List<Ljava/lang/String;>;"
+    .local p1, "queryList":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     invoke-direct {p0, p1}, Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;-><init>(Ljava/util/List;)V
 
-    .line 51
+    .line 49
     return-void
 .end method
 
 .method private static createSupplicantQuery(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     .locals 6
-    .parameter "uuid"
-    .parameter "data"
+    .param p0, "uuid"    # Ljava/lang/String;
+    .param p1, "data"    # Ljava/lang/String;
 
     .prologue
     .line 100
@@ -42,7 +41,7 @@
     invoke-direct {v0}, Ljava/lang/StringBuffer;-><init>()V
 
     .line 101
-    .local v0, sb:Ljava/lang/StringBuffer;
+    .local v0, "sb":Ljava/lang/StringBuffer;
     const-string/jumbo v1, "upnp "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
@@ -50,21 +49,21 @@
     .line 102
     sget-object v1, Ljava/util/Locale;->US:Ljava/util/Locale;
 
-    const-string v2, "%02x "
+    const-string/jumbo v2, "%02x "
 
     const/4 v3, 0x1
 
     new-array v3, v3, [Ljava/lang/Object;
 
-    const/4 v4, 0x0
+    const/16 v4, 0x10
 
-    const/16 v5, 0x10
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    move-result-object v4
 
-    move-result-object v5
+    const/4 v5, 0x0
 
-    aput-object v5, v3, v4
+    aput-object v4, v3, v5
 
     invoke-static {v1, v2, v3}, Ljava/lang/String;->format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
@@ -84,7 +83,7 @@
     if-eqz p1, :cond_0
 
     .line 106
-    const-string v1, "::"
+    const-string/jumbo v1, "::"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -102,9 +101,8 @@
 
 .method public static newInstance(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Landroid/net/wifi/p2p/nsd/WifiP2pUpnpServiceInfo;
     .locals 5
-    .parameter "uuid"
-    .parameter "device"
-    .parameter
+    .param p0, "uuid"    # Ljava/lang/String;
+    .param p1, "device"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -119,8 +117,10 @@
     .end annotation
 
     .prologue
+    .local p2, "services":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+    const/4 v3, 0x0
+
     .line 73
-    .local p2, services:Ljava/util/List;,"Ljava/util/List<Ljava/lang/String;>;"
     if-eqz p0, :cond_0
 
     if-nez p1, :cond_1
@@ -140,19 +140,17 @@
     invoke-static {p0}, Ljava/util/UUID;->fromString(Ljava/lang/String;)Ljava/util/UUID;
 
     .line 78
-    new-instance v1, Ljava/util/ArrayList;
+    new-instance v0, Ljava/util/ArrayList;
 
-    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     .line 80
-    .local v1, info:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/String;>;"
-    const/4 v3, 0x0
-
+    .local v0, "info":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
     invoke-static {p0, v3}, Landroid/net/wifi/p2p/nsd/WifiP2pUpnpServiceInfo;->createSupplicantQuery(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
-    invoke-virtual {v1, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     .line 81
     const-string/jumbo v3, "upnp:rootdevice"
@@ -161,54 +159,54 @@
 
     move-result-object v3
 
-    invoke-virtual {v1, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     .line 82
     invoke-static {p0, p1}, Landroid/net/wifi/p2p/nsd/WifiP2pUpnpServiceInfo;->createSupplicantQuery(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
-    invoke-virtual {v1, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     .line 83
     if-eqz p2, :cond_2
 
     .line 84
-    invoke-interface {p2}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+    invoke-interface {p2}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
-    move-result-object v0
+    move-result-object v2
 
-    .local v0, i$:Ljava/util/Iterator;
+    .local v2, "service$iterator":Ljava/util/Iterator;
     :goto_0
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v3
 
     if-eqz v3, :cond_2
 
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v1
 
-    check-cast v2, Ljava/lang/String;
+    check-cast v1, Ljava/lang/String;
 
     .line 85
-    .local v2, service:Ljava/lang/String;
-    invoke-static {p0, v2}, Landroid/net/wifi/p2p/nsd/WifiP2pUpnpServiceInfo;->createSupplicantQuery(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .local v1, "service":Ljava/lang/String;
+    invoke-static {p0, v1}, Landroid/net/wifi/p2p/nsd/WifiP2pUpnpServiceInfo;->createSupplicantQuery(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
-    invoke-virtual {v1, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     goto :goto_0
 
     .line 89
-    .end local v0           #i$:Ljava/util/Iterator;
-    .end local v2           #service:Ljava/lang/String;
+    .end local v1    # "service":Ljava/lang/String;
+    .end local v2    # "service$iterator":Ljava/util/Iterator;
     :cond_2
     new-instance v3, Landroid/net/wifi/p2p/nsd/WifiP2pUpnpServiceInfo;
 
-    invoke-direct {v3, v1}, Landroid/net/wifi/p2p/nsd/WifiP2pUpnpServiceInfo;-><init>(Ljava/util/List;)V
+    invoke-direct {v3, v0}, Landroid/net/wifi/p2p/nsd/WifiP2pUpnpServiceInfo;-><init>(Ljava/util/List;)V
 
     return-object v3
 .end method

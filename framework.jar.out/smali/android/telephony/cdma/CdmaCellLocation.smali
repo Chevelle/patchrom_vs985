@@ -61,13 +61,13 @@
     .line 62
     iput v0, p0, Landroid/telephony/cdma/CdmaCellLocation;->mNetworkId:I
 
-    .line 63
+    .line 57
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Bundle;)V
     .locals 2
-    .parameter "bundle"
+    .param p1, "bundle"    # Landroid/os/Bundle;
 
     .prologue
     const v1, 0x7fffffff
@@ -93,7 +93,7 @@
     iput v0, p0, Landroid/telephony/cdma/CdmaCellLocation;->mNetworkId:I
 
     .line 69
-    const-string v0, "baseStationId"
+    const-string/jumbo v0, "baseStationId"
 
     iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationId:I
 
@@ -104,7 +104,7 @@
     iput v0, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationId:I
 
     .line 70
-    const-string v0, "baseStationLatitude"
+    const-string/jumbo v0, "baseStationLatitude"
 
     iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationLatitude:I
 
@@ -115,7 +115,7 @@
     iput v0, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationLatitude:I
 
     .line 71
-    const-string v0, "baseStationLongitude"
+    const-string/jumbo v0, "baseStationLongitude"
 
     iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationLongitude:I
 
@@ -147,13 +147,13 @@
 
     iput v0, p0, Landroid/telephony/cdma/CdmaCellLocation;->mNetworkId:I
 
-    .line 74
+    .line 68
     return-void
 .end method
 
 .method public static convertQuartSecToDecDegrees(I)D
     .locals 4
-    .parameter "quartSec"
+    .param p0, "quartSec"    # I
 
     .prologue
     .line 240
@@ -167,11 +167,7 @@
 
     const v0, -0x278d00
 
-    if-lt p0, v0, :cond_0
-
-    const v0, 0x278d00
-
-    if-le p0, v0, :cond_1
+    if-ge p0, v0, :cond_1
 
     .line 242
     :cond_0
@@ -181,7 +177,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Invalid coordiante value:"
+    const-string/jumbo v2, "Invalid coordiante value:"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -199,11 +195,16 @@
 
     throw v0
 
-    .line 244
+    .line 240
     :cond_1
+    const v0, 0x278d00
+
+    if-gt p0, v0, :cond_0
+
+    .line 244
     int-to-double v0, p0
 
-    const-wide v2, 0x40cc200000000000L
+    const-wide v2, 0x40cc200000000000L    # 14400.0
 
     div-double/2addr v0, v2
 
@@ -212,8 +213,8 @@
 
 .method private static equalsHandlesNulls(Ljava/lang/Object;Ljava/lang/Object;)Z
     .locals 1
-    .parameter "a"
-    .parameter "b"
+    .param p0, "a"    # Ljava/lang/Object;
+    .param p1, "b"    # Ljava/lang/Object;
 
     .prologue
     .line 203
@@ -243,7 +244,7 @@
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
     .locals 6
-    .parameter "o"
+    .param p1, "o"    # Ljava/lang/Object;
 
     .prologue
     const/4 v3, 0x0
@@ -259,27 +260,25 @@
     .catch Ljava/lang/ClassCastException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 174
-    .local v2, s:Landroid/telephony/cdma/CdmaCellLocation;
-    if-nez p1, :cond_1
+    .local v2, "s":Landroid/telephony/cdma/CdmaCellLocation;
+    if-nez p1, :cond_0
 
-    .line 178
-    .end local v2           #s:Landroid/telephony/cdma/CdmaCellLocation;
-    :cond_0
-    :goto_0
+    .line 175
     return v3
 
     .line 170
+    .end local v2    # "s":Landroid/telephony/cdma/CdmaCellLocation;
     :catch_0
     move-exception v1
 
     .line 171
-    .local v1, ex:Ljava/lang/ClassCastException;
-    goto :goto_0
+    .local v1, "ex":Ljava/lang/ClassCastException;
+    return v3
 
     .line 178
-    .end local v1           #ex:Ljava/lang/ClassCastException;
-    .restart local v2       #s:Landroid/telephony/cdma/CdmaCellLocation;
-    :cond_1
+    .end local v1    # "ex":Ljava/lang/ClassCastException;
+    .restart local v2    # "s":Landroid/telephony/cdma/CdmaCellLocation;
+    :cond_0
     iget v4, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationId:I
 
     invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -296,8 +295,9 @@
 
     move-result v4
 
-    if-eqz v4, :cond_0
+    if-eqz v4, :cond_1
 
+    .line 179
     iget v4, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationLatitude:I
 
     invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -314,8 +314,10 @@
 
     move-result v4
 
-    if-eqz v4, :cond_0
+    .line 178
+    if-eqz v4, :cond_1
 
+    .line 180
     iget v4, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationLongitude:I
 
     invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -332,8 +334,10 @@
 
     move-result v4
 
-    if-eqz v4, :cond_0
+    .line 178
+    if-eqz v4, :cond_1
 
+    .line 181
     iget v4, p0, Landroid/telephony/cdma/CdmaCellLocation;->mSystemId:I
 
     invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -350,52 +354,52 @@
 
     move-result v4
 
-    if-eqz v4, :cond_0
+    .line 178
+    if-eqz v4, :cond_1
 
-    iget v4, p0, Landroid/telephony/cdma/CdmaCellLocation;->mNetworkId:I
+    .line 182
+    iget v3, p0, Landroid/telephony/cdma/CdmaCellLocation;->mNetworkId:I
+
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v3
+
+    iget v4, v2, Landroid/telephony/cdma/CdmaCellLocation;->mNetworkId:I
 
     invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v4
 
-    iget v5, v2, Landroid/telephony/cdma/CdmaCellLocation;->mNetworkId:I
+    invoke-static {v3, v4}, Landroid/telephony/cdma/CdmaCellLocation;->equalsHandlesNulls(Ljava/lang/Object;Ljava/lang/Object;)Z
 
-    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    move-result v3
 
-    move-result-object v5
-
-    invoke-static {v4, v5}, Landroid/telephony/cdma/CdmaCellLocation;->equalsHandlesNulls(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_0
-
-    const/4 v3, 0x1
-
-    goto :goto_0
+    .line 178
+    :cond_1
+    return v3
 .end method
 
 .method public fillInNotifierBundle(Landroid/os/Bundle;)V
     .locals 2
-    .parameter "bundleToFill"
+    .param p1, "bundleToFill"    # Landroid/os/Bundle;
 
     .prologue
     .line 212
-    const-string v0, "baseStationId"
+    const-string/jumbo v0, "baseStationId"
 
     iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationId:I
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
 
     .line 213
-    const-string v0, "baseStationLatitude"
+    const-string/jumbo v0, "baseStationLatitude"
 
     iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationLatitude:I
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
 
     .line 214
-    const-string v0, "baseStationLongitude"
+    const-string/jumbo v0, "baseStationLongitude"
 
     iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationLongitude:I
 
@@ -415,7 +419,7 @@
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
 
-    .line 217
+    .line 211
     return-void
 .end method
 
@@ -484,62 +488,68 @@
 
     xor-int/2addr v0, v1
 
+    .line 161
     iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mSystemId:I
 
+    .line 160
     xor-int/2addr v0, v1
 
+    .line 161
     iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mNetworkId:I
 
+    .line 160
     xor-int/2addr v0, v1
 
     return v0
 .end method
 
 .method public isEmpty()Z
-    .locals 3
+    .locals 4
 
     .prologue
-    const v2, 0x7fffffff
+    const v3, 0x7fffffff
 
-    const/4 v1, -0x1
+    const/4 v0, 0x0
+
+    const/4 v2, -0x1
 
     .line 223
-    iget v0, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationId:I
+    iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationId:I
 
-    if-ne v0, v1, :cond_0
+    if-ne v1, v2, :cond_0
 
-    iget v0, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationLatitude:I
+    .line 224
+    iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationLatitude:I
 
-    if-ne v0, v2, :cond_0
+    if-ne v1, v3, :cond_0
 
-    iget v0, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationLongitude:I
+    .line 225
+    iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationLongitude:I
 
-    if-ne v0, v2, :cond_0
+    if-ne v1, v3, :cond_0
 
-    iget v0, p0, Landroid/telephony/cdma/CdmaCellLocation;->mSystemId:I
+    .line 226
+    iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mSystemId:I
 
-    if-ne v0, v1, :cond_0
+    if-ne v1, v2, :cond_0
 
-    iget v0, p0, Landroid/telephony/cdma/CdmaCellLocation;->mNetworkId:I
+    .line 227
+    iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mNetworkId:I
 
-    if-ne v0, v1, :cond_0
+    if-ne v1, v2, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
+    .line 223
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public setCellLocationData(III)V
     .locals 0
-    .parameter "baseStationId"
-    .parameter "baseStationLatitude"
-    .parameter "baseStationLongitude"
+    .param p1, "baseStationId"    # I
+    .param p2, "baseStationLatitude"    # I
+    .param p3, "baseStationLongitude"    # I
 
     .prologue
     .line 140
@@ -551,17 +561,17 @@
     .line 142
     iput p3, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationLongitude:I
 
-    .line 143
+    .line 138
     return-void
 .end method
 
 .method public setCellLocationData(IIIII)V
     .locals 0
-    .parameter "baseStationId"
-    .parameter "baseStationLatitude"
-    .parameter "baseStationLongitude"
-    .parameter "systemId"
-    .parameter "networkId"
+    .param p1, "baseStationId"    # I
+    .param p2, "baseStationLatitude"    # I
+    .param p3, "baseStationLongitude"    # I
+    .param p4, "systemId"    # I
+    .param p5, "networkId"    # I
 
     .prologue
     .line 151
@@ -579,7 +589,7 @@
     .line 155
     iput p5, p0, Landroid/telephony/cdma/CdmaCellLocation;->mNetworkId:I
 
-    .line 156
+    .line 149
     return-void
 .end method
 
@@ -606,7 +616,7 @@
     .line 131
     iput v0, p0, Landroid/telephony/cdma/CdmaCellLocation;->mNetworkId:I
 
-    .line 132
+    .line 126
     return-void
 .end method
 
@@ -619,7 +629,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "["
+    const-string/jumbo v1, "["
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -631,56 +641,72 @@
 
     move-result-object v0
 
-    const-string v1, ","
+    const-string/jumbo v1, ","
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 189
     iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationLatitude:I
 
+    .line 188
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ","
+    .line 189
+    const-string/jumbo v1, ","
 
+    .line 188
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 190
     iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mBaseStationLongitude:I
 
+    .line 188
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ","
+    .line 190
+    const-string/jumbo v1, ","
 
+    .line 188
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 191
     iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mSystemId:I
 
+    .line 188
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ","
+    .line 191
+    const-string/jumbo v1, ","
 
+    .line 188
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 192
     iget v1, p0, Landroid/telephony/cdma/CdmaCellLocation;->mNetworkId:I
 
+    .line 188
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "]"
+    .line 192
+    const-string/jumbo v1, "]"
 
+    .line 188
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0

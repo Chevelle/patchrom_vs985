@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/widget/Spinner$DropdownPopup;)V
     .locals 0
-    .parameter
+    .param p1, "this$1"    # Landroid/widget/Spinner$DropdownPopup;
 
     .prologue
-    .line 1128
+    .line 1241
     iput-object p1, p0, Landroid/widget/Spinner$DropdownPopup$2;->this$1:Landroid/widget/Spinner$DropdownPopup;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,38 +41,36 @@
     .locals 1
 
     .prologue
-    .line 1131
+    .line 1244
     iget-object v0, p0, Landroid/widget/Spinner$DropdownPopup$2;->this$1:Landroid/widget/Spinner$DropdownPopup;
 
     iget-object v0, v0, Landroid/widget/Spinner$DropdownPopup;->this$0:Landroid/widget/Spinner;
 
-    #calls: Landroid/widget/Spinner;->isVisibleToUser()Z
-    invoke-static {v0}, Landroid/widget/Spinner;->access$600(Landroid/widget/Spinner;)Z
+    invoke-static {v0}, Landroid/widget/Spinner;->-wrap0(Landroid/widget/Spinner;)Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 1132
+    .line 1245
     iget-object v0, p0, Landroid/widget/Spinner$DropdownPopup$2;->this$1:Landroid/widget/Spinner$DropdownPopup;
 
     invoke-virtual {v0}, Landroid/widget/Spinner$DropdownPopup;->dismiss()V
 
-    .line 1140
+    .line 1243
     :goto_0
     return-void
 
-    .line 1134
+    .line 1247
     :cond_0
     iget-object v0, p0, Landroid/widget/Spinner$DropdownPopup$2;->this$1:Landroid/widget/Spinner$DropdownPopup;
 
     invoke-virtual {v0}, Landroid/widget/Spinner$DropdownPopup;->computeContentWidth()V
 
-    .line 1138
+    .line 1251
     iget-object v0, p0, Landroid/widget/Spinner$DropdownPopup$2;->this$1:Landroid/widget/Spinner$DropdownPopup;
 
-    #calls: Landroid/widget/ListPopupWindow;->show()V
-    invoke-static {v0}, Landroid/widget/Spinner$DropdownPopup;->access$701(Landroid/widget/Spinner$DropdownPopup;)V
+    invoke-static {v0}, Landroid/widget/Spinner$DropdownPopup;->-wrap0(Landroid/widget/Spinner$DropdownPopup;)V
 
     goto :goto_0
 .end method

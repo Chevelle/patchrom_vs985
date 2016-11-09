@@ -15,24 +15,19 @@
 
 
 # direct methods
-.method private constructor <init>()V
-    .locals 0
+.method public constructor <init>()V
+    .locals 1
 
     .prologue
-    .line 637
-    invoke-direct {p0}, Landroid/os/Handler;-><init>()V
+    .line 658
+    .local p0, "this":Landroid/os/AsyncTask$InternalHandler;, "Landroid/os/AsyncTask<TParams;TProgress;TResult;>.InternalHandler;"
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
 
-    return-void
-.end method
+    move-result-object v0
 
-.method synthetic constructor <init>(Landroid/os/AsyncTask$1;)V
-    .locals 0
-    .parameter "x0"
+    invoke-direct {p0, v0}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
-    .prologue
-    .line 637
-    invoke-direct {p0}, Landroid/os/AsyncTask$InternalHandler;-><init>()V
-
+    .line 657
     return-void
 .end method
 
@@ -40,25 +35,26 @@
 # virtual methods
 .method public handleMessage(Landroid/os/Message;)V
     .locals 4
-    .parameter "msg"
+    .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
-    .line 641
+    .line 664
+    .local p0, "this":Landroid/os/AsyncTask$InternalHandler;, "Landroid/os/AsyncTask<TParams;TProgress;TResult;>.InternalHandler;"
     iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v0, Landroid/os/AsyncTask$AsyncTaskResult;
 
-    .line 642
-    .local v0, result:Landroid/os/AsyncTask$AsyncTaskResult;
+    .line 665
+    .local v0, "result":Landroid/os/AsyncTask$AsyncTaskResult;, "Landroid/os/AsyncTask$AsyncTaskResult<*>;"
     iget v1, p1, Landroid/os/Message;->what:I
 
     packed-switch v1, :pswitch_data_0
 
-    .line 651
+    .line 663
     :goto_0
     return-void
 
-    .line 645
+    .line 668
     :pswitch_0
     iget-object v1, v0, Landroid/os/AsyncTask$AsyncTaskResult;->mTask:Landroid/os/AsyncTask;
 
@@ -68,12 +64,11 @@
 
     aget-object v2, v2, v3
 
-    #calls: Landroid/os/AsyncTask;->finish(Ljava/lang/Object;)V
-    invoke-static {v1, v2}, Landroid/os/AsyncTask;->access$600(Landroid/os/AsyncTask;Ljava/lang/Object;)V
+    invoke-static {v1, v2}, Landroid/os/AsyncTask;->-wrap1(Landroid/os/AsyncTask;Ljava/lang/Object;)V
 
     goto :goto_0
 
-    .line 648
+    .line 671
     :pswitch_1
     iget-object v1, v0, Landroid/os/AsyncTask$AsyncTaskResult;->mTask:Landroid/os/AsyncTask;
 
@@ -83,7 +78,7 @@
 
     goto :goto_0
 
-    .line 642
+    .line 665
     nop
 
     :pswitch_data_0

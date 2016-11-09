@@ -21,17 +21,17 @@
 # direct methods
 .method public constructor <init>(Landroid/content/pm/PackageParser$ParsePackageItemArgs;Landroid/content/pm/InstrumentationInfo;)V
     .locals 0
-    .parameter "args"
-    .parameter "_info"
+    .param p1, "args"    # Landroid/content/pm/PackageParser$ParsePackageItemArgs;
+    .param p2, "_info"    # Landroid/content/pm/InstrumentationInfo;
 
     .prologue
-    .line 4067
+    .line 5013
     invoke-direct {p0, p1, p2}, Landroid/content/pm/PackageParser$Component;-><init>(Landroid/content/pm/PackageParser$ParsePackageItemArgs;Landroid/content/pm/PackageItemInfo;)V
 
-    .line 4068
+    .line 5014
     iput-object p2, p0, Landroid/content/pm/PackageParser$Instrumentation;->info:Landroid/content/pm/InstrumentationInfo;
 
-    .line 4069
+    .line 5012
     return-void
 .end method
 
@@ -39,18 +39,18 @@
 # virtual methods
 .method public setPackageName(Ljava/lang/String;)V
     .locals 1
-    .parameter "packageName"
+    .param p1, "packageName"    # Ljava/lang/String;
 
     .prologue
-    .line 4072
+    .line 5018
     invoke-super {p0, p1}, Landroid/content/pm/PackageParser$Component;->setPackageName(Ljava/lang/String;)V
 
-    .line 4073
+    .line 5019
     iget-object v0, p0, Landroid/content/pm/PackageParser$Instrumentation;->info:Landroid/content/pm/InstrumentationInfo;
 
     iput-object p1, v0, Landroid/content/pm/InstrumentationInfo;->packageName:Ljava/lang/String;
 
-    .line 4074
+    .line 5017
     return-void
 .end method
 
@@ -58,20 +58,20 @@
     .locals 2
 
     .prologue
-    .line 4077
+    .line 5023
     new-instance v0, Ljava/lang/StringBuilder;
 
     const/16 v1, 0x80
 
     invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 4078
-    .local v0, sb:Ljava/lang/StringBuilder;
-    const-string v1, "Instrumentation{"
+    .line 5024
+    .local v0, "sb":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "Instrumentation{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 4079
+    .line 5025
     invoke-static {p0}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     move-result v1
@@ -82,20 +82,20 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 4080
+    .line 5026
     const/16 v1, 0x20
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 4081
+    .line 5027
     invoke-virtual {p0, v0}, Landroid/content/pm/PackageParser$Instrumentation;->appendComponentShortName(Ljava/lang/StringBuilder;)V
 
-    .line 4082
+    .line 5028
     const/16 v1, 0x7d
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 4083
+    .line 5029
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1

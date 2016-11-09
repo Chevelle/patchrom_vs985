@@ -23,7 +23,7 @@
     .end annotation
 .end method
 
-.method public abstract getMap()[I
+.method public abstract getMap()[J
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

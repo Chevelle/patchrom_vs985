@@ -15,6 +15,22 @@
 
 
 # virtual methods
+.method public abstract addGpsMeasurementsListener(Landroid/location/IGpsMeasurementsListener;Ljava/lang/String;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract addGpsNavigationMessageListener(Landroid/location/IGpsNavigationMessageListener;Ljava/lang/String;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract addGpsStatusListener(Landroid/location/IGpsStatusListener;Ljava/lang/String;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -23,7 +39,7 @@
     .end annotation
 .end method
 
-.method public abstract addTestProvider(Ljava/lang/String;Lcom/android/internal/location/ProviderProperties;)V
+.method public abstract addTestProvider(Ljava/lang/String;Lcom/android/internal/location/ProviderProperties;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -31,7 +47,7 @@
     .end annotation
 .end method
 
-.method public abstract clearTestProviderEnabled(Ljava/lang/String;)V
+.method public abstract clearTestProviderEnabled(Ljava/lang/String;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -39,7 +55,7 @@
     .end annotation
 .end method
 
-.method public abstract clearTestProviderLocation(Ljava/lang/String;)V
+.method public abstract clearTestProviderLocation(Ljava/lang/String;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -47,7 +63,7 @@
     .end annotation
 .end method
 
-.method public abstract clearTestProviderStatus(Ljava/lang/String;)V
+.method public abstract clearTestProviderStatus(Ljava/lang/String;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -139,6 +155,14 @@
     .end annotation
 .end method
 
+.method public abstract getNetworkProviderPackage()Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getProviderProperties(Ljava/lang/String;)Lcom/android/internal/location/ProviderProperties;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -199,6 +223,22 @@
     .end annotation
 .end method
 
+.method public abstract removeGpsMeasurementsListener(Landroid/location/IGpsMeasurementsListener;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract removeGpsNavigationMessageListener(Landroid/location/IGpsNavigationMessageListener;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract removeGpsStatusListener(Landroid/location/IGpsStatusListener;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -207,7 +247,7 @@
     .end annotation
 .end method
 
-.method public abstract removeTestProvider(Ljava/lang/String;)V
+.method public abstract removeTestProvider(Ljava/lang/String;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -263,7 +303,7 @@
     .end annotation
 .end method
 
-.method public abstract setTestProviderEnabled(Ljava/lang/String;Z)V
+.method public abstract setTestProviderEnabled(Ljava/lang/String;ZLjava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -271,7 +311,7 @@
     .end annotation
 .end method
 
-.method public abstract setTestProviderLocation(Ljava/lang/String;Landroid/location/Location;)V
+.method public abstract setTestProviderLocation(Ljava/lang/String;Landroid/location/Location;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -279,7 +319,7 @@
     .end annotation
 .end method
 
-.method public abstract setTestProviderStatus(Ljava/lang/String;ILandroid/os/Bundle;J)V
+.method public abstract setTestProviderStatus(Ljava/lang/String;ILandroid/os/Bundle;JLjava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

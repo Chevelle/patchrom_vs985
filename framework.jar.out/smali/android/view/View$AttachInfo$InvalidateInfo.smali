@@ -46,15 +46,17 @@
     .locals 2
 
     .prologue
-    .line 18714
+    .line 21513
     new-instance v0, Landroid/util/Pools$SynchronizedPool;
 
     const/16 v1, 0xa
 
     invoke-direct {v0, v1}, Landroid/util/Pools$SynchronizedPool;-><init>(I)V
 
+    .line 21512
     sput-object v0, Landroid/view/View$AttachInfo$InvalidateInfo;->sPool:Landroid/util/Pools$SynchronizedPool;
 
+    .line 21509
     return-void
 .end method
 
@@ -62,7 +64,7 @@
     .locals 0
 
     .prologue
-    .line 18711
+    .line 21509
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -72,7 +74,7 @@
     .locals 2
 
     .prologue
-    .line 18725
+    .line 21523
     sget-object v1, Landroid/view/View$AttachInfo$InvalidateInfo;->sPool:Landroid/util/Pools$SynchronizedPool;
 
     invoke-virtual {v1}, Landroid/util/Pools$SynchronizedPool;->acquire()Ljava/lang/Object;
@@ -81,19 +83,19 @@
 
     check-cast v0, Landroid/view/View$AttachInfo$InvalidateInfo;
 
-    .line 18726
-    .local v0, instance:Landroid/view/View$AttachInfo$InvalidateInfo;
+    .line 21524
+    .local v0, "instance":Landroid/view/View$AttachInfo$InvalidateInfo;
     if-eqz v0, :cond_0
 
-    .end local v0           #instance:Landroid/view/View$AttachInfo$InvalidateInfo;
+    .end local v0    # "instance":Landroid/view/View$AttachInfo$InvalidateInfo;
     :goto_0
     return-object v0
 
-    .restart local v0       #instance:Landroid/view/View$AttachInfo$InvalidateInfo;
+    .restart local v0    # "instance":Landroid/view/View$AttachInfo$InvalidateInfo;
     :cond_0
     new-instance v0, Landroid/view/View$AttachInfo$InvalidateInfo;
 
-    .end local v0           #instance:Landroid/view/View$AttachInfo$InvalidateInfo;
+    .end local v0    # "instance":Landroid/view/View$AttachInfo$InvalidateInfo;
     invoke-direct {v0}, Landroid/view/View$AttachInfo$InvalidateInfo;-><init>()V
 
     goto :goto_0
@@ -105,16 +107,16 @@
     .locals 1
 
     .prologue
-    .line 18730
+    .line 21528
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/view/View$AttachInfo$InvalidateInfo;->target:Landroid/view/View;
 
-    .line 18731
+    .line 21529
     sget-object v0, Landroid/view/View$AttachInfo$InvalidateInfo;->sPool:Landroid/util/Pools$SynchronizedPool;
 
     invoke-virtual {v0, p0}, Landroid/util/Pools$SynchronizedPool;->release(Ljava/lang/Object;)Z
 
-    .line 18732
+    .line 21527
     return-void
 .end method

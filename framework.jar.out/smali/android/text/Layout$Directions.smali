@@ -21,15 +21,15 @@
 # direct methods
 .method constructor <init>([I)V
     .locals 0
-    .parameter "dirs"
+    .param p1, "dirs"    # [I
 
     .prologue
-    .line 1792
+    .line 1898
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1793
+    .line 1899
     iput-object p1, p0, Landroid/text/Layout$Directions;->mDirections:[I
 
-    .line 1794
+    .line 1898
     return-void
 .end method

@@ -4,9 +4,9 @@
 
 
 # static fields
-.field private static final ALT:Ljava/lang/Object; = null
+.field private static final ALT:Ljava/lang/Object;
 
-.field private static final CAP:Ljava/lang/Object; = null
+.field private static final CAP:Ljava/lang/Object;
 
 .field private static final LOCKED:I = 0x4000011
 
@@ -56,9 +56,9 @@
 
 .field private static final RELEASED:I = 0x2000011
 
-.field private static final SELECTING:Ljava/lang/Object; = null
+.field private static final SELECTING:Ljava/lang/Object;
 
-.field private static final SYM:Ljava/lang/Object; = null
+.field private static final SYM:Ljava/lang/Object;
 
 .field private static final USED:I = 0x3000011
 
@@ -96,6 +96,7 @@
 
     sput-object v0, Landroid/text/method/MetaKeyKeyListener;->SELECTING:Ljava/lang/Object;
 
+    .line 73
     return-void
 .end method
 
@@ -111,8 +112,8 @@
 
 .method private static adjust(Landroid/text/Spannable;Ljava/lang/Object;)V
     .locals 3
-    .parameter "content"
-    .parameter "what"
+    .param p0, "content"    # Landroid/text/Spannable;
+    .param p1, "what"    # Ljava/lang/Object;
 
     .prologue
     const/4 v2, 0x0
@@ -123,7 +124,7 @@
     move-result v0
 
     .line 298
-    .local v0, current:I
+    .local v0, "current":I
     const v1, 0x1000011
 
     if-ne v0, v1, :cond_1
@@ -133,7 +134,7 @@
 
     invoke-interface {p0, p1, v2, v2, v1}, Landroid/text/Spannable;->setSpan(Ljava/lang/Object;III)V
 
-    .line 302
+    .line 295
     :cond_0
     :goto_0
     return-void
@@ -152,7 +153,7 @@
 
 .method public static adjustMetaAfterKeypress(J)J
     .locals 10
-    .parameter "state"
+    .param p0, "state"    # J
 
     .prologue
     const-wide v2, -0x1010100000102L
@@ -234,7 +235,7 @@
 
     .line 520
     :cond_3
-    const-wide/high16 v0, 0x1
+    const-wide/high16 v0, 0x1000000000000L
 
     and-long/2addr v0, p0
 
@@ -249,7 +250,7 @@
 
     .line 526
     :cond_4
-    const-wide/high16 v0, 0x2
+    const-wide/high16 v0, 0x2000000000000L
 
     and-long/2addr v0, p0
 
@@ -264,7 +265,7 @@
 
     .line 532
     :cond_5
-    const-wide/high16 v0, 0x4
+    const-wide/high16 v0, 0x4000000000000L
 
     and-long/2addr v0, p0
 
@@ -280,7 +281,7 @@
 
 .method public static adjustMetaAfterKeypress(Landroid/text/Spannable;)V
     .locals 1
-    .parameter "content"
+    .param p0, "content"    # Landroid/text/Spannable;
 
     .prologue
     .line 273
@@ -298,14 +299,14 @@
 
     invoke-static {p0, v0}, Landroid/text/method/MetaKeyKeyListener;->adjust(Landroid/text/Spannable;Ljava/lang/Object;)V
 
-    .line 276
+    .line 272
     return-void
 .end method
 
 .method public static clearMetaKeyState(Landroid/text/Editable;I)V
     .locals 1
-    .parameter "content"
-    .parameter "states"
+    .param p0, "content"    # Landroid/text/Editable;
+    .param p1, "states"    # I
 
     .prologue
     .line 422
@@ -347,99 +348,93 @@
 
     invoke-interface {p0, v0}, Landroid/text/Editable;->removeSpan(Ljava/lang/Object;)V
 
-    .line 426
+    .line 421
     :cond_3
     return-void
 .end method
 
 .method private static getActive(Ljava/lang/CharSequence;Ljava/lang/Object;II)I
     .locals 4
-    .parameter "text"
-    .parameter "meta"
-    .parameter "on"
-    .parameter "lock"
+    .param p0, "text"    # Ljava/lang/CharSequence;
+    .param p1, "meta"    # Ljava/lang/Object;
+    .param p2, "on"    # I
+    .param p3, "lock"    # I
 
     .prologue
-    const/4 v2, 0x0
+    const/4 v3, 0x0
 
     .line 251
-    instance-of v3, p0, Landroid/text/Spanned;
+    instance-of v2, p0, Landroid/text/Spanned;
 
-    if-nez v3, :cond_1
+    if-nez v2, :cond_0
 
-    move p3, v2
+    .line 252
+    return v3
 
-    .line 263
-    .end local p3
     :cond_0
-    :goto_0
-    return p3
-
-    .restart local p3
-    :cond_1
     move-object v1, p0
 
     .line 255
     check-cast v1, Landroid/text/Spanned;
 
     .line 256
-    .local v1, sp:Landroid/text/Spanned;
+    .local v1, "sp":Landroid/text/Spanned;
     invoke-interface {v1, p1}, Landroid/text/Spanned;->getSpanFlags(Ljava/lang/Object;)I
 
     move-result v0
 
     .line 258
-    .local v0, flag:I
-    const v3, 0x4000011
+    .local v0, "flag":I
+    const v2, 0x4000011
 
-    if-eq v0, v3, :cond_0
+    if-ne v0, v2, :cond_1
+
+    .line 259
+    return p3
 
     .line 260
+    :cond_1
     if-eqz v0, :cond_2
 
-    move p3, p2
-
     .line 261
-    goto :goto_0
-
-    :cond_2
-    move p3, v2
+    return p2
 
     .line 263
-    goto :goto_0
+    :cond_2
+    return v3
 .end method
 
 .method public static final getMetaState(J)I
-    .locals 5
-    .parameter "state"
+    .locals 6
+    .param p0, "state"    # J
 
     .prologue
-    const-wide/16 v3, 0x0
+    const-wide/16 v4, 0x0
 
     .line 458
     const/4 v0, 0x0
 
     .line 460
-    .local v0, result:I
-    const-wide/16 v1, 0x100
+    .local v0, "result":I
+    const-wide/16 v2, 0x100
 
-    and-long/2addr v1, p0
+    and-long/2addr v2, p0
 
-    cmp-long v1, v1, v3
+    cmp-long v1, v2, v4
 
     if-eqz v1, :cond_3
 
     .line 461
-    or-int/lit16 v0, v0, 0x100
+    const/16 v0, 0x100
 
     .line 466
     :cond_0
     :goto_0
-    const-wide/16 v1, 0x200
+    const-wide/16 v2, 0x200
 
-    and-long/2addr v1, p0
+    and-long/2addr v2, p0
 
-    cmp-long v1, v1, v3
+    cmp-long v1, v2, v4
 
     if-eqz v1, :cond_4
 
@@ -449,11 +444,11 @@
     .line 472
     :cond_1
     :goto_1
-    const-wide/16 v1, 0x400
+    const-wide/16 v2, 0x400
 
-    and-long/2addr v1, p0
+    and-long/2addr v2, p0
 
-    cmp-long v1, v1, v3
+    cmp-long v1, v2, v4
 
     if-eqz v1, :cond_5
 
@@ -467,26 +462,26 @@
 
     .line 462
     :cond_3
-    const-wide/16 v1, 0x1
+    const-wide/16 v2, 0x1
 
-    and-long/2addr v1, p0
+    and-long/2addr v2, p0
 
-    cmp-long v1, v1, v3
+    cmp-long v1, v2, v4
 
     if-eqz v1, :cond_0
 
     .line 463
-    or-int/lit8 v0, v0, 0x1
+    const/4 v0, 0x1
 
     goto :goto_0
 
     .line 468
     :cond_4
-    const-wide/16 v1, 0x2
+    const-wide/16 v2, 0x2
 
-    and-long/2addr v1, p0
+    and-long/2addr v2, p0
 
-    cmp-long v1, v1, v3
+    cmp-long v1, v2, v4
 
     if-eqz v1, :cond_1
 
@@ -497,11 +492,11 @@
 
     .line 474
     :cond_5
-    const-wide/16 v1, 0x4
+    const-wide/16 v2, 0x4
 
-    and-long/2addr v1, p0
+    and-long/2addr v2, p0
 
-    cmp-long v1, v1, v3
+    cmp-long v1, v2, v4
 
     if-eqz v1, :cond_2
 
@@ -512,116 +507,109 @@
 .end method
 
 .method public static final getMetaState(JI)I
-    .locals 7
-    .parameter "state"
-    .parameter "meta"
+    .locals 8
+    .param p0, "state"    # J
+    .param p2, "meta"    # I
 
     .prologue
-    const/4 v0, 0x2
+    const/4 v6, 0x2
 
-    const/4 v1, 0x1
+    const/4 v5, 0x1
 
-    const/4 v2, 0x0
+    const/4 v4, 0x0
 
-    const-wide/16 v5, 0x0
+    const-wide/16 v2, 0x0
 
     .line 490
     packed-switch p2, :pswitch_data_0
 
-    :pswitch_0
-    move v0, v2
-
     .line 507
-    :cond_0
-    :goto_0
-    return v0
+    :pswitch_0
+    return v4
 
     .line 492
     :pswitch_1
-    const-wide/16 v3, 0x100
+    const-wide/16 v0, 0x100
 
-    and-long/2addr v3, p0
+    and-long/2addr v0, p0
 
-    cmp-long v3, v3, v5
+    cmp-long v0, v0, v2
 
-    if-nez v3, :cond_0
+    if-eqz v0, :cond_0
+
+    return v6
 
     .line 493
-    const-wide/16 v3, 0x1
+    :cond_0
+    const-wide/16 v0, 0x1
 
-    and-long/2addr v3, p0
+    and-long/2addr v0, p0
 
-    cmp-long v0, v3, v5
+    cmp-long v0, v0, v2
 
     if-eqz v0, :cond_1
 
-    move v0, v1
-
-    goto :goto_0
-
-    :cond_1
-    move v0, v2
+    return v5
 
     .line 494
-    goto :goto_0
+    :cond_1
+    return v4
 
     .line 497
     :pswitch_2
-    const-wide/16 v3, 0x200
+    const-wide/16 v0, 0x200
 
-    and-long/2addr v3, p0
+    and-long/2addr v0, p0
 
-    cmp-long v3, v3, v5
-
-    if-nez v3, :cond_0
-
-    .line 498
-    const-wide/16 v3, 0x2
-
-    and-long/2addr v3, p0
-
-    cmp-long v0, v3, v5
+    cmp-long v0, v0, v2
 
     if-eqz v0, :cond_2
 
-    move v0, v1
+    return v6
 
-    goto :goto_0
-
+    .line 498
     :cond_2
-    move v0, v2
+    const-wide/16 v0, 0x2
 
-    .line 499
-    goto :goto_0
+    and-long/2addr v0, p0
 
-    .line 502
-    :pswitch_3
-    const-wide/16 v3, 0x400
-
-    and-long/2addr v3, p0
-
-    cmp-long v3, v3, v5
-
-    if-nez v3, :cond_0
-
-    .line 503
-    const-wide/16 v3, 0x4
-
-    and-long/2addr v3, p0
-
-    cmp-long v0, v3, v5
+    cmp-long v0, v0, v2
 
     if-eqz v0, :cond_3
 
-    move v0, v1
+    return v5
 
-    goto :goto_0
-
+    .line 499
     :cond_3
-    move v0, v2
+    return v4
+
+    .line 502
+    :pswitch_3
+    const-wide/16 v0, 0x400
+
+    and-long/2addr v0, p0
+
+    cmp-long v0, v0, v2
+
+    if-eqz v0, :cond_4
+
+    return v6
+
+    .line 503
+    :cond_4
+    const-wide/16 v0, 0x4
+
+    and-long/2addr v0, p0
+
+    cmp-long v0, v0, v2
+
+    if-eqz v0, :cond_5
+
+    return v5
 
     .line 504
-    goto :goto_0
+    :cond_5
+    return v4
 
     .line 490
     :pswitch_data_0
@@ -635,7 +623,7 @@
 
 .method public static final getMetaState(Ljava/lang/CharSequence;)I
     .locals 5
-    .parameter "text"
+    .param p0, "text"    # Ljava/lang/CharSequence;
 
     .prologue
     const/16 v4, 0x800
@@ -651,6 +639,7 @@
 
     move-result v0
 
+    .line 161
     sget-object v1, Landroid/text/method/MetaKeyKeyListener;->ALT:Ljava/lang/Object;
 
     const/4 v2, 0x2
@@ -661,8 +650,10 @@
 
     move-result v1
 
+    .line 160
     or-int/2addr v0, v1
 
+    .line 162
     sget-object v1, Landroid/text/method/MetaKeyKeyListener;->SYM:Ljava/lang/Object;
 
     const/4 v2, 0x4
@@ -673,14 +664,17 @@
 
     move-result v1
 
+    .line 160
     or-int/2addr v0, v1
 
+    .line 163
     sget-object v1, Landroid/text/method/MetaKeyKeyListener;->SELECTING:Ljava/lang/Object;
 
     invoke-static {p0, v1, v4, v4}, Landroid/text/method/MetaKeyKeyListener;->getActive(Ljava/lang/CharSequence;Ljava/lang/Object;II)I
 
     move-result v1
 
+    .line 160
     or-int/2addr v0, v1
 
     return v0
@@ -688,8 +682,8 @@
 
 .method public static final getMetaState(Ljava/lang/CharSequence;I)I
     .locals 3
-    .parameter "text"
-    .parameter "meta"
+    .param p0, "text"    # Ljava/lang/CharSequence;
+    .param p1, "meta"    # I
 
     .prologue
     const/4 v2, 0x2
@@ -702,7 +696,6 @@
     .line 214
     const/4 v0, 0x0
 
-    :goto_0
     return v0
 
     .line 202
@@ -713,7 +706,7 @@
 
     move-result v0
 
-    goto :goto_0
+    return v0
 
     .line 205
     :sswitch_1
@@ -723,7 +716,7 @@
 
     move-result v0
 
-    goto :goto_0
+    return v0
 
     .line 208
     :sswitch_2
@@ -733,7 +726,7 @@
 
     move-result v0
 
-    goto :goto_0
+    return v0
 
     .line 211
     :sswitch_3
@@ -743,7 +736,7 @@
 
     move-result v0
 
-    goto :goto_0
+    return v0
 
     .line 200
     nop
@@ -758,13 +751,15 @@
 .end method
 
 .method public static final getMetaState(Ljava/lang/CharSequence;ILandroid/view/KeyEvent;)I
-    .locals 3
-    .parameter "text"
-    .parameter "meta"
-    .parameter "event"
+    .locals 4
+    .param p0, "text"    # Ljava/lang/CharSequence;
+    .param p1, "meta"    # I
+    .param p2, "event"    # Landroid/view/KeyEvent;
 
     .prologue
-    const/4 v1, 0x1
+    const/4 v3, 0x1
+
+    const/4 v2, 0x0
 
     .line 232
     invoke-virtual {p2}, Landroid/view/KeyEvent;->getMetaState()I
@@ -772,60 +767,57 @@
     move-result v0
 
     .line 233
-    .local v0, metaState:I
+    .local v0, "metaState":I
     invoke-virtual {p2}, Landroid/view/KeyEvent;->getKeyCharacterMap()Landroid/view/KeyCharacterMap;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-virtual {v2}, Landroid/view/KeyCharacterMap;->getModifierBehavior()I
+    invoke-virtual {v1}, Landroid/view/KeyCharacterMap;->getModifierBehavior()I
 
-    move-result v2
+    move-result v1
 
-    if-ne v2, v1, :cond_0
+    if-ne v1, v3, :cond_0
 
     .line 235
     invoke-static {p0}, Landroid/text/method/MetaKeyKeyListener;->getMetaState(Ljava/lang/CharSequence;)I
 
-    move-result v2
+    move-result v1
 
-    or-int/2addr v0, v2
+    or-int/2addr v0, v1
 
     .line 237
     :cond_0
-    const/16 v2, 0x800
+    const/16 v1, 0x800
 
-    if-ne v2, p1, :cond_2
+    if-ne v1, p1, :cond_2
 
     .line 240
-    and-int/lit16 v2, v0, 0x800
+    and-int/lit16 v1, v0, 0x800
 
-    if-eqz v2, :cond_1
+    if-eqz v1, :cond_1
 
-    .line 246
-    :goto_0
-    return v1
+    .line 242
+    return v3
 
     .line 244
     :cond_1
-    const/4 v1, 0x0
-
-    goto :goto_0
+    return v2
 
     .line 246
     :cond_2
-    int-to-long v1, v0
+    int-to-long v2, v0
 
-    invoke-static {v1, v2, p1}, Landroid/text/method/MetaKeyKeyListener;->getMetaState(JI)I
+    invoke-static {v2, v3, p1}, Landroid/text/method/MetaKeyKeyListener;->getMetaState(JI)I
 
     move-result v1
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public static final getMetaState(Ljava/lang/CharSequence;Landroid/view/KeyEvent;)I
     .locals 3
-    .parameter "text"
-    .parameter "event"
+    .param p0, "text"    # Ljava/lang/CharSequence;
+    .param p1, "event"    # Landroid/view/KeyEvent;
 
     .prologue
     .line 181
@@ -834,7 +826,7 @@
     move-result v0
 
     .line 182
-    .local v0, metaState:I
+    .local v0, "metaState":I
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getKeyCharacterMap()Landroid/view/KeyCharacterMap;
 
     move-result-object v1
@@ -843,8 +835,10 @@
 
     move-result v1
 
+    .line 183
     const/4 v2, 0x1
 
+    .line 182
     if-ne v1, v2, :cond_0
 
     .line 184
@@ -860,249 +854,289 @@
 .end method
 
 .method public static handleKeyDown(JILandroid/view/KeyEvent;)J
-    .locals 13
-    .parameter "state"
-    .parameter "keyCode"
-    .parameter "event"
+    .locals 16
+    .param p0, "state"    # J
+    .param p2, "keyCode"    # I
+    .param p3, "event"    # Landroid/view/KeyEvent;
 
     .prologue
     .line 542
-    const/16 v0, 0x3b
+    const/16 v2, 0x3b
 
-    if-eq p2, v0, :cond_0
+    move/from16 v0, p2
 
-    const/16 v0, 0x3c
+    if-eq v0, v2, :cond_0
 
-    if-ne p2, v0, :cond_2
+    const/16 v2, 0x3c
+
+    move/from16 v0, p2
+
+    if-ne v0, v2, :cond_1
+
+    .line 544
+    :cond_0
+    const-wide/16 v8, 0x100
 
     .line 543
-    :cond_0
-    const/4 v2, 0x1
+    const/4 v5, 0x1
 
-    const-wide v3, 0x1010100000101L
+    const-wide v6, 0x1010100000101L
 
-    const-wide/16 v5, 0x100
+    .line 544
+    const-wide v10, 0x10000000000L
 
-    const-wide v7, 0x10000000000L
+    const-wide/high16 v12, 0x1000000000000L
 
-    const-wide/high16 v9, 0x1
+    const-wide v14, 0x100000000L
 
-    const-wide v11, 0x100000000L
+    move-wide/from16 v3, p0
 
-    move-wide v0, p0
+    .line 543
+    invoke-static/range {v3 .. v15}, Landroid/text/method/MetaKeyKeyListener;->press(JIJJJJJ)J
 
-    invoke-static/range {v0 .. v12}, Landroid/text/method/MetaKeyKeyListener;->press(JIJJJJJ)J
+    move-result-wide v2
 
-    move-result-wide p0
-
-    .line 557
-    .end local p0
-    :cond_1
-    :goto_0
-    return-wide p0
+    return-wide v2
 
     .line 547
-    .restart local p0
+    :cond_1
+    const/16 v2, 0x39
+
+    move/from16 v0, p2
+
+    if-eq v0, v2, :cond_2
+
+    const/16 v2, 0x3a
+
+    move/from16 v0, p2
+
+    if-ne v0, v2, :cond_3
+
+    .line 550
     :cond_2
-    const/16 v0, 0x39
-
-    if-eq p2, v0, :cond_3
-
-    const/16 v0, 0x3a
-
-    if-eq p2, v0, :cond_3
-
-    const/16 v0, 0x4e
-
-    if-ne p2, v0, :cond_4
+    const-wide/16 v8, 0x200
 
     .line 549
+    const/4 v5, 0x2
+
+    const-wide v6, 0x2020200000202L
+
+    .line 550
+    const-wide v10, 0x20000000000L
+
+    const-wide/high16 v12, 0x2000000000000L
+
+    const-wide v14, 0x200000000L
+
+    move-wide/from16 v3, p0
+
+    .line 549
+    invoke-static/range {v3 .. v15}, Landroid/text/method/MetaKeyKeyListener;->press(JIJJJJJ)J
+
+    move-result-wide v2
+
+    return-wide v2
+
+    .line 548
     :cond_3
-    const/4 v2, 0x2
+    const/16 v2, 0x4e
 
-    const-wide v3, 0x2020200000202L
+    move/from16 v0, p2
 
-    const-wide/16 v5, 0x200
-
-    const-wide v7, 0x20000000000L
-
-    const-wide/high16 v9, 0x2
-
-    const-wide v11, 0x200000000L
-
-    move-wide v0, p0
-
-    invoke-static/range {v0 .. v12}, Landroid/text/method/MetaKeyKeyListener;->press(JIJJJJJ)J
-
-    move-result-wide p0
-
-    goto :goto_0
+    if-eq v0, v2, :cond_2
 
     .line 553
-    :cond_4
-    const/16 v0, 0x3f
+    const/16 v2, 0x3f
 
-    if-ne p2, v0, :cond_1
+    move/from16 v0, p2
+
+    if-ne v0, v2, :cond_4
+
+    .line 555
+    const-wide/16 v8, 0x400
 
     .line 554
-    const/4 v2, 0x4
+    const/4 v5, 0x4
 
-    const-wide v3, 0x4040400000404L
+    const-wide v6, 0x4040400000404L
 
-    const-wide/16 v5, 0x400
+    .line 555
+    const-wide v10, 0x40000000000L
 
-    const-wide v7, 0x40000000000L
+    const-wide/high16 v12, 0x4000000000000L
 
-    const-wide/high16 v9, 0x4
+    const-wide v14, 0x400000000L
 
-    const-wide v11, 0x400000000L
+    move-wide/from16 v3, p0
 
-    move-wide v0, p0
+    .line 554
+    invoke-static/range {v3 .. v15}, Landroid/text/method/MetaKeyKeyListener;->press(JIJJJJJ)J
 
-    invoke-static/range {v0 .. v12}, Landroid/text/method/MetaKeyKeyListener;->press(JIJJJJJ)J
+    move-result-wide v2
 
-    move-result-wide p0
+    return-wide v2
 
-    goto :goto_0
+    .line 557
+    :cond_4
+    return-wide p0
 .end method
 
 .method public static handleKeyUp(JILandroid/view/KeyEvent;)J
-    .locals 12
-    .parameter "state"
-    .parameter "keyCode"
-    .parameter "event"
+    .locals 16
+    .param p0, "state"    # J
+    .param p2, "keyCode"    # I
+    .param p3, "event"    # Landroid/view/KeyEvent;
 
     .prologue
     .line 580
-    const/16 v0, 0x3b
+    const/16 v2, 0x3b
 
-    if-eq p2, v0, :cond_0
+    move/from16 v0, p2
 
-    const/16 v0, 0x3c
+    if-eq v0, v2, :cond_0
 
-    if-ne p2, v0, :cond_2
+    const/16 v2, 0x3c
+
+    move/from16 v0, p2
+
+    if-ne v0, v2, :cond_1
 
     .line 581
     :cond_0
-    const/4 v2, 0x1
+    const/4 v5, 0x1
 
-    const-wide v3, 0x1010100000101L
+    const-wide v6, 0x1010100000101L
 
-    const-wide v5, 0x10000000000L
+    .line 582
+    const-wide v8, 0x10000000000L
 
-    const-wide/high16 v7, 0x1
+    const-wide/high16 v10, 0x1000000000000L
 
-    const-wide v9, 0x100000000L
+    const-wide v12, 0x100000000L
 
-    move-wide v0, p0
+    move-wide/from16 v3, p0
 
-    move-object v11, p3
+    move-object/from16 v14, p3
 
-    invoke-static/range {v0 .. v11}, Landroid/text/method/MetaKeyKeyListener;->release(JIJJJJLandroid/view/KeyEvent;)J
+    .line 581
+    invoke-static/range {v3 .. v14}, Landroid/text/method/MetaKeyKeyListener;->release(JIJJJJLandroid/view/KeyEvent;)J
 
-    move-result-wide p0
+    move-result-wide v2
 
-    .line 595
-    .end local p0
-    :cond_1
-    :goto_0
-    return-wide p0
+    return-wide v2
 
     .line 585
-    .restart local p0
-    :cond_2
-    const/16 v0, 0x39
+    :cond_1
+    const/16 v2, 0x39
 
-    if-eq p2, v0, :cond_3
+    move/from16 v0, p2
 
-    const/16 v0, 0x3a
+    if-eq v0, v2, :cond_2
 
-    if-eq p2, v0, :cond_3
+    const/16 v2, 0x3a
 
-    const/16 v0, 0x4e
+    move/from16 v0, p2
 
-    if-ne p2, v0, :cond_4
+    if-ne v0, v2, :cond_3
 
     .line 587
+    :cond_2
+    const/4 v5, 0x2
+
+    const-wide v6, 0x2020200000202L
+
+    .line 588
+    const-wide v8, 0x20000000000L
+
+    const-wide/high16 v10, 0x2000000000000L
+
+    const-wide v12, 0x200000000L
+
+    move-wide/from16 v3, p0
+
+    move-object/from16 v14, p3
+
+    .line 587
+    invoke-static/range {v3 .. v14}, Landroid/text/method/MetaKeyKeyListener;->release(JIJJJJLandroid/view/KeyEvent;)J
+
+    move-result-wide v2
+
+    return-wide v2
+
+    .line 586
     :cond_3
-    const/4 v2, 0x2
+    const/16 v2, 0x4e
 
-    const-wide v3, 0x2020200000202L
+    move/from16 v0, p2
 
-    const-wide v5, 0x20000000000L
-
-    const-wide/high16 v7, 0x2
-
-    const-wide v9, 0x200000000L
-
-    move-wide v0, p0
-
-    move-object v11, p3
-
-    invoke-static/range {v0 .. v11}, Landroid/text/method/MetaKeyKeyListener;->release(JIJJJJLandroid/view/KeyEvent;)J
-
-    move-result-wide p0
-
-    goto :goto_0
+    if-eq v0, v2, :cond_2
 
     .line 591
-    :cond_4
-    const/16 v0, 0x3f
+    const/16 v2, 0x3f
 
-    if-ne p2, v0, :cond_1
+    move/from16 v0, p2
+
+    if-ne v0, v2, :cond_4
 
     .line 592
-    const/4 v2, 0x4
+    const/4 v5, 0x4
 
-    const-wide v3, 0x4040400000404L
+    const-wide v6, 0x4040400000404L
 
-    const-wide v5, 0x40000000000L
+    .line 593
+    const-wide v8, 0x40000000000L
 
-    const-wide/high16 v7, 0x4
+    const-wide/high16 v10, 0x4000000000000L
 
-    const-wide v9, 0x400000000L
+    const-wide v12, 0x400000000L
 
-    move-wide v0, p0
+    move-wide/from16 v3, p0
 
-    move-object v11, p3
+    move-object/from16 v14, p3
 
-    invoke-static/range {v0 .. v11}, Landroid/text/method/MetaKeyKeyListener;->release(JIJJJJLandroid/view/KeyEvent;)J
+    .line 592
+    invoke-static/range {v3 .. v14}, Landroid/text/method/MetaKeyKeyListener;->release(JIJJJJLandroid/view/KeyEvent;)J
 
-    move-result-wide p0
+    move-result-wide v2
 
-    goto :goto_0
+    return-wide v2
+
+    .line 595
+    :cond_4
+    return-wide p0
 .end method
 
 .method public static isMetaTracker(Ljava/lang/CharSequence;Ljava/lang/Object;)Z
-    .locals 1
-    .parameter "text"
-    .parameter "what"
+    .locals 2
+    .param p0, "text"    # Ljava/lang/CharSequence;
+    .param p1, "what"    # Ljava/lang/Object;
 
     .prologue
-    .line 283
-    sget-object v0, Landroid/text/method/MetaKeyKeyListener;->CAP:Ljava/lang/Object;
-
-    if-eq p1, v0, :cond_0
-
-    sget-object v0, Landroid/text/method/MetaKeyKeyListener;->ALT:Ljava/lang/Object;
-
-    if-eq p1, v0, :cond_0
-
-    sget-object v0, Landroid/text/method/MetaKeyKeyListener;->SYM:Ljava/lang/Object;
-
-    if-eq p1, v0, :cond_0
-
-    sget-object v0, Landroid/text/method/MetaKeyKeyListener;->SELECTING:Ljava/lang/Object;
-
-    if-ne p1, v0, :cond_1
-
-    :cond_0
     const/4 v0, 0x1
 
+    .line 283
+    sget-object v1, Landroid/text/method/MetaKeyKeyListener;->CAP:Ljava/lang/Object;
+
+    if-eq p1, v1, :cond_0
+
+    sget-object v1, Landroid/text/method/MetaKeyKeyListener;->ALT:Ljava/lang/Object;
+
+    if-ne p1, v1, :cond_1
+
+    :cond_0
     :goto_0
     return v0
 
     :cond_1
+    sget-object v1, Landroid/text/method/MetaKeyKeyListener;->SYM:Ljava/lang/Object;
+
+    if-eq p1, v1, :cond_0
+
+    .line 284
+    sget-object v1, Landroid/text/method/MetaKeyKeyListener;->SELECTING:Ljava/lang/Object;
+
+    if-eq p1, v1, :cond_0
+
     const/4 v0, 0x0
 
     goto :goto_0
@@ -1110,8 +1144,8 @@
 
 .method public static isSelectingMetaTracker(Ljava/lang/CharSequence;Ljava/lang/Object;)Z
     .locals 1
-    .parameter "text"
-    .parameter "what"
+    .param p0, "text"    # Ljava/lang/CharSequence;
+    .param p1, "what"    # Ljava/lang/Object;
 
     .prologue
     .line 292
@@ -1132,13 +1166,13 @@
 
 .method private static press(JIJJJJJ)J
     .locals 4
-    .parameter "state"
-    .parameter "what"
-    .parameter "mask"
-    .parameter "locked"
-    .parameter "pressed"
-    .parameter "released"
-    .parameter "used"
+    .param p0, "state"    # J
+    .param p2, "what"    # I
+    .param p3, "mask"    # J
+    .param p5, "locked"    # J
+    .param p7, "pressed"    # J
+    .param p9, "released"    # J
+    .param p11, "used"    # J
 
     .prologue
     .line 562
@@ -1166,9 +1200,7 @@
     if-eqz v0, :cond_2
 
     .line 565
-    const-wide/16 v0, -0x1
-
-    xor-long/2addr v0, p3
+    not-long v0, p3
 
     and-long/2addr v0, p0
 
@@ -1200,9 +1232,7 @@
     if-eqz v0, :cond_3
 
     .line 569
-    const-wide/16 v0, -0x1
-
-    xor-long/2addr v0, p3
+    not-long v0, p3
 
     and-long/2addr p0, v0
 
@@ -1221,8 +1251,8 @@
 
 .method private press(Landroid/text/Editable;Ljava/lang/Object;)V
     .locals 5
-    .parameter "content"
-    .parameter "what"
+    .param p1, "content"    # Landroid/text/Editable;
+    .param p2, "what"    # Ljava/lang/Object;
 
     .prologue
     const v4, 0x4000011
@@ -1237,33 +1267,30 @@
     move-result v0
 
     .line 348
-    .local v0, state:I
-    if-ne v0, v3, :cond_1
-
-    .line 358
-    :cond_0
-    :goto_0
-    return-void
+    .local v0, "state":I
+    if-eq v0, v3, :cond_0
 
     .line 350
-    :cond_1
     const v1, 0x2000011
 
-    if-ne v0, v1, :cond_2
+    if-ne v0, v1, :cond_1
 
     .line 351
     invoke-interface {p1, p2, v2, v2, v4}, Landroid/text/Editable;->setSpan(Ljava/lang/Object;III)V
 
-    goto :goto_0
+    .line 345
+    :cond_0
+    :goto_0
+    return-void
 
     .line 352
-    :cond_2
+    :cond_1
     const v1, 0x3000011
 
     if-eq v0, v1, :cond_0
 
     .line 354
-    if-ne v0, v4, :cond_3
+    if-ne v0, v4, :cond_2
 
     .line 355
     invoke-interface {p1, p2}, Landroid/text/Editable;->removeSpan(Ljava/lang/Object;)V
@@ -1271,7 +1298,7 @@
     goto :goto_0
 
     .line 357
-    :cond_3
+    :cond_2
     invoke-interface {p1, p2, v2, v2, v3}, Landroid/text/Editable;->setSpan(Ljava/lang/Object;III)V
 
     goto :goto_0
@@ -1279,15 +1306,17 @@
 
 .method private static release(JIJJJJLandroid/view/KeyEvent;)J
     .locals 4
-    .parameter "state"
-    .parameter "what"
-    .parameter "mask"
-    .parameter "pressed"
-    .parameter "released"
-    .parameter "used"
-    .parameter "event"
+    .param p0, "state"    # J
+    .param p2, "what"    # I
+    .param p3, "mask"    # J
+    .param p5, "pressed"    # J
+    .param p7, "released"    # J
+    .param p9, "used"    # J
+    .param p11, "event"    # Landroid/view/KeyEvent;
 
     .prologue
+    const-wide/16 v2, 0x0
+
     .line 600
     invoke-virtual {p11}, Landroid/view/KeyEvent;->getKeyCharacterMap()Landroid/view/KeyCharacterMap;
 
@@ -1300,9 +1329,7 @@
     packed-switch v0, :pswitch_data_0
 
     .line 610
-    const-wide/16 v0, -0x1
-
-    xor-long/2addr v0, p3
+    not-long v0, p3
 
     and-long/2addr p0, v0
 
@@ -1315,16 +1342,12 @@
     :pswitch_0
     and-long v0, p0, p9
 
-    const-wide/16 v2, 0x0
-
     cmp-long v0, v0, v2
 
     if-eqz v0, :cond_1
 
     .line 603
-    const-wide/16 v0, -0x1
-
-    xor-long/2addr v0, p3
+    not-long v0, p3
 
     and-long/2addr p0, v0
 
@@ -1333,8 +1356,6 @@
     .line 604
     :cond_1
     and-long v0, p0, p5
-
-    const-wide/16 v2, 0x0
 
     cmp-long v0, v0, v2
 
@@ -1360,9 +1381,9 @@
 
 .method private release(Landroid/text/Editable;Ljava/lang/Object;Landroid/view/KeyEvent;)V
     .locals 3
-    .parameter "content"
-    .parameter "what"
-    .parameter "event"
+    .param p1, "content"    # Landroid/text/Editable;
+    .param p2, "what"    # Ljava/lang/Object;
+    .param p3, "event"    # Landroid/view/KeyEvent;
 
     .prologue
     const/4 v2, 0x0
@@ -1373,7 +1394,7 @@
     move-result v0
 
     .line 403
-    .local v0, current:I
+    .local v0, "current":I
     invoke-virtual {p3}, Landroid/view/KeyEvent;->getKeyCharacterMap()Landroid/view/KeyCharacterMap;
 
     move-result-object v1
@@ -1387,7 +1408,7 @@
     .line 412
     invoke-interface {p1, p2}, Landroid/text/Editable;->removeSpan(Ljava/lang/Object;)V
 
-    .line 415
+    .line 400
     :cond_0
     :goto_0
     return-void
@@ -1427,8 +1448,8 @@
 
 .method private static resetLock(Landroid/text/Spannable;Ljava/lang/Object;)V
     .locals 2
-    .parameter "content"
-    .parameter "what"
+    .param p0, "content"    # Landroid/text/Spannable;
+    .param p1, "what"    # Ljava/lang/Object;
 
     .prologue
     .line 316
@@ -1437,7 +1458,7 @@
     move-result v0
 
     .line 318
-    .local v0, current:I
+    .local v0, "current":I
     const v1, 0x4000011
 
     if-ne v0, v1, :cond_0
@@ -1445,14 +1466,14 @@
     .line 319
     invoke-interface {p0, p1}, Landroid/text/Spannable;->removeSpan(Ljava/lang/Object;)V
 
-    .line 320
+    .line 315
     :cond_0
     return-void
 .end method
 
 .method public static resetLockedMeta(J)J
     .locals 4
-    .parameter "state"
+    .param p0, "state"    # J
 
     .prologue
     const-wide/16 v2, 0x0
@@ -1508,7 +1529,7 @@
 
 .method protected static resetLockedMeta(Landroid/text/Spannable;)V
     .locals 1
-    .parameter "content"
+    .param p0, "content"    # Landroid/text/Spannable;
 
     .prologue
     .line 309
@@ -1531,13 +1552,13 @@
 
     invoke-static {p0, v0}, Landroid/text/method/MetaKeyKeyListener;->resetLock(Landroid/text/Spannable;Ljava/lang/Object;)V
 
-    .line 313
+    .line 308
     return-void
 .end method
 
 .method public static resetMetaState(Landroid/text/Spannable;)V
     .locals 1
-    .parameter "text"
+    .param p0, "text"    # Landroid/text/Spannable;
 
     .prologue
     .line 145
@@ -1560,14 +1581,14 @@
 
     invoke-interface {p0, v0}, Landroid/text/Spannable;->removeSpan(Ljava/lang/Object;)V
 
-    .line 149
+    .line 144
     return-void
 .end method
 
 .method public static startSelecting(Landroid/view/View;Landroid/text/Spannable;)V
     .locals 3
-    .parameter "view"
-    .parameter "content"
+    .param p0, "view"    # Landroid/view/View;
+    .param p1, "content"    # Landroid/text/Spannable;
 
     .prologue
     const/4 v2, 0x0
@@ -1579,14 +1600,14 @@
 
     invoke-interface {p1, v0, v2, v2, v1}, Landroid/text/Spannable;->setSpan(Ljava/lang/Object;III)V
 
-    .line 366
+    .line 364
     return-void
 .end method
 
 .method public static stopSelecting(Landroid/view/View;Landroid/text/Spannable;)V
     .locals 1
-    .parameter "view"
-    .parameter "content"
+    .param p0, "view"    # Landroid/view/View;
+    .param p1, "content"    # Landroid/text/Spannable;
 
     .prologue
     .line 374
@@ -1594,16 +1615,16 @@
 
     invoke-interface {p1, v0}, Landroid/text/Spannable;->removeSpan(Ljava/lang/Object;)V
 
-    .line 375
+    .line 373
     return-void
 .end method
 
 
 # virtual methods
 .method public clearMetaKeyState(JI)J
-    .locals 4
-    .parameter "state"
-    .parameter "which"
+    .locals 5
+    .param p1, "state"    # J
+    .param p3, "which"    # I
 
     .prologue
     const-wide/16 v2, 0x0
@@ -1671,156 +1692,160 @@
 
 .method public clearMetaKeyState(Landroid/view/View;Landroid/text/Editable;I)V
     .locals 0
-    .parameter "view"
-    .parameter "content"
-    .parameter "states"
+    .param p1, "view"    # Landroid/view/View;
+    .param p2, "content"    # Landroid/text/Editable;
+    .param p3, "states"    # I
 
     .prologue
     .line 418
     invoke-static {p2, p3}, Landroid/text/method/MetaKeyKeyListener;->clearMetaKeyState(Landroid/text/Editable;I)V
 
-    .line 419
+    .line 417
     return-void
 .end method
 
 .method public onKeyDown(Landroid/view/View;Landroid/text/Editable;ILandroid/view/KeyEvent;)Z
     .locals 2
-    .parameter "view"
-    .parameter "content"
-    .parameter "keyCode"
-    .parameter "event"
+    .param p1, "view"    # Landroid/view/View;
+    .param p2, "content"    # Landroid/text/Editable;
+    .param p3, "keyCode"    # I
+    .param p4, "event"    # Landroid/view/KeyEvent;
 
     .prologue
-    const/4 v0, 0x1
+    const/4 v1, 0x1
 
     .line 326
-    const/16 v1, 0x3b
+    const/16 v0, 0x3b
 
-    if-eq p3, v1, :cond_0
+    if-eq p3, v0, :cond_0
 
-    const/16 v1, 0x3c
+    const/16 v0, 0x3c
 
-    if-ne p3, v1, :cond_1
+    if-ne p3, v0, :cond_1
 
     .line 327
     :cond_0
-    sget-object v1, Landroid/text/method/MetaKeyKeyListener;->CAP:Ljava/lang/Object;
+    sget-object v0, Landroid/text/method/MetaKeyKeyListener;->CAP:Ljava/lang/Object;
 
-    invoke-direct {p0, p2, v1}, Landroid/text/method/MetaKeyKeyListener;->press(Landroid/text/Editable;Ljava/lang/Object;)V
+    invoke-direct {p0, p2, v0}, Landroid/text/method/MetaKeyKeyListener;->press(Landroid/text/Editable;Ljava/lang/Object;)V
 
-    .line 342
-    :goto_0
-    return v0
+    .line 328
+    return v1
 
     .line 331
     :cond_1
-    const/16 v1, 0x39
+    const/16 v0, 0x39
 
-    if-eq p3, v1, :cond_2
+    if-eq p3, v0, :cond_2
 
-    const/16 v1, 0x3a
+    const/16 v0, 0x3a
 
-    if-eq p3, v1, :cond_2
-
-    const/16 v1, 0x4e
-
-    if-ne p3, v1, :cond_3
+    if-ne p3, v0, :cond_3
 
     .line 333
     :cond_2
-    sget-object v1, Landroid/text/method/MetaKeyKeyListener;->ALT:Ljava/lang/Object;
+    sget-object v0, Landroid/text/method/MetaKeyKeyListener;->ALT:Ljava/lang/Object;
 
-    invoke-direct {p0, p2, v1}, Landroid/text/method/MetaKeyKeyListener;->press(Landroid/text/Editable;Ljava/lang/Object;)V
+    invoke-direct {p0, p2, v0}, Landroid/text/method/MetaKeyKeyListener;->press(Landroid/text/Editable;Ljava/lang/Object;)V
 
-    goto :goto_0
+    .line 334
+    return v1
+
+    .line 332
+    :cond_3
+    const/16 v0, 0x4e
+
+    if-eq p3, v0, :cond_2
 
     .line 337
-    :cond_3
-    const/16 v1, 0x3f
+    const/16 v0, 0x3f
 
-    if-ne p3, v1, :cond_4
+    if-ne p3, v0, :cond_4
 
     .line 338
-    sget-object v1, Landroid/text/method/MetaKeyKeyListener;->SYM:Ljava/lang/Object;
+    sget-object v0, Landroid/text/method/MetaKeyKeyListener;->SYM:Ljava/lang/Object;
 
-    invoke-direct {p0, p2, v1}, Landroid/text/method/MetaKeyKeyListener;->press(Landroid/text/Editable;Ljava/lang/Object;)V
+    invoke-direct {p0, p2, v0}, Landroid/text/method/MetaKeyKeyListener;->press(Landroid/text/Editable;Ljava/lang/Object;)V
 
-    goto :goto_0
+    .line 339
+    return v1
 
     .line 342
     :cond_4
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public onKeyUp(Landroid/view/View;Landroid/text/Editable;ILandroid/view/KeyEvent;)Z
     .locals 2
-    .parameter "view"
-    .parameter "content"
-    .parameter "keyCode"
-    .parameter "event"
+    .param p1, "view"    # Landroid/view/View;
+    .param p2, "content"    # Landroid/text/Editable;
+    .param p3, "keyCode"    # I
+    .param p4, "event"    # Landroid/view/KeyEvent;
 
     .prologue
-    const/4 v0, 0x1
+    const/4 v1, 0x1
 
     .line 381
-    const/16 v1, 0x3b
+    const/16 v0, 0x3b
 
-    if-eq p3, v1, :cond_0
+    if-eq p3, v0, :cond_0
 
-    const/16 v1, 0x3c
+    const/16 v0, 0x3c
 
-    if-ne p3, v1, :cond_1
+    if-ne p3, v0, :cond_1
 
     .line 382
     :cond_0
-    sget-object v1, Landroid/text/method/MetaKeyKeyListener;->CAP:Ljava/lang/Object;
+    sget-object v0, Landroid/text/method/MetaKeyKeyListener;->CAP:Ljava/lang/Object;
 
-    invoke-direct {p0, p2, v1, p4}, Landroid/text/method/MetaKeyKeyListener;->release(Landroid/text/Editable;Ljava/lang/Object;Landroid/view/KeyEvent;)V
+    invoke-direct {p0, p2, v0, p4}, Landroid/text/method/MetaKeyKeyListener;->release(Landroid/text/Editable;Ljava/lang/Object;Landroid/view/KeyEvent;)V
 
-    .line 397
-    :goto_0
-    return v0
+    .line 383
+    return v1
 
     .line 386
     :cond_1
-    const/16 v1, 0x39
+    const/16 v0, 0x39
 
-    if-eq p3, v1, :cond_2
+    if-eq p3, v0, :cond_2
 
-    const/16 v1, 0x3a
+    const/16 v0, 0x3a
 
-    if-eq p3, v1, :cond_2
-
-    const/16 v1, 0x4e
-
-    if-ne p3, v1, :cond_3
+    if-ne p3, v0, :cond_3
 
     .line 388
     :cond_2
-    sget-object v1, Landroid/text/method/MetaKeyKeyListener;->ALT:Ljava/lang/Object;
+    sget-object v0, Landroid/text/method/MetaKeyKeyListener;->ALT:Ljava/lang/Object;
 
-    invoke-direct {p0, p2, v1, p4}, Landroid/text/method/MetaKeyKeyListener;->release(Landroid/text/Editable;Ljava/lang/Object;Landroid/view/KeyEvent;)V
+    invoke-direct {p0, p2, v0, p4}, Landroid/text/method/MetaKeyKeyListener;->release(Landroid/text/Editable;Ljava/lang/Object;Landroid/view/KeyEvent;)V
 
-    goto :goto_0
+    .line 389
+    return v1
+
+    .line 387
+    :cond_3
+    const/16 v0, 0x4e
+
+    if-eq p3, v0, :cond_2
 
     .line 392
-    :cond_3
-    const/16 v1, 0x3f
+    const/16 v0, 0x3f
 
-    if-ne p3, v1, :cond_4
+    if-ne p3, v0, :cond_4
 
     .line 393
-    sget-object v1, Landroid/text/method/MetaKeyKeyListener;->SYM:Ljava/lang/Object;
+    sget-object v0, Landroid/text/method/MetaKeyKeyListener;->SYM:Ljava/lang/Object;
 
-    invoke-direct {p0, p2, v1, p4}, Landroid/text/method/MetaKeyKeyListener;->release(Landroid/text/Editable;Ljava/lang/Object;Landroid/view/KeyEvent;)V
+    invoke-direct {p0, p2, v0, p4}, Landroid/text/method/MetaKeyKeyListener;->release(Landroid/text/Editable;Ljava/lang/Object;Landroid/view/KeyEvent;)V
 
-    goto :goto_0
+    .line 394
+    return v1
 
     .line 397
     :cond_4
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 .end method

@@ -20,7 +20,7 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 1
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
     .line 80
@@ -28,14 +28,14 @@
 
     invoke-direct {p0, p1, v0}, Landroid/net/LocalSocketAddress;-><init>(Ljava/lang/String;Landroid/net/LocalSocketAddress$Namespace;)V
 
-    .line 81
+    .line 79
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Landroid/net/LocalSocketAddress$Namespace;)V
     .locals 0
-    .parameter "name"
-    .parameter "namespace"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "namespace"    # Landroid/net/LocalSocketAddress$Namespace;
 
     .prologue
     .line 68
@@ -47,7 +47,7 @@
     .line 70
     iput-object p2, p0, Landroid/net/LocalSocketAddress;->namespace:Landroid/net/LocalSocketAddress$Namespace;
 
-    .line 71
+    .line 68
     return-void
 .end method
 

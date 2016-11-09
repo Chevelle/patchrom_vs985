@@ -6,9 +6,9 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/provider/SyncStateContract$Helpers;,
+        Landroid/provider/SyncStateContract$Columns;,
         Landroid/provider/SyncStateContract$Constants;,
-        Landroid/provider/SyncStateContract$Columns;
+        Landroid/provider/SyncStateContract$Helpers;
     }
 .end annotation
 
@@ -21,6 +21,5 @@
     .line 33
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 58
     return-void
 .end method

@@ -9,3 +9,9 @@
 # virtual methods
 .method public abstract getSpanTypeId()I
 .end method
+
+.method public abstract getSpanTypeIdInternal()I
+.end method
+
+.method public abstract writeToParcelInternal(Landroid/os/Parcel;I)V
+.end method

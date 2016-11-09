@@ -15,7 +15,15 @@
 
 
 # virtual methods
-.method public abstract clearWallpaper()V
+.method public abstract clearKeyguardWallpaper()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract clearWallpaper(Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -24,6 +32,22 @@
 .end method
 
 .method public abstract getHeightHint()I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getKeyguardWallpaper(Landroid/app/IWallpaperManagerCallback;Landroid/os/Bundle;)Landroid/os/ParcelFileDescriptor;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getName()Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -63,7 +87,7 @@
     .end annotation
 .end method
 
-.method public abstract setDimensionHints(II)V
+.method public abstract isWallpaperSupported(Ljava/lang/String;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -71,7 +95,31 @@
     .end annotation
 .end method
 
-.method public abstract setWallpaper(Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+.method public abstract setDimensionHints(IILjava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setDisplayPadding(Landroid/graphics/Rect;Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setKeyguardWallpaper(Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setWallpaper(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -80,6 +128,22 @@
 .end method
 
 .method public abstract setWallpaperComponent(Landroid/content/ComponentName;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setWallpaperComponentChecked(Landroid/content/ComponentName;Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract settingsRestored()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

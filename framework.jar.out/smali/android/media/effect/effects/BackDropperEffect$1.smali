@@ -24,7 +24,7 @@
 # direct methods
 .method constructor <init>(Landroid/media/effect/effects/BackDropperEffect;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/media/effect/effects/BackDropperEffect;
 
     .prologue
     .line 74
@@ -39,14 +39,15 @@
 # virtual methods
 .method public onLearningDone(Landroid/filterpacks/videoproc/BackDropperFilter;)V
     .locals 3
-    .parameter "filter"
+    .param p1, "filter"    # Landroid/filterpacks/videoproc/BackDropperFilter;
 
     .prologue
+    const/4 v2, 0x0
+
     .line 76
     iget-object v0, p0, Landroid/media/effect/effects/BackDropperEffect$1;->this$0:Landroid/media/effect/effects/BackDropperEffect;
 
-    #getter for: Landroid/media/effect/effects/BackDropperEffect;->mEffectListener:Landroid/media/effect/EffectUpdateListener;
-    invoke-static {v0}, Landroid/media/effect/effects/BackDropperEffect;->access$000(Landroid/media/effect/effects/BackDropperEffect;)Landroid/media/effect/EffectUpdateListener;
+    invoke-static {v0}, Landroid/media/effect/effects/BackDropperEffect;->-get0(Landroid/media/effect/effects/BackDropperEffect;)Landroid/media/effect/EffectUpdateListener;
 
     move-result-object v0
 
@@ -55,18 +56,15 @@
     .line 77
     iget-object v0, p0, Landroid/media/effect/effects/BackDropperEffect$1;->this$0:Landroid/media/effect/effects/BackDropperEffect;
 
-    #getter for: Landroid/media/effect/effects/BackDropperEffect;->mEffectListener:Landroid/media/effect/EffectUpdateListener;
-    invoke-static {v0}, Landroid/media/effect/effects/BackDropperEffect;->access$000(Landroid/media/effect/effects/BackDropperEffect;)Landroid/media/effect/EffectUpdateListener;
+    invoke-static {v0}, Landroid/media/effect/effects/BackDropperEffect;->-get0(Landroid/media/effect/effects/BackDropperEffect;)Landroid/media/effect/EffectUpdateListener;
 
     move-result-object v0
 
     iget-object v1, p0, Landroid/media/effect/effects/BackDropperEffect$1;->this$0:Landroid/media/effect/effects/BackDropperEffect;
 
-    const/4 v2, 0x0
-
     invoke-interface {v0, v1, v2}, Landroid/media/effect/EffectUpdateListener;->onEffectUpdated(Landroid/media/effect/Effect;Ljava/lang/Object;)V
 
-    .line 79
+    .line 75
     :cond_0
     return-void
 .end method

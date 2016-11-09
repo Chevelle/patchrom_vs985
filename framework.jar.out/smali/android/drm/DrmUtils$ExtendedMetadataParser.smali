@@ -31,64 +31,64 @@
 # direct methods
 .method private constructor <init>([B)V
     .locals 6
-    .parameter "constraintData"
+    .param p1, "constraintData"    # [B
 
     .prologue
-    .line 151
+    .line 150
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 131
+    .line 130
     new-instance v5, Ljava/util/HashMap;
 
     invoke-direct {v5}, Ljava/util/HashMap;-><init>()V
 
     iput-object v5, p0, Landroid/drm/DrmUtils$ExtendedMetadataParser;->mMap:Ljava/util/HashMap;
 
-    .line 153
+    .line 152
     const/4 v0, 0x0
 
-    .line 155
-    .local v0, index:I
+    .line 154
+    .local v0, "index":I
     :goto_0
     array-length v5, p1
 
     if-ge v0, v5, :cond_1
 
-    .line 157
+    .line 156
     invoke-direct {p0, p1, v0}, Landroid/drm/DrmUtils$ExtendedMetadataParser;->readByte([BI)I
 
     move-result v1
 
-    .line 158
-    .local v1, keyLength:I
+    .line 157
+    .local v1, "keyLength":I
     add-int/lit8 v0, v0, 0x1
 
-    .line 161
+    .line 160
     invoke-direct {p0, p1, v0}, Landroid/drm/DrmUtils$ExtendedMetadataParser;->readByte([BI)I
 
     move-result v4
 
-    .line 162
-    .local v4, valueLength:I
+    .line 161
+    .local v4, "valueLength":I
     add-int/lit8 v0, v0, 0x1
 
-    .line 165
+    .line 164
     invoke-direct {p0, p1, v1, v0}, Landroid/drm/DrmUtils$ExtendedMetadataParser;->readMultipleBytes([BII)Ljava/lang/String;
 
     move-result-object v2
 
-    .line 166
-    .local v2, strKey:Ljava/lang/String;
+    .line 165
+    .local v2, "strKey":Ljava/lang/String;
     add-int/2addr v0, v1
 
-    .line 169
+    .line 168
     invoke-direct {p0, p1, v4, v0}, Landroid/drm/DrmUtils$ExtendedMetadataParser;->readMultipleBytes([BII)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 170
-    .local v3, strValue:Ljava/lang/String;
-    const-string v5, " "
+    .line 169
+    .local v3, "strValue":Ljava/lang/String;
+    const-string/jumbo v5, " "
 
     invoke-virtual {v3, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -96,36 +96,34 @@
 
     if-eqz v5, :cond_0
 
-    .line 171
-    const-string v3, ""
+    .line 170
+    const-string/jumbo v3, ""
 
-    .line 173
+    .line 172
     :cond_0
     add-int/2addr v0, v4
 
-    .line 174
+    .line 173
     iget-object v5, p0, Landroid/drm/DrmUtils$ExtendedMetadataParser;->mMap:Ljava/util/HashMap;
 
     invoke-virtual {v5, v2, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     goto :goto_0
 
-    .line 176
-    .end local v1           #keyLength:I
-    .end local v2           #strKey:Ljava/lang/String;
-    .end local v3           #strValue:Ljava/lang/String;
-    .end local v4           #valueLength:I
+    .line 150
+    .end local v1    # "keyLength":I
+    .end local v2    # "strKey":Ljava/lang/String;
+    .end local v3    # "strValue":Ljava/lang/String;
+    .end local v4    # "valueLength":I
     :cond_1
     return-void
 .end method
 
-.method synthetic constructor <init>([BLandroid/drm/DrmUtils$1;)V
+.method synthetic constructor <init>([BLandroid/drm/DrmUtils$ExtendedMetadataParser;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "constraintData"    # [B
 
     .prologue
-    .line 130
     invoke-direct {p0, p1}, Landroid/drm/DrmUtils$ExtendedMetadataParser;-><init>([B)V
 
     return-void
@@ -133,11 +131,11 @@
 
 .method private readByte([BI)I
     .locals 1
-    .parameter "constraintData"
-    .parameter "arrayIndex"
+    .param p1, "constraintData"    # [B
+    .param p2, "arrayIndex"    # I
 
     .prologue
-    .line 135
+    .line 134
     aget-byte v0, p1, p2
 
     return v0
@@ -145,40 +143,40 @@
 
 .method private readMultipleBytes([BII)Ljava/lang/String;
     .locals 4
-    .parameter "constraintData"
-    .parameter "numberOfBytes"
-    .parameter "arrayIndex"
+    .param p1, "constraintData"    # [B
+    .param p2, "numberOfBytes"    # I
+    .param p3, "arrayIndex"    # I
 
     .prologue
-    .line 140
+    .line 139
     new-array v2, p2, [B
 
-    .line 141
-    .local v2, returnBytes:[B
+    .line 140
+    .local v2, "returnBytes":[B
     move v1, p3
 
-    .local v1, j:I
+    .local v1, "j":I
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     add-int v3, p3, p2
 
     if-ge v1, v3, :cond_0
 
-    .line 142
+    .line 141
     aget-byte v3, p1, v1
 
     aput-byte v3, v2, v0
 
-    .line 141
+    .line 140
     add-int/lit8 v1, v1, 0x1
 
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 144
+    .line 143
     :cond_0
     new-instance v3, Ljava/lang/String;
 
@@ -191,10 +189,10 @@
 # virtual methods
 .method public get(Ljava/lang/String;)Ljava/lang/String;
     .locals 1
-    .parameter "key"
+    .param p1, "key"    # Ljava/lang/String;
 
     .prologue
-    .line 207
+    .line 206
     iget-object v0, p0, Landroid/drm/DrmUtils$ExtendedMetadataParser;->mMap:Ljava/util/HashMap;
 
     invoke-virtual {v0, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -219,7 +217,7 @@
     .end annotation
 
     .prologue
-    .line 185
+    .line 184
     iget-object v0, p0, Landroid/drm/DrmUtils$ExtendedMetadataParser;->mMap:Ljava/util/HashMap;
 
     invoke-virtual {v0}, Ljava/util/HashMap;->values()Ljava/util/Collection;
@@ -246,7 +244,7 @@
     .end annotation
 
     .prologue
-    .line 195
+    .line 194
     iget-object v0, p0, Landroid/drm/DrmUtils$ExtendedMetadataParser;->mMap:Ljava/util/HashMap;
 
     invoke-virtual {v0}, Ljava/util/HashMap;->keySet()Ljava/util/Set;

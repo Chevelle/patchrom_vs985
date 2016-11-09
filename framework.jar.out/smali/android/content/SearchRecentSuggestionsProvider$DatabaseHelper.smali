@@ -21,8 +21,8 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;I)V
     .locals 2
-    .parameter "context"
-    .parameter "newVersion"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "newVersion"    # I
 
     .prologue
     .line 132
@@ -35,7 +35,7 @@
     .line 133
     iput p2, p0, Landroid/content/SearchRecentSuggestionsProvider$DatabaseHelper;->mNewVersion:I
 
-    .line 134
+    .line 131
     return-void
 .end method
 
@@ -43,7 +43,7 @@
 # virtual methods
 .method public onCreate(Landroid/database/sqlite/SQLiteDatabase;)V
     .locals 2
-    .parameter "db"
+    .param p1, "db"    # Landroid/database/sqlite/SQLiteDatabase;
 
     .prologue
     .line 138
@@ -52,8 +52,8 @@
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 139
-    .local v0, builder:Ljava/lang/StringBuilder;
-    const-string v1, "CREATE TABLE suggestions (_id INTEGER PRIMARY KEY,display1 TEXT UNIQUE ON CONFLICT REPLACE"
+    .local v0, "builder":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "CREATE TABLE suggestions (_id INTEGER PRIMARY KEY,display1 TEXT UNIQUE ON CONFLICT REPLACE"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -65,13 +65,13 @@
     if-eqz v1, :cond_0
 
     .line 143
-    const-string v1, ",display2 TEXT"
+    const-string/jumbo v1, ",display2 TEXT"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 145
     :cond_0
-    const-string v1, ",query TEXT,date LONG);"
+    const-string/jumbo v1, ",query TEXT,date LONG);"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -82,25 +82,25 @@
 
     invoke-virtual {p1, v1}, Landroid/database/sqlite/SQLiteDatabase;->execSQL(Ljava/lang/String;)V
 
-    .line 149
+    .line 137
     return-void
 .end method
 
 .method public onUpgrade(Landroid/database/sqlite/SQLiteDatabase;II)V
     .locals 3
-    .parameter "db"
-    .parameter "oldVersion"
-    .parameter "newVersion"
+    .param p1, "db"    # Landroid/database/sqlite/SQLiteDatabase;
+    .param p2, "oldVersion"    # I
+    .param p3, "newVersion"    # I
 
     .prologue
     .line 153
-    const-string v0, "SuggestionsProvider"
+    const-string/jumbo v0, "SuggestionsProvider"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Upgrading database from version "
+    const-string/jumbo v2, "Upgrading database from version "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -110,7 +110,7 @@
 
     move-result-object v1
 
-    const-string v2, " to "
+    const-string/jumbo v2, " to "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -120,8 +120,10 @@
 
     move-result-object v1
 
-    const-string v2, ", which will destroy all old data"
+    .line 154
+    const-string/jumbo v2, ", which will destroy all old data"
 
+    .line 153
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -133,13 +135,13 @@
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 155
-    const-string v0, "DROP TABLE IF EXISTS suggestions"
+    const-string/jumbo v0, "DROP TABLE IF EXISTS suggestions"
 
     invoke-virtual {p1, v0}, Landroid/database/sqlite/SQLiteDatabase;->execSQL(Ljava/lang/String;)V
 
     .line 156
     invoke-virtual {p0, p1}, Landroid/content/SearchRecentSuggestionsProvider$DatabaseHelper;->onCreate(Landroid/database/sqlite/SQLiteDatabase;)V
 
-    .line 157
+    .line 152
     return-void
 .end method

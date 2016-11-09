@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 68
+    .line 67
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 69
     iput-object p1, p0, Landroid/content/pm/IPackageDataObserver$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 70
+    .line 67
     return-void
 .end method
 
@@ -54,15 +54,15 @@
 
     .prologue
     .line 77
-    const-string v0, "android.content.pm.IPackageDataObserver"
+    const-string/jumbo v0, "android.content.pm.IPackageDataObserver"
 
     return-object v0
 .end method
 
 .method public onRemoveCompleted(Ljava/lang/String;Z)V
     .locals 5
-    .parameter "packageName"
-    .parameter "succeeded"
+    .param p1, "packageName"    # Ljava/lang/String;
+    .param p2, "succeeded"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -78,9 +78,9 @@
     move-result-object v0
 
     .line 83
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.content.pm.IPackageDataObserver"
+    const-string/jumbo v2, "android.content.pm.IPackageDataObserver"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -109,7 +109,7 @@
     .line 89
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 91
+    .line 79
     return-void
 
     .line 85
@@ -118,11 +118,13 @@
 
     goto :goto_0
 
-    .line 89
+    .line 88
     :catchall_0
     move-exception v1
 
+    .line 89
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 88
     throw v1
 .end method

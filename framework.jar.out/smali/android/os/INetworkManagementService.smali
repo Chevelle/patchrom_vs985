@@ -15,7 +15,7 @@
 
 
 # virtual methods
-.method public abstract addIdleTimer(Ljava/lang/String;ILjava/lang/String;)V
+.method public abstract addIdleTimer(Ljava/lang/String;II)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -23,7 +23,18 @@
     .end annotation
 .end method
 
-.method public abstract addRoute(Ljava/lang/String;Landroid/net/RouteInfo;)V
+.method public abstract addInterfaceToLocalNetwork(Ljava/lang/String;Ljava/util/List;)V
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            "Ljava/util/List",
+            "<",
+            "Landroid/net/RouteInfo;",
+            ">;)V"
+        }
+    .end annotation
+
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -31,7 +42,39 @@
     .end annotation
 .end method
 
-.method public abstract addSecondaryRoute(Ljava/lang/String;Landroid/net/RouteInfo;)V
+.method public abstract addInterfaceToNetwork(Ljava/lang/String;I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract addLegacyRouteForNetId(ILandroid/net/RouteInfo;I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract addRoute(ILandroid/net/RouteInfo;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract addVpnUidRanges(I[Landroid/net/UidRange;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract allowProtect(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -47,31 +90,7 @@
     .end annotation
 .end method
 
-.method public abstract clearDnsInterfaceForPid(I)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract clearDnsInterfaceForUidRange(Ljava/lang/String;II)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract clearDnsInterfaceMaps()V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract clearHostExemption(Landroid/net/LinkAddress;)V
+.method public abstract clearDefaultNetId()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -87,7 +106,7 @@
     .end annotation
 .end method
 
-.method public abstract clearMarkedForwarding(Ljava/lang/String;)V
+.method public abstract clearPermission([I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -95,7 +114,7 @@
     .end annotation
 .end method
 
-.method public abstract clearMarkedForwardingRoute(Ljava/lang/String;Landroid/net/RouteInfo;)V
+.method public abstract createPhysicalNetwork(ILjava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -103,7 +122,15 @@
     .end annotation
 .end method
 
-.method public abstract clearUidRangeRoute(Ljava/lang/String;II)V
+.method public abstract createVirtualNetwork(IZZ)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract denyProtect(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -151,15 +178,7 @@
     .end annotation
 .end method
 
-.method public abstract flushDefaultDnsCache()V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract flushInterfaceDnsCache(Ljava/lang/String;)V
+.method public abstract flushNetworkDnsCache(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -184,22 +203,6 @@
 .end method
 
 .method public abstract getIpForwardingEnabled()Z
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getMarkForProtect()I
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getMarkForUid(I)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -263,7 +266,7 @@
     .end annotation
 .end method
 
-.method public abstract isClatdStarted()Z
+.method public abstract isClatdStarted(Ljava/lang/String;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -272,6 +275,14 @@
 .end method
 
 .method public abstract isFirewallEnabled()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isNetworkActive()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -311,6 +322,14 @@
     .end annotation
 .end method
 
+.method public abstract registerNetworkActivityListener(Landroid/os/INetworkActivityListener;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract registerObserver(Landroid/net/INetworkManagementEventObserver;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -335,6 +354,22 @@
     .end annotation
 .end method
 
+.method public abstract removeInterfaceFromLocalNetwork(Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract removeInterfaceFromNetwork(Ljava/lang/String;I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract removeInterfaceQuota(Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -343,7 +378,7 @@
     .end annotation
 .end method
 
-.method public abstract removeRoute(Ljava/lang/String;Landroid/net/RouteInfo;)V
+.method public abstract removeNetwork(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -351,7 +386,15 @@
     .end annotation
 .end method
 
-.method public abstract removeSecondaryRoute(Ljava/lang/String;Landroid/net/RouteInfo;)V
+.method public abstract removeRoute(ILandroid/net/RouteInfo;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract removeVpnUidRanges(I[Landroid/net/UidRange;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -367,7 +410,7 @@
     .end annotation
 .end method
 
-.method public abstract setDefaultInterfaceForDns(Ljava/lang/String;)V
+.method public abstract setDefaultNetId(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -375,7 +418,7 @@
     .end annotation
 .end method
 
-.method public abstract setDnsForwarders([Ljava/lang/String;)V
+.method public abstract setDnsForwarders(Landroid/net/Network;[Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -383,7 +426,7 @@
     .end annotation
 .end method
 
-.method public abstract setDnsInterfaceForPid(Ljava/lang/String;I)V
+.method public abstract setDnsServersForNetwork(I[Ljava/lang/String;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -391,15 +434,7 @@
     .end annotation
 .end method
 
-.method public abstract setDnsInterfaceForUidRange(Ljava/lang/String;II)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setDnsServersForInterface(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)V
+.method public abstract setFirewallChainEnabled(IZ)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -439,7 +474,15 @@
     .end annotation
 .end method
 
-.method public abstract setFirewallUidRule(IZ)V
+.method public abstract setFirewallUidRule(III)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setFirewallUidRules(I[I[I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -448,14 +491,6 @@
 .end method
 
 .method public abstract setGlobalAlert(J)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setHostExemption(Landroid/net/LinkAddress;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -480,6 +515,14 @@
 .end method
 
 .method public abstract setInterfaceDown(Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setInterfaceIpv6NdOffload(Ljava/lang/String;Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -519,22 +562,6 @@
     .end annotation
 .end method
 
-.method public abstract setMarkedForwarding(Ljava/lang/String;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setMarkedForwardingRoute(Ljava/lang/String;Landroid/net/RouteInfo;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
 .method public abstract setMtu(Ljava/lang/String;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -543,7 +570,7 @@
     .end annotation
 .end method
 
-.method public abstract setUidNetworkRules(IZ)V
+.method public abstract setNetworkPermission(ILjava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -551,7 +578,23 @@
     .end annotation
 .end method
 
-.method public abstract setUidRangeRoute(Ljava/lang/String;II)V
+.method public abstract setPermission(Ljava/lang/String;[I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setUidCleartextNetworkPolicy(II)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setUidNetworkRules(IZ)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -583,6 +626,14 @@
     .end annotation
 .end method
 
+.method public abstract startInterfaceForwarding(Ljava/lang/String;Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract startTethering([Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -599,7 +650,15 @@
     .end annotation
 .end method
 
-.method public abstract stopClatd()V
+.method public abstract stopClatd(Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract stopInterfaceForwarding(Ljava/lang/String;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -616,6 +675,14 @@
 .end method
 
 .method public abstract tetherInterface(Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract unregisterNetworkActivityListener(Landroid/os/INetworkActivityListener;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

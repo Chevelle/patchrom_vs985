@@ -56,10 +56,10 @@
 
     const/4 v3, 0x0
 
-    .line 78
+    .line 79
     new-instance v0, Landroid/webkit/WebSettings$TextSize;
 
-    const-string v1, "SMALLEST"
+    const-string/jumbo v1, "SMALLEST"
 
     const/16 v2, 0x32
 
@@ -67,10 +67,10 @@
 
     sput-object v0, Landroid/webkit/WebSettings$TextSize;->SMALLEST:Landroid/webkit/WebSettings$TextSize;
 
-    .line 79
+    .line 80
     new-instance v0, Landroid/webkit/WebSettings$TextSize;
 
-    const-string v1, "SMALLER"
+    const-string/jumbo v1, "SMALLER"
 
     const/16 v2, 0x4b
 
@@ -78,10 +78,10 @@
 
     sput-object v0, Landroid/webkit/WebSettings$TextSize;->SMALLER:Landroid/webkit/WebSettings$TextSize;
 
-    .line 80
+    .line 81
     new-instance v0, Landroid/webkit/WebSettings$TextSize;
 
-    const-string v1, "NORMAL"
+    const-string/jumbo v1, "NORMAL"
 
     const/16 v2, 0x64
 
@@ -89,10 +89,10 @@
 
     sput-object v0, Landroid/webkit/WebSettings$TextSize;->NORMAL:Landroid/webkit/WebSettings$TextSize;
 
-    .line 81
+    .line 82
     new-instance v0, Landroid/webkit/WebSettings$TextSize;
 
-    const-string v1, "LARGER"
+    const-string/jumbo v1, "LARGER"
 
     const/16 v2, 0x96
 
@@ -100,10 +100,10 @@
 
     sput-object v0, Landroid/webkit/WebSettings$TextSize;->LARGER:Landroid/webkit/WebSettings$TextSize;
 
-    .line 82
+    .line 83
     new-instance v0, Landroid/webkit/WebSettings$TextSize;
 
-    const-string v1, "LARGEST"
+    const-string/jumbo v1, "LARGEST"
 
     const/16 v2, 0xc8
 
@@ -111,7 +111,7 @@
 
     sput-object v0, Landroid/webkit/WebSettings$TextSize;->LARGEST:Landroid/webkit/WebSettings$TextSize;
 
-    .line 77
+    .line 78
     const/4 v0, 0x5
 
     new-array v0, v0, [Landroid/webkit/WebSettings$TextSize;
@@ -143,32 +143,25 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "size"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "size"    # I
 
     .prologue
-    .line 83
+    .line 84
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
-    .line 84
+    .line 85
     iput p3, p0, Landroid/webkit/WebSettings$TextSize;->value:I
 
-    .line 85
+    .line 84
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/webkit/WebSettings$TextSize;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 77
+    .line 78
     const-class v0, Landroid/webkit/WebSettings$TextSize;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -184,14 +177,8 @@
     .locals 1
 
     .prologue
-    .line 77
+    .line 78
     sget-object v0, Landroid/webkit/WebSettings$TextSize;->$VALUES:[Landroid/webkit/WebSettings$TextSize;
-
-    invoke-virtual {v0}, [Landroid/webkit/WebSettings$TextSize;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/webkit/WebSettings$TextSize;
 
     return-object v0
 .end method

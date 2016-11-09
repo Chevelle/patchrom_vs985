@@ -6,9 +6,18 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/view/ActionMode$Callback;
+        Landroid/view/ActionMode$Callback;,
+        Landroid/view/ActionMode$Callback2;
     }
 .end annotation
+
+
+# static fields
+.field public static final DEFAULT_HIDE_DURATION:I = -0x1
+
+.field public static final TYPE_FLOATING:I = 0x1
+
+.field public static final TYPE_PRIMARY:I
 
 
 # instance fields
@@ -16,16 +25,23 @@
 
 .field private mTitleOptionalHint:Z
 
+.field private mType:I
+
 
 # direct methods
 .method public constructor <init>()V
-    .locals 0
+    .locals 1
 
     .prologue
-    .line 31
+    .line 34
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 229
+    .line 55
+    const/4 v0, 0x0
+
+    iput v0, p0, Landroid/view/ActionMode;->mType:I
+
+    .line 34
     return-void
 .end method
 
@@ -50,7 +66,7 @@
     .locals 1
 
     .prologue
-    .line 60
+    .line 82
     iget-object v0, p0, Landroid/view/ActionMode;->mTag:Ljava/lang/Object;
 
     return-object v0
@@ -63,20 +79,47 @@
     .locals 1
 
     .prologue
-    .line 134
+    .line 156
     iget-boolean v0, p0, Landroid/view/ActionMode;->mTitleOptionalHint:Z
 
     return v0
 .end method
 
+.method public getType()I
+    .locals 1
+
+    .prologue
+    .line 194
+    iget v0, p0, Landroid/view/ActionMode;->mType:I
+
+    return v0
+.end method
+
+.method public hide(J)V
+    .locals 0
+    .param p1, "duration"    # J
+
+    .prologue
+    .line 226
+    return-void
+.end method
+
 .method public abstract invalidate()V
+.end method
+
+.method public invalidateContentRect()V
+    .locals 0
+
+    .prologue
+    .line 213
+    return-void
 .end method
 
 .method public isTitleOptional()Z
     .locals 1
 
     .prologue
-    .line 142
+    .line 164
     const/4 v0, 0x0
 
     return v0
@@ -86,10 +129,19 @@
     .locals 1
 
     .prologue
-    .line 209
+    .line 282
     const/4 v0, 0x1
 
     return v0
+.end method
+
+.method public onWindowFocusChanged(Z)V
+    .locals 0
+    .param p1, "hasWindowFocus"    # Z
+
+    .prologue
+    .line 271
+    return-void
 .end method
 
 .method public abstract setCustomView(Landroid/view/View;)V
@@ -103,13 +155,13 @@
 
 .method public setTag(Ljava/lang/Object;)V
     .locals 0
-    .parameter "tag"
+    .param p1, "tag"    # Ljava/lang/Object;
 
     .prologue
-    .line 46
+    .line 68
     iput-object p1, p0, Landroid/view/ActionMode;->mTag:Ljava/lang/Object;
 
-    .line 47
+    .line 67
     return-void
 .end method
 
@@ -121,12 +173,24 @@
 
 .method public setTitleOptionalHint(Z)V
     .locals 0
-    .parameter "titleOptional"
+    .param p1, "titleOptional"    # Z
 
     .prologue
-    .line 123
+    .line 145
     iput-boolean p1, p0, Landroid/view/ActionMode;->mTitleOptionalHint:Z
 
-    .line 124
+    .line 144
+    return-void
+.end method
+
+.method public setType(I)V
+    .locals 0
+    .param p1, "type"    # I
+
+    .prologue
+    .line 185
+    iput p1, p0, Landroid/view/ActionMode;->mType:I
+
+    .line 184
     return-void
 .end method

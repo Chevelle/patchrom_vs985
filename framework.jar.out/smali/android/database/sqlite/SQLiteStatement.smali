@@ -6,9 +6,9 @@
 # direct methods
 .method constructor <init>(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;[Ljava/lang/Object;)V
     .locals 1
-    .parameter "db"
-    .parameter "sql"
-    .parameter "bindArgs"
+    .param p1, "db"    # Landroid/database/sqlite/SQLiteDatabase;
+    .param p2, "sql"    # Ljava/lang/String;
+    .param p3, "bindArgs"    # [Ljava/lang/Object;
 
     .prologue
     .line 31
@@ -16,7 +16,7 @@
 
     invoke-direct {p0, p1, p2, p3, v0}, Landroid/database/sqlite/SQLiteProgram;-><init>(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;[Ljava/lang/Object;Landroid/os/CancellationSignal;)V
 
-    .line 32
+    .line 30
     return-void
 .end method
 
@@ -51,13 +51,13 @@
 
     invoke-virtual {v1, v2, v3, v4, v5}, Landroid/database/sqlite/SQLiteSession;->execute(Ljava/lang/String;[Ljava/lang/Object;ILandroid/os/CancellationSignal;)V
     :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Landroid/database/sqlite/SQLiteDatabaseCorruptException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 49
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->releaseReference()V
 
-    .line 51
+    .line 41
     return-void
 
     .line 45
@@ -65,7 +65,7 @@
     move-exception v0
 
     .line 46
-    .local v0, ex:Landroid/database/sqlite/SQLiteDatabaseCorruptException;
+    .local v0, "ex":Landroid/database/sqlite/SQLiteDatabaseCorruptException;
     :try_start_1
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->onCorruption()V
 
@@ -74,13 +74,15 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 49
-    .end local v0           #ex:Landroid/database/sqlite/SQLiteDatabaseCorruptException;
+    .line 48
+    .end local v0    # "ex":Landroid/database/sqlite/SQLiteDatabaseCorruptException;
     :catchall_0
     move-exception v1
 
+    .line 49
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->releaseReference()V
 
+    .line 48
     throw v1
 .end method
 
@@ -97,6 +99,7 @@
 
     move-result-object v1
 
+    .line 87
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->getSql()Ljava/lang/String;
 
     move-result-object v2
@@ -111,24 +114,26 @@
 
     const/4 v5, 0x0
 
+    .line 86
     invoke-virtual {v1, v2, v3, v4, v5}, Landroid/database/sqlite/SQLiteSession;->executeForLastInsertedRowId(Ljava/lang/String;[Ljava/lang/Object;ILandroid/os/CancellationSignal;)J
     :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Landroid/database/sqlite/SQLiteDatabaseCorruptException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    move-result-wide v1
+    move-result-wide v2
 
     .line 92
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->releaseReference()V
 
-    return-wide v1
+    .line 86
+    return-wide v2
 
     .line 88
     :catch_0
     move-exception v0
 
     .line 89
-    .local v0, ex:Landroid/database/sqlite/SQLiteDatabaseCorruptException;
+    .local v0, "ex":Landroid/database/sqlite/SQLiteDatabaseCorruptException;
     :try_start_1
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->onCorruption()V
 
@@ -137,13 +142,15 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 92
-    .end local v0           #ex:Landroid/database/sqlite/SQLiteDatabaseCorruptException;
+    .line 91
+    .end local v0    # "ex":Landroid/database/sqlite/SQLiteDatabaseCorruptException;
     :catchall_0
     move-exception v1
 
+    .line 92
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->releaseReference()V
 
+    .line 91
     throw v1
 .end method
 
@@ -160,6 +167,7 @@
 
     move-result-object v1
 
+    .line 65
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->getSql()Ljava/lang/String;
 
     move-result-object v2
@@ -174,16 +182,18 @@
 
     const/4 v5, 0x0
 
+    .line 64
     invoke-virtual {v1, v2, v3, v4, v5}, Landroid/database/sqlite/SQLiteSession;->executeForChangedRowCount(Ljava/lang/String;[Ljava/lang/Object;ILandroid/os/CancellationSignal;)I
     :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Landroid/database/sqlite/SQLiteDatabaseCorruptException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result v1
 
     .line 70
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->releaseReference()V
 
+    .line 64
     return v1
 
     .line 66
@@ -191,7 +201,7 @@
     move-exception v0
 
     .line 67
-    .local v0, ex:Landroid/database/sqlite/SQLiteDatabaseCorruptException;
+    .local v0, "ex":Landroid/database/sqlite/SQLiteDatabaseCorruptException;
     :try_start_1
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->onCorruption()V
 
@@ -200,13 +210,15 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 70
-    .end local v0           #ex:Landroid/database/sqlite/SQLiteDatabaseCorruptException;
+    .line 69
+    .end local v0    # "ex":Landroid/database/sqlite/SQLiteDatabaseCorruptException;
     :catchall_0
     move-exception v1
 
+    .line 70
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->releaseReference()V
 
+    .line 69
     throw v1
 .end method
 
@@ -223,6 +235,7 @@
 
     move-result-object v1
 
+    .line 150
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->getSql()Ljava/lang/String;
 
     move-result-object v2
@@ -237,16 +250,18 @@
 
     const/4 v5, 0x0
 
+    .line 149
     invoke-virtual {v1, v2, v3, v4, v5}, Landroid/database/sqlite/SQLiteSession;->executeForBlobFileDescriptor(Ljava/lang/String;[Ljava/lang/Object;ILandroid/os/CancellationSignal;)Landroid/os/ParcelFileDescriptor;
     :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Landroid/database/sqlite/SQLiteDatabaseCorruptException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result-object v1
 
     .line 155
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->releaseReference()V
 
+    .line 149
     return-object v1
 
     .line 151
@@ -254,7 +269,7 @@
     move-exception v0
 
     .line 152
-    .local v0, ex:Landroid/database/sqlite/SQLiteDatabaseCorruptException;
+    .local v0, "ex":Landroid/database/sqlite/SQLiteDatabaseCorruptException;
     :try_start_1
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->onCorruption()V
 
@@ -263,13 +278,15 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 155
-    .end local v0           #ex:Landroid/database/sqlite/SQLiteDatabaseCorruptException;
+    .line 154
+    .end local v0    # "ex":Landroid/database/sqlite/SQLiteDatabaseCorruptException;
     :catchall_0
     move-exception v1
 
+    .line 155
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->releaseReference()V
 
+    .line 154
     throw v1
 .end method
 
@@ -286,6 +303,7 @@
 
     move-result-object v1
 
+    .line 108
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->getSql()Ljava/lang/String;
 
     move-result-object v2
@@ -300,24 +318,26 @@
 
     const/4 v5, 0x0
 
+    .line 107
     invoke-virtual {v1, v2, v3, v4, v5}, Landroid/database/sqlite/SQLiteSession;->executeForLong(Ljava/lang/String;[Ljava/lang/Object;ILandroid/os/CancellationSignal;)J
     :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Landroid/database/sqlite/SQLiteDatabaseCorruptException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    move-result-wide v1
+    move-result-wide v2
 
     .line 113
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->releaseReference()V
 
-    return-wide v1
+    .line 107
+    return-wide v2
 
     .line 109
     :catch_0
     move-exception v0
 
     .line 110
-    .local v0, ex:Landroid/database/sqlite/SQLiteDatabaseCorruptException;
+    .local v0, "ex":Landroid/database/sqlite/SQLiteDatabaseCorruptException;
     :try_start_1
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->onCorruption()V
 
@@ -326,13 +346,15 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 113
-    .end local v0           #ex:Landroid/database/sqlite/SQLiteDatabaseCorruptException;
+    .line 112
+    .end local v0    # "ex":Landroid/database/sqlite/SQLiteDatabaseCorruptException;
     :catchall_0
     move-exception v1
 
+    .line 113
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->releaseReference()V
 
+    .line 112
     throw v1
 .end method
 
@@ -349,6 +371,7 @@
 
     move-result-object v1
 
+    .line 129
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->getSql()Ljava/lang/String;
 
     move-result-object v2
@@ -363,16 +386,18 @@
 
     const/4 v5, 0x0
 
+    .line 128
     invoke-virtual {v1, v2, v3, v4, v5}, Landroid/database/sqlite/SQLiteSession;->executeForString(Ljava/lang/String;[Ljava/lang/Object;ILandroid/os/CancellationSignal;)Ljava/lang/String;
     :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Landroid/database/sqlite/SQLiteDatabaseCorruptException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result-object v1
 
     .line 134
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->releaseReference()V
 
+    .line 128
     return-object v1
 
     .line 130
@@ -380,7 +405,7 @@
     move-exception v0
 
     .line 131
-    .local v0, ex:Landroid/database/sqlite/SQLiteDatabaseCorruptException;
+    .local v0, "ex":Landroid/database/sqlite/SQLiteDatabaseCorruptException;
     :try_start_1
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->onCorruption()V
 
@@ -389,13 +414,15 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 134
-    .end local v0           #ex:Landroid/database/sqlite/SQLiteDatabaseCorruptException;
+    .line 133
+    .end local v0    # "ex":Landroid/database/sqlite/SQLiteDatabaseCorruptException;
     :catchall_0
     move-exception v1
 
+    .line 134
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteStatement;->releaseReference()V
 
+    .line 133
     throw v1
 .end method
 
@@ -408,7 +435,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "SQLiteProgram: "
+    const-string/jumbo v1, "SQLiteProgram: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

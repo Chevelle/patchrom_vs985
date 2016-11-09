@@ -3,12 +3,12 @@
 .source "SearchDialog.java"
 
 # interfaces
-.implements Landroid/widget/SearchView$OnSuggestionListener;
+.implements Landroid/view/View$OnClickListener;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Landroid/app/SearchDialog;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Landroid/app/SearchDialog;->createContentView()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/app/SearchDialog;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/app/SearchDialog;
 
     .prologue
-    .line 694
+    .line 176
     iput-object p1, p0, Landroid/app/SearchDialog$5;->this$0:Landroid/app/SearchDialog;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,29 +37,16 @@
 
 
 # virtual methods
-.method public onSuggestionClick(I)Z
+.method public onClick(Landroid/view/View;)V
     .locals 1
-    .parameter "position"
+    .param p1, "v"    # Landroid/view/View;
 
     .prologue
-    .line 701
+    .line 179
     iget-object v0, p0, Landroid/app/SearchDialog$5;->this$0:Landroid/app/SearchDialog;
 
     invoke-virtual {v0}, Landroid/app/SearchDialog;->dismiss()V
 
-    .line 702
-    const/4 v0, 0x0
-
-    return v0
-.end method
-
-.method public onSuggestionSelect(I)Z
-    .locals 1
-    .parameter "position"
-
-    .prologue
-    .line 697
-    const/4 v0, 0x0
-
-    return v0
+    .line 178
+    return-void
 .end method

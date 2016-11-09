@@ -21,28 +21,26 @@
 # direct methods
 .method private constructor <init>(Landroid/text/TextDirectionHeuristics$TextDirectionAlgorithm;Z)V
     .locals 0
-    .parameter "algorithm"
-    .parameter "defaultIsRtl"
+    .param p1, "algorithm"    # Landroid/text/TextDirectionHeuristics$TextDirectionAlgorithm;
+    .param p2, "defaultIsRtl"    # Z
 
     .prologue
-    .line 162
+    .line 180
     invoke-direct {p0, p1}, Landroid/text/TextDirectionHeuristics$TextDirectionHeuristicImpl;-><init>(Landroid/text/TextDirectionHeuristics$TextDirectionAlgorithm;)V
 
-    .line 163
+    .line 181
     iput-boolean p2, p0, Landroid/text/TextDirectionHeuristics$TextDirectionHeuristicInternal;->mDefaultIsRtl:Z
 
-    .line 164
+    .line 179
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/text/TextDirectionHeuristics$TextDirectionAlgorithm;ZLandroid/text/TextDirectionHeuristics$1;)V
+.method synthetic constructor <init>(Landroid/text/TextDirectionHeuristics$TextDirectionAlgorithm;ZLandroid/text/TextDirectionHeuristics$TextDirectionHeuristicInternal;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
+    .param p1, "algorithm"    # Landroid/text/TextDirectionHeuristics$TextDirectionAlgorithm;
+    .param p2, "defaultIsRtl"    # Z
 
     .prologue
-    .line 157
     invoke-direct {p0, p1, p2}, Landroid/text/TextDirectionHeuristics$TextDirectionHeuristicInternal;-><init>(Landroid/text/TextDirectionHeuristics$TextDirectionAlgorithm;Z)V
 
     return-void
@@ -54,7 +52,7 @@
     .locals 1
 
     .prologue
-    .line 168
+    .line 186
     iget-boolean v0, p0, Landroid/text/TextDirectionHeuristics$TextDirectionHeuristicInternal;->mDefaultIsRtl:Z
 
     return v0

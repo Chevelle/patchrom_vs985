@@ -35,43 +35,46 @@
     .locals 3
 
     .prologue
-    .line 249
+    .line 273
     const/4 v0, 0x5
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const/4 v1, 0x0
+    const-string/jumbo v1, "NULL"
 
-    const-string v2, "NULL"
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x1
+    const-string/jumbo v1, "PAP"
 
-    const-string v2, "PAP"
+    const/4 v2, 0x1
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x2
+    const-string/jumbo v1, "MSCHAP"
 
-    const-string v2, "MSCHAP"
+    const/4 v2, 0x2
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x3
+    .line 274
+    const-string/jumbo v1, "MSCHAPV2"
 
-    const-string v2, "MSCHAPV2"
+    const/4 v2, 0x3
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x4
+    const-string/jumbo v1, "GTC"
 
-    const-string v2, "GTC"
+    const/4 v2, 0x4
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
+    .line 273
     sput-object v0, Landroid/net/wifi/WifiEnterpriseConfig$Phase2;->strings:[Ljava/lang/String;
 
+    .line 261
     return-void
 .end method
 
@@ -79,7 +82,7 @@
     .locals 0
 
     .prologue
-    .line 252
+    .line 277
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

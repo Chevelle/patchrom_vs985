@@ -28,12 +28,12 @@
 # direct methods
 .method constructor <init>(Landroid/widget/AdapterViewAnimator;Landroid/view/View;Landroid/widget/AdapterViewAnimator$ViewAndMetaData;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/AdapterViewAnimator;
+    .param p2, "val$v"    # Landroid/view/View;
+    .param p3, "val$viewData"    # Landroid/widget/AdapterViewAnimator$ViewAndMetaData;
 
     .prologue
-    .line 645
+    .line 648
     iput-object p1, p0, Landroid/widget/AdapterViewAnimator$1;->this$0:Landroid/widget/AdapterViewAnimator;
 
     iput-object p2, p0, Landroid/widget/AdapterViewAnimator$1;->val$v:Landroid/view/View;
@@ -48,25 +48,29 @@
 
 # virtual methods
 .method public run()V
-    .locals 2
+    .locals 4
 
     .prologue
-    .line 647
+    .line 650
     iget-object v0, p0, Landroid/widget/AdapterViewAnimator$1;->this$0:Landroid/widget/AdapterViewAnimator;
 
     iget-object v1, p0, Landroid/widget/AdapterViewAnimator$1;->val$v:Landroid/view/View;
 
     invoke-virtual {v0, v1}, Landroid/widget/AdapterViewAnimator;->hideTapFeedback(Landroid/view/View;)V
 
-    .line 648
+    .line 651
     iget-object v0, p0, Landroid/widget/AdapterViewAnimator$1;->this$0:Landroid/widget/AdapterViewAnimator;
 
     new-instance v1, Landroid/widget/AdapterViewAnimator$1$1;
 
-    invoke-direct {v1, p0}, Landroid/widget/AdapterViewAnimator$1$1;-><init>(Landroid/widget/AdapterViewAnimator$1;)V
+    iget-object v2, p0, Landroid/widget/AdapterViewAnimator$1;->val$viewData:Landroid/widget/AdapterViewAnimator$ViewAndMetaData;
+
+    iget-object v3, p0, Landroid/widget/AdapterViewAnimator$1;->val$v:Landroid/view/View;
+
+    invoke-direct {v1, p0, v2, v3}, Landroid/widget/AdapterViewAnimator$1$1;-><init>(Landroid/widget/AdapterViewAnimator$1;Landroid/widget/AdapterViewAnimator$ViewAndMetaData;Landroid/view/View;)V
 
     invoke-virtual {v0, v1}, Landroid/widget/AdapterViewAnimator;->post(Ljava/lang/Runnable;)Z
 
-    .line 658
+    .line 649
     return-void
 .end method

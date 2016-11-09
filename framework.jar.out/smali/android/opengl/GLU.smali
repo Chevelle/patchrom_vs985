@@ -19,6 +19,7 @@
 
     sput-object v0, Landroid/opengl/GLU;->sScratch:[F
 
+    .line 26
     return-void
 .end method
 
@@ -34,7 +35,7 @@
 
 .method public static gluErrorString(I)Ljava/lang/String;
     .locals 1
-    .parameter "error"
+    .param p0, "error"    # I
 
     .prologue
     .line 36
@@ -43,52 +44,53 @@
     .line 52
     const/4 v0, 0x0
 
-    :goto_0
     return-object v0
 
     .line 38
     :sswitch_0
     const-string/jumbo v0, "no error"
 
-    goto :goto_0
+    return-object v0
 
     .line 40
     :sswitch_1
-    const-string v0, "invalid enum"
+    const-string/jumbo v0, "invalid enum"
 
-    goto :goto_0
+    return-object v0
 
     .line 42
     :sswitch_2
-    const-string v0, "invalid value"
+    const-string/jumbo v0, "invalid value"
 
-    goto :goto_0
+    return-object v0
 
     .line 44
     :sswitch_3
-    const-string v0, "invalid operation"
+    const-string/jumbo v0, "invalid operation"
 
-    goto :goto_0
+    return-object v0
 
     .line 46
     :sswitch_4
     const-string/jumbo v0, "stack overflow"
 
-    goto :goto_0
+    return-object v0
 
     .line 48
     :sswitch_5
     const-string/jumbo v0, "stack underflow"
 
-    goto :goto_0
+    return-object v0
 
     .line 50
     :sswitch_6
     const-string/jumbo v0, "out of memory"
 
-    goto :goto_0
+    return-object v0
 
     .line 36
+    nop
+
     :sswitch_data_0
     .sparse-switch
         0x0 -> :sswitch_0
@@ -103,23 +105,23 @@
 
 .method public static gluLookAt(Ljavax/microedition/khronos/opengles/GL10;FFFFFFFFF)V
     .locals 11
-    .parameter "gl"
-    .parameter "eyeX"
-    .parameter "eyeY"
-    .parameter "eyeZ"
-    .parameter "centerX"
-    .parameter "centerY"
-    .parameter "centerZ"
-    .parameter "upX"
-    .parameter "upY"
-    .parameter "upZ"
+    .param p0, "gl"    # Ljavax/microedition/khronos/opengles/GL10;
+    .param p1, "eyeX"    # F
+    .param p2, "eyeY"    # F
+    .param p3, "eyeZ"    # F
+    .param p4, "centerX"    # F
+    .param p5, "centerY"    # F
+    .param p6, "centerZ"    # F
+    .param p7, "upX"    # F
+    .param p8, "upY"    # F
+    .param p9, "upZ"    # F
 
     .prologue
     .line 75
     sget-object v0, Landroid/opengl/GLU;->sScratch:[F
 
     .line 76
-    .local v0, scratch:[F
+    .local v0, "scratch":[F
     monitor-enter v0
 
     .line 77
@@ -150,37 +152,36 @@
     const/4 v1, 0x0
 
     invoke-interface {p0, v0, v1}, Ljavax/microedition/khronos/opengles/GL10;->glMultMatrixf([FI)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 80
     monitor-exit v0
 
-    .line 81
+    .line 73
     return-void
 
-    .line 80
+    .line 76
     :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
 
 .method public static gluOrtho2D(Ljavax/microedition/khronos/opengles/GL10;FFFF)V
     .locals 7
-    .parameter "gl"
-    .parameter "left"
-    .parameter "right"
-    .parameter "bottom"
-    .parameter "top"
+    .param p0, "gl"    # Ljavax/microedition/khronos/opengles/GL10;
+    .param p1, "left"    # F
+    .param p2, "right"    # F
+    .param p3, "bottom"    # F
+    .param p4, "top"    # F
 
     .prologue
     .line 94
-    const/high16 v5, -0x4080
+    const/high16 v5, -0x40800000    # -1.0f
 
-    const/high16 v6, 0x3f80
+    const/high16 v6, 0x3f800000    # 1.0f
 
     move-object v0, p0
 
@@ -194,47 +195,47 @@
 
     invoke-interface/range {v0 .. v6}, Ljavax/microedition/khronos/opengles/GL10;->glOrthof(FFFFFF)V
 
-    .line 95
+    .line 93
     return-void
 .end method
 
 .method public static gluPerspective(Ljavax/microedition/khronos/opengles/GL10;FFFF)V
-    .locals 9
-    .parameter "gl"
-    .parameter "fovy"
-    .parameter "aspect"
-    .parameter "zNear"
-    .parameter "zFar"
+    .locals 10
+    .param p0, "gl"    # Ljavax/microedition/khronos/opengles/GL10;
+    .param p1, "fovy"    # F
+    .param p2, "aspect"    # F
+    .param p3, "zNear"    # F
+    .param p4, "zFar"    # F
 
     .prologue
     .line 113
-    float-to-double v5, p1
+    float-to-double v6, p1
 
-    const-wide v7, 0x3f81df46a2529d39L
+    const-wide v8, 0x3f81df46a2529d39L    # 0.008726646259971648
 
-    mul-double/2addr v5, v7
+    mul-double/2addr v6, v8
 
-    invoke-static {v5, v6}, Ljava/lang/Math;->tan(D)D
+    invoke-static {v6, v7}, Ljava/lang/Math;->tan(D)D
 
-    move-result-wide v5
+    move-result-wide v6
 
-    double-to-float v0, v5
+    double-to-float v0, v6
 
     mul-float v4, p3, v0
 
     .line 114
-    .local v4, top:F
+    .local v4, "top":F
     neg-float v3, v4
 
     .line 115
-    .local v3, bottom:F
+    .local v3, "bottom":F
     mul-float v1, v3, p2
 
     .line 116
-    .local v1, left:F
+    .local v1, "left":F
     mul-float v2, v4, p2
 
-    .local v2, right:F
+    .local v2, "right":F
     move-object v0, p0
 
     move v5, p3
@@ -244,45 +245,45 @@
     .line 117
     invoke-interface/range {v0 .. v6}, Ljavax/microedition/khronos/opengles/GL10;->glFrustumf(FFFFFF)V
 
-    .line 118
+    .line 112
     return-void
 .end method
 
 .method public static gluProject(FFF[FI[FI[II[FI)I
     .locals 11
-    .parameter "objX"
-    .parameter "objY"
-    .parameter "objZ"
-    .parameter "model"
-    .parameter "modelOffset"
-    .parameter "project"
-    .parameter "projectOffset"
-    .parameter "view"
-    .parameter "viewOffset"
-    .parameter "win"
-    .parameter "winOffset"
+    .param p0, "objX"    # F
+    .param p1, "objY"    # F
+    .param p2, "objZ"    # F
+    .param p3, "model"    # [F
+    .param p4, "modelOffset"    # I
+    .param p5, "project"    # [F
+    .param p6, "projectOffset"    # I
+    .param p7, "view"    # [I
+    .param p8, "viewOffset"    # I
+    .param p9, "win"    # [F
+    .param p10, "winOffset"    # I
 
     .prologue
     .line 150
     sget-object v0, Landroid/opengl/GLU;->sScratch:[F
 
     .line 151
-    .local v0, scratch:[F
+    .local v0, "scratch":[F
     monitor-enter v0
 
     .line 152
     const/4 v6, 0x0
 
     .line 153
-    .local v6, M_OFFSET:I
+    .local v6, "M_OFFSET":I
     const/16 v8, 0x10
 
     .line 154
-    .local v8, V_OFFSET:I
+    .local v8, "V_OFFSET":I
     const/16 v7, 0x14
 
     .line 155
-    .local v7, V2_OFFSET:I
+    .local v7, "V2_OFFSET":I
     const/4 v1, 0x0
 
     move-object/from16 v2, p5
@@ -312,15 +313,16 @@
     aput p2, v0, v1
 
     .line 161
-    const/16 v1, 0x13
+    const/high16 v1, 0x3f800000    # 1.0f
 
-    const/high16 v2, 0x3f80
+    const/16 v2, 0x13
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
     .line 163
     const/16 v1, 0x14
 
+    .line 164
     const/4 v3, 0x0
 
     const/16 v5, 0x10
@@ -329,15 +331,18 @@
 
     move-object v4, v0
 
+    .line 163
     invoke-static/range {v0 .. v5}, Landroid/opengl/Matrix;->multiplyMV([FI[FI[FI)V
 
     .line 166
     const/16 v1, 0x17
 
     aget v10, v0, v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 167
-    .local v10, w:F
+    .local v10, "w":F
     const/4 v1, 0x0
 
     cmpl-float v1, v10, v1
@@ -349,18 +354,17 @@
 
     monitor-exit v0
 
-    .line 183
-    :goto_0
     return v1
 
     .line 171
     :cond_0
-    const/high16 v1, 0x3f80
+    const/high16 v1, 0x3f800000    # 1.0f
 
     div-float v9, v1, v10
 
-    .line 173
-    .local v9, rw:F
+    .line 174
+    .local v9, "rw":F
+    :try_start_1
     aget v1, p7, p8
 
     int-to-float v1, v1
@@ -371,29 +375,35 @@
 
     int-to-float v2, v2
 
+    .line 175
     const/16 v3, 0x14
 
     aget v3, v0, v3
 
     mul-float/2addr v3, v9
 
-    const/high16 v4, 0x3f80
+    const/high16 v4, 0x3f800000    # 1.0f
 
     add-float/2addr v3, v4
 
+    .line 174
     mul-float/2addr v2, v3
 
-    const/high16 v3, 0x3f00
+    .line 176
+    const/high16 v3, 0x3f000000    # 0.5f
 
+    .line 174
     mul-float/2addr v2, v3
 
     add-float/2addr v1, v2
 
+    .line 173
     aput v1, p9, p10
 
     .line 177
     add-int/lit8 v1, p10, 0x1
 
+    .line 178
     add-int/lit8 v2, p8, 0x1
 
     aget v2, p7, v2
@@ -406,24 +416,29 @@
 
     int-to-float v3, v3
 
+    .line 179
     const/16 v4, 0x15
 
     aget v4, v0, v4
 
     mul-float/2addr v4, v9
 
-    const/high16 v5, 0x3f80
+    const/high16 v5, 0x3f800000    # 1.0f
 
     add-float/2addr v4, v5
 
+    .line 178
     mul-float/2addr v3, v4
 
-    const/high16 v4, 0x3f00
+    .line 179
+    const/high16 v4, 0x3f000000    # 0.5f
 
+    .line 178
     mul-float/2addr v3, v4
 
     add-float/2addr v2, v3
 
+    .line 177
     aput v2, p9, v1
 
     .line 180
@@ -435,72 +450,71 @@
 
     mul-float/2addr v2, v9
 
-    const/high16 v3, 0x3f80
+    const/high16 v3, 0x3f800000    # 1.0f
 
     add-float/2addr v2, v3
 
-    const/high16 v3, 0x3f00
+    const/high16 v3, 0x3f000000    # 0.5f
 
     mul-float/2addr v2, v3
 
     aput v2, p9, v1
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 181
     monitor-exit v0
 
     .line 183
     const/4 v1, 0x1
 
-    goto :goto_0
+    return v1
 
-    .line 181
-    .end local v9           #rw:F
-    .end local v10           #w:F
+    .line 151
+    .end local v9    # "rw":F
+    .end local v10    # "w":F
     :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
 
 .method public static gluUnProject(FFF[FI[FI[II[FI)I
     .locals 10
-    .parameter "winX"
-    .parameter "winY"
-    .parameter "winZ"
-    .parameter "model"
-    .parameter "modelOffset"
-    .parameter "project"
-    .parameter "projectOffset"
-    .parameter "view"
-    .parameter "viewOffset"
-    .parameter "obj"
-    .parameter "objOffset"
+    .param p0, "winX"    # F
+    .param p1, "winY"    # F
+    .param p2, "winZ"    # F
+    .param p3, "model"    # [F
+    .param p4, "modelOffset"    # I
+    .param p5, "project"    # [F
+    .param p6, "projectOffset"    # I
+    .param p7, "view"    # [I
+    .param p8, "viewOffset"    # I
+    .param p9, "obj"    # [F
+    .param p10, "objOffset"    # I
 
     .prologue
     .line 216
     sget-object v0, Landroid/opengl/GLU;->sScratch:[F
 
     .line 217
-    .local v0, scratch:[F
+    .local v0, "scratch":[F
     monitor-enter v0
 
     .line 218
     const/4 v8, 0x0
 
     .line 219
-    .local v8, PM_OFFSET:I
+    .local v8, "PM_OFFSET":I
     const/16 v7, 0x10
 
     .line 220
-    .local v7, INVPM_OFFSET:I
+    .local v7, "INVPM_OFFSET":I
     const/4 v9, 0x0
 
     .line 221
-    .local v9, V_OFFSET:I
+    .local v9, "V_OFFSET":I
     const/4 v1, 0x0
 
     move-object v2, p5
@@ -520,6 +534,8 @@
     const/4 v2, 0x0
 
     invoke-static {v0, v1, v0, v2}, Landroid/opengl/Matrix;->invertM([FI[FI)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result v1
 
@@ -530,92 +546,98 @@
 
     monitor-exit v0
 
-    .line 241
-    :goto_0
     return v1
 
-    .line 228
+    .line 229
     :cond_0
-    const/4 v1, 0x0
+    add-int/lit8 v1, p8, 0x0
 
-    const/high16 v2, 0x4000
+    :try_start_1
+    aget v1, p7, v1
 
-    add-int/lit8 v3, p8, 0x0
+    int-to-float v1, v1
 
-    aget v3, p7, v3
+    sub-float v1, p0, v1
 
-    int-to-float v3, v3
+    const/high16 v2, 0x40000000    # 2.0f
 
-    sub-float v3, p0, v3
+    mul-float/2addr v1, v2
 
-    mul-float/2addr v2, v3
+    add-int/lit8 v2, p8, 0x2
 
-    add-int/lit8 v3, p8, 0x2
+    aget v2, p7, v2
 
-    aget v3, p7, v3
+    int-to-float v2, v2
 
-    int-to-float v3, v3
+    div-float/2addr v1, v2
 
-    div-float/2addr v2, v3
+    .line 230
+    const/high16 v2, 0x3f800000    # 1.0f
 
-    const/high16 v3, 0x3f80
+    .line 229
+    sub-float/2addr v1, v2
 
-    sub-float/2addr v2, v3
+    .line 228
+    const/4 v2, 0x0
 
-    aput v2, v0, v1
+    aput v1, v0, v2
+
+    .line 232
+    add-int/lit8 v1, p8, 0x1
+
+    aget v1, p7, v1
+
+    int-to-float v1, v1
+
+    sub-float v1, p1, v1
+
+    const/high16 v2, 0x40000000    # 2.0f
+
+    mul-float/2addr v1, v2
+
+    add-int/lit8 v2, p8, 0x3
+
+    aget v2, p7, v2
+
+    int-to-float v2, v2
+
+    div-float/2addr v1, v2
+
+    .line 233
+    const/high16 v2, 0x3f800000    # 1.0f
+
+    .line 232
+    sub-float/2addr v1, v2
 
     .line 231
-    const/4 v1, 0x1
+    const/4 v2, 0x1
 
-    const/high16 v2, 0x4000
-
-    add-int/lit8 v3, p8, 0x1
-
-    aget v3, p7, v3
-
-    int-to-float v3, v3
-
-    sub-float v3, p1, v3
-
-    mul-float/2addr v2, v3
-
-    add-int/lit8 v3, p8, 0x3
-
-    aget v3, p7, v3
-
-    int-to-float v3, v3
-
-    div-float/2addr v2, v3
-
-    const/high16 v3, 0x3f80
-
-    sub-float/2addr v2, v3
-
-    aput v2, v0, v1
+    aput v1, v0, v2
 
     .line 234
-    const/4 v1, 0x2
+    const/high16 v1, 0x40000000    # 2.0f
 
-    const/high16 v2, 0x4000
+    mul-float/2addr v1, p2
 
-    mul-float/2addr v2, p2
+    const/high16 v2, 0x3f800000    # 1.0f
 
-    const/high16 v3, 0x3f80
+    sub-float/2addr v1, v2
 
-    sub-float/2addr v2, v3
+    const/4 v2, 0x2
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
     .line 235
-    const/4 v1, 0x3
+    const/high16 v1, 0x3f800000    # 1.0f
 
-    const/high16 v2, 0x3f80
+    const/4 v2, 0x3
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
     .line 237
     const/16 v4, 0x10
 
+    .line 238
     const/4 v6, 0x0
 
     move-object/from16 v1, p9
@@ -626,23 +648,23 @@
 
     move-object v5, v0
 
+    .line 237
     invoke-static/range {v1 .. v6}, Landroid/opengl/Matrix;->multiplyMV([FI[FI[FI)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 239
     monitor-exit v0
 
     .line 241
     const/4 v1, 0x1
 
-    goto :goto_0
+    return v1
 
-    .line 239
+    .line 217
     :catchall_0
     move-exception v1
 
     monitor-exit v0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method

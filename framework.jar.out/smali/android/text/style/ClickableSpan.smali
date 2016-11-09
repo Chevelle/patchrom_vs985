@@ -24,7 +24,7 @@
 
 .method public updateDrawState(Landroid/text/TextPaint;)V
     .locals 1
-    .parameter "ds"
+    .param p1, "ds"    # Landroid/text/TextPaint;
 
     .prologue
     .line 40
@@ -37,6 +37,6 @@
 
     invoke-virtual {p1, v0}, Landroid/text/TextPaint;->setUnderlineText(Z)V
 
-    .line 42
+    .line 39
     return-void
 .end method

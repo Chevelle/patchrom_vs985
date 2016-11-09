@@ -28,7 +28,7 @@
 # direct methods
 .method public constructor <init>(Landroid/inputmethodservice/AbstractInputMethodService;)V
     .locals 1
-    .parameter
+    .param p1, "this$0"    # Landroid/inputmethodservice/AbstractInputMethodService;
 
     .prologue
     .line 90
@@ -41,6 +41,7 @@
 
     iput-boolean v0, p0, Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodSessionImpl;->mEnabled:Z
 
+    .line 90
     return-void
 .end method
 
@@ -48,9 +49,9 @@
 # virtual methods
 .method public dispatchGenericMotionEvent(ILandroid/view/MotionEvent;Landroid/view/inputmethod/InputMethodSession$EventCallback;)V
     .locals 2
-    .parameter "seq"
-    .parameter "event"
-    .parameter "callback"
+    .param p1, "seq"    # I
+    .param p2, "event"    # Landroid/view/MotionEvent;
+    .param p3, "callback"    # Landroid/view/inputmethod/InputMethodSession$EventCallback;
 
     .prologue
     .line 161
@@ -61,52 +62,54 @@
     move-result v0
 
     .line 162
-    .local v0, handled:Z
+    .local v0, "handled":Z
     if-eqz p3, :cond_0
 
     .line 163
     invoke-interface {p3, p1, v0}, Landroid/view/inputmethod/InputMethodSession$EventCallback;->finishedEvent(IZ)V
 
-    .line 165
+    .line 160
     :cond_0
     return-void
 .end method
 
 .method public dispatchKeyEvent(ILandroid/view/KeyEvent;Landroid/view/inputmethod/InputMethodSession$EventCallback;)V
     .locals 3
-    .parameter "seq"
-    .parameter "event"
-    .parameter "callback"
+    .param p1, "seq"    # I
+    .param p2, "event"    # Landroid/view/KeyEvent;
+    .param p3, "callback"    # Landroid/view/inputmethod/InputMethodSession$EventCallback;
 
     .prologue
     .line 136
     iget-object v1, p0, Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodSessionImpl;->this$0:Landroid/inputmethodservice/AbstractInputMethodService;
 
+    .line 137
     iget-object v2, p0, Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodSessionImpl;->this$0:Landroid/inputmethodservice/AbstractInputMethodService;
 
     iget-object v2, v2, Landroid/inputmethodservice/AbstractInputMethodService;->mDispatcherState:Landroid/view/KeyEvent$DispatcherState;
 
+    .line 136
     invoke-virtual {p2, v1, v2, p0}, Landroid/view/KeyEvent;->dispatch(Landroid/view/KeyEvent$Callback;Landroid/view/KeyEvent$DispatcherState;Ljava/lang/Object;)Z
 
     move-result v0
 
     .line 138
-    .local v0, handled:Z
+    .local v0, "handled":Z
     if-eqz p3, :cond_0
 
     .line 139
     invoke-interface {p3, p1, v0}, Landroid/view/inputmethod/InputMethodSession$EventCallback;->finishedEvent(IZ)V
 
-    .line 141
+    .line 135
     :cond_0
     return-void
 .end method
 
 .method public dispatchTrackballEvent(ILandroid/view/MotionEvent;Landroid/view/inputmethod/InputMethodSession$EventCallback;)V
     .locals 2
-    .parameter "seq"
-    .parameter "event"
-    .parameter "callback"
+    .param p1, "seq"    # I
+    .param p2, "event"    # Landroid/view/MotionEvent;
+    .param p3, "callback"    # Landroid/view/inputmethod/InputMethodSession$EventCallback;
 
     .prologue
     .line 149
@@ -117,13 +120,13 @@
     move-result v0
 
     .line 150
-    .local v0, handled:Z
+    .local v0, "handled":Z
     if-eqz p3, :cond_0
 
     .line 151
     invoke-interface {p3, p1, v0}, Landroid/view/inputmethod/InputMethodSession$EventCallback;->finishedEvent(IZ)V
 
-    .line 153
+    .line 148
     :cond_0
     return-void
 .end method
@@ -162,13 +165,13 @@
 
     iput-boolean v0, p0, Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodSessionImpl;->mEnabled:Z
 
-    .line 128
+    .line 125
     return-void
 .end method
 
 .method public setEnabled(Z)V
     .locals 1
-    .parameter "enabled"
+    .param p1, "enabled"    # Z
 
     .prologue
     .line 116
@@ -179,7 +182,7 @@
     .line 117
     iput-boolean p1, p0, Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodSessionImpl;->mEnabled:Z
 
-    .line 119
+    .line 115
     :cond_0
     return-void
 .end method

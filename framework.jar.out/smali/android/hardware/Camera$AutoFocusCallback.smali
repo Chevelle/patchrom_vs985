@@ -13,6 +13,9 @@
     name = "AutoFocusCallback"
 .end annotation
 
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
 
 # virtual methods
 .method public abstract onAutoFocus(ZLandroid/hardware/Camera;)V

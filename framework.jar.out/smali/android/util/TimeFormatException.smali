@@ -4,14 +4,14 @@
 
 
 # direct methods
-.method constructor <init>(Ljava/lang/String;)V
+.method public constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "s"
+    .param p1, "s"    # Ljava/lang/String;
 
     .prologue
-    .line 23
+    .line 27
     invoke-direct {p0, p1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
-    .line 24
+    .line 25
     return-void
 .end method

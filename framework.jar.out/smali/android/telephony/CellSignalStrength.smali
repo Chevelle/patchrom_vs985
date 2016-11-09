@@ -12,7 +12,7 @@
 
 .field public static final SIGNAL_STRENGTH_MODERATE:I = 0x2
 
-.field public static final SIGNAL_STRENGTH_NAMES:[Ljava/lang/String; = null
+.field public static final SIGNAL_STRENGTH_NAMES:[Ljava/lang/String;
 
 .field public static final SIGNAL_STRENGTH_NONE_OR_UNKNOWN:I = 0x0
 
@@ -24,43 +24,46 @@
     .locals 3
 
     .prologue
-    .line 40
+    .line 38
     const/4 v0, 0x5
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const/4 v1, 0x0
+    .line 39
+    const-string/jumbo v1, "none"
 
-    const-string/jumbo v2, "none"
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x1
+    const-string/jumbo v1, "poor"
 
-    const-string/jumbo v2, "poor"
+    const/4 v2, 0x1
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x2
+    const-string/jumbo v1, "moderate"
 
-    const-string v2, "moderate"
+    const/4 v2, 0x2
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x3
+    const-string/jumbo v1, "good"
 
-    const-string v2, "good"
+    const/4 v2, 0x3
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x4
+    const-string/jumbo v1, "great"
 
-    const-string v2, "great"
+    const/4 v2, 0x4
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
+    .line 38
     sput-object v0, Landroid/telephony/CellSignalStrength;->SIGNAL_STRENGTH_NAMES:[Ljava/lang/String;
 
+    .line 22
     return-void
 .end method
 
@@ -68,10 +71,9 @@
     .locals 0
 
     .prologue
-    .line 45
+    .line 43
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 46
     return-void
 .end method
 

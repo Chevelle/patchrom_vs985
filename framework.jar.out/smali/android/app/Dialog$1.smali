@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/app/Dialog;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/app/Dialog;
 
     .prologue
-    .line 119
+    .line 133
     iput-object p1, p0, Landroid/app/Dialog$1;->this$0:Landroid/app/Dialog;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,11 +41,11 @@
     .locals 1
 
     .prologue
-    .line 121
+    .line 135
     iget-object v0, p0, Landroid/app/Dialog$1;->this$0:Landroid/app/Dialog;
 
     invoke-virtual {v0}, Landroid/app/Dialog;->dismissDialog()V
 
-    .line 122
+    .line 134
     return-void
 .end method

@@ -16,8 +16,8 @@
 # direct methods
 .method public constructor <init>(Landroid/drm/ProcessedData;Ljava/lang/String;)V
     .locals 3
-    .parameter "data"
-    .parameter "mimeType"
+    .param p1, "data"    # Landroid/drm/ProcessedData;
+    .param p2, "mimeType"    # Ljava/lang/String;
 
     .prologue
     .line 118
@@ -29,7 +29,7 @@
     .line 120
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "data is null"
+    const-string/jumbo v2, "data is null"
 
     invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -72,7 +72,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "mimeType: "
+    const-string/jumbo v2, "mimeType: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -84,20 +84,24 @@
 
     move-result-object v1
 
-    const-string v2, ","
+    const-string/jumbo v2, ","
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, "data: "
+    .line 130
+    const-string/jumbo v2, "data: "
 
+    .line 129
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 130
     iget-object v2, p0, Landroid/drm/DrmRights;->mData:[B
 
+    .line 129
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -107,23 +111,23 @@
     move-result-object v0
 
     .line 131
-    .local v0, msg:Ljava/lang/String;
+    .local v0, "msg":Ljava/lang/String;
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     invoke-direct {v1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 133
-    .end local v0           #msg:Ljava/lang/String;
+    .line 118
+    .end local v0    # "msg":Ljava/lang/String;
     :cond_1
     return-void
 .end method
 
 .method public constructor <init>(Ljava/io/File;Ljava/lang/String;)V
     .locals 0
-    .parameter "rightsFile"
-    .parameter "mimeType"
+    .param p1, "rightsFile"    # Ljava/io/File;
+    .param p2, "mimeType"    # Ljava/lang/String;
 
     .prologue
     .line 92
@@ -132,14 +136,14 @@
     .line 93
     invoke-direct {p0, p1, p2}, Landroid/drm/DrmRights;->instantiate(Ljava/io/File;Ljava/lang/String;)V
 
-    .line 94
+    .line 92
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;)V
     .locals 1
-    .parameter "rightsFilePath"
-    .parameter "mimeType"
+    .param p1, "rightsFilePath"    # Ljava/lang/String;
+    .param p2, "mimeType"    # Ljava/lang/String;
 
     .prologue
     .line 52
@@ -151,18 +155,18 @@
     invoke-direct {v0, p1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
     .line 54
-    .local v0, file:Ljava/io/File;
+    .local v0, "file":Ljava/io/File;
     invoke-direct {p0, v0, p2}, Landroid/drm/DrmRights;->instantiate(Ljava/io/File;Ljava/lang/String;)V
 
-    .line 55
+    .line 52
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
-    .parameter "rightsFilePath"
-    .parameter "mimeType"
-    .parameter "accountId"
+    .param p1, "rightsFilePath"    # Ljava/lang/String;
+    .param p2, "mimeType"    # Ljava/lang/String;
+    .param p3, "accountId"    # Ljava/lang/String;
 
     .prologue
     .line 65
@@ -171,16 +175,16 @@
     .line 67
     iput-object p3, p0, Landroid/drm/DrmRights;->mAccountId:Ljava/lang/String;
 
-    .line 68
+    .line 64
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
-    .parameter "rightsFilePath"
-    .parameter "mimeType"
-    .parameter "accountId"
-    .parameter "subscriptionId"
+    .param p1, "rightsFilePath"    # Ljava/lang/String;
+    .param p2, "mimeType"    # Ljava/lang/String;
+    .param p3, "accountId"    # Ljava/lang/String;
+    .param p4, "subscriptionId"    # Ljava/lang/String;
 
     .prologue
     .line 80
@@ -192,14 +196,14 @@
     .line 83
     iput-object p4, p0, Landroid/drm/DrmRights;->mSubscriptionId:Ljava/lang/String;
 
-    .line 84
+    .line 79
     return-void
 .end method
 
 .method private instantiate(Ljava/io/File;Ljava/lang/String;)V
     .locals 4
-    .parameter "rightsFile"
-    .parameter "mimeType"
+    .param p1, "rightsFile"    # Ljava/io/File;
+    .param p2, "mimeType"    # Ljava/lang/String;
 
     .prologue
     .line 98
@@ -228,7 +232,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "mimeType: "
+    const-string/jumbo v3, "mimeType: "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -240,20 +244,24 @@
 
     move-result-object v2
 
-    const-string v3, ","
+    const-string/jumbo v3, ","
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    const-string v3, "data: "
+    .line 106
+    const-string/jumbo v3, "data: "
 
+    .line 105
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
+    .line 106
     iget-object v3, p0, Landroid/drm/DrmRights;->mData:[B
 
+    .line 105
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -263,7 +271,7 @@
     move-result-object v1
 
     .line 107
-    .local v1, msg:Ljava/lang/String;
+    .local v1, "msg":Ljava/lang/String;
     new-instance v2, Ljava/lang/IllegalArgumentException;
 
     invoke-direct {v2, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
@@ -271,18 +279,18 @@
     throw v2
 
     .line 99
-    .end local v1           #msg:Ljava/lang/String;
+    .end local v1    # "msg":Ljava/lang/String;
     :catch_0
     move-exception v0
 
     .line 100
-    .local v0, e:Ljava/io/IOException;
+    .local v0, "e":Ljava/io/IOException;
     invoke-virtual {v0}, Ljava/io/IOException;->printStackTrace()V
 
     goto :goto_0
 
-    .line 109
-    .end local v0           #e:Ljava/io/IOException;
+    .line 96
+    .end local v0    # "e":Ljava/io/IOException;
     :cond_0
     return-void
 .end method
@@ -330,41 +338,43 @@
 .end method
 
 .method isValid()Z
-    .locals 2
+    .locals 3
 
     .prologue
+    const/4 v0, 0x0
+
     .line 177
-    iget-object v0, p0, Landroid/drm/DrmRights;->mMimeType:Ljava/lang/String;
+    iget-object v1, p0, Landroid/drm/DrmRights;->mMimeType:Ljava/lang/String;
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
-    iget-object v0, p0, Landroid/drm/DrmRights;->mMimeType:Ljava/lang/String;
+    iget-object v1, p0, Landroid/drm/DrmRights;->mMimeType:Ljava/lang/String;
 
-    const-string v1, ""
+    const-string/jumbo v2, ""
 
-    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_0
+    if-eqz v1, :cond_1
 
-    iget-object v0, p0, Landroid/drm/DrmRights;->mData:[B
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Landroid/drm/DrmRights;->mData:[B
-
-    array-length v0, v0
-
-    if-lez v0, :cond_0
-
-    const/4 v0, 0x1
-
+    :cond_0
     :goto_0
     return v0
 
-    :cond_0
-    const/4 v0, 0x0
+    .line 178
+    :cond_1
+    iget-object v1, p0, Landroid/drm/DrmRights;->mData:[B
+
+    if-eqz v1, :cond_0
+
+    iget-object v1, p0, Landroid/drm/DrmRights;->mData:[B
+
+    array-length v1, v1
+
+    if-lez v1, :cond_0
+
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method

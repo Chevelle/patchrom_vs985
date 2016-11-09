@@ -18,7 +18,7 @@
 
 
 # static fields
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
 
 .field private static final SELECTION:Ljava/lang/String; = "selected=1"
 
@@ -29,7 +29,7 @@
 
     .prologue
     .line 2007
-    const-string v0, "content://com.android.calendar/instances/groupbyday"
+    const-string/jumbo v0, "content://com.android.calendar/instances/groupbyday"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
@@ -37,6 +37,7 @@
 
     sput-object v0, Landroid/provider/CalendarContract$EventDays;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 2006
     return-void
 .end method
 
@@ -52,10 +53,10 @@
 
 .method public static final query(Landroid/content/ContentResolver;II[Ljava/lang/String;)Landroid/database/Cursor;
     .locals 8
-    .parameter "cr"
-    .parameter "startDay"
-    .parameter "numDays"
-    .parameter "projection"
+    .param p0, "cr"    # Landroid/content/ContentResolver;
+    .param p1, "startDay"    # I
+    .param p2, "numDays"    # I
+    .param p3, "projection"    # [Ljava/lang/String;
 
     .prologue
     const/4 v4, 0x0
@@ -65,8 +66,7 @@
 
     if-ge p2, v0, :cond_0
 
-    .line 2039
-    :goto_0
+    .line 2033
     return-object v4
 
     .line 2035
@@ -76,7 +76,7 @@
     add-int/lit8 v7, v0, -0x1
 
     .line 2036
-    .local v7, endDay:I
+    .local v7, "endDay":I
     sget-object v0, Landroid/provider/CalendarContract$EventDays;->CONTENT_URI:Landroid/net/Uri;
 
     invoke-virtual {v0}, Landroid/net/Uri;->buildUpon()Landroid/net/Uri$Builder;
@@ -84,7 +84,7 @@
     move-result-object v6
 
     .line 2037
-    .local v6, builder:Landroid/net/Uri$Builder;
+    .local v6, "builder":Landroid/net/Uri$Builder;
     int-to-long v0, p1
 
     invoke-static {v6, v0, v1}, Landroid/content/ContentUris;->appendId(Landroid/net/Uri$Builder;J)Landroid/net/Uri$Builder;
@@ -101,15 +101,17 @@
 
     const-string/jumbo v3, "selected=1"
 
+    .line 2040
     const-string/jumbo v5, "startDay"
 
     move-object v0, p0
 
     move-object v2, p3
 
+    .line 2039
     invoke-virtual/range {v0 .. v5}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v4
+    move-result-object v0
 
-    goto :goto_0
+    return-object v0
 .end method

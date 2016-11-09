@@ -26,8 +26,8 @@
 # direct methods
 .method constructor <init>(Landroid/os/RemoteCallback;Landroid/os/Bundle;)V
     .locals 0
-    .parameter
-    .parameter "result"
+    .param p1, "this$0"    # Landroid/os/RemoteCallback;
+    .param p2, "result"    # Landroid/os/Bundle;
 
     .prologue
     .line 31
@@ -38,7 +38,7 @@
     .line 32
     iput-object p2, p0, Landroid/os/RemoteCallback$DeliverResult;->mResult:Landroid/os/Bundle;
 
-    .line 33
+    .line 31
     return-void
 .end method
 
@@ -55,6 +55,6 @@
 
     invoke-virtual {v0, v1}, Landroid/os/RemoteCallback;->onResult(Landroid/os/Bundle;)V
 
-    .line 37
+    .line 35
     return-void
 .end method

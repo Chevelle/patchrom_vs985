@@ -33,29 +33,29 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 2
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
     const/4 v1, 0x0
 
-    .line 57
+    .line 52
     invoke-direct {p0, p1}, Landroid/filterfw/core/Filter;-><init>(Ljava/lang/String;)V
 
-    .line 44
+    .line 40
     const/16 v0, 0x280
 
     iput v0, p0, Landroid/filterpacks/imageproc/RotateFilter;->mTileSize:I
 
-    .line 49
+    .line 44
     iput v1, p0, Landroid/filterpacks/imageproc/RotateFilter;->mWidth:I
 
-    .line 50
+    .line 45
     iput v1, p0, Landroid/filterpacks/imageproc/RotateFilter;->mHeight:I
 
-    .line 51
+    .line 46
     iput v1, p0, Landroid/filterpacks/imageproc/RotateFilter;->mTarget:I
 
-    .line 58
+    .line 51
     return-void
 .end method
 
@@ -63,193 +63,203 @@
     .locals 11
 
     .prologue
-    const/high16 v8, -0x4080
+    const/high16 v10, 0x3f800000    # 1.0f
 
-    const/high16 v10, 0x3f00
+    const/high16 v9, 0x3f000000    # 0.5f
 
-    const/high16 v7, 0x3f80
+    .line 125
+    iget v7, p0, Landroid/filterpacks/imageproc/RotateFilter;->mAngle:I
 
-    .line 130
-    iget v9, p0, Landroid/filterpacks/imageproc/RotateFilter;->mAngle:I
+    rem-int/lit8 v7, v7, 0x5a
 
-    rem-int/lit8 v9, v9, 0x5a
+    if-nez v7, :cond_3
 
-    if-nez v9, :cond_3
+    .line 126
+    iget v7, p0, Landroid/filterpacks/imageproc/RotateFilter;->mAngle:I
 
-    .line 131
-    iget v9, p0, Landroid/filterpacks/imageproc/RotateFilter;->mAngle:I
+    rem-int/lit16 v7, v7, 0xb4
 
-    rem-int/lit16 v9, v9, 0xb4
+    if-nez v7, :cond_1
 
-    if-nez v9, :cond_1
-
-    .line 132
+    .line 127
     const/4 v2, 0x0
 
-    .line 133
-    .local v2, sinTheta:F
-    iget v9, p0, Landroid/filterpacks/imageproc/RotateFilter;->mAngle:I
+    .line 128
+    .local v2, "sinTheta":F
+    iget v7, p0, Landroid/filterpacks/imageproc/RotateFilter;->mAngle:I
 
-    rem-int/lit16 v9, v9, 0x168
+    rem-int/lit16 v7, v7, 0x168
 
-    if-nez v9, :cond_0
+    if-nez v7, :cond_0
 
-    move v0, v7
+    const/high16 v0, 0x3f800000    # 1.0f
 
-    .line 145
-    .local v0, cosTheta:F
+    .line 140
+    .local v0, "cosTheta":F
     :goto_0
     new-instance v3, Landroid/filterfw/geometry/Point;
 
-    neg-float v8, v0
+    neg-float v7, v0
 
-    add-float/2addr v8, v2
+    add-float/2addr v7, v2
 
-    add-float/2addr v8, v7
+    add-float/2addr v7, v10
 
-    mul-float/2addr v8, v10
+    mul-float/2addr v7, v9
 
-    neg-float v9, v2
+    .line 141
+    neg-float v8, v2
 
-    sub-float/2addr v9, v0
+    sub-float/2addr v8, v0
 
-    add-float/2addr v9, v7
+    add-float/2addr v8, v10
 
-    mul-float/2addr v9, v10
+    mul-float/2addr v8, v9
 
-    invoke-direct {v3, v8, v9}, Landroid/filterfw/geometry/Point;-><init>(FF)V
+    .line 140
+    invoke-direct {v3, v7, v8}, Landroid/filterfw/geometry/Point;-><init>(FF)V
 
-    .line 147
-    .local v3, x0:Landroid/filterfw/geometry/Point;
+    .line 142
+    .local v3, "x0":Landroid/filterfw/geometry/Point;
     new-instance v4, Landroid/filterfw/geometry/Point;
 
-    add-float v8, v0, v2
+    add-float v7, v0, v2
 
-    add-float/2addr v8, v7
+    add-float/2addr v7, v10
 
-    mul-float/2addr v8, v10
+    mul-float/2addr v7, v9
 
-    sub-float v9, v2, v0
+    .line 143
+    sub-float v8, v2, v0
 
-    add-float/2addr v9, v7
+    add-float/2addr v8, v10
 
-    mul-float/2addr v9, v10
+    mul-float/2addr v8, v9
 
-    invoke-direct {v4, v8, v9}, Landroid/filterfw/geometry/Point;-><init>(FF)V
+    .line 142
+    invoke-direct {v4, v7, v8}, Landroid/filterfw/geometry/Point;-><init>(FF)V
 
-    .line 149
-    .local v4, x1:Landroid/filterfw/geometry/Point;
+    .line 144
+    .local v4, "x1":Landroid/filterfw/geometry/Point;
     new-instance v5, Landroid/filterfw/geometry/Point;
 
-    neg-float v8, v0
+    neg-float v7, v0
 
-    sub-float/2addr v8, v2
+    sub-float/2addr v7, v2
 
-    add-float/2addr v8, v7
+    add-float/2addr v7, v10
 
-    mul-float/2addr v8, v10
+    mul-float/2addr v7, v9
 
-    neg-float v9, v2
+    .line 145
+    neg-float v8, v2
 
-    add-float/2addr v9, v0
+    add-float/2addr v8, v0
 
-    add-float/2addr v9, v7
+    add-float/2addr v8, v10
 
-    mul-float/2addr v9, v10
+    mul-float/2addr v8, v9
 
-    invoke-direct {v5, v8, v9}, Landroid/filterfw/geometry/Point;-><init>(FF)V
+    .line 144
+    invoke-direct {v5, v7, v8}, Landroid/filterfw/geometry/Point;-><init>(FF)V
 
-    .line 151
-    .local v5, x2:Landroid/filterfw/geometry/Point;
+    .line 146
+    .local v5, "x2":Landroid/filterfw/geometry/Point;
     new-instance v6, Landroid/filterfw/geometry/Point;
 
-    sub-float v8, v0, v2
+    sub-float v7, v0, v2
 
-    add-float/2addr v8, v7
+    add-float/2addr v7, v10
 
-    mul-float/2addr v8, v10
+    mul-float/2addr v7, v9
 
-    add-float v9, v2, v0
+    .line 147
+    add-float v8, v2, v0
 
-    add-float/2addr v7, v9
+    add-float/2addr v8, v10
 
-    mul-float/2addr v7, v10
+    mul-float/2addr v8, v9
 
-    invoke-direct {v6, v8, v7}, Landroid/filterfw/geometry/Point;-><init>(FF)V
+    .line 146
+    invoke-direct {v6, v7, v8}, Landroid/filterfw/geometry/Point;-><init>(FF)V
 
-    .line 153
-    .local v6, x3:Landroid/filterfw/geometry/Point;
+    .line 148
+    .local v6, "x3":Landroid/filterfw/geometry/Point;
     new-instance v1, Landroid/filterfw/geometry/Quad;
 
     invoke-direct {v1, v3, v4, v5, v6}, Landroid/filterfw/geometry/Quad;-><init>(Landroid/filterfw/geometry/Point;Landroid/filterfw/geometry/Point;Landroid/filterfw/geometry/Point;Landroid/filterfw/geometry/Point;)V
 
-    .line 154
-    .local v1, quad:Landroid/filterfw/geometry/Quad;
+    .line 149
+    .local v1, "quad":Landroid/filterfw/geometry/Quad;
     iget-object v7, p0, Landroid/filterpacks/imageproc/RotateFilter;->mProgram:Landroid/filterfw/core/Program;
 
     check-cast v7, Landroid/filterfw/core/ShaderProgram;
 
     invoke-virtual {v7, v1}, Landroid/filterfw/core/ShaderProgram;->setTargetRegion(Landroid/filterfw/geometry/Quad;)V
 
-    .line 155
+    .line 121
     return-void
 
-    .end local v0           #cosTheta:F
-    .end local v1           #quad:Landroid/filterfw/geometry/Quad;
-    .end local v3           #x0:Landroid/filterfw/geometry/Point;
-    .end local v4           #x1:Landroid/filterfw/geometry/Point;
-    .end local v5           #x2:Landroid/filterfw/geometry/Point;
-    .end local v6           #x3:Landroid/filterfw/geometry/Point;
+    .line 128
+    .end local v0    # "cosTheta":F
+    .end local v1    # "quad":Landroid/filterfw/geometry/Quad;
+    .end local v3    # "x0":Landroid/filterfw/geometry/Point;
+    .end local v4    # "x1":Landroid/filterfw/geometry/Point;
+    .end local v5    # "x2":Landroid/filterfw/geometry/Point;
+    .end local v6    # "x3":Landroid/filterfw/geometry/Point;
     :cond_0
-    move v0, v8
+    const/high16 v0, -0x40800000    # -1.0f
 
-    .line 133
+    .restart local v0    # "cosTheta":F
     goto :goto_0
 
-    .line 135
-    .end local v2           #sinTheta:F
+    .line 130
+    .end local v0    # "cosTheta":F
+    .end local v2    # "sinTheta":F
     :cond_1
     const/4 v0, 0x0
 
-    .line 136
-    .restart local v0       #cosTheta:F
-    iget v9, p0, Landroid/filterpacks/imageproc/RotateFilter;->mAngle:I
+    .line 131
+    .restart local v0    # "cosTheta":F
+    iget v7, p0, Landroid/filterpacks/imageproc/RotateFilter;->mAngle:I
 
-    add-int/lit8 v9, v9, 0x5a
+    add-int/lit8 v7, v7, 0x5a
 
-    rem-int/lit16 v9, v9, 0x168
+    rem-int/lit16 v7, v7, 0x168
 
-    if-nez v9, :cond_2
+    if-nez v7, :cond_2
 
-    move v2, v8
+    const/high16 v2, -0x40800000    # -1.0f
 
-    .line 138
-    .restart local v2       #sinTheta:F
+    .line 133
+    .restart local v2    # "sinTheta":F
     :goto_1
-    iget v8, p0, Landroid/filterpacks/imageproc/RotateFilter;->mHeight:I
+    iget v7, p0, Landroid/filterpacks/imageproc/RotateFilter;->mHeight:I
 
-    iput v8, p0, Landroid/filterpacks/imageproc/RotateFilter;->mOutputWidth:I
+    iput v7, p0, Landroid/filterpacks/imageproc/RotateFilter;->mOutputWidth:I
 
-    .line 139
-    iget v8, p0, Landroid/filterpacks/imageproc/RotateFilter;->mWidth:I
+    .line 134
+    iget v7, p0, Landroid/filterpacks/imageproc/RotateFilter;->mWidth:I
 
-    iput v8, p0, Landroid/filterpacks/imageproc/RotateFilter;->mOutputHeight:I
+    iput v7, p0, Landroid/filterpacks/imageproc/RotateFilter;->mOutputHeight:I
 
     goto :goto_0
 
-    .end local v2           #sinTheta:F
+    .line 131
+    .end local v2    # "sinTheta":F
     :cond_2
-    move v2, v7
+    const/high16 v2, 0x3f800000    # 1.0f
 
-    .line 136
+    .restart local v2    # "sinTheta":F
     goto :goto_1
 
-    .line 142
-    .end local v0           #cosTheta:F
+    .line 137
+    .end local v0    # "cosTheta":F
+    .end local v2    # "sinTheta":F
     :cond_3
     new-instance v7, Ljava/lang/RuntimeException;
 
-    const-string v8, "degree has to be multiply of 90."
+    const-string/jumbo v8, "degree has to be multiply of 90."
 
     invoke-direct {v7, v8}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -260,40 +270,40 @@
 # virtual methods
 .method public fieldPortValueUpdated(Ljava/lang/String;Landroid/filterfw/core/FilterContext;)V
     .locals 1
-    .parameter "name"
-    .parameter "context"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
-    .line 84
+    .line 79
     iget-object v0, p0, Landroid/filterpacks/imageproc/RotateFilter;->mProgram:Landroid/filterfw/core/Program;
 
     if-eqz v0, :cond_0
 
-    .line 85
+    .line 80
     invoke-direct {p0}, Landroid/filterpacks/imageproc/RotateFilter;->updateParameters()V
 
-    .line 87
+    .line 78
     :cond_0
     return-void
 .end method
 
 .method public initProgram(Landroid/filterfw/core/FilterContext;I)V
     .locals 4
-    .parameter "context"
-    .parameter "target"
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
+    .param p2, "target"    # I
 
     .prologue
-    .line 67
+    .line 62
     packed-switch p2, :pswitch_data_0
 
-    .line 76
+    .line 71
     new-instance v1, Ljava/lang/RuntimeException;
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Filter Sharpen does not support frames of target "
+    const-string/jumbo v3, "Filter Sharpen does not support frames of target "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -303,8 +313,10 @@
 
     move-result-object v2
 
-    const-string v3, "!"
+    .line 72
+    const-string/jumbo v3, "!"
 
+    .line 71
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -317,33 +329,33 @@
 
     throw v1
 
-    .line 69
+    .line 64
     :pswitch_0
     invoke-static {p1}, Landroid/filterfw/core/ShaderProgram;->createIdentity(Landroid/filterfw/core/FilterContext;)Landroid/filterfw/core/ShaderProgram;
 
     move-result-object v0
 
-    .line 70
-    .local v0, shaderProgram:Landroid/filterfw/core/ShaderProgram;
+    .line 65
+    .local v0, "shaderProgram":Landroid/filterfw/core/ShaderProgram;
     iget v1, p0, Landroid/filterpacks/imageproc/RotateFilter;->mTileSize:I
 
     invoke-virtual {v0, v1}, Landroid/filterfw/core/ShaderProgram;->setMaximumTileSize(I)V
 
-    .line 71
+    .line 66
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/filterfw/core/ShaderProgram;->setClearsOutput(Z)V
 
-    .line 72
+    .line 67
     iput-object v0, p0, Landroid/filterpacks/imageproc/RotateFilter;->mProgram:Landroid/filterfw/core/Program;
 
-    .line 79
+    .line 74
     iput p2, p0, Landroid/filterpacks/imageproc/RotateFilter;->mTarget:I
 
-    .line 80
+    .line 61
     return-void
 
-    .line 67
+    .line 62
     :pswitch_data_0
     .packed-switch 0x3
         :pswitch_0
@@ -352,26 +364,26 @@
 
 .method public process(Landroid/filterfw/core/FilterContext;)V
     .locals 7
-    .parameter "context"
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
     const/4 v6, 0x3
 
-    .line 92
-    const-string v4, "image"
+    .line 87
+    const-string/jumbo v4, "image"
 
     invoke-virtual {p0, v4}, Landroid/filterpacks/imageproc/RotateFilter;->pullInput(Ljava/lang/String;)Landroid/filterfw/core/Frame;
 
     move-result-object v0
 
-    .line 93
-    .local v0, input:Landroid/filterfw/core/Frame;
+    .line 88
+    .local v0, "input":Landroid/filterfw/core/Frame;
     invoke-virtual {v0}, Landroid/filterfw/core/Frame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v1
 
-    .line 96
-    .local v1, inputFormat:Landroid/filterfw/core/FrameFormat;
+    .line 91
+    .local v1, "inputFormat":Landroid/filterfw/core/FrameFormat;
     iget-object v4, p0, Landroid/filterpacks/imageproc/RotateFilter;->mProgram:Landroid/filterfw/core/Program;
 
     if-eqz v4, :cond_0
@@ -384,7 +396,7 @@
 
     if-eq v4, v5, :cond_1
 
-    .line 97
+    .line 92
     :cond_0
     invoke-virtual {v1}, Landroid/filterfw/core/FrameFormat;->getTarget()I
 
@@ -392,7 +404,7 @@
 
     invoke-virtual {p0, p1, v4}, Landroid/filterpacks/imageproc/RotateFilter;->initProgram(Landroid/filterfw/core/FilterContext;I)V
 
-    .line 100
+    .line 95
     :cond_1
     invoke-virtual {v1}, Landroid/filterfw/core/FrameFormat;->getWidth()I
 
@@ -410,7 +422,7 @@
 
     if-eq v4, v5, :cond_3
 
-    .line 101
+    .line 96
     :cond_2
     invoke-virtual {v1}, Landroid/filterfw/core/FrameFormat;->getWidth()I
 
@@ -418,27 +430,27 @@
 
     iput v4, p0, Landroid/filterpacks/imageproc/RotateFilter;->mWidth:I
 
-    .line 102
+    .line 97
     invoke-virtual {v1}, Landroid/filterfw/core/FrameFormat;->getHeight()I
 
     move-result v4
 
     iput v4, p0, Landroid/filterpacks/imageproc/RotateFilter;->mHeight:I
 
-    .line 103
+    .line 98
     iget v4, p0, Landroid/filterpacks/imageproc/RotateFilter;->mWidth:I
 
     iput v4, p0, Landroid/filterpacks/imageproc/RotateFilter;->mOutputWidth:I
 
-    .line 104
+    .line 99
     iget v4, p0, Landroid/filterpacks/imageproc/RotateFilter;->mHeight:I
 
     iput v4, p0, Landroid/filterpacks/imageproc/RotateFilter;->mOutputHeight:I
 
-    .line 106
+    .line 101
     invoke-direct {p0}, Landroid/filterpacks/imageproc/RotateFilter;->updateParameters()V
 
-    .line 110
+    .line 105
     :cond_3
     iget v4, p0, Landroid/filterpacks/imageproc/RotateFilter;->mOutputWidth:I
 
@@ -448,8 +460,8 @@
 
     move-result-object v3
 
-    .line 114
-    .local v3, outputFormat:Landroid/filterfw/core/FrameFormat;
+    .line 109
+    .local v3, "outputFormat":Landroid/filterfw/core/FrameFormat;
     invoke-virtual {p1}, Landroid/filterfw/core/FilterContext;->getFrameManager()Landroid/filterfw/core/FrameManager;
 
     move-result-object v4
@@ -458,21 +470,21 @@
 
     move-result-object v2
 
-    .line 117
-    .local v2, output:Landroid/filterfw/core/Frame;
+    .line 112
+    .local v2, "output":Landroid/filterfw/core/Frame;
     iget-object v4, p0, Landroid/filterpacks/imageproc/RotateFilter;->mProgram:Landroid/filterfw/core/Program;
 
     invoke-virtual {v4, v0, v2}, Landroid/filterfw/core/Program;->process(Landroid/filterfw/core/Frame;Landroid/filterfw/core/Frame;)V
 
-    .line 120
-    const-string v4, "image"
+    .line 115
+    const-string/jumbo v4, "image"
 
     invoke-virtual {p0, v4, v2}, Landroid/filterpacks/imageproc/RotateFilter;->pushOutput(Ljava/lang/String;Landroid/filterfw/core/Frame;)V
 
-    .line 123
+    .line 118
     invoke-virtual {v2}, Landroid/filterfw/core/Frame;->release()Landroid/filterfw/core/Frame;
 
-    .line 124
+    .line 85
     return-void
 .end method
 
@@ -480,8 +492,8 @@
     .locals 2
 
     .prologue
-    .line 62
-    const-string v0, "image"
+    .line 57
+    const-string/jumbo v0, "image"
 
     const/4 v1, 0x3
 
@@ -491,13 +503,13 @@
 
     invoke-virtual {p0, v0, v1}, Landroid/filterpacks/imageproc/RotateFilter;->addMaskedInputPort(Ljava/lang/String;Landroid/filterfw/core/FrameFormat;)V
 
-    .line 63
-    const-string v0, "image"
+    .line 58
+    const-string/jumbo v0, "image"
 
-    const-string v1, "image"
+    const-string/jumbo v1, "image"
 
     invoke-virtual {p0, v0, v1}, Landroid/filterpacks/imageproc/RotateFilter;->addOutputBasedOnInput(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 64
+    .line 56
     return-void
 .end method

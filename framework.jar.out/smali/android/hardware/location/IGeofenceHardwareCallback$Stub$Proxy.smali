@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 114
+    .line 113
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 115
     iput-object p1, p0, Landroid/hardware/location/IGeofenceHardwareCallback$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 116
+    .line 113
     return-void
 .end method
 
@@ -54,15 +54,15 @@
 
     .prologue
     .line 123
-    const-string v0, "android.hardware.location.IGeofenceHardwareCallback"
+    const-string/jumbo v0, "android.hardware.location.IGeofenceHardwareCallback"
 
     return-object v0
 .end method
 
 .method public onGeofenceAdd(II)V
     .locals 5
-    .parameter "geofenceId"
-    .parameter "status"
+    .param p1, "geofenceId"    # I
+    .param p2, "status"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -76,9 +76,9 @@
     move-result-object v0
 
     .line 151
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.hardware.location.IGeofenceHardwareCallback"
+    const-string/jumbo v1, "android.hardware.location.IGeofenceHardwareCallback"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -104,22 +104,24 @@
     .line 157
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 159
+    .line 147
     return-void
 
-    .line 157
+    .line 156
     :catchall_0
     move-exception v1
 
+    .line 157
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 156
     throw v1
 .end method
 
 .method public onGeofencePause(II)V
     .locals 5
-    .parameter "geofenceId"
-    .parameter "status"
+    .param p1, "geofenceId"    # I
+    .param p2, "status"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -133,9 +135,9 @@
     move-result-object v0
 
     .line 177
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.hardware.location.IGeofenceHardwareCallback"
+    const-string/jumbo v1, "android.hardware.location.IGeofenceHardwareCallback"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -161,22 +163,24 @@
     .line 183
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 185
+    .line 173
     return-void
 
-    .line 183
+    .line 182
     :catchall_0
     move-exception v1
 
+    .line 183
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 182
     throw v1
 .end method
 
 .method public onGeofenceRemove(II)V
     .locals 5
-    .parameter "geofenceId"
-    .parameter "status"
+    .param p1, "geofenceId"    # I
+    .param p2, "status"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -190,9 +194,9 @@
     move-result-object v0
 
     .line 164
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.hardware.location.IGeofenceHardwareCallback"
+    const-string/jumbo v1, "android.hardware.location.IGeofenceHardwareCallback"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -218,22 +222,24 @@
     .line 170
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 172
+    .line 160
     return-void
 
-    .line 170
+    .line 169
     :catchall_0
     move-exception v1
 
+    .line 170
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 169
     throw v1
 .end method
 
 .method public onGeofenceResume(II)V
     .locals 5
-    .parameter "geofenceId"
-    .parameter "status"
+    .param p1, "geofenceId"    # I
+    .param p2, "status"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -247,9 +253,9 @@
     move-result-object v0
 
     .line 190
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.hardware.location.IGeofenceHardwareCallback"
+    const-string/jumbo v1, "android.hardware.location.IGeofenceHardwareCallback"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -275,25 +281,27 @@
     .line 196
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 198
+    .line 186
     return-void
 
-    .line 196
+    .line 195
     :catchall_0
     move-exception v1
 
+    .line 196
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 195
     throw v1
 .end method
 
 .method public onGeofenceTransition(IILandroid/location/Location;JI)V
-    .locals 5
-    .parameter "geofenceId"
-    .parameter "transition"
-    .parameter "location"
-    .parameter "timestamp"
-    .parameter "monitoringType"
+    .locals 6
+    .param p1, "geofenceId"    # I
+    .param p2, "transition"    # I
+    .param p3, "location"    # Landroid/location/Location;
+    .param p4, "timestamp"    # J
+    .param p6, "monitoringType"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -307,9 +315,9 @@
     move-result-object v0
 
     .line 129
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.hardware.location.IGeofenceHardwareCallback"
+    const-string/jumbo v1, "android.hardware.location.IGeofenceHardwareCallback"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -355,7 +363,7 @@
     .line 144
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 146
+    .line 125
     return-void
 
     .line 137
@@ -369,11 +377,13 @@
 
     goto :goto_0
 
-    .line 144
+    .line 143
     :catchall_0
     move-exception v1
 
+    .line 144
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 143
     throw v1
 .end method

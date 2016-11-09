@@ -18,96 +18,107 @@
 # virtual methods
 .method public onCharacteristicChanged(Landroid/bluetooth/BluetoothGatt;Landroid/bluetooth/BluetoothGattCharacteristic;)V
     .locals 0
-    .parameter "gatt"
-    .parameter "characteristic"
+    .param p1, "gatt"    # Landroid/bluetooth/BluetoothGatt;
+    .param p2, "characteristic"    # Landroid/bluetooth/BluetoothGattCharacteristic;
 
     .prologue
-    .line 91
+    .line 90
     return-void
 .end method
 
 .method public onCharacteristicRead(Landroid/bluetooth/BluetoothGatt;Landroid/bluetooth/BluetoothGattCharacteristic;I)V
     .locals 0
-    .parameter "gatt"
-    .parameter "characteristic"
-    .parameter "status"
+    .param p1, "gatt"    # Landroid/bluetooth/BluetoothGatt;
+    .param p2, "characteristic"    # Landroid/bluetooth/BluetoothGattCharacteristic;
+    .param p3, "status"    # I
 
     .prologue
-    .line 61
+    .line 60
     return-void
 .end method
 
 .method public onCharacteristicWrite(Landroid/bluetooth/BluetoothGatt;Landroid/bluetooth/BluetoothGattCharacteristic;I)V
     .locals 0
-    .parameter "gatt"
-    .parameter "characteristic"
-    .parameter "status"
+    .param p1, "gatt"    # Landroid/bluetooth/BluetoothGatt;
+    .param p2, "characteristic"    # Landroid/bluetooth/BluetoothGattCharacteristic;
+    .param p3, "status"    # I
 
     .prologue
-    .line 80
+    .line 79
     return-void
 .end method
 
 .method public onConnectionStateChange(Landroid/bluetooth/BluetoothGatt;II)V
     .locals 0
-    .parameter "gatt"
-    .parameter "status"
-    .parameter "newState"
+    .param p1, "gatt"    # Landroid/bluetooth/BluetoothGatt;
+    .param p2, "status"    # I
+    .param p3, "newState"    # I
 
     .prologue
-    .line 37
+    .line 36
     return-void
 .end method
 
 .method public onDescriptorRead(Landroid/bluetooth/BluetoothGatt;Landroid/bluetooth/BluetoothGattDescriptor;I)V
     .locals 0
-    .parameter "gatt"
-    .parameter "descriptor"
-    .parameter "status"
+    .param p1, "gatt"    # Landroid/bluetooth/BluetoothGatt;
+    .param p2, "descriptor"    # Landroid/bluetooth/BluetoothGattDescriptor;
+    .param p3, "status"    # I
 
     .prologue
-    .line 104
+    .line 103
     return-void
 .end method
 
 .method public onDescriptorWrite(Landroid/bluetooth/BluetoothGatt;Landroid/bluetooth/BluetoothGattDescriptor;I)V
     .locals 0
-    .parameter "gatt"
-    .parameter "descriptor"
-    .parameter "status"
+    .param p1, "gatt"    # Landroid/bluetooth/BluetoothGatt;
+    .param p2, "descriptor"    # Landroid/bluetooth/BluetoothGattDescriptor;
+    .param p3, "status"    # I
 
     .prologue
-    .line 117
+    .line 116
+    return-void
+.end method
+
+.method public onMtuChanged(Landroid/bluetooth/BluetoothGatt;II)V
+    .locals 0
+    .param p1, "gatt"    # Landroid/bluetooth/BluetoothGatt;
+    .param p2, "mtu"    # I
+    .param p3, "status"    # I
+
+    .prologue
+    .line 153
     return-void
 .end method
 
 .method public onReadRemoteRssi(Landroid/bluetooth/BluetoothGatt;II)V
     .locals 0
-    .parameter "gatt"
-    .parameter "rssi"
-    .parameter "status"
+    .param p1, "gatt"    # Landroid/bluetooth/BluetoothGatt;
+    .param p2, "rssi"    # I
+    .param p3, "status"    # I
 
     .prologue
-    .line 140
+    .line 139
     return-void
 .end method
 
 .method public onReliableWriteCompleted(Landroid/bluetooth/BluetoothGatt;I)V
     .locals 0
-    .parameter "gatt"
-    .parameter "status"
+    .param p1, "gatt"    # Landroid/bluetooth/BluetoothGatt;
+    .param p2, "status"    # I
 
     .prologue
-    .line 127
+    .line 126
     return-void
 .end method
 
 .method public onServicesDiscovered(Landroid/bluetooth/BluetoothGatt;I)V
     .locals 0
-    .parameter "gatt"
-    .parameter "status"
+    .param p1, "gatt"    # Landroid/bluetooth/BluetoothGatt;
+    .param p2, "status"    # I
 
     .prologue
-    .line 48
+    .line 47
     return-void
 .end method

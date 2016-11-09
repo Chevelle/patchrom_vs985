@@ -1,122 +1,98 @@
-.class Landroid/transition/ChangeBounds$2;
-.super Landroid/transition/Transition$TransitionListenerAdapter;
+.class final Landroid/transition/ChangeBounds$2;
+.super Landroid/util/Property;
 .source "ChangeBounds.java"
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/transition/ChangeBounds;->createAnimator(Landroid/view/ViewGroup;Landroid/transition/TransitionValues;Landroid/transition/TransitionValues;)Landroid/animation/Animator;
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroid/transition/ChangeBounds;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x8
     name = null
 .end annotation
 
-
-# instance fields
-.field mCanceled:Z
-
-.field final synthetic this$0:Landroid/transition/ChangeBounds;
-
-.field final synthetic val$parent:Landroid/view/ViewGroup;
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Landroid/util/Property",
+        "<",
+        "Landroid/transition/ChangeBounds$ViewBounds;",
+        "Landroid/graphics/PointF;",
+        ">;"
+    }
+.end annotation
 
 
 # direct methods
-.method constructor <init>(Landroid/transition/ChangeBounds;Landroid/view/ViewGroup;)V
-    .locals 1
-    .parameter
-    .parameter
+.method constructor <init>(Ljava/lang/Class;Ljava/lang/String;)V
+    .locals 0
+    .param p2, "$anonymous1"    # Ljava/lang/String;
 
     .prologue
-    .line 238
-    iput-object p1, p0, Landroid/transition/ChangeBounds$2;->this$0:Landroid/transition/ChangeBounds;
-
-    iput-object p2, p0, Landroid/transition/ChangeBounds$2;->val$parent:Landroid/view/ViewGroup;
-
-    invoke-direct {p0}, Landroid/transition/Transition$TransitionListenerAdapter;-><init>()V
-
-    .line 239
-    const/4 v0, 0x0
-
-    iput-boolean v0, p0, Landroid/transition/ChangeBounds$2;->mCanceled:Z
+    .line 87
+    .local p1, "$anonymous0":Ljava/lang/Class;, "Ljava/lang/Class<Landroid/graphics/PointF;>;"
+    invoke-direct {p0, p1, p2}, Landroid/util/Property;-><init>(Ljava/lang/Class;Ljava/lang/String;)V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onTransitionCancel(Landroid/transition/Transition;)V
-    .locals 2
-    .parameter "transition"
+.method public get(Landroid/transition/ChangeBounds$ViewBounds;)Landroid/graphics/PointF;
+    .locals 1
+    .param p1, "viewBounds"    # Landroid/transition/ChangeBounds$ViewBounds;
 
     .prologue
-    .line 243
-    iget-object v0, p0, Landroid/transition/ChangeBounds$2;->val$parent:Landroid/view/ViewGroup;
+    .line 95
+    const/4 v0, 0x0
 
-    const/4 v1, 0x0
+    return-object v0
+.end method
 
-    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->suppressLayout(Z)V
+.method public bridge synthetic get(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 1
+    .param p1, "viewBounds"    # Ljava/lang/Object;
 
-    .line 244
-    const/4 v0, 0x1
+    .prologue
+    .line 94
+    check-cast p1, Landroid/transition/ChangeBounds$ViewBounds;
 
-    iput-boolean v0, p0, Landroid/transition/ChangeBounds$2;->mCanceled:Z
+    .end local p1    # "viewBounds":Ljava/lang/Object;
+    invoke-virtual {p0, p1}, Landroid/transition/ChangeBounds$2;->get(Landroid/transition/ChangeBounds$ViewBounds;)Landroid/graphics/PointF;
 
-    .line 245
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public set(Landroid/transition/ChangeBounds$ViewBounds;Landroid/graphics/PointF;)V
+    .locals 0
+    .param p1, "viewBounds"    # Landroid/transition/ChangeBounds$ViewBounds;
+    .param p2, "topLeft"    # Landroid/graphics/PointF;
+
+    .prologue
+    .line 90
+    invoke-virtual {p1, p2}, Landroid/transition/ChangeBounds$ViewBounds;->setTopLeft(Landroid/graphics/PointF;)V
+
+    .line 89
     return-void
 .end method
 
-.method public onTransitionEnd(Landroid/transition/Transition;)V
-    .locals 2
-    .parameter "transition"
+.method public bridge synthetic set(Ljava/lang/Object;Ljava/lang/Object;)V
+    .locals 0
+    .param p1, "viewBounds"    # Ljava/lang/Object;
+    .param p2, "topLeft"    # Ljava/lang/Object;
 
     .prologue
-    .line 249
-    iget-boolean v0, p0, Landroid/transition/ChangeBounds$2;->mCanceled:Z
+    .line 89
+    check-cast p1, Landroid/transition/ChangeBounds$ViewBounds;
 
-    if-nez v0, :cond_0
+    .end local p1    # "viewBounds":Ljava/lang/Object;
+    check-cast p2, Landroid/graphics/PointF;
 
-    .line 250
-    iget-object v0, p0, Landroid/transition/ChangeBounds$2;->val$parent:Landroid/view/ViewGroup;
+    .end local p2    # "topLeft":Ljava/lang/Object;
+    invoke-virtual {p0, p1, p2}, Landroid/transition/ChangeBounds$2;->set(Landroid/transition/ChangeBounds$ViewBounds;Landroid/graphics/PointF;)V
 
-    const/4 v1, 0x0
-
-    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->suppressLayout(Z)V
-
-    .line 252
-    :cond_0
-    return-void
-.end method
-
-.method public onTransitionPause(Landroid/transition/Transition;)V
-    .locals 2
-    .parameter "transition"
-
-    .prologue
-    .line 256
-    iget-object v0, p0, Landroid/transition/ChangeBounds$2;->val$parent:Landroid/view/ViewGroup;
-
-    const/4 v1, 0x0
-
-    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->suppressLayout(Z)V
-
-    .line 257
-    return-void
-.end method
-
-.method public onTransitionResume(Landroid/transition/Transition;)V
-    .locals 2
-    .parameter "transition"
-
-    .prologue
-    .line 261
-    iget-object v0, p0, Landroid/transition/ChangeBounds$2;->val$parent:Landroid/view/ViewGroup;
-
-    const/4 v1, 0x1
-
-    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->suppressLayout(Z)V
-
-    .line 262
     return-void
 .end method

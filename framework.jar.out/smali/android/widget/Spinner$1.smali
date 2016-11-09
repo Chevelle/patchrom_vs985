@@ -5,7 +5,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/widget/Spinner;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;II)V
+    value = Landroid/widget/Spinner;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;IIILandroid/content/res/Resources$Theme;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -23,12 +23,12 @@
 # direct methods
 .method constructor <init>(Landroid/widget/Spinner;Landroid/view/View;Landroid/widget/Spinner$DropdownPopup;)V
     .locals 0
-    .parameter
-    .parameter "x0"
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/Spinner;
+    .param p2, "$anonymous0"    # Landroid/view/View;
+    .param p3, "val$popup"    # Landroid/widget/Spinner$DropdownPopup;
 
     .prologue
-    .line 201
+    .line 271
     iput-object p1, p0, Landroid/widget/Spinner$1;->this$0:Landroid/widget/Spinner;
 
     iput-object p3, p0, Landroid/widget/Spinner$1;->val$popup:Landroid/widget/Spinner$DropdownPopup;
@@ -44,7 +44,7 @@
     .locals 1
 
     .prologue
-    .line 204
+    .line 274
     iget-object v0, p0, Landroid/widget/Spinner$1;->val$popup:Landroid/widget/Spinner$DropdownPopup;
 
     return-object v0
@@ -54,11 +54,10 @@
     .locals 3
 
     .prologue
-    .line 209
+    .line 279
     iget-object v0, p0, Landroid/widget/Spinner$1;->this$0:Landroid/widget/Spinner;
 
-    #getter for: Landroid/widget/Spinner;->mPopup:Landroid/widget/Spinner$SpinnerPopup;
-    invoke-static {v0}, Landroid/widget/Spinner;->access$100(Landroid/widget/Spinner;)Landroid/widget/Spinner$SpinnerPopup;
+    invoke-static {v0}, Landroid/widget/Spinner;->-get1(Landroid/widget/Spinner;)Landroid/widget/Spinner$SpinnerPopup;
 
     move-result-object v0
 
@@ -68,11 +67,10 @@
 
     if-nez v0, :cond_0
 
-    .line 210
+    .line 280
     iget-object v0, p0, Landroid/widget/Spinner$1;->this$0:Landroid/widget/Spinner;
 
-    #getter for: Landroid/widget/Spinner;->mPopup:Landroid/widget/Spinner$SpinnerPopup;
-    invoke-static {v0}, Landroid/widget/Spinner;->access$100(Landroid/widget/Spinner;)Landroid/widget/Spinner$SpinnerPopup;
+    invoke-static {v0}, Landroid/widget/Spinner;->-get1(Landroid/widget/Spinner;)Landroid/widget/Spinner$SpinnerPopup;
 
     move-result-object v0
 
@@ -90,7 +88,7 @@
 
     invoke-interface {v0, v1, v2}, Landroid/widget/Spinner$SpinnerPopup;->show(II)V
 
-    .line 212
+    .line 282
     :cond_0
     const/4 v0, 0x1
 

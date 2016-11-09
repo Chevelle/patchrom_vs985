@@ -63,6 +63,22 @@
     .end annotation
 .end method
 
+.method public abstract getPortStatus(Ljava/lang/String;)Landroid/hardware/usb/UsbPortStatus;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getPorts()[Landroid/hardware/usb/UsbPort;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract grantAccessoryPermission(Landroid/hardware/usb/UsbAccessory;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -96,6 +112,14 @@
 .end method
 
 .method public abstract hasDevicePermission(Landroid/hardware/usb/UsbDevice;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isFunctionEnabled(Ljava/lang/String;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -143,7 +167,7 @@
     .end annotation
 .end method
 
-.method public abstract setCurrentFunction(Ljava/lang/String;Z)V
+.method public abstract setCurrentFunction(Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -159,7 +183,15 @@
     .end annotation
 .end method
 
-.method public abstract setMassStorageBackingFile(Ljava/lang/String;)V
+.method public abstract setPortRoles(Ljava/lang/String;II)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setUsbDataUnlocked(Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

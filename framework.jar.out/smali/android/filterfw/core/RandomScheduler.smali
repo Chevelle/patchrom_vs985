@@ -10,7 +10,7 @@
 # direct methods
 .method public constructor <init>(Landroid/filterfw/core/FilterGraph;)V
     .locals 1
-    .parameter "graph"
+    .param p1, "graph"    # Landroid/filterfw/core/FilterGraph;
 
     .prologue
     .line 34
@@ -23,7 +23,7 @@
 
     iput-object v0, p0, Landroid/filterfw/core/RandomScheduler;->mRand:Ljava/util/Random;
 
-    .line 35
+    .line 33
     return-void
 .end method
 
@@ -33,7 +33,7 @@
     .locals 0
 
     .prologue
-    .line 39
+    .line 38
     return-void
 .end method
 
@@ -47,7 +47,7 @@
     invoke-direct {v0}, Ljava/util/Vector;-><init>()V
 
     .line 44
-    .local v0, candidates:Ljava/util/Vector;,"Ljava/util/Vector<Landroid/filterfw/core/Filter;>;"
+    .local v0, "candidates":Ljava/util/Vector;, "Ljava/util/Vector<Landroid/filterfw/core/Filter;>;"
     invoke-virtual {p0}, Landroid/filterfw/core/RandomScheduler;->getGraph()Landroid/filterfw/core/FilterGraph;
 
     move-result-object v4
@@ -56,11 +56,11 @@
 
     move-result-object v4
 
-    invoke-interface {v4}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+    invoke-interface {v4}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
     move-result-object v2
 
-    .local v2, i$:Ljava/util/Iterator;
+    .local v2, "filter$iterator":Ljava/util/Iterator;
     :cond_0
     :goto_0
     invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
@@ -76,7 +76,7 @@
     check-cast v1, Landroid/filterfw/core/Filter;
 
     .line 45
-    .local v1, filter:Landroid/filterfw/core/Filter;
+    .local v1, "filter":Landroid/filterfw/core/Filter;
     invoke-virtual {v1}, Landroid/filterfw/core/Filter;->canProcess()Z
 
     move-result v4
@@ -89,7 +89,7 @@
     goto :goto_0
 
     .line 48
-    .end local v1           #filter:Landroid/filterfw/core/Filter;
+    .end local v1    # "filter":Landroid/filterfw/core/Filter;
     :cond_1
     invoke-virtual {v0}, Ljava/util/Vector;->size()I
 
@@ -109,20 +109,19 @@
     move-result v3
 
     .line 50
-    .local v3, r:I
+    .local v3, "r":I
     invoke-virtual {v0, v3}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
 
     move-result-object v4
 
     check-cast v4, Landroid/filterfw/core/Filter;
 
-    .line 52
-    .end local v3           #r:I
-    :goto_1
     return-object v4
 
+    .line 52
+    .end local v3    # "r":I
     :cond_2
     const/4 v4, 0x0
 
-    goto :goto_1
+    return-object v4
 .end method

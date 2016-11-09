@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/content/res/ObbInfo$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -38,13 +46,15 @@
     .locals 1
 
     .prologue
-    .line 88
+    .line 89
     new-instance v0, Landroid/content/res/ObbInfo$1;
 
     invoke-direct {v0}, Landroid/content/res/ObbInfo$1;-><init>()V
 
+    .line 88
     sput-object v0, Landroid/content/res/ObbInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 27
     return-void
 .end method
 
@@ -55,13 +65,12 @@
     .line 59
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 60
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 99
@@ -102,17 +111,15 @@
 
     iput-object v0, p0, Landroid/content/res/ObbInfo;->salt:[B
 
-    .line 105
+    .line 99
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/content/res/ObbInfo$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/content/res/ObbInfo;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 27
     invoke-direct {p0, p1}, Landroid/content/res/ObbInfo;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -140,8 +147,8 @@
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 64
-    .local v0, sb:Ljava/lang/StringBuilder;
-    const-string v1, "ObbInfo{"
+    .local v0, "sb":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "ObbInfo{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -157,7 +164,7 @@
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 66
-    const-string v1, " packageName="
+    const-string/jumbo v1, " packageName="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -167,7 +174,7 @@
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 68
-    const-string v1, ",version="
+    const-string/jumbo v1, ",version="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -177,7 +184,7 @@
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 70
-    const-string v1, ",flags="
+    const-string/jumbo v1, ",flags="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -201,8 +208,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "parcelableFlags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "parcelableFlags"    # I
 
     .prologue
     .line 81
@@ -230,6 +237,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByteArray([B)V
 
-    .line 86
+    .line 80
     return-void
 .end method

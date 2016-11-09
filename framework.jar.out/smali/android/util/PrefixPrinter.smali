@@ -15,8 +15,8 @@
 # direct methods
 .method private constructor <init>(Landroid/util/Printer;Ljava/lang/String;)V
     .locals 0
-    .parameter "printer"
-    .parameter "prefix"
+    .param p1, "printer"    # Landroid/util/Printer;
+    .param p2, "prefix"    # Ljava/lang/String;
 
     .prologue
     .line 42
@@ -28,20 +28,20 @@
     .line 44
     iput-object p2, p0, Landroid/util/PrefixPrinter;->mPrefix:Ljava/lang/String;
 
-    .line 45
+    .line 42
     return-void
 .end method
 
 .method public static create(Landroid/util/Printer;Ljava/lang/String;)Landroid/util/Printer;
     .locals 1
-    .parameter "printer"
-    .parameter "prefix"
+    .param p0, "printer"    # Landroid/util/Printer;
+    .param p1, "prefix"    # Ljava/lang/String;
 
     .prologue
     .line 36
     if-eqz p1, :cond_0
 
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -49,28 +49,24 @@
 
     if-eqz v0, :cond_1
 
-    .line 39
-    .end local p0
+    .line 37
     :cond_0
-    :goto_0
     return-object p0
 
-    .restart local p0
+    .line 39
     :cond_1
     new-instance v0, Landroid/util/PrefixPrinter;
 
     invoke-direct {v0, p0, p1}, Landroid/util/PrefixPrinter;-><init>(Landroid/util/Printer;Ljava/lang/String;)V
 
-    move-object p0, v0
-
-    goto :goto_0
+    return-object v0
 .end method
 
 
 # virtual methods
 .method public println(Ljava/lang/String;)V
     .locals 3
-    .parameter "str"
+    .param p1, "str"    # Ljava/lang/String;
 
     .prologue
     .line 48
@@ -96,6 +92,6 @@
 
     invoke-interface {v0, v1}, Landroid/util/Printer;->println(Ljava/lang/String;)V
 
-    .line 49
+    .line 47
     return-void
 .end method

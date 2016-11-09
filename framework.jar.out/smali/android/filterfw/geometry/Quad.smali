@@ -21,16 +21,15 @@
     .line 37
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 38
     return-void
 .end method
 
 .method public constructor <init>(Landroid/filterfw/geometry/Point;Landroid/filterfw/geometry/Point;Landroid/filterfw/geometry/Point;Landroid/filterfw/geometry/Point;)V
     .locals 0
-    .parameter "p0"
-    .parameter "p1"
-    .parameter "p2"
-    .parameter "p3"
+    .param p1, "p0"    # Landroid/filterfw/geometry/Point;
+    .param p2, "p1"    # Landroid/filterfw/geometry/Point;
+    .param p3, "p2"    # Landroid/filterfw/geometry/Point;
+    .param p4, "p3"    # Landroid/filterfw/geometry/Point;
 
     .prologue
     .line 40
@@ -48,7 +47,7 @@
     .line 44
     iput-object p4, p0, Landroid/filterfw/geometry/Quad;->p3:Landroid/filterfw/geometry/Point;
 
-    .line 45
+    .line 40
     return-void
 .end method
 
@@ -67,32 +66,34 @@
 
     if-eqz v0, :cond_0
 
+    .line 49
     iget-object v0, p0, Landroid/filterfw/geometry/Quad;->p1:Landroid/filterfw/geometry/Point;
 
     invoke-virtual {v0}, Landroid/filterfw/geometry/Point;->IsInUnitRange()Z
 
     move-result v0
 
+    .line 48
     if-eqz v0, :cond_0
 
+    .line 50
     iget-object v0, p0, Landroid/filterfw/geometry/Quad;->p2:Landroid/filterfw/geometry/Point;
 
     invoke-virtual {v0}, Landroid/filterfw/geometry/Point;->IsInUnitRange()Z
 
     move-result v0
 
+    .line 48
     if-eqz v0, :cond_0
 
+    .line 51
     iget-object v0, p0, Landroid/filterfw/geometry/Quad;->p3:Landroid/filterfw/geometry/Point;
 
     invoke-virtual {v0}, Landroid/filterfw/geometry/Point;->IsInUnitRange()Z
 
     move-result v0
 
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
-
+    .line 48
     :goto_0
     return v0
 
@@ -164,7 +165,7 @@
     move-result-object v2
 
     .line 72
-    .local v2, xs:Ljava/util/List;,"Ljava/util/List<Ljava/lang/Float;>;"
+    .local v2, "xs":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Float;>;"
     new-array v6, v12, [Ljava/lang/Float;
 
     iget-object v7, p0, Landroid/filterfw/geometry/Quad;->p0:Landroid/filterfw/geometry/Point;
@@ -212,7 +213,7 @@
     move-result-object v5
 
     .line 73
-    .local v5, ys:Ljava/util/List;,"Ljava/util/List<Ljava/lang/Float;>;"
+    .local v5, "ys":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Float;>;"
     invoke-static {v2}, Ljava/util/Collections;->min(Ljava/util/Collection;)Ljava/lang/Object;
 
     move-result-object v6
@@ -224,7 +225,7 @@
     move-result v0
 
     .line 74
-    .local v0, x0:F
+    .local v0, "x0":F
     invoke-static {v5}, Ljava/util/Collections;->min(Ljava/util/Collection;)Ljava/lang/Object;
 
     move-result-object v6
@@ -236,7 +237,7 @@
     move-result v3
 
     .line 75
-    .local v3, y0:F
+    .local v3, "y0":F
     invoke-static {v2}, Ljava/util/Collections;->max(Ljava/util/Collection;)Ljava/lang/Object;
 
     move-result-object v6
@@ -248,7 +249,7 @@
     move-result v1
 
     .line 76
-    .local v1, x1:F
+    .local v1, "x1":F
     invoke-static {v5}, Ljava/util/Collections;->max(Ljava/util/Collection;)Ljava/lang/Object;
 
     move-result-object v6
@@ -260,7 +261,7 @@
     move-result v4
 
     .line 77
-    .local v4, y1:F
+    .local v4, "y1":F
     new-instance v6, Landroid/filterfw/geometry/Rectangle;
 
     sub-float v7, v1, v0
@@ -281,60 +282,60 @@
 
     new-array v1, v1, [Ljava/lang/Float;
 
-    const/4 v2, 0x0
+    iget-object v2, p0, Landroid/filterfw/geometry/Quad;->p0:Landroid/filterfw/geometry/Point;
 
-    iget-object v3, p0, Landroid/filterfw/geometry/Quad;->p0:Landroid/filterfw/geometry/Point;
+    iget v2, v2, Landroid/filterfw/geometry/Point;->y:F
 
-    iget v3, v3, Landroid/filterfw/geometry/Point;->y:F
+    invoke-static {v2}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
-    invoke-static {v3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x0
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x1
+    iget-object v2, p0, Landroid/filterfw/geometry/Quad;->p1:Landroid/filterfw/geometry/Point;
 
-    iget-object v3, p0, Landroid/filterfw/geometry/Quad;->p1:Landroid/filterfw/geometry/Point;
+    iget v2, v2, Landroid/filterfw/geometry/Point;->y:F
 
-    iget v3, v3, Landroid/filterfw/geometry/Point;->y:F
+    invoke-static {v2}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
-    invoke-static {v3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x1
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x2
+    iget-object v2, p0, Landroid/filterfw/geometry/Quad;->p2:Landroid/filterfw/geometry/Point;
 
-    iget-object v3, p0, Landroid/filterfw/geometry/Quad;->p2:Landroid/filterfw/geometry/Point;
+    iget v2, v2, Landroid/filterfw/geometry/Point;->y:F
 
-    iget v3, v3, Landroid/filterfw/geometry/Point;->y:F
+    invoke-static {v2}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
-    invoke-static {v3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x2
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x3
+    iget-object v2, p0, Landroid/filterfw/geometry/Quad;->p3:Landroid/filterfw/geometry/Point;
 
-    iget-object v3, p0, Landroid/filterfw/geometry/Quad;->p3:Landroid/filterfw/geometry/Point;
+    iget v2, v2, Landroid/filterfw/geometry/Point;->y:F
 
-    iget v3, v3, Landroid/filterfw/geometry/Point;->y:F
+    invoke-static {v2}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
-    invoke-static {v3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x3
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
     invoke-static {v1}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
 
     move-result-object v0
 
     .line 87
-    .local v0, ys:Ljava/util/List;,"Ljava/util/List<Ljava/lang/Float;>;"
+    .local v0, "ys":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Float;>;"
     invoke-static {v0}, Ljava/util/Collections;->max(Ljava/util/Collection;)Ljava/lang/Object;
 
     move-result-object v1
@@ -369,60 +370,60 @@
 
     new-array v1, v1, [Ljava/lang/Float;
 
-    const/4 v2, 0x0
+    iget-object v2, p0, Landroid/filterfw/geometry/Quad;->p0:Landroid/filterfw/geometry/Point;
 
-    iget-object v3, p0, Landroid/filterfw/geometry/Quad;->p0:Landroid/filterfw/geometry/Point;
+    iget v2, v2, Landroid/filterfw/geometry/Point;->x:F
 
-    iget v3, v3, Landroid/filterfw/geometry/Point;->x:F
+    invoke-static {v2}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
-    invoke-static {v3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x0
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x1
+    iget-object v2, p0, Landroid/filterfw/geometry/Quad;->p1:Landroid/filterfw/geometry/Point;
 
-    iget-object v3, p0, Landroid/filterfw/geometry/Quad;->p1:Landroid/filterfw/geometry/Point;
+    iget v2, v2, Landroid/filterfw/geometry/Point;->x:F
 
-    iget v3, v3, Landroid/filterfw/geometry/Point;->x:F
+    invoke-static {v2}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
-    invoke-static {v3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x1
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x2
+    iget-object v2, p0, Landroid/filterfw/geometry/Quad;->p2:Landroid/filterfw/geometry/Point;
 
-    iget-object v3, p0, Landroid/filterfw/geometry/Quad;->p2:Landroid/filterfw/geometry/Point;
+    iget v2, v2, Landroid/filterfw/geometry/Point;->x:F
 
-    iget v3, v3, Landroid/filterfw/geometry/Point;->x:F
+    invoke-static {v2}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
-    invoke-static {v3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x2
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x3
+    iget-object v2, p0, Landroid/filterfw/geometry/Quad;->p3:Landroid/filterfw/geometry/Point;
 
-    iget-object v3, p0, Landroid/filterfw/geometry/Quad;->p3:Landroid/filterfw/geometry/Point;
+    iget v2, v2, Landroid/filterfw/geometry/Point;->x:F
 
-    iget v3, v3, Landroid/filterfw/geometry/Point;->x:F
+    invoke-static {v2}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
-    invoke-static {v3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x3
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
     invoke-static {v1}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
 
     move-result-object v0
 
     .line 82
-    .local v0, xs:Ljava/util/List;,"Ljava/util/List<Ljava/lang/Float;>;"
+    .local v0, "xs":Ljava/util/List;, "Ljava/util/List<Ljava/lang/Float;>;"
     invoke-static {v0}, Ljava/util/Collections;->max(Ljava/util/Collection;)Ljava/lang/Object;
 
     move-result-object v1
@@ -450,7 +451,7 @@
 
 .method public scaled(F)Landroid/filterfw/geometry/Quad;
     .locals 5
-    .parameter "s"
+    .param p1, "s"    # F
 
     .prologue
     .line 63
@@ -487,8 +488,8 @@
 
 .method public scaled(FF)Landroid/filterfw/geometry/Quad;
     .locals 5
-    .parameter "x"
-    .parameter "y"
+    .param p1, "x"    # F
+    .param p2, "y"    # F
 
     .prologue
     .line 67
@@ -544,7 +545,7 @@
 
     move-result-object v0
 
-    const-string v1, ", "
+    const-string/jumbo v1, ", "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -556,7 +557,7 @@
 
     move-result-object v0
 
-    const-string v1, ", "
+    const-string/jumbo v1, ", "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -568,7 +569,7 @@
 
     move-result-object v0
 
-    const-string v1, ", "
+    const-string/jumbo v1, ", "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -595,8 +596,8 @@
 
 .method public translated(FF)Landroid/filterfw/geometry/Quad;
     .locals 5
-    .parameter "x"
-    .parameter "y"
+    .param p1, "x"    # F
+    .param p2, "y"    # F
 
     .prologue
     .line 59
@@ -633,7 +634,7 @@
 
 .method public translated(Landroid/filterfw/geometry/Point;)Landroid/filterfw/geometry/Quad;
     .locals 5
-    .parameter "t"
+    .param p1, "t"    # Landroid/filterfw/geometry/Point;
 
     .prologue
     .line 55

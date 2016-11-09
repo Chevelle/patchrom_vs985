@@ -35,6 +35,8 @@
 
 .field public static final THREE_GPP:I = 0x1
 
+.field public static final WEBM:I = 0x9
+
 
 # instance fields
 .field final synthetic this$0:Landroid/media/MediaRecorder;
@@ -43,10 +45,10 @@
 # direct methods
 .method private constructor <init>(Landroid/media/MediaRecorder;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/media/MediaRecorder;
 
     .prologue
-    .line 242
+    .line 313
     iput-object p1, p0, Landroid/media/MediaRecorder$OutputFormat;->this$0:Landroid/media/MediaRecorder;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

@@ -13,6 +13,12 @@
     name = "SavedState"
 .end annotation
 
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/preference/MultiCheckPreference$SavedState$1;
+    }
+.end annotation
+
 
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
@@ -36,44 +42,46 @@
     .locals 1
 
     .prologue
-    .line 315
+    .line 326
     new-instance v0, Landroid/preference/MultiCheckPreference$SavedState$1;
 
     invoke-direct {v0}, Landroid/preference/MultiCheckPreference$SavedState$1;-><init>()V
 
+    .line 325
     sput-object v0, Landroid/preference/MultiCheckPreference$SavedState;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 307
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 301
+    .line 311
     invoke-direct {p0, p1}, Landroid/preference/Preference$BaseSavedState;-><init>(Landroid/os/Parcel;)V
 
-    .line 302
+    .line 312
     invoke-virtual {p1}, Landroid/os/Parcel;->createBooleanArray()[Z
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/preference/MultiCheckPreference$SavedState;->values:[Z
 
-    .line 303
+    .line 310
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcelable;)V
     .locals 0
-    .parameter "superState"
+    .param p1, "superState"    # Landroid/os/Parcelable;
 
     .prologue
-    .line 312
+    .line 322
     invoke-direct {p0, p1}, Landroid/preference/Preference$BaseSavedState;-><init>(Landroid/os/Parcelable;)V
 
-    .line 313
+    .line 321
     return-void
 .end method
 
@@ -81,18 +89,18 @@
 # virtual methods
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 307
+    .line 317
     invoke-super {p0, p1, p2}, Landroid/preference/Preference$BaseSavedState;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 308
+    .line 318
     iget-object v0, p0, Landroid/preference/MultiCheckPreference$SavedState;->values:[Z
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeBooleanArray([Z)V
 
-    .line 309
+    .line 316
     return-void
 .end method

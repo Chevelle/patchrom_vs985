@@ -10,8 +10,8 @@
 # direct methods
 .method public constructor <init>(Ljava/io/InputStream;Ljavax/crypto/Mac;)V
     .locals 0
-    .parameter "in"
-    .parameter "mac"
+    .param p1, "in"    # Ljava/io/InputStream;
+    .param p2, "mac"    # Ljavax/crypto/Mac;
 
     .prologue
     .line 36
@@ -20,7 +20,7 @@
     .line 38
     iput-object p2, p0, Landroid/content/pm/MacAuthenticatedInputStream;->mMac:Ljavax/crypto/Mac;
 
-    .line 39
+    .line 35
     return-void
 .end method
 
@@ -28,7 +28,7 @@
 # virtual methods
 .method public isTagEqual([B)Z
     .locals 6
-    .parameter "tag"
+    .param p1, "tag"    # [B
 
     .prologue
     const/4 v3, 0x0
@@ -41,32 +41,32 @@
     move-result-object v0
 
     .line 44
-    .local v0, actualTag:[B
+    .local v0, "actualTag":[B
     if-eqz p1, :cond_0
 
-    if-eqz v0, :cond_0
+    if-nez v0, :cond_1
 
+    .line 45
+    :cond_0
+    return v3
+
+    .line 44
+    :cond_1
     array-length v4, p1
 
     array-length v5, v0
 
-    if-eq v4, v5, :cond_1
-
-    .line 58
-    :cond_0
-    :goto_0
-    return v3
+    if-ne v4, v5, :cond_0
 
     .line 53
-    :cond_1
     const/4 v2, 0x0
 
     .line 54
-    .local v2, value:I
+    .local v2, "value":I
     const/4 v1, 0x0
 
-    .local v1, i:I
-    :goto_1
+    .local v1, "i":I
+    :goto_0
     array-length v4, p1
 
     if-ge v1, v4, :cond_2
@@ -83,15 +83,16 @@
     .line 54
     add-int/lit8 v1, v1, 0x1
 
-    goto :goto_1
+    goto :goto_0
 
     .line 58
     :cond_2
-    if-nez v2, :cond_0
+    if-nez v2, :cond_3
 
     const/4 v3, 0x1
 
-    goto :goto_0
+    :cond_3
+    return v3
 .end method
 
 .method public read()I
@@ -109,7 +110,7 @@
     move-result v0
 
     .line 64
-    .local v0, b:I
+    .local v0, "b":I
     if-ltz v0, :cond_0
 
     .line 65
@@ -126,9 +127,9 @@
 
 .method public read([BII)I
     .locals 2
-    .parameter "buffer"
-    .parameter "offset"
-    .parameter "count"
+    .param p1, "buffer"    # [B
+    .param p2, "offset"    # I
+    .param p3, "count"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -142,7 +143,7 @@
     move-result v0
 
     .line 73
-    .local v0, numRead:I
+    .local v0, "numRead":I
     if-lez v0, :cond_0
 
     .line 74

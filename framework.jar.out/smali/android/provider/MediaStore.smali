@@ -6,12 +6,12 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/provider/MediaStore$Video;,
-        Landroid/provider/MediaStore$Audio;,
-        Landroid/provider/MediaStore$Images;,
-        Landroid/provider/MediaStore$InternalThumbnails;,
+        Landroid/provider/MediaStore$MediaColumns;,
         Landroid/provider/MediaStore$Files;,
-        Landroid/provider/MediaStore$MediaColumns;
+        Landroid/provider/MediaStore$InternalThumbnails;,
+        Landroid/provider/MediaStore$Images;,
+        Landroid/provider/MediaStore$Audio;,
+        Landroid/provider/MediaStore$Video;
     }
 .end annotation
 
@@ -40,6 +40,12 @@
 .field public static final EXTRA_MEDIA_ARTIST:Ljava/lang/String; = "android.intent.extra.artist"
 
 .field public static final EXTRA_MEDIA_FOCUS:Ljava/lang/String; = "android.intent.extra.focus"
+
+.field public static final EXTRA_MEDIA_GENRE:Ljava/lang/String; = "android.intent.extra.genre"
+
+.field public static final EXTRA_MEDIA_PLAYLIST:Ljava/lang/String; = "android.intent.extra.playlist"
+
+.field public static final EXTRA_MEDIA_RADIO_CHANNEL:Ljava/lang/String; = "android.intent.extra.radio_channel"
 
 .field public static final EXTRA_MEDIA_TITLE:Ljava/lang/String; = "android.intent.extra.title"
 
@@ -76,6 +82,8 @@
 
 .field public static final MEDIA_SCANNER_VOLUME:Ljava/lang/String; = "volume"
 
+.field public static final META_DATA_STILL_IMAGE_CAMERA_PREWARM_SERVICE:Ljava/lang/String; = "android.media.still_image_camera_preview_service"
+
 .field public static final PARAM_DELETE_DATA:Ljava/lang/String; = "deletedata"
 
 .field private static final TAG:Ljava/lang/String; = "MediaStore"
@@ -90,10 +98,9 @@
     .locals 0
 
     .prologue
-    .line 48
+    .line 51
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1864
     return-void
 .end method
 
@@ -101,8 +108,8 @@
     .locals 1
 
     .prologue
-    .line 2156
-    const-string v0, "content://media/none/media_scanner"
+    .line 2234
+    const-string/jumbo v0, "content://media/none/media_scanner"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
@@ -113,17 +120,18 @@
 
 .method public static getVersion(Landroid/content/Context;)Ljava/lang/String;
     .locals 7
-    .parameter "context"
+    .param p0, "context"    # Landroid/content/Context;
 
     .prologue
     const/4 v2, 0x0
 
-    .line 2181
+    .line 2259
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v0
 
-    const-string v1, "content://media/none/version"
+    .line 2260
+    const-string/jumbo v1, "content://media/none/version"
 
     invoke-static {v1}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
@@ -135,49 +143,53 @@
 
     move-object v5, v2
 
+    .line 2259
     invoke-virtual/range {v0 .. v5}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
     move-result-object v6
 
-    .line 2184
-    .local v6, c:Landroid/database/Cursor;
-    if-eqz v6, :cond_0
+    .line 2262
+    .local v6, "c":Landroid/database/Cursor;
+    if-eqz v6, :cond_1
 
-    .line 2186
+    .line 2264
     :try_start_0
     invoke-interface {v6}, Landroid/database/Cursor;->moveToFirst()Z
 
     move-result v0
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_0
 
-    .line 2187
+    .line 2265
     const/4 v0, 0x0
 
     invoke-interface {v6, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    move-result-object v2
+    move-result-object v0
 
-    .line 2190
+    .line 2268
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
-    .line 2193
+    .line 2265
+    return-object v0
+
+    .line 2268
     :cond_0
-    :goto_0
+    invoke-interface {v6}, Landroid/database/Cursor;->close()V
+
+    .line 2271
+    :cond_1
     return-object v2
 
-    .line 2190
-    :cond_1
-    invoke-interface {v6}, Landroid/database/Cursor;->close()V
-
-    goto :goto_0
-
+    .line 2267
     :catchall_0
     move-exception v0
 
+    .line 2268
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
+    .line 2267
     throw v0
 .end method

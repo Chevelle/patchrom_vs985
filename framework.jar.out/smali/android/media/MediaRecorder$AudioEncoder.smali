@@ -27,6 +27,8 @@
 
 .field public static final HE_AAC:I = 0x4
 
+.field public static final VORBIS:I = 0x6
+
 
 # instance fields
 .field final synthetic this$0:Landroid/media/MediaRecorder;
@@ -35,10 +37,10 @@
 # direct methods
 .method private constructor <init>(Landroid/media/MediaRecorder;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/media/MediaRecorder;
 
     .prologue
-    .line 284
+    .line 358
     iput-object p1, p0, Landroid/media/MediaRecorder$AudioEncoder;->this$0:Landroid/media/MediaRecorder;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

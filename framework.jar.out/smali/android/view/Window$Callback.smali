@@ -69,6 +69,9 @@
 .method public abstract onSearchRequested()Z
 .end method
 
+.method public abstract onSearchRequested(Landroid/view/SearchEvent;)Z
+.end method
+
 .method public abstract onWindowAttributesChanged(Landroid/view/WindowManager$LayoutParams;)V
 .end method
 
@@ -76,4 +79,7 @@
 .end method
 
 .method public abstract onWindowStartingActionMode(Landroid/view/ActionMode$Callback;)Landroid/view/ActionMode;
+.end method
+
+.method public abstract onWindowStartingActionMode(Landroid/view/ActionMode$Callback;I)Landroid/view/ActionMode;
 .end method

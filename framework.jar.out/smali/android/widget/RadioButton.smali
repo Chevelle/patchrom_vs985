@@ -6,89 +6,78 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 1
-    .parameter "context"
+    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 55
+    .line 51
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Landroid/widget/RadioButton;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 56
+    .line 50
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
     .locals 1
-    .parameter "context"
-    .parameter "attrs"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "attrs"    # Landroid/util/AttributeSet;
 
     .prologue
-    .line 59
+    .line 55
     const v0, 0x101007e
 
     invoke-direct {p0, p1, p2, v0}, Landroid/widget/RadioButton;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 60
+    .line 54
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+    .locals 1
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "attrs"    # Landroid/util/AttributeSet;
+    .param p3, "defStyleAttr"    # I
+
+    .prologue
+    .line 59
+    const/4 v0, 0x0
+
+    invoke-direct {p0, p1, p2, p3, v0}, Landroid/widget/RadioButton;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;II)V
+
+    .line 58
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;II)V
     .locals 0
-    .parameter "context"
-    .parameter "attrs"
-    .parameter "defStyle"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "attrs"    # Landroid/util/AttributeSet;
+    .param p3, "defStyleAttr"    # I
+    .param p4, "defStyleRes"    # I
 
     .prologue
     .line 63
-    invoke-direct {p0, p1, p2, p3}, Landroid/widget/CompoundButton;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+    invoke-direct {p0, p1, p2, p3, p4}, Landroid/widget/CompoundButton;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;II)V
 
-    .line 64
+    .line 62
     return-void
 .end method
 
 
 # virtual methods
-.method public onInitializeAccessibilityEvent(Landroid/view/accessibility/AccessibilityEvent;)V
+.method public getAccessibilityClassName()Ljava/lang/CharSequence;
     .locals 1
-    .parameter "event"
 
     .prologue
     .line 82
-    invoke-super {p0, p1}, Landroid/widget/CompoundButton;->onInitializeAccessibilityEvent(Landroid/view/accessibility/AccessibilityEvent;)V
-
-    .line 83
     const-class v0, Landroid/widget/RadioButton;
 
     invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
 
     move-result-object v0
 
-    invoke-virtual {p1, v0}, Landroid/view/accessibility/AccessibilityEvent;->setClassName(Ljava/lang/CharSequence;)V
-
-    .line 84
-    return-void
-.end method
-
-.method public onInitializeAccessibilityNodeInfo(Landroid/view/accessibility/AccessibilityNodeInfo;)V
-    .locals 1
-    .parameter "info"
-
-    .prologue
-    .line 88
-    invoke-super {p0, p1}, Landroid/widget/CompoundButton;->onInitializeAccessibilityNodeInfo(Landroid/view/accessibility/AccessibilityNodeInfo;)V
-
-    .line 89
-    const-class v0, Landroid/widget/RadioButton;
-
-    invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-virtual {p1, v0}, Landroid/view/accessibility/AccessibilityNodeInfo;->setClassName(Ljava/lang/CharSequence;)V
-
-    .line 90
-    return-void
+    return-object v0
 .end method
 
 .method public toggle()V
@@ -105,7 +94,7 @@
     .line 76
     invoke-super {p0}, Landroid/widget/CompoundButton;->toggle()V
 
-    .line 78
+    .line 72
     :cond_0
     return-void
 .end method

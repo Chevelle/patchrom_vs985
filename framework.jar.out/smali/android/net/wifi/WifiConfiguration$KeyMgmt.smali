@@ -19,17 +19,13 @@
 
 .field public static final NONE:I = 0x0
 
-.field public static final WAPI_CERT:I = 0x6
-
-.field public static final WAPI_PSK:I = 0x5
-
 .field public static final WPA2_PSK:I = 0x4
 
 .field public static final WPA_EAP:I = 0x2
 
 .field public static final WPA_PSK:I = 0x1
 
-.field public static final strings:[Ljava/lang/String; = null
+.field public static final strings:[Ljava/lang/String;
 
 .field public static final varName:Ljava/lang/String; = "key_mgmt"
 
@@ -39,54 +35,46 @@
     .locals 3
 
     .prologue
-    const/4 v0, 0x7
+    .line 88
+    const/4 v0, 0x5
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const/4 v1, 0x0
+    const-string/jumbo v1, "NONE"
 
-    const-string v2, "NONE"
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x1
+    const-string/jumbo v1, "WPA_PSK"
 
-    const-string v2, "WPA_PSK"
+    const/4 v2, 0x1
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x2
+    const-string/jumbo v1, "WPA_EAP"
 
-    const-string v2, "WPA_EAP"
+    const/4 v2, 0x2
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x3
+    const-string/jumbo v1, "IEEE8021X"
 
-    const-string v2, "IEEE8021X"
+    const/4 v2, 0x3
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x4
+    .line 89
+    const-string/jumbo v1, "WPA2_PSK"
 
-    const-string v2, "WPA2_PSK"
+    const/4 v2, 0x4
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x5
-
-    const-string v2, "WAPI_PSK"
-
-    aput-object v2, v0, v1
-
-    const/4 v1, 0x6
-
-    const-string v2, "WAPI_CERT"
-
-    aput-object v2, v0, v1
-
+    .line 88
     sput-object v0, Landroid/net/wifi/WifiConfiguration$KeyMgmt;->strings:[Ljava/lang/String;
 
+    .line 67
     return-void
 .end method
 
@@ -94,7 +82,7 @@
     .locals 0
 
     .prologue
-    .line 52
+    .line 68
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

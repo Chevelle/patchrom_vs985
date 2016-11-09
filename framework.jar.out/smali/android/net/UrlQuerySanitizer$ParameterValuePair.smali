@@ -25,12 +25,12 @@
 # direct methods
 .method public constructor <init>(Landroid/net/UrlQuerySanitizer;Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter "parameter"
-    .parameter "value"
+    .param p1, "this$0"    # Landroid/net/UrlQuerySanitizer;
+    .param p2, "parameter"    # Ljava/lang/String;
+    .param p3, "value"    # Ljava/lang/String;
 
     .prologue
-    .line 75
+    .line 74
     iput-object p1, p0, Landroid/net/UrlQuerySanitizer$ParameterValuePair;->this$0:Landroid/net/UrlQuerySanitizer;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,6 +41,6 @@
     .line 77
     iput-object p3, p0, Landroid/net/UrlQuerySanitizer$ParameterValuePair;->mValue:Ljava/lang/String;
 
-    .line 78
+    .line 75
     return-void
 .end method

@@ -30,9 +30,17 @@
 
 
 # direct methods
+.method static synthetic -wrap0(Landroid/app/MediaRouteActionProvider;)V
+    .locals 0
+
+    invoke-direct {p0}, Landroid/app/MediaRouteActionProvider;->refreshRoute()V
+
+    return-void
+.end method
+
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 1
-    .parameter "context"
+    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
     .line 57
@@ -42,7 +50,7 @@
     iput-object p1, p0, Landroid/app/MediaRouteActionProvider;->mContext:Landroid/content/Context;
 
     .line 60
-    const-string v0, "media_router"
+    const-string/jumbo v0, "media_router"
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
@@ -64,18 +72,7 @@
 
     invoke-virtual {p0, v0}, Landroid/app/MediaRouteActionProvider;->setRouteTypes(I)V
 
-    .line 67
-    return-void
-.end method
-
-.method static synthetic access$000(Landroid/app/MediaRouteActionProvider;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 45
-    invoke-direct {p0}, Landroid/app/MediaRouteActionProvider;->refreshRoute()V
-
+    .line 56
     return-void
 .end method
 
@@ -86,7 +83,7 @@
     .line 151
     invoke-virtual {p0}, Landroid/app/MediaRouteActionProvider;->refreshVisibility()V
 
-    .line 152
+    .line 150
     return-void
 .end method
 
@@ -101,8 +98,10 @@
 
     iget v1, p0, Landroid/app/MediaRouteActionProvider;->mRouteTypes:I
 
+    .line 147
     const/4 v2, 0x1
 
+    .line 146
     invoke-virtual {v0, v1, v2}, Landroid/media/MediaRouter;->isRouteAvailable(II)Z
 
     move-result v0
@@ -117,7 +116,7 @@
     .line 110
     new-instance v0, Ljava/lang/UnsupportedOperationException;
 
-    const-string v1, "Use onCreateActionView(MenuItem) instead."
+    const-string/jumbo v1, "Use onCreateActionView(MenuItem) instead."
 
     invoke-direct {v0, v1}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
 
@@ -126,7 +125,7 @@
 
 .method public onCreateActionView(Landroid/view/MenuItem;)Landroid/view/View;
     .locals 4
-    .parameter "item"
+    .param p1, "item"    # Landroid/view/MenuItem;
 
     .prologue
     .line 115
@@ -135,7 +134,7 @@
     if-eqz v0, :cond_0
 
     .line 116
-    const-string v0, "MediaRouteActionProvider"
+    const-string/jumbo v0, "MediaRouteActionProvider"
 
     const-string/jumbo v1, "onCreateActionView: this ActionProvider is already associated with a menu item. Don\'t reuse MediaRouteActionProvider instances! Abandoning the old one..."
 
@@ -177,10 +176,13 @@
 
     new-instance v1, Landroid/view/ViewGroup$LayoutParams;
 
+    .line 126
     const/4 v2, -0x2
 
+    .line 127
     const/4 v3, -0x1
 
+    .line 125
     invoke-direct {v1, v2, v3}, Landroid/view/ViewGroup$LayoutParams;-><init>(II)V
 
     invoke-virtual {v0, v1}, Landroid/app/MediaRouteButton;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
@@ -207,14 +209,13 @@
 
     move-result v0
 
-    .line 136
-    :goto_0
     return v0
 
+    .line 136
     :cond_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public overridesItemVisibility()Z
@@ -229,7 +230,7 @@
 
 .method public setExtendedSettingsClickListener(Landroid/view/View$OnClickListener;)V
     .locals 1
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/view/View$OnClickListener;
 
     .prologue
     .line 101
@@ -245,14 +246,14 @@
 
     invoke-virtual {v0, p1}, Landroid/app/MediaRouteButton;->setExtendedSettingsClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 105
+    .line 100
     :cond_0
     return-void
 .end method
 
 .method public setRouteTypes(I)V
     .locals 3
-    .parameter "types"
+    .param p1, "types"    # I
 
     .prologue
     .line 76
@@ -284,8 +285,10 @@
 
     iget-object v1, p0, Landroid/app/MediaRouteActionProvider;->mCallback:Landroid/app/MediaRouteActionProvider$MediaRouterCallback;
 
+    .line 90
     const/16 v2, 0x8
 
+    .line 89
     invoke-virtual {v0, p1, v1, v2}, Landroid/media/MediaRouter;->addCallback(ILandroid/media/MediaRouter$Callback;I)V
 
     .line 92
@@ -304,7 +307,7 @@
 
     invoke-virtual {v0, v1}, Landroid/app/MediaRouteButton;->setRouteTypes(I)V
 
-    .line 98
+    .line 75
     :cond_2
     return-void
 .end method

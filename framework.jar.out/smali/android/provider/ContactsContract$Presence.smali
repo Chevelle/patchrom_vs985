@@ -22,10 +22,10 @@
     .locals 1
 
     .prologue
-    .line 5071
+    .line 5380
     const/4 v0, 0x0
 
-    invoke-direct {p0, v0}, Landroid/provider/ContactsContract$StatusUpdates;-><init>(Landroid/provider/ContactsContract$1;)V
+    invoke-direct {p0, v0}, Landroid/provider/ContactsContract$StatusUpdates;-><init>(Landroid/provider/ContactsContract$StatusUpdates;)V
 
     return-void
 .end method

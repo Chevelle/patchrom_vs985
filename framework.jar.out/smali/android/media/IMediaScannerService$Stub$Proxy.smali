@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 79
+    .line 78
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 80
     iput-object p1, p0, Landroid/media/IMediaScannerService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 81
+    .line 78
     return-void
 .end method
 
@@ -54,16 +54,16 @@
 
     .prologue
     .line 88
-    const-string v0, "android.media.IMediaScannerService"
+    const-string/jumbo v0, "android.media.IMediaScannerService"
 
     return-object v0
 .end method
 
 .method public requestScanFile(Ljava/lang/String;Ljava/lang/String;Landroid/media/IMediaScannerListener;)V
     .locals 5
-    .parameter "path"
-    .parameter "mimeType"
-    .parameter "listener"
+    .param p1, "path"    # Ljava/lang/String;
+    .param p2, "mimeType"    # Ljava/lang/String;
+    .param p3, "listener"    # Landroid/media/IMediaScannerListener;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -71,23 +71,25 @@
     .end annotation
 
     .prologue
+    const/4 v2, 0x0
+
     .line 100
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
     .line 101
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 103
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.media.IMediaScannerService"
+    const-string/jumbo v3, "android.media.IMediaScannerService"
 
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
     .line 104
     invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
@@ -102,7 +104,7 @@
 
     move-result-object v2
 
-    :goto_0
+    :cond_0
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeStrongBinder(Landroid/os/IBinder;)V
 
     .line 107
@@ -125,31 +127,27 @@
     .line 112
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 114
+    .line 98
     return-void
 
-    .line 106
-    :cond_0
-    const/4 v2, 0x0
-
-    goto :goto_0
-
-    .line 111
+    .line 110
     :catchall_0
     move-exception v2
 
+    .line 111
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 112
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 110
     throw v2
 .end method
 
 .method public scanFile(Ljava/lang/String;Ljava/lang/String;)V
     .locals 5
-    .parameter "path"
-    .parameter "mimeType"
+    .param p1, "path"    # Ljava/lang/String;
+    .param p2, "mimeType"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -163,15 +161,15 @@
     move-result-object v0
 
     .line 125
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 127
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.media.IMediaScannerService"
+    const-string/jumbo v2, "android.media.IMediaScannerService"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -201,17 +199,19 @@
     .line 135
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 137
+    .line 122
     return-void
 
-    .line 134
+    .line 133
     :catchall_0
     move-exception v2
 
+    .line 134
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 135
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 133
     throw v2
 .end method

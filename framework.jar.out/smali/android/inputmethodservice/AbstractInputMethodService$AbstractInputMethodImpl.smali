@@ -24,7 +24,7 @@
 # direct methods
 .method public constructor <init>(Landroid/inputmethodservice/AbstractInputMethodService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/inputmethodservice/AbstractInputMethodService;
 
     .prologue
     .line 56
@@ -39,7 +39,7 @@
 # virtual methods
 .method public createSession(Landroid/view/inputmethod/InputMethod$SessionCallback;)V
     .locals 1
-    .parameter "callback"
+    .param p1, "callback"    # Landroid/view/inputmethod/InputMethod$SessionCallback;
 
     .prologue
     .line 63
@@ -51,37 +51,37 @@
 
     invoke-interface {p1, v0}, Landroid/view/inputmethod/InputMethod$SessionCallback;->sessionCreated(Landroid/view/inputmethod/InputMethodSession;)V
 
-    .line 64
+    .line 62
     return-void
 .end method
 
 .method public revokeSession(Landroid/view/inputmethod/InputMethodSession;)V
     .locals 0
-    .parameter "session"
+    .param p1, "session"    # Landroid/view/inputmethod/InputMethodSession;
 
     .prologue
     .line 81
     check-cast p1, Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodSessionImpl;
 
-    .end local p1
+    .end local p1    # "session":Landroid/view/inputmethod/InputMethodSession;
     invoke-virtual {p1}, Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodSessionImpl;->revokeSelf()V
 
-    .line 82
+    .line 80
     return-void
 .end method
 
 .method public setSessionEnabled(Landroid/view/inputmethod/InputMethodSession;Z)V
     .locals 0
-    .parameter "session"
-    .parameter "enabled"
+    .param p1, "session"    # Landroid/view/inputmethod/InputMethodSession;
+    .param p2, "enabled"    # Z
 
     .prologue
     .line 72
     check-cast p1, Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodSessionImpl;
 
-    .end local p1
+    .end local p1    # "session":Landroid/view/inputmethod/InputMethodSession;
     invoke-virtual {p1, p2}, Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodSessionImpl;->setEnabled(Z)V
 
-    .line 73
+    .line 71
     return-void
 .end method

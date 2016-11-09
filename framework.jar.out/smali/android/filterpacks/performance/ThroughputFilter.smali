@@ -23,7 +23,7 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 3
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
     const/4 v2, 0x0
@@ -31,7 +31,7 @@
     .line 44
     invoke-direct {p0, p1}, Landroid/filterfw/core/Filter;-><init>(Ljava/lang/String;)V
 
-    .line 33
+    .line 34
     const/4 v0, 0x5
 
     iput v0, p0, Landroid/filterpacks/performance/ThroughputFilter;->mPeriod:I
@@ -47,7 +47,7 @@
     .line 39
     iput v2, p0, Landroid/filterpacks/performance/ThroughputFilter;->mPeriodFrameCount:I
 
-    .line 45
+    .line 43
     return-void
 .end method
 
@@ -55,8 +55,8 @@
 # virtual methods
 .method public getOutputFormat(Ljava/lang/String;Landroid/filterfw/core/FrameFormat;)Landroid/filterfw/core/FrameFormat;
     .locals 0
-    .parameter "portName"
-    .parameter "inputFormat"
+    .param p1, "portName"    # Ljava/lang/String;
+    .param p2, "inputFormat"    # Landroid/filterfw/core/FrameFormat;
 
     .prologue
     .line 60
@@ -65,7 +65,7 @@
 
 .method public open(Landroid/filterfw/core/FilterContext;)V
     .locals 2
-    .parameter "env"
+    .param p1, "env"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
     const/4 v0, 0x0
@@ -81,25 +81,25 @@
 
     iput-wide v0, p0, Landroid/filterpacks/performance/ThroughputFilter;->mLastTime:J
 
-    .line 68
+    .line 64
     return-void
 .end method
 
 .method public process(Landroid/filterfw/core/FilterContext;)V
-    .locals 11
-    .parameter "context"
+    .locals 12
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
     .line 73
-    const-string v7, "frame"
+    const-string/jumbo v7, "frame"
 
     invoke-virtual {p0, v7}, Landroid/filterpacks/performance/ThroughputFilter;->pullInput(Ljava/lang/String;)Landroid/filterfw/core/Frame;
 
     move-result-object v2
 
     .line 74
-    .local v2, input:Landroid/filterfw/core/Frame;
-    const-string v7, "frame"
+    .local v2, "input":Landroid/filterfw/core/Frame;
+    const-string/jumbo v7, "frame"
 
     invoke-virtual {p0, v7, v2}, Landroid/filterpacks/performance/ThroughputFilter;->pushOutput(Ljava/lang/String;Landroid/filterfw/core/Frame;)V
 
@@ -118,20 +118,20 @@
     iput v7, p0, Landroid/filterpacks/performance/ThroughputFilter;->mPeriodFrameCount:I
 
     .line 81
-    iget-wide v7, p0, Landroid/filterpacks/performance/ThroughputFilter;->mLastTime:J
+    iget-wide v8, p0, Landroid/filterpacks/performance/ThroughputFilter;->mLastTime:J
 
-    const-wide/16 v9, 0x0
+    const-wide/16 v10, 0x0
 
-    cmp-long v7, v7, v9
+    cmp-long v7, v8, v10
 
     if-nez v7, :cond_0
 
     .line 82
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
-    move-result-wide v7
+    move-result-wide v8
 
-    iput-wide v7, p0, Landroid/filterpacks/performance/ThroughputFilter;->mLastTime:J
+    iput-wide v8, p0, Landroid/filterpacks/performance/ThroughputFilter;->mLastTime:J
 
     .line 84
     :cond_0
@@ -140,18 +140,18 @@
     move-result-wide v0
 
     .line 87
-    .local v0, curTime:J
-    iget-wide v7, p0, Landroid/filterpacks/performance/ThroughputFilter;->mLastTime:J
+    .local v0, "curTime":J
+    iget-wide v8, p0, Landroid/filterpacks/performance/ThroughputFilter;->mLastTime:J
 
-    sub-long v7, v0, v7
+    sub-long v8, v0, v8
 
-    iget v9, p0, Landroid/filterpacks/performance/ThroughputFilter;->mPeriod:I
+    iget v7, p0, Landroid/filterpacks/performance/ThroughputFilter;->mPeriod:I
 
-    mul-int/lit16 v9, v9, 0x3e8
+    mul-int/lit16 v7, v7, 0x3e8
 
-    int-to-long v9, v9
+    int-to-long v10, v7
 
-    cmp-long v7, v7, v9
+    cmp-long v7, v8, v10
 
     if-ltz v7, :cond_1
 
@@ -161,7 +161,7 @@
     move-result-object v3
 
     .line 89
-    .local v3, inputFormat:Landroid/filterfw/core/FrameFormat;
+    .local v3, "inputFormat":Landroid/filterfw/core/FrameFormat;
     invoke-virtual {v3}, Landroid/filterfw/core/FrameFormat;->getWidth()I
 
     move-result v7
@@ -173,19 +173,22 @@
     mul-int v4, v7, v8
 
     .line 90
-    .local v4, pixelCount:I
+    .local v4, "pixelCount":I
     new-instance v5, Landroid/filterpacks/performance/Throughput;
 
     iget v7, p0, Landroid/filterpacks/performance/ThroughputFilter;->mTotalFrameCount:I
 
+    .line 91
     iget v8, p0, Landroid/filterpacks/performance/ThroughputFilter;->mPeriodFrameCount:I
 
+    .line 92
     iget v9, p0, Landroid/filterpacks/performance/ThroughputFilter;->mPeriod:I
 
+    .line 90
     invoke-direct {v5, v7, v8, v9, v4}, Landroid/filterpacks/performance/Throughput;-><init>(IIII)V
 
     .line 94
-    .local v5, throughput:Landroid/filterpacks/performance/Throughput;
+    .local v5, "throughput":Landroid/filterpacks/performance/Throughput;
     invoke-virtual {p1}, Landroid/filterfw/core/FilterContext;->getFrameManager()Landroid/filterfw/core/FrameManager;
 
     move-result-object v7
@@ -197,7 +200,7 @@
     move-result-object v6
 
     .line 95
-    .local v6, throughputFrame:Landroid/filterfw/core/Frame;
+    .local v6, "throughputFrame":Landroid/filterfw/core/Frame;
     invoke-virtual {v6, v5}, Landroid/filterfw/core/Frame;->setObjectValue(Ljava/lang/Object;)V
 
     .line 96
@@ -213,11 +216,11 @@
 
     iput v7, p0, Landroid/filterpacks/performance/ThroughputFilter;->mPeriodFrameCount:I
 
-    .line 100
-    .end local v3           #inputFormat:Landroid/filterfw/core/FrameFormat;
-    .end local v4           #pixelCount:I
-    .end local v5           #throughput:Landroid/filterpacks/performance/Throughput;
-    .end local v6           #throughputFrame:Landroid/filterfw/core/Frame;
+    .line 71
+    .end local v3    # "inputFormat":Landroid/filterfw/core/FrameFormat;
+    .end local v4    # "pixelCount":I
+    .end local v5    # "throughput":Landroid/filterpacks/performance/Throughput;
+    .end local v6    # "throughputFrame":Landroid/filterfw/core/Frame;
     :cond_1
     return-void
 .end method
@@ -227,7 +230,7 @@
 
     .prologue
     .line 50
-    const-string v0, "frame"
+    const-string/jumbo v0, "frame"
 
     invoke-virtual {p0, v0}, Landroid/filterpacks/performance/ThroughputFilter;->addInputPort(Ljava/lang/String;)V
 
@@ -243,9 +246,9 @@
     iput-object v0, p0, Landroid/filterpacks/performance/ThroughputFilter;->mOutputFormat:Landroid/filterfw/core/FrameFormat;
 
     .line 54
-    const-string v0, "frame"
+    const-string/jumbo v0, "frame"
 
-    const-string v1, "frame"
+    const-string/jumbo v1, "frame"
 
     invoke-virtual {p0, v0, v1}, Landroid/filterpacks/performance/ThroughputFilter;->addOutputBasedOnInput(Ljava/lang/String;Ljava/lang/String;)V
 
@@ -256,6 +259,6 @@
 
     invoke-virtual {p0, v0, v1}, Landroid/filterpacks/performance/ThroughputFilter;->addOutputPort(Ljava/lang/String;Landroid/filterfw/core/FrameFormat;)V
 
-    .line 56
+    .line 48
     return-void
 .end method

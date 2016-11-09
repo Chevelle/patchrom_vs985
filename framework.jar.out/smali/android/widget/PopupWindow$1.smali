@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/widget/PopupWindow;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/PopupWindow;
 
     .prologue
-    .line 133
+    .line 164
     iput-object p1, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -43,11 +43,10 @@
     .prologue
     const/4 v6, -0x1
 
-    .line 135
+    .line 167
     iget-object v0, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
-    #getter for: Landroid/widget/PopupWindow;->mAnchor:Ljava/lang/ref/WeakReference;
-    invoke-static {v0}, Landroid/widget/PopupWindow;->access$000(Landroid/widget/PopupWindow;)Ljava/lang/ref/WeakReference;
+    invoke-static {v0}, Landroid/widget/PopupWindow;->-get2(Landroid/widget/PopupWindow;)Ljava/lang/ref/WeakReference;
 
     move-result-object v0
 
@@ -55,83 +54,75 @@
 
     iget-object v0, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
-    #getter for: Landroid/widget/PopupWindow;->mAnchor:Ljava/lang/ref/WeakReference;
-    invoke-static {v0}, Landroid/widget/PopupWindow;->access$000(Landroid/widget/PopupWindow;)Ljava/lang/ref/WeakReference;
+    invoke-static {v0}, Landroid/widget/PopupWindow;->-get2(Landroid/widget/PopupWindow;)Ljava/lang/ref/WeakReference;
 
     move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/ref/WeakReference;->get()Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object v1
 
-    check-cast v0, Landroid/view/View;
+    check-cast v1, Landroid/view/View;
 
-    move-object v1, v0
-
-    .line 136
-    .local v1, anchor:Landroid/view/View;
+    .line 168
     :goto_0
     if-eqz v1, :cond_0
 
     iget-object v0, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
-    #getter for: Landroid/widget/PopupWindow;->mPopupView:Landroid/view/View;
-    invoke-static {v0}, Landroid/widget/PopupWindow;->access$100(Landroid/widget/PopupWindow;)Landroid/view/View;
+    invoke-static {v0}, Landroid/widget/PopupWindow;->-get6(Landroid/widget/PopupWindow;)Landroid/widget/PopupWindow$PopupDecorView;
 
     move-result-object v0
 
     if-eqz v0, :cond_0
 
-    .line 137
+    .line 170
     iget-object v0, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
-    #getter for: Landroid/widget/PopupWindow;->mPopupView:Landroid/view/View;
-    invoke-static {v0}, Landroid/widget/PopupWindow;->access$100(Landroid/widget/PopupWindow;)Landroid/view/View;
+    invoke-static {v0}, Landroid/widget/PopupWindow;->-get6(Landroid/widget/PopupWindow;)Landroid/widget/PopupWindow$PopupDecorView;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+    invoke-virtual {v0}, Landroid/widget/PopupWindow$PopupDecorView;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
     move-result-object v2
 
+    .line 169
     check-cast v2, Landroid/view/WindowManager$LayoutParams;
 
-    .line 140
-    .local v2, p:Landroid/view/WindowManager$LayoutParams;
+    .line 172
+    .local v2, "p":Landroid/view/WindowManager$LayoutParams;
     iget-object v7, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
     iget-object v0, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
     iget-object v3, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
-    #getter for: Landroid/widget/PopupWindow;->mAnchorXoff:I
-    invoke-static {v3}, Landroid/widget/PopupWindow;->access$200(Landroid/widget/PopupWindow;)I
+    invoke-static {v3}, Landroid/widget/PopupWindow;->-get3(Landroid/widget/PopupWindow;)I
 
     move-result v3
 
     iget-object v4, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
-    #getter for: Landroid/widget/PopupWindow;->mAnchorYoff:I
-    invoke-static {v4}, Landroid/widget/PopupWindow;->access$300(Landroid/widget/PopupWindow;)I
+    invoke-static {v4}, Landroid/widget/PopupWindow;->-get4(Landroid/widget/PopupWindow;)I
 
     move-result v4
 
+    .line 173
     iget-object v5, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
-    #getter for: Landroid/widget/PopupWindow;->mAnchoredGravity:I
-    invoke-static {v5}, Landroid/widget/PopupWindow;->access$400(Landroid/widget/PopupWindow;)I
+    invoke-static {v5}, Landroid/widget/PopupWindow;->-get5(Landroid/widget/PopupWindow;)I
 
     move-result v5
 
-    #calls: Landroid/widget/PopupWindow;->findDropDownPosition(Landroid/view/View;Landroid/view/WindowManager$LayoutParams;III)Z
-    invoke-static/range {v0 .. v5}, Landroid/widget/PopupWindow;->access$500(Landroid/widget/PopupWindow;Landroid/view/View;Landroid/view/WindowManager$LayoutParams;III)Z
+    .line 172
+    invoke-static/range {v0 .. v5}, Landroid/widget/PopupWindow;->-wrap1(Landroid/widget/PopupWindow;Landroid/view/View;Landroid/view/WindowManager$LayoutParams;III)Z
 
     move-result v0
 
-    #calls: Landroid/widget/PopupWindow;->updateAboveAnchor(Z)V
-    invoke-static {v7, v0}, Landroid/widget/PopupWindow;->access$600(Landroid/widget/PopupWindow;Z)V
+    invoke-static {v7, v0}, Landroid/widget/PopupWindow;->-wrap3(Landroid/widget/PopupWindow;Z)V
 
-    .line 142
+    .line 174
     iget-object v3, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
     iget v4, v2, Landroid/view/WindowManager$LayoutParams;->x:I
@@ -144,15 +135,15 @@
 
     invoke-virtual/range {v3 .. v8}, Landroid/widget/PopupWindow;->update(IIIIZ)V
 
-    .line 144
-    .end local v2           #p:Landroid/view/WindowManager$LayoutParams;
+    .line 166
+    .end local v2    # "p":Landroid/view/WindowManager$LayoutParams;
     :cond_0
     return-void
 
-    .line 135
-    .end local v1           #anchor:Landroid/view/View;
+    .line 167
     :cond_1
     const/4 v1, 0x0
 
+    .local v1, "anchor":Landroid/view/View;
     goto :goto_0
 .end method

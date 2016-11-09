@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/net/wifi/WpsInfo$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -42,13 +50,15 @@
     .locals 1
 
     .prologue
-    .line 90
+    .line 89
     new-instance v0, Landroid/net/wifi/WpsInfo$1;
 
     invoke-direct {v0}, Landroid/net/wifi/WpsInfo$1;-><init>()V
 
+    .line 88
     sput-object v0, Landroid/net/wifi/WpsInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 27
     return-void
 .end method
 
@@ -58,51 +68,51 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 51
+    .line 49
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 52
+    .line 50
     const/4 v0, 0x4
 
     iput v0, p0, Landroid/net/wifi/WpsInfo;->setup:I
 
-    .line 53
+    .line 51
     iput-object v1, p0, Landroid/net/wifi/WpsInfo;->BSSID:Ljava/lang/String;
 
-    .line 54
+    .line 52
     iput-object v1, p0, Landroid/net/wifi/WpsInfo;->pin:Ljava/lang/String;
 
-    .line 55
+    .line 49
     return-void
 .end method
 
 .method public constructor <init>(Landroid/net/wifi/WpsInfo;)V
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/net/wifi/WpsInfo;
 
     .prologue
-    .line 74
+    .line 72
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 75
+    .line 73
     if-eqz p1, :cond_0
 
-    .line 76
+    .line 74
     iget v0, p1, Landroid/net/wifi/WpsInfo;->setup:I
 
     iput v0, p0, Landroid/net/wifi/WpsInfo;->setup:I
 
-    .line 77
+    .line 75
     iget-object v0, p1, Landroid/net/wifi/WpsInfo;->BSSID:Ljava/lang/String;
 
     iput-object v0, p0, Landroid/net/wifi/WpsInfo;->BSSID:Ljava/lang/String;
 
-    .line 78
+    .line 76
     iget-object v0, p1, Landroid/net/wifi/WpsInfo;->pin:Ljava/lang/String;
 
     iput-object v0, p0, Landroid/net/wifi/WpsInfo;->pin:Ljava/lang/String;
 
-    .line 80
+    .line 72
     :cond_0
     return-void
 .end method
@@ -113,7 +123,7 @@
     .locals 1
 
     .prologue
-    .line 70
+    .line 68
     const/4 v0, 0x0
 
     return v0
@@ -125,14 +135,14 @@
     .prologue
     const/16 v3, 0xa
 
-    .line 58
+    .line 56
     new-instance v0, Ljava/lang/StringBuffer;
 
     invoke-direct {v0}, Ljava/lang/StringBuffer;-><init>()V
 
-    .line 59
-    .local v0, sbuf:Ljava/lang/StringBuffer;
-    const-string v1, " setup: "
+    .line 57
+    .local v0, "sbuf":Ljava/lang/StringBuffer;
+    const-string/jumbo v1, " setup: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -142,11 +152,11 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuffer;->append(I)Ljava/lang/StringBuffer;
 
-    .line 60
+    .line 58
     invoke-virtual {v0, v3}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
 
-    .line 61
-    const-string v1, " BSSID: "
+    .line 59
+    const-string/jumbo v1, " BSSID: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -156,11 +166,11 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    .line 62
+    .line 60
     invoke-virtual {v0, v3}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
 
-    .line 63
-    const-string v1, " pin: "
+    .line 61
+    const-string/jumbo v1, " pin: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -170,10 +180,10 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    .line 64
+    .line 62
     invoke-virtual {v0, v3}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
 
-    .line 65
+    .line 63
     invoke-virtual {v0}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
 
     move-result-object v1
@@ -183,25 +193,25 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 84
+    .line 82
     iget v0, p0, Landroid/net/wifi/WpsInfo;->setup:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 85
+    .line 83
     iget-object v0, p0, Landroid/net/wifi/WpsInfo;->BSSID:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 86
+    .line 84
     iget-object v0, p0, Landroid/net/wifi/WpsInfo;->pin:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 87
+    .line 81
     return-void
 .end method

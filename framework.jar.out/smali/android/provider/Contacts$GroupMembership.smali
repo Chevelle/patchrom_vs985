@@ -37,7 +37,7 @@
     .end annotation
 .end field
 
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 .end field
@@ -84,23 +84,26 @@
 
     .prologue
     .line 1053
-    const-string v0, "content://contacts/groupmembership"
+    const-string/jumbo v0, "content://contacts/groupmembership"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 1052
     sput-object v0, Landroid/provider/Contacts$GroupMembership;->CONTENT_URI:Landroid/net/Uri;
 
     .line 1061
-    const-string v0, "content://contacts/groupmembershipraw"
+    const-string/jumbo v0, "content://contacts/groupmembershipraw"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 1060
     sput-object v0, Landroid/provider/Contacts$GroupMembership;->RAW_CONTENT_URI:Landroid/net/Uri;
 
+    .line 1041
     return-void
 .end method
 
@@ -108,7 +111,7 @@
     .locals 0
 
     .prologue
-    .line 1046
+    .line 1045
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

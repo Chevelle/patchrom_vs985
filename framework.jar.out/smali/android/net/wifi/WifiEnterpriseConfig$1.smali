@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 162
+    .line 179
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -40,229 +40,247 @@
 
 .method private readCertificate(Landroid/os/Parcel;)Ljava/security/cert/X509Certificate;
     .locals 6
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 196
+    .line 214
     const/4 v2, 0x0
 
-    .line 197
-    .local v2, cert:Ljava/security/cert/X509Certificate;
+    .line 215
+    .local v2, "cert":Ljava/security/cert/X509Certificate;
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v4
 
-    .line 198
-    .local v4, len:I
+    .line 216
+    .local v4, "len":I
     if-lez v4, :cond_0
 
-    .line 200
+    .line 218
     :try_start_0
     new-array v0, v4, [B
 
-    .line 201
-    .local v0, bytes:[B
+    .line 219
+    .local v0, "bytes":[B
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->readByteArray([B)V
 
-    .line 202
-    const-string v5, "X.509"
+    .line 220
+    const-string/jumbo v5, "X.509"
 
     invoke-static {v5}, Ljava/security/cert/CertificateFactory;->getInstance(Ljava/lang/String;)Ljava/security/cert/CertificateFactory;
 
     move-result-object v1
 
-    .line 203
-    .local v1, cFactory:Ljava/security/cert/CertificateFactory;
+    .line 222
+    .local v1, "cFactory":Ljava/security/cert/CertificateFactory;
     new-instance v5, Ljava/io/ByteArrayInputStream;
 
     invoke-direct {v5, v0}, Ljava/io/ByteArrayInputStream;-><init>([B)V
 
+    .line 221
     invoke-virtual {v1, v5}, Ljava/security/cert/CertificateFactory;->generateCertificate(Ljava/io/InputStream;)Ljava/security/cert/Certificate;
 
     move-result-object v2
 
-    .end local v2           #cert:Ljava/security/cert/X509Certificate;
+    .end local v2    # "cert":Ljava/security/cert/X509Certificate;
     check-cast v2, Ljava/security/cert/X509Certificate;
     :try_end_0
     .catch Ljava/security/cert/CertificateException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 209
-    .end local v0           #bytes:[B
-    .end local v1           #cFactory:Ljava/security/cert/CertificateFactory;
-    .restart local v2       #cert:Ljava/security/cert/X509Certificate;
+    .line 227
+    .end local v0    # "bytes":[B
+    .end local v1    # "cFactory":Ljava/security/cert/CertificateFactory;
     :cond_0
     :goto_0
     return-object v2
 
-    .line 205
-    .end local v2           #cert:Ljava/security/cert/X509Certificate;
+    .line 223
     :catch_0
     move-exception v3
 
-    .line 206
-    .local v3, e:Ljava/security/cert/CertificateException;
+    .line 224
+    .local v3, "e":Ljava/security/cert/CertificateException;
     const/4 v2, 0x0
 
-    .restart local v2       #cert:Ljava/security/cert/X509Certificate;
+    .restart local v2    # "cert":Ljava/security/cert/X509Certificate;
     goto :goto_0
 .end method
 
 
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/net/wifi/WifiEnterpriseConfig;
-    .locals 12
-    .parameter "in"
+    .locals 14
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 164
-    new-instance v4, Landroid/net/wifi/WifiEnterpriseConfig;
+    .line 181
+    new-instance v5, Landroid/net/wifi/WifiEnterpriseConfig;
 
-    invoke-direct {v4}, Landroid/net/wifi/WifiEnterpriseConfig;-><init>()V
+    invoke-direct {v5}, Landroid/net/wifi/WifiEnterpriseConfig;-><init>()V
 
-    .line 165
-    .local v4, enterpriseConfig:Landroid/net/wifi/WifiEnterpriseConfig;
+    .line 182
+    .local v5, "enterpriseConfig":Landroid/net/wifi/WifiEnterpriseConfig;
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v2
 
-    .line 166
-    .local v2, count:I
-    const/4 v5, 0x0
+    .line 183
+    .local v2, "count":I
+    const/4 v6, 0x0
 
-    .local v5, i:I
+    .local v6, "i":I
     :goto_0
-    if-ge v5, v2, :cond_0
+    if-ge v6, v2, :cond_0
 
-    .line 167
+    .line 184
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
-    move-result-object v6
+    move-result-object v7
 
-    .line 168
-    .local v6, key:Ljava/lang/String;
+    .line 185
+    .local v7, "key":Ljava/lang/String;
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v10
-
-    .line 169
-    .local v10, value:Ljava/lang/String;
-    #getter for: Landroid/net/wifi/WifiEnterpriseConfig;->mFields:Ljava/util/HashMap;
-    invoke-static {v4}, Landroid/net/wifi/WifiEnterpriseConfig;->access$000(Landroid/net/wifi/WifiEnterpriseConfig;)Ljava/util/HashMap;
 
     move-result-object v11
 
-    invoke-virtual {v11, v6, v10}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .line 186
+    .local v11, "value":Ljava/lang/String;
+    invoke-static {v5}, Landroid/net/wifi/WifiEnterpriseConfig;->-get0(Landroid/net/wifi/WifiEnterpriseConfig;)Ljava/util/HashMap;
 
-    .line 166
-    add-int/lit8 v5, v5, 0x1
+    move-result-object v12
+
+    invoke-virtual {v12, v7, v11}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 183
+    add-int/lit8 v6, v6, 0x1
 
     goto :goto_0
 
-    .line 172
-    .end local v6           #key:Ljava/lang/String;
-    .end local v10           #value:Ljava/lang/String;
+    .line 189
+    .end local v7    # "key":Ljava/lang/String;
+    .end local v11    # "value":Ljava/lang/String;
     :cond_0
     invoke-direct {p0, p1}, Landroid/net/wifi/WifiEnterpriseConfig$1;->readCertificate(Landroid/os/Parcel;)Ljava/security/cert/X509Certificate;
 
-    move-result-object v11
+    move-result-object v12
 
-    #setter for: Landroid/net/wifi/WifiEnterpriseConfig;->mCaCert:Ljava/security/cert/X509Certificate;
-    invoke-static {v4, v11}, Landroid/net/wifi/WifiEnterpriseConfig;->access$102(Landroid/net/wifi/WifiEnterpriseConfig;Ljava/security/cert/X509Certificate;)Ljava/security/cert/X509Certificate;
+    invoke-static {v5, v12}, Landroid/net/wifi/WifiEnterpriseConfig;->-set0(Landroid/net/wifi/WifiEnterpriseConfig;Ljava/security/cert/X509Certificate;)Ljava/security/cert/X509Certificate;
 
-    .line 174
-    const/4 v9, 0x0
+    .line 191
+    const/4 v10, 0x0
 
-    .line 175
-    .local v9, userKey:Ljava/security/PrivateKey;
+    .line 192
+    .local v10, "userKey":Ljava/security/PrivateKey;
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
-    move-result v8
+    move-result v9
 
-    .line 176
-    .local v8, len:I
-    if-lez v8, :cond_1
+    .line 193
+    .local v9, "len":I
+    if-lez v9, :cond_1
 
-    .line 178
+    .line 195
     :try_start_0
-    new-array v1, v8, [B
+    new-array v1, v9, [B
 
-    .line 179
-    .local v1, bytes:[B
+    .line 196
+    .local v1, "bytes":[B
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->readByteArray([B)V
 
-    .line 180
+    .line 197
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 181
-    .local v0, algorithm:Ljava/lang/String;
+    .line 198
+    .local v0, "algorithm":Ljava/lang/String;
     invoke-static {v0}, Ljava/security/KeyFactory;->getInstance(Ljava/lang/String;)Ljava/security/KeyFactory;
 
-    move-result-object v7
+    move-result-object v8
 
-    .line 182
-    .local v7, keyFactory:Ljava/security/KeyFactory;
-    new-instance v11, Ljava/security/spec/PKCS8EncodedKeySpec;
+    .line 199
+    .local v8, "keyFactory":Ljava/security/KeyFactory;
+    new-instance v12, Ljava/security/spec/PKCS8EncodedKeySpec;
 
-    invoke-direct {v11, v1}, Ljava/security/spec/PKCS8EncodedKeySpec;-><init>([B)V
+    invoke-direct {v12, v1}, Ljava/security/spec/PKCS8EncodedKeySpec;-><init>([B)V
 
-    invoke-virtual {v7, v11}, Ljava/security/KeyFactory;->generatePrivate(Ljava/security/spec/KeySpec;)Ljava/security/PrivateKey;
+    invoke-virtual {v8, v12}, Ljava/security/KeyFactory;->generatePrivate(Ljava/security/spec/KeySpec;)Ljava/security/PrivateKey;
     :try_end_0
-    .catch Ljava/security/NoSuchAlgorithmException; {:try_start_0 .. :try_end_0} :catch_0
-    .catch Ljava/security/spec/InvalidKeySpecException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/security/NoSuchAlgorithmException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/security/spec/InvalidKeySpecException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result-object v9
+    move-result-object v10
 
-    .line 190
-    .end local v0           #algorithm:Ljava/lang/String;
-    .end local v1           #bytes:[B
-    .end local v7           #keyFactory:Ljava/security/KeyFactory;
+    .line 207
+    .end local v0    # "algorithm":Ljava/lang/String;
+    .end local v1    # "bytes":[B
+    .end local v8    # "keyFactory":Ljava/security/KeyFactory;
+    .end local v10    # "userKey":Ljava/security/PrivateKey;
     :cond_1
     :goto_1
-    #setter for: Landroid/net/wifi/WifiEnterpriseConfig;->mClientPrivateKey:Ljava/security/PrivateKey;
-    invoke-static {v4, v9}, Landroid/net/wifi/WifiEnterpriseConfig;->access$202(Landroid/net/wifi/WifiEnterpriseConfig;Ljava/security/PrivateKey;)Ljava/security/PrivateKey;
+    invoke-static {v5, v10}, Landroid/net/wifi/WifiEnterpriseConfig;->-set2(Landroid/net/wifi/WifiEnterpriseConfig;Ljava/security/PrivateKey;)Ljava/security/PrivateKey;
 
-    .line 191
+    .line 208
     invoke-direct {p0, p1}, Landroid/net/wifi/WifiEnterpriseConfig$1;->readCertificate(Landroid/os/Parcel;)Ljava/security/cert/X509Certificate;
 
-    move-result-object v11
+    move-result-object v12
 
-    #setter for: Landroid/net/wifi/WifiEnterpriseConfig;->mClientCertificate:Ljava/security/cert/X509Certificate;
-    invoke-static {v4, v11}, Landroid/net/wifi/WifiEnterpriseConfig;->access$302(Landroid/net/wifi/WifiEnterpriseConfig;Ljava/security/cert/X509Certificate;)Ljava/security/cert/X509Certificate;
+    invoke-static {v5, v12}, Landroid/net/wifi/WifiEnterpriseConfig;->-set1(Landroid/net/wifi/WifiEnterpriseConfig;Ljava/security/cert/X509Certificate;)Ljava/security/cert/X509Certificate;
 
-    .line 192
-    return-object v4
+    .line 209
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
-    .line 183
+    move-result v12
+
+    const/4 v13, 0x1
+
+    if-ne v12, v13, :cond_2
+
+    const/4 v12, 0x1
+
+    :goto_2
+    invoke-static {v5, v12}, Landroid/net/wifi/WifiEnterpriseConfig;->-set3(Landroid/net/wifi/WifiEnterpriseConfig;Z)Z
+
+    .line 210
+    return-object v5
+
+    .line 202
+    .restart local v10    # "userKey":Ljava/security/PrivateKey;
     :catch_0
-    move-exception v3
+    move-exception v4
 
-    .line 184
-    .local v3, e:Ljava/security/NoSuchAlgorithmException;
-    const/4 v9, 0x0
+    .line 203
+    .local v4, "e":Ljava/security/spec/InvalidKeySpecException;
+    const/4 v10, 0x0
 
-    .line 187
     goto :goto_1
 
-    .line 185
-    .end local v3           #e:Ljava/security/NoSuchAlgorithmException;
+    .line 200
+    .end local v4    # "e":Ljava/security/spec/InvalidKeySpecException;
     :catch_1
     move-exception v3
 
-    .line 186
-    .local v3, e:Ljava/security/spec/InvalidKeySpecException;
-    const/4 v9, 0x0
+    .line 201
+    .local v3, "e":Ljava/security/NoSuchAlgorithmException;
+    const/4 v10, 0x0
 
     goto :goto_1
+
+    .line 209
+    .end local v3    # "e":Ljava/security/NoSuchAlgorithmException;
+    .end local v10    # "userKey":Ljava/security/PrivateKey;
+    :cond_2
+    const/4 v12, 0x0
+
+    goto :goto_2
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 162
+    .line 180
     invoke-virtual {p0, p1}, Landroid/net/wifi/WifiEnterpriseConfig$1;->createFromParcel(Landroid/os/Parcel;)Landroid/net/wifi/WifiEnterpriseConfig;
 
     move-result-object v0
@@ -272,10 +290,10 @@
 
 .method public newArray(I)[Landroid/net/wifi/WifiEnterpriseConfig;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 213
+    .line 231
     new-array v0, p1, [Landroid/net/wifi/WifiEnterpriseConfig;
 
     return-object v0
@@ -283,10 +301,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 162
+    .line 230
     invoke-virtual {p0, p1}, Landroid/net/wifi/WifiEnterpriseConfig$1;->newArray(I)[Landroid/net/wifi/WifiEnterpriseConfig;
 
     move-result-object v0

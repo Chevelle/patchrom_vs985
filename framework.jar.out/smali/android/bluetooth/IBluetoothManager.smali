@@ -15,6 +15,14 @@
 
 
 # virtual methods
+.method public abstract bindBluetoothProfileService(ILandroid/bluetooth/IBluetoothProfileServiceConnection;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract disable(Z)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -63,6 +71,22 @@
     .end annotation
 .end method
 
+.method public abstract isBleAppPresent()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isBleScanAlwaysAvailable()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract isEnabled()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -87,6 +111,14 @@
     .end annotation
 .end method
 
+.method public abstract unbindBluetoothProfileService(ILandroid/bluetooth/IBluetoothProfileServiceConnection;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract unregisterAdapter(Landroid/bluetooth/IBluetoothManagerCallback;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -96,6 +128,14 @@
 .end method
 
 .method public abstract unregisterStateChangeCallback(Landroid/bluetooth/IBluetoothStateChangeCallback;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract updateBleAppCount(Landroid/os/IBinder;Z)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

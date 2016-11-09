@@ -27,46 +27,46 @@
 # direct methods
 .method constructor <init>(Landroid/renderscript/Type;Landroid/renderscript/Script$KernelID;Landroid/renderscript/Script$FieldID;)V
     .locals 0
-    .parameter "t"
-    .parameter "from"
-    .parameter "to"
+    .param p1, "t"    # Landroid/renderscript/Type;
+    .param p2, "from"    # Landroid/renderscript/Script$KernelID;
+    .param p3, "to"    # Landroid/renderscript/Script$FieldID;
 
     .prologue
-    .line 65
+    .line 62
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 66
+    .line 63
     iput-object p2, p0, Landroid/renderscript/ScriptGroup$ConnectLine;->mFrom:Landroid/renderscript/Script$KernelID;
 
-    .line 67
+    .line 64
     iput-object p3, p0, Landroid/renderscript/ScriptGroup$ConnectLine;->mToF:Landroid/renderscript/Script$FieldID;
 
-    .line 68
+    .line 65
     iput-object p1, p0, Landroid/renderscript/ScriptGroup$ConnectLine;->mAllocationType:Landroid/renderscript/Type;
 
-    .line 69
+    .line 62
     return-void
 .end method
 
 .method constructor <init>(Landroid/renderscript/Type;Landroid/renderscript/Script$KernelID;Landroid/renderscript/Script$KernelID;)V
     .locals 0
-    .parameter "t"
-    .parameter "from"
-    .parameter "to"
+    .param p1, "t"    # Landroid/renderscript/Type;
+    .param p2, "from"    # Landroid/renderscript/Script$KernelID;
+    .param p3, "to"    # Landroid/renderscript/Script$KernelID;
 
     .prologue
-    .line 59
+    .line 56
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 60
+    .line 57
     iput-object p2, p0, Landroid/renderscript/ScriptGroup$ConnectLine;->mFrom:Landroid/renderscript/Script$KernelID;
 
-    .line 61
+    .line 58
     iput-object p3, p0, Landroid/renderscript/ScriptGroup$ConnectLine;->mToK:Landroid/renderscript/Script$KernelID;
 
-    .line 62
+    .line 59
     iput-object p1, p0, Landroid/renderscript/ScriptGroup$ConnectLine;->mAllocationType:Landroid/renderscript/Type;
 
-    .line 63
+    .line 56
     return-void
 .end method

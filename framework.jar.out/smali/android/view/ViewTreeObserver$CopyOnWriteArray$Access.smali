@@ -37,57 +37,46 @@
 
 
 # direct methods
-.method constructor <init>()V
-    .locals 0
-
-    .prologue
-    .line 962
-    .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access<TT;>;"
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    return-void
-.end method
-
-.method static synthetic access$000(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;)Ljava/util/ArrayList;
+.method static synthetic -get0(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;)Ljava/util/ArrayList;
     .locals 1
-    .parameter "x0"
 
-    .prologue
-    .line 962
     iget-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->mData:Ljava/util/ArrayList;
 
     return-object v0
 .end method
 
-.method static synthetic access$002(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;Ljava/util/ArrayList;)Ljava/util/ArrayList;
+.method static synthetic -set0(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;Ljava/util/ArrayList;)Ljava/util/ArrayList;
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
 
-    .prologue
-    .line 962
     iput-object p1, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->mData:Ljava/util/ArrayList;
 
     return-object p1
 .end method
 
-.method static synthetic access$102(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;I)I
+.method static synthetic -set1(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;I)I
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
 
-    .prologue
-    .line 962
     iput p1, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->mSize:I
 
     return p1
+.end method
+
+.method constructor <init>()V
+    .locals 0
+
+    .prologue
+    .line 1097
+    .local p0, "this":Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;, "Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>.Access<TT;>;"
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
 .end method
 
 
 # virtual methods
 .method get(I)Ljava/lang/Object;
     .locals 1
-    .parameter "index"
+    .param p1, "index"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I)TT;"
@@ -95,8 +84,8 @@
     .end annotation
 
     .prologue
-    .line 967
-    .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access<TT;>;"
+    .line 1102
+    .local p0, "this":Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;, "Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>.Access<TT;>;"
     iget-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->mData:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -110,8 +99,8 @@
     .locals 1
 
     .prologue
-    .line 971
-    .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access<TT;>;"
+    .line 1106
+    .local p0, "this":Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;, "Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>.Access<TT;>;"
     iget v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->mSize:I
 
     return v0

@@ -16,9 +16,15 @@
     name = "RemoteDisplayInfo"
 .end annotation
 
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/media/RemoteDisplayState$RemoteDisplayInfo$1;
+    }
+.end annotation
+
 
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -67,19 +73,21 @@
     .locals 1
 
     .prologue
-    .line 176
+    .line 177
     new-instance v0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo$1;
 
     invoke-direct {v0}, Landroid/media/RemoteDisplayState$RemoteDisplayInfo$1;-><init>()V
 
+    .line 176
     sput-object v0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 89
     return-void
 .end method
 
 .method public constructor <init>(Landroid/media/RemoteDisplayState$RemoteDisplayInfo;)V
     .locals 1
-    .parameter "other"
+    .param p1, "other"    # Landroid/media/RemoteDisplayState$RemoteDisplayInfo;
 
     .prologue
     .line 119
@@ -125,13 +133,13 @@
 
     iput v0, p0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->presentationDisplayId:I
 
-    .line 128
+    .line 119
     return-void
 .end method
 
 .method constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 130
@@ -193,13 +201,13 @@
 
     iput v0, p0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->presentationDisplayId:I
 
-    .line 139
+    .line 130
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 1
-    .parameter "id"
+    .param p1, "id"    # Ljava/lang/String;
 
     .prologue
     const/4 v0, 0x0
@@ -221,7 +229,7 @@
 
     iput v0, p0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->presentationDisplayId:I
 
-    .line 117
+    .line 112
     return-void
 .end method
 
@@ -238,33 +246,34 @@
 .end method
 
 .method public isValid()Z
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v0, 0x0
+
     .line 142
-    iget-object v0, p0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->id:Ljava/lang/String;
+    iget-object v1, p0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->id:Ljava/lang/String;
 
-    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_0
 
-    iget-object v0, p0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->name:Ljava/lang/String;
+    iget-object v1, p0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->name:Ljava/lang/String;
 
-    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_0
+    if-eqz v1, :cond_1
 
-    const/4 v0, 0x1
-
+    :cond_0
     :goto_0
     return v0
 
-    :cond_0
-    const/4 v0, 0x0
+    :cond_1
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method
@@ -278,7 +287,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "RemoteDisplayInfo{ id="
+    const-string/jumbo v1, "RemoteDisplayInfo{ id="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -290,92 +299,122 @@
 
     move-result-object v0
 
-    const-string v1, ", name="
+    .line 165
+    const-string/jumbo v1, ", name="
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 165
     iget-object v1, p0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->name:Ljava/lang/String;
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", description="
+    .line 166
+    const-string/jumbo v1, ", description="
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 166
     iget-object v1, p0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->description:Ljava/lang/String;
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", status="
+    .line 167
+    const-string/jumbo v1, ", status="
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 167
     iget v1, p0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->status:I
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", volume="
+    .line 168
+    const-string/jumbo v1, ", volume="
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 168
     iget v1, p0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->volume:I
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", volumeMax="
+    .line 169
+    const-string/jumbo v1, ", volumeMax="
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 169
     iget v1, p0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->volumeMax:I
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", volumeHandling="
+    .line 170
+    const-string/jumbo v1, ", volumeHandling="
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 170
     iget v1, p0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->volumeHandling:I
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", presentationDisplayId="
+    .line 171
+    const-string/jumbo v1, ", presentationDisplayId="
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 171
     iget v1, p0, Landroid/media/RemoteDisplayState$RemoteDisplayInfo;->presentationDisplayId:I
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " }"
+    .line 172
+    const-string/jumbo v1, " }"
 
+    .line 164
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -389,8 +428,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 152
@@ -433,6 +472,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 160
+    .line 151
     return-void
 .end method

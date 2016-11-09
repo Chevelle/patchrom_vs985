@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/widget/NumberPicker;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/NumberPicker;
 
     .prologue
-    .line 2165
+    .line 2288
     iput-object p1, p0, Landroid/widget/NumberPicker$BeginSoftInputOnLongPressCommand;->this$0:Landroid/widget/NumberPicker;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,23 +38,14 @@
 
 # virtual methods
 .method public run()V
-    .locals 2
+    .locals 1
 
     .prologue
-    .line 2169
+    .line 2292
     iget-object v0, p0, Landroid/widget/NumberPicker$BeginSoftInputOnLongPressCommand;->this$0:Landroid/widget/NumberPicker;
 
-    #calls: Landroid/widget/NumberPicker;->showSoftInput()V
-    invoke-static {v0}, Landroid/widget/NumberPicker;->access$2700(Landroid/widget/NumberPicker;)V
+    invoke-virtual {v0}, Landroid/widget/NumberPicker;->performLongClick()Z
 
-    .line 2170
-    iget-object v0, p0, Landroid/widget/NumberPicker$BeginSoftInputOnLongPressCommand;->this$0:Landroid/widget/NumberPicker;
-
-    const/4 v1, 0x1
-
-    #setter for: Landroid/widget/NumberPicker;->mIngonreMoveEvents:Z
-    invoke-static {v0, v1}, Landroid/widget/NumberPicker;->access$2802(Landroid/widget/NumberPicker;Z)Z
-
-    .line 2171
+    .line 2291
     return-void
 .end method

@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 104
+    .line 103
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 105
     iput-object p1, p0, Landroid/app/backup/IFullBackupRestoreObserver$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 106
+    .line 103
     return-void
 .end method
 
@@ -54,14 +54,14 @@
 
     .prologue
     .line 113
-    const-string v0, "android.app.backup.IFullBackupRestoreObserver"
+    const-string/jumbo v0, "android.app.backup.IFullBackupRestoreObserver"
 
     return-object v0
 .end method
 
 .method public onBackupPackage(Ljava/lang/String;)V
     .locals 5
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -75,9 +75,9 @@
     move-result-object v0
 
     .line 140
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.app.backup.IFullBackupRestoreObserver"
+    const-string/jumbo v1, "android.app.backup.IFullBackupRestoreObserver"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -100,15 +100,17 @@
     .line 145
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 147
+    .line 136
     return-void
 
-    .line 145
+    .line 144
     :catchall_0
     move-exception v1
 
+    .line 145
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 144
     throw v1
 .end method
 
@@ -127,9 +129,9 @@
     move-result-object v0
 
     .line 155
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.app.backup.IFullBackupRestoreObserver"
+    const-string/jumbo v1, "android.app.backup.IFullBackupRestoreObserver"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -149,15 +151,17 @@
     .line 159
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 161
+    .line 151
     return-void
 
-    .line 159
+    .line 158
     :catchall_0
     move-exception v1
 
+    .line 159
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 158
     throw v1
 .end method
 
@@ -176,9 +180,9 @@
     move-result-object v0
 
     .line 202
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.app.backup.IFullBackupRestoreObserver"
+    const-string/jumbo v1, "android.app.backup.IFullBackupRestoreObserver"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -198,21 +202,23 @@
     .line 206
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 208
+    .line 198
     return-void
 
-    .line 206
+    .line 205
     :catchall_0
     move-exception v1
 
+    .line 206
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 205
     throw v1
 .end method
 
 .method public onRestorePackage(Ljava/lang/String;)V
     .locals 5
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -226,9 +232,9 @@
     move-result-object v0
 
     .line 187
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.app.backup.IFullBackupRestoreObserver"
+    const-string/jumbo v1, "android.app.backup.IFullBackupRestoreObserver"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -251,15 +257,17 @@
     .line 192
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 194
+    .line 183
     return-void
 
-    .line 192
+    .line 191
     :catchall_0
     move-exception v1
 
+    .line 192
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 191
     throw v1
 .end method
 
@@ -278,9 +286,9 @@
     move-result-object v0
 
     .line 122
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.app.backup.IFullBackupRestoreObserver"
+    const-string/jumbo v1, "android.app.backup.IFullBackupRestoreObserver"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -300,15 +308,17 @@
     .line 126
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 128
+    .line 118
     return-void
 
-    .line 126
+    .line 125
     :catchall_0
     move-exception v1
 
+    .line 126
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 125
     throw v1
 .end method
 
@@ -327,9 +337,9 @@
     move-result-object v0
 
     .line 169
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.app.backup.IFullBackupRestoreObserver"
+    const-string/jumbo v1, "android.app.backup.IFullBackupRestoreObserver"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -349,15 +359,17 @@
     .line 173
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 175
+    .line 165
     return-void
 
-    .line 173
+    .line 172
     :catchall_0
     move-exception v1
 
+    .line 173
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 172
     throw v1
 .end method
 
@@ -376,9 +388,9 @@
     move-result-object v0
 
     .line 216
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.app.backup.IFullBackupRestoreObserver"
+    const-string/jumbo v1, "android.app.backup.IFullBackupRestoreObserver"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -398,14 +410,16 @@
     .line 220
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 222
+    .line 212
     return-void
 
-    .line 220
+    .line 219
     :catchall_0
     move-exception v1
 
+    .line 220
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 219
     throw v1
 .end method

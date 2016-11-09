@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/os/ParcelableParcel$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$ClassLoaderCreator;
     .annotation system Ldalvik/annotation/Signature;
@@ -30,20 +38,22 @@
     .locals 1
 
     .prologue
-    .line 61
+    .line 62
     new-instance v0, Landroid/os/ParcelableParcel$1;
 
     invoke-direct {v0}, Landroid/os/ParcelableParcel$1;-><init>()V
 
+    .line 61
     sput-object v0, Landroid/os/ParcelableParcel;->CREATOR:Landroid/os/Parcelable$ClassLoaderCreator;
 
+    .line 23
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;Ljava/lang/ClassLoader;)V
     .locals 4
-    .parameter "src"
-    .parameter "loader"
+    .param p1, "src"    # Landroid/os/Parcel;
+    .param p2, "loader"    # Ljava/lang/ClassLoader;
 
     .prologue
     .line 32
@@ -65,13 +75,13 @@
     move-result v1
 
     .line 36
-    .local v1, size:I
+    .local v1, "size":I
     invoke-virtual {p1}, Landroid/os/Parcel;->dataPosition()I
 
     move-result v0
 
     .line 37
-    .local v0, pos:I
+    .local v0, "pos":I
     iget-object v2, p0, Landroid/os/ParcelableParcel;->mParcel:Landroid/os/Parcel;
 
     invoke-virtual {p1}, Landroid/os/Parcel;->dataPosition()I
@@ -85,13 +95,13 @@
 
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->setDataPosition(I)V
 
-    .line 39
+    .line 32
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/ClassLoader;)V
     .locals 1
-    .parameter "loader"
+    .param p1, "loader"    # Ljava/lang/ClassLoader;
 
     .prologue
     .line 27
@@ -107,7 +117,7 @@
     .line 29
     iput-object p1, p0, Landroid/os/ParcelableParcel;->mClassLoader:Ljava/lang/ClassLoader;
 
-    .line 30
+    .line 27
     return-void
 .end method
 
@@ -152,8 +162,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 3
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 57
@@ -168,16 +178,16 @@
     .line 58
     iget-object v0, p0, Landroid/os/ParcelableParcel;->mParcel:Landroid/os/Parcel;
 
-    const/4 v1, 0x0
+    iget-object v1, p0, Landroid/os/ParcelableParcel;->mParcel:Landroid/os/Parcel;
 
-    iget-object v2, p0, Landroid/os/ParcelableParcel;->mParcel:Landroid/os/Parcel;
+    invoke-virtual {v1}, Landroid/os/Parcel;->dataSize()I
 
-    invoke-virtual {v2}, Landroid/os/Parcel;->dataSize()I
+    move-result v1
 
-    move-result v2
+    const/4 v2, 0x0
 
-    invoke-virtual {p1, v0, v1, v2}, Landroid/os/Parcel;->appendFrom(Landroid/os/Parcel;II)V
+    invoke-virtual {p1, v0, v2, v1}, Landroid/os/Parcel;->appendFrom(Landroid/os/Parcel;II)V
 
-    .line 59
+    .line 56
     return-void
 .end method

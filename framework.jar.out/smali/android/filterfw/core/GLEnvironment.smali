@@ -15,11 +15,11 @@
 
     .prologue
     .line 148
-    const-string v0, "filterfw"
+    const-string/jumbo v0, "filterfw"
 
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
-    .line 149
+    .line 30
     return-void
 .end method
 
@@ -38,13 +38,13 @@
     .line 37
     invoke-direct {p0}, Landroid/filterfw/core/GLEnvironment;->nativeAllocate()Z
 
-    .line 38
+    .line 36
     return-void
 .end method
 
 .method private constructor <init>(Landroid/filterfw/core/NativeAllocatorTag;)V
     .locals 1
-    .parameter "tag"
+    .param p1, "tag"    # Landroid/filterfw/core/NativeAllocatorTag;
 
     .prologue
     .line 40
@@ -55,7 +55,7 @@
 
     iput-boolean v0, p0, Landroid/filterfw/core/GLEnvironment;->mManageContext:Z
 
-    .line 41
+    .line 40
     return-void
 .end method
 
@@ -143,16 +143,16 @@
 
     move-result-object v1
 
-    invoke-virtual {v0, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v1}, Landroid/os/Looper;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
     .line 83
-    const-string v0, "FilterFramework"
+    const-string/jumbo v0, "FilterFramework"
 
-    const-string v1, "Activating GL context in UI thread!"
+    const-string/jumbo v1, "Activating GL context in UI thread!"
 
     invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -166,25 +166,26 @@
 
     move-result v0
 
-    if-nez v0, :cond_1
+    if-eqz v0, :cond_2
+
+    .line 81
+    :cond_1
+    return-void
 
     .line 86
+    :cond_2
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not activate GLEnvironment!"
+    const-string/jumbo v1, "Could not activate GLEnvironment!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
-
-    .line 88
-    :cond_1
-    return-void
 .end method
 
 .method public activateSurfaceWithId(I)V
     .locals 3
-    .parameter "surfaceId"
+    .param p1, "surfaceId"    # I
 
     .prologue
     .line 130
@@ -201,7 +202,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Could not activate surface "
+    const-string/jumbo v2, "Could not activate surface "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -211,7 +212,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -225,7 +226,7 @@
 
     throw v0
 
-    .line 133
+    .line 129
     :cond_0
     return-void
 .end method
@@ -243,20 +244,21 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_1
+
+    .line 90
+    :cond_0
+    return-void
 
     .line 92
+    :cond_1
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not deactivate GLEnvironment!"
+    const-string/jumbo v1, "Could not deactivate GLEnvironment!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
-
-    .line 94
-    :cond_0
-    return-void
 .end method
 
 .method protected finalize()V
@@ -271,7 +273,7 @@
     .line 52
     invoke-virtual {p0}, Landroid/filterfw/core/GLEnvironment;->tearDown()V
 
-    .line 53
+    .line 51
     return-void
 .end method
 
@@ -294,13 +296,13 @@
     .line 65
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not initialize GLEnvironment with current context!"
+    const-string/jumbo v1, "Could not initialize GLEnvironment with current context!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 67
+    .line 62
     :cond_0
     return-void
 .end method
@@ -324,13 +326,13 @@
     .line 58
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not initialize GLEnvironment with new context!"
+    const-string/jumbo v1, "Could not initialize GLEnvironment with new context!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 60
+    .line 55
     :cond_0
     return-void
 .end method
@@ -361,7 +363,7 @@
 
 .method public registerSurface(Landroid/view/Surface;)I
     .locals 4
-    .parameter "surface"
+    .param p1, "surface"    # Landroid/view/Surface;
 
     .prologue
     .line 103
@@ -370,7 +372,7 @@
     move-result v0
 
     .line 104
-    .local v0, result:I
+    .local v0, "result":I
     if-gez v0, :cond_0
 
     .line 105
@@ -380,7 +382,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Error registering surface "
+    const-string/jumbo v3, "Error registering surface "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -390,7 +392,7 @@
 
     move-result-object v2
 
-    const-string v3, "!"
+    const-string/jumbo v3, "!"
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -411,7 +413,7 @@
 
 .method public registerSurfaceFromMediaRecorder(Landroid/media/MediaRecorder;)I
     .locals 4
-    .parameter "mediaRecorder"
+    .param p1, "mediaRecorder"    # Landroid/media/MediaRecorder;
 
     .prologue
     .line 121
@@ -420,7 +422,7 @@
     move-result v0
 
     .line 122
-    .local v0, result:I
+    .local v0, "result":I
     if-gez v0, :cond_0
 
     .line 123
@@ -430,7 +432,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Error registering surface from MediaRecorder"
+    const-string/jumbo v3, "Error registering surface from MediaRecorder"
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -440,8 +442,10 @@
 
     move-result-object v2
 
-    const-string v3, "!"
+    .line 124
+    const-string/jumbo v3, "!"
 
+    .line 123
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -461,9 +465,9 @@
 
 .method public registerSurfaceTexture(Landroid/graphics/SurfaceTexture;II)I
     .locals 5
-    .parameter "surfaceTexture"
-    .parameter "width"
-    .parameter "height"
+    .param p1, "surfaceTexture"    # Landroid/graphics/SurfaceTexture;
+    .param p2, "width"    # I
+    .param p3, "height"    # I
 
     .prologue
     .line 111
@@ -472,13 +476,13 @@
     invoke-direct {v1, p1}, Landroid/view/Surface;-><init>(Landroid/graphics/SurfaceTexture;)V
 
     .line 112
-    .local v1, surface:Landroid/view/Surface;
+    .local v1, "surface":Landroid/view/Surface;
     invoke-direct {p0, v1, p2, p3}, Landroid/filterfw/core/GLEnvironment;->nativeAddSurfaceWidthHeight(Landroid/view/Surface;II)I
 
     move-result v0
 
     .line 113
-    .local v0, result:I
+    .local v0, "result":I
     invoke-virtual {v1}, Landroid/view/Surface;->release()V
 
     .line 114
@@ -491,7 +495,7 @@
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "Error registering surfaceTexture "
+    const-string/jumbo v4, "Error registering surfaceTexture "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -501,7 +505,7 @@
 
     move-result-object v3
 
-    const-string v4, "!"
+    const-string/jumbo v4, "!"
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -521,8 +525,8 @@
 .end method
 
 .method public setSurfaceTimestamp(J)V
-    .locals 2
-    .parameter "timestamp"
+    .locals 3
+    .param p1, "timestamp"    # J
 
     .prologue
     .line 142
@@ -535,13 +539,13 @@
     .line 143
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not set timestamp for current surface!"
+    const-string/jumbo v1, "Could not set timestamp for current surface!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 145
+    .line 141
     :cond_0
     return-void
 .end method
@@ -560,13 +564,13 @@
     .line 98
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Error swapping EGL buffers!"
+    const-string/jumbo v1, "Error swapping EGL buffers!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 100
+    .line 96
     :cond_0
     return-void
 .end method
@@ -577,9 +581,9 @@
     .prologue
     const/4 v1, -0x1
 
-    .line 44
     monitor-enter p0
 
+    .line 44
     :try_start_0
     iget v0, p0, Landroid/filterfw/core/GLEnvironment;->glEnvId:I
 
@@ -595,13 +599,12 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 48
     :cond_0
     monitor-exit p0
 
+    .line 43
     return-void
 
-    .line 44
     :catchall_0
     move-exception v0
 
@@ -612,7 +615,7 @@
 
 .method public unregisterSurfaceId(I)V
     .locals 3
-    .parameter "surfaceId"
+    .param p1, "surfaceId"    # I
 
     .prologue
     .line 136
@@ -629,7 +632,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Could not unregister surface "
+    const-string/jumbo v2, "Could not unregister surface "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -639,7 +642,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -653,7 +656,7 @@
 
     throw v0
 
-    .line 139
+    .line 135
     :cond_0
     return-void
 .end method

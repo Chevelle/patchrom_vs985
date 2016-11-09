@@ -15,7 +15,23 @@
 
 
 # virtual methods
+.method public abstract accountAuthenticated(Landroid/accounts/Account;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract addAccount(Landroid/accounts/IAccountManagerResponse;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;ZLandroid/os/Bundle;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract addAccountAsUser(Landroid/accounts/IAccountManagerResponse;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;ZLandroid/os/Bundle;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -55,6 +71,14 @@
     .end annotation
 .end method
 
+.method public abstract copyAccountToUser(Landroid/accounts/IAccountManagerResponse;Landroid/accounts/Account;II)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract editProperties(Landroid/accounts/IAccountManagerResponse;Ljava/lang/String;Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -63,7 +87,7 @@
     .end annotation
 .end method
 
-.method public abstract getAccounts(Ljava/lang/String;)[Landroid/accounts/Account;
+.method public abstract getAccounts(Ljava/lang/String;Ljava/lang/String;)[Landroid/accounts/Account;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -71,7 +95,7 @@
     .end annotation
 .end method
 
-.method public abstract getAccountsAsUser(Ljava/lang/String;I)[Landroid/accounts/Account;
+.method public abstract getAccountsAsUser(Ljava/lang/String;ILjava/lang/String;)[Landroid/accounts/Account;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -79,7 +103,7 @@
     .end annotation
 .end method
 
-.method public abstract getAccountsByFeatures(Landroid/accounts/IAccountManagerResponse;Ljava/lang/String;[Ljava/lang/String;)V
+.method public abstract getAccountsByFeatures(Landroid/accounts/IAccountManagerResponse;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -87,7 +111,7 @@
     .end annotation
 .end method
 
-.method public abstract getAccountsByTypeForPackage(Ljava/lang/String;Ljava/lang/String;)[Landroid/accounts/Account;
+.method public abstract getAccountsByTypeForPackage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)[Landroid/accounts/Account;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -95,7 +119,7 @@
     .end annotation
 .end method
 
-.method public abstract getAccountsForPackage(Ljava/lang/String;I)[Landroid/accounts/Account;
+.method public abstract getAccountsForPackage(Ljava/lang/String;ILjava/lang/String;)[Landroid/accounts/Account;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -119,7 +143,7 @@
     .end annotation
 .end method
 
-.method public abstract getAuthenticatorTypes()[Landroid/accounts/AuthenticatorDescription;
+.method public abstract getAuthenticatorTypes(I)[Landroid/accounts/AuthenticatorDescription;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -128,6 +152,14 @@
 .end method
 
 .method public abstract getPassword(Landroid/accounts/Account;)Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getPreviousName(Landroid/accounts/Account;)Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -151,7 +183,7 @@
     .end annotation
 .end method
 
-.method public abstract hasFeatures(Landroid/accounts/IAccountManagerResponse;Landroid/accounts/Account;[Ljava/lang/String;)V
+.method public abstract hasFeatures(Landroid/accounts/IAccountManagerResponse;Landroid/accounts/Account;[Ljava/lang/String;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -175,7 +207,23 @@
     .end annotation
 .end method
 
-.method public abstract removeAccount(Landroid/accounts/IAccountManagerResponse;Landroid/accounts/Account;)V
+.method public abstract removeAccount(Landroid/accounts/IAccountManagerResponse;Landroid/accounts/Account;Z)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract removeAccountAsUser(Landroid/accounts/IAccountManagerResponse;Landroid/accounts/Account;ZI)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract removeAccountExplicitly(Landroid/accounts/Account;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -184,6 +232,22 @@
 .end method
 
 .method public abstract removeSharedAccountAsUser(Landroid/accounts/Account;I)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract renameAccount(Landroid/accounts/IAccountManagerResponse;Landroid/accounts/Account;Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract renameSharedAccountAsUser(Landroid/accounts/Account;Ljava/lang/String;I)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

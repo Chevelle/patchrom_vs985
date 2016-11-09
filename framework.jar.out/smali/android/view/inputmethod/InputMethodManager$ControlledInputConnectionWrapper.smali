@@ -23,23 +23,23 @@
 # direct methods
 .method public constructor <init>(Landroid/os/Looper;Landroid/view/inputmethod/InputConnection;Landroid/view/inputmethod/InputMethodManager;)V
     .locals 1
-    .parameter "mainLooper"
-    .parameter "conn"
-    .parameter "inputMethodManager"
+    .param p1, "mainLooper"    # Landroid/os/Looper;
+    .param p2, "conn"    # Landroid/view/inputmethod/InputConnection;
+    .param p3, "inputMethodManager"    # Landroid/view/inputmethod/InputMethodManager;
 
     .prologue
-    .line 489
+    .line 539
     invoke-direct {p0, p1, p2}, Lcom/android/internal/view/IInputConnectionWrapper;-><init>(Landroid/os/Looper;Landroid/view/inputmethod/InputConnection;)V
 
-    .line 490
+    .line 540
     iput-object p3, p0, Landroid/view/inputmethod/InputMethodManager$ControlledInputConnectionWrapper;->mParentInputMethodManager:Landroid/view/inputmethod/InputMethodManager;
 
-    .line 491
+    .line 541
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/view/inputmethod/InputMethodManager$ControlledInputConnectionWrapper;->mActive:Z
 
-    .line 492
+    .line 538
     return-void
 .end method
 
@@ -49,12 +49,12 @@
     .locals 1
 
     .prologue
-    .line 500
+    .line 550
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/view/inputmethod/InputMethodManager$ControlledInputConnectionWrapper;->mActive:Z
 
-    .line 501
+    .line 549
     return-void
 .end method
 
@@ -62,7 +62,7 @@
     .locals 1
 
     .prologue
-    .line 496
+    .line 546
     iget-object v0, p0, Landroid/view/inputmethod/InputMethodManager$ControlledInputConnectionWrapper;->mParentInputMethodManager:Landroid/view/inputmethod/InputMethodManager;
 
     iget-boolean v0, v0, Landroid/view/inputmethod/InputMethodManager;->mActive:Z
@@ -70,10 +70,6 @@
     if-eqz v0, :cond_0
 
     iget-boolean v0, p0, Landroid/view/inputmethod/InputMethodManager$ControlledInputConnectionWrapper;->mActive:Z
-
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
 
     :goto_0
     return v0

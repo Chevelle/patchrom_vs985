@@ -27,7 +27,7 @@
     .end annotation
 .end field
 
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 .end field
@@ -49,14 +49,16 @@
 
     .prologue
     .line 153
-    const-string v0, "content://contacts/settings"
+    const-string/jumbo v0, "content://contacts/settings"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 152
     sput-object v0, Landroid/provider/Contacts$Settings;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 141
     return-void
 .end method
 
@@ -64,7 +66,7 @@
     .locals 0
 
     .prologue
-    .line 146
+    .line 145
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -72,9 +74,9 @@
 
 .method public static getSetting(Landroid/content/ContentResolver;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     .locals 8
-    .parameter "cr"
-    .parameter "account"
-    .parameter "key"
+    .param p0, "cr"    # Landroid/content/ContentResolver;
+    .param p1, "account"    # Ljava/lang/String;
+    .param p2, "key"    # Ljava/lang/String;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
@@ -85,17 +87,17 @@
 
     const/4 v7, 0x0
 
-    .line 203
-    const-string v3, "key=?"
+    .line 202
+    const-string/jumbo v3, "key=?"
 
-    .line 204
-    .local v3, selectString:Ljava/lang/String;
+    .line 203
+    .local v3, "selectString":Ljava/lang/String;
     new-array v4, v0, [Ljava/lang/String;
 
     aput-object p2, v4, v7
 
-    .line 206
-    .local v4, selectArgs:[Ljava/lang/String;
+    .line 205
+    .local v4, "selectArgs":[Ljava/lang/String;
     sget-object v1, Landroid/provider/Contacts$Settings;->CONTENT_URI:Landroid/net/Uri;
 
     new-array v2, v0, [Ljava/lang/String;
@@ -110,8 +112,8 @@
 
     move-result-object v6
 
-    .line 209
-    .local v6, cursor:Landroid/database/Cursor;
+    .line 208
+    .local v6, "cursor":Landroid/database/Cursor;
     :try_start_0
     invoke-interface {v6}, Landroid/database/Cursor;->moveToNext()Z
     :try_end_0
@@ -121,13 +123,13 @@
 
     if-nez v0, :cond_0
 
-    .line 212
+    .line 211
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
-    :goto_0
+    .line 208
     return-object v5
 
-    .line 210
+    .line 209
     :cond_0
     const/4 v0, 0x0
 
@@ -136,54 +138,58 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    move-result-object v5
+    move-result-object v0
 
-    .line 212
+    .line 211
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
-    goto :goto_0
+    .line 209
+    return-object v0
 
+    .line 210
     :catchall_0
     move-exception v0
 
+    .line 211
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
+    .line 210
     throw v0
 .end method
 
 .method public static setSetting(Landroid/content/ContentResolver;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     .locals 3
-    .parameter "cr"
-    .parameter "account"
-    .parameter "key"
-    .parameter "value"
+    .param p0, "cr"    # Landroid/content/ContentResolver;
+    .param p1, "account"    # Ljava/lang/String;
+    .param p2, "key"    # Ljava/lang/String;
+    .param p3, "value"    # Ljava/lang/String;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
     .prologue
     const/4 v2, 0x0
 
-    .line 222
+    .line 221
     new-instance v0, Landroid/content/ContentValues;
 
     invoke-direct {v0}, Landroid/content/ContentValues;-><init>()V
 
-    .line 229
-    .local v0, values:Landroid/content/ContentValues;
-    const-string v1, "key"
+    .line 228
+    .local v0, "values":Landroid/content/ContentValues;
+    const-string/jumbo v1, "key"
 
     invoke-virtual {v0, v1, p2}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 230
+    .line 229
     const-string/jumbo v1, "value"
 
     invoke-virtual {v0, v1, p3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 231
+    .line 230
     sget-object v1, Landroid/provider/Contacts$Settings;->CONTENT_URI:Landroid/net/Uri;
 
     invoke-virtual {p0, v1, v0, v2, v2}, Landroid/content/ContentResolver;->update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
-    .line 232
+    .line 220
     return-void
 .end method

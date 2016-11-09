@@ -23,8 +23,8 @@
 # direct methods
 .method public constructor <init>(ILjava/lang/String;)V
     .locals 0
-    .parameter "id"
-    .parameter "name"
+    .param p1, "id"    # I
+    .param p2, "name"    # Ljava/lang/String;
 
     .prologue
     .line 260
@@ -36,6 +36,6 @@
     .line 262
     iput-object p2, p0, Landroid/media/TimedText$Font;->name:Ljava/lang/String;
 
-    .line 263
+    .line 260
     return-void
 .end method

@@ -24,10 +24,10 @@
 # direct methods
 .method private constructor <init>(Landroid/widget/SlidingDrawer;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/SlidingDrawer;
 
     .prologue
-    .line 947
+    .line 960
     iput-object p1, p0, Landroid/widget/SlidingDrawer$DrawerToggler;->this$0:Landroid/widget/SlidingDrawer;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -35,13 +35,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/widget/SlidingDrawer;Landroid/widget/SlidingDrawer$1;)V
+.method synthetic constructor <init>(Landroid/widget/SlidingDrawer;Landroid/widget/SlidingDrawer$DrawerToggler;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Landroid/widget/SlidingDrawer;
 
     .prologue
-    .line 947
     invoke-direct {p0, p1}, Landroid/widget/SlidingDrawer$DrawerToggler;-><init>(Landroid/widget/SlidingDrawer;)V
 
     return-void
@@ -51,42 +49,41 @@
 # virtual methods
 .method public onClick(Landroid/view/View;)V
     .locals 1
-    .parameter "v"
+    .param p1, "v"    # Landroid/view/View;
 
     .prologue
-    .line 949
+    .line 962
     iget-object v0, p0, Landroid/widget/SlidingDrawer$DrawerToggler;->this$0:Landroid/widget/SlidingDrawer;
 
-    #getter for: Landroid/widget/SlidingDrawer;->mLocked:Z
-    invoke-static {v0}, Landroid/widget/SlidingDrawer;->access$200(Landroid/widget/SlidingDrawer;)Z
+    invoke-static {v0}, Landroid/widget/SlidingDrawer;->-get1(Landroid/widget/SlidingDrawer;)Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 961
-    :goto_0
+    .line 963
     return-void
 
-    .line 956
+    .line 969
     :cond_0
     iget-object v0, p0, Landroid/widget/SlidingDrawer$DrawerToggler;->this$0:Landroid/widget/SlidingDrawer;
 
-    #getter for: Landroid/widget/SlidingDrawer;->mAnimateOnClick:Z
-    invoke-static {v0}, Landroid/widget/SlidingDrawer;->access$300(Landroid/widget/SlidingDrawer;)Z
+    invoke-static {v0}, Landroid/widget/SlidingDrawer;->-get0(Landroid/widget/SlidingDrawer;)Z
 
     move-result v0
 
     if-eqz v0, :cond_1
 
-    .line 957
+    .line 970
     iget-object v0, p0, Landroid/widget/SlidingDrawer$DrawerToggler;->this$0:Landroid/widget/SlidingDrawer;
 
     invoke-virtual {v0}, Landroid/widget/SlidingDrawer;->animateToggle()V
 
-    goto :goto_0
+    .line 961
+    :goto_0
+    return-void
 
-    .line 959
+    .line 972
     :cond_1
     iget-object v0, p0, Landroid/widget/SlidingDrawer$DrawerToggler;->this$0:Landroid/widget/SlidingDrawer;
 

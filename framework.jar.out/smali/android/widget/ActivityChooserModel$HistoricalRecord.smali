@@ -25,179 +25,165 @@
 # direct methods
 .method public constructor <init>(Landroid/content/ComponentName;JF)V
     .locals 0
-    .parameter "activityName"
-    .parameter "time"
-    .parameter "weight"
+    .param p1, "activityName"    # Landroid/content/ComponentName;
+    .param p2, "time"    # J
+    .param p4, "weight"    # F
 
     .prologue
-    .line 817
+    .line 818
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 818
+    .line 819
     iput-object p1, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->activity:Landroid/content/ComponentName;
 
-    .line 819
+    .line 820
     iput-wide p2, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->time:J
 
-    .line 820
+    .line 821
     iput p4, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->weight:F
 
-    .line 821
+    .line 818
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;JF)V
-    .locals 1
-    .parameter "activityName"
-    .parameter "time"
-    .parameter "weight"
+    .locals 2
+    .param p1, "activityName"    # Ljava/lang/String;
+    .param p2, "time"    # J
+    .param p4, "weight"    # F
 
     .prologue
-    .line 807
+    .line 808
     invoke-static {p1}, Landroid/content/ComponentName;->unflattenFromString(Ljava/lang/String;)Landroid/content/ComponentName;
 
     move-result-object v0
 
     invoke-direct {p0, v0, p2, p3, p4}, Landroid/widget/ActivityChooserModel$HistoricalRecord;-><init>(Landroid/content/ComponentName;JF)V
 
-    .line 808
+    .line 807
     return-void
 .end method
 
 
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
-    .locals 7
-    .parameter "obj"
+    .locals 8
+    .param p1, "obj"    # Ljava/lang/Object;
 
     .prologue
-    const/4 v1, 0x1
+    const/4 v7, 0x1
 
-    const/4 v2, 0x0
+    const/4 v6, 0x0
 
-    .line 835
-    if-ne p0, p1, :cond_1
+    .line 836
+    if-ne p0, p1, :cond_0
 
-    .line 858
-    :cond_0
-    :goto_0
-    return v1
-
-    .line 838
-    :cond_1
-    if-nez p1, :cond_2
-
-    move v1, v2
+    .line 837
+    return v7
 
     .line 839
-    goto :goto_0
+    :cond_0
+    if-nez p1, :cond_1
 
-    .line 841
-    :cond_2
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    .line 840
+    return v6
 
-    move-result-object v3
+    .line 842
+    :cond_1
+    invoke-virtual {p0}, Landroid/widget/ActivityChooserModel$HistoricalRecord;->getClass()Ljava/lang/Class;
+
+    move-result-object v1
 
     invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    move-result-object v4
+    move-result-object v2
 
-    if-eq v3, v4, :cond_3
+    if-eq v1, v2, :cond_2
 
-    move v1, v2
+    .line 843
+    return v6
 
-    .line 842
-    goto :goto_0
-
-    :cond_3
+    :cond_2
     move-object v0, p1
 
-    .line 844
+    .line 845
     check-cast v0, Landroid/widget/ActivityChooserModel$HistoricalRecord;
 
-    .line 845
-    .local v0, other:Landroid/widget/ActivityChooserModel$HistoricalRecord;
-    iget-object v3, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->activity:Landroid/content/ComponentName;
-
-    if-nez v3, :cond_4
-
     .line 846
-    iget-object v3, v0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->activity:Landroid/content/ComponentName;
+    .local v0, "other":Landroid/widget/ActivityChooserModel$HistoricalRecord;
+    iget-object v1, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->activity:Landroid/content/ComponentName;
 
-    if-eqz v3, :cond_5
-
-    move v1, v2
+    if-nez v1, :cond_3
 
     .line 847
-    goto :goto_0
+    iget-object v1, v0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->activity:Landroid/content/ComponentName;
 
-    .line 849
-    :cond_4
-    iget-object v3, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->activity:Landroid/content/ComponentName;
+    if-eqz v1, :cond_4
 
-    iget-object v4, v0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->activity:Landroid/content/ComponentName;
-
-    invoke-virtual {v3, v4}, Landroid/content/ComponentName;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_5
-
-    move v1, v2
+    .line 848
+    return v6
 
     .line 850
-    goto :goto_0
+    :cond_3
+    iget-object v1, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->activity:Landroid/content/ComponentName;
 
-    .line 852
-    :cond_5
-    iget-wide v3, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->time:J
+    iget-object v2, v0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->activity:Landroid/content/ComponentName;
 
-    iget-wide v5, v0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->time:J
+    invoke-virtual {v1, v2}, Landroid/content/ComponentName;->equals(Ljava/lang/Object;)Z
 
-    cmp-long v3, v3, v5
+    move-result v1
 
-    if-eqz v3, :cond_6
+    if-nez v1, :cond_4
 
-    move v1, v2
+    .line 851
+    return v6
 
     .line 853
-    goto :goto_0
+    :cond_4
+    iget-wide v2, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->time:J
 
-    .line 855
-    :cond_6
-    iget v3, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->weight:F
+    iget-wide v4, v0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->time:J
 
-    invoke-static {v3}, Ljava/lang/Float;->floatToIntBits(F)I
+    cmp-long v1, v2, v4
 
-    move-result v3
+    if-eqz v1, :cond_5
 
-    iget v4, v0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->weight:F
-
-    invoke-static {v4}, Ljava/lang/Float;->floatToIntBits(F)I
-
-    move-result v4
-
-    if-eq v3, v4, :cond_0
-
-    move v1, v2
+    .line 854
+    return v6
 
     .line 856
-    goto :goto_0
+    :cond_5
+    iget v1, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->weight:F
+
+    invoke-static {v1}, Ljava/lang/Float;->floatToIntBits(F)I
+
+    move-result v1
+
+    iget v2, v0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->weight:F
+
+    invoke-static {v2}, Ljava/lang/Float;->floatToIntBits(F)I
+
+    move-result v2
+
+    if-eq v1, v2, :cond_6
+
+    .line 857
+    return v6
+
+    .line 859
+    :cond_6
+    return v7
 .end method
 
 .method public hashCode()I
     .locals 8
 
     .prologue
-    .line 825
+    .line 826
     const/16 v0, 0x1f
 
-    .line 826
-    .local v0, prime:I
-    const/4 v1, 0x1
-
-    .line 827
-    .local v1, result:I
+    .line 828
+    .local v0, "prime":I
     iget-object v2, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->activity:Landroid/content/ComponentName;
 
     if-nez v2, :cond_0
@@ -207,24 +193,25 @@
     :goto_0
     add-int/lit8 v1, v2, 0x1f
 
-    .line 828
+    .line 829
+    .local v1, "result":I
     mul-int/lit8 v2, v1, 0x1f
 
-    iget-wide v3, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->time:J
+    iget-wide v4, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->time:J
 
-    iget-wide v5, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->time:J
+    iget-wide v6, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->time:J
 
-    const/16 v7, 0x20
+    const/16 v3, 0x20
 
-    ushr-long/2addr v5, v7
+    ushr-long/2addr v6, v3
 
-    xor-long/2addr v3, v5
+    xor-long/2addr v4, v6
 
-    long-to-int v3, v3
+    long-to-int v3, v4
 
     add-int v1, v2, v3
 
-    .line 829
+    .line 830
     mul-int/lit8 v2, v1, 0x1f
 
     iget v3, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->weight:F
@@ -235,10 +222,11 @@
 
     add-int v1, v2, v3
 
-    .line 830
+    .line 831
     return v1
 
-    .line 827
+    .line 828
+    .end local v1    # "result":I
     :cond_0
     iget-object v2, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->activity:Landroid/content/ComponentName;
 
@@ -250,22 +238,22 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 5
+    .locals 6
 
     .prologue
-    .line 863
+    .line 864
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 864
-    .local v0, builder:Ljava/lang/StringBuilder;
-    const-string v1, "["
+    .line 865
+    .local v0, "builder":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "["
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 865
-    const-string v1, "; activity:"
+    .line 866
+    const-string/jumbo v1, "; activity:"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -275,8 +263,8 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    .line 866
-    const-string v1, "; time:"
+    .line 867
+    const-string/jumbo v1, "; time:"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -286,8 +274,8 @@
 
     invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    .line 867
-    const-string v1, "; weight:"
+    .line 868
+    const-string/jumbo v1, "; weight:"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -297,18 +285,18 @@
 
     iget v3, p0, Landroid/widget/ActivityChooserModel$HistoricalRecord;->weight:F
 
-    float-to-double v3, v3
+    float-to-double v4, v3
 
-    invoke-direct {v2, v3, v4}, Ljava/math/BigDecimal;-><init>(D)V
+    invoke-direct {v2, v4, v5}, Ljava/math/BigDecimal;-><init>(D)V
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    .line 868
-    const-string v1, "]"
+    .line 869
+    const-string/jumbo v1, "]"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 869
+    .line 870
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1

@@ -21,8 +21,8 @@
 # direct methods
 .method constructor <init>(Landroid/view/OrientationListener;Landroid/content/Context;)V
     .locals 0
-    .parameter
-    .parameter "context"
+    .param p1, "this$0"    # Landroid/view/OrientationListener;
+    .param p2, "context"    # Landroid/content/Context;
 
     .prologue
     .line 63
@@ -31,15 +31,15 @@
     .line 64
     invoke-direct {p0, p2}, Landroid/view/OrientationEventListener;-><init>(Landroid/content/Context;)V
 
-    .line 65
+    .line 63
     return-void
 .end method
 
 .method constructor <init>(Landroid/view/OrientationListener;Landroid/content/Context;I)V
     .locals 0
-    .parameter
-    .parameter "context"
-    .parameter "rate"
+    .param p1, "this$0"    # Landroid/view/OrientationListener;
+    .param p2, "context"    # Landroid/content/Context;
+    .param p3, "rate"    # I
 
     .prologue
     .line 67
@@ -51,7 +51,7 @@
     .line 70
     invoke-virtual {p0, p1}, Landroid/view/OrientationListener$OrientationEventListenerInternal;->registerListener(Landroid/view/OrientationListener;)V
 
-    .line 71
+    .line 67
     return-void
 .end method
 
@@ -59,7 +59,7 @@
 # virtual methods
 .method public onOrientationChanged(I)V
     .locals 1
-    .parameter "orientation"
+    .param p1, "orientation"    # I
 
     .prologue
     .line 74
@@ -67,6 +67,6 @@
 
     invoke-virtual {v0, p1}, Landroid/view/OrientationListener;->onOrientationChanged(I)V
 
-    .line 75
+    .line 73
     return-void
 .end method

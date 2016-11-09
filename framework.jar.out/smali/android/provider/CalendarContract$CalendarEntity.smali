@@ -35,7 +35,7 @@
 
     .prologue
     .line 493
-    const-string v0, "content://com.android.calendar/calendar_entities"
+    const-string/jumbo v0, "content://com.android.calendar/calendar_entities"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
@@ -43,6 +43,7 @@
 
     sput-object v0, Landroid/provider/CalendarContract$CalendarEntity;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 487
     return-void
 .end method
 
@@ -58,7 +59,7 @@
 
 .method public static newEntityIterator(Landroid/database/Cursor;)Landroid/content/EntityIterator;
     .locals 1
-    .parameter "cursor"
+    .param p0, "cursor"    # Landroid/database/Cursor;
 
     .prologue
     .line 509

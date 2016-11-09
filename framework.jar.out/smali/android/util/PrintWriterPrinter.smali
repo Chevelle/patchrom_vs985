@@ -13,7 +13,7 @@
 # direct methods
 .method public constructor <init>(Ljava/io/PrintWriter;)V
     .locals 0
-    .parameter "pw"
+    .param p1, "pw"    # Ljava/io/PrintWriter;
 
     .prologue
     .line 33
@@ -22,7 +22,7 @@
     .line 34
     iput-object p1, p0, Landroid/util/PrintWriterPrinter;->mPW:Ljava/io/PrintWriter;
 
-    .line 35
+    .line 33
     return-void
 .end method
 
@@ -30,7 +30,7 @@
 # virtual methods
 .method public println(Ljava/lang/String;)V
     .locals 1
-    .parameter "x"
+    .param p1, "x"    # Ljava/lang/String;
 
     .prologue
     .line 38
@@ -38,6 +38,6 @@
 
     invoke-virtual {v0, p1}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 39
+    .line 37
     return-void
 .end method

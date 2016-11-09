@@ -23,6 +23,14 @@
     .end annotation
 .end method
 
+.method public abstract getDefaultVoiceNameFor(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getFeaturesForLanguage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -32,6 +40,24 @@
 .end method
 
 .method public abstract getLanguage()[Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getVoices()Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List",
+            "<",
+            "Landroid/speech/tts/Voice;",
+            ">;"
+        }
+    .end annotation
+
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -63,7 +89,7 @@
     .end annotation
 .end method
 
-.method public abstract playAudio(Landroid/os/IBinder;Landroid/net/Uri;ILandroid/os/Bundle;)I
+.method public abstract loadVoice(Landroid/os/IBinder;Ljava/lang/String;)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -71,7 +97,15 @@
     .end annotation
 .end method
 
-.method public abstract playSilence(Landroid/os/IBinder;JILandroid/os/Bundle;)I
+.method public abstract playAudio(Landroid/os/IBinder;Landroid/net/Uri;ILandroid/os/Bundle;Ljava/lang/String;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract playSilence(Landroid/os/IBinder;JILjava/lang/String;)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -87,7 +121,7 @@
     .end annotation
 .end method
 
-.method public abstract speak(Landroid/os/IBinder;Ljava/lang/String;ILandroid/os/Bundle;)I
+.method public abstract speak(Landroid/os/IBinder;Ljava/lang/CharSequence;ILandroid/os/Bundle;Ljava/lang/String;)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -103,7 +137,7 @@
     .end annotation
 .end method
 
-.method public abstract synthesizeToFileDescriptor(Landroid/os/IBinder;Ljava/lang/String;Landroid/os/ParcelFileDescriptor;Landroid/os/Bundle;)I
+.method public abstract synthesizeToFileDescriptor(Landroid/os/IBinder;Ljava/lang/CharSequence;Landroid/os/ParcelFileDescriptor;Landroid/os/Bundle;Ljava/lang/String;)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

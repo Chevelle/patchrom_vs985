@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/net/wifi/WpsResult;
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 80
@@ -51,7 +51,7 @@
     invoke-direct {v0}, Landroid/net/wifi/WpsResult;-><init>()V
 
     .line 81
-    .local v0, result:Landroid/net/wifi/WpsResult;
+    .local v0, "result":Landroid/net/wifi/WpsResult;
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
@@ -75,10 +75,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 78
+    .line 79
     invoke-virtual {p0, p1}, Landroid/net/wifi/WpsResult$1;->createFromParcel(Landroid/os/Parcel;)Landroid/net/wifi/WpsResult;
 
     move-result-object v0
@@ -88,7 +88,7 @@
 
 .method public newArray(I)[Landroid/net/wifi/WpsResult;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 87
@@ -99,10 +99,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 78
+    .line 86
     invoke-virtual {p0, p1}, Landroid/net/wifi/WpsResult$1;->newArray(I)[Landroid/net/wifi/WpsResult;
 
     move-result-object v0

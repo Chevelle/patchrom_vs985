@@ -16,36 +16,48 @@
 
 .method public static throwAnyException(Ljava/lang/Exception;)V
     .locals 0
-    .parameter "e"
+    .param p0, "e"    # Ljava/lang/Exception;
 
     .prologue
     .line 33
-    invoke-static {p0}, Landroid/hardware/camera2/utils/UncheckedThrow;->throwAnyImpl(Ljava/lang/Exception;)V
+    invoke-static {p0}, Landroid/hardware/camera2/utils/UncheckedThrow;->throwAnyImpl(Ljava/lang/Throwable;)V
 
-    .line 34
+    .line 28
     return-void
 .end method
 
-.method private static throwAnyImpl(Ljava/lang/Exception;)V
+.method public static throwAnyException(Ljava/lang/Throwable;)V
     .locals 0
-    .parameter "e"
+    .param p0, "e"    # Ljava/lang/Throwable;
+
+    .prologue
+    .line 45
+    invoke-static {p0}, Landroid/hardware/camera2/utils/UncheckedThrow;->throwAnyImpl(Ljava/lang/Throwable;)V
+
+    .line 40
+    return-void
+.end method
+
+.method private static throwAnyImpl(Ljava/lang/Throwable;)V
+    .locals 0
+    .param p0, "e"    # Ljava/lang/Throwable;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T:",
-            "Ljava/lang/Exception;",
+            "Ljava/lang/Throwable;",
             ">(",
-            "Ljava/lang/Exception;",
+            "Ljava/lang/Throwable;",
             ")V^TT;"
         }
     .end annotation
 
     .annotation system Ldalvik/annotation/Throws;
         value = {
-            Ljava/lang/Exception;
+            Ljava/lang/Throwable;
         }
     .end annotation
 
     .prologue
-    .line 38
+    .line 50
     throw p0
 .end method

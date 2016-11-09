@@ -170,6 +170,8 @@
 
 .field public static final TONE_DTMF_S:I = 0xa
 
+.field public static final TONE_HOLD_RECALL:I = 0x65
+
 .field public static final TONE_PROP_ACK:I = 0x19
 
 .field public static final TONE_PROP_BEEP:I = 0x18
@@ -179,6 +181,8 @@
 .field public static final TONE_PROP_NACK:I = 0x1a
 
 .field public static final TONE_PROP_PROMPT:I = 0x1b
+
+.field public static final TONE_SUPERVISORY_CH:I = 0x64
 
 .field public static final TONE_SUP_BUSY:I = 0x11
 
@@ -206,25 +210,27 @@
 
 .field public static final TONE_SUP_RINGTONE:I = 0x17
 
+.field public static final TONE_UNKNOWN:I = -0x1
+
 
 # instance fields
-.field private mNativeContext:I
+.field private mNativeContext:J
 
 
 # direct methods
 .method public constructor <init>(II)V
     .locals 0
-    .parameter "streamType"
-    .parameter "volume"
+    .param p1, "streamType"    # I
+    .param p2, "volume"    # I
 
     .prologue
-    .line 739
+    .line 756
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 740
+    .line 757
     invoke-direct {p0, p1, p2}, Landroid/media/ToneGenerator;->native_setup(II)V
 
-    .line 741
+    .line 756
     return-void
 .end method
 
@@ -240,7 +246,7 @@
     .locals 0
 
     .prologue
-    .line 887
+    .line 904
     invoke-direct {p0}, Landroid/media/ToneGenerator;->native_finalize()V
 
     return-void
@@ -254,10 +260,10 @@
 
 .method public startTone(I)Z
     .locals 1
-    .parameter "toneType"
+    .param p1, "toneType"    # I
 
     .prologue
-    .line 850
+    .line 867
     const/4 v0, -0x1
 
     invoke-virtual {p0, p1, v0}, Landroid/media/ToneGenerator;->startTone(II)Z

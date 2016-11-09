@@ -29,7 +29,7 @@
 # virtual methods
 .method public dispatchChange(Z)V
     .locals 1
-    .parameter "selfChange"
+    .param p1, "selfChange"    # Z
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
@@ -39,14 +39,14 @@
 
     invoke-virtual {p0, p1, v0}, Landroid/database/ContentObservable;->dispatchChange(ZLandroid/net/Uri;)V
 
-    .line 51
+    .line 49
     return-void
 .end method
 
 .method public dispatchChange(ZLandroid/net/Uri;)V
     .locals 4
-    .parameter "selfChange"
-    .parameter "uri"
+    .param p1, "selfChange"    # Z
+    .param p2, "uri"    # Landroid/net/Uri;
 
     .prologue
     .line 67
@@ -58,30 +58,30 @@
     :try_start_0
     iget-object v2, p0, Landroid/database/ContentObservable;->mObservers:Ljava/util/ArrayList;
 
-    invoke-virtual {v2}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
+    invoke-interface {v2}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
-    move-result-object v0
+    move-result-object v1
 
-    .local v0, i$:Ljava/util/Iterator;
+    .local v1, "observer$iterator":Ljava/util/Iterator;
     :cond_0
     :goto_0
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v2
 
     if-eqz v2, :cond_2
 
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    move-result-object v1
+    move-result-object v0
 
-    check-cast v1, Landroid/database/ContentObserver;
+    check-cast v0, Landroid/database/ContentObserver;
 
     .line 69
-    .local v1, observer:Landroid/database/ContentObserver;
+    .local v0, "observer":Landroid/database/ContentObserver;
     if-eqz p1, :cond_1
 
-    invoke-virtual {v1}, Landroid/database/ContentObserver;->deliverSelfNotifications()Z
+    invoke-virtual {v0}, Landroid/database/ContentObserver;->deliverSelfNotifications()Z
 
     move-result v2
 
@@ -89,36 +89,33 @@
 
     .line 70
     :cond_1
-    invoke-virtual {v1, p1, p2}, Landroid/database/ContentObserver;->dispatchChange(ZLandroid/net/Uri;)V
+    invoke-virtual {v0, p1, p2}, Landroid/database/ContentObserver;->dispatchChange(ZLandroid/net/Uri;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     goto :goto_0
 
-    .line 73
-    .end local v0           #i$:Ljava/util/Iterator;
-    .end local v1           #observer:Landroid/database/ContentObserver;
+    .line 67
+    .end local v0    # "observer":Landroid/database/ContentObserver;
+    .end local v1    # "observer$iterator":Ljava/util/Iterator;
     :catchall_0
     move-exception v2
 
     monitor-exit v3
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v2
 
-    .restart local v0       #i$:Ljava/util/Iterator;
+    .restart local v1    # "observer$iterator":Ljava/util/Iterator;
     :cond_2
-    :try_start_1
     monitor-exit v3
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 74
+    .line 66
     return-void
 .end method
 
 .method public notifyChange(Z)V
     .locals 4
-    .parameter "selfChange"
+    .param p1, "selfChange"    # Z
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
@@ -132,76 +129,73 @@
     :try_start_0
     iget-object v2, p0, Landroid/database/ContentObservable;->mObservers:Ljava/util/ArrayList;
 
-    invoke-virtual {v2}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
+    invoke-interface {v2}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
-    move-result-object v0
+    move-result-object v1
 
-    .local v0, i$:Ljava/util/Iterator;
+    .local v1, "observer$iterator":Ljava/util/Iterator;
     :goto_0
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v2
 
     if-eqz v2, :cond_0
 
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    move-result-object v1
+    move-result-object v0
 
-    check-cast v1, Landroid/database/ContentObserver;
+    check-cast v0, Landroid/database/ContentObserver;
 
     .line 87
-    .local v1, observer:Landroid/database/ContentObserver;
+    .local v0, "observer":Landroid/database/ContentObserver;
     const/4 v2, 0x0
 
-    invoke-virtual {v1, p1, v2}, Landroid/database/ContentObserver;->onChange(ZLandroid/net/Uri;)V
+    invoke-virtual {v0, p1, v2}, Landroid/database/ContentObserver;->onChange(ZLandroid/net/Uri;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     goto :goto_0
 
-    .line 89
-    .end local v0           #i$:Ljava/util/Iterator;
-    .end local v1           #observer:Landroid/database/ContentObserver;
+    .line 85
+    .end local v0    # "observer":Landroid/database/ContentObserver;
+    .end local v1    # "observer$iterator":Ljava/util/Iterator;
     :catchall_0
     move-exception v2
 
     monitor-exit v3
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v2
 
-    .restart local v0       #i$:Ljava/util/Iterator;
+    .restart local v1    # "observer$iterator":Ljava/util/Iterator;
     :cond_0
-    :try_start_1
     monitor-exit v3
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 90
+    .line 84
     return-void
 .end method
 
 .method public registerObserver(Landroid/database/ContentObserver;)V
     .locals 0
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/ContentObserver;
 
     .prologue
     .line 32
     invoke-super {p0, p1}, Landroid/database/Observable;->registerObserver(Ljava/lang/Object;)V
 
-    .line 33
+    .line 31
     return-void
 .end method
 
 .method public bridge synthetic registerObserver(Ljava/lang/Object;)V
     .locals 0
-    .parameter "x0"
+    .param p1, "observer"    # Ljava/lang/Object;
 
     .prologue
-    .line 26
+    .line 31
     check-cast p1, Landroid/database/ContentObserver;
 
-    .end local p1
+    .end local p1    # "observer":Ljava/lang/Object;
     invoke-virtual {p0, p1}, Landroid/database/ContentObservable;->registerObserver(Landroid/database/ContentObserver;)V
 
     return-void

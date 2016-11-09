@@ -26,41 +26,33 @@
 
 
 # direct methods
-.method constructor <init>(Landroid/widget/NumberPicker;)V
+.method static synthetic -set0(Landroid/widget/NumberPicker$SetSelectionCommand;I)I
     .locals 0
-    .parameter
 
-    .prologue
-    .line 2117
-    iput-object p1, p0, Landroid/widget/NumberPicker$SetSelectionCommand;->this$0:Landroid/widget/NumberPicker;
+    iput p1, p0, Landroid/widget/NumberPicker$SetSelectionCommand;->mSelectionEnd:I
 
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    return-void
+    return p1
 .end method
 
-.method static synthetic access$602(Landroid/widget/NumberPicker$SetSelectionCommand;I)I
+.method static synthetic -set1(Landroid/widget/NumberPicker$SetSelectionCommand;I)I
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
 
-    .prologue
-    .line 2117
     iput p1, p0, Landroid/widget/NumberPicker$SetSelectionCommand;->mSelectionStart:I
 
     return p1
 .end method
 
-.method static synthetic access$702(Landroid/widget/NumberPicker$SetSelectionCommand;I)I
+.method constructor <init>(Landroid/widget/NumberPicker;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Landroid/widget/NumberPicker;
 
     .prologue
-    .line 2117
-    iput p1, p0, Landroid/widget/NumberPicker$SetSelectionCommand;->mSelectionEnd:I
+    .line 2240
+    iput-object p1, p0, Landroid/widget/NumberPicker$SetSelectionCommand;->this$0:Landroid/widget/NumberPicker;
 
-    return p1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
 .end method
 
 
@@ -69,11 +61,10 @@
     .locals 3
 
     .prologue
-    .line 2123
+    .line 2246
     iget-object v0, p0, Landroid/widget/NumberPicker$SetSelectionCommand;->this$0:Landroid/widget/NumberPicker;
 
-    #getter for: Landroid/widget/NumberPicker;->mInputText:Landroid/widget/EditText;
-    invoke-static {v0}, Landroid/widget/NumberPicker;->access$100(Landroid/widget/NumberPicker;)Landroid/widget/EditText;
+    invoke-static {v0}, Landroid/widget/NumberPicker;->-get7(Landroid/widget/NumberPicker;)Landroid/widget/EditText;
 
     move-result-object v0
 
@@ -83,6 +74,6 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/widget/EditText;->setSelection(II)V
 
-    .line 2124
+    .line 2245
     return-void
 .end method

@@ -24,7 +24,13 @@
 
 
 # instance fields
-.field public final persistentServices:Ljava/util/Map;
+.field mPersistentServicesFileDidNotExist:Z
+    .annotation build Lcom/android/internal/annotations/GuardedBy;
+        value = "mServicesLock"
+    .end annotation
+.end field
+
+.field final persistentServices:Ljava/util/Map;
     .annotation build Lcom/android/internal/annotations/GuardedBy;
         value = "mServicesLock"
     .end annotation
@@ -39,7 +45,7 @@
     .end annotation
 .end field
 
-.field public services:Ljava/util/Map;
+.field services:Ljava/util/Map;
     .annotation build Lcom/android/internal/annotations/GuardedBy;
         value = "mServicesLock"
     .end annotation
@@ -60,32 +66,36 @@
     .locals 1
 
     .prologue
-    .line 87
-    .local p0, this:Landroid/content/pm/RegisteredServicesCache$UserServices;,"Landroid/content/pm/RegisteredServicesCache$UserServices<TV;>;"
+    .line 92
+    .local p0, "this":Landroid/content/pm/RegisteredServicesCache$UserServices;, "Landroid/content/pm/RegisteredServicesCache<TV;>.UserServices<TV;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 88
+    .line 94
     invoke-static {}, Lcom/google/android/collect/Maps;->newHashMap()Ljava/util/HashMap;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/content/pm/RegisteredServicesCache$UserServices;->persistentServices:Ljava/util/Map;
 
-    .line 90
+    .line 96
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/content/pm/RegisteredServicesCache$UserServices;->services:Ljava/util/Map;
 
+    .line 98
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Landroid/content/pm/RegisteredServicesCache$UserServices;->mPersistentServicesFileDidNotExist:Z
+
+    .line 92
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/content/pm/RegisteredServicesCache$1;)V
+.method synthetic constructor <init>(Landroid/content/pm/RegisteredServicesCache$UserServices;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 87
-    .local p0, this:Landroid/content/pm/RegisteredServicesCache$UserServices;,"Landroid/content/pm/RegisteredServicesCache$UserServices<TV;>;"
+    .local p0, "this":Landroid/content/pm/RegisteredServicesCache$UserServices;, "Landroid/content/pm/RegisteredServicesCache<TV;>.UserServices<TV;>;"
     invoke-direct {p0}, Landroid/content/pm/RegisteredServicesCache$UserServices;-><init>()V
 
     return-void

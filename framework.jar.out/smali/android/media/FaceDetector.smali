@@ -6,7 +6,6 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/media/FaceDetector$1;,
         Landroid/media/FaceDetector$Face;
     }
 .end annotation
@@ -19,15 +18,15 @@
 # instance fields
 .field private mBWBuffer:[B
 
-.field private mDCR:I
+.field private mDCR:J
 
-.field private mFD:I
+.field private mFD:J
 
 .field private mHeight:I
 
 .field private mMaxFaces:I
 
-.field private mSDK:I
+.field private mSDK:J
 
 .field private mWidth:I
 
@@ -44,7 +43,7 @@
 
     .line 181
     :try_start_0
-    const-string v1, "FFTEm"
+    const-string/jumbo v1, "FFTEm"
 
     invoke-static {v1}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
@@ -58,21 +57,21 @@
     :try_end_0
     .catch Ljava/lang/UnsatisfiedLinkError; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 187
-    .local v0, e:Ljava/lang/UnsatisfiedLinkError;
+    .line 29
+    .local v0, "e":Ljava/lang/UnsatisfiedLinkError;
     :goto_0
     return-void
 
     .line 184
-    .end local v0           #e:Ljava/lang/UnsatisfiedLinkError;
+    .end local v0    # "e":Ljava/lang/UnsatisfiedLinkError;
     :catch_0
     move-exception v0
 
     .line 185
-    .restart local v0       #e:Ljava/lang/UnsatisfiedLinkError;
-    const-string v1, "FFTEm"
+    .restart local v0    # "e":Ljava/lang/UnsatisfiedLinkError;
+    const-string/jumbo v1, "FFTEm"
 
-    const-string v2, "face detection library not found!"
+    const-string/jumbo v2, "face detection library not found!"
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -81,12 +80,12 @@
 
 .method public constructor <init>(III)V
     .locals 1
-    .parameter "width"
-    .parameter "height"
-    .parameter "maxFaces"
+    .param p1, "width"    # I
+    .param p2, "height"    # I
+    .param p3, "maxFaces"    # I
 
     .prologue
-    .line 113
+    .line 112
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 114
@@ -94,8 +93,7 @@
 
     if-nez v0, :cond_0
 
-    .line 122
-    :goto_0
+    .line 115
     return-void
 
     .line 117
@@ -118,7 +116,8 @@
 
     iput-object v0, p0, Landroid/media/FaceDetector;->mBWBuffer:[B
 
-    goto :goto_0
+    .line 112
+    return-void
 .end method
 
 .method private native fft_destroy()V
@@ -150,37 +149,37 @@
     .line 168
     invoke-direct {p0}, Landroid/media/FaceDetector;->fft_destroy()V
 
-    .line 169
+    .line 167
     return-void
 .end method
 
 .method public findFaces(Landroid/graphics/Bitmap;[Landroid/media/FaceDetector$Face;)I
-    .locals 4
-    .parameter "bitmap"
-    .parameter "faces"
+    .locals 5
+    .param p1, "bitmap"    # Landroid/graphics/Bitmap;
+    .param p2, "faces"    # [Landroid/media/FaceDetector$Face;
 
     .prologue
+    const/4 v4, 0x0
+
     .line 141
     sget-boolean v2, Landroid/media/FaceDetector;->sInitialized:Z
 
-    if-nez v2, :cond_1
+    if-nez v2, :cond_0
 
     .line 142
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
-    .line 161
-    :cond_0
-    return v1
+    return v2
 
     .line 144
-    :cond_1
+    :cond_0
     invoke-virtual {p1}, Landroid/graphics/Bitmap;->getWidth()I
 
     move-result v2
 
     iget v3, p0, Landroid/media/FaceDetector;->mWidth:I
 
-    if-ne v2, v3, :cond_2
+    if-ne v2, v3, :cond_1
 
     invoke-virtual {p1}, Landroid/graphics/Bitmap;->getHeight()I
 
@@ -188,74 +187,76 @@
 
     iget v3, p0, Landroid/media/FaceDetector;->mHeight:I
 
-    if-eq v2, v3, :cond_3
+    if-eq v2, v3, :cond_2
 
     .line 145
-    :cond_2
+    :cond_1
     new-instance v2, Ljava/lang/IllegalArgumentException;
 
-    const-string v3, "bitmap size doesn\'t match initialization"
+    .line 146
+    const-string/jumbo v3, "bitmap size doesn\'t match initialization"
 
+    .line 145
     invoke-direct {v2, v3}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v2
 
     .line 148
-    :cond_3
+    :cond_2
     array-length v2, p2
 
     iget v3, p0, Landroid/media/FaceDetector;->mMaxFaces:I
 
-    if-ge v2, v3, :cond_4
+    if-ge v2, v3, :cond_3
 
     .line 149
     new-instance v2, Ljava/lang/IllegalArgumentException;
 
-    const-string v3, "faces[] smaller than maxFaces"
+    .line 150
+    const-string/jumbo v3, "faces[] smaller than maxFaces"
 
+    .line 149
     invoke-direct {v2, v3}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v2
 
     .line 153
-    :cond_4
+    :cond_3
     invoke-direct {p0, p1}, Landroid/media/FaceDetector;->fft_detect(Landroid/graphics/Bitmap;)I
 
     move-result v1
 
     .line 154
-    .local v1, numFaces:I
+    .local v1, "numFaces":I
     iget v2, p0, Landroid/media/FaceDetector;->mMaxFaces:I
 
-    if-lt v1, v2, :cond_5
+    if-lt v1, v2, :cond_4
 
     .line 155
     iget v1, p0, Landroid/media/FaceDetector;->mMaxFaces:I
 
     .line 156
-    :cond_5
+    :cond_4
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
-    if-ge v0, v1, :cond_0
+    if-ge v0, v1, :cond_6
 
     .line 157
     aget-object v2, p2, v0
 
-    if-nez v2, :cond_6
+    if-nez v2, :cond_5
 
     .line 158
     new-instance v2, Landroid/media/FaceDetector$Face;
 
-    const/4 v3, 0x0
-
-    invoke-direct {v2, p0, v3}, Landroid/media/FaceDetector$Face;-><init>(Landroid/media/FaceDetector;Landroid/media/FaceDetector$1;)V
+    invoke-direct {v2, p0, v4}, Landroid/media/FaceDetector$Face;-><init>(Landroid/media/FaceDetector;Landroid/media/FaceDetector$Face;)V
 
     aput-object v2, p2, v0
 
     .line 159
-    :cond_6
+    :cond_5
     aget-object v2, p2, v0
 
     invoke-direct {p0, v2, v0}, Landroid/media/FaceDetector;->fft_get_face(Landroid/media/FaceDetector$Face;I)V
@@ -264,4 +265,8 @@
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
+
+    .line 161
+    :cond_6
+    return v1
 .end method

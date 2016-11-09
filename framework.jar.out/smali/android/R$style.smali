@@ -98,18 +98,30 @@
 .field public static final TextAppearance_DeviceDefault_Widget_ActionBar_Subtitle:I = 0x10301c7
 
 .field public static final TextAppearance_DeviceDefault_Widget_ActionBar_Subtitle_Inverse:I = 0x10301cb
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public static final TextAppearance_DeviceDefault_Widget_ActionBar_Title:I = 0x10301c6
 
 .field public static final TextAppearance_DeviceDefault_Widget_ActionBar_Title_Inverse:I = 0x10301ca
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public static final TextAppearance_DeviceDefault_Widget_ActionMode_Subtitle:I = 0x10301c9
 
 .field public static final TextAppearance_DeviceDefault_Widget_ActionMode_Subtitle_Inverse:I = 0x10301cd
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public static final TextAppearance_DeviceDefault_Widget_ActionMode_Title:I = 0x10301c8
 
 .field public static final TextAppearance_DeviceDefault_Widget_ActionMode_Title_Inverse:I = 0x10301cc
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public static final TextAppearance_DeviceDefault_Widget_Button:I = 0x10301ba
 
@@ -213,6 +225,116 @@
 
 .field public static final TextAppearance_Large_Inverse:I = 0x1030043
 
+.field public static final TextAppearance_Material:I = 0x10301ed
+
+.field public static final TextAppearance_Material_Body1:I = 0x10301f0
+
+.field public static final TextAppearance_Material_Body2:I = 0x10301ef
+
+.field public static final TextAppearance_Material_Button:I = 0x10301ee
+
+.field public static final TextAppearance_Material_Caption:I = 0x10301f1
+
+.field public static final TextAppearance_Material_DialogWindowTitle:I = 0x10301f2
+
+.field public static final TextAppearance_Material_Display1:I = 0x10301f6
+
+.field public static final TextAppearance_Material_Display2:I = 0x10301f5
+
+.field public static final TextAppearance_Material_Display3:I = 0x10301f4
+
+.field public static final TextAppearance_Material_Display4:I = 0x10301f3
+
+.field public static final TextAppearance_Material_Headline:I = 0x10301f7
+
+.field public static final TextAppearance_Material_Inverse:I = 0x10301f8
+
+.field public static final TextAppearance_Material_Large:I = 0x10301f9
+
+.field public static final TextAppearance_Material_Large_Inverse:I = 0x10301fa
+
+.field public static final TextAppearance_Material_Medium:I = 0x10301fb
+
+.field public static final TextAppearance_Material_Medium_Inverse:I = 0x10301fc
+
+.field public static final TextAppearance_Material_Menu:I = 0x10301fd
+
+.field public static final TextAppearance_Material_Notification:I = 0x10301fe
+
+.field public static final TextAppearance_Material_Notification_Emphasis:I = 0x10301ff
+
+.field public static final TextAppearance_Material_Notification_Info:I = 0x1030200
+
+.field public static final TextAppearance_Material_Notification_Line2:I = 0x1030201
+
+.field public static final TextAppearance_Material_Notification_Time:I = 0x1030202
+
+.field public static final TextAppearance_Material_Notification_Title:I = 0x1030203
+
+.field public static final TextAppearance_Material_SearchResult_Subtitle:I = 0x1030204
+
+.field public static final TextAppearance_Material_SearchResult_Title:I = 0x1030205
+
+.field public static final TextAppearance_Material_Small:I = 0x1030206
+
+.field public static final TextAppearance_Material_Small_Inverse:I = 0x1030207
+
+.field public static final TextAppearance_Material_Subhead:I = 0x1030208
+
+.field public static final TextAppearance_Material_Title:I = 0x1030209
+
+.field public static final TextAppearance_Material_Widget:I = 0x103020b
+
+.field public static final TextAppearance_Material_Widget_ActionBar_Menu:I = 0x103020c
+
+.field public static final TextAppearance_Material_Widget_ActionBar_Subtitle:I = 0x103020d
+
+.field public static final TextAppearance_Material_Widget_ActionBar_Subtitle_Inverse:I = 0x103020e
+
+.field public static final TextAppearance_Material_Widget_ActionBar_Title:I = 0x103020f
+
+.field public static final TextAppearance_Material_Widget_ActionBar_Title_Inverse:I = 0x1030210
+
+.field public static final TextAppearance_Material_Widget_ActionMode_Subtitle:I = 0x1030211
+
+.field public static final TextAppearance_Material_Widget_ActionMode_Subtitle_Inverse:I = 0x1030212
+
+.field public static final TextAppearance_Material_Widget_ActionMode_Title:I = 0x1030213
+
+.field public static final TextAppearance_Material_Widget_ActionMode_Title_Inverse:I = 0x1030214
+
+.field public static final TextAppearance_Material_Widget_Button:I = 0x1030215
+
+.field public static final TextAppearance_Material_Widget_Button_Inverse:I = 0x10302e5
+
+.field public static final TextAppearance_Material_Widget_DropDownHint:I = 0x1030216
+
+.field public static final TextAppearance_Material_Widget_DropDownItem:I = 0x1030217
+
+.field public static final TextAppearance_Material_Widget_EditText:I = 0x1030218
+
+.field public static final TextAppearance_Material_Widget_IconMenu_Item:I = 0x1030219
+
+.field public static final TextAppearance_Material_Widget_PopupMenu:I = 0x103021a
+
+.field public static final TextAppearance_Material_Widget_PopupMenu_Large:I = 0x103021b
+
+.field public static final TextAppearance_Material_Widget_PopupMenu_Small:I = 0x103021c
+
+.field public static final TextAppearance_Material_Widget_TabWidget:I = 0x103021d
+
+.field public static final TextAppearance_Material_Widget_TextView:I = 0x103021e
+
+.field public static final TextAppearance_Material_Widget_TextView_PopupMenu:I = 0x103021f
+
+.field public static final TextAppearance_Material_Widget_TextView_SpinnerItem:I = 0x1030220
+
+.field public static final TextAppearance_Material_Widget_Toolbar_Subtitle:I = 0x1030221
+
+.field public static final TextAppearance_Material_Widget_Toolbar_Title:I = 0x1030222
+
+.field public static final TextAppearance_Material_WindowTitle:I = 0x103020a
+
 .field public static final TextAppearance_Medium:I = 0x1030044
 
 .field public static final TextAppearance_Medium_Inverse:I = 0x1030045
@@ -267,6 +389,22 @@
 
 .field public static final Theme:I = 0x1030005
 
+.field public static final ThemeOverlay:I = 0x1030247
+
+.field public static final ThemeOverlay_Material:I = 0x1030248
+
+.field public static final ThemeOverlay_Material_ActionBar:I = 0x1030249
+
+.field public static final ThemeOverlay_Material_Dark:I = 0x103024b
+
+.field public static final ThemeOverlay_Material_Dark_ActionBar:I = 0x103024c
+
+.field public static final ThemeOverlay_Material_Dialog:I = 0x10302e4
+
+.field public static final ThemeOverlay_Material_Dialog_Alert:I = 0x10302e6
+
+.field public static final ThemeOverlay_Material_Light:I = 0x103024a
+
 .field public static final Theme_Black:I = 0x1030008
 
 .field public static final Theme_Black_NoTitleBar:I = 0x1030009
@@ -280,6 +418,8 @@
 .field public static final Theme_DeviceDefault_DialogWhenLarge:I = 0x1030136
 
 .field public static final Theme_DeviceDefault_DialogWhenLarge_NoActionBar:I = 0x1030137
+
+.field public static final Theme_DeviceDefault_Dialog_Alert:I = 0x10302d1
 
 .field public static final Theme_DeviceDefault_Dialog_MinWidth:I = 0x103012f
 
@@ -298,6 +438,8 @@
 .field public static final Theme_DeviceDefault_Light_DialogWhenLarge:I = 0x1030138
 
 .field public static final Theme_DeviceDefault_Light_DialogWhenLarge_NoActionBar:I = 0x1030139
+
+.field public static final Theme_DeviceDefault_Light_Dialog_Alert:I = 0x10302d2
 
 .field public static final Theme_DeviceDefault_Light_Dialog_MinWidth:I = 0x1030133
 
@@ -324,6 +466,8 @@
 .field public static final Theme_DeviceDefault_NoActionBar_TranslucentDecor:I = 0x10301e3
 
 .field public static final Theme_DeviceDefault_Panel:I = 0x103013a
+
+.field public static final Theme_DeviceDefault_Settings:I = 0x1030223
 
 .field public static final Theme_DeviceDefault_Wallpaper:I = 0x103013c
 
@@ -389,6 +533,8 @@
 
 .field public static final Theme_InputMethod:I = 0x1030054
 
+.field public static final Theme_Leanback_FormWizard:I = 0x10302d0
+
 .field public static final Theme_Light:I = 0x103000c
 
 .field public static final Theme_Light_NoTitleBar:I = 0x103000d
@@ -398,6 +544,112 @@
 .field public static final Theme_Light_Panel:I = 0x103005a
 
 .field public static final Theme_Light_WallpaperSettings:I = 0x1030062
+
+.field public static final Theme_Material:I = 0x1030224
+
+.field public static final Theme_Material_DayNight:I = 0x10302d4
+
+.field public static final Theme_Material_DayNight_DarkActionBar:I = 0x10302d5
+
+.field public static final Theme_Material_DayNight_Dialog:I = 0x10302d6
+
+.field public static final Theme_Material_DayNight_DialogWhenLarge:I = 0x10302dc
+
+.field public static final Theme_Material_DayNight_DialogWhenLarge_DarkActionBar:I = 0x10302e8
+
+.field public static final Theme_Material_DayNight_DialogWhenLarge_NoActionBar:I = 0x10302dd
+
+.field public static final Theme_Material_DayNight_Dialog_Alert:I = 0x10302d7
+
+.field public static final Theme_Material_DayNight_Dialog_MinWidth:I = 0x10302d8
+
+.field public static final Theme_Material_DayNight_Dialog_NoActionBar:I = 0x10302d9
+
+.field public static final Theme_Material_DayNight_Dialog_NoActionBar_MinWidth:I = 0x10302da
+
+.field public static final Theme_Material_DayNight_Dialog_Presentation:I = 0x10302db
+
+.field public static final Theme_Material_DayNight_NoActionBar:I = 0x10302de
+
+.field public static final Theme_Material_DayNight_NoActionBar_Fullscreen:I = 0x10302df
+
+.field public static final Theme_Material_DayNight_NoActionBar_Overscan:I = 0x10302e0
+
+.field public static final Theme_Material_DayNight_NoActionBar_TranslucentDecor:I = 0x10302e1
+
+.field public static final Theme_Material_DayNight_Panel:I = 0x10302e2
+
+.field public static final Theme_Material_Dialog:I = 0x1030225
+
+.field public static final Theme_Material_DialogWhenLarge:I = 0x103022b
+
+.field public static final Theme_Material_DialogWhenLarge_NoActionBar:I = 0x103022c
+
+.field public static final Theme_Material_Dialog_Alert:I = 0x1030226
+
+.field public static final Theme_Material_Dialog_MinWidth:I = 0x1030227
+
+.field public static final Theme_Material_Dialog_NoActionBar:I = 0x1030228
+
+.field public static final Theme_Material_Dialog_NoActionBar_MinWidth:I = 0x1030229
+
+.field public static final Theme_Material_Dialog_Presentation:I = 0x103022a
+
+.field public static final Theme_Material_InputMethod:I = 0x103022d
+
+.field public static final Theme_Material_Light:I = 0x1030237
+
+.field public static final Theme_Material_Light_DarkActionBar:I = 0x1030238
+
+.field public static final Theme_Material_Light_Dialog:I = 0x1030239
+
+.field public static final Theme_Material_Light_DialogWhenLarge:I = 0x103023f
+
+.field public static final Theme_Material_Light_DialogWhenLarge_DarkActionBar:I = 0x10302e7
+
+.field public static final Theme_Material_Light_DialogWhenLarge_NoActionBar:I = 0x1030240
+
+.field public static final Theme_Material_Light_Dialog_Alert:I = 0x103023a
+
+.field public static final Theme_Material_Light_Dialog_MinWidth:I = 0x103023b
+
+.field public static final Theme_Material_Light_Dialog_NoActionBar:I = 0x103023c
+
+.field public static final Theme_Material_Light_Dialog_NoActionBar_MinWidth:I = 0x103023d
+
+.field public static final Theme_Material_Light_Dialog_Presentation:I = 0x103023e
+
+.field public static final Theme_Material_Light_LightStatusBar:I = 0x10302e3
+
+.field public static final Theme_Material_Light_NoActionBar:I = 0x1030241
+
+.field public static final Theme_Material_Light_NoActionBar_Fullscreen:I = 0x1030242
+
+.field public static final Theme_Material_Light_NoActionBar_Overscan:I = 0x1030243
+
+.field public static final Theme_Material_Light_NoActionBar_TranslucentDecor:I = 0x1030244
+
+.field public static final Theme_Material_Light_Panel:I = 0x1030245
+
+.field public static final Theme_Material_Light_Voice:I = 0x1030246
+
+.field public static final Theme_Material_NoActionBar:I = 0x103022e
+
+.field public static final Theme_Material_NoActionBar_Fullscreen:I = 0x103022f
+
+.field public static final Theme_Material_NoActionBar_Overscan:I = 0x1030230
+
+.field public static final Theme_Material_NoActionBar_TranslucentDecor:I = 0x1030231
+
+.field public static final Theme_Material_Panel:I = 0x1030232
+
+.field public static final Theme_Material_Settings:I = 0x1030233
+
+.field public static final Theme_Material_Voice:I = 0x1030234
+
+.field public static final Theme_Material_Wallpaper:I = 0x1030235
+
+.field public static final Theme_Material_Wallpaper_NoTitleBar:I = 0x1030236
 
 .field public static final Theme_NoDisplay:I = 0x1030055
 
@@ -521,6 +773,8 @@
 
 .field public static final Widget_DeviceDefault_ExpandableListView:I = 0x103014b
 
+.field public static final Widget_DeviceDefault_FastScroll:I = 0x10301e9
+
 .field public static final Widget_DeviceDefault_GridView:I = 0x103014c
 
 .field public static final Widget_DeviceDefault_HorizontalScrollView:I = 0x103015b
@@ -534,18 +788,30 @@
 .field public static final Widget_DeviceDefault_Light_ActionBar_Solid:I = 0x10301a7
 
 .field public static final Widget_DeviceDefault_Light_ActionBar_Solid_Inverse:I = 0x10301a8
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public static final Widget_DeviceDefault_Light_ActionBar_TabBar:I = 0x10301a6
 
 .field public static final Widget_DeviceDefault_Light_ActionBar_TabBar_Inverse:I = 0x10301a9
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public static final Widget_DeviceDefault_Light_ActionBar_TabText:I = 0x10301a5
 
 .field public static final Widget_DeviceDefault_Light_ActionBar_TabText_Inverse:I = 0x10301ab
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public static final Widget_DeviceDefault_Light_ActionBar_TabView:I = 0x10301a4
 
 .field public static final Widget_DeviceDefault_Light_ActionBar_TabView_Inverse:I = 0x10301aa
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public static final Widget_DeviceDefault_Light_ActionButton:I = 0x103019f
 
@@ -556,6 +822,9 @@
 .field public static final Widget_DeviceDefault_Light_ActionMode:I = 0x10301a1
 
 .field public static final Widget_DeviceDefault_Light_ActionMode_Inverse:I = 0x10301ac
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public static final Widget_DeviceDefault_Light_AutoCompleteTextView:I = 0x103017b
 
@@ -586,6 +855,8 @@
 .field public static final Widget_DeviceDefault_Light_EditText:I = 0x103017e
 
 .field public static final Widget_DeviceDefault_Light_ExpandableListView:I = 0x103017f
+
+.field public static final Widget_DeviceDefault_Light_FastScroll:I = 0x10301eb
 
 .field public static final Widget_DeviceDefault_Light_GridView:I = 0x1030180
 
@@ -633,6 +904,8 @@
 
 .field public static final Widget_DeviceDefault_Light_Spinner:I = 0x1030193
 
+.field public static final Widget_DeviceDefault_Light_StackView:I = 0x10301ec
+
 .field public static final Widget_DeviceDefault_Light_Tab:I = 0x103019d
 
 .field public static final Widget_DeviceDefault_Light_TabWidget:I = 0x1030195
@@ -679,6 +952,8 @@
 
 .field public static final Widget_DeviceDefault_Spinner:I = 0x103015c
 
+.field public static final Widget_DeviceDefault_StackView:I = 0x10301ea
+
 .field public static final Widget_DeviceDefault_Tab:I = 0x103016d
 
 .field public static final Widget_DeviceDefault_TabWidget:I = 0x103015e
@@ -698,6 +973,8 @@
 .field public static final Widget_EditText:I = 0x1030023
 
 .field public static final Widget_ExpandableListView:I = 0x1030024
+
+.field public static final Widget_FastScroll:I = 0x10301e5
 
 .field public static final Widget_FragmentBreadCrumbs:I = 0x1030089
 
@@ -947,6 +1224,270 @@
 
 .field public static final Widget_ListView_White:I = 0x103002f
 
+.field public static final Widget_Material:I = 0x103024d
+
+.field public static final Widget_Material_ActionBar:I = 0x103024e
+
+.field public static final Widget_Material_ActionBar_Solid:I = 0x103024f
+
+.field public static final Widget_Material_ActionBar_TabBar:I = 0x1030250
+
+.field public static final Widget_Material_ActionBar_TabText:I = 0x1030251
+
+.field public static final Widget_Material_ActionBar_TabView:I = 0x1030252
+
+.field public static final Widget_Material_ActionButton:I = 0x1030253
+
+.field public static final Widget_Material_ActionButton_CloseMode:I = 0x1030254
+
+.field public static final Widget_Material_ActionButton_Overflow:I = 0x1030255
+
+.field public static final Widget_Material_ActionMode:I = 0x1030256
+
+.field public static final Widget_Material_AutoCompleteTextView:I = 0x1030257
+
+.field public static final Widget_Material_Button:I = 0x1030258
+
+.field public static final Widget_Material_ButtonBar:I = 0x103025f
+
+.field public static final Widget_Material_ButtonBar_AlertDialog:I = 0x1030260
+
+.field public static final Widget_Material_Button_Borderless:I = 0x1030259
+
+.field public static final Widget_Material_Button_Borderless_Colored:I = 0x103025a
+
+.field public static final Widget_Material_Button_Borderless_Small:I = 0x103025b
+
+.field public static final Widget_Material_Button_Colored:I = 0x10302d3
+
+.field public static final Widget_Material_Button_Inset:I = 0x103025c
+
+.field public static final Widget_Material_Button_Small:I = 0x103025d
+
+.field public static final Widget_Material_Button_Toggle:I = 0x103025e
+
+.field public static final Widget_Material_CalendarView:I = 0x1030261
+
+.field public static final Widget_Material_CheckedTextView:I = 0x1030262
+
+.field public static final Widget_Material_CompoundButton_CheckBox:I = 0x1030263
+
+.field public static final Widget_Material_CompoundButton_RadioButton:I = 0x1030264
+
+.field public static final Widget_Material_CompoundButton_Star:I = 0x1030265
+
+.field public static final Widget_Material_DatePicker:I = 0x1030266
+
+.field public static final Widget_Material_DropDownItem:I = 0x1030267
+
+.field public static final Widget_Material_DropDownItem_Spinner:I = 0x1030268
+
+.field public static final Widget_Material_EditText:I = 0x1030269
+
+.field public static final Widget_Material_ExpandableListView:I = 0x103026a
+
+.field public static final Widget_Material_FastScroll:I = 0x103026b
+
+.field public static final Widget_Material_GridView:I = 0x103026c
+
+.field public static final Widget_Material_HorizontalScrollView:I = 0x103026d
+
+.field public static final Widget_Material_ImageButton:I = 0x103026e
+
+.field public static final Widget_Material_Light:I = 0x103028e
+
+.field public static final Widget_Material_Light_ActionBar:I = 0x103028f
+
+.field public static final Widget_Material_Light_ActionBar_Solid:I = 0x1030290
+
+.field public static final Widget_Material_Light_ActionBar_TabBar:I = 0x1030291
+
+.field public static final Widget_Material_Light_ActionBar_TabText:I = 0x1030292
+
+.field public static final Widget_Material_Light_ActionBar_TabView:I = 0x1030293
+
+.field public static final Widget_Material_Light_ActionButton:I = 0x1030294
+
+.field public static final Widget_Material_Light_ActionButton_CloseMode:I = 0x1030295
+
+.field public static final Widget_Material_Light_ActionButton_Overflow:I = 0x1030296
+
+.field public static final Widget_Material_Light_ActionMode:I = 0x1030297
+
+.field public static final Widget_Material_Light_AutoCompleteTextView:I = 0x1030298
+
+.field public static final Widget_Material_Light_Button:I = 0x1030299
+
+.field public static final Widget_Material_Light_ButtonBar:I = 0x10302a0
+
+.field public static final Widget_Material_Light_ButtonBar_AlertDialog:I = 0x10302a1
+
+.field public static final Widget_Material_Light_Button_Borderless:I = 0x103029a
+
+.field public static final Widget_Material_Light_Button_Borderless_Colored:I = 0x103029b
+
+.field public static final Widget_Material_Light_Button_Borderless_Small:I = 0x103029c
+
+.field public static final Widget_Material_Light_Button_Inset:I = 0x103029d
+
+.field public static final Widget_Material_Light_Button_Small:I = 0x103029e
+
+.field public static final Widget_Material_Light_Button_Toggle:I = 0x103029f
+
+.field public static final Widget_Material_Light_CalendarView:I = 0x10302a2
+
+.field public static final Widget_Material_Light_CheckedTextView:I = 0x10302a3
+
+.field public static final Widget_Material_Light_CompoundButton_CheckBox:I = 0x10302a4
+
+.field public static final Widget_Material_Light_CompoundButton_RadioButton:I = 0x10302a5
+
+.field public static final Widget_Material_Light_CompoundButton_Star:I = 0x10302a6
+
+.field public static final Widget_Material_Light_DatePicker:I = 0x10302a7
+
+.field public static final Widget_Material_Light_DropDownItem:I = 0x10302a8
+
+.field public static final Widget_Material_Light_DropDownItem_Spinner:I = 0x10302a9
+
+.field public static final Widget_Material_Light_EditText:I = 0x10302aa
+
+.field public static final Widget_Material_Light_ExpandableListView:I = 0x10302ab
+
+.field public static final Widget_Material_Light_FastScroll:I = 0x10302ac
+
+.field public static final Widget_Material_Light_GridView:I = 0x10302ad
+
+.field public static final Widget_Material_Light_HorizontalScrollView:I = 0x10302ae
+
+.field public static final Widget_Material_Light_ImageButton:I = 0x10302af
+
+.field public static final Widget_Material_Light_ListPopupWindow:I = 0x10302b0
+
+.field public static final Widget_Material_Light_ListView:I = 0x10302b1
+
+.field public static final Widget_Material_Light_ListView_DropDown:I = 0x10302b2
+
+.field public static final Widget_Material_Light_MediaRouteButton:I = 0x10302b3
+
+.field public static final Widget_Material_Light_PopupMenu:I = 0x10302b4
+
+.field public static final Widget_Material_Light_PopupMenu_Overflow:I = 0x10302b5
+
+.field public static final Widget_Material_Light_PopupWindow:I = 0x10302b6
+
+.field public static final Widget_Material_Light_ProgressBar:I = 0x10302b7
+
+.field public static final Widget_Material_Light_ProgressBar_Horizontal:I = 0x10302b8
+
+.field public static final Widget_Material_Light_ProgressBar_Inverse:I = 0x10302b9
+
+.field public static final Widget_Material_Light_ProgressBar_Large:I = 0x10302ba
+
+.field public static final Widget_Material_Light_ProgressBar_Large_Inverse:I = 0x10302bb
+
+.field public static final Widget_Material_Light_ProgressBar_Small:I = 0x10302bc
+
+.field public static final Widget_Material_Light_ProgressBar_Small_Inverse:I = 0x10302bd
+
+.field public static final Widget_Material_Light_ProgressBar_Small_Title:I = 0x10302be
+
+.field public static final Widget_Material_Light_RatingBar:I = 0x10302bf
+
+.field public static final Widget_Material_Light_RatingBar_Indicator:I = 0x10302c0
+
+.field public static final Widget_Material_Light_RatingBar_Small:I = 0x10302c1
+
+.field public static final Widget_Material_Light_ScrollView:I = 0x10302c2
+
+.field public static final Widget_Material_Light_SearchView:I = 0x10302c3
+
+.field public static final Widget_Material_Light_SeekBar:I = 0x10302c4
+
+.field public static final Widget_Material_Light_SegmentedButton:I = 0x10302c5
+
+.field public static final Widget_Material_Light_Spinner:I = 0x10302c7
+
+.field public static final Widget_Material_Light_Spinner_Underlined:I = 0x10302c8
+
+.field public static final Widget_Material_Light_StackView:I = 0x10302c6
+
+.field public static final Widget_Material_Light_Tab:I = 0x10302c9
+
+.field public static final Widget_Material_Light_TabWidget:I = 0x10302ca
+
+.field public static final Widget_Material_Light_TextView:I = 0x10302cb
+
+.field public static final Widget_Material_Light_TextView_SpinnerItem:I = 0x10302cc
+
+.field public static final Widget_Material_Light_TimePicker:I = 0x10302cd
+
+.field public static final Widget_Material_Light_WebTextView:I = 0x10302ce
+
+.field public static final Widget_Material_Light_WebView:I = 0x10302cf
+
+.field public static final Widget_Material_ListPopupWindow:I = 0x103026f
+
+.field public static final Widget_Material_ListView:I = 0x1030270
+
+.field public static final Widget_Material_ListView_DropDown:I = 0x1030271
+
+.field public static final Widget_Material_MediaRouteButton:I = 0x1030272
+
+.field public static final Widget_Material_PopupMenu:I = 0x1030273
+
+.field public static final Widget_Material_PopupMenu_Overflow:I = 0x1030274
+
+.field public static final Widget_Material_PopupWindow:I = 0x1030275
+
+.field public static final Widget_Material_ProgressBar:I = 0x1030276
+
+.field public static final Widget_Material_ProgressBar_Horizontal:I = 0x1030277
+
+.field public static final Widget_Material_ProgressBar_Large:I = 0x1030278
+
+.field public static final Widget_Material_ProgressBar_Small:I = 0x1030279
+
+.field public static final Widget_Material_ProgressBar_Small_Title:I = 0x103027a
+
+.field public static final Widget_Material_RatingBar:I = 0x103027b
+
+.field public static final Widget_Material_RatingBar_Indicator:I = 0x103027c
+
+.field public static final Widget_Material_RatingBar_Small:I = 0x103027d
+
+.field public static final Widget_Material_ScrollView:I = 0x103027e
+
+.field public static final Widget_Material_SearchView:I = 0x103027f
+
+.field public static final Widget_Material_SeekBar:I = 0x1030280
+
+.field public static final Widget_Material_SegmentedButton:I = 0x1030281
+
+.field public static final Widget_Material_Spinner:I = 0x1030283
+
+.field public static final Widget_Material_Spinner_Underlined:I = 0x1030284
+
+.field public static final Widget_Material_StackView:I = 0x1030282
+
+.field public static final Widget_Material_Tab:I = 0x1030285
+
+.field public static final Widget_Material_TabWidget:I = 0x1030286
+
+.field public static final Widget_Material_TextView:I = 0x1030287
+
+.field public static final Widget_Material_TextView_SpinnerItem:I = 0x1030288
+
+.field public static final Widget_Material_TimePicker:I = 0x1030289
+
+.field public static final Widget_Material_Toolbar:I = 0x103028a
+
+.field public static final Widget_Material_Toolbar_Button_Navigation:I = 0x103028b
+
+.field public static final Widget_Material_WebTextView:I = 0x103028c
+
+.field public static final Widget_Material_WebView:I = 0x103028d
+
 .field public static final Widget_PopupMenu:I = 0x1030086
 
 .field public static final Widget_PopupWindow:I = 0x1030036
@@ -975,6 +1516,8 @@
 
 .field public static final Widget_Spinner_DropDown:I = 0x1030083
 
+.field public static final Widget_StackView:I = 0x10301e6
+
 .field public static final Widget_TabWidget:I = 0x1030034
 
 .field public static final Widget_TextView:I = 0x1030022
@@ -982,6 +1525,10 @@
 .field public static final Widget_TextView_PopupMenu:I = 0x1030029
 
 .field public static final Widget_TextView_SpinnerItem:I = 0x103002a
+
+.field public static final Widget_Toolbar:I = 0x10301e7
+
+.field public static final Widget_Toolbar_Button_Navigation:I = 0x10301e8
 
 .field public static final Widget_WebView:I = 0x1030033
 
@@ -991,7 +1538,7 @@
     .locals 0
 
     .prologue
-    .line 11366
+    .line 14015
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

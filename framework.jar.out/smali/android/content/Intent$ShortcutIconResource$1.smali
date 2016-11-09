@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 765
+    .line 782
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,39 +42,39 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/content/Intent$ShortcutIconResource;
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 768
+    .line 785
     new-instance v0, Landroid/content/Intent$ShortcutIconResource;
 
     invoke-direct {v0}, Landroid/content/Intent$ShortcutIconResource;-><init>()V
 
-    .line 769
-    .local v0, icon:Landroid/content/Intent$ShortcutIconResource;
+    .line 786
+    .local v0, "icon":Landroid/content/Intent$ShortcutIconResource;
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, v0, Landroid/content/Intent$ShortcutIconResource;->packageName:Ljava/lang/String;
 
-    .line 770
+    .line 787
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, v0, Landroid/content/Intent$ShortcutIconResource;->resourceName:Ljava/lang/String;
 
-    .line 771
+    .line 788
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 765
+    .line 784
     invoke-virtual {p0, p1}, Landroid/content/Intent$ShortcutIconResource$1;->createFromParcel(Landroid/os/Parcel;)Landroid/content/Intent$ShortcutIconResource;
 
     move-result-object v0
@@ -84,10 +84,10 @@
 
 .method public newArray(I)[Landroid/content/Intent$ShortcutIconResource;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 775
+    .line 792
     new-array v0, p1, [Landroid/content/Intent$ShortcutIconResource;
 
     return-object v0
@@ -95,10 +95,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 765
+    .line 791
     invoke-virtual {p0, p1}, Landroid/content/Intent$ShortcutIconResource$1;->newArray(I)[Landroid/content/Intent$ShortcutIconResource;
 
     move-result-object v0

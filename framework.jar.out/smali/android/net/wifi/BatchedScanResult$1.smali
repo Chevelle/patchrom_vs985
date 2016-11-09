@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 79
+    .line 78
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -41,79 +41,83 @@
 
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/net/wifi/BatchedScanResult;
-    .locals 5
-    .parameter "in"
+    .locals 6
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     const/4 v3, 0x1
 
-    .line 81
+    const/4 v4, 0x0
+
+    .line 80
     new-instance v2, Landroid/net/wifi/BatchedScanResult;
 
     invoke-direct {v2}, Landroid/net/wifi/BatchedScanResult;-><init>()V
 
-    .line 82
-    .local v2, result:Landroid/net/wifi/BatchedScanResult;
+    .line 81
+    .local v2, "result":Landroid/net/wifi/BatchedScanResult;
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
-    move-result v4
+    move-result v5
 
-    if-ne v4, v3, :cond_0
+    if-ne v5, v3, :cond_0
 
     :goto_0
     iput-boolean v3, v2, Landroid/net/wifi/BatchedScanResult;->truncated:Z
 
-    .line 83
+    .line 82
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    .local v0, count:I
+    .local v0, "count":I
     move v1, v0
 
-    .line 84
-    .end local v0           #count:I
-    .local v1, count:I
+    .line 83
+    .end local v0    # "count":I
+    .local v1, "count":I
     :goto_1
     add-int/lit8 v0, v1, -0x1
 
-    .end local v1           #count:I
-    .restart local v0       #count:I
+    .end local v1    # "count":I
+    .restart local v0    # "count":I
     if-lez v1, :cond_1
 
-    .line 85
-    iget-object v3, v2, Landroid/net/wifi/BatchedScanResult;->scanResults:Ljava/util/List;
+    .line 84
+    iget-object v4, v2, Landroid/net/wifi/BatchedScanResult;->scanResults:Ljava/util/List;
 
-    sget-object v4, Landroid/net/wifi/ScanResult;->CREATOR:Landroid/os/Parcelable$Creator;
+    sget-object v3, Landroid/net/wifi/ScanResult;->CREATOR:Landroid/os/Parcelable$Creator;
 
-    invoke-interface {v4, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+    invoke-interface {v3, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
 
-    move-result-object v4
+    move-result-object v3
 
-    invoke-interface {v3, v4}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    check-cast v3, Landroid/net/wifi/ScanResult;
+
+    invoke-interface {v4, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     move v1, v0
 
-    .end local v0           #count:I
-    .restart local v1       #count:I
+    .end local v0    # "count":I
+    .restart local v1    # "count":I
     goto :goto_1
 
-    .line 82
-    .end local v1           #count:I
+    .end local v1    # "count":I
     :cond_0
-    const/4 v3, 0x0
+    move v3, v4
 
+    .line 81
     goto :goto_0
 
-    .line 87
-    .restart local v0       #count:I
+    .line 86
+    .restart local v0    # "count":I
     :cond_1
     return-object v2
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 79
@@ -126,10 +130,10 @@
 
 .method public newArray(I)[Landroid/net/wifi/BatchedScanResult;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 91
+    .line 90
     new-array v0, p1, [Landroid/net/wifi/BatchedScanResult;
 
     return-object v0
@@ -137,10 +141,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 79
+    .line 89
     invoke-virtual {p0, p1}, Landroid/net/wifi/BatchedScanResult$1;->newArray(I)[Landroid/net/wifi/BatchedScanResult;
 
     move-result-object v0

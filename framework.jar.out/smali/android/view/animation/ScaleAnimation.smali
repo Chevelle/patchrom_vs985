@@ -46,10 +46,10 @@
 # direct methods
 .method public constructor <init>(FFFF)V
     .locals 2
-    .parameter "fromX"
-    .parameter "toX"
-    .parameter "fromY"
-    .parameter "toY"
+    .param p1, "fromX"    # F
+    .param p2, "toX"    # F
+    .param p3, "fromY"    # F
+    .param p4, "toY"    # F
 
     .prologue
     const/4 v1, 0x0
@@ -118,25 +118,25 @@
     .line 152
     iput v1, p0, Landroid/view/animation/ScaleAnimation;->mPivotY:F
 
-    .line 153
+    .line 145
     return-void
 .end method
 
 .method public constructor <init>(FFFFFF)V
     .locals 2
-    .parameter "fromX"
-    .parameter "toX"
-    .parameter "fromY"
-    .parameter "toY"
-    .parameter "pivotX"
-    .parameter "pivotY"
+    .param p1, "fromX"    # F
+    .param p2, "toX"    # F
+    .param p3, "fromY"    # F
+    .param p4, "toY"    # F
+    .param p5, "pivotX"    # F
+    .param p6, "pivotY"    # F
 
     .prologue
     const/4 v0, 0x0
 
     const/4 v1, 0x0
 
-    .line 172
+    .line 171
     invoke-direct {p0}, Landroid/view/animation/Animation;-><init>()V
 
     .line 38
@@ -207,27 +207,27 @@
     .line 183
     invoke-direct {p0}, Landroid/view/animation/ScaleAnimation;->initializePivotPoint()V
 
-    .line 184
+    .line 172
     return-void
 .end method
 
 .method public constructor <init>(FFFFIFIF)V
     .locals 2
-    .parameter "fromX"
-    .parameter "toX"
-    .parameter "fromY"
-    .parameter "toY"
-    .parameter "pivotXType"
-    .parameter "pivotXValue"
-    .parameter "pivotYType"
-    .parameter "pivotYValue"
+    .param p1, "fromX"    # F
+    .param p2, "toX"    # F
+    .param p3, "fromY"    # F
+    .param p4, "toY"    # F
+    .param p5, "pivotXType"    # I
+    .param p6, "pivotXValue"    # F
+    .param p7, "pivotYType"    # I
+    .param p8, "pivotYValue"    # F
 
     .prologue
     const/4 v1, 0x0
 
     const/4 v0, 0x0
 
-    .line 213
+    .line 212
     invoke-direct {p0}, Landroid/view/animation/Animation;-><init>()V
 
     .line 38
@@ -298,14 +298,14 @@
     .line 224
     invoke-direct {p0}, Landroid/view/animation/ScaleAnimation;->initializePivotPoint()V
 
-    .line 225
+    .line 213
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
     .locals 7
-    .parameter "context"
-    .parameter "attrs"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "attrs"    # Landroid/util/AttributeSet;
 
     .prologue
     const/4 v6, 0x4
@@ -360,23 +360,25 @@
 
     iput-object v3, p0, Landroid/view/animation/ScaleAnimation;->mResources:Landroid/content/res/Resources;
 
-    .line 67
+    .line 68
     sget-object v3, Lcom/android/internal/R$styleable;->ScaleAnimation:[I
 
+    .line 67
     invoke-virtual {p1, p2, v3}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 70
-    .local v0, a:Landroid/content/res/TypedArray;
+    .line 71
+    .local v0, "a":Landroid/content/res/TypedArray;
     const/4 v3, 0x2
 
+    .line 70
     invoke-virtual {v0, v3}, Landroid/content/res/TypedArray;->peekValue(I)Landroid/util/TypedValue;
 
     move-result-object v2
 
     .line 72
-    .local v2, tv:Landroid/util/TypedValue;
+    .local v2, "tv":Landroid/util/TypedValue;
     iput v5, p0, Landroid/view/animation/ScaleAnimation;->mFromX:F
 
     .line 73
@@ -394,11 +396,12 @@
 
     iput v3, p0, Landroid/view/animation/ScaleAnimation;->mFromX:F
 
-    .line 82
+    .line 83
     :cond_0
     :goto_0
     const/4 v3, 0x3
 
+    .line 82
     invoke-virtual {v0, v3}, Landroid/content/res/TypedArray;->peekValue(I)Landroid/util/TypedValue;
 
     move-result-object v2
@@ -446,11 +449,12 @@
 
     iput v3, p0, Landroid/view/animation/ScaleAnimation;->mFromY:F
 
-    .line 107
+    .line 108
     :cond_2
     :goto_2
     const/4 v3, 0x5
 
+    .line 107
     invoke-virtual {v0, v3}, Landroid/content/res/TypedArray;->peekValue(I)Landroid/util/TypedValue;
 
     move-result-object v2
@@ -485,7 +489,7 @@
     move-result-object v1
 
     .line 122
-    .local v1, d:Landroid/view/animation/Animation$Description;
+    .local v1, "d":Landroid/view/animation/Animation$Description;
     iget v3, v1, Landroid/view/animation/Animation$Description;->type:I
 
     iput v3, p0, Landroid/view/animation/ScaleAnimation;->mPivotXType:I
@@ -495,9 +499,10 @@
 
     iput v3, p0, Landroid/view/animation/ScaleAnimation;->mPivotXValue:F
 
-    .line 125
+    .line 126
     const/4 v3, 0x1
 
+    .line 125
     invoke-virtual {v0, v3}, Landroid/content/res/TypedArray;->peekValue(I)Landroid/util/TypedValue;
 
     move-result-object v3
@@ -522,11 +527,11 @@
     .line 132
     invoke-direct {p0}, Landroid/view/animation/ScaleAnimation;->initializePivotPoint()V
 
-    .line 133
+    .line 62
     return-void
 
     .line 78
-    .end local v1           #d:Landroid/view/animation/Animation$Description;
+    .end local v1    # "d":Landroid/view/animation/Animation$Description;
     :cond_4
     iget v3, v2, Landroid/util/TypedValue;->type:I
 
@@ -604,7 +609,7 @@
 
     iput v0, p0, Landroid/view/animation/ScaleAnimation;->mPivotY:F
 
-    .line 238
+    .line 231
     :cond_1
     return-void
 .end method
@@ -613,29 +618,29 @@
 # virtual methods
 .method protected applyTransformation(FLandroid/view/animation/Transformation;)V
     .locals 8
-    .parameter "interpolatedTime"
-    .parameter "t"
+    .param p1, "interpolatedTime"    # F
+    .param p2, "t"    # Landroid/view/animation/Transformation;
 
     .prologue
     const/4 v7, 0x0
 
-    const/high16 v6, 0x3f80
+    const/high16 v6, 0x3f800000    # 1.0f
 
     .line 242
-    const/high16 v1, 0x3f80
+    const/high16 v1, 0x3f800000    # 1.0f
 
     .line 243
-    .local v1, sx:F
-    const/high16 v2, 0x3f80
+    .local v1, "sx":F
+    const/high16 v2, 0x3f800000    # 1.0f
 
     .line 244
-    .local v2, sy:F
+    .local v2, "sy":F
     invoke-virtual {p0}, Landroid/view/animation/ScaleAnimation;->getScaleFactor()F
 
     move-result v0
 
     .line 246
-    .local v0, scale:F
+    .local v0, "scale":F
     iget v3, p0, Landroid/view/animation/ScaleAnimation;->mFromX:F
 
     cmpl-float v3, v3, v6
@@ -711,7 +716,7 @@
 
     invoke-virtual {v3, v1, v2}, Landroid/graphics/Matrix;->setScale(FF)V
 
-    .line 258
+    .line 241
     :goto_0
     return-void
 
@@ -736,10 +741,10 @@
 
 .method public initialize(IIII)V
     .locals 6
-    .parameter "width"
-    .parameter "height"
-    .parameter "parentWidth"
-    .parameter "parentHeight"
+    .param p1, "width"    # I
+    .param p2, "height"    # I
+    .param p3, "parentWidth"    # I
+    .param p4, "parentHeight"    # I
 
     .prologue
     .line 279
@@ -843,23 +848,23 @@
 
     iput v0, p0, Landroid/view/animation/ScaleAnimation;->mPivotY:F
 
-    .line 288
+    .line 278
     return-void
 .end method
 
 .method resolveScale(FIIII)F
     .locals 3
-    .parameter "scale"
-    .parameter "type"
-    .parameter "data"
-    .parameter "size"
-    .parameter "psize"
+    .param p1, "scale"    # F
+    .param p2, "type"    # I
+    .param p3, "data"    # I
+    .param p4, "size"    # I
+    .param p5, "psize"    # I
 
     .prologue
     .line 262
     const/4 v1, 0x6
 
-    if-ne p2, v1, :cond_1
+    if-ne p2, v1, :cond_0
 
     .line 263
     int-to-float v1, p4
@@ -871,26 +876,21 @@
     move-result v0
 
     .line 270
-    .local v0, targetSize:F
+    .local v0, "targetSize":F
     :goto_0
     if-nez p4, :cond_2
 
     .line 271
-    const/high16 p1, 0x3f80
+    const/high16 v1, 0x3f800000    # 1.0f
 
-    .line 274
-    .end local v0           #targetSize:F
-    .end local p1
-    :cond_0
-    :goto_1
-    return p1
+    return v1
 
     .line 264
-    .restart local p1
-    :cond_1
+    .end local v0    # "targetSize":F
+    :cond_0
     const/4 v1, 0x5
 
-    if-ne p2, v1, :cond_0
+    if-ne p2, v1, :cond_1
 
     .line 265
     iget-object v1, p0, Landroid/view/animation/ScaleAnimation;->mResources:Landroid/content/res/Resources;
@@ -903,14 +903,20 @@
 
     move-result v0
 
-    .restart local v0       #targetSize:F
+    .restart local v0    # "targetSize":F
     goto :goto_0
 
+    .line 267
+    .end local v0    # "targetSize":F
+    :cond_1
+    return p1
+
     .line 274
+    .restart local v0    # "targetSize":F
     :cond_2
     int-to-float v1, p4
 
-    div-float p1, v0, v1
+    div-float v1, v0, v1
 
-    goto :goto_1
+    return v1
 .end method

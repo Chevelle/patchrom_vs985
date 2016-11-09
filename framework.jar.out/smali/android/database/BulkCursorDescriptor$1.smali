@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/database/BulkCursorDescriptor;
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 33
@@ -51,7 +51,7 @@
     invoke-direct {v0}, Landroid/database/BulkCursorDescriptor;-><init>()V
 
     .line 34
-    .local v0, d:Landroid/database/BulkCursorDescriptor;
+    .local v0, "d":Landroid/database/BulkCursorDescriptor;
     invoke-virtual {v0, p1}, Landroid/database/BulkCursorDescriptor;->readFromParcel(Landroid/os/Parcel;)V
 
     .line 35
@@ -60,10 +60,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 30
+    .line 32
     invoke-virtual {p0, p1}, Landroid/database/BulkCursorDescriptor$1;->createFromParcel(Landroid/os/Parcel;)Landroid/database/BulkCursorDescriptor;
 
     move-result-object v0
@@ -73,7 +73,7 @@
 
 .method public newArray(I)[Landroid/database/BulkCursorDescriptor;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 40
@@ -84,10 +84,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 30
+    .line 39
     invoke-virtual {p0, p1}, Landroid/database/BulkCursorDescriptor$1;->newArray(I)[Landroid/database/BulkCursorDescriptor;
 
     move-result-object v0

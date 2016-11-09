@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/widget/VideoView;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/VideoView;
 
     .prologue
-    .line 536
+    .line 551
     iput-object p1, p0, Landroid/widget/VideoView$6;->this$0:Landroid/widget/VideoView;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,16 +39,15 @@
 # virtual methods
 .method public onBufferingUpdate(Landroid/media/MediaPlayer;I)V
     .locals 1
-    .parameter "mp"
-    .parameter "percent"
+    .param p1, "mp"    # Landroid/media/MediaPlayer;
+    .param p2, "percent"    # I
 
     .prologue
-    .line 538
+    .line 553
     iget-object v0, p0, Landroid/widget/VideoView$6;->this$0:Landroid/widget/VideoView;
 
-    #setter for: Landroid/widget/VideoView;->mCurrentBufferPercentage:I
-    invoke-static {v0, p2}, Landroid/widget/VideoView;->access$1902(Landroid/widget/VideoView;I)I
+    invoke-static {v0, p2}, Landroid/widget/VideoView;->-set3(Landroid/widget/VideoView;I)I
 
-    .line 539
+    .line 552
     return-void
 .end method

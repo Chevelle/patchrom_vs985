@@ -29,10 +29,10 @@
     .end annotation
 .end field
 
-.field fragments:Ljava/util/ArrayList;
+.field fragments:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
-            "Ljava/util/ArrayList",
+            "Ljava/util/List",
             "<",
             "Landroid/app/Fragment;",
             ">;"
@@ -46,11 +46,13 @@
             "Landroid/util/ArrayMap",
             "<",
             "Ljava/lang/String;",
-            "Landroid/app/LoaderManagerImpl;",
+            "Landroid/app/LoaderManager;",
             ">;"
         }
     .end annotation
 .end field
+
+.field voiceInteractor:Landroid/app/VoiceInteractor;
 
 
 # direct methods
@@ -58,7 +60,7 @@
     .locals 0
 
     .prologue
-    .line 706
+    .line 731
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

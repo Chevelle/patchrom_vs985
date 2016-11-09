@@ -22,7 +22,7 @@
 
 .field public static final CONTENT_TYPE:Ljava/lang/String; = "vnd.android.cursor.dir/aggregation_exception"
 
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
 
 .field public static final RAW_CONTACT_ID1:Ljava/lang/String; = "raw_contact_id1"
 
@@ -42,17 +42,19 @@
     .locals 2
 
     .prologue
-    .line 7330
+    .line 7744
     sget-object v0, Landroid/provider/ContactsContract;->AUTHORITY_URI:Landroid/net/Uri;
 
-    const-string v1, "aggregation_exceptions"
+    const-string/jumbo v1, "aggregation_exceptions"
 
     invoke-static {v0, v1}, Landroid/net/Uri;->withAppendedPath(Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 7743
     sput-object v0, Landroid/provider/ContactsContract$AggregationExceptions;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 7734
     return-void
 .end method
 
@@ -60,7 +62,7 @@
     .locals 0
 
     .prologue
-    .line 7325
+    .line 7738
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

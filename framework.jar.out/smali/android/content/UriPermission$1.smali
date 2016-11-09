@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/content/UriPermission;
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 109
@@ -55,10 +55,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 106
+    .line 108
     invoke-virtual {p0, p1}, Landroid/content/UriPermission$1;->createFromParcel(Landroid/os/Parcel;)Landroid/content/UriPermission;
 
     move-result-object v0
@@ -68,7 +68,7 @@
 
 .method public newArray(I)[Landroid/content/UriPermission;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 114
@@ -79,10 +79,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 106
+    .line 113
     invoke-virtual {p0, p1}, Landroid/content/UriPermission$1;->newArray(I)[Landroid/content/UriPermission;
 
     move-result-object v0

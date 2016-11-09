@@ -73,6 +73,30 @@
 .method public abstract notifySubtreeAccessibilityStateChanged(Landroid/view/View;Landroid/view/View;I)V
 .end method
 
+.method public abstract onNestedFling(Landroid/view/View;FFZ)Z
+.end method
+
+.method public abstract onNestedPreFling(Landroid/view/View;FF)Z
+.end method
+
+.method public abstract onNestedPrePerformAccessibilityAction(Landroid/view/View;ILandroid/os/Bundle;)Z
+.end method
+
+.method public abstract onNestedPreScroll(Landroid/view/View;II[I)V
+.end method
+
+.method public abstract onNestedScroll(Landroid/view/View;IIII)V
+.end method
+
+.method public abstract onNestedScrollAccepted(Landroid/view/View;Landroid/view/View;I)V
+.end method
+
+.method public abstract onStartNestedScroll(Landroid/view/View;Landroid/view/View;I)Z
+.end method
+
+.method public abstract onStopNestedScroll(Landroid/view/View;)V
+.end method
+
 .method public abstract recomputeViewAttributes(Landroid/view/View;)V
 .end method
 
@@ -101,4 +125,7 @@
 .end method
 
 .method public abstract startActionModeForChild(Landroid/view/View;Landroid/view/ActionMode$Callback;)Landroid/view/ActionMode;
+.end method
+
+.method public abstract startActionModeForChild(Landroid/view/View;Landroid/view/ActionMode$Callback;I)Landroid/view/ActionMode;
 .end method

@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 99
+    .line 98
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 100
     iput-object p1, p0, Landroid/app/IInstrumentationWatcher$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 101
+    .line 98
     return-void
 .end method
 
@@ -54,16 +54,16 @@
 
     .prologue
     .line 108
-    const-string v0, "android.app.IInstrumentationWatcher"
+    const-string/jumbo v0, "android.app.IInstrumentationWatcher"
 
     return-object v0
 .end method
 
 .method public instrumentationFinished(Landroid/content/ComponentName;ILandroid/os/Bundle;)V
     .locals 5
-    .parameter "name"
-    .parameter "resultCode"
-    .parameter "results"
+    .param p1, "name"    # Landroid/content/ComponentName;
+    .param p2, "resultCode"    # I
+    .param p3, "results"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -77,15 +77,15 @@
     move-result-object v0
 
     .line 142
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 144
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.app.IInstrumentationWatcher"
+    const-string/jumbo v2, "android.app.IInstrumentationWatcher"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -140,7 +140,7 @@
     .line 165
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 167
+    .line 139
     return-void
 
     .line 150
@@ -154,15 +154,17 @@
 
     goto :goto_0
 
-    .line 164
+    .line 163
     :catchall_0
     move-exception v2
 
+    .line 164
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 165
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 163
     throw v2
 
     .line 158
@@ -179,9 +181,9 @@
 
 .method public instrumentationStatus(Landroid/content/ComponentName;ILandroid/os/Bundle;)V
     .locals 5
-    .parameter "name"
-    .parameter "resultCode"
-    .parameter "results"
+    .param p1, "name"    # Landroid/content/ComponentName;
+    .param p2, "resultCode"    # I
+    .param p3, "results"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -195,15 +197,15 @@
     move-result-object v0
 
     .line 113
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 115
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.app.IInstrumentationWatcher"
+    const-string/jumbo v2, "android.app.IInstrumentationWatcher"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -258,7 +260,7 @@
     .line 136
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 138
+    .line 110
     return-void
 
     .line 121
@@ -272,15 +274,17 @@
 
     goto :goto_0
 
-    .line 135
+    .line 134
     :catchall_0
     move-exception v2
 
+    .line 135
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 136
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 134
     throw v2
 
     .line 129

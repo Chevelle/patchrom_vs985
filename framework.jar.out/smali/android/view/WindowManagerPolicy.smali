@@ -6,26 +6,22 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/view/WindowManagerPolicy$OnKeyguardExitResult;,
-        Landroid/view/WindowManagerPolicy$ScreenOnListener;,
-        Landroid/view/WindowManagerPolicy$PointerEventListener;,
+        Landroid/view/WindowManagerPolicy$WindowState;,
+        Landroid/view/WindowManagerPolicy$InputConsumer;,
         Landroid/view/WindowManagerPolicy$WindowManagerFuncs;,
-        Landroid/view/WindowManagerPolicy$FakeWindow;,
-        Landroid/view/WindowManagerPolicy$WindowState;
+        Landroid/view/WindowManagerPolicy$PointerEventListener;,
+        Landroid/view/WindowManagerPolicy$ScreenOnListener;,
+        Landroid/view/WindowManagerPolicy$OnKeyguardExitResult;
     }
 .end annotation
 
 
 # static fields
-.field public static final ACTION_GO_TO_SLEEP:I = 0x4
-
 .field public static final ACTION_HDMI_PLUGGED:Ljava/lang/String; = "android.intent.action.HDMI_PLUGGED"
 
 .field public static final ACTION_PASS_TO_USER:I = 0x1
 
-.field public static final ACTION_POKE_USER_ACTIVITY:I = 0x2
-
-.field public static final ACTION_WAKE_UP:I = 0x2
+.field public static final EXTRA_FROM_HOME_KEY:Ljava/lang/String; = "android.intent.extra.FROM_HOME_KEY"
 
 .field public static final EXTRA_HDMI_PLUGGED_STATE:Ljava/lang/String; = "state"
 
@@ -37,41 +33,23 @@
 
 .field public static final FINISH_LAYOUT_REDO_WALLPAPER:I = 0x4
 
-.field public static final FLAG_ALT:I = 0x10
-
-.field public static final FLAG_ALT_GR:I = 0x20
-
-.field public static final FLAG_BRIGHT_HERE:I = 0x20000000
-
-.field public static final FLAG_CAPS_LOCK:I = 0x8
-
 .field public static final FLAG_DISABLE_KEY_REPEAT:I = 0x8000000
 
 .field public static final FLAG_FILTERED:I = 0x4000000
 
 .field public static final FLAG_INJECTED:I = 0x1000000
 
-.field public static final FLAG_LAUNCHER:I = 0x80
-
-.field public static final FLAG_MENU:I = 0x40
+.field public static final FLAG_INTERACTIVE:I = 0x20000000
 
 .field public static final FLAG_PASS_TO_USER:I = 0x40000000
 
-.field public static final FLAG_SHIFT:I = 0x4
-
 .field public static final FLAG_TRUSTED:I = 0x2000000
 
-.field public static final FLAG_VIRTUAL:I = 0x100
+.field public static final FLAG_VIRTUAL:I = 0x2
 
 .field public static final FLAG_WAKE:I = 0x1
 
-.field public static final FLAG_WAKE_DROPPED:I = 0x2
-
-.field public static final FLAG_WOKE_HERE:I = 0x10000000
-
 .field public static final OFF_BECAUSE_OF_ADMIN:I = 0x1
-
-.field public static final OFF_BECAUSE_OF_PROX_SENSOR:I = 0x4
 
 .field public static final OFF_BECAUSE_OF_TIMEOUT:I = 0x3
 
@@ -114,7 +92,7 @@
 .method public abstract allowAppAnimationsLw()Z
 .end method
 
-.method public abstract applyPostLayoutPolicyLw(Landroid/view/WindowManagerPolicy$WindowState;Landroid/view/WindowManager$LayoutParams;)V
+.method public abstract applyPostLayoutPolicyLw(Landroid/view/WindowManagerPolicy$WindowState;Landroid/view/WindowManager$LayoutParams;Landroid/view/WindowManagerPolicy$WindowState;)V
 .end method
 
 .method public abstract beginLayoutLw(ZIII)V
@@ -135,16 +113,16 @@
 .method public abstract checkShowToOwnerOnly(Landroid/view/WindowManager$LayoutParams;)Z
 .end method
 
-.method public abstract createForceHideEnterAnimation(Z)Landroid/view/animation/Animation;
+.method public abstract createForceHideEnterAnimation(ZZ)Landroid/view/animation/Animation;
+.end method
+
+.method public abstract createForceHideWallpaperExitAnimation(Z)Landroid/view/animation/Animation;
 .end method
 
 .method public abstract dismissKeyguardLw()V
 .end method
 
 .method public abstract dispatchUnhandledKey(Landroid/view/WindowManagerPolicy$WindowState;Landroid/view/KeyEvent;I)Landroid/view/KeyEvent;
-.end method
-
-.method public abstract doesForceHide(Landroid/view/WindowManagerPolicy$WindowState;Landroid/view/WindowManager$LayoutParams;)Z
 .end method
 
 .method public abstract dump(Ljava/lang/String;Ljava/io/PrintWriter;[Ljava/lang/String;)V
@@ -165,10 +143,13 @@
 .method public abstract finishPostLayoutPolicyLw()I
 .end method
 
-.method public abstract focusChangedLw(Landroid/view/WindowManagerPolicy$WindowState;Landroid/view/WindowManagerPolicy$WindowState;)I
+.method public abstract finishedGoingToSleep(I)V
 .end method
 
-.method public abstract getAboveUniverseLayer()I
+.method public abstract finishedWakingUp()V
+.end method
+
+.method public abstract focusChangedLw(Landroid/view/WindowManagerPolicy$WindowState;Landroid/view/WindowManagerPolicy$WindowState;)I
 .end method
 
 .method public abstract getConfigDisplayHeight(III)I
@@ -177,16 +158,16 @@
 .method public abstract getConfigDisplayWidth(III)I
 .end method
 
-.method public abstract getContentInsetHintLw(Landroid/view/WindowManager$LayoutParams;Landroid/graphics/Rect;)V
-.end method
-
 .method public abstract getContentRectLw(Landroid/graphics/Rect;)V
 .end method
 
-.method public abstract getMaxWallpaperLayer()I
+.method public abstract getInputMethodWindowVisibleHeightLw()I
 .end method
 
-.method public abstract getNavigationbarDisplayHeight(I)I
+.method public abstract getInsetHintLw(Landroid/view/WindowManager$LayoutParams;ILandroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;)V
+.end method
+
+.method public abstract getMaxWallpaperLayer()I
 .end method
 
 .method public abstract getNonDecorDisplayHeight(III)I
@@ -195,13 +176,13 @@
 .method public abstract getNonDecorDisplayWidth(III)I
 .end method
 
-.method public abstract getStatusbarDisplayHeight()I
-.end method
-
 .method public abstract getSystemDecorLayerLw()I
 .end method
 
 .method public abstract getUserRotationMode()I
+.end method
+
+.method public abstract getWinShowWhenLockedLw()Landroid/view/WindowManagerPolicy$WindowState;
 .end method
 
 .method public abstract hasNavigationBar()Z
@@ -219,16 +200,22 @@
 .method public abstract interceptKeyBeforeDispatching(Landroid/view/WindowManagerPolicy$WindowState;Landroid/view/KeyEvent;I)J
 .end method
 
-.method public abstract interceptKeyBeforeQueueing(Landroid/view/KeyEvent;IZ)I
+.method public abstract interceptKeyBeforeQueueing(Landroid/view/KeyEvent;I)I
 .end method
 
-.method public abstract interceptMotionBeforeQueueingWhenScreenOff(I)I
+.method public abstract interceptMotionBeforeQueueingNonInteractive(JI)I
 .end method
 
 .method public abstract isDefaultOrientationForced()Z
 .end method
 
-.method public abstract isImmersiveMode(I)Z
+.method public abstract isForceHiding(Landroid/view/WindowManager$LayoutParams;)Z
+.end method
+
+.method public abstract isKeyguardDrawnLw()Z
+.end method
+
+.method public abstract isKeyguardHostWindow(Landroid/view/WindowManager$LayoutParams;)Z
 .end method
 
 .method public abstract isKeyguardLocked()Z
@@ -237,10 +224,10 @@
 .method public abstract isKeyguardSecure()Z
 .end method
 
-.method public abstract isScreenOnEarly()Z
+.method public abstract isKeyguardShowingOrOccluded()Z
 .end method
 
-.method public abstract isScreenOnFully()Z
+.method public abstract isScreenOn()Z
 .end method
 
 .method public abstract isTopLevelWindow(I)Z
@@ -252,10 +239,16 @@
 .method public abstract keepScreenOnStoppedLw()V
 .end method
 
-.method public abstract layoutWindowLw(Landroid/view/WindowManagerPolicy$WindowState;Landroid/view/WindowManager$LayoutParams;Landroid/view/WindowManagerPolicy$WindowState;)V
+.method public abstract layoutWindowLw(Landroid/view/WindowManagerPolicy$WindowState;Landroid/view/WindowManagerPolicy$WindowState;)V
 .end method
 
 .method public abstract lockNow(Landroid/os/Bundle;)V
+.end method
+
+.method public abstract notifyActivityDrawnForKeyguardLw()V
+.end method
+
+.method public abstract notifyCameraLensCoverSwitchChanged(JZ)V
 .end method
 
 .method public abstract notifyLidSwitchChanged(JZ)V
@@ -279,7 +272,10 @@
 .method public abstract rotationHasCompatibleMetricsLw(II)Z
 .end method
 
-.method public abstract screenTurnedOff(I)V
+.method public abstract screenTurnedOff()V
+.end method
+
+.method public abstract screenTurnedOn()V
 .end method
 
 .method public abstract screenTurningOn(Landroid/view/WindowManagerPolicy$ScreenOnListener;)V
@@ -289,12 +285,6 @@
 .end method
 
 .method public abstract selectRotationAnimationLw([I)V
-.end method
-
-.method public abstract sendActionColorBroadcast(II)V
-.end method
-
-.method public abstract sendAppColorBroadcast(I)V
 .end method
 
 .method public abstract setCurrentOrientationLw(I)V
@@ -312,22 +302,31 @@
 .method public abstract setLastInputMethodWindowLw(Landroid/view/WindowManagerPolicy$WindowState;Landroid/view/WindowManagerPolicy$WindowState;)V
 .end method
 
-.method public abstract setPackageName(Ljava/lang/String;)V
-.end method
-
 .method public abstract setRotationLw(I)V
 .end method
 
 .method public abstract setSafeMode(Z)V
 .end method
 
-.method public abstract setTouchExplorationEnabled(Z)V
-.end method
-
 .method public abstract setUserRotationMode(II)V
 .end method
 
 .method public abstract showBootMessage(Ljava/lang/CharSequence;Z)V
+.end method
+
+.method public abstract showGlobalActions()V
+.end method
+
+.method public abstract showRecentApps()V
+.end method
+
+.method public abstract startKeyguardExitAnimation(JJ)V
+.end method
+
+.method public abstract startedGoingToSleep(I)V
+.end method
+
+.method public abstract startedWakingUp()V
 .end method
 
 .method public abstract subWindowTypeToLayerLw(I)I

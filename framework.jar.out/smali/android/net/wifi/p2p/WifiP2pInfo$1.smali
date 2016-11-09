@@ -41,89 +41,90 @@
 
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/net/wifi/p2p/WifiP2pInfo;
-    .locals 4
-    .parameter "in"
+    .locals 5
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    const/4 v3, 0x0
+    const/4 v4, 0x0
 
-    const/4 v2, 0x1
+    const/4 v3, 0x1
 
     .line 83
-    new-instance v0, Landroid/net/wifi/p2p/WifiP2pInfo;
+    new-instance v1, Landroid/net/wifi/p2p/WifiP2pInfo;
 
-    invoke-direct {v0}, Landroid/net/wifi/p2p/WifiP2pInfo;-><init>()V
+    invoke-direct {v1}, Landroid/net/wifi/p2p/WifiP2pInfo;-><init>()V
 
     .line 84
-    .local v0, info:Landroid/net/wifi/p2p/WifiP2pInfo;
+    .local v1, "info":Landroid/net/wifi/p2p/WifiP2pInfo;
     invoke-virtual {p1}, Landroid/os/Parcel;->readByte()B
 
-    move-result v1
+    move-result v2
 
-    if-ne v1, v2, :cond_2
+    if-ne v2, v3, :cond_2
 
-    move v1, v2
+    move v2, v3
 
     :goto_0
-    iput-boolean v1, v0, Landroid/net/wifi/p2p/WifiP2pInfo;->groupFormed:Z
+    iput-boolean v2, v1, Landroid/net/wifi/p2p/WifiP2pInfo;->groupFormed:Z
 
     .line 85
     invoke-virtual {p1}, Landroid/os/Parcel;->readByte()B
 
-    move-result v1
+    move-result v2
 
-    if-ne v1, v2, :cond_0
+    if-ne v2, v3, :cond_0
 
-    move v3, v2
+    move v4, v3
 
     :cond_0
-    iput-boolean v3, v0, Landroid/net/wifi/p2p/WifiP2pInfo;->isGroupOwner:Z
+    iput-boolean v4, v1, Landroid/net/wifi/p2p/WifiP2pInfo;->isGroupOwner:Z
 
     .line 86
     invoke-virtual {p1}, Landroid/os/Parcel;->readByte()B
 
-    move-result v1
+    move-result v2
 
-    if-ne v1, v2, :cond_1
+    if-ne v2, v3, :cond_1
 
     .line 88
     :try_start_0
     invoke-virtual {p1}, Landroid/os/Parcel;->createByteArray()[B
 
-    move-result-object v1
+    move-result-object v2
 
-    invoke-static {v1}, Ljava/net/InetAddress;->getByAddress([B)Ljava/net/InetAddress;
+    invoke-static {v2}, Ljava/net/InetAddress;->getByAddress([B)Ljava/net/InetAddress;
 
-    move-result-object v1
+    move-result-object v2
 
-    iput-object v1, v0, Landroid/net/wifi/p2p/WifiP2pInfo;->groupOwnerAddress:Ljava/net/InetAddress;
+    iput-object v2, v1, Landroid/net/wifi/p2p/WifiP2pInfo;->groupOwnerAddress:Ljava/net/InetAddress;
     :try_end_0
     .catch Ljava/net/UnknownHostException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 91
     :cond_1
     :goto_1
-    return-object v0
+    return-object v1
 
     :cond_2
-    move v1, v3
+    move v2, v4
 
     .line 84
     goto :goto_0
 
     .line 89
     :catch_0
-    move-exception v1
+    move-exception v0
 
+    .local v0, "e":Ljava/net/UnknownHostException;
     goto :goto_1
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 81
+    .line 82
     invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pInfo$1;->createFromParcel(Landroid/os/Parcel;)Landroid/net/wifi/p2p/WifiP2pInfo;
 
     move-result-object v0
@@ -133,7 +134,7 @@
 
 .method public newArray(I)[Landroid/net/wifi/p2p/WifiP2pInfo;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 95
@@ -144,10 +145,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 81
+    .line 94
     invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pInfo$1;->newArray(I)[Landroid/net/wifi/p2p/WifiP2pInfo;
 
     move-result-object v0

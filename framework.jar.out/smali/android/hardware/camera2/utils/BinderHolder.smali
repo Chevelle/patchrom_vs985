@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/hardware/camera2/utils/BinderHolder$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -28,13 +36,15 @@
     .locals 1
 
     .prologue
-    .line 43
+    .line 44
     new-instance v0, Landroid/hardware/camera2/utils/BinderHolder$1;
 
     invoke-direct {v0}, Landroid/hardware/camera2/utils/BinderHolder$1;-><init>()V
 
+    .line 43
     sput-object v0, Landroid/hardware/camera2/utils/BinderHolder;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 26
     return-void
 .end method
 
@@ -56,7 +66,7 @@
 
 .method public constructor <init>(Landroid/os/IBinder;)V
     .locals 1
-    .parameter "binder"
+    .param p1, "binder"    # Landroid/os/IBinder;
 
     .prologue
     .line 66
@@ -70,13 +80,13 @@
     .line 67
     iput-object p1, p0, Landroid/hardware/camera2/utils/BinderHolder;->mBinder:Landroid/os/IBinder;
 
-    .line 68
+    .line 66
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 70
@@ -94,17 +104,15 @@
 
     iput-object v0, p0, Landroid/hardware/camera2/utils/BinderHolder;->mBinder:Landroid/os/IBinder;
 
-    .line 72
+    .line 70
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/hardware/camera2/utils/BinderHolder$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/hardware/camera2/utils/BinderHolder;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 26
     invoke-direct {p0, p1}, Landroid/hardware/camera2/utils/BinderHolder;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -134,7 +142,7 @@
 
 .method public readFromParcel(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "src"
+    .param p1, "src"    # Landroid/os/Parcel;
 
     .prologue
     .line 40
@@ -144,26 +152,26 @@
 
     iput-object v0, p0, Landroid/hardware/camera2/utils/BinderHolder;->mBinder:Landroid/os/IBinder;
 
-    .line 41
+    .line 39
     return-void
 .end method
 
 .method public setBinder(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "binder"
+    .param p1, "binder"    # Landroid/os/IBinder;
 
     .prologue
     .line 61
     iput-object p1, p0, Landroid/hardware/camera2/utils/BinderHolder;->mBinder:Landroid/os/IBinder;
 
-    .line 62
+    .line 60
     return-void
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 36
@@ -171,6 +179,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeStrongBinder(Landroid/os/IBinder;)V
 
-    .line 37
+    .line 35
     return-void
 .end method

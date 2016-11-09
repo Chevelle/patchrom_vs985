@@ -22,3 +22,19 @@
         }
     .end annotation
 .end method
+
+.method public abstract getPackagesForUid(I)[Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isRuntimePermission(Ljava/lang/String;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method

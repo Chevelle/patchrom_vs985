@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/os/PatternMatcher$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -36,19 +44,21 @@
     .locals 1
 
     .prologue
-    .line 98
+    .line 99
     new-instance v0, Landroid/os/PatternMatcher$1;
 
     invoke-direct {v0}, Landroid/os/PatternMatcher$1;-><init>()V
 
+    .line 98
     sput-object v0, Landroid/os/PatternMatcher;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 24
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "src"
+    .param p1, "src"    # Landroid/os/Parcel;
 
     .prologue
     .line 93
@@ -68,14 +78,14 @@
 
     iput v0, p0, Landroid/os/PatternMatcher;->mType:I
 
-    .line 96
+    .line 93
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter "pattern"
-    .parameter "type"
+    .param p1, "pattern"    # Ljava/lang/String;
+    .param p2, "type"    # I
 
     .prologue
     .line 51
@@ -87,15 +97,15 @@
     .line 53
     iput p2, p0, Landroid/os/PatternMatcher;->mType:I
 
-    .line 54
+    .line 51
     return-void
 .end method
 
 .method static matchPattern(Ljava/lang/String;Ljava/lang/String;I)Z
     .locals 13
-    .parameter "pattern"
-    .parameter "match"
-    .parameter "type"
+    .param p0, "pattern"    # Ljava/lang/String;
+    .param p1, "match"    # Ljava/lang/String;
+    .param p2, "type"    # I
 
     .prologue
     const/16 v12, 0x5c
@@ -109,48 +119,49 @@
     const/4 v8, 0x0
 
     .line 110
-    if-nez p1, :cond_1
+    if-nez p1, :cond_0
 
-    .line 195
-    :cond_0
-    :goto_0
     return v8
 
     .line 111
-    :cond_1
-    if-nez p2, :cond_2
+    :cond_0
+    if-nez p2, :cond_1
 
     .line 112
     invoke-virtual {p0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v8
+    move-result v7
 
-    goto :goto_0
+    return v7
 
     .line 113
-    :cond_2
-    if-ne p2, v7, :cond_3
+    :cond_1
+    if-ne p2, v7, :cond_2
 
     .line 114
     invoke-virtual {p1, p0}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
-    move-result v8
+    move-result v7
 
-    goto :goto_0
+    return v7
 
     .line 115
-    :cond_3
+    :cond_2
     const/4 v9, 0x2
 
-    if-ne p2, v9, :cond_0
+    if-eq p2, v9, :cond_3
+
+    .line 116
+    return v8
 
     .line 119
+    :cond_3
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v1
 
     .line 120
-    .local v1, NP:I
+    .local v1, "NP":I
     if-gtz v1, :cond_5
 
     .line 121
@@ -160,15 +171,13 @@
 
     if-gtz v9, :cond_4
 
-    :goto_1
-    move v8, v7
-
-    goto :goto_0
+    :goto_0
+    return v7
 
     :cond_4
     move v7, v8
 
-    goto :goto_1
+    goto :goto_0
 
     .line 123
     :cond_5
@@ -177,30 +186,29 @@
     move-result v0
 
     .line 124
-    .local v0, NM:I
+    .local v0, "NM":I
     const/4 v5, 0x0
 
-    .local v5, ip:I
+    .local v5, "ip":I
     const/4 v4, 0x0
 
     .line 125
-    .local v4, im:I
+    .local v4, "im":I
     invoke-virtual {p0, v8}, Ljava/lang/String;->charAt(I)C
 
     move-result v6
 
     .line 126
-    .local v6, nextChar:C
-    :goto_2
-    if-ge v5, v1, :cond_14
+    :goto_1
+    if-ge v5, v1, :cond_17
 
-    if-ge v4, v0, :cond_14
+    if-ge v4, v0, :cond_17
 
     .line 127
     move v2, v6
 
     .line 128
-    .local v2, c:C
+    .local v2, "c":C
     add-int/lit8 v5, v5, 0x1
 
     .line 129
@@ -211,14 +219,14 @@
     move-result v6
 
     .line 130
-    :goto_3
+    :goto_2
     if-ne v2, v12, :cond_8
 
-    move v3, v7
+    const/4 v3, 0x1
 
     .line 131
-    .local v3, escaped:Z
-    :goto_4
+    .local v3, "escaped":Z
+    :goto_3
     if-eqz v3, :cond_6
 
     .line 132
@@ -236,45 +244,47 @@
 
     .line 136
     :cond_6
-    :goto_5
-    if-ne v6, v11, :cond_12
+    :goto_4
+    if-ne v6, v11, :cond_15
 
     .line 137
-    if-nez v3, :cond_f
+    if-nez v3, :cond_12
 
-    if-ne v2, v10, :cond_f
+    if-ne v2, v10, :cond_12
 
     .line 138
     add-int/lit8 v9, v1, -0x1
 
     if-lt v5, v9, :cond_a
 
-    move v8, v7
-
     .line 141
-    goto :goto_0
-
-    .end local v3           #escaped:Z
-    :cond_7
-    move v6, v8
+    return v7
 
     .line 129
-    goto :goto_3
+    .end local v3    # "escaped":Z
+    :cond_7
+    const/4 v6, 0x0
 
-    :cond_8
-    move v3, v8
+    .local v6, "nextChar":C
+    goto :goto_2
 
     .line 130
-    goto :goto_4
+    .end local v6    # "nextChar":C
+    :cond_8
+    const/4 v3, 0x0
 
-    .restart local v3       #escaped:Z
-    :cond_9
-    move v6, v8
+    .restart local v3    # "escaped":Z
+    goto :goto_3
 
     .line 134
-    goto :goto_5
+    :cond_9
+    const/4 v6, 0x0
+
+    .restart local v6    # "nextChar":C
+    goto :goto_4
 
     .line 143
+    .end local v6    # "nextChar":C
     :cond_a
     add-int/lit8 v5, v5, 0x1
 
@@ -284,158 +294,172 @@
     move-result v6
 
     .line 147
+    .local v6, "nextChar":C
     if-ne v6, v12, :cond_b
 
     .line 148
     add-int/lit8 v5, v5, 0x1
 
     .line 149
-    if-ge v5, v1, :cond_c
+    if-ge v5, v1, :cond_d
 
     invoke-virtual {p0, v5}, Ljava/lang/String;->charAt(I)C
 
     move-result v6
 
     .line 152
+    .end local v6    # "nextChar":C
     :cond_b
-    :goto_6
+    :goto_5
     invoke-virtual {p1, v4}, Ljava/lang/String;->charAt(I)C
 
     move-result v9
 
-    if-ne v9, v6, :cond_d
+    if-ne v9, v6, :cond_e
 
     .line 157
-    :goto_7
-    if-eq v4, v0, :cond_0
+    :cond_c
+    if-ne v4, v0, :cond_f
+
+    .line 160
+    return v8
+
+    .line 149
+    .restart local v6    # "nextChar":C
+    :cond_d
+    const/4 v6, 0x0
+
+    .local v6, "nextChar":C
+    goto :goto_5
+
+    .line 155
+    .end local v6    # "nextChar":C
+    :cond_e
+    add-int/lit8 v4, v4, 0x1
+
+    .line 156
+    if-ge v4, v0, :cond_c
+
+    goto :goto_5
 
     .line 162
+    :cond_f
     add-int/lit8 v5, v5, 0x1
 
     .line 163
-    if-ge v5, v1, :cond_e
+    if-ge v5, v1, :cond_10
 
     invoke-virtual {p0, v5}, Ljava/lang/String;->charAt(I)C
 
     move-result v6
 
     .line 164
-    :goto_8
+    :goto_6
     add-int/lit8 v4, v4, 0x1
 
-    goto :goto_2
-
-    :cond_c
-    move v6, v8
-
-    .line 149
-    goto :goto_6
-
-    .line 155
-    :cond_d
-    add-int/lit8 v4, v4, 0x1
-
-    .line 156
-    if-lt v4, v0, :cond_b
-
-    goto :goto_7
-
-    :cond_e
-    move v6, v8
+    goto :goto_1
 
     .line 163
-    goto :goto_8
+    :cond_10
+    const/4 v6, 0x0
+
+    .restart local v6    # "nextChar":C
+    goto :goto_6
+
+    .line 171
+    .end local v6    # "nextChar":C
+    :cond_11
+    add-int/lit8 v4, v4, 0x1
+
+    .line 172
+    if-ge v4, v0, :cond_13
 
     .line 168
-    :cond_f
+    :cond_12
     invoke-virtual {p1, v4}, Ljava/lang/String;->charAt(I)C
 
     move-result v9
 
-    if-eq v9, v2, :cond_10
+    if-eq v9, v2, :cond_11
 
     .line 173
-    :goto_9
+    :cond_13
     add-int/lit8 v5, v5, 0x1
 
     .line 174
-    if-ge v5, v1, :cond_11
+    if-ge v5, v1, :cond_14
 
     invoke-virtual {p0, v5}, Ljava/lang/String;->charAt(I)C
 
     move-result v6
 
-    :goto_a
-    goto :goto_2
+    .local v6, "nextChar":C
+    goto :goto_1
 
-    .line 171
-    :cond_10
-    add-int/lit8 v4, v4, 0x1
+    .end local v6    # "nextChar":C
+    :cond_14
+    const/4 v6, 0x0
 
-    .line 172
-    if-lt v4, v0, :cond_f
-
-    goto :goto_9
-
-    :cond_11
-    move v6, v8
-
-    .line 174
-    goto :goto_a
+    .local v6, "nextChar":C
+    goto :goto_1
 
     .line 177
-    :cond_12
-    if-eq v2, v10, :cond_13
+    .end local v6    # "nextChar":C
+    :cond_15
+    if-eq v2, v10, :cond_16
 
     invoke-virtual {p1, v4}, Ljava/lang/String;->charAt(I)C
 
     move-result v9
 
-    if-ne v9, v2, :cond_0
+    if-eq v9, v2, :cond_16
+
+    return v8
 
     .line 178
-    :cond_13
+    :cond_16
     add-int/lit8 v4, v4, 0x1
 
-    goto :goto_2
+    goto :goto_1
 
     .line 182
-    .end local v2           #c:C
-    .end local v3           #escaped:Z
-    :cond_14
-    if-lt v5, v1, :cond_15
+    .end local v2    # "c":C
+    .end local v3    # "escaped":Z
+    :cond_17
+    if-lt v5, v1, :cond_18
 
-    if-lt v4, v0, :cond_15
-
-    move v8, v7
+    if-lt v4, v0, :cond_18
 
     .line 184
-    goto/16 :goto_0
+    return v7
 
     .line 190
-    :cond_15
+    :cond_18
     add-int/lit8 v9, v1, -0x2
 
-    if-ne v5, v9, :cond_0
+    if-ne v5, v9, :cond_19
 
     invoke-virtual {p0, v5}, Ljava/lang/String;->charAt(I)C
 
     move-result v9
 
-    if-ne v9, v10, :cond_0
+    if-ne v9, v10, :cond_19
 
+    .line 191
     add-int/lit8 v9, v5, 0x1
 
     invoke-virtual {p0, v9}, Ljava/lang/String;->charAt(I)C
 
     move-result v9
 
-    if-ne v9, v11, :cond_0
-
-    move v8, v7
+    if-ne v9, v11, :cond_19
 
     .line 192
-    goto/16 :goto_0
+    return v7
+
+    .line 195
+    :cond_19
+    return v8
 .end method
 
 
@@ -472,7 +496,7 @@
 
 .method public match(Ljava/lang/String;)Z
     .locals 2
-    .parameter "str"
+    .param p1, "str"    # Ljava/lang/String;
 
     .prologue
     .line 65
@@ -492,10 +516,10 @@
 
     .prologue
     .line 69
-    const-string v0, "? "
+    const-string/jumbo v0, "? "
 
     .line 70
-    .local v0, type:Ljava/lang/String;
+    .local v0, "type":Ljava/lang/String;
     iget v1, p0, Landroid/os/PatternMatcher;->mType:I
 
     packed-switch v1, :pswitch_data_0
@@ -506,7 +530,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "PatternMatcher{"
+    const-string/jumbo v2, "PatternMatcher{"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -536,27 +560,23 @@
 
     .line 72
     :pswitch_0
-    const-string v0, "LITERAL: "
+    const-string/jumbo v0, "LITERAL: "
 
-    .line 73
     goto :goto_0
 
     .line 75
     :pswitch_1
-    const-string v0, "PREFIX: "
+    const-string/jumbo v0, "PREFIX: "
 
-    .line 76
     goto :goto_0
 
     .line 78
     :pswitch_2
-    const-string v0, "GLOB: "
+    const-string/jumbo v0, "GLOB: "
 
     goto :goto_0
 
     .line 70
-    nop
-
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -567,8 +587,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 89
@@ -581,6 +601,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 91
+    .line 88
     return-void
 .end method

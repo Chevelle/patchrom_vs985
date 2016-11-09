@@ -47,6 +47,14 @@
     .end annotation
 .end method
 
+.method public abstract disableWBS()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract disconnect(Landroid/bluetooth/BluetoothDevice;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -56,6 +64,22 @@
 .end method
 
 .method public abstract disconnectAudio()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract enableWBS()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getAudioRouteAllowed()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -164,6 +188,14 @@
 .end method
 
 .method public abstract sendVendorSpecificResultCode(Landroid/bluetooth/BluetoothDevice;Ljava/lang/String;Ljava/lang/String;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setAudioRouteAllowed(Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

@@ -15,6 +15,20 @@
 
 
 # static fields
+.field public static final accessibilityActionContextClick:I = 0x102003c
+
+.field public static final accessibilityActionScrollDown:I = 0x102003a
+
+.field public static final accessibilityActionScrollLeft:I = 0x1020039
+
+.field public static final accessibilityActionScrollRight:I = 0x102003b
+
+.field public static final accessibilityActionScrollToPosition:I = 0x1020037
+
+.field public static final accessibilityActionScrollUp:I = 0x1020038
+
+.field public static final accessibilityActionShowOnScreen:I = 0x1020036
+
 .field public static final addToDictionary:I = 0x102002a
 
 .field public static final background:I = 0x1020000
@@ -67,13 +81,23 @@
 
 .field public static final list:I = 0x102000a
 
+.field public static final mask:I = 0x102002e
+
 .field public static final message:I = 0x102000b
 
+.field public static final navigationBarBackground:I = 0x1020030
+
 .field public static final paste:I = 0x1020022
+
+.field public static final pasteAsPlainText:I = 0x1020031
 
 .field public static final primary:I = 0x102000c
 
 .field public static final progress:I = 0x102000d
+
+.field public static final redo:I = 0x1020033
+
+.field public static final replaceText:I = 0x1020034
 
 .field public static final secondaryProgress:I = 0x102000f
 
@@ -83,7 +107,11 @@
 
 .field public static final selectedIcon:I = 0x102000e
 
+.field public static final shareText:I = 0x1020035
+
 .field public static final startSelectingText:I = 0x1020028
+
+.field public static final statusBarBackground:I = 0x102002f
 
 .field public static final stopSelectingText:I = 0x1020029
 
@@ -105,6 +133,8 @@
 
 .field public static final toggle:I = 0x1020017
 
+.field public static final undo:I = 0x1020032
+
 .field public static final widget_frame:I = 0x1020018
 
 
@@ -113,7 +143,7 @@
     .locals 0
 
     .prologue
-    .line 11075
+    .line 13675
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

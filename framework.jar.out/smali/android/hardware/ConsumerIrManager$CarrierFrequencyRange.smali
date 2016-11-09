@@ -25,9 +25,9 @@
 # direct methods
 .method public constructor <init>(Landroid/hardware/ConsumerIrManager;II)V
     .locals 0
-    .parameter
-    .parameter "min"
-    .parameter "max"
+    .param p1, "this$0"    # Landroid/hardware/ConsumerIrManager;
+    .param p2, "min"    # I
+    .param p3, "max"    # I
 
     .prologue
     .line 105
@@ -41,7 +41,7 @@
     .line 107
     iput p3, p0, Landroid/hardware/ConsumerIrManager$CarrierFrequencyRange;->mMaxFrequency:I
 
-    .line 108
+    .line 105
     return-void
 .end method
 

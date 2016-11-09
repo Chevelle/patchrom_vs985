@@ -31,6 +31,62 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/graphics/pdf/PdfDocument$PageInfo;)Landroid/graphics/Rect;
+    .locals 1
+
+    iget-object v0, p0, Landroid/graphics/pdf/PdfDocument$PageInfo;->mContentRect:Landroid/graphics/Rect;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Landroid/graphics/pdf/PdfDocument$PageInfo;)I
+    .locals 1
+
+    iget v0, p0, Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageHeight:I
+
+    return v0
+.end method
+
+.method static synthetic -get2(Landroid/graphics/pdf/PdfDocument$PageInfo;)I
+    .locals 1
+
+    iget v0, p0, Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageWidth:I
+
+    return v0
+.end method
+
+.method static synthetic -set0(Landroid/graphics/pdf/PdfDocument$PageInfo;Landroid/graphics/Rect;)Landroid/graphics/Rect;
+    .locals 0
+
+    iput-object p1, p0, Landroid/graphics/pdf/PdfDocument$PageInfo;->mContentRect:Landroid/graphics/Rect;
+
+    return-object p1
+.end method
+
+.method static synthetic -set1(Landroid/graphics/pdf/PdfDocument$PageInfo;I)I
+    .locals 0
+
+    iput p1, p0, Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageHeight:I
+
+    return p1
+.end method
+
+.method static synthetic -set2(Landroid/graphics/pdf/PdfDocument$PageInfo;I)I
+    .locals 0
+
+    iput p1, p0, Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageNumber:I
+
+    return p1
+.end method
+
+.method static synthetic -set3(Landroid/graphics/pdf/PdfDocument$PageInfo;I)I
+    .locals 0
+
+    iput p1, p0, Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageWidth:I
+
+    return p1
+.end method
+
 .method private constructor <init>()V
     .locals 0
 
@@ -38,100 +94,16 @@
     .line 273
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 275
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/graphics/pdf/PdfDocument$1;)V
+.method synthetic constructor <init>(Landroid/graphics/pdf/PdfDocument$PageInfo;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 264
     invoke-direct {p0}, Landroid/graphics/pdf/PdfDocument$PageInfo;-><init>()V
 
     return-void
-.end method
-
-.method static synthetic access$000(Landroid/graphics/pdf/PdfDocument$PageInfo;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 264
-    iget v0, p0, Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageWidth:I
-
-    return v0
-.end method
-
-.method static synthetic access$002(Landroid/graphics/pdf/PdfDocument$PageInfo;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 264
-    iput p1, p0, Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageWidth:I
-
-    return p1
-.end method
-
-.method static synthetic access$100(Landroid/graphics/pdf/PdfDocument$PageInfo;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 264
-    iget v0, p0, Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageHeight:I
-
-    return v0
-.end method
-
-.method static synthetic access$102(Landroid/graphics/pdf/PdfDocument$PageInfo;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 264
-    iput p1, p0, Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageHeight:I
-
-    return p1
-.end method
-
-.method static synthetic access$200(Landroid/graphics/pdf/PdfDocument$PageInfo;)Landroid/graphics/Rect;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 264
-    iget-object v0, p0, Landroid/graphics/pdf/PdfDocument$PageInfo;->mContentRect:Landroid/graphics/Rect;
-
-    return-object v0
-.end method
-
-.method static synthetic access$202(Landroid/graphics/pdf/PdfDocument$PageInfo;Landroid/graphics/Rect;)Landroid/graphics/Rect;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 264
-    iput-object p1, p0, Landroid/graphics/pdf/PdfDocument$PageInfo;->mContentRect:Landroid/graphics/Rect;
-
-    return-object p1
-.end method
-
-.method static synthetic access$602(Landroid/graphics/pdf/PdfDocument$PageInfo;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 264
-    iput p1, p0, Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageNumber:I
-
-    return p1
 .end method
 
 

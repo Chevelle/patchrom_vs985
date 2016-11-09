@@ -23,232 +23,232 @@
 
 # direct methods
 .method public constructor <init>(Landroid/filterfw/core/FilterContext;Landroid/filterfw/core/FilterGraph;Ljava/lang/Class;)V
-    .locals 5
-    .parameter "context"
-    .parameter "graph"
-    .parameter "schedulerClass"
+    .locals 9
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
+    .param p2, "graph"    # Landroid/filterfw/core/FilterGraph;
+    .param p3, "schedulerClass"    # Ljava/lang/Class;
 
     .prologue
-    const/4 v4, 0x0
+    const/4 v8, 0x0
 
-    const/4 v3, 0x1
+    const/4 v7, 0x1
 
     .line 46
     invoke-direct {p0, p1}, Landroid/filterfw/core/GraphRunner;-><init>(Landroid/filterfw/core/FilterContext;)V
 
     .line 33
-    iput-object v4, p0, Landroid/filterfw/core/SyncRunner;->mScheduler:Landroid/filterfw/core/Scheduler;
+    iput-object v8, p0, Landroid/filterfw/core/SyncRunner;->mScheduler:Landroid/filterfw/core/Scheduler;
 
     .line 35
-    iput-object v4, p0, Landroid/filterfw/core/SyncRunner;->mDoneListener:Landroid/filterfw/core/GraphRunner$OnRunnerDoneListener;
+    iput-object v8, p0, Landroid/filterfw/core/SyncRunner;->mDoneListener:Landroid/filterfw/core/GraphRunner$OnRunnerDoneListener;
 
     .line 36
-    new-instance v2, Ljava/util/concurrent/ScheduledThreadPoolExecutor;
+    new-instance v6, Ljava/util/concurrent/ScheduledThreadPoolExecutor;
 
-    invoke-direct {v2, v3}, Ljava/util/concurrent/ScheduledThreadPoolExecutor;-><init>(I)V
+    invoke-direct {v6, v7}, Ljava/util/concurrent/ScheduledThreadPoolExecutor;-><init>(I)V
 
-    iput-object v2, p0, Landroid/filterfw/core/SyncRunner;->mWakeExecutor:Ljava/util/concurrent/ScheduledThreadPoolExecutor;
+    iput-object v6, p0, Landroid/filterfw/core/SyncRunner;->mWakeExecutor:Ljava/util/concurrent/ScheduledThreadPoolExecutor;
 
     .line 37
-    new-instance v2, Landroid/os/ConditionVariable;
+    new-instance v6, Landroid/os/ConditionVariable;
 
-    invoke-direct {v2}, Landroid/os/ConditionVariable;-><init>()V
+    invoke-direct {v6}, Landroid/os/ConditionVariable;-><init>()V
 
-    iput-object v2, p0, Landroid/filterfw/core/SyncRunner;->mWakeCondition:Landroid/os/ConditionVariable;
+    iput-object v6, p0, Landroid/filterfw/core/SyncRunner;->mWakeCondition:Landroid/os/ConditionVariable;
 
     .line 39
-    iput-object v4, p0, Landroid/filterfw/core/SyncRunner;->mTimer:Landroid/filterfw/core/StopWatchMap;
+    iput-object v8, p0, Landroid/filterfw/core/SyncRunner;->mTimer:Landroid/filterfw/core/StopWatchMap;
 
     .line 48
-    const-string v2, "SyncRunner"
+    const-string/jumbo v6, "SyncRunner"
 
-    const/4 v3, 0x2
+    const/4 v7, 0x2
 
-    invoke-static {v2, v3}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
+    invoke-static {v6, v7}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
 
-    move-result v2
+    move-result v6
 
-    iput-boolean v2, p0, Landroid/filterfw/core/SyncRunner;->mLogVerbose:Z
+    iput-boolean v6, p0, Landroid/filterfw/core/SyncRunner;->mLogVerbose:Z
 
     .line 50
-    iget-boolean v2, p0, Landroid/filterfw/core/SyncRunner;->mLogVerbose:Z
+    iget-boolean v6, p0, Landroid/filterfw/core/SyncRunner;->mLogVerbose:Z
 
-    if-eqz v2, :cond_0
+    if-eqz v6, :cond_0
 
-    const-string v2, "SyncRunner"
+    const-string/jumbo v6, "SyncRunner"
 
-    const-string v3, "Initializing SyncRunner"
+    const-string/jumbo v7, "Initializing SyncRunner"
 
-    invoke-static {v2, v3}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v6, v7}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 53
     :cond_0
-    const-class v2, Landroid/filterfw/core/Scheduler;
+    const-class v6, Landroid/filterfw/core/Scheduler;
 
-    invoke-virtual {v2, p3}, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+    invoke-virtual {v6, p3}, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
 
-    move-result v2
+    move-result v6
 
-    if-eqz v2, :cond_2
+    if-eqz v6, :cond_2
 
     .line 55
-    const/4 v2, 0x1
+    const/4 v6, 0x1
 
     :try_start_0
-    new-array v2, v2, [Ljava/lang/Class;
+    new-array v6, v6, [Ljava/lang/Class;
 
-    const/4 v3, 0x0
+    const-class v7, Landroid/filterfw/core/FilterGraph;
 
-    const-class v4, Landroid/filterfw/core/FilterGraph;
+    const/4 v8, 0x0
 
-    aput-object v4, v2, v3
+    aput-object v7, v6, v8
 
-    invoke-virtual {p3, v2}, Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    invoke-virtual {p3, v6}, Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
 
-    move-result-object v1
+    move-result-object v5
 
     .line 56
-    .local v1, schedulerConstructor:Ljava/lang/reflect/Constructor;
-    const/4 v2, 0x1
+    .local v5, "schedulerConstructor":Ljava/lang/reflect/Constructor;
+    const/4 v6, 0x1
 
-    new-array v2, v2, [Ljava/lang/Object;
+    new-array v6, v6, [Ljava/lang/Object;
 
-    const/4 v3, 0x0
+    const/4 v7, 0x0
 
-    aput-object p2, v2, v3
+    aput-object p2, v6, v7
 
-    invoke-virtual {v1, v2}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v5, v6}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v6
 
-    check-cast v2, Landroid/filterfw/core/Scheduler;
+    check-cast v6, Landroid/filterfw/core/Scheduler;
 
-    iput-object v2, p0, Landroid/filterfw/core/SyncRunner;->mScheduler:Landroid/filterfw/core/Scheduler;
+    iput-object v6, p0, Landroid/filterfw/core/SyncRunner;->mScheduler:Landroid/filterfw/core/Scheduler;
     :try_end_0
-    .catch Ljava/lang/NoSuchMethodException; {:try_start_0 .. :try_end_0} :catch_0
-    .catch Ljava/lang/InstantiationException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/NoSuchMethodException; {:try_start_0 .. :try_end_0} :catch_4
+    .catch Ljava/lang/InstantiationException; {:try_start_0 .. :try_end_0} :catch_3
     .catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_2
-    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_3
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_4
+    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 73
     iput-object p1, p0, Landroid/filterfw/core/SyncRunner;->mFilterContext:Landroid/filterfw/core/FilterContext;
 
     .line 74
-    iget-object v2, p0, Landroid/filterfw/core/SyncRunner;->mFilterContext:Landroid/filterfw/core/FilterContext;
+    iget-object v6, p0, Landroid/filterfw/core/SyncRunner;->mFilterContext:Landroid/filterfw/core/FilterContext;
 
-    invoke-virtual {v2, p2}, Landroid/filterfw/core/FilterContext;->addGraph(Landroid/filterfw/core/FilterGraph;)V
+    invoke-virtual {v6, p2}, Landroid/filterfw/core/FilterContext;->addGraph(Landroid/filterfw/core/FilterGraph;)V
 
     .line 76
-    new-instance v2, Landroid/filterfw/core/StopWatchMap;
+    new-instance v6, Landroid/filterfw/core/StopWatchMap;
 
-    invoke-direct {v2}, Landroid/filterfw/core/StopWatchMap;-><init>()V
+    invoke-direct {v6}, Landroid/filterfw/core/StopWatchMap;-><init>()V
 
-    iput-object v2, p0, Landroid/filterfw/core/SyncRunner;->mTimer:Landroid/filterfw/core/StopWatchMap;
+    iput-object v6, p0, Landroid/filterfw/core/SyncRunner;->mTimer:Landroid/filterfw/core/StopWatchMap;
 
     .line 78
-    iget-boolean v2, p0, Landroid/filterfw/core/SyncRunner;->mLogVerbose:Z
+    iget-boolean v6, p0, Landroid/filterfw/core/SyncRunner;->mLogVerbose:Z
 
-    if-eqz v2, :cond_1
+    if-eqz v6, :cond_1
 
-    const-string v2, "SyncRunner"
+    const-string/jumbo v6, "SyncRunner"
 
-    const-string v3, "Setting up filters"
+    const-string/jumbo v7, "Setting up filters"
 
-    invoke-static {v2, v3}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v6, v7}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 81
     :cond_1
     invoke-virtual {p2}, Landroid/filterfw/core/FilterGraph;->setupFilters()V
 
-    .line 82
+    .line 45
     return-void
 
-    .line 57
-    .end local v1           #schedulerConstructor:Ljava/lang/reflect/Constructor;
+    .line 65
+    .end local v5    # "schedulerConstructor":Ljava/lang/reflect/Constructor;
     :catch_0
     move-exception v0
 
-    .line 58
-    .local v0, e:Ljava/lang/NoSuchMethodException;
-    new-instance v2, Ljava/lang/RuntimeException;
+    .line 66
+    .local v0, "e":Ljava/lang/Exception;
+    new-instance v6, Ljava/lang/RuntimeException;
 
-    const-string v3, "Scheduler does not have constructor <init>(FilterGraph)!"
+    const-string/jumbo v7, "Could not instantiate Scheduler"
 
-    invoke-direct {v2, v3, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+    invoke-direct {v6, v7, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    throw v2
-
-    .line 59
-    .end local v0           #e:Ljava/lang/NoSuchMethodException;
-    :catch_1
-    move-exception v0
-
-    .line 60
-    .local v0, e:Ljava/lang/InstantiationException;
-    new-instance v2, Ljava/lang/RuntimeException;
-
-    const-string v3, "Could not instantiate the Scheduler instance!"
-
-    invoke-direct {v2, v3, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
-
-    throw v2
-
-    .line 61
-    .end local v0           #e:Ljava/lang/InstantiationException;
-    :catch_2
-    move-exception v0
-
-    .line 62
-    .local v0, e:Ljava/lang/IllegalAccessException;
-    new-instance v2, Ljava/lang/RuntimeException;
-
-    const-string v3, "Cannot access Scheduler constructor!"
-
-    invoke-direct {v2, v3, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
-
-    throw v2
+    throw v6
 
     .line 63
-    .end local v0           #e:Ljava/lang/IllegalAccessException;
-    :catch_3
-    move-exception v0
+    .end local v0    # "e":Ljava/lang/Exception;
+    :catch_1
+    move-exception v4
 
     .line 64
-    .local v0, e:Ljava/lang/reflect/InvocationTargetException;
-    new-instance v2, Ljava/lang/RuntimeException;
+    .local v4, "e":Ljava/lang/reflect/InvocationTargetException;
+    new-instance v6, Ljava/lang/RuntimeException;
 
-    const-string v3, "Scheduler constructor threw an exception"
+    const-string/jumbo v7, "Scheduler constructor threw an exception"
 
-    invoke-direct {v2, v3, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+    invoke-direct {v6, v7, v4}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    throw v2
+    throw v6
 
-    .line 65
-    .end local v0           #e:Ljava/lang/reflect/InvocationTargetException;
+    .line 61
+    .end local v4    # "e":Ljava/lang/reflect/InvocationTargetException;
+    :catch_2
+    move-exception v1
+
+    .line 62
+    .local v1, "e":Ljava/lang/IllegalAccessException;
+    new-instance v6, Ljava/lang/RuntimeException;
+
+    const-string/jumbo v7, "Cannot access Scheduler constructor!"
+
+    invoke-direct {v6, v7, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    throw v6
+
+    .line 59
+    .end local v1    # "e":Ljava/lang/IllegalAccessException;
+    :catch_3
+    move-exception v2
+
+    .line 60
+    .local v2, "e":Ljava/lang/InstantiationException;
+    new-instance v6, Ljava/lang/RuntimeException;
+
+    const-string/jumbo v7, "Could not instantiate the Scheduler instance!"
+
+    invoke-direct {v6, v7, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    throw v6
+
+    .line 57
+    .end local v2    # "e":Ljava/lang/InstantiationException;
     :catch_4
-    move-exception v0
+    move-exception v3
 
-    .line 66
-    .local v0, e:Ljava/lang/Exception;
-    new-instance v2, Ljava/lang/RuntimeException;
+    .line 58
+    .local v3, "e":Ljava/lang/NoSuchMethodException;
+    new-instance v6, Ljava/lang/RuntimeException;
 
-    const-string v3, "Could not instantiate Scheduler"
+    const-string/jumbo v7, "Scheduler does not have constructor <init>(FilterGraph)!"
 
-    invoke-direct {v2, v3, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+    invoke-direct {v6, v7, v3}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    throw v2
+    throw v6
 
     .line 69
-    .end local v0           #e:Ljava/lang/Exception;
+    .end local v3    # "e":Ljava/lang/NoSuchMethodException;
     :cond_2
-    new-instance v2, Ljava/lang/IllegalArgumentException;
+    new-instance v6, Ljava/lang/IllegalArgumentException;
 
-    const-string v3, "Class provided is not a Scheduler subclass!"
+    const-string/jumbo v7, "Class provided is not a Scheduler subclass!"
 
-    invoke-direct {v2, v3}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v6, v7}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw v2
+    throw v6
 .end method
 
 
@@ -265,7 +265,7 @@
     .line 222
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Attempting to run schedule with no scheduler in place!"
+    const-string/jumbo v1, "Attempting to run schedule with no scheduler in place!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -282,13 +282,13 @@
     .line 224
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Calling step on scheduler with no graph in place!"
+    const-string/jumbo v1, "Calling step on scheduler with no graph in place!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 226
+    .line 220
     :cond_1
     return-void
 .end method
@@ -309,7 +309,7 @@
 
     invoke-virtual {v0}, Landroid/filterfw/core/FilterGraph;->beginProcessing()V
 
-    .line 100
+    .line 97
     return-void
 .end method
 
@@ -322,9 +322,9 @@
 
     if-eqz v0, :cond_0
 
-    const-string v0, "SyncRunner"
+    const-string/jumbo v0, "SyncRunner"
 
-    const-string v1, "Closing graph."
+    const-string/jumbo v1, "Closing graph."
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -343,7 +343,7 @@
 
     invoke-virtual {v0}, Landroid/filterfw/core/Scheduler;->reset()V
 
-    .line 107
+    .line 102
     return-void
 .end method
 
@@ -351,34 +351,34 @@
     .locals 5
 
     .prologue
-    const/4 v3, 0x4
+    const/4 v4, 0x4
 
     .line 191
     const/4 v2, 0x0
 
     .line 192
-    .local v2, isBlocked:Z
-    iget-object v4, p0, Landroid/filterfw/core/SyncRunner;->mScheduler:Landroid/filterfw/core/Scheduler;
+    .local v2, "isBlocked":Z
+    iget-object v3, p0, Landroid/filterfw/core/SyncRunner;->mScheduler:Landroid/filterfw/core/Scheduler;
 
-    invoke-virtual {v4}, Landroid/filterfw/core/Scheduler;->getGraph()Landroid/filterfw/core/FilterGraph;
+    invoke-virtual {v3}, Landroid/filterfw/core/Scheduler;->getGraph()Landroid/filterfw/core/FilterGraph;
 
-    move-result-object v4
+    move-result-object v3
 
-    invoke-virtual {v4}, Landroid/filterfw/core/FilterGraph;->getFilters()Ljava/util/Set;
+    invoke-virtual {v3}, Landroid/filterfw/core/FilterGraph;->getFilters()Ljava/util/Set;
 
-    move-result-object v4
+    move-result-object v3
 
-    invoke-interface {v4}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+    invoke-interface {v3}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
-    .local v1, i$:Ljava/util/Iterator;
+    .local v1, "filter$iterator":Ljava/util/Iterator;
     :cond_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result v4
+    move-result v3
 
-    if-eqz v4, :cond_2
+    if-eqz v3, :cond_2
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -387,42 +387,44 @@
     check-cast v0, Landroid/filterfw/core/Filter;
 
     .line 193
-    .local v0, filter:Landroid/filterfw/core/Filter;
+    .local v0, "filter":Landroid/filterfw/core/Filter;
     invoke-virtual {v0}, Landroid/filterfw/core/Filter;->isOpen()Z
 
-    move-result v4
+    move-result v3
 
-    if-eqz v4, :cond_0
+    if-eqz v3, :cond_0
 
     .line 194
     invoke-virtual {v0}, Landroid/filterfw/core/Filter;->getStatus()I
 
-    move-result v4
+    move-result v3
 
-    if-ne v4, v3, :cond_1
+    if-ne v3, v4, :cond_1
 
     .line 196
     const/4 v3, 0x3
 
-    .line 203
-    .end local v0           #filter:Landroid/filterfw/core/Filter;
-    :cond_1
-    :goto_0
     return v3
 
+    .line 199
+    :cond_1
+    return v4
+
+    .line 203
+    .end local v0    # "filter":Landroid/filterfw/core/Filter;
     :cond_2
     const/4 v3, 0x2
 
-    goto :goto_0
+    return v3
 .end method
 
 .method public declared-synchronized getError()Ljava/lang/Exception;
     .locals 1
 
     .prologue
-    .line 155
     monitor-enter p0
 
+    .line 155
     const/4 v0, 0x0
 
     monitor-exit p0
@@ -431,13 +433,15 @@
 .end method
 
 .method public getGraph()Landroid/filterfw/core/FilterGraph;
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 86
-    iget-object v0, p0, Landroid/filterfw/core/SyncRunner;->mScheduler:Landroid/filterfw/core/Scheduler;
+    const/4 v0, 0x0
 
-    if-eqz v0, :cond_0
+    .line 86
+    iget-object v1, p0, Landroid/filterfw/core/SyncRunner;->mScheduler:Landroid/filterfw/core/Scheduler;
+
+    if-eqz v1, :cond_0
 
     iget-object v0, p0, Landroid/filterfw/core/SyncRunner;->mScheduler:Landroid/filterfw/core/Scheduler;
 
@@ -445,13 +449,8 @@
 
     move-result-object v0
 
-    :goto_0
-    return-object v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return-object v0
 .end method
 
 .method public isRunning()Z
@@ -473,9 +472,9 @@
 
     if-eqz v1, :cond_0
 
-    const-string v1, "SyncRunner"
+    const-string/jumbo v1, "SyncRunner"
 
-    const-string v2, "Performing one step."
+    const-string/jumbo v2, "Performing one step."
 
     invoke-static {v1, v2}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -488,7 +487,7 @@
     move-result-object v0
 
     .line 210
-    .local v0, filter:Landroid/filterfw/core/Filter;
+    .local v0, "filter":Landroid/filterfw/core/Filter;
     if-eqz v0, :cond_1
 
     .line 211
@@ -515,19 +514,18 @@
     .line 214
     const/4 v1, 0x1
 
-    .line 216
-    :goto_0
     return v1
 
+    .line 216
     :cond_1
     const/4 v1, 0x0
 
-    goto :goto_0
+    return v1
 .end method
 
 .method protected processFilterNode(Landroid/filterfw/core/Filter;)V
     .locals 3
-    .parameter "filter"
+    .param p1, "filter"    # Landroid/filterfw/core/Filter;
 
     .prologue
     .line 163
@@ -535,9 +533,9 @@
 
     if-eqz v0, :cond_0
 
-    const-string v0, "SyncRunner"
+    const-string/jumbo v0, "SyncRunner"
 
-    const-string v1, "Processing filter node"
+    const-string/jumbo v1, "Processing filter node"
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -563,7 +561,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "There was an error executing "
+    const-string/jumbo v2, "There was an error executing "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -573,7 +571,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -602,9 +600,9 @@
 
     if-eqz v0, :cond_2
 
-    const-string v0, "SyncRunner"
+    const-string/jumbo v0, "SyncRunner"
 
-    const-string v1, "Scheduling filter wakeup"
+    const-string/jumbo v1, "Scheduling filter wakeup"
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -616,7 +614,7 @@
 
     invoke-virtual {p0, p1, v0}, Landroid/filterfw/core/SyncRunner;->scheduleFilterWake(Landroid/filterfw/core/Filter;I)V
 
-    .line 171
+    .line 162
     :cond_3
     return-void
 .end method
@@ -630,9 +628,9 @@
 
     if-eqz v2, :cond_0
 
-    const-string v2, "SyncRunner"
+    const-string/jumbo v2, "SyncRunner"
 
-    const-string v3, "Beginning run."
+    const-string/jumbo v3, "Beginning run."
 
     invoke-static {v2, v3}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -649,11 +647,10 @@
     move-result v0
 
     .line 120
-    .local v0, glActivated:Z
+    .local v0, "glActivated":Z
     const/4 v1, 0x1
 
     .line 121
-    .local v1, keepRunning:Z
     :goto_0
     if-eqz v1, :cond_1
 
@@ -662,9 +659,11 @@
 
     move-result v1
 
+    .local v1, "keepRunning":Z
     goto :goto_0
 
     .line 126
+    .end local v1    # "keepRunning":Z
     :cond_1
     if-eqz v0, :cond_2
 
@@ -682,9 +681,9 @@
 
     if-eqz v2, :cond_3
 
-    const-string v2, "SyncRunner"
+    const-string/jumbo v2, "SyncRunner"
 
-    const-string v3, "Calling completion listener."
+    const-string/jumbo v3, "Calling completion listener."
 
     invoke-static {v2, v3}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -704,21 +703,21 @@
 
     if-eqz v2, :cond_5
 
-    const-string v2, "SyncRunner"
+    const-string/jumbo v2, "SyncRunner"
 
-    const-string v3, "Run complete"
+    const-string/jumbo v3, "Run complete"
 
     invoke-static {v2, v3}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 136
+    .line 110
     :cond_5
     return-void
 .end method
 
 .method protected scheduleFilterWake(Landroid/filterfw/core/Filter;I)V
     .locals 7
-    .parameter "filter"
-    .parameter "delay"
+    .param p1, "filter"    # Landroid/filterfw/core/Filter;
+    .param p2, "delay"    # I
 
     .prologue
     .line 175
@@ -730,36 +729,38 @@
     move-object v1, p1
 
     .line 179
-    .local v1, filterToSchedule:Landroid/filterfw/core/Filter;
+    .local v1, "filterToSchedule":Landroid/filterfw/core/Filter;
     iget-object v0, p0, Landroid/filterfw/core/SyncRunner;->mWakeCondition:Landroid/os/ConditionVariable;
 
     .line 181
-    .local v0, conditionToWake:Landroid/os/ConditionVariable;
+    .local v0, "conditionToWake":Landroid/os/ConditionVariable;
     iget-object v2, p0, Landroid/filterfw/core/SyncRunner;->mWakeExecutor:Ljava/util/concurrent/ScheduledThreadPoolExecutor;
 
     new-instance v3, Landroid/filterfw/core/SyncRunner$1;
 
     invoke-direct {v3, p0, v1, v0}, Landroid/filterfw/core/SyncRunner$1;-><init>(Landroid/filterfw/core/SyncRunner;Landroid/filterfw/core/Filter;Landroid/os/ConditionVariable;)V
 
+    .line 187
     int-to-long v4, p2
 
     sget-object v6, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
 
+    .line 181
     invoke-virtual {v2, v3, v4, v5, v6}, Ljava/util/concurrent/ScheduledThreadPoolExecutor;->schedule(Ljava/lang/Runnable;JLjava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;
 
-    .line 188
+    .line 173
     return-void
 .end method
 
 .method public setDoneCallback(Landroid/filterfw/core/GraphRunner$OnRunnerDoneListener;)V
     .locals 0
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/filterfw/core/GraphRunner$OnRunnerDoneListener;
 
     .prologue
     .line 145
     iput-object p1, p0, Landroid/filterfw/core/SyncRunner;->mDoneListener:Landroid/filterfw/core/GraphRunner$OnRunnerDoneListener;
 
-    .line 146
+    .line 144
     return-void
 .end method
 
@@ -784,7 +785,7 @@
     .line 92
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Trying to process graph that is not open!"
+    const-string/jumbo v1, "Trying to process graph that is not open!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -818,7 +819,7 @@
     .line 150
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "SyncRunner does not support stopping a graph!"
+    const-string/jumbo v1, "SyncRunner does not support stopping a graph!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -834,6 +835,6 @@
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->block()V
 
-    .line 160
+    .line 158
     return-void
 .end method

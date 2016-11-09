@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/os/Messenger$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -28,88 +36,89 @@
     .locals 1
 
     .prologue
-    .line 91
+    .line 99
     new-instance v0, Landroid/os/Messenger$1;
 
     invoke-direct {v0}, Landroid/os/Messenger$1;-><init>()V
 
+    .line 98
     sput-object v0, Landroid/os/Messenger;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 32
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Handler;)V
     .locals 1
-    .parameter "target"
+    .param p1, "target"    # Landroid/os/Handler;
 
     .prologue
-    .line 36
+    .line 43
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 37
+    .line 44
     invoke-virtual {p1}, Landroid/os/Handler;->getIMessenger()Landroid/os/IMessenger;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/os/Messenger;->mTarget:Landroid/os/IMessenger;
 
-    .line 38
+    .line 43
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/IBinder;)V
     .locals 1
-    .parameter "target"
+    .param p1, "target"    # Landroid/os/IBinder;
 
     .prologue
-    .line 138
+    .line 145
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 139
+    .line 146
     invoke-static {p1}, Landroid/os/IMessenger$Stub;->asInterface(Landroid/os/IBinder;)Landroid/os/IMessenger;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/os/Messenger;->mTarget:Landroid/os/IMessenger;
 
-    .line 140
+    .line 145
     return-void
 .end method
 
 .method public static readMessengerOrNullFromParcel(Landroid/os/Parcel;)Landroid/os/Messenger;
     .locals 2
-    .parameter "in"
+    .param p0, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 128
+    const/4 v1, 0x0
+
+    .line 135
     invoke-virtual {p0}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v0
 
-    .line 129
-    .local v0, b:Landroid/os/IBinder;
+    .line 136
+    .local v0, "b":Landroid/os/IBinder;
     if-eqz v0, :cond_0
 
     new-instance v1, Landroid/os/Messenger;
 
     invoke-direct {v1, v0}, Landroid/os/Messenger;-><init>(Landroid/os/IBinder;)V
 
-    :goto_0
-    return-object v1
-
     :cond_0
-    const/4 v1, 0x0
-
-    goto :goto_0
+    return-object v1
 .end method
 
 .method public static writeMessengerOrNullToParcel(Landroid/os/Messenger;Landroid/os/Parcel;)V
     .locals 1
-    .parameter "messenger"
-    .parameter "out"
+    .param p0, "messenger"    # Landroid/os/Messenger;
+    .param p1, "out"    # Landroid/os/Parcel;
 
     .prologue
-    .line 113
+    const/4 v0, 0x0
+
+    .line 120
     if-eqz p0, :cond_0
 
     iget-object v0, p0, Landroid/os/Messenger;->mTarget:Landroid/os/IMessenger;
@@ -118,17 +127,11 @@
 
     move-result-object v0
 
-    :goto_0
+    :cond_0
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeStrongBinder(Landroid/os/IBinder;)V
 
-    .line 115
+    .line 119
     return-void
-
-    .line 113
-    :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
 .end method
 
 
@@ -137,29 +140,26 @@
     .locals 1
 
     .prologue
-    .line 84
+    .line 91
     const/4 v0, 0x0
 
     return v0
 .end method
 
 .method public equals(Ljava/lang/Object;)Z
-    .locals 3
-    .parameter "otherObj"
+    .locals 4
+    .param p1, "otherObj"    # Ljava/lang/Object;
 
     .prologue
-    const/4 v0, 0x0
+    const/4 v3, 0x0
 
-    .line 68
+    .line 75
     if-nez p1, :cond_0
 
     .line 76
-    .end local p1
-    :goto_0
-    return v0
+    return v3
 
-    .line 72
-    .restart local p1
+    .line 79
     :cond_0
     :try_start_0
     iget-object v1, p0, Landroid/os/Messenger;->mTarget:Landroid/os/IMessenger;
@@ -170,7 +170,7 @@
 
     check-cast p1, Landroid/os/Messenger;
 
-    .end local p1
+    .end local p1    # "otherObj":Ljava/lang/Object;
     iget-object v2, p1, Landroid/os/Messenger;->mTarget:Landroid/os/IMessenger;
 
     invoke-interface {v2}, Landroid/os/IMessenger;->asBinder()Landroid/os/IBinder;
@@ -181,22 +181,24 @@
     :try_end_0
     .catch Ljava/lang/ClassCastException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result v0
+    move-result v1
 
-    goto :goto_0
+    return v1
 
-    .line 74
+    .line 81
     :catch_0
-    move-exception v1
+    move-exception v0
 
-    goto :goto_0
+    .line 83
+    .local v0, "e":Ljava/lang/ClassCastException;
+    return v3
 .end method
 
 .method public getBinder()Landroid/os/IBinder;
     .locals 1
 
     .prologue
-    .line 60
+    .line 67
     iget-object v0, p0, Landroid/os/Messenger;->mTarget:Landroid/os/IMessenger;
 
     invoke-interface {v0}, Landroid/os/IMessenger;->asBinder()Landroid/os/IBinder;
@@ -210,7 +212,7 @@
     .locals 1
 
     .prologue
-    .line 80
+    .line 87
     iget-object v0, p0, Landroid/os/Messenger;->mTarget:Landroid/os/IMessenger;
 
     invoke-interface {v0}, Landroid/os/IMessenger;->asBinder()Landroid/os/IBinder;
@@ -226,7 +228,7 @@
 
 .method public send(Landroid/os/Message;)V
     .locals 1
-    .parameter "message"
+    .param p1, "message"    # Landroid/os/Message;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -234,22 +236,22 @@
     .end annotation
 
     .prologue
-    .line 50
+    .line 57
     iget-object v0, p0, Landroid/os/Messenger;->mTarget:Landroid/os/IMessenger;
 
     invoke-interface {v0, p1}, Landroid/os/IMessenger;->send(Landroid/os/Message;)V
 
-    .line 51
+    .line 56
     return-void
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "out"
-    .parameter "flags"
+    .param p1, "out"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 88
+    .line 95
     iget-object v0, p0, Landroid/os/Messenger;->mTarget:Landroid/os/IMessenger;
 
     invoke-interface {v0}, Landroid/os/IMessenger;->asBinder()Landroid/os/IBinder;
@@ -258,6 +260,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeStrongBinder(Landroid/os/IBinder;)V
 
-    .line 89
+    .line 94
     return-void
 .end method

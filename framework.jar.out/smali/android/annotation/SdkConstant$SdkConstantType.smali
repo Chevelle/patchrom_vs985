@@ -55,7 +55,7 @@
     .line 32
     new-instance v0, Landroid/annotation/SdkConstant$SdkConstantType;
 
-    const-string v1, "ACTIVITY_INTENT_ACTION"
+    const-string/jumbo v1, "ACTIVITY_INTENT_ACTION"
 
     invoke-direct {v0, v1, v2}, Landroid/annotation/SdkConstant$SdkConstantType;-><init>(Ljava/lang/String;I)V
 
@@ -63,7 +63,7 @@
 
     new-instance v0, Landroid/annotation/SdkConstant$SdkConstantType;
 
-    const-string v1, "BROADCAST_INTENT_ACTION"
+    const-string/jumbo v1, "BROADCAST_INTENT_ACTION"
 
     invoke-direct {v0, v1, v3}, Landroid/annotation/SdkConstant$SdkConstantType;-><init>(Ljava/lang/String;I)V
 
@@ -71,7 +71,7 @@
 
     new-instance v0, Landroid/annotation/SdkConstant$SdkConstantType;
 
-    const-string v1, "SERVICE_ACTION"
+    const-string/jumbo v1, "SERVICE_ACTION"
 
     invoke-direct {v0, v1, v4}, Landroid/annotation/SdkConstant$SdkConstantType;-><init>(Ljava/lang/String;I)V
 
@@ -79,7 +79,7 @@
 
     new-instance v0, Landroid/annotation/SdkConstant$SdkConstantType;
 
-    const-string v1, "INTENT_CATEGORY"
+    const-string/jumbo v1, "INTENT_CATEGORY"
 
     invoke-direct {v0, v1, v5}, Landroid/annotation/SdkConstant$SdkConstantType;-><init>(Ljava/lang/String;I)V
 
@@ -87,7 +87,7 @@
 
     new-instance v0, Landroid/annotation/SdkConstant$SdkConstantType;
 
-    const-string v1, "FEATURE"
+    const-string/jumbo v1, "FEATURE"
 
     invoke-direct {v0, v1, v6}, Landroid/annotation/SdkConstant$SdkConstantType;-><init>(Ljava/lang/String;I)V
 
@@ -125,13 +125,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 31
@@ -142,7 +135,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Landroid/annotation/SdkConstant$SdkConstantType;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 31
@@ -163,12 +156,6 @@
     .prologue
     .line 31
     sget-object v0, Landroid/annotation/SdkConstant$SdkConstantType;->$VALUES:[Landroid/annotation/SdkConstant$SdkConstantType;
-
-    invoke-virtual {v0}, [Landroid/annotation/SdkConstant$SdkConstantType;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/annotation/SdkConstant$SdkConstantType;
 
     return-object v0
 .end method

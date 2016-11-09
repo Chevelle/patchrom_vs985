@@ -9,7 +9,6 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/graphics/drawable/TransitionDrawable$1;,
         Landroid/graphics/drawable/TransitionDrawable$TransitionState;
     }
 .end annotation
@@ -59,14 +58,14 @@
 
     invoke-direct {p0, v1, v0}, Landroid/graphics/drawable/TransitionDrawable;-><init>(Landroid/graphics/drawable/TransitionDrawable$TransitionState;Landroid/content/res/Resources;)V
 
-    .line 89
+    .line 87
     return-void
 .end method
 
 .method private constructor <init>(Landroid/graphics/drawable/TransitionDrawable$TransitionState;Landroid/content/res/Resources;)V
     .locals 1
-    .parameter "state"
-    .parameter "res"
+    .param p1, "state"    # Landroid/graphics/drawable/TransitionDrawable$TransitionState;
+    .param p2, "res"    # Landroid/content/res/Resources;
 
     .prologue
     .line 92
@@ -82,18 +81,16 @@
 
     iput v0, p0, Landroid/graphics/drawable/TransitionDrawable;->mAlpha:I
 
-    .line 93
+    .line 91
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/graphics/drawable/TransitionDrawable$TransitionState;Landroid/content/res/Resources;Landroid/graphics/drawable/TransitionDrawable$1;)V
+.method synthetic constructor <init>(Landroid/graphics/drawable/TransitionDrawable$TransitionState;Landroid/content/res/Resources;Landroid/graphics/drawable/TransitionDrawable;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
+    .param p1, "state"    # Landroid/graphics/drawable/TransitionDrawable$TransitionState;
+    .param p2, "res"    # Landroid/content/res/Resources;
 
     .prologue
-    .line 41
     invoke-direct {p0, p1, p2}, Landroid/graphics/drawable/TransitionDrawable;-><init>(Landroid/graphics/drawable/TransitionDrawable$TransitionState;Landroid/content/res/Resources;)V
 
     return-void
@@ -101,8 +98,8 @@
 
 .method private constructor <init>(Landroid/graphics/drawable/TransitionDrawable$TransitionState;[Landroid/graphics/drawable/Drawable;)V
     .locals 1
-    .parameter "state"
-    .parameter "layers"
+    .param p1, "state"    # Landroid/graphics/drawable/TransitionDrawable$TransitionState;
+    .param p2, "layers"    # [Landroid/graphics/drawable/Drawable;
 
     .prologue
     .line 96
@@ -118,13 +115,13 @@
 
     iput v0, p0, Landroid/graphics/drawable/TransitionDrawable;->mAlpha:I
 
-    .line 97
+    .line 95
     return-void
 .end method
 
 .method public constructor <init>([Landroid/graphics/drawable/Drawable;)V
     .locals 2
-    .parameter "layers"
+    .param p1, "layers"    # [Landroid/graphics/drawable/Drawable;
 
     .prologue
     const/4 v1, 0x0
@@ -136,7 +133,7 @@
 
     invoke-direct {p0, v0, p1}, Landroid/graphics/drawable/TransitionDrawable;-><init>(Landroid/graphics/drawable/TransitionDrawable$TransitionState;[Landroid/graphics/drawable/Drawable;)V
 
-    .line 79
+    .line 77
     return-void
 .end method
 
@@ -144,8 +141,8 @@
 # virtual methods
 .method createConstantState(Landroid/graphics/drawable/LayerDrawable$LayerState;Landroid/content/res/Resources;)Landroid/graphics/drawable/LayerDrawable$LayerState;
     .locals 1
-    .parameter "state"
-    .parameter "res"
+    .param p1, "state"    # Landroid/graphics/drawable/LayerDrawable$LayerState;
+    .param p2, "res"    # Landroid/content/res/Resources;
 
     .prologue
     .line 101
@@ -153,7 +150,7 @@
 
     check-cast p1, Landroid/graphics/drawable/TransitionDrawable$TransitionState;
 
-    .end local p1
+    .end local p1    # "state":Landroid/graphics/drawable/LayerDrawable$LayerState;
     invoke-direct {v0, p1, p0, p2}, Landroid/graphics/drawable/TransitionDrawable$TransitionState;-><init>(Landroid/graphics/drawable/TransitionDrawable$TransitionState;Landroid/graphics/drawable/TransitionDrawable;Landroid/content/res/Resources;)V
 
     return-object v0
@@ -161,25 +158,25 @@
 
 .method public draw(Landroid/graphics/Canvas;)V
     .locals 14
-    .parameter "canvas"
+    .param p1, "canvas"    # Landroid/graphics/Canvas;
 
     .prologue
-    const/high16 v13, 0x3f80
+    const/high16 v13, 0x3f800000    # 1.0f
 
     const/16 v12, 0xff
 
-    const/4 v7, 0x0
+    const/4 v11, 0x1
 
-    const/4 v6, 0x1
+    const/4 v10, 0x0
 
     .line 167
     const/4 v4, 0x1
 
     .line 169
-    .local v4, done:Z
-    iget v8, p0, Landroid/graphics/drawable/TransitionDrawable;->mTransitionState:I
+    .local v4, "done":Z
+    iget v6, p0, Landroid/graphics/drawable/TransitionDrawable;->mTransitionState:I
 
-    packed-switch v8, :pswitch_data_0
+    packed-switch v6, :pswitch_data_0
 
     .line 187
     :cond_0
@@ -187,17 +184,17 @@
     iget v0, p0, Landroid/graphics/drawable/TransitionDrawable;->mAlpha:I
 
     .line 188
-    .local v0, alpha:I
+    .local v0, "alpha":I
     iget-boolean v2, p0, Landroid/graphics/drawable/TransitionDrawable;->mCrossFade:Z
 
     .line 189
-    .local v2, crossFade:Z
-    iget-object v8, p0, Landroid/graphics/drawable/TransitionDrawable;->mLayerState:Landroid/graphics/drawable/LayerDrawable$LayerState;
+    .local v2, "crossFade":Z
+    iget-object v6, p0, Landroid/graphics/drawable/TransitionDrawable;->mLayerState:Landroid/graphics/drawable/LayerDrawable$LayerState;
 
-    iget-object v1, v8, Landroid/graphics/drawable/LayerDrawable$LayerState;->mChildren:[Landroid/graphics/drawable/LayerDrawable$ChildDrawable;
+    iget-object v1, v6, Landroid/graphics/drawable/LayerDrawable$LayerState;->mChildren:[Landroid/graphics/drawable/LayerDrawable$ChildDrawable;
 
     .line 191
-    .local v1, array:[Landroid/graphics/drawable/LayerDrawable$ChildDrawable;
+    .local v1, "array":[Landroid/graphics/drawable/LayerDrawable$ChildDrawable;
     if-eqz v4, :cond_5
 
     .line 194
@@ -207,135 +204,137 @@
 
     .line 195
     :cond_1
-    aget-object v7, v1, v7
+    aget-object v6, v1, v10
 
-    iget-object v7, v7, Landroid/graphics/drawable/LayerDrawable$ChildDrawable;->mDrawable:Landroid/graphics/drawable/Drawable;
+    iget-object v6, v6, Landroid/graphics/drawable/LayerDrawable$ChildDrawable;->mDrawable:Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v7, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+    invoke-virtual {v6, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
     .line 197
     :cond_2
     if-ne v0, v12, :cond_3
 
     .line 198
-    aget-object v6, v1, v6
+    aget-object v6, v1, v11
 
     iget-object v6, v6, Landroid/graphics/drawable/LayerDrawable$ChildDrawable;->mDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v6, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    .line 223
+    .line 200
     :cond_3
-    :goto_1
     return-void
 
     .line 171
-    .end local v0           #alpha:I
-    .end local v1           #array:[Landroid/graphics/drawable/LayerDrawable$ChildDrawable;
-    .end local v2           #crossFade:Z
+    .end local v0    # "alpha":I
+    .end local v1    # "array":[Landroid/graphics/drawable/LayerDrawable$ChildDrawable;
+    .end local v2    # "crossFade":Z
     :pswitch_0
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
-    move-result-wide v8
+    move-result-wide v6
 
-    iput-wide v8, p0, Landroid/graphics/drawable/TransitionDrawable;->mStartTimeMillis:J
+    iput-wide v6, p0, Landroid/graphics/drawable/TransitionDrawable;->mStartTimeMillis:J
 
     .line 172
     const/4 v4, 0x0
 
     .line 173
-    iput v6, p0, Landroid/graphics/drawable/TransitionDrawable;->mTransitionState:I
+    iput v11, p0, Landroid/graphics/drawable/TransitionDrawable;->mTransitionState:I
 
     goto :goto_0
 
     .line 177
     :pswitch_1
-    iget-wide v8, p0, Landroid/graphics/drawable/TransitionDrawable;->mStartTimeMillis:J
+    iget-wide v6, p0, Landroid/graphics/drawable/TransitionDrawable;->mStartTimeMillis:J
 
-    const-wide/16 v10, 0x0
+    const-wide/16 v8, 0x0
 
-    cmp-long v8, v8, v10
+    cmp-long v6, v6, v8
 
-    if-ltz v8, :cond_0
+    if-ltz v6, :cond_0
 
-    .line 178
+    .line 179
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
-    move-result-wide v8
+    move-result-wide v6
 
-    iget-wide v10, p0, Landroid/graphics/drawable/TransitionDrawable;->mStartTimeMillis:J
+    iget-wide v8, p0, Landroid/graphics/drawable/TransitionDrawable;->mStartTimeMillis:J
 
-    sub-long/2addr v8, v10
+    sub-long/2addr v6, v8
 
-    long-to-float v8, v8
+    .line 178
+    long-to-float v6, v6
 
-    iget v9, p0, Landroid/graphics/drawable/TransitionDrawable;->mDuration:I
+    .line 179
+    iget v7, p0, Landroid/graphics/drawable/TransitionDrawable;->mDuration:I
 
-    int-to-float v9, v9
+    int-to-float v7, v7
 
-    div-float v5, v8, v9
+    .line 178
+    div-float v5, v6, v7
 
     .line 180
-    .local v5, normalized:F
-    cmpl-float v8, v5, v13
+    .local v5, "normalized":F
+    cmpl-float v6, v5, v13
 
-    if-ltz v8, :cond_4
+    if-ltz v6, :cond_4
 
-    move v4, v6
+    const/4 v4, 0x1
 
     .line 181
-    :goto_2
+    :goto_1
     invoke-static {v5, v13}, Ljava/lang/Math;->min(FF)F
 
     move-result v5
 
     .line 182
+    iget v6, p0, Landroid/graphics/drawable/TransitionDrawable;->mFrom:I
+
+    int-to-float v6, v6
+
+    iget v7, p0, Landroid/graphics/drawable/TransitionDrawable;->mTo:I
+
     iget v8, p0, Landroid/graphics/drawable/TransitionDrawable;->mFrom:I
 
-    int-to-float v8, v8
+    sub-int/2addr v7, v8
 
-    iget v9, p0, Landroid/graphics/drawable/TransitionDrawable;->mTo:I
+    int-to-float v7, v7
 
-    iget v10, p0, Landroid/graphics/drawable/TransitionDrawable;->mFrom:I
+    mul-float/2addr v7, v5
 
-    sub-int/2addr v9, v10
+    add-float/2addr v6, v7
 
-    int-to-float v9, v9
+    float-to-int v6, v6
 
-    mul-float/2addr v9, v5
-
-    add-float/2addr v8, v9
-
-    float-to-int v8, v8
-
-    iput v8, p0, Landroid/graphics/drawable/TransitionDrawable;->mAlpha:I
+    iput v6, p0, Landroid/graphics/drawable/TransitionDrawable;->mAlpha:I
 
     goto :goto_0
 
-    :cond_4
-    move v4, v7
-
     .line 180
-    goto :goto_2
+    :cond_4
+    const/4 v4, 0x0
+
+    goto :goto_1
 
     .line 204
-    .end local v5           #normalized:F
-    .restart local v0       #alpha:I
-    .restart local v1       #array:[Landroid/graphics/drawable/LayerDrawable$ChildDrawable;
-    .restart local v2       #crossFade:Z
+    .end local v5    # "normalized":F
+    .restart local v0    # "alpha":I
+    .restart local v1    # "array":[Landroid/graphics/drawable/LayerDrawable$ChildDrawable;
+    .restart local v2    # "crossFade":Z
     :cond_5
-    aget-object v7, v1, v7
+    aget-object v6, v1, v10
 
-    iget-object v3, v7, Landroid/graphics/drawable/LayerDrawable$ChildDrawable;->mDrawable:Landroid/graphics/drawable/Drawable;
+    iget-object v3, v6, Landroid/graphics/drawable/LayerDrawable$ChildDrawable;->mDrawable:Landroid/graphics/drawable/Drawable;
 
     .line 205
-    .local v3, d:Landroid/graphics/drawable/Drawable;
+    .local v3, "d":Landroid/graphics/drawable/Drawable;
     if-eqz v2, :cond_6
 
     .line 206
-    rsub-int v7, v0, 0xff
+    rsub-int v6, v0, 0xff
 
-    invoke-virtual {v3, v7}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
+    invoke-virtual {v3, v6}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
     .line 208
     :cond_6
@@ -352,7 +351,7 @@
     if-lez v0, :cond_8
 
     .line 214
-    aget-object v6, v1, v6
+    aget-object v6, v1, v11
 
     iget-object v3, v6, Landroid/graphics/drawable/LayerDrawable$ChildDrawable;->mDrawable:Landroid/graphics/drawable/Drawable;
 
@@ -367,12 +366,14 @@
 
     .line 220
     :cond_8
-    if-nez v4, :cond_3
+    if-nez v4, :cond_9
 
     .line 221
     invoke-virtual {p0}, Landroid/graphics/drawable/TransitionDrawable;->invalidateSelf()V
 
-    goto :goto_1
+    .line 166
+    :cond_9
+    return-void
 
     .line 169
     :pswitch_data_0
@@ -409,13 +410,13 @@
     .line 125
     invoke-virtual {p0}, Landroid/graphics/drawable/TransitionDrawable;->invalidateSelf()V
 
-    .line 126
+    .line 122
     return-void
 .end method
 
 .method public reverseTransition(I)V
-    .locals 9
-    .parameter "duration"
+    .locals 10
+    .param p1, "duration"    # I
 
     .prologue
     const/4 v2, 0x1
@@ -430,16 +431,16 @@
     move-result-wide v0
 
     .line 139
-    .local v0, time:J
-    iget-wide v5, p0, Landroid/graphics/drawable/TransitionDrawable;->mStartTimeMillis:J
+    .local v0, "time":J
+    iget-wide v6, p0, Landroid/graphics/drawable/TransitionDrawable;->mStartTimeMillis:J
 
-    sub-long v5, v0, v5
+    sub-long v6, v0, v6
 
-    iget v7, p0, Landroid/graphics/drawable/TransitionDrawable;->mDuration:I
+    iget v5, p0, Landroid/graphics/drawable/TransitionDrawable;->mDuration:I
 
-    int-to-long v7, v7
+    int-to-long v8, v5
 
-    cmp-long v5, v5, v7
+    cmp-long v5, v6, v8
 
     if-lez v5, :cond_1
 
@@ -472,8 +473,7 @@
     .line 153
     invoke-virtual {p0}, Landroid/graphics/drawable/TransitionDrawable;->invalidateSelf()V
 
-    .line 163
-    :goto_1
+    .line 154
     return-void
 
     .line 146
@@ -495,9 +495,11 @@
     :cond_1
     iget-boolean v5, p0, Landroid/graphics/drawable/TransitionDrawable;->mReverse:Z
 
-    if-nez v5, :cond_2
+    if-eqz v5, :cond_2
 
-    :goto_2
+    move v2, v3
+
+    :cond_2
     iput-boolean v2, p0, Landroid/graphics/drawable/TransitionDrawable;->mReverse:Z
 
     .line 158
@@ -512,7 +514,7 @@
 
     move v2, v3
 
-    :goto_3
+    :goto_1
     iput v2, p0, Landroid/graphics/drawable/TransitionDrawable;->mTo:I
 
     .line 160
@@ -524,7 +526,7 @@
 
     sub-long v4, v0, v4
 
-    :goto_4
+    :goto_2
     long-to-int v2, v4
 
     iput v2, p0, Landroid/graphics/drawable/TransitionDrawable;->mDuration:I
@@ -532,21 +534,16 @@
     .line 162
     iput v3, p0, Landroid/graphics/drawable/TransitionDrawable;->mTransitionState:I
 
-    goto :goto_1
-
-    :cond_2
-    move v2, v3
-
-    .line 157
-    goto :goto_2
+    .line 136
+    return-void
 
     :cond_3
     move v2, v4
 
     .line 159
-    goto :goto_3
+    goto :goto_1
 
-    .line 160
+    .line 161
     :cond_4
     iget v2, p0, Landroid/graphics/drawable/TransitionDrawable;->mOriginalDuration:I
 
@@ -558,24 +555,24 @@
 
     sub-long/2addr v4, v6
 
-    goto :goto_4
+    goto :goto_2
 .end method
 
 .method public setCrossFadeEnabled(Z)V
     .locals 0
-    .parameter "enabled"
+    .param p1, "enabled"    # Z
 
     .prologue
     .line 234
     iput-boolean p1, p0, Landroid/graphics/drawable/TransitionDrawable;->mCrossFade:Z
 
-    .line 235
+    .line 233
     return-void
 .end method
 
 .method public startTransition(I)V
     .locals 2
-    .parameter "durationMillis"
+    .param p1, "durationMillis"    # I
 
     .prologue
     const/4 v1, 0x0
@@ -605,6 +602,6 @@
     .line 116
     invoke-virtual {p0}, Landroid/graphics/drawable/TransitionDrawable;->invalidateSelf()V
 
-    .line 117
+    .line 109
     return-void
 .end method

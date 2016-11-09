@@ -3,12 +3,17 @@
 .source "MediaMetadataEditor.java"
 
 
+# annotations
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
+
 # static fields
 .field public static final BITMAP_KEY_ARTWORK:I = 0x64
 
 .field public static final KEY_EDITABLE_MASK:I = 0x1fffffff
 
-.field protected static final METADATA_KEYS_TYPE:Landroid/util/SparseIntArray; = null
+.field protected static final METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
 .field protected static final METADATA_TYPE_BITMAP:I = 0x2
 
@@ -38,6 +43,8 @@
 
 .field protected mEditorMetadata:Landroid/os/Bundle;
 
+.field protected mMetadataBuilder:Landroid/media/MediaMetadata$Builder;
+
 .field protected mMetadataChanged:Z
 
 
@@ -54,7 +61,7 @@
 
     const/4 v2, 0x1
 
-    .line 435
+    .line 442
     new-instance v0, Landroid/util/SparseIntArray;
 
     const/16 v1, 0x11
@@ -63,118 +70,122 @@
 
     sput-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
-    .line 438
+    .line 445
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     invoke-virtual {v0, v3, v3}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 440
+    .line 447
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     const/16 v1, 0xe
 
     invoke-virtual {v0, v1, v3}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 441
+    .line 448
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     const/16 v1, 0x9
 
     invoke-virtual {v0, v1, v3}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 442
+    .line 449
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     const/16 v1, 0x8
 
     invoke-virtual {v0, v1, v3}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 444
+    .line 451
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     invoke-virtual {v0, v2, v2}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 445
+    .line 452
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
+    .line 453
     const/16 v1, 0xd
 
+    .line 452
     invoke-virtual {v0, v1, v2}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 447
+    .line 454
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     const/4 v1, 0x7
 
     invoke-virtual {v0, v1, v2}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 448
+    .line 455
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     invoke-virtual {v0, v5, v2}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 449
+    .line 456
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     invoke-virtual {v0, v4, v2}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 450
+    .line 457
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
+    .line 458
     const/16 v1, 0xf
 
+    .line 457
     invoke-virtual {v0, v1, v2}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 452
+    .line 459
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     const/4 v1, 0x4
 
     invoke-virtual {v0, v1, v2}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 453
+    .line 460
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     const/4 v1, 0x5
 
     invoke-virtual {v0, v1, v2}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 454
+    .line 461
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     const/4 v1, 0x6
 
     invoke-virtual {v0, v1, v2}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 455
+    .line 462
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     const/16 v1, 0xb
 
     invoke-virtual {v0, v1, v2}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 457
+    .line 464
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     const/16 v1, 0x64
 
     invoke-virtual {v0, v1, v5}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 459
+    .line 466
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     const/16 v1, 0x65
 
     invoke-virtual {v0, v1, v4}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 460
+    .line 467
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
     const v1, 0x10000001
 
     invoke-virtual {v0, v1, v4}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 461
+    .line 33
     return-void
 .end method
 
@@ -184,19 +195,19 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 37
+    .line 39
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 88
+    .line 90
     iput-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mMetadataChanged:Z
 
-    .line 93
+    .line 95
     iput-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mApplied:Z
 
-    .line 98
+    .line 100
     iput-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mArtworkChanged:Z
 
-    .line 38
+    .line 39
     return-void
 .end method
 
@@ -204,39 +215,38 @@
 # virtual methods
 .method public declared-synchronized addEditableKey(I)V
     .locals 4
-    .parameter "key"
+    .param p1, "key"    # I
 
     .prologue
-    .line 135
     monitor-enter p0
 
+    .line 142
     :try_start_0
     iget-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mApplied:Z
 
     if-eqz v0, :cond_0
 
-    .line 136
-    const-string v0, "MediaMetadataEditor"
+    .line 143
+    const-string/jumbo v0, "MediaMetadataEditor"
 
-    const-string v1, "Can\'t change editable keys of a previously applied MetadataEditor"
+    const-string/jumbo v1, "Can\'t change editable keys of a previously applied MetadataEditor"
 
     invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 147
-    :goto_0
     monitor-exit p0
 
+    .line 144
     return-void
 
-    .line 141
+    .line 148
     :cond_0
     const v0, 0x10000001
 
     if-ne p1, v0, :cond_1
 
-    .line 142
+    .line 149
     :try_start_1
     iget-wide v0, p0, Landroid/media/MediaMetadataEditor;->mEditableKeys:J
 
@@ -250,33 +260,29 @@
 
     iput-wide v0, p0, Landroid/media/MediaMetadataEditor;->mEditableKeys:J
 
-    .line 143
+    .line 150
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mMetadataChanged:Z
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    goto :goto_0
-
-    .line 135
-    :catchall_0
-    move-exception v0
-
+    :goto_0
     monitor-exit p0
 
-    throw v0
+    .line 141
+    return-void
 
-    .line 145
+    .line 152
     :cond_1
     :try_start_2
-    const-string v0, "MediaMetadataEditor"
+    const-string/jumbo v0, "MediaMetadataEditor"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Metadata key "
+    const-string/jumbo v2, "Metadata key "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -286,7 +292,7 @@
 
     move-result-object v1
 
-    const-string v2, " cannot be edited"
+    const-string/jumbo v2, " cannot be edited"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -301,6 +307,13 @@
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     goto :goto_0
+
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+
+    throw v0
 .end method
 
 .method public abstract apply()V
@@ -310,46 +323,54 @@
     .locals 2
 
     .prologue
-    .line 118
     monitor-enter p0
 
+    .line 124
     :try_start_0
     iget-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mApplied:Z
 
     if-eqz v0, :cond_0
 
-    .line 119
-    const-string v0, "MediaMetadataEditor"
+    .line 125
+    const-string/jumbo v0, "MediaMetadataEditor"
 
-    const-string v1, "Can\'t clear a previously applied MediaMetadataEditor"
+    const-string/jumbo v1, "Can\'t clear a previously applied MediaMetadataEditor"
 
     invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 124
-    :goto_0
     monitor-exit p0
 
+    .line 126
     return-void
 
-    .line 122
+    .line 128
     :cond_0
     :try_start_1
     iget-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorMetadata:Landroid/os/Bundle;
 
     invoke-virtual {v0}, Landroid/os/Bundle;->clear()V
 
-    .line 123
+    .line 129
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorArtwork:Landroid/graphics/Bitmap;
+
+    .line 130
+    new-instance v0, Landroid/media/MediaMetadata$Builder;
+
+    invoke-direct {v0}, Landroid/media/MediaMetadata$Builder;-><init>()V
+
+    iput-object v0, p0, Landroid/media/MediaMetadataEditor;->mMetadataBuilder:Landroid/media/MediaMetadata$Builder;
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    goto :goto_0
+    monitor-exit p0
 
-    .line 118
+    .line 123
+    return-void
+
     :catchall_0
     move-exception v0
 
@@ -360,8 +381,8 @@
 
 .method public declared-synchronized getBitmap(ILandroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
     .locals 3
-    .parameter "key"
-    .parameter "defaultValue"
+    .param p1, "key"    # I
+    .param p2, "defaultValue"    # Landroid/graphics/Bitmap;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;
@@ -369,14 +390,14 @@
     .end annotation
 
     .prologue
-    .line 358
     monitor-enter p0
 
+    .line 365
     const/16 v0, 0x64
 
     if-eq p1, v0, :cond_0
 
-    .line 359
+    .line 366
     :try_start_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -384,7 +405,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Invalid type \'Bitmap\' for key "
+    const-string/jumbo v2, "Invalid type \'Bitmap\' for key "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -404,7 +425,6 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 358
     :catchall_0
     move-exception v0
 
@@ -412,7 +432,7 @@
 
     throw v0
 
-    .line 361
+    .line 368
     :cond_0
     :try_start_1
     iget-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorArtwork:Landroid/graphics/Bitmap;
@@ -423,7 +443,7 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .end local p2
+    .end local p2    # "defaultValue":Landroid/graphics/Bitmap;
     :cond_1
     monitor-exit p0
 
@@ -431,46 +451,49 @@
 .end method
 
 .method public declared-synchronized getEditableKeys()[I
-    .locals 5
+    .locals 6
 
     .prologue
-    .line 169
     monitor-enter p0
 
+    .line 176
     :try_start_0
-    iget-wide v1, p0, Landroid/media/MediaMetadataEditor;->mEditableKeys:J
+    iget-wide v2, p0, Landroid/media/MediaMetadataEditor;->mEditableKeys:J
 
-    const-wide/32 v3, 0x10000001
+    const-wide/32 v4, 0x10000001
 
-    cmp-long v1, v1, v3
+    cmp-long v1, v2, v4
 
     if-nez v1, :cond_0
 
-    .line 170
+    .line 177
     const/4 v1, 0x1
 
     new-array v0, v1, [I
 
-    const/4 v1, 0x0
+    const v1, 0x10000001
 
-    const v2, 0x10000001
+    const/4 v2, 0x0
 
-    aput v2, v0, v1
+    aput v1, v0, v2
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 173
-    :goto_0
+    .local v0, "keys":[I
     monitor-exit p0
 
+    .line 178
     return-object v0
 
+    .line 180
+    .end local v0    # "keys":[I
     :cond_0
-    const/4 v0, 0x0
+    const/4 v1, 0x0
 
-    goto :goto_0
+    monitor-exit p0
 
-    .line 169
+    return-object v1
+
     :catchall_0
     move-exception v1
 
@@ -480,9 +503,9 @@
 .end method
 
 .method public declared-synchronized getLong(IJ)J
-    .locals 3
-    .parameter "key"
-    .parameter "defaultValue"
+    .locals 4
+    .param p1, "key"    # I
+    .param p2, "defaultValue"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;
@@ -490,9 +513,9 @@
     .end annotation
 
     .prologue
-    .line 326
     monitor-enter p0
 
+    .line 333
     :try_start_0
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
@@ -504,14 +527,14 @@
 
     if-eqz v0, :cond_0
 
-    .line 327
+    .line 334
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Invalid type \'long\' for key "
+    const-string/jumbo v2, "Invalid type \'long\' for key "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -531,7 +554,6 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 326
     :catchall_0
     move-exception v0
 
@@ -539,7 +561,7 @@
 
     throw v0
 
-    .line 329
+    .line 336
     :cond_0
     :try_start_1
     iget-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorMetadata:Landroid/os/Bundle;
@@ -561,8 +583,8 @@
 
 .method public declared-synchronized getObject(ILjava/lang/Object;)Ljava/lang/Object;
     .locals 3
-    .parameter "key"
-    .parameter "defaultValue"
+    .param p1, "key"    # I
+    .param p2, "defaultValue"    # Ljava/lang/Object;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;
@@ -570,9 +592,9 @@
     .end annotation
 
     .prologue
-    .line 375
     monitor-enter p0
 
+    .line 382
     :try_start_0
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
@@ -584,7 +606,7 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 400
+    .line 407
     :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -592,7 +614,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Invalid key "
+    const-string/jumbo v2, "Invalid key "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -612,7 +634,6 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 375
     :catchall_0
     move-exception v0
 
@@ -620,7 +641,7 @@
 
     throw v0
 
-    .line 377
+    .line 384
     :pswitch_0
     :try_start_1
     iget-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorMetadata:Landroid/os/Bundle;
@@ -635,7 +656,7 @@
 
     if-eqz v0, :cond_1
 
-    .line 378
+    .line 385
     iget-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorMetadata:Landroid/os/Bundle;
 
     invoke-static {p1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
@@ -650,18 +671,19 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    move-result-object p2
+    move-result-object v0
 
-    .line 397
-    .end local p2
-    :cond_1
-    :goto_0
     monitor-exit p0
 
+    return-object v0
+
+    :cond_1
+    monitor-exit p0
+
+    .line 387
     return-object p2
 
-    .line 383
-    .restart local p2
+    .line 390
     :pswitch_1
     :try_start_2
     iget-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorMetadata:Landroid/os/Bundle;
@@ -674,9 +696,9 @@
 
     move-result v0
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_2
 
-    .line 384
+    .line 391
     iget-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorMetadata:Landroid/os/Bundle;
 
     invoke-static {p1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
@@ -684,13 +706,24 @@
     move-result-object v1
 
     invoke-virtual {v0, v1}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    move-result-object p2
+    move-result-object v0
 
-    goto :goto_0
+    monitor-exit p0
 
-    .line 389
+    return-object v0
+
+    :cond_2
+    monitor-exit p0
+
+    .line 393
+    return-object p2
+
+    .line 396
     :pswitch_2
+    :try_start_3
     iget-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorMetadata:Landroid/os/Bundle;
 
     invoke-static {p1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
@@ -701,9 +734,9 @@
 
     move-result v0
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_3
 
-    .line 390
+    .line 397
     iget-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorMetadata:Landroid/os/Bundle;
 
     invoke-static {p1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
@@ -711,29 +744,44 @@
     move-result-object v1
 
     invoke-virtual {v0, v1}, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    move-result-object p2
+    move-result-object v0
 
-    goto :goto_0
+    monitor-exit p0
 
-    .line 396
+    return-object v0
+
+    :cond_3
+    monitor-exit p0
+
+    .line 399
+    return-object p2
+
+    .line 403
     :pswitch_3
     const/16 v0, 0x64
 
     if-ne p1, v0, :cond_0
 
-    .line 397
+    .line 404
+    :try_start_4
     iget-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorArtwork:Landroid/graphics/Bitmap;
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_4
 
     iget-object p2, p0, Landroid/media/MediaMetadataEditor;->mEditorArtwork:Landroid/graphics/Bitmap;
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_0
 
-    goto :goto_0
+    .end local p2    # "defaultValue":Ljava/lang/Object;
+    :cond_4
+    monitor-exit p0
 
-    .line 375
+    return-object p2
+
+    .line 382
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -745,8 +793,8 @@
 
 .method public declared-synchronized getString(ILjava/lang/String;)Ljava/lang/String;
     .locals 3
-    .parameter "key"
-    .parameter "defaultValue"
+    .param p1, "key"    # I
+    .param p2, "defaultValue"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;
@@ -754,9 +802,9 @@
     .end annotation
 
     .prologue
-    .line 342
     monitor-enter p0
 
+    .line 349
     :try_start_0
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
@@ -770,14 +818,14 @@
 
     if-eq v0, v1, :cond_0
 
-    .line 343
+    .line 350
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Invalid type \'String\' for key "
+    const-string/jumbo v2, "Invalid type \'String\' for key "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -797,7 +845,6 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 342
     :catchall_0
     move-exception v0
 
@@ -805,7 +852,7 @@
 
     throw v0
 
-    .line 345
+    .line 352
     :cond_0
     :try_start_1
     iget-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorMetadata:Landroid/os/Bundle;
@@ -826,9 +873,9 @@
 .end method
 
 .method public declared-synchronized putBitmap(ILandroid/graphics/Bitmap;)Landroid/media/MediaMetadataEditor;
-    .locals 4
-    .parameter "key"
-    .parameter "bitmap"
+    .locals 3
+    .param p1, "key"    # I
+    .param p2, "bitmap"    # Landroid/graphics/Bitmap;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;
@@ -836,250 +883,225 @@
     .end annotation
 
     .prologue
-    .line 252
     monitor-enter p0
-
-    :try_start_0
-    iget-boolean v1, p0, Landroid/media/MediaMetadataEditor;->mApplied:Z
-
-    if-eqz v1, :cond_0
-
-    .line 253
-    const-string v1, "MediaMetadataEditor"
-
-    const-string v2, "Can\'t edit a previously applied MediaMetadataEditor"
-
-    invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    move-object v0, p0
-
-    .line 261
-    .end local p0
-    .local v0, this:Landroid/media/MediaMetadataEditor;
-    :goto_0
-    monitor-exit p0
-
-    return-object v0
-
-    .line 256
-    .end local v0           #this:Landroid/media/MediaMetadataEditor;
-    .restart local p0
-    :cond_0
-    const/16 v1, 0x64
-
-    if-eq p1, v1, :cond_1
-
-    .line 257
-    :try_start_1
-    new-instance v1, Ljava/lang/IllegalArgumentException;
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, "Invalid type \'Bitmap\' for key "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw v1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    .line 252
-    :catchall_0
-    move-exception v1
-
-    monitor-exit p0
-
-    throw v1
 
     .line 259
-    :cond_1
-    :try_start_2
-    iput-object p2, p0, Landroid/media/MediaMetadataEditor;->mEditorArtwork:Landroid/graphics/Bitmap;
-
-    .line 260
-    const/4 v1, 0x1
-
-    iput-boolean v1, p0, Landroid/media/MediaMetadataEditor;->mArtworkChanged:Z
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
-    move-object v0, p0
-
-    .line 261
-    .end local p0
-    .restart local v0       #this:Landroid/media/MediaMetadataEditor;
-    goto :goto_0
-.end method
-
-.method public declared-synchronized putLong(IJ)Landroid/media/MediaMetadataEditor;
-    .locals 4
-    .parameter "key"
-    .parameter "value"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/lang/IllegalArgumentException;
-        }
-    .end annotation
-
-    .prologue
-    .line 228
-    monitor-enter p0
-
-    :try_start_0
-    iget-boolean v1, p0, Landroid/media/MediaMetadataEditor;->mApplied:Z
-
-    if-eqz v1, :cond_0
-
-    .line 229
-    const-string v1, "MediaMetadataEditor"
-
-    const-string v2, "Can\'t edit a previously applied MediaMetadataEditor"
-
-    invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    move-object v0, p0
-
-    .line 237
-    .end local p0
-    .local v0, this:Landroid/media/MediaMetadataEditor;
-    :goto_0
-    monitor-exit p0
-
-    return-object v0
-
-    .line 232
-    .end local v0           #this:Landroid/media/MediaMetadataEditor;
-    .restart local p0
-    :cond_0
-    :try_start_1
-    sget-object v1, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
-
-    const/4 v2, -0x1
-
-    invoke-virtual {v1, p1, v2}, Landroid/util/SparseIntArray;->get(II)I
-
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    .line 233
-    new-instance v1, Ljava/lang/IllegalArgumentException;
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, "Invalid type \'long\' for key "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw v1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    .line 228
-    :catchall_0
-    move-exception v1
-
-    monitor-exit p0
-
-    throw v1
-
-    .line 235
-    :cond_1
-    :try_start_2
-    iget-object v1, p0, Landroid/media/MediaMetadataEditor;->mEditorMetadata:Landroid/os/Bundle;
-
-    invoke-static {p1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2, p2, p3}, Landroid/os/Bundle;->putLong(Ljava/lang/String;J)V
-
-    .line 236
-    const/4 v1, 0x1
-
-    iput-boolean v1, p0, Landroid/media/MediaMetadataEditor;->mMetadataChanged:Z
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
-    move-object v0, p0
-
-    .line 237
-    .end local p0
-    .restart local v0       #this:Landroid/media/MediaMetadataEditor;
-    goto :goto_0
-.end method
-
-.method public declared-synchronized putObject(ILjava/lang/Object;)Landroid/media/MediaMetadataEditor;
-    .locals 3
-    .parameter "key"
-    .parameter "value"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/lang/IllegalArgumentException;
-        }
-    .end annotation
-
-    .prologue
-    .line 283
-    monitor-enter p0
-
     :try_start_0
     iget-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mApplied:Z
 
     if-eqz v0, :cond_0
 
-    .line 284
-    const-string v0, "MediaMetadataEditor"
+    .line 260
+    const-string/jumbo v0, "MediaMetadataEditor"
 
-    const-string v1, "Can\'t edit a previously applied MediaMetadataEditor"
+    const-string/jumbo v1, "Can\'t edit a previously applied MediaMetadataEditor"
 
     invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    move-object v0, p0
-
-    .line 313
-    .end local p2
-    :goto_0
     monitor-exit p0
 
-    return-object v0
+    .line 261
+    return-object p0
 
-    .line 287
-    .restart local p2
+    .line 263
+    :cond_0
+    const/16 v0, 0x64
+
+    if-eq p1, v0, :cond_1
+
+    .line 264
+    :try_start_1
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v2, "Invalid type \'Bitmap\' for key "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+
+    throw v0
+
+    .line 266
+    :cond_1
+    :try_start_2
+    iput-object p2, p0, Landroid/media/MediaMetadataEditor;->mEditorArtwork:Landroid/graphics/Bitmap;
+
+    .line 267
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mArtworkChanged:Z
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    monitor-exit p0
+
+    .line 268
+    return-object p0
+.end method
+
+.method public declared-synchronized putLong(IJ)Landroid/media/MediaMetadataEditor;
+    .locals 4
+    .param p1, "key"    # I
+    .param p2, "value"    # J
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/lang/IllegalArgumentException;
+        }
+    .end annotation
+
+    .prologue
+    monitor-enter p0
+
+    .line 235
+    :try_start_0
+    iget-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mApplied:Z
+
+    if-eqz v0, :cond_0
+
+    .line 236
+    const-string/jumbo v0, "MediaMetadataEditor"
+
+    const-string/jumbo v1, "Can\'t edit a previously applied MediaMetadataEditor"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit p0
+
+    .line 237
+    return-object p0
+
+    .line 239
+    :cond_0
+    :try_start_1
+    sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
+
+    const/4 v1, -0x1
+
+    invoke-virtual {v0, p1, v1}, Landroid/util/SparseIntArray;->get(II)I
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 240
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v2, "Invalid type \'long\' for key "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+
+    throw v0
+
+    .line 242
+    :cond_1
+    :try_start_2
+    iget-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorMetadata:Landroid/os/Bundle;
+
+    invoke-static {p1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1, p2, p3}, Landroid/os/Bundle;->putLong(Ljava/lang/String;J)V
+
+    .line 243
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mMetadataChanged:Z
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    monitor-exit p0
+
+    .line 244
+    return-object p0
+.end method
+
+.method public declared-synchronized putObject(ILjava/lang/Object;)Landroid/media/MediaMetadataEditor;
+    .locals 3
+    .param p1, "key"    # I
+    .param p2, "value"    # Ljava/lang/Object;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/lang/IllegalArgumentException;
+        }
+    .end annotation
+
+    .prologue
+    monitor-enter p0
+
+    .line 290
+    :try_start_0
+    iget-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mApplied:Z
+
+    if-eqz v0, :cond_0
+
+    .line 291
+    const-string/jumbo v0, "MediaMetadataEditor"
+
+    const-string/jumbo v1, "Can\'t edit a previously applied MediaMetadataEditor"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit p0
+
+    .line 292
+    return-object p0
+
+    .line 294
     :cond_0
     :try_start_1
     sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
@@ -1092,14 +1114,14 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 311
+    .line 318
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Invalid key "
+    const-string/jumbo v2, "Invalid key "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1119,8 +1141,7 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 283
-    .end local p2
+    .end local p2    # "value":Ljava/lang/Object;
     :catchall_0
     move-exception v0
 
@@ -1128,38 +1149,43 @@
 
     throw v0
 
-    .line 289
-    .restart local p2
+    .line 296
+    .restart local p2    # "value":Ljava/lang/Object;
     :pswitch_0
     :try_start_2
     instance-of v0, p2, Ljava/lang/Long;
 
     if-eqz v0, :cond_1
 
-    .line 290
+    .line 297
     check-cast p2, Ljava/lang/Long;
 
-    .end local p2
+    .end local p2    # "value":Ljava/lang/Object;
     invoke-virtual {p2}, Ljava/lang/Long;->longValue()J
 
     move-result-wide v0
 
     invoke-virtual {p0, p1, v0, v1}, Landroid/media/MediaMetadataEditor;->putLong(IJ)Landroid/media/MediaMetadataEditor;
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     move-result-object v0
 
-    goto :goto_0
+    monitor-exit p0
 
-    .line 292
-    .restart local p2
+    return-object v0
+
+    .line 299
+    .restart local p2    # "value":Ljava/lang/Object;
     :cond_1
+    :try_start_3
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Not a non-null Long for key "
+    const-string/jumbo v2, "Not a non-null Long for key "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1177,7 +1203,7 @@
 
     throw v0
 
-    .line 295
+    .line 302
     :pswitch_1
     if-eqz p2, :cond_2
 
@@ -1185,27 +1211,32 @@
 
     if-eqz v0, :cond_3
 
-    .line 296
+    .line 303
     :cond_2
     check-cast p2, Ljava/lang/String;
 
-    .end local p2
+    .end local p2    # "value":Ljava/lang/Object;
     invoke-virtual {p0, p1, p2}, Landroid/media/MediaMetadataEditor;->putString(ILjava/lang/String;)Landroid/media/MediaMetadataEditor;
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     move-result-object v0
 
-    goto :goto_0
+    monitor-exit p0
 
-    .line 298
-    .restart local p2
+    return-object v0
+
+    .line 305
+    .restart local p2    # "value":Ljava/lang/Object;
     :cond_3
+    :try_start_4
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Not a String for key "
+    const-string/jumbo v2, "Not a String for key "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1223,7 +1254,7 @@
 
     throw v0
 
-    .line 301
+    .line 308
     :pswitch_2
     iget-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorMetadata:Landroid/os/Bundle;
 
@@ -1233,49 +1264,57 @@
 
     check-cast p2, Landroid/os/Parcelable;
 
-    .end local p2
+    .end local p2    # "value":Ljava/lang/Object;
     invoke-virtual {v0, v1, p2}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V
 
-    .line 302
+    .line 309
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mMetadataChanged:Z
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_0
 
-    move-object v0, p0
+    monitor-exit p0
 
-    .line 313
-    goto/16 :goto_0
+    .line 320
+    return-object p0
 
-    .line 305
-    .restart local p2
+    .line 312
+    .restart local p2    # "value":Ljava/lang/Object;
     :pswitch_3
     if-eqz p2, :cond_4
 
+    :try_start_5
     instance-of v0, p2, Landroid/graphics/Bitmap;
 
     if-eqz v0, :cond_5
 
-    .line 306
+    .line 313
     :cond_4
     check-cast p2, Landroid/graphics/Bitmap;
 
-    .end local p2
+    .end local p2    # "value":Ljava/lang/Object;
     invoke-virtual {p0, p1, p2}, Landroid/media/MediaMetadataEditor;->putBitmap(ILandroid/graphics/Bitmap;)Landroid/media/MediaMetadataEditor;
+    :try_end_5
+    .catchall {:try_start_5 .. :try_end_5} :catchall_0
 
     move-result-object v0
 
-    goto/16 :goto_0
+    monitor-exit p0
 
-    .line 308
-    .restart local p2
+    return-object v0
+
+    .line 315
+    .restart local p2    # "value":Ljava/lang/Object;
     :cond_5
+    :try_start_6
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Not a Bitmap for key "
+    const-string/jumbo v2, "Not a Bitmap for key "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1292,10 +1331,10 @@
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+    :try_end_6
+    .catchall {:try_start_6 .. :try_end_6} :catchall_0
 
-    .line 287
+    .line 294
     nop
 
     :pswitch_data_0
@@ -1308,9 +1347,9 @@
 .end method
 
 .method public declared-synchronized putString(ILjava/lang/String;)Landroid/media/MediaMetadataEditor;
-    .locals 4
-    .parameter "key"
-    .parameter "value"
+    .locals 3
+    .param p1, "key"    # I
+    .param p2, "value"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;
@@ -1318,109 +1357,99 @@
     .end annotation
 
     .prologue
-    const/4 v3, 0x1
+    const/4 v2, 0x1
 
-    .line 199
     monitor-enter p0
 
+    .line 206
     :try_start_0
-    iget-boolean v1, p0, Landroid/media/MediaMetadataEditor;->mApplied:Z
+    iget-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mApplied:Z
 
-    if-eqz v1, :cond_0
+    if-eqz v0, :cond_0
 
-    .line 200
-    const-string v1, "MediaMetadataEditor"
+    .line 207
+    const-string/jumbo v0, "MediaMetadataEditor"
 
-    const-string v2, "Can\'t edit a previously applied MediaMetadataEditor"
+    const-string/jumbo v1, "Can\'t edit a previously applied MediaMetadataEditor"
 
-    invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    move-object v0, p0
-
-    .line 208
-    .end local p0
-    .local v0, this:Landroid/media/MediaMetadataEditor;
-    :goto_0
     monitor-exit p0
 
-    return-object v0
+    .line 208
+    return-object p0
 
-    .line 203
-    .end local v0           #this:Landroid/media/MediaMetadataEditor;
-    .restart local p0
+    .line 210
     :cond_0
     :try_start_1
-    sget-object v1, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
+    sget-object v0, Landroid/media/MediaMetadataEditor;->METADATA_KEYS_TYPE:Landroid/util/SparseIntArray;
 
-    const/4 v2, -0x1
+    const/4 v1, -0x1
 
-    invoke-virtual {v1, p1, v2}, Landroid/util/SparseIntArray;->get(II)I
+    invoke-virtual {v0, p1, v1}, Landroid/util/SparseIntArray;->get(II)I
 
-    move-result v1
+    move-result v0
 
-    if-eq v1, v3, :cond_1
+    if-eq v0, v2, :cond_1
 
-    .line 204
-    new-instance v1, Ljava/lang/IllegalArgumentException;
+    .line 211
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Invalid type \'String\' for key "
+    const-string/jumbo v2, "Invalid type \'String\' for key "
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw v1
+    throw v0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 199
     :catchall_0
-    move-exception v1
+    move-exception v0
 
     monitor-exit p0
 
-    throw v1
+    throw v0
 
-    .line 206
+    .line 213
     :cond_1
     :try_start_2
-    iget-object v1, p0, Landroid/media/MediaMetadataEditor;->mEditorMetadata:Landroid/os/Bundle;
+    iget-object v0, p0, Landroid/media/MediaMetadataEditor;->mEditorMetadata:Landroid/os/Bundle;
 
     invoke-static {p1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-virtual {v1, v2, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v0, v1, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 207
-    const/4 v1, 0x1
+    .line 214
+    const/4 v0, 0x1
 
-    iput-boolean v1, p0, Landroid/media/MediaMetadataEditor;->mMetadataChanged:Z
+    iput-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mMetadataChanged:Z
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    move-object v0, p0
+    monitor-exit p0
 
-    .line 208
-    .end local p0
-    .restart local v0       #this:Landroid/media/MediaMetadataEditor;
-    goto :goto_0
+    .line 215
+    return-object p0
 .end method
 
 .method public declared-synchronized removeEditableKeys()V
@@ -1429,54 +1458,55 @@
     .prologue
     const-wide/16 v2, 0x0
 
-    .line 153
     monitor-enter p0
 
+    .line 160
     :try_start_0
     iget-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mApplied:Z
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_0
 
-    .line 154
-    const-string v0, "MediaMetadataEditor"
+    .line 161
+    const-string/jumbo v0, "MediaMetadataEditor"
 
-    const-string v1, "Can\'t remove all editable keys of a previously applied MetadataEditor"
+    const-string/jumbo v1, "Can\'t remove all editable keys of a previously applied MetadataEditor"
 
     invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 161
-    :cond_0
-    :goto_0
     monitor-exit p0
 
+    .line 162
     return-void
 
-    .line 157
-    :cond_1
+    .line 164
+    :cond_0
     :try_start_1
     iget-wide v0, p0, Landroid/media/MediaMetadataEditor;->mEditableKeys:J
 
     cmp-long v0, v0, v2
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
-    .line 158
+    .line 165
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Landroid/media/MediaMetadataEditor;->mEditableKeys:J
 
-    .line 159
+    .line 166
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/media/MediaMetadataEditor;->mMetadataChanged:Z
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    goto :goto_0
+    :cond_1
+    monitor-exit p0
 
-    .line 153
+    .line 159
+    return-void
+
     :catchall_0
     move-exception v0
 

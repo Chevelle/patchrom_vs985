@@ -24,7 +24,7 @@
 # direct methods
 .method constructor <init>(Landroid/accounts/ChooseAccountTypeActivity;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/accounts/ChooseAccountTypeActivity;
 
     .prologue
     .line 108
@@ -39,10 +39,9 @@
 # virtual methods
 .method public onItemClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
     .locals 2
-    .parameter
-    .parameter "v"
-    .parameter "position"
-    .parameter "id"
+    .param p2, "v"    # Landroid/view/View;
+    .param p3, "position"    # I
+    .param p4, "id"    # J
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -55,13 +54,12 @@
 
     .prologue
     .line 110
-    .local p1, parent:Landroid/widget/AdapterView;,"Landroid/widget/AdapterView<*>;"
+    .local p1, "parent":Landroid/widget/AdapterView;, "Landroid/widget/AdapterView<*>;"
     iget-object v1, p0, Landroid/accounts/ChooseAccountTypeActivity$1;->this$0:Landroid/accounts/ChooseAccountTypeActivity;
 
     iget-object v0, p0, Landroid/accounts/ChooseAccountTypeActivity$1;->this$0:Landroid/accounts/ChooseAccountTypeActivity;
 
-    #getter for: Landroid/accounts/ChooseAccountTypeActivity;->mAuthenticatorInfosToDisplay:Ljava/util/ArrayList;
-    invoke-static {v0}, Landroid/accounts/ChooseAccountTypeActivity;->access$000(Landroid/accounts/ChooseAccountTypeActivity;)Ljava/util/ArrayList;
+    invoke-static {v0}, Landroid/accounts/ChooseAccountTypeActivity;->-get0(Landroid/accounts/ChooseAccountTypeActivity;)Ljava/util/ArrayList;
 
     move-result-object v0
 
@@ -75,9 +73,8 @@
 
     iget-object v0, v0, Landroid/accounts/AuthenticatorDescription;->type:Ljava/lang/String;
 
-    #calls: Landroid/accounts/ChooseAccountTypeActivity;->setResultAndFinish(Ljava/lang/String;)V
-    invoke-static {v1, v0}, Landroid/accounts/ChooseAccountTypeActivity;->access$100(Landroid/accounts/ChooseAccountTypeActivity;Ljava/lang/String;)V
+    invoke-static {v1, v0}, Landroid/accounts/ChooseAccountTypeActivity;->-wrap0(Landroid/accounts/ChooseAccountTypeActivity;Ljava/lang/String;)V
 
-    .line 111
+    .line 109
     return-void
 .end method

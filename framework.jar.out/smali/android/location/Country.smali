@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/location/Country$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final COUNTRY_SOURCE_LOCALE:I = 0x3
 
@@ -49,12 +57,13 @@
 
     sput-object v0, Landroid/location/Country;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 30
     return-void
 .end method
 
 .method public constructor <init>(Landroid/location/Country;)V
     .locals 2
-    .parameter "country"
+    .param p1, "country"    # Landroid/location/Country;
 
     .prologue
     .line 101
@@ -75,14 +84,14 @@
 
     iput-wide v0, p0, Landroid/location/Country;->mTimestamp:J
 
-    .line 105
+    .line 101
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;I)V
     .locals 2
-    .parameter "countryIso"
-    .parameter "source"
+    .param p1, "countryIso"    # Ljava/lang/String;
+    .param p2, "source"    # I
 
     .prologue
     .line 81
@@ -91,11 +100,7 @@
     .line 82
     if-eqz p1, :cond_0
 
-    if-ltz p2, :cond_0
-
-    const/4 v0, 0x3
-
-    if-le p2, v0, :cond_1
+    if-gez p2, :cond_1
 
     .line 84
     :cond_0
@@ -105,8 +110,13 @@
 
     throw v0
 
-    .line 86
+    .line 83
     :cond_1
+    const/4 v0, 0x3
+
+    if-gt p2, v0, :cond_0
+
+    .line 86
     sget-object v0, Ljava/util/Locale;->US:Ljava/util/Locale;
 
     invoke-virtual {p1, v0}, Ljava/lang/String;->toUpperCase(Ljava/util/Locale;)Ljava/lang/String;
@@ -125,15 +135,15 @@
 
     iput-wide v0, p0, Landroid/location/Country;->mTimestamp:J
 
-    .line 89
+    .line 81
     return-void
 .end method
 
 .method private constructor <init>(Ljava/lang/String;IJ)V
     .locals 1
-    .parameter "countryIso"
-    .parameter "source"
-    .parameter "timestamp"
+    .param p1, "countryIso"    # Ljava/lang/String;
+    .param p2, "source"    # I
+    .param p3, "timestamp"    # J
 
     .prologue
     .line 91
@@ -142,11 +152,7 @@
     .line 92
     if-eqz p1, :cond_0
 
-    if-ltz p2, :cond_0
-
-    const/4 v0, 0x3
-
-    if-le p2, v0, :cond_1
+    if-gez p2, :cond_1
 
     .line 94
     :cond_0
@@ -156,8 +162,13 @@
 
     throw v0
 
-    .line 96
+    .line 93
     :cond_1
+    const/4 v0, 0x3
+
+    if-gt p2, v0, :cond_0
+
+    .line 96
     sget-object v0, Ljava/util/Locale;->US:Ljava/util/Locale;
 
     invoke-virtual {p1, v0}, Ljava/lang/String;->toUpperCase(Ljava/util/Locale;)Ljava/lang/String;
@@ -172,19 +183,17 @@
     .line 98
     iput-wide p3, p0, Landroid/location/Country;->mTimestamp:J
 
-    .line 99
+    .line 91
     return-void
 .end method
 
-.method synthetic constructor <init>(Ljava/lang/String;IJLandroid/location/Country$1;)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
-    .parameter "x3"
+.method synthetic constructor <init>(Ljava/lang/String;IJLandroid/location/Country;)V
+    .locals 1
+    .param p1, "countryIso"    # Ljava/lang/String;
+    .param p2, "source"    # I
+    .param p3, "timestamp"    # J
 
     .prologue
-    .line 30
     invoke-direct {p0, p1, p2, p3, p4}, Landroid/location/Country;-><init>(Ljava/lang/String;IJ)V
 
     return-void
@@ -204,7 +213,7 @@
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 5
-    .parameter "object"
+    .param p1, "object"    # Ljava/lang/Object;
 
     .prologue
     const/4 v1, 0x1
@@ -212,18 +221,16 @@
     const/4 v2, 0x0
 
     .line 163
-    if-ne p1, p0, :cond_1
+    if-ne p1, p0, :cond_0
 
-    .line 171
-    :cond_0
-    :goto_0
+    .line 164
     return v1
 
     .line 166
-    :cond_1
+    :cond_0
     instance-of v3, p1, Landroid/location/Country;
 
-    if-eqz v3, :cond_3
+    if-eqz v3, :cond_2
 
     move-object v0, p1
 
@@ -231,7 +238,7 @@
     check-cast v0, Landroid/location/Country;
 
     .line 169
-    .local v0, c:Landroid/location/Country;
+    .local v0, "c":Landroid/location/Country;
     iget-object v3, p0, Landroid/location/Country;->mCountryIso:Ljava/lang/String;
 
     invoke-virtual {v0}, Landroid/location/Country;->getCountryIso()Ljava/lang/String;
@@ -242,7 +249,7 @@
 
     move-result v3
 
-    if-eqz v3, :cond_2
+    if-eqz v3, :cond_1
 
     iget v3, p0, Landroid/location/Country;->mSource:I
 
@@ -250,24 +257,25 @@
 
     move-result v4
 
-    if-eq v3, v4, :cond_0
+    if-ne v3, v4, :cond_1
 
-    :cond_2
+    :goto_0
+    return v1
+
+    :cond_1
     move v1, v2
 
     goto :goto_0
-
-    .end local v0           #c:Landroid/location/Country;
-    :cond_3
-    move v1, v2
 
     .line 171
-    goto :goto_0
+    .end local v0    # "c":Landroid/location/Country;
+    :cond_2
+    return v2
 .end method
 
 .method public equalsIgnoreSource(Landroid/location/Country;)Z
     .locals 2
-    .parameter "country"
+    .param p1, "country"    # Landroid/location/Country;
 
     .prologue
     .line 195
@@ -282,10 +290,6 @@
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v0
-
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
 
     :goto_0
     return v0
@@ -334,11 +338,8 @@
     iget v0, p0, Landroid/location/Country;->mHashCode:I
 
     .line 177
-    .local v0, hash:I
+    .local v0, "hash":I
     if-nez v0, :cond_0
-
-    .line 178
-    const/16 v0, 0x11
 
     .line 179
     iget-object v1, p0, Landroid/location/Country;->mCountryIso:Ljava/lang/String;
@@ -367,7 +368,7 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 3
+    .locals 4
 
     .prologue
     .line 200
@@ -375,7 +376,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "Country {ISO="
+    const-string/jumbo v1, "Country {ISO="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -387,7 +388,7 @@
 
     move-result-object v0
 
-    const-string v1, ", source="
+    const-string/jumbo v1, ", source="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -399,15 +400,15 @@
 
     move-result-object v0
 
-    const-string v1, ", time="
+    const-string/jumbo v1, ", time="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    iget-wide v1, p0, Landroid/location/Country;->mTimestamp:J
+    iget-wide v2, p0, Landroid/location/Country;->mTimestamp:J
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
@@ -426,8 +427,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 2
-    .parameter "parcel"
-    .parameter "flags"
+    .param p1, "parcel"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 151
@@ -445,6 +446,6 @@
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 154
+    .line 150
     return-void
 .end method

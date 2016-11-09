@@ -28,7 +28,7 @@
 
 .method public static bytesPerSampleForColorspace(I)I
     .locals 3
-    .parameter "colorspace"
+    .param p0, "colorspace"    # I
 
     .prologue
     const/4 v0, 0x3
@@ -43,7 +43,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Unknown colorspace id "
+    const-string/jumbo v2, "Unknown colorspace id "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -53,7 +53,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -71,8 +71,9 @@
     :pswitch_0
     const/4 v0, 0x1
 
-    .line 87
-    :goto_0
+    return v0
+
+    .line 83
     :pswitch_1
     return v0
 
@@ -80,7 +81,11 @@
     :pswitch_2
     const/4 v0, 0x4
 
-    goto :goto_0
+    return v0
+
+    .line 87
+    :pswitch_3
+    return v0
 
     .line 79
     nop
@@ -90,22 +95,23 @@
         :pswitch_0
         :pswitch_1
         :pswitch_2
-        :pswitch_1
+        :pswitch_3
     .end packed-switch
 .end method
 
 .method public static create(I)Landroid/filterfw/core/MutableFrameFormat;
     .locals 2
-    .parameter "colorspace"
+    .param p0, "colorspace"    # I
 
     .prologue
     const/4 v1, 0x0
 
-    .line 71
+    .line 74
     invoke-static {p0}, Landroid/filterfw/format/ImageFormat;->bytesPerSampleForColorspace(I)I
 
     move-result v0
 
+    .line 71
     invoke-static {v1, v1, p0, v0, v1}, Landroid/filterfw/format/ImageFormat;->create(IIIII)Landroid/filterfw/core/MutableFrameFormat;
 
     move-result-object v0
@@ -115,17 +121,18 @@
 
 .method public static create(II)Landroid/filterfw/core/MutableFrameFormat;
     .locals 2
-    .parameter "colorspace"
-    .parameter "target"
+    .param p0, "colorspace"    # I
+    .param p1, "target"    # I
 
     .prologue
     const/4 v1, 0x0
 
-    .line 63
+    .line 66
     invoke-static {p0}, Landroid/filterfw/format/ImageFormat;->bytesPerSampleForColorspace(I)I
 
     move-result v0
 
+    .line 63
     invoke-static {v1, v1, p0, v0, p1}, Landroid/filterfw/format/ImageFormat;->create(IIIII)Landroid/filterfw/core/MutableFrameFormat;
 
     move-result-object v0
@@ -135,17 +142,18 @@
 
 .method public static create(IIII)Landroid/filterfw/core/MutableFrameFormat;
     .locals 1
-    .parameter "width"
-    .parameter "height"
-    .parameter "colorspace"
-    .parameter "target"
+    .param p0, "width"    # I
+    .param p1, "height"    # I
+    .param p2, "colorspace"    # I
+    .param p3, "target"    # I
 
     .prologue
-    .line 55
+    .line 58
     invoke-static {p2}, Landroid/filterfw/format/ImageFormat;->bytesPerSampleForColorspace(I)I
 
     move-result v0
 
+    .line 55
     invoke-static {p0, p1, p2, v0, p3}, Landroid/filterfw/format/ImageFormat;->create(IIIII)Landroid/filterfw/core/MutableFrameFormat;
 
     move-result-object v0
@@ -155,11 +163,11 @@
 
 .method public static create(IIIII)Landroid/filterfw/core/MutableFrameFormat;
     .locals 3
-    .parameter "width"
-    .parameter "height"
-    .parameter "colorspace"
-    .parameter "bytesPerSample"
-    .parameter "target"
+    .param p0, "width"    # I
+    .param p1, "height"    # I
+    .param p2, "colorspace"    # I
+    .param p3, "bytesPerSample"    # I
+    .param p4, "target"    # I
 
     .prologue
     .line 41
@@ -170,14 +178,14 @@
     invoke-direct {v0, v1, p4}, Landroid/filterfw/core/MutableFrameFormat;-><init>(II)V
 
     .line 42
-    .local v0, result:Landroid/filterfw/core/MutableFrameFormat;
+    .local v0, "result":Landroid/filterfw/core/MutableFrameFormat;
     invoke-virtual {v0, p0, p1}, Landroid/filterfw/core/MutableFrameFormat;->setDimensions(II)V
 
     .line 43
     invoke-virtual {v0, p3}, Landroid/filterfw/core/MutableFrameFormat;->setBytesPerSample(I)V
 
     .line 44
-    const-string v1, "colorspace"
+    const-string/jumbo v1, "colorspace"
 
     invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 

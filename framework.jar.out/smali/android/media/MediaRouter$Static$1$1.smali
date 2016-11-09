@@ -18,7 +18,7 @@
 
 
 # instance fields
-.field final synthetic this$1:Landroid/media/MediaRouter$Static$1;
+.field final synthetic this$2:Landroid/media/MediaRouter$Static$1;
 
 .field final synthetic val$newRoutes:Landroid/media/AudioRoutesInfo;
 
@@ -26,12 +26,12 @@
 # direct methods
 .method constructor <init>(Landroid/media/MediaRouter$Static$1;Landroid/media/AudioRoutesInfo;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$2"    # Landroid/media/MediaRouter$Static$1;
+    .param p2, "val$newRoutes"    # Landroid/media/AudioRoutesInfo;
 
     .prologue
-    .line 99
-    iput-object p1, p0, Landroid/media/MediaRouter$Static$1$1;->this$1:Landroid/media/MediaRouter$Static$1;
+    .line 101
+    iput-object p1, p0, Landroid/media/MediaRouter$Static$1$1;->this$2:Landroid/media/MediaRouter$Static$1;
 
     iput-object p2, p0, Landroid/media/MediaRouter$Static$1$1;->val$newRoutes:Landroid/media/AudioRoutesInfo;
 
@@ -46,10 +46,10 @@
     .locals 2
 
     .prologue
-    .line 101
-    iget-object v0, p0, Landroid/media/MediaRouter$Static$1$1;->this$1:Landroid/media/MediaRouter$Static$1;
+    .line 103
+    iget-object v0, p0, Landroid/media/MediaRouter$Static$1$1;->this$2:Landroid/media/MediaRouter$Static$1;
 
-    iget-object v0, v0, Landroid/media/MediaRouter$Static$1;->this$0:Landroid/media/MediaRouter$Static;
+    iget-object v0, v0, Landroid/media/MediaRouter$Static$1;->this$1:Landroid/media/MediaRouter$Static;
 
     iget-object v1, p0, Landroid/media/MediaRouter$Static$1$1;->val$newRoutes:Landroid/media/AudioRoutesInfo;
 

@@ -15,7 +15,7 @@
 
 
 # instance fields
-.field final synthetic this$0:Landroid/widget/ListPopupWindow$DropDownListView;
+.field final synthetic this$1:Landroid/widget/ListPopupWindow$DropDownListView;
 
 .field final synthetic val$child:Landroid/view/View;
 
@@ -27,14 +27,14 @@
 # direct methods
 .method constructor <init>(Landroid/widget/ListPopupWindow$DropDownListView;Landroid/view/View;IJ)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$1"    # Landroid/widget/ListPopupWindow$DropDownListView;
+    .param p2, "val$child"    # Landroid/view/View;
+    .param p3, "val$position"    # I
+    .param p4, "val$id"    # J
 
     .prologue
-    .line 1524
-    iput-object p1, p0, Landroid/widget/ListPopupWindow$DropDownListView$2;->this$0:Landroid/widget/ListPopupWindow$DropDownListView;
+    .line 1646
+    iput-object p1, p0, Landroid/widget/ListPopupWindow$DropDownListView$2;->this$1:Landroid/widget/ListPopupWindow$DropDownListView;
 
     iput-object p2, p0, Landroid/widget/ListPopupWindow$DropDownListView$2;->val$child:Landroid/view/View;
 
@@ -50,21 +50,21 @@
 
 # virtual methods
 .method public onAnimationEnd(Landroid/animation/Animator;)V
-    .locals 5
-    .parameter "animation"
+    .locals 6
+    .param p1, "animation"    # Landroid/animation/Animator;
 
     .prologue
-    .line 1527
-    iget-object v0, p0, Landroid/widget/ListPopupWindow$DropDownListView$2;->this$0:Landroid/widget/ListPopupWindow$DropDownListView;
+    .line 1649
+    iget-object v0, p0, Landroid/widget/ListPopupWindow$DropDownListView$2;->this$1:Landroid/widget/ListPopupWindow$DropDownListView;
 
     iget-object v1, p0, Landroid/widget/ListPopupWindow$DropDownListView$2;->val$child:Landroid/view/View;
 
     iget v2, p0, Landroid/widget/ListPopupWindow$DropDownListView$2;->val$position:I
 
-    iget-wide v3, p0, Landroid/widget/ListPopupWindow$DropDownListView$2;->val$id:J
+    iget-wide v4, p0, Landroid/widget/ListPopupWindow$DropDownListView$2;->val$id:J
 
-    invoke-virtual {v0, v1, v2, v3, v4}, Landroid/widget/ListPopupWindow$DropDownListView;->performItemClick(Landroid/view/View;IJ)Z
+    invoke-virtual {v0, v1, v2, v4, v5}, Landroid/widget/ListPopupWindow$DropDownListView;->performItemClick(Landroid/view/View;IJ)Z
 
-    .line 1528
+    .line 1648
     return-void
 .end method

@@ -9,9 +9,10 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/os/RemoteCallback$RemoteCallbackProxy;,
+        Landroid/os/RemoteCallback$DeliverResult;,
         Landroid/os/RemoteCallback$LocalCallback;,
-        Landroid/os/RemoteCallback$DeliverResult;
+        Landroid/os/RemoteCallback$RemoteCallbackProxy;,
+        Landroid/os/RemoteCallback$1;
     }
 .end annotation
 
@@ -40,19 +41,21 @@
     .locals 1
 
     .prologue
-    .line 95
+    .line 96
     new-instance v0, Landroid/os/RemoteCallback$1;
 
     invoke-direct {v0}, Landroid/os/RemoteCallback$1;-><init>()V
 
+    .line 95
     sput-object v0, Landroid/os/RemoteCallback;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 24
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Handler;)V
     .locals 1
-    .parameter "handler"
+    .param p1, "handler"    # Landroid/os/Handler;
 
     .prologue
     .line 55
@@ -68,13 +71,13 @@
 
     iput-object v0, p0, Landroid/os/RemoteCallback;->mTarget:Landroid/os/IRemoteCallback;
 
-    .line 58
+    .line 55
     return-void
 .end method
 
 .method constructor <init>(Landroid/os/IRemoteCallback;)V
     .locals 1
-    .parameter "target"
+    .param p1, "target"    # Landroid/os/IRemoteCallback;
 
     .prologue
     .line 60
@@ -88,7 +91,7 @@
     .line 62
     iput-object p1, p0, Landroid/os/RemoteCallback;->mTarget:Landroid/os/IRemoteCallback;
 
-    .line 63
+    .line 60
     return-void
 .end method
 
@@ -105,22 +108,19 @@
 .end method
 
 .method public equals(Ljava/lang/Object;)Z
-    .locals 3
-    .parameter "otherObj"
+    .locals 4
+    .param p1, "otherObj"    # Ljava/lang/Object;
 
     .prologue
-    const/4 v0, 0x0
+    const/4 v3, 0x0
 
     .line 72
     if-nez p1, :cond_0
 
-    .line 80
-    .end local p1
-    :goto_0
-    return v0
+    .line 73
+    return v3
 
     .line 76
-    .restart local p1
     :cond_0
     :try_start_0
     iget-object v1, p0, Landroid/os/RemoteCallback;->mTarget:Landroid/os/IRemoteCallback;
@@ -131,7 +131,7 @@
 
     check-cast p1, Landroid/os/RemoteCallback;
 
-    .end local p1
+    .end local p1    # "otherObj":Ljava/lang/Object;
     iget-object v2, p1, Landroid/os/RemoteCallback;->mTarget:Landroid/os/IRemoteCallback;
 
     invoke-interface {v2}, Landroid/os/IRemoteCallback;->asBinder()Landroid/os/IBinder;
@@ -142,15 +142,17 @@
     :try_end_0
     .catch Ljava/lang/ClassCastException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result v0
+    move-result v1
 
-    goto :goto_0
+    return v1
 
     .line 78
     :catch_0
-    move-exception v1
+    move-exception v0
 
-    goto :goto_0
+    .line 80
+    .local v0, "e":Ljava/lang/ClassCastException;
+    return v3
 .end method
 
 .method public hashCode()I
@@ -176,7 +178,7 @@
 
 .method public sendResult(Landroid/os/Bundle;)V
     .locals 1
-    .parameter "bundle"
+    .param p1, "bundle"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -189,14 +191,14 @@
 
     invoke-interface {v0, p1}, Landroid/os/IRemoteCallback;->sendResult(Landroid/os/Bundle;)V
 
-    .line 67
+    .line 65
     return-void
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "out"
-    .parameter "flags"
+    .param p1, "out"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 92
@@ -208,6 +210,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeStrongBinder(Landroid/os/IBinder;)V
 
-    .line 93
+    .line 91
     return-void
 .end method

@@ -17,11 +17,9 @@
 # static fields
 .field public static final RSN:I = 0x1
 
-.field public static final WAPI:I = 0x2
-
 .field public static final WPA:I = 0x0
 
-.field public static final strings:[Ljava/lang/String; = null
+.field public static final strings:[Ljava/lang/String;
 
 .field public static final varName:Ljava/lang/String; = "proto"
 
@@ -31,30 +29,26 @@
     .locals 3
 
     .prologue
-    const/4 v0, 0x3
+    .line 105
+    const/4 v0, 0x2
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const/4 v1, 0x0
+    const-string/jumbo v1, "WPA"
 
-    const-string v2, "WPA"
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x1
+    const-string/jumbo v1, "RSN"
 
-    const-string v2, "RSN"
+    const/4 v2, 0x1
 
-    aput-object v2, v0, v1
-
-    const/4 v1, 0x2
-
-    const-string v2, "WAPI"
-
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     sput-object v0, Landroid/net/wifi/WifiConfiguration$Protocol;->strings:[Ljava/lang/String;
 
+    .line 95
     return-void
 .end method
 
@@ -62,7 +56,7 @@
     .locals 0
 
     .prologue
-    .line 80
+    .line 96
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

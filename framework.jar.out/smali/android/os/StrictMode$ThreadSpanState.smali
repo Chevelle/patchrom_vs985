@@ -29,18 +29,16 @@
     .locals 0
 
     .prologue
-    .line 1827
+    .line 2054
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/StrictMode$1;)V
+.method synthetic constructor <init>(Landroid/os/StrictMode$ThreadSpanState;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 1827
     invoke-direct {p0}, Landroid/os/StrictMode$ThreadSpanState;-><init>()V
 
     return-void

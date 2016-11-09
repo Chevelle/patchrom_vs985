@@ -10,7 +10,6 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/text/AlteredCharSequence$1;,
         Landroid/text/AlteredCharSequence$AlteredSpanned;
     }
 .end annotation
@@ -29,13 +28,13 @@
 # direct methods
 .method private constructor <init>(Ljava/lang/CharSequence;[CII)V
     .locals 0
-    .parameter "source"
-    .parameter "sub"
-    .parameter "substart"
-    .parameter "subend"
+    .param p1, "source"    # Ljava/lang/CharSequence;
+    .param p2, "sub"    # [C
+    .param p3, "substart"    # I
+    .param p4, "subend"    # I
 
     .prologue
-    .line 43
+    .line 42
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 44
@@ -50,20 +49,18 @@
     .line 47
     iput p4, p0, Landroid/text/AlteredCharSequence;->mEnd:I
 
-    .line 48
+    .line 43
     return-void
 .end method
 
-.method synthetic constructor <init>(Ljava/lang/CharSequence;[CIILandroid/text/AlteredCharSequence$1;)V
+.method synthetic constructor <init>(Ljava/lang/CharSequence;[CIILandroid/text/AlteredCharSequence;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
-    .parameter "x3"
-    .parameter "x4"
+    .param p1, "source"    # Ljava/lang/CharSequence;
+    .param p2, "sub"    # [C
+    .param p3, "substart"    # I
+    .param p4, "subend"    # I
 
     .prologue
-    .line 25
     invoke-direct {p0, p1, p2, p3, p4}, Landroid/text/AlteredCharSequence;-><init>(Ljava/lang/CharSequence;[CII)V
 
     return-void
@@ -71,10 +68,10 @@
 
 .method public static make(Ljava/lang/CharSequence;[CII)Landroid/text/AlteredCharSequence;
     .locals 6
-    .parameter "source"
-    .parameter "sub"
-    .parameter "substart"
-    .parameter "subend"
+    .param p0, "source"    # Ljava/lang/CharSequence;
+    .param p1, "sub"    # [C
+    .param p2, "substart"    # I
+    .param p3, "subend"    # I
 
     .prologue
     .line 36
@@ -95,25 +92,24 @@
 
     move v4, p3
 
-    invoke-direct/range {v0 .. v5}, Landroid/text/AlteredCharSequence$AlteredSpanned;-><init>(Ljava/lang/CharSequence;[CIILandroid/text/AlteredCharSequence$1;)V
+    invoke-direct/range {v0 .. v5}, Landroid/text/AlteredCharSequence$AlteredSpanned;-><init>(Ljava/lang/CharSequence;[CIILandroid/text/AlteredCharSequence$AlteredSpanned;)V
 
-    .line 39
-    :goto_0
     return-object v0
 
+    .line 39
     :cond_0
     new-instance v0, Landroid/text/AlteredCharSequence;
 
     invoke-direct {v0, p0, p1, p2, p3}, Landroid/text/AlteredCharSequence;-><init>(Ljava/lang/CharSequence;[CII)V
 
-    goto :goto_0
+    return-object v0
 .end method
 
 
 # virtual methods
 .method public charAt(I)C
     .locals 2
-    .parameter "off"
+    .param p1, "off"    # I
 
     .prologue
     .line 90
@@ -134,10 +130,9 @@
 
     aget-char v0, v0, v1
 
-    .line 93
-    :goto_0
     return v0
 
+    .line 93
     :cond_0
     iget-object v0, p0, Landroid/text/AlteredCharSequence;->mSource:Ljava/lang/CharSequence;
 
@@ -145,15 +140,15 @@
 
     move-result v0
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public getChars(II[CI)V
     .locals 3
-    .parameter "start"
-    .parameter "end"
-    .parameter "dest"
-    .parameter "off"
+    .param p1, "start"    # I
+    .param p2, "end"    # I
+    .param p3, "dest"    # [C
+    .param p4, "off"    # I
 
     .prologue
     .line 106
@@ -187,9 +182,9 @@
 
     sub-int v2, p2, p1
 
-    invoke-static {v0, v1, p3, p4, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v0, v1, p3, p4, v2}, Ljava/lang/System;->arraycopy([CI[CII)V
 
-    .line 113
+    .line 105
     :cond_0
     return-void
 .end method
@@ -210,8 +205,8 @@
 
 .method public subSequence(II)Ljava/lang/CharSequence;
     .locals 4
-    .parameter "start"
-    .parameter "end"
+    .param p1, "start"    # I
+    .param p2, "end"    # I
 
     .prologue
     .line 101
@@ -221,6 +216,7 @@
 
     move-result-object v0
 
+    .line 102
     iget-object v1, p0, Landroid/text/AlteredCharSequence;->mChars:[C
 
     iget v2, p0, Landroid/text/AlteredCharSequence;->mStart:I
@@ -231,6 +227,7 @@
 
     sub-int/2addr v3, p1
 
+    .line 101
     invoke-static {v0, v1, v2, v3}, Landroid/text/AlteredCharSequence;->make(Ljava/lang/CharSequence;[CII)Landroid/text/AlteredCharSequence;
 
     move-result-object v0
@@ -250,11 +247,11 @@
     move-result v0
 
     .line 118
-    .local v0, len:I
+    .local v0, "len":I
     new-array v1, v0, [C
 
     .line 119
-    .local v1, ret:[C
+    .local v1, "ret":[C
     invoke-virtual {p0, v2, v0, v1, v2}, Landroid/text/AlteredCharSequence;->getChars(II[CI)V
 
     .line 120
@@ -267,9 +264,9 @@
 
 .method update([CII)V
     .locals 0
-    .parameter "sub"
-    .parameter "substart"
-    .parameter "subend"
+    .param p1, "sub"    # [C
+    .param p2, "substart"    # I
+    .param p3, "subend"    # I
 
     .prologue
     .line 51
@@ -281,6 +278,6 @@
     .line 53
     iput p3, p0, Landroid/text/AlteredCharSequence;->mEnd:I
 
-    .line 54
+    .line 50
     return-void
 .end method

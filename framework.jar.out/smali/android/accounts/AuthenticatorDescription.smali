@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/accounts/AuthenticatorDescription$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -40,19 +48,21 @@
     .locals 1
 
     .prologue
-    .line 133
+    .line 134
     new-instance v0, Landroid/accounts/AuthenticatorDescription$1;
 
     invoke-direct {v0}, Landroid/accounts/AuthenticatorDescription$1;-><init>()V
 
+    .line 133
     sput-object v0, Landroid/accounts/AuthenticatorDescription;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 25
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     const/4 v0, 0x1
@@ -112,7 +122,7 @@
     :goto_0
     iput-boolean v0, p0, Landroid/accounts/AuthenticatorDescription;->customTokens:Z
 
-    .line 97
+    .line 89
     return-void
 
     .line 96
@@ -122,13 +132,11 @@
     goto :goto_0
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/accounts/AuthenticatorDescription$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/accounts/AuthenticatorDescription;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 25
     invoke-direct {p0, p1}, Landroid/accounts/AuthenticatorDescription;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -136,7 +144,7 @@
 
 .method private constructor <init>(Ljava/lang/String;)V
     .locals 2
-    .parameter "type"
+    .param p1, "type"    # Ljava/lang/String;
 
     .prologue
     const/4 v1, 0x0
@@ -167,18 +175,18 @@
     .line 86
     iput-boolean v1, p0, Landroid/accounts/AuthenticatorDescription;->customTokens:Z
 
-    .line 87
+    .line 79
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;IIII)V
     .locals 8
-    .parameter "type"
-    .parameter "packageName"
-    .parameter "labelId"
-    .parameter "iconId"
-    .parameter "smallIconId"
-    .parameter "prefId"
+    .param p1, "type"    # Ljava/lang/String;
+    .param p2, "packageName"    # Ljava/lang/String;
+    .param p3, "labelId"    # I
+    .param p4, "iconId"    # I
+    .param p5, "smallIconId"    # I
+    .param p6, "prefId"    # I
 
     .prologue
     .line 66
@@ -200,22 +208,22 @@
 
     invoke-direct/range {v0 .. v7}, Landroid/accounts/AuthenticatorDescription;-><init>(Ljava/lang/String;Ljava/lang/String;IIIIZ)V
 
-    .line 67
+    .line 65
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;IIIIZ)V
     .locals 2
-    .parameter "type"
-    .parameter "packageName"
-    .parameter "labelId"
-    .parameter "iconId"
-    .parameter "smallIconId"
-    .parameter "prefId"
-    .parameter "customTokens"
+    .param p1, "type"    # Ljava/lang/String;
+    .param p2, "packageName"    # Ljava/lang/String;
+    .param p3, "labelId"    # I
+    .param p4, "iconId"    # I
+    .param p5, "smallIconId"    # I
+    .param p6, "prefId"    # I
+    .param p7, "customTokens"    # Z
 
     .prologue
-    .line 52
+    .line 51
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 53
@@ -263,13 +271,13 @@
     .line 61
     iput-boolean p7, p0, Landroid/accounts/AuthenticatorDescription;->customTokens:Z
 
-    .line 62
+    .line 52
     return-void
 .end method
 
 .method public static newKey(Ljava/lang/String;)Landroid/accounts/AuthenticatorDescription;
     .locals 2
-    .parameter "type"
+    .param p0, "type"    # Ljava/lang/String;
 
     .prologue
     .line 75
@@ -306,7 +314,7 @@
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 3
-    .parameter "o"
+    .param p1, "o"    # Ljava/lang/Object;
 
     .prologue
     .line 111
@@ -314,8 +322,6 @@
 
     const/4 v1, 0x1
 
-    .line 114
-    :goto_0
     return v1
 
     .line 112
@@ -326,7 +332,7 @@
 
     const/4 v1, 0x0
 
-    goto :goto_0
+    return v1
 
     :cond_1
     move-object v0, p1
@@ -335,7 +341,7 @@
     check-cast v0, Landroid/accounts/AuthenticatorDescription;
 
     .line 114
-    .local v0, other:Landroid/accounts/AuthenticatorDescription;
+    .local v0, "other":Landroid/accounts/AuthenticatorDescription;
     iget-object v1, p0, Landroid/accounts/AuthenticatorDescription;->type:Ljava/lang/String;
 
     iget-object v2, v0, Landroid/accounts/AuthenticatorDescription;->type:Ljava/lang/String;
@@ -344,7 +350,7 @@
 
     move-result v1
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public hashCode()I
@@ -370,7 +376,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "AuthenticatorDescription {type="
+    const-string/jumbo v1, "AuthenticatorDescription {type="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -397,8 +403,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 123
@@ -443,7 +449,7 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByte(B)V
 
-    .line 130
+    .line 122
     return-void
 
     .line 129

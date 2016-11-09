@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 68
+    .line 67
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,50 +42,50 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/view/inputmethod/ExtractedTextRequest;
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 70
+    .line 69
     new-instance v0, Landroid/view/inputmethod/ExtractedTextRequest;
 
     invoke-direct {v0}, Landroid/view/inputmethod/ExtractedTextRequest;-><init>()V
 
-    .line 71
-    .local v0, res:Landroid/view/inputmethod/ExtractedTextRequest;
+    .line 70
+    .local v0, "res":Landroid/view/inputmethod/ExtractedTextRequest;
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     iput v1, v0, Landroid/view/inputmethod/ExtractedTextRequest;->token:I
 
-    .line 72
+    .line 71
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     iput v1, v0, Landroid/view/inputmethod/ExtractedTextRequest;->flags:I
 
-    .line 73
+    .line 72
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     iput v1, v0, Landroid/view/inputmethod/ExtractedTextRequest;->hintMaxLines:I
 
-    .line 74
+    .line 73
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     iput v1, v0, Landroid/view/inputmethod/ExtractedTextRequest;->hintMaxChars:I
 
-    .line 75
+    .line 74
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 68
@@ -98,10 +98,10 @@
 
 .method public newArray(I)[Landroid/view/inputmethod/ExtractedTextRequest;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 79
+    .line 78
     new-array v0, p1, [Landroid/view/inputmethod/ExtractedTextRequest;
 
     return-object v0
@@ -109,10 +109,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 68
+    .line 77
     invoke-virtual {p0, p1}, Landroid/view/inputmethod/ExtractedTextRequest$1;->newArray(I)[Landroid/view/inputmethod/ExtractedTextRequest;
 
     move-result-object v0

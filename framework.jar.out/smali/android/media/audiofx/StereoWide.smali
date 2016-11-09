@@ -6,10 +6,9 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/media/audiofx/StereoWide$1;,
-        Landroid/media/audiofx/StereoWide$Settings;,
+        Landroid/media/audiofx/StereoWide$OnParameterChangeListener;,
         Landroid/media/audiofx/StereoWide$BaseParameterListener;,
-        Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
+        Landroid/media/audiofx/StereoWide$Settings;
     }
 .end annotation
 
@@ -33,10 +32,26 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/media/audiofx/StereoWide;)Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
+    .locals 1
+
+    iget-object v0, p0, Landroid/media/audiofx/StereoWide;->mParamListener:Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Landroid/media/audiofx/StereoWide;)Ljava/lang/Object;
+    .locals 1
+
+    iget-object v0, p0, Landroid/media/audiofx/StereoWide;->mParamListenerLock:Ljava/lang/Object;
+
+    return-object v0
+.end method
+
 .method public constructor <init>(II)V
     .locals 6
-    .parameter "priority"
-    .parameter "audioSession"
+    .param p1, "priority"    # I
+    .param p2, "audioSession"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -80,9 +95,9 @@
     if-nez p2, :cond_0
 
     .line 92
-    const-string v3, "StereoWide"
+    const-string/jumbo v3, "StereoWide"
 
-    const-string v4, "WARNING: attaching a StereoWide to global output mix is deprecated!"
+    const-string/jumbo v4, "WARNING: attaching a StereoWide to global output mix is deprecated!"
 
     invoke-static {v3, v4}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -91,7 +106,7 @@
     new-array v0, v1, [I
 
     .line 96
-    .local v0, value:[I
+    .local v0, "value":[I
     invoke-virtual {p0, v2, v0}, Landroid/media/audiofx/StereoWide;->getParameter(I[I)I
 
     move-result v3
@@ -106,7 +121,7 @@
     :goto_0
     iput-boolean v1, p0, Landroid/media/audiofx/StereoWide;->mStrengthSupported:Z
 
-    .line 98
+    .line 88
     return-void
 
     :cond_1
@@ -114,28 +129,6 @@
 
     .line 97
     goto :goto_0
-.end method
-
-.method static synthetic access$000(Landroid/media/audiofx/StereoWide;)Ljava/lang/Object;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 37
-    iget-object v0, p0, Landroid/media/audiofx/StereoWide;->mParamListenerLock:Ljava/lang/Object;
-
-    return-object v0
-.end method
-
-.method static synthetic access$100(Landroid/media/audiofx/StereoWide;)Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 37
-    iget-object v0, p0, Landroid/media/audiofx/StereoWide;->mParamListener:Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
-
-    return-object v0
 .end method
 
 
@@ -159,11 +152,11 @@
     invoke-direct {v0}, Landroid/media/audiofx/StereoWide$Settings;-><init>()V
 
     .line 265
-    .local v0, settings:Landroid/media/audiofx/StereoWide$Settings;
+    .local v0, "settings":Landroid/media/audiofx/StereoWide$Settings;
     new-array v1, v2, [S
 
     .line 266
-    .local v1, value:[S
+    .local v1, "value":[S
     invoke-virtual {p0, v2, v1}, Landroid/media/audiofx/StereoWide;->getParameter(I[S)I
 
     move-result v2
@@ -198,7 +191,7 @@
     new-array v0, v1, [S
 
     .line 136
-    .local v0, value:[S
+    .local v0, "value":[S
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/StereoWide;->getParameter(I[S)I
 
     move-result v1
@@ -225,7 +218,7 @@
 
 .method public setParameterListener(Landroid/media/audiofx/StereoWide$OnParameterChangeListener;)V
     .locals 3
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
 
     .prologue
     .line 195
@@ -247,7 +240,7 @@
 
     const/4 v2, 0x0
 
-    invoke-direct {v0, p0, v2}, Landroid/media/audiofx/StereoWide$BaseParameterListener;-><init>(Landroid/media/audiofx/StereoWide;Landroid/media/audiofx/StereoWide$1;)V
+    invoke-direct {v0, p0, v2}, Landroid/media/audiofx/StereoWide$BaseParameterListener;-><init>(Landroid/media/audiofx/StereoWide;Landroid/media/audiofx/StereoWide$BaseParameterListener;)V
 
     iput-object v0, p0, Landroid/media/audiofx/StereoWide;->mBaseParamListener:Landroid/media/audiofx/StereoWide$BaseParameterListener;
 
@@ -255,28 +248,27 @@
     iget-object v0, p0, Landroid/media/audiofx/StereoWide;->mBaseParamListener:Landroid/media/audiofx/StereoWide$BaseParameterListener;
 
     invoke-super {p0, v0}, Landroid/media/audiofx/AudioEffect;->setParameterListener(Landroid/media/audiofx/AudioEffect$OnParameterChangeListener;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 201
     :cond_0
     monitor-exit v1
 
-    .line 202
+    .line 194
     return-void
 
-    .line 201
+    .line 195
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public setProperties(Landroid/media/audiofx/StereoWide$Settings;)V
     .locals 2
-    .parameter "settings"
+    .param p1, "settings"    # Landroid/media/audiofx/StereoWide$Settings;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -287,23 +279,23 @@
 
     .prologue
     .line 281
-    const/4 v0, 0x1
+    iget-short v0, p1, Landroid/media/audiofx/StereoWide$Settings;->strength:S
 
-    iget-short v1, p1, Landroid/media/audiofx/StereoWide$Settings;->strength:S
+    const/4 v1, 0x1
 
-    invoke-virtual {p0, v0, v1}, Landroid/media/audiofx/StereoWide;->setParameter(IS)I
+    invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/StereoWide;->setParameter(IS)I
 
     move-result v0
 
     invoke-virtual {p0, v0}, Landroid/media/audiofx/StereoWide;->checkStatus(I)V
 
-    .line 282
+    .line 280
     return-void
 .end method
 
 .method public setStrength(S)V
     .locals 1
-    .parameter "strength"
+    .param p1, "strength"    # S
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -322,6 +314,6 @@
 
     invoke-virtual {p0, v0}, Landroid/media/audiofx/StereoWide;->checkStatus(I)V
 
-    .line 123
+    .line 121
     return-void
 .end method

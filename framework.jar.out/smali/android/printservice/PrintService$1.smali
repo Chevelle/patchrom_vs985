@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Landroid/printservice/PrintService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/printservice/PrintService;
 
     .prologue
-    .line 336
+    .line 360
     iput-object p1, p0, Landroid/printservice/PrintService$1;->this$0:Landroid/printservice/PrintService;
 
     invoke-direct {p0}, Landroid/printservice/IPrintService$Stub;-><init>()V
@@ -38,11 +38,10 @@
     .locals 2
 
     .prologue
-    .line 339
+    .line 363
     iget-object v0, p0, Landroid/printservice/PrintService$1;->this$0:Landroid/printservice/PrintService;
 
-    #getter for: Landroid/printservice/PrintService;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Landroid/printservice/PrintService;->access$000(Landroid/printservice/PrintService;)Landroid/os/Handler;
+    invoke-static {v0}, Landroid/printservice/PrintService;->-get2(Landroid/printservice/PrintService;)Landroid/os/Handler;
 
     move-result-object v0
 
@@ -50,7 +49,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 340
+    .line 362
     return-void
 .end method
 
@@ -58,11 +57,10 @@
     .locals 2
 
     .prologue
-    .line 344
+    .line 368
     iget-object v0, p0, Landroid/printservice/PrintService$1;->this$0:Landroid/printservice/PrintService;
 
-    #getter for: Landroid/printservice/PrintService;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Landroid/printservice/PrintService;->access$000(Landroid/printservice/PrintService;)Landroid/os/Handler;
+    invoke-static {v0}, Landroid/printservice/PrintService;->-get2(Landroid/printservice/PrintService;)Landroid/os/Handler;
 
     move-result-object v0
 
@@ -70,20 +68,19 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 345
+    .line 367
     return-void
 .end method
 
 .method public onPrintJobQueued(Landroid/print/PrintJobInfo;)V
     .locals 2
-    .parameter "printJobInfo"
+    .param p1, "printJobInfo"    # Landroid/print/PrintJobInfo;
 
     .prologue
-    .line 389
+    .line 413
     iget-object v0, p0, Landroid/printservice/PrintService$1;->this$0:Landroid/printservice/PrintService;
 
-    #getter for: Landroid/printservice/PrintService;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Landroid/printservice/PrintService;->access$000(Landroid/printservice/PrintService;)Landroid/os/Handler;
+    invoke-static {v0}, Landroid/printservice/PrintService;->-get2(Landroid/printservice/PrintService;)Landroid/os/Handler;
 
     move-result-object v0
 
@@ -95,20 +92,19 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 391
+    .line 412
     return-void
 .end method
 
 .method public requestCancelPrintJob(Landroid/print/PrintJobInfo;)V
     .locals 2
-    .parameter "printJobInfo"
+    .param p1, "printJobInfo"    # Landroid/print/PrintJobInfo;
 
     .prologue
-    .line 383
+    .line 407
     iget-object v0, p0, Landroid/printservice/PrintService$1;->this$0:Landroid/printservice/PrintService;
 
-    #getter for: Landroid/printservice/PrintService;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Landroid/printservice/PrintService;->access$000(Landroid/printservice/PrintService;)Landroid/os/Handler;
+    invoke-static {v0}, Landroid/printservice/PrintService;->-get2(Landroid/printservice/PrintService;)Landroid/os/Handler;
 
     move-result-object v0
 
@@ -120,20 +116,19 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 385
+    .line 406
     return-void
 .end method
 
 .method public setClient(Landroid/printservice/IPrintServiceClient;)V
     .locals 2
-    .parameter "client"
+    .param p1, "client"    # Landroid/printservice/IPrintServiceClient;
 
     .prologue
-    .line 377
+    .line 401
     iget-object v0, p0, Landroid/printservice/PrintService$1;->this$0:Landroid/printservice/PrintService;
 
-    #getter for: Landroid/printservice/PrintService;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Landroid/printservice/PrintService;->access$000(Landroid/printservice/PrintService;)Landroid/os/Handler;
+    invoke-static {v0}, Landroid/printservice/PrintService;->-get2(Landroid/printservice/PrintService;)Landroid/os/Handler;
 
     move-result-object v0
 
@@ -145,13 +140,12 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 379
+    .line 400
     return-void
 .end method
 
 .method public startPrinterDiscovery(Ljava/util/List;)V
     .locals 2
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -163,12 +157,11 @@
     .end annotation
 
     .prologue
-    .line 348
-    .local p1, priorityList:Ljava/util/List;,"Ljava/util/List<Landroid/print/PrinterId;>;"
+    .line 372
+    .local p1, "priorityList":Ljava/util/List;, "Ljava/util/List<Landroid/print/PrinterId;>;"
     iget-object v0, p0, Landroid/printservice/PrintService$1;->this$0:Landroid/printservice/PrintService;
 
-    #getter for: Landroid/printservice/PrintService;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Landroid/printservice/PrintService;->access$000(Landroid/printservice/PrintService;)Landroid/os/Handler;
+    invoke-static {v0}, Landroid/printservice/PrintService;->-get2(Landroid/printservice/PrintService;)Landroid/os/Handler;
 
     move-result-object v0
 
@@ -180,20 +173,19 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 350
+    .line 371
     return-void
 .end method
 
 .method public startPrinterStateTracking(Landroid/print/PrinterId;)V
     .locals 2
-    .parameter "printerId"
+    .param p1, "printerId"    # Landroid/print/PrinterId;
 
     .prologue
-    .line 365
+    .line 389
     iget-object v0, p0, Landroid/printservice/PrintService$1;->this$0:Landroid/printservice/PrintService;
 
-    #getter for: Landroid/printservice/PrintService;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Landroid/printservice/PrintService;->access$000(Landroid/printservice/PrintService;)Landroid/os/Handler;
+    invoke-static {v0}, Landroid/printservice/PrintService;->-get2(Landroid/printservice/PrintService;)Landroid/os/Handler;
 
     move-result-object v0
 
@@ -205,7 +197,7 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 367
+    .line 388
     return-void
 .end method
 
@@ -213,11 +205,10 @@
     .locals 2
 
     .prologue
-    .line 354
+    .line 378
     iget-object v0, p0, Landroid/printservice/PrintService$1;->this$0:Landroid/printservice/PrintService;
 
-    #getter for: Landroid/printservice/PrintService;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Landroid/printservice/PrintService;->access$000(Landroid/printservice/PrintService;)Landroid/os/Handler;
+    invoke-static {v0}, Landroid/printservice/PrintService;->-get2(Landroid/printservice/PrintService;)Landroid/os/Handler;
 
     move-result-object v0
 
@@ -225,20 +216,19 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 355
+    .line 377
     return-void
 .end method
 
 .method public stopPrinterStateTracking(Landroid/print/PrinterId;)V
     .locals 2
-    .parameter "printerId"
+    .param p1, "printerId"    # Landroid/print/PrinterId;
 
     .prologue
-    .line 371
+    .line 395
     iget-object v0, p0, Landroid/printservice/PrintService$1;->this$0:Landroid/printservice/PrintService;
 
-    #getter for: Landroid/printservice/PrintService;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Landroid/printservice/PrintService;->access$000(Landroid/printservice/PrintService;)Landroid/os/Handler;
+    invoke-static {v0}, Landroid/printservice/PrintService;->-get2(Landroid/printservice/PrintService;)Landroid/os/Handler;
 
     move-result-object v0
 
@@ -250,13 +240,12 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 373
+    .line 394
     return-void
 .end method
 
 .method public validatePrinters(Ljava/util/List;)V
     .locals 2
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -268,12 +257,11 @@
     .end annotation
 
     .prologue
-    .line 359
-    .local p1, printerIds:Ljava/util/List;,"Ljava/util/List<Landroid/print/PrinterId;>;"
+    .line 383
+    .local p1, "printerIds":Ljava/util/List;, "Ljava/util/List<Landroid/print/PrinterId;>;"
     iget-object v0, p0, Landroid/printservice/PrintService$1;->this$0:Landroid/printservice/PrintService;
 
-    #getter for: Landroid/printservice/PrintService;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Landroid/printservice/PrintService;->access$000(Landroid/printservice/PrintService;)Landroid/os/Handler;
+    invoke-static {v0}, Landroid/printservice/PrintService;->-get2(Landroid/printservice/PrintService;)Landroid/os/Handler;
 
     move-result-object v0
 
@@ -285,6 +273,6 @@
 
     invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
 
-    .line 361
+    .line 382
     return-void
 .end method

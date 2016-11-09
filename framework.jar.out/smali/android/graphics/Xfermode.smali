@@ -4,7 +4,7 @@
 
 
 # instance fields
-.field native_instance:I
+.field native_instance:J
 
 
 # direct methods
@@ -18,13 +18,13 @@
     return-void
 .end method
 
-.method private static native finalizer(I)V
+.method private static native finalizer(J)V
 .end method
 
 
 # virtual methods
 .method protected finalize()V
-    .locals 1
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/Throwable;
@@ -34,23 +34,25 @@
     .prologue
     .line 35
     :try_start_0
-    iget v0, p0, Landroid/graphics/Xfermode;->native_instance:I
+    iget-wide v0, p0, Landroid/graphics/Xfermode;->native_instance:J
 
-    invoke-static {v0}, Landroid/graphics/Xfermode;->finalizer(I)V
+    invoke-static {v0, v1}, Landroid/graphics/Xfermode;->finalizer(J)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 37
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 39
+    .line 33
     return-void
 
-    .line 37
+    .line 36
     :catchall_0
     move-exception v0
 
+    .line 37
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
+    .line 36
     throw v0
 .end method

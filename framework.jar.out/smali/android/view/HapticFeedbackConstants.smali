@@ -4,11 +4,15 @@
 
 
 # static fields
+.field public static final CALENDAR_DATE:I = 0x5
+
+.field public static final CLOCK_TICK:I = 0x4
+
+.field public static final CONTEXT_CLICK:I = 0x6
+
 .field public static final FLAG_IGNORE_GLOBAL_SETTING:I = 0x2
 
 .field public static final FLAG_IGNORE_VIEW_SETTING:I = 0x1
-
-.field public static final FLAG_WHEN_ENABLED_EXPLICITLY:I = 0x4
 
 .field public static final KEYBOARD_TAP:I = 0x3
 
@@ -19,8 +23,6 @@
 .field public static final SAFE_MODE_ENABLED:I = 0x2711
 
 .field public static final VIRTUAL_KEY:I = 0x1
-
-.field public static final VIRTUAL_RELEASED:I = 0x2
 
 
 # direct methods

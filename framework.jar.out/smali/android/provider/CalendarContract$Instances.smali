@@ -22,13 +22,13 @@
 # static fields
 .field public static final BEGIN:Ljava/lang/String; = "begin"
 
-.field public static final CONTENT_BY_DAY_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_BY_DAY_URI:Landroid/net/Uri;
 
-.field public static final CONTENT_SEARCH_BY_DAY_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_SEARCH_BY_DAY_URI:Landroid/net/Uri;
 
-.field public static final CONTENT_SEARCH_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_SEARCH_URI:Landroid/net/Uri;
 
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
 
 .field private static final DEFAULT_SORT_ORDER:Ljava/lang/String; = "begin ASC"
 
@@ -44,7 +44,7 @@
 
 .field public static final START_MINUTE:Ljava/lang/String; = "startMinute"
 
-.field private static final WHERE_CALENDARS_ARGS:[Ljava/lang/String; = null
+.field private static final WHERE_CALENDARS_ARGS:[Ljava/lang/String;
 
 .field private static final WHERE_CALENDARS_SELECTED:Ljava/lang/String; = "visible=?"
 
@@ -59,16 +59,18 @@
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const/4 v1, 0x0
+    .line 1728
+    const-string/jumbo v1, "1"
 
-    const-string v2, "1"
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
+    .line 1727
     sput-object v0, Landroid/provider/CalendarContract$Instances;->WHERE_CALENDARS_ARGS:[Ljava/lang/String;
 
     .line 1796
-    const-string v0, "content://com.android.calendar/instances/when"
+    const-string/jumbo v0, "content://com.android.calendar/instances/when"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
@@ -76,17 +78,18 @@
 
     sput-object v0, Landroid/provider/CalendarContract$Instances;->CONTENT_URI:Landroid/net/Uri;
 
-    .line 1803
-    const-string v0, "content://com.android.calendar/instances/whenbyday"
+    .line 1804
+    const-string/jumbo v0, "content://com.android.calendar/instances/whenbyday"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 1803
     sput-object v0, Landroid/provider/CalendarContract$Instances;->CONTENT_BY_DAY_URI:Landroid/net/Uri;
 
     .line 1810
-    const-string v0, "content://com.android.calendar/instances/search"
+    const-string/jumbo v0, "content://com.android.calendar/instances/search"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
@@ -94,15 +97,17 @@
 
     sput-object v0, Landroid/provider/CalendarContract$Instances;->CONTENT_SEARCH_URI:Landroid/net/Uri;
 
-    .line 1817
-    const-string v0, "content://com.android.calendar/instances/searchbyday"
+    .line 1818
+    const-string/jumbo v0, "content://com.android.calendar/instances/searchbyday"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 1817
     sput-object v0, Landroid/provider/CalendarContract$Instances;->CONTENT_SEARCH_BY_DAY_URI:Landroid/net/Uri;
 
+    .line 1724
     return-void
 .end method
 
@@ -117,11 +122,11 @@
 .end method
 
 .method public static final query(Landroid/content/ContentResolver;[Ljava/lang/String;JJ)Landroid/database/Cursor;
-    .locals 7
-    .parameter "cr"
-    .parameter "projection"
-    .parameter "begin"
-    .parameter "end"
+    .locals 8
+    .param p0, "cr"    # Landroid/content/ContentResolver;
+    .param p1, "projection"    # [Ljava/lang/String;
+    .param p2, "begin"    # J
+    .param p4, "end"    # J
 
     .prologue
     .line 1753
@@ -132,7 +137,7 @@
     move-result-object v6
 
     .line 1754
-    .local v6, builder:Landroid/net/Uri$Builder;
+    .local v6, "builder":Landroid/net/Uri$Builder;
     invoke-static {v6, p2, p3}, Landroid/content/ContentUris;->appendId(Landroid/net/Uri$Builder;J)Landroid/net/Uri$Builder;
 
     .line 1755
@@ -145,14 +150,16 @@
 
     const-string/jumbo v3, "visible=?"
 
+    .line 1757
     sget-object v4, Landroid/provider/CalendarContract$Instances;->WHERE_CALENDARS_ARGS:[Ljava/lang/String;
 
-    const-string v5, "begin ASC"
+    const-string/jumbo v5, "begin ASC"
 
     move-object v0, p0
 
     move-object v2, p1
 
+    .line 1756
     invoke-virtual/range {v0 .. v5}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
     move-result-object v0
@@ -161,12 +168,12 @@
 .end method
 
 .method public static final query(Landroid/content/ContentResolver;[Ljava/lang/String;JJLjava/lang/String;)Landroid/database/Cursor;
-    .locals 7
-    .parameter "cr"
-    .parameter "projection"
-    .parameter "begin"
-    .parameter "end"
-    .parameter "searchQuery"
+    .locals 8
+    .param p0, "cr"    # Landroid/content/ContentResolver;
+    .param p1, "projection"    # [Ljava/lang/String;
+    .param p2, "begin"    # J
+    .param p4, "end"    # J
+    .param p6, "searchQuery"    # Ljava/lang/String;
 
     .prologue
     .line 1782
@@ -177,7 +184,7 @@
     move-result-object v6
 
     .line 1783
-    .local v6, builder:Landroid/net/Uri$Builder;
+    .local v6, "builder":Landroid/net/Uri$Builder;
     invoke-static {v6, p2, p3}, Landroid/content/ContentUris;->appendId(Landroid/net/Uri$Builder;J)Landroid/net/Uri$Builder;
 
     .line 1784
@@ -195,14 +202,16 @@
 
     const-string/jumbo v3, "visible=?"
 
+    .line 1787
     sget-object v4, Landroid/provider/CalendarContract$Instances;->WHERE_CALENDARS_ARGS:[Ljava/lang/String;
 
-    const-string v5, "begin ASC"
+    const-string/jumbo v5, "begin ASC"
 
     move-object v0, p0
 
     move-object v2, p1
 
+    .line 1786
     invoke-virtual/range {v0 .. v5}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
     move-result-object v0

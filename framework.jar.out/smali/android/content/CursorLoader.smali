@@ -45,59 +45,59 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 1
-    .parameter "context"
+    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 124
+    .line 123
     invoke-direct {p0, p1}, Landroid/content/AsyncTaskLoader;-><init>(Landroid/content/Context;)V
 
-    .line 125
+    .line 124
     new-instance v0, Landroid/content/Loader$ForceLoadContentObserver;
 
     invoke-direct {v0, p0}, Landroid/content/Loader$ForceLoadContentObserver;-><init>(Landroid/content/Loader;)V
 
     iput-object v0, p0, Landroid/content/CursorLoader;->mObserver:Landroid/content/Loader$ForceLoadContentObserver;
 
-    .line 126
+    .line 122
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)V
     .locals 1
-    .parameter "context"
-    .parameter "uri"
-    .parameter "projection"
-    .parameter "selection"
-    .parameter "selectionArgs"
-    .parameter "sortOrder"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "uri"    # Landroid/net/Uri;
+    .param p3, "projection"    # [Ljava/lang/String;
+    .param p4, "selection"    # Ljava/lang/String;
+    .param p5, "selectionArgs"    # [Ljava/lang/String;
+    .param p6, "sortOrder"    # Ljava/lang/String;
 
     .prologue
-    .line 136
+    .line 135
     invoke-direct {p0, p1}, Landroid/content/AsyncTaskLoader;-><init>(Landroid/content/Context;)V
 
-    .line 137
+    .line 136
     new-instance v0, Landroid/content/Loader$ForceLoadContentObserver;
 
     invoke-direct {v0, p0}, Landroid/content/Loader$ForceLoadContentObserver;-><init>(Landroid/content/Loader;)V
 
     iput-object v0, p0, Landroid/content/CursorLoader;->mObserver:Landroid/content/Loader$ForceLoadContentObserver;
 
-    .line 138
+    .line 137
     iput-object p2, p0, Landroid/content/CursorLoader;->mUri:Landroid/net/Uri;
 
-    .line 139
+    .line 138
     iput-object p3, p0, Landroid/content/CursorLoader;->mProjection:[Ljava/lang/String;
 
-    .line 140
+    .line 139
     iput-object p4, p0, Landroid/content/CursorLoader;->mSelection:Ljava/lang/String;
 
-    .line 141
+    .line 140
     iput-object p5, p0, Landroid/content/CursorLoader;->mSelectionArgs:[Ljava/lang/String;
 
-    .line 142
+    .line 141
     iput-object p6, p0, Landroid/content/CursorLoader;->mSortOrder:Ljava/lang/String;
 
-    .line 143
+    .line 134
     return-void
 .end method
 
@@ -107,95 +107,99 @@
     .locals 1
 
     .prologue
-    .line 87
+    .line 86
     invoke-super {p0}, Landroid/content/AsyncTaskLoader;->cancelLoadInBackground()V
 
-    .line 89
+    .line 88
     monitor-enter p0
 
-    .line 90
+    .line 89
     :try_start_0
     iget-object v0, p0, Landroid/content/CursorLoader;->mCancellationSignal:Landroid/os/CancellationSignal;
 
     if-eqz v0, :cond_0
 
-    .line 91
+    .line 90
     iget-object v0, p0, Landroid/content/CursorLoader;->mCancellationSignal:Landroid/os/CancellationSignal;
 
     invoke-virtual {v0}, Landroid/os/CancellationSignal;->cancel()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 93
     :cond_0
     monitor-exit p0
 
-    .line 94
+    .line 85
     return-void
 
-    .line 93
+    .line 88
     :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public deliverResult(Landroid/database/Cursor;)V
     .locals 2
-    .parameter "cursor"
+    .param p1, "cursor"    # Landroid/database/Cursor;
 
     .prologue
-    .line 99
+    .line 98
     invoke-virtual {p0}, Landroid/content/CursorLoader;->isReset()Z
 
     move-result v1
 
     if-eqz v1, :cond_1
 
-    .line 101
+    .line 100
     if-eqz p1, :cond_0
 
-    .line 102
+    .line 101
     invoke-interface {p1}, Landroid/database/Cursor;->close()V
 
-    .line 116
+    .line 103
     :cond_0
-    :goto_0
     return-void
 
-    .line 106
+    .line 105
     :cond_1
     iget-object v0, p0, Landroid/content/CursorLoader;->mCursor:Landroid/database/Cursor;
 
-    .line 107
-    .local v0, oldCursor:Landroid/database/Cursor;
+    .line 106
+    .local v0, "oldCursor":Landroid/database/Cursor;
     iput-object p1, p0, Landroid/content/CursorLoader;->mCursor:Landroid/database/Cursor;
 
-    .line 109
+    .line 108
     invoke-virtual {p0}, Landroid/content/CursorLoader;->isStarted()Z
 
     move-result v1
 
     if-eqz v1, :cond_2
 
-    .line 110
+    .line 109
     invoke-super {p0, p1}, Landroid/content/AsyncTaskLoader;->deliverResult(Ljava/lang/Object;)V
 
-    .line 113
+    .line 112
     :cond_2
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_3
 
-    if-eq v0, p1, :cond_0
+    if-eq v0, p1, :cond_3
 
     invoke-interface {v0}, Landroid/database/Cursor;->isClosed()Z
 
     move-result v1
 
-    if-nez v1, :cond_0
+    if-eqz v1, :cond_4
 
-    .line 114
+    .line 97
+    :cond_3
+    :goto_0
+    return-void
+
+    .line 113
+    :cond_4
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
 
     goto :goto_0
@@ -203,13 +207,13 @@
 
 .method public bridge synthetic deliverResult(Ljava/lang/Object;)V
     .locals 0
-    .parameter "x0"
+    .param p1, "cursor"    # Ljava/lang/Object;
 
     .prologue
-    .line 43
+    .line 97
     check-cast p1, Landroid/database/Cursor;
 
-    .end local p1
+    .end local p1    # "cursor":Ljava/lang/Object;
     invoke-virtual {p0, p1}, Landroid/content/CursorLoader;->deliverResult(Landroid/database/Cursor;)V
 
     return-void
@@ -217,19 +221,19 @@
 
 .method public dump(Ljava/lang/String;Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
     .locals 1
-    .parameter "prefix"
-    .parameter "fd"
-    .parameter "writer"
-    .parameter "args"
+    .param p1, "prefix"    # Ljava/lang/String;
+    .param p2, "fd"    # Ljava/io/FileDescriptor;
+    .param p3, "writer"    # Ljava/io/PrintWriter;
+    .param p4, "args"    # [Ljava/lang/String;
 
     .prologue
-    .line 233
+    .line 232
     invoke-super {p0, p1, p2, p3, p4}, Landroid/content/AsyncTaskLoader;->dump(Ljava/lang/String;Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
 
-    .line 234
+    .line 233
     invoke-virtual {p3, p1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const-string v0, "mUri="
+    const-string/jumbo v0, "mUri="
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
@@ -237,14 +241,14 @@
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/Object;)V
 
-    .line 235
+    .line 234
     invoke-virtual {p3, p1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const-string v0, "mProjection="
+    const-string/jumbo v0, "mProjection="
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 236
+    .line 235
     iget-object v0, p0, Landroid/content/CursorLoader;->mProjection:[Ljava/lang/String;
 
     invoke-static {v0}, Ljava/util/Arrays;->toString([Ljava/lang/Object;)Ljava/lang/String;
@@ -253,10 +257,10 @@
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 237
+    .line 236
     invoke-virtual {p3, p1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const-string v0, "mSelection="
+    const-string/jumbo v0, "mSelection="
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
@@ -264,14 +268,14 @@
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 238
+    .line 237
     invoke-virtual {p3, p1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const-string v0, "mSelectionArgs="
+    const-string/jumbo v0, "mSelectionArgs="
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 239
+    .line 238
     iget-object v0, p0, Landroid/content/CursorLoader;->mSelectionArgs:[Ljava/lang/String;
 
     invoke-static {v0}, Ljava/util/Arrays;->toString([Ljava/lang/Object;)Ljava/lang/String;
@@ -280,10 +284,10 @@
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 240
+    .line 239
     invoke-virtual {p3, p1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const-string v0, "mSortOrder="
+    const-string/jumbo v0, "mSortOrder="
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
@@ -291,10 +295,10 @@
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 241
+    .line 240
     invoke-virtual {p3, p1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const-string v0, "mCursor="
+    const-string/jumbo v0, "mCursor="
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
@@ -302,10 +306,10 @@
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/Object;)V
 
-    .line 242
+    .line 241
     invoke-virtual {p3, p1}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const-string v0, "mContentChanged="
+    const-string/jumbo v0, "mContentChanged="
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
@@ -313,7 +317,7 @@
 
     invoke-virtual {p3, v0}, Ljava/io/PrintWriter;->println(Z)V
 
-    .line 243
+    .line 231
     return-void
 .end method
 
@@ -321,7 +325,7 @@
     .locals 1
 
     .prologue
-    .line 200
+    .line 199
     iget-object v0, p0, Landroid/content/CursorLoader;->mProjection:[Ljava/lang/String;
 
     return-object v0
@@ -331,7 +335,7 @@
     .locals 1
 
     .prologue
-    .line 208
+    .line 207
     iget-object v0, p0, Landroid/content/CursorLoader;->mSelection:Ljava/lang/String;
 
     return-object v0
@@ -341,7 +345,7 @@
     .locals 1
 
     .prologue
-    .line 216
+    .line 215
     iget-object v0, p0, Landroid/content/CursorLoader;->mSelectionArgs:[Ljava/lang/String;
 
     return-object v0
@@ -351,7 +355,7 @@
     .locals 1
 
     .prologue
-    .line 224
+    .line 223
     iget-object v0, p0, Landroid/content/CursorLoader;->mSortOrder:Ljava/lang/String;
 
     return-object v0
@@ -361,7 +365,7 @@
     .locals 1
 
     .prologue
-    .line 192
+    .line 191
     iget-object v0, p0, Landroid/content/CursorLoader;->mUri:Landroid/net/Uri;
 
     return-object v0
@@ -371,10 +375,10 @@
     .locals 9
 
     .prologue
-    .line 58
+    .line 57
     monitor-enter p0
 
-    .line 59
+    .line 58
     :try_start_0
     invoke-virtual {p0}, Landroid/content/CursorLoader;->isLoadInBackgroundCanceled()Z
 
@@ -382,24 +386,24 @@
 
     if-eqz v0, :cond_0
 
-    .line 60
+    .line 59
     new-instance v0, Landroid/os/OperationCanceledException;
 
     invoke-direct {v0}, Landroid/os/OperationCanceledException;-><init>()V
 
     throw v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 63
+    .line 57
     :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 
-    .line 62
+    .line 61
     :cond_0
     :try_start_1
     new-instance v0, Landroid/os/CancellationSignal;
@@ -407,13 +411,12 @@
     invoke-direct {v0}, Landroid/os/CancellationSignal;-><init>()V
 
     iput-object v0, p0, Landroid/content/CursorLoader;->mCancellationSignal:Landroid/os/CancellationSignal;
-
-    .line 63
-    monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 65
+    monitor-exit p0
+
+    .line 64
     :try_start_2
     invoke-virtual {p0}, Landroid/content/CursorLoader;->getContext()Landroid/content/Context;
 
@@ -429,105 +432,103 @@
 
     iget-object v3, p0, Landroid/content/CursorLoader;->mSelection:Ljava/lang/String;
 
+    .line 65
     iget-object v4, p0, Landroid/content/CursorLoader;->mSelectionArgs:[Ljava/lang/String;
 
     iget-object v5, p0, Landroid/content/CursorLoader;->mSortOrder:Ljava/lang/String;
 
     iget-object v6, p0, Landroid/content/CursorLoader;->mCancellationSignal:Landroid/os/CancellationSignal;
 
+    .line 64
     invoke-virtual/range {v0 .. v6}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/database/Cursor;
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
     move-result-object v7
 
-    .line 67
-    .local v7, cursor:Landroid/database/Cursor;
+    .line 66
+    .local v7, "cursor":Landroid/database/Cursor;
     if-eqz v7, :cond_1
 
-    .line 70
+    .line 69
     :try_start_3
     invoke-interface {v7}, Landroid/database/Cursor;->getCount()I
 
-    .line 71
+    .line 70
     iget-object v0, p0, Landroid/content/CursorLoader;->mObserver:Landroid/content/Loader$ForceLoadContentObserver;
 
     invoke-interface {v7, v0}, Landroid/database/Cursor;->registerContentObserver(Landroid/database/ContentObserver;)V
     :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_1
     .catch Ljava/lang/RuntimeException; {:try_start_3 .. :try_end_3} :catch_0
+    .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
-    .line 79
+    .line 78
     :cond_1
     monitor-enter p0
 
-    .line 80
+    .line 79
     const/4 v0, 0x0
 
     :try_start_4
     iput-object v0, p0, Landroid/content/CursorLoader;->mCancellationSignal:Landroid/os/CancellationSignal;
-
-    .line 81
-    monitor-exit p0
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_2
 
+    monitor-exit p0
+
+    .line 76
     return-object v7
 
-    .line 72
+    .line 71
     :catch_0
     move-exception v8
 
-    .line 73
-    .local v8, ex:Ljava/lang/RuntimeException;
+    .line 72
+    .local v8, "ex":Ljava/lang/RuntimeException;
     :try_start_5
     invoke-interface {v7}, Landroid/database/Cursor;->close()V
 
-    .line 74
+    .line 73
     throw v8
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_1
 
-    .line 79
-    .end local v7           #cursor:Landroid/database/Cursor;
-    .end local v8           #ex:Ljava/lang/RuntimeException;
+    .line 77
+    .end local v7    # "cursor":Landroid/database/Cursor;
+    .end local v8    # "ex":Ljava/lang/RuntimeException;
     :catchall_1
     move-exception v0
 
+    .line 78
     monitor-enter p0
 
-    .line 80
+    .line 79
     const/4 v1, 0x0
 
     :try_start_6
     iput-object v1, p0, Landroid/content/CursorLoader;->mCancellationSignal:Landroid/os/CancellationSignal;
-
-    .line 81
-    monitor-exit p0
     :try_end_6
     .catchall {:try_start_6 .. :try_end_6} :catchall_3
 
+    monitor-exit p0
+
+    .line 77
     throw v0
 
-    .restart local v7       #cursor:Landroid/database/Cursor;
+    .line 78
+    .restart local v7    # "cursor":Landroid/database/Cursor;
     :catchall_2
     move-exception v0
 
-    :try_start_7
     monitor-exit p0
-    :try_end_7
-    .catchall {:try_start_7 .. :try_end_7} :catchall_2
 
     throw v0
 
-    .end local v7           #cursor:Landroid/database/Cursor;
+    .end local v7    # "cursor":Landroid/database/Cursor;
     :catchall_3
     move-exception v0
 
-    :try_start_8
     monitor-exit p0
-    :try_end_8
-    .catchall {:try_start_8 .. :try_end_8} :catchall_3
 
     throw v0
 .end method
@@ -536,7 +537,7 @@
     .locals 1
 
     .prologue
-    .line 43
+    .line 56
     invoke-virtual {p0}, Landroid/content/CursorLoader;->loadInBackground()Landroid/database/Cursor;
 
     move-result-object v0
@@ -546,51 +547,57 @@
 
 .method public onCanceled(Landroid/database/Cursor;)V
     .locals 1
-    .parameter "cursor"
+    .param p1, "cursor"    # Landroid/database/Cursor;
 
     .prologue
-    .line 173
+    .line 172
     if-eqz p1, :cond_0
 
     invoke-interface {p1}, Landroid/database/Cursor;->isClosed()Z
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_1
 
-    .line 174
+    .line 171
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 173
+    :cond_1
     invoke-interface {p1}, Landroid/database/Cursor;->close()V
 
-    .line 176
-    :cond_0
-    return-void
+    goto :goto_0
 .end method
 
 .method public bridge synthetic onCanceled(Ljava/lang/Object;)V
     .locals 0
-    .parameter "x0"
+    .param p1, "cursor"    # Ljava/lang/Object;
 
     .prologue
-    .line 43
+    .line 171
     check-cast p1, Landroid/database/Cursor;
 
-    .end local p1
+    .end local p1    # "cursor":Ljava/lang/Object;
     invoke-virtual {p0, p1}, Landroid/content/CursorLoader;->onCanceled(Landroid/database/Cursor;)V
 
     return-void
 .end method
 
 .method protected onReset()V
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 180
+    const/4 v1, 0x0
+
+    .line 179
     invoke-super {p0}, Landroid/content/AsyncTaskLoader;->onReset()V
 
-    .line 183
+    .line 182
     invoke-virtual {p0}, Landroid/content/CursorLoader;->onStopLoading()V
 
-    .line 185
+    .line 184
     iget-object v0, p0, Landroid/content/CursorLoader;->mCursor:Landroid/database/Cursor;
 
     if-eqz v0, :cond_0
@@ -601,38 +608,40 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_1
 
-    .line 186
+    .line 187
+    :cond_0
+    :goto_0
+    iput-object v1, p0, Landroid/content/CursorLoader;->mCursor:Landroid/database/Cursor;
+
+    .line 178
+    return-void
+
+    .line 185
+    :cond_1
     iget-object v0, p0, Landroid/content/CursorLoader;->mCursor:Landroid/database/Cursor;
 
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
 
-    .line 188
-    :cond_0
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Landroid/content/CursorLoader;->mCursor:Landroid/database/Cursor;
-
-    .line 189
-    return-void
+    goto :goto_0
 .end method
 
 .method protected onStartLoading()V
     .locals 1
 
     .prologue
-    .line 154
+    .line 153
     iget-object v0, p0, Landroid/content/CursorLoader;->mCursor:Landroid/database/Cursor;
 
     if-eqz v0, :cond_0
 
-    .line 155
+    .line 154
     iget-object v0, p0, Landroid/content/CursorLoader;->mCursor:Landroid/database/Cursor;
 
     invoke-virtual {p0, v0}, Landroid/content/CursorLoader;->deliverResult(Landroid/database/Cursor;)V
 
-    .line 157
+    .line 156
     :cond_0
     invoke-virtual {p0}, Landroid/content/CursorLoader;->takeContentChanged()Z
 
@@ -644,11 +653,11 @@
 
     if-nez v0, :cond_2
 
-    .line 158
+    .line 157
     :cond_1
     invoke-virtual {p0}, Landroid/content/CursorLoader;->forceLoad()V
 
-    .line 160
+    .line 152
     :cond_2
     return-void
 .end method
@@ -657,69 +666,69 @@
     .locals 0
 
     .prologue
-    .line 168
+    .line 167
     invoke-virtual {p0}, Landroid/content/CursorLoader;->cancelLoad()Z
 
-    .line 169
+    .line 165
     return-void
 .end method
 
 .method public setProjection([Ljava/lang/String;)V
     .locals 0
-    .parameter "projection"
+    .param p1, "projection"    # [Ljava/lang/String;
 
     .prologue
-    .line 204
+    .line 203
     iput-object p1, p0, Landroid/content/CursorLoader;->mProjection:[Ljava/lang/String;
 
-    .line 205
+    .line 202
     return-void
 .end method
 
 .method public setSelection(Ljava/lang/String;)V
     .locals 0
-    .parameter "selection"
+    .param p1, "selection"    # Ljava/lang/String;
 
     .prologue
-    .line 212
+    .line 211
     iput-object p1, p0, Landroid/content/CursorLoader;->mSelection:Ljava/lang/String;
 
-    .line 213
+    .line 210
     return-void
 .end method
 
 .method public setSelectionArgs([Ljava/lang/String;)V
     .locals 0
-    .parameter "selectionArgs"
+    .param p1, "selectionArgs"    # [Ljava/lang/String;
 
     .prologue
-    .line 220
+    .line 219
     iput-object p1, p0, Landroid/content/CursorLoader;->mSelectionArgs:[Ljava/lang/String;
 
-    .line 221
+    .line 218
     return-void
 .end method
 
 .method public setSortOrder(Ljava/lang/String;)V
     .locals 0
-    .parameter "sortOrder"
+    .param p1, "sortOrder"    # Ljava/lang/String;
 
     .prologue
-    .line 228
+    .line 227
     iput-object p1, p0, Landroid/content/CursorLoader;->mSortOrder:Ljava/lang/String;
 
-    .line 229
+    .line 226
     return-void
 .end method
 
 .method public setUri(Landroid/net/Uri;)V
     .locals 0
-    .parameter "uri"
+    .param p1, "uri"    # Landroid/net/Uri;
 
     .prologue
-    .line 196
+    .line 195
     iput-object p1, p0, Landroid/content/CursorLoader;->mUri:Landroid/net/Uri;
 
-    .line 197
+    .line 194
     return-void
 .end method

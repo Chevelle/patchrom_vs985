@@ -35,14 +35,14 @@
     sput-object v0, Landroid/media/CameraProfile;->sCache:Ljava/util/HashMap;
 
     .line 92
-    const-string v0, "media_jni"
+    const-string/jumbo v0, "media_jni"
 
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
     .line 93
     invoke-static {}, Landroid/media/CameraProfile;->native_init()V
 
-    .line 94
+    .line 31
     return-void
 .end method
 
@@ -58,7 +58,7 @@
 
 .method private static getImageEncodingQualityLevels(I)[I
     .locals 6
-    .parameter "cameraId"
+    .param p0, "cameraId"    # I
 
     .prologue
     .line 97
@@ -67,7 +67,7 @@
     move-result v2
 
     .line 98
-    .local v2, nLevels:I
+    .local v2, "nLevels":I
     const/4 v3, 0x3
 
     if-eq v2, v3, :cond_0
@@ -79,7 +79,7 @@
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v5, "Unexpected Jpeg encoding quality levels "
+    const-string/jumbo v5, "Unexpected Jpeg encoding quality levels "
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -102,10 +102,10 @@
     new-array v1, v2, [I
 
     .line 103
-    .local v1, levels:[I
+    .local v1, "levels":[I
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-ge v0, v2, :cond_1
 
@@ -130,26 +130,28 @@
 .end method
 
 .method public static getJpegEncodingQualityParameter(I)I
-    .locals 4
-    .parameter "quality"
+    .locals 5
+    .param p0, "quality"    # I
 
     .prologue
+    const/4 v4, 0x0
+
     .line 58
     invoke-static {}, Landroid/hardware/Camera;->getNumberOfCameras()I
 
     move-result v2
 
     .line 59
-    .local v2, numberOfCameras:I
+    .local v2, "numberOfCameras":I
     new-instance v0, Landroid/hardware/Camera$CameraInfo;
 
     invoke-direct {v0}, Landroid/hardware/Camera$CameraInfo;-><init>()V
 
     .line 60
-    .local v0, cameraInfo:Landroid/hardware/Camera$CameraInfo;
+    .local v0, "cameraInfo":Landroid/hardware/Camera$CameraInfo;
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_0
     if-ge v1, v2, :cond_1
 
@@ -166,8 +168,6 @@
 
     move-result v3
 
-    .line 66
-    :goto_1
     return v3
 
     .line 60
@@ -178,15 +178,13 @@
 
     .line 66
     :cond_1
-    const/4 v3, 0x0
-
-    goto :goto_1
+    return v4
 .end method
 
 .method public static getJpegEncodingQualityParameter(II)I
     .locals 4
-    .parameter "cameraId"
-    .parameter "quality"
+    .param p0, "cameraId"    # I
+    .param p1, "quality"    # I
 
     .prologue
     .line 78
@@ -204,7 +202,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Unsupported quality level: "
+    const-string/jumbo v3, "Unsupported quality level: "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -243,7 +241,7 @@
     check-cast v0, [I
 
     .line 83
-    .local v0, levels:[I
+    .local v0, "levels":[I
     if-nez v0, :cond_2
 
     .line 84
@@ -263,19 +261,19 @@
     .line 87
     :cond_2
     aget v1, v0, p1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit v2
 
     return v1
 
-    .line 88
-    .end local v0           #levels:[I
+    .line 81
+    .end local v0    # "levels":[I
     :catchall_0
     move-exception v1
 
     monitor-exit v2
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method

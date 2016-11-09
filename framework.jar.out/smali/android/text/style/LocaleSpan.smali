@@ -13,7 +13,7 @@
 # direct methods
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 4
-    .parameter "src"
+    .param p1, "src"    # Landroid/os/Parcel;
 
     .prologue
     .line 41
@@ -38,13 +38,13 @@
 
     iput-object v0, p0, Landroid/text/style/LocaleSpan;->mLocale:Ljava/util/Locale;
 
-    .line 43
+    .line 41
     return-void
 .end method
 
 .method public constructor <init>(Ljava/util/Locale;)V
     .locals 0
-    .parameter "locale"
+    .param p1, "locale"    # Ljava/util/Locale;
 
     .prologue
     .line 37
@@ -53,20 +53,20 @@
     .line 38
     iput-object p1, p0, Landroid/text/style/LocaleSpan;->mLocale:Ljava/util/Locale;
 
-    .line 39
+    .line 37
     return-void
 .end method
 
 .method private static apply(Landroid/graphics/Paint;Ljava/util/Locale;)V
     .locals 0
-    .parameter "paint"
-    .parameter "locale"
+    .param p0, "paint"    # Landroid/graphics/Paint;
+    .param p1, "locale"    # Ljava/util/Locale;
 
     .prologue
-    .line 82
+    .line 92
     invoke-virtual {p0, p1}, Landroid/graphics/Paint;->setTextLocale(Ljava/util/Locale;)V
 
-    .line 83
+    .line 91
     return-void
 .end method
 
@@ -76,7 +76,7 @@
     .locals 1
 
     .prologue
-    .line 52
+    .line 57
     const/4 v0, 0x0
 
     return v0
@@ -86,7 +86,7 @@
     .locals 1
 
     .prologue
-    .line 68
+    .line 78
     iget-object v0, p0, Landroid/text/style/LocaleSpan;->mLocale:Ljava/util/Locale;
 
     return-object v0
@@ -97,6 +97,18 @@
 
     .prologue
     .line 47
+    invoke-virtual {p0}, Landroid/text/style/LocaleSpan;->getSpanTypeIdInternal()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getSpanTypeIdInternal()I
+    .locals 1
+
+    .prologue
+    .line 52
     const/16 v0, 0x17
 
     return v0
@@ -104,39 +116,52 @@
 
 .method public updateDrawState(Landroid/text/TextPaint;)V
     .locals 1
-    .parameter "ds"
+    .param p1, "ds"    # Landroid/text/TextPaint;
 
     .prologue
-    .line 73
+    .line 83
     iget-object v0, p0, Landroid/text/style/LocaleSpan;->mLocale:Ljava/util/Locale;
 
     invoke-static {p1, v0}, Landroid/text/style/LocaleSpan;->apply(Landroid/graphics/Paint;Ljava/util/Locale;)V
 
-    .line 74
+    .line 82
     return-void
 .end method
 
 .method public updateMeasureState(Landroid/text/TextPaint;)V
     .locals 1
-    .parameter "paint"
+    .param p1, "paint"    # Landroid/text/TextPaint;
 
     .prologue
-    .line 78
+    .line 88
     iget-object v0, p0, Landroid/text/style/LocaleSpan;->mLocale:Ljava/util/Locale;
 
     invoke-static {p1, v0}, Landroid/text/style/LocaleSpan;->apply(Landroid/graphics/Paint;Ljava/util/Locale;)V
 
-    .line 79
+    .line 87
     return-void
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
-    .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .locals 0
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 57
+    .line 62
+    invoke-virtual {p0, p1, p2}, Landroid/text/style/LocaleSpan;->writeToParcelInternal(Landroid/os/Parcel;I)V
+
+    .line 61
+    return-void
+.end method
+
+.method public writeToParcelInternal(Landroid/os/Parcel;I)V
+    .locals 1
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
+
+    .prologue
+    .line 67
     iget-object v0, p0, Landroid/text/style/LocaleSpan;->mLocale:Ljava/util/Locale;
 
     invoke-virtual {v0}, Ljava/util/Locale;->getLanguage()Ljava/lang/String;
@@ -145,7 +170,7 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 58
+    .line 68
     iget-object v0, p0, Landroid/text/style/LocaleSpan;->mLocale:Ljava/util/Locale;
 
     invoke-virtual {v0}, Ljava/util/Locale;->getCountry()Ljava/lang/String;
@@ -154,7 +179,7 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 59
+    .line 69
     iget-object v0, p0, Landroid/text/style/LocaleSpan;->mLocale:Ljava/util/Locale;
 
     invoke-virtual {v0}, Ljava/util/Locale;->getVariant()Ljava/lang/String;
@@ -163,6 +188,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 60
+    .line 66
     return-void
 .end method

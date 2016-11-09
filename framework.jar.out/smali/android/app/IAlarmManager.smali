@@ -15,6 +15,22 @@
 
 
 # virtual methods
+.method public abstract getNextAlarmClock(I)Landroid/app/AlarmManager$AlarmClockInfo;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getNextWakeFromIdleTime()J
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract remove(Landroid/app/PendingIntent;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -23,7 +39,7 @@
     .end annotation
 .end method
 
-.method public abstract set(IJJJLandroid/app/PendingIntent;Landroid/os/WorkSource;)V
+.method public abstract set(IJJJILandroid/app/PendingIntent;Landroid/os/WorkSource;Landroid/app/AlarmManager$AlarmClockInfo;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -31,7 +47,7 @@
     .end annotation
 .end method
 
-.method public abstract setTime(J)V
+.method public abstract setTime(J)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

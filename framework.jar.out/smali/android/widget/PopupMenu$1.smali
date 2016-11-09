@@ -21,11 +21,11 @@
 # direct methods
 .method constructor <init>(Landroid/widget/PopupMenu;Landroid/view/View;)V
     .locals 0
-    .parameter
-    .parameter "x0"
+    .param p1, "this$0"    # Landroid/widget/PopupMenu;
+    .param p2, "$anonymous0"    # Landroid/view/View;
 
     .prologue
-    .line 108
+    .line 159
     iput-object p1, p0, Landroid/widget/PopupMenu$1;->this$0:Landroid/widget/PopupMenu;
 
     invoke-direct {p0, p2}, Landroid/widget/ListPopupWindow$ForwardingListener;-><init>(Landroid/view/View;)V
@@ -39,11 +39,10 @@
     .locals 1
 
     .prologue
-    .line 124
+    .line 175
     iget-object v0, p0, Landroid/widget/PopupMenu$1;->this$0:Landroid/widget/PopupMenu;
 
-    #getter for: Landroid/widget/PopupMenu;->mPopup:Lcom/android/internal/view/menu/MenuPopupHelper;
-    invoke-static {v0}, Landroid/widget/PopupMenu;->access$000(Landroid/widget/PopupMenu;)Lcom/android/internal/view/menu/MenuPopupHelper;
+    invoke-static {v0}, Landroid/widget/PopupMenu;->-get0(Landroid/widget/PopupMenu;)Lcom/android/internal/view/menu/MenuPopupHelper;
 
     move-result-object v0
 
@@ -58,12 +57,12 @@
     .locals 1
 
     .prologue
-    .line 111
+    .line 162
     iget-object v0, p0, Landroid/widget/PopupMenu$1;->this$0:Landroid/widget/PopupMenu;
 
     invoke-virtual {v0}, Landroid/widget/PopupMenu;->show()V
 
-    .line 112
+    .line 163
     const/4 v0, 0x1
 
     return v0
@@ -73,12 +72,12 @@
     .locals 1
 
     .prologue
-    .line 117
+    .line 168
     iget-object v0, p0, Landroid/widget/PopupMenu$1;->this$0:Landroid/widget/PopupMenu;
 
     invoke-virtual {v0}, Landroid/widget/PopupMenu;->dismiss()V
 
-    .line 118
+    .line 169
     const/4 v0, 0x1
 
     return v0

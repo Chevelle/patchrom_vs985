@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/telephony/cdma/CdmaSmsCbProgramData$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final ALERT_OPTION_DEFAULT_ALERT:I = 0x1
 
@@ -31,7 +39,7 @@
 
 .field public static final ALERT_OPTION_VISUAL_REPEAT:I = 0x5
 
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -75,20 +83,21 @@
 
     sput-object v0, Landroid/telephony/cdma/CdmaSmsCbProgramData;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 31
     return-void
 .end method
 
 .method public constructor <init>(IIIIILjava/lang/String;)V
     .locals 0
-    .parameter "operation"
-    .parameter "category"
-    .parameter "language"
-    .parameter "maxMessages"
-    .parameter "alertOption"
-    .parameter "categoryName"
+    .param p1, "operation"    # I
+    .param p2, "category"    # I
+    .param p3, "language"    # I
+    .param p4, "maxMessages"    # I
+    .param p5, "alertOption"    # I
+    .param p6, "categoryName"    # Ljava/lang/String;
 
     .prologue
-    .line 98
+    .line 97
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 99
@@ -109,13 +118,13 @@
     .line 104
     iput-object p6, p0, Landroid/telephony/cdma/CdmaSmsCbProgramData;->mCategoryName:Ljava/lang/String;
 
-    .line 105
+    .line 98
     return-void
 .end method
 
 .method constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 108
@@ -163,7 +172,7 @@
 
     iput-object v0, p0, Landroid/telephony/cdma/CdmaSmsCbProgramData;->mCategoryName:Ljava/lang/String;
 
-    .line 115
+    .line 108
     return-void
 .end method
 
@@ -248,7 +257,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "CdmaSmsCbProgramData{operation="
+    const-string/jumbo v1, "CdmaSmsCbProgramData{operation="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -260,7 +269,7 @@
 
     move-result-object v0
 
-    const-string v1, ", category="
+    const-string/jumbo v1, ", category="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -272,56 +281,74 @@
 
     move-result-object v0
 
-    const-string v1, ", language="
+    .line 184
+    const-string/jumbo v1, ", language="
 
+    .line 183
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 184
     iget v1, p0, Landroid/telephony/cdma/CdmaSmsCbProgramData;->mLanguage:I
 
+    .line 183
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", max messages="
+    .line 184
+    const-string/jumbo v1, ", max messages="
 
+    .line 183
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 184
     iget v1, p0, Landroid/telephony/cdma/CdmaSmsCbProgramData;->mMaxMessages:I
 
+    .line 183
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", alert option="
+    .line 185
+    const-string/jumbo v1, ", alert option="
 
+    .line 183
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 185
     iget v1, p0, Landroid/telephony/cdma/CdmaSmsCbProgramData;->mAlertOption:I
 
+    .line 183
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", category name="
+    .line 185
+    const-string/jumbo v1, ", category name="
 
+    .line 183
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 185
     iget-object v1, p0, Landroid/telephony/cdma/CdmaSmsCbProgramData;->mCategoryName:Ljava/lang/String;
 
+    .line 183
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 185
     const/16 v1, 0x7d
 
+    .line 183
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -335,8 +362,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 125
@@ -369,6 +396,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 131
+    .line 124
     return-void
 .end method

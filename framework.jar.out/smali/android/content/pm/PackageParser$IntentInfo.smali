@@ -15,6 +15,8 @@
 
 
 # instance fields
+.field public banner:I
+
 .field public hasDefault:Z
 
 .field public icon:I
@@ -33,7 +35,7 @@
     .locals 0
 
     .prologue
-    .line 4098
+    .line 5044
     invoke-direct {p0}, Landroid/content/IntentFilter;-><init>()V
 
     return-void

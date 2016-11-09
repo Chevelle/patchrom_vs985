@@ -24,7 +24,7 @@
     .locals 0
 
     .prologue
-    .line 12
+    .line 15
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -39,6 +39,9 @@
 .end method
 
 .method public abstract add(Landroid/app/Fragment;Ljava/lang/String;)Landroid/app/FragmentTransaction;
+.end method
+
+.method public abstract addSharedElement(Landroid/view/View;Ljava/lang/String;)Landroid/app/FragmentTransaction;
 .end method
 
 .method public abstract addToBackStack(Ljava/lang/String;)Landroid/app/FragmentTransaction;

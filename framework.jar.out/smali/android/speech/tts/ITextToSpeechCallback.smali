@@ -15,15 +15,7 @@
 
 
 # virtual methods
-.method public abstract onDone(Ljava/lang/String;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract onError(Ljava/lang/String;)V
+.method public abstract onError(Ljava/lang/String;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -32,6 +24,22 @@
 .end method
 
 .method public abstract onStart(Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onStop(Ljava/lang/String;Z)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onSuccess(Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

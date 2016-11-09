@@ -29,10 +29,10 @@
 # direct methods
 .method constructor <init>(JLjava/lang/String;JI)V
     .locals 1
-    .parameter "rowId"
-    .parameter "path"
-    .parameter "lastModified"
-    .parameter "format"
+    .param p1, "rowId"    # J
+    .param p3, "path"    # Ljava/lang/String;
+    .param p4, "lastModified"    # J
+    .param p6, "format"    # I
 
     .prologue
     .line 361
@@ -55,14 +55,14 @@
 
     iput-boolean v0, p0, Landroid/media/MediaScanner$FileEntry;->mLastModifiedChanged:Z
 
-    .line 367
+    .line 361
     return-void
 .end method
 
 
 # virtual methods
 .method public toString()Ljava/lang/String;
-    .locals 3
+    .locals 4
 
     .prologue
     .line 371
@@ -76,15 +76,15 @@
 
     move-result-object v0
 
-    const-string v1, " mRowId: "
+    const-string/jumbo v1, " mRowId: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    iget-wide v1, p0, Landroid/media/MediaScanner$FileEntry;->mRowId:J
+    iget-wide v2, p0, Landroid/media/MediaScanner$FileEntry;->mRowId:J
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     move-result-object v0
 

@@ -15,7 +15,7 @@
 # direct methods
 .method public constructor <init>(Landroid/database/Cursor;)V
     .locals 1
-    .parameter "cursor"
+    .param p1, "cursor"    # Landroid/database/Cursor;
 
     .prologue
     .line 36
@@ -34,7 +34,7 @@
 
     invoke-interface {v0}, Landroid/database/Cursor;->moveToFirst()Z
 
-    .line 40
+    .line 36
     return-void
 .end method
 
@@ -52,7 +52,7 @@
     .line 107
     new-instance v0, Ljava/lang/IllegalStateException;
 
-    const-string v1, "closing when already closed"
+    const-string/jumbo v1, "closing when already closed"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
@@ -69,7 +69,7 @@
 
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
 
-    .line 111
+    .line 105
     return-void
 .end method
 
@@ -93,7 +93,7 @@
     .line 60
     new-instance v0, Ljava/lang/IllegalStateException;
 
-    const-string v1, "calling hasNext() when the iterator is closed"
+    const-string/jumbo v1, "calling hasNext() when the iterator is closed"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
@@ -107,15 +107,15 @@
 
     move-result v0
 
-    if-nez v0, :cond_1
+    if-eqz v0, :cond_1
 
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
     :goto_0
     return v0
 
     :cond_1
-    const/4 v0, 0x0
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method
@@ -132,7 +132,7 @@
     .line 77
     new-instance v1, Ljava/lang/IllegalStateException;
 
-    const-string v2, "calling next() when the iterator is closed"
+    const-string/jumbo v2, "calling next() when the iterator is closed"
 
     invoke-direct {v1, v2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
@@ -173,10 +173,10 @@
     move-exception v0
 
     .line 86
-    .local v0, e:Landroid/os/RemoteException;
+    .local v0, "e":Landroid/os/RemoteException;
     new-instance v1, Ljava/lang/RuntimeException;
 
-    const-string v2, "caught a remote exception, this process will die soon"
+    const-string/jumbo v2, "caught a remote exception, this process will die soon"
 
     invoke-direct {v1, v2, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
@@ -187,7 +187,7 @@
     .locals 1
 
     .prologue
-    .line 27
+    .line 75
     invoke-virtual {p0}, Landroid/content/CursorEntityIterator;->next()Landroid/content/Entity;
 
     move-result-object v0
@@ -221,7 +221,7 @@
     .line 96
     new-instance v0, Ljava/lang/IllegalStateException;
 
-    const-string v1, "calling reset() when the iterator is closed"
+    const-string/jumbo v1, "calling reset() when the iterator is closed"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
@@ -233,6 +233,6 @@
 
     invoke-interface {v0}, Landroid/database/Cursor;->moveToFirst()Z
 
-    .line 99
+    .line 94
     return-void
 .end method

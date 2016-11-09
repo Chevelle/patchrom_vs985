@@ -9,7 +9,7 @@
         value = {
             "Landroid/util/SparseArray",
             "<",
-            "Landroid/transition/TransitionValues;",
+            "Landroid/view/View;",
             ">;"
         }
     .end annotation
@@ -20,7 +20,19 @@
         value = {
             "Landroid/util/LongSparseArray",
             "<",
-            "Landroid/transition/TransitionValues;",
+            "Landroid/view/View;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field nameValues:Landroid/util/ArrayMap;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Landroid/util/ArrayMap",
+            "<",
+            "Ljava/lang/String;",
+            "Landroid/view/View;",
             ">;"
         }
     .end annotation
@@ -47,11 +59,12 @@
     .line 24
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 25
+    .line 26
     new-instance v0, Landroid/util/ArrayMap;
 
     invoke-direct {v0}, Landroid/util/ArrayMap;-><init>()V
 
+    .line 25
     iput-object v0, p0, Landroid/transition/TransitionValuesMaps;->viewValues:Landroid/util/ArrayMap;
 
     .line 27
@@ -68,5 +81,13 @@
 
     iput-object v0, p0, Landroid/transition/TransitionValuesMaps;->itemIdValues:Landroid/util/LongSparseArray;
 
+    .line 29
+    new-instance v0, Landroid/util/ArrayMap;
+
+    invoke-direct {v0}, Landroid/util/ArrayMap;-><init>()V
+
+    iput-object v0, p0, Landroid/transition/TransitionValuesMaps;->nameValues:Landroid/util/ArrayMap;
+
+    .line 24
     return-void
 .end method

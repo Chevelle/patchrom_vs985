@@ -24,9 +24,9 @@
 # virtual methods
 .method public assertActivityRequiresPermission(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     .locals 4
-    .parameter "packageName"
-    .parameter "className"
-    .parameter "permission"
+    .param p1, "packageName"    # Ljava/lang/String;
+    .param p2, "className"    # Ljava/lang/String;
+    .param p3, "permission"    # Ljava/lang/String;
 
     .prologue
     .line 93
@@ -35,11 +35,11 @@
     invoke-direct {v1}, Landroid/content/Intent;-><init>()V
 
     .line 94
-    .local v1, intent:Landroid/content/Intent;
+    .local v1, "intent":Landroid/content/Intent;
     invoke-virtual {v1, p1, p2}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
     .line 95
-    const/high16 v2, 0x1000
+    const/high16 v2, 0x10000000
 
     invoke-virtual {v1, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
@@ -56,7 +56,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "expected security exception for "
+    const-string/jumbo v3, "expected security exception for "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -74,7 +74,7 @@
     :try_end_0
     .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 105
+    .line 92
     :goto_0
     return-void
 
@@ -83,7 +83,7 @@
     move-exception v0
 
     .line 101
-    .local v0, expected:Ljava/lang/SecurityException;
+    .local v0, "expected":Ljava/lang/SecurityException;
     const-string/jumbo v2, "security exception\'s error message."
 
     invoke-virtual {v0}, Ljava/lang/SecurityException;->getMessage()Ljava/lang/String;
@@ -97,7 +97,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "error message should contain "
+    const-string/jumbo v3, "error message should contain "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -107,7 +107,7 @@
 
     move-result-object v2
 
-    const-string v3, "."
+    const-string/jumbo v3, "."
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -117,6 +117,7 @@
 
     move-result-object v2
 
+    .line 103
     invoke-virtual {v0}, Ljava/lang/SecurityException;->getMessage()Ljava/lang/String;
 
     move-result-object v3
@@ -125,6 +126,7 @@
 
     move-result v3
 
+    .line 102
     invoke-static {v2, v3}, Landroid/test/AndroidTestCase;->assertTrue(Ljava/lang/String;Z)V
 
     goto :goto_0
@@ -132,8 +134,8 @@
 
 .method public assertReadingContentUriRequiresPermission(Landroid/net/Uri;Ljava/lang/String;)V
     .locals 7
-    .parameter "uri"
-    .parameter "permission"
+    .param p1, "uri"    # Landroid/net/Uri;
+    .param p2, "permission"    # Ljava/lang/String;
 
     .prologue
     .line 117
@@ -163,7 +165,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "expected SecurityException requiring "
+    const-string/jumbo v1, "expected SecurityException requiring "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -181,7 +183,7 @@
     :try_end_0
     .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 124
+    .line 115
     :goto_0
     return-void
 
@@ -190,7 +192,7 @@
     move-exception v6
 
     .line 120
-    .local v6, expected:Ljava/lang/SecurityException;
+    .local v6, "expected":Ljava/lang/SecurityException;
     const-string/jumbo v0, "security exception\'s error message."
 
     invoke-virtual {v6}, Ljava/lang/SecurityException;->getMessage()Ljava/lang/String;
@@ -204,7 +206,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "error message should contain "
+    const-string/jumbo v1, "error message should contain "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -214,7 +216,7 @@
 
     move-result-object v0
 
-    const-string v1, "."
+    const-string/jumbo v1, "."
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -224,6 +226,7 @@
 
     move-result-object v0
 
+    .line 122
     invoke-virtual {v6}, Ljava/lang/SecurityException;->getMessage()Ljava/lang/String;
 
     move-result-object v1
@@ -232,6 +235,7 @@
 
     move-result v1
 
+    .line 121
     invoke-static {v0, v1}, Landroid/test/AndroidTestCase;->assertTrue(Ljava/lang/String;Z)V
 
     goto :goto_0
@@ -239,8 +243,8 @@
 
 .method public assertWritingContentUriRequiresPermission(Landroid/net/Uri;Ljava/lang/String;)V
     .locals 3
-    .parameter "uri"
-    .parameter "permission"
+    .param p1, "uri"    # Landroid/net/Uri;
+    .param p2, "permission"    # Ljava/lang/String;
 
     .prologue
     .line 136
@@ -264,7 +268,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "expected SecurityException requiring "
+    const-string/jumbo v2, "expected SecurityException requiring "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -282,7 +286,7 @@
     :try_end_0
     .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 144
+    .line 134
     :goto_0
     return-void
 
@@ -291,7 +295,7 @@
     move-exception v0
 
     .line 139
-    .local v0, expected:Ljava/lang/SecurityException;
+    .local v0, "expected":Ljava/lang/SecurityException;
     const-string/jumbo v1, "security exception\'s error message."
 
     invoke-virtual {v0}, Ljava/lang/SecurityException;->getMessage()Ljava/lang/String;
@@ -305,7 +309,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "error message should contain \""
+    const-string/jumbo v2, "error message should contain \""
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -315,22 +319,26 @@
 
     move-result-object v1
 
-    const-string v2, "\". Got: \""
+    const-string/jumbo v2, "\". Got: \""
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 141
     invoke-virtual {v0}, Ljava/lang/SecurityException;->getMessage()Ljava/lang/String;
 
     move-result-object v2
 
+    .line 140
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, "\"."
+    .line 141
+    const-string/jumbo v2, "\"."
 
+    .line 140
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -339,6 +347,7 @@
 
     move-result-object v1
 
+    .line 142
     invoke-virtual {v0}, Ljava/lang/SecurityException;->getMessage()Ljava/lang/String;
 
     move-result-object v2
@@ -347,6 +356,7 @@
 
     move-result v2
 
+    .line 140
     invoke-static {v1, v2}, Landroid/test/AndroidTestCase;->assertTrue(Ljava/lang/String;Z)V
 
     goto :goto_0
@@ -373,8 +383,7 @@
 .end method
 
 .method protected scrubClass(Ljava/lang/Class;)V
-    .locals 8
-    .parameter
+    .locals 7
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -391,129 +400,129 @@
 
     .prologue
     .line 158
-    .local p1, testCaseClass:Ljava/lang/Class;,"Ljava/lang/Class<*>;"
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    move-result-object v6
-
-    invoke-virtual {v6}, Ljava/lang/Class;->getDeclaredFields()[Ljava/lang/reflect/Field;
+    .local p1, "testCaseClass":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
+    invoke-virtual {p0}, Landroid/test/AndroidTestCase;->getClass()Ljava/lang/Class;
 
     move-result-object v3
 
+    invoke-virtual {v3}, Ljava/lang/Class;->getDeclaredFields()[Ljava/lang/reflect/Field;
+
+    move-result-object v2
+
     .line 159
-    .local v3, fields:[Ljava/lang/reflect/Field;
-    move-object v0, v3
+    .local v2, "fields":[Ljava/lang/reflect/Field;
+    const/4 v3, 0x0
 
-    .local v0, arr$:[Ljava/lang/reflect/Field;
-    array-length v5, v0
+    array-length v4, v2
 
-    .local v5, len$:I
-    const/4 v4, 0x0
-
-    .local v4, i$:I
     :goto_0
-    if-ge v4, v5, :cond_1
+    if-ge v3, v4, :cond_2
 
-    aget-object v2, v0, v4
+    aget-object v1, v2, v3
 
     .line 160
-    .local v2, field:Ljava/lang/reflect/Field;
-    invoke-virtual {v2}, Ljava/lang/reflect/Field;->getType()Ljava/lang/Class;
+    .local v1, "field":Ljava/lang/reflect/Field;
+    invoke-virtual {v1}, Ljava/lang/reflect/Field;->getType()Ljava/lang/Class;
 
-    move-result-object v6
+    move-result-object v5
 
-    invoke-virtual {v6}, Ljava/lang/Class;->isPrimitive()Z
+    invoke-virtual {v5}, Ljava/lang/Class;->isPrimitive()Z
 
-    move-result v6
+    move-result v5
 
-    if-nez v6, :cond_0
+    if-nez v5, :cond_0
 
-    invoke-virtual {v2}, Ljava/lang/reflect/Field;->getModifiers()I
+    .line 161
+    invoke-virtual {v1}, Ljava/lang/reflect/Field;->getModifiers()I
 
-    move-result v6
+    move-result v5
 
-    invoke-static {v6}, Ljava/lang/reflect/Modifier;->isStatic(I)Z
+    invoke-static {v5}, Ljava/lang/reflect/Modifier;->isStatic(I)Z
 
-    move-result v6
+    move-result v5
 
-    if-nez v6, :cond_0
+    if-eqz v5, :cond_1
+
+    .line 159
+    :cond_0
+    :goto_1
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_0
 
     .line 163
-    const/4 v6, 0x1
+    :cond_1
+    const/4 v5, 0x1
 
     :try_start_0
-    invoke-virtual {v2, v6}, Ljava/lang/reflect/Field;->setAccessible(Z)V
+    invoke-virtual {v1, v5}, Ljava/lang/reflect/Field;->setAccessible(Z)V
 
     .line 164
-    const/4 v6, 0x0
+    const/4 v5, 0x0
 
-    invoke-virtual {v2, p0, v6}, Ljava/lang/reflect/Field;->set(Ljava/lang/Object;Ljava/lang/Object;)V
+    invoke-virtual {v1, p0, v5}, Ljava/lang/reflect/Field;->set(Ljava/lang/Object;Ljava/lang/Object;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 169
-    :goto_1
-    invoke-virtual {v2, p0}, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    :goto_2
+    invoke-virtual {v1, p0}, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v6
+    move-result-object v5
 
-    if-eqz v6, :cond_0
+    if-eqz v5, :cond_0
 
     .line 170
-    const-string v6, "TestCase"
+    const-string/jumbo v5, "TestCase"
 
-    const-string v7, "Error: Could not nullify field!"
+    const-string/jumbo v6, "Error: Could not nullify field!"
 
-    invoke-static {v6, v7}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 159
-    :cond_0
-    add-int/lit8 v4, v4, 0x1
-
-    goto :goto_0
-
-    .line 165
-    :catch_0
-    move-exception v1
-
-    .line 166
-    .local v1, e:Ljava/lang/Exception;
-    const-string v6, "TestCase"
-
-    const-string v7, "Error: Could not nullify field!"
-
-    invoke-static {v6, v7}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v5, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_1
 
-    .line 174
-    .end local v1           #e:Ljava/lang/Exception;
-    .end local v2           #field:Ljava/lang/reflect/Field;
-    :cond_1
+    .line 165
+    :catch_0
+    move-exception v0
+
+    .line 166
+    .local v0, "e":Ljava/lang/Exception;
+    const-string/jumbo v5, "TestCase"
+
+    const-string/jumbo v6, "Error: Could not nullify field!"
+
+    invoke-static {v5, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_2
+
+    .line 157
+    .end local v0    # "e":Ljava/lang/Exception;
+    .end local v1    # "field":Ljava/lang/reflect/Field;
+    :cond_2
     return-void
 .end method
 
 .method public setContext(Landroid/content/Context;)V
     .locals 0
-    .parameter "context"
+    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
     .line 53
     iput-object p1, p0, Landroid/test/AndroidTestCase;->mContext:Landroid/content/Context;
 
-    .line 54
+    .line 52
     return-void
 .end method
 
 .method public setTestContext(Landroid/content/Context;)V
     .locals 0
-    .parameter "context"
+    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
     .line 69
     iput-object p1, p0, Landroid/test/AndroidTestCase;->mTestContext:Landroid/content/Context;
 
-    .line 70
+    .line 68
     return-void
 .end method
 
@@ -529,7 +538,7 @@
     .line 39
     invoke-super {p0}, Ljunit/framework/TestCase;->setUp()V
 
-    .line 40
+    .line 38
     return-void
 .end method
 
@@ -545,7 +554,7 @@
     .line 44
     invoke-super {p0}, Ljunit/framework/TestCase;->tearDown()V
 
-    .line 45
+    .line 43
     return-void
 .end method
 
@@ -554,12 +563,14 @@
 
     .prologue
     .line 48
-    const-string v0, "Context is null. setContext should be called before tests are run"
+    const-string/jumbo v0, "Context is null. setContext should be called before tests are run"
 
+    .line 49
     iget-object v1, p0, Landroid/test/AndroidTestCase;->mContext:Landroid/content/Context;
 
+    .line 48
     invoke-static {v0, v1}, Landroid/test/AndroidTestCase;->assertNotNull(Ljava/lang/String;Ljava/lang/Object;)V
 
-    .line 50
+    .line 47
     return-void
 .end method

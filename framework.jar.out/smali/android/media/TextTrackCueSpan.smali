@@ -14,8 +14,8 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;J)V
     .locals 4
-    .parameter "text"
-    .parameter "timestamp"
+    .param p1, "text"    # Ljava/lang/String;
+    .param p2, "timestamp"    # J
 
     .prologue
     .line 74
@@ -41,7 +41,7 @@
     :goto_0
     iput-boolean v0, p0, Landroid/media/TextTrackCueSpan;->mEnabled:Z
 
-    .line 79
+    .line 74
     return-void
 
     .line 78
@@ -55,7 +55,7 @@
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
     .locals 6
-    .parameter "o"
+    .param p1, "o"    # Ljava/lang/Object;
 
     .prologue
     const/4 v1, 0x0
@@ -63,40 +63,37 @@
     .line 83
     instance-of v2, p1, Landroid/media/TextTrackCueSpan;
 
-    if-nez v2, :cond_1
+    if-nez v2, :cond_0
 
-    .line 87
-    :cond_0
-    :goto_0
+    .line 84
     return v1
 
-    :cond_1
+    :cond_0
     move-object v0, p1
 
     .line 86
     check-cast v0, Landroid/media/TextTrackCueSpan;
 
     .line 87
-    .local v0, span:Landroid/media/TextTrackCueSpan;
+    .local v0, "span":Landroid/media/TextTrackCueSpan;
     iget-wide v2, p0, Landroid/media/TextTrackCueSpan;->mTimestampMs:J
 
     iget-wide v4, v0, Landroid/media/TextTrackCueSpan;->mTimestampMs:J
 
     cmp-long v2, v2, v4
 
-    if-nez v2, :cond_0
+    if-nez v2, :cond_1
 
-    iget-object v2, p0, Landroid/media/TextTrackCueSpan;->mText:Ljava/lang/String;
+    .line 88
+    iget-object v1, p0, Landroid/media/TextTrackCueSpan;->mText:Ljava/lang/String;
 
-    iget-object v3, v0, Landroid/media/TextTrackCueSpan;->mText:Ljava/lang/String;
+    iget-object v2, v0, Landroid/media/TextTrackCueSpan;->mText:Ljava/lang/String;
 
-    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v2
+    move-result v1
 
-    if-eqz v2, :cond_0
-
-    const/4 v1, 0x1
-
-    goto :goto_0
+    .line 87
+    :cond_1
+    return v1
 .end method

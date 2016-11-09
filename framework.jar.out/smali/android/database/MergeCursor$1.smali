@@ -21,7 +21,7 @@
 # direct methods
 .method constructor <init>(Landroid/database/MergeCursor;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/database/MergeCursor;
 
     .prologue
     .line 27
@@ -45,7 +45,7 @@
 
     iput v1, v0, Landroid/database/MergeCursor;->mPos:I
 
-    .line 34
+    .line 30
     return-void
 .end method
 
@@ -60,6 +60,6 @@
 
     iput v1, v0, Landroid/database/MergeCursor;->mPos:I
 
-    .line 39
+    .line 37
     return-void
 .end method

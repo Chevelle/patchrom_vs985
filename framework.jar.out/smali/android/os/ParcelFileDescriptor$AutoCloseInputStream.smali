@@ -21,20 +21,20 @@
 # direct methods
 .method public constructor <init>(Landroid/os/ParcelFileDescriptor;)V
     .locals 1
-    .parameter "pfd"
+    .param p1, "pfd"    # Landroid/os/ParcelFileDescriptor;
 
     .prologue
-    .line 796
+    .line 842
     invoke-virtual {p1}, Landroid/os/ParcelFileDescriptor;->getFileDescriptor()Ljava/io/FileDescriptor;
 
     move-result-object v0
 
     invoke-direct {p0, v0}, Ljava/io/FileInputStream;-><init>(Ljava/io/FileDescriptor;)V
 
-    .line 797
+    .line 843
     iput-object p1, p0, Landroid/os/ParcelFileDescriptor$AutoCloseInputStream;->mPfd:Landroid/os/ParcelFileDescriptor;
 
-    .line 798
+    .line 841
     return-void
 .end method
 
@@ -49,7 +49,7 @@
     .end annotation
 
     .prologue
-    .line 803
+    .line 849
     :try_start_0
     iget-object v0, p0, Landroid/os/ParcelFileDescriptor$AutoCloseInputStream;->mPfd:Landroid/os/ParcelFileDescriptor;
 
@@ -57,17 +57,19 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 805
+    .line 851
     invoke-super {p0}, Ljava/io/FileInputStream;->close()V
 
-    .line 807
+    .line 847
     return-void
 
-    .line 805
+    .line 850
     :catchall_0
     move-exception v0
 
+    .line 851
     invoke-super {p0}, Ljava/io/FileInputStream;->close()V
 
+    .line 850
     throw v0
 .end method

@@ -3,12 +3,12 @@
 .source "ViewDebug.java"
 
 # interfaces
-.implements Ljava/util/concurrent/Callable;
+.implements Ljava/lang/Runnable;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/view/ViewDebug;->callMethodOnAppropriateTheadBlocking(Ljava/lang/reflect/Method;Ljava/lang/Object;)Ljava/lang/Object;
+    value = Landroid/view/ViewDebug;->dumpv2(Landroid/view/View;Ljava/io/ByteArrayOutputStream;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -16,34 +16,29 @@
     name = null
 .end annotation
 
-.annotation system Ldalvik/annotation/Signature;
-    value = {
-        "Ljava/lang/Object;",
-        "Ljava/util/concurrent/Callable",
-        "<",
-        "Ljava/lang/Object;",
-        ">;"
-    }
-.end annotation
-
 
 # instance fields
-.field final synthetic val$method:Ljava/lang/reflect/Method;
+.field final synthetic val$encoder:Landroid/view/ViewHierarchyEncoder;
+
+.field final synthetic val$latch:Ljava/util/concurrent/CountDownLatch;
 
 .field final synthetic val$view:Landroid/view/View;
 
 
 # direct methods
-.method constructor <init>(Ljava/lang/reflect/Method;Landroid/view/View;)V
+.method constructor <init>(Landroid/view/View;Landroid/view/ViewHierarchyEncoder;Ljava/util/concurrent/CountDownLatch;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "val$view"    # Landroid/view/View;
+    .param p2, "val$encoder"    # Landroid/view/ViewHierarchyEncoder;
+    .param p3, "val$latch"    # Ljava/util/concurrent/CountDownLatch;
 
     .prologue
-    .line 1010
-    iput-object p1, p0, Landroid/view/ViewDebug$7;->val$method:Ljava/lang/reflect/Method;
+    .line 839
+    iput-object p1, p0, Landroid/view/ViewDebug$7;->val$view:Landroid/view/View;
 
-    iput-object p2, p0, Landroid/view/ViewDebug$7;->val$view:Landroid/view/View;
+    iput-object p2, p0, Landroid/view/ViewDebug$7;->val$encoder:Landroid/view/ViewHierarchyEncoder;
+
+    iput-object p3, p0, Landroid/view/ViewDebug$7;->val$latch:Ljava/util/concurrent/CountDownLatch;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -52,28 +47,22 @@
 
 
 # virtual methods
-.method public call()Ljava/lang/Object;
-    .locals 3
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/lang/IllegalAccessException;,
-            Ljava/lang/reflect/InvocationTargetException;
-        }
-    .end annotation
+.method public run()V
+    .locals 2
 
     .prologue
-    .line 1013
-    iget-object v1, p0, Landroid/view/ViewDebug$7;->val$method:Ljava/lang/reflect/Method;
+    .line 842
+    iget-object v0, p0, Landroid/view/ViewDebug$7;->val$view:Landroid/view/View;
 
-    iget-object v2, p0, Landroid/view/ViewDebug$7;->val$view:Landroid/view/View;
+    iget-object v1, p0, Landroid/view/ViewDebug$7;->val$encoder:Landroid/view/ViewHierarchyEncoder;
 
-    const/4 v0, 0x0
+    invoke-virtual {v0, v1}, Landroid/view/View;->encode(Landroid/view/ViewHierarchyEncoder;)V
 
-    check-cast v0, [Ljava/lang/Object;
+    .line 843
+    iget-object v0, p0, Landroid/view/ViewDebug$7;->val$latch:Ljava/util/concurrent/CountDownLatch;
 
-    invoke-virtual {v1, v2, v0}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v0}, Ljava/util/concurrent/CountDownLatch;->countDown()V
 
-    move-result-object v0
-
-    return-object v0
+    .line 841
+    return-void
 .end method

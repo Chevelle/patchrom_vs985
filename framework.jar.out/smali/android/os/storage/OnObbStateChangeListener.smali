@@ -36,10 +36,10 @@
 # virtual methods
 .method public onObbStateChange(Ljava/lang/String;I)V
     .locals 0
-    .parameter "path"
-    .parameter "state"
+    .param p1, "path"    # Ljava/lang/String;
+    .param p2, "state"    # I
 
     .prologue
-    .line 84
+    .line 83
     return-void
 .end method

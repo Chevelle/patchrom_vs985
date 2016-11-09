@@ -33,18 +33,16 @@
     .locals 0
 
     .prologue
-    .line 43
+    .line 68
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/transition/Visibility$1;)V
+.method synthetic constructor <init>(Landroid/transition/Visibility$VisibilityInfo;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 43
     invoke-direct {p0}, Landroid/transition/Visibility$VisibilityInfo;-><init>()V
 
     return-void

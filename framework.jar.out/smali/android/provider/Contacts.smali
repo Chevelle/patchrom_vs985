@@ -6,26 +6,26 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/provider/Contacts$Intents;,
-        Landroid/provider/Contacts$Extensions;,
-        Landroid/provider/Contacts$ExtensionsColumns;,
-        Landroid/provider/Contacts$Photos;,
-        Landroid/provider/Contacts$PhotosColumns;,
-        Landroid/provider/Contacts$Organizations;,
-        Landroid/provider/Contacts$OrganizationColumns;,
-        Landroid/provider/Contacts$Presence;,
-        Landroid/provider/Contacts$PresenceColumns;,
-        Landroid/provider/Contacts$ContactMethods;,
-        Landroid/provider/Contacts$ContactMethodsColumns;,
-        Landroid/provider/Contacts$GroupMembership;,
-        Landroid/provider/Contacts$Phones;,
-        Landroid/provider/Contacts$PhonesColumns;,
-        Landroid/provider/Contacts$Groups;,
-        Landroid/provider/Contacts$GroupsColumns;,
-        Landroid/provider/Contacts$People;,
-        Landroid/provider/Contacts$PeopleColumns;,
+        Landroid/provider/Contacts$SettingsColumns;,
         Landroid/provider/Contacts$Settings;,
-        Landroid/provider/Contacts$SettingsColumns;
+        Landroid/provider/Contacts$PeopleColumns;,
+        Landroid/provider/Contacts$People;,
+        Landroid/provider/Contacts$GroupsColumns;,
+        Landroid/provider/Contacts$Groups;,
+        Landroid/provider/Contacts$PhonesColumns;,
+        Landroid/provider/Contacts$Phones;,
+        Landroid/provider/Contacts$GroupMembership;,
+        Landroid/provider/Contacts$ContactMethodsColumns;,
+        Landroid/provider/Contacts$ContactMethods;,
+        Landroid/provider/Contacts$PresenceColumns;,
+        Landroid/provider/Contacts$Presence;,
+        Landroid/provider/Contacts$OrganizationColumns;,
+        Landroid/provider/Contacts$Organizations;,
+        Landroid/provider/Contacts$PhotosColumns;,
+        Landroid/provider/Contacts$Photos;,
+        Landroid/provider/Contacts$ExtensionsColumns;,
+        Landroid/provider/Contacts$Extensions;,
+        Landroid/provider/Contacts$Intents;
     }
 .end annotation
 
@@ -39,7 +39,7 @@
     .end annotation
 .end field
 
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 .end field
@@ -77,8 +77,8 @@
     .locals 1
 
     .prologue
-    .line 60
-    const-string v0, "content://contacts"
+    .line 59
+    const-string/jumbo v0, "content://contacts"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
@@ -86,6 +86,7 @@
 
     sput-object v0, Landroid/provider/Contacts;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 45
     return-void
 .end method
 
@@ -93,7 +94,7 @@
     .locals 0
 
     .prologue
-    .line 96
+    .line 95
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

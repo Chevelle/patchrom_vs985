@@ -23,27 +23,27 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;[Landroid/media/TextTrackCueSpan;)V
     .locals 1
-    .parameter "context"
-    .parameter "spans"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "spans"    # [Landroid/media/TextTrackCueSpan;
 
     .prologue
-    .line 1808
+    .line 1832
     invoke-direct {p0, p1}, Lcom/android/internal/widget/SubtitleView;-><init>(Landroid/content/Context;)V
 
-    .line 1804
+    .line 1828
     new-instance v0, Landroid/text/SpannableStringBuilder;
 
     invoke-direct {v0}, Landroid/text/SpannableStringBuilder;-><init>()V
 
     iput-object v0, p0, Landroid/media/WebVttRenderingWidget$SpanLayout;->mBuilder:Landroid/text/SpannableStringBuilder;
 
-    .line 1810
+    .line 1834
     iput-object p2, p0, Landroid/media/WebVttRenderingWidget$SpanLayout;->mSpans:[Landroid/media/TextTrackCueSpan;
 
-    .line 1812
+    .line 1836
     invoke-virtual {p0}, Landroid/media/WebVttRenderingWidget$SpanLayout;->update()V
 
-    .line 1813
+    .line 1831
     return-void
 .end method
 
@@ -51,41 +51,41 @@
 # virtual methods
 .method public setCaptionStyle(Landroid/view/accessibility/CaptioningManager$CaptionStyle;F)V
     .locals 1
-    .parameter "captionStyle"
-    .parameter "fontSize"
+    .param p1, "captionStyle"    # Landroid/view/accessibility/CaptioningManager$CaptionStyle;
+    .param p2, "fontSize"    # F
 
     .prologue
-    .line 1834
+    .line 1858
     iget v0, p1, Landroid/view/accessibility/CaptioningManager$CaptionStyle;->backgroundColor:I
 
     invoke-virtual {p0, v0}, Landroid/media/WebVttRenderingWidget$SpanLayout;->setBackgroundColor(I)V
 
-    .line 1835
+    .line 1859
     iget v0, p1, Landroid/view/accessibility/CaptioningManager$CaptionStyle;->foregroundColor:I
 
     invoke-virtual {p0, v0}, Landroid/media/WebVttRenderingWidget$SpanLayout;->setForegroundColor(I)V
 
-    .line 1836
+    .line 1860
     iget v0, p1, Landroid/view/accessibility/CaptioningManager$CaptionStyle;->edgeColor:I
 
     invoke-virtual {p0, v0}, Landroid/media/WebVttRenderingWidget$SpanLayout;->setEdgeColor(I)V
 
-    .line 1837
+    .line 1861
     iget v0, p1, Landroid/view/accessibility/CaptioningManager$CaptionStyle;->edgeType:I
 
     invoke-virtual {p0, v0}, Landroid/media/WebVttRenderingWidget$SpanLayout;->setEdgeType(I)V
 
-    .line 1838
+    .line 1862
     invoke-virtual {p1}, Landroid/view/accessibility/CaptioningManager$CaptionStyle;->getTypeface()Landroid/graphics/Typeface;
 
     move-result-object v0
 
     invoke-virtual {p0, v0}, Landroid/media/WebVttRenderingWidget$SpanLayout;->setTypeface(Landroid/graphics/Typeface;)V
 
-    .line 1839
+    .line 1863
     invoke-virtual {p0, p2}, Landroid/media/WebVttRenderingWidget$SpanLayout;->setTextSize(F)V
 
-    .line 1840
+    .line 1857
     return-void
 .end method
 
@@ -93,58 +93,58 @@
     .locals 6
 
     .prologue
-    .line 1816
+    .line 1840
     iget-object v0, p0, Landroid/media/WebVttRenderingWidget$SpanLayout;->mBuilder:Landroid/text/SpannableStringBuilder;
 
-    .line 1817
-    .local v0, builder:Landroid/text/SpannableStringBuilder;
+    .line 1841
+    .local v0, "builder":Landroid/text/SpannableStringBuilder;
     iget-object v4, p0, Landroid/media/WebVttRenderingWidget$SpanLayout;->mSpans:[Landroid/media/TextTrackCueSpan;
 
-    .line 1819
-    .local v4, spans:[Landroid/media/TextTrackCueSpan;
+    .line 1843
+    .local v4, "spans":[Landroid/media/TextTrackCueSpan;
     invoke-virtual {v0}, Landroid/text/SpannableStringBuilder;->clear()V
 
-    .line 1820
+    .line 1844
     invoke-virtual {v0}, Landroid/text/SpannableStringBuilder;->clearSpans()V
 
-    .line 1822
+    .line 1846
     array-length v3, v4
 
-    .line 1823
-    .local v3, spanCount:I
+    .line 1847
+    .local v3, "spanCount":I
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_0
     if-ge v1, v3, :cond_1
 
-    .line 1824
+    .line 1848
     aget-object v2, v4, v1
 
-    .line 1825
-    .local v2, span:Landroid/media/TextTrackCueSpan;
+    .line 1849
+    .local v2, "span":Landroid/media/TextTrackCueSpan;
     iget-boolean v5, v2, Landroid/media/TextTrackCueSpan;->mEnabled:Z
 
     if-eqz v5, :cond_0
 
-    .line 1826
+    .line 1850
     aget-object v5, v4, v1
 
     iget-object v5, v5, Landroid/media/TextTrackCueSpan;->mText:Ljava/lang/String;
 
     invoke-virtual {v0, v5}, Landroid/text/SpannableStringBuilder;->append(Ljava/lang/CharSequence;)Landroid/text/SpannableStringBuilder;
 
-    .line 1823
+    .line 1847
     :cond_0
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 1830
-    .end local v2           #span:Landroid/media/TextTrackCueSpan;
+    .line 1854
+    .end local v2    # "span":Landroid/media/TextTrackCueSpan;
     :cond_1
     invoke-virtual {p0, v0}, Landroid/media/WebVttRenderingWidget$SpanLayout;->setText(Ljava/lang/CharSequence;)V
 
-    .line 1831
+    .line 1839
     return-void
 .end method

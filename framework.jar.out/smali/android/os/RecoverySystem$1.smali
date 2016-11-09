@@ -5,7 +5,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/os/RecoverySystem;->rebootWipeUserData(Landroid/content/Context;)V
+    value = Landroid/os/RecoverySystem;->rebootWipeUserData(Landroid/content/Context;ZLjava/lang/String;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Landroid/os/ConditionVariable;)V
     .locals 0
-    .parameter
+    .param p1, "val$condition"    # Landroid/os/ConditionVariable;
 
     .prologue
-    .line 358
+    .line 415
     iput-object p1, p0, Landroid/os/RecoverySystem$1;->val$condition:Landroid/os/ConditionVariable;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -36,15 +36,15 @@
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
     .locals 1
-    .parameter "context"
-    .parameter "intent"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 361
+    .line 418
     iget-object v0, p0, Landroid/os/RecoverySystem$1;->val$condition:Landroid/os/ConditionVariable;
 
     invoke-virtual {v0}, Landroid/os/ConditionVariable;->open()V
 
-    .line 362
+    .line 417
     return-void
 .end method

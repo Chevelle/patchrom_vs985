@@ -80,12 +80,13 @@
     .line 40
     iput v0, p0, Landroid/net/MobileLinkQualityInfo;->mLteCqi:I
 
+    .line 26
     return-void
 .end method
 
 .method public static createFromParcelBody(Landroid/os/Parcel;)Landroid/net/MobileLinkQualityInfo;
     .locals 2
-    .parameter "in"
+    .param p0, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 71
@@ -94,7 +95,7 @@
     invoke-direct {v0}, Landroid/net/MobileLinkQualityInfo;-><init>()V
 
     .line 73
-    .local v0, li:Landroid/net/MobileLinkQualityInfo;
+    .local v0, "li":Landroid/net/MobileLinkQualityInfo;
     invoke-virtual {v0, p0}, Landroid/net/MobileLinkQualityInfo;->initializeFromParcel(Landroid/os/Parcel;)V
 
     .line 75
@@ -326,164 +327,164 @@
 
 .method public setCdmaDbm(I)V
     .locals 0
-    .parameter "cdmaDbm"
+    .param p1, "cdmaDbm"    # I
 
     .prologue
     .line 149
     iput p1, p0, Landroid/net/MobileLinkQualityInfo;->mCdmaDbm:I
 
-    .line 150
+    .line 148
     return-void
 .end method
 
 .method public setCdmaEcio(I)V
     .locals 0
-    .parameter "cdmaEcio"
+    .param p1, "cdmaEcio"    # I
 
     .prologue
     .line 164
     iput p1, p0, Landroid/net/MobileLinkQualityInfo;->mCdmaEcio:I
 
-    .line 165
+    .line 163
     return-void
 .end method
 
 .method public setEvdoDbm(I)V
     .locals 0
-    .parameter "evdoDbm"
+    .param p1, "evdoDbm"    # I
 
     .prologue
     .line 179
     iput p1, p0, Landroid/net/MobileLinkQualityInfo;->mEvdoDbm:I
 
-    .line 180
+    .line 178
     return-void
 .end method
 
 .method public setEvdoEcio(I)V
     .locals 0
-    .parameter "evdoEcio"
+    .param p1, "evdoEcio"    # I
 
     .prologue
     .line 194
     iput p1, p0, Landroid/net/MobileLinkQualityInfo;->mEvdoEcio:I
 
-    .line 195
+    .line 193
     return-void
 .end method
 
 .method public setEvdoSnr(I)V
     .locals 0
-    .parameter "evdoSnr"
+    .param p1, "evdoSnr"    # I
 
     .prologue
     .line 209
     iput p1, p0, Landroid/net/MobileLinkQualityInfo;->mEvdoSnr:I
 
-    .line 210
+    .line 208
     return-void
 .end method
 
 .method public setGsmErrorRate(I)V
     .locals 0
-    .parameter "gsmErrorRate"
+    .param p1, "gsmErrorRate"    # I
 
     .prologue
     .line 134
     iput p1, p0, Landroid/net/MobileLinkQualityInfo;->mGsmErrorRate:I
 
-    .line 135
+    .line 133
     return-void
 .end method
 
 .method public setLteCqi(I)V
     .locals 0
-    .parameter "lteCqi"
+    .param p1, "lteCqi"    # I
 
     .prologue
     .line 284
     iput p1, p0, Landroid/net/MobileLinkQualityInfo;->mLteCqi:I
 
-    .line 285
+    .line 283
     return-void
 .end method
 
 .method public setLteRsrp(I)V
     .locals 0
-    .parameter "lteRsrp"
+    .param p1, "lteRsrp"    # I
 
     .prologue
     .line 239
     iput p1, p0, Landroid/net/MobileLinkQualityInfo;->mLteRsrp:I
 
-    .line 240
+    .line 238
     return-void
 .end method
 
 .method public setLteRsrq(I)V
     .locals 0
-    .parameter "lteRsrq"
+    .param p1, "lteRsrq"    # I
 
     .prologue
     .line 254
     iput p1, p0, Landroid/net/MobileLinkQualityInfo;->mLteRsrq:I
 
-    .line 255
+    .line 253
     return-void
 .end method
 
 .method public setLteRssnr(I)V
     .locals 0
-    .parameter "lteRssnr"
+    .param p1, "lteRssnr"    # I
 
     .prologue
     .line 269
     iput p1, p0, Landroid/net/MobileLinkQualityInfo;->mLteRssnr:I
 
-    .line 270
+    .line 268
     return-void
 .end method
 
 .method public setLteSignalStrength(I)V
     .locals 0
-    .parameter "lteSignalStrength"
+    .param p1, "lteSignalStrength"    # I
 
     .prologue
     .line 224
     iput p1, p0, Landroid/net/MobileLinkQualityInfo;->mLteSignalStrength:I
 
-    .line 225
+    .line 223
     return-void
 .end method
 
 .method public setMobileNetworkType(I)V
     .locals 0
-    .parameter "mobileNetworkType"
+    .param p1, "mobileNetworkType"    # I
 
     .prologue
     .line 104
     iput p1, p0, Landroid/net/MobileLinkQualityInfo;->mMobileNetworkType:I
 
-    .line 105
+    .line 103
     return-void
 .end method
 
 .method public setRssi(I)V
     .locals 0
-    .parameter "Rssi"
+    .param p1, "Rssi"    # I
 
     .prologue
     .line 119
     iput p1, p0, Landroid/net/MobileLinkQualityInfo;->mRssi:I
 
-    .line 120
+    .line 118
     return-void
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 48
@@ -556,6 +557,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 63
+    .line 47
     return-void
 .end method

@@ -21,7 +21,7 @@
 
 .field public static final TKIP:I = 0x1
 
-.field public static final strings:[Ljava/lang/String; = null
+.field public static final strings:[Ljava/lang/String;
 
 .field public static final varName:Ljava/lang/String; = "pairwise"
 
@@ -31,36 +31,32 @@
     .locals 3
 
     .prologue
-    const/4 v0, 0x4
+    .line 141
+    const/4 v0, 0x3
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const/4 v1, 0x0
+    const-string/jumbo v1, "NONE"
 
-    const-string v2, "NONE"
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x1
+    const-string/jumbo v1, "TKIP"
 
-    const-string v2, "TKIP"
+    const/4 v2, 0x1
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x2
+    const-string/jumbo v1, "CCMP"
 
-    const-string v2, "CCMP"
+    const/4 v2, 0x2
 
-    aput-object v2, v0, v1
-
-    const/4 v1, 0x3
-
-    const-string v2, "SMS4"
-
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     sput-object v0, Landroid/net/wifi/WifiConfiguration$PairwiseCipher;->strings:[Ljava/lang/String;
 
+    .line 129
     return-void
 .end method
 
@@ -68,7 +64,7 @@
     .locals 0
 
     .prologue
-    .line 114
+    .line 130
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

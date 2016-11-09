@@ -4,7 +4,6 @@
 
 # interfaces
 .implements Landroid/provider/BaseColumns;
-.implements Landroid/provider/SyncConstValue;
 .implements Landroid/provider/Contacts$GroupsColumns;
 
 
@@ -33,7 +32,7 @@
     .end annotation
 .end field
 
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 .end field
@@ -43,7 +42,7 @@
     .end annotation
 .end field
 
-.field public static final DELETED_CONTENT_URI:Landroid/net/Uri; = null
+.field public static final DELETED_CONTENT_URI:Landroid/net/Uri;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 .end field
@@ -65,23 +64,26 @@
 
     .prologue
     .line 805
-    const-string v0, "content://contacts/groups"
+    const-string/jumbo v0, "content://contacts/groups"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 804
     sput-object v0, Landroid/provider/Contacts$Groups;->CONTENT_URI:Landroid/net/Uri;
 
     .line 814
-    const-string v0, "content://contacts/deleted_groups"
+    const-string/jumbo v0, "content://contacts/deleted_groups"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 813
     sput-object v0, Landroid/provider/Contacts$Groups;->DELETED_CONTENT_URI:Landroid/net/Uri;
 
+    .line 792
     return-void
 .end method
 
@@ -89,7 +91,7 @@
     .locals 0
 
     .prologue
-    .line 798
+    .line 797
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

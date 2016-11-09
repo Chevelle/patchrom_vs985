@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 99
+    .line 98
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 100
     iput-object p1, p0, Landroid/app/IUiModeManager$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 101
+    .line 98
     return-void
 .end method
 
@@ -51,7 +51,7 @@
 
 .method public disableCarMode(I)V
     .locals 5
-    .parameter "flags"
+    .param p1, "flags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -65,15 +65,15 @@
     move-result-object v0
 
     .line 135
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 137
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.app.IUiModeManager"
+    const-string/jumbo v2, "android.app.IUiModeManager"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -100,24 +100,26 @@
     .line 144
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 146
+    .line 132
     return-void
 
-    .line 143
+    .line 142
     :catchall_0
     move-exception v2
 
+    .line 143
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 144
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 142
     throw v2
 .end method
 
 .method public enableCarMode(I)V
     .locals 5
-    .parameter "flags"
+    .param p1, "flags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -131,15 +133,15 @@
     move-result-object v0
 
     .line 117
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 119
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.app.IUiModeManager"
+    const-string/jumbo v2, "android.app.IUiModeManager"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -166,18 +168,20 @@
     .line 126
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 128
+    .line 114
     return-void
 
-    .line 125
+    .line 124
     :catchall_0
     move-exception v2
 
+    .line 125
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 126
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 124
     throw v2
 .end method
 
@@ -196,15 +200,15 @@
     move-result-object v0
 
     .line 153
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 156
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.app.IUiModeManager"
+    const-string/jumbo v3, "android.app.IUiModeManager"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -228,7 +232,7 @@
     move-result v2
 
     .line 162
-    .local v2, _result:I
+    .local v2, "_result":I
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 163
@@ -237,16 +241,18 @@
     .line 165
     return v2
 
-    .line 162
-    .end local v2           #_result:I
+    .line 161
+    .end local v2    # "_result":I
     :catchall_0
     move-exception v3
 
+    .line 162
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 163
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 161
     throw v3
 .end method
 
@@ -255,7 +261,7 @@
 
     .prologue
     .line 108
-    const-string v0, "android.app.IUiModeManager"
+    const-string/jumbo v0, "android.app.IUiModeManager"
 
     return-object v0
 .end method
@@ -275,15 +281,15 @@
     move-result-object v0
 
     .line 196
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 199
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.app.IUiModeManager"
+    const-string/jumbo v3, "android.app.IUiModeManager"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -307,7 +313,7 @@
     move-result v2
 
     .line 205
-    .local v2, _result:I
+    .local v2, "_result":I
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 206
@@ -316,22 +322,24 @@
     .line 208
     return v2
 
-    .line 205
-    .end local v2           #_result:I
+    .line 204
+    .end local v2    # "_result":I
     :catchall_0
     move-exception v3
 
+    .line 205
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 206
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 204
     throw v3
 .end method
 
 .method public setNightMode(I)V
     .locals 5
-    .parameter "mode"
+    .param p1, "mode"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -345,15 +353,15 @@
     move-result-object v0
 
     .line 177
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 179
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.app.IUiModeManager"
+    const-string/jumbo v2, "android.app.IUiModeManager"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -380,17 +388,19 @@
     .line 186
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 188
+    .line 174
     return-void
 
-    .line 185
+    .line 184
     :catchall_0
     move-exception v2
 
+    .line 185
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 186
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 184
     throw v2
 .end method

@@ -15,8 +15,8 @@
 
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyDataSetObserver;,
-        Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyContentObserver;
+        Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyContentObserver;,
+        Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyDataSetObserver;
     }
 .end annotation
 
@@ -36,12 +36,30 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/widget/CursorTreeAdapter$MyCursorHelper;)Landroid/database/Cursor;
+    .locals 1
+
+    iget-object v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
+
+    return-object v0
+.end method
+
+.method static synthetic -set0(Landroid/widget/CursorTreeAdapter$MyCursorHelper;Z)Z
+    .locals 0
+
+    iput-boolean p1, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mDataValid:Z
+
+    return p1
+.end method
+
 .method constructor <init>(Landroid/widget/CursorTreeAdapter;Landroid/database/Cursor;)V
     .locals 3
-    .parameter
-    .parameter "cursor"
+    .param p1, "this$0"    # Landroid/widget/CursorTreeAdapter;
+    .param p2, "cursor"    # Landroid/database/Cursor;
 
     .prologue
+    const/4 v2, 0x0
+
     .line 408
     iput-object p1, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->this$0:Landroid/widget/CursorTreeAdapter;
 
@@ -53,7 +71,7 @@
     const/4 v0, 0x1
 
     .line 410
-    .local v0, cursorPresent:Z
+    .local v0, "cursorPresent":Z
     :goto_0
     iput-object p2, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
 
@@ -63,7 +81,7 @@
     .line 412
     if-eqz v0, :cond_2
 
-    const-string v1, "_id"
+    const-string/jumbo v1, "_id"
 
     invoke-interface {p2, v1}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
 
@@ -82,9 +100,7 @@
     .line 414
     new-instance v1, Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyDataSetObserver;
 
-    const/4 v2, 0x0
-
-    invoke-direct {v1, p0, v2}, Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyDataSetObserver;-><init>(Landroid/widget/CursorTreeAdapter$MyCursorHelper;Landroid/widget/CursorTreeAdapter$1;)V
+    invoke-direct {v1, p0, v2}, Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyDataSetObserver;-><init>(Landroid/widget/CursorTreeAdapter$MyCursorHelper;Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyDataSetObserver;)V
 
     iput-object v1, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mDataSetObserver:Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyDataSetObserver;
 
@@ -101,54 +117,31 @@
 
     invoke-interface {p2, v1}, Landroid/database/Cursor;->registerDataSetObserver(Landroid/database/DataSetObserver;)V
 
-    .line 419
+    .line 408
     :cond_0
     return-void
 
     .line 409
-    .end local v0           #cursorPresent:Z
+    .end local v0    # "cursorPresent":Z
     :cond_1
     const/4 v0, 0x0
 
+    .restart local v0    # "cursorPresent":Z
     goto :goto_0
 
     .line 412
-    .restart local v0       #cursorPresent:Z
     :cond_2
     const/4 v1, -0x1
 
     goto :goto_1
 .end method
 
-.method static synthetic access$300(Landroid/widget/CursorTreeAdapter$MyCursorHelper;)Landroid/database/Cursor;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 401
-    iget-object v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
-
-    return-object v0
-.end method
-
-.method static synthetic access$402(Landroid/widget/CursorTreeAdapter$MyCursorHelper;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 401
-    iput-boolean p1, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mDataValid:Z
-
-    return p1
-.end method
-
 
 # virtual methods
 .method changeCursor(Landroid/database/Cursor;Z)V
     .locals 1
-    .parameter "cursor"
-    .parameter "releaseCursors"
+    .param p1, "cursor"    # Landroid/database/Cursor;
+    .param p2, "releaseCursors"    # Z
 
     .prologue
     .line 454
@@ -156,8 +149,6 @@
 
     if-ne p1, v0, :cond_0
 
-    .line 471
-    :goto_0
     return-void
 
     .line 456
@@ -181,7 +172,7 @@
     invoke-interface {p1, v0}, Landroid/database/Cursor;->registerDataSetObserver(Landroid/database/DataSetObserver;)V
 
     .line 461
-    const-string v0, "_id"
+    const-string/jumbo v0, "_id"
 
     invoke-interface {p1, v0}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
 
@@ -199,7 +190,9 @@
 
     invoke-virtual {v0, p2}, Landroid/widget/CursorTreeAdapter;->notifyDataSetChanged(Z)V
 
-    goto :goto_0
+    .line 453
+    :goto_0
+    return-void
 
     .line 466
     :cond_1
@@ -221,16 +214,17 @@
 .end method
 
 .method deactivate()V
-    .locals 2
+    .locals 3
 
     .prologue
+    const/4 v2, 0x0
+
     .line 474
     iget-object v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
 
     if-nez v0, :cond_0
 
-    .line 482
-    :goto_0
+    .line 475
     return-void
 
     .line 478
@@ -254,11 +248,10 @@
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
 
     .line 481
-    const/4 v0, 0x0
+    iput-object v2, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
 
-    iput-object v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
-
-    goto :goto_0
+    .line 473
+    return-void
 .end method
 
 .method getCount()I
@@ -281,14 +274,13 @@
 
     move-result v0
 
-    .line 429
-    :goto_0
     return v0
 
+    .line 429
     :cond_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 .end method
 
 .method getCursor()Landroid/database/Cursor;
@@ -302,29 +294,29 @@
 .end method
 
 .method getId(I)J
-    .locals 3
-    .parameter "position"
+    .locals 4
+    .param p1, "position"    # I
 
     .prologue
-    const-wide/16 v0, 0x0
+    const-wide/16 v2, 0x0
 
     .line 434
-    iget-boolean v2, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mDataValid:Z
+    iget-boolean v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mDataValid:Z
 
-    if-eqz v2, :cond_0
+    if-eqz v0, :cond_1
 
-    iget-object v2, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
+    iget-object v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
 
-    if-eqz v2, :cond_0
+    if-eqz v0, :cond_1
 
     .line 435
-    iget-object v2, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
+    iget-object v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
 
-    invoke-interface {v2, p1}, Landroid/database/Cursor;->moveToPosition(I)Z
+    invoke-interface {v0, p1}, Landroid/database/Cursor;->moveToPosition(I)Z
 
-    move-result v2
+    move-result v0
 
-    if-eqz v2, :cond_0
+    if-eqz v0, :cond_0
 
     .line 436
     iget-object v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
@@ -335,40 +327,45 @@
 
     move-result-wide v0
 
-    .line 441
-    :cond_0
     return-wide v0
+
+    .line 438
+    :cond_0
+    return-wide v2
+
+    .line 441
+    :cond_1
+    return-wide v2
 .end method
 
 .method isValid()Z
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v0, 0x0
+
     .line 485
-    iget-boolean v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mDataValid:Z
+    iget-boolean v1, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mDataValid:Z
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
-    iget-object v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
+    iget-object v1, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method moveTo(I)Landroid/database/Cursor;
-    .locals 1
-    .parameter "position"
+    .locals 2
+    .param p1, "position"    # I
 
     .prologue
+    const/4 v1, 0x0
+
     .line 446
     iget-boolean v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mDataValid:Z
 
@@ -389,12 +386,9 @@
     .line 447
     iget-object v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
 
-    .line 449
-    :goto_0
     return-object v0
 
+    .line 449
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return-object v1
 .end method

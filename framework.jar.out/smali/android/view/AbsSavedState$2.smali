@@ -42,18 +42,18 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/view/AbsSavedState;
     .locals 3
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 78
     const/4 v1, 0x0
 
+    .line 78
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->readParcelable(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
 
     move-result-object v0
 
     .line 79
-    .local v0, superState:Landroid/os/Parcelable;
+    .local v0, "superState":Landroid/os/Parcelable;
     if-eqz v0, :cond_0
 
     .line 80
@@ -74,10 +74,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 75
+    .line 77
     invoke-virtual {p0, p1}, Landroid/view/AbsSavedState$2;->createFromParcel(Landroid/os/Parcel;)Landroid/view/AbsSavedState;
 
     move-result-object v0
@@ -87,7 +87,7 @@
 
 .method public newArray(I)[Landroid/view/AbsSavedState;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 86
@@ -98,10 +98,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 75
+    .line 85
     invoke-virtual {p0, p1}, Landroid/view/AbsSavedState$2;->newArray(I)[Landroid/view/AbsSavedState;
 
     move-result-object v0

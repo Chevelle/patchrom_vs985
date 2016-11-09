@@ -28,12 +28,12 @@
 # direct methods
 .method constructor <init>(Landroid/os/TokenWatcher;Landroid/os/IBinder;Ljava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter "token"
-    .parameter "tag"
+    .param p1, "this$0"    # Landroid/os/TokenWatcher;
+    .param p2, "token"    # Landroid/os/IBinder;
+    .param p3, "tag"    # Ljava/lang/String;
 
     .prologue
-    .line 186
+    .line 185
     iput-object p1, p0, Landroid/os/TokenWatcher$Death;->this$0:Landroid/os/TokenWatcher;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -44,7 +44,7 @@
     .line 188
     iput-object p3, p0, Landroid/os/TokenWatcher$Death;->tag:Ljava/lang/String;
 
-    .line 189
+    .line 185
     return-void
 .end method
 
@@ -63,7 +63,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/os/TokenWatcher;->cleanup(Landroid/os/IBinder;Z)V
 
-    .line 194
+    .line 191
     return-void
 .end method
 
@@ -85,8 +85,7 @@
     .line 200
     iget-object v0, p0, Landroid/os/TokenWatcher$Death;->this$0:Landroid/os/TokenWatcher;
 
-    #getter for: Landroid/os/TokenWatcher;->mTag:Ljava/lang/String;
-    invoke-static {v0}, Landroid/os/TokenWatcher;->access$200(Landroid/os/TokenWatcher;)Ljava/lang/String;
+    invoke-static {v0}, Landroid/os/TokenWatcher;->-get1(Landroid/os/TokenWatcher;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -94,7 +93,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "cleaning up leaked reference: "
+    const-string/jumbo v2, "cleaning up leaked reference: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -125,14 +124,16 @@
     :cond_0
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 207
+    .line 196
     return-void
 
-    .line 205
+    .line 204
     :catchall_0
     move-exception v0
 
+    .line 205
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
+    .line 204
     throw v0
 .end method

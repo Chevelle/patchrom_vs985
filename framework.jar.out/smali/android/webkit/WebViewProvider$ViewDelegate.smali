@@ -39,6 +39,9 @@
 .method public abstract onDrawVerticalScrollBar(Landroid/graphics/Canvas;Landroid/graphics/drawable/Drawable;IIII)V
 .end method
 
+.method public abstract onFinishTemporaryDetach()V
+.end method
+
 .method public abstract onFocusChanged(ZILandroid/graphics/Rect;)V
 .end method
 
@@ -69,10 +72,16 @@
 .method public abstract onOverScrolled(IIZZ)V
 .end method
 
+.method public abstract onProvideVirtualStructure(Landroid/view/ViewStructure;)V
+.end method
+
 .method public abstract onScrollChanged(IIII)V
 .end method
 
 .method public abstract onSizeChanged(IIII)V
+.end method
+
+.method public abstract onStartTemporaryDetach()V
 .end method
 
 .method public abstract onTouchEvent(Landroid/view/MotionEvent;)Z

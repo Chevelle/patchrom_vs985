@@ -25,25 +25,25 @@
 # direct methods
 .method public constructor <init>(Landroid/view/textservice/TextInfo;II)V
     .locals 1
-    .parameter "ti"
-    .parameter "start"
-    .parameter "end"
+    .param p1, "ti"    # Landroid/view/textservice/TextInfo;
+    .param p2, "start"    # I
+    .param p3, "end"    # I
 
     .prologue
-    .line 344
+    .line 343
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 345
+    .line 344
     iput-object p1, p0, Landroid/service/textservice/SpellCheckerService$SentenceLevelAdapter$SentenceWordItem;->mTextInfo:Landroid/view/textservice/TextInfo;
 
-    .line 346
+    .line 345
     iput p2, p0, Landroid/service/textservice/SpellCheckerService$SentenceLevelAdapter$SentenceWordItem;->mStart:I
 
-    .line 347
+    .line 346
     sub-int v0, p3, p2
 
     iput v0, p0, Landroid/service/textservice/SpellCheckerService$SentenceLevelAdapter$SentenceWordItem;->mLength:I
 
-    .line 348
+    .line 343
     return-void
 .end method

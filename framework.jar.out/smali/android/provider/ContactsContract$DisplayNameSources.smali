@@ -25,4 +25,6 @@
 
 .field public static final STRUCTURED_NAME:I = 0x28
 
+.field public static final STRUCTURED_PHONETIC_NAME:I = 0x25
+
 .field public static final UNDEFINED:I

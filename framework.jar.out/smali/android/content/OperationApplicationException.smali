@@ -20,13 +20,13 @@
 
     iput v0, p0, Landroid/content/OperationApplicationException;->mNumSuccessfulYieldPoints:I
 
-    .line 29
+    .line 26
     return-void
 .end method
 
 .method public constructor <init>(I)V
     .locals 0
-    .parameter "numSuccessfulYieldPoints"
+    .param p1, "numSuccessfulYieldPoints"    # I
 
     .prologue
     .line 43
@@ -35,13 +35,13 @@
     .line 44
     iput p1, p0, Landroid/content/OperationApplicationException;->mNumSuccessfulYieldPoints:I
 
-    .line 45
+    .line 42
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 1
-    .parameter "message"
+    .param p1, "message"    # Ljava/lang/String;
 
     .prologue
     .line 31
@@ -52,14 +52,14 @@
 
     iput v0, p0, Landroid/content/OperationApplicationException;->mNumSuccessfulYieldPoints:I
 
-    .line 33
+    .line 30
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter "message"
-    .parameter "numSuccessfulYieldPoints"
+    .param p1, "message"    # Ljava/lang/String;
+    .param p2, "numSuccessfulYieldPoints"    # I
 
     .prologue
     .line 47
@@ -68,14 +68,14 @@
     .line 48
     iput p2, p0, Landroid/content/OperationApplicationException;->mNumSuccessfulYieldPoints:I
 
-    .line 49
+    .line 46
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/Throwable;)V
     .locals 1
-    .parameter "message"
-    .parameter "cause"
+    .param p1, "message"    # Ljava/lang/String;
+    .param p2, "cause"    # Ljava/lang/Throwable;
 
     .prologue
     .line 35
@@ -86,13 +86,13 @@
 
     iput v0, p0, Landroid/content/OperationApplicationException;->mNumSuccessfulYieldPoints:I
 
-    .line 37
+    .line 34
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/Throwable;)V
     .locals 1
-    .parameter "cause"
+    .param p1, "cause"    # Ljava/lang/Throwable;
 
     .prologue
     .line 39
@@ -103,7 +103,7 @@
 
     iput v0, p0, Landroid/content/OperationApplicationException;->mNumSuccessfulYieldPoints:I
 
-    .line 41
+    .line 38
     return-void
 .end method
 

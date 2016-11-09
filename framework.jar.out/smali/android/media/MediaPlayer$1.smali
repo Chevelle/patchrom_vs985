@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/media/MediaPlayer;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/media/MediaPlayer;
 
     .prologue
-    .line 1741
+    .line 2183
     iput-object p1, p0, Landroid/media/MediaPlayer$1;->this$0:Landroid/media/MediaPlayer;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,134 +38,101 @@
 
 # virtual methods
 .method public onSubtitleData(Landroid/media/MediaPlayer;Landroid/media/SubtitleData;)V
-    .locals 9
-    .parameter "mp"
-    .parameter "data"
+    .locals 6
+    .param p1, "mp"    # Landroid/media/MediaPlayer;
+    .param p2, "data"    # Landroid/media/SubtitleData;
 
     .prologue
-    .line 1744
+    .line 2186
     invoke-virtual {p2}, Landroid/media/SubtitleData;->getTrackIndex()I
 
-    move-result v1
+    move-result v0
 
-    .line 1745
-    .local v1, index:I
-    iget-object v5, p0, Landroid/media/MediaPlayer$1;->this$0:Landroid/media/MediaPlayer;
+    .line 2187
+    .local v0, "index":I
+    iget-object v4, p0, Landroid/media/MediaPlayer$1;->this$0:Landroid/media/MediaPlayer;
 
-    #getter for: Landroid/media/MediaPlayer;->mInbandSubtitleTracks:[Landroid/media/SubtitleTrack;
-    invoke-static {v5}, Landroid/media/MediaPlayer;->access$000(Landroid/media/MediaPlayer;)[Landroid/media/SubtitleTrack;
+    invoke-static {v4}, Landroid/media/MediaPlayer;->-get1(Landroid/media/MediaPlayer;)Ljava/util/Vector;
 
     move-result-object v5
 
-    array-length v5, v5
+    monitor-enter v5
 
-    if-lt v1, v5, :cond_1
+    .line 2188
+    :try_start_0
+    iget-object v4, p0, Landroid/media/MediaPlayer$1;->this$0:Landroid/media/MediaPlayer;
 
-    .line 1761
+    invoke-static {v4}, Landroid/media/MediaPlayer;->-get1(Landroid/media/MediaPlayer;)Ljava/util/Vector;
+
+    move-result-object v4
+
+    invoke-interface {v4}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    move-result-object v2
+
+    .local v2, "p$iterator":Ljava/util/Iterator;
     :cond_0
     :goto_0
-    return-void
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
-    .line 1748
-    :cond_1
-    iget-object v5, p0, Landroid/media/MediaPlayer$1;->this$0:Landroid/media/MediaPlayer;
+    move-result v4
 
-    #getter for: Landroid/media/MediaPlayer;->mInbandSubtitleTracks:[Landroid/media/SubtitleTrack;
-    invoke-static {v5}, Landroid/media/MediaPlayer;->access$000(Landroid/media/MediaPlayer;)[Landroid/media/SubtitleTrack;
+    if-eqz v4, :cond_1
 
-    move-result-object v5
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    aget-object v4, v5, v1
+    move-result-object v1
 
-    .line 1749
-    .local v4, track:Landroid/media/SubtitleTrack;
+    check-cast v1, Landroid/util/Pair;
+
+    .line 2189
+    .local v1, "p":Landroid/util/Pair;, "Landroid/util/Pair<Ljava/lang/Integer;Landroid/media/SubtitleTrack;>;"
+    iget-object v4, v1, Landroid/util/Pair;->first:Ljava/lang/Object;
+
     if-eqz v4, :cond_0
 
-    .line 1751
-    :try_start_0
-    invoke-virtual {p2}, Landroid/media/SubtitleData;->getStartTimeUs()J
+    iget-object v4, v1, Landroid/util/Pair;->first:Ljava/lang/Object;
 
-    move-result-wide v5
+    check-cast v4, Ljava/lang/Integer;
 
-    const-wide/16 v7, 0x1
+    invoke-virtual {v4}, Ljava/lang/Integer;->intValue()I
 
-    add-long v2, v5, v7
+    move-result v4
 
-    .line 1753
-    .local v2, runID:J
-    new-instance v5, Ljava/lang/String;
+    if-ne v4, v0, :cond_0
 
-    invoke-virtual {p2}, Landroid/media/SubtitleData;->getData()[B
+    iget-object v4, v1, Landroid/util/Pair;->second:Ljava/lang/Object;
 
-    move-result-object v6
+    if-eqz v4, :cond_0
 
-    const-string v7, "UTF-8"
+    .line 2191
+    iget-object v3, v1, Landroid/util/Pair;->second:Ljava/lang/Object;
 
-    invoke-direct {v5, v6, v7}, Ljava/lang/String;-><init>([BLjava/lang/String;)V
+    check-cast v3, Landroid/media/SubtitleTrack;
 
-    const/4 v6, 0x1
-
-    invoke-virtual {v4, v5, v6, v2, v3}, Landroid/media/SubtitleTrack;->onData(Ljava/lang/String;ZJ)V
-
-    .line 1754
-    invoke-virtual {p2}, Landroid/media/SubtitleData;->getStartTimeUs()J
-
-    move-result-wide v5
-
-    invoke-virtual {p2}, Landroid/media/SubtitleData;->getDurationUs()J
-
-    move-result-wide v7
-
-    add-long/2addr v5, v7
-
-    const-wide/16 v7, 0x3e8
-
-    div-long/2addr v5, v7
-
-    invoke-virtual {v4, v2, v3, v5, v6}, Landroid/media/SubtitleTrack;->setRunDiscardTimeMs(JJ)V
+    .line 2192
+    .local v3, "track":Landroid/media/SubtitleTrack;
+    invoke-virtual {v3, p2}, Landroid/media/SubtitleTrack;->onData(Landroid/media/SubtitleData;)V
     :try_end_0
-    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     goto :goto_0
 
-    .line 1757
-    .end local v2           #runID:J
-    :catch_0
-    move-exception v0
+    .line 2187
+    .end local v1    # "p":Landroid/util/Pair;, "Landroid/util/Pair<Ljava/lang/Integer;Landroid/media/SubtitleTrack;>;"
+    .end local v2    # "p$iterator":Ljava/util/Iterator;
+    .end local v3    # "track":Landroid/media/SubtitleTrack;
+    :catchall_0
+    move-exception v4
 
-    .line 1758
-    .local v0, e:Ljava/io/UnsupportedEncodingException;
-    const-string v5, "MediaPlayer"
+    monitor-exit v5
 
-    new-instance v6, Ljava/lang/StringBuilder;
+    throw v4
 
-    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+    .restart local v2    # "p$iterator":Ljava/util/Iterator;
+    :cond_1
+    monitor-exit v5
 
-    const-string/jumbo v7, "subtitle data for track "
-
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v6
-
-    invoke-virtual {v6, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v6
-
-    const-string v7, " is not UTF-8 encoded: "
-
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v6
-
-    invoke-virtual {v6, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v6
-
-    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v6
-
-    invoke-static {v5, v6}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_0
+    .line 2185
+    return-void
 .end method

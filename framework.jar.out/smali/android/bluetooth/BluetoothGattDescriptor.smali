@@ -4,11 +4,11 @@
 
 
 # static fields
-.field public static final DISABLE_NOTIFICATION_VALUE:[B = null
+.field public static final DISABLE_NOTIFICATION_VALUE:[B
 
-.field public static final ENABLE_INDICATION_VALUE:[B = null
+.field public static final ENABLE_INDICATION_VALUE:[B
 
-.field public static final ENABLE_NOTIFICATION_VALUE:[B = null
+.field public static final ENABLE_NOTIFICATION_VALUE:[B
 
 .field public static final PERMISSION_READ:I = 0x1
 
@@ -67,13 +67,14 @@
 
     sput-object v0, Landroid/bluetooth/BluetoothGattDescriptor;->DISABLE_NOTIFICATION_VALUE:[B
 
+    .line 28
     return-void
 
     .line 33
     nop
 
     :array_0
-    .array-data 0x1
+    .array-data 1
         0x1t
         0x0t
     .end array-data
@@ -82,7 +83,7 @@
     nop
 
     :array_1
-    .array-data 0x1
+    .array-data 1
         0x2t
         0x0t
     .end array-data
@@ -91,7 +92,7 @@
     nop
 
     :array_2
-    .array-data 0x1
+    .array-data 1
         0x0t
         0x0t
     .end array-data
@@ -99,26 +100,26 @@
 
 .method constructor <init>(Landroid/bluetooth/BluetoothGattCharacteristic;Ljava/util/UUID;II)V
     .locals 0
-    .parameter "characteristic"
-    .parameter "uuid"
-    .parameter "instance"
-    .parameter "permissions"
+    .param p1, "characteristic"    # Landroid/bluetooth/BluetoothGattCharacteristic;
+    .param p2, "uuid"    # Ljava/util/UUID;
+    .param p3, "instance"    # I
+    .param p4, "permissions"    # I
 
     .prologue
-    .line 137
+    .line 136
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 138
     invoke-direct {p0, p1, p2, p3, p4}, Landroid/bluetooth/BluetoothGattDescriptor;->initDescriptor(Landroid/bluetooth/BluetoothGattCharacteristic;Ljava/util/UUID;II)V
 
-    .line 139
+    .line 137
     return-void
 .end method
 
 .method public constructor <init>(Ljava/util/UUID;I)V
     .locals 2
-    .parameter "uuid"
-    .parameter "permissions"
+    .param p1, "uuid"    # Ljava/util/UUID;
+    .param p2, "permissions"    # I
 
     .prologue
     .line 124
@@ -131,16 +132,16 @@
 
     invoke-direct {p0, v0, p1, v1, p2}, Landroid/bluetooth/BluetoothGattDescriptor;->initDescriptor(Landroid/bluetooth/BluetoothGattCharacteristic;Ljava/util/UUID;II)V
 
-    .line 126
+    .line 124
     return-void
 .end method
 
 .method private initDescriptor(Landroid/bluetooth/BluetoothGattCharacteristic;Ljava/util/UUID;II)V
     .locals 0
-    .parameter "characteristic"
-    .parameter "uuid"
-    .parameter "instance"
-    .parameter "permissions"
+    .param p1, "characteristic"    # Landroid/bluetooth/BluetoothGattCharacteristic;
+    .param p2, "uuid"    # Ljava/util/UUID;
+    .param p3, "instance"    # I
+    .param p4, "permissions"    # I
 
     .prologue
     .line 143
@@ -155,7 +156,7 @@
     .line 146
     iput p4, p0, Landroid/bluetooth/BluetoothGattDescriptor;->mPermissions:I
 
-    .line 147
+    .line 142
     return-void
 .end method
 
@@ -213,19 +214,19 @@
 
 .method setCharacteristic(Landroid/bluetooth/BluetoothGattCharacteristic;)V
     .locals 0
-    .parameter "characteristic"
+    .param p1, "characteristic"    # Landroid/bluetooth/BluetoothGattCharacteristic;
 
     .prologue
     .line 162
     iput-object p1, p0, Landroid/bluetooth/BluetoothGattDescriptor;->mCharacteristic:Landroid/bluetooth/BluetoothGattCharacteristic;
 
-    .line 163
+    .line 161
     return-void
 .end method
 
 .method public setValue([B)Z
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # [B
 
     .prologue
     .line 225

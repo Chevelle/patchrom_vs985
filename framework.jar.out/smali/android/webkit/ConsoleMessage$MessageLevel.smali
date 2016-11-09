@@ -55,7 +55,7 @@
     .line 30
     new-instance v0, Landroid/webkit/ConsoleMessage$MessageLevel;
 
-    const-string v1, "TIP"
+    const-string/jumbo v1, "TIP"
 
     invoke-direct {v0, v1, v2}, Landroid/webkit/ConsoleMessage$MessageLevel;-><init>(Ljava/lang/String;I)V
 
@@ -64,7 +64,7 @@
     .line 31
     new-instance v0, Landroid/webkit/ConsoleMessage$MessageLevel;
 
-    const-string v1, "LOG"
+    const-string/jumbo v1, "LOG"
 
     invoke-direct {v0, v1, v3}, Landroid/webkit/ConsoleMessage$MessageLevel;-><init>(Ljava/lang/String;I)V
 
@@ -73,7 +73,7 @@
     .line 32
     new-instance v0, Landroid/webkit/ConsoleMessage$MessageLevel;
 
-    const-string v1, "WARNING"
+    const-string/jumbo v1, "WARNING"
 
     invoke-direct {v0, v1, v4}, Landroid/webkit/ConsoleMessage$MessageLevel;-><init>(Ljava/lang/String;I)V
 
@@ -82,7 +82,7 @@
     .line 33
     new-instance v0, Landroid/webkit/ConsoleMessage$MessageLevel;
 
-    const-string v1, "ERROR"
+    const-string/jumbo v1, "ERROR"
 
     invoke-direct {v0, v1, v5}, Landroid/webkit/ConsoleMessage$MessageLevel;-><init>(Ljava/lang/String;I)V
 
@@ -91,7 +91,7 @@
     .line 34
     new-instance v0, Landroid/webkit/ConsoleMessage$MessageLevel;
 
-    const-string v1, "DEBUG"
+    const-string/jumbo v1, "DEBUG"
 
     invoke-direct {v0, v1, v6}, Landroid/webkit/ConsoleMessage$MessageLevel;-><init>(Ljava/lang/String;I)V
 
@@ -129,13 +129,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 29
@@ -146,7 +139,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Landroid/webkit/ConsoleMessage$MessageLevel;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 29
@@ -167,12 +160,6 @@
     .prologue
     .line 29
     sget-object v0, Landroid/webkit/ConsoleMessage$MessageLevel;->$VALUES:[Landroid/webkit/ConsoleMessage$MessageLevel;
-
-    invoke-virtual {v0}, [Landroid/webkit/ConsoleMessage$MessageLevel;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/webkit/ConsoleMessage$MessageLevel;
 
     return-object v0
 .end method

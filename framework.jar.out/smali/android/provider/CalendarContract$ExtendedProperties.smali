@@ -28,15 +28,17 @@
     .locals 1
 
     .prologue
-    .line 2540
-    const-string v0, "content://com.android.calendar/extendedproperties"
+    .line 2541
+    const-string/jumbo v0, "content://com.android.calendar/extendedproperties"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 2540
     sput-object v0, Landroid/provider/CalendarContract$ExtendedProperties;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 2538
     return-void
 .end method
 

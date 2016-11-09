@@ -21,9 +21,9 @@
 # direct methods
 .method public constructor <init>(Ljavax/microedition/khronos/egl/EGL;ILjava/io/Writer;)V
     .locals 3
-    .parameter "egl"
-    .parameter "configFlags"
-    .parameter "log"
+    .param p1, "egl"    # Ljavax/microedition/khronos/egl/EGL;
+    .param p2, "configFlags"    # I
+    .param p3, "log"    # Ljava/io/Writer;
 
     .prologue
     const/4 v1, 0x1
@@ -36,50 +36,52 @@
     .line 39
     check-cast p1, Ljavax/microedition/khronos/egl/EGL10;
 
-    .end local p1
+    .end local p1    # "egl":Ljavax/microedition/khronos/egl/EGL;
     iput-object p1, p0, Landroid/opengl/EGLLogWrapper;->mEgl10:Ljavax/microedition/khronos/egl/EGL10;
 
     .line 40
     iput-object p3, p0, Landroid/opengl/EGLLogWrapper;->mLog:Ljava/io/Writer;
 
-    .line 41
+    .line 42
     and-int/lit8 v0, p2, 0x4
 
     if-eqz v0, :cond_0
 
     move v0, v1
 
+    .line 41
     :goto_0
     iput-boolean v0, p0, Landroid/opengl/EGLLogWrapper;->mLogArgumentNames:Z
 
-    .line 43
+    .line 44
     and-int/lit8 v0, p2, 0x1
 
     if-eqz v0, :cond_1
 
+    .line 43
     :goto_1
     iput-boolean v1, p0, Landroid/opengl/EGLLogWrapper;->mCheckError:Z
 
-    .line 45
+    .line 38
     return-void
 
     :cond_0
     move v0, v2
 
-    .line 41
+    .line 42
     goto :goto_0
 
     :cond_1
     move v1, v2
 
-    .line 43
+    .line 44
     goto :goto_1
 .end method
 
 .method private arg(Ljava/lang/String;I)V
     .locals 1
-    .parameter "name"
-    .parameter "value"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "value"    # I
 
     .prologue
     .line 421
@@ -89,14 +91,14 @@
 
     invoke-direct {p0, p1, v0}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 422
+    .line 420
     return-void
 .end method
 
 .method private arg(Ljava/lang/String;Ljava/lang/Object;)V
     .locals 1
-    .parameter "name"
-    .parameter "object"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "object"    # Ljava/lang/Object;
 
     .prologue
     .line 425
@@ -106,14 +108,14 @@
 
     invoke-direct {p0, p1, v0}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 426
+    .line 424
     return-void
 .end method
 
 .method private arg(Ljava/lang/String;Ljava/lang/String;)V
     .locals 2
-    .parameter "name"
-    .parameter "value"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "value"    # Ljava/lang/String;
 
     .prologue
     .line 398
@@ -126,7 +128,7 @@
     if-lez v0, :cond_0
 
     .line 399
-    const-string v0, ", "
+    const-string/jumbo v0, ", "
 
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->log(Ljava/lang/String;)V
 
@@ -145,7 +147,7 @@
 
     move-result-object v0
 
-    const-string v1, "="
+    const-string/jumbo v1, "="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -161,14 +163,14 @@
     :cond_1
     invoke-direct {p0, p2}, Landroid/opengl/EGLLogWrapper;->log(Ljava/lang/String;)V
 
-    .line 405
+    .line 397
     return-void
 .end method
 
 .method private arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLContext;)V
     .locals 1
-    .parameter "name"
-    .parameter "object"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "object"    # Ljavax/microedition/khronos/egl/EGLContext;
 
     .prologue
     .line 439
@@ -177,11 +179,11 @@
     if-ne p2, v0, :cond_0
 
     .line 440
-    const-string v0, "EGL10.EGL_NO_CONTEXT"
+    const-string/jumbo v0, "EGL10.EGL_NO_CONTEXT"
 
     invoke-direct {p0, p1, v0}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 444
+    .line 438
     :goto_0
     return-void
 
@@ -198,8 +200,8 @@
 
 .method private arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
     .locals 1
-    .parameter "name"
-    .parameter "object"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "object"    # Ljavax/microedition/khronos/egl/EGLDisplay;
 
     .prologue
     .line 429
@@ -208,11 +210,11 @@
     if-ne p2, v0, :cond_0
 
     .line 430
-    const-string v0, "EGL10.EGL_DEFAULT_DISPLAY"
+    const-string/jumbo v0, "EGL10.EGL_DEFAULT_DISPLAY"
 
     invoke-direct {p0, p1, v0}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 436
+    .line 428
     :goto_0
     return-void
 
@@ -223,7 +225,7 @@
     if-ne p2, v0, :cond_1
 
     .line 432
-    const-string v0, "EGL10.EGL_NO_DISPLAY"
+    const-string/jumbo v0, "EGL10.EGL_NO_DISPLAY"
 
     invoke-direct {p0, p1, v0}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/String;)V
 
@@ -242,8 +244,8 @@
 
 .method private arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLSurface;)V
     .locals 1
-    .parameter "name"
-    .parameter "object"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "object"    # Ljavax/microedition/khronos/egl/EGLSurface;
 
     .prologue
     .line 447
@@ -252,11 +254,11 @@
     if-ne p2, v0, :cond_0
 
     .line 448
-    const-string v0, "EGL10.EGL_NO_SURFACE"
+    const-string/jumbo v0, "EGL10.EGL_NO_SURFACE"
 
     invoke-direct {p0, p1, v0}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 452
+    .line 446
     :goto_0
     return-void
 
@@ -273,8 +275,8 @@
 
 .method private arg(Ljava/lang/String;[I)V
     .locals 2
-    .parameter "name"
-    .parameter "arr"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "arr"    # [I
 
     .prologue
     .line 480
@@ -285,7 +287,7 @@
 
     invoke-direct {p0, p1, v0}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 485
+    .line 479
     :goto_0
     return-void
 
@@ -306,8 +308,8 @@
 
 .method private arg(Ljava/lang/String;[Ljava/lang/Object;)V
     .locals 2
-    .parameter "name"
-    .parameter "arr"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "arr"    # [Ljava/lang/Object;
 
     .prologue
     .line 488
@@ -318,7 +320,7 @@
 
     invoke-direct {p0, p1, v0}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 493
+    .line 487
     :goto_0
     return-void
 
@@ -339,7 +341,7 @@
 
 .method private begin(Ljava/lang/String;)V
     .locals 2
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
     .line 393
@@ -368,7 +370,7 @@
 
     iput v0, p0, Landroid/opengl/EGLLogWrapper;->mArgCount:I
 
-    .line 395
+    .line 392
     return-void
 .end method
 
@@ -383,7 +385,7 @@
 
     move-result v0
 
-    .local v0, eglError:I
+    .local v0, "eglError":I
     const/16 v2, 0x3000
 
     if-eq v0, v2, :cond_0
@@ -393,7 +395,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "eglError: "
+    const-string/jumbo v3, "eglError: "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -412,7 +414,7 @@
     move-result-object v1
 
     .line 373
-    .local v1, errorMessage:Ljava/lang/String;
+    .local v1, "errorMessage":Ljava/lang/String;
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->logLine(Ljava/lang/String;)V
 
     .line 374
@@ -427,8 +429,8 @@
 
     throw v2
 
-    .line 378
-    .end local v1           #errorMessage:Ljava/lang/String;
+    .line 369
+    .end local v1    # "errorMessage":Ljava/lang/String;
     :cond_0
     return-void
 .end method
@@ -438,14 +440,14 @@
 
     .prologue
     .line 408
-    const-string v0, ");\n"
+    const-string/jumbo v0, ");\n"
 
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->log(Ljava/lang/String;)V
 
     .line 409
     invoke-direct {p0}, Landroid/opengl/EGLLogWrapper;->flush()V
 
-    .line 410
+    .line 407
     return-void
 .end method
 
@@ -461,7 +463,7 @@
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 418
+    .line 412
     :goto_0
     return-void
 
@@ -470,7 +472,7 @@
     move-exception v0
 
     .line 416
-    .local v0, e:Ljava/io/IOException;
+    .local v0, "e":Ljava/io/IOException;
     const/4 v1, 0x0
 
     iput-object v1, p0, Landroid/opengl/EGLLogWrapper;->mLog:Ljava/io/Writer;
@@ -480,7 +482,7 @@
 
 .method public static getErrorString(I)Ljava/lang/String;
     .locals 1
-    .parameter "error"
+    .param p0, "error"    # I
 
     .prologue
     .line 536
@@ -491,102 +493,99 @@
 
     move-result-object v0
 
-    :goto_0
     return-object v0
 
     .line 538
     :pswitch_0
-    const-string v0, "EGL_SUCCESS"
+    const-string/jumbo v0, "EGL_SUCCESS"
 
-    goto :goto_0
+    return-object v0
 
     .line 540
     :pswitch_1
-    const-string v0, "EGL_NOT_INITIALIZED"
+    const-string/jumbo v0, "EGL_NOT_INITIALIZED"
 
-    goto :goto_0
+    return-object v0
 
     .line 542
     :pswitch_2
-    const-string v0, "EGL_BAD_ACCESS"
+    const-string/jumbo v0, "EGL_BAD_ACCESS"
 
-    goto :goto_0
+    return-object v0
 
     .line 544
     :pswitch_3
-    const-string v0, "EGL_BAD_ALLOC"
+    const-string/jumbo v0, "EGL_BAD_ALLOC"
 
-    goto :goto_0
+    return-object v0
 
     .line 546
     :pswitch_4
-    const-string v0, "EGL_BAD_ATTRIBUTE"
+    const-string/jumbo v0, "EGL_BAD_ATTRIBUTE"
 
-    goto :goto_0
+    return-object v0
 
     .line 548
     :pswitch_5
-    const-string v0, "EGL_BAD_CONFIG"
+    const-string/jumbo v0, "EGL_BAD_CONFIG"
 
-    goto :goto_0
+    return-object v0
 
     .line 550
     :pswitch_6
-    const-string v0, "EGL_BAD_CONTEXT"
+    const-string/jumbo v0, "EGL_BAD_CONTEXT"
 
-    goto :goto_0
+    return-object v0
 
     .line 552
     :pswitch_7
-    const-string v0, "EGL_BAD_CURRENT_SURFACE"
+    const-string/jumbo v0, "EGL_BAD_CURRENT_SURFACE"
 
-    goto :goto_0
+    return-object v0
 
     .line 554
     :pswitch_8
-    const-string v0, "EGL_BAD_DISPLAY"
+    const-string/jumbo v0, "EGL_BAD_DISPLAY"
 
-    goto :goto_0
+    return-object v0
 
     .line 556
     :pswitch_9
-    const-string v0, "EGL_BAD_MATCH"
+    const-string/jumbo v0, "EGL_BAD_MATCH"
 
-    goto :goto_0
+    return-object v0
 
     .line 558
     :pswitch_a
-    const-string v0, "EGL_BAD_NATIVE_PIXMAP"
+    const-string/jumbo v0, "EGL_BAD_NATIVE_PIXMAP"
 
-    goto :goto_0
+    return-object v0
 
     .line 560
     :pswitch_b
-    const-string v0, "EGL_BAD_NATIVE_WINDOW"
+    const-string/jumbo v0, "EGL_BAD_NATIVE_WINDOW"
 
-    goto :goto_0
+    return-object v0
 
     .line 562
     :pswitch_c
-    const-string v0, "EGL_BAD_PARAMETER"
+    const-string/jumbo v0, "EGL_BAD_PARAMETER"
 
-    goto :goto_0
+    return-object v0
 
     .line 564
     :pswitch_d
-    const-string v0, "EGL_BAD_SURFACE"
+    const-string/jumbo v0, "EGL_BAD_SURFACE"
 
-    goto :goto_0
+    return-object v0
 
     .line 566
     :pswitch_e
-    const-string v0, "EGL_CONTEXT_LOST"
+    const-string/jumbo v0, "EGL_CONTEXT_LOST"
 
-    goto :goto_0
+    return-object v0
 
     .line 536
-    nop
-
     :pswitch_data_0
     .packed-switch 0x3000
         :pswitch_0
@@ -609,7 +608,7 @@
 
 .method private static getHex(I)Ljava/lang/String;
     .locals 2
-    .parameter "value"
+    .param p0, "value"    # I
 
     .prologue
     .line 532
@@ -617,7 +616,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "0x"
+    const-string/jumbo v1, "0x"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -639,19 +638,19 @@
 .end method
 
 .method private log(Ljava/lang/String;)V
-    .locals 1
-    .parameter "message"
+    .locals 2
+    .param p1, "message"    # Ljava/lang/String;
 
     .prologue
     .line 386
     :try_start_0
-    iget-object v0, p0, Landroid/opengl/EGLLogWrapper;->mLog:Ljava/io/Writer;
+    iget-object v1, p0, Landroid/opengl/EGLLogWrapper;->mLog:Ljava/io/Writer;
 
-    invoke-virtual {v0, p1}, Ljava/io/Writer;->write(Ljava/lang/String;)V
+    invoke-virtual {v1, p1}, Ljava/io/Writer;->write(Ljava/lang/String;)V
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 390
+    .line 384
     :goto_0
     return-void
 
@@ -659,12 +658,13 @@
     :catch_0
     move-exception v0
 
+    .local v0, "e":Ljava/io/IOException;
     goto :goto_0
 .end method
 
 .method private logLine(Ljava/lang/String;)V
     .locals 2
-    .parameter "message"
+    .param p1, "message"    # Ljava/lang/String;
 
     .prologue
     .line 381
@@ -688,13 +688,13 @@
 
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->log(Ljava/lang/String;)V
 
-    .line 382
+    .line 380
     return-void
 .end method
 
 .method private returns(I)V
     .locals 1
-    .parameter "result"
+    .param p1, "result"    # I
 
     .prologue
     .line 460
@@ -704,13 +704,13 @@
 
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Ljava/lang/String;)V
 
-    .line 461
+    .line 459
     return-void
 .end method
 
 .method private returns(Ljava/lang/Object;)V
     .locals 1
-    .parameter "result"
+    .param p1, "result"    # Ljava/lang/Object;
 
     .prologue
     .line 468
@@ -720,13 +720,13 @@
 
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Ljava/lang/String;)V
 
-    .line 469
+    .line 467
     return-void
 .end method
 
 .method private returns(Ljava/lang/String;)V
     .locals 2
-    .parameter "result"
+    .param p1, "result"    # Ljava/lang/String;
 
     .prologue
     .line 455
@@ -734,7 +734,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, " returns "
+    const-string/jumbo v1, " returns "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -744,7 +744,7 @@
 
     move-result-object v0
 
-    const-string v1, ";\n"
+    const-string/jumbo v1, ";\n"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -759,13 +759,13 @@
     .line 456
     invoke-direct {p0}, Landroid/opengl/EGLLogWrapper;->flush()V
 
-    .line 457
+    .line 454
     return-void
 .end method
 
 .method private returns(Z)V
     .locals 1
-    .parameter "result"
+    .param p1, "result"    # Z
 
     .prologue
     .line 464
@@ -775,15 +775,15 @@
 
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Ljava/lang/String;)V
 
-    .line 465
+    .line 463
     return-void
 .end method
 
 .method private toString(I[II)Ljava/lang/String;
     .locals 6
-    .parameter "n"
-    .parameter "arr"
-    .parameter "offset"
+    .param p1, "n"    # I
+    .param p2, "arr"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 496
@@ -792,7 +792,7 @@
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 497
-    .local v1, buf:Ljava/lang/StringBuilder;
+    .local v1, "buf":Ljava/lang/StringBuilder;
     const-string/jumbo v4, "{\n"
 
     invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -801,10 +801,10 @@
     array-length v0, p2
 
     .line 499
-    .local v0, arrLen:I
+    .local v0, "arrLen":I
     const/4 v2, 0x0
 
-    .local v2, i:I
+    .local v2, "i":I
     :goto_0
     if-ge v2, p1, :cond_2
 
@@ -812,14 +812,10 @@
     add-int v3, p3, v2
 
     .line 501
-    .local v3, index:I
-    new-instance v4, Ljava/lang/StringBuilder;
+    .local v3, "index":I
+    const-string/jumbo v4, " ["
 
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, " ["
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
@@ -827,17 +823,9 @@
 
     move-result-object v4
 
-    const-string v5, "] = "
+    const-string/jumbo v5, "] = "
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 502
     if-ltz v3, :cond_0
@@ -870,7 +858,7 @@
     goto :goto_1
 
     .line 509
-    .end local v3           #index:I
+    .end local v3    # "index":I
     :cond_2
     const-string/jumbo v4, "}"
 
@@ -886,9 +874,9 @@
 
 .method private toString(I[Ljava/lang/Object;I)Ljava/lang/String;
     .locals 6
-    .parameter "n"
-    .parameter "arr"
-    .parameter "offset"
+    .param p1, "n"    # I
+    .param p2, "arr"    # [Ljava/lang/Object;
+    .param p3, "offset"    # I
 
     .prologue
     .line 514
@@ -897,7 +885,7 @@
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 515
-    .local v1, buf:Ljava/lang/StringBuilder;
+    .local v1, "buf":Ljava/lang/StringBuilder;
     const-string/jumbo v4, "{\n"
 
     invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -906,10 +894,10 @@
     array-length v0, p2
 
     .line 517
-    .local v0, arrLen:I
+    .local v0, "arrLen":I
     const/4 v2, 0x0
 
-    .local v2, i:I
+    .local v2, "i":I
     :goto_0
     if-ge v2, p1, :cond_2
 
@@ -917,14 +905,10 @@
     add-int v3, p3, v2
 
     .line 519
-    .local v3, index:I
-    new-instance v4, Ljava/lang/StringBuilder;
+    .local v3, "index":I
+    const-string/jumbo v4, " ["
 
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, " ["
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
@@ -932,17 +916,9 @@
 
     move-result-object v4
 
-    const-string v5, "] = "
+    const-string/jumbo v5, "] = "
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 520
     if-ltz v3, :cond_0
@@ -975,7 +951,7 @@
     goto :goto_1
 
     .line 527
-    .end local v3           #index:I
+    .end local v3    # "index":I
     :cond_2
     const-string/jumbo v4, "}"
 
@@ -991,7 +967,7 @@
 
 .method private toString(Ljava/lang/Object;)Ljava/lang/String;
     .locals 1
-    .parameter "obj"
+    .param p1, "obj"    # Ljava/lang/Object;
 
     .prologue
     .line 472
@@ -1000,46 +976,45 @@
     .line 473
     const-string/jumbo v0, "null"
 
-    .line 475
-    :goto_0
     return-object v0
 
+    .line 475
     :cond_0
     invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     move-result-object v0
 
-    goto :goto_0
+    return-object v0
 .end method
 
 
 # virtual methods
 .method public eglChooseConfig(Ljavax/microedition/khronos/egl/EGLDisplay;[I[Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
     .locals 7
-    .parameter "display"
-    .parameter "attrib_list"
-    .parameter "configs"
-    .parameter "config_size"
-    .parameter "num_config"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "attrib_list"    # [I
+    .param p3, "configs"    # [Ljavax/microedition/khronos/egl/EGLConfig;
+    .param p4, "config_size"    # I
+    .param p5, "num_config"    # [I
 
     .prologue
     .line 49
-    const-string v0, "eglChooseConfig"
+    const-string/jumbo v0, "eglChooseConfig"
 
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 50
-    const-string v0, "display"
+    const-string/jumbo v0, "display"
 
     invoke-direct {p0, v0, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
     .line 51
-    const-string v0, "attrib_list"
+    const-string/jumbo v0, "attrib_list"
 
     invoke-direct {p0, v0, p2}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;[I)V
 
     .line 52
-    const-string v0, "config_size"
+    const-string/jumbo v0, "config_size"
 
     invoke-direct {p0, v0, p4}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;I)V
 
@@ -1064,8 +1039,8 @@
     move-result v6
 
     .line 57
-    .local v6, result:Z
-    const-string v0, "configs"
+    .local v6, "result":Z
+    const-string/jumbo v0, "configs"
 
     invoke-direct {p0, v0, p3}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;[Ljava/lang/Object;)V
 
@@ -1086,18 +1061,18 @@
 
 .method public eglCopyBuffers(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;Ljava/lang/Object;)Z
     .locals 2
-    .parameter "display"
-    .parameter "surface"
-    .parameter "native_pixmap"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "surface"    # Ljavax/microedition/khronos/egl/EGLSurface;
+    .param p3, "native_pixmap"    # Ljava/lang/Object;
 
     .prologue
     .line 66
-    const-string v1, "eglCopyBuffers"
+    const-string/jumbo v1, "eglCopyBuffers"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 67
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
@@ -1122,7 +1097,7 @@
     move-result v0
 
     .line 73
-    .local v0, result:Z
+    .local v0, "result":Z
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Z)V
 
     .line 74
@@ -1134,24 +1109,24 @@
 
 .method public eglCreateContext(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;Ljavax/microedition/khronos/egl/EGLContext;[I)Ljavax/microedition/khronos/egl/EGLContext;
     .locals 2
-    .parameter "display"
-    .parameter "config"
-    .parameter "share_context"
-    .parameter "attrib_list"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "config"    # Ljavax/microedition/khronos/egl/EGLConfig;
+    .param p3, "share_context"    # Ljavax/microedition/khronos/egl/EGLContext;
+    .param p4, "attrib_list"    # [I
 
     .prologue
     .line 80
-    const-string v1, "eglCreateContext"
+    const-string/jumbo v1, "eglCreateContext"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 81
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
     .line 82
-    const-string v1, "config"
+    const-string/jumbo v1, "config"
 
     invoke-direct {p0, v1, p2}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/Object;)V
 
@@ -1161,7 +1136,7 @@
     invoke-direct {p0, v1, p3}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLContext;)V
 
     .line 84
-    const-string v1, "attrib_list"
+    const-string/jumbo v1, "attrib_list"
 
     invoke-direct {p0, v1, p4}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;[I)V
 
@@ -1176,7 +1151,7 @@
     move-result-object v0
 
     .line 89
-    .local v0, result:Ljavax/microedition/khronos/egl/EGLContext;
+    .local v0, "result":Ljavax/microedition/khronos/egl/EGLContext;
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Ljava/lang/Object;)V
 
     .line 90
@@ -1188,28 +1163,28 @@
 
 .method public eglCreatePbufferSurface(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;[I)Ljavax/microedition/khronos/egl/EGLSurface;
     .locals 2
-    .parameter "display"
-    .parameter "config"
-    .parameter "attrib_list"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "config"    # Ljavax/microedition/khronos/egl/EGLConfig;
+    .param p3, "attrib_list"    # [I
 
     .prologue
     .line 96
-    const-string v1, "eglCreatePbufferSurface"
+    const-string/jumbo v1, "eglCreatePbufferSurface"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 97
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
     .line 98
-    const-string v1, "config"
+    const-string/jumbo v1, "config"
 
     invoke-direct {p0, v1, p2}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/Object;)V
 
     .line 99
-    const-string v1, "attrib_list"
+    const-string/jumbo v1, "attrib_list"
 
     invoke-direct {p0, v1, p3}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;[I)V
 
@@ -1224,7 +1199,7 @@
     move-result-object v0
 
     .line 104
-    .local v0, result:Ljavax/microedition/khronos/egl/EGLSurface;
+    .local v0, "result":Ljavax/microedition/khronos/egl/EGLSurface;
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Ljava/lang/Object;)V
 
     .line 105
@@ -1236,24 +1211,24 @@
 
 .method public eglCreatePixmapSurface(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;Ljava/lang/Object;[I)Ljavax/microedition/khronos/egl/EGLSurface;
     .locals 2
-    .parameter "display"
-    .parameter "config"
-    .parameter "native_pixmap"
-    .parameter "attrib_list"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "config"    # Ljavax/microedition/khronos/egl/EGLConfig;
+    .param p3, "native_pixmap"    # Ljava/lang/Object;
+    .param p4, "attrib_list"    # [I
 
     .prologue
     .line 111
-    const-string v1, "eglCreatePixmapSurface"
+    const-string/jumbo v1, "eglCreatePixmapSurface"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 112
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
     .line 113
-    const-string v1, "config"
+    const-string/jumbo v1, "config"
 
     invoke-direct {p0, v1, p2}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/Object;)V
 
@@ -1263,7 +1238,7 @@
     invoke-direct {p0, v1, p3}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/Object;)V
 
     .line 115
-    const-string v1, "attrib_list"
+    const-string/jumbo v1, "attrib_list"
 
     invoke-direct {p0, v1, p4}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;[I)V
 
@@ -1278,7 +1253,7 @@
     move-result-object v0
 
     .line 120
-    .local v0, result:Ljavax/microedition/khronos/egl/EGLSurface;
+    .local v0, "result":Ljavax/microedition/khronos/egl/EGLSurface;
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Ljava/lang/Object;)V
 
     .line 121
@@ -1290,24 +1265,24 @@
 
 .method public eglCreateWindowSurface(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;Ljava/lang/Object;[I)Ljavax/microedition/khronos/egl/EGLSurface;
     .locals 2
-    .parameter "display"
-    .parameter "config"
-    .parameter "native_window"
-    .parameter "attrib_list"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "config"    # Ljavax/microedition/khronos/egl/EGLConfig;
+    .param p3, "native_window"    # Ljava/lang/Object;
+    .param p4, "attrib_list"    # [I
 
     .prologue
     .line 127
-    const-string v1, "eglCreateWindowSurface"
+    const-string/jumbo v1, "eglCreateWindowSurface"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 128
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
     .line 129
-    const-string v1, "config"
+    const-string/jumbo v1, "config"
 
     invoke-direct {p0, v1, p2}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/Object;)V
 
@@ -1317,7 +1292,7 @@
     invoke-direct {p0, v1, p3}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/Object;)V
 
     .line 131
-    const-string v1, "attrib_list"
+    const-string/jumbo v1, "attrib_list"
 
     invoke-direct {p0, v1, p4}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;[I)V
 
@@ -1332,7 +1307,7 @@
     move-result-object v0
 
     .line 136
-    .local v0, result:Ljavax/microedition/khronos/egl/EGLSurface;
+    .local v0, "result":Ljavax/microedition/khronos/egl/EGLSurface;
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Ljava/lang/Object;)V
 
     .line 137
@@ -1344,22 +1319,22 @@
 
 .method public eglDestroyContext(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLContext;)Z
     .locals 2
-    .parameter "display"
-    .parameter "context"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "context"    # Ljavax/microedition/khronos/egl/EGLContext;
 
     .prologue
     .line 142
-    const-string v1, "eglDestroyContext"
+    const-string/jumbo v1, "eglDestroyContext"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 143
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
     .line 144
-    const-string v1, "context"
+    const-string/jumbo v1, "context"
 
     invoke-direct {p0, v1, p2}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLContext;)V
 
@@ -1374,7 +1349,7 @@
     move-result v0
 
     .line 148
-    .local v0, result:Z
+    .local v0, "result":Z
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Z)V
 
     .line 149
@@ -1386,17 +1361,17 @@
 
 .method public eglDestroySurface(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;)Z
     .locals 2
-    .parameter "display"
-    .parameter "surface"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "surface"    # Ljavax/microedition/khronos/egl/EGLSurface;
 
     .prologue
     .line 154
-    const-string v1, "eglDestroySurface"
+    const-string/jumbo v1, "eglDestroySurface"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 155
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
@@ -1416,7 +1391,7 @@
     move-result v0
 
     .line 160
-    .local v0, result:Z
+    .local v0, "result":Z
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Z)V
 
     .line 161
@@ -1428,29 +1403,29 @@
 
 .method public eglGetConfigAttrib(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
     .locals 2
-    .parameter "display"
-    .parameter "config"
-    .parameter "attribute"
-    .parameter "value"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "config"    # Ljavax/microedition/khronos/egl/EGLConfig;
+    .param p3, "attribute"    # I
+    .param p4, "value"    # [I
 
     .prologue
     .line 167
-    const-string v1, "eglGetConfigAttrib"
+    const-string/jumbo v1, "eglGetConfigAttrib"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 168
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
     .line 169
-    const-string v1, "config"
+    const-string/jumbo v1, "config"
 
     invoke-direct {p0, v1, p2}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/Object;)V
 
     .line 170
-    const-string v1, "attribute"
+    const-string/jumbo v1, "attribute"
 
     invoke-direct {p0, v1, p3}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;I)V
 
@@ -1465,7 +1440,7 @@
     move-result v0
 
     .line 174
-    .local v0, result:Z
+    .local v0, "result":Z
     const-string/jumbo v1, "value"
 
     invoke-direct {p0, v1, p4}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;[I)V
@@ -1484,24 +1459,24 @@
 
 .method public eglGetConfigs(Ljavax/microedition/khronos/egl/EGLDisplay;[Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
     .locals 2
-    .parameter "display"
-    .parameter "configs"
-    .parameter "config_size"
-    .parameter "num_config"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "configs"    # [Ljavax/microedition/khronos/egl/EGLConfig;
+    .param p3, "config_size"    # I
+    .param p4, "num_config"    # [I
 
     .prologue
     .line 182
-    const-string v1, "eglGetConfigs"
+    const-string/jumbo v1, "eglGetConfigs"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 183
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
     .line 184
-    const-string v1, "config_size"
+    const-string/jumbo v1, "config_size"
 
     invoke-direct {p0, v1, p3}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;I)V
 
@@ -1516,8 +1491,8 @@
     move-result v0
 
     .line 189
-    .local v0, result:Z
-    const-string v1, "configs"
+    .local v0, "result":Z
+    const-string/jumbo v1, "configs"
 
     invoke-direct {p0, v1, p2}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;[Ljava/lang/Object;)V
 
@@ -1541,7 +1516,7 @@
 
     .prologue
     .line 197
-    const-string v1, "eglGetCurrentContext"
+    const-string/jumbo v1, "eglGetCurrentContext"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
@@ -1556,7 +1531,7 @@
     move-result-object v0
 
     .line 201
-    .local v0, result:Ljavax/microedition/khronos/egl/EGLContext;
+    .local v0, "result":Ljavax/microedition/khronos/egl/EGLContext;
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Ljava/lang/Object;)V
 
     .line 203
@@ -1571,7 +1546,7 @@
 
     .prologue
     .line 208
-    const-string v1, "eglGetCurrentDisplay"
+    const-string/jumbo v1, "eglGetCurrentDisplay"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
@@ -1586,7 +1561,7 @@
     move-result-object v0
 
     .line 212
-    .local v0, result:Ljavax/microedition/khronos/egl/EGLDisplay;
+    .local v0, "result":Ljavax/microedition/khronos/egl/EGLDisplay;
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Ljava/lang/Object;)V
 
     .line 214
@@ -1598,11 +1573,11 @@
 
 .method public eglGetCurrentSurface(I)Ljavax/microedition/khronos/egl/EGLSurface;
     .locals 2
-    .parameter "readdraw"
+    .param p1, "readdraw"    # I
 
     .prologue
     .line 219
-    const-string v1, "eglGetCurrentSurface"
+    const-string/jumbo v1, "eglGetCurrentSurface"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
@@ -1622,7 +1597,7 @@
     move-result-object v0
 
     .line 224
-    .local v0, result:Ljavax/microedition/khronos/egl/EGLSurface;
+    .local v0, "result":Ljavax/microedition/khronos/egl/EGLSurface;
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Ljava/lang/Object;)V
 
     .line 226
@@ -1634,11 +1609,11 @@
 
 .method public eglGetDisplay(Ljava/lang/Object;)Ljavax/microedition/khronos/egl/EGLDisplay;
     .locals 2
-    .parameter "native_display"
+    .param p1, "native_display"    # Ljava/lang/Object;
 
     .prologue
     .line 231
-    const-string v1, "eglGetDisplay"
+    const-string/jumbo v1, "eglGetDisplay"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
@@ -1658,7 +1633,7 @@
     move-result-object v0
 
     .line 236
-    .local v0, result:Ljavax/microedition/khronos/egl/EGLDisplay;
+    .local v0, "result":Ljavax/microedition/khronos/egl/EGLDisplay;
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Ljava/lang/Object;)V
 
     .line 238
@@ -1673,7 +1648,7 @@
 
     .prologue
     .line 243
-    const-string v1, "eglGetError"
+    const-string/jumbo v1, "eglGetError"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
@@ -1688,7 +1663,7 @@
     move-result v0
 
     .line 247
-    .local v0, result:I
+    .local v0, "result":I
     invoke-static {v0}, Landroid/opengl/EGLLogWrapper;->getErrorString(I)Ljava/lang/String;
 
     move-result-object v1
@@ -1701,17 +1676,17 @@
 
 .method public eglInitialize(Ljavax/microedition/khronos/egl/EGLDisplay;[I)Z
     .locals 2
-    .parameter "display"
-    .parameter "major_minor"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "major_minor"    # [I
 
     .prologue
     .line 253
-    const-string v1, "eglInitialize"
+    const-string/jumbo v1, "eglInitialize"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 254
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
@@ -1726,11 +1701,11 @@
     move-result v0
 
     .line 257
-    .local v0, result:Z
+    .local v0, "result":Z
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Z)V
 
     .line 258
-    const-string v1, "major_minor"
+    const-string/jumbo v1, "major_minor"
 
     invoke-direct {p0, v1, p2}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;[I)V
 
@@ -1743,24 +1718,24 @@
 
 .method public eglMakeCurrent(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;Ljavax/microedition/khronos/egl/EGLSurface;Ljavax/microedition/khronos/egl/EGLContext;)Z
     .locals 2
-    .parameter "display"
-    .parameter "draw"
-    .parameter "read"
-    .parameter "context"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "draw"    # Ljavax/microedition/khronos/egl/EGLSurface;
+    .param p3, "read"    # Ljavax/microedition/khronos/egl/EGLSurface;
+    .param p4, "context"    # Ljavax/microedition/khronos/egl/EGLContext;
 
     .prologue
     .line 265
-    const-string v1, "eglMakeCurrent"
+    const-string/jumbo v1, "eglMakeCurrent"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 266
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
     .line 267
-    const-string v1, "draw"
+    const-string/jumbo v1, "draw"
 
     invoke-direct {p0, v1, p2}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLSurface;)V
 
@@ -1770,7 +1745,7 @@
     invoke-direct {p0, v1, p3}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLSurface;)V
 
     .line 269
-    const-string v1, "context"
+    const-string/jumbo v1, "context"
 
     invoke-direct {p0, v1, p4}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLContext;)V
 
@@ -1785,7 +1760,7 @@
     move-result v0
 
     .line 272
-    .local v0, result:Z
+    .local v0, "result":Z
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Z)V
 
     .line 273
@@ -1797,29 +1772,29 @@
 
 .method public eglQueryContext(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLContext;I[I)Z
     .locals 2
-    .parameter "display"
-    .parameter "context"
-    .parameter "attribute"
-    .parameter "value"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "context"    # Ljavax/microedition/khronos/egl/EGLContext;
+    .param p3, "attribute"    # I
+    .param p4, "value"    # [I
 
     .prologue
     .line 279
-    const-string v1, "eglQueryContext"
+    const-string/jumbo v1, "eglQueryContext"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 280
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
     .line 281
-    const-string v1, "context"
+    const-string/jumbo v1, "context"
 
     invoke-direct {p0, v1, p2}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLContext;)V
 
     .line 282
-    const-string v1, "attribute"
+    const-string/jumbo v1, "attribute"
 
     invoke-direct {p0, v1, p3}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;I)V
 
@@ -1834,7 +1809,7 @@
     move-result v0
 
     .line 286
-    .local v0, result:Z
+    .local v0, "result":Z
     const/4 v1, 0x0
 
     aget v1, p4, v1
@@ -1853,22 +1828,22 @@
 
 .method public eglQueryString(Ljavax/microedition/khronos/egl/EGLDisplay;I)Ljava/lang/String;
     .locals 2
-    .parameter "display"
-    .parameter "name"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "name"    # I
 
     .prologue
     .line 293
-    const-string v1, "eglQueryString"
+    const-string/jumbo v1, "eglQueryString"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 294
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
     .line 295
-    const-string v1, "name"
+    const-string/jumbo v1, "name"
 
     invoke-direct {p0, v1, p2}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;I)V
 
@@ -1883,7 +1858,7 @@
     move-result-object v0
 
     .line 298
-    .local v0, result:Ljava/lang/String;
+    .local v0, "result":Ljava/lang/String;
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Ljava/lang/String;)V
 
     .line 299
@@ -1895,19 +1870,19 @@
 
 .method public eglQuerySurface(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;I[I)Z
     .locals 2
-    .parameter "display"
-    .parameter "surface"
-    .parameter "attribute"
-    .parameter "value"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "surface"    # Ljavax/microedition/khronos/egl/EGLSurface;
+    .param p3, "attribute"    # I
+    .param p4, "value"    # [I
 
     .prologue
     .line 305
-    const-string v1, "eglQuerySurface"
+    const-string/jumbo v1, "eglQuerySurface"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 306
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
@@ -1917,7 +1892,7 @@
     invoke-direct {p0, v1, p2}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLSurface;)V
 
     .line 308
-    const-string v1, "attribute"
+    const-string/jumbo v1, "attribute"
 
     invoke-direct {p0, v1, p3}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;I)V
 
@@ -1932,7 +1907,7 @@
     move-result v0
 
     .line 312
-    .local v0, result:Z
+    .local v0, "result":Z
     const/4 v1, 0x0
 
     aget v1, p4, v1
@@ -1954,7 +1929,7 @@
 
     .prologue
     .line 320
-    const-string v1, "eglReleaseThread"
+    const-string/jumbo v1, "eglReleaseThread"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
@@ -1969,7 +1944,7 @@
     move-result v0
 
     .line 323
-    .local v0, result:Z
+    .local v0, "result":Z
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Z)V
 
     .line 324
@@ -1981,17 +1956,17 @@
 
 .method public eglSwapBuffers(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;)Z
     .locals 2
-    .parameter "display"
-    .parameter "surface"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p2, "surface"    # Ljavax/microedition/khronos/egl/EGLSurface;
 
     .prologue
     .line 329
-    const-string v1, "eglInitialize"
+    const-string/jumbo v1, "eglSwapBuffers"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 330
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
@@ -2011,7 +1986,7 @@
     move-result v0
 
     .line 334
-    .local v0, result:Z
+    .local v0, "result":Z
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Z)V
 
     .line 335
@@ -2023,16 +1998,16 @@
 
 .method public eglTerminate(Ljavax/microedition/khronos/egl/EGLDisplay;)Z
     .locals 2
-    .parameter "display"
+    .param p1, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
 
     .prologue
     .line 340
-    const-string v1, "eglTerminate"
+    const-string/jumbo v1, "eglTerminate"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 341
-    const-string v1, "display"
+    const-string/jumbo v1, "display"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljavax/microedition/khronos/egl/EGLDisplay;)V
 
@@ -2047,7 +2022,7 @@
     move-result v0
 
     .line 344
-    .local v0, result:Z
+    .local v0, "result":Z
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Z)V
 
     .line 345
@@ -2062,7 +2037,7 @@
 
     .prologue
     .line 350
-    const-string v1, "eglWaitGL"
+    const-string/jumbo v1, "eglWaitGL"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
@@ -2077,7 +2052,7 @@
     move-result v0
 
     .line 353
-    .local v0, result:Z
+    .local v0, "result":Z
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Z)V
 
     .line 354
@@ -2089,22 +2064,22 @@
 
 .method public eglWaitNative(ILjava/lang/Object;)Z
     .locals 2
-    .parameter "engine"
-    .parameter "bindTarget"
+    .param p1, "engine"    # I
+    .param p2, "bindTarget"    # Ljava/lang/Object;
 
     .prologue
     .line 359
-    const-string v1, "eglWaitNative"
+    const-string/jumbo v1, "eglWaitNative"
 
     invoke-direct {p0, v1}, Landroid/opengl/EGLLogWrapper;->begin(Ljava/lang/String;)V
 
     .line 360
-    const-string v1, "engine"
+    const-string/jumbo v1, "engine"
 
     invoke-direct {p0, v1, p1}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;I)V
 
     .line 361
-    const-string v1, "bindTarget"
+    const-string/jumbo v1, "bindTarget"
 
     invoke-direct {p0, v1, p2}, Landroid/opengl/EGLLogWrapper;->arg(Ljava/lang/String;Ljava/lang/Object;)V
 
@@ -2119,7 +2094,7 @@
     move-result v0
 
     .line 364
-    .local v0, result:Z
+    .local v0, "result":Z
     invoke-direct {p0, v0}, Landroid/opengl/EGLLogWrapper;->returns(Z)V
 
     .line 365

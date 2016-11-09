@@ -4,7 +4,7 @@
 
 
 # instance fields
-.field native_instance:I
+.field native_instance:J
 
 
 # direct methods
@@ -18,13 +18,13 @@
     return-void
 .end method
 
-.method private static native nativeDestructor(I)V
+.method private static native nativeDestructor(J)V
 .end method
 
 
 # virtual methods
 .method protected finalize()V
-    .locals 1
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/Throwable;
@@ -33,10 +33,10 @@
 
     .prologue
     .line 27
-    iget v0, p0, Landroid/graphics/PathEffect;->native_instance:I
+    iget-wide v0, p0, Landroid/graphics/PathEffect;->native_instance:J
 
-    invoke-static {v0}, Landroid/graphics/PathEffect;->nativeDestructor(I)V
+    invoke-static {v0, v1}, Landroid/graphics/PathEffect;->nativeDestructor(J)V
 
-    .line 28
+    .line 26
     return-void
 .end method

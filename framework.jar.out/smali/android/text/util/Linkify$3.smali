@@ -22,7 +22,7 @@
     .locals 0
 
     .prologue
-    .line 142
+    .line 145
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -32,11 +32,11 @@
 # virtual methods
 .method public final transformUrl(Ljava/util/regex/Matcher;Ljava/lang/String;)Ljava/lang/String;
     .locals 1
-    .parameter "match"
-    .parameter "url"
+    .param p1, "match"    # Ljava/util/regex/Matcher;
+    .param p2, "url"    # Ljava/lang/String;
 
     .prologue
-    .line 144
+    .line 147
     invoke-static {p1}, Landroid/util/Patterns;->digitsAndPlusOnly(Ljava/util/regex/Matcher;)Ljava/lang/String;
 
     move-result-object v0

@@ -11,20 +11,20 @@
     .line 31
     invoke-direct {p0}, Landroid/filterfw/core/FrameFormat;-><init>()V
 
-    .line 32
+    .line 30
     return-void
 .end method
 
 .method public constructor <init>(II)V
     .locals 0
-    .parameter "baseType"
-    .parameter "target"
+    .param p1, "baseType"    # I
+    .param p2, "target"    # I
 
     .prologue
     .line 35
     invoke-direct {p0, p1, p2}, Landroid/filterfw/core/FrameFormat;-><init>(II)V
 
-    .line 36
+    .line 34
     return-void
 .end method
 
@@ -32,7 +32,7 @@
 # virtual methods
 .method public setBaseType(I)V
     .locals 1
-    .parameter "baseType"
+    .param p1, "baseType"    # I
 
     .prologue
     .line 39
@@ -45,13 +45,13 @@
 
     iput v0, p0, Landroid/filterfw/core/MutableFrameFormat;->mBytesPerSample:I
 
-    .line 41
+    .line 38
     return-void
 .end method
 
 .method public setBytesPerSample(I)V
     .locals 1
-    .parameter "bytesPerSample"
+    .param p1, "bytesPerSample"    # I
 
     .prologue
     .line 48
@@ -62,13 +62,13 @@
 
     iput v0, p0, Landroid/filterfw/core/MutableFrameFormat;->mSize:I
 
-    .line 50
+    .line 47
     return-void
 .end method
 
 .method public setDimensionCount(I)V
     .locals 1
-    .parameter "count"
+    .param p1, "count"    # I
 
     .prologue
     .line 82
@@ -76,13 +76,13 @@
 
     iput-object v0, p0, Landroid/filterfw/core/MutableFrameFormat;->mDimensions:[I
 
-    .line 83
+    .line 81
     return-void
 .end method
 
 .method public setDimensions(I)V
     .locals 2
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 58
@@ -91,7 +91,7 @@
     new-array v0, v1, [I
 
     .line 59
-    .local v0, dimensions:[I
+    .local v0, "dimensions":[I
     const/4 v1, 0x0
 
     aput p1, v0, v1
@@ -104,14 +104,14 @@
 
     iput v1, p0, Landroid/filterfw/core/MutableFrameFormat;->mSize:I
 
-    .line 62
+    .line 57
     return-void
 .end method
 
 .method public setDimensions(II)V
     .locals 2
-    .parameter "width"
-    .parameter "height"
+    .param p1, "width"    # I
+    .param p2, "height"    # I
 
     .prologue
     .line 65
@@ -120,7 +120,7 @@
     new-array v0, v1, [I
 
     .line 66
-    .local v0, dimensions:[I
+    .local v0, "dimensions":[I
     const/4 v1, 0x0
 
     aput p1, v0, v1
@@ -138,15 +138,15 @@
 
     iput v1, p0, Landroid/filterfw/core/MutableFrameFormat;->mSize:I
 
-    .line 70
+    .line 64
     return-void
 .end method
 
 .method public setDimensions(III)V
     .locals 2
-    .parameter "width"
-    .parameter "height"
-    .parameter "depth"
+    .param p1, "width"    # I
+    .param p2, "height"    # I
+    .param p3, "depth"    # I
 
     .prologue
     .line 73
@@ -155,7 +155,7 @@
     new-array v0, v1, [I
 
     .line 74
-    .local v0, dimensions:[I
+    .local v0, "dimensions":[I
     const/4 v1, 0x0
 
     aput p1, v0, v1
@@ -178,19 +178,19 @@
 
     iput v1, p0, Landroid/filterfw/core/MutableFrameFormat;->mSize:I
 
-    .line 79
+    .line 72
     return-void
 .end method
 
 .method public setDimensions([I)V
     .locals 1
-    .parameter "dimensions"
+    .param p1, "dimensions"    # [I
 
     .prologue
+    const/4 v0, 0x0
+
     .line 53
     if-nez p1, :cond_0
-
-    const/4 v0, 0x0
 
     :goto_0
     iput-object v0, p0, Landroid/filterfw/core/MutableFrameFormat;->mDimensions:[I
@@ -200,7 +200,7 @@
 
     iput v0, p0, Landroid/filterfw/core/MutableFrameFormat;->mSize:I
 
-    .line 55
+    .line 52
     return-void
 
     .line 53
@@ -216,8 +216,8 @@
 
 .method public setMetaValue(Ljava/lang/String;Ljava/lang/Object;)V
     .locals 1
-    .parameter "key"
-    .parameter "value"
+    .param p1, "key"    # Ljava/lang/String;
+    .param p2, "value"    # Ljava/lang/Object;
 
     .prologue
     .line 90
@@ -238,30 +238,30 @@
 
     invoke-virtual {v0, p1, p2}, Landroid/filterfw/core/KeyValueMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 94
+    .line 89
     return-void
 .end method
 
 .method public setObjectClass(Ljava/lang/Class;)V
     .locals 0
-    .parameter "objectClass"
+    .param p1, "objectClass"    # Ljava/lang/Class;
 
     .prologue
     .line 86
     iput-object p1, p0, Landroid/filterfw/core/MutableFrameFormat;->mObjectClass:Ljava/lang/Class;
 
-    .line 87
+    .line 85
     return-void
 .end method
 
 .method public setTarget(I)V
     .locals 0
-    .parameter "target"
+    .param p1, "target"    # I
 
     .prologue
     .line 44
     iput p1, p0, Landroid/filterfw/core/MutableFrameFormat;->mTarget:I
 
-    .line 45
+    .line 43
     return-void
 .end method

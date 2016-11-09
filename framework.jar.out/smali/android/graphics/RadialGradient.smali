@@ -10,11 +10,11 @@
 
 
 # instance fields
-.field private mColor0:I
-
-.field private mColor1:I
+.field private mCenterColor:I
 
 .field private mColors:[I
+
+.field private mEdgeColor:I
 
 .field private mPositions:[F
 
@@ -31,26 +31,26 @@
 
 # direct methods
 .method public constructor <init>(FFFIILandroid/graphics/Shader$TileMode;)V
-    .locals 7
-    .parameter "x"
-    .parameter "y"
-    .parameter "radius"
-    .parameter "color0"
-    .parameter "color1"
-    .parameter "tile"
+    .locals 6
+    .param p1, "centerX"    # F
+    .param p2, "centerY"    # F
+    .param p3, "radius"    # F
+    .param p4, "centerColor"    # I
+    .param p5, "edgeColor"    # I
+    .param p6, "tileMode"    # Landroid/graphics/Shader$TileMode;
 
     .prologue
-    .line 82
+    .line 83
     invoke-direct {p0}, Landroid/graphics/Shader;-><init>()V
 
-    .line 83
+    .line 85
     const/4 v0, 0x0
 
     cmpg-float v0, p3, v0
 
     if-gtz v0, :cond_0
 
-    .line 84
+    .line 86
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string/jumbo v1, "radius must be > 0"
@@ -59,31 +59,31 @@
 
     throw v0
 
-    .line 86
+    .line 88
     :cond_0
     const/4 v0, 0x2
 
     iput v0, p0, Landroid/graphics/RadialGradient;->mType:I
 
-    .line 87
+    .line 89
     iput p1, p0, Landroid/graphics/RadialGradient;->mX:F
 
-    .line 88
+    .line 90
     iput p2, p0, Landroid/graphics/RadialGradient;->mY:F
 
-    .line 89
+    .line 91
     iput p3, p0, Landroid/graphics/RadialGradient;->mRadius:F
 
-    .line 90
-    iput p4, p0, Landroid/graphics/RadialGradient;->mColor0:I
-
-    .line 91
-    iput p5, p0, Landroid/graphics/RadialGradient;->mColor1:I
-
     .line 92
-    iput-object p6, p0, Landroid/graphics/RadialGradient;->mTileMode:Landroid/graphics/Shader$TileMode;
+    iput p4, p0, Landroid/graphics/RadialGradient;->mCenterColor:I
 
     .line 93
+    iput p5, p0, Landroid/graphics/RadialGradient;->mEdgeColor:I
+
+    .line 94
+    iput-object p6, p0, Landroid/graphics/RadialGradient;->mTileMode:Landroid/graphics/Shader$TileMode;
+
+    .line 95
     iget v5, p6, Landroid/graphics/Shader$TileMode;->nativeInt:I
 
     move v0, p1
@@ -96,58 +96,37 @@
 
     move v4, p5
 
-    invoke-static/range {v0 .. v5}, Landroid/graphics/RadialGradient;->nativeCreate2(FFFIII)I
+    invoke-static/range {v0 .. v5}, Landroid/graphics/RadialGradient;->nativeCreate2(FFFIII)J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/graphics/RadialGradient;->native_instance:I
+    invoke-virtual {p0, v0, v1}, Landroid/graphics/RadialGradient;->init(J)V
 
-    .line 94
-    iget v0, p0, Landroid/graphics/RadialGradient;->native_instance:I
-
-    iget v6, p6, Landroid/graphics/Shader$TileMode;->nativeInt:I
-
-    move v1, p1
-
-    move v2, p2
-
-    move v3, p3
-
-    move v4, p4
-
-    move v5, p5
-
-    invoke-static/range {v0 .. v6}, Landroid/graphics/RadialGradient;->nativePostCreate2(IFFFIII)I
-
-    move-result v0
-
-    iput v0, p0, Landroid/graphics/RadialGradient;->native_shader:I
-
-    .line 96
+    .line 84
     return-void
 .end method
 
 .method public constructor <init>(FFF[I[FLandroid/graphics/Shader$TileMode;)V
-    .locals 7
-    .parameter "x"
-    .parameter "y"
-    .parameter "radius"
-    .parameter "colors"
-    .parameter "positions"
-    .parameter "tile"
+    .locals 6
+    .param p1, "centerX"    # F
+    .param p2, "centerY"    # F
+    .param p3, "radius"    # F
+    .param p4, "colors"    # [I
+    .param p5, "stops"    # [F
+    .param p6, "tileMode"    # Landroid/graphics/Shader$TileMode;
 
     .prologue
-    .line 51
+    .line 54
     invoke-direct {p0}, Landroid/graphics/Shader;-><init>()V
 
-    .line 52
+    .line 56
     const/4 v0, 0x0
 
     cmpg-float v0, p3, v0
 
     if-gtz v0, :cond_0
 
-    .line 53
+    .line 57
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string/jumbo v1, "radius must be > 0"
@@ -156,7 +135,7 @@
 
     throw v0
 
-    .line 55
+    .line 59
     :cond_0
     array-length v0, p4
 
@@ -164,7 +143,7 @@
 
     if-ge v0, v1, :cond_1
 
-    .line 56
+    .line 60
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string/jumbo v1, "needs >= 2 number of colors"
@@ -173,7 +152,7 @@
 
     throw v0
 
-    .line 58
+    .line 62
     :cond_1
     if-eqz p5, :cond_2
 
@@ -183,40 +162,40 @@
 
     if-eq v0, v1, :cond_2
 
-    .line 59
+    .line 63
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "color and position arrays must be of equal length"
+    const-string/jumbo v1, "color and position arrays must be of equal length"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 61
+    .line 65
     :cond_2
     const/4 v0, 0x1
 
     iput v0, p0, Landroid/graphics/RadialGradient;->mType:I
 
-    .line 62
+    .line 66
     iput p1, p0, Landroid/graphics/RadialGradient;->mX:F
 
-    .line 63
+    .line 67
     iput p2, p0, Landroid/graphics/RadialGradient;->mY:F
 
-    .line 64
+    .line 68
     iput p3, p0, Landroid/graphics/RadialGradient;->mRadius:F
 
-    .line 65
+    .line 69
     iput-object p4, p0, Landroid/graphics/RadialGradient;->mColors:[I
 
-    .line 66
+    .line 70
     iput-object p5, p0, Landroid/graphics/RadialGradient;->mPositions:[F
 
-    .line 67
+    .line 71
     iput-object p6, p0, Landroid/graphics/RadialGradient;->mTileMode:Landroid/graphics/Shader$TileMode;
 
-    .line 68
+    .line 72
     iget v5, p6, Landroid/graphics/Shader$TileMode;->nativeInt:I
 
     move v0, p1
@@ -229,47 +208,20 @@
 
     move-object v4, p5
 
-    invoke-static/range {v0 .. v5}, Landroid/graphics/RadialGradient;->nativeCreate1(FFF[I[FI)I
+    invoke-static/range {v0 .. v5}, Landroid/graphics/RadialGradient;->nativeCreate1(FFF[I[FI)J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/graphics/RadialGradient;->native_instance:I
+    invoke-virtual {p0, v0, v1}, Landroid/graphics/RadialGradient;->init(J)V
 
-    .line 69
-    iget v0, p0, Landroid/graphics/RadialGradient;->native_instance:I
-
-    iget v6, p6, Landroid/graphics/Shader$TileMode;->nativeInt:I
-
-    move v1, p1
-
-    move v2, p2
-
-    move v3, p3
-
-    move-object v4, p4
-
-    move-object v5, p5
-
-    invoke-static/range {v0 .. v6}, Landroid/graphics/RadialGradient;->nativePostCreate1(IFFF[I[FI)I
-
-    move-result v0
-
-    iput v0, p0, Landroid/graphics/RadialGradient;->native_shader:I
-
-    .line 71
+    .line 55
     return-void
 .end method
 
-.method private static native nativeCreate1(FFF[I[FI)I
+.method private static native nativeCreate1(FFF[I[FI)J
 .end method
 
-.method private static native nativeCreate2(FFFIII)I
-.end method
-
-.method private static native nativePostCreate1(IFFF[I[FI)I
-.end method
-
-.method private static native nativePostCreate2(IFFFIII)I
+.method private static native nativeCreate2(FFFIII)J
 .end method
 
 
@@ -278,6 +230,8 @@
     .locals 7
 
     .prologue
+    const/4 v5, 0x0
+
     .line 104
     iget v1, p0, Landroid/graphics/RadialGradient;->mType:I
 
@@ -286,7 +240,7 @@
     .line 113
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "RadialGradient should be created with either colors and positions or center color and edge color"
+    const-string/jumbo v2, "RadialGradient should be created with either colors and positions or center color and edge color"
 
     invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -304,45 +258,41 @@
 
     iget-object v4, p0, Landroid/graphics/RadialGradient;->mColors:[I
 
-    invoke-virtual {v4}, [I->clone()Ljava/lang/Object;
+    invoke-virtual {v4}, Ljava/lang/Object;->clone()Ljava/lang/Object;
 
     move-result-object v4
 
     check-cast v4, [I
 
+    .line 107
+    iget-object v6, p0, Landroid/graphics/RadialGradient;->mPositions:[F
+
+    if-eqz v6, :cond_0
+
     iget-object v5, p0, Landroid/graphics/RadialGradient;->mPositions:[F
 
-    if-eqz v5, :cond_0
-
-    iget-object v5, p0, Landroid/graphics/RadialGradient;->mPositions:[F
-
-    invoke-virtual {v5}, [F->clone()Ljava/lang/Object;
+    invoke-virtual {v5}, Ljava/lang/Object;->clone()Ljava/lang/Object;
 
     move-result-object v5
 
     check-cast v5, [F
 
-    :goto_0
+    :cond_0
     iget-object v6, p0, Landroid/graphics/RadialGradient;->mTileMode:Landroid/graphics/Shader$TileMode;
 
+    .line 106
     invoke-direct/range {v0 .. v6}, Landroid/graphics/RadialGradient;-><init>(FFF[I[FLandroid/graphics/Shader$TileMode;)V
 
     .line 116
-    .local v0, copy:Landroid/graphics/RadialGradient;
-    :goto_1
+    .local v0, "copy":Landroid/graphics/RadialGradient;
+    :goto_0
     invoke-virtual {p0, v0}, Landroid/graphics/RadialGradient;->copyLocalMatrix(Landroid/graphics/Shader;)V
 
     .line 117
     return-object v0
 
-    .line 106
-    .end local v0           #copy:Landroid/graphics/RadialGradient;
-    :cond_0
-    const/4 v5, 0x0
-
-    goto :goto_0
-
     .line 110
+    .end local v0    # "copy":Landroid/graphics/RadialGradient;
     :pswitch_1
     new-instance v0, Landroid/graphics/RadialGradient;
 
@@ -352,17 +302,17 @@
 
     iget v3, p0, Landroid/graphics/RadialGradient;->mRadius:F
 
-    iget v4, p0, Landroid/graphics/RadialGradient;->mColor0:I
+    iget v4, p0, Landroid/graphics/RadialGradient;->mCenterColor:I
 
-    iget v5, p0, Landroid/graphics/RadialGradient;->mColor1:I
+    iget v5, p0, Landroid/graphics/RadialGradient;->mEdgeColor:I
 
     iget-object v6, p0, Landroid/graphics/RadialGradient;->mTileMode:Landroid/graphics/Shader$TileMode;
 
     invoke-direct/range {v0 .. v6}, Landroid/graphics/RadialGradient;-><init>(FFFIILandroid/graphics/Shader$TileMode;)V
 
     .line 111
-    .restart local v0       #copy:Landroid/graphics/RadialGradient;
-    goto :goto_1
+    .restart local v0    # "copy":Landroid/graphics/RadialGradient;
+    goto :goto_0
 
     .line 104
     :pswitch_data_0

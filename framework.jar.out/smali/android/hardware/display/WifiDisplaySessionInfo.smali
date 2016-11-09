@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/hardware/display/WifiDisplaySessionInfo$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -36,13 +44,15 @@
     .locals 1
 
     .prologue
-    .line 39
+    .line 40
     new-instance v0, Landroid/hardware/display/WifiDisplaySessionInfo$1;
 
     invoke-direct {v0}, Landroid/hardware/display/WifiDisplaySessionInfo$1;-><init>()V
 
+    .line 39
     sput-object v0, Landroid/hardware/display/WifiDisplaySessionInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 32
     return-void
 .end method
 
@@ -51,34 +61,34 @@
 
     .prologue
     .line 59
+    const-string/jumbo v3, ""
+
+    const-string/jumbo v4, ""
+
+    const-string/jumbo v5, ""
+
     const/4 v1, 0x1
 
     const/4 v2, 0x0
-
-    const-string v3, ""
-
-    const-string v4, ""
-
-    const-string v5, ""
 
     move-object v0, p0
 
     invoke-direct/range {v0 .. v5}, Landroid/hardware/display/WifiDisplaySessionInfo;-><init>(ZILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 60
+    .line 58
     return-void
 .end method
 
 .method public constructor <init>(ZILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
-    .parameter "client"
-    .parameter "session"
-    .parameter "group"
-    .parameter "pp"
-    .parameter "ip"
+    .param p1, "client"    # Z
+    .param p2, "session"    # I
+    .param p3, "group"    # Ljava/lang/String;
+    .param p4, "pp"    # Ljava/lang/String;
+    .param p5, "ip"    # Ljava/lang/String;
 
     .prologue
-    .line 63
+    .line 62
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 64
@@ -96,7 +106,7 @@
     .line 68
     iput-object p5, p0, Landroid/hardware/display/WifiDisplaySessionInfo;->mIP:Ljava/lang/String;
 
-    .line 69
+    .line 63
     return-void
 .end method
 
@@ -171,67 +181,85 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "WifiDisplaySessionInfo:\n    Client/Owner: "
+    const-string/jumbo v1, "WifiDisplaySessionInfo:\n    Client/Owner: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 109
     iget-boolean v0, p0, Landroid/hardware/display/WifiDisplaySessionInfo;->mClient:Z
 
     if-eqz v0, :cond_0
 
-    const-string v0, "Client"
+    const-string/jumbo v0, "Client"
 
+    .line 108
     :goto_0
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "\n    GroupId: "
+    .line 110
+    const-string/jumbo v1, "\n    GroupId: "
 
+    .line 108
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 110
     iget-object v1, p0, Landroid/hardware/display/WifiDisplaySessionInfo;->mGroupId:Ljava/lang/String;
 
+    .line 108
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "\n    Passphrase: "
+    .line 111
+    const-string/jumbo v1, "\n    Passphrase: "
 
+    .line 108
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 111
     iget-object v1, p0, Landroid/hardware/display/WifiDisplaySessionInfo;->mPassphrase:Ljava/lang/String;
 
+    .line 108
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "\n    SessionId: "
+    .line 112
+    const-string/jumbo v1, "\n    SessionId: "
 
+    .line 108
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 112
     iget v1, p0, Landroid/hardware/display/WifiDisplaySessionInfo;->mSessionId:I
 
+    .line 108
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "\n    IP Address: "
+    .line 113
+    const-string/jumbo v1, "\n    IP Address: "
 
+    .line 108
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 113
     iget-object v1, p0, Landroid/hardware/display/WifiDisplaySessionInfo;->mIP:Ljava/lang/String;
 
+    .line 108
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -242,16 +270,17 @@
 
     return-object v0
 
+    .line 109
     :cond_0
-    const-string v0, "Owner"
+    const-string/jumbo v0, "Owner"
 
     goto :goto_0
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 93
@@ -284,7 +313,7 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 98
+    .line 92
     return-void
 
     .line 93

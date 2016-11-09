@@ -28,11 +28,10 @@
 # direct methods
 .method constructor <init>(Landroid/util/ArrayMap;)V
     .locals 0
-    .parameter
 
     .prologue
-    .line 735
-    .local p0, this:Landroid/util/ArrayMap$1;,"Landroid/util/ArrayMap.1;"
+    .line 750
+    .local p1, "this$0":Landroid/util/ArrayMap;, "Landroid/util/ArrayMap<TK;TV;>;"
     iput-object p1, p0, Landroid/util/ArrayMap$1;->this$0:Landroid/util/ArrayMap;
 
     invoke-direct {p0}, Landroid/util/MapCollections;-><init>()V
@@ -46,24 +45,22 @@
     .locals 1
 
     .prologue
-    .line 778
-    .local p0, this:Landroid/util/ArrayMap$1;,"Landroid/util/ArrayMap.1;"
+    .line 793
     iget-object v0, p0, Landroid/util/ArrayMap$1;->this$0:Landroid/util/ArrayMap;
 
     invoke-virtual {v0}, Landroid/util/ArrayMap;->clear()V
 
-    .line 779
+    .line 792
     return-void
 .end method
 
 .method protected colGetEntry(II)Ljava/lang/Object;
     .locals 2
-    .parameter "index"
-    .parameter "offset"
+    .param p1, "index"    # I
+    .param p2, "offset"    # I
 
     .prologue
-    .line 743
-    .local p0, this:Landroid/util/ArrayMap$1;,"Landroid/util/ArrayMap.1;"
+    .line 758
     iget-object v0, p0, Landroid/util/ArrayMap$1;->this$0:Landroid/util/ArrayMap;
 
     iget-object v0, v0, Landroid/util/ArrayMap;->mArray:[Ljava/lang/Object;
@@ -88,8 +85,7 @@
     .end annotation
 
     .prologue
-    .line 758
-    .local p0, this:Landroid/util/ArrayMap$1;,"Landroid/util/ArrayMap.1;"
+    .line 773
     iget-object v0, p0, Landroid/util/ArrayMap$1;->this$0:Landroid/util/ArrayMap;
 
     return-object v0
@@ -99,8 +95,7 @@
     .locals 1
 
     .prologue
-    .line 738
-    .local p0, this:Landroid/util/ArrayMap$1;,"Landroid/util/ArrayMap.1;"
+    .line 753
     iget-object v0, p0, Landroid/util/ArrayMap$1;->this$0:Landroid/util/ArrayMap;
 
     iget v0, v0, Landroid/util/ArrayMap;->mSize:I
@@ -109,44 +104,26 @@
 .end method
 
 .method protected colIndexOfKey(Ljava/lang/Object;)I
-    .locals 2
-    .parameter "key"
+    .locals 1
+    .param p1, "key"    # Ljava/lang/Object;
 
     .prologue
-    .line 748
-    .local p0, this:Landroid/util/ArrayMap$1;,"Landroid/util/ArrayMap.1;"
-    if-nez p1, :cond_0
-
+    .line 763
     iget-object v0, p0, Landroid/util/ArrayMap$1;->this$0:Landroid/util/ArrayMap;
 
-    invoke-virtual {v0}, Landroid/util/ArrayMap;->indexOfNull()I
+    invoke-virtual {v0, p1}, Landroid/util/ArrayMap;->indexOfKey(Ljava/lang/Object;)I
 
     move-result v0
 
-    :goto_0
     return v0
-
-    :cond_0
-    iget-object v0, p0, Landroid/util/ArrayMap$1;->this$0:Landroid/util/ArrayMap;
-
-    invoke-virtual {p1}, Ljava/lang/Object;->hashCode()I
-
-    move-result v1
-
-    invoke-virtual {v0, p1, v1}, Landroid/util/ArrayMap;->indexOf(Ljava/lang/Object;I)I
-
-    move-result v0
-
-    goto :goto_0
 .end method
 
 .method protected colIndexOfValue(Ljava/lang/Object;)I
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # Ljava/lang/Object;
 
     .prologue
-    .line 753
-    .local p0, this:Landroid/util/ArrayMap$1;,"Landroid/util/ArrayMap.1;"
+    .line 768
     iget-object v0, p0, Landroid/util/ArrayMap$1;->this$0:Landroid/util/ArrayMap;
 
     invoke-virtual {v0, p1}, Landroid/util/ArrayMap;->indexOfValue(Ljava/lang/Object;)I
@@ -158,8 +135,6 @@
 
 .method protected colPut(Ljava/lang/Object;Ljava/lang/Object;)V
     .locals 1
-    .parameter
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TK;TV;)V"
@@ -167,37 +142,34 @@
     .end annotation
 
     .prologue
-    .line 763
-    .local p0, this:Landroid/util/ArrayMap$1;,"Landroid/util/ArrayMap.1;"
-    .local p1, key:Ljava/lang/Object;,"TK;"
-    .local p2, value:Ljava/lang/Object;,"TV;"
+    .line 778
+    .local p1, "key":Ljava/lang/Object;, "TK;"
+    .local p2, "value":Ljava/lang/Object;, "TV;"
     iget-object v0, p0, Landroid/util/ArrayMap$1;->this$0:Landroid/util/ArrayMap;
 
     invoke-virtual {v0, p1, p2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 764
+    .line 777
     return-void
 .end method
 
 .method protected colRemoveAt(I)V
     .locals 1
-    .parameter "index"
+    .param p1, "index"    # I
 
     .prologue
-    .line 773
-    .local p0, this:Landroid/util/ArrayMap$1;,"Landroid/util/ArrayMap.1;"
+    .line 788
     iget-object v0, p0, Landroid/util/ArrayMap$1;->this$0:Landroid/util/ArrayMap;
 
     invoke-virtual {v0, p1}, Landroid/util/ArrayMap;->removeAt(I)Ljava/lang/Object;
 
-    .line 774
+    .line 787
     return-void
 .end method
 
 .method protected colSetValue(ILjava/lang/Object;)Ljava/lang/Object;
     .locals 1
-    .parameter "index"
-    .parameter
+    .param p1, "index"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(ITV;)TV;"
@@ -205,9 +177,8 @@
     .end annotation
 
     .prologue
-    .line 768
-    .local p0, this:Landroid/util/ArrayMap$1;,"Landroid/util/ArrayMap.1;"
-    .local p2, value:Ljava/lang/Object;,"TV;"
+    .line 783
+    .local p2, "value":Ljava/lang/Object;, "TV;"
     iget-object v0, p0, Landroid/util/ArrayMap$1;->this$0:Landroid/util/ArrayMap;
 
     invoke-virtual {v0, p1, p2}, Landroid/util/ArrayMap;->setValueAt(ILjava/lang/Object;)Ljava/lang/Object;

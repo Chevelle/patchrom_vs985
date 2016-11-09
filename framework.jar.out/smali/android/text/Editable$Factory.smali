@@ -30,6 +30,7 @@
 
     sput-object v0, Landroid/text/Editable$Factory;->sInstance:Landroid/text/Editable$Factory;
 
+    .line 123
     return-void
 .end method
 
@@ -57,7 +58,7 @@
 # virtual methods
 .method public newEditable(Ljava/lang/CharSequence;)Landroid/text/Editable;
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Ljava/lang/CharSequence;
 
     .prologue
     .line 139

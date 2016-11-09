@@ -29,18 +29,18 @@
 
     .prologue
     .line 361
-    const-string v0, "filterfw"
+    const-string/jumbo v0, "filterfw"
 
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
-    .line 362
+    .line 47
     return-void
 .end method
 
 .method constructor <init>(Landroid/filterfw/core/FrameFormat;Landroid/filterfw/core/FrameManager;)V
     .locals 1
-    .parameter "format"
-    .parameter "frameManager"
+    .param p1, "format"    # Landroid/filterfw/core/FrameFormat;
+    .param p2, "frameManager"    # Landroid/filterfw/core/FrameManager;
 
     .prologue
     .line 71
@@ -56,16 +56,16 @@
 
     iput-boolean v0, p0, Landroid/filterfw/core/GLFrame;->mOwnsTexture:Z
 
-    .line 72
+    .line 70
     return-void
 .end method
 
 .method constructor <init>(Landroid/filterfw/core/FrameFormat;Landroid/filterfw/core/FrameManager;IJ)V
-    .locals 1
-    .parameter "format"
-    .parameter "frameManager"
-    .parameter "bindingType"
-    .parameter "bindingId"
+    .locals 2
+    .param p1, "format"    # Landroid/filterfw/core/FrameFormat;
+    .param p2, "frameManager"    # Landroid/filterfw/core/FrameManager;
+    .param p3, "bindingType"    # I
+    .param p4, "bindingId"    # J
 
     .prologue
     .line 75
@@ -81,7 +81,7 @@
 
     iput-boolean v0, p0, Landroid/filterfw/core/GLFrame;->mOwnsTexture:Z
 
-    .line 76
+    .line 74
     return-void
 .end method
 
@@ -112,7 +112,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Attempting to access "
+    const-string/jumbo v2, "Attempting to access "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -122,14 +122,16 @@
 
     move-result-object v1
 
-    const-string v2, " with foreign GL "
+    const-string/jumbo v2, " with foreign GL "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, "context active!"
+    .line 352
+    const-string/jumbo v2, "context active!"
 
+    .line 351
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -150,7 +152,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Attempting to access "
+    const-string/jumbo v2, "Attempting to access "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -160,14 +162,16 @@
 
     move-result-object v1
 
-    const-string v2, " with no GL context "
+    const-string/jumbo v2, " with no GL context "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, " active!"
+    .line 355
+    const-string/jumbo v2, " active!"
 
+    .line 354
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -180,7 +184,7 @@
 
     throw v0
 
-    .line 358
+    .line 348
     :cond_1
     return-void
 .end method
@@ -208,7 +212,7 @@
 
 .method private initNew(Z)V
     .locals 3
-    .parameter "isExternal"
+    .param p1, "isExternal"    # Z
 
     .prologue
     .line 115
@@ -226,7 +230,7 @@
     .line 117
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not allocate external GL frame!"
+    const-string/jumbo v1, "Could not allocate external GL frame!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -261,20 +265,20 @@
     .line 121
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not allocate GL frame!"
+    const-string/jumbo v1, "Could not allocate GL frame!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 124
+    .line 114
     :cond_1
     return-void
 .end method
 
 .method private initWithFbo(I)V
     .locals 4
-    .parameter "fboId"
+    .param p1, "fboId"    # I
 
     .prologue
     .line 137
@@ -287,7 +291,7 @@
     move-result v1
 
     .line 138
-    .local v1, width:I
+    .local v1, "width":I
     invoke-virtual {p0}, Landroid/filterfw/core/GLFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v2
@@ -297,7 +301,7 @@
     move-result v0
 
     .line 139
-    .local v0, height:I
+    .local v0, "height":I
     iget-object v2, p0, Landroid/filterfw/core/GLFrame;->mGLEnvironment:Landroid/filterfw/core/GLEnvironment;
 
     invoke-direct {p0, v2, p1, v1, v0}, Landroid/filterfw/core/GLFrame;->nativeAllocateWithFbo(Landroid/filterfw/core/GLEnvironment;III)Z
@@ -309,20 +313,20 @@
     .line 140
     new-instance v2, Ljava/lang/RuntimeException;
 
-    const-string v3, "Could not allocate FBO backed GL frame!"
+    const-string/jumbo v3, "Could not allocate FBO backed GL frame!"
 
     invoke-direct {v2, v3}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v2
 
-    .line 142
+    .line 136
     :cond_0
     return-void
 .end method
 
 .method private initWithTexture(I)V
     .locals 4
-    .parameter "texId"
+    .param p1, "texId"    # I
 
     .prologue
     .line 127
@@ -335,7 +339,7 @@
     move-result v1
 
     .line 128
-    .local v1, width:I
+    .local v1, "width":I
     invoke-virtual {p0}, Landroid/filterfw/core/GLFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v2
@@ -345,7 +349,7 @@
     move-result v0
 
     .line 129
-    .local v0, height:I
+    .local v0, "height":I
     iget-object v2, p0, Landroid/filterfw/core/GLFrame;->mGLEnvironment:Landroid/filterfw/core/GLEnvironment;
 
     invoke-direct {p0, v2, p1, v1, v0}, Landroid/filterfw/core/GLFrame;->nativeAllocateWithTexture(Landroid/filterfw/core/GLEnvironment;III)Z
@@ -357,7 +361,7 @@
     .line 130
     new-instance v2, Ljava/lang/RuntimeException;
 
-    const-string v3, "Could not allocate texture backed GL frame!"
+    const-string/jumbo v3, "Could not allocate texture backed GL frame!"
 
     invoke-direct {v2, v3}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -372,7 +376,7 @@
     .line 133
     invoke-virtual {p0}, Landroid/filterfw/core/GLFrame;->markReadOnly()V
 
-    .line 134
+    .line 126
     return-void
 .end method
 
@@ -431,7 +435,7 @@
 # virtual methods
 .method flushGPU(Ljava/lang/String;)V
     .locals 3
-    .parameter "message"
+    .param p1, "message"    # Ljava/lang/String;
 
     .prologue
     .line 145
@@ -440,7 +444,7 @@
     move-result-object v0
 
     .line 146
-    .local v0, timer:Landroid/filterfw/core/StopWatchMap;
+    .local v0, "timer":Landroid/filterfw/core/StopWatchMap;
     iget-boolean v1, v0, Landroid/filterfw/core/StopWatchMap;->LOG_MFF_RUNNING_TIMES:Z
 
     if-eqz v1, :cond_0
@@ -450,7 +454,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "glFinish "
+    const-string/jumbo v2, "glFinish "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -474,7 +478,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "glFinish "
+    const-string/jumbo v2, "glFinish "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -490,7 +494,7 @@
 
     invoke-virtual {v0, v1}, Landroid/filterfw/core/StopWatchMap;->stop(Ljava/lang/String;)V
 
-    .line 151
+    .line 144
     :cond_0
     return-void
 .end method
@@ -509,13 +513,13 @@
     .line 313
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not focus on GLFrame for drawing!"
+    const-string/jumbo v1, "Could not focus on GLFrame for drawing!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 315
+    .line 311
     :cond_0
     return-void
 .end method
@@ -540,13 +544,13 @@
     .line 290
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not generate mip-map for GL frame!"
+    const-string/jumbo v1, "Could not generate mip-map for GL frame!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 292
+    .line 286
     :cond_0
     return-void
 .end method
@@ -559,7 +563,7 @@
     invoke-direct {p0}, Landroid/filterfw/core/GLFrame;->assertGLEnvValid()V
 
     .line 243
-    const-string v1, "getBitmap"
+    const-string/jumbo v1, "getBitmap"
 
     invoke-virtual {p0, v1}, Landroid/filterfw/core/GLFrame;->flushGPU(Ljava/lang/String;)V
 
@@ -572,6 +576,7 @@
 
     move-result v1
 
+    .line 245
     invoke-virtual {p0}, Landroid/filterfw/core/GLFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v2
@@ -580,14 +585,16 @@
 
     move-result v2
 
+    .line 246
     sget-object v3, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
+    .line 244
     invoke-static {v1, v2, v3}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
 
     move-result-object v0
 
     .line 247
-    .local v0, result:Landroid/graphics/Bitmap;
+    .local v0, "result":Landroid/graphics/Bitmap;
     invoke-direct {p0, v0}, Landroid/filterfw/core/GLFrame;->getNativeBitmap(Landroid/graphics/Bitmap;)Z
 
     move-result v1
@@ -597,7 +604,7 @@
     .line 248
     new-instance v1, Ljava/lang/RuntimeException;
 
-    const-string v2, "Could not get bitmap data from GL frame!"
+    const-string/jumbo v2, "Could not get bitmap data from GL frame!"
 
     invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -616,7 +623,7 @@
     invoke-direct {p0}, Landroid/filterfw/core/GLFrame;->assertGLEnvValid()V
 
     .line 221
-    const-string v0, "getData"
+    const-string/jumbo v0, "getData"
 
     invoke-virtual {p0, v0}, Landroid/filterfw/core/GLFrame;->flushGPU(Ljava/lang/String;)V
 
@@ -652,7 +659,7 @@
     invoke-direct {p0}, Landroid/filterfw/core/GLFrame;->assertGLEnvValid()V
 
     .line 202
-    const-string v0, "getFloats"
+    const-string/jumbo v0, "getFloats"
 
     invoke-virtual {p0, v0}, Landroid/filterfw/core/GLFrame;->flushGPU(Ljava/lang/String;)V
 
@@ -682,7 +689,7 @@
     invoke-direct {p0}, Landroid/filterfw/core/GLFrame;->assertGLEnvValid()V
 
     .line 186
-    const-string v0, "getInts"
+    const-string/jumbo v0, "getInts"
 
     invoke-virtual {p0, v0}, Landroid/filterfw/core/GLFrame;->flushGPU(Ljava/lang/String;)V
 
@@ -729,9 +736,9 @@
     .locals 2
 
     .prologue
-    .line 155
     monitor-enter p0
 
+    .line 155
     :try_start_0
     iget v0, p0, Landroid/filterfw/core/GLFrame;->glFrameId:I
     :try_end_0
@@ -763,16 +770,18 @@
 
 .method init(Landroid/filterfw/core/GLEnvironment;)V
     .locals 6
-    .parameter "glEnv"
+    .param p1, "glEnv"    # Landroid/filterfw/core/GLEnvironment;
 
     .prologue
+    const/4 v5, 0x0
+
     .line 79
     invoke-virtual {p0}, Landroid/filterfw/core/GLFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v1
 
     .line 80
-    .local v1, format:Landroid/filterfw/core/FrameFormat;
+    .local v1, "format":Landroid/filterfw/core/FrameFormat;
     iput-object p1, p0, Landroid/filterfw/core/GLFrame;->mGLEnvironment:Landroid/filterfw/core/GLEnvironment;
 
     .line 83
@@ -787,7 +796,7 @@
     .line 84
     new-instance v3, Ljava/lang/IllegalArgumentException;
 
-    const-string v4, "GL frames must have 4 bytes per sample!"
+    const-string/jumbo v4, "GL frames must have 4 bytes per sample!"
 
     invoke-direct {v3, v4}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -806,7 +815,7 @@
     .line 86
     new-instance v3, Ljava/lang/IllegalArgumentException;
 
-    const-string v4, "GL frames must be 2-dimensional!"
+    const-string/jumbo v4, "GL frames must be 2-dimensional!"
 
     invoke-direct {v3, v4}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -827,7 +836,7 @@
     .line 88
     new-instance v3, Ljava/lang/IllegalArgumentException;
 
-    const-string v4, "Initializing GL frame with zero size!"
+    const-string/jumbo v4, "Initializing GL frame with zero size!"
 
     invoke-direct {v3, v4}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -840,23 +849,21 @@
     move-result v0
 
     .line 93
-    .local v0, bindingType:I
+    .local v0, "bindingType":I
     const/4 v2, 0x1
 
     .line 94
-    .local v2, reusable:Z
+    .local v2, "reusable":Z
     if-nez v0, :cond_3
 
     .line 95
-    const/4 v3, 0x0
-
-    invoke-direct {p0, v3}, Landroid/filterfw/core/GLFrame;->initNew(Z)V
+    invoke-direct {p0, v5}, Landroid/filterfw/core/GLFrame;->initNew(Z)V
 
     .line 111
     :goto_0
     invoke-virtual {p0, v2}, Landroid/filterfw/core/GLFrame;->setReusable(Z)V
 
-    .line 112
+    .line 78
     return-void
 
     .line 96
@@ -884,9 +891,9 @@
     .line 100
     invoke-virtual {p0}, Landroid/filterfw/core/GLFrame;->getBindingId()J
 
-    move-result-wide v3
+    move-result-wide v4
 
-    long-to-int v3, v3
+    long-to-int v3, v4
 
     invoke-direct {p0, v3}, Landroid/filterfw/core/GLFrame;->initWithTexture(I)V
 
@@ -901,9 +908,9 @@
     .line 102
     invoke-virtual {p0}, Landroid/filterfw/core/GLFrame;->getBindingId()J
 
-    move-result-wide v3
+    move-result-wide v4
 
-    long-to-int v3, v3
+    long-to-int v3, v4
 
     invoke-direct {p0, v3}, Landroid/filterfw/core/GLFrame;->initWithFbo(I)V
 
@@ -918,9 +925,9 @@
     .line 104
     invoke-virtual {p0}, Landroid/filterfw/core/GLFrame;->getBindingId()J
 
-    move-result-wide v3
+    move-result-wide v4
 
-    long-to-int v3, v3
+    long-to-int v3, v4
 
     invoke-direct {p0, v3}, Landroid/filterfw/core/GLFrame;->initWithTexture(I)V
 
@@ -935,9 +942,9 @@
     .line 106
     invoke-virtual {p0}, Landroid/filterfw/core/GLFrame;->getBindingId()J
 
-    move-result-wide v3
+    move-result-wide v4
 
-    long-to-int v3, v3
+    long-to-int v3, v4
 
     invoke-direct {p0, v3}, Landroid/filterfw/core/GLFrame;->initWithFbo(I)V
 
@@ -951,7 +958,7 @@
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v5, "Attempting to create GL frame with unknown binding type "
+    const-string/jumbo v5, "Attempting to create GL frame with unknown binding type "
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -961,8 +968,10 @@
 
     move-result-object v4
 
-    const-string v5, "!"
+    .line 109
+    const-string/jumbo v5, "!"
 
+    .line 108
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
@@ -988,7 +997,7 @@
     .line 344
     invoke-direct {p0}, Landroid/filterfw/core/GLFrame;->nativeReattachTexToFbo()Z
 
-    .line 346
+    .line 340
     :cond_0
     return-void
 .end method
@@ -1005,7 +1014,7 @@
     .line 335
     invoke-direct {p0}, Landroid/filterfw/core/GLFrame;->nativeDetachTexFromFbo()Z
 
-    .line 337
+    .line 332
     :cond_0
     return-void
 .end method
@@ -1014,9 +1023,9 @@
     .locals 1
 
     .prologue
-    .line 160
     monitor-enter p0
 
+    .line 160
     :try_start_0
     invoke-direct {p0}, Landroid/filterfw/core/GLFrame;->nativeDeallocate()Z
 
@@ -1027,12 +1036,11 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 162
     monitor-exit p0
 
+    .line 159
     return-void
 
-    .line 160
     :catchall_0
     move-exception v0
 
@@ -1043,7 +1051,7 @@
 
 .method protected reset(Landroid/filterfw/core/FrameFormat;)V
     .locals 2
-    .parameter "newFormat"
+    .param p1, "newFormat"    # Landroid/filterfw/core/FrameFormat;
 
     .prologue
     .line 325
@@ -1056,7 +1064,7 @@
     .line 326
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not reset GLFrame texture parameters!"
+    const-string/jumbo v1, "Could not reset GLFrame texture parameters!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -1066,13 +1074,13 @@
     :cond_0
     invoke-super {p0, p1}, Landroid/filterfw/core/Frame;->reset(Landroid/filterfw/core/FrameFormat;)V
 
-    .line 329
+    .line 324
     return-void
 .end method
 
 .method public setBitmap(Landroid/graphics/Bitmap;)V
     .locals 3
-    .parameter "bitmap"
+    .param p1, "bitmap"    # Landroid/graphics/Bitmap;
 
     .prologue
     .line 227
@@ -1096,6 +1104,7 @@
 
     if-ne v1, v2, :cond_0
 
+    .line 230
     invoke-virtual {p0}, Landroid/filterfw/core/GLFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v1
@@ -1114,7 +1123,7 @@
     :cond_0
     new-instance v1, Ljava/lang/RuntimeException;
 
-    const-string v2, "Bitmap dimensions do not match GL frame dimensions!"
+    const-string/jumbo v2, "Bitmap dimensions do not match GL frame dimensions!"
 
     invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -1127,7 +1136,7 @@
     move-result-object v0
 
     .line 234
-    .local v0, rgbaBitmap:Landroid/graphics/Bitmap;
+    .local v0, "rgbaBitmap":Landroid/graphics/Bitmap;
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->getByteCount()I
 
     move-result v1
@@ -1141,22 +1150,22 @@
     .line 235
     new-instance v1, Ljava/lang/RuntimeException;
 
-    const-string v2, "Could not set GL frame bitmap data!"
+    const-string/jumbo v2, "Could not set GL frame bitmap data!"
 
     invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 238
+    .line 226
     :cond_2
     return-void
 .end method
 
 .method public setData(Ljava/nio/ByteBuffer;II)V
     .locals 3
-    .parameter "buffer"
-    .parameter "offset"
-    .parameter "length"
+    .param p1, "buffer"    # Ljava/nio/ByteBuffer;
+    .param p2, "offset"    # I
+    .param p3, "length"    # I
 
     .prologue
     .line 208
@@ -1171,7 +1180,7 @@
     move-result-object v0
 
     .line 211
-    .local v0, bytes:[B
+    .local v0, "bytes":[B
     invoke-virtual {p0}, Landroid/filterfw/core/GLFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v1
@@ -1187,7 +1196,7 @@
     .line 212
     new-instance v1, Ljava/lang/RuntimeException;
 
-    const-string v2, "Data size in setData does not match GL frame size!"
+    const-string/jumbo v2, "Data size in setData does not match GL frame size!"
 
     invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -1204,20 +1213,20 @@
     .line 214
     new-instance v1, Ljava/lang/RuntimeException;
 
-    const-string v2, "Could not set GL frame data!"
+    const-string/jumbo v2, "Could not set GL frame data!"
 
     invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 216
+    .line 207
     :cond_1
     return-void
 .end method
 
 .method public setDataFromFrame(Landroid/filterfw/core/Frame;)V
     .locals 3
-    .parameter "frame"
+    .param p1, "frame"    # Landroid/filterfw/core/Frame;
 
     .prologue
     .line 255
@@ -1245,11 +1254,12 @@
     .line 259
     new-instance v0, Ljava/lang/RuntimeException;
 
+    .line 260
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Attempting to assign frame of size "
+    const-string/jumbo v2, "Attempting to assign frame of size "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1267,18 +1277,21 @@
 
     move-result-object v1
 
-    const-string v2, " to "
+    const-string/jumbo v2, " to "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 261
     const-string/jumbo v2, "smaller GL frame of size "
 
+    .line 260
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 261
     invoke-virtual {p0}, Landroid/filterfw/core/GLFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v2
@@ -1287,12 +1300,15 @@
 
     move-result v2
 
+    .line 260
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, "!"
+    .line 261
+    const-string/jumbo v2, "!"
 
+    .line 260
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -1301,6 +1317,7 @@
 
     move-result-object v1
 
+    .line 259
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
@@ -1314,15 +1331,15 @@
     .line 266
     check-cast p1, Landroid/filterfw/core/NativeFrame;
 
-    .end local p1
+    .end local p1    # "frame":Landroid/filterfw/core/Frame;
     invoke-direct {p0, p1}, Landroid/filterfw/core/GLFrame;->nativeCopyFromNative(Landroid/filterfw/core/NativeFrame;)Z
 
-    .line 274
+    .line 254
     :goto_0
     return-void
 
     .line 267
-    .restart local p1
+    .restart local p1    # "frame":Landroid/filterfw/core/Frame;
     :cond_1
     instance-of v0, p1, Landroid/filterfw/core/GLFrame;
 
@@ -1331,13 +1348,13 @@
     .line 268
     check-cast p1, Landroid/filterfw/core/GLFrame;
 
-    .end local p1
+    .end local p1    # "frame":Landroid/filterfw/core/Frame;
     invoke-direct {p0, p1}, Landroid/filterfw/core/GLFrame;->nativeCopyFromGL(Landroid/filterfw/core/GLFrame;)Z
 
     goto :goto_0
 
     .line 269
-    .restart local p1
+    .restart local p1    # "frame":Landroid/filterfw/core/Frame;
     :cond_2
     instance-of v0, p1, Landroid/filterfw/core/SimpleFrame;
 
@@ -1361,7 +1378,7 @@
 
 .method public setFloats([F)V
     .locals 2
-    .parameter "floats"
+    .param p1, "floats"    # [F
 
     .prologue
     .line 192
@@ -1380,20 +1397,20 @@
     .line 195
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not set int values for GL frame!"
+    const-string/jumbo v1, "Could not set int values for GL frame!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 197
+    .line 191
     :cond_0
     return-void
 .end method
 
 .method public setInts([I)V
     .locals 2
-    .parameter "ints"
+    .param p1, "ints"    # [I
 
     .prologue
     .line 176
@@ -1412,21 +1429,21 @@
     .line 179
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not set int values for GL frame!"
+    const-string/jumbo v1, "Could not set int values for GL frame!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 181
+    .line 175
     :cond_0
     return-void
 .end method
 
 .method public setTextureParameter(II)V
     .locals 3
-    .parameter "param"
-    .parameter "value"
+    .param p1, "param"    # I
+    .param p2, "value"    # I
 
     .prologue
     .line 295
@@ -1449,7 +1466,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Could not set texture value "
+    const-string/jumbo v2, "Could not set texture value "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1459,7 +1476,7 @@
 
     move-result-object v1
 
-    const-string v2, " = "
+    const-string/jumbo v2, " = "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1469,14 +1486,16 @@
 
     move-result-object v1
 
-    const-string v2, " "
+    const-string/jumbo v2, " "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, "for GLFrame!"
+    .line 299
+    const-string/jumbo v2, "for GLFrame!"
 
+    .line 298
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -1489,17 +1508,17 @@
 
     throw v0
 
-    .line 301
+    .line 294
     :cond_0
     return-void
 .end method
 
 .method public setViewport(IIII)V
     .locals 0
-    .parameter "x"
-    .parameter "y"
-    .parameter "width"
-    .parameter "height"
+    .param p1, "x"    # I
+    .param p2, "y"    # I
+    .param p3, "width"    # I
+    .param p4, "height"    # I
 
     .prologue
     .line 277
@@ -1508,13 +1527,13 @@
     .line 278
     invoke-direct {p0, p1, p2, p3, p4}, Landroid/filterfw/core/GLFrame;->setNativeViewport(IIII)Z
 
-    .line 279
+    .line 276
     return-void
 .end method
 
 .method public setViewport(Landroid/graphics/Rect;)V
     .locals 5
-    .parameter "rect"
+    .param p1, "rect"    # Landroid/graphics/Rect;
 
     .prologue
     .line 282
@@ -1539,7 +1558,7 @@
 
     invoke-direct {p0, v0, v1, v2, v3}, Landroid/filterfw/core/GLFrame;->setNativeViewport(IIII)Z
 
-    .line 284
+    .line 281
     return-void
 .end method
 
@@ -1552,7 +1571,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "GLFrame id: "
+    const-string/jumbo v1, "GLFrame id: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1564,7 +1583,7 @@
 
     move-result-object v0
 
-    const-string v1, " ("
+    const-string/jumbo v1, " ("
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1578,30 +1597,36 @@
 
     move-result-object v0
 
-    const-string v1, ") with texture ID "
+    const-string/jumbo v1, ") with texture ID "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 320
     invoke-virtual {p0}, Landroid/filterfw/core/GLFrame;->getTextureId()I
 
     move-result v1
 
+    .line 319
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", FBO ID "
+    .line 320
+    const-string/jumbo v1, ", FBO ID "
 
+    .line 319
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 320
     invoke-virtual {p0}, Landroid/filterfw/core/GLFrame;->getFboId()I
 
     move-result v1
 
+    .line 319
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0

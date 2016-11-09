@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/os/CommonClock;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/os/CommonClock;
 
     .prologue
-    .line 314
+    .line 305
     iput-object p1, p0, Landroid/os/CommonClock$1;->this$0:Landroid/os/CommonClock;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,51 +41,47 @@
     .locals 2
 
     .prologue
-    .line 316
+    .line 307
     iget-object v0, p0, Landroid/os/CommonClock$1;->this$0:Landroid/os/CommonClock;
 
-    #getter for: Landroid/os/CommonClock;->mListenerLock:Ljava/lang/Object;
-    invoke-static {v0}, Landroid/os/CommonClock;->access$000(Landroid/os/CommonClock;)Ljava/lang/Object;
+    invoke-static {v0}, Landroid/os/CommonClock;->-get0(Landroid/os/CommonClock;)Ljava/lang/Object;
 
     move-result-object v1
 
     monitor-enter v1
 
-    .line 317
+    .line 308
     :try_start_0
     iget-object v0, p0, Landroid/os/CommonClock$1;->this$0:Landroid/os/CommonClock;
 
-    #getter for: Landroid/os/CommonClock;->mServerDiedListener:Landroid/os/CommonClock$OnServerDiedListener;
-    invoke-static {v0}, Landroid/os/CommonClock;->access$100(Landroid/os/CommonClock;)Landroid/os/CommonClock$OnServerDiedListener;
+    invoke-static {v0}, Landroid/os/CommonClock;->-get1(Landroid/os/CommonClock;)Landroid/os/CommonClock$OnServerDiedListener;
 
     move-result-object v0
 
     if-eqz v0, :cond_0
 
-    .line 318
+    .line 309
     iget-object v0, p0, Landroid/os/CommonClock$1;->this$0:Landroid/os/CommonClock;
 
-    #getter for: Landroid/os/CommonClock;->mServerDiedListener:Landroid/os/CommonClock$OnServerDiedListener;
-    invoke-static {v0}, Landroid/os/CommonClock;->access$100(Landroid/os/CommonClock;)Landroid/os/CommonClock$OnServerDiedListener;
+    invoke-static {v0}, Landroid/os/CommonClock;->-get1(Landroid/os/CommonClock;)Landroid/os/CommonClock$OnServerDiedListener;
 
     move-result-object v0
 
     invoke-interface {v0}, Landroid/os/CommonClock$OnServerDiedListener;->onServerDied()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 319
     :cond_0
     monitor-exit v1
 
-    .line 320
+    .line 306
     return-void
 
-    .line 319
+    .line 307
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

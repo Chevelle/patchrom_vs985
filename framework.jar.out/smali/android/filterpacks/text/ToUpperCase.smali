@@ -10,13 +10,13 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
     .line 36
     invoke-direct {p0, p1}, Landroid/filterfw/core/Filter;-><init>(Ljava/lang/String;)V
 
-    .line 37
+    .line 35
     return-void
 .end method
 
@@ -24,18 +24,18 @@
 # virtual methods
 .method public process(Landroid/filterfw/core/FilterContext;)V
     .locals 5
-    .parameter "env"
+    .param p1, "env"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
     .line 48
-    const-string v3, "mixedcase"
+    const-string/jumbo v3, "mixedcase"
 
     invoke-virtual {p0, v3}, Landroid/filterpacks/text/ToUpperCase;->pullInput(Ljava/lang/String;)Landroid/filterfw/core/Frame;
 
     move-result-object v0
 
     .line 49
-    .local v0, input:Landroid/filterfw/core/Frame;
+    .local v0, "input":Landroid/filterfw/core/Frame;
     invoke-virtual {v0}, Landroid/filterfw/core/Frame;->getObjectValue()Ljava/lang/Object;
 
     move-result-object v1
@@ -43,7 +43,7 @@
     check-cast v1, Ljava/lang/String;
 
     .line 51
-    .local v1, inputString:Ljava/lang/String;
+    .local v1, "inputString":Ljava/lang/String;
     invoke-virtual {p1}, Landroid/filterfw/core/FilterContext;->getFrameManager()Landroid/filterfw/core/FrameManager;
 
     move-result-object v3
@@ -55,7 +55,7 @@
     move-result-object v2
 
     .line 52
-    .local v2, output:Landroid/filterfw/core/Frame;
+    .local v2, "output":Landroid/filterfw/core/Frame;
     invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
 
     move-result-object v3
@@ -71,7 +71,7 @@
 
     invoke-virtual {p0, v3, v2}, Landroid/filterpacks/text/ToUpperCase;->pushOutput(Ljava/lang/String;Landroid/filterfw/core/Frame;)V
 
-    .line 55
+    .line 47
     return-void
 .end method
 
@@ -91,7 +91,7 @@
     iput-object v0, p0, Landroid/filterpacks/text/ToUpperCase;->mOutputFormat:Landroid/filterfw/core/FrameFormat;
 
     .line 42
-    const-string v0, "mixedcase"
+    const-string/jumbo v0, "mixedcase"
 
     iget-object v1, p0, Landroid/filterpacks/text/ToUpperCase;->mOutputFormat:Landroid/filterfw/core/FrameFormat;
 
@@ -104,6 +104,6 @@
 
     invoke-virtual {p0, v0, v1}, Landroid/filterpacks/text/ToUpperCase;->addOutputPort(Ljava/lang/String;Landroid/filterfw/core/FrameFormat;)V
 
-    .line 44
+    .line 40
     return-void
 .end method

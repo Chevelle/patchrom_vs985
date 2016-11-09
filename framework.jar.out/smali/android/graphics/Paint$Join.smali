@@ -48,34 +48,37 @@
 
     const/4 v2, 0x0
 
-    .line 392
+    .line 373
     new-instance v0, Landroid/graphics/Paint$Join;
 
-    const-string v1, "MITER"
+    const-string/jumbo v1, "MITER"
 
     invoke-direct {v0, v1, v2, v2}, Landroid/graphics/Paint$Join;-><init>(Ljava/lang/String;II)V
 
+    .line 376
     sput-object v0, Landroid/graphics/Paint$Join;->MITER:Landroid/graphics/Paint$Join;
 
-    .line 396
+    .line 377
     new-instance v0, Landroid/graphics/Paint$Join;
 
-    const-string v1, "ROUND"
+    const-string/jumbo v1, "ROUND"
 
     invoke-direct {v0, v1, v3, v3}, Landroid/graphics/Paint$Join;-><init>(Ljava/lang/String;II)V
 
+    .line 380
     sput-object v0, Landroid/graphics/Paint$Join;->ROUND:Landroid/graphics/Paint$Join;
 
-    .line 400
+    .line 381
     new-instance v0, Landroid/graphics/Paint$Join;
 
-    const-string v1, "BEVEL"
+    const-string/jumbo v1, "BEVEL"
 
     invoke-direct {v0, v1, v4, v4}, Landroid/graphics/Paint$Join;-><init>(Ljava/lang/String;II)V
 
+    .line 384
     sput-object v0, Landroid/graphics/Paint$Join;->BEVEL:Landroid/graphics/Paint$Join;
 
-    .line 388
+    .line 372
     const/4 v0, 0x3
 
     new-array v0, v0, [Landroid/graphics/Paint$Join;
@@ -99,32 +102,25 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "nativeInt"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "nativeInt"    # I
 
     .prologue
-    .line 402
+    .line 386
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
-    .line 403
+    .line 387
     iput p3, p0, Landroid/graphics/Paint$Join;->nativeInt:I
 
-    .line 404
+    .line 386
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/graphics/Paint$Join;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 388
+    .line 372
     const-class v0, Landroid/graphics/Paint$Join;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -140,14 +136,8 @@
     .locals 1
 
     .prologue
-    .line 388
+    .line 372
     sget-object v0, Landroid/graphics/Paint$Join;->$VALUES:[Landroid/graphics/Paint$Join;
-
-    invoke-virtual {v0}, [Landroid/graphics/Paint$Join;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/graphics/Paint$Join;
 
     return-object v0
 .end method

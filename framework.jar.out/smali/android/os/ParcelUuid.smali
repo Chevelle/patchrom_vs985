@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/os/ParcelUuid$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -28,19 +36,21 @@
     .locals 1
 
     .prologue
-    .line 110
+    .line 111
     new-instance v0, Landroid/os/ParcelUuid$1;
 
     invoke-direct {v0}, Landroid/os/ParcelUuid$1;-><init>()V
 
+    .line 110
     sput-object v0, Landroid/os/ParcelUuid;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 26
     return-void
 .end method
 
 .method public constructor <init>(Ljava/util/UUID;)V
     .locals 0
-    .parameter "uuid"
+    .param p1, "uuid"    # Ljava/util/UUID;
 
     .prologue
     .line 36
@@ -49,13 +59,13 @@
     .line 37
     iput-object p1, p0, Landroid/os/ParcelUuid;->mUuid:Ljava/util/UUID;
 
-    .line 38
+    .line 36
     return-void
 .end method
 
 .method public static fromString(Ljava/lang/String;)Landroid/os/ParcelUuid;
     .locals 2
-    .parameter "uuid"
+    .param p0, "uuid"    # Ljava/lang/String;
 
     .prologue
     .line 52
@@ -84,41 +94,43 @@
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 3
-    .parameter "object"
+    .param p1, "object"    # Ljava/lang/Object;
 
     .prologue
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
     .line 93
-    if-nez p1, :cond_1
+    if-nez p1, :cond_0
 
-    .line 107
-    :cond_0
-    :goto_0
-    return v1
+    .line 94
+    return v2
 
     .line 97
-    :cond_1
-    if-ne p0, p1, :cond_2
+    :cond_0
+    if-ne p0, p1, :cond_1
 
     .line 98
     const/4 v1, 0x1
 
-    goto :goto_0
+    return v1
 
     .line 101
+    :cond_1
+    instance-of v1, p1, Landroid/os/ParcelUuid;
+
+    if-nez v1, :cond_2
+
+    .line 102
+    return v2
+
     :cond_2
-    instance-of v2, p1, Landroid/os/ParcelUuid;
-
-    if-eqz v2, :cond_0
-
     move-object v0, p1
 
     .line 105
     check-cast v0, Landroid/os/ParcelUuid;
 
     .line 107
-    .local v0, that:Landroid/os/ParcelUuid;
+    .local v0, "that":Landroid/os/ParcelUuid;
     iget-object v1, p0, Landroid/os/ParcelUuid;->mUuid:Ljava/util/UUID;
 
     iget-object v2, v0, Landroid/os/ParcelUuid;->mUuid:Ljava/util/UUID;
@@ -127,7 +139,7 @@
 
     move-result v1
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public getUuid()Ljava/util/UUID;
@@ -170,8 +182,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 2
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 129
@@ -192,6 +204,6 @@
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 131
+    .line 128
     return-void
 .end method

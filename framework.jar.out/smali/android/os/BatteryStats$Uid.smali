@@ -15,53 +15,85 @@
 
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/os/BatteryStats$Uid$Pkg;,
-        Landroid/os/BatteryStats$Uid$Proc;,
-        Landroid/os/BatteryStats$Uid$Pid;,
+        Landroid/os/BatteryStats$Uid$Wakelock;,
         Landroid/os/BatteryStats$Uid$Sensor;,
-        Landroid/os/BatteryStats$Uid$Wakelock;
+        Landroid/os/BatteryStats$Uid$Pid;,
+        Landroid/os/BatteryStats$Uid$Proc;,
+        Landroid/os/BatteryStats$Uid$Pkg;
     }
 .end annotation
 
 
 # static fields
+.field public static final NUM_PROCESS_STATE:I = 0x3
+
 .field public static final NUM_USER_ACTIVITY_TYPES:I = 0x3
 
 .field public static final NUM_WIFI_BATCHED_SCAN_BINS:I = 0x5
+
+.field public static final PROCESS_STATE_ACTIVE:I = 0x1
+
+.field public static final PROCESS_STATE_FOREGROUND:I = 0x0
+
+.field static final PROCESS_STATE_NAMES:[Ljava/lang/String;
+
+.field public static final PROCESS_STATE_RUNNING:I = 0x2
 
 .field static final USER_ACTIVITY_TYPES:[Ljava/lang/String;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 3
+    .locals 6
 
     .prologue
-    .line 306
-    const/4 v0, 0x3
+    const/4 v5, 0x3
 
-    new-array v0, v0, [Ljava/lang/String;
+    const/4 v4, 0x2
 
-    const/4 v1, 0x0
+    const/4 v3, 0x1
 
-    const-string/jumbo v2, "other"
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    .line 419
+    new-array v0, v5, [Ljava/lang/String;
 
-    const/4 v1, 0x1
+    .line 420
+    const-string/jumbo v1, "Foreground"
 
-    const-string v2, "button"
+    aput-object v1, v0, v2
 
-    aput-object v2, v0, v1
+    const-string/jumbo v1, "Active"
 
-    const/4 v1, 0x2
+    aput-object v1, v0, v3
 
-    const-string/jumbo v2, "touch"
+    const-string/jumbo v1, "Running"
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v4
 
+    .line 419
+    sput-object v0, Landroid/os/BatteryStats$Uid;->PROCESS_STATE_NAMES:[Ljava/lang/String;
+
+    .line 434
+    new-array v0, v5, [Ljava/lang/String;
+
+    .line 435
+    const-string/jumbo v1, "other"
+
+    aput-object v1, v0, v2
+
+    const-string/jumbo v1, "button"
+
+    aput-object v1, v0, v3
+
+    const-string/jumbo v1, "touch"
+
+    aput-object v1, v0, v4
+
+    .line 434
     sput-object v0, Landroid/os/BatteryStats$Uid;->USER_ACTIVITY_TYPES:[Ljava/lang/String;
 
+    .line 314
     return-void
 .end method
 
@@ -69,16 +101,24 @@
     .locals 0
 
     .prologue
-    .line 225
+    .line 314
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 397
     return-void
 .end method
 
 
 # virtual methods
-.method public abstract getAudioTurnedOnTime(JI)J
+.method public abstract getAudioTurnedOnTimer()Landroid/os/BatteryStats$Timer;
+.end method
+
+.method public abstract getCameraTurnedOnTimer()Landroid/os/BatteryStats$Timer;
+.end method
+
+.method public abstract getCpuPowerMaUs(I)J
+.end method
+
+.method public abstract getFlashlightTurnedOnTimer()Landroid/os/BatteryStats$Timer;
 .end method
 
 .method public abstract getForegroundActivityTimer()Landroid/os/BatteryStats$Timer;
@@ -87,14 +127,37 @@
 .method public abstract getFullWifiLockTime(JI)J
 .end method
 
-.method public abstract getNetworkActivityCount(II)J
-.end method
-
-.method public abstract getPackageStats()Ljava/util/Map;
+.method public abstract getJobStats()Landroid/util/ArrayMap;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/util/Map",
+            "Landroid/util/ArrayMap",
+            "<",
+            "Ljava/lang/String;",
+            "+",
+            "Landroid/os/BatteryStats$Timer;",
+            ">;"
+        }
+    .end annotation
+.end method
+
+.method public abstract getMobileRadioActiveCount(I)I
+.end method
+
+.method public abstract getMobileRadioActiveTime(I)J
+.end method
+
+.method public abstract getNetworkActivityBytes(II)J
+.end method
+
+.method public abstract getNetworkActivityPackets(II)J
+.end method
+
+.method public abstract getPackageStats()Landroid/util/ArrayMap;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Landroid/util/ArrayMap",
             "<",
             "Ljava/lang/String;",
             "+",
@@ -116,11 +179,14 @@
     .end annotation
 .end method
 
-.method public abstract getProcessStats()Ljava/util/Map;
+.method public abstract getProcessStateTime(IJI)J
+.end method
+
+.method public abstract getProcessStats()Landroid/util/ArrayMap;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/util/Map",
+            "Landroid/util/ArrayMap",
             "<",
             "Ljava/lang/String;",
             "+",
@@ -130,18 +196,36 @@
     .end annotation
 .end method
 
-.method public abstract getSensorStats()Ljava/util/Map;
+.method public abstract getSensorStats()Landroid/util/SparseArray;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/util/Map",
-            "<",
-            "Ljava/lang/Integer;",
-            "+",
+            "Landroid/util/SparseArray",
+            "<+",
             "Landroid/os/BatteryStats$Uid$Sensor;",
             ">;"
         }
     .end annotation
+.end method
+
+.method public abstract getSyncStats()Landroid/util/ArrayMap;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Landroid/util/ArrayMap",
+            "<",
+            "Ljava/lang/String;",
+            "+",
+            "Landroid/os/BatteryStats$Timer;",
+            ">;"
+        }
+    .end annotation
+.end method
+
+.method public abstract getSystemCpuTimeUs(I)J
+.end method
+
+.method public abstract getTimeAtCpuSpeed(III)J
 .end method
 
 .method public abstract getUid()I
@@ -150,17 +234,20 @@
 .method public abstract getUserActivityCount(II)I
 .end method
 
+.method public abstract getUserCpuTimeUs(I)J
+.end method
+
 .method public abstract getVibratorOnTimer()Landroid/os/BatteryStats$Timer;
 .end method
 
-.method public abstract getVideoTurnedOnTime(JI)J
+.method public abstract getVideoTurnedOnTimer()Landroid/os/BatteryStats$Timer;
 .end method
 
-.method public abstract getWakelockStats()Ljava/util/Map;
+.method public abstract getWakelockStats()Landroid/util/ArrayMap;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/util/Map",
+            "Landroid/util/ArrayMap",
             "<",
             "Ljava/lang/String;",
             "+",
@@ -170,13 +257,22 @@
     .end annotation
 .end method
 
+.method public abstract getWifiBatchedScanCount(II)I
+.end method
+
 .method public abstract getWifiBatchedScanTime(IJI)J
+.end method
+
+.method public abstract getWifiControllerActivity(II)J
 .end method
 
 .method public abstract getWifiMulticastTime(JI)J
 .end method
 
 .method public abstract getWifiRunningTime(JI)J
+.end method
+
+.method public abstract getWifiScanCount(I)I
 .end method
 
 .method public abstract getWifiScanTime(JI)J
@@ -188,53 +284,41 @@
 .method public abstract hasUserActivity()Z
 .end method
 
-.method public abstract noteActivityPausedLocked()V
+.method public abstract noteActivityPausedLocked(J)V
 .end method
 
-.method public abstract noteActivityResumedLocked()V
+.method public abstract noteActivityResumedLocked(J)V
 .end method
 
-.method public abstract noteAudioTurnedOffLocked()V
+.method public abstract noteFullWifiLockAcquiredLocked(J)V
 .end method
 
-.method public abstract noteAudioTurnedOnLocked()V
-.end method
-
-.method public abstract noteFullWifiLockAcquiredLocked()V
-.end method
-
-.method public abstract noteFullWifiLockReleasedLocked()V
+.method public abstract noteFullWifiLockReleasedLocked(J)V
 .end method
 
 .method public abstract noteUserActivityLocked(I)V
 .end method
 
-.method public abstract noteVideoTurnedOffLocked()V
+.method public abstract noteWifiBatchedScanStartedLocked(IJ)V
 .end method
 
-.method public abstract noteVideoTurnedOnLocked()V
+.method public abstract noteWifiBatchedScanStoppedLocked(J)V
 .end method
 
-.method public abstract noteWifiBatchedScanStartedLocked(I)V
+.method public abstract noteWifiMulticastDisabledLocked(J)V
 .end method
 
-.method public abstract noteWifiBatchedScanStoppedLocked()V
+.method public abstract noteWifiMulticastEnabledLocked(J)V
 .end method
 
-.method public abstract noteWifiMulticastDisabledLocked()V
+.method public abstract noteWifiRunningLocked(J)V
 .end method
 
-.method public abstract noteWifiMulticastEnabledLocked()V
+.method public abstract noteWifiScanStartedLocked(J)V
 .end method
 
-.method public abstract noteWifiRunningLocked()V
+.method public abstract noteWifiScanStoppedLocked(J)V
 .end method
 
-.method public abstract noteWifiScanStartedLocked()V
-.end method
-
-.method public abstract noteWifiScanStoppedLocked()V
-.end method
-
-.method public abstract noteWifiStoppedLocked()V
+.method public abstract noteWifiStoppedLocked(J)V
 .end method

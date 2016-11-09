@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/inputmethodservice/InputMethodService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/inputmethodservice/InputMethodService;
 
     .prologue
-    .line 356
+    .line 341
     iput-object p1, p0, Landroid/inputmethodservice/InputMethodService$2;->this$0:Landroid/inputmethodservice/InputMethodService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,56 +39,58 @@
 # virtual methods
 .method public onClick(Landroid/view/View;)V
     .locals 4
-    .parameter "v"
+    .param p1, "v"    # Landroid/view/View;
 
     .prologue
-    .line 358
+    .line 343
     iget-object v2, p0, Landroid/inputmethodservice/InputMethodService$2;->this$0:Landroid/inputmethodservice/InputMethodService;
 
     invoke-virtual {v2}, Landroid/inputmethodservice/InputMethodService;->getCurrentInputEditorInfo()Landroid/view/inputmethod/EditorInfo;
 
     move-result-object v0
 
-    .line 359
-    .local v0, ei:Landroid/view/inputmethod/EditorInfo;
+    .line 344
+    .local v0, "ei":Landroid/view/inputmethod/EditorInfo;
     iget-object v2, p0, Landroid/inputmethodservice/InputMethodService$2;->this$0:Landroid/inputmethodservice/InputMethodService;
 
     invoke-virtual {v2}, Landroid/inputmethodservice/InputMethodService;->getCurrentInputConnection()Landroid/view/inputmethod/InputConnection;
 
     move-result-object v1
 
-    .line 360
-    .local v1, ic:Landroid/view/inputmethod/InputConnection;
+    .line 345
+    .local v1, "ic":Landroid/view/inputmethod/InputConnection;
     if-eqz v0, :cond_0
 
     if-eqz v1, :cond_0
 
-    .line 361
+    .line 346
     iget v2, v0, Landroid/view/inputmethod/EditorInfo;->actionId:I
 
     if-eqz v2, :cond_1
 
-    .line 362
+    .line 347
     iget v2, v0, Landroid/view/inputmethod/EditorInfo;->actionId:I
 
     invoke-interface {v1, v2}, Landroid/view/inputmethod/InputConnection;->performEditorAction(I)Z
 
-    .line 368
+    .line 342
     :cond_0
     :goto_0
     return-void
 
-    .line 363
+    .line 348
     :cond_1
     iget v2, v0, Landroid/view/inputmethod/EditorInfo;->imeOptions:I
 
     and-int/lit16 v2, v2, 0xff
 
+    .line 349
     const/4 v3, 0x1
 
+    .line 348
     if-eq v2, v3, :cond_0
 
-    .line 365
+    .line 350
     iget v2, v0, Landroid/view/inputmethod/EditorInfo;->imeOptions:I
 
     and-int/lit16 v2, v2, 0xff

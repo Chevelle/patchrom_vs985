@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 92
+    .line 91
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 93
     iput-object p1, p0, Landroid/speech/IRecognitionService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 94
+    .line 91
     return-void
 .end method
 
@@ -51,7 +51,7 @@
 
 .method public cancel(Landroid/speech/IRecognitionListener;)V
     .locals 5
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/speech/IRecognitionListener;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -67,9 +67,9 @@
     move-result-object v0
 
     .line 160
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.speech.IRecognitionService"
+    const-string/jumbo v2, "android.speech.IRecognitionService"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -99,15 +99,17 @@
     .line 165
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 167
+    .line 156
     return-void
 
-    .line 165
+    .line 164
     :catchall_0
     move-exception v1
 
+    .line 165
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 164
     throw v1
 .end method
 
@@ -116,15 +118,15 @@
 
     .prologue
     .line 101
-    const-string v0, "android.speech.IRecognitionService"
+    const-string/jumbo v0, "android.speech.IRecognitionService"
 
     return-object v0
 .end method
 
 .method public startListening(Landroid/content/Intent;Landroid/speech/IRecognitionListener;)V
     .locals 5
-    .parameter "recognizerIntent"
-    .parameter "listener"
+    .param p1, "recognizerIntent"    # Landroid/content/Intent;
+    .param p2, "listener"    # Landroid/speech/IRecognitionListener;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -140,9 +142,9 @@
     move-result-object v0
 
     .line 117
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.speech.IRecognitionService"
+    const-string/jumbo v2, "android.speech.IRecognitionService"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -186,7 +188,7 @@
     .line 129
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 131
+    .line 113
     return-void
 
     .line 123
@@ -200,18 +202,20 @@
 
     goto :goto_0
 
-    .line 129
+    .line 128
     :catchall_0
     move-exception v1
 
+    .line 129
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 128
     throw v1
 .end method
 
 .method public stopListening(Landroid/speech/IRecognitionListener;)V
     .locals 5
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/speech/IRecognitionListener;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -227,9 +231,9 @@
     move-result-object v0
 
     .line 143
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.speech.IRecognitionService"
+    const-string/jumbo v2, "android.speech.IRecognitionService"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -259,14 +263,16 @@
     .line 148
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 150
+    .line 139
     return-void
 
-    .line 148
+    .line 147
     :catchall_0
     move-exception v1
 
+    .line 148
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 147
     throw v1
 .end method

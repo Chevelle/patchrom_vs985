@@ -15,7 +15,7 @@
 
 
 # virtual methods
-.method public abstract addKeyboardLayoutForInputDevice(Ljava/lang/String;Ljava/lang/String;)V
+.method public abstract addKeyboardLayoutForInputDevice(Landroid/hardware/input/InputDeviceIdentifier;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -31,7 +31,7 @@
     .end annotation
 .end method
 
-.method public abstract getCurrentKeyboardLayoutForInputDevice(Ljava/lang/String;)Ljava/lang/String;
+.method public abstract getCurrentKeyboardLayoutForInputDevice(Landroid/hardware/input/InputDeviceIdentifier;)Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -71,7 +71,15 @@
     .end annotation
 .end method
 
-.method public abstract getKeyboardLayoutsForInputDevice(Ljava/lang/String;)[Ljava/lang/String;
+.method public abstract getKeyboardLayoutsForInputDevice(Landroid/hardware/input/InputDeviceIdentifier;)[Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getTouchCalibrationForInputDevice(Ljava/lang/String;I)Landroid/hardware/input/TouchCalibration;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -95,6 +103,14 @@
     .end annotation
 .end method
 
+.method public abstract isInTabletMode()I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract registerInputDevicesChangedListener(Landroid/hardware/input/IInputDevicesChangedListener;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -103,7 +119,7 @@
     .end annotation
 .end method
 
-.method public abstract removeKeyboardLayoutForInputDevice(Ljava/lang/String;Ljava/lang/String;)V
+.method public abstract registerTabletModeChangedListener(Landroid/hardware/input/ITabletModeChangedListener;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -111,7 +127,23 @@
     .end annotation
 .end method
 
-.method public abstract setCurrentKeyboardLayoutForInputDevice(Ljava/lang/String;Ljava/lang/String;)V
+.method public abstract removeKeyboardLayoutForInputDevice(Landroid/hardware/input/InputDeviceIdentifier;Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setCurrentKeyboardLayoutForInputDevice(Landroid/hardware/input/InputDeviceIdentifier;Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setTouchCalibrationForInputDevice(Ljava/lang/String;ILandroid/hardware/input/TouchCalibration;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

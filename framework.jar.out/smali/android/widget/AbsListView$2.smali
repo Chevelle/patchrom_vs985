@@ -26,11 +26,11 @@
 # direct methods
 .method constructor <init>(Landroid/widget/AbsListView;Z)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/AbsListView;
+    .param p2, "val$alwaysShow"    # Z
 
     .prologue
-    .line 1282
+    .line 1328
     iput-object p1, p0, Landroid/widget/AbsListView$2;->this$0:Landroid/widget/AbsListView;
 
     iput-boolean p2, p0, Landroid/widget/AbsListView$2;->val$alwaysShow:Z
@@ -46,14 +46,13 @@
     .locals 2
 
     .prologue
-    .line 1285
+    .line 1331
     iget-object v0, p0, Landroid/widget/AbsListView$2;->this$0:Landroid/widget/AbsListView;
 
     iget-boolean v1, p0, Landroid/widget/AbsListView$2;->val$alwaysShow:Z
 
-    #calls: Landroid/widget/AbsListView;->setFastScrollerAlwaysVisibleUiThread(Z)V
-    invoke-static {v0, v1}, Landroid/widget/AbsListView;->access$100(Landroid/widget/AbsListView;Z)V
+    invoke-static {v0, v1}, Landroid/widget/AbsListView;->-wrap8(Landroid/widget/AbsListView;Z)V
 
-    .line 1286
+    .line 1330
     return-void
 .end method

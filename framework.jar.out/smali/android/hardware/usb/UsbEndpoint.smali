@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/hardware/usb/UsbEndpoint$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -39,35 +47,37 @@
 
     invoke-direct {v0}, Landroid/hardware/usb/UsbEndpoint$1;-><init>()V
 
+    .line 136
     sput-object v0, Landroid/hardware/usb/UsbEndpoint;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 32
     return-void
 .end method
 
 .method public constructor <init>(IIII)V
     .locals 0
-    .parameter "address"
-    .parameter "attributes"
-    .parameter "maxPacketSize"
-    .parameter "interval"
+    .param p1, "address"    # I
+    .param p2, "attributes"    # I
+    .param p3, "maxPacketSize"    # I
+    .param p4, "interval"    # I
 
     .prologue
-    .line 44
+    .line 43
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 45
+    .line 44
     iput p1, p0, Landroid/hardware/usb/UsbEndpoint;->mAddress:I
 
-    .line 46
+    .line 45
     iput p2, p0, Landroid/hardware/usb/UsbEndpoint;->mAttributes:I
 
-    .line 47
+    .line 46
     iput p3, p0, Landroid/hardware/usb/UsbEndpoint;->mMaxPacketSize:I
 
-    .line 48
+    .line 47
     iput p4, p0, Landroid/hardware/usb/UsbEndpoint;->mInterval:I
 
-    .line 49
+    .line 43
     return-void
 .end method
 
@@ -77,7 +87,7 @@
     .locals 1
 
     .prologue
-    .line 153
+    .line 152
     const/4 v0, 0x0
 
     return v0
@@ -87,7 +97,7 @@
     .locals 1
 
     .prologue
-    .line 61
+    .line 60
     iget v0, p0, Landroid/hardware/usb/UsbEndpoint;->mAddress:I
 
     return v0
@@ -97,7 +107,7 @@
     .locals 1
 
     .prologue
-    .line 94
+    .line 93
     iget v0, p0, Landroid/hardware/usb/UsbEndpoint;->mAttributes:I
 
     return v0
@@ -107,7 +117,7 @@
     .locals 1
 
     .prologue
-    .line 85
+    .line 84
     iget v0, p0, Landroid/hardware/usb/UsbEndpoint;->mAddress:I
 
     and-int/lit16 v0, v0, 0x80
@@ -119,7 +129,7 @@
     .locals 1
 
     .prologue
-    .line 70
+    .line 69
     iget v0, p0, Landroid/hardware/usb/UsbEndpoint;->mAddress:I
 
     and-int/lit8 v0, v0, 0xf
@@ -131,7 +141,7 @@
     .locals 1
 
     .prologue
-    .line 128
+    .line 127
     iget v0, p0, Landroid/hardware/usb/UsbEndpoint;->mInterval:I
 
     return v0
@@ -141,7 +151,7 @@
     .locals 1
 
     .prologue
-    .line 119
+    .line 118
     iget v0, p0, Landroid/hardware/usb/UsbEndpoint;->mMaxPacketSize:I
 
     return v0
@@ -151,7 +161,7 @@
     .locals 1
 
     .prologue
-    .line 110
+    .line 109
     iget v0, p0, Landroid/hardware/usb/UsbEndpoint;->mAttributes:I
 
     and-int/lit8 v0, v0, 0x3
@@ -163,12 +173,12 @@
     .locals 2
 
     .prologue
-    .line 133
+    .line 132
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "UsbEndpoint[mAddress="
+    const-string/jumbo v1, "UsbEndpoint[mAddress="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -180,7 +190,7 @@
 
     move-result-object v0
 
-    const-string v1, ",mAttributes="
+    const-string/jumbo v1, ",mAttributes="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -192,32 +202,42 @@
 
     move-result-object v0
 
-    const-string v1, ",mMaxPacketSize="
+    .line 133
+    const-string/jumbo v1, ",mMaxPacketSize="
 
+    .line 132
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 133
     iget v1, p0, Landroid/hardware/usb/UsbEndpoint;->mMaxPacketSize:I
 
+    .line 132
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ",mInterval="
+    .line 133
+    const-string/jumbo v1, ",mInterval="
 
+    .line 132
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 133
     iget v1, p0, Landroid/hardware/usb/UsbEndpoint;->mInterval:I
 
+    .line 132
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "]"
+    .line 133
+    const-string/jumbo v1, "]"
 
+    .line 132
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -231,30 +251,30 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "parcel"
-    .parameter "flags"
+    .param p1, "parcel"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 157
+    .line 156
     iget v0, p0, Landroid/hardware/usb/UsbEndpoint;->mAddress:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 158
+    .line 157
     iget v0, p0, Landroid/hardware/usb/UsbEndpoint;->mAttributes:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 159
+    .line 158
     iget v0, p0, Landroid/hardware/usb/UsbEndpoint;->mMaxPacketSize:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 160
+    .line 159
     iget v0, p0, Landroid/hardware/usb/UsbEndpoint;->mInterval:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 161
+    .line 155
     return-void
 .end method

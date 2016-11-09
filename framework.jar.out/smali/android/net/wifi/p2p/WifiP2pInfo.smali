@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/net/wifi/p2p/WifiP2pInfo$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -32,13 +40,15 @@
     .locals 1
 
     .prologue
-    .line 80
+    .line 81
     new-instance v0, Landroid/net/wifi/p2p/WifiP2pInfo$1;
 
     invoke-direct {v0}, Landroid/net/wifi/p2p/WifiP2pInfo$1;-><init>()V
 
+    .line 80
     sput-object v0, Landroid/net/wifi/p2p/WifiP2pInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 30
     return-void
 .end method
 
@@ -49,13 +59,12 @@
     .line 41
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 42
     return-void
 .end method
 
 .method public constructor <init>(Landroid/net/wifi/p2p/WifiP2pInfo;)V
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/net/wifi/p2p/WifiP2pInfo;
 
     .prologue
     .line 58
@@ -79,7 +88,7 @@
 
     iput-object v0, p0, Landroid/net/wifi/p2p/WifiP2pInfo;->groupOwnerAddress:Ljava/net/InetAddress;
 
-    .line 64
+    .line 58
     :cond_0
     return-void
 .end method
@@ -106,8 +115,8 @@
     invoke-direct {v0}, Ljava/lang/StringBuffer;-><init>()V
 
     .line 46
-    .local v0, sbuf:Ljava/lang/StringBuffer;
-    const-string v1, "groupFormed: "
+    .local v0, "sbuf":Ljava/lang/StringBuffer;
+    const-string/jumbo v1, "groupFormed: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -119,26 +128,34 @@
 
     move-result-object v1
 
-    const-string v2, " isGroupOwner: "
+    .line 47
+    const-string/jumbo v2, " isGroupOwner: "
 
+    .line 46
     invoke-virtual {v1, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     move-result-object v1
 
+    .line 47
     iget-boolean v2, p0, Landroid/net/wifi/p2p/WifiP2pInfo;->isGroupOwner:Z
 
+    .line 46
     invoke-virtual {v1, v2}, Ljava/lang/StringBuffer;->append(Z)Ljava/lang/StringBuffer;
 
     move-result-object v1
 
-    const-string v2, " groupOwnerAddress: "
+    .line 48
+    const-string/jumbo v2, " groupOwnerAddress: "
 
+    .line 46
     invoke-virtual {v1, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     move-result-object v1
 
+    .line 48
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pInfo;->groupOwnerAddress:Ljava/net/InetAddress;
 
+    .line 46
     invoke-virtual {v1, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/Object;)Ljava/lang/StringBuffer;
 
     .line 49
@@ -151,8 +168,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 3
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     const/4 v1, 0x1
@@ -196,7 +213,7 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByteArray([B)V
 
-    .line 77
+    .line 67
     :goto_2
     return-void
 

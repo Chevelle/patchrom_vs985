@@ -30,13 +30,29 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/text/method/CharacterPickerDialog;)Landroid/view/LayoutInflater;
+    .locals 1
+
+    iget-object v0, p0, Landroid/text/method/CharacterPickerDialog;->mInflater:Landroid/view/LayoutInflater;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Landroid/text/method/CharacterPickerDialog;)Ljava/lang/String;
+    .locals 1
+
+    iget-object v0, p0, Landroid/text/method/CharacterPickerDialog;->mOptions:Ljava/lang/String;
+
+    return-object v0
+.end method
+
 .method public constructor <init>(Landroid/content/Context;Landroid/view/View;Landroid/text/Editable;Ljava/lang/String;Z)V
     .locals 1
-    .parameter "context"
-    .parameter "view"
-    .parameter "text"
-    .parameter "options"
-    .parameter "insert"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "view"    # Landroid/view/View;
+    .param p3, "text"    # Landroid/text/Editable;
+    .param p4, "options"    # Ljava/lang/String;
+    .param p5, "insert"    # Z
 
     .prologue
     .line 57
@@ -63,35 +79,13 @@
 
     iput-object v0, p0, Landroid/text/method/CharacterPickerDialog;->mInflater:Landroid/view/LayoutInflater;
 
-    .line 64
+    .line 56
     return-void
-.end method
-
-.method static synthetic access$000(Landroid/text/method/CharacterPickerDialog;)Landroid/view/LayoutInflater;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 40
-    iget-object v0, p0, Landroid/text/method/CharacterPickerDialog;->mInflater:Landroid/view/LayoutInflater;
-
-    return-object v0
-.end method
-
-.method static synthetic access$100(Landroid/text/method/CharacterPickerDialog;)Ljava/lang/String;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 40
-    iget-object v0, p0, Landroid/text/method/CharacterPickerDialog;->mOptions:Ljava/lang/String;
-
-    return-object v0
 .end method
 
 .method private replaceCharacterAndClose(Ljava/lang/CharSequence;)V
     .locals 3
-    .parameter "replace"
+    .param p1, "replace"    # Ljava/lang/CharSequence;
 
     .prologue
     .line 94
@@ -102,7 +96,7 @@
     move-result v0
 
     .line 95
-    .local v0, selEnd:I
+    .local v0, "selEnd":I
     iget-boolean v1, p0, Landroid/text/method/CharacterPickerDialog;->mInsert:Z
 
     if-nez v1, :cond_0
@@ -119,7 +113,7 @@
     :goto_0
     invoke-virtual {p0}, Landroid/text/method/CharacterPickerDialog;->dismiss()V
 
-    .line 102
+    .line 93
     return-void
 
     .line 98
@@ -137,7 +131,7 @@
 # virtual methods
 .method public onClick(Landroid/view/View;)V
     .locals 2
-    .parameter "v"
+    .param p1, "v"    # Landroid/view/View;
 
     .prologue
     .line 108
@@ -148,14 +142,14 @@
     .line 109
     invoke-virtual {p0}, Landroid/text/method/CharacterPickerDialog;->dismiss()V
 
-    .line 114
-    .end local p1
+    .line 107
+    .end local p1    # "v":Landroid/view/View;
     :cond_0
     :goto_0
     return-void
 
     .line 110
-    .restart local p1
+    .restart local p1    # "v":Landroid/view/View;
     :cond_1
     instance-of v1, p1, Landroid/widget/Button;
 
@@ -164,13 +158,13 @@
     .line 111
     check-cast p1, Landroid/widget/Button;
 
-    .end local p1
+    .end local p1    # "v":Landroid/view/View;
     invoke-virtual {p1}, Landroid/widget/Button;->getText()Ljava/lang/CharSequence;
 
     move-result-object v0
 
     .line 112
-    .local v0, result:Ljava/lang/CharSequence;
+    .local v0, "result":Ljava/lang/CharSequence;
     invoke-direct {p0, v0}, Landroid/text/method/CharacterPickerDialog;->replaceCharacterAndClose(Ljava/lang/CharSequence;)V
 
     goto :goto_0
@@ -178,7 +172,7 @@
 
 .method protected onCreate(Landroid/os/Bundle;)V
     .locals 4
-    .parameter "savedInstanceState"
+    .param p1, "savedInstanceState"    # Landroid/os/Bundle;
 
     .prologue
     .line 68
@@ -194,7 +188,7 @@
     move-result-object v1
 
     .line 71
-    .local v1, params:Landroid/view/WindowManager$LayoutParams;
+    .local v1, "params":Landroid/view/WindowManager$LayoutParams;
     iget-object v2, p0, Landroid/text/method/CharacterPickerDialog;->mView:Landroid/view/View;
 
     invoke-virtual {v2}, Landroid/view/View;->getApplicationWindowToken()Landroid/os/IBinder;
@@ -216,12 +210,12 @@
     iput v2, v1, Landroid/view/WindowManager$LayoutParams;->flags:I
 
     .line 75
-    const v2, 0x1090032
+    const v2, 0x109003c
 
     invoke-virtual {p0, v2}, Landroid/text/method/CharacterPickerDialog;->setContentView(I)V
 
     .line 77
-    const v2, 0x102028d
+    const v2, 0x1020317
 
     invoke-virtual {p0, v2}, Landroid/text/method/CharacterPickerDialog;->findViewById(I)Landroid/view/View;
 
@@ -230,7 +224,7 @@
     check-cast v0, Landroid/widget/GridView;
 
     .line 78
-    .local v0, grid:Landroid/widget/GridView;
+    .local v0, "grid":Landroid/widget/GridView;
     new-instance v2, Landroid/text/method/CharacterPickerDialog$OptionsAdapter;
 
     invoke-virtual {p0}, Landroid/text/method/CharacterPickerDialog;->getContext()Landroid/content/Context;
@@ -245,7 +239,7 @@
     invoke-virtual {v0, p0}, Landroid/widget/GridView;->setOnItemClickListener(Landroid/widget/AdapterView$OnItemClickListener;)V
 
     .line 81
-    const v2, 0x102028e
+    const v2, 0x1020318
 
     invoke-virtual {p0, v2}, Landroid/text/method/CharacterPickerDialog;->findViewById(I)Landroid/view/View;
 
@@ -260,16 +254,16 @@
 
     invoke-virtual {v2, p0}, Landroid/widget/Button;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 83
+    .line 67
     return-void
 .end method
 
 .method public onItemClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
     .locals 2
-    .parameter "parent"
-    .parameter "view"
-    .parameter "position"
-    .parameter "id"
+    .param p1, "parent"    # Landroid/widget/AdapterView;
+    .param p2, "view"    # Landroid/view/View;
+    .param p3, "position"    # I
+    .param p4, "id"    # J
 
     .prologue
     .line 89
@@ -284,9 +278,9 @@
     move-result-object v0
 
     .line 90
-    .local v0, result:Ljava/lang/String;
+    .local v0, "result":Ljava/lang/String;
     invoke-direct {p0, v0}, Landroid/text/method/CharacterPickerDialog;->replaceCharacterAndClose(Ljava/lang/CharSequence;)V
 
-    .line 91
+    .line 88
     return-void
 .end method

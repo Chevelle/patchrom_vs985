@@ -12,8 +12,8 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;D)V
     .locals 0
-    .parameter "label"
-    .parameter "predictionScore"
+    .param p1, "label"    # Ljava/lang/String;
+    .param p2, "predictionScore"    # D
 
     .prologue
     .line 24
@@ -25,7 +25,7 @@
     .line 26
     iput-wide p2, p0, Landroid/gesture/Prediction;->score:D
 
-    .line 27
+    .line 24
     return-void
 .end method
 

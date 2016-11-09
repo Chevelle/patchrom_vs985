@@ -17,38 +17,38 @@
 # direct methods
 .method public constructor <init>(II)V
     .locals 0
-    .parameter "w"
-    .parameter "h"
+    .param p1, "w"    # I
+    .param p2, "h"    # I
 
     .prologue
-    .line 1536
+    .line 1533
     invoke-direct {p0, p1, p2}, Landroid/view/ViewGroup$LayoutParams;-><init>(II)V
 
-    .line 1537
+    .line 1532
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
     .locals 0
-    .parameter "c"
-    .parameter "attrs"
+    .param p1, "c"    # Landroid/content/Context;
+    .param p2, "attrs"    # Landroid/util/AttributeSet;
 
     .prologue
-    .line 1532
+    .line 1529
     invoke-direct {p0, p1, p2}, Landroid/view/ViewGroup$LayoutParams;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 1533
+    .line 1528
     return-void
 .end method
 
 .method public constructor <init>(Landroid/view/ViewGroup$LayoutParams;)V
     .locals 0
-    .parameter "source"
+    .param p1, "source"    # Landroid/view/ViewGroup$LayoutParams;
 
     .prologue
-    .line 1540
+    .line 1537
     invoke-direct {p0, p1}, Landroid/view/ViewGroup$LayoutParams;-><init>(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 1541
+    .line 1536
     return-void
 .end method

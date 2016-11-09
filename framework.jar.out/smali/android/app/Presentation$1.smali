@@ -1,66 +1,103 @@
-.class final Landroid/app/Presentation$1;
-.super Landroid/view/ContextThemeWrapper;
+.class Landroid/app/Presentation$1;
+.super Ljava/lang/Object;
 .source "Presentation.java"
+
+# interfaces
+.implements Landroid/hardware/display/DisplayManager$DisplayListener;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/app/Presentation;->createPresentationContext(Landroid/content/Context;Landroid/view/Display;I)Landroid/content/Context;
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroid/app/Presentation;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x8
+    accessFlags = 0x0
     name = null
 .end annotation
 
 
 # instance fields
-.field final synthetic val$displayWindowManager:Landroid/view/WindowManagerImpl;
+.field final synthetic this$0:Landroid/app/Presentation;
 
 
 # direct methods
-.method constructor <init>(Landroid/content/Context;ILandroid/view/WindowManagerImpl;)V
+.method constructor <init>(Landroid/app/Presentation;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
-    .parameter
+    .param p1, "this$0"    # Landroid/app/Presentation;
 
     .prologue
-    .line 312
-    iput-object p3, p0, Landroid/app/Presentation$1;->val$displayWindowManager:Landroid/view/WindowManagerImpl;
+    .line 325
+    iput-object p1, p0, Landroid/app/Presentation$1;->this$0:Landroid/app/Presentation;
 
-    invoke-direct {p0, p1, p2}, Landroid/view/ContextThemeWrapper;-><init>(Landroid/content/Context;I)V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-    .locals 1
-    .parameter "name"
+.method public onDisplayAdded(I)V
+    .locals 0
+    .param p1, "displayId"    # I
 
     .prologue
-    .line 315
-    const-string/jumbo v0, "window"
+    .line 327
+    return-void
+.end method
 
-    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+.method public onDisplayChanged(I)V
+    .locals 1
+    .param p1, "displayId"    # I
 
-    move-result v0
+    .prologue
+    .line 339
+    iget-object v0, p0, Landroid/app/Presentation$1;->this$0:Landroid/app/Presentation;
 
-    if-eqz v0, :cond_0
-
-    .line 316
-    iget-object v0, p0, Landroid/app/Presentation$1;->val$displayWindowManager:Landroid/view/WindowManagerImpl;
-
-    .line 318
-    :goto_0
-    return-object v0
-
-    :cond_0
-    invoke-super {p0, p1}, Landroid/view/ContextThemeWrapper;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    invoke-static {v0}, Landroid/app/Presentation;->-get0(Landroid/app/Presentation;)Landroid/view/Display;
 
     move-result-object v0
 
-    goto :goto_0
+    invoke-virtual {v0}, Landroid/view/Display;->getDisplayId()I
+
+    move-result v0
+
+    if-ne p1, v0, :cond_0
+
+    .line 340
+    iget-object v0, p0, Landroid/app/Presentation$1;->this$0:Landroid/app/Presentation;
+
+    invoke-static {v0}, Landroid/app/Presentation;->-wrap0(Landroid/app/Presentation;)V
+
+    .line 338
+    :cond_0
+    return-void
+.end method
+
+.method public onDisplayRemoved(I)V
+    .locals 1
+    .param p1, "displayId"    # I
+
+    .prologue
+    .line 332
+    iget-object v0, p0, Landroid/app/Presentation$1;->this$0:Landroid/app/Presentation;
+
+    invoke-static {v0}, Landroid/app/Presentation;->-get0(Landroid/app/Presentation;)Landroid/view/Display;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/view/Display;->getDisplayId()I
+
+    move-result v0
+
+    if-ne p1, v0, :cond_0
+
+    .line 333
+    iget-object v0, p0, Landroid/app/Presentation$1;->this$0:Landroid/app/Presentation;
+
+    invoke-static {v0}, Landroid/app/Presentation;->-wrap1(Landroid/app/Presentation;)V
+
+    .line 331
+    :cond_0
+    return-void
 .end method

@@ -15,6 +15,8 @@
 
 
 # instance fields
+.field final bannerRes:I
+
 .field final iconRes:I
 
 .field final labelRes:I
@@ -33,37 +35,41 @@
 
 
 # direct methods
-.method constructor <init>(Landroid/content/pm/PackageParser$Package;[Ljava/lang/String;IIII)V
+.method constructor <init>(Landroid/content/pm/PackageParser$Package;[Ljava/lang/String;IIIII)V
     .locals 0
-    .parameter "_owner"
-    .parameter "_outError"
-    .parameter "_nameRes"
-    .parameter "_labelRes"
-    .parameter "_iconRes"
-    .parameter "_logoRes"
+    .param p1, "_owner"    # Landroid/content/pm/PackageParser$Package;
+    .param p2, "_outError"    # [Ljava/lang/String;
+    .param p3, "_nameRes"    # I
+    .param p4, "_labelRes"    # I
+    .param p5, "_iconRes"    # I
+    .param p6, "_logoRes"    # I
+    .param p7, "_bannerRes"    # I
 
     .prologue
-    .line 175
+    .line 215
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 176
+    .line 217
     iput-object p1, p0, Landroid/content/pm/PackageParser$ParsePackageItemArgs;->owner:Landroid/content/pm/PackageParser$Package;
 
-    .line 177
+    .line 218
     iput-object p2, p0, Landroid/content/pm/PackageParser$ParsePackageItemArgs;->outError:[Ljava/lang/String;
 
-    .line 178
+    .line 219
     iput p3, p0, Landroid/content/pm/PackageParser$ParsePackageItemArgs;->nameRes:I
 
-    .line 179
+    .line 220
     iput p4, p0, Landroid/content/pm/PackageParser$ParsePackageItemArgs;->labelRes:I
 
-    .line 180
+    .line 221
     iput p5, p0, Landroid/content/pm/PackageParser$ParsePackageItemArgs;->iconRes:I
 
-    .line 181
+    .line 222
     iput p6, p0, Landroid/content/pm/PackageParser$ParsePackageItemArgs;->logoRes:I
 
-    .line 182
+    .line 223
+    iput p7, p0, Landroid/content/pm/PackageParser$ParsePackageItemArgs;->bannerRes:I
+
+    .line 216
     return-void
 .end method

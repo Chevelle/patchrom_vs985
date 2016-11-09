@@ -21,7 +21,7 @@
 
 .field public static final SHARED:I = 0x1
 
-.field public static final strings:[Ljava/lang/String; = null
+.field public static final strings:[Ljava/lang/String;
 
 .field public static final varName:Ljava/lang/String; = "auth_alg"
 
@@ -31,31 +31,32 @@
     .locals 3
 
     .prologue
-    .line 107
+    .line 123
     const/4 v0, 0x3
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const/4 v1, 0x0
+    const-string/jumbo v1, "OPEN"
 
-    const-string v2, "OPEN"
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x1
+    const-string/jumbo v1, "SHARED"
 
-    const-string v2, "SHARED"
+    const/4 v2, 0x1
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x2
+    const-string/jumbo v1, "LEAP"
 
-    const-string v2, "LEAP"
+    const/4 v2, 0x2
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     sput-object v0, Landroid/net/wifi/WifiConfiguration$AuthAlgorithm;->strings:[Ljava/lang/String;
 
+    .line 111
     return-void
 .end method
 
@@ -63,7 +64,7 @@
     .locals 0
 
     .prologue
-    .line 96
+    .line 112
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

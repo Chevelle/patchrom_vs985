@@ -22,18 +22,16 @@
     .locals 0
 
     .prologue
-    .line 1422
+    .line 1550
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/StrictMode$1;)V
+.method synthetic constructor <init>(Landroid/os/StrictMode$AndroidCloseGuardReporter;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 1422
     invoke-direct {p0}, Landroid/os/StrictMode$AndroidCloseGuardReporter;-><init>()V
 
     return-void
@@ -43,13 +41,13 @@
 # virtual methods
 .method public report(Ljava/lang/String;Ljava/lang/Throwable;)V
     .locals 0
-    .parameter "message"
-    .parameter "allocationSite"
+    .param p1, "message"    # Ljava/lang/String;
+    .param p2, "allocationSite"    # Ljava/lang/Throwable;
 
     .prologue
-    .line 1424
+    .line 1552
     invoke-static {p1, p2}, Landroid/os/StrictMode;->onVmPolicyViolation(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    .line 1425
+    .line 1551
     return-void
 .end method

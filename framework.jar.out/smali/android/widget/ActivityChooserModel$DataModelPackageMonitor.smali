@@ -21,10 +21,10 @@
 # direct methods
 .method private constructor <init>(Landroid/widget/ActivityChooserModel;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/ActivityChooserModel;
 
     .prologue
-    .line 1126
+    .line 1124
     iput-object p1, p0, Landroid/widget/ActivityChooserModel$DataModelPackageMonitor;->this$0:Landroid/widget/ActivityChooserModel;
 
     invoke-direct {p0}, Lcom/android/internal/content/PackageMonitor;-><init>()V
@@ -32,13 +32,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/widget/ActivityChooserModel;Landroid/widget/ActivityChooserModel$1;)V
+.method synthetic constructor <init>(Landroid/widget/ActivityChooserModel;Landroid/widget/ActivityChooserModel$DataModelPackageMonitor;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Landroid/widget/ActivityChooserModel;
 
     .prologue
-    .line 1126
     invoke-direct {p0, p1}, Landroid/widget/ActivityChooserModel$DataModelPackageMonitor;-><init>(Landroid/widget/ActivityChooserModel;)V
 
     return-void
@@ -50,14 +48,13 @@
     .locals 2
 
     .prologue
-    .line 1130
+    .line 1128
     iget-object v0, p0, Landroid/widget/ActivityChooserModel$DataModelPackageMonitor;->this$0:Landroid/widget/ActivityChooserModel;
 
     const/4 v1, 0x1
 
-    #setter for: Landroid/widget/ActivityChooserModel;->mReloadActivities:Z
-    invoke-static {v0, v1}, Landroid/widget/ActivityChooserModel;->access$702(Landroid/widget/ActivityChooserModel;Z)Z
+    invoke-static {v0, v1}, Landroid/widget/ActivityChooserModel;->-set1(Landroid/widget/ActivityChooserModel;Z)Z
 
-    .line 1131
+    .line 1127
     return-void
 .end method

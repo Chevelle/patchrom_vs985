@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 2625
+    .line 2682
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -38,11 +38,11 @@
 
 .method public onRoutePresentationDisplayChanged(Landroid/media/MediaRouter;Landroid/media/MediaRouter$RouteInfo;)V
     .locals 0
-    .parameter "router"
-    .parameter "info"
+    .param p1, "router"    # Landroid/media/MediaRouter;
+    .param p2, "info"    # Landroid/media/MediaRouter$RouteInfo;
 
     .prologue
-    .line 2714
+    .line 2770
     return-void
 .end method
 

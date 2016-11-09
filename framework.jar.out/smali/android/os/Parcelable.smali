@@ -6,8 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/os/Parcelable$ClassLoaderCreator;,
-        Landroid/os/Parcelable$Creator;
+        Landroid/os/Parcelable$Creator;,
+        Landroid/os/Parcelable$ClassLoaderCreator;
     }
 .end annotation
 

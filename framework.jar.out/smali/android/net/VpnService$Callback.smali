@@ -21,10 +21,10 @@
 # direct methods
 .method private constructor <init>(Landroid/net/VpnService;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/net/VpnService;
 
     .prologue
-    .line 238
+    .line 366
     iput-object p1, p0, Landroid/net/VpnService$Callback;->this$0:Landroid/net/VpnService;
 
     invoke-direct {p0}, Landroid/os/Binder;-><init>()V
@@ -32,13 +32,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/net/VpnService;Landroid/net/VpnService$1;)V
+.method synthetic constructor <init>(Landroid/net/VpnService;Landroid/net/VpnService$Callback;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Landroid/net/VpnService;
 
     .prologue
-    .line 238
     invoke-direct {p0, p1}, Landroid/net/VpnService$Callback;-><init>(Landroid/net/VpnService;)V
 
     return-void
@@ -48,31 +46,30 @@
 # virtual methods
 .method protected onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
     .locals 1
-    .parameter "code"
-    .parameter "data"
-    .parameter "reply"
-    .parameter "flags"
+    .param p1, "code"    # I
+    .param p2, "data"    # Landroid/os/Parcel;
+    .param p3, "reply"    # Landroid/os/Parcel;
+    .param p4, "flags"    # I
 
     .prologue
-    .line 241
+    .line 369
     const v0, 0xffffff
 
     if-ne p1, v0, :cond_0
 
-    .line 242
+    .line 370
     iget-object v0, p0, Landroid/net/VpnService$Callback;->this$0:Landroid/net/VpnService;
 
     invoke-virtual {v0}, Landroid/net/VpnService;->onRevoke()V
 
-    .line 243
+    .line 371
     const/4 v0, 0x1
 
-    .line 245
-    :goto_0
     return v0
 
+    .line 373
     :cond_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 .end method

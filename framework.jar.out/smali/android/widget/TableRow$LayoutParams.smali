@@ -37,139 +37,148 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/widget/TableRow$LayoutParams;)[I
+    .locals 1
+
+    iget-object v0, p0, Landroid/widget/TableRow$LayoutParams;->mOffset:[I
+
+    return-object v0
+.end method
+
 .method public constructor <init>()V
     .locals 2
 
     .prologue
     const/4 v1, -0x1
 
-    .line 470
+    .line 464
     const/4 v0, -0x2
 
     invoke-direct {p0, v1, v0}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 418
+    .line 412
     const/4 v0, 0x2
 
     new-array v0, v0, [I
 
     iput-object v0, p0, Landroid/widget/TableRow$LayoutParams;->mOffset:[I
 
-    .line 471
+    .line 465
     iput v1, p0, Landroid/widget/TableRow$LayoutParams;->column:I
 
-    .line 472
+    .line 466
     const/4 v0, 0x1
 
     iput v0, p0, Landroid/widget/TableRow$LayoutParams;->span:I
 
-    .line 473
+    .line 463
     return-void
 .end method
 
 .method public constructor <init>(I)V
     .locals 0
-    .parameter "column"
+    .param p1, "column"    # I
 
     .prologue
-    .line 485
+    .line 479
     invoke-direct {p0}, Landroid/widget/TableRow$LayoutParams;-><init>()V
 
-    .line 486
+    .line 480
     iput p1, p0, Landroid/widget/TableRow$LayoutParams;->column:I
 
-    .line 487
+    .line 478
     return-void
 .end method
 
 .method public constructor <init>(II)V
     .locals 1
-    .parameter "w"
-    .parameter "h"
+    .param p1, "w"    # I
+    .param p2, "h"    # I
 
     .prologue
-    .line 446
+    .line 440
     invoke-direct {p0, p1, p2}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 418
+    .line 412
     const/4 v0, 0x2
 
     new-array v0, v0, [I
 
     iput-object v0, p0, Landroid/widget/TableRow$LayoutParams;->mOffset:[I
 
-    .line 447
+    .line 441
     const/4 v0, -0x1
 
     iput v0, p0, Landroid/widget/TableRow$LayoutParams;->column:I
 
-    .line 448
+    .line 442
     const/4 v0, 0x1
 
     iput v0, p0, Landroid/widget/TableRow$LayoutParams;->span:I
 
-    .line 449
+    .line 439
     return-void
 .end method
 
 .method public constructor <init>(IIF)V
     .locals 1
-    .parameter "w"
-    .parameter "h"
-    .parameter "initWeight"
+    .param p1, "w"    # I
+    .param p2, "h"    # I
+    .param p3, "initWeight"    # F
 
     .prologue
-    .line 459
+    .line 453
     invoke-direct {p0, p1, p2, p3}, Landroid/widget/LinearLayout$LayoutParams;-><init>(IIF)V
 
-    .line 418
+    .line 412
     const/4 v0, 0x2
 
     new-array v0, v0, [I
 
     iput-object v0, p0, Landroid/widget/TableRow$LayoutParams;->mOffset:[I
 
-    .line 460
+    .line 454
     const/4 v0, -0x1
 
     iput v0, p0, Landroid/widget/TableRow$LayoutParams;->column:I
 
-    .line 461
+    .line 455
     const/4 v0, 0x1
 
     iput v0, p0, Landroid/widget/TableRow$LayoutParams;->span:I
 
-    .line 462
+    .line 452
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
     .locals 4
-    .parameter "c"
-    .parameter "attrs"
+    .param p1, "c"    # Landroid/content/Context;
+    .param p2, "attrs"    # Landroid/util/AttributeSet;
 
     .prologue
     const/4 v3, 0x1
 
-    .line 424
+    .line 418
     invoke-direct {p0, p1, p2}, Landroid/widget/LinearLayout$LayoutParams;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 418
+    .line 412
     const/4 v1, 0x2
 
     new-array v1, v1, [I
 
     iput-object v1, p0, Landroid/widget/TableRow$LayoutParams;->mOffset:[I
 
-    .line 426
+    .line 422
     sget-object v1, Lcom/android/internal/R$styleable;->TableRow_Cell:[I
 
+    .line 421
     invoke-virtual {p1, p2, v1}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 430
-    .local v0, a:Landroid/content/res/TypedArray;
+    .line 424
+    .local v0, "a":Landroid/content/res/TypedArray;
     const/4 v1, 0x0
 
     const/4 v2, -0x1
@@ -180,96 +189,111 @@
 
     iput v1, p0, Landroid/widget/TableRow$LayoutParams;->column:I
 
-    .line 431
+    .line 425
     invoke-virtual {v0, v3, v3}, Landroid/content/res/TypedArray;->getInt(II)I
 
     move-result v1
 
     iput v1, p0, Landroid/widget/TableRow$LayoutParams;->span:I
 
-    .line 432
+    .line 426
     iget v1, p0, Landroid/widget/TableRow$LayoutParams;->span:I
 
     if-gt v1, v3, :cond_0
 
-    .line 433
+    .line 427
     iput v3, p0, Landroid/widget/TableRow$LayoutParams;->span:I
 
-    .line 436
+    .line 430
     :cond_0
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 437
+    .line 417
     return-void
 .end method
 
 .method public constructor <init>(Landroid/view/ViewGroup$LayoutParams;)V
     .locals 1
-    .parameter "p"
+    .param p1, "p"    # Landroid/view/ViewGroup$LayoutParams;
 
     .prologue
-    .line 493
+    .line 487
     invoke-direct {p0, p1}, Landroid/widget/LinearLayout$LayoutParams;-><init>(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 418
+    .line 412
     const/4 v0, 0x2
 
     new-array v0, v0, [I
 
     iput-object v0, p0, Landroid/widget/TableRow$LayoutParams;->mOffset:[I
 
-    .line 494
+    .line 486
     return-void
 .end method
 
 .method public constructor <init>(Landroid/view/ViewGroup$MarginLayoutParams;)V
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/view/ViewGroup$MarginLayoutParams;
 
     .prologue
-    .line 500
+    .line 494
     invoke-direct {p0, p1}, Landroid/widget/LinearLayout$LayoutParams;-><init>(Landroid/view/ViewGroup$MarginLayoutParams;)V
 
-    .line 418
+    .line 412
     const/4 v0, 0x2
 
     new-array v0, v0, [I
 
     iput-object v0, p0, Landroid/widget/TableRow$LayoutParams;->mOffset:[I
 
-    .line 501
+    .line 493
     return-void
-.end method
-
-.method static synthetic access$200(Landroid/widget/TableRow$LayoutParams;)[I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 402
-    iget-object v0, p0, Landroid/widget/TableRow$LayoutParams;->mOffset:[I
-
-    return-object v0
 .end method
 
 
 # virtual methods
-.method protected setBaseAttributes(Landroid/content/res/TypedArray;II)V
-    .locals 1
-    .parameter "a"
-    .parameter "widthAttr"
-    .parameter "heightAttr"
+.method protected encodeProperties(Landroid/view/ViewHierarchyEncoder;)V
+    .locals 2
+    .param p1, "encoder"    # Landroid/view/ViewHierarchyEncoder;
 
     .prologue
-    .line 506
+    .line 517
+    invoke-super {p0, p1}, Landroid/widget/LinearLayout$LayoutParams;->encodeProperties(Landroid/view/ViewHierarchyEncoder;)V
+
+    .line 518
+    const-string/jumbo v0, "layout:column"
+
+    iget v1, p0, Landroid/widget/TableRow$LayoutParams;->column:I
+
+    invoke-virtual {p1, v0, v1}, Landroid/view/ViewHierarchyEncoder;->addProperty(Ljava/lang/String;I)V
+
+    .line 519
+    const-string/jumbo v0, "layout:span"
+
+    iget v1, p0, Landroid/widget/TableRow$LayoutParams;->span:I
+
+    invoke-virtual {p1, v0, v1}, Landroid/view/ViewHierarchyEncoder;->addProperty(Ljava/lang/String;I)V
+
+    .line 516
+    return-void
+.end method
+
+.method protected setBaseAttributes(Landroid/content/res/TypedArray;II)V
+    .locals 1
+    .param p1, "a"    # Landroid/content/res/TypedArray;
+    .param p2, "widthAttr"    # I
+    .param p3, "heightAttr"    # I
+
+    .prologue
+    .line 500
     invoke-virtual {p1, p2}, Landroid/content/res/TypedArray;->hasValue(I)Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 507
-    const-string v0, "layout_width"
+    .line 501
+    const-string/jumbo v0, "layout_width"
 
     invoke-virtual {p1, p2, v0}, Landroid/content/res/TypedArray;->getLayoutDimension(ILjava/lang/String;)I
 
@@ -277,7 +301,7 @@
 
     iput v0, p0, Landroid/widget/TableRow$LayoutParams;->width:I
 
-    .line 513
+    .line 507
     :goto_0
     invoke-virtual {p1, p3}, Landroid/content/res/TypedArray;->hasValue(I)Z
 
@@ -285,8 +309,8 @@
 
     if-eqz v0, :cond_1
 
-    .line 514
-    const-string v0, "layout_height"
+    .line 508
+    const-string/jumbo v0, "layout_height"
 
     invoke-virtual {p1, p3, v0}, Landroid/content/res/TypedArray;->getLayoutDimension(ILjava/lang/String;)I
 
@@ -294,11 +318,11 @@
 
     iput v0, p0, Landroid/widget/TableRow$LayoutParams;->height:I
 
-    .line 518
+    .line 498
     :goto_1
     return-void
 
-    .line 509
+    .line 503
     :cond_0
     const/4 v0, -0x1
 
@@ -306,7 +330,7 @@
 
     goto :goto_0
 
-    .line 516
+    .line 510
     :cond_1
     const/4 v0, -0x2
 

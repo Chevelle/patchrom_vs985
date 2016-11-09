@@ -15,11 +15,17 @@
 
 
 # static fields
+.field public static final AKA:I = 0x5
+
+.field public static final AKA_PRIME:I = 0x6
+
 .field public static final NONE:I = -0x1
 
 .field public static final PEAP:I = 0x0
 
 .field public static final PWD:I = 0x3
+
+.field public static final SIM:I = 0x4
 
 .field public static final TLS:I = 0x1
 
@@ -33,37 +39,56 @@
     .locals 3
 
     .prologue
-    .line 230
-    const/4 v0, 0x4
+    .line 254
+    const/4 v0, 0x7
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const/4 v1, 0x0
+    const-string/jumbo v1, "PEAP"
 
-    const-string v2, "PEAP"
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x1
+    const-string/jumbo v1, "TLS"
 
-    const-string v2, "TLS"
+    const/4 v2, 0x1
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x2
+    const-string/jumbo v1, "TTLS"
 
-    const-string v2, "TTLS"
+    const/4 v2, 0x2
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x3
+    const-string/jumbo v1, "PWD"
 
-    const-string v2, "PWD"
+    const/4 v2, 0x3
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
+
+    const-string/jumbo v1, "SIM"
+
+    const/4 v2, 0x4
+
+    aput-object v1, v0, v2
+
+    const-string/jumbo v1, "AKA"
+
+    const/4 v2, 0x5
+
+    aput-object v1, v0, v2
+
+    const-string/jumbo v1, "AKA\'"
+
+    const/4 v2, 0x6
+
+    aput-object v1, v0, v2
 
     sput-object v0, Landroid/net/wifi/WifiEnterpriseConfig$Eap;->strings:[Ljava/lang/String;
 
+    .line 236
     return-void
 .end method
 
@@ -71,7 +96,7 @@
     .locals 0
 
     .prologue
-    .line 233
+    .line 257
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

@@ -23,8 +23,8 @@
 # direct methods
 .method public constructor <init>(II)V
     .locals 0
-    .parameter "startChar"
-    .parameter "endChar"
+    .param p1, "startChar"    # I
+    .param p2, "endChar"    # I
 
     .prologue
     .line 133
@@ -36,6 +36,6 @@
     .line 135
     iput p2, p0, Landroid/media/TimedText$CharPos;->endChar:I
 
-    .line 136
+    .line 133
     return-void
 .end method

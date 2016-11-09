@@ -9,8 +9,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/text/style/LeadingMarginSpan$Standard;,
-        Landroid/text/style/LeadingMarginSpan$LeadingMarginSpan2;
+        Landroid/text/style/LeadingMarginSpan$LeadingMarginSpan2;,
+        Landroid/text/style/LeadingMarginSpan$Standard;
     }
 .end annotation
 

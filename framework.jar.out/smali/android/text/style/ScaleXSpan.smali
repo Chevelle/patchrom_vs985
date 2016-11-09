@@ -13,7 +13,7 @@
 # direct methods
 .method public constructor <init>(F)V
     .locals 0
-    .parameter "proportion"
+    .param p1, "proportion"    # F
 
     .prologue
     .line 28
@@ -22,13 +22,13 @@
     .line 29
     iput p1, p0, Landroid/text/style/ScaleXSpan;->mProportion:F
 
-    .line 30
+    .line 28
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "src"
+    .param p1, "src"    # Landroid/os/Parcel;
 
     .prologue
     .line 32
@@ -41,7 +41,7 @@
 
     iput v0, p0, Landroid/text/style/ScaleXSpan;->mProportion:F
 
-    .line 34
+    .line 32
     return-void
 .end method
 
@@ -51,7 +51,7 @@
     .locals 1
 
     .prologue
-    .line 41
+    .line 46
     const/4 v0, 0x0
 
     return v0
@@ -61,7 +61,7 @@
     .locals 1
 
     .prologue
-    .line 49
+    .line 59
     iget v0, p0, Landroid/text/style/ScaleXSpan;->mProportion:F
 
     return v0
@@ -72,6 +72,18 @@
 
     .prologue
     .line 37
+    invoke-virtual {p0}, Landroid/text/style/ScaleXSpan;->getSpanTypeIdInternal()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getSpanTypeIdInternal()I
+    .locals 1
+
+    .prologue
+    .line 42
     const/4 v0, 0x4
 
     return v0
@@ -79,10 +91,10 @@
 
 .method public updateDrawState(Landroid/text/TextPaint;)V
     .locals 2
-    .parameter "ds"
+    .param p1, "ds"    # Landroid/text/TextPaint;
 
     .prologue
-    .line 54
+    .line 64
     invoke-virtual {p1}, Landroid/text/TextPaint;->getTextScaleX()F
 
     move-result v0
@@ -93,16 +105,16 @@
 
     invoke-virtual {p1, v0}, Landroid/text/TextPaint;->setTextScaleX(F)V
 
-    .line 55
+    .line 63
     return-void
 .end method
 
 .method public updateMeasureState(Landroid/text/TextPaint;)V
     .locals 2
-    .parameter "ds"
+    .param p1, "ds"    # Landroid/text/TextPaint;
 
     .prologue
-    .line 59
+    .line 69
     invoke-virtual {p1}, Landroid/text/TextPaint;->getTextScaleX()F
 
     move-result v0
@@ -113,21 +125,34 @@
 
     invoke-virtual {p1, v0}, Landroid/text/TextPaint;->setTextScaleX(F)V
 
-    .line 60
+    .line 68
     return-void
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
-    .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .locals 0
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 45
+    .line 50
+    invoke-virtual {p0, p1, p2}, Landroid/text/style/ScaleXSpan;->writeToParcelInternal(Landroid/os/Parcel;I)V
+
+    .line 49
+    return-void
+.end method
+
+.method public writeToParcelInternal(Landroid/os/Parcel;I)V
+    .locals 1
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
+
+    .prologue
+    .line 55
     iget v0, p0, Landroid/text/style/ScaleXSpan;->mProportion:F
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeFloat(F)V
 
-    .line 46
+    .line 54
     return-void
 .end method

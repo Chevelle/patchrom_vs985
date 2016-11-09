@@ -19,58 +19,59 @@
     .locals 1
 
     .prologue
-    .line 51
+    .line 54
     const/16 v0, 0xa
 
     invoke-direct {p0, v0}, Landroid/util/SparseIntArray;-><init>(I)V
 
-    .line 52
+    .line 53
     return-void
 .end method
 
 .method public constructor <init>(I)V
-    .locals 1
-    .parameter "initialCapacity"
+    .locals 2
+    .param p1, "initialCapacity"    # I
 
     .prologue
-    .line 61
+    const/4 v1, 0x0
+
+    .line 64
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 62
+    .line 65
     if-nez p1, :cond_0
 
-    .line 63
-    sget-object v0, Landroid/util/ContainerHelpers;->EMPTY_INTS:[I
+    .line 66
+    sget-object v0, Llibcore/util/EmptyArray;->INT:[I
 
     iput-object v0, p0, Landroid/util/SparseIntArray;->mKeys:[I
 
-    .line 64
-    sget-object v0, Landroid/util/ContainerHelpers;->EMPTY_INTS:[I
+    .line 67
+    sget-object v0, Llibcore/util/EmptyArray;->INT:[I
 
     iput-object v0, p0, Landroid/util/SparseIntArray;->mValues:[I
 
-    .line 70
+    .line 72
     :goto_0
-    const/4 v0, 0x0
+    iput v1, p0, Landroid/util/SparseIntArray;->mSize:I
 
-    iput v0, p0, Landroid/util/SparseIntArray;->mSize:I
-
-    .line 71
+    .line 64
     return-void
 
-    .line 66
+    .line 69
     :cond_0
-    invoke-static {p1}, Lcom/android/internal/util/ArrayUtils;->idealIntArraySize(I)I
+    invoke-static {p1}, Lcom/android/internal/util/ArrayUtils;->newUnpaddedIntArray(I)[I
 
-    move-result p1
-
-    .line 67
-    new-array v0, p1, [I
+    move-result-object v0
 
     iput-object v0, p0, Landroid/util/SparseIntArray;->mKeys:[I
 
-    .line 68
-    new-array v0, p1, [I
+    .line 70
+    iget-object v0, p0, Landroid/util/SparseIntArray;->mKeys:[I
+
+    array-length v0, v0
+
+    new-array v0, v0, [I
 
     iput-object v0, p0, Landroid/util/SparseIntArray;->mValues:[I
 
@@ -80,174 +81,134 @@
 
 # virtual methods
 .method public append(II)V
-    .locals 7
-    .parameter "key"
-    .parameter "value"
+    .locals 2
+    .param p1, "key"    # I
+    .param p2, "value"    # I
 
     .prologue
-    const/4 v6, 0x0
+    .line 231
+    iget v0, p0, Landroid/util/SparseIntArray;->mSize:I
 
-    .line 241
-    iget v4, p0, Landroid/util/SparseIntArray;->mSize:I
+    if-eqz v0, :cond_0
 
-    if-eqz v4, :cond_0
+    iget-object v0, p0, Landroid/util/SparseIntArray;->mKeys:[I
 
-    iget-object v4, p0, Landroid/util/SparseIntArray;->mKeys:[I
+    iget v1, p0, Landroid/util/SparseIntArray;->mSize:I
 
-    iget v5, p0, Landroid/util/SparseIntArray;->mSize:I
+    add-int/lit8 v1, v1, -0x1
 
-    add-int/lit8 v5, v5, -0x1
+    aget v0, v0, v1
 
-    aget v4, v4, v5
+    if-gt p1, v0, :cond_0
 
-    if-gt p1, v4, :cond_0
-
-    .line 242
+    .line 232
     invoke-virtual {p0, p1, p2}, Landroid/util/SparseIntArray;->put(II)V
 
-    .line 264
-    :goto_0
+    .line 233
     return-void
 
-    .line 246
+    .line 236
     :cond_0
-    iget v3, p0, Landroid/util/SparseIntArray;->mSize:I
+    iget-object v0, p0, Landroid/util/SparseIntArray;->mKeys:[I
 
-    .line 247
-    .local v3, pos:I
-    iget-object v4, p0, Landroid/util/SparseIntArray;->mKeys:[I
+    iget v1, p0, Landroid/util/SparseIntArray;->mSize:I
 
-    array-length v4, v4
+    invoke-static {v0, v1, p1}, Lcom/android/internal/util/GrowingArrayUtils;->append([III)[I
 
-    if-lt v3, v4, :cond_1
+    move-result-object v0
 
-    .line 248
-    add-int/lit8 v4, v3, 0x1
+    iput-object v0, p0, Landroid/util/SparseIntArray;->mKeys:[I
 
-    invoke-static {v4}, Lcom/android/internal/util/ArrayUtils;->idealIntArraySize(I)I
+    .line 237
+    iget-object v0, p0, Landroid/util/SparseIntArray;->mValues:[I
 
-    move-result v0
+    iget v1, p0, Landroid/util/SparseIntArray;->mSize:I
 
-    .line 250
-    .local v0, n:I
-    new-array v1, v0, [I
+    invoke-static {v0, v1, p2}, Lcom/android/internal/util/GrowingArrayUtils;->append([III)[I
 
-    .line 251
-    .local v1, nkeys:[I
-    new-array v2, v0, [I
+    move-result-object v0
 
-    .line 254
-    .local v2, nvalues:[I
-    iget-object v4, p0, Landroid/util/SparseIntArray;->mKeys:[I
+    iput-object v0, p0, Landroid/util/SparseIntArray;->mValues:[I
 
-    iget-object v5, p0, Landroid/util/SparseIntArray;->mKeys:[I
+    .line 238
+    iget v0, p0, Landroid/util/SparseIntArray;->mSize:I
 
-    array-length v5, v5
+    add-int/lit8 v0, v0, 0x1
 
-    invoke-static {v4, v6, v1, v6, v5}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    iput v0, p0, Landroid/util/SparseIntArray;->mSize:I
 
-    .line 255
-    iget-object v4, p0, Landroid/util/SparseIntArray;->mValues:[I
-
-    iget-object v5, p0, Landroid/util/SparseIntArray;->mValues:[I
-
-    array-length v5, v5
-
-    invoke-static {v4, v6, v2, v6, v5}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 257
-    iput-object v1, p0, Landroid/util/SparseIntArray;->mKeys:[I
-
-    .line 258
-    iput-object v2, p0, Landroid/util/SparseIntArray;->mValues:[I
-
-    .line 261
-    .end local v0           #n:I
-    .end local v1           #nkeys:[I
-    .end local v2           #nvalues:[I
-    :cond_1
-    iget-object v4, p0, Landroid/util/SparseIntArray;->mKeys:[I
-
-    aput p1, v4, v3
-
-    .line 262
-    iget-object v4, p0, Landroid/util/SparseIntArray;->mValues:[I
-
-    aput p2, v4, v3
-
-    .line 263
-    add-int/lit8 v4, v3, 0x1
-
-    iput v4, p0, Landroid/util/SparseIntArray;->mSize:I
-
-    goto :goto_0
+    .line 230
+    return-void
 .end method
 
 .method public clear()V
     .locals 1
 
     .prologue
-    .line 233
+    .line 223
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/util/SparseIntArray;->mSize:I
 
-    .line 234
+    .line 222
     return-void
 .end method
 
 .method public clone()Landroid/util/SparseIntArray;
-    .locals 3
+    .locals 4
 
     .prologue
-    .line 75
+    .line 77
     const/4 v1, 0x0
 
-    .line 77
-    .local v1, clone:Landroid/util/SparseIntArray;
+    .line 79
+    .local v1, "clone":Landroid/util/SparseIntArray;
     :try_start_0
     invoke-super {p0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v3
 
-    move-object v0, v2
+    move-object v0, v3
 
     check-cast v0, Landroid/util/SparseIntArray;
 
     move-object v1, v0
 
-    .line 78
-    iget-object v2, p0, Landroid/util/SparseIntArray;->mKeys:[I
+    .line 80
+    .local v1, "clone":Landroid/util/SparseIntArray;
+    iget-object v3, p0, Landroid/util/SparseIntArray;->mKeys:[I
 
-    invoke-virtual {v2}, [I->clone()Ljava/lang/Object;
+    invoke-virtual {v3}, Ljava/lang/Object;->clone()Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v3
 
-    check-cast v2, [I
+    check-cast v3, [I
 
-    iput-object v2, v1, Landroid/util/SparseIntArray;->mKeys:[I
+    iput-object v3, v1, Landroid/util/SparseIntArray;->mKeys:[I
 
-    .line 79
-    iget-object v2, p0, Landroid/util/SparseIntArray;->mValues:[I
+    .line 81
+    iget-object v3, p0, Landroid/util/SparseIntArray;->mValues:[I
 
-    invoke-virtual {v2}, [I->clone()Ljava/lang/Object;
+    invoke-virtual {v3}, Ljava/lang/Object;->clone()Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v3
 
-    check-cast v2, [I
+    check-cast v3, [I
 
-    iput-object v2, v1, Landroid/util/SparseIntArray;->mValues:[I
+    iput-object v3, v1, Landroid/util/SparseIntArray;->mValues:[I
     :try_end_0
     .catch Ljava/lang/CloneNotSupportedException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 83
+    .line 85
+    .end local v1    # "clone":Landroid/util/SparseIntArray;
     :goto_0
     return-object v1
 
-    .line 80
+    .line 82
     :catch_0
     move-exception v2
 
+    .local v2, "cnse":Ljava/lang/CloneNotSupportedException;
     goto :goto_0
 .end method
 
@@ -260,7 +221,7 @@
     .end annotation
 
     .prologue
-    .line 42
+    .line 76
     invoke-virtual {p0}, Landroid/util/SparseIntArray;->clone()Landroid/util/SparseIntArray;
 
     move-result-object v0
@@ -270,10 +231,10 @@
 
 .method public delete(I)V
     .locals 3
-    .parameter "key"
+    .param p1, "key"    # I
 
     .prologue
-    .line 112
+    .line 114
     iget-object v1, p0, Landroid/util/SparseIntArray;->mKeys:[I
 
     iget v2, p0, Landroid/util/SparseIntArray;->mSize:I
@@ -282,24 +243,24 @@
 
     move-result v0
 
-    .line 114
-    .local v0, i:I
+    .line 116
+    .local v0, "i":I
     if-ltz v0, :cond_0
 
-    .line 115
+    .line 117
     invoke-virtual {p0, v0}, Landroid/util/SparseIntArray;->removeAt(I)V
 
-    .line 117
+    .line 113
     :cond_0
     return-void
 .end method
 
 .method public get(I)I
     .locals 1
-    .parameter "key"
+    .param p1, "key"    # I
 
     .prologue
-    .line 91
+    .line 93
     const/4 v0, 0x0
 
     invoke-virtual {p0, p1, v0}, Landroid/util/SparseIntArray;->get(II)I
@@ -311,11 +272,11 @@
 
 .method public get(II)I
     .locals 3
-    .parameter "key"
-    .parameter "valueIfKeyNotFound"
+    .param p1, "key"    # I
+    .param p2, "valueIfKeyNotFound"    # I
 
     .prologue
-    .line 99
+    .line 101
     iget-object v1, p0, Landroid/util/SparseIntArray;->mKeys:[I
 
     iget v2, p0, Landroid/util/SparseIntArray;->mSize:I
@@ -324,30 +285,28 @@
 
     move-result v0
 
-    .line 101
-    .local v0, i:I
+    .line 103
+    .local v0, "i":I
     if-gez v0, :cond_0
 
     .line 104
-    .end local p2
-    :goto_0
     return p2
 
-    .restart local p2
+    .line 106
     :cond_0
     iget-object v1, p0, Landroid/util/SparseIntArray;->mValues:[I
 
-    aget p2, v1, v0
+    aget v1, v1, v0
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public indexOfKey(I)I
     .locals 2
-    .parameter "key"
+    .param p1, "key"    # I
 
     .prologue
-    .line 210
+    .line 200
     iget-object v0, p0, Landroid/util/SparseIntArray;->mKeys:[I
 
     iget v1, p0, Landroid/util/SparseIntArray;->mSize:I
@@ -361,50 +320,47 @@
 
 .method public indexOfValue(I)I
     .locals 2
-    .parameter "value"
+    .param p1, "value"    # I
 
     .prologue
-    .line 222
+    .line 212
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     iget v1, p0, Landroid/util/SparseIntArray;->mSize:I
 
     if-ge v0, v1, :cond_1
 
-    .line 223
+    .line 213
     iget-object v1, p0, Landroid/util/SparseIntArray;->mValues:[I
 
     aget v1, v1, v0
 
     if-ne v1, p1, :cond_0
 
-    .line 226
-    .end local v0           #i:I
-    :goto_1
+    .line 214
     return v0
 
-    .line 222
-    .restart local v0       #i:I
+    .line 212
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 226
+    .line 216
     :cond_1
-    const/4 v0, -0x1
+    const/4 v1, -0x1
 
-    goto :goto_1
+    return v1
 .end method
 
 .method public keyAt(I)I
     .locals 1
-    .parameter "index"
+    .param p1, "index"    # I
 
     .prologue
-    .line 186
+    .line 168
     iget-object v0, p0, Landroid/util/SparseIntArray;->mKeys:[I
 
     aget v0, v0, p1
@@ -413,154 +369,75 @@
 .end method
 
 .method public put(II)V
-    .locals 8
-    .parameter "key"
-    .parameter "value"
+    .locals 3
+    .param p1, "key"    # I
+    .param p2, "value"    # I
 
     .prologue
-    const/4 v6, 0x0
+    .line 136
+    iget-object v1, p0, Landroid/util/SparseIntArray;->mKeys:[I
 
-    .line 134
-    iget-object v4, p0, Landroid/util/SparseIntArray;->mKeys:[I
+    iget v2, p0, Landroid/util/SparseIntArray;->mSize:I
 
-    iget v5, p0, Landroid/util/SparseIntArray;->mSize:I
-
-    invoke-static {v4, v5, p1}, Landroid/util/ContainerHelpers;->binarySearch([III)I
+    invoke-static {v1, v2, p1}, Landroid/util/ContainerHelpers;->binarySearch([III)I
 
     move-result v0
 
-    .line 136
-    .local v0, i:I
+    .line 138
+    .local v0, "i":I
     if-ltz v0, :cond_0
 
-    .line 137
-    iget-object v4, p0, Landroid/util/SparseIntArray;->mValues:[I
+    .line 139
+    iget-object v1, p0, Landroid/util/SparseIntArray;->mValues:[I
 
-    aput p2, v4, v0
+    aput p2, v1, v0
 
-    .line 165
+    .line 135
     :goto_0
     return-void
 
-    .line 139
-    :cond_0
-    xor-int/lit8 v0, v0, -0x1
-
     .line 141
-    iget v4, p0, Landroid/util/SparseIntArray;->mSize:I
+    :cond_0
+    not-int v0, v0
 
-    iget-object v5, p0, Landroid/util/SparseIntArray;->mKeys:[I
+    .line 143
+    iget-object v1, p0, Landroid/util/SparseIntArray;->mKeys:[I
 
-    array-length v5, v5
+    iget v2, p0, Landroid/util/SparseIntArray;->mSize:I
 
-    if-lt v4, v5, :cond_1
+    invoke-static {v1, v2, v0, p1}, Lcom/android/internal/util/GrowingArrayUtils;->insert([IIII)[I
 
-    .line 142
-    iget v4, p0, Landroid/util/SparseIntArray;->mSize:I
+    move-result-object v1
 
-    add-int/lit8 v4, v4, 0x1
-
-    invoke-static {v4}, Lcom/android/internal/util/ArrayUtils;->idealIntArraySize(I)I
-
-    move-result v1
+    iput-object v1, p0, Landroid/util/SparseIntArray;->mKeys:[I
 
     .line 144
-    .local v1, n:I
-    new-array v2, v1, [I
+    iget-object v1, p0, Landroid/util/SparseIntArray;->mValues:[I
+
+    iget v2, p0, Landroid/util/SparseIntArray;->mSize:I
+
+    invoke-static {v1, v2, v0, p2}, Lcom/android/internal/util/GrowingArrayUtils;->insert([IIII)[I
+
+    move-result-object v1
+
+    iput-object v1, p0, Landroid/util/SparseIntArray;->mValues:[I
 
     .line 145
-    .local v2, nkeys:[I
-    new-array v3, v1, [I
+    iget v1, p0, Landroid/util/SparseIntArray;->mSize:I
 
-    .line 148
-    .local v3, nvalues:[I
-    iget-object v4, p0, Landroid/util/SparseIntArray;->mKeys:[I
+    add-int/lit8 v1, v1, 0x1
 
-    iget-object v5, p0, Landroid/util/SparseIntArray;->mKeys:[I
-
-    array-length v5, v5
-
-    invoke-static {v4, v6, v2, v6, v5}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 149
-    iget-object v4, p0, Landroid/util/SparseIntArray;->mValues:[I
-
-    iget-object v5, p0, Landroid/util/SparseIntArray;->mValues:[I
-
-    array-length v5, v5
-
-    invoke-static {v4, v6, v3, v6, v5}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 151
-    iput-object v2, p0, Landroid/util/SparseIntArray;->mKeys:[I
-
-    .line 152
-    iput-object v3, p0, Landroid/util/SparseIntArray;->mValues:[I
-
-    .line 155
-    .end local v1           #n:I
-    .end local v2           #nkeys:[I
-    .end local v3           #nvalues:[I
-    :cond_1
-    iget v4, p0, Landroid/util/SparseIntArray;->mSize:I
-
-    sub-int/2addr v4, v0
-
-    if-eqz v4, :cond_2
-
-    .line 157
-    iget-object v4, p0, Landroid/util/SparseIntArray;->mKeys:[I
-
-    iget-object v5, p0, Landroid/util/SparseIntArray;->mKeys:[I
-
-    add-int/lit8 v6, v0, 0x1
-
-    iget v7, p0, Landroid/util/SparseIntArray;->mSize:I
-
-    sub-int/2addr v7, v0
-
-    invoke-static {v4, v0, v5, v6, v7}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 158
-    iget-object v4, p0, Landroid/util/SparseIntArray;->mValues:[I
-
-    iget-object v5, p0, Landroid/util/SparseIntArray;->mValues:[I
-
-    add-int/lit8 v6, v0, 0x1
-
-    iget v7, p0, Landroid/util/SparseIntArray;->mSize:I
-
-    sub-int/2addr v7, v0
-
-    invoke-static {v4, v0, v5, v6, v7}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 161
-    :cond_2
-    iget-object v4, p0, Landroid/util/SparseIntArray;->mKeys:[I
-
-    aput p1, v4, v0
-
-    .line 162
-    iget-object v4, p0, Landroid/util/SparseIntArray;->mValues:[I
-
-    aput p2, v4, v0
-
-    .line 163
-    iget v4, p0, Landroid/util/SparseIntArray;->mSize:I
-
-    add-int/lit8 v4, v4, 0x1
-
-    iput v4, p0, Landroid/util/SparseIntArray;->mSize:I
+    iput v1, p0, Landroid/util/SparseIntArray;->mSize:I
 
     goto :goto_0
 .end method
 
 .method public removeAt(I)V
     .locals 5
-    .parameter "index"
+    .param p1, "index"    # I
 
     .prologue
-    .line 123
+    .line 125
     iget-object v0, p0, Landroid/util/SparseIntArray;->mKeys:[I
 
     add-int/lit8 v1, p1, 0x1
@@ -573,9 +450,9 @@
 
     sub-int/2addr v3, v4
 
-    invoke-static {v0, v1, v2, p1, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v0, v1, v2, p1, v3}, Ljava/lang/System;->arraycopy([II[III)V
 
-    .line 124
+    .line 126
     iget-object v0, p0, Landroid/util/SparseIntArray;->mValues:[I
 
     add-int/lit8 v1, p1, 0x1
@@ -588,16 +465,31 @@
 
     sub-int/2addr v3, v4
 
-    invoke-static {v0, v1, v2, p1, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v0, v1, v2, p1, v3}, Ljava/lang/System;->arraycopy([II[III)V
 
-    .line 125
+    .line 127
     iget v0, p0, Landroid/util/SparseIntArray;->mSize:I
 
     add-int/lit8 v0, v0, -0x1
 
     iput v0, p0, Landroid/util/SparseIntArray;->mSize:I
 
-    .line 126
+    .line 124
+    return-void
+.end method
+
+.method public setValueAt(II)V
+    .locals 1
+    .param p1, "index"    # I
+    .param p2, "value"    # I
+
+    .prologue
+    .line 191
+    iget-object v0, p0, Landroid/util/SparseIntArray;->mValues:[I
+
+    aput p2, v0, p1
+
+    .line 190
     return-void
 .end method
 
@@ -605,7 +497,7 @@
     .locals 1
 
     .prologue
-    .line 172
+    .line 154
     iget v0, p0, Landroid/util/SparseIntArray;->mSize:I
 
     return v0
@@ -615,21 +507,19 @@
     .locals 5
 
     .prologue
-    .line 273
+    .line 248
     invoke-virtual {p0}, Landroid/util/SparseIntArray;->size()I
 
     move-result v4
 
     if-gtz v4, :cond_0
 
-    .line 274
+    .line 249
     const-string/jumbo v4, "{}"
 
-    .line 290
-    :goto_0
     return-object v4
 
-    .line 277
+    .line 252
     :cond_0
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -639,80 +529,80 @@
 
     invoke-direct {v0, v4}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 278
-    .local v0, buffer:Ljava/lang/StringBuilder;
+    .line 253
+    .local v0, "buffer":Ljava/lang/StringBuilder;
     const/16 v4, 0x7b
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 279
+    .line 254
     const/4 v1, 0x0
 
-    .local v1, i:I
-    :goto_1
+    .local v1, "i":I
+    :goto_0
     iget v4, p0, Landroid/util/SparseIntArray;->mSize:I
 
     if-ge v1, v4, :cond_2
 
-    .line 280
+    .line 255
     if-lez v1, :cond_1
 
-    .line 281
-    const-string v4, ", "
+    .line 256
+    const-string/jumbo v4, ", "
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 283
+    .line 258
     :cond_1
     invoke-virtual {p0, v1}, Landroid/util/SparseIntArray;->keyAt(I)I
 
     move-result v2
 
-    .line 284
-    .local v2, key:I
+    .line 259
+    .local v2, "key":I
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    .line 285
+    .line 260
     const/16 v4, 0x3d
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 286
+    .line 261
     invoke-virtual {p0, v1}, Landroid/util/SparseIntArray;->valueAt(I)I
 
     move-result v3
 
-    .line 287
-    .local v3, value:I
+    .line 262
+    .local v3, "value":I
     invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    .line 279
+    .line 254
     add-int/lit8 v1, v1, 0x1
 
-    goto :goto_1
+    goto :goto_0
 
-    .line 289
-    .end local v2           #key:I
-    .end local v3           #value:I
+    .line 264
+    .end local v2    # "key":I
+    .end local v3    # "value":I
     :cond_2
     const/16 v4, 0x7d
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 290
+    .line 265
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v4
 
-    goto :goto_0
+    return-object v4
 .end method
 
 .method public valueAt(I)I
     .locals 1
-    .parameter "index"
+    .param p1, "index"    # I
 
     .prologue
-    .line 201
+    .line 183
     iget-object v0, p0, Landroid/util/SparseIntArray;->mValues:[I
 
     aget v0, v0, p1

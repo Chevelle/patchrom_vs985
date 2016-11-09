@@ -47,6 +47,14 @@
     .end annotation
 .end method
 
+.method public abstract setDisplayPadding(Landroid/graphics/Rect;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract setVisibility(Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {

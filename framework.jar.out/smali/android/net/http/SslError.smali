@@ -4,8 +4,7 @@
 
 
 # static fields
-#the value of this static final field might be set in the static constructor
-.field static final synthetic $assertionsDisabled:Z = false
+.field static final synthetic -assertionsDisabled:Z
 
 .field public static final SSL_DATE_INVALID:I = 0x4
 
@@ -38,75 +37,92 @@
     .locals 1
 
     .prologue
-    .line 25
     const-class v0, Landroid/net/http/SslError;
 
     invoke-virtual {v0}, Ljava/lang/Class;->desiredAssertionStatus()Z
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_0
 
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
     :goto_0
-    sput-boolean v0, Landroid/net/http/SslError;->$assertionsDisabled:Z
+    sput-boolean v0, Landroid/net/http/SslError;->-assertionsDisabled:Z
 
+    .line 25
     return-void
 
     :cond_0
-    const/4 v0, 0x0
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method
 
 .method public constructor <init>(ILandroid/net/http/SslCertificate;)V
     .locals 1
-    .parameter "error"
-    .parameter "certificate"
+    .param p1, "error"    # I
+    .param p2, "certificate"    # Landroid/net/http/SslCertificate;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
     .prologue
     .line 91
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     invoke-direct {p0, p1, p2, v0}, Landroid/net/http/SslError;-><init>(ILandroid/net/http/SslCertificate;Ljava/lang/String;)V
 
-    .line 92
+    .line 90
     return-void
 .end method
 
 .method public constructor <init>(ILandroid/net/http/SslCertificate;Ljava/lang/String;)V
-    .locals 1
-    .parameter "error"
-    .parameter "certificate"
-    .parameter "url"
+    .locals 3
+    .param p1, "error"    # I
+    .param p2, "certificate"    # Landroid/net/http/SslCertificate;
+    .param p3, "url"    # Ljava/lang/String;
 
     .prologue
+    const/4 v0, 0x1
+
+    const/4 v1, 0x0
+
     .line 113
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 114
-    sget-boolean v0, Landroid/net/http/SslError;->$assertionsDisabled:Z
+    sget-boolean v2, Landroid/net/http/SslError;->-assertionsDisabled:Z
 
-    if-nez v0, :cond_0
+    if-nez v2, :cond_1
 
-    if-nez p2, :cond_0
+    if-eqz p2, :cond_0
+
+    move v2, v0
+
+    :goto_0
+    if-nez v2, :cond_1
 
     new-instance v0, Ljava/lang/AssertionError;
 
     invoke-direct {v0}, Ljava/lang/AssertionError;-><init>()V
 
     throw v0
+
+    :cond_0
+    move v2, v1
+
+    goto :goto_0
 
     .line 115
-    :cond_0
-    sget-boolean v0, Landroid/net/http/SslError;->$assertionsDisabled:Z
+    :cond_1
+    sget-boolean v2, Landroid/net/http/SslError;->-assertionsDisabled:Z
 
-    if-nez v0, :cond_1
+    if-nez v2, :cond_3
 
-    if-nez p3, :cond_1
+    if-eqz p3, :cond_2
+
+    :goto_1
+    if-nez v0, :cond_3
 
     new-instance v0, Ljava/lang/AssertionError;
 
@@ -114,8 +130,13 @@
 
     throw v0
 
+    :cond_2
+    move v0, v1
+
+    goto :goto_1
+
     .line 116
-    :cond_1
+    :cond_3
     invoke-virtual {p0, p1}, Landroid/net/http/SslError;->addError(I)Z
 
     .line 117
@@ -124,32 +145,32 @@
     .line 118
     iput-object p3, p0, Landroid/net/http/SslError;->mUrl:Ljava/lang/String;
 
-    .line 119
+    .line 113
     return-void
 .end method
 
 .method public constructor <init>(ILjava/security/cert/X509Certificate;)V
     .locals 1
-    .parameter "error"
-    .parameter "certificate"
+    .param p1, "error"    # I
+    .param p2, "certificate"    # Ljava/security/cert/X509Certificate;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
     .prologue
     .line 103
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     invoke-direct {p0, p1, p2, v0}, Landroid/net/http/SslError;-><init>(ILjava/security/cert/X509Certificate;Ljava/lang/String;)V
 
-    .line 104
+    .line 102
     return-void
 .end method
 
 .method public constructor <init>(ILjava/security/cert/X509Certificate;Ljava/lang/String;)V
     .locals 1
-    .parameter "error"
-    .parameter "certificate"
-    .parameter "url"
+    .param p1, "error"    # I
+    .param p2, "certificate"    # Ljava/security/cert/X509Certificate;
+    .param p3, "url"    # Ljava/lang/String;
 
     .prologue
     .line 129
@@ -159,31 +180,37 @@
 
     invoke-direct {p0, p1, v0, p3}, Landroid/net/http/SslError;-><init>(ILandroid/net/http/SslCertificate;Ljava/lang/String;)V
 
-    .line 130
+    .line 128
     return-void
 .end method
 
 .method public static SslErrorFromChromiumErrorCode(ILandroid/net/http/SslCertificate;Ljava/lang/String;)Landroid/net/http/SslError;
-    .locals 2
-    .parameter "error"
-    .parameter "cert"
-    .parameter "url"
+    .locals 3
+    .param p0, "error"    # I
+    .param p1, "cert"    # Landroid/net/http/SslCertificate;
+    .param p2, "url"    # Ljava/lang/String;
 
     .prologue
-    const/16 v1, -0xc8
+    const/4 v0, 0x0
+
+    const/16 v2, -0xc8
 
     .line 143
-    sget-boolean v0, Landroid/net/http/SslError;->$assertionsDisabled:Z
+    sget-boolean v1, Landroid/net/http/SslError;->-assertionsDisabled:Z
 
-    if-nez v0, :cond_1
+    if-nez v1, :cond_1
 
-    const/16 v0, -0x12b
+    const/16 v1, -0x12b
 
-    if-lt p0, v0, :cond_0
+    if-lt p0, v1, :cond_0
 
-    if-le p0, v1, :cond_1
+    if-gt p0, v2, :cond_0
+
+    const/4 v0, 0x1
 
     :cond_0
+    if-nez v0, :cond_1
+
     new-instance v0, Ljava/lang/AssertionError;
 
     invoke-direct {v0}, Ljava/lang/AssertionError;-><init>()V
@@ -192,7 +219,7 @@
 
     .line 144
     :cond_1
-    if-ne p0, v1, :cond_2
+    if-ne p0, v2, :cond_2
 
     .line 145
     new-instance v0, Landroid/net/http/SslError;
@@ -201,8 +228,6 @@
 
     invoke-direct {v0, v1, p1, p2}, Landroid/net/http/SslError;-><init>(ILandroid/net/http/SslCertificate;Ljava/lang/String;)V
 
-    .line 151
-    :goto_0
     return-object v0
 
     .line 146
@@ -218,7 +243,7 @@
 
     invoke-direct {v0, v1, p1, p2}, Landroid/net/http/SslError;-><init>(ILandroid/net/http/SslCertificate;Ljava/lang/String;)V
 
-    goto :goto_0
+    return-object v0
 
     .line 148
     :cond_3
@@ -233,7 +258,7 @@
 
     invoke-direct {v0, v1, p1, p2}, Landroid/net/http/SslError;-><init>(ILandroid/net/http/SslCertificate;Ljava/lang/String;)V
 
-    goto :goto_0
+    return-object v0
 
     .line 151
     :cond_4
@@ -243,36 +268,36 @@
 
     invoke-direct {v0, v1, p1, p2}, Landroid/net/http/SslError;-><init>(ILandroid/net/http/SslCertificate;Ljava/lang/String;)V
 
-    goto :goto_0
+    return-object v0
 .end method
 
 
 # virtual methods
 .method public addError(I)Z
     .locals 3
-    .parameter "error"
+    .param p1, "error"    # I
 
     .prologue
-    const/4 v1, 0x1
-
     .line 177
     if-ltz p1, :cond_1
 
-    const/4 v2, 0x6
+    const/4 v1, 0x6
 
-    if-ge p1, v2, :cond_1
+    if-ge p1, v1, :cond_1
 
-    move v0, v1
+    const/4 v0, 0x1
 
     .line 178
-    .local v0, rval:Z
+    .local v0, "rval":Z
     :goto_0
     if-eqz v0, :cond_0
 
     .line 179
-    iget v2, p0, Landroid/net/http/SslError;->mErrors:I
+    iget v1, p0, Landroid/net/http/SslError;->mErrors:I
 
-    shl-int/2addr v1, p1
+    const/4 v2, 0x1
+
+    shl-int/2addr v2, p1
 
     or-int/2addr v1, v2
 
@@ -283,10 +308,11 @@
     return v0
 
     .line 177
-    .end local v0           #rval:Z
+    .end local v0    # "rval":Z
     :cond_1
     const/4 v0, 0x0
 
+    .restart local v0    # "rval":Z
     goto :goto_0
 .end method
 
@@ -312,7 +338,7 @@
     .line 207
     const/4 v0, 0x5
 
-    .local v0, error:I
+    .local v0, "error":I
     :goto_0
     if-ltz v0, :cond_1
 
@@ -327,13 +353,10 @@
 
     if-eqz v1, :cond_0
 
-    .line 216
-    .end local v0           #error:I
-    :goto_1
+    .line 209
     return v0
 
     .line 207
-    .restart local v0       #error:I
     :cond_0
     add-int/lit8 v0, v0, -0x1
 
@@ -341,7 +364,7 @@
 
     .line 213
     :cond_1
-    sget-boolean v1, Landroid/net/http/SslError;->$assertionsDisabled:Z
+    sget-boolean v1, Landroid/net/http/SslError;->-assertionsDisabled:Z
 
     if-nez v1, :cond_2
 
@@ -352,11 +375,11 @@
     throw v1
 
     .line 216
-    .end local v0           #error:I
+    .end local v0    # "error":I
     :cond_2
-    const/4 v0, -0x1
+    const/4 v1, -0x1
 
-    goto :goto_1
+    return v1
 .end method
 
 .method public getUrl()Ljava/lang/String;
@@ -370,56 +393,54 @@
 .end method
 
 .method public hasError(I)Z
-    .locals 5
-    .parameter "error"
+    .locals 3
+    .param p1, "error"    # I
 
     .prologue
-    const/4 v2, 0x0
-
-    const/4 v1, 0x1
-
     .line 191
     if-ltz p1, :cond_1
 
-    const/4 v3, 0x6
+    const/4 v1, 0x6
 
-    if-ge p1, v3, :cond_1
+    if-ge p1, v1, :cond_1
 
-    move v0, v1
+    const/4 v0, 0x1
 
     .line 192
-    .local v0, rval:Z
+    .local v0, "rval":Z
     :goto_0
     if-eqz v0, :cond_0
 
     .line 193
-    iget v3, p0, Landroid/net/http/SslError;->mErrors:I
+    iget v1, p0, Landroid/net/http/SslError;->mErrors:I
 
-    shl-int v4, v1, p1
+    const/4 v2, 0x1
 
-    and-int/2addr v3, v4
+    shl-int/2addr v2, p1
 
-    if-eqz v3, :cond_2
+    and-int/2addr v1, v2
 
-    move v0, v1
+    if-eqz v1, :cond_2
+
+    const/4 v0, 0x1
 
     .line 196
     :cond_0
     :goto_1
     return v0
 
-    .end local v0           #rval:Z
-    :cond_1
-    move v0, v2
-
     .line 191
+    .end local v0    # "rval":Z
+    :cond_1
+    const/4 v0, 0x0
+
+    .restart local v0    # "rval":Z
     goto :goto_0
 
-    .restart local v0       #rval:Z
-    :cond_2
-    move v0, v2
-
     .line 193
+    :cond_2
+    const/4 v0, 0x0
+
     goto :goto_1
 .end method
 
@@ -446,30 +467,38 @@
 
     move-result-object v0
 
-    const-string v1, " certificate: "
+    .line 225
+    const-string/jumbo v1, " certificate: "
 
+    .line 224
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 225
     invoke-virtual {p0}, Landroid/net/http/SslError;->getCertificate()Landroid/net/http/SslCertificate;
 
     move-result-object v1
 
+    .line 224
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " on URL: "
+    .line 226
+    const-string/jumbo v1, " on URL: "
 
+    .line 224
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 226
     invoke-virtual {p0}, Landroid/net/http/SslError;->getUrl()Ljava/lang/String;
 
     move-result-object v1
 
+    .line 224
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0

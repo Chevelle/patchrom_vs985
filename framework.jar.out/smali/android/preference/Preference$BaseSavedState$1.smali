@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 1827
+    .line 1870
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,10 +42,10 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/preference/Preference$BaseSavedState;
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 1829
+    .line 1872
     new-instance v0, Landroid/preference/Preference$BaseSavedState;
 
     invoke-direct {v0, p1}, Landroid/preference/Preference$BaseSavedState;-><init>(Landroid/os/Parcel;)V
@@ -55,10 +55,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 1827
+    .line 1871
     invoke-virtual {p0, p1}, Landroid/preference/Preference$BaseSavedState$1;->createFromParcel(Landroid/os/Parcel;)Landroid/preference/Preference$BaseSavedState;
 
     move-result-object v0
@@ -68,10 +68,10 @@
 
 .method public newArray(I)[Landroid/preference/Preference$BaseSavedState;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 1833
+    .line 1876
     new-array v0, p1, [Landroid/preference/Preference$BaseSavedState;
 
     return-object v0
@@ -79,10 +79,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 1827
+    .line 1875
     invoke-virtual {p0, p1}, Landroid/preference/Preference$BaseSavedState$1;->newArray(I)[Landroid/preference/Preference$BaseSavedState;
 
     move-result-object v0

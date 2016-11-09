@@ -22,7 +22,7 @@
     .locals 0
 
     .prologue
-    .line 735
+    .line 1209
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -32,20 +32,20 @@
 # virtual methods
 .method public onOpChanged(ILjava/lang/String;)V
     .locals 0
-    .parameter "op"
-    .parameter "packageName"
+    .param p1, "op"    # I
+    .param p2, "packageName"    # Ljava/lang/String;
 
     .prologue
-    .line 737
+    .line 1211
     return-void
 .end method
 
 .method public onOpChanged(Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
-    .parameter "op"
-    .parameter "packageName"
+    .param p1, "op"    # Ljava/lang/String;
+    .param p2, "packageName"    # Ljava/lang/String;
 
     .prologue
-    .line 736
+    .line 1210
     return-void
 .end method

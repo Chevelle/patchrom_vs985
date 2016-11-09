@@ -70,7 +70,7 @@
     sput-object v0, Landroid/filterfw/core/FilterFactory;->mClassLoaderGuard:Ljava/lang/Object;
 
     .line 49
-    const-string v0, "FilterFactory"
+    const-string/jumbo v0, "FilterFactory"
 
     const/4 v1, 0x2
 
@@ -80,6 +80,7 @@
 
     sput-boolean v0, Landroid/filterfw/core/FilterFactory;->mLogVerbose:Z
 
+    .line 33
     return-void
 .end method
 
@@ -97,12 +98,13 @@
 
     iput-object v0, p0, Landroid/filterfw/core/FilterFactory;->mPackages:Ljava/util/HashSet;
 
+    .line 33
     return-void
 .end method
 
 .method public static addFilterLibrary(Ljava/lang/String;)V
     .locals 3
-    .parameter "libraryPath"
+    .param p0, "libraryPath"    # Ljava/lang/String;
 
     .prologue
     .line 65
@@ -110,13 +112,13 @@
 
     if-eqz v0, :cond_0
 
-    const-string v0, "FilterFactory"
+    const-string/jumbo v0, "FilterFactory"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Adding filter library "
+    const-string/jumbo v2, "Adding filter library "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -153,22 +155,23 @@
 
     if-eqz v0, :cond_1
 
-    const-string v0, "FilterFactory"
+    const-string/jumbo v0, "FilterFactory"
 
-    const-string v2, "Library already added"
+    const-string/jumbo v2, "Library already added"
 
     invoke-static {v0, v2}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 69
     :cond_1
     monitor-exit v1
 
-    .line 75
-    :goto_0
+    .line 69
     return-void
 
     .line 71
     :cond_2
+    :try_start_1
     sget-object v0, Landroid/filterfw/core/FilterFactory;->mLibraries:Ljava/util/HashSet;
 
     invoke-virtual {v0, p0}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
@@ -181,18 +184,19 @@
     invoke-direct {v0, p0, v2}, Ldalvik/system/PathClassLoader;-><init>(Ljava/lang/String;Ljava/lang/ClassLoader;)V
 
     sput-object v0, Landroid/filterfw/core/FilterFactory;->mCurrentClassLoader:Ljava/lang/ClassLoader;
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 74
     monitor-exit v1
 
-    goto :goto_0
+    .line 64
+    return-void
 
+    .line 66
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
@@ -224,7 +228,7 @@
 # virtual methods
 .method public addPackage(Ljava/lang/String;)V
     .locals 3
-    .parameter "packageName"
+    .param p1, "packageName"    # Ljava/lang/String;
 
     .prologue
     .line 78
@@ -232,13 +236,13 @@
 
     if-eqz v0, :cond_0
 
-    const-string v0, "FilterFactory"
+    const-string/jumbo v0, "FilterFactory"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Adding package "
+    const-string/jumbo v2, "Adding package "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -260,200 +264,209 @@
 
     invoke-virtual {v0, p1}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
 
-    .line 86
+    .line 77
     return-void
 .end method
 
 .method public createFilterByClass(Ljava/lang/Class;Ljava/lang/String;)Landroid/filterfw/core/Filter;
-    .locals 7
-    .parameter "filterClass"
-    .parameter "filterName"
+    .locals 9
+    .param p1, "filterClass"    # Ljava/lang/Class;
+    .param p2, "filterName"    # Ljava/lang/String;
 
     .prologue
     .line 116
     :try_start_0
-    const-class v4, Landroid/filterfw/core/Filter;
+    const-class v6, Landroid/filterfw/core/Filter;
 
-    invoke-virtual {p1, v4}, Ljava/lang/Class;->asSubclass(Ljava/lang/Class;)Ljava/lang/Class;
+    invoke-virtual {p1, v6}, Ljava/lang/Class;->asSubclass(Ljava/lang/Class;)Ljava/lang/Class;
     :try_end_0
     .catch Ljava/lang/ClassCastException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 123
-    const/4 v3, 0x0
+    const/4 v4, 0x0
 
     .line 125
-    .local v3, filterConstructor:Ljava/lang/reflect/Constructor;
-    const/4 v4, 0x1
+    .local v4, "filterConstructor":Ljava/lang/reflect/Constructor;
+    const/4 v6, 0x1
 
     :try_start_1
-    new-array v4, v4, [Ljava/lang/Class;
+    new-array v6, v6, [Ljava/lang/Class;
 
-    const/4 v5, 0x0
+    const-class v7, Ljava/lang/String;
 
-    const-class v6, Ljava/lang/String;
+    const/4 v8, 0x0
 
-    aput-object v6, v4, v5
+    aput-object v7, v6, v8
 
-    invoke-virtual {p1, v4}, Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    invoke-virtual {p1, v6}, Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
     :try_end_1
     .catch Ljava/lang/NoSuchMethodException; {:try_start_1 .. :try_end_1} :catch_1
 
-    move-result-object v3
-
-    .line 132
-    const/4 v2, 0x0
-
-    .line 134
-    .local v2, filter:Landroid/filterfw/core/Filter;
-    const/4 v4, 0x1
-
-    :try_start_2
-    new-array v4, v4, [Ljava/lang/Object;
-
-    const/4 v5, 0x0
-
-    aput-object p2, v4, v5
-
-    invoke-virtual {v3, v4}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
-
     move-result-object v4
 
-    move-object v0, v4
+    .line 132
+    .local v4, "filterConstructor":Ljava/lang/reflect/Constructor;
+    const/4 v3, 0x0
+
+    .line 134
+    .local v3, "filter":Landroid/filterfw/core/Filter;
+    const/4 v6, 0x1
+
+    :try_start_2
+    new-array v6, v6, [Ljava/lang/Object;
+
+    const/4 v7, 0x0
+
+    aput-object p2, v6, v7
+
+    invoke-virtual {v4, v6}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v6
+
+    move-object v0, v6
 
     check-cast v0, Landroid/filterfw/core/Filter;
 
-    move-object v2, v0
+    move-object v3, v0
     :try_end_2
     .catch Ljava/lang/Throwable; {:try_start_2 .. :try_end_2} :catch_2
 
     .line 139
+    .end local v3    # "filter":Landroid/filterfw/core/Filter;
     :goto_0
-    if-nez v2, :cond_0
+    if-nez v3, :cond_0
 
     .line 140
-    new-instance v4, Ljava/lang/IllegalArgumentException;
+    new-instance v6, Ljava/lang/IllegalArgumentException;
 
-    new-instance v5, Ljava/lang/StringBuilder;
+    new-instance v7, Ljava/lang/StringBuilder;
 
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v6, "Could not construct the filter \'"
+    const-string/jumbo v8, "Could not construct the filter \'"
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-virtual {v5, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v7
 
-    const-string v6, "\'!"
+    .line 141
+    const-string/jumbo v8, "\'!"
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 140
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-direct {v4, v5}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v6, v7}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw v4
+    throw v6
 
     .line 117
-    .end local v2           #filter:Landroid/filterfw/core/Filter;
-    .end local v3           #filterConstructor:Ljava/lang/reflect/Constructor;
+    .end local v4    # "filterConstructor":Ljava/lang/reflect/Constructor;
     :catch_0
     move-exception v1
 
     .line 118
-    .local v1, e:Ljava/lang/ClassCastException;
-    new-instance v4, Ljava/lang/IllegalArgumentException;
+    .local v1, "e":Ljava/lang/ClassCastException;
+    new-instance v6, Ljava/lang/IllegalArgumentException;
 
-    new-instance v5, Ljava/lang/StringBuilder;
+    new-instance v7, Ljava/lang/StringBuilder;
 
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v6, "Attempting to allocate class \'"
+    const-string/jumbo v8, "Attempting to allocate class \'"
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-virtual {v5, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v7
 
-    const-string v6, "\' which is not a subclass of Filter!"
+    .line 119
+    const-string/jumbo v8, "\' which is not a subclass of Filter!"
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 118
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-direct {v4, v5}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v6, v7}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw v4
+    throw v6
 
     .line 126
-    .end local v1           #e:Ljava/lang/ClassCastException;
-    .restart local v3       #filterConstructor:Ljava/lang/reflect/Constructor;
+    .end local v1    # "e":Ljava/lang/ClassCastException;
+    .local v4, "filterConstructor":Ljava/lang/reflect/Constructor;
     :catch_1
-    move-exception v1
+    move-exception v2
 
     .line 127
-    .local v1, e:Ljava/lang/NoSuchMethodException;
-    new-instance v4, Ljava/lang/IllegalArgumentException;
+    .local v2, "e":Ljava/lang/NoSuchMethodException;
+    new-instance v6, Ljava/lang/IllegalArgumentException;
 
-    new-instance v5, Ljava/lang/StringBuilder;
+    new-instance v7, Ljava/lang/StringBuilder;
 
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v6, "The filter class \'"
+    const-string/jumbo v8, "The filter class \'"
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-virtual {v5, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v7
 
-    const-string v6, "\' does not have a constructor of the form <init>(String name)!"
+    .line 128
+    const-string/jumbo v8, "\' does not have a constructor of the form <init>(String name)!"
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 127
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-direct {v4, v5}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v6, v7}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw v4
+    throw v6
 
     .line 143
-    .end local v1           #e:Ljava/lang/NoSuchMethodException;
-    .restart local v2       #filter:Landroid/filterfw/core/Filter;
+    .end local v2    # "e":Ljava/lang/NoSuchMethodException;
+    .local v4, "filterConstructor":Ljava/lang/reflect/Constructor;
     :cond_0
-    return-object v2
+    return-object v3
 
     .line 135
+    .restart local v3    # "filter":Landroid/filterfw/core/Filter;
     :catch_2
-    move-exception v4
+    move-exception v5
 
+    .local v5, "t":Ljava/lang/Throwable;
     goto :goto_0
 .end method
 
 .method public createFilterByClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/filterfw/core/Filter;
     .locals 8
-    .parameter "className"
-    .parameter "filterName"
+    .param p1, "className"    # Ljava/lang/String;
+    .param p2, "filterName"    # Ljava/lang/String;
 
     .prologue
     .line 89
@@ -461,13 +474,13 @@
 
     if-eqz v4, :cond_0
 
-    const-string v4, "FilterFactory"
+    const-string/jumbo v4, "FilterFactory"
 
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v6, "Looking up class "
+    const-string/jumbo v6, "Looking up class "
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -488,52 +501,53 @@
     const/4 v1, 0x0
 
     .line 93
-    .local v1, filterClass:Ljava/lang/Class;
+    .local v1, "filterClass":Ljava/lang/Class;
     iget-object v4, p0, Landroid/filterfw/core/FilterFactory;->mPackages:Ljava/util/HashSet;
 
-    invoke-virtual {v4}, Ljava/util/HashSet;->iterator()Ljava/util/Iterator;
+    invoke-interface {v4}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
-    move-result-object v2
+    move-result-object v3
 
-    .local v2, i$:Ljava/util/Iterator;
+    .end local v1    # "filterClass":Ljava/lang/Class;
+    .local v3, "packageName$iterator":Ljava/util/Iterator;
     :cond_1
     :goto_0
-    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v4
 
     if-eqz v4, :cond_3
 
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    move-result-object v3
+    move-result-object v2
 
-    check-cast v3, Ljava/lang/String;
+    check-cast v2, Ljava/lang/String;
 
     .line 95
-    .local v3, packageName:Ljava/lang/String;
+    .local v2, "packageName":Ljava/lang/String;
     :try_start_0
     sget-boolean v4, Landroid/filterfw/core/FilterFactory;->mLogVerbose:Z
 
     if-eqz v4, :cond_2
 
-    const-string v4, "FilterFactory"
+    const-string/jumbo v4, "FilterFactory"
 
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v6, "Trying "
+    const-string/jumbo v6, "Trying "
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v5
 
-    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v5
 
-    const-string v6, "."
+    const-string/jumbo v6, "."
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -565,11 +579,11 @@
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v6, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v6
 
-    const-string v7, "."
+    const-string/jumbo v7, "."
 
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -584,19 +598,23 @@
     move-result-object v6
 
     invoke-virtual {v4, v6}, Ljava/lang/ClassLoader;->loadClass(Ljava/lang/String;)Ljava/lang/Class;
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     move-result-object v1
 
-    .line 98
+    .local v1, "filterClass":Ljava/lang/Class;
+    :try_start_2
     monitor-exit v5
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    :try_end_2
+    .catch Ljava/lang/ClassNotFoundException; {:try_start_2 .. :try_end_2} :catch_0
 
     .line 103
     if-eqz v1, :cond_1
 
     .line 107
-    .end local v3           #packageName:Ljava/lang/String;
+    .end local v1    # "filterClass":Ljava/lang/Class;
+    .end local v2    # "packageName":Ljava/lang/String;
     :cond_3
     if-nez v1, :cond_4
 
@@ -607,7 +625,7 @@
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v6, "Unknown filter class \'"
+    const-string/jumbo v6, "Unknown filter class \'"
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -617,7 +635,7 @@
 
     move-result-object v5
 
-    const-string v6, "\'!"
+    const-string/jumbo v6, "\'!"
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -631,17 +649,14 @@
 
     throw v4
 
-    .line 98
-    .restart local v3       #packageName:Ljava/lang/String;
+    .line 96
+    .restart local v2    # "packageName":Ljava/lang/String;
     :catchall_0
     move-exception v4
 
-    :try_start_2
-    monitor-exit v5
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
     :try_start_3
+    monitor-exit v5
+
     throw v4
     :try_end_3
     .catch Ljava/lang/ClassNotFoundException; {:try_start_3 .. :try_end_3} :catch_0
@@ -650,13 +665,12 @@
     :catch_0
     move-exception v0
 
-    .line 100
-    .local v0, e:Ljava/lang/ClassNotFoundException;
+    .local v0, "e":Ljava/lang/ClassNotFoundException;
     goto :goto_0
 
     .line 110
-    .end local v0           #e:Ljava/lang/ClassNotFoundException;
-    .end local v3           #packageName:Ljava/lang/String;
+    .end local v0    # "e":Ljava/lang/ClassNotFoundException;
+    .end local v2    # "packageName":Ljava/lang/String;
     :cond_4
     invoke-virtual {p0, v1, p2}, Landroid/filterfw/core/FilterFactory;->createFilterByClass(Ljava/lang/Class;Ljava/lang/String;)Landroid/filterfw/core/Filter;
 

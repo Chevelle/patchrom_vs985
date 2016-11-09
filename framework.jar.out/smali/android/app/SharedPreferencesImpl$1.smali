@@ -21,8 +21,8 @@
 # direct methods
 .method constructor <init>(Landroid/app/SharedPreferencesImpl;Ljava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter "x0"
+    .param p1, "this$0"    # Landroid/app/SharedPreferencesImpl;
+    .param p2, "$anonymous0"    # Ljava/lang/String;
 
     .prologue
     .line 88
@@ -48,22 +48,20 @@
     :try_start_0
     iget-object v0, p0, Landroid/app/SharedPreferencesImpl$1;->this$0:Landroid/app/SharedPreferencesImpl;
 
-    #calls: Landroid/app/SharedPreferencesImpl;->loadFromDiskLocked()V
-    invoke-static {v0}, Landroid/app/SharedPreferencesImpl;->access$000(Landroid/app/SharedPreferencesImpl;)V
+    invoke-static {v0}, Landroid/app/SharedPreferencesImpl;->-wrap1(Landroid/app/SharedPreferencesImpl;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 92
     monitor-exit v1
 
-    .line 93
+    .line 89
     return-void
 
-    .line 92
+    .line 90
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

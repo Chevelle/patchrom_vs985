@@ -30,6 +30,7 @@
 
     sput-object v0, Landroid/text/Spannable$Factory;->sInstance:Landroid/text/Spannable$Factory;
 
+    .line 52
     return-void
 .end method
 
@@ -57,7 +58,7 @@
 # virtual methods
 .method public newSpannable(Ljava/lang/CharSequence;)Landroid/text/Spannable;
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Ljava/lang/CharSequence;
 
     .prologue
     .line 67

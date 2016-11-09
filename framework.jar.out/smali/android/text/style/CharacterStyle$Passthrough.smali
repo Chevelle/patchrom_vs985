@@ -21,7 +21,7 @@
 # direct methods
 .method public constructor <init>(Landroid/text/style/CharacterStyle;)V
     .locals 0
-    .parameter "cs"
+    .param p1, "cs"    # Landroid/text/style/CharacterStyle;
 
     .prologue
     .line 66
@@ -30,7 +30,7 @@
     .line 67
     iput-object p1, p0, Landroid/text/style/CharacterStyle$Passthrough;->mStyle:Landroid/text/style/CharacterStyle;
 
-    .line 68
+    .line 66
     return-void
 .end method
 
@@ -52,7 +52,7 @@
 
 .method public updateDrawState(Landroid/text/TextPaint;)V
     .locals 1
-    .parameter "tp"
+    .param p1, "tp"    # Landroid/text/TextPaint;
 
     .prologue
     .line 75
@@ -60,6 +60,6 @@
 
     invoke-virtual {v0, p1}, Landroid/text/style/CharacterStyle;->updateDrawState(Landroid/text/TextPaint;)V
 
-    .line 76
+    .line 74
     return-void
 .end method

@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/widget/Gallery;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/Gallery;
 
     .prologue
-    .line 127
+    .line 126
     iput-object p1, p0, Landroid/widget/Gallery$1;->this$0:Landroid/widget/Gallery;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,19 +41,18 @@
     .locals 2
 
     .prologue
-    .line 130
+    .line 129
     iget-object v0, p0, Landroid/widget/Gallery$1;->this$0:Landroid/widget/Gallery;
 
     const/4 v1, 0x0
 
-    #setter for: Landroid/widget/Gallery;->mSuppressSelectionChanged:Z
-    invoke-static {v0, v1}, Landroid/widget/Gallery;->access$002(Landroid/widget/Gallery;Z)Z
+    invoke-static {v0, v1}, Landroid/widget/Gallery;->-set2(Landroid/widget/Gallery;Z)Z
 
-    .line 131
+    .line 130
     iget-object v0, p0, Landroid/widget/Gallery$1;->this$0:Landroid/widget/Gallery;
 
     invoke-virtual {v0}, Landroid/widget/Gallery;->selectionChanged()V
 
-    .line 132
+    .line 128
     return-void
 .end method

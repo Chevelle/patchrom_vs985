@@ -16,7 +16,7 @@
 
 .field private mLength:I
 
-.field private mNativeContext:I
+.field private mNativeContext:J
 
 
 # direct methods
@@ -27,7 +27,6 @@
     .line 51
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 52
     return-void
 .end method
 
@@ -78,7 +77,7 @@
     .line 72
     invoke-direct {p0}, Landroid/hardware/usb/UsbRequest;->native_close()V
 
-    .line 73
+    .line 70
     return-void
 .end method
 
@@ -86,29 +85,29 @@
     .locals 5
 
     .prologue
-    const/4 v2, 0x0
+    const/4 v4, 0x0
 
     .line 154
-    iget-object v3, p0, Landroid/hardware/usb/UsbRequest;->mEndpoint:Landroid/hardware/usb/UsbEndpoint;
+    iget-object v2, p0, Landroid/hardware/usb/UsbRequest;->mEndpoint:Landroid/hardware/usb/UsbEndpoint;
 
-    invoke-virtual {v3}, Landroid/hardware/usb/UsbEndpoint;->getDirection()I
+    invoke-virtual {v2}, Landroid/hardware/usb/UsbEndpoint;->getDirection()I
 
-    move-result v3
+    move-result v2
 
-    if-nez v3, :cond_1
+    if-nez v2, :cond_1
 
     const/4 v1, 0x1
 
     .line 156
-    .local v1, out:Z
+    .local v1, "out":Z
     :goto_0
-    iget-object v3, p0, Landroid/hardware/usb/UsbRequest;->mBuffer:Ljava/nio/ByteBuffer;
+    iget-object v2, p0, Landroid/hardware/usb/UsbRequest;->mBuffer:Ljava/nio/ByteBuffer;
 
-    invoke-virtual {v3}, Ljava/nio/ByteBuffer;->isDirect()Z
+    invoke-virtual {v2}, Ljava/nio/ByteBuffer;->isDirect()Z
 
-    move-result v3
+    move-result v2
 
-    if-eqz v3, :cond_2
+    if-eqz v2, :cond_2
 
     .line 157
     invoke-direct {p0}, Landroid/hardware/usb/UsbRequest;->native_dequeue_direct()I
@@ -116,57 +115,57 @@
     move-result v0
 
     .line 161
-    .local v0, bytesRead:I
+    .local v0, "bytesRead":I
     :goto_1
     if-ltz v0, :cond_0
 
     .line 162
-    iget-object v3, p0, Landroid/hardware/usb/UsbRequest;->mBuffer:Ljava/nio/ByteBuffer;
+    iget-object v2, p0, Landroid/hardware/usb/UsbRequest;->mBuffer:Ljava/nio/ByteBuffer;
 
-    iget v4, p0, Landroid/hardware/usb/UsbRequest;->mLength:I
+    iget v3, p0, Landroid/hardware/usb/UsbRequest;->mLength:I
 
-    invoke-static {v0, v4}, Ljava/lang/Math;->min(II)I
+    invoke-static {v0, v3}, Ljava/lang/Math;->min(II)I
 
-    move-result v4
+    move-result v3
 
-    invoke-virtual {v3, v4}, Ljava/nio/ByteBuffer;->position(I)Ljava/nio/Buffer;
+    invoke-virtual {v2, v3}, Ljava/nio/ByteBuffer;->position(I)Ljava/nio/Buffer;
 
     .line 164
     :cond_0
-    const/4 v3, 0x0
+    const/4 v2, 0x0
 
-    iput-object v3, p0, Landroid/hardware/usb/UsbRequest;->mBuffer:Ljava/nio/ByteBuffer;
+    iput-object v2, p0, Landroid/hardware/usb/UsbRequest;->mBuffer:Ljava/nio/ByteBuffer;
 
     .line 165
-    iput v2, p0, Landroid/hardware/usb/UsbRequest;->mLength:I
+    iput v4, p0, Landroid/hardware/usb/UsbRequest;->mLength:I
 
-    .line 166
+    .line 153
     return-void
 
-    .end local v0           #bytesRead:I
-    .end local v1           #out:Z
-    :cond_1
-    move v1, v2
-
     .line 154
+    .end local v0    # "bytesRead":I
+    .end local v1    # "out":Z
+    :cond_1
+    const/4 v1, 0x0
+
+    .restart local v1    # "out":Z
     goto :goto_0
 
     .line 159
-    .restart local v1       #out:Z
     :cond_2
-    iget-object v3, p0, Landroid/hardware/usb/UsbRequest;->mBuffer:Ljava/nio/ByteBuffer;
+    iget-object v2, p0, Landroid/hardware/usb/UsbRequest;->mBuffer:Ljava/nio/ByteBuffer;
 
-    invoke-virtual {v3}, Ljava/nio/ByteBuffer;->array()[B
+    invoke-virtual {v2}, Ljava/nio/ByteBuffer;->array()[B
 
-    move-result-object v3
+    move-result-object v2
 
-    iget v4, p0, Landroid/hardware/usb/UsbRequest;->mLength:I
+    iget v3, p0, Landroid/hardware/usb/UsbRequest;->mLength:I
 
-    invoke-direct {p0, v3, v4, v1}, Landroid/hardware/usb/UsbRequest;->native_dequeue_array([BIZ)I
+    invoke-direct {p0, v2, v3, v1}, Landroid/hardware/usb/UsbRequest;->native_dequeue_array([BIZ)I
 
     move-result v0
 
-    .restart local v0       #bytesRead:I
+    .restart local v0    # "bytesRead":I
     goto :goto_1
 .end method
 
@@ -186,13 +185,13 @@
     if-eqz v0, :cond_0
 
     .line 79
-    const-string v0, "UsbRequest"
+    const-string/jumbo v0, "UsbRequest"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "endpoint still open in finalize(): "
+    const-string/jumbo v2, "endpoint still open in finalize(): "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -217,15 +216,17 @@
     :cond_0
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 85
+    .line 76
     return-void
 
-    .line 83
+    .line 82
     :catchall_0
     move-exception v0
 
+    .line 83
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
+    .line 82
     throw v0
 .end method
 
@@ -251,8 +252,8 @@
 
 .method public initialize(Landroid/hardware/usb/UsbDeviceConnection;Landroid/hardware/usb/UsbEndpoint;)Z
     .locals 6
-    .parameter "connection"
-    .parameter "endpoint"
+    .param p1, "connection"    # Landroid/hardware/usb/UsbDeviceConnection;
+    .param p2, "endpoint"    # Landroid/hardware/usb/UsbEndpoint;
 
     .prologue
     .line 62
@@ -267,6 +268,7 @@
 
     move-result v3
 
+    .line 64
     invoke-virtual {p2}, Landroid/hardware/usb/UsbEndpoint;->getMaxPacketSize()I
 
     move-result v4
@@ -279,6 +281,7 @@
 
     move-object v1, p1
 
+    .line 63
     invoke-direct/range {v0 .. v5}, Landroid/hardware/usb/UsbRequest;->native_init(Landroid/hardware/usb/UsbDeviceConnection;IIII)Z
 
     move-result v0
@@ -288,8 +291,8 @@
 
 .method public queue(Ljava/nio/ByteBuffer;I)Z
     .locals 4
-    .parameter "buffer"
-    .parameter "length"
+    .param p1, "buffer"    # Ljava/nio/ByteBuffer;
+    .param p2, "length"    # I
 
     .prologue
     .line 136
@@ -304,7 +307,7 @@
     const/4 v0, 0x1
 
     .line 138
-    .local v0, out:Z
+    .local v0, "out":Z
     :goto_0
     invoke-virtual {p1}, Ljava/nio/ByteBuffer;->isDirect()Z
 
@@ -318,7 +321,7 @@
     move-result v1
 
     .line 145
-    .local v1, result:Z
+    .local v1, "result":Z
     :goto_1
     if-eqz v1, :cond_0
 
@@ -333,15 +336,15 @@
     return v1
 
     .line 136
-    .end local v0           #out:Z
-    .end local v1           #result:Z
+    .end local v0    # "out":Z
+    .end local v1    # "result":Z
     :cond_1
     const/4 v0, 0x0
 
+    .restart local v0    # "out":Z
     goto :goto_0
 
     .line 140
-    .restart local v0       #out:Z
     :cond_2
     invoke-virtual {p1}, Ljava/nio/ByteBuffer;->hasArray()Z
 
@@ -358,15 +361,15 @@
 
     move-result v1
 
-    .restart local v1       #result:Z
+    .restart local v1    # "result":Z
     goto :goto_1
 
     .line 143
-    .end local v1           #result:Z
+    .end local v1    # "result":Z
     :cond_3
     new-instance v2, Ljava/lang/IllegalArgumentException;
 
-    const-string v3, "buffer is not direct and has no array"
+    const-string/jumbo v3, "buffer is not direct and has no array"
 
     invoke-direct {v2, v3}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -375,12 +378,12 @@
 
 .method public setClientData(Ljava/lang/Object;)V
     .locals 0
-    .parameter "data"
+    .param p1, "data"    # Ljava/lang/Object;
 
     .prologue
     .line 119
     iput-object p1, p0, Landroid/hardware/usb/UsbRequest;->mClientData:Ljava/lang/Object;
 
-    .line 120
+    .line 118
     return-void
 .end method

@@ -14,10 +14,20 @@
 .end annotation
 
 
+# static fields
+.field public static final REQUEST_TYPE_INITIAL:I = 0x0
+
+.field public static final REQUEST_TYPE_RELEASE:I = 0x2
+
+.field public static final REQUEST_TYPE_RENEWAL:I = 0x1
+
+
 # instance fields
 .field private mData:[B
 
 .field private mDefaultUrl:Ljava/lang/String;
+
+.field private mRequestType:I
 
 
 # direct methods
@@ -25,7 +35,7 @@
     .locals 0
 
     .prologue
-    .line 321
+    .line 692
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -34,21 +44,61 @@
 
 # virtual methods
 .method public getData()[B
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 326
+    .line 699
+    iget-object v0, p0, Landroid/media/MediaDrm$KeyRequest;->mData:[B
+
+    if-nez v0, :cond_0
+
+    .line 703
+    new-instance v0, Ljava/lang/RuntimeException;
+
+    const-string/jumbo v1, "KeyRequest is not initialized"
+
+    invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 705
+    :cond_0
     iget-object v0, p0, Landroid/media/MediaDrm$KeyRequest;->mData:[B
 
     return-object v0
 .end method
 
 .method public getDefaultUrl()Ljava/lang/String;
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 333
+    .line 716
+    iget-object v0, p0, Landroid/media/MediaDrm$KeyRequest;->mDefaultUrl:Ljava/lang/String;
+
+    if-nez v0, :cond_0
+
+    .line 720
+    new-instance v0, Ljava/lang/RuntimeException;
+
+    const-string/jumbo v1, "KeyRequest is not initialized"
+
+    invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 722
+    :cond_0
     iget-object v0, p0, Landroid/media/MediaDrm$KeyRequest;->mDefaultUrl:Ljava/lang/String;
 
     return-object v0
+.end method
+
+.method public getRequestType()I
+    .locals 1
+
+    .prologue
+    .line 731
+    iget v0, p0, Landroid/media/MediaDrm$KeyRequest;->mRequestType:I
+
+    return v0
 .end method

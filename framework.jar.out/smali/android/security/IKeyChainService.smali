@@ -15,6 +15,14 @@
 
 
 # virtual methods
+.method public abstract containsCaAlias(Ljava/lang/String;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract deleteCaCertificate(Ljava/lang/String;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -23,7 +31,51 @@
     .end annotation
 .end method
 
+.method public abstract getCaCertificateChainAliases(Ljava/lang/String;Z)Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            "Z)",
+            "Ljava/util/List",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getCertificate(Ljava/lang/String;)[B
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getEncodedCaCertificate(Ljava/lang/String;Z)[B
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getSystemCaAliases()Landroid/content/pm/ParceledListSlice;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getUserCaAliases()Landroid/content/pm/ParceledListSlice;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -40,6 +92,14 @@
 .end method
 
 .method public abstract installCaCertificate([B)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract installKeyPair([B[BLjava/lang/String;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

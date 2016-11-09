@@ -10,55 +10,55 @@
 # direct methods
 .method constructor <init>(Landroid/filterfw/core/FrameFormat;Landroid/filterfw/core/FrameManager;)V
     .locals 1
-    .parameter "format"
-    .parameter "frameManager"
+    .param p1, "format"    # Landroid/filterfw/core/FrameFormat;
+    .param p2, "frameManager"    # Landroid/filterfw/core/FrameManager;
 
     .prologue
-    .line 38
+    .line 36
     invoke-direct {p0, p1, p2}, Landroid/filterfw/core/Frame;-><init>(Landroid/filterfw/core/FrameFormat;Landroid/filterfw/core/FrameManager;)V
 
-    .line 39
+    .line 37
     invoke-direct {p0, p1}, Landroid/filterfw/core/SimpleFrame;->initWithFormat(Landroid/filterfw/core/FrameFormat;)V
 
-    .line 40
+    .line 38
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Landroid/filterfw/core/SimpleFrame;->setReusable(Z)V
 
-    .line 41
+    .line 35
     return-void
 .end method
 
 .method private initWithFormat(Landroid/filterfw/core/FrameFormat;)V
     .locals 3
-    .parameter "format"
+    .param p1, "format"    # Landroid/filterfw/core/FrameFormat;
 
     .prologue
-    .line 51
+    .line 49
     invoke-virtual {p1}, Landroid/filterfw/core/FrameFormat;->getLength()I
 
     move-result v1
 
-    .line 52
-    .local v1, count:I
+    .line 50
+    .local v1, "count":I
     invoke-virtual {p1}, Landroid/filterfw/core/FrameFormat;->getBaseType()I
 
     move-result v0
 
-    .line 53
-    .local v0, baseType:I
+    .line 51
+    .local v0, "baseType":I
     packed-switch v0, :pswitch_data_0
 
-    .line 70
+    .line 68
     const/4 v2, 0x0
 
     iput-object v2, p0, Landroid/filterfw/core/SimpleFrame;->mObject:Ljava/lang/Object;
 
-    .line 73
+    .line 48
     :goto_0
     return-void
 
-    .line 55
+    .line 53
     :pswitch_0
     new-array v2, v1, [B
 
@@ -66,7 +66,7 @@
 
     goto :goto_0
 
-    .line 58
+    .line 56
     :pswitch_1
     new-array v2, v1, [S
 
@@ -74,7 +74,7 @@
 
     goto :goto_0
 
-    .line 61
+    .line 59
     :pswitch_2
     new-array v2, v1, [I
 
@@ -82,7 +82,7 @@
 
     goto :goto_0
 
-    .line 64
+    .line 62
     :pswitch_3
     new-array v2, v1, [F
 
@@ -90,7 +90,7 @@
 
     goto :goto_0
 
-    .line 67
+    .line 65
     :pswitch_4
     new-array v2, v1, [D
 
@@ -98,7 +98,7 @@
 
     goto :goto_0
 
-    .line 53
+    .line 51
     :pswitch_data_0
     .packed-switch 0x2
         :pswitch_0
@@ -111,10 +111,10 @@
 
 .method private setFormatObjectClass(Ljava/lang/Class;)V
     .locals 2
-    .parameter "objectClass"
+    .param p1, "objectClass"    # Ljava/lang/Class;
 
     .prologue
-    .line 134
+    .line 132
     invoke-virtual {p0}, Landroid/filterfw/core/SimpleFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v1
@@ -123,41 +123,41 @@
 
     move-result-object v0
 
-    .line 135
-    .local v0, format:Landroid/filterfw/core/MutableFrameFormat;
+    .line 133
+    .local v0, "format":Landroid/filterfw/core/MutableFrameFormat;
     invoke-virtual {v0, p1}, Landroid/filterfw/core/MutableFrameFormat;->setObjectClass(Ljava/lang/Class;)V
 
-    .line 136
+    .line 134
     invoke-virtual {p0, v0}, Landroid/filterfw/core/SimpleFrame;->setFormat(Landroid/filterfw/core/FrameFormat;)V
 
-    .line 137
+    .line 131
     return-void
 .end method
 
 .method static wrapObject(Ljava/lang/Object;Landroid/filterfw/core/FrameManager;)Landroid/filterfw/core/SimpleFrame;
     .locals 3
-    .parameter "object"
-    .parameter "frameManager"
+    .param p0, "object"    # Ljava/lang/Object;
+    .param p1, "frameManager"    # Landroid/filterfw/core/FrameManager;
 
     .prologue
-    .line 44
+    .line 42
     const/4 v2, 0x1
 
     invoke-static {p0, v2}, Landroid/filterfw/format/ObjectFormat;->fromObject(Ljava/lang/Object;I)Landroid/filterfw/core/MutableFrameFormat;
 
     move-result-object v0
 
-    .line 45
-    .local v0, format:Landroid/filterfw/core/FrameFormat;
+    .line 43
+    .local v0, "format":Landroid/filterfw/core/FrameFormat;
     new-instance v1, Landroid/filterfw/core/SimpleFrame;
 
     invoke-direct {v1, v0, p1}, Landroid/filterfw/core/SimpleFrame;-><init>(Landroid/filterfw/core/FrameFormat;Landroid/filterfw/core/FrameManager;)V
 
-    .line 46
-    .local v1, result:Landroid/filterfw/core/SimpleFrame;
+    .line 44
+    .local v1, "result":Landroid/filterfw/core/SimpleFrame;
     invoke-virtual {v1, p0}, Landroid/filterfw/core/SimpleFrame;->setObjectValue(Ljava/lang/Object;)V
 
-    .line 47
+    .line 45
     return-object v1
 .end method
 
@@ -167,7 +167,7 @@
     .locals 1
 
     .prologue
-    .line 130
+    .line 128
     iget-object v0, p0, Landroid/filterfw/core/SimpleFrame;->mObject:Ljava/lang/Object;
 
     instance-of v0, v0, Landroid/graphics/Bitmap;
@@ -191,7 +191,7 @@
     .locals 1
 
     .prologue
-    .line 119
+    .line 117
     iget-object v0, p0, Landroid/filterfw/core/SimpleFrame;->mObject:Ljava/lang/Object;
 
     instance-of v0, v0, Ljava/nio/ByteBuffer;
@@ -215,7 +215,7 @@
     .locals 1
 
     .prologue
-    .line 108
+    .line 106
     iget-object v0, p0, Landroid/filterfw/core/SimpleFrame;->mObject:Ljava/lang/Object;
 
     instance-of v0, v0, [F
@@ -223,8 +223,6 @@
     if-eqz v0, :cond_0
 
     iget-object v0, p0, Landroid/filterfw/core/SimpleFrame;->mObject:Ljava/lang/Object;
-
-    check-cast v0, [F
 
     check-cast v0, [F
 
@@ -241,7 +239,7 @@
     .locals 1
 
     .prologue
-    .line 97
+    .line 95
     iget-object v0, p0, Landroid/filterfw/core/SimpleFrame;->mObject:Ljava/lang/Object;
 
     instance-of v0, v0, [I
@@ -249,8 +247,6 @@
     if-eqz v0, :cond_0
 
     iget-object v0, p0, Landroid/filterfw/core/SimpleFrame;->mObject:Ljava/lang/Object;
-
-    check-cast v0, [I
 
     check-cast v0, [I
 
@@ -267,7 +263,7 @@
     .locals 1
 
     .prologue
-    .line 86
+    .line 84
     iget-object v0, p0, Landroid/filterfw/core/SimpleFrame;->mObject:Ljava/lang/Object;
 
     return-object v0
@@ -277,7 +273,7 @@
     .locals 1
 
     .prologue
-    .line 77
+    .line 75
     const/4 v0, 0x0
 
     return v0
@@ -287,36 +283,36 @@
     .locals 0
 
     .prologue
-    .line 82
+    .line 79
     return-void
 .end method
 
 .method public setBitmap(Landroid/graphics/Bitmap;)V
     .locals 0
-    .parameter "bitmap"
+    .param p1, "bitmap"    # Landroid/graphics/Bitmap;
 
     .prologue
-    .line 124
+    .line 122
     invoke-virtual {p0}, Landroid/filterfw/core/SimpleFrame;->assertFrameMutable()V
 
-    .line 125
+    .line 123
     invoke-virtual {p0, p1}, Landroid/filterfw/core/SimpleFrame;->setGenericObjectValue(Ljava/lang/Object;)V
 
-    .line 126
+    .line 121
     return-void
 .end method
 
 .method public setData(Ljava/nio/ByteBuffer;II)V
     .locals 1
-    .parameter "buffer"
-    .parameter "offset"
-    .parameter "length"
+    .param p1, "buffer"    # Ljava/nio/ByteBuffer;
+    .param p2, "offset"    # I
+    .param p3, "length"    # I
 
     .prologue
-    .line 113
+    .line 111
     invoke-virtual {p0}, Landroid/filterfw/core/SimpleFrame;->assertFrameMutable()V
 
-    .line 114
+    .line 112
     invoke-virtual {p1}, Ljava/nio/ByteBuffer;->array()[B
 
     move-result-object v0
@@ -327,58 +323,58 @@
 
     invoke-virtual {p0, v0}, Landroid/filterfw/core/SimpleFrame;->setGenericObjectValue(Ljava/lang/Object;)V
 
-    .line 115
+    .line 110
     return-void
 .end method
 
 .method public setFloats([F)V
     .locals 0
-    .parameter "floats"
+    .param p1, "floats"    # [F
 
     .prologue
-    .line 102
+    .line 100
     invoke-virtual {p0}, Landroid/filterfw/core/SimpleFrame;->assertFrameMutable()V
 
-    .line 103
+    .line 101
     invoke-virtual {p0, p1}, Landroid/filterfw/core/SimpleFrame;->setGenericObjectValue(Ljava/lang/Object;)V
 
-    .line 104
+    .line 99
     return-void
 .end method
 
 .method protected setGenericObjectValue(Ljava/lang/Object;)V
     .locals 4
-    .parameter "object"
+    .param p1, "object"    # Ljava/lang/Object;
 
     .prologue
-    .line 144
+    .line 142
     invoke-virtual {p0}, Landroid/filterfw/core/SimpleFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v0
 
-    .line 145
-    .local v0, format:Landroid/filterfw/core/FrameFormat;
+    .line 143
+    .local v0, "format":Landroid/filterfw/core/FrameFormat;
     invoke-virtual {v0}, Landroid/filterfw/core/FrameFormat;->getObjectClass()Ljava/lang/Class;
 
     move-result-object v1
 
     if-nez v1, :cond_1
 
-    .line 146
+    .line 144
     invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v1
 
     invoke-direct {p0, v1}, Landroid/filterfw/core/SimpleFrame;->setFormatObjectClass(Ljava/lang/Class;)V
 
-    .line 154
+    .line 152
     :cond_0
     iput-object p1, p0, Landroid/filterfw/core/SimpleFrame;->mObject:Ljava/lang/Object;
 
-    .line 155
+    .line 138
     return-void
 
-    .line 147
+    .line 145
     :cond_1
     invoke-virtual {v0}, Landroid/filterfw/core/FrameFormat;->getObjectClass()Ljava/lang/Class;
 
@@ -394,14 +390,15 @@
 
     if-nez v1, :cond_0
 
-    .line 148
+    .line 146
     new-instance v1, Ljava/lang/RuntimeException;
 
+    .line 147
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Attempting to set object value of type \'"
+    const-string/jumbo v3, "Attempting to set object value of type \'"
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -415,28 +412,34 @@
 
     move-result-object v2
 
-    const-string v3, "\' on "
+    const-string/jumbo v3, "\' on "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    const-string v3, "SimpleFrame of type \'"
+    .line 148
+    const-string/jumbo v3, "SimpleFrame of type \'"
 
+    .line 147
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
+    .line 148
     invoke-virtual {v0}, Landroid/filterfw/core/FrameFormat;->getObjectClass()Ljava/lang/Class;
 
     move-result-object v3
 
+    .line 147
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    const-string v3, "\'!"
+    .line 148
+    const-string/jumbo v3, "\'!"
 
+    .line 147
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -445,6 +448,7 @@
 
     move-result-object v2
 
+    .line 146
     invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v1
@@ -452,16 +456,16 @@
 
 .method public setInts([I)V
     .locals 0
-    .parameter "ints"
+    .param p1, "ints"    # [I
 
     .prologue
-    .line 91
+    .line 89
     invoke-virtual {p0}, Landroid/filterfw/core/SimpleFrame;->assertFrameMutable()V
 
-    .line 92
+    .line 90
     invoke-virtual {p0, p1}, Landroid/filterfw/core/SimpleFrame;->setGenericObjectValue(Ljava/lang/Object;)V
 
-    .line 93
+    .line 88
     return-void
 .end method
 
@@ -469,12 +473,12 @@
     .locals 2
 
     .prologue
-    .line 159
+    .line 157
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "SimpleFrame ("
+    const-string/jumbo v1, "SimpleFrame ("
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -488,7 +492,7 @@
 
     move-result-object v0
 
-    const-string v1, ")"
+    const-string/jumbo v1, ")"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

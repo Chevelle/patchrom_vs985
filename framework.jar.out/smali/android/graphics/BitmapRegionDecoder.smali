@@ -4,7 +4,7 @@
 
 
 # instance fields
-.field private mNativeBitmapRegionDecoder:I
+.field private mNativeBitmapRegionDecoder:J
 
 .field private final mNativeLock:Ljava/lang/Object;
 
@@ -12,9 +12,9 @@
 
 
 # direct methods
-.method private constructor <init>(I)V
+.method private constructor <init>(J)V
     .locals 1
-    .parameter "decoder"
+    .param p1, "decoder"    # J
 
     .prologue
     .line 168
@@ -28,20 +28,20 @@
     iput-object v0, p0, Landroid/graphics/BitmapRegionDecoder;->mNativeLock:Ljava/lang/Object;
 
     .line 169
-    iput p1, p0, Landroid/graphics/BitmapRegionDecoder;->mNativeBitmapRegionDecoder:I
+    iput-wide p1, p0, Landroid/graphics/BitmapRegionDecoder;->mNativeBitmapRegionDecoder:J
 
     .line 170
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/graphics/BitmapRegionDecoder;->mRecycled:Z
 
-    .line 171
+    .line 168
     return-void
 .end method
 
 .method private checkRecycled(Ljava/lang/String;)V
     .locals 1
-    .parameter "errorMessage"
+    .param p1, "errorMessage"    # Ljava/lang/String;
 
     .prologue
     .line 243
@@ -56,24 +56,24 @@
 
     throw v0
 
-    .line 246
+    .line 242
     :cond_0
     return-void
 .end method
 
-.method private static native nativeClean(I)V
+.method private static native nativeClean(J)V
 .end method
 
-.method private static native nativeDecodeRegion(IIIIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+.method private static native nativeDecodeRegion(JIIIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
 .end method
 
-.method private static native nativeGetHeight(I)I
+.method private static native nativeGetHeight(J)I
 .end method
 
-.method private static native nativeGetWidth(I)I
+.method private static native nativeGetWidth(J)I
 .end method
 
-.method private static native nativeNewInstance(IZ)Landroid/graphics/BitmapRegionDecoder;
+.method private static native nativeNewInstance(JZ)Landroid/graphics/BitmapRegionDecoder;
 .end method
 
 .method private static native nativeNewInstance(Ljava/io/FileDescriptor;Z)Landroid/graphics/BitmapRegionDecoder;
@@ -87,8 +87,8 @@
 
 .method public static newInstance(Ljava/io/FileDescriptor;Z)Landroid/graphics/BitmapRegionDecoder;
     .locals 1
-    .parameter "fd"
-    .parameter "isShareable"
+    .param p0, "fd"    # Ljava/io/FileDescriptor;
+    .param p1, "isShareable"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -105,9 +105,9 @@
 .end method
 
 .method public static newInstance(Ljava/io/InputStream;Z)Landroid/graphics/BitmapRegionDecoder;
-    .locals 2
-    .parameter "is"
-    .parameter "isShareable"
+    .locals 4
+    .param p0, "is"    # Ljava/io/InputStream;
+    .param p1, "isShareable"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -120,42 +120,41 @@
 
     if-eqz v1, :cond_0
 
-    .line 116
+    .line 117
     check-cast p0, Landroid/content/res/AssetManager$AssetInputStream;
 
-    .end local p0
-    invoke-virtual {p0}, Landroid/content/res/AssetManager$AssetInputStream;->getAssetInt()I
+    .end local p0    # "is":Ljava/io/InputStream;
+    invoke-virtual {p0}, Landroid/content/res/AssetManager$AssetInputStream;->getNativeAsset()J
 
-    move-result v1
+    move-result-wide v2
 
-    invoke-static {v1, p1}, Landroid/graphics/BitmapRegionDecoder;->nativeNewInstance(IZ)Landroid/graphics/BitmapRegionDecoder;
+    .line 116
+    invoke-static {v2, v3, p1}, Landroid/graphics/BitmapRegionDecoder;->nativeNewInstance(JZ)Landroid/graphics/BitmapRegionDecoder;
 
     move-result-object v1
 
-    .line 124
-    :goto_0
     return-object v1
 
     .line 123
-    .restart local p0
+    .restart local p0    # "is":Ljava/io/InputStream;
     :cond_0
     const/16 v1, 0x4000
 
     new-array v0, v1, [B
 
     .line 124
-    .local v0, tempStorage:[B
+    .local v0, "tempStorage":[B
     invoke-static {p0, v0, p1}, Landroid/graphics/BitmapRegionDecoder;->nativeNewInstance(Ljava/io/InputStream;[BZ)Landroid/graphics/BitmapRegionDecoder;
 
     move-result-object v1
 
-    goto :goto_0
+    return-object v1
 .end method
 
 .method public static newInstance(Ljava/lang/String;Z)Landroid/graphics/BitmapRegionDecoder;
     .locals 5
-    .parameter "pathName"
-    .parameter "isShareable"
+    .param p0, "pathName"    # Ljava/lang/String;
+    .param p1, "isShareable"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -167,34 +166,35 @@
     const/4 v0, 0x0
 
     .line 146
-    .local v0, decoder:Landroid/graphics/BitmapRegionDecoder;
-    const/4 v1, 0x0
+    .local v0, "decoder":Landroid/graphics/BitmapRegionDecoder;
+    const/4 v2, 0x0
 
     .line 149
-    .local v1, stream:Ljava/io/InputStream;
+    .local v2, "stream":Ljava/io/InputStream;
     :try_start_0
-    new-instance v2, Ljava/io/FileInputStream;
+    new-instance v3, Ljava/io/FileInputStream;
 
-    invoke-direct {v2, p0}, Ljava/io/FileInputStream;-><init>(Ljava/lang/String;)V
+    invoke-direct {v3, p0}, Ljava/io/FileInputStream;-><init>(Ljava/lang/String;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 150
-    .end local v1           #stream:Ljava/io/InputStream;
-    .local v2, stream:Ljava/io/InputStream;
+    .local v3, "stream":Ljava/io/InputStream;
     :try_start_1
-    invoke-static {v2, p1}, Landroid/graphics/BitmapRegionDecoder;->newInstance(Ljava/io/InputStream;Z)Landroid/graphics/BitmapRegionDecoder;
+    invoke-static {v3, p1}, Landroid/graphics/BitmapRegionDecoder;->newInstance(Ljava/io/InputStream;Z)Landroid/graphics/BitmapRegionDecoder;
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
+    .end local v2    # "stream":Ljava/io/InputStream;
     move-result-object v0
 
     .line 152
-    if-eqz v2, :cond_0
+    .local v0, "decoder":Landroid/graphics/BitmapRegionDecoder;
+    if-eqz v3, :cond_0
 
     .line 154
     :try_start_2
-    invoke-virtual {v2}, Ljava/io/InputStream;->close()V
+    invoke-virtual {v3}, Ljava/io/InputStream;->close()V
     :try_end_2
     .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_0
 
@@ -203,60 +203,63 @@
     :goto_0
     return-object v0
 
-    .line 152
-    .end local v2           #stream:Ljava/io/InputStream;
-    .restart local v1       #stream:Ljava/io/InputStream;
-    :catchall_0
-    move-exception v3
+    .line 155
+    :catch_0
+    move-exception v1
 
+    .local v1, "e":Ljava/io/IOException;
+    goto :goto_0
+
+    .line 151
+    .end local v1    # "e":Ljava/io/IOException;
+    .end local v3    # "stream":Ljava/io/InputStream;
+    .local v0, "decoder":Landroid/graphics/BitmapRegionDecoder;
+    .restart local v2    # "stream":Ljava/io/InputStream;
+    :catchall_0
+    move-exception v4
+
+    .line 152
+    .end local v2    # "stream":Ljava/io/InputStream;
     :goto_1
-    if-eqz v1, :cond_1
+    if-eqz v2, :cond_1
 
     .line 154
     :try_start_3
-    invoke-virtual {v1}, Ljava/io/InputStream;->close()V
+    invoke-virtual {v2}, Ljava/io/InputStream;->close()V
     :try_end_3
     .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_1
 
-    .line 157
+    .line 151
     :cond_1
     :goto_2
-    throw v3
+    throw v4
 
     .line 155
-    .end local v1           #stream:Ljava/io/InputStream;
-    .restart local v2       #stream:Ljava/io/InputStream;
-    :catch_0
-    move-exception v3
-
-    goto :goto_0
-
-    .end local v2           #stream:Ljava/io/InputStream;
-    .restart local v1       #stream:Ljava/io/InputStream;
     :catch_1
-    move-exception v4
+    move-exception v1
 
+    .restart local v1    # "e":Ljava/io/IOException;
     goto :goto_2
 
-    .line 152
-    .end local v1           #stream:Ljava/io/InputStream;
-    .restart local v2       #stream:Ljava/io/InputStream;
+    .line 151
+    .end local v1    # "e":Ljava/io/IOException;
+    .restart local v3    # "stream":Ljava/io/InputStream;
     :catchall_1
-    move-exception v3
+    move-exception v4
 
-    move-object v1, v2
+    move-object v2, v3
 
-    .end local v2           #stream:Ljava/io/InputStream;
-    .restart local v1       #stream:Ljava/io/InputStream;
+    .end local v3    # "stream":Ljava/io/InputStream;
+    .local v2, "stream":Ljava/io/InputStream;
     goto :goto_1
 .end method
 
 .method public static newInstance([BIIZ)Landroid/graphics/BitmapRegionDecoder;
     .locals 2
-    .parameter "data"
-    .parameter "offset"
-    .parameter "length"
-    .parameter "isShareable"
+    .param p0, "data"    # [B
+    .param p1, "offset"    # I
+    .param p2, "length"    # I
+    .param p3, "isShareable"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -295,19 +298,19 @@
 
 # virtual methods
 .method public decodeRegion(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    .locals 7
-    .parameter "rect"
-    .parameter "options"
+    .locals 8
+    .param p1, "rect"    # Landroid/graphics/Rect;
+    .param p2, "options"    # Landroid/graphics/BitmapFactory$Options;
 
     .prologue
     .line 183
-    iget-object v6, p0, Landroid/graphics/BitmapRegionDecoder;->mNativeLock:Ljava/lang/Object;
+    iget-object v7, p0, Landroid/graphics/BitmapRegionDecoder;->mNativeLock:Ljava/lang/Object;
 
-    monitor-enter v6
+    monitor-enter v7
 
     .line 184
     :try_start_0
-    const-string v0, "decodeRegion called on recycled region decoder"
+    const-string/jumbo v0, "decodeRegion called on recycled region decoder"
 
     invoke-direct {p0, v0}, Landroid/graphics/BitmapRegionDecoder;->checkRecycled(Ljava/lang/String;)V
 
@@ -318,23 +321,7 @@
 
     iget v0, p1, Landroid/graphics/Rect;->bottom:I
 
-    if-lez v0, :cond_0
-
-    iget v0, p1, Landroid/graphics/Rect;->left:I
-
-    invoke-virtual {p0}, Landroid/graphics/BitmapRegionDecoder;->getWidth()I
-
-    move-result v1
-
-    if-ge v0, v1, :cond_0
-
-    iget v0, p1, Landroid/graphics/Rect;->top:I
-
-    invoke-virtual {p0}, Landroid/graphics/BitmapRegionDecoder;->getHeight()I
-
-    move-result v1
-
-    if-lt v0, v1, :cond_1
+    if-gtz v0, :cond_1
 
     .line 187
     :cond_0
@@ -345,47 +332,67 @@
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
-
-    .line 190
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v6
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
+    .line 183
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v7
+
     throw v0
 
-    .line 188
+    .line 185
     :cond_1
     :try_start_1
-    iget v0, p0, Landroid/graphics/BitmapRegionDecoder;->mNativeBitmapRegionDecoder:I
+    iget v0, p1, Landroid/graphics/Rect;->left:I
 
-    iget v1, p1, Landroid/graphics/Rect;->left:I
+    invoke-virtual {p0}, Landroid/graphics/BitmapRegionDecoder;->getWidth()I
 
-    iget v2, p1, Landroid/graphics/Rect;->top:I
+    move-result v1
 
-    iget v3, p1, Landroid/graphics/Rect;->right:I
+    if-ge v0, v1, :cond_0
 
-    iget v4, p1, Landroid/graphics/Rect;->left:I
+    .line 186
+    iget v0, p1, Landroid/graphics/Rect;->top:I
 
-    sub-int/2addr v3, v4
+    invoke-virtual {p0}, Landroid/graphics/BitmapRegionDecoder;->getHeight()I
 
-    iget v4, p1, Landroid/graphics/Rect;->bottom:I
+    move-result v1
 
-    iget v5, p1, Landroid/graphics/Rect;->top:I
+    if-ge v0, v1, :cond_0
+
+    .line 188
+    iget-wide v0, p0, Landroid/graphics/BitmapRegionDecoder;->mNativeBitmapRegionDecoder:J
+
+    iget v2, p1, Landroid/graphics/Rect;->left:I
+
+    iget v3, p1, Landroid/graphics/Rect;->top:I
+
+    .line 189
+    iget v4, p1, Landroid/graphics/Rect;->right:I
+
+    iget v5, p1, Landroid/graphics/Rect;->left:I
 
     sub-int/2addr v4, v5
 
-    move-object v5, p2
+    iget v5, p1, Landroid/graphics/Rect;->bottom:I
 
-    invoke-static/range {v0 .. v5}, Landroid/graphics/BitmapRegionDecoder;->nativeDecodeRegion(IIIIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    iget v6, p1, Landroid/graphics/Rect;->top:I
+
+    sub-int/2addr v5, v6
+
+    move-object v6, p2
+
+    .line 188
+    invoke-static/range {v0 .. v6}, Landroid/graphics/BitmapRegionDecoder;->nativeDecodeRegion(JIIIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     move-result-object v0
 
-    monitor-exit v6
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    monitor-exit v7
 
     return-object v0
 .end method
@@ -408,20 +415,22 @@
     .line 253
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 255
+    .line 249
     return-void
 
-    .line 253
+    .line 252
     :catchall_0
     move-exception v0
 
+    .line 253
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
+    .line 252
     throw v0
 .end method
 
 .method public getHeight()I
-    .locals 2
+    .locals 4
 
     .prologue
     .line 203
@@ -431,14 +440,16 @@
 
     .line 204
     :try_start_0
-    const-string v0, "getHeight called on recycled region decoder"
+    const-string/jumbo v0, "getHeight called on recycled region decoder"
 
     invoke-direct {p0, v0}, Landroid/graphics/BitmapRegionDecoder;->checkRecycled(Ljava/lang/String;)V
 
     .line 205
-    iget v0, p0, Landroid/graphics/BitmapRegionDecoder;->mNativeBitmapRegionDecoder:I
+    iget-wide v2, p0, Landroid/graphics/BitmapRegionDecoder;->mNativeBitmapRegionDecoder:J
 
-    invoke-static {v0}, Landroid/graphics/BitmapRegionDecoder;->nativeGetHeight(I)I
+    invoke-static {v2, v3}, Landroid/graphics/BitmapRegionDecoder;->nativeGetHeight(J)I
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result v0
 
@@ -446,19 +457,17 @@
 
     return v0
 
-    .line 206
+    .line 203
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public getWidth()I
-    .locals 2
+    .locals 4
 
     .prologue
     .line 195
@@ -468,14 +477,16 @@
 
     .line 196
     :try_start_0
-    const-string v0, "getWidth called on recycled region decoder"
+    const-string/jumbo v0, "getWidth called on recycled region decoder"
 
     invoke-direct {p0, v0}, Landroid/graphics/BitmapRegionDecoder;->checkRecycled(Ljava/lang/String;)V
 
     .line 197
-    iget v0, p0, Landroid/graphics/BitmapRegionDecoder;->mNativeBitmapRegionDecoder:I
+    iget-wide v2, p0, Landroid/graphics/BitmapRegionDecoder;->mNativeBitmapRegionDecoder:J
 
-    invoke-static {v0}, Landroid/graphics/BitmapRegionDecoder;->nativeGetWidth(I)I
+    invoke-static {v2, v3}, Landroid/graphics/BitmapRegionDecoder;->nativeGetWidth(J)I
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result v0
 
@@ -483,13 +494,11 @@
 
     return v0
 
-    .line 198
+    .line 195
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
@@ -505,7 +514,7 @@
 .end method
 
 .method public recycle()V
-    .locals 2
+    .locals 4
 
     .prologue
     .line 220
@@ -520,29 +529,28 @@
     if-nez v0, :cond_0
 
     .line 222
-    iget v0, p0, Landroid/graphics/BitmapRegionDecoder;->mNativeBitmapRegionDecoder:I
+    iget-wide v2, p0, Landroid/graphics/BitmapRegionDecoder;->mNativeBitmapRegionDecoder:J
 
-    invoke-static {v0}, Landroid/graphics/BitmapRegionDecoder;->nativeClean(I)V
+    invoke-static {v2, v3}, Landroid/graphics/BitmapRegionDecoder;->nativeClean(J)V
 
     .line 223
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/graphics/BitmapRegionDecoder;->mRecycled:Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 225
     :cond_0
     monitor-exit v1
 
-    .line 226
+    .line 219
     return-void
 
-    .line 225
+    .line 220
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

@@ -17,9 +17,9 @@
 # direct methods
 .method public constructor <init>(IILandroid/graphics/AvoidXfermode$Mode;)V
     .locals 2
-    .parameter "opColor"
-    .parameter "tolerance"
-    .parameter "mode"
+    .param p1, "opColor"    # I
+    .param p2, "tolerance"    # I
+    .param p3, "mode"    # Landroid/graphics/AvoidXfermode$Mode;
 
     .prologue
     .line 52
@@ -46,15 +46,15 @@
     :cond_1
     iget v0, p3, Landroid/graphics/AvoidXfermode$Mode;->nativeInt:I
 
-    invoke-static {p1, p2, v0}, Landroid/graphics/AvoidXfermode;->nativeCreate(III)I
+    invoke-static {p1, p2, v0}, Landroid/graphics/AvoidXfermode;->nativeCreate(III)J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/graphics/AvoidXfermode;->native_instance:I
+    iput-wide v0, p0, Landroid/graphics/AvoidXfermode;->native_instance:J
 
-    .line 57
+    .line 52
     return-void
 .end method
 
-.method private static native nativeCreate(III)I
+.method private static native nativeCreate(III)J
 .end method

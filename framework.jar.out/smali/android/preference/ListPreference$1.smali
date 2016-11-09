@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/preference/ListPreference;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/preference/ListPreference;
 
     .prologue
-    .line 246
+    .line 255
     iput-object p1, p0, Landroid/preference/ListPreference$1;->this$0:Landroid/preference/ListPreference;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,24 +39,23 @@
 # virtual methods
 .method public onClick(Landroid/content/DialogInterface;I)V
     .locals 2
-    .parameter "dialog"
-    .parameter "which"
+    .param p1, "dialog"    # Landroid/content/DialogInterface;
+    .param p2, "which"    # I
 
     .prologue
-    .line 248
+    .line 257
     iget-object v0, p0, Landroid/preference/ListPreference$1;->this$0:Landroid/preference/ListPreference;
 
-    #setter for: Landroid/preference/ListPreference;->mClickedDialogEntryIndex:I
-    invoke-static {v0, p2}, Landroid/preference/ListPreference;->access$002(Landroid/preference/ListPreference;I)I
+    invoke-static {v0, p2}, Landroid/preference/ListPreference;->-set0(Landroid/preference/ListPreference;I)I
 
-    .line 254
+    .line 263
     iget-object v0, p0, Landroid/preference/ListPreference$1;->this$0:Landroid/preference/ListPreference;
 
     const/4 v1, -0x1
 
     invoke-virtual {v0, p1, v1}, Landroid/preference/ListPreference;->onClick(Landroid/content/DialogInterface;I)V
 
-    .line 255
+    .line 264
     invoke-interface {p1}, Landroid/content/DialogInterface;->dismiss()V
 
     .line 256

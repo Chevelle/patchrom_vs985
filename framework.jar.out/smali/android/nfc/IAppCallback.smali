@@ -15,7 +15,7 @@
 
 
 # virtual methods
-.method public abstract createBeamShareData()Landroid/nfc/BeamShareData;
+.method public abstract createBeamShareData(B)Landroid/nfc/BeamShareData;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -23,7 +23,7 @@
     .end annotation
 .end method
 
-.method public abstract onNdefPushComplete()V
+.method public abstract onNdefPushComplete(B)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

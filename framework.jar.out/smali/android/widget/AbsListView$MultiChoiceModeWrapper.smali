@@ -26,10 +26,10 @@
 # direct methods
 .method constructor <init>(Landroid/widget/AbsListView;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/AbsListView;
 
     .prologue
-    .line 6334
+    .line 6250
     iput-object p1, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->this$0:Landroid/widget/AbsListView;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
     .locals 1
 
     .prologue
-    .line 6342
+    .line 6258
     iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->mWrapped:Landroid/widget/AbsListView$MultiChoiceModeListener;
 
     if-eqz v0, :cond_0
@@ -61,11 +61,11 @@
 
 .method public onActionItemClicked(Landroid/view/ActionMode;Landroid/view/MenuItem;)Z
     .locals 1
-    .parameter "mode"
-    .parameter "item"
+    .param p1, "mode"    # Landroid/view/ActionMode;
+    .param p2, "item"    # Landroid/view/MenuItem;
 
     .prologue
-    .line 6362
+    .line 6278
     iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->mWrapped:Landroid/widget/AbsListView$MultiChoiceModeListener;
 
     invoke-interface {v0, p1, p2}, Landroid/widget/AbsListView$MultiChoiceModeListener;->onActionItemClicked(Landroid/view/ActionMode;Landroid/view/MenuItem;)Z
@@ -77,127 +77,129 @@
 
 .method public onCreateActionMode(Landroid/view/ActionMode;Landroid/view/Menu;)Z
     .locals 2
-    .parameter "mode"
-    .parameter "menu"
+    .param p1, "mode"    # Landroid/view/ActionMode;
+    .param p2, "menu"    # Landroid/view/Menu;
 
     .prologue
-    const/4 v0, 0x0
+    const/4 v1, 0x0
 
-    .line 6347
-    iget-object v1, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->mWrapped:Landroid/widget/AbsListView$MultiChoiceModeListener;
+    .line 6263
+    iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->mWrapped:Landroid/widget/AbsListView$MultiChoiceModeListener;
 
-    invoke-interface {v1, p1, p2}, Landroid/widget/AbsListView$MultiChoiceModeListener;->onCreateActionMode(Landroid/view/ActionMode;Landroid/view/Menu;)Z
+    invoke-interface {v0, p1, p2}, Landroid/widget/AbsListView$MultiChoiceModeListener;->onCreateActionMode(Landroid/view/ActionMode;Landroid/view/Menu;)Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_0
+    if-eqz v0, :cond_0
 
-    .line 6349
-    iget-object v1, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->this$0:Landroid/widget/AbsListView;
+    .line 6265
+    iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->this$0:Landroid/widget/AbsListView;
 
-    invoke-virtual {v1, v0}, Landroid/widget/AbsListView;->setLongClickable(Z)V
+    invoke-virtual {v0, v1}, Landroid/widget/AbsListView;->setLongClickable(Z)V
 
-    .line 6350
+    .line 6266
     const/4 v0, 0x1
 
-    .line 6352
-    :cond_0
     return v0
+
+    .line 6268
+    :cond_0
+    return v1
 .end method
 
 .method public onDestroyActionMode(Landroid/view/ActionMode;)V
     .locals 3
-    .parameter "mode"
+    .param p1, "mode"    # Landroid/view/ActionMode;
 
     .prologue
     const/4 v2, 0x1
 
-    .line 6367
+    .line 6283
     iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->mWrapped:Landroid/widget/AbsListView$MultiChoiceModeListener;
 
     invoke-interface {v0, p1}, Landroid/widget/AbsListView$MultiChoiceModeListener;->onDestroyActionMode(Landroid/view/ActionMode;)V
 
-    .line 6368
+    .line 6284
     iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->this$0:Landroid/widget/AbsListView;
 
     const/4 v1, 0x0
 
     iput-object v1, v0, Landroid/widget/AbsListView;->mChoiceActionMode:Landroid/view/ActionMode;
 
-    .line 6371
+    .line 6287
     iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->this$0:Landroid/widget/AbsListView;
 
     invoke-virtual {v0}, Landroid/widget/AbsListView;->clearChoices()V
 
-    .line 6373
+    .line 6289
     iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->this$0:Landroid/widget/AbsListView;
 
     iput-boolean v2, v0, Landroid/widget/AbsListView;->mDataChanged:Z
 
-    .line 6374
+    .line 6290
     iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->this$0:Landroid/widget/AbsListView;
 
     invoke-virtual {v0}, Landroid/widget/AbsListView;->rememberSyncState()V
 
-    .line 6375
+    .line 6291
     iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->this$0:Landroid/widget/AbsListView;
 
     invoke-virtual {v0}, Landroid/widget/AbsListView;->requestLayout()V
 
-    .line 6377
+    .line 6293
     iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->this$0:Landroid/widget/AbsListView;
 
     invoke-virtual {v0, v2}, Landroid/widget/AbsListView;->setLongClickable(Z)V
 
-    .line 6378
+    .line 6282
     return-void
 .end method
 
 .method public onItemCheckedStateChanged(Landroid/view/ActionMode;IJZ)V
-    .locals 6
-    .parameter "mode"
-    .parameter "position"
-    .parameter "id"
-    .parameter "checked"
+    .locals 7
+    .param p1, "mode"    # Landroid/view/ActionMode;
+    .param p2, "position"    # I
+    .param p3, "id"    # J
+    .param p5, "checked"    # Z
 
     .prologue
-    .line 6383
-    iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->mWrapped:Landroid/widget/AbsListView$MultiChoiceModeListener;
+    .line 6299
+    iget-object v1, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->mWrapped:Landroid/widget/AbsListView$MultiChoiceModeListener;
 
-    move-object v1, p1
+    move-object v2, p1
 
-    move v2, p2
+    move v3, p2
 
-    move-wide v3, p3
+    move-wide v4, p3
 
-    move v5, p5
+    move v6, p5
 
-    invoke-interface/range {v0 .. v5}, Landroid/widget/AbsListView$MultiChoiceModeListener;->onItemCheckedStateChanged(Landroid/view/ActionMode;IJZ)V
+    invoke-interface/range {v1 .. v6}, Landroid/widget/AbsListView$MultiChoiceModeListener;->onItemCheckedStateChanged(Landroid/view/ActionMode;IJZ)V
 
-    .line 6386
+    .line 6302
     iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->this$0:Landroid/widget/AbsListView;
 
-    invoke-static {v0}, Landroid/widget/Injector$AbsListViewHook;->needFinishActionMode(Landroid/widget/AbsListView;)Z
+    invoke-virtual {v0}, Landroid/widget/AbsListView;->getCheckedItemCount()I
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-nez v0, :cond_0
 
-    .line 6387
+    .line 6303
     invoke-virtual {p1}, Landroid/view/ActionMode;->finish()V
 
-    .line 6389
+    .line 6298
     :cond_0
     return-void
 .end method
 
 .method public onPrepareActionMode(Landroid/view/ActionMode;Landroid/view/Menu;)Z
     .locals 1
-    .parameter "mode"
-    .parameter "menu"
+    .param p1, "mode"    # Landroid/view/ActionMode;
+    .param p2, "menu"    # Landroid/view/Menu;
 
     .prologue
-    .line 6357
+    .line 6273
     iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->mWrapped:Landroid/widget/AbsListView$MultiChoiceModeListener;
 
     invoke-interface {v0, p1, p2}, Landroid/widget/AbsListView$MultiChoiceModeListener;->onPrepareActionMode(Landroid/view/ActionMode;Landroid/view/Menu;)Z
@@ -209,12 +211,12 @@
 
 .method public setWrapped(Landroid/widget/AbsListView$MultiChoiceModeListener;)V
     .locals 0
-    .parameter "wrapped"
+    .param p1, "wrapped"    # Landroid/widget/AbsListView$MultiChoiceModeListener;
 
     .prologue
-    .line 6338
+    .line 6254
     iput-object p1, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->mWrapped:Landroid/widget/AbsListView$MultiChoiceModeListener;
 
-    .line 6339
+    .line 6253
     return-void
 .end method

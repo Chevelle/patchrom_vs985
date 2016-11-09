@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/speech/tts/TextToSpeech;->isLanguageAvailable(Ljava/util/Locale;)I
+    value = Landroid/speech/tts/TextToSpeech;->getAvailableLanguages()Ljava/util/Set;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -21,8 +21,10 @@
         "Ljava/lang/Object;",
         "Landroid/speech/tts/TextToSpeech$Action",
         "<",
-        "Ljava/lang/Integer;",
-        ">;"
+        "Ljava/util/Set",
+        "<",
+        "Ljava/util/Locale;",
+        ">;>;"
     }
 .end annotation
 
@@ -30,20 +32,15 @@
 # instance fields
 .field final synthetic this$0:Landroid/speech/tts/TextToSpeech;
 
-.field final synthetic val$loc:Ljava/util/Locale;
-
 
 # direct methods
-.method constructor <init>(Landroid/speech/tts/TextToSpeech;Ljava/util/Locale;)V
+.method constructor <init>(Landroid/speech/tts/TextToSpeech;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/speech/tts/TextToSpeech;
 
     .prologue
-    .line 1220
+    .line 1581
     iput-object p1, p0, Landroid/speech/tts/TextToSpeech$11;->this$0:Landroid/speech/tts/TextToSpeech;
-
-    iput-object p2, p0, Landroid/speech/tts/TextToSpeech$11;->val$loc:Ljava/util/Locale;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -52,9 +49,9 @@
 
 
 # virtual methods
-.method public run(Landroid/speech/tts/ITextToSpeechService;)Ljava/lang/Integer;
-    .locals 7
-    .parameter "service"
+.method public bridge synthetic run(Landroid/speech/tts/ITextToSpeechService;)Ljava/lang/Object;
+    .locals 1
+    .param p1, "service"    # Landroid/speech/tts/ITextToSpeechService;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -62,143 +59,90 @@
     .end annotation
 
     .prologue
-    const/4 v6, -0x2
+    .line 1583
+    invoke-virtual {p0, p1}, Landroid/speech/tts/TextToSpeech$11;->run(Landroid/speech/tts/ITextToSpeechService;)Ljava/util/Set;
 
-    .line 1223
-    const/4 v2, 0x0
+    move-result-object v0
 
-    .local v2, language:Ljava/lang/String;
-    const/4 v0, 0x0
+    return-object v0
+.end method
 
-    .line 1226
-    .local v0, country:Ljava/lang/String;
-    :try_start_0
-    iget-object v3, p0, Landroid/speech/tts/TextToSpeech$11;->val$loc:Ljava/util/Locale;
+.method public run(Landroid/speech/tts/ITextToSpeechService;)Ljava/util/Set;
+    .locals 5
+    .param p1, "service"    # Landroid/speech/tts/ITextToSpeechService;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/speech/tts/ITextToSpeechService;",
+            ")",
+            "Ljava/util/Set",
+            "<",
+            "Ljava/util/Locale;",
+            ">;"
+        }
+    .end annotation
 
-    invoke-virtual {v3}, Ljava/util/Locale;->getISO3Language()Ljava/lang/String;
-    :try_end_0
-    .catch Ljava/util/MissingResourceException; {:try_start_0 .. :try_end_0} :catch_0
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 1584
+    invoke-interface {p1}, Landroid/speech/tts/ITextToSpeechService;->getVoices()Ljava/util/List;
+
+    move-result-object v3
+
+    .line 1585
+    .local v3, "voices":Ljava/util/List;, "Ljava/util/List<Landroid/speech/tts/Voice;>;"
+    if-nez v3, :cond_0
+
+    .line 1586
+    new-instance v4, Ljava/util/HashSet;
+
+    invoke-direct {v4}, Ljava/util/HashSet;-><init>()V
+
+    return-object v4
+
+    .line 1588
+    :cond_0
+    new-instance v0, Ljava/util/HashSet;
+
+    invoke-direct {v0}, Ljava/util/HashSet;-><init>()V
+
+    .line 1589
+    .local v0, "locales":Ljava/util/HashSet;, "Ljava/util/HashSet<Ljava/util/Locale;>;"
+    invoke-interface {v3}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
     move-result-object v2
 
-    .line 1233
-    :try_start_1
-    iget-object v3, p0, Landroid/speech/tts/TextToSpeech$11;->val$loc:Ljava/util/Locale;
-
-    invoke-virtual {v3}, Ljava/util/Locale;->getISO3Country()Ljava/lang/String;
-    :try_end_1
-    .catch Ljava/util/MissingResourceException; {:try_start_1 .. :try_end_1} :catch_1
-
-    move-result-object v0
-
-    .line 1239
-    iget-object v3, p0, Landroid/speech/tts/TextToSpeech$11;->val$loc:Ljava/util/Locale;
-
-    invoke-virtual {v3}, Ljava/util/Locale;->getVariant()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-interface {p1, v2, v0, v3}, Landroid/speech/tts/ITextToSpeechService;->isLanguageAvailable(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
-
-    move-result v3
-
-    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
+    .local v2, "voice$iterator":Ljava/util/Iterator;
     :goto_0
-    return-object v3
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
-    .line 1227
-    :catch_0
-    move-exception v1
+    move-result v4
 
-    .line 1228
-    .local v1, e:Ljava/util/MissingResourceException;
-    const-string v3, "TextToSpeech"
+    if-eqz v4, :cond_1
 
-    new-instance v4, Ljava/lang/StringBuilder;
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+    move-result-object v1
 
-    const-string v5, "Couldn\'t retrieve ISO 639-2/T language code for locale: "
+    check-cast v1, Landroid/speech/tts/Voice;
 
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 1590
+    .local v1, "voice":Landroid/speech/tts/Voice;
+    invoke-virtual {v1}, Landroid/speech/tts/Voice;->getLocale()Ljava/util/Locale;
 
     move-result-object v4
 
-    iget-object v5, p0, Landroid/speech/tts/TextToSpeech$11;->val$loc:Ljava/util/Locale;
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v3, v4, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    .line 1229
-    invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
+    invoke-virtual {v0, v4}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
 
     goto :goto_0
 
-    .line 1234
-    .end local v1           #e:Ljava/util/MissingResourceException;
-    :catch_1
-    move-exception v1
-
-    .line 1235
-    .restart local v1       #e:Ljava/util/MissingResourceException;
-    const-string v3, "TextToSpeech"
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, "Couldn\'t retrieve ISO 3166 country code for locale: "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    iget-object v5, p0, Landroid/speech/tts/TextToSpeech$11;->val$loc:Ljava/util/Locale;
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v3, v4, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    .line 1236
-    invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
-
-    goto :goto_0
-.end method
-
-.method public bridge synthetic run(Landroid/speech/tts/ITextToSpeechService;)Ljava/lang/Object;
-    .locals 1
-    .parameter "x0"
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-
-    .prologue
-    .line 1220
-    invoke-virtual {p0, p1}, Landroid/speech/tts/TextToSpeech$11;->run(Landroid/speech/tts/ITextToSpeechService;)Ljava/lang/Integer;
-
-    move-result-object v0
-
+    .line 1592
+    .end local v1    # "voice":Landroid/speech/tts/Voice;
+    :cond_1
     return-object v0
 .end method

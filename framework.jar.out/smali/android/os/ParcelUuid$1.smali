@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/os/ParcelUuid;
     .locals 6
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 113
@@ -51,19 +51,19 @@
     move-result-wide v2
 
     .line 114
-    .local v2, mostSigBits:J
+    .local v2, "mostSigBits":J
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
     move-result-wide v0
 
     .line 115
-    .local v0, leastSigBits:J
+    .local v0, "leastSigBits":J
     new-instance v4, Ljava/util/UUID;
 
     invoke-direct {v4, v2, v3, v0, v1}, Ljava/util/UUID;-><init>(JJ)V
 
     .line 116
-    .local v4, uuid:Ljava/util/UUID;
+    .local v4, "uuid":Ljava/util/UUID;
     new-instance v5, Landroid/os/ParcelUuid;
 
     invoke-direct {v5, v4}, Landroid/os/ParcelUuid;-><init>(Ljava/util/UUID;)V
@@ -73,10 +73,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 111
+    .line 112
     invoke-virtual {p0, p1}, Landroid/os/ParcelUuid$1;->createFromParcel(Landroid/os/Parcel;)Landroid/os/ParcelUuid;
 
     move-result-object v0
@@ -86,7 +86,7 @@
 
 .method public newArray(I)[Landroid/os/ParcelUuid;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 120
@@ -97,10 +97,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 111
+    .line 119
     invoke-virtual {p0, p1}, Landroid/os/ParcelUuid$1;->newArray(I)[Landroid/os/ParcelUuid;
 
     move-result-object v0

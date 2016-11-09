@@ -17,6 +17,7 @@
 
     sput-object v0, Landroid/graphics/TemporaryBuffer;->sTemp:[C
 
+    .line 24
     return-void
 .end method
 
@@ -32,7 +33,7 @@
 
 .method public static obtain(I)[C
     .locals 3
-    .parameter "len"
+    .param p0, "len"    # I
 
     .prologue
     .line 28
@@ -45,15 +46,14 @@
     sget-object v0, Landroid/graphics/TemporaryBuffer;->sTemp:[C
 
     .line 30
-    .local v0, buf:[C
+    .local v0, "buf":[C
     const/4 v1, 0x0
 
     sput-object v1, Landroid/graphics/TemporaryBuffer;->sTemp:[C
-
-    .line 31
-    monitor-exit v2
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit v2
 
     .line 33
     if-eqz v0, :cond_0
@@ -64,32 +64,27 @@
 
     .line 34
     :cond_0
-    invoke-static {p0}, Lcom/android/internal/util/ArrayUtils;->idealCharArraySize(I)I
+    invoke-static {p0}, Lcom/android/internal/util/ArrayUtils;->newUnpaddedCharArray(I)[C
 
-    move-result v1
-
-    new-array v0, v1, [C
+    move-result-object v0
 
     .line 37
     :cond_1
     return-object v0
 
-    .line 31
-    .end local v0           #buf:[C
+    .line 28
+    .end local v0    # "buf":[C
     :catchall_0
     move-exception v1
 
-    :try_start_1
     monitor-exit v2
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v1
 .end method
 
 .method public static recycle([C)V
     .locals 2
-    .parameter "temp"
+    .param p0, "temp"    # [C
 
     .prologue
     .line 41
@@ -99,31 +94,30 @@
 
     if-le v0, v1, :cond_0
 
-    .line 46
-    :goto_0
     return-void
 
     .line 43
     :cond_0
-    const-class v1, Landroid/graphics/TemporaryBuffer;
+    const-class v0, Landroid/graphics/TemporaryBuffer;
 
-    monitor-enter v1
+    monitor-enter v0
 
     .line 44
     :try_start_0
     sput-object p0, Landroid/graphics/TemporaryBuffer;->sTemp:[C
-
-    .line 45
-    monitor-exit v1
-
-    goto :goto_0
-
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw v0
+    monitor-exit v0
+
+    .line 40
+    return-void
+
+    .line 43
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+
+    throw v1
 .end method

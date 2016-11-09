@@ -23,19 +23,19 @@
 # direct methods
 .method constructor <init>(ILjava/lang/String;)V
     .locals 0
-    .parameter "fileType"
-    .parameter "mimeType"
+    .param p1, "fileType"    # I
+    .param p2, "mimeType"    # Ljava/lang/String;
 
     .prologue
-    .line 118
+    .line 113
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 119
+    .line 114
     iput p1, p0, Landroid/media/MediaFile$MediaFileType;->fileType:I
 
-    .line 120
+    .line 115
     iput-object p2, p0, Landroid/media/MediaFile$MediaFileType;->mimeType:Ljava/lang/String;
 
-    .line 121
+    .line 113
     return-void
 .end method

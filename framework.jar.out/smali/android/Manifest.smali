@@ -6,8 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/Manifest$permission_group;,
-        Landroid/Manifest$permission;
+        Landroid/Manifest$permission;,
+        Landroid/Manifest$permission_group;
     }
 .end annotation
 
@@ -20,6 +20,5 @@
     .line 10
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1063
     return-void
 .end method

@@ -33,7 +33,7 @@
     .locals 2
 
     .prologue
-    .line 319
+    .line 359
     new-instance v0, Landroid/os/StrictMode$ThreadPolicy;
 
     const/4 v1, 0x0
@@ -42,31 +42,30 @@
 
     sput-object v0, Landroid/os/StrictMode$ThreadPolicy;->LAX:Landroid/os/StrictMode$ThreadPolicy;
 
+    .line 355
     return-void
 .end method
 
 .method private constructor <init>(I)V
     .locals 0
-    .parameter "mask"
+    .param p1, "mask"    # I
 
     .prologue
-    .line 323
+    .line 363
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 324
+    .line 364
     iput p1, p0, Landroid/os/StrictMode$ThreadPolicy;->mask:I
 
-    .line 325
+    .line 363
     return-void
 .end method
 
-.method synthetic constructor <init>(ILandroid/os/StrictMode$1;)V
+.method synthetic constructor <init>(ILandroid/os/StrictMode$ThreadPolicy;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "mask"    # I
 
     .prologue
-    .line 315
     invoke-direct {p0, p1}, Landroid/os/StrictMode$ThreadPolicy;-><init>(I)V
 
     return-void
@@ -78,12 +77,12 @@
     .locals 2
 
     .prologue
-    .line 329
+    .line 369
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "[StrictMode.ThreadPolicy; mask="
+    const-string/jumbo v1, "[StrictMode.ThreadPolicy; mask="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -95,7 +94,7 @@
 
     move-result-object v0
 
-    const-string v1, "]"
+    const-string/jumbo v1, "]"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

@@ -13,29 +13,29 @@
 
     invoke-direct {p0, v0}, Landroid/os/OperationCanceledException;-><init>(Ljava/lang/String;)V
 
-    .line 28
+    .line 26
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "message"
+    .param p1, "message"    # Ljava/lang/String;
 
     .prologue
     .line 31
     if-eqz p1, :cond_0
 
-    .end local p1
+    .end local p1    # "message":Ljava/lang/String;
     :goto_0
     invoke-direct {p0, p1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
-    .line 32
+    .line 30
     return-void
 
     .line 31
-    .restart local p1
+    .restart local p1    # "message":Ljava/lang/String;
     :cond_0
-    const-string p1, "The operation has been canceled."
+    const-string/jumbo p1, "The operation has been canceled."
 
     goto :goto_0
 .end method

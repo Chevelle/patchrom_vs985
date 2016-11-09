@@ -34,15 +34,15 @@
 # direct methods
 .method constructor <init>(Landroid/media/RemoteDisplay;Landroid/view/Surface;IIII)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/media/RemoteDisplay;
+    .param p2, "val$surface"    # Landroid/view/Surface;
+    .param p3, "val$width"    # I
+    .param p4, "val$height"    # I
+    .param p5, "val$flags"    # I
+    .param p6, "val$session"    # I
 
     .prologue
-    .line 127
+    .line 130
     iput-object p1, p0, Landroid/media/RemoteDisplay$1;->this$0:Landroid/media/RemoteDisplay;
 
     iput-object p2, p0, Landroid/media/RemoteDisplay$1;->val$surface:Landroid/view/Surface;
@@ -66,11 +66,10 @@
     .locals 6
 
     .prologue
-    .line 130
+    .line 133
     iget-object v0, p0, Landroid/media/RemoteDisplay$1;->this$0:Landroid/media/RemoteDisplay;
 
-    #getter for: Landroid/media/RemoteDisplay;->mListener:Landroid/media/RemoteDisplay$Listener;
-    invoke-static {v0}, Landroid/media/RemoteDisplay;->access$000(Landroid/media/RemoteDisplay;)Landroid/media/RemoteDisplay$Listener;
+    invoke-static {v0}, Landroid/media/RemoteDisplay;->-get0(Landroid/media/RemoteDisplay;)Landroid/media/RemoteDisplay$Listener;
 
     move-result-object v0
 
@@ -86,6 +85,6 @@
 
     invoke-interface/range {v0 .. v5}, Landroid/media/RemoteDisplay$Listener;->onDisplayConnected(Landroid/view/Surface;IIII)V
 
-    .line 131
+    .line 132
     return-void
 .end method

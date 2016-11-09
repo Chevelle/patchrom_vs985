@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/view/inputmethod/ExtractedTextRequest$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -39,8 +47,10 @@
 
     invoke-direct {v0}, Landroid/view/inputmethod/ExtractedTextRequest$1;-><init>()V
 
+    .line 66
     sput-object v0, Landroid/view/inputmethod/ExtractedTextRequest;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 26
     return-void
 .end method
 
@@ -48,7 +58,7 @@
     .locals 0
 
     .prologue
-    .line 27
+    .line 26
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -60,7 +70,7 @@
     .locals 1
 
     .prologue
-    .line 84
+    .line 83
     const/4 v0, 0x0
 
     return v0
@@ -68,30 +78,30 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 58
+    .line 57
     iget v0, p0, Landroid/view/inputmethod/ExtractedTextRequest;->token:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 59
+    .line 58
     iget v0, p0, Landroid/view/inputmethod/ExtractedTextRequest;->flags:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 60
+    .line 59
     iget v0, p0, Landroid/view/inputmethod/ExtractedTextRequest;->hintMaxLines:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 61
+    .line 60
     iget v0, p0, Landroid/view/inputmethod/ExtractedTextRequest;->hintMaxChars:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 62
+    .line 56
     return-void
 .end method

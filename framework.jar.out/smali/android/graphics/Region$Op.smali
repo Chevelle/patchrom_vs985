@@ -61,7 +61,7 @@
     .line 37
     new-instance v0, Landroid/graphics/Region$Op;
 
-    const-string v1, "DIFFERENCE"
+    const-string/jumbo v1, "DIFFERENCE"
 
     invoke-direct {v0, v1, v4, v4}, Landroid/graphics/Region$Op;-><init>(Ljava/lang/String;II)V
 
@@ -70,7 +70,7 @@
     .line 38
     new-instance v0, Landroid/graphics/Region$Op;
 
-    const-string v1, "INTERSECT"
+    const-string/jumbo v1, "INTERSECT"
 
     invoke-direct {v0, v1, v5, v5}, Landroid/graphics/Region$Op;-><init>(Ljava/lang/String;II)V
 
@@ -79,7 +79,7 @@
     .line 39
     new-instance v0, Landroid/graphics/Region$Op;
 
-    const-string v1, "UNION"
+    const-string/jumbo v1, "UNION"
 
     invoke-direct {v0, v1, v6, v6}, Landroid/graphics/Region$Op;-><init>(Ljava/lang/String;II)V
 
@@ -88,7 +88,7 @@
     .line 40
     new-instance v0, Landroid/graphics/Region$Op;
 
-    const-string v1, "XOR"
+    const-string/jumbo v1, "XOR"
 
     invoke-direct {v0, v1, v7, v7}, Landroid/graphics/Region$Op;-><init>(Ljava/lang/String;II)V
 
@@ -97,7 +97,7 @@
     .line 41
     new-instance v0, Landroid/graphics/Region$Op;
 
-    const-string v1, "REVERSE_DIFFERENCE"
+    const-string/jumbo v1, "REVERSE_DIFFERENCE"
 
     invoke-direct {v0, v1, v8, v8}, Landroid/graphics/Region$Op;-><init>(Ljava/lang/String;II)V
 
@@ -106,7 +106,7 @@
     .line 42
     new-instance v0, Landroid/graphics/Region$Op;
 
-    const-string v1, "REPLACE"
+    const-string/jumbo v1, "REPLACE"
 
     const/4 v2, 0x5
 
@@ -141,11 +141,11 @@
 
     aput-object v1, v0, v8
 
-    const/4 v1, 0x5
+    sget-object v1, Landroid/graphics/Region$Op;->REPLACE:Landroid/graphics/Region$Op;
 
-    sget-object v2, Landroid/graphics/Region$Op;->REPLACE:Landroid/graphics/Region$Op;
+    const/4 v2, 0x5
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     sput-object v0, Landroid/graphics/Region$Op;->$VALUES:[Landroid/graphics/Region$Op;
 
@@ -154,14 +154,7 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "nativeInt"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "nativeInt"    # I
 
     .prologue
     .line 44
@@ -170,13 +163,13 @@
     .line 45
     iput p3, p0, Landroid/graphics/Region$Op;->nativeInt:I
 
-    .line 46
+    .line 44
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/graphics/Region$Op;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 36
@@ -197,12 +190,6 @@
     .prologue
     .line 36
     sget-object v0, Landroid/graphics/Region$Op;->$VALUES:[Landroid/graphics/Region$Op;
-
-    invoke-virtual {v0}, [Landroid/graphics/Region$Op;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/graphics/Region$Op;
 
     return-object v0
 .end method

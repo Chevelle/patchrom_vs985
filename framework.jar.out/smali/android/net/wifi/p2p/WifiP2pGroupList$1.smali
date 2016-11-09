@@ -1,115 +1,123 @@
-.class Landroid/net/wifi/p2p/WifiP2pGroupList$1;
-.super Landroid/util/LruCache;
+.class final Landroid/net/wifi/p2p/WifiP2pGroupList$1;
+.super Ljava/lang/Object;
 .source "WifiP2pGroupList.java"
+
+# interfaces
+.implements Landroid/os/Parcelable$Creator;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/net/wifi/p2p/WifiP2pGroupList;-><init>(Landroid/net/wifi/p2p/WifiP2pGroupList;Landroid/net/wifi/p2p/WifiP2pGroupList$GroupDeleteListener;)V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroid/net/wifi/p2p/WifiP2pGroupList;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x8
     name = null
 .end annotation
 
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Landroid/util/LruCache",
+        "Ljava/lang/Object;",
+        "Landroid/os/Parcelable$Creator",
         "<",
-        "Ljava/lang/Integer;",
-        "Landroid/net/wifi/p2p/WifiP2pGroup;",
+        "Landroid/net/wifi/p2p/WifiP2pGroupList;",
         ">;"
     }
 .end annotation
 
 
-# instance fields
-.field final synthetic this$0:Landroid/net/wifi/p2p/WifiP2pGroupList;
-
-
 # direct methods
-.method constructor <init>(Landroid/net/wifi/p2p/WifiP2pGroupList;I)V
+.method constructor <init>()V
     .locals 0
-    .parameter
-    .parameter "x0"
 
     .prologue
-    .line 51
-    iput-object p1, p0, Landroid/net/wifi/p2p/WifiP2pGroupList$1;->this$0:Landroid/net/wifi/p2p/WifiP2pGroupList;
-
-    invoke-direct {p0, p2}, Landroid/util/LruCache;-><init>(I)V
+    .line 231
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method protected entryRemoved(ZLjava/lang/Integer;Landroid/net/wifi/p2p/WifiP2pGroup;Landroid/net/wifi/p2p/WifiP2pGroup;)V
-    .locals 2
-    .parameter "evicted"
-    .parameter "netId"
-    .parameter "oldValue"
-    .parameter "newValue"
+.method public createFromParcel(Landroid/os/Parcel;)Landroid/net/wifi/p2p/WifiP2pGroupList;
+    .locals 4
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 55
-    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pGroupList$1;->this$0:Landroid/net/wifi/p2p/WifiP2pGroupList;
+    .line 233
+    new-instance v1, Landroid/net/wifi/p2p/WifiP2pGroupList;
 
-    #getter for: Landroid/net/wifi/p2p/WifiP2pGroupList;->mListener:Landroid/net/wifi/p2p/WifiP2pGroupList$GroupDeleteListener;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pGroupList;->access$000(Landroid/net/wifi/p2p/WifiP2pGroupList;)Landroid/net/wifi/p2p/WifiP2pGroupList$GroupDeleteListener;
+    invoke-direct {v1}, Landroid/net/wifi/p2p/WifiP2pGroupList;-><init>()V
 
-    move-result-object v0
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pGroupList$1;->this$0:Landroid/net/wifi/p2p/WifiP2pGroupList;
-
-    #getter for: Landroid/net/wifi/p2p/WifiP2pGroupList;->isClearCalled:Z
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pGroupList;->access$100(Landroid/net/wifi/p2p/WifiP2pGroupList;)Z
+    .line 235
+    .local v1, "grpList":Landroid/net/wifi/p2p/WifiP2pGroupList;
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    if-nez v0, :cond_0
+    .line 236
+    .local v0, "deviceCount":I
+    const/4 v2, 0x0
 
-    .line 56
-    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pGroupList$1;->this$0:Landroid/net/wifi/p2p/WifiP2pGroupList;
+    .local v2, "i":I
+    :goto_0
+    if-ge v2, v0, :cond_0
 
-    #getter for: Landroid/net/wifi/p2p/WifiP2pGroupList;->mListener:Landroid/net/wifi/p2p/WifiP2pGroupList$GroupDeleteListener;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pGroupList;->access$000(Landroid/net/wifi/p2p/WifiP2pGroupList;)Landroid/net/wifi/p2p/WifiP2pGroupList$GroupDeleteListener;
+    .line 237
+    const/4 v3, 0x0
+
+    invoke-virtual {p1, v3}, Landroid/os/Parcel;->readParcelable(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
+
+    move-result-object v3
+
+    check-cast v3, Landroid/net/wifi/p2p/WifiP2pGroup;
+
+    invoke-virtual {v1, v3}, Landroid/net/wifi/p2p/WifiP2pGroupList;->add(Landroid/net/wifi/p2p/WifiP2pGroup;)V
+
+    .line 236
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_0
+
+    .line 239
+    :cond_0
+    return-object v1
+.end method
+
+.method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+    .locals 1
+    .param p1, "in"    # Landroid/os/Parcel;
+
+    .prologue
+    .line 232
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pGroupList$1;->createFromParcel(Landroid/os/Parcel;)Landroid/net/wifi/p2p/WifiP2pGroupList;
 
     move-result-object v0
 
-    invoke-virtual {p3}, Landroid/net/wifi/p2p/WifiP2pGroup;->getNetworkId()I
-
-    move-result v1
-
-    invoke-interface {v0, v1}, Landroid/net/wifi/p2p/WifiP2pGroupList$GroupDeleteListener;->onDeleteGroup(I)V
-
-    .line 58
-    :cond_0
-    return-void
+    return-object v0
 .end method
 
-.method protected bridge synthetic entryRemoved(ZLjava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
-    .parameter "x3"
+.method public newArray(I)[Landroid/net/wifi/p2p/WifiP2pGroupList;
+    .locals 1
+    .param p1, "size"    # I
 
     .prologue
-    .line 51
-    check-cast p2, Ljava/lang/Integer;
+    .line 243
+    new-array v0, p1, [Landroid/net/wifi/p2p/WifiP2pGroupList;
 
-    .end local p2
-    check-cast p3, Landroid/net/wifi/p2p/WifiP2pGroup;
+    return-object v0
+.end method
 
-    .end local p3
-    check-cast p4, Landroid/net/wifi/p2p/WifiP2pGroup;
+.method public bridge synthetic newArray(I)[Ljava/lang/Object;
+    .locals 1
+    .param p1, "size"    # I
 
-    .end local p4
-    invoke-virtual {p0, p1, p2, p3, p4}, Landroid/net/wifi/p2p/WifiP2pGroupList$1;->entryRemoved(ZLjava/lang/Integer;Landroid/net/wifi/p2p/WifiP2pGroup;Landroid/net/wifi/p2p/WifiP2pGroup;)V
+    .prologue
+    .line 242
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pGroupList$1;->newArray(I)[Landroid/net/wifi/p2p/WifiP2pGroupList;
 
-    return-void
+    move-result-object v0
+
+    return-object v0
 .end method

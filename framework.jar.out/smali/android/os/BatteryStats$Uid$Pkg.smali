@@ -25,20 +25,19 @@
     .locals 0
 
     .prologue
-    .line 397
+    .line 565
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 415
     return-void
 .end method
 
 
 # virtual methods
-.method public abstract getServiceStats()Ljava/util/Map;
+.method public abstract getServiceStats()Landroid/util/ArrayMap;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
-            "Ljava/util/Map",
+            "Landroid/util/ArrayMap",
             "<",
             "Ljava/lang/String;",
             "+",
@@ -48,5 +47,16 @@
     .end annotation
 .end method
 
-.method public abstract getWakeups(I)I
+.method public abstract getWakeupAlarmStats()Landroid/util/ArrayMap;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Landroid/util/ArrayMap",
+            "<",
+            "Ljava/lang/String;",
+            "+",
+            "Landroid/os/BatteryStats$Counter;",
+            ">;"
+        }
+    .end annotation
 .end method

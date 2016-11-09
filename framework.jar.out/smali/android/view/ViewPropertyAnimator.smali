@@ -6,37 +6,42 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/view/ViewPropertyAnimator$AnimatorEventListener;,
+        Landroid/view/ViewPropertyAnimator$PropertyBundle;,
         Landroid/view/ViewPropertyAnimator$NameValuesHolder;,
-        Landroid/view/ViewPropertyAnimator$PropertyBundle;
+        Landroid/view/ViewPropertyAnimator$AnimatorEventListener;,
+        Landroid/view/ViewPropertyAnimator$1;
     }
 .end annotation
 
 
 # static fields
-.field private static final ALPHA:I = 0x200
+.field static final ALPHA:I = 0x800
 
-.field private static final NONE:I = 0x0
+.field static final NONE:I = 0x0
 
-.field private static final ROTATION:I = 0x10
+.field static final ROTATION:I = 0x20
 
-.field private static final ROTATION_X:I = 0x20
+.field static final ROTATION_X:I = 0x40
 
-.field private static final ROTATION_Y:I = 0x40
+.field static final ROTATION_Y:I = 0x80
 
-.field private static final SCALE_X:I = 0x4
+.field static final SCALE_X:I = 0x8
 
-.field private static final SCALE_Y:I = 0x8
+.field static final SCALE_Y:I = 0x10
 
-.field private static final TRANSFORM_MASK:I = 0x1ff
+.field private static final TRANSFORM_MASK:I = 0x7ff
 
-.field private static final TRANSLATION_X:I = 0x1
+.field static final TRANSLATION_X:I = 0x1
 
-.field private static final TRANSLATION_Y:I = 0x2
+.field static final TRANSLATION_Y:I = 0x2
 
-.field private static final X:I = 0x80
+.field static final TRANSLATION_Z:I = 0x4
 
-.field private static final Y:I = 0x100
+.field static final X:I = 0x100
+
+.field static final Y:I = 0x200
+
+.field static final Z:I = 0x400
 
 
 # instance fields
@@ -133,6 +138,8 @@
 
 .field private mPendingSetupAction:Ljava/lang/Runnable;
 
+.field private mRTBackend:Landroid/view/ViewPropertyAnimatorRT;
+
 .field private mStartDelay:J
 
 .field private mStartDelaySet:Z
@@ -141,242 +148,206 @@
 
 .field private mUpdateListener:Landroid/animation/ValueAnimator$AnimatorUpdateListener;
 
-.field private final mView:Landroid/view/View;
+.field final mView:Landroid/view/View;
 
 
 # direct methods
+.method static synthetic -get0(Landroid/view/ViewPropertyAnimator;)Ljava/util/HashMap;
+    .locals 1
+
+    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorCleanupMap:Ljava/util/HashMap;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Landroid/view/ViewPropertyAnimator;)Ljava/util/HashMap;
+    .locals 1
+
+    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorMap:Ljava/util/HashMap;
+
+    return-object v0
+.end method
+
+.method static synthetic -get2(Landroid/view/ViewPropertyAnimator;)Ljava/util/HashMap;
+    .locals 1
+
+    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorOnEndMap:Ljava/util/HashMap;
+
+    return-object v0
+.end method
+
+.method static synthetic -get3(Landroid/view/ViewPropertyAnimator;)Ljava/util/HashMap;
+    .locals 1
+
+    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorOnStartMap:Ljava/util/HashMap;
+
+    return-object v0
+.end method
+
+.method static synthetic -get4(Landroid/view/ViewPropertyAnimator;)Ljava/util/HashMap;
+    .locals 1
+
+    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorSetupMap:Ljava/util/HashMap;
+
+    return-object v0
+.end method
+
+.method static synthetic -get5(Landroid/view/ViewPropertyAnimator;)Landroid/animation/Animator$AnimatorListener;
+    .locals 1
+
+    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mListener:Landroid/animation/Animator$AnimatorListener;
+
+    return-object v0
+.end method
+
+.method static synthetic -get6(Landroid/view/ViewPropertyAnimator;)Landroid/animation/ValueAnimator$AnimatorUpdateListener;
+    .locals 1
+
+    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mUpdateListener:Landroid/animation/ValueAnimator$AnimatorUpdateListener;
+
+    return-object v0
+.end method
+
+.method static synthetic -wrap0(Landroid/view/ViewPropertyAnimator;IF)V
+    .locals 0
+    .param p1, "propertyConstant"    # I
+    .param p2, "value"    # F
+
+    .prologue
+    invoke-direct {p0, p1, p2}, Landroid/view/ViewPropertyAnimator;->setValue(IF)V
+
+    return-void
+.end method
+
+.method static synthetic -wrap1(Landroid/view/ViewPropertyAnimator;)V
+    .locals 0
+
+    invoke-direct {p0}, Landroid/view/ViewPropertyAnimator;->startAnimation()V
+
+    return-void
+.end method
+
 .method constructor <init>(Landroid/view/View;)V
     .locals 4
-    .parameter "view"
+    .param p1, "view"    # Landroid/view/View;
 
     .prologue
     const/4 v3, 0x0
 
     const/4 v2, 0x0
 
-    .line 245
+    .line 251
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 67
+    .line 66
     iput-boolean v2, p0, Landroid/view/ViewPropertyAnimator;->mDurationSet:Z
 
-    .line 74
+    .line 73
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Landroid/view/ViewPropertyAnimator;->mStartDelay:J
 
-    .line 80
+    .line 79
     iput-boolean v2, p0, Landroid/view/ViewPropertyAnimator;->mStartDelaySet:Z
 
-    .line 93
+    .line 92
     iput-boolean v2, p0, Landroid/view/ViewPropertyAnimator;->mInterpolatorSet:Z
 
-    .line 98
+    .line 97
     iput-object v3, p0, Landroid/view/ViewPropertyAnimator;->mListener:Landroid/animation/Animator$AnimatorListener;
 
-    .line 103
+    .line 102
     iput-object v3, p0, Landroid/view/ViewPropertyAnimator;->mUpdateListener:Landroid/animation/ValueAnimator$AnimatorUpdateListener;
 
-    .line 116
+    .line 120
     new-instance v0, Landroid/view/ViewPropertyAnimator$AnimatorEventListener;
 
-    invoke-direct {v0, p0, v3}, Landroid/view/ViewPropertyAnimator$AnimatorEventListener;-><init>(Landroid/view/ViewPropertyAnimator;Landroid/view/ViewPropertyAnimator$1;)V
+    invoke-direct {v0, p0, v3}, Landroid/view/ViewPropertyAnimator$AnimatorEventListener;-><init>(Landroid/view/ViewPropertyAnimator;Landroid/view/ViewPropertyAnimator$AnimatorEventListener;)V
 
     iput-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorEventListener:Landroid/view/ViewPropertyAnimator$AnimatorEventListener;
 
-    .line 126
+    .line 130
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Landroid/view/ViewPropertyAnimator;->mPendingAnimations:Ljava/util/ArrayList;
 
-    .line 159
+    .line 165
     new-instance v0, Landroid/view/ViewPropertyAnimator$1;
 
     invoke-direct {v0, p0}, Landroid/view/ViewPropertyAnimator$1;-><init>(Landroid/view/ViewPropertyAnimator;)V
 
     iput-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimationStarter:Ljava/lang/Runnable;
 
-    .line 215
+    .line 222
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
+    .line 221
     iput-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorMap:Ljava/util/HashMap;
 
-    .line 246
+    .line 252
     iput-object p1, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
 
-    .line 247
+    .line 253
     invoke-virtual {p1}, Landroid/view/View;->ensureTransformationInfo()V
 
-    .line 248
-    return-void
-.end method
-
-.method static synthetic access$100(Landroid/view/ViewPropertyAnimator;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 48
-    invoke-direct {p0}, Landroid/view/ViewPropertyAnimator;->startAnimation()V
-
-    return-void
-.end method
-
-.method static synthetic access$1000(Landroid/view/ViewPropertyAnimator;)Landroid/animation/ValueAnimator$AnimatorUpdateListener;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 48
-    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mUpdateListener:Landroid/animation/ValueAnimator$AnimatorUpdateListener;
-
-    return-object v0
-.end method
-
-.method static synthetic access$200(Landroid/view/ViewPropertyAnimator;)Landroid/view/View;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 48
-    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
-
-    return-object v0
-.end method
-
-.method static synthetic access$300(Landroid/view/ViewPropertyAnimator;)Ljava/util/HashMap;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 48
-    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorSetupMap:Ljava/util/HashMap;
-
-    return-object v0
-.end method
-
-.method static synthetic access$400(Landroid/view/ViewPropertyAnimator;)Ljava/util/HashMap;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 48
-    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorOnStartMap:Ljava/util/HashMap;
-
-    return-object v0
-.end method
-
-.method static synthetic access$500(Landroid/view/ViewPropertyAnimator;)Landroid/animation/Animator$AnimatorListener;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 48
-    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mListener:Landroid/animation/Animator$AnimatorListener;
-
-    return-object v0
-.end method
-
-.method static synthetic access$600(Landroid/view/ViewPropertyAnimator;)Ljava/util/HashMap;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 48
-    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorOnEndMap:Ljava/util/HashMap;
-
-    return-object v0
-.end method
-
-.method static synthetic access$700(Landroid/view/ViewPropertyAnimator;)Ljava/util/HashMap;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 48
-    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorCleanupMap:Ljava/util/HashMap;
-
-    return-object v0
-.end method
-
-.method static synthetic access$800(Landroid/view/ViewPropertyAnimator;)Ljava/util/HashMap;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 48
-    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorMap:Ljava/util/HashMap;
-
-    return-object v0
-.end method
-
-.method static synthetic access$900(Landroid/view/ViewPropertyAnimator;IF)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
-
-    .prologue
-    .line 48
-    invoke-direct {p0, p1, p2}, Landroid/view/ViewPropertyAnimator;->setValue(IF)V
-
+    .line 251
     return-void
 .end method
 
 .method private animateProperty(IF)V
     .locals 2
-    .parameter "constantName"
-    .parameter "toValue"
+    .param p1, "constantName"    # I
+    .param p2, "toValue"    # F
 
     .prologue
-    .line 836
+    .line 919
     invoke-direct {p0, p1}, Landroid/view/ViewPropertyAnimator;->getValue(I)F
 
     move-result v1
 
-    .line 837
-    .local v1, fromValue:F
+    .line 920
+    .local v1, "fromValue":F
     sub-float v0, p2, v1
 
-    .line 838
-    .local v0, deltaValue:F
+    .line 921
+    .local v0, "deltaValue":F
     invoke-direct {p0, p1, v1, v0}, Landroid/view/ViewPropertyAnimator;->animatePropertyBy(IFF)V
 
-    .line 839
+    .line 918
     return-void
 .end method
 
 .method private animatePropertyBy(IF)V
     .locals 1
-    .parameter "constantName"
-    .parameter "byValue"
+    .param p1, "constantName"    # I
+    .param p2, "byValue"    # F
 
     .prologue
-    .line 850
+    .line 933
     invoke-direct {p0, p1}, Landroid/view/ViewPropertyAnimator;->getValue(I)F
 
     move-result v0
 
-    .line 851
-    .local v0, fromValue:F
+    .line 934
+    .local v0, "fromValue":F
     invoke-direct {p0, p1, v0, p2}, Landroid/view/ViewPropertyAnimator;->animatePropertyBy(IFF)V
 
-    .line 852
+    .line 932
     return-void
 .end method
 
 .method private animatePropertyBy(IFF)V
     .locals 8
-    .parameter "constantName"
-    .parameter "startValue"
-    .parameter "byValue"
+    .param p1, "constantName"    # I
+    .param p2, "startValue"    # F
+    .param p3, "byValue"    # F
 
     .prologue
-    .line 864
+    .line 947
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorMap:Ljava/util/HashMap;
 
     invoke-virtual {v6}, Ljava/util/HashMap;->size()I
@@ -385,364 +356,351 @@
 
     if-lez v6, :cond_2
 
-    .line 865
+    .line 948
     const/4 v1, 0x0
 
-    .line 866
-    .local v1, animatorToCancel:Landroid/animation/Animator;
+    .line 949
+    .local v1, "animatorToCancel":Landroid/animation/Animator;
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorMap:Ljava/util/HashMap;
 
     invoke-virtual {v6}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
 
     move-result-object v0
 
-    .line 867
-    .local v0, animatorSet:Ljava/util/Set;,"Ljava/util/Set<Landroid/animation/Animator;>;"
-    invoke-interface {v0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+    .line 950
+    .local v0, "animatorSet":Ljava/util/Set;, "Ljava/util/Set<Landroid/animation/Animator;>;"
+    invoke-interface {v0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
-    move-result-object v3
+    move-result-object v5
 
-    .local v3, i$:Ljava/util/Iterator;
+    .local v5, "runningAnim$iterator":Ljava/util/Iterator;
     :cond_0
-    invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v6
 
     if-eqz v6, :cond_1
 
-    invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    move-result-object v5
+    move-result-object v4
 
-    check-cast v5, Landroid/animation/Animator;
+    check-cast v4, Landroid/animation/Animator;
 
-    .line 868
-    .local v5, runningAnim:Landroid/animation/Animator;
+    .line 951
+    .local v4, "runningAnim":Landroid/animation/Animator;
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorMap:Ljava/util/HashMap;
 
-    invoke-virtual {v6, v5}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v6, v4}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v2
 
     check-cast v2, Landroid/view/ViewPropertyAnimator$PropertyBundle;
 
-    .line 869
-    .local v2, bundle:Landroid/view/ViewPropertyAnimator$PropertyBundle;
+    .line 952
+    .local v2, "bundle":Landroid/view/ViewPropertyAnimator$PropertyBundle;
     invoke-virtual {v2, p1}, Landroid/view/ViewPropertyAnimator$PropertyBundle;->cancel(I)Z
 
     move-result v6
 
     if-eqz v6, :cond_0
 
-    .line 874
+    .line 957
     iget v6, v2, Landroid/view/ViewPropertyAnimator$PropertyBundle;->mPropertyMask:I
 
     if-nez v6, :cond_0
 
-    .line 876
-    move-object v1, v5
+    .line 959
+    move-object v1, v4
 
-    .line 881
-    .end local v2           #bundle:Landroid/view/ViewPropertyAnimator$PropertyBundle;
-    .end local v5           #runningAnim:Landroid/animation/Animator;
+    .line 964
+    .end local v1    # "animatorToCancel":Landroid/animation/Animator;
+    .end local v2    # "bundle":Landroid/view/ViewPropertyAnimator$PropertyBundle;
+    .end local v4    # "runningAnim":Landroid/animation/Animator;
     :cond_1
     if-eqz v1, :cond_2
 
-    .line 882
+    .line 965
     invoke-virtual {v1}, Landroid/animation/Animator;->cancel()V
 
-    .line 886
-    .end local v0           #animatorSet:Ljava/util/Set;,"Ljava/util/Set<Landroid/animation/Animator;>;"
-    .end local v1           #animatorToCancel:Landroid/animation/Animator;
-    .end local v3           #i$:Ljava/util/Iterator;
+    .line 969
+    .end local v0    # "animatorSet":Ljava/util/Set;, "Ljava/util/Set<Landroid/animation/Animator;>;"
+    .end local v5    # "runningAnim$iterator":Ljava/util/Iterator;
     :cond_2
-    new-instance v4, Landroid/view/ViewPropertyAnimator$NameValuesHolder;
+    new-instance v3, Landroid/view/ViewPropertyAnimator$NameValuesHolder;
 
-    invoke-direct {v4, p1, p2, p3}, Landroid/view/ViewPropertyAnimator$NameValuesHolder;-><init>(IFF)V
+    invoke-direct {v3, p1, p2, p3}, Landroid/view/ViewPropertyAnimator$NameValuesHolder;-><init>(IFF)V
 
-    .line 887
-    .local v4, nameValuePair:Landroid/view/ViewPropertyAnimator$NameValuesHolder;
+    .line 970
+    .local v3, "nameValuePair":Landroid/view/ViewPropertyAnimator$NameValuesHolder;
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mPendingAnimations:Ljava/util/ArrayList;
 
-    invoke-virtual {v6, v4}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v6, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 888
+    .line 971
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
 
     iget-object v7, p0, Landroid/view/ViewPropertyAnimator;->mAnimationStarter:Ljava/lang/Runnable;
 
     invoke-virtual {v6, v7}, Landroid/view/View;->removeCallbacks(Ljava/lang/Runnable;)Z
 
-    .line 889
+    .line 972
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
 
     iget-object v7, p0, Landroid/view/ViewPropertyAnimator;->mAnimationStarter:Ljava/lang/Runnable;
 
     invoke-virtual {v6, v7}, Landroid/view/View;->postOnAnimation(Ljava/lang/Runnable;)V
 
-    .line 890
+    .line 945
     return-void
 .end method
 
 .method private getValue(I)F
     .locals 3
-    .parameter "propertyConstant"
+    .param p1, "propertyConstant"    # I
 
     .prologue
-    .line 954
+    .line 1034
     iget-object v1, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
 
-    iget-object v0, v1, Landroid/view/View;->mTransformationInfo:Landroid/view/View$TransformationInfo;
+    iget-object v0, v1, Landroid/view/View;->mRenderNode:Landroid/view/RenderNode;
 
-    .line 955
-    .local v0, info:Landroid/view/View$TransformationInfo;
+    .line 1035
+    .local v0, "node":Landroid/view/RenderNode;
     sparse-switch p1, :sswitch_data_0
 
-    .line 977
+    .line 1061
     const/4 v1, 0x0
 
-    :goto_0
     return v1
 
-    .line 957
+    .line 1037
     :sswitch_0
-    iget v1, v0, Landroid/view/View$TransformationInfo;->mTranslationX:F
+    invoke-virtual {v0}, Landroid/view/RenderNode;->getTranslationX()F
 
-    goto :goto_0
+    move-result v1
 
-    .line 959
+    return v1
+
+    .line 1039
     :sswitch_1
-    iget v1, v0, Landroid/view/View$TransformationInfo;->mTranslationY:F
+    invoke-virtual {v0}, Landroid/view/RenderNode;->getTranslationY()F
 
-    goto :goto_0
+    move-result v1
 
-    .line 961
+    return v1
+
+    .line 1041
     :sswitch_2
-    iget v1, v0, Landroid/view/View$TransformationInfo;->mRotation:F
+    invoke-virtual {v0}, Landroid/view/RenderNode;->getTranslationZ()F
 
-    goto :goto_0
+    move-result v1
 
-    .line 963
+    return v1
+
+    .line 1043
     :sswitch_3
-    iget v1, v0, Landroid/view/View$TransformationInfo;->mRotationX:F
+    invoke-virtual {v0}, Landroid/view/RenderNode;->getRotation()F
 
-    goto :goto_0
+    move-result v1
 
-    .line 965
+    return v1
+
+    .line 1045
     :sswitch_4
-    iget v1, v0, Landroid/view/View$TransformationInfo;->mRotationY:F
+    invoke-virtual {v0}, Landroid/view/RenderNode;->getRotationX()F
 
-    goto :goto_0
+    move-result v1
 
-    .line 967
+    return v1
+
+    .line 1047
     :sswitch_5
-    iget v1, v0, Landroid/view/View$TransformationInfo;->mScaleX:F
+    invoke-virtual {v0}, Landroid/view/RenderNode;->getRotationY()F
 
-    goto :goto_0
+    move-result v1
 
-    .line 969
+    return v1
+
+    .line 1049
     :sswitch_6
-    iget v1, v0, Landroid/view/View$TransformationInfo;->mScaleY:F
+    invoke-virtual {v0}, Landroid/view/RenderNode;->getScaleX()F
 
-    goto :goto_0
+    move-result v1
 
-    .line 971
+    return v1
+
+    .line 1051
     :sswitch_7
+    invoke-virtual {v0}, Landroid/view/RenderNode;->getScaleY()F
+
+    move-result v1
+
+    return v1
+
+    .line 1053
+    :sswitch_8
     iget-object v1, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
 
     iget v1, v1, Landroid/view/View;->mLeft:I
 
     int-to-float v1, v1
 
-    iget v2, v0, Landroid/view/View$TransformationInfo;->mTranslationX:F
+    invoke-virtual {v0}, Landroid/view/RenderNode;->getTranslationX()F
+
+    move-result v2
 
     add-float/2addr v1, v2
 
-    goto :goto_0
+    return v1
 
-    .line 973
-    :sswitch_8
+    .line 1055
+    :sswitch_9
     iget-object v1, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
 
     iget v1, v1, Landroid/view/View;->mTop:I
 
     int-to-float v1, v1
 
-    iget v2, v0, Landroid/view/View$TransformationInfo;->mTranslationY:F
+    invoke-virtual {v0}, Landroid/view/RenderNode;->getTranslationY()F
+
+    move-result v2
 
     add-float/2addr v1, v2
 
-    goto :goto_0
+    return v1
 
-    .line 975
-    :sswitch_9
-    iget v1, v0, Landroid/view/View$TransformationInfo;->mAlpha:F
+    .line 1057
+    :sswitch_a
+    invoke-virtual {v0}, Landroid/view/RenderNode;->getElevation()F
 
-    goto :goto_0
+    move-result v1
 
-    .line 955
-    nop
+    invoke-virtual {v0}, Landroid/view/RenderNode;->getTranslationZ()F
 
+    move-result v2
+
+    add-float/2addr v1, v2
+
+    return v1
+
+    .line 1059
+    :sswitch_b
+    iget-object v1, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
+
+    iget-object v1, v1, Landroid/view/View;->mTransformationInfo:Landroid/view/View$TransformationInfo;
+
+    iget v1, v1, Landroid/view/View$TransformationInfo;->mAlpha:F
+
+    return v1
+
+    .line 1035
     :sswitch_data_0
     .sparse-switch
         0x1 -> :sswitch_0
         0x2 -> :sswitch_1
-        0x4 -> :sswitch_5
+        0x4 -> :sswitch_2
         0x8 -> :sswitch_6
-        0x10 -> :sswitch_2
+        0x10 -> :sswitch_7
         0x20 -> :sswitch_3
         0x40 -> :sswitch_4
-        0x80 -> :sswitch_7
+        0x80 -> :sswitch_5
         0x100 -> :sswitch_8
         0x200 -> :sswitch_9
+        0x400 -> :sswitch_a
+        0x800 -> :sswitch_b
     .end sparse-switch
 .end method
 
 .method private setValue(IF)V
     .locals 3
-    .parameter "propertyConstant"
-    .parameter "value"
+    .param p1, "propertyConstant"    # I
+    .param p2, "value"    # F
 
     .prologue
-    .line 901
+    .line 984
     iget-object v2, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
 
-    iget-object v1, v2, Landroid/view/View;->mTransformationInfo:Landroid/view/View$TransformationInfo;
+    iget-object v0, v2, Landroid/view/View;->mTransformationInfo:Landroid/view/View$TransformationInfo;
 
-    .line 902
-    .local v1, info:Landroid/view/View$TransformationInfo;
+    .line 985
+    .local v0, "info":Landroid/view/View$TransformationInfo;
     iget-object v2, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
 
-    iget-object v0, v2, Landroid/view/View;->mDisplayList:Landroid/view/DisplayList;
+    iget-object v1, v2, Landroid/view/View;->mRenderNode:Landroid/view/RenderNode;
 
-    .line 903
-    .local v0, displayList:Landroid/view/DisplayList;
+    .line 986
+    .local v1, "renderNode":Landroid/view/RenderNode;
     sparse-switch p1, :sswitch_data_0
 
-    .line 945
-    :cond_0
+    .line 983
     :goto_0
     return-void
 
-    .line 905
+    .line 988
     :sswitch_0
-    iput p2, v1, Landroid/view/View$TransformationInfo;->mTranslationX:F
-
-    .line 906
-    if-eqz v0, :cond_0
-
-    invoke-virtual {v0, p2}, Landroid/view/DisplayList;->setTranslationX(F)V
+    invoke-virtual {v1, p2}, Landroid/view/RenderNode;->setTranslationX(F)Z
 
     goto :goto_0
 
-    .line 909
+    .line 991
     :sswitch_1
-    iput p2, v1, Landroid/view/View$TransformationInfo;->mTranslationY:F
-
-    .line 910
-    if-eqz v0, :cond_0
-
-    invoke-virtual {v0, p2}, Landroid/view/DisplayList;->setTranslationY(F)V
+    invoke-virtual {v1, p2}, Landroid/view/RenderNode;->setTranslationY(F)Z
 
     goto :goto_0
 
-    .line 913
+    .line 994
     :sswitch_2
-    iput p2, v1, Landroid/view/View$TransformationInfo;->mRotation:F
-
-    .line 914
-    if-eqz v0, :cond_0
-
-    invoke-virtual {v0, p2}, Landroid/view/DisplayList;->setRotation(F)V
+    invoke-virtual {v1, p2}, Landroid/view/RenderNode;->setTranslationZ(F)Z
 
     goto :goto_0
 
-    .line 917
+    .line 997
     :sswitch_3
-    iput p2, v1, Landroid/view/View$TransformationInfo;->mRotationX:F
-
-    .line 918
-    if-eqz v0, :cond_0
-
-    invoke-virtual {v0, p2}, Landroid/view/DisplayList;->setRotationX(F)V
+    invoke-virtual {v1, p2}, Landroid/view/RenderNode;->setRotation(F)Z
 
     goto :goto_0
 
-    .line 921
+    .line 1000
     :sswitch_4
-    iput p2, v1, Landroid/view/View$TransformationInfo;->mRotationY:F
-
-    .line 922
-    if-eqz v0, :cond_0
-
-    invoke-virtual {v0, p2}, Landroid/view/DisplayList;->setRotationY(F)V
+    invoke-virtual {v1, p2}, Landroid/view/RenderNode;->setRotationX(F)Z
 
     goto :goto_0
 
-    .line 925
+    .line 1003
     :sswitch_5
-    iput p2, v1, Landroid/view/View$TransformationInfo;->mScaleX:F
-
-    .line 926
-    if-eqz v0, :cond_0
-
-    invoke-virtual {v0, p2}, Landroid/view/DisplayList;->setScaleX(F)V
+    invoke-virtual {v1, p2}, Landroid/view/RenderNode;->setRotationY(F)Z
 
     goto :goto_0
 
-    .line 929
+    .line 1006
     :sswitch_6
-    iput p2, v1, Landroid/view/View$TransformationInfo;->mScaleY:F
-
-    .line 930
-    if-eqz v0, :cond_0
-
-    invoke-virtual {v0, p2}, Landroid/view/DisplayList;->setScaleY(F)V
+    invoke-virtual {v1, p2}, Landroid/view/RenderNode;->setScaleX(F)Z
 
     goto :goto_0
 
-    .line 933
+    .line 1009
     :sswitch_7
-    iget-object v2, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
-
-    iget v2, v2, Landroid/view/View;->mLeft:I
-
-    int-to-float v2, v2
-
-    sub-float v2, p2, v2
-
-    iput v2, v1, Landroid/view/View$TransformationInfo;->mTranslationX:F
-
-    .line 934
-    if-eqz v0, :cond_0
-
-    iget-object v2, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
-
-    iget v2, v2, Landroid/view/View;->mLeft:I
-
-    int-to-float v2, v2
-
-    sub-float v2, p2, v2
-
-    invoke-virtual {v0, v2}, Landroid/view/DisplayList;->setTranslationX(F)V
+    invoke-virtual {v1, p2}, Landroid/view/RenderNode;->setScaleY(F)Z
 
     goto :goto_0
 
-    .line 937
+    .line 1012
     :sswitch_8
     iget-object v2, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
 
-    iget v2, v2, Landroid/view/View;->mTop:I
+    iget v2, v2, Landroid/view/View;->mLeft:I
 
     int-to-float v2, v2
 
     sub-float v2, p2, v2
 
-    iput v2, v1, Landroid/view/View$TransformationInfo;->mTranslationY:F
+    invoke-virtual {v1, v2}, Landroid/view/RenderNode;->setTranslationX(F)Z
 
-    .line 938
-    if-eqz v0, :cond_0
+    goto :goto_0
 
+    .line 1015
+    :sswitch_9
     iget-object v2, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
 
     iget v2, v2, Landroid/view/View;->mTop:I
@@ -751,34 +709,46 @@
 
     sub-float v2, p2, v2
 
-    invoke-virtual {v0, v2}, Landroid/view/DisplayList;->setTranslationY(F)V
+    invoke-virtual {v1, v2}, Landroid/view/RenderNode;->setTranslationY(F)Z
 
     goto :goto_0
 
-    .line 941
-    :sswitch_9
-    iput p2, v1, Landroid/view/View$TransformationInfo;->mAlpha:F
+    .line 1018
+    :sswitch_a
+    invoke-virtual {v1}, Landroid/view/RenderNode;->getElevation()F
 
-    .line 942
-    if-eqz v0, :cond_0
+    move-result v2
 
-    invoke-virtual {v0, p2}, Landroid/view/DisplayList;->setAlpha(F)V
+    sub-float v2, p2, v2
+
+    invoke-virtual {v1, v2}, Landroid/view/RenderNode;->setTranslationZ(F)Z
 
     goto :goto_0
 
-    .line 903
+    .line 1021
+    :sswitch_b
+    iput p2, v0, Landroid/view/View$TransformationInfo;->mAlpha:F
+
+    .line 1022
+    invoke-virtual {v1, p2}, Landroid/view/RenderNode;->setAlpha(F)Z
+
+    goto :goto_0
+
+    .line 986
     :sswitch_data_0
     .sparse-switch
         0x1 -> :sswitch_0
         0x2 -> :sswitch_1
-        0x4 -> :sswitch_5
+        0x4 -> :sswitch_2
         0x8 -> :sswitch_6
-        0x10 -> :sswitch_2
+        0x10 -> :sswitch_7
         0x20 -> :sswitch_3
         0x40 -> :sswitch_4
-        0x80 -> :sswitch_7
+        0x80 -> :sswitch_5
         0x100 -> :sswitch_8
         0x200 -> :sswitch_9
+        0x400 -> :sswitch_a
+        0x800 -> :sswitch_b
     .end sparse-switch
 .end method
 
@@ -790,26 +760,43 @@
 
     const/4 v9, 0x0
 
-    .line 781
+    .line 861
+    iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mRTBackend:Landroid/view/ViewPropertyAnimatorRT;
+
+    if-eqz v6, :cond_0
+
+    iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mRTBackend:Landroid/view/ViewPropertyAnimatorRT;
+
+    invoke-virtual {v6, p0}, Landroid/view/ViewPropertyAnimatorRT;->startAnimation(Landroid/view/ViewPropertyAnimator;)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_0
+
+    .line 862
+    return-void
+
+    .line 864
+    :cond_0
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
 
     invoke-virtual {v6, v7}, Landroid/view/View;->setHasTransientState(Z)V
 
-    .line 782
+    .line 865
     new-array v6, v7, [F
 
-    const/4 v7, 0x0
+    const/high16 v7, 0x3f800000    # 1.0f
 
-    const/high16 v8, 0x3f80
+    const/4 v8, 0x0
 
-    aput v8, v6, v7
+    aput v7, v6, v8
 
     invoke-static {v6}, Landroid/animation/ValueAnimator;->ofFloat([F)Landroid/animation/ValueAnimator;
 
     move-result-object v0
 
-    .line 783
-    .local v0, animator:Landroid/animation/ValueAnimator;
+    .line 867
+    .local v0, "animator":Landroid/animation/ValueAnimator;
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mPendingAnimations:Ljava/util/ArrayList;
 
     invoke-virtual {v6}, Ljava/util/ArrayList;->clone()Ljava/lang/Object;
@@ -818,50 +805,50 @@
 
     check-cast v2, Ljava/util/ArrayList;
 
-    .line 785
-    .local v2, nameValueList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Landroid/view/ViewPropertyAnimator$NameValuesHolder;>;"
+    .line 868
+    .local v2, "nameValueList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/view/ViewPropertyAnimator$NameValuesHolder;>;"
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mPendingAnimations:Ljava/util/ArrayList;
 
     invoke-virtual {v6}, Ljava/util/ArrayList;->clear()V
 
-    .line 786
+    .line 869
     const/4 v5, 0x0
 
-    .line 787
-    .local v5, propertyMask:I
+    .line 870
+    .local v5, "propertyMask":I
     invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
 
     move-result v4
 
-    .line 788
-    .local v4, propertyCount:I
+    .line 871
+    .local v4, "propertyCount":I
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_0
-    if-ge v1, v4, :cond_0
+    if-ge v1, v4, :cond_1
 
-    .line 789
+    .line 872
     invoke-virtual {v2, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v3
 
     check-cast v3, Landroid/view/ViewPropertyAnimator$NameValuesHolder;
 
-    .line 790
-    .local v3, nameValuesHolder:Landroid/view/ViewPropertyAnimator$NameValuesHolder;
+    .line 873
+    .local v3, "nameValuesHolder":Landroid/view/ViewPropertyAnimator$NameValuesHolder;
     iget v6, v3, Landroid/view/ViewPropertyAnimator$NameValuesHolder;->mNameConstant:I
 
     or-int/2addr v5, v6
 
-    .line 788
+    .line 871
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 792
-    .end local v3           #nameValuesHolder:Landroid/view/ViewPropertyAnimator$NameValuesHolder;
-    :cond_0
+    .line 875
+    .end local v3    # "nameValuesHolder":Landroid/view/ViewPropertyAnimator$NameValuesHolder;
+    :cond_1
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorMap:Ljava/util/HashMap;
 
     new-instance v7, Landroid/view/ViewPropertyAnimator$PropertyBundle;
@@ -870,117 +857,117 @@
 
     invoke-virtual {v6, v0, v7}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 793
+    .line 876
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mPendingSetupAction:Ljava/lang/Runnable;
 
-    if-eqz v6, :cond_1
+    if-eqz v6, :cond_2
 
-    .line 794
+    .line 877
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorSetupMap:Ljava/util/HashMap;
 
     iget-object v7, p0, Landroid/view/ViewPropertyAnimator;->mPendingSetupAction:Ljava/lang/Runnable;
 
     invoke-virtual {v6, v0, v7}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 795
+    .line 878
     iput-object v9, p0, Landroid/view/ViewPropertyAnimator;->mPendingSetupAction:Ljava/lang/Runnable;
 
-    .line 797
-    :cond_1
+    .line 880
+    :cond_2
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mPendingCleanupAction:Ljava/lang/Runnable;
 
-    if-eqz v6, :cond_2
+    if-eqz v6, :cond_3
 
-    .line 798
+    .line 881
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorCleanupMap:Ljava/util/HashMap;
 
     iget-object v7, p0, Landroid/view/ViewPropertyAnimator;->mPendingCleanupAction:Ljava/lang/Runnable;
 
     invoke-virtual {v6, v0, v7}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 799
+    .line 882
     iput-object v9, p0, Landroid/view/ViewPropertyAnimator;->mPendingCleanupAction:Ljava/lang/Runnable;
 
-    .line 801
-    :cond_2
+    .line 884
+    :cond_3
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mPendingOnStartAction:Ljava/lang/Runnable;
 
-    if-eqz v6, :cond_3
+    if-eqz v6, :cond_4
 
-    .line 802
+    .line 885
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorOnStartMap:Ljava/util/HashMap;
 
     iget-object v7, p0, Landroid/view/ViewPropertyAnimator;->mPendingOnStartAction:Ljava/lang/Runnable;
 
     invoke-virtual {v6, v0, v7}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 803
+    .line 886
     iput-object v9, p0, Landroid/view/ViewPropertyAnimator;->mPendingOnStartAction:Ljava/lang/Runnable;
 
-    .line 805
-    :cond_3
+    .line 888
+    :cond_4
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mPendingOnEndAction:Ljava/lang/Runnable;
 
-    if-eqz v6, :cond_4
+    if-eqz v6, :cond_5
 
-    .line 806
+    .line 889
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorOnEndMap:Ljava/util/HashMap;
 
     iget-object v7, p0, Landroid/view/ViewPropertyAnimator;->mPendingOnEndAction:Ljava/lang/Runnable;
 
     invoke-virtual {v6, v0, v7}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 807
+    .line 890
     iput-object v9, p0, Landroid/view/ViewPropertyAnimator;->mPendingOnEndAction:Ljava/lang/Runnable;
 
-    .line 809
-    :cond_4
+    .line 892
+    :cond_5
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorEventListener:Landroid/view/ViewPropertyAnimator$AnimatorEventListener;
 
     invoke-virtual {v0, v6}, Landroid/animation/ValueAnimator;->addUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V
 
-    .line 810
+    .line 893
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorEventListener:Landroid/view/ViewPropertyAnimator$AnimatorEventListener;
 
     invoke-virtual {v0, v6}, Landroid/animation/ValueAnimator;->addListener(Landroid/animation/Animator$AnimatorListener;)V
 
-    .line 811
+    .line 894
     iget-boolean v6, p0, Landroid/view/ViewPropertyAnimator;->mStartDelaySet:Z
 
-    if-eqz v6, :cond_5
+    if-eqz v6, :cond_6
 
-    .line 812
+    .line 895
     iget-wide v6, p0, Landroid/view/ViewPropertyAnimator;->mStartDelay:J
 
     invoke-virtual {v0, v6, v7}, Landroid/animation/ValueAnimator;->setStartDelay(J)V
 
-    .line 814
-    :cond_5
+    .line 897
+    :cond_6
     iget-boolean v6, p0, Landroid/view/ViewPropertyAnimator;->mDurationSet:Z
 
-    if-eqz v6, :cond_6
+    if-eqz v6, :cond_7
 
-    .line 815
+    .line 898
     iget-wide v6, p0, Landroid/view/ViewPropertyAnimator;->mDuration:J
 
     invoke-virtual {v0, v6, v7}, Landroid/animation/ValueAnimator;->setDuration(J)Landroid/animation/ValueAnimator;
 
-    .line 817
-    :cond_6
+    .line 900
+    :cond_7
     iget-boolean v6, p0, Landroid/view/ViewPropertyAnimator;->mInterpolatorSet:Z
 
-    if-eqz v6, :cond_7
+    if-eqz v6, :cond_8
 
-    .line 818
+    .line 901
     iget-object v6, p0, Landroid/view/ViewPropertyAnimator;->mInterpolator:Landroid/animation/TimeInterpolator;
 
     invoke-virtual {v0, v6}, Landroid/animation/ValueAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)V
 
-    .line 820
-    :cond_7
+    .line 903
+    :cond_8
     invoke-virtual {v0}, Landroid/animation/ValueAnimator;->start()V
 
-    .line 821
+    .line 860
     return-void
 .end method
 
@@ -988,29 +975,29 @@
 # virtual methods
 .method public alpha(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 662
-    const/16 v0, 0x200
+    .line 735
+    const/16 v0, 0x800
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animateProperty(IF)V
 
-    .line 663
+    .line 736
     return-object p0
 .end method
 
 .method public alphaBy(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 675
-    const/16 v0, 0x200
+    .line 748
+    const/16 v0, 0x800
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animatePropertyBy(IF)V
 
-    .line 676
+    .line 749
     return-object p0
 .end method
 
@@ -1018,7 +1005,9 @@
     .locals 6
 
     .prologue
-    .line 407
+    const/4 v5, 0x0
+
+    .line 422
     iget-object v4, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorMap:Ljava/util/HashMap;
 
     invoke-virtual {v4}, Ljava/util/HashMap;->size()I
@@ -1027,65 +1016,88 @@
 
     if-lez v4, :cond_0
 
-    .line 408
+    .line 424
     iget-object v4, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorMap:Ljava/util/HashMap;
 
     invoke-virtual {v4}, Ljava/util/HashMap;->clone()Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v1
 
-    check-cast v2, Ljava/util/HashMap;
+    check-cast v1, Ljava/util/HashMap;
 
-    .line 410
-    .local v2, mAnimatorMapCopy:Ljava/util/HashMap;,"Ljava/util/HashMap<Landroid/animation/Animator;Landroid/view/ViewPropertyAnimator$PropertyBundle;>;"
-    invoke-virtual {v2}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
+    .line 425
+    .local v1, "mAnimatorMapCopy":Ljava/util/HashMap;, "Ljava/util/HashMap<Landroid/animation/Animator;Landroid/view/ViewPropertyAnimator$PropertyBundle;>;"
+    invoke-virtual {v1}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
 
     move-result-object v0
 
-    .line 411
-    .local v0, animatorSet:Ljava/util/Set;,"Ljava/util/Set<Landroid/animation/Animator;>;"
-    invoke-interface {v0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+    .line 426
+    .local v0, "animatorSet":Ljava/util/Set;, "Ljava/util/Set<Landroid/animation/Animator;>;"
+    invoke-interface {v0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
-    move-result-object v1
+    move-result-object v3
 
-    .local v1, i$:Ljava/util/Iterator;
+    .local v3, "runningAnim$iterator":Ljava/util/Iterator;
     :goto_0
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v4
 
     if-eqz v4, :cond_0
 
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    move-result-object v3
+    move-result-object v2
 
-    check-cast v3, Landroid/animation/Animator;
+    check-cast v2, Landroid/animation/Animator;
 
-    .line 412
-    .local v3, runningAnim:Landroid/animation/Animator;
-    invoke-virtual {v3}, Landroid/animation/Animator;->cancel()V
+    .line 427
+    .local v2, "runningAnim":Landroid/animation/Animator;
+    invoke-virtual {v2}, Landroid/animation/Animator;->cancel()V
 
     goto :goto_0
 
-    .line 415
-    .end local v0           #animatorSet:Ljava/util/Set;,"Ljava/util/Set<Landroid/animation/Animator;>;"
-    .end local v1           #i$:Ljava/util/Iterator;
-    .end local v2           #mAnimatorMapCopy:Ljava/util/HashMap;,"Ljava/util/HashMap<Landroid/animation/Animator;Landroid/view/ViewPropertyAnimator$PropertyBundle;>;"
-    .end local v3           #runningAnim:Landroid/animation/Animator;
+    .line 430
+    .end local v0    # "animatorSet":Ljava/util/Set;, "Ljava/util/Set<Landroid/animation/Animator;>;"
+    .end local v1    # "mAnimatorMapCopy":Ljava/util/HashMap;, "Ljava/util/HashMap<Landroid/animation/Animator;Landroid/view/ViewPropertyAnimator$PropertyBundle;>;"
+    .end local v2    # "runningAnim":Landroid/animation/Animator;
+    .end local v3    # "runningAnim$iterator":Ljava/util/Iterator;
     :cond_0
     iget-object v4, p0, Landroid/view/ViewPropertyAnimator;->mPendingAnimations:Ljava/util/ArrayList;
 
     invoke-virtual {v4}, Ljava/util/ArrayList;->clear()V
 
-    .line 416
+    .line 431
+    iput-object v5, p0, Landroid/view/ViewPropertyAnimator;->mPendingSetupAction:Ljava/lang/Runnable;
+
+    .line 432
+    iput-object v5, p0, Landroid/view/ViewPropertyAnimator;->mPendingCleanupAction:Ljava/lang/Runnable;
+
+    .line 433
+    iput-object v5, p0, Landroid/view/ViewPropertyAnimator;->mPendingOnStartAction:Ljava/lang/Runnable;
+
+    .line 434
+    iput-object v5, p0, Landroid/view/ViewPropertyAnimator;->mPendingOnEndAction:Ljava/lang/Runnable;
+
+    .line 435
     iget-object v4, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
 
     iget-object v5, p0, Landroid/view/ViewPropertyAnimator;->mAnimationStarter:Ljava/lang/Runnable;
 
     invoke-virtual {v4, v5}, Landroid/view/View;->removeCallbacks(Ljava/lang/Runnable;)Z
 
-    .line 417
+    .line 436
+    iget-object v4, p0, Landroid/view/ViewPropertyAnimator;->mRTBackend:Landroid/view/ViewPropertyAnimatorRT;
+
+    if-eqz v4, :cond_1
+
+    .line 437
+    iget-object v4, p0, Landroid/view/ViewPropertyAnimator;->mRTBackend:Landroid/view/ViewPropertyAnimatorRT;
+
+    invoke-virtual {v4}, Landroid/view/ViewPropertyAnimatorRT;->cancelAll()V
+
+    .line 421
+    :cond_1
     return-void
 .end method
 
@@ -1093,32 +1105,30 @@
     .locals 2
 
     .prologue
-    .line 277
+    .line 283
     iget-boolean v0, p0, Landroid/view/ViewPropertyAnimator;->mDurationSet:Z
 
     if-eqz v0, :cond_0
 
-    .line 278
+    .line 284
     iget-wide v0, p0, Landroid/view/ViewPropertyAnimator;->mDuration:J
 
-    .line 285
-    :goto_0
     return-wide v0
 
-    .line 282
+    .line 288
     :cond_0
     iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mTempValueAnimator:Landroid/animation/ValueAnimator;
 
     if-nez v0, :cond_1
 
-    .line 283
+    .line 289
     new-instance v0, Landroid/animation/ValueAnimator;
 
     invoke-direct {v0}, Landroid/animation/ValueAnimator;-><init>()V
 
     iput-object v0, p0, Landroid/view/ViewPropertyAnimator;->mTempValueAnimator:Landroid/animation/ValueAnimator;
 
-    .line 285
+    .line 291
     :cond_1
     iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mTempValueAnimator:Landroid/animation/ValueAnimator;
 
@@ -1126,39 +1136,37 @@
 
     move-result-wide v0
 
-    goto :goto_0
+    return-wide v0
 .end method
 
 .method public getInterpolator()Landroid/animation/TimeInterpolator;
     .locals 1
 
     .prologue
-    .line 345
+    .line 352
     iget-boolean v0, p0, Landroid/view/ViewPropertyAnimator;->mInterpolatorSet:Z
 
     if-eqz v0, :cond_0
 
-    .line 346
+    .line 353
     iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mInterpolator:Landroid/animation/TimeInterpolator;
 
-    .line 353
-    :goto_0
     return-object v0
 
-    .line 350
+    .line 357
     :cond_0
     iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mTempValueAnimator:Landroid/animation/ValueAnimator;
 
     if-nez v0, :cond_1
 
-    .line 351
+    .line 358
     new-instance v0, Landroid/animation/ValueAnimator;
 
     invoke-direct {v0}, Landroid/animation/ValueAnimator;-><init>()V
 
     iput-object v0, p0, Landroid/view/ViewPropertyAnimator;->mTempValueAnimator:Landroid/animation/ValueAnimator;
 
-    .line 353
+    .line 360
     :cond_1
     iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mTempValueAnimator:Landroid/animation/ValueAnimator;
 
@@ -1166,191 +1174,247 @@
 
     move-result-object v0
 
-    goto :goto_0
+    return-object v0
+.end method
+
+.method getListener()Landroid/animation/Animator$AnimatorListener;
+    .locals 1
+
+    .prologue
+    .line 380
+    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mListener:Landroid/animation/Animator$AnimatorListener;
+
+    return-object v0
 .end method
 
 .method public getStartDelay()J
     .locals 2
 
     .prologue
-    .line 298
+    .line 304
     iget-boolean v0, p0, Landroid/view/ViewPropertyAnimator;->mStartDelaySet:Z
 
     if-eqz v0, :cond_0
 
-    .line 299
+    .line 305
     iget-wide v0, p0, Landroid/view/ViewPropertyAnimator;->mStartDelay:J
 
-    .line 303
-    :goto_0
     return-wide v0
 
+    .line 309
     :cond_0
     const-wide/16 v0, 0x0
+
+    return-wide v0
+.end method
+
+.method getUpdateListener()Landroid/animation/ValueAnimator$AnimatorUpdateListener;
+    .locals 1
+
+    .prologue
+    .line 403
+    iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mUpdateListener:Landroid/animation/ValueAnimator$AnimatorUpdateListener;
+
+    return-object v0
+.end method
+
+.method hasActions()Z
+    .locals 2
+
+    .prologue
+    const/4 v0, 0x1
+
+    .line 849
+    iget-object v1, p0, Landroid/view/ViewPropertyAnimator;->mPendingSetupAction:Ljava/lang/Runnable;
+
+    if-nez v1, :cond_0
+
+    .line 850
+    iget-object v1, p0, Landroid/view/ViewPropertyAnimator;->mPendingCleanupAction:Ljava/lang/Runnable;
+
+    if-eqz v1, :cond_1
+
+    .line 849
+    :cond_0
+    :goto_0
+    return v0
+
+    .line 851
+    :cond_1
+    iget-object v1, p0, Landroid/view/ViewPropertyAnimator;->mPendingOnStartAction:Ljava/lang/Runnable;
+
+    if-nez v1, :cond_0
+
+    .line 852
+    iget-object v1, p0, Landroid/view/ViewPropertyAnimator;->mPendingOnEndAction:Ljava/lang/Runnable;
+
+    if-nez v1, :cond_0
+
+    const/4 v0, 0x0
 
     goto :goto_0
 .end method
 
 .method public rotation(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 480
-    const/16 v0, 0x10
+    .line 528
+    const/16 v0, 0x20
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animateProperty(IF)V
 
-    .line 481
+    .line 529
     return-object p0
 .end method
 
 .method public rotationBy(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 493
-    const/16 v0, 0x10
+    .line 541
+    const/16 v0, 0x20
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animatePropertyBy(IF)V
 
-    .line 494
+    .line 542
     return-object p0
 .end method
 
 .method public rotationX(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 506
-    const/16 v0, 0x20
+    .line 554
+    const/16 v0, 0x40
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animateProperty(IF)V
 
-    .line 507
+    .line 555
     return-object p0
 .end method
 
 .method public rotationXBy(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 519
-    const/16 v0, 0x20
+    .line 567
+    const/16 v0, 0x40
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animatePropertyBy(IF)V
 
-    .line 520
+    .line 568
     return-object p0
 .end method
 
 .method public rotationY(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 532
-    const/16 v0, 0x40
+    .line 580
+    const/16 v0, 0x80
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animateProperty(IF)V
 
-    .line 533
+    .line 581
     return-object p0
 .end method
 
 .method public rotationYBy(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 545
-    const/16 v0, 0x40
+    .line 593
+    const/16 v0, 0x80
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animatePropertyBy(IF)V
 
-    .line 546
+    .line 594
     return-object p0
 .end method
 
 .method public scaleX(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 610
-    const/4 v0, 0x4
+    .line 683
+    const/16 v0, 0x8
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animateProperty(IF)V
 
-    .line 611
+    .line 684
     return-object p0
 .end method
 
 .method public scaleXBy(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 623
-    const/4 v0, 0x4
+    .line 696
+    const/16 v0, 0x8
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animatePropertyBy(IF)V
 
-    .line 624
+    .line 697
     return-object p0
 .end method
 
 .method public scaleY(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 636
-    const/16 v0, 0x8
+    .line 709
+    const/16 v0, 0x10
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animateProperty(IF)V
 
-    .line 637
+    .line 710
     return-object p0
 .end method
 
 .method public scaleYBy(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 649
-    const/16 v0, 0x8
+    .line 722
+    const/16 v0, 0x10
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animatePropertyBy(IF)V
 
-    .line 650
+    .line 723
     return-object p0
 .end method
 
 .method public setDuration(J)Landroid/view/ViewPropertyAnimator;
     .locals 3
-    .parameter "duration"
+    .param p1, "duration"    # J
 
     .prologue
-    .line 259
+    .line 265
     const-wide/16 v0, 0x0
 
     cmp-long v0, p1, v0
 
     if-gez v0, :cond_0
 
-    .line 260
+    .line 266
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Animators cannot have negative duration: "
+    const-string/jumbo v2, "Animators cannot have negative duration: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1368,68 +1432,68 @@
 
     throw v0
 
-    .line 263
+    .line 269
     :cond_0
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/view/ViewPropertyAnimator;->mDurationSet:Z
 
-    .line 264
+    .line 270
     iput-wide p1, p0, Landroid/view/ViewPropertyAnimator;->mDuration:J
 
-    .line 265
+    .line 271
     return-object p0
 .end method
 
 .method public setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "interpolator"
+    .param p1, "interpolator"    # Landroid/animation/TimeInterpolator;
 
     .prologue
-    .line 334
+    .line 341
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/view/ViewPropertyAnimator;->mInterpolatorSet:Z
 
-    .line 335
+    .line 342
     iput-object p1, p0, Landroid/view/ViewPropertyAnimator;->mInterpolator:Landroid/animation/TimeInterpolator;
 
-    .line 336
+    .line 343
     return-object p0
 .end method
 
 .method public setListener(Landroid/animation/Animator$AnimatorListener;)Landroid/view/ViewPropertyAnimator;
     .locals 0
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/animation/Animator$AnimatorListener;
 
     .prologue
-    .line 368
+    .line 375
     iput-object p1, p0, Landroid/view/ViewPropertyAnimator;->mListener:Landroid/animation/Animator$AnimatorListener;
 
-    .line 369
+    .line 376
     return-object p0
 .end method
 
 .method public setStartDelay(J)Landroid/view/ViewPropertyAnimator;
     .locals 3
-    .parameter "startDelay"
+    .param p1, "startDelay"    # J
 
     .prologue
-    .line 316
+    .line 322
     const-wide/16 v0, 0x0
 
     cmp-long v0, p1, v0
 
     if-gez v0, :cond_0
 
-    .line 317
+    .line 323
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Animators cannot have negative duration: "
+    const-string/jumbo v2, "Animators cannot have negative start delay: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1447,28 +1511,28 @@
 
     throw v0
 
-    .line 320
+    .line 326
     :cond_0
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/view/ViewPropertyAnimator;->mStartDelaySet:Z
 
-    .line 321
+    .line 327
     iput-wide p1, p0, Landroid/view/ViewPropertyAnimator;->mStartDelay:J
 
-    .line 322
+    .line 328
     return-object p0
 .end method
 
 .method public setUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)Landroid/view/ViewPropertyAnimator;
     .locals 0
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/animation/ValueAnimator$AnimatorUpdateListener;
 
     .prologue
-    .line 387
+    .line 398
     iput-object p1, p0, Landroid/view/ViewPropertyAnimator;->mUpdateListener:Landroid/animation/ValueAnimator$AnimatorUpdateListener;
 
-    .line 388
+    .line 399
     return-object p0
 .end method
 
@@ -1476,99 +1540,127 @@
     .locals 2
 
     .prologue
-    .line 399
+    .line 414
     iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
 
     iget-object v1, p0, Landroid/view/ViewPropertyAnimator;->mAnimationStarter:Ljava/lang/Runnable;
 
     invoke-virtual {v0, v1}, Landroid/view/View;->removeCallbacks(Ljava/lang/Runnable;)Z
 
-    .line 400
+    .line 415
     invoke-direct {p0}, Landroid/view/ViewPropertyAnimator;->startAnimation()V
 
-    .line 401
+    .line 413
     return-void
 .end method
 
 .method public translationX(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 558
+    .line 606
     const/4 v0, 0x1
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animateProperty(IF)V
 
-    .line 559
+    .line 607
     return-object p0
 .end method
 
 .method public translationXBy(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 571
+    .line 619
     const/4 v0, 0x1
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animatePropertyBy(IF)V
 
-    .line 572
+    .line 620
     return-object p0
 .end method
 
 .method public translationY(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 584
+    .line 632
     const/4 v0, 0x2
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animateProperty(IF)V
 
-    .line 585
+    .line 633
     return-object p0
 .end method
 
 .method public translationYBy(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 597
+    .line 645
     const/4 v0, 0x2
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animatePropertyBy(IF)V
 
-    .line 598
+    .line 646
+    return-object p0
+.end method
+
+.method public translationZ(F)Landroid/view/ViewPropertyAnimator;
+    .locals 1
+    .param p1, "value"    # F
+
+    .prologue
+    .line 658
+    const/4 v0, 0x4
+
+    invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animateProperty(IF)V
+
+    .line 659
+    return-object p0
+.end method
+
+.method public translationZBy(F)Landroid/view/ViewPropertyAnimator;
+    .locals 1
+    .param p1, "value"    # F
+
+    .prologue
+    .line 671
+    const/4 v0, 0x4
+
+    invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animatePropertyBy(IF)V
+
+    .line 672
     return-object p0
 .end method
 
 .method public withEndAction(Ljava/lang/Runnable;)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "runnable"
+    .param p1, "runnable"    # Ljava/lang/Runnable;
 
     .prologue
-    .line 768
+    .line 841
     iput-object p1, p0, Landroid/view/ViewPropertyAnimator;->mPendingOnEndAction:Ljava/lang/Runnable;
 
-    .line 769
+    .line 842
     if-eqz p1, :cond_0
 
     iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorOnEndMap:Ljava/util/HashMap;
 
     if-nez v0, :cond_0
 
-    .line 770
+    .line 843
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
     iput-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorOnEndMap:Ljava/util/HashMap;
 
-    .line 772
+    .line 845
     :cond_0
     return-object p0
 .end method
@@ -1577,137 +1669,165 @@
     .locals 2
 
     .prologue
-    .line 701
+    .line 774
     new-instance v1, Landroid/view/ViewPropertyAnimator$2;
 
     invoke-direct {v1, p0}, Landroid/view/ViewPropertyAnimator$2;-><init>(Landroid/view/ViewPropertyAnimator;)V
 
     iput-object v1, p0, Landroid/view/ViewPropertyAnimator;->mPendingSetupAction:Ljava/lang/Runnable;
 
-    .line 710
+    .line 783
     iget-object v1, p0, Landroid/view/ViewPropertyAnimator;->mView:Landroid/view/View;
 
     invoke-virtual {v1}, Landroid/view/View;->getLayerType()I
 
     move-result v0
 
-    .line 711
-    .local v0, currentLayerType:I
+    .line 784
+    .local v0, "currentLayerType":I
     new-instance v1, Landroid/view/ViewPropertyAnimator$3;
 
     invoke-direct {v1, p0, v0}, Landroid/view/ViewPropertyAnimator$3;-><init>(Landroid/view/ViewPropertyAnimator;I)V
 
     iput-object v1, p0, Landroid/view/ViewPropertyAnimator;->mPendingCleanupAction:Ljava/lang/Runnable;
 
-    .line 717
+    .line 790
     iget-object v1, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorSetupMap:Ljava/util/HashMap;
 
     if-nez v1, :cond_0
 
-    .line 718
+    .line 791
     new-instance v1, Ljava/util/HashMap;
 
     invoke-direct {v1}, Ljava/util/HashMap;-><init>()V
 
     iput-object v1, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorSetupMap:Ljava/util/HashMap;
 
-    .line 720
+    .line 793
     :cond_0
     iget-object v1, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorCleanupMap:Ljava/util/HashMap;
 
     if-nez v1, :cond_1
 
-    .line 721
+    .line 794
     new-instance v1, Ljava/util/HashMap;
 
     invoke-direct {v1}, Ljava/util/HashMap;-><init>()V
 
     iput-object v1, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorCleanupMap:Ljava/util/HashMap;
 
-    .line 724
+    .line 797
     :cond_1
     return-object p0
 .end method
 
 .method public withStartAction(Ljava/lang/Runnable;)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "runnable"
+    .param p1, "runnable"    # Ljava/lang/Runnable;
 
     .prologue
-    .line 739
+    .line 812
     iput-object p1, p0, Landroid/view/ViewPropertyAnimator;->mPendingOnStartAction:Ljava/lang/Runnable;
 
-    .line 740
+    .line 813
     if-eqz p1, :cond_0
 
     iget-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorOnStartMap:Ljava/util/HashMap;
 
     if-nez v0, :cond_0
 
-    .line 741
+    .line 814
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
     iput-object v0, p0, Landroid/view/ViewPropertyAnimator;->mAnimatorOnStartMap:Ljava/util/HashMap;
 
-    .line 743
+    .line 816
     :cond_0
     return-object p0
 .end method
 
 .method public x(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 428
-    const/16 v0, 0x80
+    .line 450
+    const/16 v0, 0x100
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animateProperty(IF)V
 
-    .line 429
+    .line 451
     return-object p0
 .end method
 
 .method public xBy(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 441
-    const/16 v0, 0x80
+    .line 463
+    const/16 v0, 0x100
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animatePropertyBy(IF)V
 
-    .line 442
+    .line 464
     return-object p0
 .end method
 
 .method public y(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 454
-    const/16 v0, 0x100
+    .line 476
+    const/16 v0, 0x200
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animateProperty(IF)V
 
-    .line 455
+    .line 477
     return-object p0
 .end method
 
 .method public yBy(F)Landroid/view/ViewPropertyAnimator;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # F
 
     .prologue
-    .line 467
-    const/16 v0, 0x100
+    .line 489
+    const/16 v0, 0x200
 
     invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animatePropertyBy(IF)V
 
-    .line 468
+    .line 490
+    return-object p0
+.end method
+
+.method public z(F)Landroid/view/ViewPropertyAnimator;
+    .locals 1
+    .param p1, "value"    # F
+
+    .prologue
+    .line 502
+    const/16 v0, 0x400
+
+    invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animateProperty(IF)V
+
+    .line 503
+    return-object p0
+.end method
+
+.method public zBy(F)Landroid/view/ViewPropertyAnimator;
+    .locals 1
+    .param p1, "value"    # F
+
+    .prologue
+    .line 515
+    const/16 v0, 0x400
+
+    invoke-direct {p0, v0, p1}, Landroid/view/ViewPropertyAnimator;->animatePropertyBy(IF)V
+
+    .line 516
     return-object p0
 .end method

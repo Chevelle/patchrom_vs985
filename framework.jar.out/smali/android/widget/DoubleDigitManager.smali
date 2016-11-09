@@ -20,10 +20,34 @@
 
 
 # direct methods
-.method public constructor <init>(JLandroid/widget/DoubleDigitManager$CallBack;)V
+.method static synthetic -get0(Landroid/widget/DoubleDigitManager;)Ljava/lang/Integer;
+    .locals 1
+
+    iget-object v0, p0, Landroid/widget/DoubleDigitManager;->intermediateDigit:Ljava/lang/Integer;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Landroid/widget/DoubleDigitManager;)Landroid/widget/DoubleDigitManager$CallBack;
+    .locals 1
+
+    iget-object v0, p0, Landroid/widget/DoubleDigitManager;->mCallBack:Landroid/widget/DoubleDigitManager$CallBack;
+
+    return-object v0
+.end method
+
+.method static synthetic -set0(Landroid/widget/DoubleDigitManager;Ljava/lang/Integer;)Ljava/lang/Integer;
     .locals 0
-    .parameter "timeoutInMillis"
-    .parameter "callBack"
+
+    iput-object p1, p0, Landroid/widget/DoubleDigitManager;->intermediateDigit:Ljava/lang/Integer;
+
+    return-object p1
+.end method
+
+.method public constructor <init>(JLandroid/widget/DoubleDigitManager$CallBack;)V
+    .locals 1
+    .param p1, "timeoutInMillis"    # J
+    .param p3, "callBack"    # Landroid/widget/DoubleDigitManager$CallBack;
 
     .prologue
     .line 39
@@ -35,49 +59,15 @@
     .line 41
     iput-object p3, p0, Landroid/widget/DoubleDigitManager;->mCallBack:Landroid/widget/DoubleDigitManager$CallBack;
 
-    .line 42
+    .line 39
     return-void
-.end method
-
-.method static synthetic access$000(Landroid/widget/DoubleDigitManager;)Ljava/lang/Integer;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 27
-    iget-object v0, p0, Landroid/widget/DoubleDigitManager;->intermediateDigit:Ljava/lang/Integer;
-
-    return-object v0
-.end method
-
-.method static synthetic access$002(Landroid/widget/DoubleDigitManager;Ljava/lang/Integer;)Ljava/lang/Integer;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 27
-    iput-object p1, p0, Landroid/widget/DoubleDigitManager;->intermediateDigit:Ljava/lang/Integer;
-
-    return-object p1
-.end method
-
-.method static synthetic access$100(Landroid/widget/DoubleDigitManager;)Landroid/widget/DoubleDigitManager$CallBack;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 27
-    iget-object v0, p0, Landroid/widget/DoubleDigitManager;->mCallBack:Landroid/widget/DoubleDigitManager$CallBack;
-
-    return-object v0
 .end method
 
 
 # virtual methods
 .method public reportDigit(I)V
     .locals 5
-    .parameter "digit"
+    .param p1, "digit"    # I
 
     .prologue
     const/4 v4, 0x0
@@ -103,8 +93,10 @@
 
     invoke-direct {v1, p0}, Landroid/widget/DoubleDigitManager$1;-><init>(Landroid/widget/DoubleDigitManager;)V
 
+    .line 59
     iget-wide v2, p0, Landroid/widget/DoubleDigitManager;->timeoutInMillis:J
 
+    .line 52
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
     .line 61
@@ -124,7 +116,7 @@
 
     invoke-interface {v0, p1}, Landroid/widget/DoubleDigitManager$CallBack;->singleDigitFinal(I)V
 
-    .line 72
+    .line 48
     :cond_0
     :goto_0
     return-void

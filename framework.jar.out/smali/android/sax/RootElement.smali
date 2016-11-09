@@ -18,22 +18,22 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 1
-    .parameter "localName"
+    .param p1, "localName"    # Ljava/lang/String;
 
     .prologue
     .line 87
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     invoke-direct {p0, v0, p1}, Landroid/sax/RootElement;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 88
+    .line 86
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;)V
     .locals 2
-    .parameter "uri"
-    .parameter "localName"
+    .param p1, "uri"    # Ljava/lang/String;
+    .param p2, "localName"    # Ljava/lang/String;
 
     .prologue
     .line 77
@@ -50,7 +50,7 @@
 
     iput-object v0, p0, Landroid/sax/RootElement;->handler:Landroid/sax/RootElement$Handler;
 
-    .line 78
+    .line 76
     return-void
 .end method
 

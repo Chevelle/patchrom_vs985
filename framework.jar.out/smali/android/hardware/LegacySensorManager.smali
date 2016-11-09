@@ -6,8 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/hardware/LegacySensorManager$LmsFilter;,
-        Landroid/hardware/LegacySensorManager$LegacyListener;
+        Landroid/hardware/LegacySensorManager$LegacyListener;,
+        Landroid/hardware/LegacySensorManager$LmsFilter;
     }
 .end annotation
 
@@ -46,98 +46,100 @@
 
     sput v0, Landroid/hardware/LegacySensorManager;->sRotation:I
 
+    .line 33
     return-void
 .end method
 
 .method public constructor <init>(Landroid/hardware/SensorManager;)V
-    .locals 3
-    .parameter "sensorManager"
+    .locals 4
+    .param p1, "sensorManager"    # Landroid/hardware/SensorManager;
 
     .prologue
     .line 44
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 42
+    new-instance v1, Ljava/util/HashMap;
+
+    invoke-direct {v1}, Ljava/util/HashMap;-><init>()V
+
     .line 41
-    new-instance v0, Ljava/util/HashMap;
-
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
-
-    iput-object v0, p0, Landroid/hardware/LegacySensorManager;->mLegacyListenersMap:Ljava/util/HashMap;
+    iput-object v1, p0, Landroid/hardware/LegacySensorManager;->mLegacyListenersMap:Ljava/util/HashMap;
 
     .line 45
     iput-object p1, p0, Landroid/hardware/LegacySensorManager;->mSensorManager:Landroid/hardware/SensorManager;
 
     .line 47
-    const-class v1, Landroid/hardware/SensorManager;
+    const-class v2, Landroid/hardware/SensorManager;
 
-    monitor-enter v1
+    monitor-enter v2
 
     .line 48
     :try_start_0
-    sget-boolean v0, Landroid/hardware/LegacySensorManager;->sInitialized:Z
+    sget-boolean v1, Landroid/hardware/LegacySensorManager;->sInitialized:Z
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_0
+
+    .line 50
+    const-string/jumbo v1, "window"
+
+    invoke-static {v1}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
+
+    move-result-object v1
 
     .line 49
-    const-string/jumbo v0, "window"
+    invoke-static {v1}, Landroid/view/IWindowManager$Stub;->asInterface(Landroid/os/IBinder;)Landroid/view/IWindowManager;
 
-    invoke-static {v0}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
+    move-result-object v1
 
-    move-result-object v0
-
-    invoke-static {v0}, Landroid/view/IWindowManager$Stub;->asInterface(Landroid/os/IBinder;)Landroid/view/IWindowManager;
-
-    move-result-object v0
-
-    sput-object v0, Landroid/hardware/LegacySensorManager;->sWindowManager:Landroid/view/IWindowManager;
+    sput-object v1, Landroid/hardware/LegacySensorManager;->sWindowManager:Landroid/view/IWindowManager;
 
     .line 51
-    sget-object v0, Landroid/hardware/LegacySensorManager;->sWindowManager:Landroid/view/IWindowManager;
+    sget-object v1, Landroid/hardware/LegacySensorManager;->sWindowManager:Landroid/view/IWindowManager;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
     .line 55
     :try_start_1
-    sget-object v0, Landroid/hardware/LegacySensorManager;->sWindowManager:Landroid/view/IWindowManager;
+    sget-object v1, Landroid/hardware/LegacySensorManager;->sWindowManager:Landroid/view/IWindowManager;
 
-    new-instance v2, Landroid/hardware/LegacySensorManager$1;
+    .line 56
+    new-instance v3, Landroid/hardware/LegacySensorManager$1;
 
-    invoke-direct {v2, p0}, Landroid/hardware/LegacySensorManager$1;-><init>(Landroid/hardware/LegacySensorManager;)V
+    invoke-direct {v3, p0}, Landroid/hardware/LegacySensorManager$1;-><init>(Landroid/hardware/LegacySensorManager;)V
 
-    invoke-interface {v0, v2}, Landroid/view/IWindowManager;->watchRotation(Landroid/view/IRotationWatcher;)I
+    .line 55
+    invoke-interface {v1, v3}, Landroid/view/IWindowManager;->watchRotation(Landroid/view/IRotationWatcher;)I
 
-    move-result v0
+    move-result v1
 
-    sput v0, Landroid/hardware/LegacySensorManager;->sRotation:I
+    sput v1, Landroid/hardware/LegacySensorManager;->sRotation:I
     :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
     .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 66
     :cond_0
     :goto_0
-    :try_start_2
-    monitor-exit v1
+    monitor-exit v2
 
-    .line 67
+    .line 44
     return-void
 
-    .line 66
+    .line 47
     :catchall_0
-    move-exception v0
+    move-exception v1
 
-    monitor-exit v1
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+    monitor-exit v2
 
-    throw v0
+    throw v1
 
     .line 62
     :catch_0
     move-exception v0
 
+    .local v0, "e":Landroid/os/RemoteException;
     goto :goto_0
 .end method
 
@@ -146,74 +148,73 @@
 
     .prologue
     .line 200
-    const-class v1, Landroid/hardware/SensorManager;
+    const-class v0, Landroid/hardware/SensorManager;
 
-    monitor-enter v1
+    monitor-enter v0
 
     .line 201
     :try_start_0
-    sget v0, Landroid/hardware/LegacySensorManager;->sRotation:I
-
-    monitor-exit v1
-
-    return v0
-
-    .line 202
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v1
+    sget v1, Landroid/hardware/LegacySensorManager;->sRotation:I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw v0
+    monitor-exit v0
+
+    return v1
+
+    .line 200
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+
+    throw v1
 .end method
 
 .method static onRotationChanged(I)V
     .locals 2
-    .parameter "rotation"
+    .param p0, "rotation"    # I
 
     .prologue
     .line 194
-    const-class v1, Landroid/hardware/SensorManager;
+    const-class v0, Landroid/hardware/SensorManager;
 
-    monitor-enter v1
+    monitor-enter v0
 
     .line 195
     :try_start_0
     sput p0, Landroid/hardware/LegacySensorManager;->sRotation:I
-
-    .line 196
-    monitor-exit v1
-
-    .line 197
-    return-void
-
-    .line 196
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw v0
+    monitor-exit v0
+
+    .line 193
+    return-void
+
+    .line 194
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+
+    throw v1
 .end method
 
 .method private registerLegacyListener(IILandroid/hardware/SensorListener;II)Z
     .locals 5
-    .parameter "legacyType"
-    .parameter "type"
-    .parameter "listener"
-    .parameter "sensors"
-    .parameter "rate"
+    .param p1, "legacyType"    # I
+    .param p2, "type"    # I
+    .param p3, "listener"    # Landroid/hardware/SensorListener;
+    .param p4, "sensors"    # I
+    .param p5, "rate"    # I
 
     .prologue
     .line 109
     const/4 v1, 0x0
 
     .line 111
-    .local v1, result:Z
+    .local v1, "result":Z
     and-int v3, p4, p1
 
     if-eqz v3, :cond_1
@@ -226,7 +227,7 @@
     move-result-object v2
 
     .line 114
-    .local v2, sensor:Landroid/hardware/Sensor;
+    .local v2, "sensor":Landroid/hardware/Sensor;
     if-eqz v2, :cond_1
 
     .line 119
@@ -245,17 +246,17 @@
     check-cast v0, Landroid/hardware/LegacySensorManager$LegacyListener;
 
     .line 124
-    .local v0, legacyListener:Landroid/hardware/LegacySensorManager$LegacyListener;
+    .local v0, "legacyListener":Landroid/hardware/LegacySensorManager$LegacyListener;
     if-nez v0, :cond_0
 
     .line 127
     new-instance v0, Landroid/hardware/LegacySensorManager$LegacyListener;
 
-    .end local v0           #legacyListener:Landroid/hardware/LegacySensorManager$LegacyListener;
+    .end local v0    # "legacyListener":Landroid/hardware/LegacySensorManager$LegacyListener;
     invoke-direct {v0, p3}, Landroid/hardware/LegacySensorManager$LegacyListener;-><init>(Landroid/hardware/SensorListener;)V
 
     .line 128
-    .restart local v0       #legacyListener:Landroid/hardware/LegacySensorManager$LegacyListener;
+    .restart local v0    # "legacyListener":Landroid/hardware/LegacySensorManager$LegacyListener;
     iget-object v3, p0, Landroid/hardware/LegacySensorManager;->mLegacyListenersMap:Ljava/util/HashMap;
 
     invoke-virtual {v3, p3, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -272,45 +273,46 @@
     iget-object v3, p0, Landroid/hardware/LegacySensorManager;->mSensorManager:Landroid/hardware/SensorManager;
 
     invoke-virtual {v3, v0, v2, p5}, Landroid/hardware/SensorManager;->registerListener(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;I)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result v1
 
-    .line 138
+    .end local v1    # "result":Z
     :goto_0
     monitor-exit v4
 
     .line 141
-    .end local v0           #legacyListener:Landroid/hardware/LegacySensorManager$LegacyListener;
-    .end local v2           #sensor:Landroid/hardware/Sensor;
+    .end local v0    # "legacyListener":Landroid/hardware/LegacySensorManager$LegacyListener;
+    .end local v2    # "sensor":Landroid/hardware/Sensor;
     :cond_1
     return v1
 
     .line 136
-    .restart local v0       #legacyListener:Landroid/hardware/LegacySensorManager$LegacyListener;
-    .restart local v2       #sensor:Landroid/hardware/Sensor;
+    .restart local v0    # "legacyListener":Landroid/hardware/LegacySensorManager$LegacyListener;
+    .restart local v1    # "result":Z
+    .restart local v2    # "sensor":Landroid/hardware/Sensor;
     :cond_2
     const/4 v1, 0x1
 
     goto :goto_0
 
-    .line 138
-    .end local v0           #legacyListener:Landroid/hardware/LegacySensorManager$LegacyListener;
+    .line 119
+    .end local v0    # "legacyListener":Landroid/hardware/LegacySensorManager$LegacyListener;
     :catchall_0
     move-exception v3
 
     monitor-exit v4
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v3
 .end method
 
 .method private unregisterLegacyListener(IILandroid/hardware/SensorListener;I)V
     .locals 4
-    .parameter "legacyType"
-    .parameter "type"
-    .parameter "listener"
-    .parameter "sensors"
+    .param p1, "legacyType"    # I
+    .param p2, "type"    # I
+    .param p3, "listener"    # Landroid/hardware/SensorListener;
+    .param p4, "sensors"    # I
 
     .prologue
     .line 163
@@ -326,7 +328,7 @@
     move-result-object v1
 
     .line 166
-    .local v1, sensor:Landroid/hardware/Sensor;
+    .local v1, "sensor":Landroid/hardware/Sensor;
     if-eqz v1, :cond_1
 
     .line 171
@@ -345,7 +347,7 @@
     check-cast v0, Landroid/hardware/LegacySensorManager$LegacyListener;
 
     .line 174
-    .local v0, legacyListener:Landroid/hardware/LegacySensorManager$LegacyListener;
+    .local v0, "legacyListener":Landroid/hardware/LegacySensorManager$LegacyListener;
     if-eqz v0, :cond_0
 
     .line 177
@@ -371,25 +373,24 @@
     iget-object v2, p0, Landroid/hardware/LegacySensorManager;->mLegacyListenersMap:Ljava/util/HashMap;
 
     invoke-virtual {v2, p3}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 188
     :cond_0
     monitor-exit v3
 
-    .line 191
-    .end local v0           #legacyListener:Landroid/hardware/LegacySensorManager$LegacyListener;
-    .end local v1           #sensor:Landroid/hardware/Sensor;
+    .line 161
+    .end local v0    # "legacyListener":Landroid/hardware/LegacySensorManager$LegacyListener;
+    .end local v1    # "sensor":Landroid/hardware/Sensor;
     :cond_1
     return-void
 
-    .line 188
-    .restart local v1       #sensor:Landroid/hardware/Sensor;
+    .line 171
+    .restart local v1    # "sensor":Landroid/hardware/Sensor;
     :catchall_0
     move-exception v2
 
     monitor-exit v3
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v2
 .end method
@@ -404,7 +405,7 @@
     const/4 v3, 0x0
 
     .line 71
-    .local v3, result:I
+    .local v3, "result":I
     iget-object v4, p0, Landroid/hardware/LegacySensorManager;->mSensorManager:Landroid/hardware/SensorManager;
 
     invoke-virtual {v4}, Landroid/hardware/SensorManager;->getFullSensorList()Ljava/util/List;
@@ -412,12 +413,12 @@
     move-result-object v0
 
     .line 72
-    .local v0, fullList:Ljava/util/List;,"Ljava/util/List<Landroid/hardware/Sensor;>;"
-    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+    .local v0, "fullList":Ljava/util/List;, "Ljava/util/List<Landroid/hardware/Sensor;>;"
+    invoke-interface {v0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
     move-result-object v2
 
-    .local v2, i$:Ljava/util/Iterator;
+    .local v2, "i$iterator":Ljava/util/Iterator;
     :goto_0
     invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
@@ -432,7 +433,7 @@
     check-cast v1, Landroid/hardware/Sensor;
 
     .line 73
-    .local v1, i:Landroid/hardware/Sensor;
+    .local v1, "i":Landroid/hardware/Sensor;
     invoke-virtual {v1}, Landroid/hardware/Sensor;->getType()I
 
     move-result v4
@@ -459,10 +460,11 @@
     :pswitch_2
     or-int/lit16 v3, v3, 0x81
 
+    .line 83
     goto :goto_0
 
     .line 86
-    .end local v1           #i:Landroid/hardware/Sensor;
+    .end local v1    # "i":Landroid/hardware/Sensor;
     :cond_0
     return v3
 
@@ -478,32 +480,27 @@
 .end method
 
 .method public registerListener(Landroid/hardware/SensorListener;II)Z
-    .locals 12
-    .parameter "listener"
-    .parameter "sensors"
-    .parameter "rate"
+    .locals 11
+    .param p1, "listener"    # Landroid/hardware/SensorListener;
+    .param p2, "sensors"    # I
+    .param p3, "rate"    # I
 
     .prologue
-    const/4 v11, 0x3
+    const/4 v10, 0x3
 
     const/4 v1, 0x2
-
-    const/4 v10, 0x0
 
     const/4 v2, 0x1
 
     .line 90
     if-nez p1, :cond_0
 
-    .line 104
-    :goto_0
-    return v10
+    .line 91
+    const/4 v0, 0x0
 
-    .line 93
+    return v0
+
     :cond_0
-    const/4 v9, 0x0
-
-    .local v9, result:Z
     move-object v0, p0
 
     move-object v3, p1
@@ -519,13 +516,12 @@
 
     if-nez v0, :cond_1
 
-    if-eqz v9, :cond_6
-
-    :cond_1
-    move v9, v2
+    .line 93
+    const/4 v9, 0x0
 
     .line 96
-    :goto_1
+    .local v9, "result":Z
+    :goto_0
     const/16 v4, 0x8
 
     move-object v3, p0
@@ -544,18 +540,13 @@
 
     if-nez v0, :cond_2
 
-    if-eqz v9, :cond_7
-
-    :cond_2
-    move v9, v2
-
     .line 98
-    :goto_2
+    :goto_1
     const/16 v4, 0x80
 
     move-object v3, p0
 
-    move v5, v11
+    move v5, v10
 
     move-object v6, p1
 
@@ -569,15 +560,10 @@
 
     if-nez v0, :cond_3
 
-    if-eqz v9, :cond_8
-
-    :cond_3
-    move v9, v2
-
-    :goto_3
+    :goto_2
     move-object v1, p0
 
-    move v3, v11
+    move v3, v10
 
     move-object v4, p1
 
@@ -592,77 +578,69 @@
 
     if-nez v0, :cond_4
 
-    if-eqz v9, :cond_9
+    .line 102
+    :goto_3
+    const/4 v1, 0x4
 
-    :cond_4
-    move v9, v2
+    .line 103
+    const/4 v2, 0x7
+
+    move-object v0, p0
+
+    move-object v3, p1
+
+    move v4, p2
+
+    move v5, p3
 
     .line 102
-    :goto_4
-    const/4 v4, 0x4
-
-    const/4 v5, 0x7
-
-    move-object v3, p0
-
-    move-object v6, p1
-
-    move v7, p2
-
-    move v8, p3
-
-    invoke-direct/range {v3 .. v8}, Landroid/hardware/LegacySensorManager;->registerLegacyListener(IILandroid/hardware/SensorListener;II)Z
+    invoke-direct/range {v0 .. v5}, Landroid/hardware/LegacySensorManager;->registerLegacyListener(IILandroid/hardware/SensorListener;II)Z
 
     move-result v0
 
     if-nez v0, :cond_5
 
-    if-eqz v9, :cond_a
-
-    :cond_5
-    move v9, v2
-
-    :goto_5
-    move v10, v9
-
     .line 104
-    goto :goto_0
-
-    :cond_6
-    move v9, v10
+    :goto_4
+    return v9
 
     .line 94
-    goto :goto_1
+    .end local v9    # "result":Z
+    :cond_1
+    const/4 v9, 0x1
 
-    :cond_7
-    move v9, v10
+    .restart local v9    # "result":Z
+    goto :goto_0
 
     .line 96
-    goto :goto_2
+    :cond_2
+    const/4 v9, 0x1
 
-    :cond_8
-    move v9, v10
+    goto :goto_1
 
     .line 98
-    goto :goto_3
+    :cond_3
+    const/4 v9, 0x1
 
-    :cond_9
-    move v9, v10
+    goto :goto_2
 
     .line 100
-    goto :goto_4
+    :cond_4
+    const/4 v9, 0x1
 
-    :cond_a
-    move v9, v10
+    goto :goto_3
 
     .line 102
-    goto :goto_5
+    :cond_5
+    const/4 v9, 0x1
+
+    goto :goto_4
 .end method
 
 .method public unregisterListener(Landroid/hardware/SensorListener;I)V
     .locals 4
-    .parameter "listener"
-    .parameter "sensors"
+    .param p1, "listener"    # Landroid/hardware/SensorListener;
+    .param p2, "sensors"    # I
 
     .prologue
     const/4 v3, 0x3
@@ -674,8 +652,7 @@
     .line 145
     if-nez p1, :cond_0
 
-    .line 158
-    :goto_0
+    .line 146
     return-void
 
     .line 148
@@ -702,5 +679,6 @@
 
     invoke-direct {p0, v0, v1, p1, p2}, Landroid/hardware/LegacySensorManager;->unregisterLegacyListener(IILandroid/hardware/SensorListener;I)V
 
-    goto :goto_0
+    .line 144
+    return-void
 .end method

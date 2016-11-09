@@ -19,13 +19,13 @@
 
 .field public static final AGGREGATION_MODE:Ljava/lang/String; = "aggregation_mode"
 
+.field public static final BACKUP_ID:Ljava/lang/String; = "backup_id"
+
 .field public static final CONTACT_ID:Ljava/lang/String; = "contact_id"
 
 .field public static final DATA_SET:Ljava/lang/String; = "data_set"
 
 .field public static final DELETED:Ljava/lang/String; = "deleted"
-
-.field public static final NAME_VERIFIED:Ljava/lang/String; = "name_verified"
 
 .field public static final RAW_CONTACT_IS_READ_ONLY:Ljava/lang/String; = "raw_contact_is_read_only"
 

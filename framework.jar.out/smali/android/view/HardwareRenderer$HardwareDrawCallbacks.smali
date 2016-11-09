@@ -15,8 +15,8 @@
 
 
 # virtual methods
-.method public abstract onHardwarePostDraw(Landroid/view/HardwareCanvas;)V
+.method public abstract onHardwarePostDraw(Landroid/view/DisplayListCanvas;)V
 .end method
 
-.method public abstract onHardwarePreDraw(Landroid/view/HardwareCanvas;)V
+.method public abstract onHardwarePreDraw(Landroid/view/DisplayListCanvas;)V
 .end method

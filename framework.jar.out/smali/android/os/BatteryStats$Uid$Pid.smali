@@ -15,21 +15,23 @@
 
 
 # instance fields
-.field public mWakeStart:J
+.field public mWakeNesting:I
 
-.field public mWakeSum:J
+.field public mWakeStartMs:J
 
-.field final synthetic this$0:Landroid/os/BatteryStats$Uid;
+.field public mWakeSumMs:J
+
+.field final synthetic this$1:Landroid/os/BatteryStats$Uid;
 
 
 # direct methods
 .method public constructor <init>(Landroid/os/BatteryStats$Uid;)V
     .locals 0
-    .parameter
+    .param p1, "this$1"    # Landroid/os/BatteryStats$Uid;
 
     .prologue
-    .line 333
-    iput-object p1, p0, Landroid/os/BatteryStats$Uid$Pid;->this$0:Landroid/os/BatteryStats$Uid;
+    .line 490
+    iput-object p1, p0, Landroid/os/BatteryStats$Uid$Pid;->this$1:Landroid/os/BatteryStats$Uid;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 

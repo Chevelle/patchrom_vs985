@@ -22,12 +22,12 @@
 # virtual methods
 .method protected onCreate(Landroid/os/Bundle;)V
     .locals 0
-    .parameter "icicle"
+    .param p1, "icicle"    # Landroid/os/Bundle;
 
     .prologue
     .line 47
     invoke-super {p0, p1}, Landroid/preference/PreferenceActivity;->onCreate(Landroid/os/Bundle;)V
 
-    .line 48
+    .line 38
     return-void
 .end method

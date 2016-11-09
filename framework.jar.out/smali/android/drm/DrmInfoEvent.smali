@@ -20,9 +20,9 @@
 # direct methods
 .method public constructor <init>(IILjava/lang/String;)V
     .locals 0
-    .parameter "uniqueId"
-    .parameter "type"
-    .parameter "message"
+    .param p1, "uniqueId"    # I
+    .param p2, "type"    # I
+    .param p3, "message"    # Ljava/lang/String;
 
     .prologue
     .line 73
@@ -31,16 +31,15 @@
     .line 74
     invoke-direct {p0, p2}, Landroid/drm/DrmInfoEvent;->checkTypeValidity(I)V
 
-    .line 75
+    .line 72
     return-void
 .end method
 
 .method public constructor <init>(IILjava/lang/String;Ljava/util/HashMap;)V
     .locals 0
-    .parameter "uniqueId"
-    .parameter "type"
-    .parameter "message"
-    .parameter
+    .param p1, "uniqueId"    # I
+    .param p2, "type"    # I
+    .param p3, "message"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(II",
@@ -55,19 +54,19 @@
 
     .prologue
     .line 89
-    .local p4, attributes:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/String;Ljava/lang/Object;>;"
+    .local p4, "attributes":Ljava/util/HashMap;, "Ljava/util/HashMap<Ljava/lang/String;Ljava/lang/Object;>;"
     invoke-direct {p0, p1, p2, p3, p4}, Landroid/drm/DrmEvent;-><init>(IILjava/lang/String;Ljava/util/HashMap;)V
 
     .line 90
     invoke-direct {p0, p2}, Landroid/drm/DrmInfoEvent;->checkTypeValidity(I)V
 
-    .line 91
+    .line 88
     return-void
 .end method
 
 .method private checkTypeValidity(I)V
     .locals 3
-    .parameter "type"
+    .param p1, "type"    # I
 
     .prologue
     .line 99
@@ -75,6 +74,7 @@
 
     if-lt p1, v1, :cond_0
 
+    .line 100
     const/4 v1, 0x6
 
     if-le p1, v1, :cond_1
@@ -85,6 +85,7 @@
 
     if-eq p1, v1, :cond_1
 
+    .line 103
     const/16 v1, 0x3ea
 
     if-eq p1, v1, :cond_1
@@ -94,7 +95,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Unsupported type: "
+    const-string/jumbo v2, "Unsupported type: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -109,15 +110,15 @@
     move-result-object v0
 
     .line 105
-    .local v0, msg:Ljava/lang/String;
+    .local v0, "msg":Ljava/lang/String;
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     invoke-direct {v1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 108
-    .end local v0           #msg:Ljava/lang/String;
+    .line 98
+    .end local v0    # "msg":Ljava/lang/String;
     :cond_1
     return-void
 .end method

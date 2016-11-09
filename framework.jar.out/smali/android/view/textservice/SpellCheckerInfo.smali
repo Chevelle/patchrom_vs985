@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/view/textservice/SpellCheckerInfo$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -56,20 +64,22 @@
 
     sput-object v0, Landroid/view/textservice/SpellCheckerInfo;->TAG:Ljava/lang/String;
 
-    .line 189
+    .line 190
     new-instance v0, Landroid/view/textservice/SpellCheckerInfo$1;
 
     invoke-direct {v0}, Landroid/view/textservice/SpellCheckerInfo$1;-><init>()V
 
+    .line 189
     sput-object v0, Landroid/view/textservice/SpellCheckerInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 43
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/content/pm/ResolveInfo;)V
     .locals 21
-    .parameter "context"
-    .parameter "service"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "service"    # Landroid/content/pm/ResolveInfo;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/xmlpull/v1/XmlPullParserException;,
@@ -78,7 +88,7 @@
     .end annotation
 
     .prologue
-    .line 65
+    .line 64
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     .line 58
@@ -105,7 +115,7 @@
     iget-object v14, v0, Landroid/content/pm/ResolveInfo;->serviceInfo:Landroid/content/pm/ServiceInfo;
 
     .line 68
-    .local v14, si:Landroid/content/pm/ServiceInfo;
+    .local v14, "si":Landroid/content/pm/ServiceInfo;
     new-instance v18, Landroid/content/ComponentName;
 
     iget-object v0, v14, Landroid/content/pm/ServiceInfo;->packageName:Ljava/lang/String;
@@ -134,21 +144,21 @@
     move-result-object v10
 
     .line 71
-    .local v10, pm:Landroid/content/pm/PackageManager;
+    .local v10, "pm":Landroid/content/pm/PackageManager;
     const/4 v7, 0x0
 
     .line 72
-    .local v7, label:I
+    .local v7, "label":I
     const/4 v13, 0x0
 
     .line 74
-    .local v13, settingsActivityComponent:Ljava/lang/String;
+    .local v13, "settingsActivityComponent":Ljava/lang/String;
     const/4 v9, 0x0
 
     .line 76
-    .local v9, parser:Landroid/content/res/XmlResourceParser;
+    .local v9, "parser":Landroid/content/res/XmlResourceParser;
     :try_start_0
-    const-string v18, "android.view.textservice.scs"
+    const-string/jumbo v18, "android.view.textservice.scs"
 
     move-object/from16 v0, v18
 
@@ -157,26 +167,29 @@
     move-result-object v9
 
     .line 77
+    .local v9, "parser":Landroid/content/res/XmlResourceParser;
     if-nez v9, :cond_1
 
     .line 78
     new-instance v18, Lorg/xmlpull/v1/XmlPullParserException;
 
-    const-string v19, "No android.view.textservice.scs meta-data"
+    const-string/jumbo v19, "No android.view.textservice.scs meta-data"
 
     invoke-direct/range {v18 .. v19}, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;)V
 
     throw v18
     :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 124
+    .end local v9    # "parser":Landroid/content/res/XmlResourceParser;
+    .end local v13    # "settingsActivityComponent":Ljava/lang/String;
     :catch_0
     move-exception v6
 
     .line 125
-    .local v6, e:Ljava/lang/Exception;
+    .local v6, "e":Ljava/lang/Exception;
     :try_start_1
     sget-object v18, Landroid/view/textservice/SpellCheckerInfo;->TAG:Ljava/lang/String;
 
@@ -184,7 +197,7 @@
 
     invoke-direct/range {v19 .. v19}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v20, "Caught exception: "
+    const-string/jumbo v20, "Caught exception: "
 
     invoke-virtual/range {v19 .. v20}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -205,11 +218,12 @@
     .line 126
     new-instance v18, Lorg/xmlpull/v1/XmlPullParserException;
 
+    .line 127
     new-instance v19, Ljava/lang/StringBuilder;
 
     invoke-direct/range {v19 .. v19}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v20, "Unable to create context for: "
+    const-string/jumbo v20, "Unable to create context for: "
 
     invoke-virtual/range {v19 .. v20}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -227,25 +241,30 @@
 
     move-result-object v19
 
+    .line 126
     invoke-direct/range {v18 .. v19}, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;)V
 
     throw v18
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 129
-    .end local v6           #e:Ljava/lang/Exception;
+    .line 128
+    .end local v6    # "e":Ljava/lang/Exception;
     :catchall_0
     move-exception v18
 
+    .line 129
     if-eqz v9, :cond_0
 
     invoke-interface {v9}, Landroid/content/res/XmlResourceParser;->close()V
 
+    .line 128
     :cond_0
     throw v18
 
     .line 82
+    .restart local v9    # "parser":Landroid/content/res/XmlResourceParser;
+    .restart local v13    # "settingsActivityComponent":Ljava/lang/String;
     :cond_1
     :try_start_2
     iget-object v0, v14, Landroid/content/pm/ServiceInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
@@ -259,19 +278,19 @@
     move-result-object v11
 
     .line 83
-    .local v11, res:Landroid/content/res/Resources;
+    .local v11, "res":Landroid/content/res/Resources;
     invoke-static {v9}, Landroid/util/Xml;->asAttributeSet(Lorg/xmlpull/v1/XmlPullParser;)Landroid/util/AttributeSet;
 
     move-result-object v4
 
-    .line 86
-    .local v4, attrs:Landroid/util/AttributeSet;
+    .line 85
+    .local v4, "attrs":Landroid/util/AttributeSet;
     :cond_2
     invoke-interface {v9}, Landroid/content/res/XmlResourceParser;->next()I
 
     move-result v17
 
-    .local v17, type:I
+    .local v17, "type":I
     const/16 v18, 0x1
 
     move/from16 v0, v17
@@ -280,6 +299,7 @@
 
     if-eq v0, v1, :cond_3
 
+    .line 86
     const/16 v18, 0x2
 
     move/from16 v0, v17
@@ -295,7 +315,7 @@
     move-result-object v8
 
     .line 90
-    .local v8, nodeName:Ljava/lang/String;
+    .local v8, "nodeName":Ljava/lang/String;
     const-string/jumbo v18, "spell-checker"
 
     move-object/from16 v0, v18
@@ -309,16 +329,19 @@
     .line 91
     new-instance v18, Lorg/xmlpull/v1/XmlPullParserException;
 
-    const-string v19, "Meta-data does not start with spell-checker tag"
+    .line 92
+    const-string/jumbo v19, "Meta-data does not start with spell-checker tag"
 
+    .line 91
     invoke-direct/range {v18 .. v19}, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;)V
 
     throw v18
 
-    .line 95
+    .line 96
     :cond_4
     sget-object v18, Lcom/android/internal/R$styleable;->SpellChecker:[I
 
+    .line 95
     move-object/from16 v0, v18
 
     invoke-virtual {v11, v4, v0}, Landroid/content/res/Resources;->obtainAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
@@ -326,7 +349,7 @@
     move-result-object v12
 
     .line 97
-    .local v12, sa:Landroid/content/res/TypedArray;
+    .local v12, "sa":Landroid/content/res/TypedArray;
     const/16 v18, 0x0
 
     const/16 v19, 0x0
@@ -339,9 +362,10 @@
 
     move-result v7
 
-    .line 98
+    .line 99
     const/16 v18, 0x1
 
+    .line 98
     move/from16 v0, v18
 
     invoke-virtual {v12, v0}, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;
@@ -349,6 +373,7 @@
     move-result-object v13
 
     .line 100
+    .local v13, "settingsActivityComponent":Ljava/lang/String;
     invoke-virtual {v12}, Landroid/content/res/TypedArray;->recycle()V
 
     .line 102
@@ -356,8 +381,8 @@
 
     move-result v5
 
-    .line 105
-    .local v5, depth:I
+    .line 104
+    .local v5, "depth":I
     :cond_5
     :goto_0
     invoke-interface {v9}, Landroid/content/res/XmlResourceParser;->next()I
@@ -380,6 +405,7 @@
 
     if-le v0, v5, :cond_8
 
+    .line 105
     :cond_6
     const/16 v18, 0x1
 
@@ -404,7 +430,7 @@
     move-result-object v16
 
     .line 108
-    .local v16, subtypeNodeName:Ljava/lang/String;
+    .local v16, "subtypeNodeName":Ljava/lang/String;
     const-string/jumbo v18, "subtype"
 
     move-object/from16 v0, v18
@@ -420,16 +446,19 @@
     .line 109
     new-instance v18, Lorg/xmlpull/v1/XmlPullParserException;
 
-    const-string v19, "Meta-data in spell-checker does not start with subtype tag"
+    .line 110
+    const-string/jumbo v19, "Meta-data in spell-checker does not start with subtype tag"
 
+    .line 109
     invoke-direct/range {v18 .. v19}, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;)V
 
     throw v18
 
-    .line 112
+    .line 113
     :cond_7
     sget-object v18, Lcom/android/internal/R$styleable;->SpellChecker_Subtype:[I
 
+    .line 112
     move-object/from16 v0, v18
 
     invoke-virtual {v11, v4, v0}, Landroid/content/res/Resources;->obtainAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
@@ -437,13 +466,16 @@
     move-result-object v3
 
     .line 114
-    .local v3, a:Landroid/content/res/TypedArray;
+    .local v3, "a":Landroid/content/res/TypedArray;
     new-instance v15, Landroid/view/textservice/SpellCheckerSubtype;
 
+    .line 115
     const/16 v18, 0x0
 
+    .line 116
     const/16 v19, 0x0
 
+    .line 115
     move/from16 v0, v18
 
     move/from16 v1, v19
@@ -452,6 +484,7 @@
 
     move-result v18
 
+    .line 117
     const/16 v19, 0x1
 
     move/from16 v0, v19
@@ -460,6 +493,7 @@
 
     move-result-object v19
 
+    .line 119
     const/16 v20, 0x2
 
     move/from16 v0, v20
@@ -468,6 +502,7 @@
 
     move-result-object v20
 
+    .line 114
     move/from16 v0, v18
 
     move-object/from16 v1, v19
@@ -477,7 +512,7 @@
     invoke-direct {v15, v0, v1, v2}, Landroid/view/textservice/SpellCheckerSubtype;-><init>(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 121
-    .local v15, subtype:Landroid/view/textservice/SpellCheckerSubtype;
+    .local v15, "subtype":Landroid/view/textservice/SpellCheckerSubtype;
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/view/textservice/SpellCheckerInfo;->mSubtypes:Ljava/util/ArrayList;
@@ -488,15 +523,15 @@
 
     invoke-virtual {v0, v15}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
     :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
     .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_0
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     goto :goto_0
 
     .line 129
-    .end local v3           #a:Landroid/content/res/TypedArray;
-    .end local v15           #subtype:Landroid/view/textservice/SpellCheckerSubtype;
-    .end local v16           #subtypeNodeName:Ljava/lang/String;
+    .end local v3    # "a":Landroid/content/res/TypedArray;
+    .end local v15    # "subtype":Landroid/view/textservice/SpellCheckerSubtype;
+    .end local v16    # "subtypeNodeName":Ljava/lang/String;
     :cond_8
     if-eqz v9, :cond_9
 
@@ -513,13 +548,13 @@
 
     iput-object v13, v0, Landroid/view/textservice/SpellCheckerInfo;->mSettingsActivityName:Ljava/lang/String;
 
-    .line 133
+    .line 65
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 139
@@ -571,7 +606,7 @@
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->readTypedList(Ljava/util/List;Landroid/os/Parcelable$Creator;)V
 
-    .line 145
+    .line 139
     return-void
 .end method
 
@@ -594,6 +629,7 @@
     .line 159
     new-instance v0, Landroid/content/ComponentName;
 
+    .line 160
     iget-object v1, p0, Landroid/view/textservice/SpellCheckerInfo;->mService:Landroid/content/pm/ResolveInfo;
 
     iget-object v1, v1, Landroid/content/pm/ResolveInfo;->serviceInfo:Landroid/content/pm/ServiceInfo;
@@ -606,6 +642,7 @@
 
     iget-object v2, v2, Landroid/content/pm/ServiceInfo;->name:Ljava/lang/String;
 
+    .line 159
     invoke-direct {v0, v1, v2}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
     return-object v0
@@ -659,7 +696,7 @@
 
 .method public getSubtypeAt(I)Landroid/view/textservice/SpellCheckerSubtype;
     .locals 1
-    .parameter "index"
+    .param p1, "index"    # I
 
     .prologue
     .line 256
@@ -690,7 +727,7 @@
 
 .method public loadIcon(Landroid/content/pm/PackageManager;)Landroid/graphics/drawable/Drawable;
     .locals 1
-    .parameter "pm"
+    .param p1, "pm"    # Landroid/content/pm/PackageManager;
 
     .prologue
     .line 218
@@ -705,7 +742,7 @@
 
 .method public loadLabel(Landroid/content/pm/PackageManager;)Ljava/lang/CharSequence;
     .locals 3
-    .parameter "pm"
+    .param p1, "pm"    # Landroid/content/pm/PackageManager;
 
     .prologue
     .line 208
@@ -716,12 +753,11 @@
     if-nez p1, :cond_1
 
     :cond_0
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
-    .line 209
-    :goto_0
     return-object v0
 
+    .line 209
     :cond_1
     invoke-virtual {p0}, Landroid/view/textservice/SpellCheckerInfo;->getPackageName()Ljava/lang/String;
 
@@ -739,13 +775,13 @@
 
     move-result-object v0
 
-    goto :goto_0
+    return-object v0
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 178
@@ -773,6 +809,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeTypedList(Ljava/util/List;)V
 
-    .line 183
+    .line 177
     return-void
 .end method

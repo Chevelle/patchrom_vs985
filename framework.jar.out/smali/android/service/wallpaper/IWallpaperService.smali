@@ -15,7 +15,7 @@
 
 
 # virtual methods
-.method public abstract attach(Landroid/service/wallpaper/IWallpaperConnection;Landroid/os/IBinder;IZII)V
+.method public abstract attach(Landroid/service/wallpaper/IWallpaperConnection;Landroid/os/IBinder;IZIILandroid/graphics/Rect;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

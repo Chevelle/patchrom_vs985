@@ -37,12 +37,10 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/database/sqlite/SQLiteSession$1;)V
+.method synthetic constructor <init>(Landroid/database/sqlite/SQLiteSession$Transaction;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 956
     invoke-direct {p0}, Landroid/database/sqlite/SQLiteSession$Transaction;-><init>()V
 
     return-void

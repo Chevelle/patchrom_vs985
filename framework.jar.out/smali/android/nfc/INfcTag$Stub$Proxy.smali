@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 275
+    .line 274
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 276
     iput-object p1, p0, Landroid/nfc/INfcTag$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 277
+    .line 274
     return-void
 .end method
 
@@ -51,7 +51,7 @@
 
 .method public canMakeReadOnly(I)Z
     .locals 6
-    .parameter "ndefType"
+    .param p1, "ndefType"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -59,23 +59,21 @@
     .end annotation
 
     .prologue
-    const/4 v2, 0x0
-
     .line 599
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
     .line 600
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 603
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -106,8 +104,8 @@
     const/4 v2, 0x1
 
     .line 610
-    .local v2, _result:Z
-    :cond_0
+    .local v2, "_result":Z
+    :goto_0
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 611
@@ -116,22 +114,32 @@
     .line 613
     return v2
 
-    .line 610
-    .end local v2           #_result:Z
+    .line 607
+    .end local v2    # "_result":Z
+    :cond_0
+    const/4 v2, 0x0
+
+    .restart local v2    # "_result":Z
+    goto :goto_0
+
+    .line 609
+    .end local v2    # "_result":Z
     :catchall_0
     move-exception v3
 
+    .line 610
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 611
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 609
     throw v3
 .end method
 
 .method public close(I)I
     .locals 6
-    .parameter "nativeHandle"
+    .param p1, "nativeHandle"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -145,15 +153,15 @@
     move-result-object v0
 
     .line 289
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 292
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -180,7 +188,7 @@
     move-result v2
 
     .line 299
-    .local v2, _result:I
+    .local v2, "_result":I
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 300
@@ -189,23 +197,25 @@
     .line 302
     return v2
 
-    .line 299
-    .end local v2           #_result:I
+    .line 298
+    .end local v2    # "_result":I
     :catchall_0
     move-exception v3
 
+    .line 299
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 300
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 298
     throw v3
 .end method
 
 .method public connect(II)I
     .locals 6
-    .parameter "nativeHandle"
-    .parameter "technology"
+    .param p1, "nativeHandle"    # I
+    .param p2, "technology"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -219,15 +229,15 @@
     move-result-object v0
 
     .line 307
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 310
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -257,7 +267,7 @@
     move-result v2
 
     .line 318
-    .local v2, _result:I
+    .local v2, "_result":I
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 319
@@ -266,23 +276,25 @@
     .line 321
     return v2
 
-    .line 318
-    .end local v2           #_result:I
+    .line 317
+    .end local v2    # "_result":I
     :catchall_0
     move-exception v3
 
+    .line 318
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 319
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 317
     throw v3
 .end method
 
 .method public formatNdef(I[B)I
     .locals 6
-    .parameter "nativeHandle"
-    .parameter "key"
+    .param p1, "nativeHandle"    # I
+    .param p2, "key"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -296,15 +308,15 @@
     move-result-object v0
 
     .line 507
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 510
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -334,7 +346,7 @@
     move-result v2
 
     .line 518
-    .local v2, _result:I
+    .local v2, "_result":I
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 519
@@ -343,16 +355,18 @@
     .line 521
     return v2
 
-    .line 518
-    .end local v2           #_result:I
+    .line 517
+    .end local v2    # "_result":I
     :catchall_0
     move-exception v3
 
+    .line 518
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 519
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 517
     throw v3
 .end method
 
@@ -365,23 +379,21 @@
     .end annotation
 
     .prologue
-    const/4 v2, 0x0
-
     .line 635
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
     .line 636
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 639
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -409,8 +421,8 @@
     const/4 v2, 0x1
 
     .line 645
-    .local v2, _result:Z
-    :cond_0
+    .local v2, "_result":Z
+    :goto_0
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 646
@@ -419,16 +431,26 @@
     .line 648
     return v2
 
-    .line 645
-    .end local v2           #_result:Z
+    .line 642
+    .end local v2    # "_result":Z
+    :cond_0
+    const/4 v2, 0x0
+
+    .restart local v2    # "_result":Z
+    goto :goto_0
+
+    .line 644
+    .end local v2    # "_result":Z
     :catchall_0
     move-exception v3
 
+    .line 645
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 646
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 644
     throw v3
 .end method
 
@@ -437,14 +459,14 @@
 
     .prologue
     .line 284
-    const-string v0, "android.nfc.INfcTag"
+    const-string/jumbo v0, "android.nfc.INfcTag"
 
     return-object v0
 .end method
 
 .method public getMaxTransceiveLength(I)I
     .locals 6
-    .parameter "technology"
+    .param p1, "technology"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -458,15 +480,15 @@
     move-result-object v0
 
     .line 618
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 621
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -493,7 +515,7 @@
     move-result v2
 
     .line 628
-    .local v2, _result:I
+    .local v2, "_result":I
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 629
@@ -502,22 +524,24 @@
     .line 631
     return v2
 
-    .line 628
-    .end local v2           #_result:I
+    .line 627
+    .end local v2    # "_result":I
     :catchall_0
     move-exception v3
 
+    .line 628
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 629
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 627
     throw v3
 .end method
 
 .method public getTechList(I)[I
     .locals 6
-    .parameter "nativeHandle"
+    .param p1, "nativeHandle"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -531,15 +555,15 @@
     move-result-object v0
 
     .line 344
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 347
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -566,7 +590,7 @@
     move-result-object v2
 
     .line 354
-    .local v2, _result:[I
+    .local v2, "_result":[I
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 355
@@ -575,22 +599,24 @@
     .line 357
     return-object v2
 
-    .line 354
-    .end local v2           #_result:[I
+    .line 353
+    .end local v2    # "_result":[I
     :catchall_0
     move-exception v3
 
+    .line 354
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 355
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 353
     throw v3
 .end method
 
 .method public getTimeout(I)I
     .locals 6
-    .parameter "technology"
+    .param p1, "technology"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -604,15 +630,15 @@
     move-result-object v0
 
     .line 568
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 571
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -639,7 +665,7 @@
     move-result v2
 
     .line 578
-    .local v2, _result:I
+    .local v2, "_result":I
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 579
@@ -648,22 +674,24 @@
     .line 581
     return v2
 
-    .line 578
-    .end local v2           #_result:I
+    .line 577
+    .end local v2    # "_result":I
     :catchall_0
     move-exception v3
 
+    .line 578
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 579
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 577
     throw v3
 .end method
 
 .method public isNdef(I)Z
     .locals 6
-    .parameter "nativeHandle"
+    .param p1, "nativeHandle"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -671,23 +699,21 @@
     .end annotation
 
     .prologue
-    const/4 v2, 0x0
-
     .line 361
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
     .line 362
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 365
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -718,8 +744,8 @@
     const/4 v2, 0x1
 
     .line 372
-    .local v2, _result:Z
-    :cond_0
+    .local v2, "_result":Z
+    :goto_0
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 373
@@ -728,22 +754,32 @@
     .line 375
     return v2
 
-    .line 372
-    .end local v2           #_result:Z
+    .line 369
+    .end local v2    # "_result":Z
+    :cond_0
+    const/4 v2, 0x0
+
+    .restart local v2    # "_result":Z
+    goto :goto_0
+
+    .line 371
+    .end local v2    # "_result":Z
     :catchall_0
     move-exception v3
 
+    .line 372
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 373
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 371
     throw v3
 .end method
 
 .method public isPresent(I)Z
     .locals 6
-    .parameter "nativeHandle"
+    .param p1, "nativeHandle"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -751,23 +787,21 @@
     .end annotation
 
     .prologue
-    const/4 v2, 0x0
-
     .line 379
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
     .line 380
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 383
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -798,8 +832,8 @@
     const/4 v2, 0x1
 
     .line 390
-    .local v2, _result:Z
-    :cond_0
+    .local v2, "_result":Z
+    :goto_0
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 391
@@ -808,22 +842,32 @@
     .line 393
     return v2
 
-    .line 390
-    .end local v2           #_result:Z
+    .line 387
+    .end local v2    # "_result":Z
+    :cond_0
+    const/4 v2, 0x0
+
+    .restart local v2    # "_result":Z
+    goto :goto_0
+
+    .line 389
+    .end local v2    # "_result":Z
     :catchall_0
     move-exception v3
 
+    .line 390
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 391
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 389
     throw v3
 .end method
 
 .method public ndefIsWritable(I)Z
     .locals 6
-    .parameter "nativeHandle"
+    .param p1, "nativeHandle"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -831,23 +875,21 @@
     .end annotation
 
     .prologue
-    const/4 v2, 0x0
-
     .line 488
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
     .line 489
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 492
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -878,8 +920,8 @@
     const/4 v2, 0x1
 
     .line 499
-    .local v2, _result:Z
-    :cond_0
+    .local v2, "_result":Z
+    :goto_0
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 500
@@ -888,22 +930,32 @@
     .line 502
     return v2
 
-    .line 499
-    .end local v2           #_result:Z
+    .line 496
+    .end local v2    # "_result":Z
+    :cond_0
+    const/4 v2, 0x0
+
+    .restart local v2    # "_result":Z
+    goto :goto_0
+
+    .line 498
+    .end local v2    # "_result":Z
     :catchall_0
     move-exception v3
 
+    .line 499
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 500
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 498
     throw v3
 .end method
 
 .method public ndefMakeReadOnly(I)I
     .locals 6
-    .parameter "nativeHandle"
+    .param p1, "nativeHandle"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -917,15 +969,15 @@
     move-result-object v0
 
     .line 471
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 474
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -952,7 +1004,7 @@
     move-result v2
 
     .line 481
-    .local v2, _result:I
+    .local v2, "_result":I
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 482
@@ -961,22 +1013,24 @@
     .line 484
     return v2
 
-    .line 481
-    .end local v2           #_result:I
+    .line 480
+    .end local v2    # "_result":I
     :catchall_0
     move-exception v3
 
+    .line 481
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 482
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 480
     throw v3
 .end method
 
 .method public ndefRead(I)Landroid/nfc/NdefMessage;
     .locals 6
-    .parameter "nativeHandle"
+    .param p1, "nativeHandle"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -990,15 +1044,15 @@
     move-result-object v0
 
     .line 423
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 426
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -1036,7 +1090,6 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 438
-    .local v2, _result:Landroid/nfc/NdefMessage;
     :goto_0
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
@@ -1047,30 +1100,31 @@
     return-object v2
 
     .line 434
-    .end local v2           #_result:Landroid/nfc/NdefMessage;
     :cond_0
     const/4 v2, 0x0
 
-    .restart local v2       #_result:Landroid/nfc/NdefMessage;
+    .local v2, "_result":Landroid/nfc/NdefMessage;
     goto :goto_0
 
-    .line 438
-    .end local v2           #_result:Landroid/nfc/NdefMessage;
+    .line 437
+    .end local v2    # "_result":Landroid/nfc/NdefMessage;
     :catchall_0
     move-exception v3
 
+    .line 438
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 439
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 437
     throw v3
 .end method
 
 .method public ndefWrite(ILandroid/nfc/NdefMessage;)I
     .locals 6
-    .parameter "nativeHandle"
-    .parameter "msg"
+    .param p1, "nativeHandle"    # I
+    .param p2, "msg"    # Landroid/nfc/NdefMessage;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -1084,15 +1138,15 @@
     move-result-object v0
 
     .line 446
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 449
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -1133,7 +1187,7 @@
     move-result v2
 
     .line 463
-    .local v2, _result:I
+    .local v2, "_result":I
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 464
@@ -1143,7 +1197,7 @@
     return v2
 
     .line 456
-    .end local v2           #_result:I
+    .end local v2    # "_result":I
     :cond_0
     const/4 v3, 0x0
 
@@ -1154,21 +1208,23 @@
 
     goto :goto_0
 
-    .line 463
+    .line 462
     :catchall_0
     move-exception v3
 
+    .line 463
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 464
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 462
     throw v3
 .end method
 
 .method public reconnect(I)I
     .locals 6
-    .parameter "nativeHandle"
+    .param p1, "nativeHandle"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -1182,15 +1238,15 @@
     move-result-object v0
 
     .line 326
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 329
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -1217,7 +1273,7 @@
     move-result v2
 
     .line 336
-    .local v2, _result:I
+    .local v2, "_result":I
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 337
@@ -1226,22 +1282,24 @@
     .line 339
     return v2
 
-    .line 336
-    .end local v2           #_result:I
+    .line 335
+    .end local v2    # "_result":I
     :catchall_0
     move-exception v3
 
+    .line 336
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 337
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 335
     throw v3
 .end method
 
 .method public rediscover(I)Landroid/nfc/Tag;
     .locals 6
-    .parameter "nativehandle"
+    .param p1, "nativehandle"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -1255,15 +1313,15 @@
     move-result-object v0
 
     .line 526
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 529
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -1301,7 +1359,6 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 541
-    .local v2, _result:Landroid/nfc/Tag;
     :goto_0
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
@@ -1312,23 +1369,24 @@
     return-object v2
 
     .line 537
-    .end local v2           #_result:Landroid/nfc/Tag;
     :cond_0
     const/4 v2, 0x0
 
-    .restart local v2       #_result:Landroid/nfc/Tag;
+    .local v2, "_result":Landroid/nfc/Tag;
     goto :goto_0
 
-    .line 541
-    .end local v2           #_result:Landroid/nfc/Tag;
+    .line 540
+    .end local v2    # "_result":Landroid/nfc/Tag;
     :catchall_0
     move-exception v3
 
+    .line 541
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 542
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 540
     throw v3
 .end method
 
@@ -1347,15 +1405,15 @@
     move-result-object v0
 
     .line 586
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 588
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.nfc.INfcTag"
+    const-string/jumbo v2, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -1379,25 +1437,27 @@
     .line 594
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 596
+    .line 583
     return-void
 
-    .line 593
+    .line 592
     :catchall_0
     move-exception v2
 
+    .line 593
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 594
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 592
     throw v2
 .end method
 
 .method public setTimeout(II)I
     .locals 6
-    .parameter "technology"
-    .parameter "timeout"
+    .param p1, "technology"    # I
+    .param p2, "timeout"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -1411,15 +1471,15 @@
     move-result-object v0
 
     .line 549
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 552
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v3, "android.nfc.INfcTag"
+    const-string/jumbo v3, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -1449,7 +1509,7 @@
     move-result v2
 
     .line 560
-    .local v2, _result:I
+    .local v2, "_result":I
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 561
@@ -1458,24 +1518,26 @@
     .line 563
     return v2
 
-    .line 560
-    .end local v2           #_result:I
+    .line 559
+    .end local v2    # "_result":I
     :catchall_0
     move-exception v3
 
+    .line 560
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 561
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 559
     throw v3
 .end method
 
 .method public transceive(I[BZ)Landroid/nfc/TransceiveResult;
     .locals 6
-    .parameter "nativeHandle"
-    .parameter "data"
-    .parameter "raw"
+    .param p1, "nativeHandle"    # I
+    .param p2, "data"    # [B
+    .param p3, "raw"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -1491,15 +1553,15 @@
     move-result-object v0
 
     .line 398
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 401
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v4, "android.nfc.INfcTag"
+    const-string/jumbo v4, "android.nfc.INfcTag"
 
     invoke-virtual {v0, v4}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -1548,7 +1610,6 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 415
-    .local v2, _result:Landroid/nfc/TransceiveResult;
     :goto_0
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
@@ -1559,22 +1620,23 @@
     return-object v2
 
     .line 411
-    .end local v2           #_result:Landroid/nfc/TransceiveResult;
     :cond_1
     const/4 v2, 0x0
 
-    .restart local v2       #_result:Landroid/nfc/TransceiveResult;
+    .local v2, "_result":Landroid/nfc/TransceiveResult;
     goto :goto_0
 
-    .line 415
-    .end local v2           #_result:Landroid/nfc/TransceiveResult;
+    .line 414
+    .end local v2    # "_result":Landroid/nfc/TransceiveResult;
     :catchall_0
     move-exception v3
 
+    .line 415
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 416
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 414
     throw v3
 .end method

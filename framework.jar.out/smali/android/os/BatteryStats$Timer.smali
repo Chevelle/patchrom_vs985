@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 196
+    .line 276
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -28,6 +28,9 @@
 
 # virtual methods
 .method public abstract getCountLocked(I)I
+.end method
+
+.method public abstract getTimeSinceMarkLocked(J)J
 .end method
 
 .method public abstract getTotalTimeLocked(JI)J

@@ -24,11 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/accounts/AccountManager$Future2Task;)V
     .locals 0
-    .parameter
 
     .prologue
-    .line 1646
-    .local p0, this:Landroid/accounts/AccountManager$Future2Task$1;,"Landroid/accounts/AccountManager$Future2Task.1;"
+    .line 2070
+    .local p1, "this$1":Landroid/accounts/AccountManager$Future2Task;, "Landroid/accounts/AccountManager$Future2Task<TT;>;"
     iput-object p1, p0, Landroid/accounts/AccountManager$Future2Task$1;->this$1:Landroid/accounts/AccountManager$Future2Task;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -42,8 +41,7 @@
     .locals 2
 
     .prologue
-    .line 1648
-    .local p0, this:Landroid/accounts/AccountManager$Future2Task$1;,"Landroid/accounts/AccountManager$Future2Task.1;"
+    .line 2072
     iget-object v0, p0, Landroid/accounts/AccountManager$Future2Task$1;->this$1:Landroid/accounts/AccountManager$Future2Task;
 
     iget-object v0, v0, Landroid/accounts/AccountManager$Future2Task;->mCallback:Landroid/accounts/AccountManagerCallback;
@@ -52,6 +50,6 @@
 
     invoke-interface {v0, v1}, Landroid/accounts/AccountManagerCallback;->run(Landroid/accounts/AccountManagerFuture;)V
 
-    .line 1649
+    .line 2071
     return-void
 .end method

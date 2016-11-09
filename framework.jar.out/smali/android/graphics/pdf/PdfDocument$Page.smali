@@ -21,10 +21,18 @@
 
 
 # direct methods
+.method static synthetic -wrap0(Landroid/graphics/pdf/PdfDocument$Page;)V
+    .locals 0
+
+    invoke-direct {p0}, Landroid/graphics/pdf/PdfDocument$Page;->finish()V
+
+    return-void
+.end method
+
 .method private constructor <init>(Landroid/graphics/Canvas;Landroid/graphics/pdf/PdfDocument$PageInfo;)V
     .locals 0
-    .parameter "canvas"
-    .parameter "pageInfo"
+    .param p1, "canvas"    # Landroid/graphics/Canvas;
+    .param p2, "pageInfo"    # Landroid/graphics/pdf/PdfDocument$PageInfo;
 
     .prologue
     .line 393
@@ -36,38 +44,27 @@
     .line 395
     iput-object p2, p0, Landroid/graphics/pdf/PdfDocument$Page;->mPageInfo:Landroid/graphics/pdf/PdfDocument$PageInfo;
 
-    .line 396
+    .line 393
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/graphics/Canvas;Landroid/graphics/pdf/PdfDocument$PageInfo;Landroid/graphics/pdf/PdfDocument$1;)V
+.method synthetic constructor <init>(Landroid/graphics/Canvas;Landroid/graphics/pdf/PdfDocument$PageInfo;Landroid/graphics/pdf/PdfDocument$Page;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
+    .param p1, "canvas"    # Landroid/graphics/Canvas;
+    .param p2, "pageInfo"    # Landroid/graphics/pdf/PdfDocument$PageInfo;
 
     .prologue
-    .line 383
     invoke-direct {p0, p1, p2}, Landroid/graphics/pdf/PdfDocument$Page;-><init>(Landroid/graphics/Canvas;Landroid/graphics/pdf/PdfDocument$PageInfo;)V
 
     return-void
 .end method
 
-.method static synthetic access$400(Landroid/graphics/pdf/PdfDocument$Page;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 383
-    invoke-direct {p0}, Landroid/graphics/pdf/PdfDocument$Page;->finish()V
-
-    return-void
-.end method
-
 .method private finish()V
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v1, 0x0
+
     .line 450
     iget-object v0, p0, Landroid/graphics/pdf/PdfDocument$Page;->mCanvas:Landroid/graphics/Canvas;
 
@@ -79,11 +76,9 @@
     invoke-virtual {v0}, Landroid/graphics/Canvas;->release()V
 
     .line 452
-    const/4 v0, 0x0
+    iput-object v1, p0, Landroid/graphics/pdf/PdfDocument$Page;->mCanvas:Landroid/graphics/Canvas;
 
-    iput-object v0, p0, Landroid/graphics/pdf/PdfDocument$Page;->mCanvas:Landroid/graphics/Canvas;
-
-    .line 454
+    .line 449
     :cond_0
     return-void
 .end method

@@ -3,38 +3,26 @@
 .source "PaintFlagsDrawFilter.java"
 
 
-# instance fields
-.field public final clearBits:I
-
-.field public final setBits:I
-
-
 # direct methods
 .method public constructor <init>(II)V
-    .locals 1
-    .parameter "clearBits"
-    .parameter "setBits"
+    .locals 2
+    .param p1, "clearBits"    # I
+    .param p2, "setBits"    # I
 
     .prologue
-    .line 33
+    .line 28
     invoke-direct {p0}, Landroid/graphics/DrawFilter;-><init>()V
 
-    .line 34
-    iput p1, p0, Landroid/graphics/PaintFlagsDrawFilter;->clearBits:I
+    .line 31
+    invoke-static {p1, p2}, Landroid/graphics/PaintFlagsDrawFilter;->nativeConstructor(II)J
 
-    .line 35
-    iput p2, p0, Landroid/graphics/PaintFlagsDrawFilter;->setBits:I
+    move-result-wide v0
 
-    .line 38
-    invoke-static {p1, p2}, Landroid/graphics/PaintFlagsDrawFilter;->nativeConstructor(II)I
+    iput-wide v0, p0, Landroid/graphics/PaintFlagsDrawFilter;->mNativeInt:J
 
-    move-result v0
-
-    iput v0, p0, Landroid/graphics/PaintFlagsDrawFilter;->mNativeInt:I
-
-    .line 39
+    .line 28
     return-void
 .end method
 
-.method private static native nativeConstructor(II)I
+.method private static native nativeConstructor(II)J
 .end method

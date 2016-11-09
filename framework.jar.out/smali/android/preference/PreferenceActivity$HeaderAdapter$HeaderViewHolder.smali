@@ -27,18 +27,16 @@
     .locals 0
 
     .prologue
-    .line 255
+    .line 260
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/preference/PreferenceActivity$1;)V
+.method synthetic constructor <init>(Landroid/preference/PreferenceActivity$HeaderAdapter$HeaderViewHolder;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 255
     invoke-direct {p0}, Landroid/preference/PreferenceActivity$HeaderAdapter$HeaderViewHolder;-><init>()V
 
     return-void

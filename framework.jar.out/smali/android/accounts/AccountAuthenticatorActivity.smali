@@ -16,73 +16,76 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 37
+    .line 36
     invoke-direct {p0}, Landroid/app/Activity;-><init>()V
 
-    .line 38
+    .line 37
     iput-object v0, p0, Landroid/accounts/AccountAuthenticatorActivity;->mAccountAuthenticatorResponse:Landroid/accounts/AccountAuthenticatorResponse;
 
-    .line 39
+    .line 38
     iput-object v0, p0, Landroid/accounts/AccountAuthenticatorActivity;->mResultBundle:Landroid/os/Bundle;
 
+    .line 36
     return-void
 .end method
 
 
 # virtual methods
 .method public finish()V
-    .locals 3
+    .locals 4
 
     .prologue
-    .line 71
+    const/4 v3, 0x0
+
+    .line 70
     iget-object v0, p0, Landroid/accounts/AccountAuthenticatorActivity;->mAccountAuthenticatorResponse:Landroid/accounts/AccountAuthenticatorResponse;
 
     if-eqz v0, :cond_0
 
-    .line 73
+    .line 72
     iget-object v0, p0, Landroid/accounts/AccountAuthenticatorActivity;->mResultBundle:Landroid/os/Bundle;
 
     if-eqz v0, :cond_1
 
-    .line 74
+    .line 73
     iget-object v0, p0, Landroid/accounts/AccountAuthenticatorActivity;->mAccountAuthenticatorResponse:Landroid/accounts/AccountAuthenticatorResponse;
 
     iget-object v1, p0, Landroid/accounts/AccountAuthenticatorActivity;->mResultBundle:Landroid/os/Bundle;
 
     invoke-virtual {v0, v1}, Landroid/accounts/AccountAuthenticatorResponse;->onResult(Landroid/os/Bundle;)V
 
-    .line 79
+    .line 78
     :goto_0
-    const/4 v0, 0x0
+    iput-object v3, p0, Landroid/accounts/AccountAuthenticatorActivity;->mAccountAuthenticatorResponse:Landroid/accounts/AccountAuthenticatorResponse;
 
-    iput-object v0, p0, Landroid/accounts/AccountAuthenticatorActivity;->mAccountAuthenticatorResponse:Landroid/accounts/AccountAuthenticatorResponse;
-
-    .line 81
+    .line 80
     :cond_0
     invoke-super {p0}, Landroid/app/Activity;->finish()V
 
-    .line 82
+    .line 69
     return-void
 
-    .line 76
+    .line 75
     :cond_1
     iget-object v0, p0, Landroid/accounts/AccountAuthenticatorActivity;->mAccountAuthenticatorResponse:Landroid/accounts/AccountAuthenticatorResponse;
 
-    const/4 v1, 0x4
+    .line 76
+    const-string/jumbo v1, "canceled"
 
-    const-string v2, "canceled"
+    .line 75
+    const/4 v2, 0x4
 
-    invoke-virtual {v0, v1, v2}, Landroid/accounts/AccountAuthenticatorResponse;->onError(ILjava/lang/String;)V
+    invoke-virtual {v0, v2, v1}, Landroid/accounts/AccountAuthenticatorResponse;->onError(ILjava/lang/String;)V
 
     goto :goto_0
 .end method
 
 .method protected onCreate(Landroid/os/Bundle;)V
     .locals 2
-    .parameter "icicle"
+    .param p1, "icicle"    # Landroid/os/Bundle;
 
     .prologue
-    .line 57
+    .line 56
     invoke-super {p0, p1}, Landroid/app/Activity;->onCreate(Landroid/os/Bundle;)V
 
     .line 59
@@ -90,7 +93,7 @@
 
     move-result-object v0
 
-    const-string v1, "accountAuthenticatorResponse"
+    const-string/jumbo v1, "accountAuthenticatorResponse"
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
 
@@ -98,31 +101,32 @@
 
     check-cast v0, Landroid/accounts/AccountAuthenticatorResponse;
 
+    .line 58
     iput-object v0, p0, Landroid/accounts/AccountAuthenticatorActivity;->mAccountAuthenticatorResponse:Landroid/accounts/AccountAuthenticatorResponse;
 
-    .line 62
+    .line 61
     iget-object v0, p0, Landroid/accounts/AccountAuthenticatorActivity;->mAccountAuthenticatorResponse:Landroid/accounts/AccountAuthenticatorResponse;
 
     if-eqz v0, :cond_0
 
-    .line 63
+    .line 62
     iget-object v0, p0, Landroid/accounts/AccountAuthenticatorActivity;->mAccountAuthenticatorResponse:Landroid/accounts/AccountAuthenticatorResponse;
 
     invoke-virtual {v0}, Landroid/accounts/AccountAuthenticatorResponse;->onRequestContinued()V
 
-    .line 65
+    .line 55
     :cond_0
     return-void
 .end method
 
 .method public final setAccountAuthenticatorResult(Landroid/os/Bundle;)V
     .locals 0
-    .parameter "result"
+    .param p1, "result"    # Landroid/os/Bundle;
 
     .prologue
-    .line 48
+    .line 47
     iput-object p1, p0, Landroid/accounts/AccountAuthenticatorActivity;->mResultBundle:Landroid/os/Bundle;
 
-    .line 49
+    .line 46
     return-void
 .end method

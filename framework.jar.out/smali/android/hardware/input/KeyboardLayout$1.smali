@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 34
+    .line 35
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,25 +42,25 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/hardware/input/KeyboardLayout;
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 36
+    .line 37
     new-instance v0, Landroid/hardware/input/KeyboardLayout;
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p1, v1}, Landroid/hardware/input/KeyboardLayout;-><init>(Landroid/os/Parcel;Landroid/hardware/input/KeyboardLayout$1;)V
+    invoke-direct {v0, p1, v1}, Landroid/hardware/input/KeyboardLayout;-><init>(Landroid/os/Parcel;Landroid/hardware/input/KeyboardLayout;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 34
+    .line 36
     invoke-virtual {p0, p1}, Landroid/hardware/input/KeyboardLayout$1;->createFromParcel(Landroid/os/Parcel;)Landroid/hardware/input/KeyboardLayout;
 
     move-result-object v0
@@ -70,10 +70,10 @@
 
 .method public newArray(I)[Landroid/hardware/input/KeyboardLayout;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 39
+    .line 40
     new-array v0, p1, [Landroid/hardware/input/KeyboardLayout;
 
     return-object v0
@@ -81,10 +81,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 34
+    .line 39
     invoke-virtual {p0, p1}, Landroid/hardware/input/KeyboardLayout$1;->newArray(I)[Landroid/hardware/input/KeyboardLayout;
 
     move-result-object v0

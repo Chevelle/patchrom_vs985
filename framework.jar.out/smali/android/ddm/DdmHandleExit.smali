@@ -15,7 +15,7 @@
 
     .prologue
     .line 30
-    const-string v0, "EXIT"
+    const-string/jumbo v0, "EXIT"
 
     invoke-static {v0}, Landroid/ddm/DdmHandleExit;->type(Ljava/lang/String;)I
 
@@ -30,6 +30,7 @@
 
     sput-object v0, Landroid/ddm/DdmHandleExit;->mInstance:Landroid/ddm/DdmHandleExit;
 
+    .line 28
     return-void
 .end method
 
@@ -54,7 +55,7 @@
 
     invoke-static {v0, v1}, Lorg/apache/harmony/dalvik/ddmc/DdmServer;->registerHandler(ILorg/apache/harmony/dalvik/ddmc/ChunkHandler;)V
 
-    .line 43
+    .line 41
     return-void
 .end method
 
@@ -78,7 +79,7 @@
 
 .method public handleChunk(Lorg/apache/harmony/dalvik/ddmc/Chunk;)Lorg/apache/harmony/dalvik/ddmc/Chunk;
     .locals 3
-    .parameter "request"
+    .param p1, "request"    # Lorg/apache/harmony/dalvik/ddmc/Chunk;
 
     .prologue
     .line 67
@@ -87,13 +88,13 @@
     move-result-object v0
 
     .line 69
-    .local v0, in:Ljava/nio/ByteBuffer;
+    .local v0, "in":Ljava/nio/ByteBuffer;
     invoke-virtual {v0}, Ljava/nio/ByteBuffer;->getInt()I
 
     move-result v1
 
     .line 71
-    .local v1, statusCode:I
+    .local v1, "statusCode":I
     invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
 
     move-result-object v2

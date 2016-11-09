@@ -6,13 +6,13 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 31
+    .line 29
     invoke-direct {p0, p1}, Landroid/filterfw/core/Filter;-><init>(Ljava/lang/String;)V
 
-    .line 32
+    .line 28
     return-void
 .end method
 
@@ -20,15 +20,15 @@
 # virtual methods
 .method public process(Landroid/filterfw/core/FilterContext;)V
     .locals 1
-    .parameter "context"
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
-    .line 41
-    const-string v0, "frame"
+    .line 39
+    const-string/jumbo v0, "frame"
 
     invoke-virtual {p0, v0}, Landroid/filterpacks/base/NullFilter;->pullInput(Ljava/lang/String;)Landroid/filterfw/core/Frame;
 
-    .line 42
+    .line 38
     return-void
 .end method
 
@@ -36,11 +36,11 @@
     .locals 1
 
     .prologue
-    .line 36
-    const-string v0, "frame"
+    .line 34
+    const-string/jumbo v0, "frame"
 
     invoke-virtual {p0, v0}, Landroid/filterpacks/base/NullFilter;->addInputPort(Ljava/lang/String;)V
 
-    .line 37
+    .line 33
     return-void
 .end method

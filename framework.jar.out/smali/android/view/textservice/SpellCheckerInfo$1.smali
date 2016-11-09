@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/view/textservice/SpellCheckerInfo;
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 193
@@ -55,10 +55,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 190
+    .line 192
     invoke-virtual {p0, p1}, Landroid/view/textservice/SpellCheckerInfo$1;->createFromParcel(Landroid/os/Parcel;)Landroid/view/textservice/SpellCheckerInfo;
 
     move-result-object v0
@@ -68,7 +68,7 @@
 
 .method public newArray(I)[Landroid/view/textservice/SpellCheckerInfo;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 198
@@ -79,10 +79,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 190
+    .line 197
     invoke-virtual {p0, p1}, Landroid/view/textservice/SpellCheckerInfo$1;->newArray(I)[Landroid/view/textservice/SpellCheckerInfo;
 
     move-result-object v0

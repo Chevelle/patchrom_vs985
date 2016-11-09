@@ -22,18 +22,23 @@
 
 .field final synthetic val$authTokenLabel:Ljava/lang/String;
 
+.field final synthetic val$authTokenTypeView:Landroid/widget/TextView;
+
 
 # direct methods
-.method constructor <init>(Landroid/accounts/GrantCredentialsPermissionActivity$1;Ljava/lang/String;)V
+.method constructor <init>(Landroid/accounts/GrantCredentialsPermissionActivity$1;Landroid/widget/TextView;Ljava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$1"    # Landroid/accounts/GrantCredentialsPermissionActivity$1;
+    .param p2, "val$authTokenTypeView"    # Landroid/widget/TextView;
+    .param p3, "val$authTokenLabel"    # Ljava/lang/String;
 
     .prologue
-    .line 99
+    .line 97
     iput-object p1, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1$1;->this$1:Landroid/accounts/GrantCredentialsPermissionActivity$1;
 
-    iput-object p2, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1$1;->val$authTokenLabel:Ljava/lang/String;
+    iput-object p2, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1$1;->val$authTokenTypeView:Landroid/widget/TextView;
+
+    iput-object p3, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1$1;->val$authTokenLabel:Ljava/lang/String;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -46,7 +51,7 @@
     .locals 2
 
     .prologue
-    .line 101
+    .line 99
     iget-object v0, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1$1;->this$1:Landroid/accounts/GrantCredentialsPermissionActivity$1;
 
     iget-object v0, v0, Landroid/accounts/GrantCredentialsPermissionActivity$1;->this$0:Landroid/accounts/GrantCredentialsPermissionActivity;
@@ -57,25 +62,21 @@
 
     if-nez v0, :cond_0
 
-    .line 102
-    iget-object v0, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1$1;->this$1:Landroid/accounts/GrantCredentialsPermissionActivity$1;
-
-    iget-object v0, v0, Landroid/accounts/GrantCredentialsPermissionActivity$1;->val$authTokenTypeView:Landroid/widget/TextView;
+    .line 100
+    iget-object v0, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1$1;->val$authTokenTypeView:Landroid/widget/TextView;
 
     iget-object v1, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1$1;->val$authTokenLabel:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 103
-    iget-object v0, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1$1;->this$1:Landroid/accounts/GrantCredentialsPermissionActivity$1;
-
-    iget-object v0, v0, Landroid/accounts/GrantCredentialsPermissionActivity$1;->val$authTokenTypeView:Landroid/widget/TextView;
+    .line 101
+    iget-object v0, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1$1;->val$authTokenTypeView:Landroid/widget/TextView;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setVisibility(I)V
 
-    .line 105
+    .line 98
     :cond_0
     return-void
 .end method

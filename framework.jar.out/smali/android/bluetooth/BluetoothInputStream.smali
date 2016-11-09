@@ -10,7 +10,7 @@
 # direct methods
 .method constructor <init>(Landroid/bluetooth/BluetoothSocket;)V
     .locals 0
-    .parameter "s"
+    .param p1, "s"    # Landroid/bluetooth/BluetoothSocket;
 
     .prologue
     .line 32
@@ -19,7 +19,7 @@
     .line 33
     iput-object p1, p0, Landroid/bluetooth/BluetoothInputStream;->mSocket:Landroid/bluetooth/BluetoothSocket;
 
-    .line 34
+    .line 32
     return-void
 .end method
 
@@ -58,7 +58,7 @@
 
     invoke-virtual {v0}, Landroid/bluetooth/BluetoothSocket;->close()V
 
-    .line 45
+    .line 43
     return-void
 .end method
 
@@ -79,7 +79,7 @@
     new-array v0, v3, [B
 
     .line 60
-    .local v0, b:[B
+    .local v0, "b":[B
     iget-object v2, p0, Landroid/bluetooth/BluetoothInputStream;->mSocket:Landroid/bluetooth/BluetoothSocket;
 
     invoke-virtual {v2, v0, v4, v3}, Landroid/bluetooth/BluetoothSocket;->read([BII)I
@@ -87,7 +87,7 @@
     move-result v1
 
     .line 61
-    .local v1, ret:I
+    .local v1, "ret":I
     if-ne v1, v3, :cond_0
 
     .line 62
@@ -95,21 +95,20 @@
 
     and-int/lit16 v2, v2, 0xff
 
-    .line 64
-    :goto_0
     return v2
 
+    .line 64
     :cond_0
     const/4 v2, -0x1
 
-    goto :goto_0
+    return v2
 .end method
 
 .method public read([BII)I
     .locals 2
-    .parameter "b"
-    .parameter "offset"
-    .parameter "length"
+    .param p1, "b"    # [B
+    .param p2, "offset"    # I
+    .param p3, "length"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -123,7 +122,7 @@
     .line 91
     new-instance v0, Ljava/lang/NullPointerException;
 
-    const-string v1, "byte array is null"
+    const-string/jumbo v1, "byte array is null"
 
     invoke-direct {v0, v1}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
@@ -145,7 +144,7 @@
     :cond_1
     new-instance v0, Ljava/lang/ArrayIndexOutOfBoundsException;
 
-    const-string v1, "invalid offset or length"
+    const-string/jumbo v1, "invalid offset or length"
 
     invoke-direct {v0, v1}, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
 

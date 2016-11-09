@@ -3,6 +3,10 @@
 .source "AccessibilityNodeProvider.java"
 
 
+# static fields
+.field public static final HOST_VIEW_ID:I = -0x1
+
+
 # direct methods
 .method public constructor <init>()V
     .locals 0
@@ -18,10 +22,10 @@
 # virtual methods
 .method public createAccessibilityNodeInfo(I)Landroid/view/accessibility/AccessibilityNodeInfo;
     .locals 1
-    .parameter "virtualViewId"
+    .param p1, "virtualViewId"    # I
 
     .prologue
-    .line 96
+    .line 101
     const/4 v0, 0x0
 
     return-object v0
@@ -29,8 +33,8 @@
 
 .method public findAccessibilityNodeInfosByText(Ljava/lang/String;I)Ljava/util/List;
     .locals 1
-    .parameter "text"
-    .parameter "virtualViewId"
+    .param p1, "text"    # Ljava/lang/String;
+    .param p2, "virtualViewId"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -44,7 +48,7 @@
     .end annotation
 
     .prologue
-    .line 133
+    .line 138
     const/4 v0, 0x0
 
     return-object v0
@@ -52,10 +56,10 @@
 
 .method public findFocus(I)Landroid/view/accessibility/AccessibilityNodeInfo;
     .locals 1
-    .parameter "focus"
+    .param p1, "focus"    # I
 
     .prologue
-    .line 148
+    .line 153
     const/4 v0, 0x0
 
     return-object v0
@@ -63,12 +67,12 @@
 
 .method public performAction(IILandroid/os/Bundle;)Z
     .locals 1
-    .parameter "virtualViewId"
-    .parameter "action"
-    .parameter "arguments"
+    .param p1, "virtualViewId"    # I
+    .param p2, "action"    # I
+    .param p3, "arguments"    # Landroid/os/Bundle;
 
     .prologue
-    .line 114
+    .line 119
     const/4 v0, 0x0
 
     return v0

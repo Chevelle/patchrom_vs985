@@ -38,13 +38,13 @@
 
     iput-boolean v0, p0, Landroid/text/style/EasyEditSpan;->mDeleteEnabled:Z
 
-    .line 67
+    .line 64
     return-void
 .end method
 
 .method public constructor <init>(Landroid/app/PendingIntent;)V
     .locals 1
-    .parameter "pendingIntent"
+    .param p1, "pendingIntent"    # Landroid/app/PendingIntent;
 
     .prologue
     .line 74
@@ -58,13 +58,13 @@
 
     iput-boolean v0, p0, Landroid/text/style/EasyEditSpan;->mDeleteEnabled:Z
 
-    .line 77
+    .line 74
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     const/4 v1, 0x1
@@ -95,7 +95,7 @@
     :goto_0
     iput-boolean v0, p0, Landroid/text/style/EasyEditSpan;->mDeleteEnabled:Z
 
-    .line 85
+    .line 82
     return-void
 
     .line 84
@@ -121,7 +121,7 @@
     .locals 1
 
     .prologue
-    .line 127
+    .line 137
     iget-object v0, p0, Landroid/text/style/EasyEditSpan;->mPendingIntent:Landroid/app/PendingIntent;
 
     return-object v0
@@ -131,7 +131,19 @@
     .locals 1
 
     .prologue
-    .line 100
+    .line 105
+    invoke-virtual {p0}, Landroid/text/style/EasyEditSpan;->getSpanTypeIdInternal()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getSpanTypeIdInternal()I
+    .locals 1
+
+    .prologue
+    .line 110
     const/16 v0, 0x16
 
     return v0
@@ -141,7 +153,7 @@
     .locals 1
 
     .prologue
-    .line 109
+    .line 119
     iget-boolean v0, p0, Landroid/text/style/EasyEditSpan;->mDeleteEnabled:Z
 
     return v0
@@ -149,30 +161,43 @@
 
 .method public setDeleteEnabled(Z)V
     .locals 0
-    .parameter "value"
+    .param p1, "value"    # Z
 
     .prologue
-    .line 118
+    .line 128
     iput-boolean p1, p0, Landroid/text/style/EasyEditSpan;->mDeleteEnabled:Z
 
-    .line 119
+    .line 127
     return-void
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
+    .locals 0
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
+
+    .prologue
+    .line 94
+    invoke-virtual {p0, p1, p2}, Landroid/text/style/EasyEditSpan;->writeToParcelInternal(Landroid/os/Parcel;I)V
+
+    .line 93
+    return-void
+.end method
+
+.method public writeToParcelInternal(Landroid/os/Parcel;I)V
     .locals 2
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     const/4 v0, 0x0
 
-    .line 94
+    .line 99
     iget-object v1, p0, Landroid/text/style/EasyEditSpan;->mPendingIntent:Landroid/app/PendingIntent;
 
     invoke-virtual {p1, v1, v0}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
-    .line 95
+    .line 100
     iget-boolean v1, p0, Landroid/text/style/EasyEditSpan;->mDeleteEnabled:Z
 
     if-eqz v1, :cond_0
@@ -184,6 +209,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByte(B)V
 
-    .line 96
+    .line 98
     return-void
 .end method

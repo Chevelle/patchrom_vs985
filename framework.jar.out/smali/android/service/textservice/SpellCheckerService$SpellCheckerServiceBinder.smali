@@ -30,33 +30,35 @@
 # direct methods
 .method public constructor <init>(Landroid/service/textservice/SpellCheckerService;)V
     .locals 1
-    .parameter "service"
+    .param p1, "service"    # Landroid/service/textservice/SpellCheckerService;
 
     .prologue
-    .line 311
+    .line 310
     invoke-direct {p0}, Lcom/android/internal/textservice/ISpellCheckerService$Stub;-><init>()V
 
-    .line 312
+    .line 311
     new-instance v0, Ljava/lang/ref/WeakReference;
 
     invoke-direct {v0, p1}, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V
 
     iput-object v0, p0, Landroid/service/textservice/SpellCheckerService$SpellCheckerServiceBinder;->mInternalServiceRef:Ljava/lang/ref/WeakReference;
 
-    .line 313
+    .line 310
     return-void
 .end method
 
 
 # virtual methods
 .method public getISpellCheckerSession(Ljava/lang/String;Lcom/android/internal/textservice/ISpellCheckerSessionListener;Landroid/os/Bundle;)Lcom/android/internal/textservice/ISpellCheckerSession;
-    .locals 4
-    .parameter "locale"
-    .parameter "listener"
-    .parameter "bundle"
+    .locals 5
+    .param p1, "locale"    # Ljava/lang/String;
+    .param p2, "listener"    # Lcom/android/internal/textservice/ISpellCheckerSessionListener;
+    .param p3, "bundle"    # Landroid/os/Bundle;
 
     .prologue
-    .line 318
+    const/4 v4, 0x0
+
+    .line 317
     iget-object v3, p0, Landroid/service/textservice/SpellCheckerService$SpellCheckerServiceBinder;->mInternalServiceRef:Ljava/lang/ref/WeakReference;
 
     invoke-virtual {v3}, Ljava/lang/ref/WeakReference;->get()Ljava/lang/Object;
@@ -65,31 +67,28 @@
 
     check-cast v1, Landroid/service/textservice/SpellCheckerService;
 
-    .line 319
-    .local v1, service:Landroid/service/textservice/SpellCheckerService;
+    .line 318
+    .local v1, "service":Landroid/service/textservice/SpellCheckerService;
     if-nez v1, :cond_0
 
-    const/4 v0, 0x0
+    return-object v4
 
-    .line 324
-    :goto_0
-    return-object v0
-
-    .line 320
+    .line 319
     :cond_0
     invoke-virtual {v1}, Landroid/service/textservice/SpellCheckerService;->createSession()Landroid/service/textservice/SpellCheckerService$Session;
 
     move-result-object v2
 
     .line 321
-    .local v2, session:Landroid/service/textservice/SpellCheckerService$Session;
+    .local v2, "session":Landroid/service/textservice/SpellCheckerService$Session;
     new-instance v0, Landroid/service/textservice/SpellCheckerService$InternalISpellCheckerSession;
 
     invoke-direct {v0, p1, p2, p3, v2}, Landroid/service/textservice/SpellCheckerService$InternalISpellCheckerSession;-><init>(Ljava/lang/String;Lcom/android/internal/textservice/ISpellCheckerSessionListener;Landroid/os/Bundle;Landroid/service/textservice/SpellCheckerService$Session;)V
 
-    .line 323
-    .local v0, internalSession:Landroid/service/textservice/SpellCheckerService$InternalISpellCheckerSession;
+    .line 322
+    .local v0, "internalSession":Landroid/service/textservice/SpellCheckerService$InternalISpellCheckerSession;
     invoke-virtual {v2}, Landroid/service/textservice/SpellCheckerService$Session;->onCreate()V
 
-    goto :goto_0
+    .line 323
+    return-object v0
 .end method

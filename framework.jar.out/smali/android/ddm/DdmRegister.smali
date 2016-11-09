@@ -42,6 +42,6 @@
     .line 56
     invoke-static {}, Lorg/apache/harmony/dalvik/ddmc/DdmServer;->registrationComplete()V
 
-    .line 57
+    .line 45
     return-void
 .end method

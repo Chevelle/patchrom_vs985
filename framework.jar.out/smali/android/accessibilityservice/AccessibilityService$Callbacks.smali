@@ -15,6 +15,9 @@
 
 
 # virtual methods
+.method public abstract init(ILandroid/os/IBinder;)V
+.end method
+
 .method public abstract onAccessibilityEvent(Landroid/view/accessibility/AccessibilityEvent;)V
 .end method
 
@@ -28,7 +31,4 @@
 .end method
 
 .method public abstract onServiceConnected()V
-.end method
-
-.method public abstract onSetConnectionId(I)V
 .end method

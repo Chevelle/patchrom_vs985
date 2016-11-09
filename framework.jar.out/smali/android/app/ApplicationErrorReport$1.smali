@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 566
+    .line 591
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,10 +42,10 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/app/ApplicationErrorReport;
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 568
+    .line 593
     new-instance v0, Landroid/app/ApplicationErrorReport;
 
     invoke-direct {v0, p1}, Landroid/app/ApplicationErrorReport;-><init>(Landroid/os/Parcel;)V
@@ -55,10 +55,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 566
+    .line 592
     invoke-virtual {p0, p1}, Landroid/app/ApplicationErrorReport$1;->createFromParcel(Landroid/os/Parcel;)Landroid/app/ApplicationErrorReport;
 
     move-result-object v0
@@ -68,10 +68,10 @@
 
 .method public newArray(I)[Landroid/app/ApplicationErrorReport;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 572
+    .line 597
     new-array v0, p1, [Landroid/app/ApplicationErrorReport;
 
     return-object v0
@@ -79,10 +79,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 566
+    .line 596
     invoke-virtual {p0, p1}, Landroid/app/ApplicationErrorReport$1;->newArray(I)[Landroid/app/ApplicationErrorReport;
 
     move-result-object v0

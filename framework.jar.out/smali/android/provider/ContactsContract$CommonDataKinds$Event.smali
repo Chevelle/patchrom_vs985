@@ -5,6 +5,7 @@
 # interfaces
 .implements Landroid/provider/ContactsContract$DataColumnsWithJoins;
 .implements Landroid/provider/ContactsContract$CommonDataKinds$CommonColumns;
+.implements Landroid/provider/ContactsContract$ContactCounts;
 
 
 # annotations
@@ -35,59 +36,99 @@
     .locals 0
 
     .prologue
-    .line 6497
+    .line 6897
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method public static getTypeResource(Ljava/lang/Integer;)I
+.method public static final getTypeLabel(Landroid/content/res/Resources;ILjava/lang/CharSequence;)Ljava/lang/CharSequence;
     .locals 2
-    .parameter "type"
+    .param p0, "res"    # Landroid/content/res/Resources;
+    .param p1, "type"    # I
+    .param p2, "label"    # Ljava/lang/CharSequence;
 
     .prologue
-    const v0, 0x1040322
+    .line 6936
+    if-nez p1, :cond_0
 
-    .line 6517
-    if-nez p0, :cond_0
-
-    .line 6525
-    :goto_0
-    :pswitch_0
-    return v0
-
-    .line 6520
-    :cond_0
-    invoke-virtual {p0}, Ljava/lang/Integer;->intValue()I
+    invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v1
 
-    packed-switch v1, :pswitch_data_0
+    if-eqz v1, :cond_1
 
-    .line 6525
-    const v0, 0x104031f
+    .line 6939
+    :cond_0
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    goto :goto_0
+    move-result-object v1
 
-    .line 6522
+    invoke-static {v1}, Landroid/provider/ContactsContract$CommonDataKinds$Event;->getTypeResource(Ljava/lang/Integer;)I
+
+    move-result v0
+
+    .line 6940
+    .local v0, "labelRes":I
+    invoke-virtual {p0, v0}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
+
+    move-result-object v1
+
+    return-object v1
+
+    .line 6937
+    .end local v0    # "labelRes":I
+    :cond_1
+    return-object p2
+.end method
+
+.method public static getTypeResource(Ljava/lang/Integer;)I
+    .locals 2
+    .param p0, "type"    # Ljava/lang/Integer;
+
+    .prologue
+    const v1, 0x1040255
+
+    .line 6917
+    if-nez p0, :cond_0
+
+    .line 6918
+    return v1
+
+    .line 6920
+    :cond_0
+    invoke-virtual {p0}, Ljava/lang/Integer;->intValue()I
+
+    move-result v0
+
+    packed-switch v0, :pswitch_data_0
+
+    .line 6925
+    const v0, 0x1040252
+
+    return v0
+
+    .line 6922
+    :pswitch_0
+    const v0, 0x1040254
+
+    return v0
+
+    .line 6923
     :pswitch_1
-    const v0, 0x1040321
+    const v0, 0x1040253
 
-    goto :goto_0
+    return v0
 
-    .line 6523
+    .line 6924
     :pswitch_2
-    const v0, 0x1040320
+    return v1
 
-    goto :goto_0
-
-    .line 6520
-    nop
-
+    .line 6920
     :pswitch_data_0
     .packed-switch 0x1
-        :pswitch_1
         :pswitch_0
         :pswitch_2
+        :pswitch_1
     .end packed-switch
 .end method

@@ -15,7 +15,7 @@
 
 
 # virtual methods
-.method public abstract acquireWakeLock(Landroid/os/IBinder;ILjava/lang/String;Ljava/lang/String;Landroid/os/WorkSource;)V
+.method public abstract acquireWakeLock(Landroid/os/IBinder;ILjava/lang/String;Ljava/lang/String;Landroid/os/WorkSource;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -31,6 +31,14 @@
     .end annotation
 .end method
 
+.method public abstract boostScreenBrightness(J)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract crash(Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -39,7 +47,7 @@
     .end annotation
 .end method
 
-.method public abstract getCurrentButtonBrightnessValue()I
+.method public abstract getCurrentPowerProfile()Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -47,7 +55,7 @@
     .end annotation
 .end method
 
-.method public abstract getCurrentScreenBrightnessValue()I
+.method public abstract goToSleep(JII)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -55,7 +63,7 @@
     .end annotation
 .end method
 
-.method public abstract goToSleep(JI)V
+.method public abstract isDeviceIdleMode()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -63,7 +71,23 @@
     .end annotation
 .end method
 
-.method public abstract isScreenOn()Z
+.method public abstract isInteractive()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isPowerSaveMode()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isScreenBrightnessBoosted()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -87,7 +111,23 @@
     .end annotation
 .end method
 
+.method public abstract powerHint(II)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract reboot(ZLjava/lang/String;Z)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract rebootCustom(ZLjava/lang/String;Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -111,7 +151,7 @@
     .end annotation
 .end method
 
-.method public abstract setButtonBrightness(I)V
+.method public abstract setPowerProfile(Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -119,7 +159,7 @@
     .end annotation
 .end method
 
-.method public abstract setMaximumScreenOffTimeoutFromDeviceAdmin(I)V
+.method public abstract setPowerSaveMode(Z)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -128,6 +168,14 @@
 .end method
 
 .method public abstract setStayOnSetting(I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setTemporaryButtonBrightnessSettingOverride(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -167,7 +215,7 @@
     .end annotation
 .end method
 
-.method public abstract updateWakeLockWorkSource(Landroid/os/IBinder;Landroid/os/WorkSource;)V
+.method public abstract updateWakeLockWorkSource(Landroid/os/IBinder;Landroid/os/WorkSource;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -183,7 +231,7 @@
     .end annotation
 .end method
 
-.method public abstract wakeUp(J)V
+.method public abstract wakeUp(JLjava/lang/String;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

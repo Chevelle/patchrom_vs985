@@ -16,8 +16,8 @@
 # direct methods
 .method public constructor <init>(ILjava/lang/String;)V
     .locals 2
-    .parameter "priority"
-    .parameter "tag"
+    .param p1, "priority"    # I
+    .param p2, "tag"    # Ljava/lang/String;
 
     .prologue
     .line 40
@@ -43,15 +43,15 @@
 
     iput v0, p0, Landroid/util/LogWriter;->mBuffer:I
 
-    .line 44
+    .line 40
     return-void
 .end method
 
 .method public constructor <init>(ILjava/lang/String;I)V
     .locals 2
-    .parameter "priority"
-    .parameter "tag"
-    .parameter "buffer"
+    .param p1, "priority"    # I
+    .param p2, "tag"    # Ljava/lang/String;
+    .param p3, "buffer"    # I
 
     .prologue
     .line 50
@@ -75,14 +75,16 @@
     .line 53
     iput p3, p0, Landroid/util/LogWriter;->mBuffer:I
 
-    .line 54
+    .line 50
     return-void
 .end method
 
 .method private flushBuilder()V
-    .locals 4
+    .locals 5
 
     .prologue
+    const/4 v4, 0x0
+
     .line 77
     iget-object v0, p0, Landroid/util/LogWriter;->mBuilder:Ljava/lang/StringBuilder;
 
@@ -110,17 +112,15 @@
     .line 79
     iget-object v0, p0, Landroid/util/LogWriter;->mBuilder:Ljava/lang/StringBuilder;
 
-    const/4 v1, 0x0
+    iget-object v1, p0, Landroid/util/LogWriter;->mBuilder:Ljava/lang/StringBuilder;
 
-    iget-object v2, p0, Landroid/util/LogWriter;->mBuilder:Ljava/lang/StringBuilder;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->length()I
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->length()I
+    move-result v1
 
-    move-result v2
+    invoke-virtual {v0, v4, v1}, Ljava/lang/StringBuilder;->delete(II)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->delete(II)Ljava/lang/StringBuilder;
-
-    .line 81
+    .line 76
     :cond_0
     return-void
 .end method
@@ -134,7 +134,7 @@
     .line 57
     invoke-direct {p0}, Landroid/util/LogWriter;->flushBuilder()V
 
-    .line 58
+    .line 56
     return-void
 .end method
 
@@ -145,21 +145,21 @@
     .line 61
     invoke-direct {p0}, Landroid/util/LogWriter;->flushBuilder()V
 
-    .line 62
+    .line 60
     return-void
 .end method
 
 .method public write([CII)V
     .locals 3
-    .parameter "buf"
-    .parameter "offset"
-    .parameter "count"
+    .param p1, "buf"    # [C
+    .param p2, "offset"    # I
+    .param p3, "count"    # I
 
     .prologue
     .line 65
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_0
     if-ge v1, p3, :cond_1
 
@@ -169,7 +169,7 @@
     aget-char v0, p1, v2
 
     .line 67
-    .local v0, c:C
+    .local v0, "c":C
     const/16 v2, 0xa
 
     if-ne v0, v2, :cond_0
@@ -191,8 +191,8 @@
 
     goto :goto_1
 
-    .line 74
-    .end local v0           #c:C
+    .line 64
+    .end local v0    # "c":C
     :cond_1
     return-void
 .end method

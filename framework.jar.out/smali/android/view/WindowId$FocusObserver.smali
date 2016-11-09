@@ -15,7 +15,8 @@
 
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/view/WindowId$FocusObserver$H;
+        Landroid/view/WindowId$FocusObserver$H;,
+        Landroid/view/WindowId$FocusObserver$1;
     }
 .end annotation
 
@@ -53,11 +54,12 @@
 
     iput-object v0, p0, Landroid/view/WindowId$FocusObserver;->mIObserver:Landroid/view/IWindowFocusObserver$Stub;
 
-    .line 77
+    .line 78
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
+    .line 77
     iput-object v0, p0, Landroid/view/WindowId$FocusObserver;->mRegistrations:Ljava/util/HashMap;
 
     .line 103
@@ -67,7 +69,7 @@
 
     iput-object v0, p0, Landroid/view/WindowId$FocusObserver;->mHandler:Landroid/os/Handler;
 
-    .line 104
+    .line 102
     return-void
 .end method
 

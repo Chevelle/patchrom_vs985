@@ -49,14 +49,14 @@
 
     iput-object v0, p0, Landroid/filterfw/GraphEnvironment;->mGraphs:Ljava/util/ArrayList;
 
-    .line 88
+    .line 86
     return-void
 .end method
 
 .method public constructor <init>(Landroid/filterfw/core/FrameManager;Landroid/filterfw/io/GraphReader;)V
     .locals 1
-    .parameter "frameManager"
-    .parameter "reader"
+    .param p1, "frameManager"    # Landroid/filterfw/core/FrameManager;
+    .param p2, "reader"    # Landroid/filterfw/io/GraphReader;
 
     .prologue
     .line 100
@@ -72,7 +72,7 @@
     .line 101
     iput-object p2, p0, Landroid/filterfw/GraphEnvironment;->mGraphReader:Landroid/filterfw/io/GraphReader;
 
-    .line 102
+    .line 99
     return-void
 .end method
 
@@ -80,7 +80,7 @@
 # virtual methods
 .method public addGraph(Landroid/filterfw/core/FilterGraph;)I
     .locals 2
-    .parameter "graph"
+    .param p1, "graph"    # Landroid/filterfw/core/FilterGraph;
 
     .prologue
     .line 152
@@ -89,7 +89,7 @@
     invoke-direct {v0, p0, p1}, Landroid/filterfw/GraphEnvironment$GraphHandle;-><init>(Landroid/filterfw/GraphEnvironment;Landroid/filterfw/core/FilterGraph;)V
 
     .line 153
-    .local v0, graphHandle:Landroid/filterfw/GraphEnvironment$GraphHandle;
+    .local v0, "graphHandle":Landroid/filterfw/GraphEnvironment$GraphHandle;
     iget-object v1, p0, Landroid/filterfw/GraphEnvironment;->mGraphs:Ljava/util/ArrayList;
 
     invoke-virtual {v1, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
@@ -108,7 +108,7 @@
 
 .method public varargs addReferences([Ljava/lang/Object;)V
     .locals 1
-    .parameter "references"
+    .param p1, "references"    # [Ljava/lang/Object;
 
     .prologue
     .line 121
@@ -118,13 +118,13 @@
 
     invoke-virtual {v0, p1}, Landroid/filterfw/io/GraphReader;->addReferencesByKeysAndValues([Ljava/lang/Object;)V
 
-    .line 122
+    .line 120
     return-void
 .end method
 
 .method public getGraph(I)Landroid/filterfw/core/FilterGraph;
     .locals 3
-    .parameter "graphId"
+    .param p1, "graphId"    # I
 
     .prologue
     .line 166
@@ -142,11 +142,12 @@
     :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
+    .line 168
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Invalid graph ID "
+    const-string/jumbo v2, "Invalid graph ID "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -156,7 +157,7 @@
 
     move-result-object v1
 
-    const-string v2, " specified in runGraph()!"
+    const-string/jumbo v2, " specified in runGraph()!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -166,6 +167,7 @@
 
     move-result-object v1
 
+    .line 167
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
@@ -212,8 +214,8 @@
 
 .method public getRunner(II)Landroid/filterfw/core/GraphRunner;
     .locals 3
-    .parameter "graphId"
-    .parameter "executionMode"
+    .param p1, "graphId"    # I
+    .param p2, "executionMode"    # I
 
     .prologue
     .line 184
@@ -222,11 +224,12 @@
     .line 192
     new-instance v0, Ljava/lang/RuntimeException;
 
+    .line 193
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Invalid execution mode "
+    const-string/jumbo v2, "Invalid execution mode "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -236,7 +239,7 @@
 
     move-result-object v1
 
-    const-string v2, " specified in getRunner()!"
+    const-string/jumbo v2, " specified in getRunner()!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -246,6 +249,7 @@
 
     move-result-object v1
 
+    .line 192
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
@@ -268,10 +272,9 @@
 
     move-result-object v0
 
-    .line 189
-    :goto_0
     return-object v0
 
+    .line 189
     :pswitch_1
     iget-object v0, p0, Landroid/filterfw/GraphEnvironment;->mGraphs:Ljava/util/ArrayList;
 
@@ -289,7 +292,7 @@
 
     move-result-object v0
 
-    goto :goto_0
+    return-object v0
 
     .line 184
     :pswitch_data_0
@@ -301,15 +304,15 @@
 
 .method public loadGraph(Landroid/content/Context;I)I
     .locals 5
-    .parameter "context"
-    .parameter "resourceId"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "resourceId"    # I
 
     .prologue
     .line 133
     const/4 v1, 0x0
 
     .line 135
-    .local v1, graph:Landroid/filterfw/core/FilterGraph;
+    .local v1, "graph":Landroid/filterfw/core/FilterGraph;
     :try_start_0
     invoke-virtual {p0}, Landroid/filterfw/GraphEnvironment;->getGraphReader()Landroid/filterfw/io/GraphReader;
 
@@ -322,6 +325,7 @@
     move-result-object v1
 
     .line 141
+    .local v1, "graph":Landroid/filterfw/core/FilterGraph;
     invoke-virtual {p0, v1}, Landroid/filterfw/GraphEnvironment;->addGraph(Landroid/filterfw/core/FilterGraph;)I
 
     move-result v2
@@ -329,18 +333,19 @@
     return v2
 
     .line 136
+    .local v1, "graph":Landroid/filterfw/core/FilterGraph;
     :catch_0
     move-exception v0
 
     .line 137
-    .local v0, e:Landroid/filterfw/io/GraphIOException;
+    .local v0, "e":Landroid/filterfw/io/GraphIOException;
     new-instance v2, Ljava/lang/RuntimeException;
 
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "Could not read graph: "
+    const-string/jumbo v4, "Could not read graph: "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

@@ -48,10 +48,10 @@
 
     const/4 v3, 0x0
 
-    .line 39
+    .line 37
     new-instance v0, Landroid/os/SystemService$State;
 
-    const-string v1, "RUNNING"
+    const-string/jumbo v1, "RUNNING"
 
     const-string/jumbo v2, "running"
 
@@ -59,10 +59,10 @@
 
     sput-object v0, Landroid/os/SystemService$State;->RUNNING:Landroid/os/SystemService$State;
 
-    .line 40
+    .line 38
     new-instance v0, Landroid/os/SystemService$State;
 
-    const-string v1, "STOPPING"
+    const-string/jumbo v1, "STOPPING"
 
     const-string/jumbo v2, "stopping"
 
@@ -70,10 +70,10 @@
 
     sput-object v0, Landroid/os/SystemService$State;->STOPPING:Landroid/os/SystemService$State;
 
-    .line 41
+    .line 39
     new-instance v0, Landroid/os/SystemService$State;
 
-    const-string v1, "STOPPED"
+    const-string/jumbo v1, "STOPPED"
 
     const-string/jumbo v2, "stopped"
 
@@ -81,10 +81,10 @@
 
     sput-object v0, Landroid/os/SystemService$State;->STOPPED:Landroid/os/SystemService$State;
 
-    .line 42
+    .line 40
     new-instance v0, Landroid/os/SystemService$State;
 
-    const-string v1, "RESTARTING"
+    const-string/jumbo v1, "RESTARTING"
 
     const-string/jumbo v2, "restarting"
 
@@ -92,7 +92,7 @@
 
     sput-object v0, Landroid/os/SystemService$State;->RESTARTING:Landroid/os/SystemService$State;
 
-    .line 38
+    .line 36
     const/4 v0, 0x4
 
     new-array v0, v0, [Landroid/os/SystemService$State;
@@ -120,38 +120,29 @@
 
 .method private constructor <init>(Ljava/lang/String;ILjava/lang/String;)V
     .locals 1
-    .parameter
-    .parameter
-    .parameter "state"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Ljava/lang/String;",
-            ")V"
-        }
-    .end annotation
+    .param p3, "state"    # Ljava/lang/String;
 
     .prologue
-    .line 44
+    .line 42
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
-    .line 45
-    invoke-static {}, Landroid/os/SystemService;->access$000()Ljava/util/HashMap;
+    .line 43
+    invoke-static {}, Landroid/os/SystemService;->-get1()Ljava/util/HashMap;
 
     move-result-object v0
 
     invoke-virtual {v0, p3, p0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 46
+    .line 42
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/os/SystemService$State;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 38
+    .line 36
     const-class v0, Landroid/os/SystemService$State;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -167,14 +158,8 @@
     .locals 1
 
     .prologue
-    .line 38
+    .line 36
     sget-object v0, Landroid/os/SystemService$State;->$VALUES:[Landroid/os/SystemService$State;
-
-    invoke-virtual {v0}, [Landroid/os/SystemService$State;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/os/SystemService$State;
 
     return-object v0
 .end method

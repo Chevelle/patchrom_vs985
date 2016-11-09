@@ -26,17 +26,28 @@
 
 .field private final mListener:Landroid/media/RemoteDisplay$Listener;
 
-.field private mPtr:I
+.field private final mOpPackageName:Ljava/lang/String;
+
+.field private mPtr:J
 
 
 # direct methods
-.method private constructor <init>(Landroid/media/RemoteDisplay$Listener;Landroid/os/Handler;)V
+.method static synthetic -get0(Landroid/media/RemoteDisplay;)Landroid/media/RemoteDisplay$Listener;
     .locals 1
-    .parameter "listener"
-    .parameter "handler"
+
+    iget-object v0, p0, Landroid/media/RemoteDisplay;->mListener:Landroid/media/RemoteDisplay$Listener;
+
+    return-object v0
+.end method
+
+.method private constructor <init>(Landroid/media/RemoteDisplay$Listener;Landroid/os/Handler;Ljava/lang/String;)V
+    .locals 1
+    .param p1, "listener"    # Landroid/media/RemoteDisplay$Listener;
+    .param p2, "handler"    # Landroid/os/Handler;
+    .param p3, "opPackageName"    # Ljava/lang/String;
 
     .prologue
-    .line 48
+    .line 49
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 37
@@ -46,67 +57,61 @@
 
     iput-object v0, p0, Landroid/media/RemoteDisplay;->mGuard:Ldalvik/system/CloseGuard;
 
-    .line 49
+    .line 50
     iput-object p1, p0, Landroid/media/RemoteDisplay;->mListener:Landroid/media/RemoteDisplay$Listener;
 
-    .line 50
+    .line 51
     iput-object p2, p0, Landroid/media/RemoteDisplay;->mHandler:Landroid/os/Handler;
 
-    .line 51
+    .line 52
+    iput-object p3, p0, Landroid/media/RemoteDisplay;->mOpPackageName:Ljava/lang/String;
+
+    .line 49
     return-void
 .end method
 
-.method static synthetic access$000(Landroid/media/RemoteDisplay;)Landroid/media/RemoteDisplay$Listener;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 29
-    iget-object v0, p0, Landroid/media/RemoteDisplay;->mListener:Landroid/media/RemoteDisplay$Listener;
-
-    return-object v0
-.end method
-
 .method private dispose(Z)V
-    .locals 1
-    .parameter "finalized"
+    .locals 4
+    .param p1, "finalized"    # Z
 
     .prologue
-    .line 101
-    iget v0, p0, Landroid/media/RemoteDisplay;->mPtr:I
+    const-wide/16 v2, 0x0
+
+    .line 104
+    iget-wide v0, p0, Landroid/media/RemoteDisplay;->mPtr:J
+
+    cmp-long v0, v0, v2
 
     if-eqz v0, :cond_1
 
-    .line 102
+    .line 105
     iget-object v0, p0, Landroid/media/RemoteDisplay;->mGuard:Ldalvik/system/CloseGuard;
 
     if-eqz v0, :cond_0
 
-    .line 103
+    .line 106
     if-eqz p1, :cond_2
 
-    .line 104
+    .line 107
     iget-object v0, p0, Landroid/media/RemoteDisplay;->mGuard:Ldalvik/system/CloseGuard;
 
     invoke-virtual {v0}, Ldalvik/system/CloseGuard;->warnIfOpen()V
 
-    .line 110
+    .line 113
     :cond_0
     :goto_0
-    iget v0, p0, Landroid/media/RemoteDisplay;->mPtr:I
+    iget-wide v0, p0, Landroid/media/RemoteDisplay;->mPtr:J
 
-    invoke-direct {p0, v0}, Landroid/media/RemoteDisplay;->nativeDispose(I)V
+    invoke-direct {p0, v0, v1}, Landroid/media/RemoteDisplay;->nativeDispose(J)V
 
-    .line 111
-    const/4 v0, 0x0
+    .line 114
+    iput-wide v2, p0, Landroid/media/RemoteDisplay;->mPtr:J
 
-    iput v0, p0, Landroid/media/RemoteDisplay;->mPtr:I
-
-    .line 113
+    .line 103
     :cond_1
     return-void
 
-    .line 106
+    .line 109
     :cond_2
     iget-object v0, p0, Landroid/media/RemoteDisplay;->mGuard:Ldalvik/system/CloseGuard;
 
@@ -115,87 +120,88 @@
     goto :goto_0
 .end method
 
-.method public static listen(Ljava/lang/String;Landroid/media/RemoteDisplay$Listener;Landroid/os/Handler;)Landroid/media/RemoteDisplay;
+.method public static listen(Ljava/lang/String;Landroid/media/RemoteDisplay$Listener;Landroid/os/Handler;Ljava/lang/String;)Landroid/media/RemoteDisplay;
     .locals 3
-    .parameter "iface"
-    .parameter "listener"
-    .parameter "handler"
+    .param p0, "iface"    # Ljava/lang/String;
+    .param p1, "listener"    # Landroid/media/RemoteDisplay$Listener;
+    .param p2, "handler"    # Landroid/os/Handler;
+    .param p3, "opPackageName"    # Ljava/lang/String;
 
     .prologue
-    .line 70
-    if-nez p0, :cond_0
-
-    .line 71
-    new-instance v1, Ljava/lang/IllegalArgumentException;
-
-    const-string v2, "iface must not be null"
-
-    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw v1
-
     .line 73
-    :cond_0
-    if-nez p1, :cond_1
+    if-nez p0, :cond_0
 
     .line 74
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "listener must not be null"
+    const-string/jumbo v2, "iface must not be null"
 
     invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
     .line 76
-    :cond_1
-    if-nez p2, :cond_2
+    :cond_0
+    if-nez p1, :cond_1
 
     .line 77
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "handler must not be null"
+    const-string/jumbo v2, "listener must not be null"
 
     invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
+    .line 79
+    :cond_1
+    if-nez p2, :cond_2
+
     .line 80
+    new-instance v1, Ljava/lang/IllegalArgumentException;
+
+    const-string/jumbo v2, "handler must not be null"
+
+    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 83
     :cond_2
     new-instance v0, Landroid/media/RemoteDisplay;
 
-    invoke-direct {v0, p1, p2}, Landroid/media/RemoteDisplay;-><init>(Landroid/media/RemoteDisplay$Listener;Landroid/os/Handler;)V
+    invoke-direct {v0, p1, p2, p3}, Landroid/media/RemoteDisplay;-><init>(Landroid/media/RemoteDisplay$Listener;Landroid/os/Handler;Ljava/lang/String;)V
 
-    .line 81
-    .local v0, display:Landroid/media/RemoteDisplay;
+    .line 84
+    .local v0, "display":Landroid/media/RemoteDisplay;
     invoke-direct {v0, p0}, Landroid/media/RemoteDisplay;->startListening(Ljava/lang/String;)V
 
-    .line 82
+    .line 85
     return-object v0
 .end method
 
-.method private native nativeDispose(I)V
+.method private native nativeDispose(J)V
 .end method
 
-.method private native nativeListen(Ljava/lang/String;)I
+.method private native nativeListen(Ljava/lang/String;Ljava/lang/String;)J
 .end method
 
-.method private native nativePause(I)V
+.method private native nativePause(J)V
 .end method
 
-.method private native nativeResume(I)V
+.method private native nativeResume(J)V
 .end method
 
 .method private notifyDisplayConnected(Landroid/view/Surface;IIII)V
     .locals 8
-    .parameter "surface"
-    .parameter "width"
-    .parameter "height"
-    .parameter "flags"
-    .parameter "session"
+    .param p1, "surface"    # Landroid/view/Surface;
+    .param p2, "width"    # I
+    .param p3, "height"    # I
+    .param p4, "flags"    # I
+    .param p5, "session"    # I
 
     .prologue
-    .line 127
+    .line 130
     iget-object v7, p0, Landroid/media/RemoteDisplay;->mHandler:Landroid/os/Handler;
 
     new-instance v0, Landroid/media/RemoteDisplay$1;
@@ -216,7 +222,7 @@
 
     invoke-virtual {v7, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 133
+    .line 129
     return-void
 .end method
 
@@ -224,7 +230,7 @@
     .locals 2
 
     .prologue
-    .line 137
+    .line 140
     iget-object v0, p0, Landroid/media/RemoteDisplay;->mHandler:Landroid/os/Handler;
 
     new-instance v1, Landroid/media/RemoteDisplay$2;
@@ -233,16 +239,16 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 143
+    .line 139
     return-void
 .end method
 
 .method private notifyDisplayError(I)V
     .locals 2
-    .parameter "error"
+    .param p1, "error"    # I
 
     .prologue
-    .line 147
+    .line 150
     iget-object v0, p0, Landroid/media/RemoteDisplay;->mHandler:Landroid/os/Handler;
 
     new-instance v1, Landroid/media/RemoteDisplay$3;
@@ -251,35 +257,41 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 153
+    .line 149
     return-void
 .end method
 
 .method private startListening(Ljava/lang/String;)V
-    .locals 3
-    .parameter "iface"
+    .locals 4
+    .param p1, "iface"    # Ljava/lang/String;
 
     .prologue
-    .line 116
-    invoke-direct {p0, p1}, Landroid/media/RemoteDisplay;->nativeListen(Ljava/lang/String;)I
+    .line 119
+    iget-object v0, p0, Landroid/media/RemoteDisplay;->mOpPackageName:Ljava/lang/String;
 
-    move-result v0
+    invoke-direct {p0, p1, v0}, Landroid/media/RemoteDisplay;->nativeListen(Ljava/lang/String;Ljava/lang/String;)J
 
-    iput v0, p0, Landroid/media/RemoteDisplay;->mPtr:I
+    move-result-wide v0
 
-    .line 117
-    iget v0, p0, Landroid/media/RemoteDisplay;->mPtr:I
+    iput-wide v0, p0, Landroid/media/RemoteDisplay;->mPtr:J
+
+    .line 120
+    iget-wide v0, p0, Landroid/media/RemoteDisplay;->mPtr:J
+
+    const-wide/16 v2, 0x0
+
+    cmp-long v0, v0, v2
 
     if-nez v0, :cond_0
 
-    .line 118
+    .line 121
     new-instance v0, Ljava/lang/IllegalStateException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Could not start listening for remote display connection on \""
+    const-string/jumbo v2, "Could not start listening for remote display connection on \""
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -289,8 +301,10 @@
 
     move-result-object v1
 
-    const-string v2, "\""
+    .line 122
+    const-string/jumbo v2, "\""
 
+    .line 121
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -303,15 +317,15 @@
 
     throw v0
 
-    .line 121
+    .line 124
     :cond_0
     iget-object v0, p0, Landroid/media/RemoteDisplay;->mGuard:Ldalvik/system/CloseGuard;
 
-    const-string v1, "dispose"
+    const-string/jumbo v1, "dispose"
 
     invoke-virtual {v0, v1}, Ldalvik/system/CloseGuard;->open(Ljava/lang/String;)V
 
-    .line 122
+    .line 118
     return-void
 .end method
 
@@ -321,12 +335,12 @@
     .locals 1
 
     .prologue
-    .line 89
+    .line 92
     const/4 v0, 0x0
 
     invoke-direct {p0, v0}, Landroid/media/RemoteDisplay;->dispose(Z)V
 
-    .line 90
+    .line 91
     return-void
 .end method
 
@@ -339,7 +353,7 @@
     .end annotation
 
     .prologue
-    .line 56
+    .line 58
     const/4 v0, 0x1
 
     :try_start_0
@@ -347,43 +361,45 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 58
+    .line 60
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 60
+    .line 56
     return-void
 
-    .line 58
+    .line 59
     :catchall_0
     move-exception v0
 
+    .line 60
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
+    .line 59
     throw v0
 .end method
 
 .method public pause()V
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 93
-    iget v0, p0, Landroid/media/RemoteDisplay;->mPtr:I
+    .line 96
+    iget-wide v0, p0, Landroid/media/RemoteDisplay;->mPtr:J
 
-    invoke-direct {p0, v0}, Landroid/media/RemoteDisplay;->nativePause(I)V
+    invoke-direct {p0, v0, v1}, Landroid/media/RemoteDisplay;->nativePause(J)V
 
-    .line 94
+    .line 95
     return-void
 .end method
 
 .method public resume()V
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 97
-    iget v0, p0, Landroid/media/RemoteDisplay;->mPtr:I
+    .line 100
+    iget-wide v0, p0, Landroid/media/RemoteDisplay;->mPtr:J
 
-    invoke-direct {p0, v0}, Landroid/media/RemoteDisplay;->nativeResume(I)V
+    invoke-direct {p0, v0, v1}, Landroid/media/RemoteDisplay;->nativeResume(J)V
 
-    .line 98
+    .line 99
     return-void
 .end method

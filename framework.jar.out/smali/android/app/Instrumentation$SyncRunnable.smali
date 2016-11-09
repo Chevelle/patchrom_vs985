@@ -26,16 +26,16 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/Runnable;)V
     .locals 0
-    .parameter "target"
+    .param p1, "target"    # Ljava/lang/Runnable;
 
     .prologue
-    .line 1714
+    .line 1892
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1715
+    .line 1893
     iput-object p1, p0, Landroid/app/Instrumentation$SyncRunnable;->mTarget:Ljava/lang/Runnable;
 
-    .line 1716
+    .line 1892
     return-void
 .end method
 
@@ -45,86 +45,83 @@
     .locals 1
 
     .prologue
-    .line 1719
+    .line 1897
     iget-object v0, p0, Landroid/app/Instrumentation$SyncRunnable;->mTarget:Ljava/lang/Runnable;
 
     invoke-interface {v0}, Ljava/lang/Runnable;->run()V
 
-    .line 1720
+    .line 1898
     monitor-enter p0
 
-    .line 1721
+    .line 1899
     const/4 v0, 0x1
 
     :try_start_0
     iput-boolean v0, p0, Landroid/app/Instrumentation$SyncRunnable;->mComplete:Z
 
-    .line 1722
-    invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
+    .line 1900
+    invoke-virtual {p0}, Landroid/app/Instrumentation$SyncRunnable;->notifyAll()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1723
     monitor-exit p0
 
-    .line 1724
+    .line 1896
     return-void
 
-    .line 1723
+    .line 1898
     :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public waitForComplete()V
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 1727
+    .line 1905
     monitor-enter p0
 
-    .line 1728
+    .line 1906
     :goto_0
     :try_start_0
-    iget-boolean v0, p0, Landroid/app/Instrumentation$SyncRunnable;->mComplete:Z
+    iget-boolean v1, p0, Landroid/app/Instrumentation$SyncRunnable;->mComplete:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_0
 
-    .line 1730
+    .line 1908
     :try_start_1
-    invoke-virtual {p0}, Ljava/lang/Object;->wait()V
+    invoke-virtual {p0}, Landroid/app/Instrumentation$SyncRunnable;->wait()V
     :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
     .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .line 1731
+    .line 1909
     :catch_0
     move-exception v0
 
+    .local v0, "e":Ljava/lang/InterruptedException;
     goto :goto_0
 
-    .line 1734
+    .end local v0    # "e":Ljava/lang/InterruptedException;
     :cond_0
-    :try_start_2
     monitor-exit p0
 
-    .line 1735
+    .line 1904
     return-void
 
-    .line 1734
+    .line 1905
     :catchall_0
-    move-exception v0
+    move-exception v1
 
     monitor-exit p0
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    throw v0
+    throw v1
 .end method

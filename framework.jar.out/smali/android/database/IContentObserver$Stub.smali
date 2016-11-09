@@ -34,43 +34,41 @@
     .locals 1
 
     .prologue
-    .line 17
+    .line 16
     invoke-direct {p0}, Landroid/os/Binder;-><init>()V
 
     .line 18
-    const-string v0, "android.database.IContentObserver"
+    const-string/jumbo v0, "android.database.IContentObserver"
 
     invoke-virtual {p0, p0, v0}, Landroid/database/IContentObserver$Stub;->attachInterface(Landroid/os/IInterface;Ljava/lang/String;)V
 
-    .line 19
+    .line 16
     return-void
 .end method
 
 .method public static asInterface(Landroid/os/IBinder;)Landroid/database/IContentObserver;
     .locals 2
-    .parameter "obj"
+    .param p0, "obj"    # Landroid/os/IBinder;
 
     .prologue
+    const/4 v1, 0x0
+
     .line 26
     if-nez p0, :cond_0
 
     .line 27
-    const/4 v0, 0x0
-
-    .line 33
-    :goto_0
-    return-object v0
+    return-object v1
 
     .line 29
     :cond_0
-    const-string v1, "android.database.IContentObserver"
+    const-string/jumbo v1, "android.database.IContentObserver"
 
     invoke-interface {p0, v1}, Landroid/os/IBinder;->queryLocalInterface(Ljava/lang/String;)Landroid/os/IInterface;
 
     move-result-object v0
 
     .line 30
-    .local v0, iin:Landroid/os/IInterface;
+    .local v0, "iin":Landroid/os/IInterface;
     if-eqz v0, :cond_1
 
     instance-of v1, v0, Landroid/database/IContentObserver;
@@ -80,16 +78,17 @@
     .line 31
     check-cast v0, Landroid/database/IContentObserver;
 
-    goto :goto_0
+    .end local v0    # "iin":Landroid/os/IInterface;
+    return-object v0
 
     .line 33
+    .restart local v0    # "iin":Landroid/os/IInterface;
     :cond_1
-    new-instance v0, Landroid/database/IContentObserver$Stub$Proxy;
+    new-instance v1, Landroid/database/IContentObserver$Stub$Proxy;
 
-    .end local v0           #iin:Landroid/os/IInterface;
-    invoke-direct {v0, p0}, Landroid/database/IContentObserver$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
+    invoke-direct {v1, p0}, Landroid/database/IContentObserver$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
 
-    goto :goto_0
+    return-object v1
 .end method
 
 
@@ -103,11 +102,11 @@
 .end method
 
 .method public onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    .locals 4
-    .parameter "code"
-    .parameter "data"
-    .parameter "reply"
-    .parameter "flags"
+    .locals 5
+    .param p1, "code"    # I
+    .param p2, "data"    # Landroid/os/Parcel;
+    .param p3, "reply"    # Landroid/os/Parcel;
+    .param p4, "flags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -115,30 +114,30 @@
     .end annotation
 
     .prologue
-    const/4 v2, 0x1
+    const/4 v4, 0x1
 
     .line 41
     sparse-switch p1, :sswitch_data_0
 
-    .line 64
+    .line 66
     invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    move-result v2
+    move-result v3
 
-    :goto_0
-    return v2
+    return v3
 
     .line 45
     :sswitch_0
-    const-string v3, "android.database.IContentObserver"
+    const-string/jumbo v3, "android.database.IContentObserver"
 
     invoke-virtual {p3, v3}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    goto :goto_0
+    .line 46
+    return v4
 
     .line 50
     :sswitch_1
-    const-string v3, "android.database.IContentObserver"
+    const-string/jumbo v3, "android.database.IContentObserver"
 
     invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
@@ -149,11 +148,11 @@
 
     if-eqz v3, :cond_0
 
-    move v0, v2
+    const/4 v0, 0x1
 
     .line 54
-    .local v0, _arg0:Z
-    :goto_1
+    .local v0, "_arg0":Z
+    :goto_0
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v3
@@ -169,28 +168,34 @@
 
     check-cast v1, Landroid/net/Uri;
 
-    .line 60
-    .local v1, _arg1:Landroid/net/Uri;
-    :goto_2
-    invoke-virtual {p0, v0, v1}, Landroid/database/IContentObserver$Stub;->onChange(ZLandroid/net/Uri;)V
+    .line 61
+    :goto_1
+    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
-    goto :goto_0
+    move-result v2
+
+    .line 62
+    .local v2, "_arg2":I
+    invoke-virtual {p0, v0, v1, v2}, Landroid/database/IContentObserver$Stub;->onChange(ZLandroid/net/Uri;I)V
+
+    .line 63
+    return v4
 
     .line 52
-    .end local v0           #_arg0:Z
-    .end local v1           #_arg1:Landroid/net/Uri;
+    .end local v0    # "_arg0":Z
+    .end local v2    # "_arg2":I
     :cond_0
     const/4 v0, 0x0
 
-    goto :goto_1
+    .restart local v0    # "_arg0":Z
+    goto :goto_0
 
     .line 58
-    .restart local v0       #_arg0:Z
     :cond_1
     const/4 v1, 0x0
 
-    .restart local v1       #_arg1:Landroid/net/Uri;
-    goto :goto_2
+    .local v1, "_arg1":Landroid/net/Uri;
+    goto :goto_1
 
     .line 41
     nop

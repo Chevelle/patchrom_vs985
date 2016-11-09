@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/content/SyncResult$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final ALREADY_IN_PROGRESS:Landroid/content/SyncResult;
 
@@ -62,6 +70,7 @@
 
     sput-object v0, Landroid/content/SyncResult;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 28
     return-void
 .end method
 
@@ -74,13 +83,13 @@
 
     invoke-direct {p0, v0}, Landroid/content/SyncResult;-><init>(Z)V
 
-    .line 120
+    .line 118
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 3
-    .parameter "parcel"
+    .param p1, "parcel"    # Landroid/os/Parcel;
 
     .prologue
     const/4 v1, 0x1
@@ -186,7 +195,7 @@
 
     iput-object v0, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
 
-    .line 148
+    .line 138
     return-void
 
     :cond_0
@@ -232,13 +241,11 @@
     goto :goto_6
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/content/SyncResult$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/content/SyncResult;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "parcel"    # Landroid/os/Parcel;
 
     .prologue
-    .line 28
     invoke-direct {p0, p1}, Landroid/content/SyncResult;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -246,7 +253,7 @@
 
 .method private constructor <init>(Z)V
     .locals 2
-    .parameter "syncAlreadyInProgress"
+    .param p1, "syncAlreadyInProgress"    # Z
 
     .prologue
     const/4 v0, 0x0
@@ -284,7 +291,7 @@
 
     iput-object v0, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
 
-    .line 136
+    .line 127
     return-void
 .end method
 
@@ -304,8 +311,10 @@
     .line 215
     new-instance v0, Ljava/lang/UnsupportedOperationException;
 
+    .line 216
     const-string/jumbo v1, "you are not allowed to clear the ALREADY_IN_PROGRESS SyncStats"
 
+    .line 215
     invoke-direct {v0, v1}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
 
     throw v0
@@ -339,7 +348,7 @@
 
     invoke-virtual {v0}, Landroid/content/SyncStats;->clear()V
 
-    .line 226
+    .line 213
     return-void
 .end method
 
@@ -368,16 +377,11 @@
 
     move-result v0
 
-    if-eqz v0, :cond_1
-
-    :cond_0
-    const/4 v0, 0x1
-
     :goto_0
     return v0
 
-    :cond_1
-    const/4 v0, 0x0
+    :cond_0
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method
@@ -397,14 +401,24 @@
 
     if-gtz v0, :cond_0
 
+    .line 167
     iget-object v0, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
 
     iget-wide v0, v0, Landroid/content/SyncStats;->numConflictDetectedExceptions:J
 
     cmp-long v0, v0, v2
 
-    if-gtz v0, :cond_0
+    if-lez v0, :cond_1
 
+    .line 166
+    :cond_0
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    .line 168
+    :cond_1
     iget-object v0, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
 
     iget-wide v0, v0, Landroid/content/SyncStats;->numAuthExceptions:J
@@ -413,52 +427,46 @@
 
     if-gtz v0, :cond_0
 
+    .line 169
     iget-boolean v0, p0, Landroid/content/SyncResult;->tooManyDeletions:Z
 
+    .line 166
     if-nez v0, :cond_0
 
+    .line 170
     iget-boolean v0, p0, Landroid/content/SyncResult;->tooManyRetries:Z
 
+    .line 166
     if-nez v0, :cond_0
 
+    .line 171
     iget-boolean v0, p0, Landroid/content/SyncResult;->databaseError:Z
-
-    if-eqz v0, :cond_1
-
-    :cond_0
-    const/4 v0, 0x1
-
-    :goto_0
-    return v0
-
-    :cond_1
-    const/4 v0, 0x0
 
     goto :goto_0
 .end method
 
 .method public hasSoftError()Z
-    .locals 4
+    .locals 6
 
     .prologue
-    .line 187
-    iget-boolean v0, p0, Landroid/content/SyncResult;->syncAlreadyInProgress:Z
-
-    if-nez v0, :cond_0
-
-    iget-object v0, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
-
-    iget-wide v0, v0, Landroid/content/SyncStats;->numIoExceptions:J
-
-    const-wide/16 v2, 0x0
-
-    cmp-long v0, v0, v2
-
-    if-lez v0, :cond_1
-
-    :cond_0
     const/4 v0, 0x1
 
+    .line 187
+    iget-boolean v1, p0, Landroid/content/SyncResult;->syncAlreadyInProgress:Z
+
+    if-nez v1, :cond_0
+
+    iget-object v1, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
+
+    iget-wide v2, v1, Landroid/content/SyncStats;->numIoExceptions:J
+
+    const-wide/16 v4, 0x0
+
+    cmp-long v1, v2, v4
+
+    if-lez v1, :cond_1
+
+    :cond_0
     :goto_0
     return v0
 
@@ -469,48 +477,51 @@
 .end method
 
 .method public madeSomeProgress()Z
-    .locals 4
+    .locals 6
 
     .prologue
-    const-wide/16 v2, 0x0
-
-    .line 204
-    iget-object v0, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
-
-    iget-wide v0, v0, Landroid/content/SyncStats;->numDeletes:J
-
-    cmp-long v0, v0, v2
-
-    if-lez v0, :cond_0
-
-    iget-boolean v0, p0, Landroid/content/SyncResult;->tooManyDeletions:Z
-
-    if-eqz v0, :cond_1
-
-    :cond_0
-    iget-object v0, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
-
-    iget-wide v0, v0, Landroid/content/SyncStats;->numInserts:J
-
-    cmp-long v0, v0, v2
-
-    if-gtz v0, :cond_1
-
-    iget-object v0, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
-
-    iget-wide v0, v0, Landroid/content/SyncStats;->numUpdates:J
-
-    cmp-long v0, v0, v2
-
-    if-lez v0, :cond_2
-
-    :cond_1
     const/4 v0, 0x1
 
+    const-wide/16 v4, 0x0
+
+    .line 204
+    iget-object v1, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
+
+    iget-wide v2, v1, Landroid/content/SyncStats;->numDeletes:J
+
+    cmp-long v1, v2, v4
+
+    if-lez v1, :cond_0
+
+    iget-boolean v1, p0, Landroid/content/SyncResult;->tooManyDeletions:Z
+
+    if-eqz v1, :cond_1
+
+    .line 205
+    :cond_0
+    iget-object v1, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
+
+    iget-wide v2, v1, Landroid/content/SyncStats;->numInserts:J
+
+    cmp-long v1, v2, v4
+
+    if-lez v1, :cond_2
+
+    .line 204
+    :cond_1
     :goto_0
     return v0
 
+    .line 206
     :cond_2
+    iget-object v1, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
+
+    iget-wide v2, v1, Landroid/content/SyncStats;->numUpdates:J
+
+    cmp-long v1, v2, v4
+
+    if-gtz v1, :cond_1
+
     const/4 v0, 0x0
 
     goto :goto_0
@@ -528,13 +539,13 @@
     invoke-direct {v0}, Ljava/lang/StringBuffer;-><init>()V
 
     .line 287
-    .local v0, sb:Ljava/lang/StringBuffer;
+    .local v0, "sb":Ljava/lang/StringBuffer;
     iget-boolean v1, p0, Landroid/content/SyncResult;->fullSyncRequested:Z
 
     if-eqz v1, :cond_0
 
     .line 288
-    const-string v1, "f1"
+    const-string/jumbo v1, "f1"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -558,7 +569,7 @@
     if-eqz v1, :cond_2
 
     .line 294
-    const-string v1, "X1"
+    const-string/jumbo v1, "X1"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -566,14 +577,14 @@
     :cond_2
     iget-object v1, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
 
-    iget-wide v1, v1, Landroid/content/SyncStats;->numParseExceptions:J
+    iget-wide v2, v1, Landroid/content/SyncStats;->numParseExceptions:J
 
-    cmp-long v1, v1, v4
+    cmp-long v1, v2, v4
 
     if-lez v1, :cond_3
 
     .line 297
-    const-string v1, "e"
+    const-string/jumbo v1, "e"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -589,14 +600,14 @@
     :cond_3
     iget-object v1, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
 
-    iget-wide v1, v1, Landroid/content/SyncStats;->numConflictDetectedExceptions:J
+    iget-wide v2, v1, Landroid/content/SyncStats;->numConflictDetectedExceptions:J
 
-    cmp-long v1, v1, v4
+    cmp-long v1, v2, v4
 
     if-lez v1, :cond_4
 
     .line 300
-    const-string v1, "c"
+    const-string/jumbo v1, "c"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -612,14 +623,14 @@
     :cond_4
     iget-object v1, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
 
-    iget-wide v1, v1, Landroid/content/SyncStats;->numAuthExceptions:J
+    iget-wide v2, v1, Landroid/content/SyncStats;->numAuthExceptions:J
 
-    cmp-long v1, v1, v4
+    cmp-long v1, v2, v4
 
     if-lez v1, :cond_5
 
     .line 303
-    const-string v1, "a"
+    const-string/jumbo v1, "a"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -638,7 +649,7 @@
     if-eqz v1, :cond_6
 
     .line 306
-    const-string v1, "D1"
+    const-string/jumbo v1, "D1"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -649,7 +660,7 @@
     if-eqz v1, :cond_7
 
     .line 309
-    const-string v1, "R1"
+    const-string/jumbo v1, "R1"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -660,7 +671,7 @@
     if-eqz v1, :cond_8
 
     .line 312
-    const-string v1, "b1"
+    const-string/jumbo v1, "b1"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -684,7 +695,7 @@
     if-eqz v1, :cond_a
 
     .line 318
-    const-string v1, "l1"
+    const-string/jumbo v1, "l1"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -692,14 +703,14 @@
     :cond_a
     iget-object v1, p0, Landroid/content/SyncResult;->stats:Landroid/content/SyncStats;
 
-    iget-wide v1, v1, Landroid/content/SyncStats;->numIoExceptions:J
+    iget-wide v2, v1, Landroid/content/SyncStats;->numIoExceptions:J
 
-    cmp-long v1, v1, v4
+    cmp-long v1, v2, v4
 
     if-lez v1, :cond_b
 
     .line 321
-    const-string v1, "I"
+    const-string/jumbo v1, "I"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -721,7 +732,7 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 5
+    .locals 6
 
     .prologue
     .line 256
@@ -730,8 +741,8 @@
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 257
-    .local v0, sb:Ljava/lang/StringBuilder;
-    const-string v1, "SyncResult:"
+    .local v0, "sb":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "SyncResult:"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -741,7 +752,7 @@
     if-eqz v1, :cond_0
 
     .line 259
-    const-string v1, " syncAlreadyInProgress: "
+    const-string/jumbo v1, " syncAlreadyInProgress: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -757,7 +768,7 @@
 
     if-eqz v1, :cond_1
 
-    const-string v1, " tooManyDeletions: "
+    const-string/jumbo v1, " tooManyDeletions: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -773,7 +784,7 @@
 
     if-eqz v1, :cond_2
 
-    const-string v1, " tooManyRetries: "
+    const-string/jumbo v1, " tooManyRetries: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -789,7 +800,7 @@
 
     if-eqz v1, :cond_3
 
-    const-string v1, " databaseError: "
+    const-string/jumbo v1, " databaseError: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -805,7 +816,7 @@
 
     if-eqz v1, :cond_4
 
-    const-string v1, " fullSyncRequested: "
+    const-string/jumbo v1, " fullSyncRequested: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -822,7 +833,7 @@
     if-eqz v1, :cond_5
 
     .line 266
-    const-string v1, " partialSyncUnavailable: "
+    const-string/jumbo v1, " partialSyncUnavailable: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -838,7 +849,7 @@
 
     if-eqz v1, :cond_6
 
-    const-string v1, " moreRecordsToGet: "
+    const-string/jumbo v1, " moreRecordsToGet: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -850,15 +861,15 @@
 
     .line 269
     :cond_6
-    iget-wide v1, p0, Landroid/content/SyncResult;->delayUntil:J
+    iget-wide v2, p0, Landroid/content/SyncResult;->delayUntil:J
 
-    const-wide/16 v3, 0x0
+    const-wide/16 v4, 0x0
 
-    cmp-long v1, v1, v3
+    cmp-long v1, v2, v4
 
     if-lez v1, :cond_7
 
-    const-string v1, " delayUntil: "
+    const-string/jumbo v1, " delayUntil: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -884,8 +895,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 3
-    .parameter "parcel"
-    .parameter "flags"
+    .param p1, "parcel"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     const/4 v1, 0x1
@@ -970,7 +981,7 @@
 
     invoke-virtual {v0, p1, p2}, Landroid/content/SyncStats;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 252
+    .line 242
     return-void
 
     :cond_0

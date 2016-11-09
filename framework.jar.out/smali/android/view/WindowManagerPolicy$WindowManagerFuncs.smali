@@ -15,6 +15,12 @@
 
 
 # static fields
+.field public static final CAMERA_LENS_COVERED:I = 0x1
+
+.field public static final CAMERA_LENS_COVER_ABSENT:I = -0x1
+
+.field public static final CAMERA_LENS_UNCOVERED:I = 0x0
+
 .field public static final LID_ABSENT:I = -0x1
 
 .field public static final LID_CLOSED:I = 0x0
@@ -23,10 +29,10 @@
 
 
 # virtual methods
-.method public abstract addFakeWindow(Landroid/os/Looper;Landroid/view/InputEventReceiver$Factory;Ljava/lang/String;IIIZZZ)Landroid/view/WindowManagerPolicy$FakeWindow;
+.method public abstract addInputConsumer(Landroid/os/Looper;Landroid/view/InputEventReceiver$Factory;)Landroid/view/WindowManagerPolicy$InputConsumer;
 .end method
 
-.method public abstract addSystemUIVisibilityFlag(I)V
+.method public abstract getCameraLensCoverState()I
 .end method
 
 .method public abstract getLidState()I
@@ -35,10 +41,10 @@
 .method public abstract getWindowManagerLock()Ljava/lang/Object;
 .end method
 
-.method public abstract reboot()V
+.method public abstract reboot(Ljava/lang/String;Z)V
 .end method
 
-.method public abstract rebootSafeMode()V
+.method public abstract rebootCustom(Ljava/lang/String;Z)V
 .end method
 
 .method public abstract rebootSafeMode(Z)V
@@ -48,9 +54,6 @@
 .end method
 
 .method public abstract registerPointerEventListener(Landroid/view/WindowManagerPolicy$PointerEventListener;)V
-.end method
-
-.method public abstract shutdown()V
 .end method
 
 .method public abstract shutdown(Z)V

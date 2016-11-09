@@ -6,8 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/app/FragmentManager$OnBackStackChangedListener;,
-        Landroid/app/FragmentManager$BackStackEntry;
+        Landroid/app/FragmentManager$BackStackEntry;,
+        Landroid/app/FragmentManager$OnBackStackChangedListener;
     }
 .end annotation
 
@@ -21,22 +21,21 @@
     .locals 0
 
     .prologue
-    .line 64
+    .line 71
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 119
     return-void
 .end method
 
 .method public static enableDebugLogging(Z)V
     .locals 0
-    .parameter "enabled"
+    .param p0, "enabled"    # Z
 
     .prologue
-    .line 344
+    .line 351
     sput-boolean p0, Landroid/app/FragmentManagerImpl;->DEBUG:Z
 
-    .line 345
+    .line 350
     return-void
 .end method
 
@@ -73,7 +72,7 @@
     .locals 0
 
     .prologue
-    .line 351
+    .line 358
     return-void
 .end method
 
@@ -86,7 +85,7 @@
     .end annotation
 
     .prologue
-    .line 144
+    .line 151
     invoke-virtual {p0}, Landroid/app/FragmentManager;->beginTransaction()Landroid/app/FragmentTransaction;
 
     move-result-object v0

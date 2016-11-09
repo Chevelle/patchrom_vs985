@@ -4,7 +4,7 @@
 
 
 # static fields
-.field private static final EMAIL_IN_DB_PATTERN:Ljava/util/regex/Pattern; = null
+.field private static final EMAIL_IN_DB_PATTERN:Ljava/util/regex/Pattern;
 
 .field public static final MEMORY_DB_PATH:Ljava/lang/String; = ":memory:"
 
@@ -39,31 +39,34 @@
     .locals 1
 
     .prologue
-    .line 40
-    const-string v0, "[\\w\\.\\-]+@[\\w\\.\\-]+"
+    .line 41
+    const-string/jumbo v0, "[\\w\\.\\-]+@[\\w\\.\\-]+"
 
     invoke-static {v0}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;)Ljava/util/regex/Pattern;
 
     move-result-object v0
 
+    .line 40
     sput-object v0, Landroid/database/sqlite/SQLiteDatabaseConfiguration;->EMAIL_IN_DB_PATTERN:Ljava/util/regex/Pattern;
 
+    .line 37
     return-void
 .end method
 
 .method public constructor <init>(Landroid/database/sqlite/SQLiteDatabaseConfiguration;)V
     .locals 2
-    .parameter "other"
+    .param p1, "other"    # Landroid/database/sqlite/SQLiteDatabaseConfiguration;
 
     .prologue
     .line 118
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 89
+    .line 90
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
+    .line 89
     iput-object v0, p0, Landroid/database/sqlite/SQLiteDatabaseConfiguration;->customFunctions:Ljava/util/ArrayList;
 
     .line 119
@@ -92,24 +95,25 @@
     .line 125
     invoke-virtual {p0, p1}, Landroid/database/sqlite/SQLiteDatabaseConfiguration;->updateParametersFrom(Landroid/database/sqlite/SQLiteDatabaseConfiguration;)V
 
-    .line 126
+    .line 118
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;I)V
     .locals 2
-    .parameter "path"
-    .parameter "openFlags"
+    .param p1, "path"    # Ljava/lang/String;
+    .param p2, "openFlags"    # I
 
     .prologue
     .line 99
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 89
+    .line 90
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
+    .line 89
     iput-object v0, p0, Landroid/database/sqlite/SQLiteDatabaseConfiguration;->customFunctions:Ljava/util/ArrayList;
 
     .line 100
@@ -150,13 +154,13 @@
 
     iput-object v0, p0, Landroid/database/sqlite/SQLiteDatabaseConfiguration;->locale:Ljava/util/Locale;
 
-    .line 111
+    .line 99
     return-void
 .end method
 
 .method private static stripPathForLogs(Ljava/lang/String;)Ljava/lang/String;
     .locals 2
-    .parameter "path"
+    .param p0, "path"    # Ljava/lang/String;
 
     .prologue
     .line 160
@@ -170,12 +174,10 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 163
-    .end local p0
-    :goto_0
+    .line 161
     return-object p0
 
-    .restart local p0
+    .line 163
     :cond_0
     sget-object v0, Landroid/database/sqlite/SQLiteDatabaseConfiguration;->EMAIL_IN_DB_PATTERN:Ljava/util/regex/Pattern;
 
@@ -183,13 +185,13 @@
 
     move-result-object v0
 
-    const-string v1, "XX@YY"
+    const-string/jumbo v1, "XX@YY"
 
     invoke-virtual {v0, v1}, Ljava/util/regex/Matcher;->replaceAll(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object p0
+    move-result-object v0
 
-    goto :goto_0
+    return-object v0
 .end method
 
 
@@ -201,7 +203,7 @@
     .line 156
     iget-object v0, p0, Landroid/database/sqlite/SQLiteDatabaseConfiguration;->path:Ljava/lang/String;
 
-    const-string v1, ":memory:"
+    const-string/jumbo v1, ":memory:"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
@@ -212,7 +214,7 @@
 
 .method public updateParametersFrom(Landroid/database/sqlite/SQLiteDatabaseConfiguration;)V
     .locals 2
-    .parameter "other"
+    .param p1, "other"    # Landroid/database/sqlite/SQLiteDatabaseConfiguration;
 
     .prologue
     .line 135
@@ -281,6 +283,6 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
 
-    .line 149
+    .line 134
     return-void
 .end method

@@ -15,6 +15,14 @@
 
 
 # virtual methods
+.method public abstract getProperty(ILandroid/os/BatteryProperty;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract registerListener(Landroid/os/IBatteryPropertiesListener;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {

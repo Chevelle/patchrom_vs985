@@ -6,8 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/print/PrintDocumentAdapter$LayoutResultCallback;,
-        Landroid/print/PrintDocumentAdapter$WriteResultCallback;
+        Landroid/print/PrintDocumentAdapter$WriteResultCallback;,
+        Landroid/print/PrintDocumentAdapter$LayoutResultCallback;
     }
 .end annotation
 
@@ -24,7 +24,6 @@
     .line 109
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 300
     return-void
 .end method
 
@@ -34,7 +33,7 @@
     .locals 0
 
     .prologue
-    .line 251
+    .line 249
     return-void
 .end method
 
@@ -45,7 +44,7 @@
     .locals 0
 
     .prologue
-    .line 129
+    .line 127
     return-void
 .end method
 

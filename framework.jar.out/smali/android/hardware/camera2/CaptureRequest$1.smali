@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 150
+    .line 419
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,30 +42,30 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/hardware/camera2/CaptureRequest;
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 153
-    new-instance v0, Landroid/hardware/camera2/CaptureRequest;
-
     const/4 v1, 0x0
 
-    invoke-direct {v0, v1}, Landroid/hardware/camera2/CaptureRequest;-><init>(Landroid/hardware/camera2/CaptureRequest$1;)V
+    .line 422
+    new-instance v0, Landroid/hardware/camera2/CaptureRequest;
 
-    .line 154
-    .local v0, request:Landroid/hardware/camera2/CaptureRequest;
-    invoke-virtual {v0, p1}, Landroid/hardware/camera2/CaptureRequest;->readFromParcel(Landroid/os/Parcel;)V
+    invoke-direct {v0, v1, v1}, Landroid/hardware/camera2/CaptureRequest;-><init>(Landroid/hardware/camera2/CaptureRequest;Landroid/hardware/camera2/CaptureRequest;)V
 
-    .line 156
+    .line 423
+    .local v0, "request":Landroid/hardware/camera2/CaptureRequest;
+    invoke-static {v0, p1}, Landroid/hardware/camera2/CaptureRequest;->-wrap0(Landroid/hardware/camera2/CaptureRequest;Landroid/os/Parcel;)V
+
+    .line 425
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 150
+    .line 421
     invoke-virtual {p0, p1}, Landroid/hardware/camera2/CaptureRequest$1;->createFromParcel(Landroid/os/Parcel;)Landroid/hardware/camera2/CaptureRequest;
 
     move-result-object v0
@@ -75,10 +75,10 @@
 
 .method public newArray(I)[Landroid/hardware/camera2/CaptureRequest;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 161
+    .line 430
     new-array v0, p1, [Landroid/hardware/camera2/CaptureRequest;
 
     return-object v0
@@ -86,10 +86,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 150
+    .line 429
     invoke-virtual {p0, p1}, Landroid/hardware/camera2/CaptureRequest$1;->newArray(I)[Landroid/hardware/camera2/CaptureRequest;
 
     move-result-object v0

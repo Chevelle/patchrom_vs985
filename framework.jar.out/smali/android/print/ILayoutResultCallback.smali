@@ -15,6 +15,14 @@
 
 
 # virtual methods
+.method public abstract onLayoutCanceled(I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract onLayoutFailed(Ljava/lang/CharSequence;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -24,6 +32,14 @@
 .end method
 
 .method public abstract onLayoutFinished(Landroid/print/PrintDocumentInfo;ZI)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onLayoutStarted(Landroid/os/ICancellationSignal;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

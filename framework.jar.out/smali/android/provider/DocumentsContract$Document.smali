@@ -41,6 +41,8 @@
 
 .field public static final FLAG_SUPPORTS_DELETE:I = 0x4
 
+.field public static final FLAG_SUPPORTS_RENAME:I = 0x40
+
 .field public static final FLAG_SUPPORTS_THUMBNAIL:I = 0x1
 
 .field public static final FLAG_SUPPORTS_WRITE:I = 0x2
@@ -53,9 +55,8 @@
     .locals 0
 
     .prologue
-    .line 120
+    .line 149
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 121
     return-void
 .end method

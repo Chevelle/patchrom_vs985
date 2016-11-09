@@ -23,8 +23,8 @@
 # direct methods
 .method public constructor <init>(II)V
     .locals 0
-    .parameter "horizontal"
-    .parameter "vertical"
+    .param p1, "horizontal"    # I
+    .param p2, "vertical"    # I
 
     .prologue
     .line 160
@@ -36,6 +36,6 @@
     .line 162
     iput p2, p0, Landroid/media/TimedText$Justification;->verticalJustification:I
 
-    .line 163
+    .line 160
     return-void
 .end method

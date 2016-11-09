@@ -18,13 +18,12 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Landroid/database/Cursor;II)V
     .locals 7
-    .parameter "context"
-    .parameter "cursor"
-    .parameter "groupLayout"
-    .parameter "childLayout"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "cursor"    # Landroid/database/Cursor;
+    .param p3, "groupLayout"    # I
+    .param p4, "childLayout"    # I
 
     .prologue
-    .line 94
     move-object v0, p0
 
     move-object v1, p1
@@ -39,22 +38,22 @@
 
     move v6, p4
 
+    .line 94
     invoke-direct/range {v0 .. v6}, Landroid/widget/ResourceCursorTreeAdapter;-><init>(Landroid/content/Context;Landroid/database/Cursor;IIII)V
 
-    .line 95
+    .line 93
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/database/Cursor;III)V
     .locals 7
-    .parameter "context"
-    .parameter "cursor"
-    .parameter "collapsedGroupLayout"
-    .parameter "expandedGroupLayout"
-    .parameter "childLayout"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "cursor"    # Landroid/database/Cursor;
+    .param p3, "collapsedGroupLayout"    # I
+    .param p4, "expandedGroupLayout"    # I
+    .param p5, "childLayout"    # I
 
     .prologue
-    .line 78
     move-object v0, p0
 
     move-object v1, p1
@@ -69,20 +68,21 @@
 
     move v6, p5
 
+    .line 78
     invoke-direct/range {v0 .. v6}, Landroid/widget/ResourceCursorTreeAdapter;-><init>(Landroid/content/Context;Landroid/database/Cursor;IIII)V
 
-    .line 79
+    .line 77
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/database/Cursor;IIII)V
     .locals 1
-    .parameter "context"
-    .parameter "cursor"
-    .parameter "collapsedGroupLayout"
-    .parameter "expandedGroupLayout"
-    .parameter "childLayout"
-    .parameter "lastChildLayout"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "cursor"    # Landroid/database/Cursor;
+    .param p3, "collapsedGroupLayout"    # I
+    .param p4, "expandedGroupLayout"    # I
+    .param p5, "childLayout"    # I
+    .param p6, "lastChildLayout"    # I
 
     .prologue
     .line 53
@@ -101,7 +101,7 @@
     iput p6, p0, Landroid/widget/ResourceCursorTreeAdapter;->mLastChildLayout:I
 
     .line 60
-    const-string v0, "layout_inflater"
+    const-string/jumbo v0, "layout_inflater"
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
@@ -111,7 +111,7 @@
 
     iput-object v0, p0, Landroid/widget/ResourceCursorTreeAdapter;->mInflater:Landroid/view/LayoutInflater;
 
-    .line 61
+    .line 52
     return-void
 .end method
 
@@ -119,10 +119,10 @@
 # virtual methods
 .method public newChildView(Landroid/content/Context;Landroid/database/Cursor;ZLandroid/view/ViewGroup;)Landroid/view/View;
     .locals 3
-    .parameter "context"
-    .parameter "cursor"
-    .parameter "isLastChild"
-    .parameter "parent"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "cursor"    # Landroid/database/Cursor;
+    .param p3, "isLastChild"    # Z
+    .param p4, "parent"    # Landroid/view/ViewGroup;
 
     .prologue
     .line 100
@@ -149,10 +149,10 @@
 
 .method public newGroupView(Landroid/content/Context;Landroid/database/Cursor;ZLandroid/view/ViewGroup;)Landroid/view/View;
     .locals 3
-    .parameter "context"
-    .parameter "cursor"
-    .parameter "isExpanded"
-    .parameter "parent"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "cursor"    # Landroid/database/Cursor;
+    .param p3, "isExpanded"    # Z
+    .param p4, "parent"    # Landroid/view/ViewGroup;
 
     .prologue
     .line 105
@@ -162,9 +162,11 @@
 
     iget v0, p0, Landroid/widget/ResourceCursorTreeAdapter;->mExpandedGroupLayout:I
 
+    .line 106
     :goto_0
     const/4 v2, 0x0
 
+    .line 105
     invoke-virtual {v1, v0, p4, v2}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
     move-result-object v0

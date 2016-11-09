@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/content/pm/ServiceInfo$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -36,13 +44,15 @@
     .locals 1
 
     .prologue
-    .line 98
+    .line 99
     new-instance v0, Landroid/content/pm/ServiceInfo$1;
 
     invoke-direct {v0}, Landroid/content/pm/ServiceInfo$1;-><init>()V
 
+    .line 98
     sput-object v0, Landroid/content/pm/ServiceInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 28
     return-void
 .end method
 
@@ -53,13 +63,12 @@
     .line 67
     invoke-direct {p0}, Landroid/content/pm/ComponentInfo;-><init>()V
 
-    .line 68
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/pm/ServiceInfo;)V
     .locals 1
-    .parameter "orig"
+    .param p1, "orig"    # Landroid/content/pm/ServiceInfo;
 
     .prologue
     .line 71
@@ -75,13 +84,13 @@
 
     iput v0, p0, Landroid/content/pm/ServiceInfo;->flags:I
 
-    .line 74
+    .line 70
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 109
@@ -101,17 +110,15 @@
 
     iput v0, p0, Landroid/content/pm/ServiceInfo;->flags:I
 
-    .line 112
+    .line 108
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/content/pm/ServiceInfo$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/content/pm/ServiceInfo;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 28
     invoke-direct {p0, p1}, Landroid/content/pm/ServiceInfo;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -131,8 +138,8 @@
 
 .method public dump(Landroid/util/Printer;Ljava/lang/String;)V
     .locals 2
-    .parameter "pw"
-    .parameter "prefix"
+    .param p1, "pw"    # Landroid/util/Printer;
+    .param p2, "prefix"    # Ljava/lang/String;
 
     .prologue
     .line 77
@@ -174,7 +181,7 @@
 
     move-result-object v0
 
-    const-string v1, "flags=0x"
+    const-string/jumbo v1, "flags=0x"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -196,7 +203,7 @@
 
     invoke-interface {p1, v0}, Landroid/util/Printer;->println(Ljava/lang/String;)V
 
-    .line 80
+    .line 76
     return-void
 .end method
 
@@ -209,12 +216,13 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "ServiceInfo{"
+    const-string/jumbo v1, "ServiceInfo{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 84
     invoke-static {p0}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     move-result v1
@@ -223,24 +231,31 @@
 
     move-result-object v1
 
+    .line 83
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " "
+    .line 85
+    const-string/jumbo v1, " "
 
+    .line 83
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 85
     iget-object v1, p0, Landroid/content/pm/ServiceInfo;->name:Ljava/lang/String;
 
+    .line 83
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 85
     const-string/jumbo v1, "}"
 
+    .line 83
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -254,8 +269,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "parcelableFlags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "parcelableFlags"    # I
 
     .prologue
     .line 93
@@ -271,6 +286,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 96
+    .line 92
     return-void
 .end method

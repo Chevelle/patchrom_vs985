@@ -47,14 +47,6 @@
     .end annotation
 .end method
 
-.method public abstract dispatchScreenState(Z)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
 .method public abstract dispatchSystemUiVisibilityChanged(IIII)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -79,7 +71,7 @@
     .end annotation
 .end method
 
-.method public abstract doneAnimating()V
+.method public abstract dispatchWindowShown()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -103,7 +95,23 @@
     .end annotation
 .end method
 
-.method public abstract resized(Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;ZLandroid/content/res/Configuration;)V
+.method public abstract onAnimationStarted(I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onAnimationStopped()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract resized(Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;ZLandroid/content/res/Configuration;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

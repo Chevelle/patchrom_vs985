@@ -55,9 +55,9 @@
     .line 131
     new-instance v0, Landroid/util/Xml$Encoding;
 
-    const-string v1, "US_ASCII"
+    const-string/jumbo v1, "US_ASCII"
 
-    const-string v2, "US-ASCII"
+    const-string/jumbo v2, "US-ASCII"
 
     invoke-direct {v0, v1, v3, v2}, Landroid/util/Xml$Encoding;-><init>(Ljava/lang/String;ILjava/lang/String;)V
 
@@ -66,9 +66,9 @@
     .line 132
     new-instance v0, Landroid/util/Xml$Encoding;
 
-    const-string v1, "UTF_8"
+    const-string/jumbo v1, "UTF_8"
 
-    const-string v2, "UTF-8"
+    const-string/jumbo v2, "UTF-8"
 
     invoke-direct {v0, v1, v4, v2}, Landroid/util/Xml$Encoding;-><init>(Ljava/lang/String;ILjava/lang/String;)V
 
@@ -77,9 +77,9 @@
     .line 133
     new-instance v0, Landroid/util/Xml$Encoding;
 
-    const-string v1, "UTF_16"
+    const-string/jumbo v1, "UTF_16"
 
-    const-string v2, "UTF-16"
+    const-string/jumbo v2, "UTF-16"
 
     invoke-direct {v0, v1, v5, v2}, Landroid/util/Xml$Encoding;-><init>(Ljava/lang/String;ILjava/lang/String;)V
 
@@ -88,9 +88,9 @@
     .line 134
     new-instance v0, Landroid/util/Xml$Encoding;
 
-    const-string v1, "ISO_8859_1"
+    const-string/jumbo v1, "ISO_8859_1"
 
-    const-string v2, "ISO-8859-1"
+    const-string/jumbo v2, "ISO-8859-1"
 
     invoke-direct {v0, v1, v6, v2}, Landroid/util/Xml$Encoding;-><init>(Ljava/lang/String;ILjava/lang/String;)V
 
@@ -124,16 +124,7 @@
 
 .method private constructor <init>(Ljava/lang/String;ILjava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "expatName"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Ljava/lang/String;",
-            ")V"
-        }
-    .end annotation
+    .param p3, "expatName"    # Ljava/lang/String;
 
     .prologue
     .line 138
@@ -142,13 +133,13 @@
     .line 139
     iput-object p3, p0, Landroid/util/Xml$Encoding;->expatName:Ljava/lang/String;
 
-    .line 140
+    .line 138
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/util/Xml$Encoding;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 129
@@ -169,12 +160,6 @@
     .prologue
     .line 129
     sget-object v0, Landroid/util/Xml$Encoding;->$VALUES:[Landroid/util/Xml$Encoding;
-
-    invoke-virtual {v0}, [Landroid/util/Xml$Encoding;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/util/Xml$Encoding;
 
     return-object v0
 .end method

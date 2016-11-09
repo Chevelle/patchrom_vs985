@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/view/textservice/SuggestionsInfo$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -18,7 +26,7 @@
     .end annotation
 .end field
 
-.field private static final EMPTY:[Ljava/lang/String; = null
+.field private static final EMPTY:[Ljava/lang/String;
 
 .field public static final RESULT_ATTR_HAS_RECOMMENDED_SUGGESTIONS:I = 0x4
 
@@ -55,20 +63,22 @@
 
     sput-object v0, Landroid/view/textservice/SuggestionsInfo;->EMPTY:[Ljava/lang/String;
 
-    .line 165
+    .line 166
     new-instance v0, Landroid/view/textservice/SuggestionsInfo$1;
 
     invoke-direct {v0}, Landroid/view/textservice/SuggestionsInfo$1;-><init>()V
 
+    .line 165
     sput-object v0, Landroid/view/textservice/SuggestionsInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 27
     return-void
 .end method
 
 .method public constructor <init>(I[Ljava/lang/String;)V
     .locals 1
-    .parameter "suggestionsAttributes"
-    .parameter "suggestions"
+    .param p1, "suggestionsAttributes"    # I
+    .param p2, "suggestions"    # [Ljava/lang/String;
 
     .prologue
     const/4 v0, 0x0
@@ -76,19 +86,19 @@
     .line 60
     invoke-direct {p0, p1, p2, v0, v0}, Landroid/view/textservice/SuggestionsInfo;-><init>(I[Ljava/lang/String;II)V
 
-    .line 61
+    .line 59
     return-void
 .end method
 
 .method public constructor <init>(I[Ljava/lang/String;II)V
     .locals 1
-    .parameter "suggestionsAttributes"
-    .parameter "suggestions"
-    .parameter "cookie"
-    .parameter "sequence"
+    .param p1, "suggestionsAttributes"    # I
+    .param p2, "suggestions"    # [Ljava/lang/String;
+    .param p3, "cookie"    # I
+    .param p4, "sequence"    # I
 
     .prologue
-    .line 71
+    .line 70
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 72
@@ -114,7 +124,7 @@
     .line 81
     iput p4, p0, Landroid/view/textservice/SuggestionsInfo;->mSequence:I
 
-    .line 82
+    .line 71
     return-void
 
     .line 76
@@ -131,7 +141,7 @@
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     const/4 v0, 0x1
@@ -177,7 +187,7 @@
     :goto_0
     iput-boolean v0, p0, Landroid/view/textservice/SuggestionsInfo;->mSuggestionsAvailable:Z
 
-    .line 90
+    .line 84
     return-void
 
     .line 89
@@ -221,7 +231,7 @@
 
 .method public getSuggestionAt(I)Ljava/lang/String;
     .locals 1
-    .parameter "i"
+    .param p1, "i"    # I
 
     .prologue
     .line 159
@@ -254,22 +264,21 @@
     .line 149
     const/4 v0, -0x1
 
-    .line 151
-    :goto_0
     return v0
 
+    .line 151
     :cond_0
     iget-object v0, p0, Landroid/view/textservice/SuggestionsInfo;->mSuggestions:[Ljava/lang/String;
 
     array-length v0, v0
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public setCookieAndSequence(II)V
     .locals 0
-    .parameter "cookie"
-    .parameter "sequence"
+    .param p1, "cookie"    # I
+    .param p2, "sequence"    # I
 
     .prologue
     .line 114
@@ -278,14 +287,14 @@
     .line 115
     iput p2, p0, Landroid/view/textservice/SuggestionsInfo;->mSequence:I
 
-    .line 116
+    .line 113
     return-void
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 100
@@ -318,7 +327,7 @@
     :goto_0
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 105
+    .line 99
     return-void
 
     .line 104

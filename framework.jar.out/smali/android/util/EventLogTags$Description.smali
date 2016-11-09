@@ -23,19 +23,19 @@
 # direct methods
 .method constructor <init>(ILjava/lang/String;)V
     .locals 0
-    .parameter "tag"
-    .parameter "name"
+    .param p1, "tag"    # I
+    .param p2, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 38
+    .line 32
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 39
+    .line 33
     iput p1, p0, Landroid/util/EventLogTags$Description;->mTag:I
 
-    .line 40
+    .line 34
     iput-object p2, p0, Landroid/util/EventLogTags$Description;->mName:Ljava/lang/String;
 
-    .line 41
+    .line 32
     return-void
 .end method

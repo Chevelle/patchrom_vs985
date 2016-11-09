@@ -9,13 +9,14 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/print/PrintJobInfo$Builder;
+        Landroid/print/PrintJobInfo$Builder;,
+        Landroid/print/PrintJobInfo$1;
     }
 .end annotation
 
 
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -82,17 +83,59 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/print/PrintJobInfo;)Landroid/os/Bundle;
+    .locals 1
+
+    iget-object v0, p0, Landroid/print/PrintJobInfo;->mAdvancedOptions:Landroid/os/Bundle;
+
+    return-object v0
+.end method
+
+.method static synthetic -set0(Landroid/print/PrintJobInfo;Landroid/os/Bundle;)Landroid/os/Bundle;
+    .locals 0
+
+    iput-object p1, p0, Landroid/print/PrintJobInfo;->mAdvancedOptions:Landroid/os/Bundle;
+
+    return-object p1
+.end method
+
+.method static synthetic -set1(Landroid/print/PrintJobInfo;Landroid/print/PrintAttributes;)Landroid/print/PrintAttributes;
+    .locals 0
+
+    iput-object p1, p0, Landroid/print/PrintJobInfo;->mAttributes:Landroid/print/PrintAttributes;
+
+    return-object p1
+.end method
+
+.method static synthetic -set2(Landroid/print/PrintJobInfo;I)I
+    .locals 0
+
+    iput p1, p0, Landroid/print/PrintJobInfo;->mCopies:I
+
+    return p1
+.end method
+
+.method static synthetic -set3(Landroid/print/PrintJobInfo;[Landroid/print/PageRange;)[Landroid/print/PageRange;
+    .locals 0
+
+    iput-object p1, p0, Landroid/print/PrintJobInfo;->mPageRanges:[Landroid/print/PageRange;
+
+    return-object p1
+.end method
+
 .method static constructor <clinit>()V
     .locals 1
 
     .prologue
-    .line 749
+    .line 750
     new-instance v0, Landroid/print/PrintJobInfo$1;
 
     invoke-direct {v0}, Landroid/print/PrintJobInfo$1;-><init>()V
 
+    .line 749
     sput-object v0, Landroid/print/PrintJobInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 31
     return-void
 .end method
 
@@ -103,13 +146,12 @@
     .line 171
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 173
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 7
-    .parameter "parcel"
+    .param p1, "parcel"    # Landroid/os/Parcel;
 
     .prologue
     const/4 v3, 0x1
@@ -199,7 +241,7 @@
     move-result-object v1
 
     .line 206
-    .local v1, parcelables:[Landroid/os/Parcelable;
+    .local v1, "parcelables":[Landroid/os/Parcelable;
     if-eqz v1, :cond_0
 
     .line 207
@@ -212,7 +254,7 @@
     .line 208
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     array-length v2, v1
 
@@ -233,7 +275,7 @@
     goto :goto_0
 
     .line 212
-    .end local v0           #i:I
+    .end local v0    # "i":I
     :cond_0
     invoke-virtual {p1, v6}, Landroid/os/Parcel;->readParcelable(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
 
@@ -271,7 +313,7 @@
 
     iput-object v2, p0, Landroid/print/PrintJobInfo;->mAdvancedOptions:Landroid/os/Bundle;
 
-    .line 216
+    .line 194
     return-void
 
     .line 214
@@ -281,13 +323,11 @@
     goto :goto_1
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/print/PrintJobInfo$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/print/PrintJobInfo;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "parcel"    # Landroid/os/Parcel;
 
     .prologue
-    .line 31
     invoke-direct {p0, p1}, Landroid/print/PrintJobInfo;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -295,7 +335,7 @@
 
 .method public constructor <init>(Landroid/print/PrintJobInfo;)V
     .locals 2
-    .parameter "other"
+    .param p1, "other"    # Landroid/print/PrintJobInfo;
 
     .prologue
     .line 176
@@ -376,124 +416,64 @@
 
     iput-object v0, p0, Landroid/print/PrintJobInfo;->mAdvancedOptions:Landroid/os/Bundle;
 
-    .line 192
+    .line 176
     return-void
-.end method
-
-.method static synthetic access$002(Landroid/print/PrintJobInfo;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 31
-    iput p1, p0, Landroid/print/PrintJobInfo;->mCopies:I
-
-    return p1
-.end method
-
-.method static synthetic access$102(Landroid/print/PrintJobInfo;Landroid/print/PrintAttributes;)Landroid/print/PrintAttributes;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 31
-    iput-object p1, p0, Landroid/print/PrintJobInfo;->mAttributes:Landroid/print/PrintAttributes;
-
-    return-object p1
-.end method
-
-.method static synthetic access$202(Landroid/print/PrintJobInfo;[Landroid/print/PageRange;)[Landroid/print/PageRange;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 31
-    iput-object p1, p0, Landroid/print/PrintJobInfo;->mPageRanges:[Landroid/print/PageRange;
-
-    return-object p1
-.end method
-
-.method static synthetic access$300(Landroid/print/PrintJobInfo;)Landroid/os/Bundle;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 31
-    iget-object v0, p0, Landroid/print/PrintJobInfo;->mAdvancedOptions:Landroid/os/Bundle;
-
-    return-object v0
-.end method
-
-.method static synthetic access$302(Landroid/print/PrintJobInfo;Landroid/os/Bundle;)Landroid/os/Bundle;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 31
-    iput-object p1, p0, Landroid/print/PrintJobInfo;->mAdvancedOptions:Landroid/os/Bundle;
-
-    return-object p1
 .end method
 
 .method public static stateToString(I)Ljava/lang/String;
     .locals 1
-    .parameter "state"
+    .param p0, "state"    # I
 
     .prologue
     .line 640
     packed-switch p0, :pswitch_data_0
 
     .line 663
-    const-string v0, "STATE_UNKNOWN"
+    const-string/jumbo v0, "STATE_UNKNOWN"
 
-    :goto_0
     return-object v0
 
     .line 642
     :pswitch_0
-    const-string v0, "STATE_CREATED"
+    const-string/jumbo v0, "STATE_CREATED"
 
-    goto :goto_0
+    return-object v0
 
     .line 645
     :pswitch_1
-    const-string v0, "STATE_QUEUED"
+    const-string/jumbo v0, "STATE_QUEUED"
 
-    goto :goto_0
+    return-object v0
 
     .line 648
     :pswitch_2
-    const-string v0, "STATE_STARTED"
+    const-string/jumbo v0, "STATE_STARTED"
 
-    goto :goto_0
+    return-object v0
 
     .line 651
     :pswitch_3
-    const-string v0, "STATE_BLOCKED"
+    const-string/jumbo v0, "STATE_BLOCKED"
 
-    goto :goto_0
+    return-object v0
 
     .line 654
     :pswitch_4
-    const-string v0, "STATE_FAILED"
+    const-string/jumbo v0, "STATE_FAILED"
 
-    goto :goto_0
+    return-object v0
 
     .line 657
     :pswitch_5
-    const-string v0, "STATE_COMPLETED"
+    const-string/jumbo v0, "STATE_COMPLETED"
 
-    goto :goto_0
+    return-object v0
 
     .line 660
     :pswitch_6
-    const-string v0, "STATE_CANCELED"
+    const-string/jumbo v0, "STATE_CANCELED"
 
-    goto :goto_0
+    return-object v0
 
     .line 640
     nop
@@ -524,7 +504,7 @@
 
 .method public getAdvancedIntOption(Ljava/lang/String;)I
     .locals 1
-    .parameter "key"
+    .param p1, "key"    # Ljava/lang/String;
 
     .prologue
     .line 563
@@ -539,14 +519,13 @@
 
     move-result v0
 
-    .line 566
-    :goto_0
     return v0
 
+    .line 566
     :cond_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public getAdvancedOptions()Landroid/os/Bundle;
@@ -560,10 +539,12 @@
 .end method
 
 .method public getAdvancedStringOption(Ljava/lang/String;)Ljava/lang/String;
-    .locals 1
-    .parameter "key"
+    .locals 2
+    .param p1, "key"    # Ljava/lang/String;
 
     .prologue
+    const/4 v1, 0x0
+
     .line 548
     iget-object v0, p0, Landroid/print/PrintJobInfo;->mAdvancedOptions:Landroid/os/Bundle;
 
@@ -576,14 +557,11 @@
 
     move-result-object v0
 
-    .line 551
-    :goto_0
     return-object v0
 
+    .line 551
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return-object v1
 .end method
 
 .method public getAppId()I
@@ -718,7 +696,7 @@
 
 .method public hasAdvancedOption(Ljava/lang/String;)Z
     .locals 1
-    .parameter "key"
+    .param p1, "key"    # Ljava/lang/String;
 
     .prologue
     .line 536
@@ -731,10 +709,6 @@
     invoke-virtual {v0, p1}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
 
     move-result v0
-
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
 
     :goto_0
     return v0
@@ -757,55 +731,55 @@
 
 .method public setAdvancedOptions(Landroid/os/Bundle;)V
     .locals 0
-    .parameter "options"
+    .param p1, "options"    # Landroid/os/Bundle;
 
     .prologue
     .line 588
     iput-object p1, p0, Landroid/print/PrintJobInfo;->mAdvancedOptions:Landroid/os/Bundle;
 
-    .line 589
+    .line 587
     return-void
 .end method
 
 .method public setAppId(I)V
     .locals 0
-    .parameter "appId"
+    .param p1, "appId"    # I
 
     .prologue
     .line 347
     iput p1, p0, Landroid/print/PrintJobInfo;->mAppId:I
 
-    .line 348
+    .line 346
     return-void
 .end method
 
 .method public setAttributes(Landroid/print/PrintAttributes;)V
     .locals 0
-    .parameter "attributes"
+    .param p1, "attributes"    # Landroid/print/PrintAttributes;
 
     .prologue
     .line 479
     iput-object p1, p0, Landroid/print/PrintJobInfo;->mAttributes:Landroid/print/PrintAttributes;
 
-    .line 480
+    .line 478
     return-void
 .end method
 
 .method public setCancelling(Z)V
     .locals 0
-    .parameter "cancelling"
+    .param p1, "cancelling"    # Z
 
     .prologue
     .line 523
     iput-boolean p1, p0, Landroid/print/PrintJobInfo;->mCanceling:Z
 
-    .line 524
+    .line 522
     return-void
 .end method
 
 .method public setCopies(I)V
     .locals 2
-    .parameter "copyCount"
+    .param p1, "copyCount"    # I
 
     .prologue
     .line 412
@@ -816,7 +790,7 @@
     .line 413
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "Copies must be more than one."
+    const-string/jumbo v1, "Copies must be more than one."
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -826,13 +800,13 @@
     :cond_0
     iput p1, p0, Landroid/print/PrintJobInfo;->mCopies:I
 
-    .line 416
+    .line 411
     return-void
 .end method
 
 .method public setCreationTime(J)V
-    .locals 2
-    .parameter "creationTime"
+    .locals 3
+    .param p1, "creationTime"    # J
 
     .prologue
     .line 389
@@ -845,7 +819,7 @@
     .line 390
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "creationTime must be non-negative."
+    const-string/jumbo v1, "creationTime must be non-negative."
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -855,120 +829,120 @@
     :cond_0
     iput-wide p1, p0, Landroid/print/PrintJobInfo;->mCreationTime:J
 
-    .line 393
+    .line 388
     return-void
 .end method
 
 .method public setDocumentInfo(Landroid/print/PrintDocumentInfo;)V
     .locals 0
-    .parameter "info"
+    .param p1, "info"    # Landroid/print/PrintDocumentInfo;
 
     .prologue
     .line 501
     iput-object p1, p0, Landroid/print/PrintJobInfo;->mDocumentInfo:Landroid/print/PrintDocumentInfo;
 
-    .line 502
+    .line 500
     return-void
 .end method
 
 .method public setId(Landroid/print/PrintJobId;)V
     .locals 0
-    .parameter "id"
+    .param p1, "id"    # Landroid/print/PrintJobId;
 
     .prologue
     .line 235
     iput-object p1, p0, Landroid/print/PrintJobInfo;->mId:Landroid/print/PrintJobId;
 
-    .line 236
+    .line 234
     return-void
 .end method
 
 .method public setLabel(Ljava/lang/String;)V
     .locals 0
-    .parameter "label"
+    .param p1, "label"    # Ljava/lang/String;
 
     .prologue
     .line 255
     iput-object p1, p0, Landroid/print/PrintJobInfo;->mLabel:Ljava/lang/String;
 
-    .line 256
+    .line 254
     return-void
 .end method
 
 .method public setPages([Landroid/print/PageRange;)V
     .locals 0
-    .parameter "pageRanges"
+    .param p1, "pageRanges"    # [Landroid/print/PageRange;
 
     .prologue
     .line 459
     iput-object p1, p0, Landroid/print/PrintJobInfo;->mPageRanges:[Landroid/print/PageRange;
 
-    .line 460
+    .line 458
     return-void
 .end method
 
 .method public setPrinterId(Landroid/print/PrinterId;)V
     .locals 0
-    .parameter "printerId"
+    .param p1, "printerId"    # Landroid/print/PrinterId;
 
     .prologue
     .line 275
     iput-object p1, p0, Landroid/print/PrintJobInfo;->mPrinterId:Landroid/print/PrinterId;
 
-    .line 276
+    .line 274
     return-void
 .end method
 
 .method public setPrinterName(Ljava/lang/String;)V
     .locals 0
-    .parameter "printerName"
+    .param p1, "printerName"    # Ljava/lang/String;
 
     .prologue
     .line 297
     iput-object p1, p0, Landroid/print/PrintJobInfo;->mPrinterName:Ljava/lang/String;
 
-    .line 298
+    .line 296
     return-void
 .end method
 
 .method public setState(I)V
     .locals 0
-    .parameter "state"
+    .param p1, "state"    # I
 
     .prologue
     .line 325
     iput p1, p0, Landroid/print/PrintJobInfo;->mState:I
 
-    .line 326
+    .line 324
     return-void
 .end method
 
 .method public setStateReason(Ljava/lang/String;)V
     .locals 0
-    .parameter "stateReason"
+    .param p1, "stateReason"    # Ljava/lang/String;
 
     .prologue
     .line 439
     iput-object p1, p0, Landroid/print/PrintJobInfo;->mStateReason:Ljava/lang/String;
 
-    .line 440
+    .line 438
     return-void
 .end method
 
 .method public setTag(Ljava/lang/String;)V
     .locals 0
-    .parameter "tag"
+    .param p1, "tag"    # Ljava/lang/String;
 
     .prologue
     .line 369
     iput-object p1, p0, Landroid/print/PrintJobInfo;->mTag:Ljava/lang/String;
 
-    .line 370
+    .line 368
     return-void
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 5
+    .locals 6
 
     .prologue
     const/4 v2, 0x0
@@ -979,13 +953,13 @@
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 618
-    .local v0, builder:Ljava/lang/StringBuilder;
-    const-string v1, "PrintJobInfo{"
+    .local v0, "builder":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "PrintJobInfo{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 619
-    const-string v1, "label: "
+    const-string/jumbo v1, "label: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -996,7 +970,7 @@
     invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 620
-    const-string v1, ", id: "
+    const-string/jumbo v1, ", id: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1007,7 +981,7 @@
     invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     .line 621
-    const-string v1, ", state: "
+    const-string/jumbo v1, ", state: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1022,13 +996,9 @@
     invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 622
-    new-instance v1, Ljava/lang/StringBuilder;
+    const-string/jumbo v1, ", printer: "
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, ", printer: "
-
-    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -1036,16 +1006,8 @@
 
     invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     .line 623
-    const-string v1, ", tag: "
+    const-string/jumbo v1, ", tag: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1056,30 +1018,18 @@
     invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 624
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, ", creationTime: "
-
-    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    iget-wide v3, p0, Landroid/print/PrintJobInfo;->mCreationTime:J
-
-    invoke-virtual {v1, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
+    const-string/jumbo v1, ", creationTime: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    move-result-object v1
+
+    iget-wide v4, p0, Landroid/print/PrintJobInfo;->mCreationTime:J
+
+    invoke-virtual {v1, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
     .line 625
-    const-string v1, ", copies: "
+    const-string/jumbo v1, ", copies: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1090,13 +1040,9 @@
     invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 626
-    new-instance v1, Ljava/lang/StringBuilder;
+    const-string/jumbo v1, ", attributes: "
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, ", attributes: "
-
-    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
@@ -1104,31 +1050,21 @@
 
     if-eqz v1, :cond_1
 
+    .line 627
     iget-object v1, p0, Landroid/print/PrintJobInfo;->mAttributes:Landroid/print/PrintAttributes;
 
     invoke-virtual {v1}, Landroid/print/PrintAttributes;->toString()Ljava/lang/String;
 
     move-result-object v1
 
+    .line 626
     :goto_0
     invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
+    .line 628
+    const-string/jumbo v1, ", documentInfo: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 628
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, ", documentInfo: "
-
-    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
@@ -1136,31 +1072,21 @@
 
     if-eqz v1, :cond_2
 
+    .line 629
     iget-object v1, p0, Landroid/print/PrintJobInfo;->mDocumentInfo:Landroid/print/PrintDocumentInfo;
 
     invoke-virtual {v1}, Landroid/print/PrintDocumentInfo;->toString()Ljava/lang/String;
 
     move-result-object v1
 
+    .line 628
     :goto_1
     invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
+    .line 630
+    const-string/jumbo v1, ", cancelling: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 630
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, ", cancelling: "
-
-    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -1168,22 +1094,10 @@
 
     invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
+    .line 631
+    const-string/jumbo v1, ", pages: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 631
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, ", pages: "
-
-    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -1191,31 +1105,21 @@
 
     if-eqz v3, :cond_0
 
+    .line 632
     iget-object v2, p0, Landroid/print/PrintJobInfo;->mPageRanges:[Landroid/print/PageRange;
 
     invoke-static {v2}, Ljava/util/Arrays;->toString([Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v2
 
+    .line 631
     :cond_0
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
+    .line 633
+    const-string/jumbo v1, ", hasAdvancedOptions: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 633
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, ", hasAdvancedOptions: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
@@ -1227,14 +1131,6 @@
 
     :goto_2
     invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 634
     const-string/jumbo v1, "}"
@@ -1251,13 +1147,13 @@
     :cond_1
     move-object v1, v2
 
-    .line 626
-    goto/16 :goto_0
+    .line 627
+    goto :goto_0
 
     :cond_2
     move-object v1, v2
 
-    .line 628
+    .line 629
     goto :goto_1
 
     .line 633
@@ -1268,9 +1164,9 @@
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
-    .locals 3
-    .parameter "parcel"
-    .parameter "flags"
+    .locals 4
+    .param p1, "parcel"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     const/4 v0, 0x0
@@ -1311,9 +1207,9 @@
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
     .line 605
-    iget-wide v1, p0, Landroid/print/PrintJobInfo;->mCreationTime:J
+    iget-wide v2, p0, Landroid/print/PrintJobInfo;->mCreationTime:J
 
-    invoke-virtual {p1, v1, v2}, Landroid/os/Parcel;->writeLong(J)V
+    invoke-virtual {p1, v2, v3}, Landroid/os/Parcel;->writeLong(J)V
 
     .line 606
     iget v1, p0, Landroid/print/PrintJobInfo;->mCopies:I
@@ -1355,6 +1251,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeBundle(Landroid/os/Bundle;)V
 
-    .line 613
+    .line 597
     return-void
 .end method

@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 368
+    .line 367
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,25 +42,25 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/telephony/CellSignalStrengthCdma;
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 371
+    .line 370
     new-instance v0, Landroid/telephony/CellSignalStrengthCdma;
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p1, v1}, Landroid/telephony/CellSignalStrengthCdma;-><init>(Landroid/os/Parcel;Landroid/telephony/CellSignalStrengthCdma$1;)V
+    invoke-direct {v0, p1, v1}, Landroid/telephony/CellSignalStrengthCdma;-><init>(Landroid/os/Parcel;Landroid/telephony/CellSignalStrengthCdma;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 368
+    .line 369
     invoke-virtual {p0, p1}, Landroid/telephony/CellSignalStrengthCdma$1;->createFromParcel(Landroid/os/Parcel;)Landroid/telephony/CellSignalStrengthCdma;
 
     move-result-object v0
@@ -70,10 +70,10 @@
 
 .method public newArray(I)[Landroid/telephony/CellSignalStrengthCdma;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 376
+    .line 375
     new-array v0, p1, [Landroid/telephony/CellSignalStrengthCdma;
 
     return-object v0
@@ -81,10 +81,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 368
+    .line 374
     invoke-virtual {p0, p1}, Landroid/telephony/CellSignalStrengthCdma$1;->newArray(I)[Landroid/telephony/CellSignalStrengthCdma;
 
     move-result-object v0

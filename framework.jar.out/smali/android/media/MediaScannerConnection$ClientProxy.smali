@@ -32,9 +32,9 @@
 # direct methods
 .method constructor <init>([Ljava/lang/String;[Ljava/lang/String;Landroid/media/MediaScannerConnection$OnScanCompletedListener;)V
     .locals 0
-    .parameter "paths"
-    .parameter "mimeTypes"
-    .parameter "client"
+    .param p1, "paths"    # [Ljava/lang/String;
+    .param p2, "mimeTypes"    # [Ljava/lang/String;
+    .param p3, "client"    # Landroid/media/MediaScannerConnection$OnScanCompletedListener;
 
     .prologue
     .line 188
@@ -49,7 +49,7 @@
     .line 191
     iput-object p3, p0, Landroid/media/MediaScannerConnection$ClientProxy;->mClient:Landroid/media/MediaScannerConnection$OnScanCompletedListener;
 
-    .line 192
+    .line 188
     return-void
 .end method
 
@@ -62,14 +62,14 @@
     .line 195
     invoke-virtual {p0}, Landroid/media/MediaScannerConnection$ClientProxy;->scanNextPath()V
 
-    .line 196
+    .line 194
     return-void
 .end method
 
 .method public onScanCompleted(Ljava/lang/String;Landroid/net/Uri;)V
     .locals 1
-    .parameter "path"
-    .parameter "uri"
+    .param p1, "path"    # Ljava/lang/String;
+    .param p2, "uri"    # Landroid/net/Uri;
 
     .prologue
     .line 199
@@ -86,7 +86,7 @@
     :cond_0
     invoke-virtual {p0}, Landroid/media/MediaScannerConnection$ClientProxy;->scanNextPath()V
 
-    .line 203
+    .line 198
     return-void
 .end method
 
@@ -108,8 +108,7 @@
 
     invoke-virtual {v1}, Landroid/media/MediaScannerConnection;->disconnect()V
 
-    .line 213
-    :goto_0
+    .line 208
     return-void
 
     .line 210
@@ -125,8 +124,7 @@
     aget-object v0, v1, v2
 
     .line 211
-    .local v0, mimeType:Ljava/lang/String;
-    :goto_1
+    :goto_0
     iget-object v1, p0, Landroid/media/MediaScannerConnection$ClientProxy;->mConnection:Landroid/media/MediaScannerConnection;
 
     iget-object v2, p0, Landroid/media/MediaScannerConnection$ClientProxy;->mPaths:[Ljava/lang/String;
@@ -144,12 +142,13 @@
 
     iput v1, p0, Landroid/media/MediaScannerConnection$ClientProxy;->mNextPath:I
 
-    goto :goto_0
+    .line 205
+    return-void
 
     .line 210
-    .end local v0           #mimeType:Ljava/lang/String;
     :cond_1
     const/4 v0, 0x0
 
-    goto :goto_1
+    .local v0, "mimeType":Ljava/lang/String;
+    goto :goto_0
 .end method

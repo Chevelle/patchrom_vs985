@@ -22,18 +22,16 @@
     .locals 0
 
     .prologue
-    .line 802
+    .line 798
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/opengl/GLSurfaceView$1;)V
+.method synthetic constructor <init>(Landroid/opengl/GLSurfaceView$DefaultWindowSurfaceFactory;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 802
     invoke-direct {p0}, Landroid/opengl/GLSurfaceView$DefaultWindowSurfaceFactory;-><init>()V
 
     return-void
@@ -43,17 +41,17 @@
 # virtual methods
 .method public createWindowSurface(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;Ljava/lang/Object;)Ljavax/microedition/khronos/egl/EGLSurface;
     .locals 4
-    .parameter "egl"
-    .parameter "display"
-    .parameter "config"
-    .parameter "nativeWindow"
+    .param p1, "egl"    # Ljavax/microedition/khronos/egl/EGL10;
+    .param p2, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p3, "config"    # Ljavax/microedition/khronos/egl/EGLConfig;
+    .param p4, "nativeWindow"    # Ljava/lang/Object;
 
     .prologue
-    .line 806
+    .line 802
     const/4 v1, 0x0
 
-    .line 808
-    .local v1, result:Ljavax/microedition/khronos/egl/EGLSurface;
+    .line 804
+    .local v1, "result":Ljavax/microedition/khronos/egl/EGLSurface;
     const/4 v2, 0x0
 
     :try_start_0
@@ -63,19 +61,21 @@
 
     move-result-object v1
 
-    .line 818
+    .line 814
+    .end local v1    # "result":Ljavax/microedition/khronos/egl/EGLSurface;
     :goto_0
     return-object v1
 
-    .line 809
+    .line 805
+    .restart local v1    # "result":Ljavax/microedition/khronos/egl/EGLSurface;
     :catch_0
     move-exception v0
 
-    .line 816
-    .local v0, e:Ljava/lang/IllegalArgumentException;
-    const-string v2, "GLSurfaceView"
+    .line 812
+    .local v0, "e":Ljava/lang/IllegalArgumentException;
+    const-string/jumbo v2, "GLSurfaceView"
 
-    const-string v3, "eglCreateWindowSurface"
+    const-string/jumbo v3, "eglCreateWindowSurface"
 
     invoke-static {v2, v3, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
@@ -84,14 +84,14 @@
 
 .method public destroySurface(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;)V
     .locals 0
-    .parameter "egl"
-    .parameter "display"
-    .parameter "surface"
+    .param p1, "egl"    # Ljavax/microedition/khronos/egl/EGL10;
+    .param p2, "display"    # Ljavax/microedition/khronos/egl/EGLDisplay;
+    .param p3, "surface"    # Ljavax/microedition/khronos/egl/EGLSurface;
 
     .prologue
-    .line 823
+    .line 819
     invoke-interface {p1, p2, p3}, Ljavax/microedition/khronos/egl/EGL10;->eglDestroySurface(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;)Z
 
-    .line 824
+    .line 818
     return-void
 .end method

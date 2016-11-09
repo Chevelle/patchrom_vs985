@@ -21,9 +21,9 @@
 # direct methods
 .method public constructor <init>(III)V
     .locals 2
-    .parameter "pageWidth"
-    .parameter "pageHeight"
-    .parameter "pageNumber"
+    .param p1, "pageWidth"    # I
+    .param p2, "pageHeight"    # I
+    .param p3, "pageNumber"    # I
 
     .prologue
     .line 328
@@ -34,7 +34,7 @@
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, v1}, Landroid/graphics/pdf/PdfDocument$PageInfo;-><init>(Landroid/graphics/pdf/PdfDocument$1;)V
+    invoke-direct {v0, v1}, Landroid/graphics/pdf/PdfDocument$PageInfo;-><init>(Landroid/graphics/pdf/PdfDocument$PageInfo;)V
 
     iput-object v0, p0, Landroid/graphics/pdf/PdfDocument$PageInfo$Builder;->mPageInfo:Landroid/graphics/pdf/PdfDocument$PageInfo;
 
@@ -80,22 +80,19 @@
     :cond_2
     iget-object v0, p0, Landroid/graphics/pdf/PdfDocument$PageInfo$Builder;->mPageInfo:Landroid/graphics/pdf/PdfDocument$PageInfo;
 
-    #setter for: Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageWidth:I
-    invoke-static {v0, p1}, Landroid/graphics/pdf/PdfDocument$PageInfo;->access$002(Landroid/graphics/pdf/PdfDocument$PageInfo;I)I
+    invoke-static {v0, p1}, Landroid/graphics/pdf/PdfDocument$PageInfo;->-set3(Landroid/graphics/pdf/PdfDocument$PageInfo;I)I
 
     .line 339
     iget-object v0, p0, Landroid/graphics/pdf/PdfDocument$PageInfo$Builder;->mPageInfo:Landroid/graphics/pdf/PdfDocument$PageInfo;
 
-    #setter for: Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageHeight:I
-    invoke-static {v0, p2}, Landroid/graphics/pdf/PdfDocument$PageInfo;->access$102(Landroid/graphics/pdf/PdfDocument$PageInfo;I)I
+    invoke-static {v0, p2}, Landroid/graphics/pdf/PdfDocument$PageInfo;->-set1(Landroid/graphics/pdf/PdfDocument$PageInfo;I)I
 
     .line 340
     iget-object v0, p0, Landroid/graphics/pdf/PdfDocument$PageInfo$Builder;->mPageInfo:Landroid/graphics/pdf/PdfDocument$PageInfo;
 
-    #setter for: Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageNumber:I
-    invoke-static {v0, p3}, Landroid/graphics/pdf/PdfDocument$PageInfo;->access$602(Landroid/graphics/pdf/PdfDocument$PageInfo;I)I
+    invoke-static {v0, p3}, Landroid/graphics/pdf/PdfDocument$PageInfo;->-set2(Landroid/graphics/pdf/PdfDocument$PageInfo;I)I
 
-    .line 341
+    .line 328
     return-void
 .end method
 
@@ -110,8 +107,7 @@
     .line 367
     iget-object v0, p0, Landroid/graphics/pdf/PdfDocument$PageInfo$Builder;->mPageInfo:Landroid/graphics/pdf/PdfDocument$PageInfo;
 
-    #getter for: Landroid/graphics/pdf/PdfDocument$PageInfo;->mContentRect:Landroid/graphics/Rect;
-    invoke-static {v0}, Landroid/graphics/pdf/PdfDocument$PageInfo;->access$200(Landroid/graphics/pdf/PdfDocument$PageInfo;)Landroid/graphics/Rect;
+    invoke-static {v0}, Landroid/graphics/pdf/PdfDocument$PageInfo;->-get0(Landroid/graphics/pdf/PdfDocument$PageInfo;)Landroid/graphics/Rect;
 
     move-result-object v0
 
@@ -122,24 +118,23 @@
 
     new-instance v1, Landroid/graphics/Rect;
 
+    .line 369
     iget-object v2, p0, Landroid/graphics/pdf/PdfDocument$PageInfo$Builder;->mPageInfo:Landroid/graphics/pdf/PdfDocument$PageInfo;
 
-    #getter for: Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageWidth:I
-    invoke-static {v2}, Landroid/graphics/pdf/PdfDocument$PageInfo;->access$000(Landroid/graphics/pdf/PdfDocument$PageInfo;)I
+    invoke-static {v2}, Landroid/graphics/pdf/PdfDocument$PageInfo;->-get2(Landroid/graphics/pdf/PdfDocument$PageInfo;)I
 
     move-result v2
 
     iget-object v3, p0, Landroid/graphics/pdf/PdfDocument$PageInfo$Builder;->mPageInfo:Landroid/graphics/pdf/PdfDocument$PageInfo;
 
-    #getter for: Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageHeight:I
-    invoke-static {v3}, Landroid/graphics/pdf/PdfDocument$PageInfo;->access$100(Landroid/graphics/pdf/PdfDocument$PageInfo;)I
+    invoke-static {v3}, Landroid/graphics/pdf/PdfDocument$PageInfo;->-get1(Landroid/graphics/pdf/PdfDocument$PageInfo;)I
 
     move-result v3
 
+    .line 368
     invoke-direct {v1, v4, v4, v2, v3}, Landroid/graphics/Rect;-><init>(IIII)V
 
-    #setter for: Landroid/graphics/pdf/PdfDocument$PageInfo;->mContentRect:Landroid/graphics/Rect;
-    invoke-static {v0, v1}, Landroid/graphics/pdf/PdfDocument$PageInfo;->access$202(Landroid/graphics/pdf/PdfDocument$PageInfo;Landroid/graphics/Rect;)Landroid/graphics/Rect;
+    invoke-static {v0, v1}, Landroid/graphics/pdf/PdfDocument$PageInfo;->-set0(Landroid/graphics/pdf/PdfDocument$PageInfo;Landroid/graphics/Rect;)Landroid/graphics/Rect;
 
     .line 371
     :cond_0
@@ -150,58 +145,59 @@
 
 .method public setContentRect(Landroid/graphics/Rect;)Landroid/graphics/pdf/PdfDocument$PageInfo$Builder;
     .locals 2
-    .parameter "contentRect"
+    .param p1, "contentRect"    # Landroid/graphics/Rect;
 
     .prologue
     .line 351
-    if-eqz p1, :cond_1
+    if-eqz p1, :cond_2
 
     iget v0, p1, Landroid/graphics/Rect;->left:I
 
     if-ltz v0, :cond_0
 
+    .line 352
     iget v0, p1, Landroid/graphics/Rect;->top:I
 
-    if-ltz v0, :cond_0
-
-    iget v0, p1, Landroid/graphics/Rect;->right:I
-
-    iget-object v1, p0, Landroid/graphics/pdf/PdfDocument$PageInfo$Builder;->mPageInfo:Landroid/graphics/pdf/PdfDocument$PageInfo;
-
-    #getter for: Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageWidth:I
-    invoke-static {v1}, Landroid/graphics/pdf/PdfDocument$PageInfo;->access$000(Landroid/graphics/pdf/PdfDocument$PageInfo;)I
-
-    move-result v1
-
-    if-gt v0, v1, :cond_0
-
-    iget v0, p1, Landroid/graphics/Rect;->bottom:I
-
-    iget-object v1, p0, Landroid/graphics/pdf/PdfDocument$PageInfo$Builder;->mPageInfo:Landroid/graphics/pdf/PdfDocument$PageInfo;
-
-    #getter for: Landroid/graphics/pdf/PdfDocument$PageInfo;->mPageHeight:I
-    invoke-static {v1}, Landroid/graphics/pdf/PdfDocument$PageInfo;->access$100(Landroid/graphics/pdf/PdfDocument$PageInfo;)I
-
-    move-result v1
-
-    if-le v0, v1, :cond_1
+    if-gez v0, :cond_1
 
     .line 355
     :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "contentRect does not fit the page"
+    const-string/jumbo v1, "contentRect does not fit the page"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 357
+    .line 353
     :cond_1
+    iget v0, p1, Landroid/graphics/Rect;->right:I
+
+    iget-object v1, p0, Landroid/graphics/pdf/PdfDocument$PageInfo$Builder;->mPageInfo:Landroid/graphics/pdf/PdfDocument$PageInfo;
+
+    invoke-static {v1}, Landroid/graphics/pdf/PdfDocument$PageInfo;->-get2(Landroid/graphics/pdf/PdfDocument$PageInfo;)I
+
+    move-result v1
+
+    if-gt v0, v1, :cond_0
+
+    .line 354
+    iget v0, p1, Landroid/graphics/Rect;->bottom:I
+
+    iget-object v1, p0, Landroid/graphics/pdf/PdfDocument$PageInfo$Builder;->mPageInfo:Landroid/graphics/pdf/PdfDocument$PageInfo;
+
+    invoke-static {v1}, Landroid/graphics/pdf/PdfDocument$PageInfo;->-get1(Landroid/graphics/pdf/PdfDocument$PageInfo;)I
+
+    move-result v1
+
+    if-gt v0, v1, :cond_0
+
+    .line 357
+    :cond_2
     iget-object v0, p0, Landroid/graphics/pdf/PdfDocument$PageInfo$Builder;->mPageInfo:Landroid/graphics/pdf/PdfDocument$PageInfo;
 
-    #setter for: Landroid/graphics/pdf/PdfDocument$PageInfo;->mContentRect:Landroid/graphics/Rect;
-    invoke-static {v0, p1}, Landroid/graphics/pdf/PdfDocument$PageInfo;->access$202(Landroid/graphics/pdf/PdfDocument$PageInfo;Landroid/graphics/Rect;)Landroid/graphics/Rect;
+    invoke-static {v0, p1}, Landroid/graphics/pdf/PdfDocument$PageInfo;->-set0(Landroid/graphics/pdf/PdfDocument$PageInfo;Landroid/graphics/Rect;)Landroid/graphics/Rect;
 
     .line 358
     return-object p0

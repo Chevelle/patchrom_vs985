@@ -4,7 +4,7 @@
 
 
 # instance fields
-.field private mNativeContext:I
+.field private mNativeContext:J
 
 
 # direct methods
@@ -12,22 +12,22 @@
     .locals 1
 
     .prologue
-    .line 87
-    const-string v0, "media_jni"
+    .line 103
+    const-string/jumbo v0, "media_jni"
 
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
-    .line 88
+    .line 104
     invoke-static {}, Landroid/media/MediaCrypto;->native_init()V
 
-    .line 89
+    .line 32
     return-void
 .end method
 
 .method public constructor <init>(Ljava/util/UUID;[B)V
     .locals 1
-    .parameter "uuid"
-    .parameter "initData"
+    .param p1, "uuid"    # Ljava/util/UUID;
+    .param p2, "initData"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/media/MediaCryptoException;
@@ -35,10 +35,10 @@
     .end annotation
 
     .prologue
-    .line 62
+    .line 64
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 63
+    .line 65
     invoke-static {p1}, Landroid/media/MediaCrypto;->getByteArrayFromUUID(Ljava/util/UUID;)[B
 
     move-result-object v0
@@ -50,81 +50,81 @@
 .end method
 
 .method private static final getByteArrayFromUUID(Ljava/util/UUID;)[B
-    .locals 9
-    .parameter "uuid"
+    .locals 11
+    .param p0, "uuid"    # Ljava/util/UUID;
 
     .prologue
-    .line 42
+    const/16 v10, 0x8
+
+    .line 44
     invoke-virtual {p0}, Ljava/util/UUID;->getMostSignificantBits()J
 
-    move-result-wide v3
-
-    .line 43
-    .local v3, msb:J
-    invoke-virtual {p0}, Ljava/util/UUID;->getLeastSignificantBits()J
-
-    move-result-wide v1
+    move-result-wide v4
 
     .line 45
-    .local v1, lsb:J
-    const/16 v6, 0x10
+    .local v4, "msb":J
+    invoke-virtual {p0}, Ljava/util/UUID;->getLeastSignificantBits()J
 
-    new-array v5, v6, [B
-
-    .line 46
-    .local v5, uuidBytes:[B
-    const/4 v0, 0x0
-
-    .local v0, i:I
-    :goto_0
-    const/16 v6, 0x8
-
-    if-ge v0, v6, :cond_0
+    move-result-wide v2
 
     .line 47
+    .local v2, "lsb":J
+    const/16 v6, 0x10
+
+    new-array v1, v6, [B
+
+    .line 48
+    .local v1, "uuidBytes":[B
+    const/4 v0, 0x0
+
+    .local v0, "i":I
+    :goto_0
+    if-ge v0, v10, :cond_0
+
+    .line 49
     rsub-int/lit8 v6, v0, 0x7
 
     mul-int/lit8 v6, v6, 0x8
 
-    ushr-long v6, v3, v6
+    ushr-long v6, v4, v6
 
     long-to-int v6, v6
 
     int-to-byte v6, v6
 
-    aput-byte v6, v5, v0
+    aput-byte v6, v1, v0
 
-    .line 48
+    .line 50
     add-int/lit8 v6, v0, 0x8
 
     rsub-int/lit8 v7, v0, 0x7
 
     mul-int/lit8 v7, v7, 0x8
 
-    ushr-long v7, v1, v7
+    ushr-long v8, v2, v7
 
-    long-to-int v7, v7
+    long-to-int v7, v8
 
     int-to-byte v7, v7
 
-    aput-byte v7, v5, v6
+    aput-byte v7, v1, v6
 
-    .line 46
+    .line 48
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 51
+    .line 53
     :cond_0
-    return-object v5
+    return-object v1
 .end method
 
 .method public static final isCryptoSchemeSupported(Ljava/util/UUID;)Z
     .locals 1
-    .parameter "uuid"
+    .param p0, "uuid"    # Ljava/util/UUID;
 
     .prologue
-    .line 38
+    .line 39
     invoke-static {p0}, Landroid/media/MediaCrypto;->getByteArrayFromUUID(Ljava/util/UUID;)[B
 
     move-result-object v0
@@ -159,10 +159,10 @@
     .locals 0
 
     .prologue
-    .line 75
+    .line 91
     invoke-direct {p0}, Landroid/media/MediaCrypto;->native_finalize()V
 
-    .line 76
+    .line 90
     return-void
 .end method
 
@@ -170,4 +170,12 @@
 .end method
 
 .method public final native requiresSecureDecoderComponent(Ljava/lang/String;)Z
+.end method
+
+.method public final native setMediaDrmSession([B)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/media/MediaCryptoException;
+        }
+    .end annotation
 .end method

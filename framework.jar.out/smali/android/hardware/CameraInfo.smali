@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/hardware/CameraInfo$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -28,13 +36,15 @@
     .locals 1
 
     .prologue
-    .line 48
+    .line 49
     new-instance v0, Landroid/hardware/CameraInfo$1;
 
     invoke-direct {v0}, Landroid/hardware/CameraInfo$1;-><init>()V
 
+    .line 48
     sput-object v0, Landroid/hardware/CameraInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 27
     return-void
 .end method
 
@@ -52,6 +62,7 @@
 
     iput-object v0, p0, Landroid/hardware/CameraInfo;->info:Landroid/hardware/Camera$CameraInfo;
 
+    .line 27
     return-void
 .end method
 
@@ -69,7 +80,7 @@
 
 .method public readFromParcel(Landroid/os/Parcel;)V
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 44
@@ -90,14 +101,14 @@
 
     iput v1, v0, Landroid/hardware/Camera$CameraInfo;->orientation:I
 
-    .line 46
+    .line 43
     return-void
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "out"
-    .parameter "flags"
+    .param p1, "out"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 39
@@ -114,6 +125,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 41
+    .line 38
     return-void
 .end method

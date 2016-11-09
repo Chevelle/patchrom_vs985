@@ -23,20 +23,20 @@
 # direct methods
 .method public constructor <init>(II)V
     .locals 0
-    .parameter "min"
-    .parameter "max"
+    .param p1, "min"    # I
+    .param p2, "max"    # I
 
     .prologue
-    .line 2317
+    .line 2435
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 2318
+    .line 2436
     iput p1, p0, Landroid/widget/GridLayout$Interval;->min:I
 
-    .line 2319
+    .line 2437
     iput p2, p0, Landroid/widget/GridLayout$Interval;->max:I
 
-    .line 2320
+    .line 2435
     return-void
 .end method
 
@@ -44,90 +44,86 @@
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
     .locals 5
-    .parameter "that"
+    .param p1, "that"    # Ljava/lang/Object;
 
     .prologue
-    const/4 v1, 0x1
+    const/4 v4, 0x1
 
-    const/4 v2, 0x0
+    const/4 v3, 0x0
 
-    .line 2342
-    if-ne p0, p1, :cond_1
+    .line 2460
+    if-ne p0, p1, :cond_0
 
-    .line 2359
+    .line 2461
+    return v4
+
+    .line 2463
     :cond_0
-    :goto_0
-    return v1
+    if-eqz p1, :cond_1
 
-    .line 2345
-    :cond_1
-    if-eqz p1, :cond_2
+    invoke-virtual {p0}, Landroid/widget/GridLayout$Interval;->getClass()Ljava/lang/Class;
 
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    move-result-object v3
+    move-result-object v1
 
     invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    move-result-object v4
+    move-result-object v2
 
-    if-eq v3, v4, :cond_3
+    if-eq v1, v2, :cond_2
+
+    .line 2464
+    :cond_1
+    return v3
 
     :cond_2
-    move v1, v2
-
-    .line 2346
-    goto :goto_0
-
-    :cond_3
     move-object v0, p1
 
-    .line 2349
+    .line 2467
     check-cast v0, Landroid/widget/GridLayout$Interval;
 
-    .line 2351
-    .local v0, interval:Landroid/widget/GridLayout$Interval;
-    iget v3, p0, Landroid/widget/GridLayout$Interval;->max:I
+    .line 2469
+    .local v0, "interval":Landroid/widget/GridLayout$Interval;
+    iget v1, p0, Landroid/widget/GridLayout$Interval;->max:I
 
-    iget v4, v0, Landroid/widget/GridLayout$Interval;->max:I
+    iget v2, v0, Landroid/widget/GridLayout$Interval;->max:I
 
-    if-eq v3, v4, :cond_4
+    if-eq v1, v2, :cond_3
 
-    move v1, v2
+    .line 2470
+    return v3
 
-    .line 2352
-    goto :goto_0
+    .line 2473
+    :cond_3
+    iget v1, p0, Landroid/widget/GridLayout$Interval;->min:I
 
-    .line 2355
+    iget v2, v0, Landroid/widget/GridLayout$Interval;->min:I
+
+    if-eq v1, v2, :cond_4
+
+    .line 2474
+    return v3
+
+    .line 2477
     :cond_4
-    iget v3, p0, Landroid/widget/GridLayout$Interval;->min:I
-
-    iget v4, v0, Landroid/widget/GridLayout$Interval;->min:I
-
-    if-eq v3, v4, :cond_0
-
-    move v1, v2
-
-    .line 2356
-    goto :goto_0
+    return v4
 .end method
 
 .method public hashCode()I
     .locals 3
 
     .prologue
-    .line 2364
+    .line 2482
     iget v0, p0, Landroid/widget/GridLayout$Interval;->min:I
 
-    .line 2365
-    .local v0, result:I
+    .line 2483
+    .local v0, "result":I
     mul-int/lit8 v1, v0, 0x1f
 
     iget v2, p0, Landroid/widget/GridLayout$Interval;->max:I
 
     add-int v0, v1, v2
 
-    .line 2366
+    .line 2484
     return v0
 .end method
 
@@ -135,7 +131,7 @@
     .locals 3
 
     .prologue
-    .line 2327
+    .line 2445
     new-instance v0, Landroid/widget/GridLayout$Interval;
 
     iget v1, p0, Landroid/widget/GridLayout$Interval;->max:I
@@ -151,7 +147,7 @@
     .locals 2
 
     .prologue
-    .line 2323
+    .line 2441
     iget v0, p0, Landroid/widget/GridLayout$Interval;->max:I
 
     iget v1, p0, Landroid/widget/GridLayout$Interval;->min:I
@@ -165,12 +161,12 @@
     .locals 2
 
     .prologue
-    .line 2371
+    .line 2489
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "["
+    const-string/jumbo v1, "["
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -182,7 +178,7 @@
 
     move-result-object v0
 
-    const-string v1, ", "
+    const-string/jumbo v1, ", "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -194,7 +190,7 @@
 
     move-result-object v0
 
-    const-string v1, "]"
+    const-string/jumbo v1, "]"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

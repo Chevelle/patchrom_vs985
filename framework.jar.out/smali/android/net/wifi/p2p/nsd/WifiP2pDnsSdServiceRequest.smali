@@ -15,13 +15,13 @@
 
     invoke-direct {p0, v0, v1}, Landroid/net/wifi/p2p/nsd/WifiP2pServiceRequest;-><init>(ILjava/lang/String;)V
 
-    .line 47
+    .line 45
     return-void
 .end method
 
 .method private constructor <init>(Ljava/lang/String;)V
     .locals 1
-    .parameter "query"
+    .param p1, "query"    # Ljava/lang/String;
 
     .prologue
     .line 38
@@ -29,27 +29,27 @@
 
     invoke-direct {p0, v0, p1}, Landroid/net/wifi/p2p/nsd/WifiP2pServiceRequest;-><init>(ILjava/lang/String;)V
 
-    .line 39
+    .line 37
     return-void
 .end method
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 2
-    .parameter "dnsQuery"
-    .parameter "dnsType"
-    .parameter "version"
+    .param p1, "dnsQuery"    # Ljava/lang/String;
+    .param p2, "dnsType"    # I
+    .param p3, "version"    # I
 
     .prologue
     .line 50
-    const/4 v0, 0x1
-
     invoke-static {p1, p2, p3}, Landroid/net/wifi/p2p/nsd/WifiP2pDnsSdServiceInfo;->createRequest(Ljava/lang/String;II)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-direct {p0, v0, v1}, Landroid/net/wifi/p2p/nsd/WifiP2pServiceRequest;-><init>(ILjava/lang/String;)V
+    const/4 v1, 0x1
 
-    .line 54
+    invoke-direct {p0, v1, v0}, Landroid/net/wifi/p2p/nsd/WifiP2pServiceRequest;-><init>(ILjava/lang/String;)V
+
+    .line 49
     return-void
 .end method
 
@@ -67,7 +67,7 @@
 
 .method public static newInstance(Ljava/lang/String;)Landroid/net/wifi/p2p/nsd/WifiP2pDnsSdServiceRequest;
     .locals 4
-    .parameter "serviceType"
+    .param p0, "serviceType"    # Ljava/lang/String;
 
     .prologue
     .line 76
@@ -94,7 +94,7 @@
 
     move-result-object v1
 
-    const-string v2, ".local."
+    const-string/jumbo v2, ".local."
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -104,10 +104,13 @@
 
     move-result-object v1
 
+    .line 80
     const/16 v2, 0xc
 
+    .line 81
     const/4 v3, 0x1
 
+    .line 79
     invoke-direct {v0, v1, v2, v3}, Landroid/net/wifi/p2p/nsd/WifiP2pDnsSdServiceRequest;-><init>(Ljava/lang/String;II)V
 
     return-object v0
@@ -115,8 +118,8 @@
 
 .method public static newInstance(Ljava/lang/String;Ljava/lang/String;)Landroid/net/wifi/p2p/nsd/WifiP2pDnsSdServiceRequest;
     .locals 4
-    .parameter "instanceName"
-    .parameter "serviceType"
+    .param p0, "instanceName"    # Ljava/lang/String;
+    .param p1, "serviceType"    # Ljava/lang/String;
 
     .prologue
     .line 98
@@ -128,8 +131,10 @@
     :cond_0
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "instance name or service type cannot be null"
+    .line 100
+    const-string/jumbo v2, "instance name or service type cannot be null"
 
+    .line 99
     invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v1
@@ -144,7 +149,7 @@
 
     move-result-object v1
 
-    const-string v2, "."
+    const-string/jumbo v2, "."
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -154,7 +159,7 @@
 
     move-result-object v1
 
-    const-string v2, ".local."
+    const-string/jumbo v2, ".local."
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -165,13 +170,16 @@
     move-result-object v0
 
     .line 103
-    .local v0, fullDomainName:Ljava/lang/String;
+    .local v0, "fullDomainName":Ljava/lang/String;
     new-instance v1, Landroid/net/wifi/p2p/nsd/WifiP2pDnsSdServiceRequest;
 
+    .line 104
     const/16 v2, 0x10
 
+    .line 105
     const/4 v3, 0x1
 
+    .line 103
     invoke-direct {v1, v0, v2, v3}, Landroid/net/wifi/p2p/nsd/WifiP2pDnsSdServiceRequest;-><init>(Ljava/lang/String;II)V
 
     return-object v1

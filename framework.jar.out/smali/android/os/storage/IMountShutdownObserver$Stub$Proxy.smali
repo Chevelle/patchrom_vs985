@@ -24,7 +24,7 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
     .line 82
@@ -33,7 +33,7 @@
     .line 83
     iput-object p1, p0, Landroid/os/storage/IMountShutdownObserver$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 84
+    .line 82
     return-void
 .end method
 
@@ -54,14 +54,14 @@
 
     .prologue
     .line 91
-    const-string v0, "IMountShutdownObserver"
+    const-string/jumbo v0, "IMountShutdownObserver"
 
     return-object v0
 .end method
 
 .method public onShutDownComplete(I)V
     .locals 5
-    .parameter "statusCode"
+    .param p1, "statusCode"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -75,15 +75,15 @@
     move-result-object v0
 
     .line 102
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 104
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "IMountShutdownObserver"
+    const-string/jumbo v2, "IMountShutdownObserver"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -110,17 +110,19 @@
     .line 110
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 112
+    .line 100
     return-void
 
-    .line 109
+    .line 108
     :catchall_0
     move-exception v2
 
+    .line 109
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 110
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 108
     throw v2
 .end method

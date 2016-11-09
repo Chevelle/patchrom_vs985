@@ -30,7 +30,7 @@
 
     .prologue
     .line 26
-    .local p0, this:Landroid/util/Singleton;,"Landroid/util/Singleton<TT;>;"
+    .local p0, "this":Landroid/util/Singleton;, "Landroid/util/Singleton<TT;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -56,7 +56,7 @@
 
     .prologue
     .line 32
-    .local p0, this:Landroid/util/Singleton;,"Landroid/util/Singleton<TT;>;"
+    .local p0, "this":Landroid/util/Singleton;, "Landroid/util/Singleton<TT;>;"
     monitor-enter p0
 
     .line 33
@@ -75,18 +75,18 @@
     .line 36
     :cond_0
     iget-object v0, p0, Landroid/util/Singleton;->mInstance:Ljava/lang/Object;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit p0
 
     return-object v0
 
-    .line 37
+    .line 32
     :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

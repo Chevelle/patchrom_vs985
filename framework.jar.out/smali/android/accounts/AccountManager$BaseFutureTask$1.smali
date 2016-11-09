@@ -1,4 +1,4 @@
-.class Landroid/accounts/AccountManager$BaseFutureTask$1;
+.class final Landroid/accounts/AccountManager$BaseFutureTask$1;
 .super Ljava/lang/Object;
 .source "AccountManager.java"
 
@@ -12,7 +12,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x8
     name = null
 .end annotation
 
@@ -32,11 +32,10 @@
 # direct methods
 .method constructor <init>(Landroid/accounts/AccountManager;)V
     .locals 0
-    .parameter
+    .param p1, "val$this$0"    # Landroid/accounts/AccountManager;
 
     .prologue
-    .line 1583
-    .local p0, this:Landroid/accounts/AccountManager$BaseFutureTask$1;,"Landroid/accounts/AccountManager$BaseFutureTask.1;"
+    .line 2004
     iput-object p1, p0, Landroid/accounts/AccountManager$BaseFutureTask$1;->val$this$0:Landroid/accounts/AccountManager;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -61,8 +60,7 @@
     .end annotation
 
     .prologue
-    .line 1585
-    .local p0, this:Landroid/accounts/AccountManager$BaseFutureTask$1;,"Landroid/accounts/AccountManager$BaseFutureTask.1;"
+    .line 2006
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string/jumbo v1, "this should never be called"

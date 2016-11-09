@@ -17,6 +17,7 @@
 
     sput-object v0, Landroid/filterfw/core/GLFrameTimer;->mTimer:Landroid/filterfw/core/StopWatchMap;
 
+    .line 31
     return-void
 .end method
 

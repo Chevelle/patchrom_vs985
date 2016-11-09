@@ -17,19 +17,26 @@
     name = "StreamItems"
 .end annotation
 
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
 
 # static fields
 .field public static final CONTENT_DIRECTORY:Ljava/lang/String; = "stream_items"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 
 # direct methods
 .method private constructor <init>()V
     .locals 0
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 2826
+    .line 2850
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 2827
     return-void
 .end method

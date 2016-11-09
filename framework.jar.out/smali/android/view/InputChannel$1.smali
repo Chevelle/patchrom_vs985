@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/view/InputChannel;
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 38
@@ -51,7 +51,7 @@
     invoke-direct {v0}, Landroid/view/InputChannel;-><init>()V
 
     .line 39
-    .local v0, result:Landroid/view/InputChannel;
+    .local v0, "result":Landroid/view/InputChannel;
     invoke-virtual {v0, p1}, Landroid/view/InputChannel;->readFromParcel(Landroid/os/Parcel;)V
 
     .line 40
@@ -60,10 +60,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 36
+    .line 37
     invoke-virtual {p0, p1}, Landroid/view/InputChannel$1;->createFromParcel(Landroid/os/Parcel;)Landroid/view/InputChannel;
 
     move-result-object v0
@@ -73,7 +73,7 @@
 
 .method public newArray(I)[Landroid/view/InputChannel;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 44
@@ -84,10 +84,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 36
+    .line 43
     invoke-virtual {p0, p1}, Landroid/view/InputChannel$1;->newArray(I)[Landroid/view/InputChannel;
 
     move-result-object v0

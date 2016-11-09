@@ -48,31 +48,34 @@
 
     const/4 v2, 0x0
 
-    .line 34
+    .line 33
     new-instance v0, Landroid/net/LocalSocketAddress$Namespace;
 
-    const-string v1, "ABSTRACT"
+    const-string/jumbo v1, "ABSTRACT"
 
     invoke-direct {v0, v1, v2, v2}, Landroid/net/LocalSocketAddress$Namespace;-><init>(Ljava/lang/String;II)V
 
+    .line 34
     sput-object v0, Landroid/net/LocalSocketAddress$Namespace;->ABSTRACT:Landroid/net/LocalSocketAddress$Namespace;
 
-    .line 39
+    .line 35
     new-instance v0, Landroid/net/LocalSocketAddress$Namespace;
 
-    const-string v1, "RESERVED"
+    const-string/jumbo v1, "RESERVED"
 
     invoke-direct {v0, v1, v3, v3}, Landroid/net/LocalSocketAddress$Namespace;-><init>(Ljava/lang/String;II)V
 
+    .line 39
     sput-object v0, Landroid/net/LocalSocketAddress$Namespace;->RESERVED:Landroid/net/LocalSocketAddress$Namespace;
 
-    .line 43
+    .line 40
     new-instance v0, Landroid/net/LocalSocketAddress$Namespace;
 
-    const-string v1, "FILESYSTEM"
+    const-string/jumbo v1, "FILESYSTEM"
 
     invoke-direct {v0, v1, v4, v4}, Landroid/net/LocalSocketAddress$Namespace;-><init>(Ljava/lang/String;II)V
 
+    .line 43
     sput-object v0, Landroid/net/LocalSocketAddress$Namespace;->FILESYSTEM:Landroid/net/LocalSocketAddress$Namespace;
 
     .line 32
@@ -99,14 +102,7 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "id"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "id"    # I
 
     .prologue
     .line 47
@@ -115,13 +111,13 @@
     .line 48
     iput p3, p0, Landroid/net/LocalSocketAddress$Namespace;->id:I
 
-    .line 49
+    .line 47
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/net/LocalSocketAddress$Namespace;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 32
@@ -142,12 +138,6 @@
     .prologue
     .line 32
     sget-object v0, Landroid/net/LocalSocketAddress$Namespace;->$VALUES:[Landroid/net/LocalSocketAddress$Namespace;
-
-    invoke-virtual {v0}, [Landroid/net/LocalSocketAddress$Namespace;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/net/LocalSocketAddress$Namespace;
 
     return-object v0
 .end method

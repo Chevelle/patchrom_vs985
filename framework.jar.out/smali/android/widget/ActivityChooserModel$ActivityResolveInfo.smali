@@ -38,19 +38,19 @@
 # direct methods
 .method public constructor <init>(Landroid/widget/ActivityChooserModel;Landroid/content/pm/ResolveInfo;)V
     .locals 0
-    .parameter
-    .parameter "resolveInfo"
+    .param p1, "this$0"    # Landroid/widget/ActivityChooserModel;
+    .param p2, "resolveInfo"    # Landroid/content/pm/ResolveInfo;
 
     .prologue
-    .line 893
+    .line 894
     iput-object p1, p0, Landroid/widget/ActivityChooserModel$ActivityResolveInfo;->this$0:Landroid/widget/ActivityChooserModel;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 894
+    .line 895
     iput-object p2, p0, Landroid/widget/ActivityChooserModel$ActivityResolveInfo;->resolveInfo:Landroid/content/pm/ResolveInfo;
 
-    .line 895
+    .line 894
     return-void
 .end method
 
@@ -58,10 +58,10 @@
 # virtual methods
 .method public compareTo(Landroid/widget/ActivityChooserModel$ActivityResolveInfo;)I
     .locals 2
-    .parameter "another"
+    .param p1, "another"    # Landroid/widget/ActivityChooserModel$ActivityResolveInfo;
 
     .prologue
-    .line 921
+    .line 922
     iget v0, p1, Landroid/widget/ActivityChooserModel$ActivityResolveInfo;->weight:F
 
     invoke-static {v0}, Ljava/lang/Float;->floatToIntBits(F)I
@@ -81,13 +81,13 @@
 
 .method public bridge synthetic compareTo(Ljava/lang/Object;)I
     .locals 1
-    .parameter "x0"
+    .param p1, "another"    # Ljava/lang/Object;
 
     .prologue
-    .line 876
+    .line 921
     check-cast p1, Landroid/widget/ActivityChooserModel$ActivityResolveInfo;
 
-    .end local p1
+    .end local p1    # "another":Ljava/lang/Object;
     invoke-virtual {p0, p1}, Landroid/widget/ActivityChooserModel$ActivityResolveInfo;->compareTo(Landroid/widget/ActivityChooserModel$ActivityResolveInfo;)I
 
     move-result v0
@@ -97,80 +97,76 @@
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 5
-    .parameter "obj"
+    .param p1, "obj"    # Ljava/lang/Object;
 
     .prologue
-    const/4 v1, 0x1
+    const/4 v4, 0x1
 
-    const/4 v2, 0x0
+    const/4 v3, 0x0
 
-    .line 904
-    if-ne p0, p1, :cond_1
+    .line 905
+    if-ne p0, p1, :cond_0
 
-    .line 917
-    :cond_0
-    :goto_0
-    return v1
-
-    .line 907
-    :cond_1
-    if-nez p1, :cond_2
-
-    move v1, v2
+    .line 906
+    return v4
 
     .line 908
-    goto :goto_0
+    :cond_0
+    if-nez p1, :cond_1
 
-    .line 910
-    :cond_2
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    .line 909
+    return v3
 
-    move-result-object v3
+    .line 911
+    :cond_1
+    invoke-virtual {p0}, Landroid/widget/ActivityChooserModel$ActivityResolveInfo;->getClass()Ljava/lang/Class;
+
+    move-result-object v1
 
     invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    move-result-object v4
+    move-result-object v2
 
-    if-eq v3, v4, :cond_3
+    if-eq v1, v2, :cond_2
 
-    move v1, v2
+    .line 912
+    return v3
 
-    .line 911
-    goto :goto_0
-
-    :cond_3
+    :cond_2
     move-object v0, p1
 
-    .line 913
+    .line 914
     check-cast v0, Landroid/widget/ActivityChooserModel$ActivityResolveInfo;
 
-    .line 914
-    .local v0, other:Landroid/widget/ActivityChooserModel$ActivityResolveInfo;
-    iget v3, p0, Landroid/widget/ActivityChooserModel$ActivityResolveInfo;->weight:F
-
-    invoke-static {v3}, Ljava/lang/Float;->floatToIntBits(F)I
-
-    move-result v3
-
-    iget v4, v0, Landroid/widget/ActivityChooserModel$ActivityResolveInfo;->weight:F
-
-    invoke-static {v4}, Ljava/lang/Float;->floatToIntBits(F)I
-
-    move-result v4
-
-    if-eq v3, v4, :cond_0
-
-    move v1, v2
-
     .line 915
-    goto :goto_0
+    .local v0, "other":Landroid/widget/ActivityChooserModel$ActivityResolveInfo;
+    iget v1, p0, Landroid/widget/ActivityChooserModel$ActivityResolveInfo;->weight:F
+
+    invoke-static {v1}, Ljava/lang/Float;->floatToIntBits(F)I
+
+    move-result v1
+
+    iget v2, v0, Landroid/widget/ActivityChooserModel$ActivityResolveInfo;->weight:F
+
+    invoke-static {v2}, Ljava/lang/Float;->floatToIntBits(F)I
+
+    move-result v2
+
+    if-eq v1, v2, :cond_3
+
+    .line 916
+    return v3
+
+    .line 918
+    :cond_3
+    return v4
 .end method
 
 .method public hashCode()I
     .locals 1
 
     .prologue
-    .line 899
+    .line 900
     iget v0, p0, Landroid/widget/ActivityChooserModel$ActivityResolveInfo;->weight:F
 
     invoke-static {v0}, Ljava/lang/Float;->floatToIntBits(F)I
@@ -183,21 +179,21 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 5
+    .locals 6
 
     .prologue
-    .line 926
+    .line 927
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 927
-    .local v0, builder:Ljava/lang/StringBuilder;
-    const-string v1, "["
+    .line 928
+    .local v0, "builder":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "["
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 928
+    .line 929
     const-string/jumbo v1, "resolveInfo:"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -212,8 +208,8 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 929
-    const-string v1, "; weight:"
+    .line 930
+    const-string/jumbo v1, "; weight:"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -223,18 +219,18 @@
 
     iget v3, p0, Landroid/widget/ActivityChooserModel$ActivityResolveInfo;->weight:F
 
-    float-to-double v3, v3
+    float-to-double v4, v3
 
-    invoke-direct {v2, v3, v4}, Ljava/math/BigDecimal;-><init>(D)V
+    invoke-direct {v2, v4, v5}, Ljava/math/BigDecimal;-><init>(D)V
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    .line 930
-    const-string v1, "]"
+    .line 931
+    const-string/jumbo v1, "]"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 931
+    .line 932
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1

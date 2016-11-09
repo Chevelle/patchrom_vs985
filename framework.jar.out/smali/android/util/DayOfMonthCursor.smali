@@ -12,10 +12,10 @@
 # direct methods
 .method public constructor <init>(IIII)V
     .locals 1
-    .parameter "year"
-    .parameter "month"
-    .parameter "dayOfMonth"
-    .parameter "weekStartDay"
+    .param p1, "year"    # I
+    .param p2, "month"    # I
+    .param p3, "dayOfMonth"    # I
+    .param p4, "weekStartDay"    # I
 
     .prologue
     .line 49
@@ -35,7 +35,7 @@
 
     iput v0, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
 
-    .line 52
+    .line 48
     return-void
 .end method
 
@@ -45,41 +45,40 @@
     .locals 3
 
     .prologue
-    const/4 v0, 0x0
+    const/4 v2, 0x0
 
     .line 121
-    iget v1, p0, Landroid/util/DayOfMonthCursor;->mRow:I
+    iget v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
-    add-int/lit8 v1, v1, 0x1
+    add-int/lit8 v0, v0, 0x1
 
-    iget v2, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
+    iget v1, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
 
-    invoke-virtual {p0, v1, v2}, Landroid/util/DayOfMonthCursor;->isWithinCurrentMonth(II)Z
+    invoke-virtual {p0, v0, v1}, Landroid/util/DayOfMonthCursor;->isWithinCurrentMonth(II)Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_0
+    if-eqz v0, :cond_0
 
     .line 123
-    iget v1, p0, Landroid/util/DayOfMonthCursor;->mRow:I
+    iget v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
-    add-int/lit8 v1, v1, 0x1
+    add-int/lit8 v0, v0, 0x1
 
-    iput v1, p0, Landroid/util/DayOfMonthCursor;->mRow:I
+    iput v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
-    .line 132
-    :goto_0
-    return v0
+    .line 124
+    return v2
 
     .line 127
     :cond_0
     invoke-virtual {p0}, Landroid/util/DayOfMonthCursor;->nextMonth()V
 
     .line 128
-    iput v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
+    iput v2, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
     .line 129
-    :goto_1
+    :goto_0
     iget v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
     iget v1, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
@@ -97,13 +96,13 @@
 
     iput v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
-    goto :goto_1
+    goto :goto_0
 
     .line 132
     :cond_1
     const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public getSelectedColumn()I
@@ -133,9 +132,11 @@
 .end method
 
 .method public getSelectedMonthOffset()I
-    .locals 2
+    .locals 3
 
     .prologue
+    const/4 v2, 0x0
+
     .line 77
     iget v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
@@ -148,11 +149,7 @@
     if-eqz v0, :cond_0
 
     .line 78
-    const/4 v0, 0x0
-
-    .line 83
-    :goto_0
-    return v0
+    return v2
 
     .line 80
     :cond_0
@@ -163,13 +160,13 @@
     .line 81
     const/4 v0, -0x1
 
-    goto :goto_0
+    return v0
 
     .line 83
     :cond_1
     const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public getSelectedRow()I
@@ -183,35 +180,34 @@
 .end method
 
 .method public isSelected(II)Z
-    .locals 1
-    .parameter "row"
-    .parameter "column"
+    .locals 2
+    .param p1, "row"    # I
+    .param p2, "column"    # I
 
     .prologue
+    const/4 v0, 0x0
+
     .line 92
-    iget v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
+    iget v1, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
-    if-ne v0, p1, :cond_0
+    if-ne v1, p1, :cond_0
 
-    iget v0, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
+    iget v1, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
 
-    if-ne v0, p2, :cond_0
+    if-ne v1, p2, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public left()Z
-    .locals 3
+    .locals 4
 
     .prologue
+    const/4 v3, 0x0
+
     .line 141
     iget v1, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
 
@@ -242,11 +238,7 @@
     if-eqz v1, :cond_1
 
     .line 149
-    const/4 v1, 0x0
-
-    .line 157
-    :goto_1
-    return v1
+    return v3
 
     .line 145
     :cond_0
@@ -268,7 +260,7 @@
     move-result v0
 
     .line 155
-    .local v0, lastDay:I
+    .local v0, "lastDay":I
     invoke-virtual {p0, v0}, Landroid/util/DayOfMonthCursor;->getRowOf(I)I
 
     move-result v1
@@ -285,55 +277,54 @@
     .line 157
     const/4 v1, 0x1
 
-    goto :goto_1
+    return v1
 .end method
 
 .method public right()Z
     .locals 3
 
     .prologue
-    const/4 v0, 0x0
+    const/4 v2, 0x0
 
     .line 166
-    iget v1, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
+    iget v0, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
 
-    const/4 v2, 0x6
+    const/4 v1, 0x6
 
-    if-ne v1, v2, :cond_0
+    if-ne v0, v1, :cond_0
 
     .line 167
-    iget v1, p0, Landroid/util/DayOfMonthCursor;->mRow:I
+    iget v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
-    add-int/lit8 v1, v1, 0x1
+    add-int/lit8 v0, v0, 0x1
 
-    iput v1, p0, Landroid/util/DayOfMonthCursor;->mRow:I
+    iput v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
     .line 168
-    iput v0, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
+    iput v2, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
 
     .line 173
     :goto_0
-    iget v1, p0, Landroid/util/DayOfMonthCursor;->mRow:I
+    iget v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
-    iget v2, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
+    iget v1, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
 
-    invoke-virtual {p0, v1, v2}, Landroid/util/DayOfMonthCursor;->isWithinCurrentMonth(II)Z
+    invoke-virtual {p0, v0, v1}, Landroid/util/DayOfMonthCursor;->isWithinCurrentMonth(II)Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_1
+    if-eqz v0, :cond_1
 
-    .line 184
-    :goto_1
-    return v0
+    .line 174
+    return v2
 
     .line 170
     :cond_0
-    iget v1, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
+    iget v0, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
 
-    add-int/lit8 v1, v1, 0x1
+    add-int/lit8 v0, v0, 0x1
 
-    iput v1, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
+    iput v0, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
 
     goto :goto_0
 
@@ -342,13 +333,13 @@
     invoke-virtual {p0}, Landroid/util/DayOfMonthCursor;->nextMonth()V
 
     .line 179
-    iput v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
+    iput v2, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
     .line 180
-    iput v0, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
+    iput v2, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
 
     .line 181
-    :goto_2
+    :goto_1
     iget v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
     iget v1, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
@@ -366,18 +357,18 @@
 
     iput v0, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
 
-    goto :goto_2
+    goto :goto_1
 
     .line 184
     :cond_2
     const/4 v0, 0x1
 
-    goto :goto_1
+    return v0
 .end method
 
 .method public setSelectedDayOfMonth(I)V
     .locals 1
-    .parameter "dayOfMonth"
+    .param p1, "dayOfMonth"    # I
 
     .prologue
     .line 87
@@ -394,14 +385,14 @@
 
     iput v0, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
 
-    .line 89
+    .line 86
     return-void
 .end method
 
 .method public setSelectedRowColumn(II)V
     .locals 0
-    .parameter "row"
-    .parameter "col"
+    .param p1, "row"    # I
+    .param p2, "col"    # I
 
     .prologue
     .line 64
@@ -410,7 +401,7 @@
     .line 65
     iput p2, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
 
-    .line 66
+    .line 63
     return-void
 .end method
 
@@ -441,8 +432,6 @@
     .line 104
     const/4 v0, 0x0
 
-    .line 112
-    :goto_0
     return v0
 
     .line 107
@@ -455,7 +444,7 @@
     iput v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
     .line 109
-    :goto_1
+    :goto_0
     iget v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
     iget v1, p0, Landroid/util/DayOfMonthCursor;->mColumn:I
@@ -473,11 +462,11 @@
 
     iput v0, p0, Landroid/util/DayOfMonthCursor;->mRow:I
 
-    goto :goto_1
+    goto :goto_0
 
     .line 112
     :cond_1
     const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 .end method

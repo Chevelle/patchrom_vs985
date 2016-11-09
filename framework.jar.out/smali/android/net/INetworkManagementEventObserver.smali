@@ -15,7 +15,7 @@
 
 
 # virtual methods
-.method public abstract addressRemoved(Ljava/lang/String;Ljava/lang/String;II)V
+.method public abstract addressRemoved(Ljava/lang/String;Landroid/net/LinkAddress;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -23,7 +23,7 @@
     .end annotation
 .end method
 
-.method public abstract addressUpdated(Ljava/lang/String;Ljava/lang/String;II)V
+.method public abstract addressUpdated(Ljava/lang/String;Landroid/net/LinkAddress;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -39,7 +39,15 @@
     .end annotation
 .end method
 
-.method public abstract interfaceClassDataActivityChanged(Ljava/lang/String;Z)V
+.method public abstract interfaceClassDataActivityChanged(Ljava/lang/String;ZJ)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract interfaceDnsServerInfo(Ljava/lang/String;J[Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -72,6 +80,22 @@
 .end method
 
 .method public abstract limitReached(Ljava/lang/String;Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract routeRemoved(Landroid/net/RouteInfo;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract routeUpdated(Landroid/net/RouteInfo;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

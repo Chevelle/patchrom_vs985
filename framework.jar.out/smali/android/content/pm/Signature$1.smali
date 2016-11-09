@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 190
+    .line 234
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,25 +42,25 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/content/pm/Signature;
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 192
+    .line 236
     new-instance v0, Landroid/content/pm/Signature;
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p1, v1}, Landroid/content/pm/Signature;-><init>(Landroid/os/Parcel;Landroid/content/pm/Signature$1;)V
+    invoke-direct {v0, p1, v1}, Landroid/content/pm/Signature;-><init>(Landroid/os/Parcel;Landroid/content/pm/Signature;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 190
+    .line 235
     invoke-virtual {p0, p1}, Landroid/content/pm/Signature$1;->createFromParcel(Landroid/os/Parcel;)Landroid/content/pm/Signature;
 
     move-result-object v0
@@ -70,10 +70,10 @@
 
 .method public newArray(I)[Landroid/content/pm/Signature;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 196
+    .line 240
     new-array v0, p1, [Landroid/content/pm/Signature;
 
     return-object v0
@@ -81,10 +81,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 190
+    .line 239
     invoke-virtual {p0, p1}, Landroid/content/pm/Signature$1;->newArray(I)[Landroid/content/pm/Signature;
 
     move-result-object v0

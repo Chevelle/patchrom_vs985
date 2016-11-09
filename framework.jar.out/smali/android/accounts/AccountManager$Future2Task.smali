@@ -45,9 +45,8 @@
 # direct methods
 .method public constructor <init>(Landroid/accounts/AccountManager;Landroid/os/Handler;Landroid/accounts/AccountManagerCallback;)V
     .locals 0
-    .parameter
-    .parameter "handler"
-    .parameter
+    .param p1, "this$0"    # Landroid/accounts/AccountManager;
+    .param p2, "handler"    # Landroid/os/Handler;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -58,25 +57,25 @@
     .end annotation
 
     .prologue
-    .line 1639
-    .local p0, this:Landroid/accounts/AccountManager$Future2Task;,"Landroid/accounts/AccountManager$Future2Task<TT;>;"
-    .local p3, callback:Landroid/accounts/AccountManagerCallback;,"Landroid/accounts/AccountManagerCallback<TT;>;"
+    .line 2063
+    .local p0, "this":Landroid/accounts/AccountManager$Future2Task;, "Landroid/accounts/AccountManager$Future2Task<TT;>;"
+    .local p3, "callback":Landroid/accounts/AccountManagerCallback;, "Landroid/accounts/AccountManagerCallback<TT;>;"
     iput-object p1, p0, Landroid/accounts/AccountManager$Future2Task;->this$0:Landroid/accounts/AccountManager;
 
-    .line 1640
+    .line 2064
     invoke-direct {p0, p1, p2}, Landroid/accounts/AccountManager$BaseFutureTask;-><init>(Landroid/accounts/AccountManager;Landroid/os/Handler;)V
 
-    .line 1641
+    .line 2065
     iput-object p3, p0, Landroid/accounts/AccountManager$Future2Task;->mCallback:Landroid/accounts/AccountManagerCallback;
 
-    .line 1642
+    .line 2063
     return-void
 .end method
 
 .method private internalGetResult(Ljava/lang/Long;Ljava/util/concurrent/TimeUnit;)Ljava/lang/Object;
-    .locals 5
-    .parameter "timeout"
-    .parameter "unit"
+    .locals 9
+    .param p1, "timeout"    # Ljava/lang/Long;
+    .param p2, "unit"    # Ljava/util/concurrent/TimeUnit;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -95,197 +94,206 @@
     .end annotation
 
     .prologue
-    .local p0, this:Landroid/accounts/AccountManager$Future2Task;,"Landroid/accounts/AccountManager$Future2Task<TT;>;"
-    const/4 v4, 0x1
+    .local p0, "this":Landroid/accounts/AccountManager$Future2Task;, "Landroid/accounts/AccountManager$Future2Task<TT;>;"
+    const/4 v8, 0x1
 
-    .line 1661
+    .line 2085
     invoke-virtual {p0}, Landroid/accounts/AccountManager$Future2Task;->isDone()Z
 
-    move-result v2
+    move-result v5
 
-    if-nez v2, :cond_0
+    if-nez v5, :cond_0
 
-    .line 1662
-    iget-object v2, p0, Landroid/accounts/AccountManager$Future2Task;->this$0:Landroid/accounts/AccountManager;
+    .line 2086
+    iget-object v5, p0, Landroid/accounts/AccountManager$Future2Task;->this$0:Landroid/accounts/AccountManager;
 
-    #calls: Landroid/accounts/AccountManager;->ensureNotOnMainThread()V
-    invoke-static {v2}, Landroid/accounts/AccountManager;->access$200(Landroid/accounts/AccountManager;)V
+    invoke-static {v5}, Landroid/accounts/AccountManager;->-wrap1(Landroid/accounts/AccountManager;)V
 
-    .line 1665
+    .line 2089
     :cond_0
     if-nez p1, :cond_1
 
-    .line 1666
+    .line 2090
     :try_start_0
     invoke-virtual {p0}, Landroid/accounts/AccountManager$Future2Task;->get()Ljava/lang/Object;
     :try_end_0
+    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_3
+    .catch Ljava/util/concurrent/TimeoutException; {:try_start_0 .. :try_end_0} :catch_2
+    .catch Ljava/util/concurrent/CancellationException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/util/concurrent/ExecutionException; {:try_start_0 .. :try_end_0} :catch_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
-    .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
-    .catch Ljava/util/concurrent/TimeoutException; {:try_start_0 .. :try_end_0} :catch_1
-    .catch Ljava/util/concurrent/CancellationException; {:try_start_0 .. :try_end_0} :catch_2
-    .catch Ljava/util/concurrent/ExecutionException; {:try_start_0 .. :try_end_0} :catch_3
 
-    move-result-object v2
+    move-result-object v5
 
-    .line 1692
-    invoke-virtual {p0, v4}, Landroid/accounts/AccountManager$Future2Task;->cancel(Z)Z
+    .line 2116
+    invoke-virtual {p0, v8}, Landroid/accounts/AccountManager$Future2Task;->cancel(Z)Z
 
-    :goto_0
-    return-object v2
+    .line 2090
+    return-object v5
 
-    .line 1668
+    .line 2092
     :cond_1
     :try_start_1
     invoke-virtual {p1}, Ljava/lang/Long;->longValue()J
 
-    move-result-wide v2
+    move-result-wide v6
 
-    invoke-virtual {p0, v2, v3, p2}, Landroid/accounts/AccountManager$Future2Task;->get(JLjava/util/concurrent/TimeUnit;)Ljava/lang/Object;
+    invoke-virtual {p0, v6, v7, p2}, Landroid/accounts/AccountManager$Future2Task;->get(JLjava/util/concurrent/TimeUnit;)Ljava/lang/Object;
     :try_end_1
+    .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_3
+    .catch Ljava/util/concurrent/TimeoutException; {:try_start_1 .. :try_end_1} :catch_2
+    .catch Ljava/util/concurrent/CancellationException; {:try_start_1 .. :try_end_1} :catch_1
+    .catch Ljava/util/concurrent/ExecutionException; {:try_start_1 .. :try_end_1} :catch_0
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
-    .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_0
-    .catch Ljava/util/concurrent/TimeoutException; {:try_start_1 .. :try_end_1} :catch_1
-    .catch Ljava/util/concurrent/CancellationException; {:try_start_1 .. :try_end_1} :catch_2
-    .catch Ljava/util/concurrent/ExecutionException; {:try_start_1 .. :try_end_1} :catch_3
 
-    move-result-object v2
+    move-result-object v5
 
-    .line 1692
-    invoke-virtual {p0, v4}, Landroid/accounts/AccountManager$Future2Task;->cancel(Z)Z
+    .line 2116
+    invoke-virtual {p0, v8}, Landroid/accounts/AccountManager$Future2Task;->cancel(Z)Z
 
-    goto :goto_0
+    .line 2092
+    return-object v5
 
-    .line 1670
+    .line 2100
     :catch_0
-    move-exception v2
+    move-exception v3
 
-    .line 1692
-    invoke-virtual {p0, v4}, Landroid/accounts/AccountManager$Future2Task;->cancel(Z)Z
-
-    .line 1694
-    :goto_1
-    new-instance v2, Landroid/accounts/OperationCanceledException;
-
-    invoke-direct {v2}, Landroid/accounts/OperationCanceledException;-><init>()V
-
-    throw v2
-
-    .line 1672
-    :catch_1
-    move-exception v2
-
-    .line 1692
-    invoke-virtual {p0, v4}, Landroid/accounts/AccountManager$Future2Task;->cancel(Z)Z
-
-    goto :goto_1
-
-    .line 1674
-    :catch_2
-    move-exception v2
-
-    .line 1692
-    invoke-virtual {p0, v4}, Landroid/accounts/AccountManager$Future2Task;->cancel(Z)Z
-
-    goto :goto_1
-
-    .line 1676
-    :catch_3
-    move-exception v1
-
-    .line 1677
-    .local v1, e:Ljava/util/concurrent/ExecutionException;
+    .line 2101
+    .local v3, "e":Ljava/util/concurrent/ExecutionException;
     :try_start_2
-    invoke-virtual {v1}, Ljava/util/concurrent/ExecutionException;->getCause()Ljava/lang/Throwable;
+    invoke-virtual {v3}, Ljava/util/concurrent/ExecutionException;->getCause()Ljava/lang/Throwable;
 
     move-result-object v0
 
-    .line 1678
-    .local v0, cause:Ljava/lang/Throwable;
-    instance-of v2, v0, Ljava/io/IOException;
+    .line 2102
+    .local v0, "cause":Ljava/lang/Throwable;
+    instance-of v5, v0, Ljava/io/IOException;
 
-    if-eqz v2, :cond_2
+    if-eqz v5, :cond_2
 
-    .line 1679
+    .line 2103
     check-cast v0, Ljava/io/IOException;
 
-    .end local v0           #cause:Ljava/lang/Throwable;
+    .end local v0    # "cause":Ljava/lang/Throwable;
     throw v0
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 1692
-    .end local v1           #e:Ljava/util/concurrent/ExecutionException;
+    .line 2115
+    .end local v3    # "e":Ljava/util/concurrent/ExecutionException;
     :catchall_0
-    move-exception v2
+    move-exception v5
 
-    invoke-virtual {p0, v4}, Landroid/accounts/AccountManager$Future2Task;->cancel(Z)Z
+    .line 2116
+    invoke-virtual {p0, v8}, Landroid/accounts/AccountManager$Future2Task;->cancel(Z)Z
 
-    throw v2
+    .line 2115
+    throw v5
 
-    .line 1680
-    .restart local v0       #cause:Ljava/lang/Throwable;
-    .restart local v1       #e:Ljava/util/concurrent/ExecutionException;
+    .line 2104
+    .restart local v0    # "cause":Ljava/lang/Throwable;
+    .restart local v3    # "e":Ljava/util/concurrent/ExecutionException;
     :cond_2
     :try_start_3
-    instance-of v2, v0, Ljava/lang/UnsupportedOperationException;
+    instance-of v5, v0, Ljava/lang/UnsupportedOperationException;
 
-    if-eqz v2, :cond_3
+    if-eqz v5, :cond_3
 
-    .line 1681
-    new-instance v2, Landroid/accounts/AuthenticatorException;
+    .line 2105
+    new-instance v5, Landroid/accounts/AuthenticatorException;
 
-    invoke-direct {v2, v0}, Landroid/accounts/AuthenticatorException;-><init>(Ljava/lang/Throwable;)V
+    invoke-direct {v5, v0}, Landroid/accounts/AuthenticatorException;-><init>(Ljava/lang/Throwable;)V
 
-    throw v2
+    throw v5
 
-    .line 1682
+    .line 2106
     :cond_3
-    instance-of v2, v0, Landroid/accounts/AuthenticatorException;
+    instance-of v5, v0, Landroid/accounts/AuthenticatorException;
 
-    if-eqz v2, :cond_4
+    if-eqz v5, :cond_4
 
-    .line 1683
+    .line 2107
     check-cast v0, Landroid/accounts/AuthenticatorException;
 
-    .end local v0           #cause:Ljava/lang/Throwable;
+    .end local v0    # "cause":Ljava/lang/Throwable;
     throw v0
 
-    .line 1684
-    .restart local v0       #cause:Ljava/lang/Throwable;
+    .line 2108
+    .restart local v0    # "cause":Ljava/lang/Throwable;
     :cond_4
-    instance-of v2, v0, Ljava/lang/RuntimeException;
+    instance-of v5, v0, Ljava/lang/RuntimeException;
 
-    if-eqz v2, :cond_5
+    if-eqz v5, :cond_5
 
-    .line 1685
+    .line 2109
     check-cast v0, Ljava/lang/RuntimeException;
 
-    .end local v0           #cause:Ljava/lang/Throwable;
+    .end local v0    # "cause":Ljava/lang/Throwable;
     throw v0
 
-    .line 1686
-    .restart local v0       #cause:Ljava/lang/Throwable;
+    .line 2110
+    .restart local v0    # "cause":Ljava/lang/Throwable;
     :cond_5
-    instance-of v2, v0, Ljava/lang/Error;
+    instance-of v5, v0, Ljava/lang/Error;
 
-    if-eqz v2, :cond_6
+    if-eqz v5, :cond_6
 
-    .line 1687
+    .line 2111
     check-cast v0, Ljava/lang/Error;
 
-    .end local v0           #cause:Ljava/lang/Throwable;
+    .end local v0    # "cause":Ljava/lang/Throwable;
     throw v0
 
-    .line 1689
-    .restart local v0       #cause:Ljava/lang/Throwable;
+    .line 2113
+    .restart local v0    # "cause":Ljava/lang/Throwable;
     :cond_6
-    new-instance v2, Ljava/lang/IllegalStateException;
+    new-instance v5, Ljava/lang/IllegalStateException;
 
-    invoke-direct {v2, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/Throwable;)V
+    invoke-direct {v5, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/Throwable;)V
 
-    throw v2
+    throw v5
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
+
+    .line 2098
+    .end local v0    # "cause":Ljava/lang/Throwable;
+    .end local v3    # "e":Ljava/util/concurrent/ExecutionException;
+    :catch_1
+    move-exception v2
+
+    .line 2116
+    .local v2, "e":Ljava/util/concurrent/CancellationException;
+    invoke-virtual {p0, v8}, Landroid/accounts/AccountManager$Future2Task;->cancel(Z)Z
+
+    .line 2118
+    .end local v2    # "e":Ljava/util/concurrent/CancellationException;
+    :goto_0
+    new-instance v5, Landroid/accounts/OperationCanceledException;
+
+    invoke-direct {v5}, Landroid/accounts/OperationCanceledException;-><init>()V
+
+    throw v5
+
+    .line 2096
+    :catch_2
+    move-exception v4
+
+    .line 2116
+    .local v4, "e":Ljava/util/concurrent/TimeoutException;
+    invoke-virtual {p0, v8}, Landroid/accounts/AccountManager$Future2Task;->cancel(Z)Z
+
+    goto :goto_0
+
+    .line 2094
+    .end local v4    # "e":Ljava/util/concurrent/TimeoutException;
+    :catch_3
+    move-exception v1
+
+    .line 2116
+    .local v1, "e":Ljava/lang/InterruptedException;
+    invoke-virtual {p0, v8}, Landroid/accounts/AccountManager$Future2Task;->cancel(Z)Z
+
+    goto :goto_0
 .end method
 
 
@@ -294,20 +302,20 @@
     .locals 1
 
     .prologue
-    .line 1645
-    .local p0, this:Landroid/accounts/AccountManager$Future2Task;,"Landroid/accounts/AccountManager$Future2Task<TT;>;"
+    .line 2069
+    .local p0, "this":Landroid/accounts/AccountManager$Future2Task;, "Landroid/accounts/AccountManager$Future2Task<TT;>;"
     iget-object v0, p0, Landroid/accounts/AccountManager$Future2Task;->mCallback:Landroid/accounts/AccountManagerCallback;
 
     if-eqz v0, :cond_0
 
-    .line 1646
+    .line 2070
     new-instance v0, Landroid/accounts/AccountManager$Future2Task$1;
 
     invoke-direct {v0, p0}, Landroid/accounts/AccountManager$Future2Task$1;-><init>(Landroid/accounts/AccountManager$Future2Task;)V
 
     invoke-virtual {p0, v0}, Landroid/accounts/AccountManager$Future2Task;->postRunnableToHandler(Ljava/lang/Runnable;)V
 
-    .line 1652
+    .line 2068
     :cond_0
     return-void
 .end method
@@ -329,10 +337,10 @@
     .end annotation
 
     .prologue
-    .local p0, this:Landroid/accounts/AccountManager$Future2Task;,"Landroid/accounts/AccountManager$Future2Task<TT;>;"
+    .local p0, "this":Landroid/accounts/AccountManager$Future2Task;, "Landroid/accounts/AccountManager$Future2Task<TT;>;"
     const/4 v0, 0x0
 
-    .line 1699
+    .line 2123
     invoke-direct {p0, v0, v0}, Landroid/accounts/AccountManager$Future2Task;->internalGetResult(Ljava/lang/Long;Ljava/util/concurrent/TimeUnit;)Ljava/lang/Object;
 
     move-result-object v0
@@ -342,8 +350,8 @@
 
 .method public getResult(JLjava/util/concurrent/TimeUnit;)Ljava/lang/Object;
     .locals 1
-    .parameter "timeout"
-    .parameter "unit"
+    .param p1, "timeout"    # J
+    .param p3, "unit"    # Ljava/util/concurrent/TimeUnit;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(J",
@@ -361,8 +369,8 @@
     .end annotation
 
     .prologue
-    .line 1704
-    .local p0, this:Landroid/accounts/AccountManager$Future2Task;,"Landroid/accounts/AccountManager$Future2Task<TT;>;"
+    .line 2128
+    .local p0, "this":Landroid/accounts/AccountManager$Future2Task;, "Landroid/accounts/AccountManager$Future2Task<TT;>;"
     invoke-static {p1, p2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
     move-result-object v0
@@ -385,10 +393,10 @@
     .end annotation
 
     .prologue
-    .line 1655
-    .local p0, this:Landroid/accounts/AccountManager$Future2Task;,"Landroid/accounts/AccountManager$Future2Task<TT;>;"
+    .line 2079
+    .local p0, "this":Landroid/accounts/AccountManager$Future2Task;, "Landroid/accounts/AccountManager$Future2Task<TT;>;"
     invoke-virtual {p0}, Landroid/accounts/AccountManager$Future2Task;->startTask()V
 
-    .line 1656
+    .line 2080
     return-object p0
 .end method

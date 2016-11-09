@@ -19,11 +19,11 @@
 
     .prologue
     .line 248
-    const-string v0, "filterfw"
+    const-string/jumbo v0, "filterfw"
 
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
-    .line 249
+    .line 31
     return-void
 .end method
 
@@ -44,14 +44,14 @@
 
     iput-object v0, p0, Landroid/filterfw/core/ShaderProgram;->mTimer:Landroid/filterfw/core/StopWatchMap;
 
-    .line 49
+    .line 48
     return-void
 .end method
 
 .method public constructor <init>(Landroid/filterfw/core/FilterContext;Ljava/lang/String;)V
     .locals 2
-    .parameter "context"
-    .parameter "fragmentShader"
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
+    .param p2, "fragmentShader"    # Ljava/lang/String;
 
     .prologue
     const/4 v1, 0x0
@@ -89,7 +89,7 @@
     .line 58
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not compile and link shader!"
+    const-string/jumbo v1, "Could not compile and link shader!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -99,15 +99,15 @@
     :cond_0
     invoke-direct {p0}, Landroid/filterfw/core/ShaderProgram;->setTimer()V
 
-    .line 61
+    .line 54
     return-void
 .end method
 
 .method public constructor <init>(Landroid/filterfw/core/FilterContext;Ljava/lang/String;Ljava/lang/String;)V
     .locals 2
-    .parameter "context"
-    .parameter "vertexShader"
-    .parameter "fragmentShader"
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
+    .param p2, "vertexShader"    # Ljava/lang/String;
+    .param p3, "fragmentShader"    # Ljava/lang/String;
 
     .prologue
     .line 63
@@ -145,7 +145,7 @@
     .line 67
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not compile and link shader!"
+    const-string/jumbo v1, "Could not compile and link shader!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -155,13 +155,13 @@
     :cond_0
     invoke-direct {p0}, Landroid/filterfw/core/ShaderProgram;->setTimer()V
 
-    .line 70
+    .line 63
     return-void
 .end method
 
 .method private constructor <init>(Landroid/filterfw/core/NativeAllocatorTag;)V
     .locals 1
-    .parameter "tag"
+    .param p1, "tag"    # Landroid/filterfw/core/NativeAllocatorTag;
 
     .prologue
     .line 51
@@ -177,7 +177,7 @@
 
     iput-object v0, p0, Landroid/filterfw/core/ShaderProgram;->mTimer:Landroid/filterfw/core/StopWatchMap;
 
-    .line 52
+    .line 51
     return-void
 .end method
 
@@ -192,7 +192,7 @@
 
 .method public static createIdentity(Landroid/filterfw/core/FilterContext;)Landroid/filterfw/core/ShaderProgram;
     .locals 2
-    .parameter "context"
+    .param p0, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
     .line 73
@@ -205,7 +205,7 @@
     move-result-object v0
 
     .line 74
-    .local v0, program:Landroid/filterfw/core/ShaderProgram;
+    .local v0, "program":Landroid/filterfw/core/ShaderProgram;
     invoke-direct {v0}, Landroid/filterfw/core/ShaderProgram;->setTimer()V
 
     .line 75
@@ -217,7 +217,7 @@
 
 .method private static getGLEnvironment(Landroid/filterfw/core/FilterContext;)Landroid/filterfw/core/GLEnvironment;
     .locals 3
-    .parameter "context"
+    .param p0, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
     .line 239
@@ -228,28 +228,27 @@
     move-result-object v0
 
     .line 240
-    .local v0, result:Landroid/filterfw/core/GLEnvironment;
     :goto_0
     if-nez v0, :cond_1
 
     .line 241
     new-instance v1, Ljava/lang/NullPointerException;
 
-    const-string v2, "Attempting to create ShaderProgram with no GL environment in place!"
+    const-string/jumbo v2, "Attempting to create ShaderProgram with no GL environment in place!"
 
     invoke-direct {v1, v2}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
     .line 239
-    .end local v0           #result:Landroid/filterfw/core/GLEnvironment;
     :cond_0
     const/4 v0, 0x0
 
+    .local v0, "result":Landroid/filterfw/core/GLEnvironment;
     goto :goto_0
 
     .line 244
-    .restart local v0       #result:Landroid/filterfw/core/GLEnvironment;
+    .end local v0    # "result":Landroid/filterfw/core/GLEnvironment;
     :cond_1
     return-object v0
 .end method
@@ -301,7 +300,7 @@
 
     iput-object v0, p0, Landroid/filterfw/core/ShaderProgram;->mTimer:Landroid/filterfw/core/StopWatchMap;
 
-    .line 45
+    .line 43
     return-void
 .end method
 
@@ -327,13 +326,13 @@
     .line 234
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not prepare shader-program for drawing!"
+    const-string/jumbo v1, "Could not prepare shader-program for drawing!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 236
+    .line 232
     :cond_0
     return-void
 .end method
@@ -350,7 +349,7 @@
     .line 80
     invoke-direct {p0}, Landroid/filterfw/core/ShaderProgram;->deallocate()Z
 
-    .line 81
+    .line 79
     return-void
 .end method
 
@@ -366,7 +365,7 @@
 
 .method public getHostValue(Ljava/lang/String;)Ljava/lang/Object;
     .locals 1
-    .parameter "variableName"
+    .param p1, "variableName"    # Ljava/lang/String;
 
     .prologue
     .line 141
@@ -379,8 +378,8 @@
 
 .method public process([Landroid/filterfw/core/Frame;Landroid/filterfw/core/Frame;)V
     .locals 8
-    .parameter "inputs"
-    .parameter "output"
+    .param p1, "inputs"    # [Landroid/filterfw/core/Frame;
+    .param p2, "output"    # Landroid/filterfw/core/Frame;
 
     .prologue
     .line 89
@@ -393,7 +392,7 @@
     .line 90
     iget-object v5, p0, Landroid/filterfw/core/ShaderProgram;->mTimer:Landroid/filterfw/core/StopWatchMap;
 
-    const-string v6, "glFinish"
+    const-string/jumbo v6, "glFinish"
 
     invoke-virtual {v5, v6}, Landroid/filterfw/core/StopWatchMap;->start(Ljava/lang/String;)V
 
@@ -403,7 +402,7 @@
     .line 92
     iget-object v5, p0, Landroid/filterfw/core/ShaderProgram;->mTimer:Landroid/filterfw/core/StopWatchMap;
 
-    const-string v6, "glFinish"
+    const-string/jumbo v6, "glFinish"
 
     invoke-virtual {v5, v6}, Landroid/filterfw/core/StopWatchMap;->stop(Ljava/lang/String;)V
 
@@ -414,10 +413,10 @@
     new-array v0, v5, [Landroid/filterfw/core/GLFrame;
 
     .line 98
-    .local v0, glInputs:[Landroid/filterfw/core/GLFrame;
+    .local v0, "glInputs":[Landroid/filterfw/core/GLFrame;
     const/4 v2, 0x0
 
-    .local v2, i:I
+    .local v2, "i":I
     :goto_0
     array-length v5, p1
 
@@ -450,7 +449,7 @@
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v7, "ShaderProgram got non-GL frame as input "
+    const-string/jumbo v7, "ShaderProgram got non-GL frame as input "
 
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -460,7 +459,7 @@
 
     move-result-object v6
 
-    const-string v7, "!"
+    const-string/jumbo v7, "!"
 
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -479,7 +478,7 @@
     const/4 v1, 0x0
 
     .line 108
-    .local v1, glOutput:Landroid/filterfw/core/GLFrame;
+    .local v1, "glOutput":Landroid/filterfw/core/GLFrame;
     instance-of v5, p2, Landroid/filterfw/core/GLFrame;
 
     if-eqz v5, :cond_4
@@ -490,6 +489,7 @@
     check-cast v1, Landroid/filterfw/core/GLFrame;
 
     .line 115
+    .local v1, "glOutput":Landroid/filterfw/core/GLFrame;
     iget v5, p0, Landroid/filterfw/core/ShaderProgram;->mMaxTileSize:I
 
     if-lez v5, :cond_3
@@ -514,7 +514,7 @@
     div-int v3, v5, v6
 
     .line 117
-    .local v3, xTiles:I
+    .local v3, "xTiles":I
     invoke-virtual {p2}, Landroid/filterfw/core/Frame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v5
@@ -534,12 +534,12 @@
     div-int v4, v5, v6
 
     .line 118
-    .local v4, yTiles:I
+    .local v4, "yTiles":I
     invoke-direct {p0, v3, v4}, Landroid/filterfw/core/ShaderProgram;->setShaderTileCounts(II)Z
 
     .line 122
-    .end local v3           #xTiles:I
-    .end local v4           #yTiles:I
+    .end local v3    # "xTiles":I
+    .end local v4    # "yTiles":I
     :cond_3
     invoke-direct {p0, v0, v1}, Landroid/filterfw/core/ShaderProgram;->shaderProcess([Landroid/filterfw/core/GLFrame;Landroid/filterfw/core/GLFrame;)Z
 
@@ -550,23 +550,25 @@
     .line 123
     new-instance v5, Ljava/lang/RuntimeException;
 
-    const-string v6, "Error executing ShaderProgram!"
+    const-string/jumbo v6, "Error executing ShaderProgram!"
 
     invoke-direct {v5, v6}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v5
 
     .line 111
+    .local v1, "glOutput":Landroid/filterfw/core/GLFrame;
     :cond_4
     new-instance v5, Ljava/lang/RuntimeException;
 
-    const-string v6, "ShaderProgram got non-GL output frame!"
+    const-string/jumbo v6, "ShaderProgram got non-GL output frame!"
 
     invoke-direct {v5, v6}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v5
 
     .line 126
+    .local v1, "glOutput":Landroid/filterfw/core/GLFrame;
     :cond_5
     iget-object v5, p0, Landroid/filterfw/core/ShaderProgram;->mTimer:Landroid/filterfw/core/StopWatchMap;
 
@@ -577,20 +579,20 @@
     .line 127
     invoke-static {}, Landroid/opengl/GLES20;->glFinish()V
 
-    .line 129
+    .line 88
     :cond_6
     return-void
 .end method
 
 .method public setAttributeValues(Ljava/lang/String;Landroid/filterfw/core/VertexFrame;IIIIZ)V
     .locals 3
-    .parameter "attributeName"
-    .parameter "vertexData"
-    .parameter "type"
-    .parameter "componentCount"
-    .parameter "strideInBytes"
-    .parameter "offsetInBytes"
-    .parameter "normalize"
+    .param p1, "attributeName"    # Ljava/lang/String;
+    .param p2, "vertexData"    # Landroid/filterfw/core/VertexFrame;
+    .param p3, "type"    # I
+    .param p4, "componentCount"    # I
+    .param p5, "strideInBytes"    # I
+    .param p6, "offsetInBytes"    # I
+    .param p7, "normalize"    # Z
 
     .prologue
     .line 158
@@ -607,7 +609,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Error setting attribute value for attribute \'"
+    const-string/jumbo v2, "Error setting attribute value for attribute \'"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -617,8 +619,10 @@
 
     move-result-object v1
 
-    const-string v2, "\'!"
+    .line 166
+    const-string/jumbo v2, "\'!"
 
+    .line 165
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -631,16 +635,16 @@
 
     throw v0
 
-    .line 168
+    .line 157
     :cond_0
     return-void
 .end method
 
 .method public setAttributeValues(Ljava/lang/String;[FI)V
     .locals 3
-    .parameter "attributeName"
-    .parameter "data"
-    .parameter "componentCount"
+    .param p1, "attributeName"    # Ljava/lang/String;
+    .param p2, "data"    # [F
+    .param p3, "componentCount"    # I
 
     .prologue
     .line 145
@@ -657,7 +661,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Error setting attribute value for attribute \'"
+    const-string/jumbo v2, "Error setting attribute value for attribute \'"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -667,8 +671,10 @@
 
     move-result-object v1
 
-    const-string v2, "\'!"
+    .line 147
+    const-string/jumbo v2, "\'!"
 
+    .line 146
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -681,14 +687,14 @@
 
     throw v0
 
-    .line 149
+    .line 144
     :cond_0
     return-void
 .end method
 
 .method public setBlendEnabled(Z)V
     .locals 3
-    .parameter "enable"
+    .param p1, "enable"    # Z
 
     .prologue
     .line 205
@@ -705,7 +711,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Could not set Blending "
+    const-string/jumbo v2, "Could not set Blending "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -715,7 +721,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -729,15 +735,15 @@
 
     throw v0
 
-    .line 208
+    .line 204
     :cond_0
     return-void
 .end method
 
 .method public setBlendFunc(II)V
     .locals 3
-    .parameter "sfactor"
-    .parameter "dfactor"
+    .param p1, "sfactor"    # I
+    .param p2, "dfactor"    # I
 
     .prologue
     .line 211
@@ -754,7 +760,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Could not set BlendFunc "
+    const-string/jumbo v2, "Could not set BlendFunc "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -764,7 +770,7 @@
 
     move-result-object v1
 
-    const-string v2, ","
+    const-string/jumbo v2, ","
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -774,7 +780,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -788,16 +794,16 @@
 
     throw v0
 
-    .line 214
+    .line 210
     :cond_0
     return-void
 .end method
 
 .method public setClearColor(FFF)V
     .locals 3
-    .parameter "r"
-    .parameter "g"
-    .parameter "b"
+    .param p1, "r"    # F
+    .param p2, "g"    # F
+    .param p3, "b"    # F
 
     .prologue
     .line 199
@@ -814,7 +820,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Could not set clear color to "
+    const-string/jumbo v2, "Could not set clear color to "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -824,7 +830,7 @@
 
     move-result-object v1
 
-    const-string v2, ","
+    const-string/jumbo v2, ","
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -834,7 +840,7 @@
 
     move-result-object v1
 
-    const-string v2, ","
+    const-string/jumbo v2, ","
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -844,7 +850,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -858,14 +864,14 @@
 
     throw v0
 
-    .line 202
+    .line 198
     :cond_0
     return-void
 .end method
 
 .method public setClearsOutput(Z)V
     .locals 3
-    .parameter "clears"
+    .param p1, "clears"    # Z
 
     .prologue
     .line 193
@@ -882,7 +888,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Could not set clears-output flag to "
+    const-string/jumbo v2, "Could not set clears-output flag to "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -892,7 +898,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -906,14 +912,14 @@
 
     throw v0
 
-    .line 196
+    .line 192
     :cond_0
     return-void
 .end method
 
 .method public setDrawMode(I)V
     .locals 3
-    .parameter "drawMode"
+    .param p1, "drawMode"    # I
 
     .prologue
     .line 217
@@ -930,7 +936,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Could not set GL draw-mode to "
+    const-string/jumbo v2, "Could not set GL draw-mode to "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -940,7 +946,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -954,15 +960,15 @@
 
     throw v0
 
-    .line 220
+    .line 216
     :cond_0
     return-void
 .end method
 
 .method public setHostValue(Ljava/lang/String;Ljava/lang/Object;)V
     .locals 3
-    .parameter "variableName"
-    .parameter "value"
+    .param p1, "variableName"    # Ljava/lang/String;
+    .param p2, "value"    # Ljava/lang/Object;
 
     .prologue
     .line 133
@@ -979,7 +985,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Error setting uniform value for variable \'"
+    const-string/jumbo v2, "Error setting uniform value for variable \'"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -989,8 +995,10 @@
 
     move-result-object v1
 
-    const-string v2, "\'!"
+    .line 135
+    const-string/jumbo v2, "\'!"
 
+    .line 134
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -1003,29 +1011,29 @@
 
     throw v0
 
-    .line 137
+    .line 132
     :cond_0
     return-void
 .end method
 
 .method public setMaximumTileSize(I)V
     .locals 0
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 229
     iput p1, p0, Landroid/filterfw/core/ShaderProgram;->mMaxTileSize:I
 
-    .line 230
+    .line 228
     return-void
 .end method
 
 .method public setSourceRect(FFFF)V
     .locals 9
-    .parameter "x"
-    .parameter "y"
-    .parameter "width"
-    .parameter "height"
+    .param p1, "x"    # F
+    .param p2, "y"    # F
+    .param p3, "width"    # F
+    .param p4, "height"    # F
 
     .prologue
     .line 185
@@ -1049,13 +1057,13 @@
 
     invoke-virtual/range {v0 .. v8}, Landroid/filterfw/core/ShaderProgram;->setSourceRegion(FFFFFFFF)Z
 
-    .line 186
+    .line 184
     return-void
 .end method
 
 .method public setSourceRegion(Landroid/filterfw/geometry/Quad;)V
     .locals 9
-    .parameter "region"
+    .param p1, "region"    # Landroid/filterfw/geometry/Quad;
 
     .prologue
     .line 171
@@ -1067,6 +1075,7 @@
 
     iget v2, v0, Landroid/filterfw/geometry/Point;->y:F
 
+    .line 172
     iget-object v0, p1, Landroid/filterfw/geometry/Quad;->p1:Landroid/filterfw/geometry/Point;
 
     iget v3, v0, Landroid/filterfw/geometry/Point;->x:F
@@ -1075,6 +1084,7 @@
 
     iget v4, v0, Landroid/filterfw/geometry/Point;->y:F
 
+    .line 173
     iget-object v0, p1, Landroid/filterfw/geometry/Quad;->p2:Landroid/filterfw/geometry/Point;
 
     iget v5, v0, Landroid/filterfw/geometry/Point;->x:F
@@ -1083,6 +1093,7 @@
 
     iget v6, v0, Landroid/filterfw/geometry/Point;->y:F
 
+    .line 174
     iget-object v0, p1, Landroid/filterfw/geometry/Quad;->p3:Landroid/filterfw/geometry/Point;
 
     iget v7, v0, Landroid/filterfw/geometry/Point;->x:F
@@ -1093,9 +1104,10 @@
 
     move-object v0, p0
 
+    .line 171
     invoke-virtual/range {v0 .. v8}, Landroid/filterfw/core/ShaderProgram;->setSourceRegion(FFFFFFFF)Z
 
-    .line 175
+    .line 170
     return-void
 .end method
 
@@ -1104,10 +1116,10 @@
 
 .method public setTargetRect(FFFF)V
     .locals 9
-    .parameter "x"
-    .parameter "y"
-    .parameter "width"
-    .parameter "height"
+    .param p1, "x"    # F
+    .param p2, "y"    # F
+    .param p3, "width"    # F
+    .param p4, "height"    # F
 
     .prologue
     .line 189
@@ -1131,13 +1143,13 @@
 
     invoke-direct/range {v0 .. v8}, Landroid/filterfw/core/ShaderProgram;->setTargetRegion(FFFFFFFF)Z
 
-    .line 190
+    .line 188
     return-void
 .end method
 
 .method public setTargetRegion(Landroid/filterfw/geometry/Quad;)V
     .locals 9
-    .parameter "region"
+    .param p1, "region"    # Landroid/filterfw/geometry/Quad;
 
     .prologue
     .line 178
@@ -1149,6 +1161,7 @@
 
     iget v2, v0, Landroid/filterfw/geometry/Point;->y:F
 
+    .line 179
     iget-object v0, p1, Landroid/filterfw/geometry/Quad;->p1:Landroid/filterfw/geometry/Point;
 
     iget v3, v0, Landroid/filterfw/geometry/Point;->x:F
@@ -1157,6 +1170,7 @@
 
     iget v4, v0, Landroid/filterfw/geometry/Point;->y:F
 
+    .line 180
     iget-object v0, p1, Landroid/filterfw/geometry/Quad;->p2:Landroid/filterfw/geometry/Point;
 
     iget v5, v0, Landroid/filterfw/geometry/Point;->x:F
@@ -1165,6 +1179,7 @@
 
     iget v6, v0, Landroid/filterfw/geometry/Point;->y:F
 
+    .line 181
     iget-object v0, p1, Landroid/filterfw/geometry/Quad;->p3:Landroid/filterfw/geometry/Point;
 
     iget v7, v0, Landroid/filterfw/geometry/Point;->x:F
@@ -1175,15 +1190,16 @@
 
     move-object v0, p0
 
+    .line 178
     invoke-direct/range {v0 .. v8}, Landroid/filterfw/core/ShaderProgram;->setTargetRegion(FFFFFFFF)Z
 
-    .line 182
+    .line 177
     return-void
 .end method
 
 .method public setVertexCount(I)V
     .locals 3
-    .parameter "count"
+    .param p1, "count"    # I
 
     .prologue
     .line 223
@@ -1200,7 +1216,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Could not set GL vertex count to "
+    const-string/jumbo v2, "Could not set GL vertex count to "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1210,7 +1226,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1224,7 +1240,7 @@
 
     throw v0
 
-    .line 226
+    .line 222
     :cond_0
     return-void
 .end method

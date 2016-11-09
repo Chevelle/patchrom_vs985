@@ -15,13 +15,16 @@
 
 
 # virtual methods
-.method public abstract computeFrameLw(Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;)V
+.method public abstract computeFrameLw(Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;)V
 .end method
 
 .method public abstract getAppToken()Landroid/view/IApplicationToken;
 .end method
 
 .method public abstract getAttrs()Landroid/view/WindowManager$LayoutParams;
+.end method
+
+.method public abstract getBaseType()I
 .end method
 
 .method public abstract getContentFrameLw()Landroid/graphics/Rect;
@@ -84,7 +87,13 @@
 .method public abstract isDefaultDisplay()Z
 .end method
 
+.method public abstract isDimming()Z
+.end method
+
 .method public abstract isDisplayedLw()Z
+.end method
+
+.method public abstract isDrawnLw()Z
 .end method
 
 .method public abstract isGoneForLayoutLw()Z
@@ -94,6 +103,9 @@
 .end method
 
 .method public abstract isVisibleOrBehindKeyguardLw()Z
+.end method
+
+.method public abstract isVoiceInteraction()Z
 .end method
 
 .method public abstract showLw(Z)Z

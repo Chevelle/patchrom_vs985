@@ -91,8 +91,22 @@
 .field public static final INTENT_ACTION_TTS_SERVICE:Ljava/lang/String; = "android.intent.action.TTS_SERVICE"
 
 .field public static final KEY_FEATURE_EMBEDDED_SYNTHESIS:Ljava/lang/String; = "embeddedTts"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
+
+.field public static final KEY_FEATURE_NETWORK_RETRIES_COUNT:Ljava/lang/String; = "networkRetriesCount"
 
 .field public static final KEY_FEATURE_NETWORK_SYNTHESIS:Ljava/lang/String; = "networkTts"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
+
+.field public static final KEY_FEATURE_NETWORK_TIMEOUT_MS:Ljava/lang/String; = "networkTimeoutMs"
+
+.field public static final KEY_FEATURE_NOT_INSTALLED:Ljava/lang/String; = "notInstalled"
+
+.field public static final KEY_PARAM_AUDIO_ATTRIBUTES:Ljava/lang/String; = "audioAttributes"
 
 .field public static final KEY_PARAM_COUNTRY:Ljava/lang/String; = "country"
 
@@ -106,11 +120,15 @@
 
 .field public static final KEY_PARAM_RATE:Ljava/lang/String; = "rate"
 
+.field public static final KEY_PARAM_SESSION_ID:Ljava/lang/String; = "sessionId"
+
 .field public static final KEY_PARAM_STREAM:Ljava/lang/String; = "streamType"
 
 .field public static final KEY_PARAM_UTTERANCE_ID:Ljava/lang/String; = "utteranceId"
 
 .field public static final KEY_PARAM_VARIANT:Ljava/lang/String; = "variant"
+
+.field public static final KEY_PARAM_VOICE_NAME:Ljava/lang/String; = "voiceName"
 
 .field public static final KEY_PARAM_VOLUME:Ljava/lang/String; = "volume"
 
@@ -126,10 +144,10 @@
 # direct methods
 .method public constructor <init>(Landroid/speech/tts/TextToSpeech;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/speech/tts/TextToSpeech;
 
     .prologue
-    .line 182
+    .line 225
     iput-object p1, p0, Landroid/speech/tts/TextToSpeech$Engine;->this$0:Landroid/speech/tts/TextToSpeech;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

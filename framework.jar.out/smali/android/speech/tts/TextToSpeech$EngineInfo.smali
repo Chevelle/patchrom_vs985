@@ -31,7 +31,7 @@
     .locals 0
 
     .prologue
-    .line 1617
+    .line 2282
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -43,12 +43,12 @@
     .locals 2
 
     .prologue
-    .line 1647
+    .line 2312
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "EngineInfo{name="
+    const-string/jumbo v1, "EngineInfo{name="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

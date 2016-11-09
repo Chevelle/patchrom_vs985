@@ -9,7 +9,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/net/wifi/SupplicantState$2;
+        Landroid/net/wifi/SupplicantState$1;
     }
 .end annotation
 
@@ -26,6 +26,8 @@
 
 # static fields
 .field private static final synthetic $VALUES:[Landroid/net/wifi/SupplicantState;
+
+.field private static synthetic -android_net_wifi_SupplicantStateSwitchesValues:[I
 
 .field public static final enum ASSOCIATED:Landroid/net/wifi/SupplicantState;
 
@@ -66,6 +68,278 @@
 
 
 # direct methods
+.method private static synthetic -getandroid_net_wifi_SupplicantStateSwitchesValues()[I
+    .locals 3
+
+    sget-object v0, Landroid/net/wifi/SupplicantState;->-android_net_wifi_SupplicantStateSwitchesValues:[I
+
+    if-eqz v0, :cond_0
+
+    sget-object v0, Landroid/net/wifi/SupplicantState;->-android_net_wifi_SupplicantStateSwitchesValues:[I
+
+    return-object v0
+
+    :cond_0
+    invoke-static {}, Landroid/net/wifi/SupplicantState;->values()[Landroid/net/wifi/SupplicantState;
+
+    move-result-object v0
+
+    array-length v0, v0
+
+    new-array v0, v0, [I
+
+    :try_start_0
+    sget-object v1, Landroid/net/wifi/SupplicantState;->ASSOCIATED:Landroid/net/wifi/SupplicantState;
+
+    invoke-virtual {v1}, Landroid/net/wifi/SupplicantState;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x1
+
+    aput v2, v0, v1
+    :try_end_0
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_c
+
+    :goto_0
+    :try_start_1
+    sget-object v1, Landroid/net/wifi/SupplicantState;->ASSOCIATING:Landroid/net/wifi/SupplicantState;
+
+    invoke-virtual {v1}, Landroid/net/wifi/SupplicantState;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x2
+
+    aput v2, v0, v1
+    :try_end_1
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_b
+
+    :goto_1
+    :try_start_2
+    sget-object v1, Landroid/net/wifi/SupplicantState;->AUTHENTICATING:Landroid/net/wifi/SupplicantState;
+
+    invoke-virtual {v1}, Landroid/net/wifi/SupplicantState;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x3
+
+    aput v2, v0, v1
+    :try_end_2
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_a
+
+    :goto_2
+    :try_start_3
+    sget-object v1, Landroid/net/wifi/SupplicantState;->COMPLETED:Landroid/net/wifi/SupplicantState;
+
+    invoke-virtual {v1}, Landroid/net/wifi/SupplicantState;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x4
+
+    aput v2, v0, v1
+    :try_end_3
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_3 .. :try_end_3} :catch_9
+
+    :goto_3
+    :try_start_4
+    sget-object v1, Landroid/net/wifi/SupplicantState;->DISCONNECTED:Landroid/net/wifi/SupplicantState;
+
+    invoke-virtual {v1}, Landroid/net/wifi/SupplicantState;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x5
+
+    aput v2, v0, v1
+    :try_end_4
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_4 .. :try_end_4} :catch_8
+
+    :goto_4
+    :try_start_5
+    sget-object v1, Landroid/net/wifi/SupplicantState;->DORMANT:Landroid/net/wifi/SupplicantState;
+
+    invoke-virtual {v1}, Landroid/net/wifi/SupplicantState;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x6
+
+    aput v2, v0, v1
+    :try_end_5
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_5 .. :try_end_5} :catch_7
+
+    :goto_5
+    :try_start_6
+    sget-object v1, Landroid/net/wifi/SupplicantState;->FOUR_WAY_HANDSHAKE:Landroid/net/wifi/SupplicantState;
+
+    invoke-virtual {v1}, Landroid/net/wifi/SupplicantState;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x7
+
+    aput v2, v0, v1
+    :try_end_6
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_6 .. :try_end_6} :catch_6
+
+    :goto_6
+    :try_start_7
+    sget-object v1, Landroid/net/wifi/SupplicantState;->GROUP_HANDSHAKE:Landroid/net/wifi/SupplicantState;
+
+    invoke-virtual {v1}, Landroid/net/wifi/SupplicantState;->ordinal()I
+
+    move-result v1
+
+    const/16 v2, 0x8
+
+    aput v2, v0, v1
+    :try_end_7
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_7 .. :try_end_7} :catch_5
+
+    :goto_7
+    :try_start_8
+    sget-object v1, Landroid/net/wifi/SupplicantState;->INACTIVE:Landroid/net/wifi/SupplicantState;
+
+    invoke-virtual {v1}, Landroid/net/wifi/SupplicantState;->ordinal()I
+
+    move-result v1
+
+    const/16 v2, 0x9
+
+    aput v2, v0, v1
+    :try_end_8
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_8 .. :try_end_8} :catch_4
+
+    :goto_8
+    :try_start_9
+    sget-object v1, Landroid/net/wifi/SupplicantState;->INTERFACE_DISABLED:Landroid/net/wifi/SupplicantState;
+
+    invoke-virtual {v1}, Landroid/net/wifi/SupplicantState;->ordinal()I
+
+    move-result v1
+
+    const/16 v2, 0xa
+
+    aput v2, v0, v1
+    :try_end_9
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_9 .. :try_end_9} :catch_3
+
+    :goto_9
+    :try_start_a
+    sget-object v1, Landroid/net/wifi/SupplicantState;->INVALID:Landroid/net/wifi/SupplicantState;
+
+    invoke-virtual {v1}, Landroid/net/wifi/SupplicantState;->ordinal()I
+
+    move-result v1
+
+    const/16 v2, 0xb
+
+    aput v2, v0, v1
+    :try_end_a
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_a .. :try_end_a} :catch_2
+
+    :goto_a
+    :try_start_b
+    sget-object v1, Landroid/net/wifi/SupplicantState;->SCANNING:Landroid/net/wifi/SupplicantState;
+
+    invoke-virtual {v1}, Landroid/net/wifi/SupplicantState;->ordinal()I
+
+    move-result v1
+
+    const/16 v2, 0xc
+
+    aput v2, v0, v1
+    :try_end_b
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_b .. :try_end_b} :catch_1
+
+    :goto_b
+    :try_start_c
+    sget-object v1, Landroid/net/wifi/SupplicantState;->UNINITIALIZED:Landroid/net/wifi/SupplicantState;
+
+    invoke-virtual {v1}, Landroid/net/wifi/SupplicantState;->ordinal()I
+
+    move-result v1
+
+    const/16 v2, 0xd
+
+    aput v2, v0, v1
+    :try_end_c
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_c .. :try_end_c} :catch_0
+
+    :goto_c
+    sput-object v0, Landroid/net/wifi/SupplicantState;->-android_net_wifi_SupplicantStateSwitchesValues:[I
+
+    return-object v0
+
+    :catch_0
+    move-exception v1
+
+    goto :goto_c
+
+    :catch_1
+    move-exception v1
+
+    goto :goto_b
+
+    :catch_2
+    move-exception v1
+
+    goto :goto_a
+
+    :catch_3
+    move-exception v1
+
+    goto :goto_9
+
+    :catch_4
+    move-exception v1
+
+    goto :goto_8
+
+    :catch_5
+    move-exception v1
+
+    goto :goto_7
+
+    :catch_6
+    move-exception v1
+
+    goto :goto_6
+
+    :catch_7
+    move-exception v1
+
+    goto :goto_5
+
+    :catch_8
+    move-exception v1
+
+    goto :goto_4
+
+    :catch_9
+    move-exception v1
+
+    goto :goto_3
+
+    :catch_a
+    move-exception v1
+
+    goto :goto_2
+
+    :catch_b
+    move-exception v1
+
+    goto/16 :goto_1
+
+    :catch_c
+    move-exception v1
+
+    goto/16 :goto_0
+.end method
+
 .method static constructor <clinit>()V
     .locals 8
 
@@ -80,137 +354,150 @@
 
     const/4 v3, 0x0
 
-    .line 39
+    .line 34
     new-instance v0, Landroid/net/wifi/SupplicantState;
 
-    const-string v1, "DISCONNECTED"
+    const-string/jumbo v1, "DISCONNECTED"
 
     invoke-direct {v0, v1, v3}, Landroid/net/wifi/SupplicantState;-><init>(Ljava/lang/String;I)V
 
+    .line 39
     sput-object v0, Landroid/net/wifi/SupplicantState;->DISCONNECTED:Landroid/net/wifi/SupplicantState;
 
-    .line 48
+    .line 41
     new-instance v0, Landroid/net/wifi/SupplicantState;
 
-    const-string v1, "INTERFACE_DISABLED"
+    const-string/jumbo v1, "INTERFACE_DISABLED"
 
     invoke-direct {v0, v1, v4}, Landroid/net/wifi/SupplicantState;-><init>(Ljava/lang/String;I)V
 
+    .line 48
     sput-object v0, Landroid/net/wifi/SupplicantState;->INTERFACE_DISABLED:Landroid/net/wifi/SupplicantState;
 
-    .line 58
+    .line 50
     new-instance v0, Landroid/net/wifi/SupplicantState;
 
-    const-string v1, "INACTIVE"
+    const-string/jumbo v1, "INACTIVE"
 
     invoke-direct {v0, v1, v5}, Landroid/net/wifi/SupplicantState;-><init>(Ljava/lang/String;I)V
 
+    .line 58
     sput-object v0, Landroid/net/wifi/SupplicantState;->INACTIVE:Landroid/net/wifi/SupplicantState;
 
-    .line 66
+    .line 60
     new-instance v0, Landroid/net/wifi/SupplicantState;
 
-    const-string v1, "SCANNING"
+    const-string/jumbo v1, "SCANNING"
 
     invoke-direct {v0, v1, v6}, Landroid/net/wifi/SupplicantState;-><init>(Ljava/lang/String;I)V
 
+    .line 66
     sput-object v0, Landroid/net/wifi/SupplicantState;->SCANNING:Landroid/net/wifi/SupplicantState;
 
-    .line 75
+    .line 68
     new-instance v0, Landroid/net/wifi/SupplicantState;
 
-    const-string v1, "AUTHENTICATING"
+    const-string/jumbo v1, "AUTHENTICATING"
 
     invoke-direct {v0, v1, v7}, Landroid/net/wifi/SupplicantState;-><init>(Ljava/lang/String;I)V
 
+    .line 75
     sput-object v0, Landroid/net/wifi/SupplicantState;->AUTHENTICATING:Landroid/net/wifi/SupplicantState;
 
-    .line 86
+    .line 77
     new-instance v0, Landroid/net/wifi/SupplicantState;
 
-    const-string v1, "ASSOCIATING"
+    const-string/jumbo v1, "ASSOCIATING"
 
     const/4 v2, 0x5
 
     invoke-direct {v0, v1, v2}, Landroid/net/wifi/SupplicantState;-><init>(Ljava/lang/String;I)V
 
+    .line 86
     sput-object v0, Landroid/net/wifi/SupplicantState;->ASSOCIATING:Landroid/net/wifi/SupplicantState;
 
-    .line 96
+    .line 88
     new-instance v0, Landroid/net/wifi/SupplicantState;
 
-    const-string v1, "ASSOCIATED"
+    const-string/jumbo v1, "ASSOCIATED"
 
     const/4 v2, 0x6
 
     invoke-direct {v0, v1, v2}, Landroid/net/wifi/SupplicantState;-><init>(Ljava/lang/String;I)V
 
+    .line 96
     sput-object v0, Landroid/net/wifi/SupplicantState;->ASSOCIATED:Landroid/net/wifi/SupplicantState;
 
-    .line 106
+    .line 98
     new-instance v0, Landroid/net/wifi/SupplicantState;
 
-    const-string v1, "FOUR_WAY_HANDSHAKE"
+    const-string/jumbo v1, "FOUR_WAY_HANDSHAKE"
 
     const/4 v2, 0x7
 
     invoke-direct {v0, v1, v2}, Landroid/net/wifi/SupplicantState;-><init>(Ljava/lang/String;I)V
 
+    .line 106
     sput-object v0, Landroid/net/wifi/SupplicantState;->FOUR_WAY_HANDSHAKE:Landroid/net/wifi/SupplicantState;
 
-    .line 116
+    .line 108
     new-instance v0, Landroid/net/wifi/SupplicantState;
 
-    const-string v1, "GROUP_HANDSHAKE"
+    const-string/jumbo v1, "GROUP_HANDSHAKE"
 
     const/16 v2, 0x8
 
     invoke-direct {v0, v1, v2}, Landroid/net/wifi/SupplicantState;-><init>(Ljava/lang/String;I)V
 
+    .line 116
     sput-object v0, Landroid/net/wifi/SupplicantState;->GROUP_HANDSHAKE:Landroid/net/wifi/SupplicantState;
 
-    .line 136
+    .line 118
     new-instance v0, Landroid/net/wifi/SupplicantState;
 
-    const-string v1, "COMPLETED"
+    const-string/jumbo v1, "COMPLETED"
 
     const/16 v2, 0x9
 
     invoke-direct {v0, v1, v2}, Landroid/net/wifi/SupplicantState;-><init>(Ljava/lang/String;I)V
 
+    .line 136
     sput-object v0, Landroid/net/wifi/SupplicantState;->COMPLETED:Landroid/net/wifi/SupplicantState;
 
-    .line 146
+    .line 138
     new-instance v0, Landroid/net/wifi/SupplicantState;
 
-    const-string v1, "DORMANT"
+    const-string/jumbo v1, "DORMANT"
 
     const/16 v2, 0xa
 
     invoke-direct {v0, v1, v2}, Landroid/net/wifi/SupplicantState;-><init>(Ljava/lang/String;I)V
 
+    .line 146
     sput-object v0, Landroid/net/wifi/SupplicantState;->DORMANT:Landroid/net/wifi/SupplicantState;
 
-    .line 155
+    .line 148
     new-instance v0, Landroid/net/wifi/SupplicantState;
 
-    const-string v1, "UNINITIALIZED"
+    const-string/jumbo v1, "UNINITIALIZED"
 
     const/16 v2, 0xb
 
     invoke-direct {v0, v1, v2}, Landroid/net/wifi/SupplicantState;-><init>(Ljava/lang/String;I)V
 
+    .line 155
     sput-object v0, Landroid/net/wifi/SupplicantState;->UNINITIALIZED:Landroid/net/wifi/SupplicantState;
 
-    .line 160
+    .line 157
     new-instance v0, Landroid/net/wifi/SupplicantState;
 
-    const-string v1, "INVALID"
+    const-string/jumbo v1, "INVALID"
 
     const/16 v2, 0xc
 
     invoke-direct {v0, v1, v2}, Landroid/net/wifi/SupplicantState;-><init>(Ljava/lang/String;I)V
 
+    .line 160
     sput-object v0, Landroid/net/wifi/SupplicantState;->INVALID:Landroid/net/wifi/SupplicantState;
 
     .line 33
@@ -238,91 +525,87 @@
 
     aput-object v1, v0, v7
 
-    const/4 v1, 0x5
+    sget-object v1, Landroid/net/wifi/SupplicantState;->ASSOCIATING:Landroid/net/wifi/SupplicantState;
 
-    sget-object v2, Landroid/net/wifi/SupplicantState;->ASSOCIATING:Landroid/net/wifi/SupplicantState;
+    const/4 v2, 0x5
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x6
+    sget-object v1, Landroid/net/wifi/SupplicantState;->ASSOCIATED:Landroid/net/wifi/SupplicantState;
 
-    sget-object v2, Landroid/net/wifi/SupplicantState;->ASSOCIATED:Landroid/net/wifi/SupplicantState;
+    const/4 v2, 0x6
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x7
+    sget-object v1, Landroid/net/wifi/SupplicantState;->FOUR_WAY_HANDSHAKE:Landroid/net/wifi/SupplicantState;
 
-    sget-object v2, Landroid/net/wifi/SupplicantState;->FOUR_WAY_HANDSHAKE:Landroid/net/wifi/SupplicantState;
+    const/4 v2, 0x7
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x8
+    sget-object v1, Landroid/net/wifi/SupplicantState;->GROUP_HANDSHAKE:Landroid/net/wifi/SupplicantState;
 
-    sget-object v2, Landroid/net/wifi/SupplicantState;->GROUP_HANDSHAKE:Landroid/net/wifi/SupplicantState;
+    const/16 v2, 0x8
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x9
+    sget-object v1, Landroid/net/wifi/SupplicantState;->COMPLETED:Landroid/net/wifi/SupplicantState;
 
-    sget-object v2, Landroid/net/wifi/SupplicantState;->COMPLETED:Landroid/net/wifi/SupplicantState;
+    const/16 v2, 0x9
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xa
+    sget-object v1, Landroid/net/wifi/SupplicantState;->DORMANT:Landroid/net/wifi/SupplicantState;
 
-    sget-object v2, Landroid/net/wifi/SupplicantState;->DORMANT:Landroid/net/wifi/SupplicantState;
+    const/16 v2, 0xa
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xb
+    sget-object v1, Landroid/net/wifi/SupplicantState;->UNINITIALIZED:Landroid/net/wifi/SupplicantState;
 
-    sget-object v2, Landroid/net/wifi/SupplicantState;->UNINITIALIZED:Landroid/net/wifi/SupplicantState;
+    const/16 v2, 0xb
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xc
+    sget-object v1, Landroid/net/wifi/SupplicantState;->INVALID:Landroid/net/wifi/SupplicantState;
 
-    sget-object v2, Landroid/net/wifi/SupplicantState;->INVALID:Landroid/net/wifi/SupplicantState;
+    const/16 v2, 0xc
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     sput-object v0, Landroid/net/wifi/SupplicantState;->$VALUES:[Landroid/net/wifi/SupplicantState;
 
-    .line 252
+    .line 255
     new-instance v0, Landroid/net/wifi/SupplicantState$1;
 
     invoke-direct {v0}, Landroid/net/wifi/SupplicantState$1;-><init>()V
 
+    .line 254
     sput-object v0, Landroid/net/wifi/SupplicantState;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 33
     return-void
 .end method
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 33
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
-    .line 193
     return-void
 .end method
 
-.method static isConnecting(Landroid/net/wifi/SupplicantState;)Z
+.method public static isConnecting(Landroid/net/wifi/SupplicantState;)Z
     .locals 2
-    .parameter "state"
+    .param p0, "state"    # Landroid/net/wifi/SupplicantState;
 
     .prologue
-    .line 198
-    sget-object v0, Landroid/net/wifi/SupplicantState$2;->$SwitchMap$android$net$wifi$SupplicantState:[I
+    .line 199
+    invoke-static {}, Landroid/net/wifi/SupplicantState;->-getandroid_net_wifi_SupplicantStateSwitchesValues()[I
+
+    move-result-object v0
 
     invoke-virtual {p0}, Landroid/net/wifi/SupplicantState;->ordinal()I
 
@@ -332,41 +615,38 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 215
+    .line 216
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "Unknown supplicant state"
+    const-string/jumbo v1, "Unknown supplicant state"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 205
+    .line 206
     :pswitch_0
     const/4 v0, 0x1
 
-    .line 213
-    :goto_0
     return v0
 
+    .line 214
     :pswitch_1
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 
-    .line 198
-    nop
-
+    .line 199
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0
         :pswitch_0
         :pswitch_0
         :pswitch_0
-        :pswitch_0
-        :pswitch_0
         :pswitch_1
         :pswitch_1
+        :pswitch_0
+        :pswitch_0
         :pswitch_1
         :pswitch_1
         :pswitch_1
@@ -375,13 +655,15 @@
     .end packed-switch
 .end method
 
-.method static isDriverActive(Landroid/net/wifi/SupplicantState;)Z
+.method public static isDriverActive(Landroid/net/wifi/SupplicantState;)Z
     .locals 2
-    .parameter "state"
+    .param p0, "state"    # Landroid/net/wifi/SupplicantState;
 
     .prologue
-    .line 220
-    sget-object v0, Landroid/net/wifi/SupplicantState$2;->$SwitchMap$android$net$wifi$SupplicantState:[I
+    .line 222
+    invoke-static {}, Landroid/net/wifi/SupplicantState;->-getandroid_net_wifi_SupplicantStateSwitchesValues()[I
+
+    move-result-object v0
 
     invoke-virtual {p0}, Landroid/net/wifi/SupplicantState;->ordinal()I
 
@@ -391,31 +673,28 @@
 
     packed-switch v0, :pswitch_data_0
 
-    .line 237
+    .line 239
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "Unknown supplicant state"
+    const-string/jumbo v1, "Unknown supplicant state"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 231
+    .line 233
     :pswitch_0
     const/4 v0, 0x1
 
-    .line 235
-    :goto_0
     return v0
 
+    .line 237
     :pswitch_1
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 
-    .line 220
-    nop
-
+    .line 222
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0
@@ -425,22 +704,24 @@
         :pswitch_0
         :pswitch_0
         :pswitch_0
-        :pswitch_1
-        :pswitch_0
         :pswitch_0
         :pswitch_0
         :pswitch_1
+        :pswitch_1
+        :pswitch_0
         :pswitch_1
     .end packed-switch
 .end method
 
 .method public static isHandshakeState(Landroid/net/wifi/SupplicantState;)Z
     .locals 2
-    .parameter "state"
+    .param p0, "state"    # Landroid/net/wifi/SupplicantState;
 
     .prologue
     .line 176
-    sget-object v0, Landroid/net/wifi/SupplicantState$2;->$SwitchMap$android$net$wifi$SupplicantState:[I
+    invoke-static {}, Landroid/net/wifi/SupplicantState;->-getandroid_net_wifi_SupplicantStateSwitchesValues()[I
+
+    move-result-object v0
 
     invoke-virtual {p0}, Landroid/net/wifi/SupplicantState;->ordinal()I
 
@@ -453,7 +734,7 @@
     .line 193
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "Unknown supplicant state"
+    const-string/jumbo v1, "Unknown supplicant state"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -463,28 +744,25 @@
     :pswitch_0
     const/4 v0, 0x1
 
-    .line 191
-    :goto_0
     return v0
 
+    .line 191
     :pswitch_1
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 
     .line 176
-    nop
-
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0
         :pswitch_0
         :pswitch_0
+        :pswitch_1
+        :pswitch_1
+        :pswitch_1
         :pswitch_0
         :pswitch_0
-        :pswitch_1
-        :pswitch_1
-        :pswitch_1
         :pswitch_1
         :pswitch_1
         :pswitch_1
@@ -494,33 +772,30 @@
 .end method
 
 .method public static isValidState(Landroid/net/wifi/SupplicantState;)Z
-    .locals 1
-    .parameter "state"
+    .locals 2
+    .param p0, "state"    # Landroid/net/wifi/SupplicantState;
 
     .prologue
+    const/4 v0, 0x0
+
     .line 170
-    sget-object v0, Landroid/net/wifi/SupplicantState;->UNINITIALIZED:Landroid/net/wifi/SupplicantState;
+    sget-object v1, Landroid/net/wifi/SupplicantState;->UNINITIALIZED:Landroid/net/wifi/SupplicantState;
 
-    if-eq p0, v0, :cond_0
+    if-eq p0, v1, :cond_0
 
-    sget-object v0, Landroid/net/wifi/SupplicantState;->INVALID:Landroid/net/wifi/SupplicantState;
+    sget-object v1, Landroid/net/wifi/SupplicantState;->INVALID:Landroid/net/wifi/SupplicantState;
 
-    if-eq p0, v0, :cond_0
+    if-eq p0, v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/net/wifi/SupplicantState;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 33
@@ -542,12 +817,6 @@
     .line 33
     sget-object v0, Landroid/net/wifi/SupplicantState;->$VALUES:[Landroid/net/wifi/SupplicantState;
 
-    invoke-virtual {v0}, [Landroid/net/wifi/SupplicantState;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/net/wifi/SupplicantState;
-
     return-object v0
 .end method
 
@@ -557,7 +826,7 @@
     .locals 1
 
     .prologue
-    .line 243
+    .line 245
     const/4 v0, 0x0
 
     return v0
@@ -565,11 +834,11 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 248
+    .line 250
     invoke-virtual {p0}, Landroid/net/wifi/SupplicantState;->name()Ljava/lang/String;
 
     move-result-object v0

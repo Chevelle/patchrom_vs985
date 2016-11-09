@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 66
+    .line 65
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 67
     iput-object p1, p0, Landroid/media/IRemoteVolumeObserver$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 68
+    .line 65
     return-void
 .end method
 
@@ -51,8 +51,8 @@
 
 .method public dispatchRemoteVolumeUpdate(II)V
     .locals 5
-    .parameter "direction"
-    .parameter "value"
+    .param p1, "direction"    # I
+    .param p2, "value"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -66,9 +66,9 @@
     move-result-object v0
 
     .line 81
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.media.IRemoteVolumeObserver"
+    const-string/jumbo v1, "android.media.IRemoteVolumeObserver"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -94,15 +94,17 @@
     .line 87
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 89
+    .line 77
     return-void
 
-    .line 87
+    .line 86
     :catchall_0
     move-exception v1
 
+    .line 87
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 86
     throw v1
 .end method
 
@@ -111,7 +113,7 @@
 
     .prologue
     .line 75
-    const-string v0, "android.media.IRemoteVolumeObserver"
+    const-string/jumbo v0, "android.media.IRemoteVolumeObserver"
 
     return-object v0
 .end method

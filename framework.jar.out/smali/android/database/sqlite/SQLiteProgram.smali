@@ -33,22 +33,23 @@
 
     sput-object v0, Landroid/database/sqlite/SQLiteProgram;->EMPTY_STRING_ARRAY:[Ljava/lang/String;
 
+    .line 30
     return-void
 .end method
 
 .method constructor <init>(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;[Ljava/lang/Object;Landroid/os/CancellationSignal;)V
-    .locals 7
-    .parameter "db"
-    .parameter "sql"
-    .parameter "bindArgs"
-    .parameter "cancellationSignalForPrepare"
+    .locals 8
+    .param p1, "db"    # Landroid/database/sqlite/SQLiteDatabase;
+    .param p2, "sql"    # Ljava/lang/String;
+    .param p3, "bindArgs"    # [Ljava/lang/Object;
+    .param p4, "cancellationSignalForPrepare"    # Landroid/os/CancellationSignal;
 
     .prologue
-    const/4 v0, 0x1
+    const/4 v7, 0x0
 
-    const/4 v3, 0x0
+    const/4 v6, 0x0
 
-    .line 41
+    .line 40
     invoke-direct {p0}, Landroid/database/sqlite/SQLiteClosable;-><init>()V
 
     .line 42
@@ -57,71 +58,77 @@
     .line 43
     invoke-virtual {p2}, Ljava/lang/String;->trim()Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v3
 
-    iput-object v4, p0, Landroid/database/sqlite/SQLiteProgram;->mSql:Ljava/lang/String;
+    iput-object v3, p0, Landroid/database/sqlite/SQLiteProgram;->mSql:Ljava/lang/String;
 
     .line 45
-    iget-object v4, p0, Landroid/database/sqlite/SQLiteProgram;->mSql:Ljava/lang/String;
+    iget-object v3, p0, Landroid/database/sqlite/SQLiteProgram;->mSql:Ljava/lang/String;
 
-    invoke-static {v4}, Landroid/database/DatabaseUtils;->getSqlStatementType(Ljava/lang/String;)I
+    invoke-static {v3}, Landroid/database/DatabaseUtils;->getSqlStatementType(Ljava/lang/String;)I
 
     move-result v2
 
     .line 46
-    .local v2, n:I
+    .local v2, "n":I
     packed-switch v2, :pswitch_data_0
 
     .line 56
-    if-ne v2, v0, :cond_0
+    const/4 v3, 0x1
+
+    if-ne v2, v3, :cond_0
+
+    const/4 v0, 0x1
 
     .line 57
-    .local v0, assumeReadOnly:Z
+    .local v0, "assumeReadOnly":Z
     :goto_0
     new-instance v1, Landroid/database/sqlite/SQLiteStatementInfo;
 
     invoke-direct {v1}, Landroid/database/sqlite/SQLiteStatementInfo;-><init>()V
 
     .line 58
-    .local v1, info:Landroid/database/sqlite/SQLiteStatementInfo;
+    .local v1, "info":Landroid/database/sqlite/SQLiteStatementInfo;
     invoke-virtual {p1}, Landroid/database/sqlite/SQLiteDatabase;->getThreadSession()Landroid/database/sqlite/SQLiteSession;
 
-    move-result-object v4
+    move-result-object v3
 
-    iget-object v5, p0, Landroid/database/sqlite/SQLiteProgram;->mSql:Ljava/lang/String;
+    iget-object v4, p0, Landroid/database/sqlite/SQLiteProgram;->mSql:Ljava/lang/String;
 
+    .line 59
     invoke-virtual {p1, v0}, Landroid/database/sqlite/SQLiteDatabase;->getThreadDefaultConnectionFlags(Z)I
 
-    move-result v6
+    move-result v5
 
-    invoke-virtual {v4, v5, v6, p4, v1}, Landroid/database/sqlite/SQLiteSession;->prepare(Ljava/lang/String;ILandroid/os/CancellationSignal;Landroid/database/sqlite/SQLiteStatementInfo;)V
+    .line 58
+    invoke-virtual {v3, v4, v5, p4, v1}, Landroid/database/sqlite/SQLiteSession;->prepare(Ljava/lang/String;ILandroid/os/CancellationSignal;Landroid/database/sqlite/SQLiteStatementInfo;)V
 
     .line 61
-    iget-boolean v4, v1, Landroid/database/sqlite/SQLiteStatementInfo;->readOnly:Z
+    iget-boolean v3, v1, Landroid/database/sqlite/SQLiteStatementInfo;->readOnly:Z
 
-    iput-boolean v4, p0, Landroid/database/sqlite/SQLiteProgram;->mReadOnly:Z
+    iput-boolean v3, p0, Landroid/database/sqlite/SQLiteProgram;->mReadOnly:Z
 
     .line 62
-    iget-object v4, v1, Landroid/database/sqlite/SQLiteStatementInfo;->columnNames:[Ljava/lang/String;
+    iget-object v3, v1, Landroid/database/sqlite/SQLiteStatementInfo;->columnNames:[Ljava/lang/String;
 
-    iput-object v4, p0, Landroid/database/sqlite/SQLiteProgram;->mColumnNames:[Ljava/lang/String;
+    iput-object v3, p0, Landroid/database/sqlite/SQLiteProgram;->mColumnNames:[Ljava/lang/String;
 
     .line 63
-    iget v4, v1, Landroid/database/sqlite/SQLiteStatementInfo;->numParameters:I
+    iget v3, v1, Landroid/database/sqlite/SQLiteStatementInfo;->numParameters:I
 
-    iput v4, p0, Landroid/database/sqlite/SQLiteProgram;->mNumParameters:I
+    iput v3, p0, Landroid/database/sqlite/SQLiteProgram;->mNumParameters:I
 
     .line 67
-    .end local v0           #assumeReadOnly:Z
-    .end local v1           #info:Landroid/database/sqlite/SQLiteStatementInfo;
+    .end local v0    # "assumeReadOnly":Z
+    .end local v1    # "info":Landroid/database/sqlite/SQLiteStatementInfo;
     :goto_1
     if-eqz p3, :cond_1
 
-    array-length v4, p3
+    array-length v3, p3
 
-    iget v5, p0, Landroid/database/sqlite/SQLiteProgram;->mNumParameters:I
+    iget v4, p0, Landroid/database/sqlite/SQLiteProgram;->mNumParameters:I
 
-    if-le v4, v5, :cond_1
+    if-le v3, v4, :cond_1
 
     .line 68
     new-instance v3, Ljava/lang/IllegalArgumentException;
@@ -130,32 +137,40 @@
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v5, "Too many bind arguments.  "
+    const-string/jumbo v5, "Too many bind arguments.  "
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
+    .line 69
     array-length v5, p3
 
+    .line 68
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    const-string v5, " arguments were provided but the statement needs "
+    .line 69
+    const-string/jumbo v5, " arguments were provided but the statement needs "
 
+    .line 68
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
+    .line 70
     iget v5, p0, Landroid/database/sqlite/SQLiteProgram;->mNumParameters:I
 
+    .line 68
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    const-string v5, " arguments."
+    .line 70
+    const-string/jumbo v5, " arguments."
 
+    .line 68
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
@@ -170,57 +185,57 @@
 
     .line 50
     :pswitch_0
-    iput-boolean v3, p0, Landroid/database/sqlite/SQLiteProgram;->mReadOnly:Z
+    iput-boolean v6, p0, Landroid/database/sqlite/SQLiteProgram;->mReadOnly:Z
 
     .line 51
-    sget-object v4, Landroid/database/sqlite/SQLiteProgram;->EMPTY_STRING_ARRAY:[Ljava/lang/String;
+    sget-object v3, Landroid/database/sqlite/SQLiteProgram;->EMPTY_STRING_ARRAY:[Ljava/lang/String;
 
-    iput-object v4, p0, Landroid/database/sqlite/SQLiteProgram;->mColumnNames:[Ljava/lang/String;
+    iput-object v3, p0, Landroid/database/sqlite/SQLiteProgram;->mColumnNames:[Ljava/lang/String;
 
     .line 52
-    iput v3, p0, Landroid/database/sqlite/SQLiteProgram;->mNumParameters:I
+    iput v6, p0, Landroid/database/sqlite/SQLiteProgram;->mNumParameters:I
 
     goto :goto_1
 
-    :cond_0
-    move v0, v3
-
     .line 56
+    :cond_0
+    const/4 v0, 0x0
+
+    .restart local v0    # "assumeReadOnly":Z
     goto :goto_0
 
     .line 73
+    .end local v0    # "assumeReadOnly":Z
     :cond_1
-    iget v4, p0, Landroid/database/sqlite/SQLiteProgram;->mNumParameters:I
+    iget v3, p0, Landroid/database/sqlite/SQLiteProgram;->mNumParameters:I
 
-    if-eqz v4, :cond_3
+    if-eqz v3, :cond_3
 
     .line 74
-    iget v4, p0, Landroid/database/sqlite/SQLiteProgram;->mNumParameters:I
+    iget v3, p0, Landroid/database/sqlite/SQLiteProgram;->mNumParameters:I
 
-    new-array v4, v4, [Ljava/lang/Object;
+    new-array v3, v3, [Ljava/lang/Object;
 
-    iput-object v4, p0, Landroid/database/sqlite/SQLiteProgram;->mBindArgs:[Ljava/lang/Object;
+    iput-object v3, p0, Landroid/database/sqlite/SQLiteProgram;->mBindArgs:[Ljava/lang/Object;
 
     .line 75
     if-eqz p3, :cond_2
 
     .line 76
-    iget-object v4, p0, Landroid/database/sqlite/SQLiteProgram;->mBindArgs:[Ljava/lang/Object;
+    iget-object v3, p0, Landroid/database/sqlite/SQLiteProgram;->mBindArgs:[Ljava/lang/Object;
 
-    array-length v5, p3
+    array-length v4, p3
 
-    invoke-static {p3, v3, v4, v3, v5}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {p3, v6, v3, v6, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 81
+    .line 41
     :cond_2
     :goto_2
     return-void
 
     .line 79
     :cond_3
-    const/4 v3, 0x0
-
-    iput-object v3, p0, Landroid/database/sqlite/SQLiteProgram;->mBindArgs:[Ljava/lang/Object;
+    iput-object v7, p0, Landroid/database/sqlite/SQLiteProgram;->mBindArgs:[Ljava/lang/Object;
 
     goto :goto_2
 
@@ -237,8 +252,8 @@
 
 .method private bind(ILjava/lang/Object;)V
     .locals 3
-    .parameter "index"
-    .parameter "value"
+    .param p1, "index"    # I
+    .param p2, "value"    # Ljava/lang/Object;
 
     .prologue
     .line 211
@@ -258,7 +273,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Cannot bind argument at index "
+    const-string/jumbo v2, "Cannot bind argument at index "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -268,26 +283,34 @@
 
     move-result-object v1
 
-    const-string v2, " because the index is out of range.  "
+    .line 213
+    const-string/jumbo v2, " because the index is out of range.  "
 
+    .line 212
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, "The statement has "
+    .line 214
+    const-string/jumbo v2, "The statement has "
 
+    .line 212
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 214
     iget v2, p0, Landroid/database/sqlite/SQLiteProgram;->mNumParameters:I
 
+    .line 212
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, " parameters."
+    .line 214
+    const-string/jumbo v2, " parameters."
 
+    .line 212
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -308,7 +331,7 @@
 
     aput-object p2, v0, v1
 
-    .line 217
+    .line 210
     return-void
 .end method
 
@@ -316,7 +339,7 @@
 # virtual methods
 .method public bindAllArgsAsStrings([Ljava/lang/String;)V
     .locals 2
-    .parameter "bindArgs"
+    .param p1, "bindArgs"    # [Ljava/lang/String;
 
     .prologue
     .line 198
@@ -325,7 +348,7 @@
     .line 199
     array-length v0, p1
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-eqz v0, :cond_0
 
@@ -341,16 +364,16 @@
 
     goto :goto_0
 
-    .line 203
-    .end local v0           #i:I
+    .line 197
+    .end local v0    # "i":I
     :cond_0
     return-void
 .end method
 
 .method public bindBlob(I[B)V
     .locals 3
-    .parameter "index"
-    .parameter "value"
+    .param p1, "index"    # I
+    .param p2, "value"    # [B
 
     .prologue
     .line 177
@@ -373,7 +396,7 @@
 
     move-result-object v1
 
-    const-string v2, " is null"
+    const-string/jumbo v2, " is null"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -391,14 +414,14 @@
     :cond_0
     invoke-direct {p0, p1, p2}, Landroid/database/sqlite/SQLiteProgram;->bind(ILjava/lang/Object;)V
 
-    .line 181
+    .line 176
     return-void
 .end method
 
 .method public bindDouble(ID)V
-    .locals 1
-    .parameter "index"
-    .parameter "value"
+    .locals 2
+    .param p1, "index"    # I
+    .param p2, "value"    # D
 
     .prologue
     .line 152
@@ -408,14 +431,14 @@
 
     invoke-direct {p0, p1, v0}, Landroid/database/sqlite/SQLiteProgram;->bind(ILjava/lang/Object;)V
 
-    .line 153
+    .line 151
     return-void
 .end method
 
 .method public bindLong(IJ)V
-    .locals 1
-    .parameter "index"
-    .parameter "value"
+    .locals 2
+    .param p1, "index"    # I
+    .param p2, "value"    # J
 
     .prologue
     .line 141
@@ -425,13 +448,13 @@
 
     invoke-direct {p0, p1, v0}, Landroid/database/sqlite/SQLiteProgram;->bind(ILjava/lang/Object;)V
 
-    .line 142
+    .line 140
     return-void
 .end method
 
 .method public bindNull(I)V
     .locals 1
-    .parameter "index"
+    .param p1, "index"    # I
 
     .prologue
     .line 130
@@ -439,14 +462,14 @@
 
     invoke-direct {p0, p1, v0}, Landroid/database/sqlite/SQLiteProgram;->bind(ILjava/lang/Object;)V
 
-    .line 131
+    .line 129
     return-void
 .end method
 
 .method public bindString(ILjava/lang/String;)V
     .locals 3
-    .parameter "index"
-    .parameter "value"
+    .param p1, "index"    # I
+    .param p2, "value"    # Ljava/lang/String;
 
     .prologue
     .line 163
@@ -469,7 +492,7 @@
 
     move-result-object v1
 
-    const-string v2, " is null"
+    const-string/jumbo v2, " is null"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -487,7 +510,7 @@
     :cond_0
     invoke-direct {p0, p1, p2}, Landroid/database/sqlite/SQLiteProgram;->bind(ILjava/lang/Object;)V
 
-    .line 167
+    .line 162
     return-void
 .end method
 
@@ -495,6 +518,8 @@
     .locals 2
 
     .prologue
+    const/4 v1, 0x0
+
     .line 187
     iget-object v0, p0, Landroid/database/sqlite/SQLiteProgram;->mBindArgs:[Ljava/lang/Object;
 
@@ -503,11 +528,9 @@
     .line 188
     iget-object v0, p0, Landroid/database/sqlite/SQLiteProgram;->mBindArgs:[Ljava/lang/Object;
 
-    const/4 v1, 0x0
-
     invoke-static {v0, v1}, Ljava/util/Arrays;->fill([Ljava/lang/Object;Ljava/lang/Object;)V
 
-    .line 190
+    .line 186
     :cond_0
     return-void
 .end method
@@ -601,7 +624,7 @@
     .line 207
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteProgram;->clearBindings()V
 
-    .line 208
+    .line 206
     return-void
 .end method
 
@@ -614,6 +637,6 @@
 
     invoke-virtual {v0}, Landroid/database/sqlite/SQLiteDatabase;->onCorruption()V
 
-    .line 112
+    .line 110
     return-void
 .end method

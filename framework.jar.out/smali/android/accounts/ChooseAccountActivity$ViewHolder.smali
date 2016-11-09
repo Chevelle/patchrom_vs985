@@ -31,12 +31,10 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/accounts/ChooseAccountActivity$1;)V
+.method synthetic constructor <init>(Landroid/accounts/ChooseAccountActivity$ViewHolder;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 150
     invoke-direct {p0}, Landroid/accounts/ChooseAccountActivity$ViewHolder;-><init>()V
 
     return-void

@@ -18,17 +18,17 @@
 
 
 # instance fields
-.field final synthetic this$0:Landroid/widget/Toast$TN;
+.field final synthetic this$1:Landroid/widget/Toast$TN;
 
 
 # direct methods
 .method constructor <init>(Landroid/widget/Toast$TN;)V
     .locals 0
-    .parameter
+    .param p1, "this$1"    # Landroid/widget/Toast$TN;
 
     .prologue
-    .line 310
-    iput-object p1, p0, Landroid/widget/Toast$TN$1;->this$0:Landroid/widget/Toast$TN;
+    .line 328
+    iput-object p1, p0, Landroid/widget/Toast$TN$1;->this$1:Landroid/widget/Toast$TN;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -41,11 +41,11 @@
     .locals 1
 
     .prologue
-    .line 313
-    iget-object v0, p0, Landroid/widget/Toast$TN$1;->this$0:Landroid/widget/Toast$TN;
+    .line 331
+    iget-object v0, p0, Landroid/widget/Toast$TN$1;->this$1:Landroid/widget/Toast$TN;
 
     invoke-virtual {v0}, Landroid/widget/Toast$TN;->handleShow()V
 
-    .line 314
+    .line 330
     return-void
 .end method

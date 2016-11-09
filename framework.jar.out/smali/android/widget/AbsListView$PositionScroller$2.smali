@@ -28,12 +28,12 @@
 # direct methods
 .method constructor <init>(Landroid/widget/AbsListView$PositionScroller;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$1"    # Landroid/widget/AbsListView$PositionScroller;
+    .param p2, "val$position"    # I
+    .param p3, "val$boundPosition"    # I
 
     .prologue
-    .line 4415
+    .line 7093
     iput-object p1, p0, Landroid/widget/AbsListView$PositionScroller$2;->this$1:Landroid/widget/AbsListView$PositionScroller;
 
     iput p2, p0, Landroid/widget/AbsListView$PositionScroller$2;->val$position:I
@@ -51,7 +51,7 @@
     .locals 3
 
     .prologue
-    .line 4417
+    .line 7095
     iget-object v0, p0, Landroid/widget/AbsListView$PositionScroller$2;->this$1:Landroid/widget/AbsListView$PositionScroller;
 
     iget v1, p0, Landroid/widget/AbsListView$PositionScroller$2;->val$position:I
@@ -60,6 +60,6 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/widget/AbsListView$PositionScroller;->start(II)V
 
-    .line 4418
+    .line 7094
     return-void
 .end method

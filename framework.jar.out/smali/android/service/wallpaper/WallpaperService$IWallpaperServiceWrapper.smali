@@ -23,35 +23,36 @@
 # direct methods
 .method public constructor <init>(Landroid/service/wallpaper/WallpaperService;Landroid/service/wallpaper/WallpaperService;)V
     .locals 0
-    .parameter
-    .parameter "context"
+    .param p1, "this$0"    # Landroid/service/wallpaper/WallpaperService;
+    .param p2, "context"    # Landroid/service/wallpaper/WallpaperService;
 
     .prologue
-    .line 1098
+    .line 1234
     iput-object p1, p0, Landroid/service/wallpaper/WallpaperService$IWallpaperServiceWrapper;->this$0:Landroid/service/wallpaper/WallpaperService;
 
     invoke-direct {p0}, Landroid/service/wallpaper/IWallpaperService$Stub;-><init>()V
 
-    .line 1099
+    .line 1235
     iput-object p2, p0, Landroid/service/wallpaper/WallpaperService$IWallpaperServiceWrapper;->mTarget:Landroid/service/wallpaper/WallpaperService;
 
-    .line 1100
+    .line 1234
     return-void
 .end method
 
 
 # virtual methods
-.method public attach(Landroid/service/wallpaper/IWallpaperConnection;Landroid/os/IBinder;IZII)V
-    .locals 9
-    .parameter "conn"
-    .parameter "windowToken"
-    .parameter "windowType"
-    .parameter "isPreview"
-    .parameter "reqWidth"
-    .parameter "reqHeight"
+.method public attach(Landroid/service/wallpaper/IWallpaperConnection;Landroid/os/IBinder;IZIILandroid/graphics/Rect;)V
+    .locals 10
+    .param p1, "conn"    # Landroid/service/wallpaper/IWallpaperConnection;
+    .param p2, "windowToken"    # Landroid/os/IBinder;
+    .param p3, "windowType"    # I
+    .param p4, "isPreview"    # Z
+    .param p5, "reqWidth"    # I
+    .param p6, "reqHeight"    # I
+    .param p7, "padding"    # Landroid/graphics/Rect;
 
     .prologue
-    .line 1105
+    .line 1241
     new-instance v0, Landroid/service/wallpaper/WallpaperService$IWallpaperEngineWrapper;
 
     iget-object v1, p0, Landroid/service/wallpaper/WallpaperService$IWallpaperServiceWrapper;->this$0:Landroid/service/wallpaper/WallpaperService;
@@ -68,10 +69,12 @@
 
     move v7, p5
 
-    move v8, p6
+    move/from16 v8, p6
 
-    invoke-direct/range {v0 .. v8}, Landroid/service/wallpaper/WallpaperService$IWallpaperEngineWrapper;-><init>(Landroid/service/wallpaper/WallpaperService;Landroid/service/wallpaper/WallpaperService;Landroid/service/wallpaper/IWallpaperConnection;Landroid/os/IBinder;IZII)V
+    move-object/from16 v9, p7
 
-    .line 1107
+    invoke-direct/range {v0 .. v9}, Landroid/service/wallpaper/WallpaperService$IWallpaperEngineWrapper;-><init>(Landroid/service/wallpaper/WallpaperService;Landroid/service/wallpaper/WallpaperService;Landroid/service/wallpaper/IWallpaperConnection;Landroid/os/IBinder;IZIILandroid/graphics/Rect;)V
+
+    .line 1240
     return-void
 .end method

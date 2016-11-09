@@ -24,9 +24,9 @@
 # direct methods
 .method public constructor <init>(IILjava/lang/String;)V
     .locals 0
-    .parameter "uniqueId"
-    .parameter "type"
-    .parameter "message"
+    .param p1, "uniqueId"    # I
+    .param p2, "type"    # I
+    .param p3, "message"    # Ljava/lang/String;
 
     .prologue
     .line 83
@@ -35,16 +35,15 @@
     .line 84
     invoke-direct {p0, p2}, Landroid/drm/DrmErrorEvent;->checkTypeValidity(I)V
 
-    .line 85
+    .line 82
     return-void
 .end method
 
 .method public constructor <init>(IILjava/lang/String;Ljava/util/HashMap;)V
     .locals 0
-    .parameter "uniqueId"
-    .parameter "type"
-    .parameter "message"
-    .parameter
+    .param p1, "uniqueId"    # I
+    .param p2, "type"    # I
+    .param p3, "message"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(II",
@@ -59,19 +58,19 @@
 
     .prologue
     .line 98
-    .local p4, attributes:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/String;Ljava/lang/Object;>;"
+    .local p4, "attributes":Ljava/util/HashMap;, "Ljava/util/HashMap<Ljava/lang/String;Ljava/lang/Object;>;"
     invoke-direct {p0, p1, p2, p3, p4}, Landroid/drm/DrmEvent;-><init>(IILjava/lang/String;Ljava/util/HashMap;)V
 
     .line 99
     invoke-direct {p0, p2}, Landroid/drm/DrmErrorEvent;->checkTypeValidity(I)V
 
-    .line 100
+    .line 97
     return-void
 .end method
 
 .method private checkTypeValidity(I)V
     .locals 3
-    .parameter "type"
+    .param p1, "type"    # I
 
     .prologue
     .line 103
@@ -79,6 +78,7 @@
 
     if-lt p1, v1, :cond_0
 
+    .line 104
     const/16 v1, 0x7d8
 
     if-le p1, v1, :cond_1
@@ -89,7 +89,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Unsupported type: "
+    const-string/jumbo v2, "Unsupported type: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -104,15 +104,15 @@
     move-result-object v0
 
     .line 106
-    .local v0, msg:Ljava/lang/String;
+    .local v0, "msg":Ljava/lang/String;
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     invoke-direct {v1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 108
-    .end local v0           #msg:Ljava/lang/String;
+    .line 102
+    .end local v0    # "msg":Ljava/lang/String;
     :cond_1
     return-void
 .end method

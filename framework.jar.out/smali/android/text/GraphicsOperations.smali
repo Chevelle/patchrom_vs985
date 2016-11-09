@@ -10,10 +10,10 @@
 .method public abstract drawText(Landroid/graphics/Canvas;IIFFLandroid/graphics/Paint;)V
 .end method
 
-.method public abstract drawTextRun(Landroid/graphics/Canvas;IIIIFFILandroid/graphics/Paint;)V
+.method public abstract drawTextRun(Landroid/graphics/Canvas;IIIIFFZLandroid/graphics/Paint;)V
 .end method
 
-.method public abstract getTextRunAdvances(IIIII[FILandroid/graphics/Paint;)F
+.method public abstract getTextRunAdvances(IIIIZ[FILandroid/graphics/Paint;)F
 .end method
 
 .method public abstract getTextRunCursor(IIIIILandroid/graphics/Paint;)I

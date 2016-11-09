@@ -26,11 +26,11 @@
 # direct methods
 .method constructor <init>(Landroid/accounts/AbstractAccountAuthenticator;Landroid/accounts/AccountAuthenticatorResponse;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/accounts/AbstractAccountAuthenticator;
+    .param p2, "val$response"    # Landroid/accounts/AccountAuthenticatorResponse;
 
     .prologue
-    .line 545
+    .line 596
     iput-object p1, p0, Landroid/accounts/AbstractAccountAuthenticator$2;->this$0:Landroid/accounts/AbstractAccountAuthenticator;
 
     iput-object p2, p0, Landroid/accounts/AbstractAccountAuthenticator$2;->val$response:Landroid/accounts/AccountAuthenticatorResponse;
@@ -46,24 +46,24 @@
     .locals 3
 
     .prologue
-    .line 547
+    .line 599
     new-instance v0, Landroid/os/Bundle;
 
     invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
 
-    .line 548
-    .local v0, result:Landroid/os/Bundle;
-    const-string v1, "booleanResult"
+    .line 600
+    .local v0, "result":Landroid/os/Bundle;
+    const-string/jumbo v1, "booleanResult"
 
     const/4 v2, 0x0
 
     invoke-virtual {v0, v1, v2}, Landroid/os/Bundle;->putBoolean(Ljava/lang/String;Z)V
 
-    .line 549
+    .line 601
     iget-object v1, p0, Landroid/accounts/AbstractAccountAuthenticator$2;->val$response:Landroid/accounts/AccountAuthenticatorResponse;
 
     invoke-virtual {v1, v0}, Landroid/accounts/AccountAuthenticatorResponse;->onResult(Landroid/os/Bundle;)V
 
-    .line 550
+    .line 598
     return-void
 .end method

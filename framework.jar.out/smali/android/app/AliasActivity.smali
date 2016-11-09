@@ -16,16 +16,17 @@
     invoke-direct {p0}, Landroid/app/Activity;-><init>()V
 
     .line 50
-    const-string v0, "android.app.alias"
+    const-string/jumbo v0, "android.app.alias"
 
     iput-object v0, p0, Landroid/app/AliasActivity;->ALIAS_META_DATA:Ljava/lang/String;
 
+    .line 43
     return-void
 .end method
 
 .method private parseAlias(Lorg/xmlpull/v1/XmlPullParser;)Landroid/content/Intent;
     .locals 9
-    .parameter "parser"
+    .param p1, "parser"    # Lorg/xmlpull/v1/XmlPullParser;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Lorg/xmlpull/v1/XmlPullParserException;,
@@ -44,19 +45,20 @@
     move-result-object v0
 
     .line 91
-    .local v0, attrs:Landroid/util/AttributeSet;
+    .local v0, "attrs":Landroid/util/AttributeSet;
     const/4 v2, 0x0
 
-    .line 95
-    .local v2, intent:Landroid/content/Intent;
+    .line 94
+    .local v2, "intent":Landroid/content/Intent;
     :cond_0
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->next()I
 
     move-result v5
 
-    .local v5, type:I
+    .local v5, "type":I
     if-eq v5, v7, :cond_1
 
+    .line 95
     const/4 v6, 0x2
 
     if-ne v5, v6, :cond_0
@@ -68,8 +70,8 @@
     move-result-object v3
 
     .line 99
-    .local v3, nodeName:Ljava/lang/String;
-    const-string v6, "alias"
+    .local v3, "nodeName":Ljava/lang/String;
+    const-string/jumbo v6, "alias"
 
     invoke-virtual {v6, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -80,11 +82,12 @@
     .line 100
     new-instance v6, Ljava/lang/RuntimeException;
 
+    .line 101
     new-instance v7, Ljava/lang/StringBuilder;
 
     invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v8, "Alias meta-data must start with <alias> tag; found"
+    const-string/jumbo v8, "Alias meta-data must start with <alias> tag; found"
 
     invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -94,16 +97,20 @@
 
     move-result-object v7
 
-    const-string v8, " at "
+    .line 102
+    const-string/jumbo v8, " at "
 
+    .line 101
     invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v7
 
+    .line 102
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->getPositionDescription()Ljava/lang/String;
 
     move-result-object v8
 
+    .line 101
     invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v7
@@ -112,6 +119,7 @@
 
     move-result-object v7
 
+    .line 100
     invoke-direct {v6, v7}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v6
@@ -122,8 +130,9 @@
 
     move-result v4
 
-    .line 107
-    .local v4, outerDepth:I
+    .line 106
+    .end local v2    # "intent":Landroid/content/Intent;
+    .local v4, "outerDepth":I
     :cond_3
     :goto_0
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->next()I
@@ -132,6 +141,7 @@
 
     if-eq v5, v7, :cond_6
 
+    .line 107
     if-ne v5, v8, :cond_4
 
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->getDepth()I
@@ -154,7 +164,7 @@
     move-result-object v3
 
     .line 113
-    const-string v6, "intent"
+    const-string/jumbo v6, "intent"
 
     invoke-virtual {v6, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -172,15 +182,17 @@
     move-result-object v1
 
     .line 115
-    .local v1, gotIntent:Landroid/content/Intent;
+    .local v1, "gotIntent":Landroid/content/Intent;
     if-nez v2, :cond_3
 
     move-object v2, v1
 
+    .local v2, "intent":Landroid/content/Intent;
     goto :goto_0
 
     .line 117
-    .end local v1           #gotIntent:Landroid/content/Intent;
+    .end local v1    # "gotIntent":Landroid/content/Intent;
+    .end local v2    # "intent":Landroid/content/Intent;
     :cond_5
     invoke-static {p1}, Lcom/android/internal/util/XmlUtils;->skipCurrentTag(Lorg/xmlpull/v1/XmlPullParser;)V
 
@@ -194,178 +206,192 @@
 
 # virtual methods
 .method protected onCreate(Landroid/os/Bundle;)V
-    .locals 7
-    .parameter "savedInstanceState"
+    .locals 9
+    .param p1, "savedInstanceState"    # Landroid/os/Bundle;
 
     .prologue
     .line 54
     invoke-super {p0, p1}, Landroid/app/Activity;->onCreate(Landroid/os/Bundle;)V
 
     .line 56
-    const/4 v3, 0x0
+    const/4 v5, 0x0
 
     .line 58
-    .local v3, parser:Landroid/content/res/XmlResourceParser;
+    .local v5, "parser":Landroid/content/res/XmlResourceParser;
     :try_start_0
     invoke-virtual {p0}, Landroid/app/AliasActivity;->getPackageManager()Landroid/content/pm/PackageManager;
 
-    move-result-object v4
+    move-result-object v6
 
+    .line 59
     invoke-virtual {p0}, Landroid/app/AliasActivity;->getComponentName()Landroid/content/ComponentName;
 
-    move-result-object v5
+    move-result-object v7
 
-    const/16 v6, 0x80
+    const/16 v8, 0x80
 
-    invoke-virtual {v4, v5, v6}, Landroid/content/pm/PackageManager;->getActivityInfo(Landroid/content/ComponentName;I)Landroid/content/pm/ActivityInfo;
+    .line 58
+    invoke-virtual {v6, v7, v8}, Landroid/content/pm/PackageManager;->getActivityInfo(Landroid/content/ComponentName;I)Landroid/content/pm/ActivityInfo;
 
     move-result-object v0
 
     .line 60
-    .local v0, ai:Landroid/content/pm/ActivityInfo;
+    .local v0, "ai":Landroid/content/pm/ActivityInfo;
     invoke-virtual {p0}, Landroid/app/AliasActivity;->getPackageManager()Landroid/content/pm/PackageManager;
 
-    move-result-object v4
+    move-result-object v6
 
-    const-string v5, "android.app.alias"
+    .line 61
+    const-string/jumbo v7, "android.app.alias"
 
-    invoke-virtual {v0, v4, v5}, Landroid/content/pm/ActivityInfo;->loadXmlMetaData(Landroid/content/pm/PackageManager;Ljava/lang/String;)Landroid/content/res/XmlResourceParser;
+    .line 60
+    invoke-virtual {v0, v6, v7}, Landroid/content/pm/ActivityInfo;->loadXmlMetaData(Landroid/content/pm/PackageManager;Ljava/lang/String;)Landroid/content/res/XmlResourceParser;
 
-    move-result-object v3
+    move-result-object v5
 
     .line 62
-    if-nez v3, :cond_1
+    .local v5, "parser":Landroid/content/res/XmlResourceParser;
+    if-nez v5, :cond_1
 
     .line 63
-    new-instance v4, Ljava/lang/RuntimeException;
+    new-instance v6, Ljava/lang/RuntimeException;
 
-    const-string v5, "Alias requires a meta-data field android.app.alias"
+    const-string/jumbo v7, "Alias requires a meta-data field android.app.alias"
 
-    invoke-direct {v4, v5}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v6, v7}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
-    throw v4
+    throw v6
     :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
     .catch Lorg/xmlpull/v1/XmlPullParserException; {:try_start_0 .. :try_end_0} :catch_1
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_2
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 76
-    .end local v0           #ai:Landroid/content/pm/ActivityInfo;
+    .end local v0    # "ai":Landroid/content/pm/ActivityInfo;
+    .end local v5    # "parser":Landroid/content/res/XmlResourceParser;
     :catch_0
     move-exception v1
 
     .line 77
-    .local v1, e:Landroid/content/pm/PackageManager$NameNotFoundException;
+    .local v1, "e":Landroid/content/pm/PackageManager$NameNotFoundException;
     :try_start_1
-    new-instance v4, Ljava/lang/RuntimeException;
+    new-instance v6, Ljava/lang/RuntimeException;
 
-    const-string v5, "Error parsing alias"
+    const-string/jumbo v7, "Error parsing alias"
 
-    invoke-direct {v4, v5, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+    invoke-direct {v6, v7, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    throw v4
+    throw v6
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 83
-    .end local v1           #e:Landroid/content/pm/PackageManager$NameNotFoundException;
+    .line 82
+    .end local v1    # "e":Landroid/content/pm/PackageManager$NameNotFoundException;
     :catchall_0
-    move-exception v4
+    move-exception v6
 
-    if-eqz v3, :cond_0
+    .line 83
+    if-eqz v5, :cond_0
 
-    invoke-interface {v3}, Landroid/content/res/XmlResourceParser;->close()V
+    invoke-interface {v5}, Landroid/content/res/XmlResourceParser;->close()V
 
+    .line 82
     :cond_0
-    throw v4
+    throw v6
 
     .line 67
-    .restart local v0       #ai:Landroid/content/pm/ActivityInfo;
+    .restart local v0    # "ai":Landroid/content/pm/ActivityInfo;
+    .restart local v5    # "parser":Landroid/content/res/XmlResourceParser;
     :cond_1
     :try_start_2
-    invoke-direct {p0, v3}, Landroid/app/AliasActivity;->parseAlias(Lorg/xmlpull/v1/XmlPullParser;)Landroid/content/Intent;
+    invoke-direct {p0, v5}, Landroid/app/AliasActivity;->parseAlias(Lorg/xmlpull/v1/XmlPullParser;)Landroid/content/Intent;
 
-    move-result-object v2
+    move-result-object v4
 
     .line 68
-    .local v2, intent:Landroid/content/Intent;
-    if-nez v2, :cond_2
+    .local v4, "intent":Landroid/content/Intent;
+    if-nez v4, :cond_2
 
     .line 69
-    new-instance v4, Ljava/lang/RuntimeException;
+    new-instance v6, Ljava/lang/RuntimeException;
 
-    const-string v5, "No <intent> tag found in alias description"
+    .line 70
+    const-string/jumbo v7, "No <intent> tag found in alias description"
 
-    invoke-direct {v4, v5}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+    .line 69
+    invoke-direct {v6, v7}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
-    throw v4
+    throw v6
     :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
     .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_2 .. :try_end_2} :catch_0
     .catch Lorg/xmlpull/v1/XmlPullParserException; {:try_start_2 .. :try_end_2} :catch_1
     .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     .line 78
-    .end local v0           #ai:Landroid/content/pm/ActivityInfo;
-    .end local v2           #intent:Landroid/content/Intent;
+    .end local v0    # "ai":Landroid/content/pm/ActivityInfo;
+    .end local v4    # "intent":Landroid/content/Intent;
+    .end local v5    # "parser":Landroid/content/res/XmlResourceParser;
     :catch_1
-    move-exception v1
+    move-exception v3
 
     .line 79
-    .local v1, e:Lorg/xmlpull/v1/XmlPullParserException;
+    .local v3, "e":Lorg/xmlpull/v1/XmlPullParserException;
     :try_start_3
-    new-instance v4, Ljava/lang/RuntimeException;
+    new-instance v6, Ljava/lang/RuntimeException;
 
-    const-string v5, "Error parsing alias"
+    const-string/jumbo v7, "Error parsing alias"
 
-    invoke-direct {v4, v5, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+    invoke-direct {v6, v7, v3}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    throw v4
+    throw v6
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     .line 73
-    .end local v1           #e:Lorg/xmlpull/v1/XmlPullParserException;
-    .restart local v0       #ai:Landroid/content/pm/ActivityInfo;
-    .restart local v2       #intent:Landroid/content/Intent;
+    .end local v3    # "e":Lorg/xmlpull/v1/XmlPullParserException;
+    .restart local v0    # "ai":Landroid/content/pm/ActivityInfo;
+    .restart local v4    # "intent":Landroid/content/Intent;
+    .restart local v5    # "parser":Landroid/content/res/XmlResourceParser;
     :cond_2
     :try_start_4
-    invoke-virtual {p0, v2}, Landroid/app/AliasActivity;->startActivity(Landroid/content/Intent;)V
+    invoke-virtual {p0, v4}, Landroid/app/AliasActivity;->startActivity(Landroid/content/Intent;)V
 
     .line 74
     invoke-virtual {p0}, Landroid/app/AliasActivity;->finish()V
     :try_end_4
-    .catchall {:try_start_4 .. :try_end_4} :catchall_0
     .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_4 .. :try_end_4} :catch_0
     .catch Lorg/xmlpull/v1/XmlPullParserException; {:try_start_4 .. :try_end_4} :catch_1
     .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_2
+    .catchall {:try_start_4 .. :try_end_4} :catchall_0
 
     .line 83
-    if-eqz v3, :cond_3
+    if-eqz v5, :cond_3
 
-    invoke-interface {v3}, Landroid/content/res/XmlResourceParser;->close()V
+    invoke-interface {v5}, Landroid/content/res/XmlResourceParser;->close()V
 
-    .line 85
+    .line 53
     :cond_3
     return-void
 
     .line 80
-    .end local v0           #ai:Landroid/content/pm/ActivityInfo;
-    .end local v2           #intent:Landroid/content/Intent;
+    .end local v0    # "ai":Landroid/content/pm/ActivityInfo;
+    .end local v4    # "intent":Landroid/content/Intent;
+    .end local v5    # "parser":Landroid/content/res/XmlResourceParser;
     :catch_2
-    move-exception v1
+    move-exception v2
 
     .line 81
-    .local v1, e:Ljava/io/IOException;
+    .local v2, "e":Ljava/io/IOException;
     :try_start_5
-    new-instance v4, Ljava/lang/RuntimeException;
+    new-instance v6, Ljava/lang/RuntimeException;
 
-    const-string v5, "Error parsing alias"
+    const-string/jumbo v7, "Error parsing alias"
 
-    invoke-direct {v4, v5, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+    invoke-direct {v6, v7, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    throw v4
+    throw v6
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_0
 .end method

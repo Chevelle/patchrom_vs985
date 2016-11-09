@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 369
+    .line 528
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -29,36 +29,36 @@
 # virtual methods
 .method public onEnabledChanged(Z)V
     .locals 0
-    .parameter "enabled"
+    .param p1, "enabled"    # Z
 
     .prologue
-    .line 376
+    .line 534
     return-void
 .end method
 
 .method public onFontScaleChanged(F)V
     .locals 0
-    .parameter "fontScale"
+    .param p1, "fontScale"    # F
 
     .prologue
-    .line 403
+    .line 558
     return-void
 .end method
 
 .method public onLocaleChanged(Ljava/util/Locale;)V
     .locals 0
-    .parameter "locale"
+    .param p1, "locale"    # Ljava/util/Locale;
 
     .prologue
-    .line 394
+    .line 550
     return-void
 .end method
 
 .method public onUserStyleChanged(Landroid/view/accessibility/CaptioningManager$CaptionStyle;)V
     .locals 0
-    .parameter "userStyle"
+    .param p1, "userStyle"    # Landroid/view/accessibility/CaptioningManager$CaptionStyle;
 
     .prologue
-    .line 385
+    .line 542
     return-void
 .end method

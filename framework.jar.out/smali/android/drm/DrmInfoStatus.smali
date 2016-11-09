@@ -22,10 +22,10 @@
 # direct methods
 .method public constructor <init>(IILandroid/drm/ProcessedData;Ljava/lang/String;)V
     .locals 3
-    .parameter "statusCode"
-    .parameter "infoType"
-    .parameter "data"
-    .parameter "mimeType"
+    .param p1, "statusCode"    # I
+    .param p2, "infoType"    # I
+    .param p3, "data"    # Landroid/drm/ProcessedData;
+    .param p4, "mimeType"    # Ljava/lang/String;
 
     .prologue
     .line 74
@@ -45,7 +45,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "infoType: "
+    const-string/jumbo v2, "infoType: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -78,7 +78,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Unsupported status code: "
+    const-string/jumbo v2, "Unsupported status code: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -100,7 +100,7 @@
     :cond_1
     if-eqz p4, :cond_2
 
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     if-ne p4, v0, :cond_3
 
@@ -108,7 +108,7 @@
     :cond_2
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "mimeType is null or an empty string"
+    const-string/jumbo v1, "mimeType is null or an empty string"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -127,13 +127,13 @@
     .line 90
     iput-object p4, p0, Landroid/drm/DrmInfoStatus;->mimeType:Ljava/lang/String;
 
-    .line 91
+    .line 74
     return-void
 .end method
 
 .method private isValidStatusCode(I)Z
     .locals 2
-    .parameter "statusCode"
+    .param p1, "statusCode"    # I
 
     .prologue
     const/4 v0, 0x1

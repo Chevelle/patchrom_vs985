@@ -29,11 +29,11 @@
 # direct methods
 .method constructor <init>(Landroid/transition/Crossfade;ZLandroid/view/View;Landroid/graphics/drawable/BitmapDrawable;Landroid/graphics/drawable/BitmapDrawable;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/transition/Crossfade;
+    .param p2, "val$useParentOverlay"    # Z
+    .param p3, "val$view"    # Landroid/view/View;
+    .param p4, "val$startDrawable"    # Landroid/graphics/drawable/BitmapDrawable;
+    .param p5, "val$endDrawable"    # Landroid/graphics/drawable/BitmapDrawable;
 
     .prologue
     .line 222
@@ -56,7 +56,7 @@
 # virtual methods
 .method public onAnimationEnd(Landroid/animation/Animator;)V
     .locals 3
-    .parameter "animation"
+    .param p1, "animation"    # Landroid/animation/Animator;
 
     .prologue
     .line 225
@@ -64,6 +64,7 @@
 
     if-eqz v1, :cond_1
 
+    .line 226
     iget-object v1, p0, Landroid/transition/Crossfade$2;->val$view:Landroid/view/View;
 
     invoke-virtual {v1}, Landroid/view/View;->getParent()Landroid/view/ViewParent;
@@ -77,7 +78,7 @@
     move-result-object v0
 
     .line 227
-    .local v0, overlay:Landroid/view/ViewOverlay;
+    .local v0, "overlay":Landroid/view/ViewOverlay;
     :goto_0
     iget-object v1, p0, Landroid/transition/Crossfade$2;->val$startDrawable:Landroid/graphics/drawable/BitmapDrawable;
 
@@ -86,8 +87,7 @@
     .line 228
     iget-object v1, p0, Landroid/transition/Crossfade$2;->this$0:Landroid/transition/Crossfade;
 
-    #getter for: Landroid/transition/Crossfade;->mFadeBehavior:I
-    invoke-static {v1}, Landroid/transition/Crossfade;->access$000(Landroid/transition/Crossfade;)I
+    invoke-static {v1}, Landroid/transition/Crossfade;->-get0(Landroid/transition/Crossfade;)I
 
     move-result v1
 
@@ -100,12 +100,12 @@
 
     invoke-virtual {v0, v1}, Landroid/view/ViewOverlay;->remove(Landroid/graphics/drawable/Drawable;)V
 
-    .line 231
+    .line 224
     :cond_0
     return-void
 
-    .line 225
-    .end local v0           #overlay:Landroid/view/ViewOverlay;
+    .line 226
+    .end local v0    # "overlay":Landroid/view/ViewOverlay;
     :cond_1
     iget-object v1, p0, Landroid/transition/Crossfade$2;->val$view:Landroid/view/View;
 
@@ -113,5 +113,6 @@
 
     move-result-object v0
 
+    .restart local v0    # "overlay":Landroid/view/ViewOverlay;
     goto :goto_0
 .end method

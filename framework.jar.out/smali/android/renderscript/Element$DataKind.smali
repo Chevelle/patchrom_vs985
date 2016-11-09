@@ -62,28 +62,28 @@
 
     const/4 v4, 0x0
 
-    .line 173
+    .line 179
     new-instance v0, Landroid/renderscript/Element$DataKind;
 
-    const-string v1, "USER"
+    const-string/jumbo v1, "USER"
 
     invoke-direct {v0, v1, v4, v4}, Landroid/renderscript/Element$DataKind;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Landroid/renderscript/Element$DataKind;->USER:Landroid/renderscript/Element$DataKind;
 
-    .line 175
+    .line 181
     new-instance v0, Landroid/renderscript/Element$DataKind;
 
-    const-string v1, "PIXEL_L"
+    const-string/jumbo v1, "PIXEL_L"
 
     invoke-direct {v0, v1, v6, v5}, Landroid/renderscript/Element$DataKind;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Landroid/renderscript/Element$DataKind;->PIXEL_L:Landroid/renderscript/Element$DataKind;
 
-    .line 176
+    .line 182
     new-instance v0, Landroid/renderscript/Element$DataKind;
 
-    const-string v1, "PIXEL_A"
+    const-string/jumbo v1, "PIXEL_A"
 
     const/16 v2, 0x8
 
@@ -91,10 +91,10 @@
 
     sput-object v0, Landroid/renderscript/Element$DataKind;->PIXEL_A:Landroid/renderscript/Element$DataKind;
 
-    .line 177
+    .line 183
     new-instance v0, Landroid/renderscript/Element$DataKind;
 
-    const-string v1, "PIXEL_LA"
+    const-string/jumbo v1, "PIXEL_LA"
 
     const/16 v2, 0x9
 
@@ -102,10 +102,10 @@
 
     sput-object v0, Landroid/renderscript/Element$DataKind;->PIXEL_LA:Landroid/renderscript/Element$DataKind;
 
-    .line 178
+    .line 184
     new-instance v0, Landroid/renderscript/Element$DataKind;
 
-    const-string v1, "PIXEL_RGB"
+    const-string/jumbo v1, "PIXEL_RGB"
 
     const/4 v2, 0x4
 
@@ -115,10 +115,10 @@
 
     sput-object v0, Landroid/renderscript/Element$DataKind;->PIXEL_RGB:Landroid/renderscript/Element$DataKind;
 
-    .line 179
+    .line 185
     new-instance v0, Landroid/renderscript/Element$DataKind;
 
-    const-string v1, "PIXEL_RGBA"
+    const-string/jumbo v1, "PIXEL_RGBA"
 
     const/4 v2, 0x5
 
@@ -128,10 +128,10 @@
 
     sput-object v0, Landroid/renderscript/Element$DataKind;->PIXEL_RGBA:Landroid/renderscript/Element$DataKind;
 
-    .line 180
+    .line 186
     new-instance v0, Landroid/renderscript/Element$DataKind;
 
-    const-string v1, "PIXEL_DEPTH"
+    const-string/jumbo v1, "PIXEL_DEPTH"
 
     const/4 v2, 0x6
 
@@ -141,10 +141,10 @@
 
     sput-object v0, Landroid/renderscript/Element$DataKind;->PIXEL_DEPTH:Landroid/renderscript/Element$DataKind;
 
-    .line 181
+    .line 187
     new-instance v0, Landroid/renderscript/Element$DataKind;
 
-    const-string v1, "PIXEL_YUV"
+    const-string/jumbo v1, "PIXEL_YUV"
 
     const/16 v2, 0xd
 
@@ -152,7 +152,7 @@
 
     sput-object v0, Landroid/renderscript/Element$DataKind;->PIXEL_YUV:Landroid/renderscript/Element$DataKind;
 
-    .line 172
+    .line 178
     const/16 v0, 0x8
 
     new-array v0, v0, [Landroid/renderscript/Element$DataKind;
@@ -173,23 +173,23 @@
 
     aput-object v1, v0, v8
 
-    const/4 v1, 0x4
+    sget-object v1, Landroid/renderscript/Element$DataKind;->PIXEL_RGB:Landroid/renderscript/Element$DataKind;
 
-    sget-object v2, Landroid/renderscript/Element$DataKind;->PIXEL_RGB:Landroid/renderscript/Element$DataKind;
+    const/4 v2, 0x4
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x5
+    sget-object v1, Landroid/renderscript/Element$DataKind;->PIXEL_RGBA:Landroid/renderscript/Element$DataKind;
 
-    sget-object v2, Landroid/renderscript/Element$DataKind;->PIXEL_RGBA:Landroid/renderscript/Element$DataKind;
+    const/4 v2, 0x5
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x6
+    sget-object v1, Landroid/renderscript/Element$DataKind;->PIXEL_DEPTH:Landroid/renderscript/Element$DataKind;
 
-    sget-object v2, Landroid/renderscript/Element$DataKind;->PIXEL_DEPTH:Landroid/renderscript/Element$DataKind;
+    const/4 v2, 0x6
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     sget-object v1, Landroid/renderscript/Element$DataKind;->PIXEL_YUV:Landroid/renderscript/Element$DataKind;
 
@@ -202,32 +202,25 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "id"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "id"    # I
 
     .prologue
-    .line 184
+    .line 190
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
-    .line 185
+    .line 191
     iput p3, p0, Landroid/renderscript/Element$DataKind;->mID:I
 
-    .line 186
+    .line 190
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/renderscript/Element$DataKind;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 172
+    .line 178
     const-class v0, Landroid/renderscript/Element$DataKind;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -243,14 +236,8 @@
     .locals 1
 
     .prologue
-    .line 172
+    .line 178
     sget-object v0, Landroid/renderscript/Element$DataKind;->$VALUES:[Landroid/renderscript/Element$DataKind;
-
-    invoke-virtual {v0}, [Landroid/renderscript/Element$DataKind;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/renderscript/Element$DataKind;
 
     return-object v0
 .end method

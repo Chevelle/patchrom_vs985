@@ -15,23 +15,7 @@
 
 
 # virtual methods
-.method public abstract abandonAudioFocus(Landroid/media/IAudioFocusDispatcher;Ljava/lang/String;)I
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract adjustLocalOrRemoteStreamVolume(IILjava/lang/String;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract adjustMasterVolume(IILjava/lang/String;)V
+.method public abstract abandonAudioFocus(Landroid/media/IAudioFocusDispatcher;Ljava/lang/String;Landroid/media/AudioAttributes;)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -47,15 +31,7 @@
     .end annotation
 .end method
 
-.method public abstract adjustSuggestedStreamVolume(IIILjava/lang/String;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract adjustVolume(IILjava/lang/String;)V
+.method public abstract adjustSuggestedStreamVolume(IIILjava/lang/String;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -71,7 +47,7 @@
     .end annotation
 .end method
 
-.method public abstract dispatchMediaKeyEvent(Landroid/view/KeyEvent;)V
+.method public abstract disableSafeMediaVolume(Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -79,7 +55,7 @@
     .end annotation
 .end method
 
-.method public abstract dispatchMediaKeyEventUnderWakelock(Landroid/view/KeyEvent;)V
+.method public abstract forceRemoteSubmixFullVolume(ZLandroid/os/IBinder;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -103,39 +79,7 @@
     .end annotation
 .end method
 
-.method public abstract getLastAudibleMasterVolume()I
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
 .method public abstract getLastAudibleStreamVolume(I)I
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getMasterMaxVolume()I
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getMasterStreamType()I
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getMasterVolume()I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -151,7 +95,7 @@
     .end annotation
 .end method
 
-.method public abstract getRemoteStreamMaxVolume()I
+.method public abstract getRingerModeExternal()I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -159,15 +103,7 @@
     .end annotation
 .end method
 
-.method public abstract getRemoteStreamVolume()I
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getRingerMode()I
+.method public abstract getRingerModeInternal()I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -191,7 +127,23 @@
     .end annotation
 .end method
 
+.method public abstract getStreamMinVolume(I)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getStreamVolume(I)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getUiSoundsStreamType()I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -231,7 +183,7 @@
     .end annotation
 .end method
 
-.method public abstract isLocalOrRemoteMusicActive()Z
+.method public abstract isHdmiSystemAudioSupported()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -255,6 +207,22 @@
     .end annotation
 .end method
 
+.method public abstract isStreamAffectedByMute(I)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isStreamAffectedByRingerMode(I)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract isStreamMute(I)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -263,7 +231,23 @@
     .end annotation
 .end method
 
+.method public abstract isValidRingerMode(I)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract loadSoundEffects()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract notifyVolumeControllerVisible(Landroid/media/IVolumeController;Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -287,23 +271,7 @@
     .end annotation
 .end method
 
-.method public abstract registerMediaButtonEventReceiverForCalls(Landroid/content/ComponentName;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract registerMediaButtonIntent(Landroid/app/PendingIntent;Landroid/content/ComponentName;Landroid/os/IBinder;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract registerRemoteControlClient(Landroid/app/PendingIntent;Landroid/media/IRemoteControlClient;Ljava/lang/String;)I
+.method public abstract registerAudioPolicy(Landroid/media/audiopolicy/AudioPolicyConfig;Landroid/media/audiopolicy/IAudioPolicyCallback;Z)Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -320,14 +288,6 @@
 .end method
 
 .method public abstract registerRemoteController(Landroid/media/IRemoteControlDisplay;IILandroid/content/ComponentName;)Z
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract registerRemoteVolumeObserverForRcc(ILandroid/media/IRemoteVolumeObserver;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -359,7 +319,7 @@
     .end annotation
 .end method
 
-.method public abstract requestAudioFocus(IILandroid/os/IBinder;Landroid/media/IAudioFocusDispatcher;Ljava/lang/String;Ljava/lang/String;)I
+.method public abstract requestAudioFocus(Landroid/media/AudioAttributes;ILandroid/os/IBinder;Landroid/media/IAudioFocusDispatcher;Ljava/lang/String;Ljava/lang/String;ILandroid/media/audiopolicy/IAudioPolicyCallback;)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -367,7 +327,7 @@
     .end annotation
 .end method
 
-.method public abstract setBluetoothA2dpDeviceConnectionState(Landroid/bluetooth/BluetoothDevice;I)I
+.method public abstract setBluetoothA2dpDeviceConnectionState(Landroid/bluetooth/BluetoothDevice;II)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -391,7 +351,7 @@
     .end annotation
 .end method
 
-.method public abstract setMasterMute(ZILandroid/os/IBinder;)V
+.method public abstract setFocusPropertiesForPolicy(ILandroid/media/audiopolicy/IAudioPolicyCallback;)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -399,7 +359,7 @@
     .end annotation
 .end method
 
-.method public abstract setMasterVolume(IILjava/lang/String;)V
+.method public abstract setHdmiSystemAudioSupported(Z)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -407,7 +367,7 @@
     .end annotation
 .end method
 
-.method public abstract setMode(ILandroid/os/IBinder;)V
+.method public abstract setMasterMute(ZILjava/lang/String;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -415,7 +375,7 @@
     .end annotation
 .end method
 
-.method public abstract setPlaybackInfoForRcc(III)V
+.method public abstract setMicrophoneMute(ZLjava/lang/String;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -423,15 +383,7 @@
     .end annotation
 .end method
 
-.method public abstract setPlaybackStateForRcc(IIJF)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setRemoteControlClientPlaybackPosition(IJ)V
+.method public abstract setMode(ILandroid/os/IBinder;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -447,7 +399,15 @@
     .end annotation
 .end method
 
-.method public abstract setRingerMode(I)V
+.method public abstract setRingerModeExternal(ILjava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setRingerModeInternal(ILjava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -471,22 +431,6 @@
     .end annotation
 .end method
 
-.method public abstract setStreamMute(IZLandroid/os/IBinder;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setStreamSolo(IZLandroid/os/IBinder;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
 .method public abstract setStreamVolume(IIILjava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -503,7 +447,23 @@
     .end annotation
 .end method
 
-.method public abstract setWiredDeviceConnectionState(IILjava/lang/String;)V
+.method public abstract setVolumeController(Landroid/media/IVolumeController;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setVolumePolicy(Landroid/media/VolumePolicy;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setWiredDeviceConnectionState(IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -520,6 +480,14 @@
 .end method
 
 .method public abstract startBluetoothSco(Landroid/os/IBinder;I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract startBluetoothScoVirtualCall(Landroid/os/IBinder;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -559,23 +527,7 @@
     .end annotation
 .end method
 
-.method public abstract unregisterMediaButtonEventReceiverForCalls()V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract unregisterMediaButtonIntent(Landroid/app/PendingIntent;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract unregisterRemoteControlClient(Landroid/app/PendingIntent;Landroid/media/IRemoteControlClient;)V
+.method public abstract unregisterAudioPolicyAsync(Landroid/media/audiopolicy/IAudioPolicyCallback;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -584,22 +536,6 @@
 .end method
 
 .method public abstract unregisterRemoteControlDisplay(Landroid/media/IRemoteControlDisplay;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract updateRemoteControlClientMetadata(IILandroid/media/Rating;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract verifyX509CertChain(I[BLjava/lang/String;Ljava/lang/String;)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

@@ -1,64 +1,65 @@
-.class Landroid/app/Presentation$3;
-.super Landroid/os/Handler;
+.class final Landroid/app/Presentation$3;
+.super Landroid/view/ContextThemeWrapper;
 .source "Presentation.java"
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Landroid/app/Presentation;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Landroid/app/Presentation;->createPresentationContext(Landroid/content/Context;Landroid/view/Display;I)Landroid/content/Context;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x8
     name = null
 .end annotation
 
 
 # instance fields
-.field final synthetic this$0:Landroid/app/Presentation;
+.field final synthetic val$displayWindowManager:Landroid/view/WindowManagerImpl;
 
 
 # direct methods
-.method constructor <init>(Landroid/app/Presentation;)V
+.method constructor <init>(Landroid/content/Context;ILandroid/view/WindowManagerImpl;)V
     .locals 0
-    .parameter
+    .param p1, "$anonymous0"    # Landroid/content/Context;
+    .param p2, "$anonymous1"    # I
+    .param p3, "val$displayWindowManager"    # Landroid/view/WindowManagerImpl;
 
     .prologue
-    .line 343
-    iput-object p1, p0, Landroid/app/Presentation$3;->this$0:Landroid/app/Presentation;
+    .line 314
+    iput-object p3, p0, Landroid/app/Presentation$3;->val$displayWindowManager:Landroid/view/WindowManagerImpl;
 
-    invoke-direct {p0}, Landroid/os/Handler;-><init>()V
+    invoke-direct {p0, p1, p2}, Landroid/view/ContextThemeWrapper;-><init>(Landroid/content/Context;I)V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public handleMessage(Landroid/os/Message;)V
+.method public getSystemService(Ljava/lang/String;)Ljava/lang/Object;
     .locals 1
-    .parameter "msg"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 346
-    iget v0, p1, Landroid/os/Message;->what:I
+    .line 317
+    const-string/jumbo v0, "window"
 
-    packed-switch v0, :pswitch_data_0
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 351
-    :goto_0
-    return-void
+    move-result v0
 
-    .line 348
-    :pswitch_0
-    iget-object v0, p0, Landroid/app/Presentation$3;->this$0:Landroid/app/Presentation;
+    if-eqz v0, :cond_0
 
-    invoke-virtual {v0}, Landroid/app/Presentation;->cancel()V
+    .line 318
+    iget-object v0, p0, Landroid/app/Presentation$3;->val$displayWindowManager:Landroid/view/WindowManagerImpl;
 
-    goto :goto_0
+    return-object v0
 
-    .line 346
-    :pswitch_data_0
-    .packed-switch 0x1
-        :pswitch_0
-    .end packed-switch
+    .line 320
+    :cond_0
+    invoke-super {p0, p1}, Landroid/view/ContextThemeWrapper;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    return-object v0
 .end method

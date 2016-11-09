@@ -33,12 +33,10 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/media/MediaScanner$1;)V
+.method synthetic constructor <init>(Landroid/media/MediaScanner$PlaylistEntry;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 375
     invoke-direct {p0}, Landroid/media/MediaScanner$PlaylistEntry;-><init>()V
 
     return-void

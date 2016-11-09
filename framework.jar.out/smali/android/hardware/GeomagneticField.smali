@@ -12,15 +12,13 @@
 
 
 # static fields
-#the value of this static final field might be set in the static constructor
-.field static final synthetic $assertionsDisabled:Z = false
+.field static final synthetic -assertionsDisabled:Z
 
-#the value of this static final field might be set in the static constructor
-.field private static final BASE_TIME:J = 0x0L
+.field private static final BASE_TIME:J
 
-.field private static final DELTA_G:[[F = null
+.field private static final DELTA_G:[[F
 
-.field private static final DELTA_H:[[F = null
+.field private static final DELTA_H:[[F
 
 .field private static final EARTH_REFERENCE_RADIUS_KM:F = 6371.2f
 
@@ -60,55 +58,59 @@
 
     const/4 v5, 0x2
 
-    const/4 v2, 0x0
+    const/4 v1, 0x0
 
-    const/4 v1, 0x1
+    const/4 v2, 0x1
 
-    .line 33
     const-class v0, Landroid/hardware/GeomagneticField;
 
     invoke-virtual {v0}, Ljava/lang/Class;->desiredAssertionStatus()Z
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_0
 
     move v0, v1
 
     :goto_0
-    sput-boolean v0, Landroid/hardware/GeomagneticField;->$assertionsDisabled:Z
+    sput-boolean v0, Landroid/hardware/GeomagneticField;->-assertionsDisabled:Z
 
     .line 52
     const/16 v0, 0xd
 
     new-array v0, v0, [[F
 
-    new-array v3, v1, [F
+    .line 53
+    new-array v3, v2, [F
 
     const/4 v4, 0x0
 
-    aput v4, v3, v2
+    aput v4, v3, v1
 
-    aput-object v3, v0, v2
+    aput-object v3, v0, v1
 
+    .line 54
     new-array v3, v5, [F
 
     fill-array-data v3, :array_0
 
-    aput-object v3, v0, v1
+    aput-object v3, v0, v2
 
+    .line 55
     new-array v3, v6, [F
 
     fill-array-data v3, :array_1
 
     aput-object v3, v0, v5
 
+    .line 56
     new-array v3, v7, [F
 
     fill-array-data v3, :array_2
 
     aput-object v3, v0, v6
 
+    .line 57
     const/4 v3, 0x5
 
     new-array v3, v3, [F
@@ -117,86 +119,95 @@
 
     aput-object v3, v0, v7
 
-    const/4 v3, 0x5
+    .line 58
+    const/4 v3, 0x6
+
+    new-array v3, v3, [F
+
+    fill-array-data v3, :array_4
+
+    const/4 v4, 0x5
+
+    aput-object v3, v0, v4
+
+    .line 59
+    const/4 v3, 0x7
+
+    new-array v3, v3, [F
+
+    fill-array-data v3, :array_5
 
     const/4 v4, 0x6
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_4
+    .line 60
+    const/16 v3, 0x8
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/4 v3, 0x6
+    fill-array-data v3, :array_6
 
     const/4 v4, 0x7
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_5
+    .line 61
+    const/16 v3, 0x9
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/4 v3, 0x7
+    fill-array-data v3, :array_7
 
     const/16 v4, 0x8
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_6
+    .line 62
+    const/16 v3, 0xa
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/16 v3, 0x8
+    fill-array-data v3, :array_8
 
     const/16 v4, 0x9
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_7
+    .line 63
+    const/16 v3, 0xb
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/16 v3, 0x9
+    fill-array-data v3, :array_9
 
     const/16 v4, 0xa
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_8
+    .line 64
+    const/16 v3, 0xc
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/16 v3, 0xa
+    fill-array-data v3, :array_a
 
     const/16 v4, 0xb
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_9
+    .line 65
+    const/16 v3, 0xd
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/16 v3, 0xb
+    fill-array-data v3, :array_b
 
     const/16 v4, 0xc
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_a
-
-    aput-object v4, v0, v3
-
-    const/16 v3, 0xc
-
-    const/16 v4, 0xd
-
-    new-array v4, v4, [F
-
-    fill-array-data v4, :array_b
-
-    aput-object v4, v0, v3
-
+    .line 52
     sput-object v0, Landroid/hardware/GeomagneticField;->G_COEFF:[[F
 
     .line 67
@@ -204,32 +215,37 @@
 
     new-array v0, v0, [[F
 
-    new-array v3, v1, [F
+    .line 68
+    new-array v3, v2, [F
 
     const/4 v4, 0x0
 
-    aput v4, v3, v2
+    aput v4, v3, v1
 
-    aput-object v3, v0, v2
+    aput-object v3, v0, v1
 
+    .line 69
     new-array v3, v5, [F
 
     fill-array-data v3, :array_c
 
-    aput-object v3, v0, v1
+    aput-object v3, v0, v2
 
+    .line 70
     new-array v3, v6, [F
 
     fill-array-data v3, :array_d
 
     aput-object v3, v0, v5
 
+    .line 71
     new-array v3, v7, [F
 
     fill-array-data v3, :array_e
 
     aput-object v3, v0, v6
 
+    .line 72
     const/4 v3, 0x5
 
     new-array v3, v3, [F
@@ -238,86 +254,95 @@
 
     aput-object v3, v0, v7
 
-    const/4 v3, 0x5
+    .line 73
+    const/4 v3, 0x6
+
+    new-array v3, v3, [F
+
+    fill-array-data v3, :array_10
+
+    const/4 v4, 0x5
+
+    aput-object v3, v0, v4
+
+    .line 74
+    const/4 v3, 0x7
+
+    new-array v3, v3, [F
+
+    fill-array-data v3, :array_11
 
     const/4 v4, 0x6
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_10
+    .line 75
+    const/16 v3, 0x8
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/4 v3, 0x6
+    fill-array-data v3, :array_12
 
     const/4 v4, 0x7
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_11
+    .line 76
+    const/16 v3, 0x9
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/4 v3, 0x7
+    fill-array-data v3, :array_13
 
     const/16 v4, 0x8
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_12
+    .line 77
+    const/16 v3, 0xa
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/16 v3, 0x8
+    fill-array-data v3, :array_14
 
     const/16 v4, 0x9
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_13
+    .line 78
+    const/16 v3, 0xb
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/16 v3, 0x9
+    fill-array-data v3, :array_15
 
     const/16 v4, 0xa
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_14
+    .line 79
+    const/16 v3, 0xc
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/16 v3, 0xa
+    fill-array-data v3, :array_16
 
     const/16 v4, 0xb
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_15
+    .line 80
+    const/16 v3, 0xd
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/16 v3, 0xb
+    fill-array-data v3, :array_17
 
     const/16 v4, 0xc
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_16
-
-    aput-object v4, v0, v3
-
-    const/16 v3, 0xc
-
-    const/16 v4, 0xd
-
-    new-array v4, v4, [F
-
-    fill-array-data v4, :array_17
-
-    aput-object v4, v0, v3
-
+    .line 67
     sput-object v0, Landroid/hardware/GeomagneticField;->H_COEFF:[[F
 
     .line 82
@@ -325,32 +350,37 @@
 
     new-array v0, v0, [[F
 
-    new-array v3, v1, [F
+    .line 83
+    new-array v3, v2, [F
 
     const/4 v4, 0x0
 
-    aput v4, v3, v2
+    aput v4, v3, v1
 
-    aput-object v3, v0, v2
+    aput-object v3, v0, v1
 
+    .line 84
     new-array v3, v5, [F
 
     fill-array-data v3, :array_18
 
-    aput-object v3, v0, v1
+    aput-object v3, v0, v2
 
+    .line 85
     new-array v3, v6, [F
 
     fill-array-data v3, :array_19
 
     aput-object v3, v0, v5
 
+    .line 86
     new-array v3, v7, [F
 
     fill-array-data v3, :array_1a
 
     aput-object v3, v0, v6
 
+    .line 87
     const/4 v3, 0x5
 
     new-array v3, v3, [F
@@ -359,86 +389,95 @@
 
     aput-object v3, v0, v7
 
-    const/4 v3, 0x5
+    .line 88
+    const/4 v3, 0x6
+
+    new-array v3, v3, [F
+
+    fill-array-data v3, :array_1c
+
+    const/4 v4, 0x5
+
+    aput-object v3, v0, v4
+
+    .line 89
+    const/4 v3, 0x7
+
+    new-array v3, v3, [F
+
+    fill-array-data v3, :array_1d
 
     const/4 v4, 0x6
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_1c
+    .line 90
+    const/16 v3, 0x8
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/4 v3, 0x6
+    fill-array-data v3, :array_1e
 
     const/4 v4, 0x7
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_1d
+    .line 91
+    const/16 v3, 0x9
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/4 v3, 0x7
+    fill-array-data v3, :array_1f
 
     const/16 v4, 0x8
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_1e
+    .line 92
+    const/16 v3, 0xa
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/16 v3, 0x8
+    fill-array-data v3, :array_20
 
     const/16 v4, 0x9
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_1f
+    .line 93
+    const/16 v3, 0xb
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/16 v3, 0x9
+    fill-array-data v3, :array_21
 
     const/16 v4, 0xa
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_20
+    .line 94
+    const/16 v3, 0xc
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/16 v3, 0xa
+    fill-array-data v3, :array_22
 
     const/16 v4, 0xb
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_21
+    .line 95
+    const/16 v3, 0xd
 
-    aput-object v4, v0, v3
+    new-array v3, v3, [F
 
-    const/16 v3, 0xb
+    fill-array-data v3, :array_23
 
     const/16 v4, 0xc
 
-    new-array v4, v4, [F
+    aput-object v3, v0, v4
 
-    fill-array-data v4, :array_22
-
-    aput-object v4, v0, v3
-
-    const/16 v3, 0xc
-
-    const/16 v4, 0xd
-
-    new-array v4, v4, [F
-
-    fill-array-data v4, :array_23
-
-    aput-object v4, v0, v3
-
+    .line 82
     sput-object v0, Landroid/hardware/GeomagneticField;->DELTA_G:[[F
 
     .line 97
@@ -446,136 +485,151 @@
 
     new-array v0, v0, [[F
 
-    new-array v3, v1, [F
+    .line 98
+    new-array v3, v2, [F
 
     const/4 v4, 0x0
 
-    aput v4, v3, v2
+    aput v4, v3, v1
 
-    aput-object v3, v0, v2
+    aput-object v3, v0, v1
 
-    new-array v2, v5, [F
+    .line 99
+    new-array v1, v5, [F
 
-    fill-array-data v2, :array_24
+    fill-array-data v1, :array_24
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    new-array v2, v6, [F
+    .line 100
+    new-array v1, v6, [F
 
-    fill-array-data v2, :array_25
+    fill-array-data v1, :array_25
 
-    aput-object v2, v0, v5
+    aput-object v1, v0, v5
 
-    new-array v2, v7, [F
+    .line 101
+    new-array v1, v7, [F
 
-    fill-array-data v2, :array_26
+    fill-array-data v1, :array_26
 
-    aput-object v2, v0, v6
+    aput-object v1, v0, v6
 
-    const/4 v2, 0x5
+    .line 102
+    const/4 v1, 0x5
 
-    new-array v2, v2, [F
+    new-array v1, v1, [F
 
-    fill-array-data v2, :array_27
+    fill-array-data v1, :array_27
 
-    aput-object v2, v0, v7
+    aput-object v1, v0, v7
 
-    const/4 v2, 0x5
+    .line 103
+    const/4 v1, 0x6
+
+    new-array v1, v1, [F
+
+    fill-array-data v1, :array_28
+
+    const/4 v3, 0x5
+
+    aput-object v1, v0, v3
+
+    .line 104
+    const/4 v1, 0x7
+
+    new-array v1, v1, [F
+
+    fill-array-data v1, :array_29
 
     const/4 v3, 0x6
 
-    new-array v3, v3, [F
+    aput-object v1, v0, v3
 
-    fill-array-data v3, :array_28
+    .line 105
+    const/16 v1, 0x8
 
-    aput-object v3, v0, v2
+    new-array v1, v1, [F
 
-    const/4 v2, 0x6
+    fill-array-data v1, :array_2a
 
     const/4 v3, 0x7
 
-    new-array v3, v3, [F
+    aput-object v1, v0, v3
 
-    fill-array-data v3, :array_29
+    .line 106
+    const/16 v1, 0x9
 
-    aput-object v3, v0, v2
+    new-array v1, v1, [F
 
-    const/4 v2, 0x7
+    fill-array-data v1, :array_2b
 
     const/16 v3, 0x8
 
-    new-array v3, v3, [F
+    aput-object v1, v0, v3
 
-    fill-array-data v3, :array_2a
+    .line 107
+    const/16 v1, 0xa
 
-    aput-object v3, v0, v2
+    new-array v1, v1, [F
 
-    const/16 v2, 0x8
+    fill-array-data v1, :array_2c
 
     const/16 v3, 0x9
 
-    new-array v3, v3, [F
+    aput-object v1, v0, v3
 
-    fill-array-data v3, :array_2b
+    .line 108
+    const/16 v1, 0xb
 
-    aput-object v3, v0, v2
+    new-array v1, v1, [F
 
-    const/16 v2, 0x9
+    fill-array-data v1, :array_2d
 
     const/16 v3, 0xa
 
-    new-array v3, v3, [F
+    aput-object v1, v0, v3
 
-    fill-array-data v3, :array_2c
+    .line 109
+    const/16 v1, 0xc
 
-    aput-object v3, v0, v2
+    new-array v1, v1, [F
 
-    const/16 v2, 0xa
+    fill-array-data v1, :array_2e
 
     const/16 v3, 0xb
 
-    new-array v3, v3, [F
+    aput-object v1, v0, v3
 
-    fill-array-data v3, :array_2d
+    .line 110
+    const/16 v1, 0xd
 
-    aput-object v3, v0, v2
+    new-array v1, v1, [F
 
-    const/16 v2, 0xb
+    fill-array-data v1, :array_2f
 
     const/16 v3, 0xc
 
-    new-array v3, v3, [F
+    aput-object v1, v0, v3
 
-    fill-array-data v3, :array_2e
-
-    aput-object v3, v0, v2
-
-    const/16 v2, 0xc
-
-    const/16 v3, 0xd
-
-    new-array v3, v3, [F
-
-    fill-array-data v3, :array_2f
-
-    aput-object v3, v0, v2
-
+    .line 97
     sput-object v0, Landroid/hardware/GeomagneticField;->DELTA_H:[[F
 
-    .line 112
+    .line 113
     new-instance v0, Ljava/util/GregorianCalendar;
 
-    const/16 v2, 0x7da
+    const/16 v1, 0x7da
 
-    invoke-direct {v0, v2, v1, v1}, Ljava/util/GregorianCalendar;-><init>(III)V
+    invoke-direct {v0, v1, v2, v2}, Ljava/util/GregorianCalendar;-><init>(III)V
 
     invoke-virtual {v0}, Ljava/util/GregorianCalendar;->getTimeInMillis()J
 
     move-result-wide v0
 
+    .line 112
     sput-wide v0, Landroid/hardware/GeomagneticField;->BASE_TIME:J
 
-    .line 118
+    .line 119
     sget-object v0, Landroid/hardware/GeomagneticField;->G_COEFF:[[F
 
     array-length v0, v0
@@ -584,582 +638,627 @@
 
     move-result-object v0
 
+    .line 118
     sput-object v0, Landroid/hardware/GeomagneticField;->SCHMIDT_QUASI_NORM_FACTORS:[[F
 
+    .line 33
     return-void
 
     :cond_0
     move v0, v2
 
-    .line 33
     goto/16 :goto_0
 
-    .line 52
+    .line 54
     :array_0
-    .array-data 0x4
-        0x33t 0x71t 0xe6t 0xc6t
-        0x9at 0x49t 0xc6t 0xc4t
+    .array-data 4
+        -0x39198ecd
+        -0x3b39b666    # -1586.3f
     .end array-data
 
+    .line 55
     :array_1
-    .array-data 0x4
-        0x9at 0xc9t 0x15t 0xc5t
-        0x9at 0x21t 0x3dt 0x45t
-        0x33t 0x93t 0xd0t 0x44t
+    .array-data 4
+        -0x3aea3666    # -2396.6f
+        0x453d219a    # 3026.1f
+        0x44d09333    # 1668.6f
     .end array-data
 
+    .line 56
     :array_2
-    .array-data 0x4
-        0x33t 0x83t 0xa7t 0x44t
-        0x33t 0x63t 0x11t 0xc5t
-        0xcdt 0xfct 0x99t 0x44t
-        0x0t 0x80t 0x1et 0x44t
+    .array-data 4
+        0x44a78333    # 1340.1f
+        -0x3aee9ccd    # -2326.2f
+        0x4499fccd    # 1231.9f
+        0x441e8000    # 634.0f
     .end array-data
 
+    .line 57
     :array_3
-    .array-data 0x4
-        0x66t 0x26t 0x64t 0x44t
-        0x9at 0x39t 0x4at 0x44t
-        0x33t 0xb3t 0x26t 0x43t
-        0xcdt 0x8ct 0xb2t 0xc3t
-        0xcdt 0xcct 0xb2t 0x42t
+    .array-data 4
+        0x44642666    # 912.6f
+        0x444a399a    # 808.9f
+        0x4326b333    # 166.7f
+        -0x3c4d7333    # -357.1f
+        0x42b2cccd    # 89.4f
     .end array-data
 
+    .line 58
     :array_4
-    .array-data 0x4
-        0x66t 0xe6t 0x66t 0xc3t
-        0x9at 0x99t 0xb2t 0x43t
-        0xcdt 0x4ct 0x48t 0x43t
-        0x9at 0x19t 0xdt 0xc3t
-        0x0t 0x0t 0x23t 0xc3t
-        0x9at 0x99t 0xf9t 0xc0t
+    .array-data 4
+        -0x3c99199a    # -230.9f
+        0x43b2999a    # 357.2f
+        0x43484ccd    # 200.3f
+        -0x3cf2e666    # -141.1f
+        -0x3cdd0000    # -163.0f
+        -0x3f066666    # -7.8f
     .end array-data
 
+    .line 59
     :array_5
-    .array-data 0x4
-        0x9at 0x99t 0x91t 0x42t
-        0x33t 0x33t 0x89t 0x42t
-        0x0t 0x0t 0x98t 0x42t
-        0x66t 0x66t 0xdt 0xc3t
-        0x66t 0x66t 0xb6t 0xc1t
-        0x33t 0x33t 0x53t 0x41t
-        0xcdt 0xcct 0x9bt 0xc2t
+    .array-data 4
+        0x4291999a    # 72.8f
+        0x42893333    # 68.6f
+        0x42980000    # 76.0f
+        -0x3cf2999a    # -141.4f
+        -0x3e49999a    # -22.8f
+        0x41533333    # 13.2f
+        -0x3d643333    # -77.9f
     .end array-data
 
+    .line 60
     :array_6
-    .array-data 0x4
-        0x0t 0x0t 0xa1t 0x42t
-        0x33t 0x33t 0x96t 0xc2t
-        0x66t 0x66t 0x96t 0xc0t
-        0x33t 0x33t 0x35t 0x42t
-        0x66t 0x66t 0x5et 0x41t
-        0x66t 0x66t 0x26t 0x41t
-        0x9at 0x99t 0xd9t 0x3ft
-        0xcdt 0xcct 0x9ct 0x40t
+    .array-data 4
+        0x42a10000    # 80.5f
+        -0x3d69cccd    # -75.1f
+        -0x3f69999a    # -4.7f
+        0x42353333    # 45.3f
+        0x415e6666    # 13.9f
+        0x41266666    # 10.4f
+        0x3fd9999a    # 1.7f
+        0x409ccccd    # 4.9f
     .end array-data
 
+    .line 61
     :array_7
-    .array-data 0x4
-        0x33t 0x33t 0xc3t 0x41t
-        0x9at 0x99t 0x1t 0x41t
-        0x0t 0x0t 0x68t 0xc1t
-        0x33t 0x33t 0xb3t 0xc0t
-        0x66t 0x66t 0x9at 0xc1t
-        0x0t 0x0t 0x38t 0x41t
-        0x66t 0x66t 0x2et 0x41t
-        0x9at 0x99t 0x61t 0xc1t
-        0xcdt 0xcct 0x6ct 0xc0t
+    .array-data 4
+        0x41c33333    # 24.4f
+        0x4101999a    # 8.1f
+        -0x3e980000    # -14.5f
+        -0x3f4ccccd    # -5.6f
+        -0x3e65999a    # -19.3f
+        0x41380000    # 11.5f
+        0x412e6666    # 10.9f
+        -0x3e9e6666    # -14.1f
+        -0x3f933333    # -3.7f
     .end array-data
 
+    .line 62
     :array_8
-    .array-data 0x4
-        0xcdt 0xcct 0xact 0x40t
-        0x66t 0x66t 0x16t 0x41t
-        0x9at 0x99t 0x59t 0x40t
-        0x66t 0x66t 0xa6t 0xc0t
-        0x66t 0x66t 0x46t 0x40t
-        0x66t 0x66t 0x46t 0xc1t
-        0x33t 0x33t 0x33t 0xbft
-        0x66t 0x66t 0x6t 0x41t
-        0x0t 0x0t 0x8t 0xc1t
-        0x9at 0x99t 0x21t 0xc1t
+    .array-data 4
+        0x40accccd    # 5.4f
+        0x41166666    # 9.4f
+        0x4059999a    # 3.4f
+        -0x3f59999a    # -5.2f
+        0x40466666    # 3.1f
+        -0x3eb9999a    # -12.4f
+        -0x40cccccd    # -0.7f
+        0x41066666    # 8.4f
+        -0x3ef80000    # -8.5f
+        -0x3ede6666    # -10.1f
     .end array-data
 
+    .line 63
     :array_9
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0xc0t
-        0x9at 0x99t 0xc9t 0xc0t
-        0x66t 0x66t 0x66t 0x3ft
-        0xcdt 0xcct 0x8ct 0xbft
-        0xcdt 0xcct 0x4ct 0xbet
-        0x0t 0x0t 0x20t 0x40t
-        0x9at 0x99t 0x99t 0xbet
-        0xcdt 0xcct 0xct 0x40t
-        0x66t 0x66t 0x46t 0x40t
-        0x0t 0x0t 0x80t 0xbft
-        0x33t 0x33t 0x33t 0xc0t
+    .array-data 4
+        -0x40000000    # -2.0f
+        -0x3f366666    # -6.3f
+        0x3f666666    # 0.9f
+        -0x40733333    # -1.1f
+        -0x41b33333    # -0.2f
+        0x40200000    # 2.5f
+        -0x41666666    # -0.3f
+        0x400ccccd    # 2.2f
+        0x40466666    # 3.1f
+        -0x40800000    # -1.0f
+        -0x3fcccccd    # -2.8f
     .end array-data
 
+    .line 64
     :array_a
-    .array-data 0x4
-        0x0t 0x0t 0x40t 0x40t
-        0x0t 0x0t 0xc0t 0xbft
-        0x66t 0x66t 0x6t 0xc0t
-        0x9at 0x99t 0xd9t 0x3ft
-        0x0t 0x0t 0x0t 0xbft
-        0x0t 0x0t 0x0t 0x3ft
-        0xcdt 0xcct 0x4ct 0xbft
-        0xcdt 0xcct 0xcct 0x3et
-        0x66t 0x66t 0xe6t 0x3ft
-        0xcdt 0xcct 0xcct 0x3dt
-        0x33t 0x33t 0x33t 0x3ft
-        0x33t 0x33t 0x73t 0x40t
+    .array-data 4
+        0x40400000    # 3.0f
+        -0x40400000    # -1.5f
+        -0x3ff9999a    # -2.1f
+        0x3fd9999a    # 1.7f
+        -0x41000000    # -0.5f
+        0x3f000000    # 0.5f
+        -0x40b33333    # -0.8f
+        0x3ecccccd    # 0.4f
+        0x3fe66666    # 1.8f
+        0x3dcccccd    # 0.1f
+        0x3f333333    # 0.7f
+        0x40733333    # 3.8f
     .end array-data
 
+    .line 65
     :array_b
-    .array-data 0x4
-        0xcdt 0xcct 0xct 0xc0t
-        0xcdt 0xcct 0x4ct 0xbet
-        0x9at 0x99t 0x99t 0x3et
-        0x0t 0x0t 0x80t 0x3ft
-        0x9at 0x99t 0x19t 0xbft
-        0x66t 0x66t 0x66t 0x3ft
-        0xcdt 0xcct 0xcct 0xbdt
-        0x0t 0x0t 0x0t 0x3ft
-        0xcdt 0xcct 0xcct 0xbet
-        0xcdt 0xcct 0xcct 0xbet
-        0xcdt 0xcct 0x4ct 0x3et
-        0xcdt 0xcct 0x4ct 0xbft
-        0x0t 0x0t 0x0t 0x0t
+    .array-data 4
+        -0x3ff33333    # -2.2f
+        -0x41b33333    # -0.2f
+        0x3e99999a    # 0.3f
+        0x3f800000    # 1.0f
+        -0x40e66666    # -0.6f
+        0x3f666666    # 0.9f
+        -0x42333333    # -0.1f
+        0x3f000000    # 0.5f
+        -0x41333333    # -0.4f
+        -0x41333333    # -0.4f
+        0x3e4ccccd    # 0.2f
+        -0x40b33333    # -0.8f
+        0x0
     .end array-data
 
-    .line 67
+    .line 69
     :array_c
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x33t 0x83t 0x9at 0x45t
+    .array-data 4
+        0x0
+        0x459a8333    # 4944.4f
     .end array-data
 
+    .line 70
     :array_d
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x33t 0x3bt 0x29t 0xc5t
-        0x66t 0x6t 0x10t 0xc4t
+    .array-data 4
+        0x0
+        -0x3ad6c4cd    # -2707.7f
+        -0x3beff99a    # -576.1f
     .end array-data
 
+    .line 71
     :array_e
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x33t 0x33t 0x20t 0xc3t
-        0x66t 0xe6t 0x7bt 0x43t
-        0x66t 0x26t 0x6t 0xc4t
+    .array-data 4
+        0x0
+        -0x3cdfcccd    # -160.2f
+        0x437be666    # 251.9f
+        -0x3bf9d99a    # -536.6f
     .end array-data
 
+    .line 72
     :array_f
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x33t 0x33t 0x8ft 0x43t
-        0x33t 0x33t 0x53t 0xc3t
-        0xcdt 0x4ct 0x24t 0x43t
-        0xcdt 0x8ct 0x9at 0xc3t
+    .array-data 4
+        0x0
+        0x438f3333    # 286.4f
+        -0x3caccccd    # -211.2f
+        0x43244ccd    # 164.3f
+        -0x3c657333    # -309.1f
     .end array-data
 
+    .line 73
     :array_10
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x66t 0x66t 0x32t 0x42t
-        0x66t 0xe6t 0x3ct 0x43t
-        0x66t 0x66t 0xect 0xc2t
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xc9t 0x42t
+    .array-data 4
+        0x0
+        0x42326666    # 44.6f
+        0x433ce666    # 188.9f
+        -0x3d13999a    # -118.2f
+        0x0
+        0x42c9cccd    # 100.9f
     .end array-data
 
+    .line 74
     :array_11
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x66t 0x66t 0xa6t 0xc1t
-        0x66t 0x66t 0x30t 0x42t
-        0x0t 0x0t 0x76t 0x42t
-        0x9at 0x99t 0x84t 0xc2t
-        0x66t 0x66t 0x46t 0x40t
-        0x0t 0x0t 0x5ct 0x42t
+    .array-data 4
+        0x0
+        -0x3e59999a    # -20.8f
+        0x42306666    # 44.1f
+        0x42760000    # 61.5f
+        -0x3d7b6666    # -66.3f
+        0x40466666    # 3.1f
+        0x425c0000    # 55.0f
     .end array-data
 
+    .line 75
     :array_12
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x9at 0x99t 0x67t 0xc2t
-        0xcdt 0xcct 0xa8t 0xc1t
-        0x0t 0x0t 0xd0t 0x40t
-        0x33t 0x33t 0xc7t 0x41t
-        0x0t 0x0t 0xe0t 0x40t
-        0x9at 0x99t 0xddt 0xc1t
-        0x33t 0x33t 0x53t 0xc0t
+    .array-data 4
+        0x0
+        -0x3d986666    # -57.9f
+        -0x3e573333    # -21.1f
+        0x40d00000    # 6.5f
+        0x41c73333    # 24.9f
+        0x40e00000    # 7.0f
+        -0x3e226666    # -27.7f
+        -0x3faccccd    # -3.3f
     .end array-data
 
+    .line 76
     :array_13
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x30t 0x41t
-        0x0t 0x0t 0xa0t 0xc1t
-        0x66t 0x66t 0x3et 0x41t
-        0x33t 0x33t 0x8bt 0xc1t
-        0x9at 0x99t 0x85t 0x41t
-        0x0t 0x0t 0xe0t 0x40t
-        0xcdt 0xcct 0x2ct 0xc1t
-        0x9at 0x99t 0xd9t 0x3ft
+    .array-data 4
+        0x0
+        0x41300000    # 11.0f
+        -0x3e600000    # -20.0f
+        0x413e6666    # 11.9f
+        -0x3e74cccd    # -17.4f
+        0x4185999a    # 16.7f
+        0x40e00000    # 7.0f
+        -0x3ed33333    # -10.8f
+        0x3fd9999a    # 1.7f
     .end array-data
 
+    .line 77
     :array_14
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0xa4t 0xc1t
-        0x0t 0x0t 0x38t 0x41t
-        0xcdt 0xcct 0x4ct 0x41t
-        0x66t 0x66t 0xe6t 0xc0t
-        0xcdt 0xcct 0xect 0xc0t
-        0x0t 0x0t 0x0t 0x41t
-        0x66t 0x66t 0x6t 0x40t
-        0x33t 0x33t 0xc3t 0xc0t
-        0x0t 0x0t 0xe0t 0x40t
+    .array-data 4
+        0x0
+        -0x3e5c0000    # -20.5f
+        0x41380000    # 11.5f
+        0x414ccccd    # 12.8f
+        -0x3f19999a    # -7.2f
+        -0x3f133333    # -7.4f
+        0x41000000    # 8.0f
+        0x40066666    # 2.1f
+        -0x3f3ccccd    # -6.1f
+        0x40e00000    # 7.0f
     .end array-data
 
+    .line 78
     :array_15
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x33t 0x33t 0x33t 0x40t
-        0xcdt 0xcct 0xcct 0xbdt
-        0x66t 0x66t 0x96t 0x40t
-        0xcdt 0xcct 0x8ct 0x40t
-        0x66t 0x66t 0xe6t 0xc0t
-        0x0t 0x0t 0x80t 0xbft
-        0x9at 0x99t 0x79t 0xc0t
-        0x0t 0x0t 0x0t 0xc0t
-        0x0t 0x0t 0x0t 0xc0t
-        0xcdt 0xcct 0x4t 0xc1t
+    .array-data 4
+        0x0
+        0x40333333    # 2.8f
+        -0x42333333    # -0.1f
+        0x40966666    # 4.7f
+        0x408ccccd    # 4.4f
+        -0x3f19999a    # -7.2f
+        -0x40800000    # -1.0f
+        -0x3f866666    # -3.9f
+        -0x40000000    # -2.0f
+        -0x40000000    # -2.0f
+        -0x3efb3333    # -8.3f
     .end array-data
 
+    .line 79
     :array_16
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0x4ct 0x3et
-        0x9at 0x99t 0xd9t 0x3ft
-        0x9at 0x99t 0x19t 0xbft
-        0x66t 0x66t 0xe6t 0xbft
-        0x66t 0x66t 0x66t 0x3ft
-        0xcdt 0xcct 0xcct 0xbet
-        0x0t 0x0t 0x20t 0xc0t
-        0x66t 0x66t 0xa6t 0xbft
-        0x66t 0x66t 0x6t 0xc0t
-        0x33t 0x33t 0xf3t 0xbft
-        0x66t 0x66t 0xe6t 0xbft
+    .array-data 4
+        0x0
+        0x3e4ccccd    # 0.2f
+        0x3fd9999a    # 1.7f
+        -0x40e66666    # -0.6f
+        -0x4019999a    # -1.8f
+        0x3f666666    # 0.9f
+        -0x41333333    # -0.4f
+        -0x3fe00000    # -2.5f
+        -0x4059999a    # -1.3f
+        -0x3ff9999a    # -2.1f
+        -0x400ccccd    # -1.9f
+        -0x4019999a    # -1.8f
     .end array-data
 
+    .line 80
     :array_17
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x66t 0x66t 0x66t 0xbft
-        0x9at 0x99t 0x99t 0x3et
-        0x66t 0x66t 0x6t 0x40t
-        0x0t 0x0t 0x20t 0xc0t
-        0x0t 0x0t 0x0t 0x3ft
-        0x9at 0x99t 0x19t 0x3ft
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0x3dt
-        0x9at 0x99t 0x99t 0x3et
-        0x66t 0x66t 0x66t 0xbft
-        0xcdt 0xcct 0x4ct 0xbet
-        0x66t 0x66t 0x66t 0x3ft
+    .array-data 4
+        0x0
+        -0x4099999a    # -0.9f
+        0x3e99999a    # 0.3f
+        0x40066666    # 2.1f
+        -0x3fe00000    # -2.5f
+        0x3f000000    # 0.5f
+        0x3f19999a    # 0.6f
+        0x0
+        0x3dcccccd    # 0.1f
+        0x3e99999a    # 0.3f
+        -0x4099999a    # -0.9f
+        -0x41b33333    # -0.2f
+        0x3f666666    # 0.9f
     .end array-data
 
-    .line 82
+    .line 84
     :array_18
-    .array-data 0x4
-        0x9at 0x99t 0x39t 0x41t
-        0x0t 0x0t 0x84t 0x41t
+    .array-data 4
+        0x4139999a    # 11.6f
+        0x41840000    # 16.5f
     .end array-data
 
+    .line 85
     :array_19
-    .array-data 0x4
-        0x9at 0x99t 0x41t 0xc1t
-        0xcdt 0xcct 0x8ct 0xc0t
-        0x33t 0x33t 0xf3t 0x3ft
+    .array-data 4
+        -0x3ebe6666    # -12.1f
+        -0x3f733333    # -4.4f
+        0x3ff33333    # 1.9f
     .end array-data
 
+    .line 86
     :array_1a
-    .array-data 0x4
-        0xcdt 0xcct 0xcct 0x3et
-        0x33t 0x33t 0x83t 0xc0t
-        0x9at 0x99t 0x39t 0xc0t
-        0x66t 0x66t 0xf6t 0xc0t
+    .array-data 4
+        0x3ecccccd    # 0.4f
+        -0x3f7ccccd    # -4.1f
+        -0x3fc66666    # -2.9f
+        -0x3f09999a    # -7.7f
     .end array-data
 
+    .line 87
     :array_1b
-    .array-data 0x4
-        0x66t 0x66t 0xe6t 0xbft
-        0x33t 0x33t 0x13t 0x40t
-        0x33t 0x33t 0xbt 0xc1t
-        0x33t 0x33t 0x93t 0x40t
-        0x66t 0x66t 0x6t 0xc0t
+    .array-data 4
+        -0x4019999a    # -1.8f
+        0x40133333    # 2.3f
+        -0x3ef4cccd    # -8.7f
+        0x40933333    # 4.6f
+        -0x3ff9999a    # -2.1f
     .end array-data
 
+    .line 88
     :array_1c
-    .array-data 0x4
-        0x0t 0x0t 0x80t 0xbft
-        0x9at 0x99t 0x19t 0x3ft
-        0x66t 0x66t 0xe6t 0xbft
-        0x0t 0x0t 0x80t 0xbft
-        0x66t 0x66t 0x66t 0x3ft
-        0x0t 0x0t 0x80t 0x3ft
+    .array-data 4
+        -0x40800000    # -1.0f
+        0x3f19999a    # 0.6f
+        -0x4019999a    # -1.8f
+        -0x40800000    # -1.0f
+        0x3f666666    # 0.9f
+        0x3f800000    # 1.0f
     .end array-data
 
+    .line 89
     :array_1d
-    .array-data 0x4
-        0xcdt 0xcct 0x4ct 0xbet
-        0xcdt 0xcct 0x4ct 0xbet
-        0xcdt 0xcct 0xcct 0xbdt
-        0x0t 0x0t 0x0t 0x40t
-        0x9at 0x99t 0xd9t 0xbft
-        0x9at 0x99t 0x99t 0xbet
-        0x9at 0x99t 0xd9t 0x3ft
+    .array-data 4
+        -0x41b33333    # -0.2f
+        -0x41b33333    # -0.2f
+        -0x42333333    # -0.1f
+        0x40000000    # 2.0f
+        -0x40266666    # -1.7f
+        -0x41666666    # -0.3f
+        0x3fd9999a    # 1.7f
     .end array-data
 
+    .line 90
     :array_1e
-    .array-data 0x4
-        0xcdt 0xcct 0xcct 0x3dt
-        0xcdt 0xcct 0xcct 0xbdt
-        0x9at 0x99t 0x19t 0xbft
-        0x66t 0x66t 0xa6t 0x3ft
-        0xcdt 0xcct 0xcct 0x3et
-        0x9at 0x99t 0x99t 0x3et
-        0x33t 0x33t 0x33t 0xbft
-        0x9at 0x99t 0x19t 0x3ft
+    .array-data 4
+        0x3dcccccd    # 0.1f
+        -0x42333333    # -0.1f
+        -0x40e66666    # -0.6f
+        0x3fa66666    # 1.3f
+        0x3ecccccd    # 0.4f
+        0x3e99999a    # 0.3f
+        -0x40cccccd    # -0.7f
+        0x3f19999a    # 0.6f
     .end array-data
 
+    .line 91
     :array_1f
-    .array-data 0x4
-        0xcdt 0xcct 0xcct 0xbdt
-        0xcdt 0xcct 0xcct 0x3dt
-        0x9at 0x99t 0x19t 0xbft
-        0xcdt 0xcct 0x4ct 0x3et
-        0xcdt 0xcct 0x4ct 0xbet
-        0x9at 0x99t 0x99t 0x3et
-        0x9at 0x99t 0x99t 0x3et
-        0x9at 0x99t 0x19t 0xbft
-        0xcdt 0xcct 0x4ct 0x3et
+    .array-data 4
+        -0x42333333    # -0.1f
+        0x3dcccccd    # 0.1f
+        -0x40e66666    # -0.6f
+        0x3e4ccccd    # 0.2f
+        -0x41b33333    # -0.2f
+        0x3e99999a    # 0.3f
+        0x3e99999a    # 0.3f
+        -0x40e66666    # -0.6f
+        0x3e4ccccd    # 0.2f
     .end array-data
 
+    .line 92
     :array_20
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0xbdt
-        0x0t 0x0t 0x0t 0x0t
-        0x9at 0x99t 0x99t 0x3et
-        0xcdt 0xcct 0xcct 0xbet
-        0x9at 0x99t 0x99t 0xbet
-        0xcdt 0xcct 0xcct 0x3dt
-        0xcdt 0xcct 0xcct 0xbdt
-        0xcdt 0xcct 0xcct 0xbet
-        0xcdt 0xcct 0x4ct 0xbet
+    .array-data 4
+        0x0
+        -0x42333333    # -0.1f
+        0x0
+        0x3e99999a    # 0.3f
+        -0x41333333    # -0.4f
+        -0x41666666    # -0.3f
+        0x3dcccccd    # 0.1f
+        -0x42333333    # -0.1f
+        -0x41333333    # -0.4f
+        -0x41b33333    # -0.2f
     .end array-data
 
+    .line 93
     :array_21
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0xbdt
-        0xcdt 0xcct 0x4ct 0x3et
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0xbdt
-        0xcdt 0xcct 0x4ct 0xbet
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0xbdt
-        0xcdt 0xcct 0x4ct 0xbet
-        0xcdt 0xcct 0x4ct 0xbet
+    .array-data 4
+        0x0
+        0x0
+        -0x42333333    # -0.1f
+        0x3e4ccccd    # 0.2f
+        0x0
+        -0x42333333    # -0.1f
+        -0x41b33333    # -0.2f
+        0x0
+        -0x42333333    # -0.1f
+        -0x41b33333    # -0.2f
+        -0x41b33333    # -0.2f
     .end array-data
 
+    .line 94
     :array_22
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0x3dt
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0xbdt
-        0x0t 0x0t 0x0t 0x0t
+    .array-data 4
+        0x0
+        0x0
+        0x0
+        0x3dcccccd    # 0.1f
+        0x0
+        0x0
+        0x0
+        0x0
+        0x0
+        0x0
+        -0x42333333    # -0.1f
+        0x0
     .end array-data
 
+    .line 95
     :array_23
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0x3dt
-        0xcdt 0xcct 0xcct 0x3dt
-        0xcdt 0xcct 0xcct 0xbdt
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0xbdt
-        0xcdt 0xcct 0xcct 0x3dt
+    .array-data 4
+        0x0
+        0x0
+        0x3dcccccd    # 0.1f
+        0x3dcccccd    # 0.1f
+        -0x42333333    # -0.1f
+        0x0
+        0x0
+        0x0
+        0x0
+        0x0
+        0x0
+        -0x42333333    # -0.1f
+        0x3dcccccd    # 0.1f
     .end array-data
 
-    .line 97
+    .line 99
     :array_24
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x33t 0x33t 0xcft 0xc1t
+    .array-data 4
+        0x0
+        -0x3e30cccd    # -25.9f
     .end array-data
 
+    .line 100
     :array_25
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0xb4t 0xc1t
-        0xcdt 0xcct 0x3ct 0xc1t
+    .array-data 4
+        0x0
+        -0x3e4c0000    # -22.5f
+        -0x3ec33333    # -11.8f
     .end array-data
 
+    .line 101
     :array_26
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x9at 0x99t 0xe9t 0x40t
-        0x9at 0x99t 0x79t 0xc0t
-        0x66t 0x66t 0x26t 0xc0t
+    .array-data 4
+        0x0
+        0x40e9999a    # 7.3f
+        -0x3f866666    # -3.9f
+        -0x3fd9999a    # -2.6f
     .end array-data
 
+    .line 102
     :array_27
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0x8ct 0x3ft
-        0xcdt 0xcct 0x2ct 0x40t
-        0x9at 0x99t 0x79t 0x40t
-        0xcdt 0xcct 0x4ct 0xbft
+    .array-data 4
+        0x0
+        0x3f8ccccd    # 1.1f
+        0x402ccccd    # 2.7f
+        0x4079999a    # 3.9f
+        -0x40b33333    # -0.8f
     .end array-data
 
+    .line 103
     :array_28
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0x3et
-        0x66t 0x66t 0xe6t 0x3ft
-        0x9at 0x99t 0x99t 0x3ft
-        0x0t 0x0t 0x80t 0x40t
-        0x9at 0x99t 0x19t 0xbft
+    .array-data 4
+        0x0
+        0x3ecccccd    # 0.4f
+        0x3fe66666    # 1.8f
+        0x3f99999a    # 1.2f
+        0x40800000    # 4.0f
+        -0x40e66666    # -0.6f
     .end array-data
 
+    .line 104
     :array_29
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0x4ct 0xbet
-        0x66t 0x66t 0x6t 0xc0t
-        0xcdt 0xcct 0xcct 0xbet
-        0x9at 0x99t 0x19t 0xbft
-        0x0t 0x0t 0x0t 0x3ft
-        0x66t 0x66t 0x66t 0x3ft
+    .array-data 4
+        0x0
+        -0x41b33333    # -0.2f
+        -0x3ff9999a    # -2.1f
+        -0x41333333    # -0.4f
+        -0x40e66666    # -0.6f
+        0x3f000000    # 0.5f
+        0x3f666666    # 0.9f
     .end array-data
 
+    .line 105
     :array_2a
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x33t 0x33t 0x33t 0x3ft
-        0x9at 0x99t 0x99t 0x3et
-        0xcdt 0xcct 0xcct 0xbdt
-        0xcdt 0xcct 0xcct 0xbdt
-        0xcdt 0xcct 0x4ct 0xbft
-        0x9at 0x99t 0x99t 0xbet
-        0x9at 0x99t 0x99t 0x3et
+    .array-data 4
+        0x0
+        0x3f333333    # 0.7f
+        0x3e99999a    # 0.3f
+        -0x42333333    # -0.1f
+        -0x42333333    # -0.1f
+        -0x40b33333    # -0.8f
+        -0x41666666    # -0.3f
+        0x3e99999a    # 0.3f
     .end array-data
 
+    .line 106
     :array_2b
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0xbdt
-        0xcdt 0xcct 0x4ct 0x3et
-        0xcdt 0xcct 0xcct 0x3et
-        0xcdt 0xcct 0xcct 0x3et
-        0xcdt 0xcct 0xcct 0x3dt
-        0xcdt 0xcct 0xcct 0xbdt
-        0xcdt 0xcct 0xcct 0x3et
-        0x9at 0x99t 0x99t 0x3et
+    .array-data 4
+        0x0
+        -0x42333333    # -0.1f
+        0x3e4ccccd    # 0.2f
+        0x3ecccccd    # 0.4f
+        0x3ecccccd    # 0.4f
+        0x3dcccccd    # 0.1f
+        -0x42333333    # -0.1f
+        0x3ecccccd    # 0.4f
+        0x3e99999a    # 0.3f
     .end array-data
 
+    .line 107
     :array_2c
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0x4ct 0xbet
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0xbdt
-        0xcdt 0xcct 0xcct 0x3dt
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0x4ct 0xbet
-        0x9at 0x99t 0x99t 0x3et
-        0xcdt 0xcct 0x4ct 0x3et
+    .array-data 4
+        0x0
+        0x0
+        -0x41b33333    # -0.2f
+        0x0
+        -0x42333333    # -0.1f
+        0x3dcccccd    # 0.1f
+        0x0
+        -0x41b33333    # -0.2f
+        0x3e99999a    # 0.3f
+        0x3e4ccccd    # 0.2f
     .end array-data
 
+    .line 108
     :array_2d
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0x3dt
-        0xcdt 0xcct 0xcct 0xbdt
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0xbdt
-        0xcdt 0xcct 0xcct 0xbdt
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0xbdt
-        0xcdt 0xcct 0x4ct 0xbet
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0xbdt
+    .array-data 4
+        0x0
+        0x3dcccccd    # 0.1f
+        -0x42333333    # -0.1f
+        0x0
+        -0x42333333    # -0.1f
+        -0x42333333    # -0.1f
+        0x0
+        -0x42333333    # -0.1f
+        -0x41b33333    # -0.2f
+        0x0
+        -0x42333333    # -0.1f
     .end array-data
 
+    .line 109
     :array_2e
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0x3dt
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0x3dt
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0x3dt
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0xbdt
-        0xcdt 0xcct 0xcct 0xbdt
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0xbdt
+    .array-data 4
+        0x0
+        0x0
+        0x3dcccccd    # 0.1f
+        0x0
+        0x3dcccccd    # 0.1f
+        0x0
+        0x3dcccccd    # 0.1f
+        0x0
+        -0x42333333    # -0.1f
+        -0x42333333    # -0.1f
+        0x0
+        -0x42333333    # -0.1f
     .end array-data
 
+    .line 110
     :array_2f
-    .array-data 0x4
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0xcdt 0xcct 0xcct 0x3dt
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
-        0x0t 0x0t 0x0t 0x0t
+    .array-data 4
+        0x0
+        0x0
+        0x0
+        0x0
+        0x0
+        0x0
+        0x3dcccccd    # 0.1f
+        0x0
+        0x0
+        0x0
+        0x0
+        0x0
+        0x0
     .end array-data
 .end method
 
 .method public constructor <init>(FFFJ)V
     .locals 26
-    .parameter "gdLatitudeDeg"
-    .parameter "gdLongitudeDeg"
-    .parameter "altitudeMeters"
-    .parameter "timeMillis"
+    .param p1, "gdLatitudeDeg"    # F
+    .param p2, "gdLongitudeDeg"    # F
+    .param p3, "altitudeMeters"    # F
+    .param p4, "timeMillis"    # J
 
     .prologue
-    .line 138
+    .line 135
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     .line 139
@@ -1169,21 +1268,26 @@
 
     array-length v2, v0
 
-    .line 143
-    .local v2, MAX_N:I
-    const v20, 0x42b3ffff
+    .line 144
+    .local v2, "MAX_N":I
+    const v20, -0x3d4c0001    # -89.99999f
 
-    const v21, -0x3d4c0001
-
-    move/from16 v0, v21
+    move/from16 v0, v20
 
     move/from16 v1, p1
 
     invoke-static {v0, v1}, Ljava/lang/Math;->max(FF)F
 
-    move-result v21
+    move-result v20
 
-    invoke-static/range {v20 .. v21}, Ljava/lang/Math;->min(FF)F
+    .line 143
+    const v21, 0x42b3ffff    # 89.99999f
+
+    move/from16 v0, v21
+
+    move/from16 v1, v20
+
+    invoke-static {v0, v1}, Ljava/lang/Math;->min(FF)F
 
     move-result p1
 
@@ -1191,9 +1295,9 @@
     invoke-direct/range {p0 .. p3}, Landroid/hardware/GeomagneticField;->computeGeocentricCoordinates(FFF)V
 
     .line 149
-    sget-boolean v20, Landroid/hardware/GeomagneticField;->$assertionsDisabled:Z
+    sget-boolean v20, Landroid/hardware/GeomagneticField;->-assertionsDisabled:Z
 
-    if-nez v20, :cond_0
+    if-nez v20, :cond_1
 
     sget-object v20, Landroid/hardware/GeomagneticField;->G_COEFF:[[F
 
@@ -1215,7 +1319,12 @@
 
     move/from16 v1, v21
 
-    if-eq v0, v1, :cond_0
+    if-ne v0, v1, :cond_0
+
+    const/16 v20, 0x1
+
+    :goto_0
+    if-nez v20, :cond_1
 
     new-instance v20, Ljava/lang/AssertionError;
 
@@ -1223,42 +1332,49 @@
 
     throw v20
 
-    .line 155
     :cond_0
-    new-instance v13, Landroid/hardware/GeomagneticField$LegendreTable;
+    const/16 v20, 0x0
+
+    goto :goto_0
+
+    .line 156
+    :cond_1
+    new-instance v11, Landroid/hardware/GeomagneticField$LegendreTable;
 
     add-int/lit8 v20, v2, -0x1
 
-    const-wide v21, 0x3ff921fb54442d18L
-
+    .line 157
     move-object/from16 v0, p0
 
     iget v0, v0, Landroid/hardware/GeomagneticField;->mGcLatitudeRad:F
 
-    move/from16 v23, v0
+    move/from16 v21, v0
 
-    move/from16 v0, v23
+    move/from16 v0, v21
 
     float-to-double v0, v0
 
-    move-wide/from16 v23, v0
+    move-wide/from16 v22, v0
 
-    sub-double v21, v21, v23
+    const-wide v24, 0x3ff921fb54442d18L    # 1.5707963267948966
 
-    move-wide/from16 v0, v21
+    sub-double v22, v24, v22
+
+    move-wide/from16 v0, v22
 
     double-to-float v0, v0
 
     move/from16 v21, v0
 
+    .line 156
     move/from16 v0, v20
 
     move/from16 v1, v21
 
-    invoke-direct {v13, v0, v1}, Landroid/hardware/GeomagneticField$LegendreTable;-><init>(IF)V
+    invoke-direct {v11, v0, v1}, Landroid/hardware/GeomagneticField$LegendreTable;-><init>(IF)V
 
     .line 161
-    .local v13, legendre:Landroid/hardware/GeomagneticField$LegendreTable;
+    .local v11, "legendre":Landroid/hardware/GeomagneticField$LegendreTable;
     add-int/lit8 v20, v2, 0x2
 
     move/from16 v0, v20
@@ -1268,33 +1384,33 @@
     move-object/from16 v16, v0
 
     .line 162
-    .local v16, relativeRadiusPower:[F
-    const/16 v20, 0x0
+    .local v16, "relativeRadiusPower":[F
+    const/high16 v20, 0x3f800000    # 1.0f
 
-    const/high16 v21, 0x3f80
+    const/16 v21, 0x0
 
-    aput v21, v16, v20
+    aput v20, v16, v21
 
     .line 163
-    const/16 v20, 0x1
-
-    const v21, 0x45c7199a
-
     move-object/from16 v0, p0
 
     iget v0, v0, Landroid/hardware/GeomagneticField;->mGcRadiusKm:F
 
-    move/from16 v22, v0
+    move/from16 v20, v0
 
-    div-float v21, v21, v22
+    const v21, 0x45c7199a
 
-    aput v21, v16, v20
+    div-float v20, v21, v20
+
+    const/16 v21, 0x1
+
+    aput v20, v16, v21
 
     .line 164
     const/4 v9, 0x2
 
-    .local v9, i:I
-    :goto_0
+    .local v9, "i":I
+    :goto_1
     move-object/from16 v0, v16
 
     array-length v0, v0
@@ -1303,17 +1419,19 @@
 
     move/from16 v0, v20
 
-    if-ge v9, v0, :cond_1
+    if-ge v9, v0, :cond_2
 
     .line 165
     add-int/lit8 v20, v9, -0x1
 
     aget v20, v16, v20
 
+    .line 166
     const/16 v21, 0x1
 
     aget v21, v16, v21
 
+    .line 165
     mul-float v20, v20, v21
 
     aput v20, v16, v9
@@ -1321,99 +1439,99 @@
     .line 164
     add-int/lit8 v9, v9, 0x1
 
-    goto :goto_0
+    goto :goto_1
 
     .line 171
-    :cond_1
+    :cond_2
     new-array v0, v2, [F
 
     move-object/from16 v17, v0
 
     .line 172
-    .local v17, sinMLon:[F
+    .local v17, "sinMLon":[F
     new-array v3, v2, [F
 
     .line 173
-    .local v3, cosMLon:[F
+    .local v3, "cosMLon":[F
     const/16 v20, 0x0
 
     const/16 v21, 0x0
 
-    aput v21, v17, v20
+    aput v20, v17, v21
 
     .line 174
-    const/16 v20, 0x0
+    const/high16 v20, 0x3f800000    # 1.0f
 
-    const/high16 v21, 0x3f80
+    const/16 v21, 0x0
 
-    aput v21, v3, v20
+    aput v20, v3, v21
 
     .line 175
-    const/16 v20, 0x1
-
     move-object/from16 v0, p0
 
     iget v0, v0, Landroid/hardware/GeomagneticField;->mGcLongitudeRad:F
 
-    move/from16 v21, v0
+    move/from16 v20, v0
 
-    move/from16 v0, v21
+    move/from16 v0, v20
 
     float-to-double v0, v0
 
-    move-wide/from16 v21, v0
+    move-wide/from16 v20, v0
 
-    invoke-static/range {v21 .. v22}, Ljava/lang/Math;->sin(D)D
+    invoke-static/range {v20 .. v21}, Ljava/lang/Math;->sin(D)D
 
-    move-result-wide v21
+    move-result-wide v20
 
-    move-wide/from16 v0, v21
+    move-wide/from16 v0, v20
 
     double-to-float v0, v0
 
-    move/from16 v21, v0
+    move/from16 v20, v0
 
-    aput v21, v17, v20
+    const/16 v21, 0x1
+
+    aput v20, v17, v21
 
     .line 176
-    const/16 v20, 0x1
-
     move-object/from16 v0, p0
 
     iget v0, v0, Landroid/hardware/GeomagneticField;->mGcLongitudeRad:F
 
-    move/from16 v21, v0
+    move/from16 v20, v0
 
-    move/from16 v0, v21
+    move/from16 v0, v20
 
     float-to-double v0, v0
 
-    move-wide/from16 v21, v0
+    move-wide/from16 v20, v0
 
-    invoke-static/range {v21 .. v22}, Ljava/lang/Math;->cos(D)D
+    invoke-static/range {v20 .. v21}, Ljava/lang/Math;->cos(D)D
 
-    move-result-wide v21
+    move-result-wide v20
 
-    move-wide/from16 v0, v21
+    move-wide/from16 v0, v20
 
     double-to-float v0, v0
 
-    move/from16 v21, v0
+    move/from16 v20, v0
 
-    aput v21, v3, v20
+    const/16 v21, 0x1
+
+    aput v20, v3, v21
 
     .line 178
     const/4 v14, 0x2
 
-    .local v14, m:I
-    :goto_1
-    if-ge v14, v2, :cond_2
+    .local v14, "m":I
+    :goto_2
+    if-ge v14, v2, :cond_3
 
     .line 181
     shr-int/lit8 v18, v14, 0x1
 
     .line 182
-    .local v18, x:I
+    .local v18, "x":I
     sub-int v20, v14, v18
 
     aget v20, v17, v20
@@ -1458,39 +1576,39 @@
     .line 178
     add-int/lit8 v14, v14, 0x1
 
-    goto :goto_1
+    goto :goto_2
 
     .line 186
-    .end local v18           #x:I
-    :cond_2
-    const/high16 v20, 0x3f80
-
+    .end local v18    # "x":I
+    :cond_3
     move-object/from16 v0, p0
 
     iget v0, v0, Landroid/hardware/GeomagneticField;->mGcLatitudeRad:F
 
-    move/from16 v21, v0
+    move/from16 v20, v0
 
-    move/from16 v0, v21
+    move/from16 v0, v20
 
     float-to-double v0, v0
 
-    move-wide/from16 v21, v0
+    move-wide/from16 v20, v0
 
-    invoke-static/range {v21 .. v22}, Ljava/lang/Math;->cos(D)D
+    invoke-static/range {v20 .. v21}, Ljava/lang/Math;->cos(D)D
 
-    move-result-wide v21
+    move-result-wide v20
 
-    move-wide/from16 v0, v21
+    move-wide/from16 v0, v20
 
     double-to-float v0, v0
 
-    move/from16 v21, v0
+    move/from16 v20, v0
 
-    div-float v10, v20, v21
+    const/high16 v21, 0x3f800000    # 1.0f
 
-    .line 187
-    .local v10, inverseCosLatitude:F
+    div-float v10, v21, v20
+
+    .line 188
+    .local v10, "inverseCosLatitude":F
     sget-wide v20, Landroid/hardware/GeomagneticField;->BASE_TIME:J
 
     sub-long v20, p4, v20
@@ -1506,30 +1624,30 @@
     div-float v19, v20, v21
 
     .line 194
-    .local v19, yearsSinceBase:F
+    .local v19, "yearsSinceBase":F
     const/4 v5, 0x0
 
     .line 195
-    .local v5, gcX:F
+    .local v5, "gcX":F
     const/4 v6, 0x0
 
     .line 196
-    .local v6, gcY:F
+    .local v6, "gcY":F
     const/4 v7, 0x0
 
     .line 198
-    .local v7, gcZ:F
+    .local v7, "gcZ":F
     const/4 v15, 0x1
 
-    .local v15, n:I
-    :goto_2
-    if-ge v15, v2, :cond_4
+    .local v15, "n":I
+    :goto_3
+    if-ge v15, v2, :cond_5
 
     .line 199
     const/4 v14, 0x0
 
-    :goto_3
-    if-gt v14, v15, :cond_3
+    :goto_4
+    if-gt v14, v15, :cond_4
 
     .line 201
     sget-object v20, Landroid/hardware/GeomagneticField;->G_COEFF:[[F
@@ -1549,7 +1667,7 @@
     add-float v4, v20, v21
 
     .line 202
-    .local v4, g:F
+    .local v4, "g":F
     sget-object v20, Landroid/hardware/GeomagneticField;->H_COEFF:[[F
 
     aget-object v20, v20, v15
@@ -1567,11 +1685,12 @@
     add-float v8, v20, v21
 
     .line 209
-    .local v8, h:F
+    .local v8, "h":F
     add-int/lit8 v20, v15, 0x2
 
     aget v20, v16, v20
 
+    .line 210
     aget v21, v3, v14
 
     mul-float v21, v21, v4
@@ -1582,9 +1701,11 @@
 
     add-float v21, v21, v22
 
+    .line 209
     mul-float v20, v20, v21
 
-    iget-object v0, v13, Landroid/hardware/GeomagneticField$LegendreTable;->mPDeriv:[[F
+    .line 211
+    iget-object v0, v11, Landroid/hardware/GeomagneticField$LegendreTable;->mPDeriv:[[F
 
     move-object/from16 v21, v0
 
@@ -1592,14 +1713,17 @@
 
     aget v21, v21, v14
 
+    .line 209
     mul-float v20, v20, v21
 
+    .line 212
     sget-object v21, Landroid/hardware/GeomagneticField;->SCHMIDT_QUASI_NORM_FACTORS:[[F
 
     aget-object v21, v21, v15
 
     aget v21, v21, v14
 
+    .line 209
     mul-float v20, v20, v21
 
     add-float v5, v5, v20
@@ -1615,6 +1739,7 @@
 
     mul-float v20, v20, v21
 
+    .line 217
     aget v21, v17, v14
 
     mul-float v21, v21, v4
@@ -1625,9 +1750,11 @@
 
     sub-float v21, v21, v22
 
+    .line 216
     mul-float v20, v20, v21
 
-    iget-object v0, v13, Landroid/hardware/GeomagneticField$LegendreTable;->mP:[[F
+    .line 218
+    iget-object v0, v11, Landroid/hardware/GeomagneticField$LegendreTable;->mP:[[F
 
     move-object/from16 v21, v0
 
@@ -1635,14 +1762,17 @@
 
     aget v21, v21, v14
 
+    .line 216
     mul-float v20, v20, v21
 
+    .line 219
     sget-object v21, Landroid/hardware/GeomagneticField;->SCHMIDT_QUASI_NORM_FACTORS:[[F
 
     aget-object v21, v21, v15
 
     aget v21, v21, v14
 
+    .line 216
     mul-float v20, v20, v21
 
     mul-float v20, v20, v10
@@ -1664,6 +1794,7 @@
 
     mul-float v20, v20, v21
 
+    .line 224
     aget v21, v3, v14
 
     mul-float v21, v21, v4
@@ -1674,9 +1805,11 @@
 
     add-float v21, v21, v22
 
+    .line 223
     mul-float v20, v20, v21
 
-    iget-object v0, v13, Landroid/hardware/GeomagneticField$LegendreTable;->mP:[[F
+    .line 225
+    iget-object v0, v11, Landroid/hardware/GeomagneticField$LegendreTable;->mP:[[F
 
     move-object/from16 v21, v0
 
@@ -1684,14 +1817,17 @@
 
     aget v21, v21, v14
 
+    .line 223
     mul-float v20, v20, v21
 
+    .line 226
     sget-object v21, Landroid/hardware/GeomagneticField;->SCHMIDT_QUASI_NORM_FACTORS:[[F
 
     aget-object v21, v21, v15
 
     aget v21, v21, v14
 
+    .line 223
     mul-float v20, v20, v21
 
     sub-float v7, v7, v20
@@ -1699,18 +1835,18 @@
     .line 199
     add-int/lit8 v14, v14, 0x1
 
-    goto/16 :goto_3
+    goto/16 :goto_4
 
     .line 198
-    .end local v4           #g:F
-    .end local v8           #h:F
-    :cond_3
+    .end local v4    # "g":F
+    .end local v8    # "h":F
+    :cond_4
     add-int/lit8 v15, v15, 0x1
 
-    goto/16 :goto_2
+    goto/16 :goto_3
 
     .line 233
-    :cond_4
+    :cond_5
     move/from16 v0, p1
 
     float-to-double v0, v0
@@ -1733,30 +1869,32 @@
 
     move-wide/from16 v22, v0
 
-    sub-double v11, v20, v22
+    sub-double v12, v20, v22
 
     .line 234
-    .local v11, latDiffRad:D
+    .local v12, "latDiffRad":D
     float-to-double v0, v5
 
     move-wide/from16 v20, v0
 
-    invoke-static {v11, v12}, Ljava/lang/Math;->cos(D)D
+    invoke-static {v12, v13}, Ljava/lang/Math;->cos(D)D
 
     move-result-wide v22
 
     mul-double v20, v20, v22
 
+    .line 235
     float-to-double v0, v7
 
     move-wide/from16 v22, v0
 
-    invoke-static {v11, v12}, Ljava/lang/Math;->sin(D)D
+    invoke-static {v12, v13}, Ljava/lang/Math;->sin(D)D
 
     move-result-wide v24
 
     mul-double v22, v22, v24
 
+    .line 234
     add-double v20, v20, v22
 
     move-wide/from16 v0, v20
@@ -1787,22 +1925,24 @@
 
     move-wide/from16 v20, v0
 
-    invoke-static {v11, v12}, Ljava/lang/Math;->sin(D)D
+    invoke-static {v12, v13}, Ljava/lang/Math;->sin(D)D
 
     move-result-wide v22
 
     mul-double v20, v20, v22
 
+    .line 238
     float-to-double v0, v7
 
     move-wide/from16 v22, v0
 
-    invoke-static {v11, v12}, Ljava/lang/Math;->cos(D)D
+    invoke-static {v12, v13}, Ljava/lang/Math;->cos(D)D
 
     move-result-wide v24
 
     mul-double v22, v22, v24
 
+    .line 237
     add-double v20, v20, v22
 
     move-wide/from16 v0, v20
@@ -1817,198 +1957,227 @@
 
     iput v0, v1, Landroid/hardware/GeomagneticField;->mZ:F
 
-    .line 239
+    .line 138
     return-void
 .end method
 
 .method private computeGeocentricCoordinates(FFF)V
-    .locals 15
-    .parameter "gdLatitudeDeg"
-    .parameter "gdLongitudeDeg"
-    .parameter "altitudeMeters"
+    .locals 12
+    .param p1, "gdLatitudeDeg"    # F
+    .param p2, "gdLongitudeDeg"    # F
+    .param p3, "altitudeMeters"    # F
 
     .prologue
     .line 307
-    const/high16 v11, 0x447a
+    const/high16 v8, 0x447a0000    # 1000.0f
 
-    div-float v2, p3, v11
-
-    .line 308
-    .local v2, altitudeKm:F
-    const v1, 0x4c1b2f2f
-
-    .line 309
-    .local v1, a2:F
-    const v3, 0x4c1a253b
+    div-float v0, p3, v8
 
     .line 310
-    .local v3, b2:F
-    move/from16 v0, p1
+    .local v0, "altitudeKm":F
+    float-to-double v8, p1
 
-    float-to-double v11, v0
+    invoke-static {v8, v9}, Ljava/lang/Math;->toRadians(D)D
 
-    invoke-static {v11, v12}, Ljava/lang/Math;->toRadians(D)D
-
-    move-result-wide v5
+    move-result-wide v2
 
     .line 311
-    .local v5, gdLatRad:D
-    invoke-static {v5, v6}, Ljava/lang/Math;->cos(D)D
+    .local v2, "gdLatRad":D
+    invoke-static {v2, v3}, Ljava/lang/Math;->cos(D)D
 
-    move-result-wide v11
+    move-result-wide v8
 
-    double-to-float v4, v11
+    double-to-float v1, v8
 
     .line 312
-    .local v4, clat:F
-    invoke-static {v5, v6}, Ljava/lang/Math;->sin(D)D
+    .local v1, "clat":F
+    invoke-static {v2, v3}, Ljava/lang/Math;->sin(D)D
 
-    move-result-wide v11
+    move-result-wide v8
 
-    double-to-float v9, v11
+    double-to-float v6, v8
 
     .line 313
-    .local v9, slat:F
-    div-float v10, v9, v4
+    .local v6, "slat":F
+    div-float v7, v6, v1
 
-    .line 314
-    .local v10, tlat:F
-    mul-float v11, v1, v4
+    .line 308
+    .local v7, "tlat":F
+    const v8, 0x4c1b2f2f    # 4.0680636E7f
 
-    mul-float/2addr v11, v4
+    .line 315
+    mul-float/2addr v8, v1
 
-    mul-float v12, v3, v9
+    mul-float/2addr v8, v1
 
-    mul-float/2addr v12, v9
+    .line 309
+    const v9, 0x4c1a253b    # 4.04083E7f
 
-    add-float/2addr v11, v12
+    .line 315
+    mul-float/2addr v9, v6
 
-    float-to-double v11, v11
+    mul-float/2addr v9, v6
 
-    invoke-static {v11, v12}, Ljava/lang/Math;->sqrt(D)D
+    add-float/2addr v8, v9
 
-    move-result-wide v11
+    float-to-double v8, v8
 
-    double-to-float v7, v11
+    invoke-static {v8, v9}, Ljava/lang/Math;->sqrt(D)D
+
+    move-result-wide v8
+
+    double-to-float v4, v8
 
     .line 317
-    .local v7, latRad:F
-    mul-float v11, v7, v2
+    .local v4, "latRad":F
+    mul-float v8, v4, v0
 
-    add-float/2addr v11, v3
+    .line 309
+    const v9, 0x4c1a253b    # 4.04083E7f
 
-    mul-float/2addr v11, v10
+    .line 317
+    add-float/2addr v8, v9
 
-    mul-float v12, v7, v2
+    mul-float/2addr v8, v7
 
-    add-float/2addr v12, v1
+    .line 318
+    mul-float v9, v4, v0
 
-    div-float/2addr v11, v12
+    .line 308
+    const v10, 0x4c1b2f2f    # 4.0680636E7f
 
-    float-to-double v11, v11
+    .line 318
+    add-float/2addr v9, v10
 
-    invoke-static {v11, v12}, Ljava/lang/Math;->atan(D)D
+    .line 317
+    div-float/2addr v8, v9
 
-    move-result-wide v11
+    float-to-double v8, v8
 
-    double-to-float v11, v11
+    invoke-static {v8, v9}, Ljava/lang/Math;->atan(D)D
 
-    iput v11, p0, Landroid/hardware/GeomagneticField;->mGcLatitudeRad:F
+    move-result-wide v8
+
+    double-to-float v8, v8
+
+    iput v8, p0, Landroid/hardware/GeomagneticField;->mGcLatitudeRad:F
 
     .line 320
-    move/from16 v0, p2
+    float-to-double v8, p2
 
-    float-to-double v11, v0
+    invoke-static {v8, v9}, Ljava/lang/Math;->toRadians(D)D
 
-    invoke-static {v11, v12}, Ljava/lang/Math;->toRadians(D)D
+    move-result-wide v8
 
-    move-result-wide v11
+    double-to-float v8, v8
 
-    double-to-float v11, v11
-
-    iput v11, p0, Landroid/hardware/GeomagneticField;->mGcLongitudeRad:F
+    iput v8, p0, Landroid/hardware/GeomagneticField;->mGcLongitudeRad:F
 
     .line 322
-    mul-float v11, v2, v2
+    mul-float v8, v0, v0
 
-    const/high16 v12, 0x4000
+    .line 323
+    const/high16 v9, 0x40000000    # 2.0f
 
-    mul-float/2addr v12, v2
+    mul-float/2addr v9, v0
 
-    mul-float v13, v1, v4
+    .line 308
+    const v10, 0x4c1b2f2f    # 4.0680636E7f
 
-    mul-float/2addr v13, v4
+    .line 323
+    mul-float/2addr v10, v1
 
-    mul-float v14, v3, v9
+    mul-float/2addr v10, v1
 
-    mul-float/2addr v14, v9
+    .line 309
+    const v11, 0x4c1a253b    # 4.04083E7f
 
-    add-float/2addr v13, v14
+    .line 324
+    mul-float/2addr v11, v6
 
-    float-to-double v13, v13
+    mul-float/2addr v11, v6
 
-    invoke-static {v13, v14}, Ljava/lang/Math;->sqrt(D)D
+    .line 323
+    add-float/2addr v10, v11
 
-    move-result-wide v13
+    float-to-double v10, v10
 
-    double-to-float v13, v13
+    invoke-static {v10, v11}, Ljava/lang/Math;->sqrt(D)D
 
-    mul-float/2addr v12, v13
+    move-result-wide v10
 
-    add-float/2addr v11, v12
+    double-to-float v10, v10
 
-    mul-float v12, v1, v1
+    mul-float/2addr v9, v10
 
-    mul-float/2addr v12, v4
+    .line 322
+    add-float/2addr v8, v9
 
-    mul-float/2addr v12, v4
+    .line 325
+    const v9, 0x58bc2457
 
-    mul-float v13, v3, v3
+    mul-float/2addr v9, v1
 
-    mul-float/2addr v13, v9
+    mul-float/2addr v9, v1
 
-    mul-float/2addr v13, v9
+    const v10, 0x58b9a1a1
 
-    add-float/2addr v12, v13
+    mul-float/2addr v10, v6
 
-    mul-float v13, v1, v4
+    mul-float/2addr v10, v6
 
-    mul-float/2addr v13, v4
+    add-float/2addr v9, v10
 
-    mul-float v14, v3, v9
+    .line 308
+    const v10, 0x4c1b2f2f    # 4.0680636E7f
 
-    mul-float/2addr v14, v9
+    .line 326
+    mul-float/2addr v10, v1
 
-    add-float/2addr v13, v14
+    mul-float/2addr v10, v1
 
-    div-float/2addr v12, v13
+    .line 309
+    const v11, 0x4c1a253b    # 4.04083E7f
 
-    add-float v8, v11, v12
+    .line 326
+    mul-float/2addr v11, v6
+
+    mul-float/2addr v11, v6
+
+    add-float/2addr v10, v11
+
+    .line 325
+    div-float/2addr v9, v10
+
+    .line 322
+    add-float v5, v8, v9
 
     .line 327
-    .local v8, radSq:F
-    float-to-double v11, v8
+    .local v5, "radSq":F
+    float-to-double v8, v5
 
-    invoke-static {v11, v12}, Ljava/lang/Math;->sqrt(D)D
+    invoke-static {v8, v9}, Ljava/lang/Math;->sqrt(D)D
 
-    move-result-wide v11
+    move-result-wide v8
 
-    double-to-float v11, v11
+    double-to-float v8, v8
 
-    iput v11, p0, Landroid/hardware/GeomagneticField;->mGcRadiusKm:F
+    iput v8, p0, Landroid/hardware/GeomagneticField;->mGcRadiusKm:F
 
-    .line 328
+    .line 306
     return-void
 .end method
 
 .method private static computeSchmidtQuasiNormFactors(I)[[F
-    .locals 10
-    .parameter "maxN"
+    .locals 11
+    .param p0, "maxN"    # I
 
     .prologue
-    const/4 v4, 0x1
+    const/4 v4, 0x2
 
-    const/4 v9, 0x0
+    const/4 v5, 0x1
+
+    const/4 v10, 0x0
 
     .line 394
     add-int/lit8 v3, p0, 0x1
@@ -2016,19 +2185,19 @@
     new-array v2, v3, [[F
 
     .line 395
-    .local v2, schmidtQuasiNorm:[[F
-    new-array v3, v4, [F
+    .local v2, "schmidtQuasiNorm":[[F
+    new-array v3, v5, [F
 
-    const/high16 v5, 0x3f80
+    const/high16 v6, 0x3f800000    # 1.0f
 
-    aput v5, v3, v9
+    aput v6, v3, v10
 
-    aput-object v3, v2, v9
+    aput-object v3, v2, v10
 
     .line 396
     const/4 v1, 0x1
 
-    .local v1, n:I
+    .local v1, "n":I
     :goto_0
     if-gt v1, p0, :cond_2
 
@@ -2042,72 +2211,78 @@
     .line 398
     aget-object v3, v2, v1
 
-    add-int/lit8 v5, v1, -0x1
+    .line 399
+    add-int/lit8 v6, v1, -0x1
 
-    aget-object v5, v2, v5
+    aget-object v6, v2, v6
 
-    aget v5, v5, v9
+    aget v6, v6, v10
 
-    mul-int/lit8 v6, v1, 0x2
+    mul-int/lit8 v7, v1, 0x2
 
-    add-int/lit8 v6, v6, -0x1
+    add-int/lit8 v7, v7, -0x1
 
-    int-to-float v6, v6
+    int-to-float v7, v7
 
-    mul-float/2addr v5, v6
+    mul-float/2addr v6, v7
 
-    int-to-float v6, v1
+    int-to-float v7, v1
 
-    div-float/2addr v5, v6
+    div-float/2addr v6, v7
 
-    aput v5, v3, v9
+    .line 398
+    aput v6, v3, v10
 
     .line 400
     const/4 v0, 0x1
 
-    .local v0, m:I
+    .local v0, "m":I
     :goto_1
     if-gt v0, v1, :cond_1
 
     .line 401
-    aget-object v5, v2, v1
+    aget-object v6, v2, v1
 
     aget-object v3, v2, v1
 
-    add-int/lit8 v6, v0, -0x1
+    add-int/lit8 v7, v0, -0x1
 
-    aget v6, v3, v6
+    aget v7, v3, v7
 
+    .line 402
     sub-int v3, v1, v0
 
-    add-int/lit8 v7, v3, 0x1
+    add-int/lit8 v8, v3, 0x1
 
-    if-ne v0, v4, :cond_0
+    if-ne v0, v5, :cond_0
 
-    const/4 v3, 0x2
+    move v3, v4
 
     :goto_2
-    mul-int/2addr v3, v7
+    mul-int/2addr v3, v8
 
     int-to-float v3, v3
 
-    add-int v7, v1, v0
+    .line 403
+    add-int v8, v1, v0
 
-    int-to-float v7, v7
+    int-to-float v8, v8
 
-    div-float/2addr v3, v7
+    .line 402
+    div-float/2addr v3, v8
 
-    float-to-double v7, v3
+    float-to-double v8, v3
 
-    invoke-static {v7, v8}, Ljava/lang/Math;->sqrt(D)D
+    invoke-static {v8, v9}, Ljava/lang/Math;->sqrt(D)D
 
-    move-result-wide v7
+    move-result-wide v8
 
-    double-to-float v3, v7
+    double-to-float v3, v8
 
-    mul-float/2addr v3, v6
+    .line 401
+    mul-float/2addr v3, v7
 
-    aput v3, v5, v0
+    aput v3, v6, v0
 
     .line 400
     add-int/lit8 v0, v0, 0x1
@@ -2115,9 +2290,9 @@
     goto :goto_1
 
     :cond_0
-    move v3, v4
+    move v3, v5
 
-    .line 401
+    .line 402
     goto :goto_2
 
     .line 396
@@ -2127,7 +2302,7 @@
     goto :goto_0
 
     .line 406
-    .end local v0           #m:I
+    .end local v0    # "m":I
     :cond_2
     return-object v2
 .end method
@@ -2199,27 +2374,19 @@
 .end method
 
 .method public getHorizontalStrength()F
-    .locals 3
+    .locals 4
 
     .prologue
     .line 284
     iget v0, p0, Landroid/hardware/GeomagneticField;->mX:F
 
-    iget v1, p0, Landroid/hardware/GeomagneticField;->mX:F
-
-    mul-float/2addr v0, v1
-
-    iget v1, p0, Landroid/hardware/GeomagneticField;->mY:F
+    float-to-double v0, v0
 
     iget v2, p0, Landroid/hardware/GeomagneticField;->mY:F
 
-    mul-float/2addr v1, v2
+    float-to-double v2, v2
 
-    add-float/2addr v0, v1
-
-    float-to-double v0, v0
-
-    invoke-static {v0, v1}, Ljava/lang/Math;->sqrt(D)D
+    invoke-static {v0, v1, v2, v3}, Ljava/lang/Math;->hypot(DD)D
 
     move-result-wide v0
 
@@ -2237,12 +2404,14 @@
 
     float-to-double v0, v0
 
+    .line 277
     invoke-virtual {p0}, Landroid/hardware/GeomagneticField;->getHorizontalStrength()F
 
     move-result v2
 
     float-to-double v2, v2
 
+    .line 276
     invoke-static {v0, v1, v2, v3}, Ljava/lang/Math;->atan2(DD)D
 
     move-result-wide v0

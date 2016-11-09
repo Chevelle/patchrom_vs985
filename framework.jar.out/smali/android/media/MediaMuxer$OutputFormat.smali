@@ -15,7 +15,9 @@
 
 
 # static fields
-.field public static final MUXER_OUTPUT_MPEG_4:I
+.field public static final MUXER_OUTPUT_MPEG_4:I = 0x0
+
+.field public static final MUXER_OUTPUT_WEBM:I = 0x1
 
 
 # direct methods
@@ -23,7 +25,7 @@
     .locals 0
 
     .prologue
-    .line 81
+    .line 83
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

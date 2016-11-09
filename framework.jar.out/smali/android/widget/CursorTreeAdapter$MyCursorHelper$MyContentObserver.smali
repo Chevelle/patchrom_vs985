@@ -21,7 +21,7 @@
 # direct methods
 .method public constructor <init>(Landroid/widget/CursorTreeAdapter$MyCursorHelper;)V
     .locals 1
-    .parameter
+    .param p1, "this$1"    # Landroid/widget/CursorTreeAdapter$MyCursorHelper;
 
     .prologue
     .line 489
@@ -30,14 +30,13 @@
     .line 490
     iget-object v0, p1, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->this$0:Landroid/widget/CursorTreeAdapter;
 
-    #getter for: Landroid/widget/CursorTreeAdapter;->mHandler:Landroid/os/Handler;
-    invoke-static {v0}, Landroid/widget/CursorTreeAdapter;->access$100(Landroid/widget/CursorTreeAdapter;)Landroid/os/Handler;
+    invoke-static {v0}, Landroid/widget/CursorTreeAdapter;->-get1(Landroid/widget/CursorTreeAdapter;)Landroid/os/Handler;
 
     move-result-object v0
 
     invoke-direct {p0, v0}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
 
-    .line 491
+    .line 489
     return-void
 .end method
 
@@ -55,7 +54,7 @@
 
 .method public onChange(Z)V
     .locals 2
-    .parameter "selfChange"
+    .param p1, "selfChange"    # Z
 
     .prologue
     .line 500
@@ -63,8 +62,7 @@
 
     iget-object v0, v0, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->this$0:Landroid/widget/CursorTreeAdapter;
 
-    #getter for: Landroid/widget/CursorTreeAdapter;->mAutoRequery:Z
-    invoke-static {v0}, Landroid/widget/CursorTreeAdapter;->access$200(Landroid/widget/CursorTreeAdapter;)Z
+    invoke-static {v0}, Landroid/widget/CursorTreeAdapter;->-get0(Landroid/widget/CursorTreeAdapter;)Z
 
     move-result v0
 
@@ -72,20 +70,36 @@
 
     iget-object v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyContentObserver;->this$1:Landroid/widget/CursorTreeAdapter$MyCursorHelper;
 
-    #getter for: Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
-    invoke-static {v0}, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->access$300(Landroid/widget/CursorTreeAdapter$MyCursorHelper;)Landroid/database/Cursor;
+    invoke-static {v0}, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->-get0(Landroid/widget/CursorTreeAdapter$MyCursorHelper;)Landroid/database/Cursor;
 
     move-result-object v0
 
     if-eqz v0, :cond_0
 
+    iget-object v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyContentObserver;->this$1:Landroid/widget/CursorTreeAdapter$MyCursorHelper;
+
+    invoke-static {v0}, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->-get0(Landroid/widget/CursorTreeAdapter$MyCursorHelper;)Landroid/database/Cursor;
+
+    move-result-object v0
+
+    invoke-interface {v0}, Landroid/database/Cursor;->isClosed()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 499
+    :cond_0
+    :goto_0
+    return-void
+
     .line 503
+    :cond_1
     iget-object v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyContentObserver;->this$1:Landroid/widget/CursorTreeAdapter$MyCursorHelper;
 
     iget-object v1, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyContentObserver;->this$1:Landroid/widget/CursorTreeAdapter$MyCursorHelper;
 
-    #getter for: Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mCursor:Landroid/database/Cursor;
-    invoke-static {v1}, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->access$300(Landroid/widget/CursorTreeAdapter$MyCursorHelper;)Landroid/database/Cursor;
+    invoke-static {v1}, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->-get0(Landroid/widget/CursorTreeAdapter$MyCursorHelper;)Landroid/database/Cursor;
 
     move-result-object v1
 
@@ -93,10 +107,7 @@
 
     move-result v1
 
-    #setter for: Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mDataValid:Z
-    invoke-static {v0, v1}, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->access$402(Landroid/widget/CursorTreeAdapter$MyCursorHelper;Z)Z
+    invoke-static {v0, v1}, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->-set0(Landroid/widget/CursorTreeAdapter$MyCursorHelper;Z)Z
 
-    .line 505
-    :cond_0
-    return-void
+    goto :goto_0
 .end method

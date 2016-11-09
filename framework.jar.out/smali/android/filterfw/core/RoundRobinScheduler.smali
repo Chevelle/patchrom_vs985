@@ -10,7 +10,7 @@
 # direct methods
 .method public constructor <init>(Landroid/filterfw/core/FilterGraph;)V
     .locals 1
-    .parameter "graph"
+    .param p1, "graph"    # Landroid/filterfw/core/FilterGraph;
 
     .prologue
     .line 33
@@ -21,7 +21,7 @@
 
     iput v0, p0, Landroid/filterfw/core/RoundRobinScheduler;->mLastPos:I
 
-    .line 34
+    .line 32
     return-void
 .end method
 
@@ -36,14 +36,16 @@
 
     iput v0, p0, Landroid/filterfw/core/RoundRobinScheduler;->mLastPos:I
 
-    .line 39
+    .line 37
     return-void
 .end method
 
 .method public scheduleNextNode()Landroid/filterfw/core/Filter;
-    .locals 8
+    .locals 9
 
     .prologue
+    const/4 v8, 0x0
+
     .line 43
     invoke-virtual {p0}, Landroid/filterfw/core/RoundRobinScheduler;->getGraph()Landroid/filterfw/core/FilterGraph;
 
@@ -54,7 +56,7 @@
     move-result-object v0
 
     .line 44
-    .local v0, all_filters:Ljava/util/Set;,"Ljava/util/Set<Landroid/filterfw/core/Filter;>;"
+    .local v0, "all_filters":Ljava/util/Set;, "Ljava/util/Set<Landroid/filterfw/core/Filter;>;"
     iget v6, p0, Landroid/filterfw/core/RoundRobinScheduler;->mLastPos:I
 
     invoke-interface {v0}, Ljava/util/Set;->size()I
@@ -72,35 +74,36 @@
     const/4 v5, 0x0
 
     .line 46
-    .local v5, pos:I
-    const/4 v2, 0x0
+    .local v5, "pos":I
+    const/4 v3, 0x0
 
     .line 47
-    .local v2, first:Landroid/filterfw/core/Filter;
-    const/4 v3, -0x1
+    .local v3, "first":Landroid/filterfw/core/Filter;
+    const/4 v4, -0x1
 
     .line 48
-    .local v3, firstNdx:I
-    invoke-interface {v0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+    .local v4, "firstNdx":I
+    invoke-interface {v0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
-    move-result-object v4
+    move-result-object v2
 
-    .local v4, i$:Ljava/util/Iterator;
+    .end local v3    # "first":Landroid/filterfw/core/Filter;
+    .local v2, "filter$iterator":Ljava/util/Iterator;
     :goto_0
-    invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v6
 
     if-eqz v6, :cond_3
 
-    invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v1
 
     check-cast v1, Landroid/filterfw/core/Filter;
 
     .line 49
-    .local v1, filter:Landroid/filterfw/core/Filter;
+    .local v1, "filter":Landroid/filterfw/core/Filter;
     invoke-virtual {v1}, Landroid/filterfw/core/Filter;->canProcess()Z
 
     move-result v6
@@ -113,15 +116,17 @@
     if-gt v5, v6, :cond_2
 
     .line 51
-    if-nez v2, :cond_1
+    if-nez v3, :cond_1
 
     .line 53
-    move-object v2, v1
+    move-object v3, v1
 
     .line 54
-    move v3, v5
+    .local v3, "first":Landroid/filterfw/core/Filter;
+    move v4, v5
 
     .line 62
+    .end local v3    # "first":Landroid/filterfw/core/Filter;
     :cond_1
     add-int/lit8 v5, v5, 0x1
 
@@ -131,26 +136,21 @@
     :cond_2
     iput v5, p0, Landroid/filterfw/core/RoundRobinScheduler;->mLastPos:I
 
-    .line 71
-    .end local v1           #filter:Landroid/filterfw/core/Filter;
-    :goto_1
+    .line 59
     return-object v1
 
     .line 65
+    .end local v1    # "filter":Landroid/filterfw/core/Filter;
     :cond_3
-    if-eqz v2, :cond_4
+    if-eqz v3, :cond_4
 
     .line 66
-    iput v3, p0, Landroid/filterfw/core/RoundRobinScheduler;->mLastPos:I
-
-    move-object v1, v2
+    iput v4, p0, Landroid/filterfw/core/RoundRobinScheduler;->mLastPos:I
 
     .line 67
-    goto :goto_1
+    return-object v3
 
     .line 71
     :cond_4
-    const/4 v1, 0x0
-
-    goto :goto_1
+    return-object v8
 .end method

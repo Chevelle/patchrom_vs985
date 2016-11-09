@@ -18,7 +18,7 @@
 # direct methods
 .method private constructor <init>(I)V
     .locals 1
-    .parameter "eventType"
+    .param p1, "eventType"    # I
 
     .prologue
     .line 68
@@ -32,13 +32,13 @@
     .line 69
     iput p1, p0, Landroid/media/MediaSyncEvent;->mType:I
 
-    .line 70
+    .line 68
     return-void
 .end method
 
 .method public static createEvent(I)Landroid/media/MediaSyncEvent;
     .locals 3
-    .parameter "eventType"
+    .param p0, "eventType"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;
@@ -64,8 +64,10 @@
 
     move-result-object v1
 
-    const-string v2, "is not a valid MediaSyncEvent type."
+    .line 59
+    const-string/jumbo v2, "is not a valid MediaSyncEvent type."
 
+    .line 58
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -89,7 +91,7 @@
 
 .method private static isValidType(I)Z
     .locals 1
-    .parameter "type"
+    .param p0, "type"    # I
 
     .prologue
     .line 114
@@ -98,14 +100,13 @@
     .line 119
     const/4 v0, 0x0
 
-    :goto_0
     return v0
 
     .line 117
     :pswitch_0
     const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 
     .line 114
     nop
@@ -141,7 +142,7 @@
 
 .method public setAudioSessionId(I)Landroid/media/MediaSyncEvent;
     .locals 3
-    .parameter "audioSessionId"
+    .param p1, "audioSessionId"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;
@@ -170,7 +171,7 @@
 
     move-result-object v1
 
-    const-string v2, " is not a valid session ID."
+    const-string/jumbo v2, " is not a valid session ID."
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

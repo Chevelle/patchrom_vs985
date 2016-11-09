@@ -36,11 +36,11 @@
 # direct methods
 .method constructor <init>(Landroid/accounts/GrantCredentialsPermissionActivity;Landroid/widget/TextView;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/accounts/GrantCredentialsPermissionActivity;
+    .param p2, "val$authTokenTypeView"    # Landroid/widget/TextView;
 
     .prologue
-    .line 94
+    .line 92
     iput-object p1, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1;->this$0:Landroid/accounts/GrantCredentialsPermissionActivity;
 
     iput-object p2, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1;->val$authTokenTypeView:Landroid/widget/TextView;
@@ -53,8 +53,7 @@
 
 # virtual methods
 .method public run(Landroid/accounts/AccountManagerFuture;)V
-    .locals 3
-    .parameter
+    .locals 7
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -66,8 +65,8 @@
     .end annotation
 
     .prologue
-    .line 97
-    .local p1, future:Landroid/accounts/AccountManagerFuture;,"Landroid/accounts/AccountManagerFuture<Ljava/lang/String;>;"
+    .line 95
+    .local p1, "future":Landroid/accounts/AccountManagerFuture;, "Landroid/accounts/AccountManagerFuture<Ljava/lang/String;>;"
     :try_start_0
     invoke-interface {p1}, Landroid/accounts/AccountManagerFuture;->getResult()Ljava/lang/Object;
 
@@ -75,48 +74,55 @@
 
     check-cast v0, Ljava/lang/String;
 
-    .line 98
-    .local v0, authTokenLabel:Ljava/lang/String;
+    .line 96
+    .local v0, "authTokenLabel":Ljava/lang/String;
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v1
+    move-result v4
 
-    if-nez v1, :cond_0
+    if-nez v4, :cond_0
 
-    .line 99
-    iget-object v1, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1;->this$0:Landroid/accounts/GrantCredentialsPermissionActivity;
+    .line 97
+    iget-object v4, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1;->this$0:Landroid/accounts/GrantCredentialsPermissionActivity;
 
-    new-instance v2, Landroid/accounts/GrantCredentialsPermissionActivity$1$1;
+    new-instance v5, Landroid/accounts/GrantCredentialsPermissionActivity$1$1;
 
-    invoke-direct {v2, p0, v0}, Landroid/accounts/GrantCredentialsPermissionActivity$1$1;-><init>(Landroid/accounts/GrantCredentialsPermissionActivity$1;Ljava/lang/String;)V
+    iget-object v6, p0, Landroid/accounts/GrantCredentialsPermissionActivity$1;->val$authTokenTypeView:Landroid/widget/TextView;
 
-    invoke-virtual {v1, v2}, Landroid/accounts/GrantCredentialsPermissionActivity;->runOnUiThread(Ljava/lang/Runnable;)V
+    invoke-direct {v5, p0, v6, v0}, Landroid/accounts/GrantCredentialsPermissionActivity$1$1;-><init>(Landroid/accounts/GrantCredentialsPermissionActivity$1;Landroid/widget/TextView;Ljava/lang/String;)V
+
+    invoke-virtual {v4, v5}, Landroid/accounts/GrantCredentialsPermissionActivity;->runOnUiThread(Ljava/lang/Runnable;)V
     :try_end_0
-    .catch Landroid/accounts/OperationCanceledException; {:try_start_0 .. :try_end_0} :catch_2
+    .catch Landroid/accounts/OperationCanceledException; {:try_start_0 .. :try_end_0} :catch_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_1
-    .catch Landroid/accounts/AuthenticatorException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Landroid/accounts/AuthenticatorException; {:try_start_0 .. :try_end_0} :catch_2
 
-    .line 112
-    .end local v0           #authTokenLabel:Ljava/lang/String;
+    .line 93
+    .end local v0    # "authTokenLabel":Ljava/lang/String;
     :cond_0
     :goto_0
     return-void
 
-    .line 110
+    .line 106
     :catch_0
-    move-exception v1
+    move-exception v2
 
+    .local v2, "e":Landroid/accounts/OperationCanceledException;
     goto :goto_0
 
-    .line 109
+    .line 107
+    .end local v2    # "e":Landroid/accounts/OperationCanceledException;
     :catch_1
-    move-exception v1
+    move-exception v3
 
+    .local v3, "e":Ljava/io/IOException;
     goto :goto_0
 
     .line 108
+    .end local v3    # "e":Ljava/io/IOException;
     :catch_2
     move-exception v1
 
+    .local v1, "e":Landroid/accounts/AuthenticatorException;
     goto :goto_0
 .end method

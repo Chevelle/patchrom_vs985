@@ -19,7 +19,7 @@
 
 .field public static final DEFAULT:I = 0x0
 
-.field public static final GRALLOC_BUFFER:I = 0x2
+.field public static final SURFACE:I = 0x2
 
 
 # instance fields
@@ -29,10 +29,10 @@
 # direct methods
 .method private constructor <init>(Landroid/media/MediaRecorder;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/media/MediaRecorder;
 
     .prologue
-    .line 226
+    .line 284
     iput-object p1, p0, Landroid/media/MediaRecorder$VideoSource;->this$0:Landroid/media/MediaRecorder;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

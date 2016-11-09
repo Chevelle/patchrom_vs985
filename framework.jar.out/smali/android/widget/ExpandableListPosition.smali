@@ -37,15 +37,17 @@
     .locals 2
 
     .prologue
-    .line 31
+    .line 32
     new-instance v0, Ljava/util/ArrayList;
 
     const/4 v1, 0x5
 
     invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V
 
+    .line 31
     sput-object v0, Landroid/widget/ExpandableListPosition;->sPool:Ljava/util/ArrayList;
 
+    .line 28
     return-void
 .end method
 
@@ -56,7 +58,6 @@
     .line 73
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 74
     return-void
 .end method
 
@@ -89,49 +90,47 @@
     move-result-object v0
 
     check-cast v0, Landroid/widget/ExpandableListPosition;
-
-    .line 123
-    .local v0, elp:Landroid/widget/ExpandableListPosition;
-    monitor-exit v2
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .local v0, "elp":Landroid/widget/ExpandableListPosition;
+    monitor-exit v2
 
     .line 124
     invoke-direct {v0}, Landroid/widget/ExpandableListPosition;->resetState()V
 
     .line 125
-    .end local v0           #elp:Landroid/widget/ExpandableListPosition;
-    :goto_0
     return-object v0
 
     .line 121
+    .end local v0    # "elp":Landroid/widget/ExpandableListPosition;
     :cond_0
     :try_start_1
-    new-instance v0, Landroid/widget/ExpandableListPosition;
+    new-instance v1, Landroid/widget/ExpandableListPosition;
 
-    invoke-direct {v0}, Landroid/widget/ExpandableListPosition;-><init>()V
+    invoke-direct {v1}, Landroid/widget/ExpandableListPosition;-><init>()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     monitor-exit v2
 
-    goto :goto_0
+    return-object v1
 
-    .line 123
+    .line 117
     :catchall_0
     move-exception v1
 
     monitor-exit v2
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v1
 .end method
 
 .method static obtain(IIII)Landroid/widget/ExpandableListPosition;
     .locals 1
-    .parameter "type"
-    .parameter "groupPos"
-    .parameter "childPos"
-    .parameter "flatListPos"
+    .param p0, "type"    # I
+    .param p1, "groupPos"    # I
+    .param p2, "childPos"    # I
+    .param p3, "flatListPos"    # I
 
     .prologue
     .line 107
@@ -140,7 +139,7 @@
     move-result-object v0
 
     .line 108
-    .local v0, elp:Landroid/widget/ExpandableListPosition;
+    .local v0, "elp":Landroid/widget/ExpandableListPosition;
     iput p0, v0, Landroid/widget/ExpandableListPosition;->type:I
 
     .line 109
@@ -158,8 +157,8 @@
 
 .method static obtainChildPosition(II)Landroid/widget/ExpandableListPosition;
     .locals 2
-    .parameter "groupPosition"
-    .parameter "childPosition"
+    .param p0, "groupPosition"    # I
+    .param p1, "childPosition"    # I
 
     .prologue
     .line 86
@@ -176,7 +175,7 @@
 
 .method static obtainGroupPosition(I)Landroid/widget/ExpandableListPosition;
     .locals 2
-    .parameter "groupPosition"
+    .param p0, "groupPosition"    # I
 
     .prologue
     const/4 v1, 0x0
@@ -192,25 +191,23 @@
 .end method
 
 .method static obtainPosition(J)Landroid/widget/ExpandableListPosition;
-    .locals 4
-    .parameter "packedPosition"
+    .locals 6
+    .param p0, "packedPosition"    # J
 
     .prologue
-    const/4 v3, 0x1
+    const/4 v4, 0x1
 
     .line 90
-    const-wide v1, 0xffffffffL
+    const-wide v2, 0xffffffffL
 
-    cmp-long v1, p0, v1
+    cmp-long v1, p0, v2
 
     if-nez v1, :cond_0
 
     .line 91
-    const/4 v0, 0x0
+    const/4 v1, 0x0
 
-    .line 103
-    :goto_0
-    return-object v0
+    return-object v1
 
     .line 94
     :cond_0
@@ -219,7 +216,7 @@
     move-result-object v0
 
     .line 95
-    .local v0, elp:Landroid/widget/ExpandableListPosition;
+    .local v0, "elp":Landroid/widget/ExpandableListPosition;
     invoke-static {p0, p1}, Landroid/widget/ExpandableListView;->getPackedPositionGroup(J)I
 
     move-result v1
@@ -231,10 +228,10 @@
 
     move-result v1
 
-    if-ne v1, v3, :cond_1
+    if-ne v1, v4, :cond_1
 
     .line 98
-    iput v3, v0, Landroid/widget/ExpandableListPosition;->type:I
+    iput v4, v0, Landroid/widget/ExpandableListPosition;->type:I
 
     .line 99
     invoke-static {p0, p1}, Landroid/widget/ExpandableListView;->getPackedPositionChild(J)I
@@ -243,7 +240,9 @@
 
     iput v1, v0, Landroid/widget/ExpandableListPosition;->childPos:I
 
-    goto :goto_0
+    .line 103
+    :goto_0
+    return-object v0
 
     .line 101
     :cond_1
@@ -272,7 +271,7 @@
     .line 70
     iput v0, p0, Landroid/widget/ExpandableListPosition;->type:I
 
-    .line 71
+    .line 66
     return-void
 .end method
 
@@ -297,10 +296,9 @@
 
     move-result-wide v0
 
-    .line 78
-    :goto_0
     return-wide v0
 
+    .line 78
     :cond_0
     iget v0, p0, Landroid/widget/ExpandableListPosition;->groupPos:I
 
@@ -308,7 +306,7 @@
 
     move-result-wide v0
 
-    goto :goto_0
+    return-wide v0
 .end method
 
 .method public recycle()V
@@ -336,21 +334,20 @@
     sget-object v0, Landroid/widget/ExpandableListPosition;->sPool:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 137
     :cond_0
     monitor-exit v1
 
-    .line 138
+    .line 132
     return-void
 
-    .line 137
+    .line 133
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

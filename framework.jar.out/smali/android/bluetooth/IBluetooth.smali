@@ -47,7 +47,7 @@
     .end annotation
 .end method
 
-.method public abstract createBond(Landroid/bluetooth/BluetoothDevice;)Z
+.method public abstract createBond(Landroid/bluetooth/BluetoothDevice;I)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -71,6 +71,14 @@
     .end annotation
 .end method
 
+.method public abstract dump(Landroid/os/ParcelFileDescriptor;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract enable()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -87,7 +95,23 @@
     .end annotation
 .end method
 
+.method public abstract factoryReset()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract fetchRemoteUuids(Landroid/bluetooth/BluetoothDevice;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getActivityEnergyInfoFromController()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -127,6 +151,14 @@
     .end annotation
 .end method
 
+.method public abstract getConnectionState(Landroid/bluetooth/BluetoothDevice;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getDiscoverableTimeout()I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -135,7 +167,23 @@
     .end annotation
 .end method
 
+.method public abstract getMessageAccessPermission(Landroid/bluetooth/BluetoothDevice;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getName()Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getPhonebookAccessPermission(Landroid/bluetooth/BluetoothDevice;)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -199,6 +247,14 @@
     .end annotation
 .end method
 
+.method public abstract getSimAccessPermission(Landroid/bluetooth/BluetoothDevice;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getState()I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -208,6 +264,14 @@
 .end method
 
 .method public abstract getUuids()[Landroid/os/ParcelUuid;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isActivityAndEnergyReportingSupported()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -231,6 +295,54 @@
     .end annotation
 .end method
 
+.method public abstract isMultiAdvertisementSupported()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isOffloadedFilteringSupported()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isOffloadedScanBatchingSupported()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isPeripheralModeSupported()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onBrEdrDown()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onLeServiceUp()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract registerCallback(Landroid/bluetooth/IBluetoothCallback;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -247,6 +359,22 @@
     .end annotation
 .end method
 
+.method public abstract reportActivityInfo()Landroid/bluetooth/BluetoothActivityEnergyInfo;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract sdpSearch(Landroid/bluetooth/BluetoothDevice;Landroid/os/ParcelUuid;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract sendConnectionStateChange(Landroid/bluetooth/BluetoothDevice;III)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -256,6 +384,14 @@
 .end method
 
 .method public abstract setDiscoverableTimeout(I)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setMessageAccessPermission(Landroid/bluetooth/BluetoothDevice;I)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -287,6 +423,14 @@
     .end annotation
 .end method
 
+.method public abstract setPhonebookAccessPermission(Landroid/bluetooth/BluetoothDevice;I)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract setPin(Landroid/bluetooth/BluetoothDevice;ZI[B)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -304,6 +448,14 @@
 .end method
 
 .method public abstract setScanMode(II)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setSimAccessPermission(Landroid/bluetooth/BluetoothDevice;I)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

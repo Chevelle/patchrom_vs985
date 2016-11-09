@@ -6,7 +6,7 @@
 # instance fields
 .field private mMatrix:Landroid/graphics/Matrix;
 
-.field native_instance:I
+.field native_instance:J
 
 
 # direct methods
@@ -20,11 +20,11 @@
     .line 31
     invoke-direct {p0}, Landroid/graphics/Camera;->nativeConstructor()V
 
-    .line 32
+    .line 30
     return-void
 .end method
 
-.method private native nativeApplyToCanvas(I)V
+.method private native nativeApplyToCanvas(J)V
 .end method
 
 .method private native nativeConstructor()V
@@ -33,14 +33,14 @@
 .method private native nativeDestructor()V
 .end method
 
-.method private native nativeGetMatrix(I)V
+.method private native nativeGetMatrix(J)V
 .end method
 
 
 # virtual methods
 .method public applyToCanvas(Landroid/graphics/Canvas;)V
-    .locals 1
-    .parameter "canvas"
+    .locals 2
+    .param p1, "canvas"    # Landroid/graphics/Canvas;
 
     .prologue
     .line 152
@@ -72,15 +72,17 @@
 
     invoke-virtual {p1, v0}, Landroid/graphics/Canvas;->concat(Landroid/graphics/Matrix;)V
 
-    .line 159
+    .line 151
     :goto_0
     return-void
 
     .line 157
     :cond_1
-    iget v0, p1, Landroid/graphics/Canvas;->mNativeCanvas:I
+    invoke-virtual {p1}, Landroid/graphics/Canvas;->getNativeCanvasWrapper()J
 
-    invoke-direct {p0, v0}, Landroid/graphics/Camera;->nativeApplyToCanvas(I)V
+    move-result-wide v0
+
+    invoke-direct {p0, v0, v1}, Landroid/graphics/Camera;->nativeApplyToCanvas(J)V
 
     goto :goto_0
 .end method
@@ -106,15 +108,17 @@
     .line 167
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 169
+    .line 163
     return-void
 
-    .line 167
+    .line 166
     :catchall_0
     move-exception v0
 
+    .line 167
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
+    .line 166
     throw v0
 .end method
 
@@ -128,16 +132,16 @@
 .end method
 
 .method public getMatrix(Landroid/graphics/Matrix;)V
-    .locals 1
-    .parameter "matrix"
+    .locals 2
+    .param p1, "matrix"    # Landroid/graphics/Matrix;
 
     .prologue
     .line 142
-    iget v0, p1, Landroid/graphics/Matrix;->native_instance:I
+    iget-wide v0, p1, Landroid/graphics/Matrix;->native_instance:J
 
-    invoke-direct {p0, v0}, Landroid/graphics/Camera;->nativeGetMatrix(I)V
+    invoke-direct {p0, v0, v1}, Landroid/graphics/Camera;->nativeGetMatrix(J)V
 
-    .line 143
+    .line 141
     return-void
 .end method
 

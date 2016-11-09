@@ -3,7 +3,7 @@
 .source "SearchDialog.java"
 
 # interfaces
-.implements Landroid/widget/SearchView$OnCloseListener;
+.implements Landroid/widget/SearchView$OnQueryTextListener;
 
 
 # annotations
@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/app/SearchDialog;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/app/SearchDialog;
 
     .prologue
-    .line 673
+    .line 674
     iput-object p1, p0, Landroid/app/SearchDialog$3;->this$0:Landroid/app/SearchDialog;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,17 +37,29 @@
 
 
 # virtual methods
-.method public onClose()Z
+.method public onQueryTextChange(Ljava/lang/String;)Z
     .locals 1
+    .param p1, "newText"    # Ljava/lang/String;
 
     .prologue
-    .line 676
+    .line 682
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public onQueryTextSubmit(Ljava/lang/String;)Z
+    .locals 1
+    .param p1, "query"    # Ljava/lang/String;
+
+    .prologue
+    .line 677
     iget-object v0, p0, Landroid/app/SearchDialog$3;->this$0:Landroid/app/SearchDialog;
 
-    #calls: Landroid/app/SearchDialog;->onClosePressed()Z
-    invoke-static {v0}, Landroid/app/SearchDialog;->access$000(Landroid/app/SearchDialog;)Z
+    invoke-virtual {v0}, Landroid/app/SearchDialog;->dismiss()V
 
-    move-result v0
+    .line 678
+    const/4 v0, 0x0
 
     return v0
 .end method

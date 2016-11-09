@@ -12,20 +12,20 @@
 # direct methods
 .method public constructor <init>(FF)V
     .locals 0
-    .parameter "startAngle"
-    .parameter "sweepAngle"
+    .param p1, "startAngle"    # F
+    .param p2, "sweepAngle"    # F
 
     .prologue
-    .line 41
+    .line 40
     invoke-direct {p0}, Landroid/graphics/drawable/shapes/RectShape;-><init>()V
 
-    .line 42
+    .line 41
     iput p1, p0, Landroid/graphics/drawable/shapes/ArcShape;->mStart:F
 
-    .line 43
+    .line 42
     iput p2, p0, Landroid/graphics/drawable/shapes/ArcShape;->mSweep:F
 
-    .line 44
+    .line 40
     return-void
 .end method
 
@@ -33,11 +33,11 @@
 # virtual methods
 .method public draw(Landroid/graphics/Canvas;Landroid/graphics/Paint;)V
     .locals 6
-    .parameter "canvas"
-    .parameter "paint"
+    .param p1, "canvas"    # Landroid/graphics/Canvas;
+    .param p2, "paint"    # Landroid/graphics/Paint;
 
     .prologue
-    .line 48
+    .line 47
     invoke-virtual {p0}, Landroid/graphics/drawable/shapes/ArcShape;->rect()Landroid/graphics/RectF;
 
     move-result-object v1
@@ -54,6 +54,6 @@
 
     invoke-virtual/range {v0 .. v5}, Landroid/graphics/Canvas;->drawArc(Landroid/graphics/RectF;FFZLandroid/graphics/Paint;)V
 
-    .line 49
+    .line 46
     return-void
 .end method

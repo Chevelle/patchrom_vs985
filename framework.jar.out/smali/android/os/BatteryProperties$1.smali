@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 74
+    .line 85
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,25 +42,25 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/os/BatteryProperties;
     .locals 2
-    .parameter "p"
+    .param p1, "p"    # Landroid/os/Parcel;
 
     .prologue
-    .line 76
+    .line 87
     new-instance v0, Landroid/os/BatteryProperties;
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p1, v1}, Landroid/os/BatteryProperties;-><init>(Landroid/os/Parcel;Landroid/os/BatteryProperties$1;)V
+    invoke-direct {v0, p1, v1}, Landroid/os/BatteryProperties;-><init>(Landroid/os/Parcel;Landroid/os/BatteryProperties;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "p"    # Landroid/os/Parcel;
 
     .prologue
-    .line 74
+    .line 86
     invoke-virtual {p0, p1}, Landroid/os/BatteryProperties$1;->createFromParcel(Landroid/os/Parcel;)Landroid/os/BatteryProperties;
 
     move-result-object v0
@@ -70,10 +70,10 @@
 
 .method public newArray(I)[Landroid/os/BatteryProperties;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 80
+    .line 91
     new-array v0, p1, [Landroid/os/BatteryProperties;
 
     return-object v0
@@ -81,10 +81,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 74
+    .line 90
     invoke-virtual {p0, p1}, Landroid/os/BatteryProperties$1;->newArray(I)[Landroid/os/BatteryProperties;
 
     move-result-object v0

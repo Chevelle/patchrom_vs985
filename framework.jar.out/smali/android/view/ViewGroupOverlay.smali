@@ -6,14 +6,14 @@
 # direct methods
 .method constructor <init>(Landroid/content/Context;Landroid/view/View;)V
     .locals 0
-    .parameter "context"
-    .parameter "hostView"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "hostView"    # Landroid/view/View;
 
     .prologue
     .line 36
     invoke-direct {p0, p1, p2}, Landroid/view/ViewOverlay;-><init>(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 37
+    .line 35
     return-void
 .end method
 
@@ -21,7 +21,7 @@
 # virtual methods
 .method public add(Landroid/view/View;)V
     .locals 1
-    .parameter "view"
+    .param p1, "view"    # Landroid/view/View;
 
     .prologue
     .line 63
@@ -29,13 +29,13 @@
 
     invoke-virtual {v0, p1}, Landroid/view/ViewOverlay$OverlayViewGroup;->add(Landroid/view/View;)V
 
-    .line 64
+    .line 62
     return-void
 .end method
 
 .method public remove(Landroid/view/View;)V
     .locals 1
-    .parameter "view"
+    .param p1, "view"    # Landroid/view/View;
 
     .prologue
     .line 74
@@ -43,6 +43,6 @@
 
     invoke-virtual {v0, p1}, Landroid/view/ViewOverlay$OverlayViewGroup;->remove(Landroid/view/View;)V
 
-    .line 75
+    .line 73
     return-void
 .end method

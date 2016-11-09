@@ -9,8 +9,8 @@
 
 # direct methods
 .method public constructor <init>(Landroid/graphics/PorterDuff$Mode;)V
-    .locals 1
-    .parameter "mode"
+    .locals 2
+    .param p1, "mode"    # Landroid/graphics/PorterDuff$Mode;
 
     .prologue
     .line 30
@@ -22,15 +22,15 @@
     .line 32
     iget v0, p1, Landroid/graphics/PorterDuff$Mode;->nativeInt:I
 
-    invoke-static {v0}, Landroid/graphics/PorterDuffXfermode;->nativeCreateXfermode(I)I
+    invoke-static {v0}, Landroid/graphics/PorterDuffXfermode;->nativeCreateXfermode(I)J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/graphics/PorterDuffXfermode;->native_instance:I
+    iput-wide v0, p0, Landroid/graphics/PorterDuffXfermode;->native_instance:J
 
-    .line 33
+    .line 30
     return-void
 .end method
 
-.method private static native nativeCreateXfermode(I)I
+.method private static native nativeCreateXfermode(I)J
 .end method

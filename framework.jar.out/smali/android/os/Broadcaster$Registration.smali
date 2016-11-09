@@ -31,7 +31,7 @@
 # direct methods
 .method private constructor <init>(Landroid/os/Broadcaster;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/os/Broadcaster;
 
     .prologue
     .line 202
@@ -42,13 +42,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Broadcaster;Landroid/os/Broadcaster$1;)V
+.method synthetic constructor <init>(Landroid/os/Broadcaster;Landroid/os/Broadcaster$Registration;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Landroid/os/Broadcaster;
 
     .prologue
-    .line 202
     invoke-direct {p0, p1}, Landroid/os/Broadcaster$Registration;-><init>(Landroid/os/Broadcaster;)V
 
     return-void

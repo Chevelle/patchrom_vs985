@@ -19,28 +19,25 @@
 
 
 # direct methods
-.method public constructor <init>(I)V
-    .locals 0
-    .parameter "level"
-
-    .prologue
-    .line 849
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 850
-    iput p1, p0, Landroid/text/HtmlToSpannedConverter$Header;->mLevel:I
-
-    .line 851
-    return-void
-.end method
-
-.method static synthetic access$900(Landroid/text/HtmlToSpannedConverter$Header;)I
+.method static synthetic -get0(Landroid/text/HtmlToSpannedConverter$Header;)I
     .locals 1
-    .parameter "x0"
 
-    .prologue
-    .line 846
     iget v0, p0, Landroid/text/HtmlToSpannedConverter$Header;->mLevel:I
 
     return v0
+.end method
+
+.method public constructor <init>(I)V
+    .locals 0
+    .param p1, "level"    # I
+
+    .prologue
+    .line 853
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 854
+    iput p1, p0, Landroid/text/HtmlToSpannedConverter$Header;->mLevel:I
+
+    .line 853
+    return-void
 .end method

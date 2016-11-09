@@ -19,6 +19,7 @@
 
     sput-object v0, Landroid/os/NullVibrator;->sInstance:Landroid/os/NullVibrator;
 
+    .line 26
     return-void
 .end method
 
@@ -29,7 +30,6 @@
     .line 29
     invoke-direct {p0}, Landroid/os/Vibrator;-><init>()V
 
-    .line 30
     return-void
 .end method
 
@@ -49,7 +49,7 @@
     .locals 0
 
     .prologue
-    .line 70
+    .line 60
     return-void
 .end method
 
@@ -63,63 +63,40 @@
     return v0
 .end method
 
-.method public vibrate(ILjava/lang/String;J)V
+.method public vibrate(ILjava/lang/String;JLandroid/media/AudioAttributes;)V
     .locals 0
-    .parameter "owningUid"
-    .parameter "owningPackage"
-    .parameter "milliseconds"
+    .param p1, "uid"    # I
+    .param p2, "opPkg"    # Ljava/lang/String;
+    .param p3, "milliseconds"    # J
+    .param p5, "attributes"    # Landroid/media/AudioAttributes;
 
     .prologue
-    .line 57
-    invoke-virtual {p0, p3, p4}, Landroid/os/NullVibrator;->vibrate(J)V
-
-    .line 58
+    .line 45
     return-void
 .end method
 
-.method public vibrate(ILjava/lang/String;[JI)V
-    .locals 0
-    .parameter "owningUid"
-    .parameter "owningPackage"
-    .parameter "pattern"
-    .parameter "repeat"
-
-    .prologue
-    .line 65
-    invoke-virtual {p0, p3, p4}, Landroid/os/NullVibrator;->vibrate([JI)V
-
-    .line 66
-    return-void
-.end method
-
-.method public vibrate(J)V
-    .locals 0
-    .parameter "milliseconds"
-
-    .prologue
-    .line 43
-    return-void
-.end method
-
-.method public vibrate([JI)V
+.method public vibrate(ILjava/lang/String;[JILandroid/media/AudioAttributes;)V
     .locals 1
-    .parameter "pattern"
-    .parameter "repeat"
+    .param p1, "uid"    # I
+    .param p2, "opPkg"    # Ljava/lang/String;
+    .param p3, "pattern"    # [J
+    .param p4, "repeat"    # I
+    .param p5, "attributes"    # Landroid/media/AudioAttributes;
 
     .prologue
-    .line 47
-    array-length v0, p1
+    .line 54
+    array-length v0, p3
 
-    if-lt p2, v0, :cond_0
+    if-lt p4, v0, :cond_0
 
-    .line 48
+    .line 55
     new-instance v0, Ljava/lang/ArrayIndexOutOfBoundsException;
 
     invoke-direct {v0}, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>()V
 
     throw v0
 
-    .line 50
+    .line 53
     :cond_0
     return-void
 .end method

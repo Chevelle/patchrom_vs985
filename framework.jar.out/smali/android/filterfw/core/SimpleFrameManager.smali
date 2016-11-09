@@ -11,20 +11,19 @@
     .line 33
     invoke-direct {p0}, Landroid/filterfw/core/FrameManager;-><init>()V
 
-    .line 34
     return-void
 .end method
 
 .method private createNewFrame(Landroid/filterfw/core/FrameFormat;)Landroid/filterfw/core/Frame;
     .locals 5
-    .parameter "format"
+    .param p1, "format"    # Landroid/filterfw/core/FrameFormat;
 
     .prologue
     .line 60
     const/4 v1, 0x0
 
     .line 61
-    .local v1, result:Landroid/filterfw/core/Frame;
+    .local v1, "result":Landroid/filterfw/core/Frame;
     invoke-virtual {p1}, Landroid/filterfw/core/FrameFormat;->getTarget()I
 
     move-result v2
@@ -38,12 +37,13 @@
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "Unsupported frame target type: "
+    const-string/jumbo v4, "Unsupported frame target type: "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
+    .line 84
     invoke-virtual {p1}, Landroid/filterfw/core/FrameFormat;->getTarget()I
 
     move-result v4
@@ -52,12 +52,15 @@
 
     move-result-object v4
 
+    .line 83
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
-    const-string v4, "!"
+    .line 84
+    const-string/jumbo v4, "!"
 
+    .line 83
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
@@ -74,33 +77,35 @@
     :pswitch_0
     new-instance v1, Landroid/filterfw/core/SimpleFrame;
 
-    .end local v1           #result:Landroid/filterfw/core/Frame;
+    .end local v1    # "result":Landroid/filterfw/core/Frame;
     invoke-direct {v1, p1, p0}, Landroid/filterfw/core/SimpleFrame;-><init>(Landroid/filterfw/core/FrameFormat;Landroid/filterfw/core/FrameManager;)V
 
     .line 86
-    .restart local v1       #result:Landroid/filterfw/core/Frame;
+    .local v1, "result":Landroid/filterfw/core/Frame;
     :goto_0
     return-object v1
 
     .line 67
+    .local v1, "result":Landroid/filterfw/core/Frame;
     :pswitch_1
     new-instance v1, Landroid/filterfw/core/NativeFrame;
 
-    .end local v1           #result:Landroid/filterfw/core/Frame;
+    .end local v1    # "result":Landroid/filterfw/core/Frame;
     invoke-direct {v1, p1, p0}, Landroid/filterfw/core/NativeFrame;-><init>(Landroid/filterfw/core/FrameFormat;Landroid/filterfw/core/FrameManager;)V
 
     .line 68
-    .restart local v1       #result:Landroid/filterfw/core/Frame;
+    .local v1, "result":Landroid/filterfw/core/Frame;
     goto :goto_0
 
     .line 71
+    .local v1, "result":Landroid/filterfw/core/Frame;
     :pswitch_2
     new-instance v0, Landroid/filterfw/core/GLFrame;
 
     invoke-direct {v0, p1, p0}, Landroid/filterfw/core/GLFrame;-><init>(Landroid/filterfw/core/FrameFormat;Landroid/filterfw/core/FrameManager;)V
 
     .line 72
-    .local v0, glFrame:Landroid/filterfw/core/GLFrame;
+    .local v0, "glFrame":Landroid/filterfw/core/GLFrame;
     invoke-virtual {p0}, Landroid/filterfw/core/SimpleFrameManager;->getGLEnvironment()Landroid/filterfw/core/GLEnvironment;
 
     move-result-object v2
@@ -111,18 +116,20 @@
     move-object v1, v0
 
     .line 74
+    .local v1, "result":Landroid/filterfw/core/Frame;
     goto :goto_0
 
     .line 78
-    .end local v0           #glFrame:Landroid/filterfw/core/GLFrame;
+    .end local v0    # "glFrame":Landroid/filterfw/core/GLFrame;
+    .local v1, "result":Landroid/filterfw/core/Frame;
     :pswitch_3
     new-instance v1, Landroid/filterfw/core/VertexFrame;
 
-    .end local v1           #result:Landroid/filterfw/core/Frame;
+    .end local v1    # "result":Landroid/filterfw/core/Frame;
     invoke-direct {v1, p1, p0}, Landroid/filterfw/core/VertexFrame;-><init>(Landroid/filterfw/core/FrameFormat;Landroid/filterfw/core/FrameManager;)V
 
     .line 79
-    .restart local v1       #result:Landroid/filterfw/core/Frame;
+    .local v1, "result":Landroid/filterfw/core/Frame;
     goto :goto_0
 
     .line 61
@@ -141,16 +148,16 @@
 # virtual methods
 .method public newBoundFrame(Landroid/filterfw/core/FrameFormat;IJ)Landroid/filterfw/core/Frame;
     .locals 7
-    .parameter "format"
-    .parameter "bindingType"
-    .parameter "bindingId"
+    .param p1, "format"    # Landroid/filterfw/core/FrameFormat;
+    .param p2, "bindingType"    # I
+    .param p3, "bindingId"    # J
 
     .prologue
     .line 43
     const/4 v6, 0x0
 
     .line 44
-    .local v6, result:Landroid/filterfw/core/Frame;
+    .local v6, "result":Landroid/filterfw/core/Frame;
     invoke-virtual {p1}, Landroid/filterfw/core/FrameFormat;->getTarget()I
 
     move-result v1
@@ -164,12 +171,13 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Attached frames are not supported for target type: "
+    const-string/jumbo v3, "Attached frames are not supported for target type: "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
+    .line 54
     invoke-virtual {p1}, Landroid/filterfw/core/FrameFormat;->getTarget()I
 
     move-result v3
@@ -178,12 +186,15 @@
 
     move-result-object v3
 
+    .line 53
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    const-string v3, "!"
+    .line 54
+    const-string/jumbo v3, "!"
 
+    .line 53
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -211,7 +222,7 @@
     invoke-direct/range {v0 .. v5}, Landroid/filterfw/core/GLFrame;-><init>(Landroid/filterfw/core/FrameFormat;Landroid/filterfw/core/FrameManager;IJ)V
 
     .line 47
-    .local v0, glFrame:Landroid/filterfw/core/GLFrame;
+    .local v0, "glFrame":Landroid/filterfw/core/GLFrame;
     invoke-virtual {p0}, Landroid/filterfw/core/SimpleFrameManager;->getGLEnvironment()Landroid/filterfw/core/GLEnvironment;
 
     move-result-object v1
@@ -222,6 +233,7 @@
     move-object v6, v0
 
     .line 56
+    .local v6, "result":Landroid/filterfw/core/Frame;
     return-object v6
 
     .line 44
@@ -235,7 +247,7 @@
 
 .method public newFrame(Landroid/filterfw/core/FrameFormat;)Landroid/filterfw/core/Frame;
     .locals 1
-    .parameter "format"
+    .param p1, "format"    # Landroid/filterfw/core/FrameFormat;
 
     .prologue
     .line 38
@@ -248,7 +260,7 @@
 
 .method public releaseFrame(Landroid/filterfw/core/Frame;)Landroid/filterfw/core/Frame;
     .locals 3
-    .parameter "frame"
+    .param p1, "frame"    # Landroid/filterfw/core/Frame;
 
     .prologue
     .line 97
@@ -257,44 +269,44 @@
     move-result v0
 
     .line 98
-    .local v0, refCount:I
-    if-nez v0, :cond_1
+    .local v0, "refCount":I
+    if-nez v0, :cond_0
 
     invoke-virtual {p1}, Landroid/filterfw/core/Frame;->hasNativeAllocation()Z
 
     move-result v1
 
-    if-eqz v1, :cond_1
+    if-eqz v1, :cond_0
 
     .line 99
     invoke-virtual {p1}, Landroid/filterfw/core/Frame;->releaseNativeAllocation()V
 
     .line 100
-    const/4 p1, 0x0
+    const/4 v1, 0x0
 
-    .line 104
-    .end local p1
-    :cond_0
-    return-object p1
+    return-object v1
 
     .line 101
-    .restart local p1
-    :cond_1
-    if-gez v0, :cond_0
+    :cond_0
+    if-gez v0, :cond_1
 
     .line 102
     new-instance v1, Ljava/lang/RuntimeException;
 
-    const-string v2, "Frame reference count dropped below 0!"
+    const-string/jumbo v2, "Frame reference count dropped below 0!"
 
     invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v1
+
+    .line 104
+    :cond_1
+    return-object p1
 .end method
 
 .method public retainFrame(Landroid/filterfw/core/Frame;)Landroid/filterfw/core/Frame;
     .locals 0
-    .parameter "frame"
+    .param p1, "frame"    # Landroid/filterfw/core/Frame;
 
     .prologue
     .line 91

@@ -17,7 +17,7 @@
     .locals 0
 
     .prologue
-    .line 28
+    .line 30
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -34,7 +34,7 @@
     .end annotation
 
     .prologue
-    .line 98
+    .line 106
     invoke-super {p0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
 
     move-result-object v0
@@ -53,7 +53,7 @@
     .end annotation
 
     .prologue
-    .line 28
+    .line 105
     invoke-virtual {p0}, Landroid/graphics/drawable/shapes/Shape;->clone()Landroid/graphics/drawable/shapes/Shape;
 
     move-result-object v0
@@ -68,17 +68,26 @@
     .locals 1
 
     .prologue
-    .line 43
+    .line 45
     iget v0, p0, Landroid/graphics/drawable/shapes/Shape;->mHeight:F
 
     return v0
+.end method
+
+.method public getOutline(Landroid/graphics/Outline;)V
+    .locals 0
+    .param p1, "outline"    # Landroid/graphics/Outline;
+
+    .prologue
+    .line 102
+    return-void
 .end method
 
 .method public final getWidth()F
     .locals 1
 
     .prologue
-    .line 36
+    .line 38
     iget v0, p0, Landroid/graphics/drawable/shapes/Shape;->mWidth:F
 
     return v0
@@ -96,8 +105,8 @@
 
 .method protected onResize(FF)V
     .locals 0
-    .parameter "width"
-    .parameter "height"
+    .param p1, "width"    # F
+    .param p2, "height"    # F
 
     .prologue
     .line 94
@@ -106,8 +115,8 @@
 
 .method public final resize(FF)V
     .locals 2
-    .parameter "width"
-    .parameter "height"
+    .param p1, "width"    # F
+    .param p2, "height"    # F
 
     .prologue
     const/4 v1, 0x0
@@ -153,7 +162,7 @@
     .line 74
     invoke-virtual {p0, p1, p2}, Landroid/graphics/drawable/shapes/Shape;->onResize(FF)V
 
-    .line 76
+    .line 64
     :cond_3
     return-void
 .end method

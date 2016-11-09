@@ -16,12 +16,12 @@
 
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "error"
+    .param p1, "error"    # Ljava/lang/String;
 
     .prologue
     .line 31
     invoke-direct {p0, p1}, Landroid/database/sqlite/SQLiteException;-><init>(Ljava/lang/String;)V
 
-    .line 32
+    .line 30
     return-void
 .end method

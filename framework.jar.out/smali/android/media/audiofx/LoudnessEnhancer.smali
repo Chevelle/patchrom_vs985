@@ -6,10 +6,9 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/media/audiofx/LoudnessEnhancer$1;,
-        Landroid/media/audiofx/LoudnessEnhancer$Settings;,
+        Landroid/media/audiofx/LoudnessEnhancer$OnParameterChangeListener;,
         Landroid/media/audiofx/LoudnessEnhancer$BaseParameterListener;,
-        Landroid/media/audiofx/LoudnessEnhancer$OnParameterChangeListener;
+        Landroid/media/audiofx/LoudnessEnhancer$Settings;
     }
 .end annotation
 
@@ -29,9 +28,25 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/media/audiofx/LoudnessEnhancer;)Landroid/media/audiofx/LoudnessEnhancer$OnParameterChangeListener;
+    .locals 1
+
+    iget-object v0, p0, Landroid/media/audiofx/LoudnessEnhancer;->mParamListener:Landroid/media/audiofx/LoudnessEnhancer$OnParameterChangeListener;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Landroid/media/audiofx/LoudnessEnhancer;)Ljava/lang/Object;
+    .locals 1
+
+    iget-object v0, p0, Landroid/media/audiofx/LoudnessEnhancer;->mParamListenerLock:Ljava/lang/Object;
+
+    return-object v0
+.end method
+
 .method public constructor <init>(I)V
     .locals 4
-    .parameter "audioSession"
+    .param p1, "audioSession"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -44,12 +59,12 @@
     .prologue
     const/4 v3, 0x0
 
+    const/4 v2, 0x0
+
     .line 80
     sget-object v0, Landroid/media/audiofx/LoudnessEnhancer;->EFFECT_TYPE_LOUDNESS_ENHANCER:Ljava/util/UUID;
 
     sget-object v1, Landroid/media/audiofx/LoudnessEnhancer;->EFFECT_TYPE_NULL:Ljava/util/UUID;
-
-    const/4 v2, 0x0
 
     invoke-direct {p0, v0, v1, v2, p1}, Landroid/media/audiofx/AudioEffect;-><init>(Ljava/util/UUID;Ljava/util/UUID;II)V
 
@@ -70,21 +85,21 @@
     if-nez p1, :cond_0
 
     .line 83
-    const-string v0, "LoudnessEnhancer"
+    const-string/jumbo v0, "LoudnessEnhancer"
 
-    const-string v1, "WARNING: attaching a LoudnessEnhancer to global output mix is deprecated!"
+    const-string/jumbo v1, "WARNING: attaching a LoudnessEnhancer to global output mix is deprecated!"
 
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 85
+    .line 79
     :cond_0
     return-void
 .end method
 
 .method public constructor <init>(II)V
     .locals 3
-    .parameter "priority"
-    .parameter "audioSession"
+    .param p1, "priority"    # I
+    .param p2, "audioSession"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -121,37 +136,15 @@
     if-nez p2, :cond_0
 
     .line 109
-    const-string v0, "LoudnessEnhancer"
+    const-string/jumbo v0, "LoudnessEnhancer"
 
-    const-string v1, "WARNING: attaching a LoudnessEnhancer to global output mix is deprecated!"
+    const-string/jumbo v1, "WARNING: attaching a LoudnessEnhancer to global output mix is deprecated!"
 
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 111
+    .line 105
     :cond_0
     return-void
-.end method
-
-.method static synthetic access$000(Landroid/media/audiofx/LoudnessEnhancer;)Ljava/lang/Object;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 39
-    iget-object v0, p0, Landroid/media/audiofx/LoudnessEnhancer;->mParamListenerLock:Ljava/lang/Object;
-
-    return-object v0
-.end method
-
-.method static synthetic access$100(Landroid/media/audiofx/LoudnessEnhancer;)Landroid/media/audiofx/LoudnessEnhancer$OnParameterChangeListener;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 39
-    iget-object v0, p0, Landroid/media/audiofx/LoudnessEnhancer;->mParamListener:Landroid/media/audiofx/LoudnessEnhancer$OnParameterChangeListener;
-
-    return-object v0
 .end method
 
 
@@ -175,13 +168,13 @@
     invoke-direct {v0}, Landroid/media/audiofx/LoudnessEnhancer$Settings;-><init>()V
 
     .line 271
-    .local v0, settings:Landroid/media/audiofx/LoudnessEnhancer$Settings;
+    .local v0, "settings":Landroid/media/audiofx/LoudnessEnhancer$Settings;
     const/4 v2, 0x1
 
     new-array v1, v2, [I
 
     .line 272
-    .local v1, value:[I
+    .local v1, "value":[I
     invoke-virtual {p0, v3, v1}, Landroid/media/audiofx/LoudnessEnhancer;->getParameter(I[I)I
 
     move-result v2
@@ -216,7 +209,7 @@
     new-array v0, v1, [I
 
     .line 137
-    .local v0, value:[I
+    .local v0, "value":[I
     invoke-virtual {p0, v2, v0}, Landroid/media/audiofx/LoudnessEnhancer;->getParameter(I[I)I
 
     move-result v1
@@ -233,7 +226,7 @@
 
 .method public setParameterListener(Landroid/media/audiofx/LoudnessEnhancer$OnParameterChangeListener;)V
     .locals 3
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/media/audiofx/LoudnessEnhancer$OnParameterChangeListener;
 
     .prologue
     .line 200
@@ -252,7 +245,7 @@
 
     const/4 v2, 0x0
 
-    invoke-direct {v0, p0, v2}, Landroid/media/audiofx/LoudnessEnhancer$BaseParameterListener;-><init>(Landroid/media/audiofx/LoudnessEnhancer;Landroid/media/audiofx/LoudnessEnhancer$1;)V
+    invoke-direct {v0, p0, v2}, Landroid/media/audiofx/LoudnessEnhancer$BaseParameterListener;-><init>(Landroid/media/audiofx/LoudnessEnhancer;Landroid/media/audiofx/LoudnessEnhancer$BaseParameterListener;)V
 
     iput-object v0, p0, Landroid/media/audiofx/LoudnessEnhancer;->mBaseParamListener:Landroid/media/audiofx/LoudnessEnhancer$BaseParameterListener;
 
@@ -264,27 +257,26 @@
     .line 205
     :cond_0
     iput-object p1, p0, Landroid/media/audiofx/LoudnessEnhancer;->mParamListener:Landroid/media/audiofx/LoudnessEnhancer$OnParameterChangeListener;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 206
     monitor-exit v1
 
-    .line 207
+    .line 199
     return-void
 
-    .line 206
+    .line 200
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public setProperties(Landroid/media/audiofx/LoudnessEnhancer$Settings;)V
     .locals 2
-    .parameter "settings"
+    .param p1, "settings"    # Landroid/media/audiofx/LoudnessEnhancer$Settings;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -295,23 +287,23 @@
 
     .prologue
     .line 288
-    const/4 v0, 0x0
+    iget v0, p1, Landroid/media/audiofx/LoudnessEnhancer$Settings;->targetGainmB:I
 
-    iget v1, p1, Landroid/media/audiofx/LoudnessEnhancer$Settings;->targetGainmB:I
+    const/4 v1, 0x0
 
-    invoke-virtual {p0, v0, v1}, Landroid/media/audiofx/LoudnessEnhancer;->setParameter(II)I
+    invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/LoudnessEnhancer;->setParameter(II)I
 
     move-result v0
 
     invoke-virtual {p0, v0}, Landroid/media/audiofx/LoudnessEnhancer;->checkStatus(I)V
 
-    .line 289
+    .line 287
     return-void
 .end method
 
 .method public setTargetGain(I)V
     .locals 1
-    .parameter "gainmB"
+    .param p1, "gainmB"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -330,6 +322,6 @@
 
     invoke-virtual {p0, v0}, Landroid/media/audiofx/LoudnessEnhancer;->checkStatus(I)V
 
-    .line 125
+    .line 123
     return-void
 .end method

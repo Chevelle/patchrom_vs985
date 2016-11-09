@@ -7,8 +7,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/view/inputmethod/EditorInfo$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -89,13 +97,15 @@
     .locals 1
 
     .prologue
-    .line 410
+    .line 425
     new-instance v0, Landroid/view/inputmethod/EditorInfo$1;
 
     invoke-direct {v0}, Landroid/view/inputmethod/EditorInfo$1;-><init>()V
 
+    .line 424
     sput-object v0, Landroid/view/inputmethod/EditorInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 31
     return-void
 .end method
 
@@ -127,15 +137,16 @@
     .line 243
     iput v0, p0, Landroid/view/inputmethod/EditorInfo;->actionId:I
 
-    .line 251
+    .line 259
     iput v1, p0, Landroid/view/inputmethod/EditorInfo;->initialSelStart:I
 
-    .line 259
+    .line 275
     iput v1, p0, Landroid/view/inputmethod/EditorInfo;->initialSelEnd:I
 
-    .line 270
+    .line 286
     iput v0, p0, Landroid/view/inputmethod/EditorInfo;->initialCapsMode:I
 
+    .line 31
     return-void
 .end method
 
@@ -145,7 +156,7 @@
     .locals 1
 
     .prologue
-    .line 436
+    .line 451
     const/4 v0, 0x0
 
     return v0
@@ -153,11 +164,11 @@
 
 .method public dump(Landroid/util/Printer;Ljava/lang/String;)V
     .locals 2
-    .parameter "pw"
-    .parameter "prefix"
+    .param p1, "pw"    # Landroid/util/Printer;
+    .param p2, "prefix"    # Ljava/lang/String;
 
     .prologue
-    .line 367
+    .line 381
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -166,7 +177,7 @@
 
     move-result-object v0
 
-    const-string v1, "inputType=0x"
+    const-string/jumbo v1, "inputType=0x"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -182,30 +193,38 @@
 
     move-result-object v0
 
-    const-string v1, " imeOptions=0x"
+    .line 382
+    const-string/jumbo v1, " imeOptions=0x"
 
+    .line 381
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 382
     iget v1, p0, Landroid/view/inputmethod/EditorInfo;->imeOptions:I
 
     invoke-static {v1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
     move-result-object v1
 
+    .line 381
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " privateImeOptions="
+    .line 383
+    const-string/jumbo v1, " privateImeOptions="
 
+    .line 381
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 383
     iget-object v1, p0, Landroid/view/inputmethod/EditorInfo;->privateImeOptions:Ljava/lang/String;
 
+    .line 381
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -216,7 +235,7 @@
 
     invoke-interface {p1, v0}, Landroid/util/Printer;->println(Ljava/lang/String;)V
 
-    .line 370
+    .line 384
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -225,7 +244,7 @@
 
     move-result-object v0
 
-    const-string v1, "actionLabel="
+    const-string/jumbo v1, "actionLabel="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -233,18 +252,22 @@
 
     iget-object v1, p0, Landroid/view/inputmethod/EditorInfo;->actionLabel:Ljava/lang/CharSequence;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " actionId="
+    .line 385
+    const-string/jumbo v1, " actionId="
 
+    .line 384
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 385
     iget v1, p0, Landroid/view/inputmethod/EditorInfo;->actionId:I
 
+    .line 384
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -255,7 +278,7 @@
 
     invoke-interface {p1, v0}, Landroid/util/Printer;->println(Ljava/lang/String;)V
 
-    .line 372
+    .line 386
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -264,7 +287,7 @@
 
     move-result-object v0
 
-    const-string v1, "initialSelStart="
+    const-string/jumbo v1, "initialSelStart="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -276,30 +299,38 @@
 
     move-result-object v0
 
-    const-string v1, " initialSelEnd="
+    .line 387
+    const-string/jumbo v1, " initialSelEnd="
 
+    .line 386
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 387
     iget v1, p0, Landroid/view/inputmethod/EditorInfo;->initialSelEnd:I
 
+    .line 386
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " initialCapsMode=0x"
+    .line 388
+    const-string/jumbo v1, " initialCapsMode=0x"
 
+    .line 386
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 389
     iget v1, p0, Landroid/view/inputmethod/EditorInfo;->initialCapsMode:I
 
     invoke-static {v1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
     move-result-object v1
 
+    .line 386
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -310,7 +341,7 @@
 
     invoke-interface {p1, v0}, Landroid/util/Printer;->println(Ljava/lang/String;)V
 
-    .line 376
+    .line 390
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -319,7 +350,7 @@
 
     move-result-object v0
 
-    const-string v1, "hintText="
+    const-string/jumbo v1, "hintText="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -327,19 +358,23 @@
 
     iget-object v1, p0, Landroid/view/inputmethod/EditorInfo;->hintText:Ljava/lang/CharSequence;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " label="
+    .line 391
+    const-string/jumbo v1, " label="
 
+    .line 390
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 391
     iget-object v1, p0, Landroid/view/inputmethod/EditorInfo;->label:Ljava/lang/CharSequence;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    .line 390
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
@@ -349,7 +384,7 @@
 
     invoke-interface {p1, v0}, Landroid/util/Printer;->println(Ljava/lang/String;)V
 
-    .line 378
+    .line 392
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -370,26 +405,34 @@
 
     move-result-object v0
 
-    const-string v1, " fieldId="
+    .line 393
+    const-string/jumbo v1, " fieldId="
 
+    .line 392
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 393
     iget v1, p0, Landroid/view/inputmethod/EditorInfo;->fieldId:I
 
+    .line 392
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " fieldName="
+    .line 394
+    const-string/jumbo v1, " fieldName="
 
+    .line 392
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 394
     iget-object v1, p0, Landroid/view/inputmethod/EditorInfo;->fieldName:Ljava/lang/String;
 
+    .line 392
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -400,7 +443,7 @@
 
     invoke-interface {p1, v0}, Landroid/util/Printer;->println(Ljava/lang/String;)V
 
-    .line 381
+    .line 395
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -409,7 +452,7 @@
 
     move-result-object v0
 
-    const-string v1, "extras="
+    const-string/jumbo v1, "extras="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -427,114 +470,74 @@
 
     invoke-interface {p1, v0}, Landroid/util/Printer;->println(Ljava/lang/String;)V
 
-    .line 382
+    .line 380
     return-void
-.end method
-
-.method public final formalTextInput(Z)V
-    .locals 2
-    .parameter "forceLong"
-
-    .prologue
-    .line 354
-    if-eqz p1, :cond_0
-
-    .line 355
-    iget v0, p0, Landroid/view/inputmethod/EditorInfo;->inputType:I
-
-    and-int/lit16 v0, v0, 0xfff
-
-    packed-switch v0, :pswitch_data_0
-
-    .line 361
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 357
-    :pswitch_0
-    iget v0, p0, Landroid/view/inputmethod/EditorInfo;->inputType:I
-
-    const v1, 0xfff000
-
-    and-int/2addr v0, v1
-
-    or-int/lit8 v0, v0, 0x51
-
-    iput v0, p0, Landroid/view/inputmethod/EditorInfo;->inputType:I
-
-    goto :goto_0
-
-    .line 355
-    nop
-
-    :pswitch_data_0
-    .packed-switch 0x41
-        :pswitch_0
-    .end packed-switch
 .end method
 
 .method public final makeCompatible(I)V
     .locals 2
-    .parameter "targetSdkVersion"
+    .param p1, "targetSdkVersion"    # I
 
     .prologue
     const v1, 0xfff000
 
-    .line 329
+    .line 358
     const/16 v0, 0xb
 
     if-ge p1, v0, :cond_0
 
-    .line 330
+    .line 359
     iget v0, p0, Landroid/view/inputmethod/EditorInfo;->inputType:I
 
     and-int/lit16 v0, v0, 0xfff
 
     sparse-switch v0, :sswitch_data_0
 
-    .line 346
+    .line 357
     :cond_0
     :goto_0
     return-void
 
-    .line 332
+    .line 362
     :sswitch_0
     iget v0, p0, Landroid/view/inputmethod/EditorInfo;->inputType:I
 
     and-int/2addr v0, v1
 
+    .line 361
     or-int/lit8 v0, v0, 0x21
 
     iput v0, p0, Landroid/view/inputmethod/EditorInfo;->inputType:I
 
     goto :goto_0
 
-    .line 336
+    .line 366
     :sswitch_1
     iget v0, p0, Landroid/view/inputmethod/EditorInfo;->inputType:I
 
     and-int/2addr v0, v1
 
+    .line 365
     or-int/lit16 v0, v0, 0x81
 
     iput v0, p0, Landroid/view/inputmethod/EditorInfo;->inputType:I
 
     goto :goto_0
 
-    .line 341
+    .line 371
     :sswitch_2
     iget v0, p0, Landroid/view/inputmethod/EditorInfo;->inputType:I
 
     and-int/2addr v0, v1
 
+    .line 370
     or-int/lit8 v0, v0, 0x2
 
     iput v0, p0, Landroid/view/inputmethod/EditorInfo;->inputType:I
 
     goto :goto_0
 
-    .line 330
+    .line 359
     nop
 
     :sswitch_data_0
@@ -548,80 +551,80 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 391
+    .line 405
     iget v0, p0, Landroid/view/inputmethod/EditorInfo;->inputType:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 392
+    .line 406
     iget v0, p0, Landroid/view/inputmethod/EditorInfo;->imeOptions:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 393
+    .line 407
     iget-object v0, p0, Landroid/view/inputmethod/EditorInfo;->privateImeOptions:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 394
+    .line 408
     iget-object v0, p0, Landroid/view/inputmethod/EditorInfo;->actionLabel:Ljava/lang/CharSequence;
 
     invoke-static {v0, p1, p2}, Landroid/text/TextUtils;->writeToParcel(Ljava/lang/CharSequence;Landroid/os/Parcel;I)V
 
-    .line 395
+    .line 409
     iget v0, p0, Landroid/view/inputmethod/EditorInfo;->actionId:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 396
+    .line 410
     iget v0, p0, Landroid/view/inputmethod/EditorInfo;->initialSelStart:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 397
+    .line 411
     iget v0, p0, Landroid/view/inputmethod/EditorInfo;->initialSelEnd:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 398
+    .line 412
     iget v0, p0, Landroid/view/inputmethod/EditorInfo;->initialCapsMode:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 399
+    .line 413
     iget-object v0, p0, Landroid/view/inputmethod/EditorInfo;->hintText:Ljava/lang/CharSequence;
 
     invoke-static {v0, p1, p2}, Landroid/text/TextUtils;->writeToParcel(Ljava/lang/CharSequence;Landroid/os/Parcel;I)V
 
-    .line 400
+    .line 414
     iget-object v0, p0, Landroid/view/inputmethod/EditorInfo;->label:Ljava/lang/CharSequence;
 
     invoke-static {v0, p1, p2}, Landroid/text/TextUtils;->writeToParcel(Ljava/lang/CharSequence;Landroid/os/Parcel;I)V
 
-    .line 401
+    .line 415
     iget-object v0, p0, Landroid/view/inputmethod/EditorInfo;->packageName:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 402
+    .line 416
     iget v0, p0, Landroid/view/inputmethod/EditorInfo;->fieldId:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 403
+    .line 417
     iget-object v0, p0, Landroid/view/inputmethod/EditorInfo;->fieldName:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 404
+    .line 418
     iget-object v0, p0, Landroid/view/inputmethod/EditorInfo;->extras:Landroid/os/Bundle;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeBundle(Landroid/os/Bundle;)V
 
-    .line 405
+    .line 404
     return-void
 .end method

@@ -9,13 +9,14 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/media/RemoteDisplayState$RemoteDisplayInfo;
+        Landroid/media/RemoteDisplayState$RemoteDisplayInfo;,
+        Landroid/media/RemoteDisplayState$1;
     }
 .end annotation
 
 
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -53,13 +54,15 @@
     .locals 1
 
     .prologue
-    .line 76
+    .line 77
     new-instance v0, Landroid/media/RemoteDisplayState$1;
 
     invoke-direct {v0}, Landroid/media/RemoteDisplayState$1;-><init>()V
 
+    .line 76
     sput-object v0, Landroid/media/RemoteDisplayState;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 31
     return-void
 .end method
 
@@ -77,13 +80,13 @@
 
     iput-object v0, p0, Landroid/media/RemoteDisplayState;->displays:Ljava/util/ArrayList;
 
-    .line 47
+    .line 45
     return-void
 .end method
 
 .method constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "src"
+    .param p1, "src"    # Landroid/os/Parcel;
 
     .prologue
     .line 49
@@ -98,7 +101,7 @@
 
     iput-object v0, p0, Landroid/media/RemoteDisplayState;->displays:Ljava/util/ArrayList;
 
-    .line 51
+    .line 49
     return-void
 .end method
 
@@ -125,11 +128,8 @@
 
     if-nez v2, :cond_0
 
-    move v2, v3
-
-    .line 63
-    :goto_0
-    return v2
+    .line 55
+    return v3
 
     .line 57
     :cond_0
@@ -140,11 +140,11 @@
     move-result v0
 
     .line 58
-    .local v0, count:I
+    .local v0, "count":I
     const/4 v1, 0x0
 
-    .local v1, i:I
-    :goto_1
+    .local v1, "i":I
+    :goto_0
     if-ge v1, v0, :cond_2
 
     .line 59
@@ -162,28 +162,26 @@
 
     if-nez v2, :cond_1
 
-    move v2, v3
-
     .line 60
-    goto :goto_0
+    return v3
 
     .line 58
     :cond_1
     add-int/lit8 v1, v1, 0x1
 
-    goto :goto_1
+    goto :goto_0
 
     .line 63
     :cond_2
     const/4 v2, 0x1
 
-    goto :goto_0
+    return v2
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 73
@@ -191,6 +189,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeTypedList(Ljava/util/List;)V
 
-    .line 74
+    .line 72
     return-void
 .end method

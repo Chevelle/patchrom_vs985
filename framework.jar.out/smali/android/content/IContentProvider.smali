@@ -135,7 +135,7 @@
     .end annotation
 .end method
 
-.method public abstract openFile(Ljava/lang/String;Landroid/net/Uri;Ljava/lang/String;Landroid/os/ICancellationSignal;)Landroid/os/ParcelFileDescriptor;
+.method public abstract openFile(Ljava/lang/String;Landroid/net/Uri;Ljava/lang/String;Landroid/os/ICancellationSignal;Landroid/os/IBinder;)Landroid/os/ParcelFileDescriptor;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;,

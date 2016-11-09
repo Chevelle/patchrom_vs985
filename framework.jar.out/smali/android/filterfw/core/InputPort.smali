@@ -10,14 +10,14 @@
 # direct methods
 .method public constructor <init>(Landroid/filterfw/core/Filter;Ljava/lang/String;)V
     .locals 0
-    .parameter "filter"
-    .parameter "name"
+    .param p1, "filter"    # Landroid/filterfw/core/Filter;
+    .param p2, "name"    # Ljava/lang/String;
 
     .prologue
     .line 28
     invoke-direct {p0, p1, p2}, Landroid/filterfw/core/FilterPort;-><init>(Landroid/filterfw/core/Filter;Ljava/lang/String;)V
 
-    .line 29
+    .line 27
     return-void
 .end method
 
@@ -32,15 +32,15 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_0
 
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
     :goto_0
     return v0
 
     :cond_0
-    const/4 v0, 0x0
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method
@@ -71,54 +71,55 @@
     :cond_0
     invoke-super {p0}, Landroid/filterfw/core/FilterPort;->close()V
 
-    .line 54
+    .line 49
     return-void
 .end method
 
 .method public filterMustClose()Z
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v0, 0x0
+
     .line 73
     invoke-virtual {p0}, Landroid/filterfw/core/InputPort;->isOpen()Z
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_0
 
     invoke-virtual {p0}, Landroid/filterfw/core/InputPort;->isBlocking()Z
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
     invoke-virtual {p0}, Landroid/filterfw/core/InputPort;->hasFrame()Z
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_0
+    if-eqz v1, :cond_1
 
-    const/4 v0, 0x1
-
+    :cond_0
     :goto_0
     return v0
 
-    :cond_0
-    const/4 v0, 0x0
+    :cond_1
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method
 
 .method public getSourceFilter()Landroid/filterfw/core/Filter;
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 61
-    iget-object v0, p0, Landroid/filterfw/core/InputPort;->mSourcePort:Landroid/filterfw/core/OutputPort;
-
-    if-nez v0, :cond_0
-
     const/4 v0, 0x0
+
+    .line 61
+    iget-object v1, p0, Landroid/filterfw/core/InputPort;->mSourcePort:Landroid/filterfw/core/OutputPort;
+
+    if-nez v1, :cond_0
 
     :goto_0
     return-object v0
@@ -200,32 +201,28 @@
 .end method
 
 .method public isReady()Z
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v0, 0x1
+
     .line 77
     invoke-virtual {p0}, Landroid/filterfw/core/InputPort;->hasFrame()Z
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_0
 
     invoke-virtual {p0}, Landroid/filterfw/core/InputPort;->isBlocking()Z
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_1
+    if-eqz v1, :cond_0
 
-    :cond_0
-    const/4 v0, 0x1
-
-    :goto_0
-    return v0
-
-    :cond_1
     const/4 v0, 0x0
 
-    goto :goto_0
+    :cond_0
+    return v0
 .end method
 
 .method public open()V
@@ -246,21 +243,25 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_1
+
+    .line 42
+    :cond_0
+    :goto_0
+    return-void
 
     .line 45
+    :cond_1
     iget-object v0, p0, Landroid/filterfw/core/InputPort;->mSourcePort:Landroid/filterfw/core/OutputPort;
 
     invoke-virtual {v0}, Landroid/filterfw/core/OutputPort;->open()V
 
-    .line 47
-    :cond_0
-    return-void
+    goto :goto_0
 .end method
 
 .method public setSourcePort(Landroid/filterfw/core/OutputPort;)V
     .locals 3
-    .parameter "source"
+    .param p1, "source"    # Landroid/filterfw/core/OutputPort;
 
     .prologue
     .line 32
@@ -279,7 +280,7 @@
 
     move-result-object v1
 
-    const-string v2, " already connected to "
+    const-string/jumbo v2, " already connected to "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -291,7 +292,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -309,7 +310,7 @@
     :cond_0
     iput-object p1, p0, Landroid/filterfw/core/InputPort;->mSourcePort:Landroid/filterfw/core/OutputPort;
 
-    .line 36
+    .line 31
     return-void
 .end method
 

@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/view/inputmethod/CompletionInfo$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -34,21 +42,23 @@
     .locals 1
 
     .prologue
-    .line 156
+    .line 157
     new-instance v0, Landroid/view/inputmethod/CompletionInfo$1;
 
     invoke-direct {v0}, Landroid/view/inputmethod/CompletionInfo$1;-><init>()V
 
+    .line 156
     sput-object v0, Landroid/view/inputmethod/CompletionInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 51
     return-void
 .end method
 
 .method public constructor <init>(JILjava/lang/CharSequence;)V
     .locals 1
-    .parameter "id"
-    .parameter "index"
-    .parameter "text"
+    .param p1, "id"    # J
+    .param p3, "index"    # I
+    .param p4, "text"    # Ljava/lang/CharSequence;
 
     .prologue
     .line 66
@@ -68,16 +78,16 @@
 
     iput-object v0, p0, Landroid/view/inputmethod/CompletionInfo;->mLabel:Ljava/lang/CharSequence;
 
-    .line 71
+    .line 66
     return-void
 .end method
 
 .method public constructor <init>(JILjava/lang/CharSequence;Ljava/lang/CharSequence;)V
-    .locals 0
-    .parameter "id"
-    .parameter "index"
-    .parameter "text"
-    .parameter "label"
+    .locals 1
+    .param p1, "id"    # J
+    .param p3, "index"    # I
+    .param p4, "text"    # Ljava/lang/CharSequence;
+    .param p5, "label"    # Ljava/lang/CharSequence;
 
     .prologue
     .line 87
@@ -95,13 +105,13 @@
     .line 91
     iput-object p5, p0, Landroid/view/inputmethod/CompletionInfo;->mLabel:Ljava/lang/CharSequence;
 
-    .line 92
+    .line 87
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 94
@@ -143,17 +153,15 @@
 
     iput-object v0, p0, Landroid/view/inputmethod/CompletionInfo;->mLabel:Ljava/lang/CharSequence;
 
-    .line 99
+    .line 94
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/view/inputmethod/CompletionInfo$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/view/inputmethod/CompletionInfo;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 51
     invoke-direct {p0, p1}, Landroid/view/inputmethod/CompletionInfo;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -212,7 +220,7 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 3
+    .locals 4
 
     .prologue
     .line 136
@@ -220,7 +228,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "CompletionInfo{#"
+    const-string/jumbo v1, "CompletionInfo{#"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -232,7 +240,7 @@
 
     move-result-object v0
 
-    const-string v1, " \""
+    const-string/jumbo v1, " \""
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -240,36 +248,46 @@
 
     iget-object v1, p0, Landroid/view/inputmethod/CompletionInfo;->mText:Ljava/lang/CharSequence;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "\" id="
+    .line 137
+    const-string/jumbo v1, "\" id="
 
+    .line 136
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    iget-wide v1, p0, Landroid/view/inputmethod/CompletionInfo;->mId:J
+    .line 137
+    iget-wide v2, p0, Landroid/view/inputmethod/CompletionInfo;->mId:J
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    .line 136
+    invoke-virtual {v0, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " label="
+    .line 137
+    const-string/jumbo v1, " label="
 
+    .line 136
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 137
     iget-object v1, p0, Landroid/view/inputmethod/CompletionInfo;->mLabel:Ljava/lang/CharSequence;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    .line 136
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 137
     const-string/jumbo v1, "}"
 
+    .line 136
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -283,8 +301,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 2
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 147
@@ -307,6 +325,6 @@
 
     invoke-static {v0, p1, p2}, Landroid/text/TextUtils;->writeToParcel(Ljava/lang/CharSequence;Landroid/os/Parcel;I)V
 
-    .line 151
+    .line 146
     return-void
 .end method

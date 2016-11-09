@@ -28,9 +28,9 @@
 # direct methods
 .method constructor <init>(Landroid/database/sqlite/SQLiteConnectionPool;Landroid/database/sqlite/SQLiteConnectionPool$ConnectionWaiter;I)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/database/sqlite/SQLiteConnectionPool;
+    .param p2, "val$waiter"    # Landroid/database/sqlite/SQLiteConnectionPool$ConnectionWaiter;
+    .param p3, "val$nonce"    # I
 
     .prologue
     .line 645
@@ -54,8 +54,7 @@
     .line 648
     iget-object v0, p0, Landroid/database/sqlite/SQLiteConnectionPool$1;->this$0:Landroid/database/sqlite/SQLiteConnectionPool;
 
-    #getter for: Landroid/database/sqlite/SQLiteConnectionPool;->mLock:Ljava/lang/Object;
-    invoke-static {v0}, Landroid/database/sqlite/SQLiteConnectionPool;->access$000(Landroid/database/sqlite/SQLiteConnectionPool;)Ljava/lang/Object;
+    invoke-static {v0}, Landroid/database/sqlite/SQLiteConnectionPool;->-get0(Landroid/database/sqlite/SQLiteConnectionPool;)Ljava/lang/Object;
 
     move-result-object v1
 
@@ -76,23 +75,21 @@
 
     iget-object v2, p0, Landroid/database/sqlite/SQLiteConnectionPool$1;->val$waiter:Landroid/database/sqlite/SQLiteConnectionPool$ConnectionWaiter;
 
-    #calls: Landroid/database/sqlite/SQLiteConnectionPool;->cancelConnectionWaiterLocked(Landroid/database/sqlite/SQLiteConnectionPool$ConnectionWaiter;)V
-    invoke-static {v0, v2}, Landroid/database/sqlite/SQLiteConnectionPool;->access$100(Landroid/database/sqlite/SQLiteConnectionPool;Landroid/database/sqlite/SQLiteConnectionPool$ConnectionWaiter;)V
+    invoke-static {v0, v2}, Landroid/database/sqlite/SQLiteConnectionPool;->-wrap0(Landroid/database/sqlite/SQLiteConnectionPool;Landroid/database/sqlite/SQLiteConnectionPool$ConnectionWaiter;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 652
     :cond_0
     monitor-exit v1
 
-    .line 653
+    .line 647
     return-void
 
-    .line 652
+    .line 648
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

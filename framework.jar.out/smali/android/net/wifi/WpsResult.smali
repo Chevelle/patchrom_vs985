@@ -9,7 +9,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/net/wifi/WpsResult$Status;
+        Landroid/net/wifi/WpsResult$Status;,
+        Landroid/net/wifi/WpsResult$1;
     }
 .end annotation
 
@@ -38,13 +39,15 @@
     .locals 1
 
     .prologue
-    .line 77
+    .line 78
     new-instance v0, Landroid/net/wifi/WpsResult$1;
 
     invoke-direct {v0}, Landroid/net/wifi/WpsResult$1;-><init>()V
 
+    .line 77
     sput-object v0, Landroid/net/wifi/WpsResult;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 26
     return-void
 .end method
 
@@ -65,13 +68,13 @@
 
     iput-object v0, p0, Landroid/net/wifi/WpsResult;->pin:Ljava/lang/String;
 
-    .line 41
+    .line 38
     return-void
 .end method
 
 .method public constructor <init>(Landroid/net/wifi/WpsResult$Status;)V
     .locals 1
-    .parameter "s"
+    .param p1, "s"    # Landroid/net/wifi/WpsResult$Status;
 
     .prologue
     .line 43
@@ -85,13 +88,13 @@
 
     iput-object v0, p0, Landroid/net/wifi/WpsResult;->pin:Ljava/lang/String;
 
-    .line 46
+    .line 43
     return-void
 .end method
 
 .method public constructor <init>(Landroid/net/wifi/WpsResult;)V
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/net/wifi/WpsResult;
 
     .prologue
     .line 63
@@ -110,7 +113,7 @@
 
     iput-object v0, p0, Landroid/net/wifi/WpsResult;->pin:Ljava/lang/String;
 
-    .line 68
+    .line 63
     :cond_0
     return-void
 .end method
@@ -137,8 +140,8 @@
     invoke-direct {v0}, Ljava/lang/StringBuffer;-><init>()V
 
     .line 50
-    .local v0, sbuf:Ljava/lang/StringBuffer;
-    const-string v1, " status: "
+    .local v0, "sbuf":Ljava/lang/StringBuffer;
+    const-string/jumbo v1, " status: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -158,7 +161,7 @@
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
 
     .line 52
-    const-string v1, " pin: "
+    const-string/jumbo v1, " pin: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -169,7 +172,7 @@
     invoke-virtual {v1, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 53
-    const-string v1, "\n"
+    const-string/jumbo v1, "\n"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -183,8 +186,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 72
@@ -201,6 +204,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 74
+    .line 71
     return-void
 .end method

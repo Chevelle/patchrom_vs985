@@ -15,6 +15,8 @@
 
 
 # instance fields
+.field mOnApplyWindowInsetsListener:Landroid/view/View$OnApplyWindowInsetsListener;
+
 .field private mOnAttachStateChangeListeners:Ljava/util/concurrent/CopyOnWriteArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -27,6 +29,8 @@
 .end field
 
 .field public mOnClickListener:Landroid/view/View$OnClickListener;
+
+.field protected mOnContextClickListener:Landroid/view/View$OnContextClickListener;
 
 .field protected mOnCreateContextMenuListener:Landroid/view/View$OnCreateContextMenuListener;
 
@@ -53,202 +57,148 @@
 
 .field protected mOnLongClickListener:Landroid/view/View$OnLongClickListener;
 
+.field protected mOnScrollChangeListener:Landroid/view/View$OnScrollChangeListener;
+
 .field private mOnSystemUiVisibilityChangeListener:Landroid/view/View$OnSystemUiVisibilityChangeListener;
 
 .field private mOnTouchListener:Landroid/view/View$OnTouchListener;
 
 
 # direct methods
-.method constructor <init>()V
-    .locals 0
-
-    .prologue
-    .line 3138
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    return-void
-.end method
-
-.method static synthetic access$000(Landroid/view/View$ListenerInfo;)Ljava/util/ArrayList;
+.method static synthetic -get0(Landroid/view/View$ListenerInfo;)Ljava/util/concurrent/CopyOnWriteArrayList;
     .locals 1
-    .parameter "x0"
 
-    .prologue
-    .line 3138
-    iget-object v0, p0, Landroid/view/View$ListenerInfo;->mOnLayoutChangeListeners:Ljava/util/ArrayList;
-
-    return-object v0
-.end method
-
-.method static synthetic access$002(Landroid/view/View$ListenerInfo;Ljava/util/ArrayList;)Ljava/util/ArrayList;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 3138
-    iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnLayoutChangeListeners:Ljava/util/ArrayList;
-
-    return-object p1
-.end method
-
-.method static synthetic access$100(Landroid/view/View$ListenerInfo;)Ljava/util/concurrent/CopyOnWriteArrayList;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 3138
     iget-object v0, p0, Landroid/view/View$ListenerInfo;->mOnAttachStateChangeListeners:Ljava/util/concurrent/CopyOnWriteArrayList;
 
     return-object v0
 .end method
 
-.method static synthetic access$102(Landroid/view/View$ListenerInfo;Ljava/util/concurrent/CopyOnWriteArrayList;)Ljava/util/concurrent/CopyOnWriteArrayList;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 3138
-    iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnAttachStateChangeListeners:Ljava/util/concurrent/CopyOnWriteArrayList;
-
-    return-object p1
-.end method
-
-.method static synthetic access$1100(Landroid/view/View$ListenerInfo;)Landroid/view/View$OnSystemUiVisibilityChangeListener;
+.method static synthetic -get1(Landroid/view/View$ListenerInfo;)Landroid/view/View$OnDragListener;
     .locals 1
-    .parameter "x0"
 
-    .prologue
-    .line 3138
-    iget-object v0, p0, Landroid/view/View$ListenerInfo;->mOnSystemUiVisibilityChangeListener:Landroid/view/View$OnSystemUiVisibilityChangeListener;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1102(Landroid/view/View$ListenerInfo;Landroid/view/View$OnSystemUiVisibilityChangeListener;)Landroid/view/View$OnSystemUiVisibilityChangeListener;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 3138
-    iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnSystemUiVisibilityChangeListener:Landroid/view/View$OnSystemUiVisibilityChangeListener;
-
-    return-object p1
-.end method
-
-.method static synthetic access$200(Landroid/view/View$ListenerInfo;)Landroid/view/View$OnKeyListener;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 3138
-    iget-object v0, p0, Landroid/view/View$ListenerInfo;->mOnKeyListener:Landroid/view/View$OnKeyListener;
-
-    return-object v0
-.end method
-
-.method static synthetic access$202(Landroid/view/View$ListenerInfo;Landroid/view/View$OnKeyListener;)Landroid/view/View$OnKeyListener;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 3138
-    iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnKeyListener:Landroid/view/View$OnKeyListener;
-
-    return-object p1
-.end method
-
-.method static synthetic access$300(Landroid/view/View$ListenerInfo;)Landroid/view/View$OnTouchListener;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 3138
-    iget-object v0, p0, Landroid/view/View$ListenerInfo;->mOnTouchListener:Landroid/view/View$OnTouchListener;
-
-    return-object v0
-.end method
-
-.method static synthetic access$302(Landroid/view/View$ListenerInfo;Landroid/view/View$OnTouchListener;)Landroid/view/View$OnTouchListener;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 3138
-    iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnTouchListener:Landroid/view/View$OnTouchListener;
-
-    return-object p1
-.end method
-
-.method static synthetic access$400(Landroid/view/View$ListenerInfo;)Landroid/view/View$OnGenericMotionListener;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 3138
-    iget-object v0, p0, Landroid/view/View$ListenerInfo;->mOnGenericMotionListener:Landroid/view/View$OnGenericMotionListener;
-
-    return-object v0
-.end method
-
-.method static synthetic access$402(Landroid/view/View$ListenerInfo;Landroid/view/View$OnGenericMotionListener;)Landroid/view/View$OnGenericMotionListener;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 3138
-    iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnGenericMotionListener:Landroid/view/View$OnGenericMotionListener;
-
-    return-object p1
-.end method
-
-.method static synthetic access$500(Landroid/view/View$ListenerInfo;)Landroid/view/View$OnHoverListener;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 3138
-    iget-object v0, p0, Landroid/view/View$ListenerInfo;->mOnHoverListener:Landroid/view/View$OnHoverListener;
-
-    return-object v0
-.end method
-
-.method static synthetic access$502(Landroid/view/View$ListenerInfo;Landroid/view/View$OnHoverListener;)Landroid/view/View$OnHoverListener;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 3138
-    iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnHoverListener:Landroid/view/View$OnHoverListener;
-
-    return-object p1
-.end method
-
-.method static synthetic access$600(Landroid/view/View$ListenerInfo;)Landroid/view/View$OnDragListener;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 3138
     iget-object v0, p0, Landroid/view/View$ListenerInfo;->mOnDragListener:Landroid/view/View$OnDragListener;
 
     return-object v0
 .end method
 
-.method static synthetic access$602(Landroid/view/View$ListenerInfo;Landroid/view/View$OnDragListener;)Landroid/view/View$OnDragListener;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
+.method static synthetic -get2(Landroid/view/View$ListenerInfo;)Landroid/view/View$OnGenericMotionListener;
+    .locals 1
 
-    .prologue
-    .line 3138
+    iget-object v0, p0, Landroid/view/View$ListenerInfo;->mOnGenericMotionListener:Landroid/view/View$OnGenericMotionListener;
+
+    return-object v0
+.end method
+
+.method static synthetic -get3(Landroid/view/View$ListenerInfo;)Landroid/view/View$OnHoverListener;
+    .locals 1
+
+    iget-object v0, p0, Landroid/view/View$ListenerInfo;->mOnHoverListener:Landroid/view/View$OnHoverListener;
+
+    return-object v0
+.end method
+
+.method static synthetic -get4(Landroid/view/View$ListenerInfo;)Landroid/view/View$OnKeyListener;
+    .locals 1
+
+    iget-object v0, p0, Landroid/view/View$ListenerInfo;->mOnKeyListener:Landroid/view/View$OnKeyListener;
+
+    return-object v0
+.end method
+
+.method static synthetic -get5(Landroid/view/View$ListenerInfo;)Ljava/util/ArrayList;
+    .locals 1
+
+    iget-object v0, p0, Landroid/view/View$ListenerInfo;->mOnLayoutChangeListeners:Ljava/util/ArrayList;
+
+    return-object v0
+.end method
+
+.method static synthetic -get6(Landroid/view/View$ListenerInfo;)Landroid/view/View$OnSystemUiVisibilityChangeListener;
+    .locals 1
+
+    iget-object v0, p0, Landroid/view/View$ListenerInfo;->mOnSystemUiVisibilityChangeListener:Landroid/view/View$OnSystemUiVisibilityChangeListener;
+
+    return-object v0
+.end method
+
+.method static synthetic -get7(Landroid/view/View$ListenerInfo;)Landroid/view/View$OnTouchListener;
+    .locals 1
+
+    iget-object v0, p0, Landroid/view/View$ListenerInfo;->mOnTouchListener:Landroid/view/View$OnTouchListener;
+
+    return-object v0
+.end method
+
+.method static synthetic -set0(Landroid/view/View$ListenerInfo;Ljava/util/concurrent/CopyOnWriteArrayList;)Ljava/util/concurrent/CopyOnWriteArrayList;
+    .locals 0
+
+    iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnAttachStateChangeListeners:Ljava/util/concurrent/CopyOnWriteArrayList;
+
+    return-object p1
+.end method
+
+.method static synthetic -set1(Landroid/view/View$ListenerInfo;Landroid/view/View$OnDragListener;)Landroid/view/View$OnDragListener;
+    .locals 0
+
     iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnDragListener:Landroid/view/View$OnDragListener;
 
     return-object p1
+.end method
+
+.method static synthetic -set2(Landroid/view/View$ListenerInfo;Landroid/view/View$OnGenericMotionListener;)Landroid/view/View$OnGenericMotionListener;
+    .locals 0
+
+    iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnGenericMotionListener:Landroid/view/View$OnGenericMotionListener;
+
+    return-object p1
+.end method
+
+.method static synthetic -set3(Landroid/view/View$ListenerInfo;Landroid/view/View$OnHoverListener;)Landroid/view/View$OnHoverListener;
+    .locals 0
+
+    iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnHoverListener:Landroid/view/View$OnHoverListener;
+
+    return-object p1
+.end method
+
+.method static synthetic -set4(Landroid/view/View$ListenerInfo;Landroid/view/View$OnKeyListener;)Landroid/view/View$OnKeyListener;
+    .locals 0
+
+    iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnKeyListener:Landroid/view/View$OnKeyListener;
+
+    return-object p1
+.end method
+
+.method static synthetic -set5(Landroid/view/View$ListenerInfo;Ljava/util/ArrayList;)Ljava/util/ArrayList;
+    .locals 0
+
+    iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnLayoutChangeListeners:Ljava/util/ArrayList;
+
+    return-object p1
+.end method
+
+.method static synthetic -set6(Landroid/view/View$ListenerInfo;Landroid/view/View$OnSystemUiVisibilityChangeListener;)Landroid/view/View$OnSystemUiVisibilityChangeListener;
+    .locals 0
+
+    iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnSystemUiVisibilityChangeListener:Landroid/view/View$OnSystemUiVisibilityChangeListener;
+
+    return-object p1
+.end method
+
+.method static synthetic -set7(Landroid/view/View$ListenerInfo;Landroid/view/View$OnTouchListener;)Landroid/view/View$OnTouchListener;
+    .locals 0
+
+    iput-object p1, p0, Landroid/view/View$ListenerInfo;->mOnTouchListener:Landroid/view/View$OnTouchListener;
+
+    return-object p1
+.end method
+
+.method constructor <init>()V
+    .locals 0
+
+    .prologue
+    .line 3405
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
 .end method

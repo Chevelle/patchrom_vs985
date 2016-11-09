@@ -17,7 +17,6 @@
     .line 35
     invoke-direct {p0}, Landroid/app/Fragment;-><init>()V
 
-    .line 36
     return-void
 .end method
 
@@ -45,9 +44,9 @@
 
 .method public onCreateView(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
     .locals 2
-    .parameter "inflater"
-    .parameter "container"
-    .parameter "savedInstanceState"
+    .param p1, "inflater"    # Landroid/view/LayoutInflater;
+    .param p2, "container"    # Landroid/view/ViewGroup;
+    .param p3, "savedInstanceState"    # Landroid/os/Bundle;
 
     .prologue
     .line 44
@@ -84,9 +83,11 @@
 .end method
 
 .method public onDestroy()V
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v1, 0x0
+
     .line 85
     iget-object v0, p0, Landroid/webkit/WebViewFragment;->mWebView:Landroid/webkit/WebView;
 
@@ -98,15 +99,13 @@
     invoke-virtual {v0}, Landroid/webkit/WebView;->destroy()V
 
     .line 87
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Landroid/webkit/WebViewFragment;->mWebView:Landroid/webkit/WebView;
+    iput-object v1, p0, Landroid/webkit/WebViewFragment;->mWebView:Landroid/webkit/WebView;
 
     .line 89
     :cond_0
     invoke-super {p0}, Landroid/app/Fragment;->onDestroy()V
 
-    .line 90
+    .line 84
     return-void
 .end method
 
@@ -122,7 +121,7 @@
     .line 77
     invoke-super {p0}, Landroid/app/Fragment;->onDestroyView()V
 
-    .line 78
+    .line 75
     return-void
 .end method
 
@@ -138,7 +137,7 @@
 
     invoke-virtual {v0}, Landroid/webkit/WebView;->onPause()V
 
-    .line 59
+    .line 56
     return-void
 .end method
 
@@ -154,6 +153,6 @@
     .line 67
     invoke-super {p0}, Landroid/app/Fragment;->onResume()V
 
-    .line 68
+    .line 65
     return-void
 .end method

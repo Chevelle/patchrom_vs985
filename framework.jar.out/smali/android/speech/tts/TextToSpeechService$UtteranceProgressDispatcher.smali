@@ -15,11 +15,14 @@
 
 
 # virtual methods
-.method public abstract dispatchOnDone()V
-.end method
-
-.method public abstract dispatchOnError()V
+.method public abstract dispatchOnError(I)V
 .end method
 
 .method public abstract dispatchOnStart()V
+.end method
+
+.method public abstract dispatchOnStop()V
+.end method
+
+.method public abstract dispatchOnSuccess()V
 .end method

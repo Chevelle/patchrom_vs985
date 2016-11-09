@@ -15,58 +15,47 @@
 
 
 # instance fields
-.field private mNativeCanvas:I
+.field private mNativeCanvasWrapper:J
 
 
 # direct methods
-.method public constructor <init>(I)V
-    .locals 0
-    .parameter "nativeCanvas"
+.method public constructor <init>(J)V
+    .locals 1
+    .param p1, "nativeCanvas"    # J
 
     .prologue
-    .line 89
+    .line 94
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 90
-    iput p1, p0, Landroid/graphics/Canvas$CanvasFinalizer;->mNativeCanvas:I
+    .line 95
+    iput-wide p1, p0, Landroid/graphics/Canvas$CanvasFinalizer;->mNativeCanvasWrapper:J
 
-    .line 91
+    .line 94
     return-void
-.end method
-
-.method static synthetic access$102(Landroid/graphics/Canvas$CanvasFinalizer;I)I
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 86
-    iput p1, p0, Landroid/graphics/Canvas$CanvasFinalizer;->mNativeCanvas:I
-
-    return p1
 .end method
 
 
 # virtual methods
 .method public dispose()V
-    .locals 1
+    .locals 4
 
     .prologue
-    .line 103
-    iget v0, p0, Landroid/graphics/Canvas$CanvasFinalizer;->mNativeCanvas:I
+    const-wide/16 v2, 0x0
+
+    .line 108
+    iget-wide v0, p0, Landroid/graphics/Canvas$CanvasFinalizer;->mNativeCanvasWrapper:J
+
+    cmp-long v0, v0, v2
 
     if-eqz v0, :cond_0
 
-    .line 104
-    iget v0, p0, Landroid/graphics/Canvas$CanvasFinalizer;->mNativeCanvas:I
+    .line 109
+    iget-wide v0, p0, Landroid/graphics/Canvas$CanvasFinalizer;->mNativeCanvasWrapper:J
 
-    #calls: Landroid/graphics/Canvas;->finalizer(I)V
-    invoke-static {v0}, Landroid/graphics/Canvas;->access$000(I)V
+    invoke-static {v0, v1}, Landroid/graphics/Canvas;->-wrap0(J)V
 
-    .line 105
-    const/4 v0, 0x0
-
-    iput v0, p0, Landroid/graphics/Canvas$CanvasFinalizer;->mNativeCanvas:I
+    .line 110
+    iput-wide v2, p0, Landroid/graphics/Canvas$CanvasFinalizer;->mNativeCanvasWrapper:J
 
     .line 107
     :cond_0
@@ -82,23 +71,25 @@
     .end annotation
 
     .prologue
-    .line 96
+    .line 101
     :try_start_0
     invoke-virtual {p0}, Landroid/graphics/Canvas$CanvasFinalizer;->dispose()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 98
+    .line 103
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 100
+    .line 99
     return-void
 
-    .line 98
+    .line 102
     :catchall_0
     move-exception v0
 
+    .line 103
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
+    .line 102
     throw v0
 .end method

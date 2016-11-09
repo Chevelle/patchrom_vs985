@@ -29,18 +29,16 @@
     .locals 0
 
     .prologue
-    .line 466
+    .line 460
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/media/ThumbnailUtils$1;)V
+.method synthetic constructor <init>(Landroid/media/ThumbnailUtils$SizedThumbnailBitmap;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 466
     invoke-direct {p0}, Landroid/media/ThumbnailUtils$SizedThumbnailBitmap;-><init>()V
 
     return-void

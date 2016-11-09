@@ -46,25 +46,26 @@
 
     const/4 v2, 0x1
 
-    .line 467
+    .line 488
     new-instance v0, Landroid/graphics/Path$Direction;
 
-    const-string v1, "CW"
+    const-string/jumbo v1, "CW"
 
     invoke-direct {v0, v1, v3, v2}, Landroid/graphics/Path$Direction;-><init>(Ljava/lang/String;II)V
 
+    .line 489
     sput-object v0, Landroid/graphics/Path$Direction;->CW:Landroid/graphics/Path$Direction;
 
-    .line 469
     new-instance v0, Landroid/graphics/Path$Direction;
 
-    const-string v1, "CCW"
+    const-string/jumbo v1, "CCW"
 
     invoke-direct {v0, v1, v2, v4}, Landroid/graphics/Path$Direction;-><init>(Ljava/lang/String;II)V
 
+    .line 491
     sput-object v0, Landroid/graphics/Path$Direction;->CCW:Landroid/graphics/Path$Direction;
 
-    .line 465
+    .line 487
     new-array v0, v4, [Landroid/graphics/Path$Direction;
 
     sget-object v1, Landroid/graphics/Path$Direction;->CW:Landroid/graphics/Path$Direction;
@@ -82,32 +83,25 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "ni"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "ni"    # I
 
     .prologue
-    .line 471
+    .line 493
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
-    .line 472
+    .line 494
     iput p3, p0, Landroid/graphics/Path$Direction;->nativeInt:I
 
-    .line 473
+    .line 493
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/graphics/Path$Direction;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 465
+    .line 487
     const-class v0, Landroid/graphics/Path$Direction;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -123,14 +117,8 @@
     .locals 1
 
     .prologue
-    .line 465
+    .line 487
     sget-object v0, Landroid/graphics/Path$Direction;->$VALUES:[Landroid/graphics/Path$Direction;
-
-    invoke-virtual {v0}, [Landroid/graphics/Path$Direction;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/graphics/Path$Direction;
 
     return-object v0
 .end method

@@ -34,43 +34,41 @@
     .locals 1
 
     .prologue
-    .line 18
+    .line 17
     invoke-direct {p0}, Landroid/os/Binder;-><init>()V
 
     .line 19
-    const-string v0, "android.media.IRemoteVolumeObserver"
+    const-string/jumbo v0, "android.media.IRemoteVolumeObserver"
 
     invoke-virtual {p0, p0, v0}, Landroid/media/IRemoteVolumeObserver$Stub;->attachInterface(Landroid/os/IInterface;Ljava/lang/String;)V
 
-    .line 20
+    .line 17
     return-void
 .end method
 
 .method public static asInterface(Landroid/os/IBinder;)Landroid/media/IRemoteVolumeObserver;
     .locals 2
-    .parameter "obj"
+    .param p0, "obj"    # Landroid/os/IBinder;
 
     .prologue
+    const/4 v1, 0x0
+
     .line 27
     if-nez p0, :cond_0
 
     .line 28
-    const/4 v0, 0x0
-
-    .line 34
-    :goto_0
-    return-object v0
+    return-object v1
 
     .line 30
     :cond_0
-    const-string v1, "android.media.IRemoteVolumeObserver"
+    const-string/jumbo v1, "android.media.IRemoteVolumeObserver"
 
     invoke-interface {p0, v1}, Landroid/os/IBinder;->queryLocalInterface(Ljava/lang/String;)Landroid/os/IInterface;
 
     move-result-object v0
 
     .line 31
-    .local v0, iin:Landroid/os/IInterface;
+    .local v0, "iin":Landroid/os/IInterface;
     if-eqz v0, :cond_1
 
     instance-of v1, v0, Landroid/media/IRemoteVolumeObserver;
@@ -80,16 +78,17 @@
     .line 32
     check-cast v0, Landroid/media/IRemoteVolumeObserver;
 
-    goto :goto_0
+    .end local v0    # "iin":Landroid/os/IInterface;
+    return-object v0
 
     .line 34
+    .restart local v0    # "iin":Landroid/os/IInterface;
     :cond_1
-    new-instance v0, Landroid/media/IRemoteVolumeObserver$Stub$Proxy;
+    new-instance v1, Landroid/media/IRemoteVolumeObserver$Stub$Proxy;
 
-    .end local v0           #iin:Landroid/os/IInterface;
-    invoke-direct {v0, p0}, Landroid/media/IRemoteVolumeObserver$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
+    invoke-direct {v1, p0}, Landroid/media/IRemoteVolumeObserver$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
 
-    goto :goto_0
+    return-object v1
 .end method
 
 
@@ -104,10 +103,10 @@
 
 .method public onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
     .locals 4
-    .parameter "code"
-    .parameter "data"
-    .parameter "reply"
-    .parameter "flags"
+    .param p1, "code"    # I
+    .param p2, "data"    # Landroid/os/Parcel;
+    .param p3, "reply"    # Landroid/os/Parcel;
+    .param p4, "flags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -115,7 +114,7 @@
     .end annotation
 
     .prologue
-    const/4 v2, 0x1
+    const/4 v3, 0x1
 
     .line 42
     sparse-switch p1, :sswitch_data_0
@@ -125,22 +124,22 @@
 
     move-result v2
 
-    :goto_0
     return v2
 
     .line 46
     :sswitch_0
-    const-string v3, "android.media.IRemoteVolumeObserver"
+    const-string/jumbo v2, "android.media.IRemoteVolumeObserver"
 
-    invoke-virtual {p3, v3}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+    invoke-virtual {p3, v2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    goto :goto_0
+    .line 47
+    return v3
 
     .line 51
     :sswitch_1
-    const-string v3, "android.media.IRemoteVolumeObserver"
+    const-string/jumbo v2, "android.media.IRemoteVolumeObserver"
 
-    invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    invoke-virtual {p2, v2}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 53
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
@@ -148,16 +147,17 @@
     move-result v0
 
     .line 55
-    .local v0, _arg0:I
+    .local v0, "_arg0":I
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     .line 56
-    .local v1, _arg1:I
+    .local v1, "_arg1":I
     invoke-virtual {p0, v0, v1}, Landroid/media/IRemoteVolumeObserver$Stub;->dispatchRemoteVolumeUpdate(II)V
 
-    goto :goto_0
+    .line 57
+    return v3
 
     .line 42
     :sswitch_data_0

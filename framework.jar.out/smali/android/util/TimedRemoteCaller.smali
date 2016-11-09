@@ -42,11 +42,11 @@
 
 # direct methods
 .method public constructor <init>(J)V
-    .locals 2
-    .parameter "callTimeoutMillis"
+    .locals 3
+    .param p1, "callTimeoutMillis"    # J
 
     .prologue
-    .local p0, this:Landroid/util/TimedRemoteCaller;,"Landroid/util/TimedRemoteCaller<TT;>;"
+    .local p0, "this":Landroid/util/TimedRemoteCaller;, "Landroid/util/TimedRemoteCaller<TT;>;"
     const/4 v1, -0x1
 
     .line 83
@@ -68,79 +68,78 @@
     .line 84
     iput-wide p1, p0, Landroid/util/TimedRemoteCaller;->mCallTimeoutMillis:J
 
-    .line 85
+    .line 83
     return-void
 .end method
 
 .method private waitForResultTimedLocked(I)Z
-    .locals 8
-    .parameter "sequence"
+    .locals 10
+    .param p1, "sequence"    # I
 
     .prologue
     .line 117
-    .local p0, this:Landroid/util/TimedRemoteCaller;,"Landroid/util/TimedRemoteCaller<TT;>;"
+    .local p0, "this":Landroid/util/TimedRemoteCaller;, "Landroid/util/TimedRemoteCaller<TT;>;"
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
-    move-result-wide v2
+    move-result-wide v4
 
     .line 120
-    .local v2, startMillis:J
+    .local v4, "startMillis":J
     :goto_0
     :try_start_0
-    iget v6, p0, Landroid/util/TimedRemoteCaller;->mReceivedSequence:I
+    iget v3, p0, Landroid/util/TimedRemoteCaller;->mReceivedSequence:I
 
-    if-ne v6, p1, :cond_0
+    if-ne v3, p1, :cond_0
 
     .line 121
-    const/4 v6, 0x1
+    const/4 v3, 0x1
 
-    .line 126
-    :goto_1
-    return v6
+    return v3
 
     .line 123
     :cond_0
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
-    move-result-wide v6
+    move-result-wide v8
 
-    sub-long v0, v6, v2
+    sub-long v0, v8, v4
 
     .line 124
-    .local v0, elapsedMillis:J
-    iget-wide v6, p0, Landroid/util/TimedRemoteCaller;->mCallTimeoutMillis:J
+    .local v0, "elapsedMillis":J
+    iget-wide v8, p0, Landroid/util/TimedRemoteCaller;->mCallTimeoutMillis:J
 
-    sub-long v4, v6, v0
+    sub-long v6, v8, v0
 
     .line 125
-    .local v4, waitMillis:J
-    const-wide/16 v6, 0x0
+    .local v6, "waitMillis":J
+    const-wide/16 v8, 0x0
 
-    cmp-long v6, v4, v6
+    cmp-long v3, v6, v8
 
-    if-gtz v6, :cond_1
+    if-gtz v3, :cond_1
 
     .line 126
-    const/4 v6, 0x0
+    const/4 v3, 0x0
 
-    goto :goto_1
+    return v3
 
     .line 128
     :cond_1
-    iget-object v6, p0, Landroid/util/TimedRemoteCaller;->mLock:Ljava/lang/Object;
+    iget-object v3, p0, Landroid/util/TimedRemoteCaller;->mLock:Ljava/lang/Object;
 
-    invoke-virtual {v6, v4, v5}, Ljava/lang/Object;->wait(J)V
+    invoke-virtual {v3, v6, v7}, Ljava/lang/Object;->wait(J)V
     :try_end_0
     .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
     goto :goto_0
 
     .line 129
-    .end local v0           #elapsedMillis:J
-    .end local v4           #waitMillis:J
+    .end local v0    # "elapsedMillis":J
+    .end local v6    # "waitMillis":J
     :catch_0
-    move-exception v6
+    move-exception v2
 
+    .local v2, "ie":Ljava/lang/InterruptedException;
     goto :goto_0
 .end method
 
@@ -148,7 +147,7 @@
 # virtual methods
 .method public final getResultTimed(I)Ljava/lang/Object;
     .locals 6
-    .parameter "sequence"
+    .param p1, "sequence"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I)TT;"
@@ -163,7 +162,7 @@
 
     .prologue
     .line 95
-    .local p0, this:Landroid/util/TimedRemoteCaller;,"Landroid/util/TimedRemoteCaller<TT;>;"
+    .local p0, "this":Landroid/util/TimedRemoteCaller;, "Landroid/util/TimedRemoteCaller<TT;>;"
     iget-object v3, p0, Landroid/util/TimedRemoteCaller;->mLock:Ljava/lang/Object;
 
     monitor-enter v3
@@ -175,7 +174,7 @@
     move-result v1
 
     .line 97
-    .local v1, success:Z
+    .local v1, "success":Z
     if-nez v1, :cond_0
 
     .line 98
@@ -185,7 +184,7 @@
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v5, "No reponse for sequence: "
+    const-string/jumbo v5, "No reponse for sequence: "
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -202,35 +201,35 @@
     invoke-direct {v2, v4}, Ljava/util/concurrent/TimeoutException;-><init>(Ljava/lang/String;)V
 
     throw v2
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 103
-    .end local v1           #success:Z
+    .line 95
+    .end local v1    # "success":Z
     :catchall_0
     move-exception v2
 
     monitor-exit v3
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v2
 
     .line 100
-    .restart local v1       #success:Z
+    .restart local v1    # "success":Z
     :cond_0
     :try_start_1
     iget-object v0, p0, Landroid/util/TimedRemoteCaller;->mResult:Ljava/lang/Object;
 
     .line 101
-    .local v0, result:Ljava/lang/Object;,"TT;"
+    .local v0, "result":Ljava/lang/Object;, "TT;"
     const/4 v2, 0x0
 
     iput-object v2, p0, Landroid/util/TimedRemoteCaller;->mResult:Ljava/lang/Object;
-
-    .line 102
-    monitor-exit v3
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
+    monitor-exit v3
+
+    .line 102
     return-object v0
 .end method
 
@@ -239,7 +238,7 @@
 
     .prologue
     .line 88
-    .local p0, this:Landroid/util/TimedRemoteCaller;,"Landroid/util/TimedRemoteCaller<TT;>;"
+    .local p0, "this":Landroid/util/TimedRemoteCaller;, "Landroid/util/TimedRemoteCaller<TT;>;"
     iget-object v1, p0, Landroid/util/TimedRemoteCaller;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
@@ -256,26 +255,25 @@
 
     .line 90
     iget v0, p0, Landroid/util/TimedRemoteCaller;->mAwaitedSequence:I
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit v1
 
     return v0
 
-    .line 91
+    .line 88
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public final onRemoteMethodResult(Ljava/lang/Object;I)V
     .locals 2
-    .parameter
-    .parameter "sequence"
+    .param p2, "sequence"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TT;I)V"
@@ -284,8 +282,8 @@
 
     .prologue
     .line 107
-    .local p0, this:Landroid/util/TimedRemoteCaller;,"Landroid/util/TimedRemoteCaller<TT;>;"
-    .local p1, result:Ljava/lang/Object;,"TT;"
+    .local p0, "this":Landroid/util/TimedRemoteCaller;, "Landroid/util/TimedRemoteCaller<TT;>;"
+    .local p1, "result":Ljava/lang/Object;, "TT;"
     iget-object v1, p0, Landroid/util/TimedRemoteCaller;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
@@ -306,21 +304,20 @@
     iget-object v0, p0, Landroid/util/TimedRemoteCaller;->mLock:Ljava/lang/Object;
 
     invoke-virtual {v0}, Ljava/lang/Object;->notifyAll()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 113
     :cond_0
     monitor-exit v1
 
-    .line 114
+    .line 106
     return-void
 
-    .line 113
+    .line 107
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

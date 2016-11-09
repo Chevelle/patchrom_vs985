@@ -15,6 +15,8 @@
 
 
 # instance fields
+.field mArray:[I
+
 .field mDimFaces:Z
 
 .field mDimMipmaps:Z
@@ -35,329 +37,428 @@
 # direct methods
 .method public constructor <init>(Landroid/renderscript/RenderScript;Landroid/renderscript/Element;)V
     .locals 1
-    .parameter "rs"
-    .parameter "e"
+    .param p1, "rs"    # Landroid/renderscript/RenderScript;
+    .param p2, "e"    # Landroid/renderscript/Element;
 
     .prologue
-    .line 239
+    .line 350
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 224
+    .line 334
     const/4 v0, 0x1
 
     iput v0, p0, Landroid/renderscript/Type$Builder;->mDimX:I
 
-    .line 240
+    .line 340
+    const/4 v0, 0x4
+
+    new-array v0, v0, [I
+
+    iput-object v0, p0, Landroid/renderscript/Type$Builder;->mArray:[I
+
+    .line 351
     invoke-virtual {p2}, Landroid/renderscript/Element;->checkValid()V
 
-    .line 241
+    .line 352
     iput-object p1, p0, Landroid/renderscript/Type$Builder;->mRS:Landroid/renderscript/RenderScript;
 
-    .line 242
+    .line 353
     iput-object p2, p0, Landroid/renderscript/Type$Builder;->mElement:Landroid/renderscript/Element;
 
-    .line 243
+    .line 350
     return-void
 .end method
 
 
 # virtual methods
 .method public create()Landroid/renderscript/Type;
-    .locals 10
+    .locals 14
 
     .prologue
-    const/4 v1, 0x1
+    const/4 v2, 0x1
 
-    .line 314
-    iget v0, p0, Landroid/renderscript/Type$Builder;->mDimZ:I
+    .line 442
+    iget v1, p0, Landroid/renderscript/Type$Builder;->mDimZ:I
 
-    if-lez v0, :cond_2
+    if-lez v1, :cond_2
 
-    .line 315
-    iget v0, p0, Landroid/renderscript/Type$Builder;->mDimX:I
+    .line 443
+    iget v1, p0, Landroid/renderscript/Type$Builder;->mDimX:I
 
-    if-lt v0, v1, :cond_0
+    if-lt v1, v2, :cond_0
 
-    iget v0, p0, Landroid/renderscript/Type$Builder;->mDimY:I
+    iget v1, p0, Landroid/renderscript/Type$Builder;->mDimY:I
 
-    if-ge v0, v1, :cond_1
+    if-ge v1, v2, :cond_1
 
-    .line 316
+    .line 444
     :cond_0
-    new-instance v0, Landroid/renderscript/RSInvalidStateException;
+    new-instance v1, Landroid/renderscript/RSInvalidStateException;
 
-    const-string v1, "Both X and Y dimension required when Z is present."
+    const-string/jumbo v2, "Both X and Y dimension required when Z is present."
 
-    invoke-direct {v0, v1}, Landroid/renderscript/RSInvalidStateException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1, v2}, Landroid/renderscript/RSInvalidStateException;-><init>(Ljava/lang/String;)V
 
-    throw v0
+    throw v1
 
-    .line 318
+    .line 446
     :cond_1
-    iget-boolean v0, p0, Landroid/renderscript/Type$Builder;->mDimFaces:Z
+    iget-boolean v1, p0, Landroid/renderscript/Type$Builder;->mDimFaces:Z
 
-    if-eqz v0, :cond_2
+    if-eqz v1, :cond_2
 
-    .line 319
-    new-instance v0, Landroid/renderscript/RSInvalidStateException;
+    .line 447
+    new-instance v1, Landroid/renderscript/RSInvalidStateException;
 
-    const-string v1, "Cube maps not supported with 3D types."
+    const-string/jumbo v2, "Cube maps not supported with 3D types."
 
-    invoke-direct {v0, v1}, Landroid/renderscript/RSInvalidStateException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1, v2}, Landroid/renderscript/RSInvalidStateException;-><init>(Ljava/lang/String;)V
 
-    throw v0
+    throw v1
 
-    .line 322
+    .line 450
     :cond_2
-    iget v0, p0, Landroid/renderscript/Type$Builder;->mDimY:I
+    iget v1, p0, Landroid/renderscript/Type$Builder;->mDimY:I
 
-    if-lez v0, :cond_3
+    if-lez v1, :cond_3
 
-    .line 323
-    iget v0, p0, Landroid/renderscript/Type$Builder;->mDimX:I
+    .line 451
+    iget v1, p0, Landroid/renderscript/Type$Builder;->mDimX:I
 
-    if-ge v0, v1, :cond_3
+    if-ge v1, v2, :cond_3
 
-    .line 324
-    new-instance v0, Landroid/renderscript/RSInvalidStateException;
+    .line 452
+    new-instance v1, Landroid/renderscript/RSInvalidStateException;
 
-    const-string v1, "X dimension required when Y is present."
+    const-string/jumbo v2, "X dimension required when Y is present."
 
-    invoke-direct {v0, v1}, Landroid/renderscript/RSInvalidStateException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1, v2}, Landroid/renderscript/RSInvalidStateException;-><init>(Ljava/lang/String;)V
 
-    throw v0
+    throw v1
 
-    .line 327
+    .line 455
     :cond_3
-    iget-boolean v0, p0, Landroid/renderscript/Type$Builder;->mDimFaces:Z
+    iget-boolean v1, p0, Landroid/renderscript/Type$Builder;->mDimFaces:Z
 
-    if-eqz v0, :cond_4
+    if-eqz v1, :cond_4
 
-    .line 328
-    iget v0, p0, Landroid/renderscript/Type$Builder;->mDimY:I
+    .line 456
+    iget v1, p0, Landroid/renderscript/Type$Builder;->mDimY:I
 
-    if-ge v0, v1, :cond_4
+    if-ge v1, v2, :cond_4
 
-    .line 329
-    new-instance v0, Landroid/renderscript/RSInvalidStateException;
+    .line 457
+    new-instance v1, Landroid/renderscript/RSInvalidStateException;
 
-    const-string v1, "Cube maps require 2D Types."
+    const-string/jumbo v2, "Cube maps require 2D Types."
 
-    invoke-direct {v0, v1}, Landroid/renderscript/RSInvalidStateException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1, v2}, Landroid/renderscript/RSInvalidStateException;-><init>(Ljava/lang/String;)V
 
-    throw v0
+    throw v1
 
-    .line 333
+    .line 461
     :cond_4
-    iget v0, p0, Landroid/renderscript/Type$Builder;->mYuv:I
+    iget v1, p0, Landroid/renderscript/Type$Builder;->mYuv:I
 
-    if-eqz v0, :cond_6
+    if-eqz v1, :cond_6
 
-    .line 334
-    iget v0, p0, Landroid/renderscript/Type$Builder;->mDimZ:I
+    .line 462
+    iget v1, p0, Landroid/renderscript/Type$Builder;->mDimZ:I
 
-    if-nez v0, :cond_5
+    if-nez v1, :cond_5
 
-    iget-boolean v0, p0, Landroid/renderscript/Type$Builder;->mDimFaces:Z
+    iget-boolean v1, p0, Landroid/renderscript/Type$Builder;->mDimFaces:Z
 
-    if-nez v0, :cond_5
+    if-nez v1, :cond_5
 
-    iget-boolean v0, p0, Landroid/renderscript/Type$Builder;->mDimMipmaps:Z
+    iget-boolean v1, p0, Landroid/renderscript/Type$Builder;->mDimMipmaps:Z
 
-    if-eqz v0, :cond_6
+    if-eqz v1, :cond_6
 
-    .line 335
+    .line 463
     :cond_5
-    new-instance v0, Landroid/renderscript/RSInvalidStateException;
+    new-instance v1, Landroid/renderscript/RSInvalidStateException;
 
-    const-string v1, "YUV only supports basic 2D."
+    const-string/jumbo v2, "YUV only supports basic 2D."
 
-    invoke-direct {v0, v1}, Landroid/renderscript/RSInvalidStateException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1, v2}, Landroid/renderscript/RSInvalidStateException;-><init>(Ljava/lang/String;)V
 
-    throw v0
+    throw v1
 
-    .line 339
+    .line 467
     :cond_6
-    iget-object v0, p0, Landroid/renderscript/Type$Builder;->mRS:Landroid/renderscript/RenderScript;
+    const/4 v0, 0x0
 
+    .line 468
+    .local v0, "arrays":[I
+    const/4 v10, 0x3
+
+    .end local v0    # "arrays":[I
+    .local v10, "ct":I
+    :goto_0
+    if-ltz v10, :cond_9
+
+    .line 469
+    iget-object v1, p0, Landroid/renderscript/Type$Builder;->mArray:[I
+
+    aget v1, v1, v10
+
+    if-eqz v1, :cond_7
+
+    if-nez v0, :cond_7
+
+    .line 470
+    new-array v0, v10, [I
+
+    .line 472
+    :cond_7
+    iget-object v1, p0, Landroid/renderscript/Type$Builder;->mArray:[I
+
+    aget v1, v1, v10
+
+    if-nez v1, :cond_8
+
+    if-eqz v0, :cond_8
+
+    .line 473
+    new-instance v1, Landroid/renderscript/RSInvalidStateException;
+
+    const-string/jumbo v2, "Array dimensions must be contigous from 0."
+
+    invoke-direct {v1, v2}, Landroid/renderscript/RSInvalidStateException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 468
+    :cond_8
+    add-int/lit8 v10, v10, -0x1
+
+    goto :goto_0
+
+    .line 477
+    :cond_9
+    iget-object v1, p0, Landroid/renderscript/Type$Builder;->mRS:Landroid/renderscript/RenderScript;
+
+    iget-object v2, p0, Landroid/renderscript/Type$Builder;->mElement:Landroid/renderscript/Element;
+
+    iget-object v3, p0, Landroid/renderscript/Type$Builder;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-virtual {v2, v3}, Landroid/renderscript/Element;->getID(Landroid/renderscript/RenderScript;)J
+
+    move-result-wide v2
+
+    .line 478
+    iget v4, p0, Landroid/renderscript/Type$Builder;->mDimX:I
+
+    iget v5, p0, Landroid/renderscript/Type$Builder;->mDimY:I
+
+    iget v6, p0, Landroid/renderscript/Type$Builder;->mDimZ:I
+
+    iget-boolean v7, p0, Landroid/renderscript/Type$Builder;->mDimMipmaps:Z
+
+    iget-boolean v8, p0, Landroid/renderscript/Type$Builder;->mDimFaces:Z
+
+    iget v9, p0, Landroid/renderscript/Type$Builder;->mYuv:I
+
+    .line 477
+    invoke-virtual/range {v1 .. v9}, Landroid/renderscript/RenderScript;->nTypeCreate(JIIIZZI)J
+
+    move-result-wide v12
+
+    .line 479
+    .local v12, "id":J
+    new-instance v11, Landroid/renderscript/Type;
+
+    iget-object v1, p0, Landroid/renderscript/Type$Builder;->mRS:Landroid/renderscript/RenderScript;
+
+    invoke-direct {v11, v12, v13, v1}, Landroid/renderscript/Type;-><init>(JLandroid/renderscript/RenderScript;)V
+
+    .line 480
+    .local v11, "t":Landroid/renderscript/Type;
     iget-object v1, p0, Landroid/renderscript/Type$Builder;->mElement:Landroid/renderscript/Element;
 
-    iget-object v2, p0, Landroid/renderscript/Type$Builder;->mRS:Landroid/renderscript/RenderScript;
+    iput-object v1, v11, Landroid/renderscript/Type;->mElement:Landroid/renderscript/Element;
 
-    invoke-virtual {v1, v2}, Landroid/renderscript/Element;->getID(Landroid/renderscript/RenderScript;)I
+    .line 481
+    iget v1, p0, Landroid/renderscript/Type$Builder;->mDimX:I
 
-    move-result v1
+    iput v1, v11, Landroid/renderscript/Type;->mDimX:I
 
-    iget v2, p0, Landroid/renderscript/Type$Builder;->mDimX:I
+    .line 482
+    iget v1, p0, Landroid/renderscript/Type$Builder;->mDimY:I
 
-    iget v3, p0, Landroid/renderscript/Type$Builder;->mDimY:I
+    iput v1, v11, Landroid/renderscript/Type;->mDimY:I
 
-    iget v4, p0, Landroid/renderscript/Type$Builder;->mDimZ:I
+    .line 483
+    iget v1, p0, Landroid/renderscript/Type$Builder;->mDimZ:I
 
-    iget-boolean v5, p0, Landroid/renderscript/Type$Builder;->mDimMipmaps:Z
+    iput v1, v11, Landroid/renderscript/Type;->mDimZ:I
 
-    iget-boolean v6, p0, Landroid/renderscript/Type$Builder;->mDimFaces:Z
+    .line 484
+    iget-boolean v1, p0, Landroid/renderscript/Type$Builder;->mDimMipmaps:Z
 
-    iget v7, p0, Landroid/renderscript/Type$Builder;->mYuv:I
+    iput-boolean v1, v11, Landroid/renderscript/Type;->mDimMipmaps:Z
 
-    invoke-virtual/range {v0 .. v7}, Landroid/renderscript/RenderScript;->nTypeCreate(IIIIZZI)I
+    .line 485
+    iget-boolean v1, p0, Landroid/renderscript/Type$Builder;->mDimFaces:Z
 
-    move-result v8
+    iput-boolean v1, v11, Landroid/renderscript/Type;->mDimFaces:Z
 
-    .line 341
-    .local v8, id:I
-    new-instance v9, Landroid/renderscript/Type;
+    .line 486
+    iget v1, p0, Landroid/renderscript/Type$Builder;->mYuv:I
 
-    iget-object v0, p0, Landroid/renderscript/Type$Builder;->mRS:Landroid/renderscript/RenderScript;
+    iput v1, v11, Landroid/renderscript/Type;->mDimYuv:I
 
-    invoke-direct {v9, v8, v0}, Landroid/renderscript/Type;-><init>(ILandroid/renderscript/RenderScript;)V
+    .line 487
+    iput-object v0, v11, Landroid/renderscript/Type;->mArrays:[I
 
-    .line 342
-    .local v9, t:Landroid/renderscript/Type;
-    iget-object v0, p0, Landroid/renderscript/Type$Builder;->mElement:Landroid/renderscript/Element;
+    .line 489
+    invoke-virtual {v11}, Landroid/renderscript/Type;->calcElementCount()V
 
-    iput-object v0, v9, Landroid/renderscript/Type;->mElement:Landroid/renderscript/Element;
+    .line 490
+    return-object v11
+.end method
 
-    .line 343
-    iget v0, p0, Landroid/renderscript/Type$Builder;->mDimX:I
+.method public setArray(II)Landroid/renderscript/Type$Builder;
+    .locals 2
+    .param p1, "dim"    # I
+    .param p2, "value"    # I
 
-    iput v0, v9, Landroid/renderscript/Type;->mDimX:I
+    .prologue
+    .line 396
+    if-ltz p1, :cond_0
 
-    .line 344
-    iget v0, p0, Landroid/renderscript/Type$Builder;->mDimY:I
+    const/4 v0, 0x4
 
-    iput v0, v9, Landroid/renderscript/Type;->mDimY:I
+    if-lt p1, v0, :cond_1
 
-    .line 345
-    iget v0, p0, Landroid/renderscript/Type$Builder;->mDimZ:I
+    .line 397
+    :cond_0
+    new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
 
-    iput v0, v9, Landroid/renderscript/Type;->mDimZ:I
+    const-string/jumbo v1, "Array dimension out of range."
 
-    .line 346
-    iget-boolean v0, p0, Landroid/renderscript/Type$Builder;->mDimMipmaps:Z
+    invoke-direct {v0, v1}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    iput-boolean v0, v9, Landroid/renderscript/Type;->mDimMipmaps:Z
+    throw v0
 
-    .line 347
-    iget-boolean v0, p0, Landroid/renderscript/Type$Builder;->mDimFaces:Z
+    .line 399
+    :cond_1
+    iget-object v0, p0, Landroid/renderscript/Type$Builder;->mArray:[I
 
-    iput-boolean v0, v9, Landroid/renderscript/Type;->mDimFaces:Z
+    aput p2, v0, p1
 
-    .line 348
-    iget v0, p0, Landroid/renderscript/Type$Builder;->mYuv:I
-
-    iput v0, v9, Landroid/renderscript/Type;->mDimYuv:I
-
-    .line 350
-    invoke-virtual {v9}, Landroid/renderscript/Type;->calcElementCount()V
-
-    .line 351
-    return-object v9
+    .line 400
+    return-object p0
 .end method
 
 .method public setFaces(Z)Landroid/renderscript/Type$Builder;
     .locals 0
-    .parameter "value"
+    .param p1, "value"    # Z
 
     .prologue
-    .line 281
+    .line 409
     iput-boolean p1, p0, Landroid/renderscript/Type$Builder;->mDimFaces:Z
 
-    .line 282
+    .line 410
     return-object p0
 .end method
 
 .method public setMipmaps(Z)Landroid/renderscript/Type$Builder;
     .locals 0
-    .parameter "value"
+    .param p1, "value"    # Z
 
     .prologue
-    .line 276
+    .line 404
     iput-boolean p1, p0, Landroid/renderscript/Type$Builder;->mDimMipmaps:Z
 
-    .line 277
+    .line 405
     return-object p0
 .end method
 
 .method public setX(I)Landroid/renderscript/Type$Builder;
     .locals 2
-    .parameter "value"
+    .param p1, "value"    # I
 
     .prologue
-    .line 252
+    .line 363
     const/4 v0, 0x1
 
     if-ge p1, v0, :cond_0
 
-    .line 253
+    .line 364
     new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
 
-    const-string v1, "Values of less than 1 for Dimension X are not valid."
+    const-string/jumbo v1, "Values of less than 1 for Dimension X are not valid."
 
     invoke-direct {v0, v1}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 255
+    .line 366
     :cond_0
     iput p1, p0, Landroid/renderscript/Type$Builder;->mDimX:I
 
-    .line 256
+    .line 367
     return-object p0
 .end method
 
 .method public setY(I)Landroid/renderscript/Type$Builder;
     .locals 2
-    .parameter "value"
+    .param p1, "value"    # I
 
     .prologue
-    .line 260
+    .line 371
     const/4 v0, 0x1
 
     if-ge p1, v0, :cond_0
 
-    .line 261
+    .line 372
     new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
 
-    const-string v1, "Values of less than 1 for Dimension Y are not valid."
+    const-string/jumbo v1, "Values of less than 1 for Dimension Y are not valid."
 
     invoke-direct {v0, v1}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 263
+    .line 374
     :cond_0
     iput p1, p0, Landroid/renderscript/Type$Builder;->mDimY:I
 
-    .line 264
+    .line 375
     return-object p0
 .end method
 
 .method public setYuvFormat(I)Landroid/renderscript/Type$Builder;
     .locals 2
-    .parameter "yuvFormat"
+    .param p1, "yuvFormat"    # I
 
     .prologue
-    .line 292
+    .line 420
     sparse-switch p1, :sswitch_data_0
 
-    .line 299
+    .line 427
     new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
 
-    const-string v1, "Only ImageFormat.NV21, .YV12, and .YUV_420_888 are supported.."
+    .line 428
+    const-string/jumbo v1, "Only ImageFormat.NV21, .YV12, and .YUV_420_888 are supported.."
 
+    .line 427
     invoke-direct {v0, v1}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 303
+    .line 431
     :sswitch_0
     iput p1, p0, Landroid/renderscript/Type$Builder;->mYuv:I
 
-    .line 304
+    .line 432
     return-object p0
 
-    .line 292
+    .line 420
+    nop
+
     :sswitch_data_0
     .sparse-switch
         0x11 -> :sswitch_0
@@ -368,27 +469,27 @@
 
 .method public setZ(I)Landroid/renderscript/Type$Builder;
     .locals 2
-    .parameter "value"
+    .param p1, "value"    # I
 
     .prologue
-    .line 268
+    .line 379
     const/4 v0, 0x1
 
     if-ge p1, v0, :cond_0
 
-    .line 269
+    .line 380
     new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
 
-    const-string v1, "Values of less than 1 for Dimension Z are not valid."
+    const-string/jumbo v1, "Values of less than 1 for Dimension Z are not valid."
 
     invoke-direct {v0, v1}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 271
+    .line 382
     :cond_0
     iput p1, p0, Landroid/renderscript/Type$Builder;->mDimZ:I
 
-    .line 272
+    .line 383
     return-object p0
 .end method

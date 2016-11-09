@@ -21,9 +21,9 @@
 
 
 # static fields
-.field public static final CONTENT_EXCEPTION_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_EXCEPTION_URI:Landroid/net/Uri;
 
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
 
 .field private static final DEFAULT_SORT_ORDER:Ljava/lang/String; = ""
 
@@ -47,22 +47,24 @@
 
     const/4 v3, 0x0
 
-    .line 1639
-    const-string v0, "content://com.android.calendar/events"
+    .line 1640
+    const-string/jumbo v0, "content://com.android.calendar/events"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 1639
     sput-object v0, Landroid/provider/CalendarContract$Events;->CONTENT_URI:Landroid/net/Uri;
 
-    .line 1647
-    const-string v0, "content://com.android.calendar/exception"
+    .line 1648
+    const-string/jumbo v0, "content://com.android.calendar/exception"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 1647
     sput-object v0, Landroid/provider/CalendarContract$Events;->CONTENT_EXCEPTION_URI:Landroid/net/Uri;
 
     .line 1667
@@ -70,140 +72,165 @@
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const-string v1, "account_name"
+    .line 1668
+    const-string/jumbo v1, "account_name"
 
     aput-object v1, v0, v3
 
-    const-string v1, "account_type"
+    .line 1669
+    const-string/jumbo v1, "account_type"
 
     aput-object v1, v0, v4
 
-    const-string v1, "cal_sync1"
+    .line 1670
+    const-string/jumbo v1, "cal_sync1"
 
     aput-object v1, v0, v5
 
-    const-string v1, "cal_sync2"
+    .line 1671
+    const-string/jumbo v1, "cal_sync2"
 
     aput-object v1, v0, v6
 
-    const-string v1, "cal_sync3"
+    .line 1672
+    const-string/jumbo v1, "cal_sync3"
 
     aput-object v1, v0, v7
 
-    const/4 v1, 0x5
+    .line 1673
+    const-string/jumbo v1, "cal_sync4"
 
-    const-string v2, "cal_sync4"
+    const/4 v2, 0x5
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x6
+    .line 1674
+    const-string/jumbo v1, "cal_sync5"
 
-    const-string v2, "cal_sync5"
+    const/4 v2, 0x6
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x7
+    .line 1675
+    const-string/jumbo v1, "cal_sync6"
 
-    const-string v2, "cal_sync6"
+    const/4 v2, 0x7
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x8
+    .line 1676
+    const-string/jumbo v1, "cal_sync7"
 
-    const-string v2, "cal_sync7"
+    const/16 v2, 0x8
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x9
+    .line 1677
+    const-string/jumbo v1, "cal_sync8"
 
-    const-string v2, "cal_sync8"
+    const/16 v2, 0x9
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xa
+    .line 1678
+    const-string/jumbo v1, "cal_sync9"
 
-    const-string v2, "cal_sync9"
+    const/16 v2, 0xa
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xb
+    .line 1679
+    const-string/jumbo v1, "cal_sync10"
 
-    const-string v2, "cal_sync10"
+    const/16 v2, 0xb
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xc
+    .line 1680
+    const-string/jumbo v1, "allowedReminders"
 
-    const-string v2, "allowedReminders"
+    const/16 v2, 0xc
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xd
+    .line 1681
+    const-string/jumbo v1, "allowedAttendeeTypes"
 
-    const-string v2, "allowedAttendeeTypes"
+    const/16 v2, 0xd
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xe
+    .line 1682
+    const-string/jumbo v1, "allowedAvailability"
 
-    const-string v2, "allowedAvailability"
+    const/16 v2, 0xe
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xf
+    .line 1683
+    const-string/jumbo v1, "calendar_access_level"
 
-    const-string v2, "calendar_access_level"
+    const/16 v2, 0xf
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x10
+    .line 1684
+    const-string/jumbo v1, "calendar_color"
 
-    const-string v2, "calendar_color"
+    const/16 v2, 0x10
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x11
+    .line 1685
+    const-string/jumbo v1, "calendar_timezone"
 
-    const-string v2, "calendar_timezone"
+    const/16 v2, 0x11
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x12
+    .line 1686
+    const-string/jumbo v1, "canModifyTimeZone"
 
-    const-string v2, "canModifyTimeZone"
+    const/16 v2, 0x12
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x13
+    .line 1687
+    const-string/jumbo v1, "canOrganizerRespond"
 
-    const-string v2, "canOrganizerRespond"
+    const/16 v2, 0x13
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x14
+    .line 1688
+    const-string/jumbo v1, "calendar_displayName"
 
-    const-string v2, "calendar_displayName"
+    const/16 v2, 0x14
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x15
+    .line 1689
+    const-string/jumbo v1, "canPartiallyUpdate"
 
-    const-string v2, "canPartiallyUpdate"
+    const/16 v2, 0x15
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x16
+    .line 1690
+    const-string/jumbo v1, "sync_events"
 
-    const-string/jumbo v2, "sync_events"
+    const/16 v2, 0x16
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x17
+    .line 1691
+    const-string/jumbo v1, "visible"
 
-    const-string/jumbo v2, "visible"
+    const/16 v2, 0x17
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
+    .line 1667
     sput-object v0, Landroid/provider/CalendarContract$Events;->PROVIDER_WRITABLE_COLUMNS:[Ljava/lang/String;
 
     .line 1701
@@ -211,76 +238,91 @@
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const-string v1, "_sync_id"
+    .line 1702
+    const-string/jumbo v1, "_sync_id"
 
     aput-object v1, v0, v3
 
-    const-string v1, "dirty"
+    .line 1703
+    const-string/jumbo v1, "dirty"
 
     aput-object v1, v0, v4
 
-    const-string v1, "mutators"
+    .line 1704
+    const-string/jumbo v1, "mutators"
 
     aput-object v1, v0, v5
 
+    .line 1705
     const-string/jumbo v1, "sync_data1"
 
     aput-object v1, v0, v6
 
+    .line 1706
     const-string/jumbo v1, "sync_data2"
 
     aput-object v1, v0, v7
 
-    const/4 v1, 0x5
+    .line 1707
+    const-string/jumbo v1, "sync_data3"
 
-    const-string/jumbo v2, "sync_data3"
+    const/4 v2, 0x5
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x6
+    .line 1708
+    const-string/jumbo v1, "sync_data4"
 
-    const-string/jumbo v2, "sync_data4"
+    const/4 v2, 0x6
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x7
+    .line 1709
+    const-string/jumbo v1, "sync_data5"
 
-    const-string/jumbo v2, "sync_data5"
+    const/4 v2, 0x7
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x8
+    .line 1710
+    const-string/jumbo v1, "sync_data6"
 
-    const-string/jumbo v2, "sync_data6"
+    const/16 v2, 0x8
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0x9
+    .line 1711
+    const-string/jumbo v1, "sync_data7"
 
-    const-string/jumbo v2, "sync_data7"
+    const/16 v2, 0x9
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xa
+    .line 1712
+    const-string/jumbo v1, "sync_data8"
 
-    const-string/jumbo v2, "sync_data8"
+    const/16 v2, 0xa
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xb
+    .line 1713
+    const-string/jumbo v1, "sync_data9"
 
-    const-string/jumbo v2, "sync_data9"
+    const/16 v2, 0xb
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/16 v1, 0xc
+    .line 1714
+    const-string/jumbo v1, "sync_data10"
 
-    const-string/jumbo v2, "sync_data10"
+    const/16 v2, 0xc
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
+    .line 1701
     sput-object v0, Landroid/provider/CalendarContract$Events;->SYNC_WRITABLE_COLUMNS:[Ljava/lang/String;
 
+    .line 1630
     return-void
 .end method
 

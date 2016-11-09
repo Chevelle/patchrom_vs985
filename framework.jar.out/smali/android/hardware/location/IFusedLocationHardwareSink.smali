@@ -15,6 +15,14 @@
 
 
 # virtual methods
+.method public abstract onCapabilities(I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract onDiagnosticDataAvailable(Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -24,6 +32,14 @@
 .end method
 
 .method public abstract onLocationAvailable([Landroid/location/Location;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onStatusChanged(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

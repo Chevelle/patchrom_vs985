@@ -31,25 +31,27 @@
 # direct methods
 .method constructor <init>(Landroid/content/res/CompatibilityInfo;)V
     .locals 2
-    .parameter
+    .param p1, "this$0"    # Landroid/content/res/CompatibilityInfo;
 
     .prologue
     .line 303
     iget v0, p1, Landroid/content/res/CompatibilityInfo;->applicationScale:F
 
+    .line 304
     iget v1, p1, Landroid/content/res/CompatibilityInfo;->applicationInvertedScale:F
 
+    .line 303
     invoke-direct {p0, p1, v0, v1}, Landroid/content/res/CompatibilityInfo$Translator;-><init>(Landroid/content/res/CompatibilityInfo;FF)V
 
-    .line 305
+    .line 302
     return-void
 .end method
 
 .method constructor <init>(Landroid/content/res/CompatibilityInfo;FF)V
     .locals 1
-    .parameter
-    .parameter "applicationScale"
-    .parameter "applicationInvertedScale"
+    .param p1, "this$0"    # Landroid/content/res/CompatibilityInfo;
+    .param p2, "applicationScale"    # F
+    .param p3, "applicationInvertedScale"    # F
 
     .prologue
     const/4 v0, 0x0
@@ -74,7 +76,7 @@
     .line 299
     iput p3, p0, Landroid/content/res/CompatibilityInfo$Translator;->applicationInvertedScale:F
 
-    .line 300
+    .line 297
     return-void
 .end method
 
@@ -82,7 +84,7 @@
 # virtual methods
 .method public getTranslatedContentInsets(Landroid/graphics/Rect;)Landroid/graphics/Rect;
     .locals 1
-    .parameter "contentInsets"
+    .param p1, "contentInsets"    # Landroid/graphics/Rect;
 
     .prologue
     .line 400
@@ -115,7 +117,7 @@
 
 .method public getTranslatedTouchableArea(Landroid/graphics/Region;)Landroid/graphics/Region;
     .locals 2
-    .parameter "touchableArea"
+    .param p1, "touchableArea"    # Landroid/graphics/Region;
 
     .prologue
     .line 422
@@ -150,7 +152,7 @@
 
 .method public getTranslatedVisibleInsets(Landroid/graphics/Rect;)Landroid/graphics/Rect;
     .locals 1
-    .parameter "visibleInsets"
+    .param p1, "visibleInsets"    # Landroid/graphics/Rect;
 
     .prologue
     .line 411
@@ -183,7 +185,7 @@
 
 .method public translateCanvas(Landroid/graphics/Canvas;)V
     .locals 4
-    .parameter "canvas"
+    .param p1, "canvas"    # Landroid/graphics/Canvas;
 
     .prologue
     const v3, 0x3b2b5601
@@ -191,7 +193,7 @@
     .line 325
     iget v1, p0, Landroid/content/res/CompatibilityInfo$Translator;->applicationScale:F
 
-    const/high16 v2, 0x3fc0
+    const/high16 v2, 0x3fc00000    # 1.5f
 
     cmpl-float v1, v1, v2
 
@@ -201,11 +203,11 @@
     const v0, 0x3b2b5601
 
     .line 342
-    .local v0, tinyOffset:F
+    .local v0, "tinyOffset":F
     invoke-virtual {p1, v3, v3}, Landroid/graphics/Canvas;->translate(FF)V
 
     .line 344
-    .end local v0           #tinyOffset:F
+    .end local v0    # "tinyOffset":F
     :cond_0
     iget v1, p0, Landroid/content/res/CompatibilityInfo$Translator;->applicationScale:F
 
@@ -213,13 +215,13 @@
 
     invoke-virtual {p1, v1, v2}, Landroid/graphics/Canvas;->scale(FF)V
 
-    .line 345
+    .line 324
     return-void
 .end method
 
 .method public translateEventInScreenToAppWindow(Landroid/view/MotionEvent;)V
     .locals 1
-    .parameter "event"
+    .param p1, "event"    # Landroid/view/MotionEvent;
 
     .prologue
     .line 351
@@ -227,13 +229,13 @@
 
     invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->scale(F)V
 
-    .line 352
+    .line 350
     return-void
 .end method
 
 .method public translateLayoutParamsInAppWindowToScreen(Landroid/view/WindowManager$LayoutParams;)V
     .locals 1
-    .parameter "params"
+    .param p1, "params"    # Landroid/view/WindowManager$LayoutParams;
 
     .prologue
     .line 392
@@ -241,21 +243,21 @@
 
     invoke-virtual {p1, v0}, Landroid/view/WindowManager$LayoutParams;->scale(F)V
 
-    .line 393
+    .line 391
     return-void
 .end method
 
 .method public translatePointInScreenToAppWindow(Landroid/graphics/PointF;)V
     .locals 2
-    .parameter "point"
+    .param p1, "point"    # Landroid/graphics/PointF;
 
     .prologue
     .line 380
     iget v0, p0, Landroid/content/res/CompatibilityInfo$Translator;->applicationInvertedScale:F
 
     .line 381
-    .local v0, scale:F
-    const/high16 v1, 0x3f80
+    .local v0, "scale":F
+    const/high16 v1, 0x3f800000    # 1.0f
 
     cmpl-float v1, v0, v1
 
@@ -275,14 +277,14 @@
 
     iput v1, p1, Landroid/graphics/PointF;->y:F
 
-    .line 385
+    .line 379
     :cond_0
     return-void
 .end method
 
 .method public translateRectInAppWindowToScreen(Landroid/graphics/Rect;)V
     .locals 1
-    .parameter "rect"
+    .param p1, "rect"    # Landroid/graphics/Rect;
 
     .prologue
     .line 366
@@ -290,13 +292,13 @@
 
     invoke-virtual {p1, v0}, Landroid/graphics/Rect;->scale(F)V
 
-    .line 367
+    .line 365
     return-void
 .end method
 
 .method public translateRectInScreenToAppWinFrame(Landroid/graphics/Rect;)V
     .locals 1
-    .parameter "rect"
+    .param p1, "rect"    # Landroid/graphics/Rect;
 
     .prologue
     .line 311
@@ -304,13 +306,13 @@
 
     invoke-virtual {p1, v0}, Landroid/graphics/Rect;->scale(F)V
 
-    .line 312
+    .line 310
     return-void
 .end method
 
 .method public translateRectInScreenToAppWindow(Landroid/graphics/Rect;)V
     .locals 1
-    .parameter "rect"
+    .param p1, "rect"    # Landroid/graphics/Rect;
 
     .prologue
     .line 373
@@ -318,13 +320,13 @@
 
     invoke-virtual {p1, v0}, Landroid/graphics/Rect;->scale(F)V
 
-    .line 374
+    .line 372
     return-void
 .end method
 
 .method public translateRegionInWindowToScreen(Landroid/graphics/Region;)V
     .locals 1
-    .parameter "transparentRegion"
+    .param p1, "transparentRegion"    # Landroid/graphics/Region;
 
     .prologue
     .line 318
@@ -332,13 +334,13 @@
 
     invoke-virtual {p1, v0}, Landroid/graphics/Region;->scale(F)V
 
-    .line 319
+    .line 317
     return-void
 .end method
 
 .method public translateWindowLayout(Landroid/view/WindowManager$LayoutParams;)V
     .locals 1
-    .parameter "params"
+    .param p1, "params"    # Landroid/view/WindowManager$LayoutParams;
 
     .prologue
     .line 359
@@ -346,6 +348,6 @@
 
     invoke-virtual {p1, v0}, Landroid/view/WindowManager$LayoutParams;->scale(F)V
 
-    .line 360
+    .line 358
     return-void
 .end method

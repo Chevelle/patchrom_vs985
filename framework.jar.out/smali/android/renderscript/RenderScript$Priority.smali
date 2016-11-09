@@ -44,29 +44,32 @@
 
     const/4 v3, 0x0
 
-    .line 1037
+    .line 1183
     new-instance v0, Landroid/renderscript/RenderScript$Priority;
 
-    const-string v1, "LOW"
+    const-string/jumbo v1, "LOW"
 
+    .line 1185
     const/16 v2, 0xf
 
+    .line 1183
     invoke-direct {v0, v1, v3, v2}, Landroid/renderscript/RenderScript$Priority;-><init>(Ljava/lang/String;II)V
 
+    .line 1185
     sput-object v0, Landroid/renderscript/RenderScript$Priority;->LOW:Landroid/renderscript/RenderScript$Priority;
 
-    .line 1038
+    .line 1186
     new-instance v0, Landroid/renderscript/RenderScript$Priority;
 
-    const-string v1, "NORMAL"
+    const-string/jumbo v1, "NORMAL"
 
-    const/4 v2, -0x4
+    const/4 v2, -0x8
 
     invoke-direct {v0, v1, v4, v2}, Landroid/renderscript/RenderScript$Priority;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Landroid/renderscript/RenderScript$Priority;->NORMAL:Landroid/renderscript/RenderScript$Priority;
 
-    .line 1036
+    .line 1182
     const/4 v0, 0x2
 
     new-array v0, v0, [Landroid/renderscript/RenderScript$Priority;
@@ -86,32 +89,25 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "id"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "id"    # I
 
     .prologue
-    .line 1041
+    .line 1189
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
-    .line 1042
+    .line 1190
     iput p3, p0, Landroid/renderscript/RenderScript$Priority;->mID:I
 
-    .line 1043
+    .line 1189
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/renderscript/RenderScript$Priority;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 1036
+    .line 1182
     const-class v0, Landroid/renderscript/RenderScript$Priority;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -127,14 +123,8 @@
     .locals 1
 
     .prologue
-    .line 1036
+    .line 1182
     sget-object v0, Landroid/renderscript/RenderScript$Priority;->$VALUES:[Landroid/renderscript/RenderScript$Priority;
-
-    invoke-virtual {v0}, [Landroid/renderscript/RenderScript$Priority;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/renderscript/RenderScript$Priority;
 
     return-object v0
 .end method

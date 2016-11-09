@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 66
+    .line 65
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 67
     iput-object p1, p0, Landroid/security/IKeyChainAliasCallback$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 68
+    .line 65
     return-void
 .end method
 
@@ -41,7 +41,7 @@
 # virtual methods
 .method public alias(Ljava/lang/String;)V
     .locals 5
-    .parameter "alias"
+    .param p1, "alias"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -55,15 +55,15 @@
     move-result-object v0
 
     .line 80
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 82
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.security.IKeyChainAliasCallback"
+    const-string/jumbo v2, "android.security.IKeyChainAliasCallback"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -90,18 +90,20 @@
     .line 89
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 91
+    .line 77
     return-void
 
-    .line 88
+    .line 87
     :catchall_0
     move-exception v2
 
+    .line 88
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 89
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 87
     throw v2
 .end method
 
@@ -120,7 +122,7 @@
 
     .prologue
     .line 75
-    const-string v0, "android.security.IKeyChainAliasCallback"
+    const-string/jumbo v0, "android.security.IKeyChainAliasCallback"
 
     return-object v0
 .end method

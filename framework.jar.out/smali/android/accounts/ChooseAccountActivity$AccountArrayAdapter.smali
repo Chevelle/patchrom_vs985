@@ -32,9 +32,9 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;I[Landroid/accounts/ChooseAccountActivity$AccountInfo;)V
     .locals 1
-    .parameter "context"
-    .parameter "textViewResourceId"
-    .parameter "infos"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "textViewResourceId"    # I
+    .param p3, "infos"    # [Landroid/accounts/ChooseAccountActivity$AccountInfo;
 
     .prologue
     .line 160
@@ -43,9 +43,10 @@
     .line 161
     iput-object p3, p0, Landroid/accounts/ChooseAccountActivity$AccountArrayAdapter;->mInfos:[Landroid/accounts/ChooseAccountActivity$AccountInfo;
 
-    .line 162
-    const-string v0, "layout_inflater"
+    .line 163
+    const-string/jumbo v0, "layout_inflater"
 
+    .line 162
     invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v0
@@ -54,7 +55,7 @@
 
     iput-object v0, p0, Landroid/accounts/ChooseAccountActivity$AccountArrayAdapter;->mLayoutInflater:Landroid/view/LayoutInflater;
 
-    .line 164
+    .line 159
     return-void
 .end method
 
@@ -62,9 +63,9 @@
 # virtual methods
 .method public getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
     .locals 4
-    .parameter "position"
-    .parameter "convertView"
-    .parameter "parent"
+    .param p1, "position"    # I
+    .param p2, "convertView"    # Landroid/view/View;
+    .param p3, "parent"    # Landroid/view/ViewGroup;
 
     .prologue
     const/4 v3, 0x0
@@ -75,7 +76,7 @@
     .line 171
     iget-object v1, p0, Landroid/accounts/ChooseAccountActivity$AccountArrayAdapter;->mLayoutInflater:Landroid/view/LayoutInflater;
 
-    const v2, 0x1090035
+    const v2, 0x109003f
 
     invoke-virtual {v1, v2, v3}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
@@ -84,11 +85,11 @@
     .line 172
     new-instance v0, Landroid/accounts/ChooseAccountActivity$ViewHolder;
 
-    invoke-direct {v0, v3}, Landroid/accounts/ChooseAccountActivity$ViewHolder;-><init>(Landroid/accounts/ChooseAccountActivity$1;)V
+    invoke-direct {v0, v3}, Landroid/accounts/ChooseAccountActivity$ViewHolder;-><init>(Landroid/accounts/ChooseAccountActivity$ViewHolder;)V
 
     .line 173
-    .local v0, holder:Landroid/accounts/ChooseAccountActivity$ViewHolder;
-    const v1, 0x1020290
+    .local v0, "holder":Landroid/accounts/ChooseAccountActivity$ViewHolder;
+    const v1, 0x102031a
 
     invoke-virtual {p2, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -99,7 +100,7 @@
     iput-object v1, v0, Landroid/accounts/ChooseAccountActivity$ViewHolder;->text:Landroid/widget/TextView;
 
     .line 174
-    const v1, 0x102028f
+    const v1, 0x1020319
 
     invoke-virtual {p2, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -139,7 +140,7 @@
     return-object p2
 
     .line 177
-    .end local v0           #holder:Landroid/accounts/ChooseAccountActivity$ViewHolder;
+    .end local v0    # "holder":Landroid/accounts/ChooseAccountActivity$ViewHolder;
     :cond_0
     invoke-virtual {p2}, Landroid/view/View;->getTag()Ljava/lang/Object;
 
@@ -147,6 +148,6 @@
 
     check-cast v0, Landroid/accounts/ChooseAccountActivity$ViewHolder;
 
-    .restart local v0       #holder:Landroid/accounts/ChooseAccountActivity$ViewHolder;
+    .restart local v0    # "holder":Landroid/accounts/ChooseAccountActivity$ViewHolder;
     goto :goto_0
 .end method

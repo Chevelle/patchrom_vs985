@@ -1,77 +1,126 @@
-.class Landroid/transition/ChangeBounds$4;
-.super Landroid/animation/AnimatorListenerAdapter;
+.class final Landroid/transition/ChangeBounds$4;
+.super Landroid/util/Property;
 .source "ChangeBounds.java"
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/transition/ChangeBounds;->createAnimator(Landroid/view/ViewGroup;Landroid/transition/TransitionValues;Landroid/transition/TransitionValues;)Landroid/animation/Animator;
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroid/transition/ChangeBounds;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x8
     name = null
 .end annotation
 
-
-# instance fields
-.field final synthetic this$0:Landroid/transition/ChangeBounds;
-
-.field final synthetic val$drawable:Landroid/graphics/drawable/BitmapDrawable;
-
-.field final synthetic val$sceneRoot:Landroid/view/ViewGroup;
-
-.field final synthetic val$view:Landroid/view/View;
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Landroid/util/Property",
+        "<",
+        "Landroid/view/View;",
+        "Landroid/graphics/PointF;",
+        ">;"
+    }
+.end annotation
 
 
 # direct methods
-.method constructor <init>(Landroid/transition/ChangeBounds;Landroid/view/ViewGroup;Landroid/graphics/drawable/BitmapDrawable;Landroid/view/View;)V
+.method constructor <init>(Ljava/lang/Class;Ljava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
-    .parameter
+    .param p2, "$anonymous1"    # Ljava/lang/String;
 
     .prologue
-    .line 298
-    iput-object p1, p0, Landroid/transition/ChangeBounds$4;->this$0:Landroid/transition/ChangeBounds;
-
-    iput-object p2, p0, Landroid/transition/ChangeBounds$4;->val$sceneRoot:Landroid/view/ViewGroup;
-
-    iput-object p3, p0, Landroid/transition/ChangeBounds$4;->val$drawable:Landroid/graphics/drawable/BitmapDrawable;
-
-    iput-object p4, p0, Landroid/transition/ChangeBounds$4;->val$view:Landroid/view/View;
-
-    invoke-direct {p0}, Landroid/animation/AnimatorListenerAdapter;-><init>()V
+    .line 113
+    .local p1, "$anonymous0":Ljava/lang/Class;, "Ljava/lang/Class<Landroid/graphics/PointF;>;"
+    invoke-direct {p0, p1, p2}, Landroid/util/Property;-><init>(Ljava/lang/Class;Ljava/lang/String;)V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onAnimationEnd(Landroid/animation/Animator;)V
-    .locals 2
-    .parameter "animation"
+.method public get(Landroid/view/View;)Landroid/graphics/PointF;
+    .locals 1
+    .param p1, "view"    # Landroid/view/View;
 
     .prologue
-    .line 301
-    iget-object v0, p0, Landroid/transition/ChangeBounds$4;->val$sceneRoot:Landroid/view/ViewGroup;
+    .line 125
+    const/4 v0, 0x0
 
-    invoke-virtual {v0}, Landroid/view/ViewGroup;->getOverlay()Landroid/view/ViewGroupOverlay;
+    return-object v0
+.end method
+
+.method public bridge synthetic get(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 1
+    .param p1, "view"    # Ljava/lang/Object;
+
+    .prologue
+    .line 124
+    check-cast p1, Landroid/view/View;
+
+    .end local p1    # "view":Ljava/lang/Object;
+    invoke-virtual {p0, p1}, Landroid/transition/ChangeBounds$4;->get(Landroid/view/View;)Landroid/graphics/PointF;
 
     move-result-object v0
 
-    iget-object v1, p0, Landroid/transition/ChangeBounds$4;->val$drawable:Landroid/graphics/drawable/BitmapDrawable;
+    return-object v0
+.end method
 
-    invoke-virtual {v0, v1}, Landroid/view/ViewGroupOverlay;->remove(Landroid/graphics/drawable/Drawable;)V
+.method public set(Landroid/view/View;Landroid/graphics/PointF;)V
+    .locals 5
+    .param p1, "view"    # Landroid/view/View;
+    .param p2, "bottomRight"    # Landroid/graphics/PointF;
 
-    .line 302
-    iget-object v0, p0, Landroid/transition/ChangeBounds$4;->val$view:Landroid/view/View;
+    .prologue
+    .line 116
+    invoke-virtual {p1}, Landroid/view/View;->getLeft()I
 
-    const/4 v1, 0x0
+    move-result v1
 
-    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+    .line 117
+    .local v1, "left":I
+    invoke-virtual {p1}, Landroid/view/View;->getTop()I
 
-    .line 303
+    move-result v3
+
+    .line 118
+    .local v3, "top":I
+    iget v4, p2, Landroid/graphics/PointF;->x:F
+
+    invoke-static {v4}, Ljava/lang/Math;->round(F)I
+
+    move-result v2
+
+    .line 119
+    .local v2, "right":I
+    iget v4, p2, Landroid/graphics/PointF;->y:F
+
+    invoke-static {v4}, Ljava/lang/Math;->round(F)I
+
+    move-result v0
+
+    .line 120
+    .local v0, "bottom":I
+    invoke-virtual {p1, v1, v3, v2, v0}, Landroid/view/View;->setLeftTopRightBottom(IIII)V
+
+    .line 115
+    return-void
+.end method
+
+.method public bridge synthetic set(Ljava/lang/Object;Ljava/lang/Object;)V
+    .locals 0
+    .param p1, "view"    # Ljava/lang/Object;
+    .param p2, "bottomRight"    # Ljava/lang/Object;
+
+    .prologue
+    .line 115
+    check-cast p1, Landroid/view/View;
+
+    .end local p1    # "view":Ljava/lang/Object;
+    check-cast p2, Landroid/graphics/PointF;
+
+    .end local p2    # "bottomRight":Ljava/lang/Object;
+    invoke-virtual {p0, p1, p2}, Landroid/transition/ChangeBounds$4;->set(Landroid/view/View;Landroid/graphics/PointF;)V
+
     return-void
 .end method

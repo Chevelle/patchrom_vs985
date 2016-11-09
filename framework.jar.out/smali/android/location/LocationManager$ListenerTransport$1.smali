@@ -17,20 +17,15 @@
 # instance fields
 .field final synthetic this$1:Landroid/location/LocationManager$ListenerTransport;
 
-.field final synthetic val$this$0:Landroid/location/LocationManager;
-
 
 # direct methods
-.method constructor <init>(Landroid/location/LocationManager$ListenerTransport;Landroid/location/LocationManager;)V
+.method constructor <init>(Landroid/location/LocationManager$ListenerTransport;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$1"    # Landroid/location/LocationManager$ListenerTransport;
 
     .prologue
-    .line 221
+    .line 227
     iput-object p1, p0, Landroid/location/LocationManager$ListenerTransport$1;->this$1:Landroid/location/LocationManager$ListenerTransport;
-
-    iput-object p2, p0, Landroid/location/LocationManager$ListenerTransport$1;->val$this$0:Landroid/location/LocationManager;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
 
@@ -41,15 +36,14 @@
 # virtual methods
 .method public handleMessage(Landroid/os/Message;)V
     .locals 1
-    .parameter "msg"
+    .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
-    .line 224
+    .line 230
     iget-object v0, p0, Landroid/location/LocationManager$ListenerTransport$1;->this$1:Landroid/location/LocationManager$ListenerTransport;
 
-    #calls: Landroid/location/LocationManager$ListenerTransport;->_handleMessage(Landroid/os/Message;)V
-    invoke-static {v0, p1}, Landroid/location/LocationManager$ListenerTransport;->access$000(Landroid/location/LocationManager$ListenerTransport;Landroid/os/Message;)V
+    invoke-static {v0, p1}, Landroid/location/LocationManager$ListenerTransport;->-wrap0(Landroid/location/LocationManager$ListenerTransport;Landroid/os/Message;)V
 
-    .line 225
+    .line 229
     return-void
 .end method

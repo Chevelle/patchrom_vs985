@@ -9,7 +9,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/media/MediaRouterClientState$RouteInfo;
+        Landroid/media/MediaRouterClientState$RouteInfo;,
+        Landroid/media/MediaRouterClientState$1;
     }
 .end annotation
 
@@ -47,13 +48,15 @@
     .locals 1
 
     .prologue
-    .line 81
+    .line 82
     new-instance v0, Landroid/media/MediaRouterClientState$1;
 
     invoke-direct {v0}, Landroid/media/MediaRouterClientState$1;-><init>()V
 
+    .line 81
     sput-object v0, Landroid/media/MediaRouterClientState;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 31
     return-void
 .end method
 
@@ -71,13 +74,13 @@
 
     iput-object v0, p0, Landroid/media/MediaRouterClientState;->routes:Ljava/util/ArrayList;
 
-    .line 46
+    .line 44
     return-void
 .end method
 
 .method constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "src"
+    .param p1, "src"    # Landroid/os/Parcel;
 
     .prologue
     .line 48
@@ -99,7 +102,7 @@
 
     iput-object v0, p0, Landroid/media/MediaRouterClientState;->globallySelectedRouteId:Ljava/lang/String;
 
-    .line 51
+    .line 48
     return-void
 .end method
 
@@ -117,7 +120,7 @@
 
 .method public getRoute(Ljava/lang/String;)Landroid/media/MediaRouterClientState$RouteInfo;
     .locals 4
-    .parameter "id"
+    .param p1, "id"    # Ljava/lang/String;
 
     .prologue
     .line 54
@@ -128,10 +131,10 @@
     move-result v0
 
     .line 55
-    .local v0, count:I
+    .local v0, "count":I
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_0
     if-ge v1, v0, :cond_1
 
@@ -145,7 +148,7 @@
     check-cast v2, Landroid/media/MediaRouterClientState$RouteInfo;
 
     .line 57
-    .local v2, route:Landroid/media/MediaRouterClientState$RouteInfo;
+    .local v2, "route":Landroid/media/MediaRouterClientState$RouteInfo;
     iget-object v3, v2, Landroid/media/MediaRouterClientState$RouteInfo;->id:Ljava/lang/String;
 
     invoke-virtual {v3, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -154,24 +157,21 @@
 
     if-eqz v3, :cond_0
 
-    .line 61
-    .end local v2           #route:Landroid/media/MediaRouterClientState$RouteInfo;
-    :goto_1
+    .line 58
     return-object v2
 
     .line 55
-    .restart local v2       #route:Landroid/media/MediaRouterClientState$RouteInfo;
     :cond_0
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
     .line 61
-    .end local v2           #route:Landroid/media/MediaRouterClientState$RouteInfo;
+    .end local v2    # "route":Landroid/media/MediaRouterClientState$RouteInfo;
     :cond_1
-    const/4 v2, 0x0
+    const/4 v3, 0x0
 
-    goto :goto_1
+    return-object v3
 .end method
 
 .method public toString()Ljava/lang/String;
@@ -183,36 +183,44 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "MediaRouterClientState{ globallySelectedRouteId="
+    const-string/jumbo v1, "MediaRouterClientState{ globallySelectedRouteId="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 78
     iget-object v1, p0, Landroid/media/MediaRouterClientState;->globallySelectedRouteId:Ljava/lang/String;
 
+    .line 77
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", routes="
+    .line 78
+    const-string/jumbo v1, ", routes="
 
+    .line 77
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 78
     iget-object v1, p0, Landroid/media/MediaRouterClientState;->routes:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->toString()Ljava/lang/String;
 
     move-result-object v1
 
+    .line 77
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " }"
+    .line 78
+    const-string/jumbo v1, " }"
 
+    .line 77
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -226,8 +234,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 71
@@ -240,6 +248,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 73
+    .line 70
     return-void
 .end method

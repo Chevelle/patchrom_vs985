@@ -21,18 +21,18 @@
 # direct methods
 .method public constructor <init>(Landroid/media/RemoteController;Landroid/media/RemoteController;Landroid/os/Looper;)V
     .locals 0
-    .parameter
-    .parameter "rc"
-    .parameter "looper"
+    .param p1, "this$0"    # Landroid/media/RemoteController;
+    .param p2, "rc"    # Landroid/media/RemoteController;
+    .param p3, "looper"    # Landroid/os/Looper;
 
     .prologue
-    .line 667
+    .line 748
     iput-object p1, p0, Landroid/media/RemoteController$EventHandler;->this$0:Landroid/media/RemoteController;
 
-    .line 668
+    .line 749
     invoke-direct {p0, p3}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
-    .line 669
+    .line 748
     return-void
 .end method
 
@@ -40,20 +40,20 @@
 # virtual methods
 .method public handleMessage(Landroid/os/Message;)V
     .locals 5
-    .parameter "msg"
+    .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
     const/4 v1, 0x0
 
     const/4 v0, 0x1
 
-    .line 673
+    .line 754
     iget v2, p1, Landroid/os/Message;->what:I
 
     packed-switch v2, :pswitch_data_0
 
-    .line 693
-    const-string v0, "RemoteController"
+    .line 781
+    const-string/jumbo v0, "RemoteController"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -77,11 +77,11 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 695
+    .line 753
     :goto_0
     return-void
 
-    .line 675
+    .line 756
     :pswitch_0
     iget-object v1, p0, Landroid/media/RemoteController$EventHandler;->this$0:Landroid/media/RemoteController;
 
@@ -91,12 +91,11 @@
 
     check-cast v0, Landroid/app/PendingIntent;
 
-    #calls: Landroid/media/RemoteController;->onNewPendingIntent(ILandroid/app/PendingIntent;)V
-    invoke-static {v1, v2, v0}, Landroid/media/RemoteController;->access$600(Landroid/media/RemoteController;ILandroid/app/PendingIntent;)V
+    invoke-static {v1, v2, v0}, Landroid/media/RemoteController;->-wrap4(Landroid/media/RemoteController;ILandroid/app/PendingIntent;)V
 
     goto :goto_0
 
-    .line 678
+    .line 759
     :pswitch_1
     iget-object v1, p0, Landroid/media/RemoteController$EventHandler;->this$0:Landroid/media/RemoteController;
 
@@ -106,12 +105,11 @@
 
     check-cast v0, Landroid/media/RemoteController$PlaybackInfo;
 
-    #calls: Landroid/media/RemoteController;->onNewPlaybackInfo(ILandroid/media/RemoteController$PlaybackInfo;)V
-    invoke-static {v1, v2, v0}, Landroid/media/RemoteController;->access$700(Landroid/media/RemoteController;ILandroid/media/RemoteController$PlaybackInfo;)V
+    invoke-static {v1, v2, v0}, Landroid/media/RemoteController;->-wrap5(Landroid/media/RemoteController;ILandroid/media/RemoteController$PlaybackInfo;)V
 
     goto :goto_0
 
-    .line 681
+    .line 762
     :pswitch_2
     iget-object v0, p0, Landroid/media/RemoteController$EventHandler;->this$0:Landroid/media/RemoteController;
 
@@ -119,12 +117,11 @@
 
     iget v2, p1, Landroid/os/Message;->arg2:I
 
-    #calls: Landroid/media/RemoteController;->onNewTransportInfo(II)V
-    invoke-static {v0, v1, v2}, Landroid/media/RemoteController;->access$800(Landroid/media/RemoteController;II)V
+    invoke-static {v0, v1, v2}, Landroid/media/RemoteController;->-wrap7(Landroid/media/RemoteController;II)V
 
     goto :goto_0
 
-    .line 684
+    .line 765
     :pswitch_3
     iget-object v1, p0, Landroid/media/RemoteController$EventHandler;->this$0:Landroid/media/RemoteController;
 
@@ -134,12 +131,11 @@
 
     check-cast v0, Landroid/os/Bundle;
 
-    #calls: Landroid/media/RemoteController;->onNewMetadata(ILandroid/os/Bundle;)V
-    invoke-static {v1, v2, v0}, Landroid/media/RemoteController;->access$900(Landroid/media/RemoteController;ILandroid/os/Bundle;)V
+    invoke-static {v1, v2, v0}, Landroid/media/RemoteController;->-wrap3(Landroid/media/RemoteController;ILandroid/os/Bundle;)V
 
     goto :goto_0
 
-    .line 687
+    .line 768
     :pswitch_4
     iget-object v2, p0, Landroid/media/RemoteController$EventHandler;->this$0:Landroid/media/RemoteController;
 
@@ -150,8 +146,7 @@
     if-ne v4, v0, :cond_0
 
     :goto_1
-    #calls: Landroid/media/RemoteController;->onClientChange(IZ)V
-    invoke-static {v2, v3, v0}, Landroid/media/RemoteController;->access$1000(Landroid/media/RemoteController;IZ)V
+    invoke-static {v2, v3, v0}, Landroid/media/RemoteController;->-wrap0(Landroid/media/RemoteController;IZ)V
 
     goto :goto_0
 
@@ -160,7 +155,7 @@
 
     goto :goto_1
 
-    .line 690
+    .line 771
     :pswitch_5
     iget-object v2, p0, Landroid/media/RemoteController$EventHandler;->this$0:Landroid/media/RemoteController;
 
@@ -169,8 +164,7 @@
     if-ne v3, v0, :cond_1
 
     :goto_2
-    #calls: Landroid/media/RemoteController;->onDisplayEnable(Z)V
-    invoke-static {v2, v0}, Landroid/media/RemoteController;->access$1100(Landroid/media/RemoteController;Z)V
+    invoke-static {v2, v0}, Landroid/media/RemoteController;->-wrap1(Landroid/media/RemoteController;Z)V
 
     goto :goto_0
 
@@ -179,9 +173,31 @@
 
     goto :goto_2
 
-    .line 673
-    nop
+    .line 775
+    :pswitch_6
+    iget-object v1, p0, Landroid/media/RemoteController$EventHandler;->this$0:Landroid/media/RemoteController;
 
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v0, Landroid/media/session/PlaybackState;
+
+    invoke-static {v1, v0}, Landroid/media/RemoteController;->-wrap6(Landroid/media/RemoteController;Landroid/media/session/PlaybackState;)V
+
+    goto :goto_0
+
+    .line 778
+    :pswitch_7
+    iget-object v1, p0, Landroid/media/RemoteController$EventHandler;->this$0:Landroid/media/RemoteController;
+
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v0, Landroid/media/MediaMetadata;
+
+    invoke-static {v1, v0}, Landroid/media/RemoteController;->-wrap2(Landroid/media/RemoteController;Landroid/media/MediaMetadata;)V
+
+    goto :goto_0
+
+    .line 754
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -190,5 +206,7 @@
         :pswitch_3
         :pswitch_4
         :pswitch_5
+        :pswitch_6
+        :pswitch_7
     .end packed-switch
 .end method

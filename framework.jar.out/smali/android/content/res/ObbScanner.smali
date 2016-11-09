@@ -16,7 +16,7 @@
 
 .method public static getObbInfo(Ljava/lang/String;)Landroid/content/res/ObbInfo;
     .locals 6
-    .parameter "filePath"
+    .param p0, "filePath"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -30,7 +30,7 @@
     .line 40
     new-instance v3, Ljava/lang/IllegalArgumentException;
 
-    const-string v4, "file path cannot be null"
+    const-string/jumbo v4, "file path cannot be null"
 
     invoke-direct {v3, v4}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -43,7 +43,7 @@
     invoke-direct {v1, p0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
     .line 44
-    .local v1, obbFile:Ljava/io/File;
+    .local v1, "obbFile":Ljava/io/File;
     invoke-virtual {v1}, Ljava/io/File;->exists()Z
 
     move-result v3
@@ -57,7 +57,7 @@
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v5, "OBB file does not exist: "
+    const-string/jumbo v5, "OBB file does not exist: "
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -82,13 +82,13 @@
     move-result-object v0
 
     .line 54
-    .local v0, canonicalFilePath:Ljava/lang/String;
+    .local v0, "canonicalFilePath":Ljava/lang/String;
     new-instance v2, Landroid/content/res/ObbInfo;
 
     invoke-direct {v2}, Landroid/content/res/ObbInfo;-><init>()V
 
     .line 55
-    .local v2, obbInfo:Landroid/content/res/ObbInfo;
+    .local v2, "obbInfo":Landroid/content/res/ObbInfo;
     iput-object v0, v2, Landroid/content/res/ObbInfo;->filename:Ljava/lang/String;
 
     .line 56

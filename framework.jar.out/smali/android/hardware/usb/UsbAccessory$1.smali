@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 196
+    .line 194
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,46 +42,46 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/hardware/usb/UsbAccessory;
     .locals 7
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 198
+    .line 196
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 199
-    .local v1, manufacturer:Ljava/lang/String;
+    .line 197
+    .local v1, "manufacturer":Ljava/lang/String;
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v2
 
-    .line 200
-    .local v2, model:Ljava/lang/String;
+    .line 198
+    .local v2, "model":Ljava/lang/String;
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v3
 
-    .line 201
-    .local v3, description:Ljava/lang/String;
+    .line 199
+    .local v3, "description":Ljava/lang/String;
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v4
 
-    .line 202
-    .local v4, version:Ljava/lang/String;
+    .line 200
+    .local v4, "version":Ljava/lang/String;
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v5
 
-    .line 203
-    .local v5, uri:Ljava/lang/String;
+    .line 201
+    .local v5, "uri":Ljava/lang/String;
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v6
 
-    .line 204
-    .local v6, serial:Ljava/lang/String;
+    .line 202
+    .local v6, "serial":Ljava/lang/String;
     new-instance v0, Landroid/hardware/usb/UsbAccessory;
 
     invoke-direct/range {v0 .. v6}, Landroid/hardware/usb/UsbAccessory;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
@@ -91,10 +91,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 196
+    .line 195
     invoke-virtual {p0, p1}, Landroid/hardware/usb/UsbAccessory$1;->createFromParcel(Landroid/os/Parcel;)Landroid/hardware/usb/UsbAccessory;
 
     move-result-object v0
@@ -104,10 +104,10 @@
 
 .method public newArray(I)[Landroid/hardware/usb/UsbAccessory;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 208
+    .line 206
     new-array v0, p1, [Landroid/hardware/usb/UsbAccessory;
 
     return-object v0
@@ -115,10 +115,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 196
+    .line 205
     invoke-virtual {p0, p1}, Landroid/hardware/usb/UsbAccessory$1;->newArray(I)[Landroid/hardware/usb/UsbAccessory;
 
     move-result-object v0

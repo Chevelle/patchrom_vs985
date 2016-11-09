@@ -14,7 +14,7 @@
 # direct methods
 .method constructor <init>(I)V
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 59
@@ -25,6 +25,6 @@
 
     iput-object v0, p0, Landroid/hardware/TriggerEvent;->values:[F
 
-    .line 61
+    .line 59
     return-void
 .end method

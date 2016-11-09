@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/location/GeocoderParams$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -26,17 +34,35 @@
 
 
 # direct methods
+.method static synthetic -set0(Landroid/location/GeocoderParams;Ljava/util/Locale;)Ljava/util/Locale;
+    .locals 0
+
+    iput-object p1, p0, Landroid/location/GeocoderParams;->mLocale:Ljava/util/Locale;
+
+    return-object p1
+.end method
+
+.method static synthetic -set1(Landroid/location/GeocoderParams;Ljava/lang/String;)Ljava/lang/String;
+    .locals 0
+
+    iput-object p1, p0, Landroid/location/GeocoderParams;->mPackageName:Ljava/lang/String;
+
+    return-object p1
+.end method
+
 .method static constructor <clinit>()V
     .locals 1
 
     .prologue
-    .line 67
+    .line 68
     new-instance v0, Landroid/location/GeocoderParams$1;
 
     invoke-direct {v0}, Landroid/location/GeocoderParams$1;-><init>()V
 
+    .line 67
     sput-object v0, Landroid/location/GeocoderParams;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 35
     return-void
 .end method
 
@@ -47,14 +73,13 @@
     .line 40
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 41
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Ljava/util/Locale;)V
     .locals 1
-    .parameter "context"
-    .parameter "locale"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "locale"    # Ljava/util/Locale;
 
     .prologue
     .line 48
@@ -70,43 +95,17 @@
 
     iput-object v0, p0, Landroid/location/GeocoderParams;->mPackageName:Ljava/lang/String;
 
-    .line 51
+    .line 48
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/location/GeocoderParams$1;)V
+.method synthetic constructor <init>(Landroid/location/GeocoderParams;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 35
     invoke-direct {p0}, Landroid/location/GeocoderParams;-><init>()V
 
     return-void
-.end method
-
-.method static synthetic access$102(Landroid/location/GeocoderParams;Ljava/util/Locale;)Ljava/util/Locale;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 35
-    iput-object p1, p0, Landroid/location/GeocoderParams;->mLocale:Ljava/util/Locale;
-
-    return-object p1
-.end method
-
-.method static synthetic access$202(Landroid/location/GeocoderParams;Ljava/lang/String;)Ljava/lang/String;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 35
-    iput-object p1, p0, Landroid/location/GeocoderParams;->mPackageName:Ljava/lang/String;
-
-    return-object p1
 .end method
 
 
@@ -143,8 +142,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "parcel"
-    .parameter "flags"
+    .param p1, "parcel"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 89
@@ -179,6 +178,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 93
+    .line 88
     return-void
 .end method

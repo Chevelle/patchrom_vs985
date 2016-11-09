@@ -20,14 +20,18 @@
 # instance fields
 .field final synthetic this$0:Landroid/view/View;
 
+.field public x:F
+
+.field public y:F
+
 
 # direct methods
 .method private constructor <init>(Landroid/view/View;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/view/View;
 
     .prologue
-    .line 18419
+    .line 21140
     iput-object p1, p0, Landroid/view/View$CheckForTap;->this$0:Landroid/view/View;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -35,13 +39,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/view/View;Landroid/view/View$1;)V
+.method synthetic constructor <init>(Landroid/view/View;Landroid/view/View$CheckForTap;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Landroid/view/View;
 
     .prologue
-    .line 18419
     invoke-direct {p0, p1}, Landroid/view/View$CheckForTap;-><init>(Landroid/view/View;)V
 
     return-void
@@ -50,10 +52,10 @@
 
 # virtual methods
 .method public run()V
-    .locals 3
+    .locals 4
 
     .prologue
-    .line 18421
+    .line 21146
     iget-object v0, p0, Landroid/view/View$CheckForTap;->this$0:Landroid/view/View;
 
     iget v1, v0, Landroid/view/View;->mPrivateFlags:I
@@ -64,23 +66,26 @@
 
     iput v1, v0, Landroid/view/View;->mPrivateFlags:I
 
-    .line 18422
+    .line 21147
     iget-object v0, p0, Landroid/view/View$CheckForTap;->this$0:Landroid/view/View;
 
-    const/4 v1, 0x1
+    iget v1, p0, Landroid/view/View$CheckForTap;->x:F
 
-    invoke-virtual {v0, v1}, Landroid/view/View;->setPressed(Z)V
+    iget v2, p0, Landroid/view/View$CheckForTap;->y:F
 
-    .line 18423
+    const/4 v3, 0x1
+
+    invoke-static {v0, v3, v1, v2}, Landroid/view/View;->-wrap2(Landroid/view/View;ZFF)V
+
+    .line 21148
     iget-object v0, p0, Landroid/view/View$CheckForTap;->this$0:Landroid/view/View;
 
     invoke-static {}, Landroid/view/ViewConfiguration;->getTapTimeout()I
 
     move-result v1
 
-    #calls: Landroid/view/View;->checkForLongClick(I)V
-    invoke-static {v0, v1}, Landroid/view/View;->access$2600(Landroid/view/View;I)V
+    invoke-static {v0, v1}, Landroid/view/View;->-wrap1(Landroid/view/View;I)V
 
-    .line 18424
+    .line 21145
     return-void
 .end method

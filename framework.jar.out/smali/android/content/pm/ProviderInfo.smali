@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/content/pm/ProviderInfo$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -51,13 +59,15 @@
     .locals 1
 
     .prologue
-    .line 141
+    .line 142
     new-instance v0, Landroid/content/pm/ProviderInfo$1;
 
     invoke-direct {v0}, Landroid/content/pm/ProviderInfo$1;-><init>()V
 
+    .line 141
     sput-object v0, Landroid/content/pm/ProviderInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 30
     return-void
 .end method
 
@@ -99,16 +109,16 @@
     .line 90
     iput v0, p0, Landroid/content/pm/ProviderInfo;->flags:I
 
-    .line 97
+    .line 98
     iput-boolean v0, p0, Landroid/content/pm/ProviderInfo;->isSyncable:Z
 
-    .line 101
+    .line 100
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/pm/ProviderInfo;)V
     .locals 2
-    .parameter "orig"
+    .param p1, "orig"    # Landroid/content/pm/ProviderInfo;
 
     .prologue
     const/4 v1, 0x0
@@ -145,7 +155,7 @@
     .line 90
     iput v0, p0, Landroid/content/pm/ProviderInfo;->flags:I
 
-    .line 97
+    .line 98
     iput-boolean v0, p0, Landroid/content/pm/ProviderInfo;->isSyncable:Z
 
     .line 105
@@ -198,13 +208,13 @@
 
     iput-boolean v0, p0, Landroid/content/pm/ProviderInfo;->isSyncable:Z
 
-    .line 115
+    .line 103
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 3
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     const/4 v1, 0x1
@@ -243,7 +253,7 @@
     .line 90
     iput v2, p0, Landroid/content/pm/ProviderInfo;->flags:I
 
-    .line 97
+    .line 98
     iput-boolean v2, p0, Landroid/content/pm/ProviderInfo;->isSyncable:Z
 
     .line 158
@@ -337,7 +347,7 @@
     :goto_2
     iput-boolean v1, p0, Landroid/content/pm/ProviderInfo;->isSyncable:Z
 
-    .line 168
+    .line 156
     return-void
 
     :cond_0
@@ -359,13 +369,11 @@
     goto :goto_2
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/content/pm/ProviderInfo$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/content/pm/ProviderInfo;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 30
     invoke-direct {p0, p1}, Landroid/content/pm/ProviderInfo;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -385,8 +393,8 @@
 
 .method public dump(Landroid/util/Printer;Ljava/lang/String;)V
     .locals 2
-    .parameter "pw"
-    .parameter "prefix"
+    .param p1, "pw"    # Landroid/util/Printer;
+    .param p2, "prefix"    # Ljava/lang/String;
 
     .prologue
     .line 118
@@ -401,7 +409,7 @@
 
     move-result-object v0
 
-    const-string v1, "authority="
+    const-string/jumbo v1, "authority="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -428,7 +436,7 @@
 
     move-result-object v0
 
-    const-string v1, "flags=0x"
+    const-string/jumbo v1, "flags=0x"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -450,7 +458,7 @@
 
     invoke-interface {p1, v0}, Landroid/util/Printer;->println(Ljava/lang/String;)V
 
-    .line 121
+    .line 117
     return-void
 .end method
 
@@ -463,7 +471,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "ContentProviderInfo{name="
+    const-string/jumbo v1, "ContentProviderInfo{name="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -475,7 +483,7 @@
 
     move-result-object v0
 
-    const-string v1, " className="
+    const-string/jumbo v1, " className="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -502,8 +510,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 3
-    .parameter "out"
-    .parameter "parcelableFlags"
+    .param p1, "out"    # Landroid/os/Parcel;
+    .param p2, "parcelableFlags"    # I
 
     .prologue
     const/4 v1, 0x1
@@ -576,7 +584,7 @@
     :goto_2
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 139
+    .line 127
     return-void
 
     :cond_0

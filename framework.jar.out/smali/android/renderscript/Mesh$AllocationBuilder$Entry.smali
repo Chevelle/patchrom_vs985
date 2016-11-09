@@ -19,17 +19,17 @@
 
 .field prim:Landroid/renderscript/Mesh$Primitive;
 
-.field final synthetic this$0:Landroid/renderscript/Mesh$AllocationBuilder;
+.field final synthetic this$1:Landroid/renderscript/Mesh$AllocationBuilder;
 
 
 # direct methods
 .method constructor <init>(Landroid/renderscript/Mesh$AllocationBuilder;)V
     .locals 0
-    .parameter
+    .param p1, "this$1"    # Landroid/renderscript/Mesh$AllocationBuilder;
 
     .prologue
-    .line 409
-    iput-object p1, p0, Landroid/renderscript/Mesh$AllocationBuilder$Entry;->this$0:Landroid/renderscript/Mesh$AllocationBuilder;
+    .line 413
+    iput-object p1, p0, Landroid/renderscript/Mesh$AllocationBuilder$Entry;->this$1:Landroid/renderscript/Mesh$AllocationBuilder;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 

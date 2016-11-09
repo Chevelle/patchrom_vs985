@@ -6,12 +6,12 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/content/DialogInterface$OnKeyListener;,
-        Landroid/content/DialogInterface$OnMultiChoiceClickListener;,
-        Landroid/content/DialogInterface$OnClickListener;,
-        Landroid/content/DialogInterface$OnShowListener;,
+        Landroid/content/DialogInterface$OnCancelListener;,
         Landroid/content/DialogInterface$OnDismissListener;,
-        Landroid/content/DialogInterface$OnCancelListener;
+        Landroid/content/DialogInterface$OnShowListener;,
+        Landroid/content/DialogInterface$OnClickListener;,
+        Landroid/content/DialogInterface$OnMultiChoiceClickListener;,
+        Landroid/content/DialogInterface$OnKeyListener;
     }
 .end annotation
 

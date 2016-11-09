@@ -15,7 +15,15 @@
 
 
 # virtual methods
-.method public abstract clearAccessibilityNodeInfoCache()V
+.method public abstract clearAccessibilityCache()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract init(Landroid/accessibilityservice/IAccessibilityServiceConnection;ILandroid/os/IBinder;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -48,14 +56,6 @@
 .end method
 
 .method public abstract onKeyEvent(Landroid/view/KeyEvent;I)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setConnection(Landroid/accessibilityservice/IAccessibilityServiceConnection;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

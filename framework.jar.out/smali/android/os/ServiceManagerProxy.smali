@@ -13,7 +13,7 @@
 # direct methods
 .method public constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
     .line 110
@@ -22,7 +22,7 @@
     .line 111
     iput-object p1, p0, Landroid/os/ServiceManagerProxy;->mRemote:Landroid/os/IBinder;
 
-    .line 112
+    .line 110
     return-void
 .end method
 
@@ -30,9 +30,9 @@
 # virtual methods
 .method public addService(Ljava/lang/String;Landroid/os/IBinder;Z)V
     .locals 5
-    .parameter "name"
-    .parameter "service"
-    .parameter "allowIsolated"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "service"    # Landroid/os/IBinder;
+    .param p3, "allowIsolated"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -48,14 +48,14 @@
     move-result-object v0
 
     .line 145
-    .local v0, data:Landroid/os/Parcel;
+    .local v0, "data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 146
-    .local v1, reply:Landroid/os/Parcel;
-    const-string v2, "android.os.IServiceManager"
+    .local v1, "reply":Landroid/os/Parcel;
+    const-string/jumbo v2, "android.os.IServiceManager"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -86,7 +86,7 @@
     .line 152
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 153
+    .line 143
     return-void
 
     :cond_0
@@ -108,7 +108,7 @@
 
 .method public checkService(Ljava/lang/String;)Landroid/os/IBinder;
     .locals 6
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -122,14 +122,14 @@
     move-result-object v1
 
     .line 132
-    .local v1, data:Landroid/os/Parcel;
+    .local v1, "data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v2
 
     .line 133
-    .local v2, reply:Landroid/os/Parcel;
-    const-string v3, "android.os.IServiceManager"
+    .local v2, "reply":Landroid/os/Parcel;
+    const-string/jumbo v3, "android.os.IServiceManager"
 
     invoke-virtual {v1, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -151,7 +151,7 @@
     move-result-object v0
 
     .line 137
-    .local v0, binder:Landroid/os/IBinder;
+    .local v0, "binder":Landroid/os/IBinder;
     invoke-virtual {v2}, Landroid/os/Parcel;->recycle()V
 
     .line 138
@@ -163,7 +163,7 @@
 
 .method public getService(Ljava/lang/String;)Landroid/os/IBinder;
     .locals 6
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -177,14 +177,14 @@
     move-result-object v1
 
     .line 120
-    .local v1, data:Landroid/os/Parcel;
+    .local v1, "data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v2
 
     .line 121
-    .local v2, reply:Landroid/os/Parcel;
-    const-string v3, "android.os.IServiceManager"
+    .local v2, "reply":Landroid/os/Parcel;
+    const-string/jumbo v3, "android.os.IServiceManager"
 
     invoke-virtual {v1, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -206,7 +206,7 @@
     move-result-object v0
 
     .line 125
-    .local v0, binder:Landroid/os/IBinder;
+    .local v0, "binder":Landroid/os/IBinder;
     invoke-virtual {v2}, Landroid/os/Parcel;->recycle()V
 
     .line 126
@@ -231,25 +231,25 @@
     invoke-direct {v6}, Ljava/util/ArrayList;-><init>()V
 
     .line 157
-    .local v6, services:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/String;>;"
+    .local v6, "services":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
     const/4 v3, 0x0
 
     .line 159
-    .local v3, n:I
+    .local v3, "n":I
     :goto_0
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 160
-    .local v1, data:Landroid/os/Parcel;
+    .local v1, "data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v4
 
     .line 161
-    .local v4, reply:Landroid/os/Parcel;
-    const-string v7, "android.os.IServiceManager"
+    .local v4, "reply":Landroid/os/Parcel;
+    const-string/jumbo v7, "android.os.IServiceManager"
 
     invoke-virtual {v1, v7}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -274,11 +274,11 @@
     move-result v5
 
     .line 166
-    .local v5, res:Z
+    .local v5, "res":Z
     if-nez v5, :cond_0
 
     .line 179
-    .end local v5           #res:Z
+    .end local v5    # "res":Z
     :goto_1
     invoke-virtual {v6}, Ljava/util/ArrayList;->size()I
 
@@ -287,24 +287,15 @@
     new-array v0, v7, [Ljava/lang/String;
 
     .line 180
-    .local v0, array:[Ljava/lang/String;
+    .local v0, "array":[Ljava/lang/String;
     invoke-virtual {v6, v0}, Ljava/util/ArrayList;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
 
     .line 181
     return-object v0
 
-    .line 169
-    .end local v0           #array:[Ljava/lang/String;
-    :catch_0
-    move-exception v2
-
-    .line 173
-    .local v2, e:Ljava/lang/RuntimeException;
-    goto :goto_1
-
     .line 175
-    .end local v2           #e:Ljava/lang/RuntimeException;
-    .restart local v5       #res:Z
+    .end local v0    # "array":[Ljava/lang/String;
+    .restart local v5    # "res":Z
     :cond_0
     invoke-virtual {v4}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
@@ -319,11 +310,19 @@
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     goto :goto_0
+
+    .line 169
+    .end local v5    # "res":Z
+    :catch_0
+    move-exception v2
+
+    .local v2, "e":Ljava/lang/RuntimeException;
+    goto :goto_1
 .end method
 
 .method public setPermissionController(Landroid/os/IPermissionController;)V
     .locals 5
-    .parameter "controller"
+    .param p1, "controller"    # Landroid/os/IPermissionController;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -337,14 +336,14 @@
     move-result-object v0
 
     .line 187
-    .local v0, data:Landroid/os/Parcel;
+    .local v0, "data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 188
-    .local v1, reply:Landroid/os/Parcel;
-    const-string v2, "android.os.IServiceManager"
+    .local v1, "reply":Landroid/os/Parcel;
+    const-string/jumbo v2, "android.os.IServiceManager"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -370,6 +369,6 @@
     .line 192
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 193
+    .line 185
     return-void
 .end method

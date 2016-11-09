@@ -27,7 +27,7 @@
 
 .field public mSql:Ljava/lang/String;
 
-.field public mStatementPtr:I
+.field public mStatementPtr:J
 
 .field public mType:I
 
@@ -37,18 +37,16 @@
     .locals 0
 
     .prologue
-    .line 1219
+    .line 1221
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/database/sqlite/SQLiteConnection$1;)V
+.method synthetic constructor <init>(Landroid/database/sqlite/SQLiteConnection$PreparedStatement;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 1219
     invoke-direct {p0}, Landroid/database/sqlite/SQLiteConnection$PreparedStatement;-><init>()V
 
     return-void

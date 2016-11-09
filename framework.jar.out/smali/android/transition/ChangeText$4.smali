@@ -28,9 +28,9 @@
 # direct methods
 .method constructor <init>(Landroid/transition/ChangeText;Landroid/widget/TextView;I)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/transition/ChangeText;
+    .param p2, "val$view"    # Landroid/widget/TextView;
+    .param p3, "val$endColor"    # I
 
     .prologue
     .line 241
@@ -49,7 +49,7 @@
 # virtual methods
 .method public onAnimationUpdate(Landroid/animation/ValueAnimator;)V
     .locals 4
-    .parameter "animation"
+    .param p1, "animation"    # Landroid/animation/ValueAnimator;
 
     .prologue
     .line 244
@@ -64,7 +64,7 @@
     move-result v0
 
     .line 245
-    .local v0, currAlpha:I
+    .local v0, "currAlpha":I
     iget-object v1, p0, Landroid/transition/ChangeText$4;->val$view:Landroid/widget/TextView;
 
     shl-int/lit8 v2, v0, 0x18
@@ -79,6 +79,7 @@
 
     or-int/2addr v2, v3
 
+    .line 246
     iget v3, p0, Landroid/transition/ChangeText$4;->val$endColor:I
 
     invoke-static {v3}, Landroid/graphics/Color;->green(I)I
@@ -87,18 +88,21 @@
 
     shl-int/lit8 v3, v3, 0x8
 
+    .line 245
     or-int/2addr v2, v3
 
+    .line 246
     iget v3, p0, Landroid/transition/ChangeText$4;->val$endColor:I
 
     invoke-static {v3}, Landroid/graphics/Color;->red(I)I
 
     move-result v3
 
+    .line 245
     or-int/2addr v2, v3
 
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 247
+    .line 243
     return-void
 .end method

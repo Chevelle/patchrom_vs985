@@ -31,6 +31,14 @@
     .end annotation
 .end method
 
+.method public abstract forceUpdateIfaces()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getDataLayerSnapshotForUid(I)Landroid/net/NetworkStats;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -64,6 +72,14 @@
 .end method
 
 .method public abstract openSession()Landroid/net/INetworkStatsSession;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract openSessionForUsageStats(Ljava/lang/String;)Landroid/net/INetworkStatsSession;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

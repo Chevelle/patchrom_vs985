@@ -30,15 +30,16 @@
 
 
 # virtual methods
-.method public onTerribleFailure(Ljava/lang/String;Landroid/util/Log$TerribleFailure;)V
+.method public onTerribleFailure(Ljava/lang/String;Landroid/util/Log$TerribleFailure;Z)V
     .locals 0
-    .parameter "tag"
-    .parameter "what"
+    .param p1, "tag"    # Ljava/lang/String;
+    .param p2, "what"    # Landroid/util/Log$TerribleFailure;
+    .param p3, "system"    # Z
 
     .prologue
     .line 104
-    invoke-static {p1, p2}, Lcom/android/internal/os/RuntimeInit;->wtf(Ljava/lang/String;Ljava/lang/Throwable;)V
+    invoke-static {p1, p2, p3}, Lcom/android/internal/os/RuntimeInit;->wtf(Ljava/lang/String;Ljava/lang/Throwable;Z)V
 
-    .line 105
+    .line 103
     return-void
 .end method

@@ -3,6 +3,14 @@
 .source "GeofenceHardwareService.java"
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/hardware/location/GeofenceHardwareService$1;
+    }
+.end annotation
+
+
 # instance fields
 .field private mBinder:Landroid/os/IBinder;
 
@@ -12,6 +20,34 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/hardware/location/GeofenceHardwareService;)Landroid/content/Context;
+    .locals 1
+
+    iget-object v0, p0, Landroid/hardware/location/GeofenceHardwareService;->mContext:Landroid/content/Context;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Landroid/hardware/location/GeofenceHardwareService;)Landroid/hardware/location/GeofenceHardwareImpl;
+    .locals 1
+
+    iget-object v0, p0, Landroid/hardware/location/GeofenceHardwareService;->mGeofenceHardwareImpl:Landroid/hardware/location/GeofenceHardwareImpl;
+
+    return-object v0
+.end method
+
+.method static synthetic -wrap0(Landroid/hardware/location/GeofenceHardwareService;III)V
+    .locals 0
+    .param p1, "pid"    # I
+    .param p2, "uid"    # I
+    .param p3, "monitoringType"    # I
+
+    .prologue
+    invoke-direct {p0, p1, p2, p3}, Landroid/hardware/location/GeofenceHardwareService;->checkPermission(III)V
+
+    return-void
+.end method
+
 .method public constructor <init>()V
     .locals 1
 
@@ -26,50 +62,15 @@
 
     iput-object v0, p0, Landroid/hardware/location/GeofenceHardwareService;->mBinder:Landroid/os/IBinder;
 
-    return-void
-.end method
-
-.method static synthetic access$000(Landroid/hardware/location/GeofenceHardwareService;)Landroid/hardware/location/GeofenceHardwareImpl;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
     .line 33
-    iget-object v0, p0, Landroid/hardware/location/GeofenceHardwareService;->mGeofenceHardwareImpl:Landroid/hardware/location/GeofenceHardwareImpl;
-
-    return-object v0
-.end method
-
-.method static synthetic access$100(Landroid/hardware/location/GeofenceHardwareService;)Landroid/content/Context;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 33
-    iget-object v0, p0, Landroid/hardware/location/GeofenceHardwareService;->mContext:Landroid/content/Context;
-
-    return-object v0
-.end method
-
-.method static synthetic access$200(Landroid/hardware/location/GeofenceHardwareService;III)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
-    .parameter "x3"
-
-    .prologue
-    .line 33
-    invoke-direct {p0, p1, p2, p3}, Landroid/hardware/location/GeofenceHardwareService;->checkPermission(III)V
-
     return-void
 .end method
 
 .method private checkPermission(III)V
     .locals 3
-    .parameter "pid"
-    .parameter "uid"
-    .parameter "monitoringType"
+    .param p1, "pid"    # I
+    .param p2, "uid"    # I
+    .param p3, "monitoringType"    # I
 
     .prologue
     .line 60
@@ -79,12 +80,14 @@
 
     move-result v0
 
+    .line 61
     iget-object v1, p0, Landroid/hardware/location/GeofenceHardwareService;->mGeofenceHardwareImpl:Landroid/hardware/location/GeofenceHardwareImpl;
 
     invoke-virtual {v1, p3}, Landroid/hardware/location/GeofenceHardwareImpl;->getMonitoringResolutionLevel(I)I
 
     move-result v1
 
+    .line 60
     if-ge v0, v1, :cond_0
 
     .line 62
@@ -94,7 +97,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Insufficient permissions to access hardware geofence for type: "
+    const-string/jumbo v2, "Insufficient permissions to access hardware geofence for type: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -112,7 +115,7 @@
 
     throw v0
 
-    .line 65
+    .line 59
     :cond_0
     return-void
 .end method
@@ -121,7 +124,7 @@
 # virtual methods
 .method public onBind(Landroid/content/Intent;)Landroid/os/IBinder;
     .locals 1
-    .parameter "intent"
+    .param p1, "intent"    # Landroid/content/Intent;
 
     .prologue
     .line 45
@@ -146,7 +149,7 @@
 
     iput-object v0, p0, Landroid/hardware/location/GeofenceHardwareService;->mGeofenceHardwareImpl:Landroid/hardware/location/GeofenceHardwareImpl;
 
-    .line 41
+    .line 38
     return-void
 .end method
 
@@ -159,13 +162,13 @@
 
     iput-object v0, p0, Landroid/hardware/location/GeofenceHardwareService;->mGeofenceHardwareImpl:Landroid/hardware/location/GeofenceHardwareImpl;
 
-    .line 56
+    .line 54
     return-void
 .end method
 
 .method public onUnbind(Landroid/content/Intent;)Z
     .locals 1
-    .parameter "intent"
+    .param p1, "intent"    # Landroid/content/Intent;
 
     .prologue
     .line 50

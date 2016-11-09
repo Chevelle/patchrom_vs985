@@ -15,7 +15,15 @@
 
 
 # virtual methods
-.method public abstract packageMoved(Ljava/lang/String;I)V
+.method public abstract onCreated(ILandroid/os/Bundle;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onStatusChanged(IIJ)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

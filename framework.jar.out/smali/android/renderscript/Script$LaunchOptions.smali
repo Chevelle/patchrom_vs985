@@ -31,100 +31,83 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/renderscript/Script$LaunchOptions;)I
+    .locals 1
+
+    iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->xend:I
+
+    return v0
+.end method
+
+.method static synthetic -get1(Landroid/renderscript/Script$LaunchOptions;)I
+    .locals 1
+
+    iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->xstart:I
+
+    return v0
+.end method
+
+.method static synthetic -get2(Landroid/renderscript/Script$LaunchOptions;)I
+    .locals 1
+
+    iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->yend:I
+
+    return v0
+.end method
+
+.method static synthetic -get3(Landroid/renderscript/Script$LaunchOptions;)I
+    .locals 1
+
+    iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->ystart:I
+
+    return v0
+.end method
+
+.method static synthetic -get4(Landroid/renderscript/Script$LaunchOptions;)I
+    .locals 1
+
+    iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->zend:I
+
+    return v0
+.end method
+
+.method static synthetic -get5(Landroid/renderscript/Script$LaunchOptions;)I
+    .locals 1
+
+    iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->zstart:I
+
+    return v0
+.end method
+
 .method public constructor <init>()V
     .locals 1
 
     .prologue
     const/4 v0, 0x0
 
-    .line 349
+    .line 495
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 350
+    .line 496
     iput v0, p0, Landroid/renderscript/Script$LaunchOptions;->xstart:I
 
-    .line 351
+    .line 497
     iput v0, p0, Landroid/renderscript/Script$LaunchOptions;->ystart:I
 
-    .line 352
+    .line 498
     iput v0, p0, Landroid/renderscript/Script$LaunchOptions;->xend:I
 
-    .line 353
+    .line 499
     iput v0, p0, Landroid/renderscript/Script$LaunchOptions;->yend:I
 
-    .line 354
+    .line 500
     iput v0, p0, Landroid/renderscript/Script$LaunchOptions;->zstart:I
 
-    .line 355
+    .line 501
     iput v0, p0, Landroid/renderscript/Script$LaunchOptions;->zend:I
 
+    .line 495
     return-void
-.end method
-
-.method static synthetic access$000(Landroid/renderscript/Script$LaunchOptions;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 349
-    iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->xstart:I
-
-    return v0
-.end method
-
-.method static synthetic access$100(Landroid/renderscript/Script$LaunchOptions;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 349
-    iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->xend:I
-
-    return v0
-.end method
-
-.method static synthetic access$200(Landroid/renderscript/Script$LaunchOptions;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 349
-    iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->ystart:I
-
-    return v0
-.end method
-
-.method static synthetic access$300(Landroid/renderscript/Script$LaunchOptions;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 349
-    iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->yend:I
-
-    return v0
-.end method
-
-.method static synthetic access$400(Landroid/renderscript/Script$LaunchOptions;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 349
-    iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->zstart:I
-
-    return v0
-.end method
-
-.method static synthetic access$500(Landroid/renderscript/Script$LaunchOptions;)I
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 349
-    iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->zend:I
-
-    return v0
 .end method
 
 
@@ -133,7 +116,7 @@
     .locals 1
 
     .prologue
-    .line 427
+    .line 573
     iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->xend:I
 
     return v0
@@ -143,7 +126,7 @@
     .locals 1
 
     .prologue
-    .line 419
+    .line 565
     iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->xstart:I
 
     return v0
@@ -153,7 +136,7 @@
     .locals 1
 
     .prologue
-    .line 443
+    .line 589
     iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->yend:I
 
     return v0
@@ -163,7 +146,7 @@
     .locals 1
 
     .prologue
-    .line 435
+    .line 581
     iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->ystart:I
 
     return v0
@@ -173,7 +156,7 @@
     .locals 1
 
     .prologue
-    .line 459
+    .line 605
     iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->zend:I
 
     return v0
@@ -183,7 +166,7 @@
     .locals 1
 
     .prologue
-    .line 451
+    .line 597
     iget v0, p0, Landroid/renderscript/Script$LaunchOptions;->zstart:I
 
     return v0
@@ -191,96 +174,96 @@
 
 .method public setX(II)Landroid/renderscript/Script$LaunchOptions;
     .locals 2
-    .parameter "xstartArg"
-    .parameter "xendArg"
+    .param p1, "xstartArg"    # I
+    .param p2, "xendArg"    # I
 
     .prologue
-    .line 368
+    .line 514
     if-ltz p1, :cond_0
 
     if-gt p2, p1, :cond_1
 
-    .line 369
+    .line 515
     :cond_0
     new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
 
-    const-string v1, "Invalid dimensions"
+    const-string/jumbo v1, "Invalid dimensions"
 
     invoke-direct {v0, v1}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 371
+    .line 517
     :cond_1
     iput p1, p0, Landroid/renderscript/Script$LaunchOptions;->xstart:I
 
-    .line 372
+    .line 518
     iput p2, p0, Landroid/renderscript/Script$LaunchOptions;->xend:I
 
-    .line 373
+    .line 519
     return-object p0
 .end method
 
 .method public setY(II)Landroid/renderscript/Script$LaunchOptions;
     .locals 2
-    .parameter "ystartArg"
-    .parameter "yendArg"
+    .param p1, "ystartArg"    # I
+    .param p2, "yendArg"    # I
 
     .prologue
-    .line 386
+    .line 532
     if-ltz p1, :cond_0
 
     if-gt p2, p1, :cond_1
 
-    .line 387
+    .line 533
     :cond_0
     new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
 
-    const-string v1, "Invalid dimensions"
+    const-string/jumbo v1, "Invalid dimensions"
 
     invoke-direct {v0, v1}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 389
+    .line 535
     :cond_1
     iput p1, p0, Landroid/renderscript/Script$LaunchOptions;->ystart:I
 
-    .line 390
+    .line 536
     iput p2, p0, Landroid/renderscript/Script$LaunchOptions;->yend:I
 
-    .line 391
+    .line 537
     return-object p0
 .end method
 
 .method public setZ(II)Landroid/renderscript/Script$LaunchOptions;
     .locals 2
-    .parameter "zstartArg"
-    .parameter "zendArg"
+    .param p1, "zstartArg"    # I
+    .param p2, "zendArg"    # I
 
     .prologue
-    .line 404
+    .line 550
     if-ltz p1, :cond_0
 
     if-gt p2, p1, :cond_1
 
-    .line 405
+    .line 551
     :cond_0
     new-instance v0, Landroid/renderscript/RSIllegalArgumentException;
 
-    const-string v1, "Invalid dimensions"
+    const-string/jumbo v1, "Invalid dimensions"
 
     invoke-direct {v0, v1}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 407
+    .line 553
     :cond_1
     iput p1, p0, Landroid/renderscript/Script$LaunchOptions;->zstart:I
 
-    .line 408
+    .line 554
     iput p2, p0, Landroid/renderscript/Script$LaunchOptions;->zend:I
 
-    .line 409
+    .line 555
     return-object p0
 .end method

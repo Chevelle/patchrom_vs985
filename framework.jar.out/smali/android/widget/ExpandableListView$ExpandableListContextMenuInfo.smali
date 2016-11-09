@@ -28,23 +28,23 @@
 # direct methods
 .method public constructor <init>(Landroid/view/View;JJ)V
     .locals 0
-    .parameter "targetView"
-    .parameter "packedPosition"
-    .parameter "id"
+    .param p1, "targetView"    # Landroid/view/View;
+    .param p2, "packedPosition"    # J
+    .param p4, "id"    # J
 
     .prologue
-    .line 1250
+    .line 1252
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1251
+    .line 1253
     iput-object p1, p0, Landroid/widget/ExpandableListView$ExpandableListContextMenuInfo;->targetView:Landroid/view/View;
 
-    .line 1252
+    .line 1254
     iput-wide p2, p0, Landroid/widget/ExpandableListView$ExpandableListContextMenuInfo;->packedPosition:J
 
-    .line 1253
+    .line 1255
     iput-wide p4, p0, Landroid/widget/ExpandableListView$ExpandableListContextMenuInfo;->id:J
 
-    .line 1254
+    .line 1252
     return-void
 .end method

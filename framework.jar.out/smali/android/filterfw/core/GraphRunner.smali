@@ -34,7 +34,7 @@
 # direct methods
 .method public constructor <init>(Landroid/filterfw/core/FilterContext;)V
     .locals 1
-    .parameter "context"
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
     .line 49
@@ -48,7 +48,7 @@
     .line 50
     iput-object p1, p0, Landroid/filterfw/core/GraphRunner;->mFilterContext:Landroid/filterfw/core/FilterContext;
 
-    .line 51
+    .line 49
     return-void
 .end method
 
@@ -66,29 +66,29 @@
     move-result-object v0
 
     .line 66
-    .local v0, glEnv:Landroid/filterfw/core/GLEnvironment;
+    .local v0, "glEnv":Landroid/filterfw/core/GLEnvironment;
     if-eqz v0, :cond_0
 
     invoke-virtual {v0}, Landroid/filterfw/core/GLEnvironment;->isActive()Z
 
     move-result v1
 
-    if-nez v1, :cond_0
+    if-eqz v1, :cond_1
+
+    .line 70
+    :cond_0
+    const/4 v1, 0x0
+
+    return v1
 
     .line 67
+    :cond_1
     invoke-virtual {v0}, Landroid/filterfw/core/GLEnvironment;->activate()V
 
     .line 68
     const/4 v1, 0x1
 
-    .line 70
-    :goto_0
     return v1
-
-    :cond_0
-    const/4 v1, 0x0
-
-    goto :goto_0
 .end method
 
 .method public abstract close()V
@@ -106,13 +106,13 @@
     move-result-object v0
 
     .line 78
-    .local v0, glEnv:Landroid/filterfw/core/GLEnvironment;
+    .local v0, "glEnv":Landroid/filterfw/core/GLEnvironment;
     if-eqz v0, :cond_0
 
     .line 79
     invoke-virtual {v0}, Landroid/filterfw/core/GLEnvironment;->deactivate()V
 
-    .line 81
+    .line 76
     :cond_0
     return-void
 .end method

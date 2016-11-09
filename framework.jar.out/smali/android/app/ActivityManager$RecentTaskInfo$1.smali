@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 551
+    .line 961
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,25 +42,25 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/app/ActivityManager$RecentTaskInfo;
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 553
+    .line 963
     new-instance v0, Landroid/app/ActivityManager$RecentTaskInfo;
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p1, v1}, Landroid/app/ActivityManager$RecentTaskInfo;-><init>(Landroid/os/Parcel;Landroid/app/ActivityManager$1;)V
+    invoke-direct {v0, p1, v1}, Landroid/app/ActivityManager$RecentTaskInfo;-><init>(Landroid/os/Parcel;Landroid/app/ActivityManager$RecentTaskInfo;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 551
+    .line 962
     invoke-virtual {p0, p1}, Landroid/app/ActivityManager$RecentTaskInfo$1;->createFromParcel(Landroid/os/Parcel;)Landroid/app/ActivityManager$RecentTaskInfo;
 
     move-result-object v0
@@ -70,10 +70,10 @@
 
 .method public newArray(I)[Landroid/app/ActivityManager$RecentTaskInfo;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 556
+    .line 966
     new-array v0, p1, [Landroid/app/ActivityManager$RecentTaskInfo;
 
     return-object v0
@@ -81,10 +81,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 551
+    .line 965
     invoke-virtual {p0, p1}, Landroid/app/ActivityManager$RecentTaskInfo$1;->newArray(I)[Landroid/app/ActivityManager$RecentTaskInfo;
 
     move-result-object v0

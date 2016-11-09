@@ -13,7 +13,7 @@
 # direct methods
 .method public constructor <init>(Landroid/graphics/Rasterizer;)V
     .locals 0
-    .parameter "r"
+    .param p1, "r"    # Landroid/graphics/Rasterizer;
 
     .prologue
     .line 26
@@ -22,7 +22,7 @@
     .line 27
     iput-object p1, p0, Landroid/text/style/RasterizerSpan;->mRasterizer:Landroid/graphics/Rasterizer;
 
-    .line 28
+    .line 26
     return-void
 .end method
 
@@ -40,7 +40,7 @@
 
 .method public updateDrawState(Landroid/text/TextPaint;)V
     .locals 1
-    .parameter "ds"
+    .param p1, "ds"    # Landroid/text/TextPaint;
 
     .prologue
     .line 36
@@ -48,6 +48,6 @@
 
     invoke-virtual {p1, v0}, Landroid/text/TextPaint;->setRasterizer(Landroid/graphics/Rasterizer;)Landroid/graphics/Rasterizer;
 
-    .line 37
+    .line 35
     return-void
 .end method

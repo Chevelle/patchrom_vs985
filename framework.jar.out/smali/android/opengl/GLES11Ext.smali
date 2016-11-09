@@ -237,7 +237,7 @@
     .line 135
     invoke-static {}, Landroid/opengl/GLES11Ext;->_nativeClassInit()V
 
-    .line 136
+    .line 24
     return-void
 .end method
 
@@ -517,17 +517,18 @@
 
 .method public static glMatrixIndexPointerOES(IIILjava/nio/Buffer;)V
     .locals 1
-    .parameter "size"
-    .parameter "type"
-    .parameter "stride"
-    .parameter "pointer"
+    .param p0, "size"    # I
+    .param p1, "type"    # I
+    .param p2, "stride"    # I
+    .param p3, "pointer"    # Ljava/nio/Buffer;
 
     .prologue
-    .line 895
+    .line 900
     invoke-virtual {p3}, Ljava/nio/Buffer;->remaining()I
 
     move-result v0
 
+    .line 895
     invoke-static {p0, p1, p2, p3, v0}, Landroid/opengl/GLES11Ext;->glMatrixIndexPointerOESBounds(IIILjava/nio/Buffer;I)V
 
     .line 902
@@ -535,40 +536,55 @@
 
     if-eq p0, v0, :cond_0
 
+    .line 903
     const/4 v0, 0x3
 
-    if-eq p0, v0, :cond_0
+    if-ne p0, v0, :cond_3
 
-    const/4 v0, 0x4
-
-    if-ne p0, v0, :cond_2
-
+    .line 905
     :cond_0
+    :goto_0
     const/16 v0, 0x1406
 
     if-eq p1, v0, :cond_1
 
+    .line 906
     const/16 v0, 0x1400
 
-    if-eq p1, v0, :cond_1
+    if-ne p1, v0, :cond_4
 
-    const/16 v0, 0x1402
-
-    if-eq p1, v0, :cond_1
-
-    const/16 v0, 0x140c
-
-    if-ne p1, v0, :cond_2
-
+    .line 909
     :cond_1
+    :goto_1
     if-ltz p2, :cond_2
 
     .line 910
     sput-object p3, Landroid/opengl/GLES11Ext;->_matrixIndexPointerOES:Ljava/nio/Buffer;
 
-    .line 912
+    .line 894
     :cond_2
     return-void
+
+    .line 904
+    :cond_3
+    const/4 v0, 0x4
+
+    if-ne p0, v0, :cond_2
+
+    goto :goto_0
+
+    .line 907
+    :cond_4
+    const/16 v0, 0x1402
+
+    if-eq p1, v0, :cond_1
+
+    .line 908
+    const/16 v0, 0x140c
+
+    if-ne p1, v0, :cond_2
+
+    goto :goto_1
 .end method
 
 .method private static native glMatrixIndexPointerOESBounds(IIILjava/nio/Buffer;I)V
@@ -669,20 +685,21 @@
 
 .method public static glWeightPointerOES(IIILjava/nio/Buffer;)V
     .locals 1
-    .parameter "size"
-    .parameter "type"
-    .parameter "stride"
-    .parameter "pointer"
+    .param p0, "size"    # I
+    .param p1, "type"    # I
+    .param p2, "stride"    # I
+    .param p3, "pointer"    # Ljava/nio/Buffer;
 
     .prologue
-    .line 930
+    .line 935
     invoke-virtual {p3}, Ljava/nio/Buffer;->remaining()I
 
     move-result v0
 
+    .line 930
     invoke-static {p0, p1, p2, p3, v0}, Landroid/opengl/GLES11Ext;->glWeightPointerOESBounds(IIILjava/nio/Buffer;I)V
 
-    .line 937
+    .line 929
     return-void
 .end method
 

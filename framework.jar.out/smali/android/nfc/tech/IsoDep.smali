@@ -20,7 +20,7 @@
 # direct methods
 .method public constructor <init>(Landroid/nfc/Tag;)V
     .locals 3
-    .parameter "tag"
+    .param p1, "tag"    # Landroid/nfc/Tag;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -28,30 +28,30 @@
     .end annotation
 
     .prologue
-    const/4 v2, 0x0
+    const/4 v2, 0x3
 
-    const/4 v1, 0x3
+    const/4 v1, 0x0
 
     .line 72
-    invoke-direct {p0, p1, v1}, Landroid/nfc/tech/BasicTagTechnology;-><init>(Landroid/nfc/Tag;I)V
+    invoke-direct {p0, p1, v2}, Landroid/nfc/tech/BasicTagTechnology;-><init>(Landroid/nfc/Tag;I)V
 
     .line 48
-    iput-object v2, p0, Landroid/nfc/tech/IsoDep;->mHiLayerResponse:[B
+    iput-object v1, p0, Landroid/nfc/tech/IsoDep;->mHiLayerResponse:[B
 
     .line 49
-    iput-object v2, p0, Landroid/nfc/tech/IsoDep;->mHistBytes:[B
+    iput-object v1, p0, Landroid/nfc/tech/IsoDep;->mHistBytes:[B
 
     .line 73
-    invoke-virtual {p1, v1}, Landroid/nfc/Tag;->getTechExtras(I)Landroid/os/Bundle;
+    invoke-virtual {p1, v2}, Landroid/nfc/Tag;->getTechExtras(I)Landroid/os/Bundle;
 
     move-result-object v0
 
     .line 74
-    .local v0, extras:Landroid/os/Bundle;
+    .local v0, "extras":Landroid/os/Bundle;
     if-eqz v0, :cond_0
 
     .line 75
-    const-string v1, "hiresp"
+    const-string/jumbo v1, "hiresp"
 
     invoke-virtual {v0, v1}, Landroid/os/Bundle;->getByteArray(Ljava/lang/String;)[B
 
@@ -60,7 +60,7 @@
     iput-object v1, p0, Landroid/nfc/tech/IsoDep;->mHiLayerResponse:[B
 
     .line 76
-    const-string v1, "histbytes"
+    const-string/jumbo v1, "histbytes"
 
     invoke-virtual {v0, v1}, Landroid/os/Bundle;->getByteArray(Ljava/lang/String;)[B
 
@@ -68,65 +68,55 @@
 
     iput-object v1, p0, Landroid/nfc/tech/IsoDep;->mHistBytes:[B
 
-    .line 78
+    .line 71
     :cond_0
     return-void
 .end method
 
 .method public static get(Landroid/nfc/Tag;)Landroid/nfc/tech/IsoDep;
     .locals 3
-    .parameter "tag"
+    .param p0, "tag"    # Landroid/nfc/Tag;
 
     .prologue
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
     .line 61
-    const/4 v2, 0x3
+    const/4 v1, 0x3
 
-    invoke-virtual {p0, v2}, Landroid/nfc/Tag;->hasTech(I)Z
+    invoke-virtual {p0, v1}, Landroid/nfc/Tag;->hasTech(I)Z
 
-    move-result v2
+    move-result v1
 
-    if-nez v2, :cond_0
+    if-nez v1, :cond_0
 
-    .line 65
-    :goto_0
-    return-object v1
+    return-object v2
 
     .line 63
     :cond_0
     :try_start_0
-    new-instance v2, Landroid/nfc/tech/IsoDep;
+    new-instance v1, Landroid/nfc/tech/IsoDep;
 
-    invoke-direct {v2, p0}, Landroid/nfc/tech/IsoDep;-><init>(Landroid/nfc/Tag;)V
+    invoke-direct {v1, p0}, Landroid/nfc/tech/IsoDep;-><init>(Landroid/nfc/Tag;)V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-object v1, v2
-
-    goto :goto_0
+    return-object v1
 
     .line 64
     :catch_0
     move-exception v0
 
     .line 65
-    .local v0, e:Landroid/os/RemoteException;
-    goto :goto_0
+    .local v0, "e":Landroid/os/RemoteException;
+    return-object v2
 .end method
 
 
 # virtual methods
 .method public bridge synthetic close()V
     .locals 0
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/IOException;
-        }
-    .end annotation
 
     .prologue
-    .line 40
     invoke-super {p0}, Landroid/nfc/tech/BasicTagTechnology;->close()V
 
     return-void
@@ -134,14 +124,8 @@
 
 .method public bridge synthetic connect()V
     .locals 0
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/IOException;
-        }
-    .end annotation
 
     .prologue
-    .line 40
     invoke-super {p0}, Landroid/nfc/tech/BasicTagTechnology;->connect()V
 
     return-void
@@ -183,7 +167,6 @@
     .locals 1
 
     .prologue
-    .line 40
     invoke-super {p0}, Landroid/nfc/tech/BasicTagTechnology;->getTag()Landroid/nfc/Tag;
 
     move-result-object v0
@@ -211,8 +194,6 @@
 
     move-result v1
 
-    .line 115
-    :goto_0
     return v1
 
     .line 113
@@ -220,24 +201,23 @@
     move-exception v0
 
     .line 114
-    .local v0, e:Landroid/os/RemoteException;
-    const-string v1, "NFC"
+    .local v0, "e":Landroid/os/RemoteException;
+    const-string/jumbo v1, "NFC"
 
-    const-string v2, "NFC service dead"
+    const-string/jumbo v2, "NFC service dead"
 
     invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     .line 115
     const/4 v1, 0x0
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public bridge synthetic isConnected()Z
     .locals 1
 
     .prologue
-    .line 40
     invoke-super {p0}, Landroid/nfc/tech/BasicTagTechnology;->isConnected()Z
 
     move-result v0
@@ -263,8 +243,6 @@
 
     move-result v1
 
-    .line 202
-    :goto_0
     return v1
 
     .line 200
@@ -272,29 +250,23 @@
     move-exception v0
 
     .line 201
-    .local v0, e:Landroid/os/RemoteException;
-    const-string v1, "NFC"
+    .local v0, "e":Landroid/os/RemoteException;
+    const-string/jumbo v1, "NFC"
 
-    const-string v2, "NFC service dead"
+    const-string/jumbo v2, "NFC service dead"
 
     invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     .line 202
     const/4 v1, 0x0
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public bridge synthetic reconnect()V
     .locals 0
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/IOException;
-        }
-    .end annotation
 
     .prologue
-    .line 40
     invoke-super {p0}, Landroid/nfc/tech/BasicTagTechnology;->reconnect()V
 
     return-void
@@ -302,7 +274,7 @@
 
 .method public setTimeout(I)V
     .locals 4
-    .parameter "timeout"
+    .param p1, "timeout"    # I
 
     .prologue
     .line 94
@@ -320,13 +292,13 @@
     move-result v1
 
     .line 95
-    .local v1, err:I
+    .local v1, "err":I
     if-eqz v1, :cond_0
 
     .line 96
     new-instance v2, Ljava/lang/IllegalArgumentException;
 
-    const-string v3, "The supplied timeout is not valid"
+    const-string/jumbo v3, "The supplied timeout is not valid"
 
     invoke-direct {v2, v3}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -335,27 +307,27 @@
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 98
-    .end local v1           #err:I
+    .end local v1    # "err":I
     :catch_0
     move-exception v0
 
     .line 99
-    .local v0, e:Landroid/os/RemoteException;
-    const-string v2, "NFC"
+    .local v0, "e":Landroid/os/RemoteException;
+    const-string/jumbo v2, "NFC"
 
-    const-string v3, "NFC service dead"
+    const-string/jumbo v3, "NFC service dead"
 
     invoke-static {v2, v3, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 101
-    .end local v0           #e:Landroid/os/RemoteException;
+    .line 92
+    .end local v0    # "e":Landroid/os/RemoteException;
     :cond_0
     return-void
 .end method
 
 .method public transceive([B)[B
     .locals 1
-    .parameter "data"
+    .param p1, "data"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;

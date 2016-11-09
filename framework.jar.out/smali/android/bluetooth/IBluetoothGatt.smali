@@ -63,7 +63,7 @@
     .end annotation
 .end method
 
-.method public abstract clientConnect(ILjava/lang/String;Z)V
+.method public abstract clientConnect(ILjava/lang/String;ZI)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -72,6 +72,30 @@
 .end method
 
 .method public abstract clientDisconnect(ILjava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract configureMTU(ILjava/lang/String;I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract connectionParameterUpdate(ILjava/lang/String;I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract disconnectAll()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -103,33 +127,7 @@
     .end annotation
 .end method
 
-.method public abstract getAdvManufacturerData()[B
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getAdvServiceData()[B
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract getAdvServiceUuids()Ljava/util/List;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()",
-            "Ljava/util/List",
-            "<",
-            "Landroid/os/ParcelUuid;",
-            ">;"
-        }
-    .end annotation
-
+.method public abstract flushPendingBatchResults(IZ)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -155,7 +153,7 @@
     .end annotation
 .end method
 
-.method public abstract isAdvertising()Z
+.method public abstract numHwTrackFiltersAvailable()I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -219,14 +217,6 @@
     .end annotation
 .end method
 
-.method public abstract removeAdvManufacturerCodeAndData(I)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
 .method public abstract removeService(IIILandroid/os/ParcelUuid;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -251,7 +241,7 @@
     .end annotation
 .end method
 
-.method public abstract serverConnect(ILjava/lang/String;Z)V
+.method public abstract serverConnect(ILjava/lang/String;ZI)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -267,7 +257,7 @@
     .end annotation
 .end method
 
-.method public abstract setAdvManufacturerCodeAndData(I[B)Z
+.method public abstract startMultiAdvertising(ILandroid/bluetooth/le/AdvertiseData;Landroid/bluetooth/le/AdvertiseData;Landroid/bluetooth/le/AdvertiseSettings;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -275,7 +265,21 @@
     .end annotation
 .end method
 
-.method public abstract setAdvServiceData([B)Z
+.method public abstract startScan(IZLandroid/bluetooth/le/ScanSettings;Ljava/util/List;Ljava/util/List;Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(IZ",
+            "Landroid/bluetooth/le/ScanSettings;",
+            "Ljava/util/List",
+            "<",
+            "Landroid/bluetooth/le/ScanFilter;",
+            ">;",
+            "Ljava/util/List;",
+            "Ljava/lang/String;",
+            ")V"
+        }
+    .end annotation
+
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -283,31 +287,7 @@
     .end annotation
 .end method
 
-.method public abstract startAdvertising(I)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract startScan(IZ)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract startScanWithUuids(IZ[Landroid/os/ParcelUuid;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract stopAdvertising()V
+.method public abstract stopMultiAdvertising(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -316,6 +296,14 @@
 .end method
 
 .method public abstract stopScan(IZ)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract unregAll()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

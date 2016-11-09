@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/telephony/CellInfoGsm$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -41,6 +49,7 @@
 
     sput-object v0, Landroid/telephony/CellInfoGsm;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 26
     return-void
 .end method
 
@@ -65,13 +74,13 @@
 
     iput-object v0, p0, Landroid/telephony/CellInfoGsm;->mCellSignalStrengthGsm:Landroid/telephony/CellSignalStrengthGsm;
 
-    .line 39
+    .line 35
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 118
@@ -99,13 +108,13 @@
 
     iput-object v0, p0, Landroid/telephony/CellInfoGsm;->mCellSignalStrengthGsm:Landroid/telephony/CellSignalStrengthGsm;
 
-    .line 121
+    .line 117
     return-void
 .end method
 
 .method public constructor <init>(Landroid/telephony/CellInfoGsm;)V
     .locals 1
-    .parameter "ci"
+    .param p1, "ci"    # Landroid/telephony/CellInfoGsm;
 
     .prologue
     .line 43
@@ -129,13 +138,13 @@
 
     iput-object v0, p0, Landroid/telephony/CellInfoGsm;->mCellSignalStrengthGsm:Landroid/telephony/CellSignalStrengthGsm;
 
-    .line 46
+    .line 42
     return-void
 .end method
 
 .method protected static createFromParcelBody(Landroid/os/Parcel;)Landroid/telephony/CellInfoGsm;
     .locals 1
-    .parameter "in"
+    .param p0, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 139
@@ -148,15 +157,15 @@
 
 .method private static log(Ljava/lang/String;)V
     .locals 1
-    .parameter "s"
+    .param p0, "s"    # Ljava/lang/String;
 
     .prologue
     .line 146
-    const-string v0, "CellInfoGsm"
+    const-string/jumbo v0, "CellInfoGsm"
 
     invoke-static {v0, p0}, Landroid/telephony/Rlog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 147
+    .line 145
     return-void
 .end method
 
@@ -174,7 +183,7 @@
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 6
-    .parameter "other"
+    .param p1, "other"    # Ljava/lang/Object;
 
     .prologue
     const/4 v3, 0x0
@@ -184,15 +193,13 @@
 
     move-result v4
 
-    if-nez v4, :cond_1
+    if-nez v4, :cond_0
 
-    .line 82
-    :cond_0
-    :goto_0
+    .line 75
     return v3
 
     .line 78
-    :cond_1
+    :cond_0
     :try_start_0
     move-object v0, p1
 
@@ -201,7 +208,7 @@
     move-object v2, v0
 
     .line 79
-    .local v2, o:Landroid/telephony/CellInfoGsm;
+    .local v2, "o":Landroid/telephony/CellInfoGsm;
     iget-object v4, p0, Landroid/telephony/CellInfoGsm;->mCellIdentityGsm:Landroid/telephony/CellIdentityGsm;
 
     iget-object v5, v2, Landroid/telephony/CellInfoGsm;->mCellIdentityGsm:Landroid/telephony/CellIdentityGsm;
@@ -210,8 +217,9 @@
 
     move-result v4
 
-    if-eqz v4, :cond_0
+    if-eqz v4, :cond_1
 
+    .line 80
     iget-object v4, p0, Landroid/telephony/CellInfoGsm;->mCellSignalStrengthGsm:Landroid/telephony/CellSignalStrengthGsm;
 
     iget-object v5, v2, Landroid/telephony/CellInfoGsm;->mCellSignalStrengthGsm:Landroid/telephony/CellSignalStrengthGsm;
@@ -220,22 +228,20 @@
     :try_end_0
     .catch Ljava/lang/ClassCastException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result v4
+    move-result v3
 
-    if-eqz v4, :cond_0
-
-    const/4 v3, 0x1
-
-    goto :goto_0
+    .line 79
+    :cond_1
+    return v3
 
     .line 81
-    .end local v2           #o:Landroid/telephony/CellInfoGsm;
+    .end local v2    # "o":Landroid/telephony/CellInfoGsm;
     :catch_0
     move-exception v1
 
     .line 82
-    .local v1, e:Ljava/lang/ClassCastException;
-    goto :goto_0
+    .local v1, "e":Ljava/lang/ClassCastException;
+    return v3
 .end method
 
 .method public getCellIdentity()Landroid/telephony/CellIdentityGsm;
@@ -288,25 +294,25 @@
 
 .method public setCellIdentity(Landroid/telephony/CellIdentityGsm;)V
     .locals 0
-    .parameter "cid"
+    .param p1, "cid"    # Landroid/telephony/CellIdentityGsm;
 
     .prologue
     .line 53
     iput-object p1, p0, Landroid/telephony/CellInfoGsm;->mCellIdentityGsm:Landroid/telephony/CellIdentityGsm;
 
-    .line 54
+    .line 52
     return-void
 .end method
 
 .method public setCellSignalStrength(Landroid/telephony/CellSignalStrengthGsm;)V
     .locals 0
-    .parameter "css"
+    .param p1, "css"    # Landroid/telephony/CellSignalStrengthGsm;
 
     .prologue
     .line 61
     iput-object p1, p0, Landroid/telephony/CellInfoGsm;->mCellSignalStrengthGsm:Landroid/telephony/CellSignalStrengthGsm;
 
-    .line 62
+    .line 60
     return-void
 .end method
 
@@ -320,8 +326,8 @@
     invoke-direct {v0}, Ljava/lang/StringBuffer;-><init>()V
 
     .line 90
-    .local v0, sb:Ljava/lang/StringBuffer;
-    const-string v1, "CellInfoGsm:{"
+    .local v0, "sb":Ljava/lang/StringBuffer;
+    const-string/jumbo v1, "CellInfoGsm:{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -333,7 +339,7 @@
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 92
-    const-string v1, " "
+    const-string/jumbo v1, " "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -344,7 +350,7 @@
     invoke-virtual {v1, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/Object;)Ljava/lang/StringBuffer;
 
     .line 93
-    const-string v1, " "
+    const-string/jumbo v1, " "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -369,8 +375,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 108
@@ -388,6 +394,6 @@
 
     invoke-virtual {v0, p1, p2}, Landroid/telephony/CellSignalStrengthGsm;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 111
+    .line 107
     return-void
 .end method

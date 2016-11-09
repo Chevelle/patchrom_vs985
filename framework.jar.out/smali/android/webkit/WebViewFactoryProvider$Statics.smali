@@ -15,6 +15,12 @@
 
 
 # virtual methods
+.method public abstract clearClientCertPreferences(Ljava/lang/Runnable;)V
+.end method
+
+.method public abstract enableSlowWholeDocumentDraw()V
+.end method
+
 .method public abstract findAddress(Ljava/lang/String;)Ljava/lang/String;
 .end method
 
@@ -24,7 +30,7 @@
 .method public abstract getDefaultUserAgent(Landroid/content/Context;)Ljava/lang/String;
 .end method
 
-.method public abstract setPlatformNotificationsEnabled(Z)V
+.method public abstract parseFileChooserResult(ILandroid/content/Intent;)[Landroid/net/Uri;
 .end method
 
 .method public abstract setWebContentsDebuggingEnabled(Z)V

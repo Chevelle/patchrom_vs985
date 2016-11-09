@@ -25,48 +25,47 @@
     .locals 0
 
     .prologue
-    .line 537
+    .line 562
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 538
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 543
+    .line 568
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 544
+    .line 569
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Landroid/app/ApplicationErrorReport$RunningServiceInfo;->durationMillis:J
 
-    .line 545
+    .line 570
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/app/ApplicationErrorReport$RunningServiceInfo;->serviceDetails:Ljava/lang/String;
 
-    .line 546
+    .line 568
     return-void
 .end method
 
 
 # virtual methods
 .method public dump(Landroid/util/Printer;Ljava/lang/String;)V
-    .locals 3
-    .parameter "pw"
-    .parameter "prefix"
+    .locals 4
+    .param p1, "pw"    # Landroid/util/Printer;
+    .param p2, "prefix"    # Ljava/lang/String;
 
     .prologue
-    .line 560
+    .line 585
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -75,15 +74,15 @@
 
     move-result-object v0
 
-    const-string v1, "durationMillis: "
+    const-string/jumbo v1, "durationMillis: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    iget-wide v1, p0, Landroid/app/ApplicationErrorReport$RunningServiceInfo;->durationMillis:J
+    iget-wide v2, p0, Landroid/app/ApplicationErrorReport$RunningServiceInfo;->durationMillis:J
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
@@ -93,7 +92,7 @@
 
     invoke-interface {p1, v0}, Landroid/util/Printer;->println(Ljava/lang/String;)V
 
-    .line 561
+    .line 586
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -120,26 +119,26 @@
 
     invoke-interface {p1, v0}, Landroid/util/Printer;->println(Ljava/lang/String;)V
 
-    .line 562
+    .line 584
     return-void
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 2
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 552
+    .line 577
     iget-wide v0, p0, Landroid/app/ApplicationErrorReport$RunningServiceInfo;->durationMillis:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 553
+    .line 578
     iget-object v0, p0, Landroid/app/ApplicationErrorReport$RunningServiceInfo;->serviceDetails:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 554
+    .line 576
     return-void
 .end method

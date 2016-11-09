@@ -28,7 +28,7 @@
 
 .field public static final ACTION_NOTIFICATION_CLICKED:Ljava/lang/String; = "android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED"
 
-.field public static final ALL_DOWNLOADS_CONTENT_URI:Landroid/net/Uri; = null
+.field public static final ALL_DOWNLOADS_CONTENT_URI:Landroid/net/Uri;
 
 .field public static final COLUMN_ALLOWED_NETWORK_TYPES:Ljava/lang/String; = "allowed_network_types"
 
@@ -98,7 +98,7 @@
 
 .field public static final COLUMN_VISIBILITY:Ljava/lang/String; = "visibility"
 
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
 
 .field public static final CONTROL_PAUSED:I = 0x1
 
@@ -138,7 +138,7 @@
 
 .field public static final PERMISSION_SEND_INTENTS:Ljava/lang/String; = "android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS"
 
-.field public static final PUBLICLY_ACCESSIBLE_DOWNLOADS_URI:Landroid/net/Uri; = null
+.field public static final PUBLICLY_ACCESSIBLE_DOWNLOADS_URI:Landroid/net/Uri;
 
 .field public static final PUBLICLY_ACCESSIBLE_DOWNLOADS_URI_SEGMENT:Ljava/lang/String; = "public_downloads"
 
@@ -170,8 +170,6 @@
 .field public static final STATUS_NOT_ACCEPTABLE:I = 0x196
 
 .field public static final STATUS_PAUSED_BY_APP:I = 0xc1
-
-.field public static final STATUS_PAUSED_BY_MANUAL:I = 0xc5
 
 .field public static final STATUS_PENDING:I = 0xbe
 
@@ -209,33 +207,37 @@
     .locals 1
 
     .prologue
-    .line 89
-    const-string v0, "content://downloads/my_downloads"
+    .line 90
+    const-string/jumbo v0, "content://downloads/my_downloads"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 89
     sput-object v0, Landroid/provider/Downloads$Impl;->CONTENT_URI:Landroid/net/Uri;
 
-    .line 96
-    const-string v0, "content://downloads/all_downloads"
+    .line 97
+    const-string/jumbo v0, "content://downloads/all_downloads"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 96
     sput-object v0, Landroid/provider/Downloads$Impl;->ALL_DOWNLOADS_CONTENT_URI:Landroid/net/Uri;
 
-    .line 106
-    const-string v0, "content://downloads/public_downloads"
+    .line 107
+    const-string/jumbo v0, "content://downloads/public_downloads"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 106
     sput-object v0, Landroid/provider/Downloads$Impl;->PUBLICLY_ACCESSIBLE_DOWNLOADS_URI:Landroid/net/Uri;
 
+    .line 41
     return-void
 .end method
 
@@ -251,7 +253,7 @@
 
 .method public static isNotificationToBeDisplayed(I)Z
     .locals 2
-    .parameter "visibility"
+    .param p0, "visibility"    # I
 
     .prologue
     const/4 v0, 0x1
@@ -259,14 +261,17 @@
     .line 552
     if-eq p0, v0, :cond_0
 
+    .line 553
     const/4 v1, 0x3
 
     if-ne p0, v1, :cond_1
 
+    .line 552
     :cond_0
     :goto_0
     return v0
 
+    .line 553
     :cond_1
     const/4 v0, 0x0
 
@@ -274,334 +279,312 @@
 .end method
 
 .method public static isStatusClientError(I)Z
-    .locals 1
-    .parameter "status"
+    .locals 2
+    .param p0, "status"    # I
 
     .prologue
+    const/4 v0, 0x0
+
     .line 535
-    const/16 v0, 0x190
+    const/16 v1, 0x190
 
-    if-lt p0, v0, :cond_0
+    if-lt p0, v1, :cond_0
 
-    const/16 v0, 0x1f4
+    const/16 v1, 0x1f4
 
-    if-ge p0, v0, :cond_0
+    if-ge p0, v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public static isStatusCompleted(I)Z
-    .locals 1
-    .parameter "status"
+    .locals 3
+    .param p0, "status"    # I
 
     .prologue
-    .line 561
-    const/16 v0, 0xc8
-
-    if-lt p0, v0, :cond_0
-
-    const/16 v0, 0x12c
-
-    if-lt p0, v0, :cond_1
-
-    :cond_0
-    const/16 v0, 0x190
-
-    if-lt p0, v0, :cond_2
-
-    const/16 v0, 0x258
-
-    if-ge p0, v0, :cond_2
-
-    :cond_1
     const/4 v0, 0x1
 
+    const/4 v1, 0x0
+
+    .line 561
+    const/16 v2, 0xc8
+
+    if-lt p0, v2, :cond_1
+
+    const/16 v2, 0x12c
+
+    if-ge p0, v2, :cond_1
+
+    :cond_0
     :goto_0
     return v0
 
+    :cond_1
+    const/16 v2, 0x190
+
+    if-lt p0, v2, :cond_2
+
+    const/16 v2, 0x258
+
+    if-lt p0, v2, :cond_0
+
     :cond_2
-    const/4 v0, 0x0
+    move v0, v1
 
     goto :goto_0
 .end method
 
 .method public static isStatusError(I)Z
-    .locals 1
-    .parameter "status"
+    .locals 2
+    .param p0, "status"    # I
 
     .prologue
+    const/4 v0, 0x0
+
     .line 528
-    const/16 v0, 0x190
+    const/16 v1, 0x190
 
-    if-lt p0, v0, :cond_0
+    if-lt p0, v1, :cond_0
 
-    const/16 v0, 0x258
+    const/16 v1, 0x258
 
-    if-ge p0, v0, :cond_0
+    if-ge p0, v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public static isStatusInformational(I)Z
-    .locals 1
-    .parameter "status"
+    .locals 2
+    .param p0, "status"    # I
 
     .prologue
+    const/4 v0, 0x0
+
     .line 514
-    const/16 v0, 0x64
+    const/16 v1, 0x64
 
-    if-lt p0, v0, :cond_0
+    if-lt p0, v1, :cond_0
 
-    const/16 v0, 0xc8
+    const/16 v1, 0xc8
 
-    if-ge p0, v0, :cond_0
+    if-ge p0, v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public static isStatusServerError(I)Z
-    .locals 1
-    .parameter "status"
+    .locals 2
+    .param p0, "status"    # I
 
     .prologue
+    const/4 v0, 0x0
+
     .line 542
-    const/16 v0, 0x1f4
+    const/16 v1, 0x1f4
 
-    if-lt p0, v0, :cond_0
+    if-lt p0, v1, :cond_0
 
-    const/16 v0, 0x258
+    const/16 v1, 0x258
 
-    if-ge p0, v0, :cond_0
+    if-ge p0, v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public static isStatusSuccess(I)Z
-    .locals 1
-    .parameter "status"
+    .locals 2
+    .param p0, "status"    # I
 
     .prologue
+    const/4 v0, 0x0
+
     .line 521
-    const/16 v0, 0xc8
+    const/16 v1, 0xc8
 
-    if-lt p0, v0, :cond_0
+    if-lt p0, v1, :cond_0
 
-    const/16 v0, 0x12c
+    const/16 v1, 0x12c
 
-    if-ge p0, v0, :cond_0
+    if-ge p0, v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public static statusToString(I)Ljava/lang/String;
     .locals 1
-    .parameter "status"
+    .param p0, "status"    # I
 
     .prologue
-    .line 731
+    .line 725
     sparse-switch p0, :sswitch_data_0
 
-    .line 757
+    .line 750
     invoke-static {p0}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
 
     move-result-object v0
 
-    :goto_0
+    return-object v0
+
+    .line 726
+    :sswitch_0
+    const-string/jumbo v0, "PENDING"
+
+    return-object v0
+
+    .line 727
+    :sswitch_1
+    const-string/jumbo v0, "RUNNING"
+
+    return-object v0
+
+    .line 728
+    :sswitch_2
+    const-string/jumbo v0, "PAUSED_BY_APP"
+
+    return-object v0
+
+    .line 729
+    :sswitch_3
+    const-string/jumbo v0, "WAITING_TO_RETRY"
+
+    return-object v0
+
+    .line 730
+    :sswitch_4
+    const-string/jumbo v0, "WAITING_FOR_NETWORK"
+
+    return-object v0
+
+    .line 731
+    :sswitch_5
+    const-string/jumbo v0, "QUEUED_FOR_WIFI"
+
     return-object v0
 
     .line 732
-    :sswitch_0
-    const-string v0, "PENDING"
+    :sswitch_6
+    const-string/jumbo v0, "INSUFFICIENT_SPACE_ERROR"
 
-    goto :goto_0
+    return-object v0
 
     .line 733
-    :sswitch_1
-    const-string v0, "RUNNING"
+    :sswitch_7
+    const-string/jumbo v0, "DEVICE_NOT_FOUND_ERROR"
 
-    goto :goto_0
+    return-object v0
 
     .line 734
-    :sswitch_2
-    const-string v0, "PAUSED_BY_APP"
+    :sswitch_8
+    const-string/jumbo v0, "SUCCESS"
 
-    goto :goto_0
+    return-object v0
 
     .line 735
-    :sswitch_3
-    const-string v0, "WAITING_TO_RETRY"
+    :sswitch_9
+    const-string/jumbo v0, "BAD_REQUEST"
 
-    goto :goto_0
+    return-object v0
 
     .line 736
-    :sswitch_4
-    const-string v0, "WAITING_FOR_NETWORK"
+    :sswitch_a
+    const-string/jumbo v0, "NOT_ACCEPTABLE"
 
-    goto :goto_0
+    return-object v0
 
     .line 737
-    :sswitch_5
-    const-string v0, "QUEUED_FOR_WIFI"
+    :sswitch_b
+    const-string/jumbo v0, "LENGTH_REQUIRED"
 
-    goto :goto_0
+    return-object v0
 
     .line 738
-    :sswitch_6
-    const-string v0, "PAUSED_BY_MANUAL"
+    :sswitch_c
+    const-string/jumbo v0, "PRECONDITION_FAILED"
 
-    goto :goto_0
+    return-object v0
 
     .line 739
-    :sswitch_7
-    const-string v0, "INSUFFICIENT_SPACE_ERROR"
+    :sswitch_d
+    const-string/jumbo v0, "FILE_ALREADY_EXISTS_ERROR"
 
-    goto :goto_0
+    return-object v0
 
     .line 740
-    :sswitch_8
-    const-string v0, "DEVICE_NOT_FOUND_ERROR"
+    :sswitch_e
+    const-string/jumbo v0, "CANNOT_RESUME"
 
-    goto :goto_0
+    return-object v0
 
     .line 741
-    :sswitch_9
-    const-string v0, "SUCCESS"
+    :sswitch_f
+    const-string/jumbo v0, "CANCELED"
 
-    goto :goto_0
+    return-object v0
 
     .line 742
-    :sswitch_a
-    const-string v0, "BAD_REQUEST"
+    :sswitch_10
+    const-string/jumbo v0, "UNKNOWN_ERROR"
 
-    goto :goto_0
+    return-object v0
 
     .line 743
-    :sswitch_b
-    const-string v0, "NOT_ACCEPTABLE"
+    :sswitch_11
+    const-string/jumbo v0, "FILE_ERROR"
 
-    goto :goto_0
+    return-object v0
 
     .line 744
-    :sswitch_c
-    const-string v0, "LENGTH_REQUIRED"
+    :sswitch_12
+    const-string/jumbo v0, "UNHANDLED_REDIRECT"
 
-    goto :goto_0
+    return-object v0
 
     .line 745
-    :sswitch_d
-    const-string v0, "PRECONDITION_FAILED"
+    :sswitch_13
+    const-string/jumbo v0, "UNHANDLED_HTTP_CODE"
 
-    goto :goto_0
+    return-object v0
 
     .line 746
-    :sswitch_e
-    const-string v0, "FILE_ALREADY_EXISTS_ERROR"
+    :sswitch_14
+    const-string/jumbo v0, "HTTP_DATA_ERROR"
 
-    goto :goto_0
+    return-object v0
 
     .line 747
-    :sswitch_f
-    const-string v0, "CANNOT_RESUME"
+    :sswitch_15
+    const-string/jumbo v0, "HTTP_EXCEPTION"
 
-    goto :goto_0
+    return-object v0
 
     .line 748
-    :sswitch_10
-    const-string v0, "CANCELED"
+    :sswitch_16
+    const-string/jumbo v0, "TOO_MANY_REDIRECTS"
 
-    goto :goto_0
+    return-object v0
 
     .line 749
-    :sswitch_11
-    const-string v0, "UNKNOWN_ERROR"
-
-    goto :goto_0
-
-    .line 750
-    :sswitch_12
-    const-string v0, "FILE_ERROR"
-
-    goto :goto_0
-
-    .line 751
-    :sswitch_13
-    const-string v0, "UNHANDLED_REDIRECT"
-
-    goto :goto_0
-
-    .line 752
-    :sswitch_14
-    const-string v0, "UNHANDLED_HTTP_CODE"
-
-    goto :goto_0
-
-    .line 753
-    :sswitch_15
-    const-string v0, "HTTP_DATA_ERROR"
-
-    goto :goto_0
-
-    .line 754
-    :sswitch_16
-    const-string v0, "HTTP_EXCEPTION"
-
-    goto :goto_0
-
-    .line 755
     :sswitch_17
-    const-string v0, "TOO_MANY_REDIRECTS"
+    const-string/jumbo v0, "BLOCKED"
 
-    goto :goto_0
+    return-object v0
 
-    .line 756
-    :sswitch_18
-    const-string v0, "BLOCKED"
-
-    goto :goto_0
-
-    .line 731
-    nop
-
+    .line 725
     :sswitch_data_0
     .sparse-switch
         0xbe -> :sswitch_0
@@ -610,24 +593,23 @@
         0xc2 -> :sswitch_3
         0xc3 -> :sswitch_4
         0xc4 -> :sswitch_5
-        0xc5 -> :sswitch_6
-        0xc6 -> :sswitch_7
-        0xc7 -> :sswitch_8
-        0xc8 -> :sswitch_9
-        0x190 -> :sswitch_a
-        0x196 -> :sswitch_b
-        0x19b -> :sswitch_c
-        0x19c -> :sswitch_d
-        0x1e8 -> :sswitch_e
-        0x1e9 -> :sswitch_f
-        0x1ea -> :sswitch_10
-        0x1eb -> :sswitch_11
-        0x1ec -> :sswitch_12
-        0x1ed -> :sswitch_13
-        0x1ee -> :sswitch_14
-        0x1ef -> :sswitch_15
-        0x1f0 -> :sswitch_16
-        0x1f1 -> :sswitch_17
-        0x1f2 -> :sswitch_18
+        0xc6 -> :sswitch_6
+        0xc7 -> :sswitch_7
+        0xc8 -> :sswitch_8
+        0x190 -> :sswitch_9
+        0x196 -> :sswitch_a
+        0x19b -> :sswitch_b
+        0x19c -> :sswitch_c
+        0x1e8 -> :sswitch_d
+        0x1e9 -> :sswitch_e
+        0x1ea -> :sswitch_f
+        0x1eb -> :sswitch_10
+        0x1ec -> :sswitch_11
+        0x1ed -> :sswitch_12
+        0x1ee -> :sswitch_13
+        0x1ef -> :sswitch_14
+        0x1f0 -> :sswitch_15
+        0x1f1 -> :sswitch_16
+        0x1f2 -> :sswitch_17
     .end sparse-switch
 .end method

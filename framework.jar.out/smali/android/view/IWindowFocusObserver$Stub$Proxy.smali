@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 71
+    .line 70
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 72
     iput-object p1, p0, Landroid/view/IWindowFocusObserver$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 73
+    .line 70
     return-void
 .end method
 
@@ -51,7 +51,7 @@
 
 .method public focusGained(Landroid/os/IBinder;)V
     .locals 5
-    .parameter "inputToken"
+    .param p1, "inputToken"    # Landroid/os/IBinder;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -65,15 +65,15 @@
     move-result-object v0
 
     .line 85
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 87
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.view.IWindowFocusObserver"
+    const-string/jumbo v2, "android.view.IWindowFocusObserver"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -100,24 +100,26 @@
     .line 94
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 96
+    .line 82
     return-void
 
-    .line 93
+    .line 92
     :catchall_0
     move-exception v2
 
+    .line 93
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 94
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 92
     throw v2
 .end method
 
 .method public focusLost(Landroid/os/IBinder;)V
     .locals 5
-    .parameter "inputToken"
+    .param p1, "inputToken"    # Landroid/os/IBinder;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -131,15 +133,15 @@
     move-result-object v0
 
     .line 100
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 102
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.view.IWindowFocusObserver"
+    const-string/jumbo v2, "android.view.IWindowFocusObserver"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -166,18 +168,20 @@
     .line 109
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 111
+    .line 97
     return-void
 
-    .line 108
+    .line 107
     :catchall_0
     move-exception v2
 
+    .line 108
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 109
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 107
     throw v2
 .end method
 
@@ -186,7 +190,7 @@
 
     .prologue
     .line 80
-    const-string v0, "android.view.IWindowFocusObserver"
+    const-string/jumbo v0, "android.view.IWindowFocusObserver"
 
     return-object v0
 .end method

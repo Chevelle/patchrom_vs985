@@ -21,8 +21,8 @@
 # direct methods
 .method public constructor <init>(Landroid/print/PrinterDiscoverySession;Landroid/os/Looper;)V
     .locals 2
-    .parameter
-    .parameter "looper"
+    .param p1, "this$0"    # Landroid/print/PrinterDiscoverySession;
+    .param p2, "looper"    # Landroid/os/Looper;
 
     .prologue
     .line 267
@@ -35,7 +35,7 @@
 
     invoke-direct {p0, p2, v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;Landroid/os/Handler$Callback;Z)V
 
-    .line 269
+    .line 267
     return-void
 .end method
 
@@ -43,7 +43,7 @@
 # virtual methods
 .method public handleMessage(Landroid/os/Message;)V
     .locals 3
-    .parameter "message"
+    .param p1, "message"    # Landroid/os/Message;
 
     .prologue
     .line 274
@@ -51,7 +51,7 @@
 
     packed-switch v2, :pswitch_data_0
 
-    .line 285
+    .line 273
     :goto_0
     return-void
 
@@ -62,27 +62,25 @@
     check-cast v1, Ljava/util/List;
 
     .line 277
-    .local v1, printers:Ljava/util/List;,"Ljava/util/List<Landroid/print/PrinterInfo;>;"
+    .local v1, "printers":Ljava/util/List;, "Ljava/util/List<Landroid/print/PrinterInfo;>;"
     iget-object v2, p0, Landroid/print/PrinterDiscoverySession$SessionHandler;->this$0:Landroid/print/PrinterDiscoverySession;
 
-    #calls: Landroid/print/PrinterDiscoverySession;->handlePrintersAdded(Ljava/util/List;)V
-    invoke-static {v2, v1}, Landroid/print/PrinterDiscoverySession;->access$000(Landroid/print/PrinterDiscoverySession;Ljava/util/List;)V
+    invoke-static {v2, v1}, Landroid/print/PrinterDiscoverySession;->-wrap0(Landroid/print/PrinterDiscoverySession;Ljava/util/List;)V
 
     goto :goto_0
 
     .line 281
-    .end local v1           #printers:Ljava/util/List;,"Ljava/util/List<Landroid/print/PrinterInfo;>;"
+    .end local v1    # "printers":Ljava/util/List;, "Ljava/util/List<Landroid/print/PrinterInfo;>;"
     :pswitch_1
     iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v0, Ljava/util/List;
 
     .line 282
-    .local v0, printerIds:Ljava/util/List;,"Ljava/util/List<Landroid/print/PrinterId;>;"
+    .local v0, "printerIds":Ljava/util/List;, "Ljava/util/List<Landroid/print/PrinterId;>;"
     iget-object v2, p0, Landroid/print/PrinterDiscoverySession$SessionHandler;->this$0:Landroid/print/PrinterDiscoverySession;
 
-    #calls: Landroid/print/PrinterDiscoverySession;->handlePrintersRemoved(Ljava/util/List;)V
-    invoke-static {v2, v0}, Landroid/print/PrinterDiscoverySession;->access$100(Landroid/print/PrinterDiscoverySession;Ljava/util/List;)V
+    invoke-static {v2, v0}, Landroid/print/PrinterDiscoverySession;->-wrap1(Landroid/print/PrinterDiscoverySession;Ljava/util/List;)V
 
     goto :goto_0
 

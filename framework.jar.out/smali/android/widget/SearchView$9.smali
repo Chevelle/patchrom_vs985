@@ -3,7 +3,7 @@
 .source "SearchView.java"
 
 # interfaces
-.implements Landroid/widget/AdapterView$OnItemClickListener;
+.implements Landroid/text/TextWatcher;
 
 
 # annotations
@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/widget/SearchView;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/SearchView;
 
     .prologue
-    .line 1327
+    .line 1676
     iput-object p1, p0, Landroid/widget/SearchView$9;->this$0:Landroid/widget/SearchView;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,34 +37,40 @@
 
 
 # virtual methods
-.method public onItemClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
-    .locals 3
-    .parameter
-    .parameter "view"
-    .parameter "position"
-    .parameter "id"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Landroid/widget/AdapterView",
-            "<*>;",
-            "Landroid/view/View;",
-            "IJ)V"
-        }
-    .end annotation
+.method public afterTextChanged(Landroid/text/Editable;)V
+    .locals 0
+    .param p1, "s"    # Landroid/text/Editable;
 
     .prologue
-    .line 1334
-    .local p1, parent:Landroid/widget/AdapterView;,"Landroid/widget/AdapterView<*>;"
+    .line 1685
+    return-void
+.end method
+
+.method public beforeTextChanged(Ljava/lang/CharSequence;III)V
+    .locals 0
+    .param p1, "s"    # Ljava/lang/CharSequence;
+    .param p2, "start"    # I
+    .param p3, "before"    # I
+    .param p4, "after"    # I
+
+    .prologue
+    .line 1678
+    return-void
+.end method
+
+.method public onTextChanged(Ljava/lang/CharSequence;III)V
+    .locals 1
+    .param p1, "s"    # Ljava/lang/CharSequence;
+    .param p2, "start"    # I
+    .param p3, "before"    # I
+    .param p4, "after"    # I
+
+    .prologue
+    .line 1682
     iget-object v0, p0, Landroid/widget/SearchView$9;->this$0:Landroid/widget/SearchView;
 
-    const/4 v1, 0x0
+    invoke-static {v0, p1}, Landroid/widget/SearchView;->-wrap9(Landroid/widget/SearchView;Ljava/lang/CharSequence;)V
 
-    const/4 v2, 0x0
-
-    #calls: Landroid/widget/SearchView;->onItemClicked(IILjava/lang/String;)Z
-    invoke-static {v0, p3, v1, v2}, Landroid/widget/SearchView;->access$1800(Landroid/widget/SearchView;IILjava/lang/String;)Z
-
-    .line 1335
+    .line 1681
     return-void
 .end method

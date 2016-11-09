@@ -63,6 +63,32 @@
     .end annotation
 .end method
 
+.method public abstract getWindow(I)Landroid/view/accessibility/AccessibilityWindowInfo;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getWindows()Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List",
+            "<",
+            "Landroid/view/accessibility/AccessibilityWindowInfo;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract performAccessibilityAction(IJILandroid/os/Bundle;ILandroid/view/accessibility/IAccessibilityInteractionConnectionCallback;J)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {

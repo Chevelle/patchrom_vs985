@@ -19,7 +19,7 @@
 
 .field public static final CONTENT_TYPE:Ljava/lang/String; = "vnd.android.cursor.dir/searches"
 
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
 
 .field public static final DATE:Ljava/lang/String; = "date"
 
@@ -44,6 +44,7 @@
 
     sput-object v0, Landroid/provider/BrowserContract$Searches;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 464
     return-void
 .end method
 

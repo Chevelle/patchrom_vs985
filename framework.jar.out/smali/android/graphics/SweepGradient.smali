@@ -27,62 +27,53 @@
 
 # direct methods
 .method public constructor <init>(FFII)V
-    .locals 1
-    .parameter "cx"
-    .parameter "cy"
-    .parameter "color0"
-    .parameter "color1"
+    .locals 2
+    .param p1, "cx"    # F
+    .param p2, "cy"    # F
+    .param p3, "color0"    # I
+    .param p4, "color1"    # I
 
     .prologue
-    .line 77
+    .line 76
     invoke-direct {p0}, Landroid/graphics/Shader;-><init>()V
 
-    .line 78
+    .line 77
     const/4 v0, 0x2
 
     iput v0, p0, Landroid/graphics/SweepGradient;->mType:I
 
-    .line 79
+    .line 78
     iput p1, p0, Landroid/graphics/SweepGradient;->mCx:F
 
-    .line 80
+    .line 79
     iput p2, p0, Landroid/graphics/SweepGradient;->mCy:F
 
-    .line 81
+    .line 80
     iput p3, p0, Landroid/graphics/SweepGradient;->mColor0:I
 
-    .line 82
+    .line 81
     iput p4, p0, Landroid/graphics/SweepGradient;->mColor1:I
 
-    .line 83
-    invoke-static {p1, p2, p3, p4}, Landroid/graphics/SweepGradient;->nativeCreate2(FFII)I
+    .line 82
+    invoke-static {p1, p2, p3, p4}, Landroid/graphics/SweepGradient;->nativeCreate2(FFII)J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/graphics/SweepGradient;->native_instance:I
+    invoke-virtual {p0, v0, v1}, Landroid/graphics/SweepGradient;->init(J)V
 
-    .line 84
-    iget v0, p0, Landroid/graphics/SweepGradient;->native_instance:I
-
-    invoke-static {v0, p1, p2, p3, p4}, Landroid/graphics/SweepGradient;->nativePostCreate2(IFFII)I
-
-    move-result v0
-
-    iput v0, p0, Landroid/graphics/SweepGradient;->native_shader:I
-
-    .line 85
+    .line 76
     return-void
 .end method
 
 .method public constructor <init>(FF[I[F)V
     .locals 2
-    .parameter "cx"
-    .parameter "cy"
-    .parameter "colors"
-    .parameter "positions"
+    .param p1, "cx"    # F
+    .param p2, "cy"    # F
+    .param p3, "colors"    # [I
+    .param p4, "positions"    # [F
 
     .prologue
-    .line 52
+    .line 51
     invoke-direct {p0}, Landroid/graphics/Shader;-><init>()V
 
     .line 53
@@ -114,8 +105,10 @@
     .line 57
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "color and position arrays must be of equal length"
+    .line 58
+    const-string/jumbo v1, "color and position arrays must be of equal length"
 
+    .line 57
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
@@ -139,58 +132,45 @@
     iput-object p4, p0, Landroid/graphics/SweepGradient;->mPositions:[F
 
     .line 65
-    invoke-static {p1, p2, p3, p4}, Landroid/graphics/SweepGradient;->nativeCreate1(FF[I[F)I
+    invoke-static {p1, p2, p3, p4}, Landroid/graphics/SweepGradient;->nativeCreate1(FF[I[F)J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/graphics/SweepGradient;->native_instance:I
+    invoke-virtual {p0, v0, v1}, Landroid/graphics/SweepGradient;->init(J)V
 
-    .line 66
-    iget v0, p0, Landroid/graphics/SweepGradient;->native_instance:I
-
-    invoke-static {v0, p1, p2, p3, p4}, Landroid/graphics/SweepGradient;->nativePostCreate1(IFF[I[F)I
-
-    move-result v0
-
-    iput v0, p0, Landroid/graphics/SweepGradient;->native_shader:I
-
-    .line 67
+    .line 52
     return-void
 .end method
 
-.method private static native nativeCreate1(FF[I[F)I
+.method private static native nativeCreate1(FF[I[F)J
 .end method
 
-.method private static native nativeCreate2(FFII)I
-.end method
-
-.method private static native nativePostCreate1(IFF[I[F)I
-.end method
-
-.method private static native nativePostCreate2(IFFII)I
+.method private static native nativeCreate2(FFII)J
 .end method
 
 
 # virtual methods
 .method protected copy()Landroid/graphics/Shader;
-    .locals 5
+    .locals 6
 
     .prologue
-    .line 93
+    const/4 v2, 0x0
+
+    .line 91
     iget v1, p0, Landroid/graphics/SweepGradient;->mType:I
 
     packed-switch v1, :pswitch_data_0
 
-    .line 102
+    .line 100
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "SweepGradient should be created with either colors and positions or start color and end color"
+    const-string/jumbo v2, "SweepGradient should be created with either colors and positions or start color and end color"
 
     invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 95
+    .line 93
     :pswitch_0
     new-instance v0, Landroid/graphics/SweepGradient;
 
@@ -200,43 +180,39 @@
 
     iget-object v1, p0, Landroid/graphics/SweepGradient;->mColors:[I
 
-    invoke-virtual {v1}, [I->clone()Ljava/lang/Object;
+    invoke-virtual {v1}, Ljava/lang/Object;->clone()Ljava/lang/Object;
 
     move-result-object v1
 
     check-cast v1, [I
 
+    .line 94
+    iget-object v5, p0, Landroid/graphics/SweepGradient;->mPositions:[F
+
+    if-eqz v5, :cond_0
+
     iget-object v2, p0, Landroid/graphics/SweepGradient;->mPositions:[F
 
-    if-eqz v2, :cond_0
-
-    iget-object v2, p0, Landroid/graphics/SweepGradient;->mPositions:[F
-
-    invoke-virtual {v2}, [F->clone()Ljava/lang/Object;
+    invoke-virtual {v2}, Ljava/lang/Object;->clone()Ljava/lang/Object;
 
     move-result-object v2
 
     check-cast v2, [F
 
-    :goto_0
+    .line 93
+    :cond_0
     invoke-direct {v0, v3, v4, v1, v2}, Landroid/graphics/SweepGradient;-><init>(FF[I[F)V
 
-    .line 105
-    .local v0, copy:Landroid/graphics/SweepGradient;
-    :goto_1
+    .line 103
+    .local v0, "copy":Landroid/graphics/SweepGradient;
+    :goto_0
     invoke-virtual {p0, v0}, Landroid/graphics/SweepGradient;->copyLocalMatrix(Landroid/graphics/Shader;)V
 
-    .line 106
+    .line 104
     return-object v0
 
-    .line 95
-    .end local v0           #copy:Landroid/graphics/SweepGradient;
-    :cond_0
-    const/4 v2, 0x0
-
-    goto :goto_0
-
-    .line 99
+    .line 97
+    .end local v0    # "copy":Landroid/graphics/SweepGradient;
     :pswitch_1
     new-instance v0, Landroid/graphics/SweepGradient;
 
@@ -250,11 +226,11 @@
 
     invoke-direct {v0, v1, v2, v3, v4}, Landroid/graphics/SweepGradient;-><init>(FFII)V
 
-    .line 100
-    .restart local v0       #copy:Landroid/graphics/SweepGradient;
-    goto :goto_1
+    .line 98
+    .restart local v0    # "copy":Landroid/graphics/SweepGradient;
+    goto :goto_0
 
-    .line 93
+    .line 91
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0

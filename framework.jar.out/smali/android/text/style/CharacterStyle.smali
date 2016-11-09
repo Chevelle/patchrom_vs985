@@ -19,13 +19,12 @@
     .line 26
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 60
     return-void
 .end method
 
 .method public static wrap(Landroid/text/style/CharacterStyle;)Landroid/text/style/CharacterStyle;
     .locals 1
-    .parameter "cs"
+    .param p0, "cs"    # Landroid/text/style/CharacterStyle;
 
     .prologue
     .line 37
@@ -38,20 +37,19 @@
 
     check-cast p0, Landroid/text/style/MetricAffectingSpan;
 
-    .end local p0
+    .end local p0    # "cs":Landroid/text/style/CharacterStyle;
     invoke-direct {v0, p0}, Landroid/text/style/MetricAffectingSpan$Passthrough;-><init>(Landroid/text/style/MetricAffectingSpan;)V
 
-    .line 40
-    .restart local p0
-    :goto_0
     return-object v0
 
+    .line 40
+    .restart local p0    # "cs":Landroid/text/style/CharacterStyle;
     :cond_0
     new-instance v0, Landroid/text/style/CharacterStyle$Passthrough;
 
     invoke-direct {v0, p0}, Landroid/text/style/CharacterStyle$Passthrough;-><init>(Landroid/text/style/CharacterStyle;)V
 
-    goto :goto_0
+    return-object v0
 .end method
 
 

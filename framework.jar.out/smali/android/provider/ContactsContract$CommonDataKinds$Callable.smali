@@ -5,6 +5,7 @@
 # interfaces
 .implements Landroid/provider/ContactsContract$DataColumnsWithJoins;
 .implements Landroid/provider/ContactsContract$CommonDataKinds$CommonColumns;
+.implements Landroid/provider/ContactsContract$ContactCounts;
 
 
 # annotations
@@ -29,28 +30,33 @@
     .locals 2
 
     .prologue
-    .line 6911
+    .line 7327
     sget-object v0, Landroid/provider/ContactsContract$Data;->CONTENT_URI:Landroid/net/Uri;
 
-    const-string v1, "callables"
+    .line 7328
+    const-string/jumbo v1, "callables"
 
+    .line 7327
     invoke-static {v0, v1}, Landroid/net/Uri;->withAppendedPath(Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
     sput-object v0, Landroid/provider/ContactsContract$CommonDataKinds$Callable;->CONTENT_URI:Landroid/net/Uri;
 
-    .line 6917
+    .line 7333
     sget-object v0, Landroid/provider/ContactsContract$CommonDataKinds$Callable;->CONTENT_URI:Landroid/net/Uri;
 
-    const-string v1, "filter"
+    .line 7334
+    const-string/jumbo v1, "filter"
 
+    .line 7333
     invoke-static {v0, v1}, Landroid/net/Uri;->withAppendedPath(Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
     sput-object v0, Landroid/provider/ContactsContract$CommonDataKinds$Callable;->CONTENT_FILTER_URI:Landroid/net/Uri;
 
+    .line 7321
     return-void
 .end method
 
@@ -58,7 +64,7 @@
     .locals 0
 
     .prologue
-    .line 6906
+    .line 7321
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

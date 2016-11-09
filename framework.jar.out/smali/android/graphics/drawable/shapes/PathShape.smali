@@ -18,9 +18,9 @@
 # direct methods
 .method public constructor <init>(Landroid/graphics/Path;FF)V
     .locals 0
-    .parameter "path"
-    .parameter "stdWidth"
-    .parameter "stdHeight"
+    .param p1, "path"    # Landroid/graphics/Path;
+    .param p2, "stdWidth"    # F
+    .param p3, "stdHeight"    # F
 
     .prologue
     .line 48
@@ -35,7 +35,7 @@
     .line 51
     iput p3, p0, Landroid/graphics/drawable/shapes/PathShape;->mStdHeight:F
 
-    .line 52
+    .line 48
     return-void
 .end method
 
@@ -58,7 +58,7 @@
     check-cast v0, Landroid/graphics/drawable/shapes/PathShape;
 
     .line 71
-    .local v0, shape:Landroid/graphics/drawable/shapes/PathShape;
+    .local v0, "shape":Landroid/graphics/drawable/shapes/PathShape;
     new-instance v1, Landroid/graphics/Path;
 
     iget-object v2, p0, Landroid/graphics/drawable/shapes/PathShape;->mPath:Landroid/graphics/Path;
@@ -80,24 +80,7 @@
     .end annotation
 
     .prologue
-    .line 29
-    invoke-virtual {p0}, Landroid/graphics/drawable/shapes/PathShape;->clone()Landroid/graphics/drawable/shapes/PathShape;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method public bridge synthetic clone()Ljava/lang/Object;
-    .locals 1
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/lang/CloneNotSupportedException;
-        }
-    .end annotation
-
-    .prologue
-    .line 29
+    .line 69
     invoke-virtual {p0}, Landroid/graphics/drawable/shapes/PathShape;->clone()Landroid/graphics/drawable/shapes/PathShape;
 
     move-result-object v0
@@ -107,8 +90,8 @@
 
 .method public draw(Landroid/graphics/Canvas;Landroid/graphics/Paint;)V
     .locals 2
-    .parameter "canvas"
-    .parameter "paint"
+    .param p1, "canvas"    # Landroid/graphics/Canvas;
+    .param p2, "paint"    # Landroid/graphics/Paint;
 
     .prologue
     .line 56
@@ -129,14 +112,14 @@
     .line 59
     invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V
 
-    .line 60
+    .line 55
     return-void
 .end method
 
 .method protected onResize(FF)V
     .locals 1
-    .parameter "width"
-    .parameter "height"
+    .param p1, "width"    # F
+    .param p2, "height"    # F
 
     .prologue
     .line 64
@@ -153,6 +136,6 @@
 
     iput v0, p0, Landroid/graphics/drawable/shapes/PathShape;->mScaleY:F
 
-    .line 66
+    .line 63
     return-void
 .end method

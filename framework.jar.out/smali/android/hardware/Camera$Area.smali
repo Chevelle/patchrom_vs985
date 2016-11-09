@@ -13,6 +13,9 @@
     name = "Area"
 .end annotation
 
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
 
 # instance fields
 .field public rect:Landroid/graphics/Rect;
@@ -23,20 +26,20 @@
 # direct methods
 .method public constructor <init>(Landroid/graphics/Rect;I)V
     .locals 0
-    .parameter "rect"
-    .parameter "weight"
+    .param p1, "rect"    # Landroid/graphics/Rect;
+    .param p2, "weight"    # I
 
     .prologue
-    .line 1932
+    .line 2246
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1933
+    .line 2247
     iput-object p1, p0, Landroid/hardware/Camera$Area;->rect:Landroid/graphics/Rect;
 
-    .line 1934
+    .line 2248
     iput p2, p0, Landroid/hardware/Camera$Area;->weight:I
 
-    .line 1935
+    .line 2246
     return-void
 .end method
 
@@ -44,52 +47,40 @@
 # virtual methods
 .method public equals(Ljava/lang/Object;)Z
     .locals 4
-    .parameter "obj"
+    .param p1, "obj"    # Ljava/lang/Object;
 
     .prologue
     const/4 v1, 0x0
 
-    .line 1945
+    .line 2259
     instance-of v2, p1, Landroid/hardware/Camera$Area;
-
-    if-nez v2, :cond_1
-
-    .line 1954
-    :cond_0
-    :goto_0
-    return v1
-
-    :cond_1
-    move-object v0, p1
-
-    .line 1948
-    check-cast v0, Landroid/hardware/Camera$Area;
-
-    .line 1949
-    .local v0, a:Landroid/hardware/Camera$Area;
-    iget-object v2, p0, Landroid/hardware/Camera$Area;->rect:Landroid/graphics/Rect;
-
-    if-nez v2, :cond_3
-
-    .line 1950
-    iget-object v2, v0, Landroid/hardware/Camera$Area;->rect:Landroid/graphics/Rect;
 
     if-nez v2, :cond_0
 
-    .line 1954
-    :cond_2
-    iget v2, p0, Landroid/hardware/Camera$Area;->weight:I
+    .line 2260
+    return v1
 
-    iget v3, v0, Landroid/hardware/Camera$Area;->weight:I
+    :cond_0
+    move-object v0, p1
 
-    if-ne v2, v3, :cond_0
+    .line 2262
+    check-cast v0, Landroid/hardware/Camera$Area;
 
-    const/4 v1, 0x1
+    .line 2263
+    .local v0, "a":Landroid/hardware/Camera$Area;
+    iget-object v2, p0, Landroid/hardware/Camera$Area;->rect:Landroid/graphics/Rect;
 
-    goto :goto_0
+    if-nez v2, :cond_1
 
-    .line 1952
-    :cond_3
+    .line 2264
+    iget-object v2, v0, Landroid/hardware/Camera$Area;->rect:Landroid/graphics/Rect;
+
+    if-eqz v2, :cond_2
+
+    return v1
+
+    .line 2266
+    :cond_1
     iget-object v2, p0, Landroid/hardware/Camera$Area;->rect:Landroid/graphics/Rect;
 
     iget-object v3, v0, Landroid/hardware/Camera$Area;->rect:Landroid/graphics/Rect;
@@ -100,5 +91,18 @@
 
     if-nez v2, :cond_2
 
-    goto :goto_0
+    return v1
+
+    .line 2268
+    :cond_2
+    iget v2, p0, Landroid/hardware/Camera$Area;->weight:I
+
+    iget v3, v0, Landroid/hardware/Camera$Area;->weight:I
+
+    if-ne v2, v3, :cond_3
+
+    const/4 v1, 0x1
+
+    :cond_3
+    return v1
 .end method

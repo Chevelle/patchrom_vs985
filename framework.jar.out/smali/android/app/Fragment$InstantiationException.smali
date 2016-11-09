@@ -17,13 +17,13 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/Exception;)V
     .locals 0
-    .parameter "msg"
-    .parameter "cause"
+    .param p1, "msg"    # Ljava/lang/String;
+    .param p2, "cause"    # Ljava/lang/Exception;
 
     .prologue
-    .line 532
+    .line 555
     invoke-direct {p0, p1, p2}, Landroid/util/AndroidRuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    .line 533
+    .line 554
     return-void
 .end method

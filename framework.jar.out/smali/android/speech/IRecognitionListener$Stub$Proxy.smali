@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 148
+    .line 147
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 149
     iput-object p1, p0, Landroid/speech/IRecognitionListener$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 150
+    .line 147
     return-void
 .end method
 
@@ -54,7 +54,7 @@
 
     .prologue
     .line 157
-    const-string v0, "android.speech.IRecognitionListener"
+    const-string/jumbo v0, "android.speech.IRecognitionListener"
 
     return-object v0
 .end method
@@ -74,9 +74,9 @@
     move-result-object v0
 
     .line 189
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.speech.IRecognitionListener"
+    const-string/jumbo v1, "android.speech.IRecognitionListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -96,21 +96,23 @@
     .line 193
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 195
+    .line 185
     return-void
 
-    .line 193
+    .line 192
     :catchall_0
     move-exception v1
 
+    .line 193
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 192
     throw v1
 .end method
 
 .method public onBufferReceived([B)V
     .locals 5
-    .parameter "buffer"
+    .param p1, "buffer"    # [B
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -124,9 +126,9 @@
     move-result-object v0
 
     .line 222
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.speech.IRecognitionListener"
+    const-string/jumbo v1, "android.speech.IRecognitionListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -149,15 +151,17 @@
     .line 227
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 229
+    .line 218
     return-void
 
-    .line 227
+    .line 226
     :catchall_0
     move-exception v1
 
+    .line 227
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 226
     throw v1
 .end method
 
@@ -176,9 +180,9 @@
     move-result-object v0
 
     .line 237
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.speech.IRecognitionListener"
+    const-string/jumbo v1, "android.speech.IRecognitionListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -198,21 +202,23 @@
     .line 241
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 243
+    .line 233
     return-void
 
-    .line 241
+    .line 240
     :catchall_0
     move-exception v1
 
+    .line 241
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 240
     throw v1
 .end method
 
 .method public onError(I)V
     .locals 5
-    .parameter "error"
+    .param p1, "error"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -226,9 +232,9 @@
     move-result-object v0
 
     .line 253
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.speech.IRecognitionListener"
+    const-string/jumbo v1, "android.speech.IRecognitionListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -251,22 +257,24 @@
     .line 258
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 260
+    .line 249
     return-void
 
-    .line 258
+    .line 257
     :catchall_0
     move-exception v1
 
+    .line 258
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 257
     throw v1
 .end method
 
 .method public onEvent(ILandroid/os/Bundle;)V
     .locals 5
-    .parameter "eventType"
-    .parameter "params"
+    .param p1, "eventType"    # I
+    .param p2, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -280,9 +288,9 @@
     move-result-object v0
 
     .line 317
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.speech.IRecognitionListener"
+    const-string/jumbo v1, "android.speech.IRecognitionListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -319,7 +327,7 @@
     .line 329
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 331
+    .line 313
     return-void
 
     .line 324
@@ -333,18 +341,20 @@
 
     goto :goto_0
 
-    .line 329
+    .line 328
     :catchall_0
     move-exception v1
 
+    .line 329
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 328
     throw v1
 .end method
 
 .method public onPartialResults(Landroid/os/Bundle;)V
     .locals 5
-    .parameter "results"
+    .param p1, "results"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -358,9 +368,9 @@
     move-result-object v0
 
     .line 293
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.speech.IRecognitionListener"
+    const-string/jumbo v1, "android.speech.IRecognitionListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -394,7 +404,7 @@
     .line 304
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 306
+    .line 289
     return-void
 
     .line 299
@@ -408,18 +418,20 @@
 
     goto :goto_0
 
-    .line 304
+    .line 303
     :catchall_0
     move-exception v1
 
+    .line 304
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 303
     throw v1
 .end method
 
 .method public onReadyForSpeech(Landroid/os/Bundle;)V
     .locals 5
-    .parameter "params"
+    .param p1, "params"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -433,9 +445,9 @@
     move-result-object v0
 
     .line 168
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.speech.IRecognitionListener"
+    const-string/jumbo v1, "android.speech.IRecognitionListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -469,7 +481,7 @@
     .line 179
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 181
+    .line 164
     return-void
 
     .line 174
@@ -483,18 +495,20 @@
 
     goto :goto_0
 
-    .line 179
+    .line 178
     :catchall_0
     move-exception v1
 
+    .line 179
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 178
     throw v1
 .end method
 
 .method public onResults(Landroid/os/Bundle;)V
     .locals 5
-    .parameter "results"
+    .param p1, "results"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -508,9 +522,9 @@
     move-result-object v0
 
     .line 270
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.speech.IRecognitionListener"
+    const-string/jumbo v1, "android.speech.IRecognitionListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -544,7 +558,7 @@
     .line 281
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 283
+    .line 266
     return-void
 
     .line 276
@@ -558,18 +572,20 @@
 
     goto :goto_0
 
-    .line 281
+    .line 280
     :catchall_0
     move-exception v1
 
+    .line 281
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 280
     throw v1
 .end method
 
 .method public onRmsChanged(F)V
     .locals 5
-    .parameter "rmsdB"
+    .param p1, "rmsdB"    # F
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -583,9 +599,9 @@
     move-result-object v0
 
     .line 205
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.speech.IRecognitionListener"
+    const-string/jumbo v1, "android.speech.IRecognitionListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -608,14 +624,16 @@
     .line 210
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 212
+    .line 201
     return-void
 
-    .line 210
+    .line 209
     :catchall_0
     move-exception v1
 
+    .line 210
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 209
     throw v1
 .end method

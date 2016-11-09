@@ -34,9 +34,9 @@
 
 .field public static final CONTENT_TYPE:Ljava/lang/String; = "vnd.android.cursor.dir/bookmark"
 
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
 
-.field public static final CONTENT_URI_DEFAULT_FOLDER:Landroid/net/Uri; = null
+.field public static final CONTENT_URI_DEFAULT_FOLDER:Landroid/net/Uri;
 
 .field public static final INSERT_AFTER:Ljava/lang/String; = "insert_after"
 
@@ -69,7 +69,7 @@
     .line 254
     sget-object v0, Landroid/provider/BrowserContract;->AUTHORITY_URI:Landroid/net/Uri;
 
-    const-string v1, "bookmarks"
+    const-string/jumbo v1, "bookmarks"
 
     invoke-static {v0, v1}, Landroid/net/Uri;->withAppendedPath(Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;
 
@@ -77,17 +77,19 @@
 
     sput-object v0, Landroid/provider/BrowserContract$Bookmarks;->CONTENT_URI:Landroid/net/Uri;
 
-    .line 303
+    .line 304
     sget-object v0, Landroid/provider/BrowserContract$Bookmarks;->CONTENT_URI:Landroid/net/Uri;
 
-    const-string v1, "folder"
+    const-string/jumbo v1, "folder"
 
     invoke-static {v0, v1}, Landroid/net/Uri;->withAppendedPath(Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 303
     sput-object v0, Landroid/provider/BrowserContract$Bookmarks;->CONTENT_URI_DEFAULT_FOLDER:Landroid/net/Uri;
 
+    .line 245
     return-void
 .end method
 
@@ -102,8 +104,8 @@
 .end method
 
 .method public static final buildFolderUri(J)Landroid/net/Uri;
-    .locals 1
-    .parameter "folderId"
+    .locals 2
+    .param p0, "folderId"    # J
 
     .prologue
     .line 324

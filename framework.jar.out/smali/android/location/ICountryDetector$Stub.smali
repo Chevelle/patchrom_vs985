@@ -38,43 +38,41 @@
     .locals 1
 
     .prologue
-    .line 19
+    .line 18
     invoke-direct {p0}, Landroid/os/Binder;-><init>()V
 
     .line 20
-    const-string v0, "android.location.ICountryDetector"
+    const-string/jumbo v0, "android.location.ICountryDetector"
 
     invoke-virtual {p0, p0, v0}, Landroid/location/ICountryDetector$Stub;->attachInterface(Landroid/os/IInterface;Ljava/lang/String;)V
 
-    .line 21
+    .line 18
     return-void
 .end method
 
 .method public static asInterface(Landroid/os/IBinder;)Landroid/location/ICountryDetector;
     .locals 2
-    .parameter "obj"
+    .param p0, "obj"    # Landroid/os/IBinder;
 
     .prologue
+    const/4 v1, 0x0
+
     .line 28
     if-nez p0, :cond_0
 
     .line 29
-    const/4 v0, 0x0
-
-    .line 35
-    :goto_0
-    return-object v0
+    return-object v1
 
     .line 31
     :cond_0
-    const-string v1, "android.location.ICountryDetector"
+    const-string/jumbo v1, "android.location.ICountryDetector"
 
     invoke-interface {p0, v1}, Landroid/os/IBinder;->queryLocalInterface(Ljava/lang/String;)Landroid/os/IInterface;
 
     move-result-object v0
 
     .line 32
-    .local v0, iin:Landroid/os/IInterface;
+    .local v0, "iin":Landroid/os/IInterface;
     if-eqz v0, :cond_1
 
     instance-of v1, v0, Landroid/location/ICountryDetector;
@@ -84,16 +82,17 @@
     .line 33
     check-cast v0, Landroid/location/ICountryDetector;
 
-    goto :goto_0
+    .end local v0    # "iin":Landroid/os/IInterface;
+    return-object v0
 
     .line 35
+    .restart local v0    # "iin":Landroid/os/IInterface;
     :cond_1
-    new-instance v0, Landroid/location/ICountryDetector$Stub$Proxy;
+    new-instance v1, Landroid/location/ICountryDetector$Stub$Proxy;
 
-    .end local v0           #iin:Landroid/os/IInterface;
-    invoke-direct {v0, p0}, Landroid/location/ICountryDetector$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
+    invoke-direct {v1, p0}, Landroid/location/ICountryDetector$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
 
-    goto :goto_0
+    return-object v1
 .end method
 
 
@@ -108,10 +107,10 @@
 
 .method public onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
     .locals 4
-    .parameter "code"
-    .parameter "data"
-    .parameter "reply"
-    .parameter "flags"
+    .param p1, "code"    # I
+    .param p2, "data"    # Landroid/os/Parcel;
+    .param p3, "reply"    # Landroid/os/Parcel;
+    .param p4, "flags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -119,7 +118,7 @@
     .end annotation
 
     .prologue
-    const/4 v2, 0x1
+    const/4 v3, 0x1
 
     .line 43
     sparse-switch p1, :sswitch_data_0
@@ -129,22 +128,22 @@
 
     move-result v2
 
-    :goto_0
     return v2
 
     .line 47
     :sswitch_0
-    const-string v3, "android.location.ICountryDetector"
+    const-string/jumbo v2, "android.location.ICountryDetector"
 
-    invoke-virtual {p3, v3}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+    invoke-virtual {p3, v2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    goto :goto_0
+    .line 48
+    return v3
 
     .line 52
     :sswitch_1
-    const-string v3, "android.location.ICountryDetector"
+    const-string/jumbo v2, "android.location.ICountryDetector"
 
-    invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    invoke-virtual {p2, v2}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 53
     invoke-virtual {p0}, Landroid/location/ICountryDetector$Stub;->detectCountry()Landroid/location/Country;
@@ -152,77 +151,81 @@
     move-result-object v1
 
     .line 54
-    .local v1, _result:Landroid/location/Country;
+    .local v1, "_result":Landroid/location/Country;
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
     .line 55
     if-eqz v1, :cond_0
 
     .line 56
-    invoke-virtual {p3, v2}, Landroid/os/Parcel;->writeInt(I)V
+    invoke-virtual {p3, v3}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 57
-    invoke-virtual {v1, p3, v2}, Landroid/location/Country;->writeToParcel(Landroid/os/Parcel;I)V
+    invoke-virtual {v1, p3, v3}, Landroid/location/Country;->writeToParcel(Landroid/os/Parcel;I)V
 
-    goto :goto_0
+    .line 62
+    :goto_0
+    return v3
 
     .line 60
     :cond_0
-    const/4 v3, 0x0
+    const/4 v2, 0x0
 
-    invoke-virtual {p3, v3}, Landroid/os/Parcel;->writeInt(I)V
+    invoke-virtual {p3, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto :goto_0
 
     .line 66
-    .end local v1           #_result:Landroid/location/Country;
+    .end local v1    # "_result":Landroid/location/Country;
     :sswitch_2
-    const-string v3, "android.location.ICountryDetector"
+    const-string/jumbo v2, "android.location.ICountryDetector"
 
-    invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    invoke-virtual {p2, v2}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 68
     invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-static {v3}, Landroid/location/ICountryListener$Stub;->asInterface(Landroid/os/IBinder;)Landroid/location/ICountryListener;
+    invoke-static {v2}, Landroid/location/ICountryListener$Stub;->asInterface(Landroid/os/IBinder;)Landroid/location/ICountryListener;
 
     move-result-object v0
 
     .line 69
-    .local v0, _arg0:Landroid/location/ICountryListener;
+    .local v0, "_arg0":Landroid/location/ICountryListener;
     invoke-virtual {p0, v0}, Landroid/location/ICountryDetector$Stub;->addCountryListener(Landroid/location/ICountryListener;)V
 
     .line 70
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    goto :goto_0
+    .line 71
+    return v3
 
     .line 75
-    .end local v0           #_arg0:Landroid/location/ICountryListener;
+    .end local v0    # "_arg0":Landroid/location/ICountryListener;
     :sswitch_3
-    const-string v3, "android.location.ICountryDetector"
+    const-string/jumbo v2, "android.location.ICountryDetector"
 
-    invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    invoke-virtual {p2, v2}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 77
     invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-static {v3}, Landroid/location/ICountryListener$Stub;->asInterface(Landroid/os/IBinder;)Landroid/location/ICountryListener;
+    invoke-static {v2}, Landroid/location/ICountryListener$Stub;->asInterface(Landroid/os/IBinder;)Landroid/location/ICountryListener;
 
     move-result-object v0
 
     .line 78
-    .restart local v0       #_arg0:Landroid/location/ICountryListener;
+    .restart local v0    # "_arg0":Landroid/location/ICountryListener;
     invoke-virtual {p0, v0}, Landroid/location/ICountryDetector$Stub;->removeCountryListener(Landroid/location/ICountryListener;)V
 
     .line 79
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    goto :goto_0
+    .line 80
+    return v3
 
     .line 43
     nop

@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/hardware/CameraInfo;
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 52
@@ -51,7 +51,7 @@
     invoke-direct {v0}, Landroid/hardware/CameraInfo;-><init>()V
 
     .line 53
-    .local v0, info:Landroid/hardware/CameraInfo;
+    .local v0, "info":Landroid/hardware/CameraInfo;
     invoke-virtual {v0, p1}, Landroid/hardware/CameraInfo;->readFromParcel(Landroid/os/Parcel;)V
 
     .line 55
@@ -60,10 +60,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 49
+    .line 51
     invoke-virtual {p0, p1}, Landroid/hardware/CameraInfo$1;->createFromParcel(Landroid/os/Parcel;)Landroid/hardware/CameraInfo;
 
     move-result-object v0
@@ -73,7 +73,7 @@
 
 .method public newArray(I)[Landroid/hardware/CameraInfo;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 60
@@ -84,10 +84,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 49
+    .line 59
     invoke-virtual {p0, p1}, Landroid/hardware/CameraInfo$1;->newArray(I)[Landroid/hardware/CameraInfo;
 
     move-result-object v0

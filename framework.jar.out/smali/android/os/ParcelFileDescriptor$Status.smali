@@ -37,34 +37,34 @@
 # direct methods
 .method public constructor <init>(I)V
     .locals 1
-    .parameter "status"
+    .param p1, "status"    # I
 
     .prologue
-    .line 968
+    .line 1016
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Landroid/os/ParcelFileDescriptor$Status;-><init>(ILjava/lang/String;)V
 
-    .line 969
+    .line 1015
     return-void
 .end method
 
 .method public constructor <init>(ILjava/lang/String;)V
     .locals 0
-    .parameter "status"
-    .parameter "msg"
+    .param p1, "status"    # I
+    .param p2, "msg"    # Ljava/lang/String;
 
     .prologue
-    .line 971
+    .line 1019
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 972
+    .line 1020
     iput p1, p0, Landroid/os/ParcelFileDescriptor$Status;->status:I
 
-    .line 973
+    .line 1021
     iput-object p2, p0, Landroid/os/ParcelFileDescriptor$Status;->msg:Ljava/lang/String;
 
-    .line 974
+    .line 1019
     return-void
 .end method
 
@@ -74,12 +74,12 @@
     .locals 3
 
     .prologue
-    .line 977
+    .line 1025
     iget v0, p0, Landroid/os/ParcelFileDescriptor$Status;->status:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 989
+    .line 1037
     :pswitch_0
     new-instance v0, Ljava/io/IOException;
 
@@ -87,7 +87,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Unknown status: "
+    const-string/jumbo v2, "Unknown status: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -105,26 +105,25 @@
 
     invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
-    :goto_0
     return-object v0
 
-    .line 979
+    .line 1027
     :pswitch_1
     new-instance v0, Ljava/io/IOException;
 
-    const-string v1, "Remote side is dead"
+    const-string/jumbo v1, "Remote side is dead"
 
     invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
-    goto :goto_0
+    return-object v0
 
-    .line 981
+    .line 1029
     :pswitch_2
     const/4 v0, 0x0
 
-    goto :goto_0
+    return-object v0
 
-    .line 983
+    .line 1031
     :pswitch_3
     new-instance v0, Ljava/io/IOException;
 
@@ -132,7 +131,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Remote error: "
+    const-string/jumbo v2, "Remote error: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -150,27 +149,27 @@
 
     invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
-    goto :goto_0
+    return-object v0
 
-    .line 985
+    .line 1033
     :pswitch_4
     new-instance v0, Landroid/os/ParcelFileDescriptor$FileDescriptorDetachedException;
 
     invoke-direct {v0}, Landroid/os/ParcelFileDescriptor$FileDescriptorDetachedException;-><init>()V
 
-    goto :goto_0
+    return-object v0
 
-    .line 987
+    .line 1035
     :pswitch_5
     new-instance v0, Ljava/io/IOException;
 
-    const-string v1, "Remote side was leaked"
+    const-string/jumbo v1, "Remote side was leaked"
 
     invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
-    goto :goto_0
+    return-object v0
 
-    .line 977
+    .line 1025
     nop
 
     :pswitch_data_0
@@ -182,4 +181,50 @@
         :pswitch_4
         :pswitch_5
     .end packed-switch
+.end method
+
+.method public toString()Ljava/lang/String;
+    .locals 2
+
+    .prologue
+    .line 1043
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v1, "{"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    iget v1, p0, Landroid/os/ParcelFileDescriptor$Status;->status:I
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string/jumbo v1, ": "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/os/ParcelFileDescriptor$Status;->msg:Ljava/lang/String;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string/jumbo v1, "}"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
 .end method

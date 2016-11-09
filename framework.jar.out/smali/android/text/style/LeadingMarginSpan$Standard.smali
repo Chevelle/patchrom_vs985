@@ -27,58 +27,58 @@
 # direct methods
 .method public constructor <init>(I)V
     .locals 0
-    .parameter "every"
+    .param p1, "every"    # I
 
     .prologue
-    .line 112
+    .line 119
     invoke-direct {p0, p1, p1}, Landroid/text/style/LeadingMarginSpan$Standard;-><init>(II)V
 
-    .line 113
+    .line 118
     return-void
 .end method
 
 .method public constructor <init>(II)V
     .locals 0
-    .parameter "first"
-    .parameter "rest"
+    .param p1, "first"    # I
+    .param p2, "rest"    # I
 
     .prologue
-    .line 102
+    .line 109
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 103
+    .line 110
     iput p1, p0, Landroid/text/style/LeadingMarginSpan$Standard;->mFirst:I
 
-    .line 104
+    .line 111
     iput p2, p0, Landroid/text/style/LeadingMarginSpan$Standard;->mRest:I
 
-    .line 105
+    .line 109
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "src"
+    .param p1, "src"    # Landroid/os/Parcel;
 
     .prologue
-    .line 115
+    .line 122
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 116
+    .line 123
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/text/style/LeadingMarginSpan$Standard;->mFirst:I
 
-    .line 117
+    .line 124
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/text/style/LeadingMarginSpan$Standard;->mRest:I
 
-    .line 118
+    .line 122
     return-void
 .end method
 
@@ -88,7 +88,7 @@
     .locals 1
 
     .prologue
-    .line 125
+    .line 137
     const/4 v0, 0x0
 
     return v0
@@ -96,30 +96,30 @@
 
 .method public drawLeadingMargin(Landroid/graphics/Canvas;Landroid/graphics/Paint;IIIIILjava/lang/CharSequence;IIZLandroid/text/Layout;)V
     .locals 0
-    .parameter "c"
-    .parameter "p"
-    .parameter "x"
-    .parameter "dir"
-    .parameter "top"
-    .parameter "baseline"
-    .parameter "bottom"
-    .parameter "text"
-    .parameter "start"
-    .parameter "end"
-    .parameter "first"
-    .parameter "layout"
+    .param p1, "c"    # Landroid/graphics/Canvas;
+    .param p2, "p"    # Landroid/graphics/Paint;
+    .param p3, "x"    # I
+    .param p4, "dir"    # I
+    .param p5, "top"    # I
+    .param p6, "baseline"    # I
+    .param p7, "bottom"    # I
+    .param p8, "text"    # Ljava/lang/CharSequence;
+    .param p9, "start"    # I
+    .param p10, "end"    # I
+    .param p11, "first"    # Z
+    .param p12, "layout"    # Landroid/text/Layout;
 
     .prologue
-    .line 143
+    .line 158
     return-void
 .end method
 
 .method public getLeadingMargin(Z)I
     .locals 1
-    .parameter "first"
+    .param p1, "first"    # Z
 
     .prologue
-    .line 134
+    .line 151
     if-eqz p1, :cond_0
 
     iget v0, p0, Landroid/text/style/LeadingMarginSpan$Standard;->mFirst:I
@@ -137,28 +137,53 @@
     .locals 1
 
     .prologue
-    .line 121
+    .line 128
+    invoke-virtual {p0}, Landroid/text/style/LeadingMarginSpan$Standard;->getSpanTypeIdInternal()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getSpanTypeIdInternal()I
+    .locals 1
+
+    .prologue
+    .line 133
     const/16 v0, 0xa
 
     return v0
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
-    .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .locals 0
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 129
+    .line 141
+    invoke-virtual {p0, p1, p2}, Landroid/text/style/LeadingMarginSpan$Standard;->writeToParcelInternal(Landroid/os/Parcel;I)V
+
+    .line 140
+    return-void
+.end method
+
+.method public writeToParcelInternal(Landroid/os/Parcel;I)V
+    .locals 1
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
+
+    .prologue
+    .line 146
     iget v0, p0, Landroid/text/style/LeadingMarginSpan$Standard;->mFirst:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 130
+    .line 147
     iget v0, p0, Landroid/text/style/LeadingMarginSpan$Standard;->mRest:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 131
+    .line 145
     return-void
 .end method

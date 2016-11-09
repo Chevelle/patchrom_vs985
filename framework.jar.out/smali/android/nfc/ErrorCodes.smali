@@ -64,151 +64,152 @@
 
 .method public static asString(I)Ljava/lang/String;
     .locals 1
-    .parameter "code"
+    .param p0, "code"    # I
 
     .prologue
     .line 37
     packed-switch p0, :pswitch_data_0
 
     .line 61
-    const-string v0, "UNKNOWN ERROR"
+    const-string/jumbo v0, "UNKNOWN ERROR"
 
-    :goto_0
     return-object v0
 
     .line 38
     :pswitch_0
-    const-string v0, "SUCCESS"
+    const-string/jumbo v0, "SUCCESS"
 
-    goto :goto_0
+    return-object v0
 
     .line 39
     :pswitch_1
-    const-string v0, "IO"
+    const-string/jumbo v0, "IO"
 
-    goto :goto_0
+    return-object v0
 
     .line 40
     :pswitch_2
-    const-string v0, "CANCELLED"
+    const-string/jumbo v0, "CANCELLED"
 
-    goto :goto_0
+    return-object v0
 
     .line 41
     :pswitch_3
-    const-string v0, "TIMEOUT"
+    const-string/jumbo v0, "TIMEOUT"
 
-    goto :goto_0
+    return-object v0
 
     .line 42
     :pswitch_4
-    const-string v0, "BUSY"
+    const-string/jumbo v0, "BUSY"
 
-    goto :goto_0
+    return-object v0
 
     .line 43
     :pswitch_5
-    const-string v0, "CONNECT/DISCONNECT"
+    const-string/jumbo v0, "CONNECT/DISCONNECT"
 
-    goto :goto_0
+    return-object v0
 
     .line 45
     :pswitch_6
-    const-string v0, "READ"
+    const-string/jumbo v0, "READ"
 
-    goto :goto_0
+    return-object v0
 
     .line 46
     :pswitch_7
-    const-string v0, "WRITE"
+    const-string/jumbo v0, "WRITE"
 
-    goto :goto_0
+    return-object v0
 
     .line 47
     :pswitch_8
-    const-string v0, "INVALID_PARAM"
+    const-string/jumbo v0, "INVALID_PARAM"
 
-    goto :goto_0
+    return-object v0
 
     .line 48
     :pswitch_9
-    const-string v0, "INSUFFICIENT_RESOURCES"
+    const-string/jumbo v0, "INSUFFICIENT_RESOURCES"
 
-    goto :goto_0
+    return-object v0
 
     .line 49
     :pswitch_a
-    const-string v0, "SOCKET_CREATION"
+    const-string/jumbo v0, "SOCKET_CREATION"
 
-    goto :goto_0
+    return-object v0
 
     .line 50
     :pswitch_b
-    const-string v0, "SOCKET_NOT_CONNECTED"
+    const-string/jumbo v0, "SOCKET_NOT_CONNECTED"
 
-    goto :goto_0
+    return-object v0
 
     .line 51
     :pswitch_c
-    const-string v0, "BUFFER_TO_SMALL"
+    const-string/jumbo v0, "BUFFER_TO_SMALL"
 
-    goto :goto_0
+    return-object v0
 
     .line 52
     :pswitch_d
-    const-string v0, "SAP_USED"
+    const-string/jumbo v0, "SAP_USED"
 
-    goto :goto_0
+    return-object v0
 
     .line 53
     :pswitch_e
-    const-string v0, "SERVICE_NAME_USED"
+    const-string/jumbo v0, "SERVICE_NAME_USED"
 
-    goto :goto_0
+    return-object v0
 
     .line 54
     :pswitch_f
-    const-string v0, "SOCKET_OPTIONS"
+    const-string/jumbo v0, "SOCKET_OPTIONS"
 
-    goto :goto_0
+    return-object v0
 
     .line 55
     :pswitch_10
-    const-string v0, "NFC_ON"
+    const-string/jumbo v0, "NFC_ON"
 
-    goto :goto_0
+    return-object v0
 
     .line 56
     :pswitch_11
-    const-string v0, "NOT_INITIALIZED"
+    const-string/jumbo v0, "NOT_INITIALIZED"
 
-    goto :goto_0
+    return-object v0
 
     .line 57
     :pswitch_12
-    const-string v0, "SE_ALREADY_SELECTED"
+    const-string/jumbo v0, "SE_ALREADY_SELECTED"
 
-    goto :goto_0
+    return-object v0
 
     .line 58
     :pswitch_13
-    const-string v0, "SE_CONNECTED"
+    const-string/jumbo v0, "SE_CONNECTED"
 
-    goto :goto_0
+    return-object v0
 
     .line 59
     :pswitch_14
-    const-string v0, "NO_SE_CONNECTED"
+    const-string/jumbo v0, "NO_SE_CONNECTED"
 
-    goto :goto_0
+    return-object v0
 
     .line 60
     :pswitch_15
-    const-string v0, "NOT_SUPPORTED"
+    const-string/jumbo v0, "NOT_SUPPORTED"
 
-    goto :goto_0
+    return-object v0
 
     .line 37
+    nop
+
     :pswitch_data_0
     .packed-switch -0x15
         :pswitch_15
@@ -238,21 +239,20 @@
 
 .method public static isError(I)Z
     .locals 1
-    .parameter "code"
+    .param p0, "code"    # I
 
     .prologue
+    const/4 v0, 0x0
+
     .line 29
     if-gez p0, :cond_0
 
     .line 30
     const/4 v0, 0x1
 
-    .line 32
-    :goto_0
     return v0
 
+    .line 32
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method

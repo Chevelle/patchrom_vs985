@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 72
+    .line 71
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 73
     iput-object p1, p0, Landroid/view/IInputFilterHost$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 74
+    .line 71
     return-void
 .end method
 
@@ -54,15 +54,15 @@
 
     .prologue
     .line 81
-    const-string v0, "android.view.IInputFilterHost"
+    const-string/jumbo v0, "android.view.IInputFilterHost"
 
     return-object v0
 .end method
 
 .method public sendInputEvent(Landroid/view/InputEvent;I)V
     .locals 5
-    .parameter "event"
-    .parameter "policyFlags"
+    .param p1, "event"    # Landroid/view/InputEvent;
+    .param p2, "policyFlags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -76,9 +76,9 @@
     move-result-object v0
 
     .line 87
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.view.IInputFilterHost"
+    const-string/jumbo v1, "android.view.IInputFilterHost"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -115,7 +115,7 @@
     .line 99
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 101
+    .line 83
     return-void
 
     .line 93
@@ -129,11 +129,13 @@
 
     goto :goto_0
 
-    .line 99
+    .line 98
     :catchall_0
     move-exception v1
 
+    .line 99
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 98
     throw v1
 .end method

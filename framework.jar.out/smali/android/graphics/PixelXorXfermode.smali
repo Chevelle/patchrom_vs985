@@ -10,23 +10,23 @@
 
 # direct methods
 .method public constructor <init>(I)V
-    .locals 1
-    .parameter "opColor"
+    .locals 2
+    .param p1, "opColor"    # I
 
     .prologue
     .line 28
     invoke-direct {p0}, Landroid/graphics/Xfermode;-><init>()V
 
     .line 29
-    invoke-static {p1}, Landroid/graphics/PixelXorXfermode;->nativeCreate(I)I
+    invoke-static {p1}, Landroid/graphics/PixelXorXfermode;->nativeCreate(I)J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/graphics/PixelXorXfermode;->native_instance:I
+    iput-wide v0, p0, Landroid/graphics/PixelXorXfermode;->native_instance:J
 
-    .line 30
+    .line 28
     return-void
 .end method
 
-.method private static native nativeCreate(I)I
+.method private static native nativeCreate(I)J
 .end method

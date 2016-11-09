@@ -1,4 +1,4 @@
-.class Landroid/view/View$CheckForLongPress;
+.class final Landroid/view/View$CheckForLongPress;
 .super Ljava/lang/Object;
 .source "View.java"
 
@@ -12,7 +12,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x12
     name = "CheckForLongPress"
 .end annotation
 
@@ -24,15 +24,25 @@
 
 
 # direct methods
-.method constructor <init>(Landroid/view/View;)V
+.method private constructor <init>(Landroid/view/View;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/view/View;
 
     .prologue
-    .line 18401
+    .line 21122
     iput-object p1, p0, Landroid/view/View$CheckForLongPress;->this$0:Landroid/view/View;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method synthetic constructor <init>(Landroid/view/View;Landroid/view/View$CheckForLongPress;)V
+    .locals 0
+    .param p1, "this$0"    # Landroid/view/View;
+
+    .prologue
+    invoke-direct {p0, p1}, Landroid/view/View$CheckForLongPress;-><init>(Landroid/view/View;)V
 
     return-void
 .end method
@@ -43,14 +53,14 @@
     .locals 1
 
     .prologue
-    .line 18415
+    .line 21136
     iget-object v0, p0, Landroid/view/View$CheckForLongPress;->this$0:Landroid/view/View;
 
     iget v0, v0, Landroid/view/View;->mWindowAttachCount:I
 
     iput v0, p0, Landroid/view/View$CheckForLongPress;->mOriginalWindowAttachCount:I
 
-    .line 18416
+    .line 21135
     return-void
 .end method
 
@@ -58,7 +68,7 @@
     .locals 2
 
     .prologue
-    .line 18406
+    .line 21127
     iget-object v0, p0, Landroid/view/View$CheckForLongPress;->this$0:Landroid/view/View;
 
     invoke-virtual {v0}, Landroid/view/View;->isPressed()Z
@@ -73,6 +83,7 @@
 
     if-eqz v0, :cond_0
 
+    .line 21128
     iget v0, p0, Landroid/view/View$CheckForLongPress;->mOriginalWindowAttachCount:I
 
     iget-object v1, p0, Landroid/view/View$CheckForLongPress;->this$0:Landroid/view/View;
@@ -81,7 +92,7 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 18408
+    .line 21129
     iget-object v0, p0, Landroid/view/View$CheckForLongPress;->this$0:Landroid/view/View;
 
     invoke-virtual {v0}, Landroid/view/View;->performLongClick()Z
@@ -90,15 +101,14 @@
 
     if-eqz v0, :cond_0
 
-    .line 18409
+    .line 21130
     iget-object v0, p0, Landroid/view/View$CheckForLongPress;->this$0:Landroid/view/View;
 
     const/4 v1, 0x1
 
-    #setter for: Landroid/view/View;->mHasPerformedLongPress:Z
-    invoke-static {v0, v1}, Landroid/view/View;->access$2502(Landroid/view/View;Z)Z
+    invoke-static {v0, v1}, Landroid/view/View;->-set0(Landroid/view/View;Z)Z
 
-    .line 18412
+    .line 21126
     :cond_0
     return-void
 .end method

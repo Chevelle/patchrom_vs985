@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/content/pm/PackageInfo$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -36,7 +44,13 @@
 
 .field public applicationInfo:Landroid/content/pm/ApplicationInfo;
 
+.field public baseRevisionCode:I
+
 .field public configPreferences:[Landroid/content/pm/ConfigurationInfo;
+
+.field public coreApp:Z
+
+.field public featureGroups:[Landroid/content/pm/FeatureGroupInfo;
 
 .field public firstInstallTime:J
 
@@ -47,6 +61,8 @@
 .field public instrumentation:[Landroid/content/pm/InstrumentationInfo;
 
 .field public lastUpdateTime:J
+
+.field public overlayTarget:Ljava/lang/String;
 
 .field public packageName:Ljava/lang/String;
 
@@ -76,6 +92,10 @@
 
 .field public signatures:[Landroid/content/pm/Signature;
 
+.field public splitNames:[Ljava/lang/String;
+
+.field public splitRevisionCodes:[I
+
 .field public versionCode:I
 
 .field public versionName:Ljava/lang/String;
@@ -86,13 +106,15 @@
     .locals 1
 
     .prologue
-    .line 275
+    .line 329
     new-instance v0, Landroid/content/pm/PackageInfo$1;
 
     invoke-direct {v0}, Landroid/content/pm/PackageInfo$1;-><init>()V
 
+    .line 328
     sput-object v0, Landroid/content/pm/PackageInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 26
     return-void
 .end method
 
@@ -100,76 +122,99 @@
     .locals 1
 
     .prologue
-    .line 230
+    .line 274
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 219
+    .line 252
     const/4 v0, 0x1
 
     iput v0, p0, Landroid/content/pm/PackageInfo;->installLocation:I
 
-    .line 231
+    .line 274
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
-    .locals 5
-    .parameter "source"
+    .locals 6
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     const/4 v2, 0x1
 
-    .line 286
+    const/4 v3, 0x0
+
+    .line 341
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 219
+    .line 252
     iput v2, p0, Landroid/content/pm/PackageInfo;->installLocation:I
 
-    .line 287
+    .line 342
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->packageName:Ljava/lang/String;
 
-    .line 288
+    .line 343
+    invoke-virtual {p1}, Landroid/os/Parcel;->createStringArray()[Ljava/lang/String;
+
+    move-result-object v1
+
+    iput-object v1, p0, Landroid/content/pm/PackageInfo;->splitNames:[Ljava/lang/String;
+
+    .line 344
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     iput v1, p0, Landroid/content/pm/PackageInfo;->versionCode:I
 
-    .line 289
+    .line 345
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->versionName:Ljava/lang/String;
 
-    .line 290
+    .line 346
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v1
+
+    iput v1, p0, Landroid/content/pm/PackageInfo;->baseRevisionCode:I
+
+    .line 347
+    invoke-virtual {p1}, Landroid/os/Parcel;->createIntArray()[I
+
+    move-result-object v1
+
+    iput-object v1, p0, Landroid/content/pm/PackageInfo;->splitRevisionCodes:[I
+
+    .line 348
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->sharedUserId:Ljava/lang/String;
 
-    .line 291
+    .line 349
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     iput v1, p0, Landroid/content/pm/PackageInfo;->sharedUserLabel:I
 
-    .line 292
+    .line 350
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    .line 293
-    .local v0, hasApp:I
+    .line 351
+    .local v0, "hasApp":I
     if-eqz v0, :cond_0
 
-    .line 294
+    .line 352
     sget-object v1, Landroid/content/pm/ApplicationInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v1, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -180,29 +225,29 @@
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
-    .line 296
+    .line 354
     :cond_0
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
-    move-result-wide v3
+    move-result-wide v4
 
-    iput-wide v3, p0, Landroid/content/pm/PackageInfo;->firstInstallTime:J
+    iput-wide v4, p0, Landroid/content/pm/PackageInfo;->firstInstallTime:J
 
-    .line 297
+    .line 355
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
-    move-result-wide v3
+    move-result-wide v4
 
-    iput-wide v3, p0, Landroid/content/pm/PackageInfo;->lastUpdateTime:J
+    iput-wide v4, p0, Landroid/content/pm/PackageInfo;->lastUpdateTime:J
 
-    .line 298
+    .line 356
     invoke-virtual {p1}, Landroid/os/Parcel;->createIntArray()[I
 
     move-result-object v1
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->gids:[I
 
-    .line 299
+    .line 357
     sget-object v1, Landroid/content/pm/ActivityInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->createTypedArray(Landroid/os/Parcelable$Creator;)[Ljava/lang/Object;
@@ -213,7 +258,7 @@
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->activities:[Landroid/content/pm/ActivityInfo;
 
-    .line 300
+    .line 358
     sget-object v1, Landroid/content/pm/ActivityInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->createTypedArray(Landroid/os/Parcelable$Creator;)[Ljava/lang/Object;
@@ -224,7 +269,7 @@
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->receivers:[Landroid/content/pm/ActivityInfo;
 
-    .line 301
+    .line 359
     sget-object v1, Landroid/content/pm/ServiceInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->createTypedArray(Landroid/os/Parcelable$Creator;)[Ljava/lang/Object;
@@ -235,7 +280,7 @@
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->services:[Landroid/content/pm/ServiceInfo;
 
-    .line 302
+    .line 360
     sget-object v1, Landroid/content/pm/ProviderInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->createTypedArray(Landroid/os/Parcelable$Creator;)[Ljava/lang/Object;
@@ -246,7 +291,7 @@
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->providers:[Landroid/content/pm/ProviderInfo;
 
-    .line 303
+    .line 361
     sget-object v1, Landroid/content/pm/InstrumentationInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->createTypedArray(Landroid/os/Parcelable$Creator;)[Ljava/lang/Object;
@@ -257,7 +302,7 @@
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->instrumentation:[Landroid/content/pm/InstrumentationInfo;
 
-    .line 304
+    .line 362
     sget-object v1, Landroid/content/pm/PermissionInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->createTypedArray(Landroid/os/Parcelable$Creator;)[Ljava/lang/Object;
@@ -268,21 +313,21 @@
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->permissions:[Landroid/content/pm/PermissionInfo;
 
-    .line 305
+    .line 363
     invoke-virtual {p1}, Landroid/os/Parcel;->createStringArray()[Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->requestedPermissions:[Ljava/lang/String;
 
-    .line 306
+    .line 364
     invoke-virtual {p1}, Landroid/os/Parcel;->createIntArray()[I
 
     move-result-object v1
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->requestedPermissionsFlags:[I
 
-    .line 307
+    .line 365
     sget-object v1, Landroid/content/pm/Signature;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->createTypedArray(Landroid/os/Parcelable$Creator;)[Ljava/lang/Object;
@@ -293,7 +338,7 @@
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->signatures:[Landroid/content/pm/Signature;
 
-    .line 308
+    .line 366
     sget-object v1, Landroid/content/pm/ConfigurationInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->createTypedArray(Landroid/os/Parcelable$Creator;)[Ljava/lang/Object;
@@ -304,7 +349,7 @@
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->configPreferences:[Landroid/content/pm/ConfigurationInfo;
 
-    .line 309
+    .line 367
     sget-object v1, Landroid/content/pm/FeatureInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->createTypedArray(Landroid/os/Parcelable$Creator;)[Ljava/lang/Object;
@@ -315,14 +360,25 @@
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->reqFeatures:[Landroid/content/pm/FeatureInfo;
 
-    .line 310
+    .line 368
+    sget-object v1, Landroid/content/pm/FeatureGroupInfo;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-virtual {p1, v1}, Landroid/os/Parcel;->createTypedArray(Landroid/os/Parcelable$Creator;)[Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, [Landroid/content/pm/FeatureGroupInfo;
+
+    iput-object v1, p0, Landroid/content/pm/PackageInfo;->featureGroups:[Landroid/content/pm/FeatureGroupInfo;
+
+    .line 369
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     iput v1, p0, Landroid/content/pm/PackageInfo;->installLocation:I
 
-    .line 311
+    .line 370
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
@@ -332,39 +388,60 @@
     move v1, v2
 
     :goto_0
-    iput-boolean v1, p0, Landroid/content/pm/PackageInfo;->requiredForAllUsers:Z
+    iput-boolean v1, p0, Landroid/content/pm/PackageInfo;->coreApp:Z
 
-    .line 312
+    .line 371
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    :goto_1
+    iput-boolean v2, p0, Landroid/content/pm/PackageInfo;->requiredForAllUsers:Z
+
+    .line 372
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->restrictedAccountType:Ljava/lang/String;
 
-    .line 313
+    .line 373
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, p0, Landroid/content/pm/PackageInfo;->requiredAccountType:Ljava/lang/String;
 
-    .line 314
+    .line 374
+    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v1
+
+    iput-object v1, p0, Landroid/content/pm/PackageInfo;->overlayTarget:Ljava/lang/String;
+
+    .line 341
     return-void
 
-    .line 311
     :cond_1
-    const/4 v1, 0x0
+    move v1, v3
 
+    .line 370
     goto :goto_0
+
+    :cond_2
+    move v2, v3
+
+    .line 371
+    goto :goto_1
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/content/pm/PackageInfo$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/content/pm/PackageInfo;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 26
     invoke-direct {p0, p1}, Landroid/content/pm/PackageInfo;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -376,7 +453,7 @@
     .locals 1
 
     .prologue
-    .line 240
+    .line 286
     const/4 v0, 0x0
 
     return v0
@@ -386,17 +463,18 @@
     .locals 2
 
     .prologue
-    .line 234
+    .line 279
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "PackageInfo{"
+    const-string/jumbo v1, "PackageInfo{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 280
     invoke-static {p0}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     move-result v1
@@ -405,24 +483,31 @@
 
     move-result-object v1
 
+    .line 279
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, " "
+    .line 281
+    const-string/jumbo v1, " "
 
+    .line 279
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 281
     iget-object v1, p0, Landroid/content/pm/PackageInfo;->packageName:Ljava/lang/String;
 
+    .line 279
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 281
     const-string/jumbo v1, "}"
 
+    .line 279
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -435,159 +520,200 @@
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
-    .locals 4
-    .parameter "dest"
-    .parameter "parcelableFlags"
+    .locals 6
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "parcelableFlags"    # I
 
     .prologue
-    const/4 v0, 0x1
+    const/4 v1, 0x1
 
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
-    .line 244
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->packageName:Ljava/lang/String;
+    .line 291
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->packageName:Ljava/lang/String;
 
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 245
-    iget v2, p0, Landroid/content/pm/PackageInfo;->versionCode:I
+    .line 292
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->splitNames:[Ljava/lang/String;
 
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeStringArray([Ljava/lang/String;)V
 
-    .line 246
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->versionName:Ljava/lang/String;
+    .line 293
+    iget v0, p0, Landroid/content/pm/PackageInfo;->versionCode:I
 
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
-
-    .line 247
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->sharedUserId:Ljava/lang/String;
-
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
-
-    .line 248
-    iget v2, p0, Landroid/content/pm/PackageInfo;->sharedUserLabel:I
-
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 249
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
-
-    if-eqz v2, :cond_0
-
-    .line 250
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 251
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
+    .line 294
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->versionName:Ljava/lang/String;
 
-    invoke-virtual {v2, p1, p2}, Landroid/content/pm/ApplicationInfo;->writeToParcel(Landroid/os/Parcel;I)V
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 255
+    .line 295
+    iget v0, p0, Landroid/content/pm/PackageInfo;->baseRevisionCode:I
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 296
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->splitRevisionCodes:[I
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeIntArray([I)V
+
+    .line 297
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->sharedUserId:Ljava/lang/String;
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    .line 298
+    iget v0, p0, Landroid/content/pm/PackageInfo;->sharedUserLabel:I
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 299
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
+
+    if-eqz v0, :cond_0
+
+    .line 300
+    invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 301
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
+
+    invoke-virtual {v0, p1, p2}, Landroid/content/pm/ApplicationInfo;->writeToParcel(Landroid/os/Parcel;I)V
+
+    .line 305
     :goto_0
-    iget-wide v2, p0, Landroid/content/pm/PackageInfo;->firstInstallTime:J
+    iget-wide v4, p0, Landroid/content/pm/PackageInfo;->firstInstallTime:J
 
-    invoke-virtual {p1, v2, v3}, Landroid/os/Parcel;->writeLong(J)V
+    invoke-virtual {p1, v4, v5}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 256
-    iget-wide v2, p0, Landroid/content/pm/PackageInfo;->lastUpdateTime:J
+    .line 306
+    iget-wide v4, p0, Landroid/content/pm/PackageInfo;->lastUpdateTime:J
 
-    invoke-virtual {p1, v2, v3}, Landroid/os/Parcel;->writeLong(J)V
+    invoke-virtual {p1, v4, v5}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 257
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->gids:[I
+    .line 307
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->gids:[I
 
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeIntArray([I)V
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeIntArray([I)V
 
-    .line 258
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->activities:[Landroid/content/pm/ActivityInfo;
+    .line 308
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->activities:[Landroid/content/pm/ActivityInfo;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
 
-    .line 259
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->receivers:[Landroid/content/pm/ActivityInfo;
+    .line 309
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->receivers:[Landroid/content/pm/ActivityInfo;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
 
-    .line 260
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->services:[Landroid/content/pm/ServiceInfo;
+    .line 310
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->services:[Landroid/content/pm/ServiceInfo;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
 
-    .line 261
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->providers:[Landroid/content/pm/ProviderInfo;
+    .line 311
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->providers:[Landroid/content/pm/ProviderInfo;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
 
-    .line 262
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->instrumentation:[Landroid/content/pm/InstrumentationInfo;
+    .line 312
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->instrumentation:[Landroid/content/pm/InstrumentationInfo;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
 
-    .line 263
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->permissions:[Landroid/content/pm/PermissionInfo;
+    .line 313
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->permissions:[Landroid/content/pm/PermissionInfo;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
 
-    .line 264
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->requestedPermissions:[Ljava/lang/String;
+    .line 314
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->requestedPermissions:[Ljava/lang/String;
 
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeStringArray([Ljava/lang/String;)V
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeStringArray([Ljava/lang/String;)V
 
-    .line 265
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->requestedPermissionsFlags:[I
+    .line 315
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->requestedPermissionsFlags:[I
 
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeIntArray([I)V
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeIntArray([I)V
 
-    .line 266
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->signatures:[Landroid/content/pm/Signature;
+    .line 316
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->signatures:[Landroid/content/pm/Signature;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
 
-    .line 267
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->configPreferences:[Landroid/content/pm/ConfigurationInfo;
+    .line 317
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->configPreferences:[Landroid/content/pm/ConfigurationInfo;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
 
-    .line 268
-    iget-object v2, p0, Landroid/content/pm/PackageInfo;->reqFeatures:[Landroid/content/pm/FeatureInfo;
+    .line 318
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->reqFeatures:[Landroid/content/pm/FeatureInfo;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
 
-    .line 269
-    iget v2, p0, Landroid/content/pm/PackageInfo;->installLocation:I
+    .line 319
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->featureGroups:[Landroid/content/pm/FeatureGroupInfo;
 
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
 
-    .line 270
-    iget-boolean v2, p0, Landroid/content/pm/PackageInfo;->requiredForAllUsers:Z
+    .line 320
+    iget v0, p0, Landroid/content/pm/PackageInfo;->installLocation:I
 
-    if-eqz v2, :cond_1
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 321
+    iget-boolean v0, p0, Landroid/content/pm/PackageInfo;->coreApp:Z
+
+    if-eqz v0, :cond_1
+
+    move v0, v1
 
     :goto_1
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 271
+    .line 322
+    iget-boolean v0, p0, Landroid/content/pm/PackageInfo;->requiredForAllUsers:Z
+
+    if-eqz v0, :cond_2
+
+    :goto_2
+    invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 323
     iget-object v0, p0, Landroid/content/pm/PackageInfo;->restrictedAccountType:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 272
+    .line 324
     iget-object v0, p0, Landroid/content/pm/PackageInfo;->requiredAccountType:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 273
+    .line 325
+    iget-object v0, p0, Landroid/content/pm/PackageInfo;->overlayTarget:Ljava/lang/String;
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    .line 290
     return-void
 
-    .line 253
+    .line 303
     :cond_0
-    invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
+    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto :goto_0
 
     :cond_1
-    move v0, v1
+    move v0, v2
 
-    .line 270
+    .line 321
     goto :goto_1
+
+    :cond_2
+    move v1, v2
+
+    .line 322
+    goto :goto_2
 .end method

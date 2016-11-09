@@ -20,7 +20,7 @@
     .locals 0
 
     .prologue
-    .line 31
+    .line 29
     return-void
 .end method
 
@@ -28,6 +28,6 @@
     .locals 0
 
     .prologue
-    .line 40
+    .line 38
     return-void
 .end method

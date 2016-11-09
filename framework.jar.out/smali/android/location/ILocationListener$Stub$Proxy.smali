@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 101
+    .line 100
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 102
     iput-object p1, p0, Landroid/location/ILocationListener$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 103
+    .line 100
     return-void
 .end method
 
@@ -54,14 +54,14 @@
 
     .prologue
     .line 110
-    const-string v0, "android.location.ILocationListener"
+    const-string/jumbo v0, "android.location.ILocationListener"
 
     return-object v0
 .end method
 
 .method public onLocationChanged(Landroid/location/Location;)V
     .locals 5
-    .parameter "location"
+    .param p1, "location"    # Landroid/location/Location;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -75,9 +75,9 @@
     move-result-object v0
 
     .line 116
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.location.ILocationListener"
+    const-string/jumbo v1, "android.location.ILocationListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -111,7 +111,7 @@
     .line 127
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 129
+    .line 112
     return-void
 
     .line 122
@@ -125,18 +125,20 @@
 
     goto :goto_0
 
-    .line 127
+    .line 126
     :catchall_0
     move-exception v1
 
+    .line 127
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 126
     throw v1
 .end method
 
 .method public onProviderDisabled(Ljava/lang/String;)V
     .locals 5
-    .parameter "provider"
+    .param p1, "provider"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -150,9 +152,9 @@
     move-result-object v0
 
     .line 166
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.location.ILocationListener"
+    const-string/jumbo v1, "android.location.ILocationListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -175,21 +177,23 @@
     .line 171
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 173
+    .line 162
     return-void
 
-    .line 171
+    .line 170
     :catchall_0
     move-exception v1
 
+    .line 171
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 170
     throw v1
 .end method
 
 .method public onProviderEnabled(Ljava/lang/String;)V
     .locals 5
-    .parameter "provider"
+    .param p1, "provider"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -203,9 +207,9 @@
     move-result-object v0
 
     .line 154
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.location.ILocationListener"
+    const-string/jumbo v1, "android.location.ILocationListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -228,23 +232,25 @@
     .line 159
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 161
+    .line 150
     return-void
 
-    .line 159
+    .line 158
     :catchall_0
     move-exception v1
 
+    .line 159
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 158
     throw v1
 .end method
 
 .method public onStatusChanged(Ljava/lang/String;ILandroid/os/Bundle;)V
     .locals 5
-    .parameter "provider"
-    .parameter "status"
-    .parameter "extras"
+    .param p1, "provider"    # Ljava/lang/String;
+    .param p2, "status"    # I
+    .param p3, "extras"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -258,9 +264,9 @@
     move-result-object v0
 
     .line 134
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.location.ILocationListener"
+    const-string/jumbo v1, "android.location.ILocationListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -300,7 +306,7 @@
     .line 147
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 149
+    .line 130
     return-void
 
     .line 142
@@ -314,11 +320,13 @@
 
     goto :goto_0
 
-    .line 147
+    .line 146
     :catchall_0
     move-exception v1
 
+    .line 147
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 146
     throw v1
 .end method

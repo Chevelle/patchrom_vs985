@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/view/textservice/SentenceSuggestionsInfo$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -32,19 +40,21 @@
     .locals 1
 
     .prologue
-    .line 132
+    .line 133
     new-instance v0, Landroid/view/textservice/SentenceSuggestionsInfo$1;
 
     invoke-direct {v0}, Landroid/view/textservice/SentenceSuggestionsInfo$1;-><init>()V
 
+    .line 132
     sput-object v0, Landroid/view/textservice/SentenceSuggestionsInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 33
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 3
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 59
@@ -56,7 +66,7 @@
     move-result v0
 
     .line 61
-    .local v0, infoSize:I
+    .local v0, "infoSize":I
     new-array v1, v0, [Landroid/view/textservice/SuggestionsInfo;
 
     iput-object v1, p0, Landroid/view/textservice/SentenceSuggestionsInfo;->mSuggestionsInfos:[Landroid/view/textservice/SuggestionsInfo;
@@ -96,26 +106,24 @@
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->readIntArray([I)V
 
-    .line 67
+    .line 59
     return-void
 .end method
 
 .method public constructor <init>([Landroid/view/textservice/SuggestionsInfo;[I[I)V
     .locals 3
-    .parameter "suggestionsInfos"
-    .parameter "offsets"
-    .parameter "lengths"
+    .param p1, "suggestionsInfos"    # [Landroid/view/textservice/SuggestionsInfo;
+    .param p2, "offsets"    # [I
+    .param p3, "lengths"    # [I
 
     .prologue
-    .line 46
+    .line 45
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 47
     if-eqz p1, :cond_0
 
-    if-eqz p2, :cond_0
-
-    if-nez p3, :cond_1
+    if-nez p2, :cond_1
 
     .line 48
     :cond_0
@@ -125,8 +133,11 @@
 
     throw v1
 
-    .line 50
+    .line 47
     :cond_1
+    if-eqz p3, :cond_0
+
+    .line 50
     array-length v1, p1
 
     array-length v2, p2
@@ -152,7 +163,7 @@
     array-length v0, p1
 
     .line 54
-    .local v0, infoSize:I
+    .local v0, "infoSize":I
     invoke-static {p1, v0}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;
 
     move-result-object v1
@@ -175,7 +186,7 @@
 
     iput-object v1, p0, Landroid/view/textservice/SentenceSuggestionsInfo;->mLengths:[I
 
-    .line 57
+    .line 46
     return-void
 .end method
 
@@ -193,7 +204,7 @@
 
 .method public getLengthAt(I)I
     .locals 1
-    .parameter "i"
+    .param p1, "i"    # I
 
     .prologue
     .line 123
@@ -210,19 +221,18 @@
 
     aget v0, v0, p1
 
-    .line 126
-    :goto_0
     return v0
 
+    .line 126
     :cond_0
     const/4 v0, -0x1
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public getOffsetAt(I)I
     .locals 1
-    .parameter "i"
+    .param p1, "i"    # I
 
     .prologue
     .line 112
@@ -239,14 +249,13 @@
 
     aget v0, v0, p1
 
-    .line 115
-    :goto_0
     return v0
 
+    .line 115
     :cond_0
     const/4 v0, -0x1
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public getSuggestionsCount()I
@@ -263,7 +272,7 @@
 
 .method public getSuggestionsInfoAt(I)Landroid/view/textservice/SuggestionsInfo;
     .locals 1
-    .parameter "i"
+    .param p1, "i"    # I
 
     .prologue
     .line 101
@@ -280,20 +289,19 @@
 
     aget-object v0, v0, p1
 
-    .line 104
-    :goto_0
     return-object v0
 
+    .line 104
     :cond_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    return-object v0
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 3
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 77
@@ -302,7 +310,7 @@
     array-length v0, v1
 
     .line 78
-    .local v0, infoSize:I
+    .local v0, "infoSize":I
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 79
@@ -322,6 +330,6 @@
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeIntArray([I)V
 
-    .line 82
+    .line 76
     return-void
 .end method

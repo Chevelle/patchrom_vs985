@@ -28,9 +28,9 @@
 
 # direct methods
 .method public constructor <init>(Landroid/net/http/SslCertificate;Ljava/lang/String;)V
-    .locals 6
-    .parameter
-    .parameter "dName"
+    .locals 7
+    .param p1, "this$0"    # Landroid/net/http/SslCertificate;
+    .param p2, "dName"    # Ljava/lang/String;
 
     .prologue
     .line 375
@@ -46,141 +46,141 @@
 
     .line 379
     :try_start_0
-    new-instance v3, Lcom/android/org/bouncycastle/asn1/x509/X509Name;
+    new-instance v4, Lcom/android/org/bouncycastle/asn1/x509/X509Name;
 
-    invoke-direct {v3, p2}, Lcom/android/org/bouncycastle/asn1/x509/X509Name;-><init>(Ljava/lang/String;)V
+    invoke-direct {v4, p2}, Lcom/android/org/bouncycastle/asn1/x509/X509Name;-><init>(Ljava/lang/String;)V
 
     .line 381
-    .local v3, x509Name:Lcom/android/org/bouncycastle/asn1/x509/X509Name;
-    invoke-virtual {v3}, Lcom/android/org/bouncycastle/asn1/x509/X509Name;->getValues()Ljava/util/Vector;
+    .local v4, "x509Name":Lcom/android/org/bouncycastle/asn1/x509/X509Name;
+    invoke-virtual {v4}, Lcom/android/org/bouncycastle/asn1/x509/X509Name;->getValues()Ljava/util/Vector;
+
+    move-result-object v3
+
+    .line 382
+    .local v3, "val":Ljava/util/Vector;
+    invoke-virtual {v4}, Lcom/android/org/bouncycastle/asn1/x509/X509Name;->getOIDs()Ljava/util/Vector;
 
     move-result-object v2
 
-    .line 382
-    .local v2, val:Ljava/util/Vector;
-    invoke-virtual {v3}, Lcom/android/org/bouncycastle/asn1/x509/X509Name;->getOIDs()Ljava/util/Vector;
-
-    move-result-object v1
-
     .line 384
-    .local v1, oid:Ljava/util/Vector;
-    const/4 v0, 0x0
+    .local v2, "oid":Ljava/util/Vector;
+    const/4 v1, 0x0
 
-    .local v0, i:I
+    .local v1, "i":I
     :goto_0
-    invoke-virtual {v1}, Ljava/util/Vector;->size()I
+    invoke-virtual {v2}, Ljava/util/Vector;->size()I
 
-    move-result v4
+    move-result v5
 
-    if-ge v0, v4, :cond_2
+    if-ge v1, v5, :cond_2
 
     .line 385
-    invoke-virtual {v1, v0}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
+    invoke-virtual {v2, v1}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
 
-    move-result-object v4
+    move-result-object v5
 
-    sget-object v5, Lcom/android/org/bouncycastle/asn1/x509/X509Name;->CN:Lcom/android/org/bouncycastle/asn1/ASN1ObjectIdentifier;
+    sget-object v6, Lcom/android/org/bouncycastle/asn1/x509/X509Name;->CN:Lcom/android/org/bouncycastle/asn1/ASN1ObjectIdentifier;
 
-    invoke-virtual {v4, v5}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v5, v6}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
 
-    move-result v4
+    move-result v5
 
-    if-eqz v4, :cond_1
+    if-eqz v5, :cond_1
 
     .line 386
-    iget-object v4, p0, Landroid/net/http/SslCertificate$DName;->mCName:Ljava/lang/String;
+    iget-object v5, p0, Landroid/net/http/SslCertificate$DName;->mCName:Ljava/lang/String;
 
-    if-nez v4, :cond_0
+    if-nez v5, :cond_0
 
     .line 387
-    invoke-virtual {v2, v0}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
+    invoke-virtual {v3, v1}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
 
-    move-result-object v4
+    move-result-object v5
 
-    check-cast v4, Ljava/lang/String;
+    check-cast v5, Ljava/lang/String;
 
-    iput-object v4, p0, Landroid/net/http/SslCertificate$DName;->mCName:Ljava/lang/String;
+    iput-object v5, p0, Landroid/net/http/SslCertificate$DName;->mCName:Ljava/lang/String;
 
     .line 384
     :cond_0
     :goto_1
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
     .line 392
     :cond_1
-    invoke-virtual {v1, v0}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
+    invoke-virtual {v2, v1}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
 
-    move-result-object v4
+    move-result-object v5
 
-    sget-object v5, Lcom/android/org/bouncycastle/asn1/x509/X509Name;->O:Lcom/android/org/bouncycastle/asn1/ASN1ObjectIdentifier;
+    sget-object v6, Lcom/android/org/bouncycastle/asn1/x509/X509Name;->O:Lcom/android/org/bouncycastle/asn1/ASN1ObjectIdentifier;
 
-    invoke-virtual {v4, v5}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v5, v6}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
 
-    move-result v4
+    move-result v5
 
-    if-eqz v4, :cond_3
+    if-eqz v5, :cond_3
 
     .line 393
-    iget-object v4, p0, Landroid/net/http/SslCertificate$DName;->mOName:Ljava/lang/String;
+    iget-object v5, p0, Landroid/net/http/SslCertificate$DName;->mOName:Ljava/lang/String;
 
-    if-nez v4, :cond_3
+    if-nez v5, :cond_3
 
     .line 394
-    invoke-virtual {v2, v0}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
+    invoke-virtual {v3, v1}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
 
-    move-result-object v4
+    move-result-object v5
 
-    check-cast v4, Ljava/lang/String;
+    check-cast v5, Ljava/lang/String;
 
-    iput-object v4, p0, Landroid/net/http/SslCertificate$DName;->mOName:Ljava/lang/String;
+    iput-object v5, p0, Landroid/net/http/SslCertificate$DName;->mOName:Ljava/lang/String;
 
     goto :goto_1
 
     .line 406
-    .end local v0           #i:I
-    .end local v1           #oid:Ljava/util/Vector;
-    .end local v2           #val:Ljava/util/Vector;
-    .end local v3           #x509Name:Lcom/android/org/bouncycastle/asn1/x509/X509Name;
+    .end local v1    # "i":I
+    .end local v2    # "oid":Ljava/util/Vector;
+    .end local v3    # "val":Ljava/util/Vector;
+    .end local v4    # "x509Name":Lcom/android/org/bouncycastle/asn1/x509/X509Name;
     :catch_0
-    move-exception v4
+    move-exception v0
 
-    .line 410
+    .line 375
     :cond_2
     return-void
 
     .line 399
-    .restart local v0       #i:I
-    .restart local v1       #oid:Ljava/util/Vector;
-    .restart local v2       #val:Ljava/util/Vector;
-    .restart local v3       #x509Name:Lcom/android/org/bouncycastle/asn1/x509/X509Name;
+    .restart local v1    # "i":I
+    .restart local v2    # "oid":Ljava/util/Vector;
+    .restart local v3    # "val":Ljava/util/Vector;
+    .restart local v4    # "x509Name":Lcom/android/org/bouncycastle/asn1/x509/X509Name;
     :cond_3
-    invoke-virtual {v1, v0}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
+    invoke-virtual {v2, v1}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
 
-    move-result-object v4
+    move-result-object v5
 
-    sget-object v5, Lcom/android/org/bouncycastle/asn1/x509/X509Name;->OU:Lcom/android/org/bouncycastle/asn1/ASN1ObjectIdentifier;
+    sget-object v6, Lcom/android/org/bouncycastle/asn1/x509/X509Name;->OU:Lcom/android/org/bouncycastle/asn1/ASN1ObjectIdentifier;
 
-    invoke-virtual {v4, v5}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v5, v6}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
 
-    move-result v4
+    move-result v5
 
-    if-eqz v4, :cond_0
+    if-eqz v5, :cond_0
 
     .line 400
-    iget-object v4, p0, Landroid/net/http/SslCertificate$DName;->mUName:Ljava/lang/String;
+    iget-object v5, p0, Landroid/net/http/SslCertificate$DName;->mUName:Ljava/lang/String;
 
-    if-nez v4, :cond_0
+    if-nez v5, :cond_0
 
     .line 401
-    invoke-virtual {v2, v0}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
+    invoke-virtual {v3, v1}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
 
-    move-result-object v4
+    move-result-object v5
 
-    check-cast v4, Ljava/lang/String;
+    check-cast v5, Ljava/lang/String;
 
-    iput-object v4, p0, Landroid/net/http/SslCertificate$DName;->mUName:Ljava/lang/String;
+    iput-object v5, p0, Landroid/net/http/SslCertificate$DName;->mUName:Ljava/lang/String;
     :try_end_0
     .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -204,7 +204,7 @@
     return-object v0
 
     :cond_0
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     goto :goto_0
 .end method
@@ -224,7 +224,7 @@
     return-object v0
 
     :cond_0
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     goto :goto_0
 .end method
@@ -244,7 +244,7 @@
     return-object v0
 
     :cond_0
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     goto :goto_0
 .end method
@@ -264,7 +264,7 @@
     return-object v0
 
     :cond_0
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     goto :goto_0
 .end method

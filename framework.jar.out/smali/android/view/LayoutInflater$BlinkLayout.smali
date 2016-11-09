@@ -29,16 +29,48 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/view/LayoutInflater$BlinkLayout;)Z
+    .locals 1
+
+    iget-boolean v0, p0, Landroid/view/LayoutInflater$BlinkLayout;->mBlink:Z
+
+    return v0
+.end method
+
+.method static synthetic -get1(Landroid/view/LayoutInflater$BlinkLayout;)Z
+    .locals 1
+
+    iget-boolean v0, p0, Landroid/view/LayoutInflater$BlinkLayout;->mBlinkState:Z
+
+    return v0
+.end method
+
+.method static synthetic -set0(Landroid/view/LayoutInflater$BlinkLayout;Z)Z
+    .locals 0
+
+    iput-boolean p1, p0, Landroid/view/LayoutInflater$BlinkLayout;->mBlinkState:Z
+
+    return p1
+.end method
+
+.method static synthetic -wrap0(Landroid/view/LayoutInflater$BlinkLayout;)V
+    .locals 0
+
+    invoke-direct {p0}, Landroid/view/LayoutInflater$BlinkLayout;->makeBlink()V
+
+    return-void
+.end method
+
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
     .locals 2
-    .parameter "context"
-    .parameter "attrs"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "attrs"    # Landroid/util/AttributeSet;
 
     .prologue
-    .line 892
+    .line 1025
     invoke-direct {p0, p1, p2}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 893
+    .line 1026
     new-instance v0, Landroid/os/Handler;
 
     new-instance v1, Landroid/view/LayoutInflater$BlinkLayout$1;
@@ -49,52 +81,7 @@
 
     iput-object v0, p0, Landroid/view/LayoutInflater$BlinkLayout;->mHandler:Landroid/os/Handler;
 
-    .line 907
-    return-void
-.end method
-
-.method static synthetic access$000(Landroid/view/LayoutInflater$BlinkLayout;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 883
-    iget-boolean v0, p0, Landroid/view/LayoutInflater$BlinkLayout;->mBlink:Z
-
-    return v0
-.end method
-
-.method static synthetic access$100(Landroid/view/LayoutInflater$BlinkLayout;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 883
-    iget-boolean v0, p0, Landroid/view/LayoutInflater$BlinkLayout;->mBlinkState:Z
-
-    return v0
-.end method
-
-.method static synthetic access$102(Landroid/view/LayoutInflater$BlinkLayout;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 883
-    iput-boolean p1, p0, Landroid/view/LayoutInflater$BlinkLayout;->mBlinkState:Z
-
-    return p1
-.end method
-
-.method static synthetic access$200(Landroid/view/LayoutInflater$BlinkLayout;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 883
-    invoke-direct {p0}, Landroid/view/LayoutInflater$BlinkLayout;->makeBlink()V
-
+    .line 1024
     return-void
 .end method
 
@@ -102,7 +89,7 @@
     .locals 4
 
     .prologue
-    .line 910
+    .line 1043
     iget-object v1, p0, Landroid/view/LayoutInflater$BlinkLayout;->mHandler:Landroid/os/Handler;
 
     const/16 v2, 0x42
@@ -111,15 +98,15 @@
 
     move-result-object v0
 
-    .line 911
-    .local v0, message:Landroid/os/Message;
+    .line 1044
+    .local v0, "message":Landroid/os/Message;
     iget-object v1, p0, Landroid/view/LayoutInflater$BlinkLayout;->mHandler:Landroid/os/Handler;
 
     const-wide/16 v2, 0x1f4
 
     invoke-virtual {v1, v0, v2, v3}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
-    .line 912
+    .line 1042
     return-void
 .end method
 
@@ -127,18 +114,18 @@
 # virtual methods
 .method protected dispatchDraw(Landroid/graphics/Canvas;)V
     .locals 1
-    .parameter "canvas"
+    .param p1, "canvas"    # Landroid/graphics/Canvas;
 
     .prologue
-    .line 936
+    .line 1069
     iget-boolean v0, p0, Landroid/view/LayoutInflater$BlinkLayout;->mBlinkState:Z
 
     if-eqz v0, :cond_0
 
-    .line 937
+    .line 1070
     invoke-super {p0, p1}, Landroid/widget/FrameLayout;->dispatchDraw(Landroid/graphics/Canvas;)V
 
-    .line 939
+    .line 1068
     :cond_0
     return-void
 .end method
@@ -149,19 +136,19 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 916
+    .line 1049
     invoke-super {p0}, Landroid/widget/FrameLayout;->onAttachedToWindow()V
 
-    .line 918
+    .line 1051
     iput-boolean v0, p0, Landroid/view/LayoutInflater$BlinkLayout;->mBlink:Z
 
-    .line 919
+    .line 1052
     iput-boolean v0, p0, Landroid/view/LayoutInflater$BlinkLayout;->mBlinkState:Z
 
-    .line 921
+    .line 1054
     invoke-direct {p0}, Landroid/view/LayoutInflater$BlinkLayout;->makeBlink()V
 
-    .line 922
+    .line 1048
     return-void
 .end method
 
@@ -169,26 +156,26 @@
     .locals 2
 
     .prologue
-    .line 926
+    .line 1059
     invoke-super {p0}, Landroid/widget/FrameLayout;->onDetachedFromWindow()V
 
-    .line 928
+    .line 1061
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/view/LayoutInflater$BlinkLayout;->mBlink:Z
 
-    .line 929
+    .line 1062
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/view/LayoutInflater$BlinkLayout;->mBlinkState:Z
 
-    .line 931
+    .line 1064
     iget-object v0, p0, Landroid/view/LayoutInflater$BlinkLayout;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0x42
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 932
+    .line 1058
     return-void
 .end method

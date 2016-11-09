@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Landroid/speech/tts/TextToSpeech$OnUtteranceCompletedListener;)V
     .locals 0
-    .parameter
+    .param p1, "val$listener"    # Landroid/speech/tts/TextToSpeech$OnUtteranceCompletedListener;
 
     .prologue
-    .line 54
+    .line 84
     iput-object p1, p0, Landroid/speech/tts/UtteranceProgressListener$1;->val$listener:Landroid/speech/tts/TextToSpeech$OnUtteranceCompletedListener;
 
     invoke-direct {p0}, Landroid/speech/tts/UtteranceProgressListener;-><init>()V
@@ -36,12 +36,12 @@
 # virtual methods
 .method public declared-synchronized onDone(Ljava/lang/String;)V
     .locals 1
-    .parameter "utteranceId"
+    .param p1, "utteranceId"    # Ljava/lang/String;
 
     .prologue
-    .line 57
     monitor-enter p0
 
+    .line 87
     :try_start_0
     iget-object v0, p0, Landroid/speech/tts/UtteranceProgressListener$1;->val$listener:Landroid/speech/tts/TextToSpeech$OnUtteranceCompletedListener;
 
@@ -49,12 +49,11 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 58
     monitor-exit p0
 
+    .line 86
     return-void
 
-    .line 57
     :catchall_0
     move-exception v0
 
@@ -65,23 +64,38 @@
 
 .method public onError(Ljava/lang/String;)V
     .locals 1
-    .parameter "utteranceId"
+    .param p1, "utteranceId"    # Ljava/lang/String;
 
     .prologue
-    .line 62
+    .line 92
     iget-object v0, p0, Landroid/speech/tts/UtteranceProgressListener$1;->val$listener:Landroid/speech/tts/TextToSpeech$OnUtteranceCompletedListener;
 
     invoke-interface {v0, p1}, Landroid/speech/tts/TextToSpeech$OnUtteranceCompletedListener;->onUtteranceCompleted(Ljava/lang/String;)V
 
-    .line 63
+    .line 91
     return-void
 .end method
 
 .method public onStart(Ljava/lang/String;)V
     .locals 0
-    .parameter "utteranceId"
+    .param p1, "utteranceId"    # Ljava/lang/String;
 
     .prologue
-    .line 69
+    .line 96
+    return-void
+.end method
+
+.method public onStop(Ljava/lang/String;Z)V
+    .locals 1
+    .param p1, "utteranceId"    # Ljava/lang/String;
+    .param p2, "interrupted"    # Z
+
+    .prologue
+    .line 103
+    iget-object v0, p0, Landroid/speech/tts/UtteranceProgressListener$1;->val$listener:Landroid/speech/tts/TextToSpeech$OnUtteranceCompletedListener;
+
+    invoke-interface {v0, p1}, Landroid/speech/tts/TextToSpeech$OnUtteranceCompletedListener;->onUtteranceCompleted(Ljava/lang/String;)V
+
+    .line 102
     return-void
 .end method

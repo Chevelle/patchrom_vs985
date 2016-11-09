@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 121
+    .line 162
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -41,60 +41,77 @@
 
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/hardware/usb/UsbInterface;
-    .locals 6
-    .parameter "in"
+    .locals 9
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 123
+    .line 164
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
-    .line 124
-    .local v1, id:I
+    .line 165
+    .local v1, "id":I
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v2
 
-    .line 125
-    .local v2, Class:I
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+    .line 166
+    .local v2, "alternateSetting":I
+    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
-    move-result v3
+    move-result-object v3
 
-    .line 126
-    .local v3, subClass:I
+    .line 167
+    .local v3, "name":Ljava/lang/String;
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v4
 
-    .line 127
-    .local v4, protocol:I
-    const-class v0, Landroid/hardware/usb/UsbEndpoint;
+    .line 168
+    .local v4, "Class":I
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
-    invoke-virtual {v0}, Ljava/lang/Class;->getClassLoader()Ljava/lang/ClassLoader;
+    move-result v5
 
-    move-result-object v0
+    .line 169
+    .local v5, "subClass":I
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
-    invoke-virtual {p1, v0}, Landroid/os/Parcel;->readParcelableArray(Ljava/lang/ClassLoader;)[Landroid/os/Parcelable;
+    move-result v6
 
-    move-result-object v5
+    .line 170
+    .local v6, "protocol":I
+    const-class v8, Landroid/hardware/usb/UsbEndpoint;
 
-    .line 128
-    .local v5, endpoints:[Landroid/os/Parcelable;
+    invoke-virtual {v8}, Ljava/lang/Class;->getClassLoader()Ljava/lang/ClassLoader;
+
+    move-result-object v8
+
+    invoke-virtual {p1, v8}, Landroid/os/Parcel;->readParcelableArray(Ljava/lang/ClassLoader;)[Landroid/os/Parcelable;
+
+    move-result-object v7
+
+    .line 171
+    .local v7, "endpoints":[Landroid/os/Parcelable;
     new-instance v0, Landroid/hardware/usb/UsbInterface;
 
-    invoke-direct/range {v0 .. v5}, Landroid/hardware/usb/UsbInterface;-><init>(IIII[Landroid/os/Parcelable;)V
+    invoke-direct/range {v0 .. v6}, Landroid/hardware/usb/UsbInterface;-><init>(IILjava/lang/String;III)V
 
+    .line 172
+    .local v0, "intf":Landroid/hardware/usb/UsbInterface;
+    invoke-virtual {v0, v7}, Landroid/hardware/usb/UsbInterface;->setEndpoints([Landroid/os/Parcelable;)V
+
+    .line 173
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 121
+    .line 163
     invoke-virtual {p0, p1}, Landroid/hardware/usb/UsbInterface$1;->createFromParcel(Landroid/os/Parcel;)Landroid/hardware/usb/UsbInterface;
 
     move-result-object v0
@@ -104,10 +121,10 @@
 
 .method public newArray(I)[Landroid/hardware/usb/UsbInterface;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 132
+    .line 177
     new-array v0, p1, [Landroid/hardware/usb/UsbInterface;
 
     return-object v0
@@ -115,10 +132,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 121
+    .line 176
     invoke-virtual {p0, p1}, Landroid/hardware/usb/UsbInterface$1;->newArray(I)[Landroid/hardware/usb/UsbInterface;
 
     move-result-object v0

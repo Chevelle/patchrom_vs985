@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Landroid/net/DhcpStateMachine;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/net/DhcpStateMachine;
 
     .prologue
-    .line 236
+    .line 242
     iput-object p1, p0, Landroid/net/DhcpStateMachine$WaitBeforeStartState;->this$0:Landroid/net/DhcpStateMachine;
 
     invoke-direct {p0}, Lcom/android/internal/util/State;-><init>()V
@@ -38,93 +38,84 @@
     .locals 0
 
     .prologue
-    .line 240
+    .line 244
     return-void
 .end method
 
 .method public processMessage(Landroid/os/Message;)Z
     .locals 3
-    .parameter "message"
+    .param p1, "message"    # Landroid/os/Message;
 
     .prologue
-    .line 244
+    .line 250
     const/4 v0, 0x1
 
-    .line 246
-    .local v0, retValue:Z
+    .line 252
+    .local v0, "retValue":Z
     iget v1, p1, Landroid/os/Message;->what:I
 
     sparse-switch v1, :sswitch_data_0
 
-    .line 261
+    .line 267
     const/4 v0, 0x0
 
-    .line 264
+    .line 270
     :goto_0
     :sswitch_0
     return v0
 
-    .line 248
+    .line 254
     :sswitch_1
     iget-object v1, p0, Landroid/net/DhcpStateMachine$WaitBeforeStartState;->this$0:Landroid/net/DhcpStateMachine;
 
-    sget-object v2, Landroid/net/DhcpStateMachine$DhcpAction;->START:Landroid/net/DhcpStateMachine$DhcpAction;
-
-    #calls: Landroid/net/DhcpStateMachine;->runDhcp(Landroid/net/DhcpStateMachine$DhcpAction;)Z
-    invoke-static {v1, v2}, Landroid/net/DhcpStateMachine;->access$800(Landroid/net/DhcpStateMachine;Landroid/net/DhcpStateMachine$DhcpAction;)Z
+    invoke-static {v1}, Landroid/net/DhcpStateMachine;->-wrap2(Landroid/net/DhcpStateMachine;)Z
 
     move-result v1
 
     if-eqz v1, :cond_0
 
-    .line 249
+    .line 255
     iget-object v1, p0, Landroid/net/DhcpStateMachine$WaitBeforeStartState;->this$0:Landroid/net/DhcpStateMachine;
 
     iget-object v2, p0, Landroid/net/DhcpStateMachine$WaitBeforeStartState;->this$0:Landroid/net/DhcpStateMachine;
 
-    #getter for: Landroid/net/DhcpStateMachine;->mRunningState:Lcom/android/internal/util/State;
-    invoke-static {v2}, Landroid/net/DhcpStateMachine;->access$900(Landroid/net/DhcpStateMachine;)Lcom/android/internal/util/State;
+    invoke-static {v2}, Landroid/net/DhcpStateMachine;->-get9(Landroid/net/DhcpStateMachine;)Lcom/android/internal/util/State;
 
     move-result-object v2
 
-    #calls: Landroid/net/DhcpStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
-    invoke-static {v1, v2}, Landroid/net/DhcpStateMachine;->access$1100(Landroid/net/DhcpStateMachine;Lcom/android/internal/util/IState;)V
+    invoke-static {v1, v2}, Landroid/net/DhcpStateMachine;->-wrap4(Landroid/net/DhcpStateMachine;Lcom/android/internal/util/IState;)V
 
     goto :goto_0
 
-    .line 251
+    .line 257
     :cond_0
     iget-object v1, p0, Landroid/net/DhcpStateMachine$WaitBeforeStartState;->this$0:Landroid/net/DhcpStateMachine;
 
     iget-object v2, p0, Landroid/net/DhcpStateMachine$WaitBeforeStartState;->this$0:Landroid/net/DhcpStateMachine;
 
-    #getter for: Landroid/net/DhcpStateMachine;->mStoppedState:Lcom/android/internal/util/State;
-    invoke-static {v2}, Landroid/net/DhcpStateMachine;->access$1200(Landroid/net/DhcpStateMachine;)Lcom/android/internal/util/State;
+    invoke-static {v2}, Landroid/net/DhcpStateMachine;->-get7(Landroid/net/DhcpStateMachine;)Lcom/android/internal/util/State;
 
     move-result-object v2
 
-    #calls: Landroid/net/DhcpStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
-    invoke-static {v1, v2}, Landroid/net/DhcpStateMachine;->access$1300(Landroid/net/DhcpStateMachine;Lcom/android/internal/util/IState;)V
+    invoke-static {v1, v2}, Landroid/net/DhcpStateMachine;->-wrap4(Landroid/net/DhcpStateMachine;Lcom/android/internal/util/IState;)V
 
     goto :goto_0
 
-    .line 255
+    .line 261
     :sswitch_2
     iget-object v1, p0, Landroid/net/DhcpStateMachine$WaitBeforeStartState;->this$0:Landroid/net/DhcpStateMachine;
 
     iget-object v2, p0, Landroid/net/DhcpStateMachine$WaitBeforeStartState;->this$0:Landroid/net/DhcpStateMachine;
 
-    #getter for: Landroid/net/DhcpStateMachine;->mStoppedState:Lcom/android/internal/util/State;
-    invoke-static {v2}, Landroid/net/DhcpStateMachine;->access$1200(Landroid/net/DhcpStateMachine;)Lcom/android/internal/util/State;
+    invoke-static {v2}, Landroid/net/DhcpStateMachine;->-get10(Landroid/net/DhcpStateMachine;)Lcom/android/internal/util/State;
 
     move-result-object v2
 
-    #calls: Landroid/net/DhcpStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
-    invoke-static {v1, v2}, Landroid/net/DhcpStateMachine;->access$1400(Landroid/net/DhcpStateMachine;Lcom/android/internal/util/IState;)V
+    invoke-static {v1, v2}, Landroid/net/DhcpStateMachine;->-wrap4(Landroid/net/DhcpStateMachine;Lcom/android/internal/util/IState;)V
 
     goto :goto_0
 
-    .line 246
+    .line 252
     :sswitch_data_0
     .sparse-switch
         0x30001 -> :sswitch_0

@@ -12,14 +12,14 @@
 # direct methods
 .method public constructor <init>(Landroid/filterfw/core/Filter;Ljava/lang/String;)V
     .locals 0
-    .parameter "filter"
-    .parameter "name"
+    .param p1, "filter"    # Landroid/filterfw/core/Filter;
+    .param p2, "name"    # Ljava/lang/String;
 
     .prologue
     .line 29
     invoke-direct {p0, p1, p2}, Landroid/filterfw/core/FilterPort;-><init>(Landroid/filterfw/core/Filter;Ljava/lang/String;)V
 
-    .line 30
+    .line 28
     return-void
 .end method
 
@@ -39,7 +39,7 @@
 
     invoke-virtual {v0}, Landroid/filterfw/core/InputPort;->clear()V
 
-    .line 87
+    .line 83
     :cond_0
     return-void
 .end method
@@ -69,14 +69,14 @@
 
     invoke-virtual {v0}, Landroid/filterfw/core/InputPort;->close()V
 
-    .line 56
+    .line 51
     :cond_0
     return-void
 .end method
 
 .method public connectTo(Landroid/filterfw/core/InputPort;)V
     .locals 3
-    .parameter "target"
+    .param p1, "target"    # Landroid/filterfw/core/InputPort;
 
     .prologue
     .line 33
@@ -95,7 +95,7 @@
 
     move-result-object v1
 
-    const-string v2, " already connected to "
+    const-string/jumbo v2, " already connected to "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -107,7 +107,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -130,7 +130,7 @@
 
     invoke-virtual {v0, p0}, Landroid/filterfw/core/InputPort;->setSourcePort(Landroid/filterfw/core/OutputPort;)V
 
-    .line 38
+    .line 32
     return-void
 .end method
 
@@ -148,10 +148,6 @@
     invoke-virtual {p0}, Landroid/filterfw/core/OutputPort;->isBlocking()Z
 
     move-result v0
-
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
 
     :goto_0
     return v0
@@ -173,15 +169,15 @@
 .end method
 
 .method public getTargetFilter()Landroid/filterfw/core/Filter;
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 63
-    iget-object v0, p0, Landroid/filterfw/core/OutputPort;->mTargetPort:Landroid/filterfw/core/InputPort;
-
-    if-nez v0, :cond_0
-
     const/4 v0, 0x0
+
+    .line 63
+    iget-object v1, p0, Landroid/filterfw/core/OutputPort;->mTargetPort:Landroid/filterfw/core/InputPort;
+
+    if-nez v1, :cond_0
 
     :goto_0
     return-object v0
@@ -251,41 +247,37 @@
 .end method
 
 .method public isReady()Z
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v0, 0x1
+
     .line 79
     invoke-virtual {p0}, Landroid/filterfw/core/OutputPort;->isOpen()Z
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
-    iget-object v0, p0, Landroid/filterfw/core/OutputPort;->mTargetPort:Landroid/filterfw/core/InputPort;
+    iget-object v1, p0, Landroid/filterfw/core/OutputPort;->mTargetPort:Landroid/filterfw/core/InputPort;
 
-    invoke-virtual {v0}, Landroid/filterfw/core/InputPort;->acceptsFrame()Z
+    invoke-virtual {v1}, Landroid/filterfw/core/InputPort;->acceptsFrame()Z
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_1
+    if-nez v1, :cond_1
 
     :cond_0
     invoke-virtual {p0}, Landroid/filterfw/core/OutputPort;->isBlocking()Z
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_2
+    if-eqz v1, :cond_1
 
-    :cond_1
-    const/4 v0, 0x1
-
-    :goto_0
-    return v0
-
-    :cond_2
     const/4 v0, 0x0
 
-    goto :goto_0
+    :cond_1
+    return v0
 .end method
 
 .method public open()V
@@ -306,16 +298,20 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_1
+
+    .line 44
+    :cond_0
+    :goto_0
+    return-void
 
     .line 47
+    :cond_1
     iget-object v0, p0, Landroid/filterfw/core/OutputPort;->mTargetPort:Landroid/filterfw/core/InputPort;
 
     invoke-virtual {v0}, Landroid/filterfw/core/InputPort;->open()V
 
-    .line 49
-    :cond_0
-    return-void
+    goto :goto_0
 .end method
 
 .method public pullFrame()Landroid/filterfw/core/Frame;
@@ -329,7 +325,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Cannot pull frame on "
+    const-string/jumbo v2, "Cannot pull frame on "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -339,7 +335,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -356,7 +352,7 @@
 
 .method public pushFrame(Landroid/filterfw/core/Frame;)V
     .locals 3
-    .parameter "frame"
+    .param p1, "frame"    # Landroid/filterfw/core/Frame;
 
     .prologue
     .line 91
@@ -367,11 +363,12 @@
     .line 92
     new-instance v0, Ljava/lang/RuntimeException;
 
+    .line 93
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Attempting to push frame on unconnected port: "
+    const-string/jumbo v2, "Attempting to push frame on unconnected port: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -381,7 +378,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -391,6 +388,7 @@
 
     move-result-object v1
 
+    .line 92
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
@@ -401,25 +399,25 @@
 
     invoke-virtual {v0, p1}, Landroid/filterfw/core/InputPort;->pushFrame(Landroid/filterfw/core/Frame;)V
 
-    .line 96
+    .line 90
     return-void
 .end method
 
 .method public setBasePort(Landroid/filterfw/core/InputPort;)V
     .locals 0
-    .parameter "basePort"
+    .param p1, "basePort"    # Landroid/filterfw/core/InputPort;
 
     .prologue
     .line 67
     iput-object p1, p0, Landroid/filterfw/core/OutputPort;->mBasePort:Landroid/filterfw/core/InputPort;
 
-    .line 68
+    .line 66
     return-void
 .end method
 
 .method public setFrame(Landroid/filterfw/core/Frame;)V
     .locals 3
-    .parameter "frame"
+    .param p1, "frame"    # Landroid/filterfw/core/Frame;
 
     .prologue
     .line 100
@@ -433,11 +431,12 @@
     .line 102
     new-instance v0, Ljava/lang/RuntimeException;
 
+    .line 103
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Attempting to set frame on unconnected port: "
+    const-string/jumbo v2, "Attempting to set frame on unconnected port: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -447,7 +446,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -457,6 +456,7 @@
 
     move-result-object v1
 
+    .line 102
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
@@ -467,7 +467,7 @@
 
     invoke-virtual {v0, p1}, Landroid/filterfw/core/InputPort;->setFrame(Landroid/filterfw/core/Frame;)V
 
-    .line 106
+    .line 99
     return-void
 .end method
 

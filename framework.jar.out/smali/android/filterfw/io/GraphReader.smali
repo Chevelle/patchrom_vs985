@@ -22,6 +22,7 @@
 
     iput-object v0, p0, Landroid/filterfw/io/GraphReader;->mReferences:Landroid/filterfw/core/KeyValueMap;
 
+    .line 33
     return-void
 .end method
 
@@ -29,8 +30,8 @@
 # virtual methods
 .method public addReference(Ljava/lang/String;Ljava/lang/Object;)V
     .locals 1
-    .parameter "name"
-    .parameter "object"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "object"    # Ljava/lang/Object;
 
     .prologue
     .line 58
@@ -38,13 +39,13 @@
 
     invoke-virtual {v0, p1, p2}, Landroid/filterfw/core/KeyValueMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 59
+    .line 57
     return-void
 .end method
 
 .method public varargs addReferencesByKeysAndValues([Ljava/lang/Object;)V
     .locals 1
-    .parameter "references"
+    .param p1, "references"    # [Ljava/lang/Object;
 
     .prologue
     .line 66
@@ -52,13 +53,13 @@
 
     invoke-virtual {v0, p1}, Landroid/filterfw/core/KeyValueMap;->setKeyValues([Ljava/lang/Object;)V
 
-    .line 67
+    .line 65
     return-void
 .end method
 
 .method public addReferencesByMap(Landroid/filterfw/core/KeyValueMap;)V
     .locals 1
-    .parameter "refs"
+    .param p1, "refs"    # Landroid/filterfw/core/KeyValueMap;
 
     .prologue
     .line 62
@@ -66,14 +67,14 @@
 
     invoke-virtual {v0, p1}, Landroid/filterfw/core/KeyValueMap;->putAll(Ljava/util/Map;)V
 
-    .line 63
+    .line 61
     return-void
 .end method
 
 .method public readGraphResource(Landroid/content/Context;I)Landroid/filterfw/core/FilterGraph;
     .locals 8
-    .parameter "context"
-    .parameter "resourceId"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "resourceId"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/filterfw/io/GraphIOException;
@@ -93,23 +94,23 @@
     move-result-object v3
 
     .line 43
-    .local v3, inputStream:Ljava/io/InputStream;
+    .local v3, "inputStream":Ljava/io/InputStream;
     new-instance v4, Ljava/io/InputStreamReader;
 
     invoke-direct {v4, v3}, Ljava/io/InputStreamReader;-><init>(Ljava/io/InputStream;)V
 
     .line 44
-    .local v4, reader:Ljava/io/InputStreamReader;
+    .local v4, "reader":Ljava/io/InputStreamReader;
     new-instance v5, Ljava/io/StringWriter;
 
     invoke-direct {v5}, Ljava/io/StringWriter;-><init>()V
 
     .line 45
-    .local v5, writer:Ljava/io/StringWriter;
+    .local v5, "writer":Ljava/io/StringWriter;
     new-array v0, v7, [C
 
     .line 48
-    .local v0, buffer:[C
+    .local v0, "buffer":[C
     :goto_0
     const/4 v6, 0x0
 
@@ -120,7 +121,7 @@
 
     move-result v1
 
-    .local v1, bytesRead:I
+    .local v1, "bytesRead":I
     if-lez v1, :cond_0
 
     .line 49
@@ -133,23 +134,23 @@
     goto :goto_0
 
     .line 51
-    .end local v1           #bytesRead:I
+    .end local v1    # "bytesRead":I
     :catch_0
     move-exception v2
 
     .line 52
-    .local v2, e:Ljava/io/IOException;
+    .local v2, "e":Ljava/io/IOException;
     new-instance v6, Ljava/lang/RuntimeException;
 
-    const-string v7, "Could not read specified resource file!"
+    const-string/jumbo v7, "Could not read specified resource file!"
 
     invoke-direct {v6, v7}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v6
 
     .line 54
-    .end local v2           #e:Ljava/io/IOException;
-    .restart local v1       #bytesRead:I
+    .end local v2    # "e":Ljava/io/IOException;
+    .restart local v1    # "bytesRead":I
     :cond_0
     invoke-virtual {v5}, Ljava/io/StringWriter;->toString()Ljava/lang/String;
 

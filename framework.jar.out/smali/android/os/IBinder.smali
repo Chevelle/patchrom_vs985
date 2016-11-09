@@ -24,6 +24,8 @@
 
 .field public static final LIKE_TRANSACTION:I = 0x5f4c494b
 
+.field public static final MAX_IPC_SIZE:I = 0x10000
+
 .field public static final PING_TRANSACTION:I = 0x5f504e47
 
 .field public static final SYSPROPS_TRANSACTION:I = 0x5f535052

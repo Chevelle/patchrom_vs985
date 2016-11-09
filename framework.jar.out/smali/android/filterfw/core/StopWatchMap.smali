@@ -44,7 +44,7 @@
 
     iput-object v0, p0, Landroid/filterfw/core/StopWatchMap;->mStopWatches:Ljava/util/HashMap;
 
-    .line 78
+    .line 76
     return-void
 .end method
 
@@ -52,7 +52,7 @@
 # virtual methods
 .method public start(Ljava/lang/String;)V
     .locals 2
-    .parameter "stopWatchName"
+    .param p1, "stopWatchName"    # Ljava/lang/String;
 
     .prologue
     .line 81
@@ -60,8 +60,7 @@
 
     if-nez v0, :cond_0
 
-    .line 88
-    :goto_0
+    .line 82
     return-void
 
     .line 84
@@ -95,12 +94,13 @@
 
     invoke-virtual {v0}, Landroid/filterfw/core/StopWatch;->start()V
 
-    goto :goto_0
+    .line 80
+    return-void
 .end method
 
 .method public stop(Ljava/lang/String;)V
     .locals 3
-    .parameter "stopWatchName"
+    .param p1, "stopWatchName"    # Ljava/lang/String;
 
     .prologue
     .line 91
@@ -108,8 +108,7 @@
 
     if-nez v0, :cond_0
 
-    .line 99
-    :goto_0
+    .line 92
     return-void
 
     .line 94
@@ -125,11 +124,12 @@
     .line 95
     new-instance v0, Ljava/lang/RuntimeException;
 
+    .line 96
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Calling stop with unknown stopWatchName: "
+    const-string/jumbo v2, "Calling stop with unknown stopWatchName: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -143,6 +143,7 @@
 
     move-result-object v1
 
+    .line 95
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
@@ -159,5 +160,6 @@
 
     invoke-virtual {v0}, Landroid/filterfw/core/StopWatch;->stop()V
 
-    goto :goto_0
+    .line 90
+    return-void
 .end method

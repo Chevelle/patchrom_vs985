@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/telephony/CellInfo;
     .locals 3
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 201
@@ -51,13 +51,13 @@
     move-result v0
 
     .line 202
-    .local v0, type:I
+    .local v0, "type":I
     packed-switch v0, :pswitch_data_0
 
     .line 207
     new-instance v1, Ljava/lang/RuntimeException;
 
-    const-string v2, "Bad CellInfo Parcel"
+    const-string/jumbo v2, "Bad CellInfo Parcel"
 
     invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -69,8 +69,6 @@
 
     move-result-object v1
 
-    .line 206
-    :goto_0
     return-object v1
 
     .line 204
@@ -79,7 +77,7 @@
 
     move-result-object v1
 
-    goto :goto_0
+    return-object v1
 
     .line 205
     :pswitch_2
@@ -87,7 +85,7 @@
 
     move-result-object v1
 
-    goto :goto_0
+    return-object v1
 
     .line 206
     :pswitch_3
@@ -95,11 +93,9 @@
 
     move-result-object v1
 
-    goto :goto_0
+    return-object v1
 
     .line 202
-    nop
-
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0
@@ -111,10 +107,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 198
+    .line 200
     invoke-virtual {p0, p1}, Landroid/telephony/CellInfo$1;->createFromParcel(Landroid/os/Parcel;)Landroid/telephony/CellInfo;
 
     move-result-object v0
@@ -124,7 +120,7 @@
 
 .method public newArray(I)[Landroid/telephony/CellInfo;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 213
@@ -135,10 +131,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 198
+    .line 212
     invoke-virtual {p0, p1}, Landroid/telephony/CellInfo$1;->newArray(I)[Landroid/telephony/CellInfo;
 
     move-result-object v0

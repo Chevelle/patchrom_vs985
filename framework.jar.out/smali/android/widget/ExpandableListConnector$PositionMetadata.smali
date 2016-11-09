@@ -42,15 +42,17 @@
     .locals 2
 
     .prologue
-    .line 957
+    .line 958
     new-instance v0, Ljava/util/ArrayList;
 
     const/4 v1, 0x5
 
     invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V
 
+    .line 957
     sput-object v0, Landroid/widget/ExpandableListConnector$PositionMetadata;->sPool:Ljava/util/ArrayList;
 
+    .line 954
     return-void
 .end method
 
@@ -61,7 +63,6 @@
     .line 991
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 992
     return-void
 .end method
 
@@ -94,51 +95,49 @@
     move-result-object v0
 
     check-cast v0, Landroid/widget/ExpandableListConnector$PositionMetadata;
-
-    .line 1011
-    .local v0, pm:Landroid/widget/ExpandableListConnector$PositionMetadata;
-    monitor-exit v2
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .local v0, "pm":Landroid/widget/ExpandableListConnector$PositionMetadata;
+    monitor-exit v2
 
     .line 1012
     invoke-direct {v0}, Landroid/widget/ExpandableListConnector$PositionMetadata;->resetState()V
 
     .line 1013
-    .end local v0           #pm:Landroid/widget/ExpandableListConnector$PositionMetadata;
-    :goto_0
     return-object v0
 
     .line 1009
+    .end local v0    # "pm":Landroid/widget/ExpandableListConnector$PositionMetadata;
     :cond_0
     :try_start_1
-    new-instance v0, Landroid/widget/ExpandableListConnector$PositionMetadata;
+    new-instance v1, Landroid/widget/ExpandableListConnector$PositionMetadata;
 
-    invoke-direct {v0}, Landroid/widget/ExpandableListConnector$PositionMetadata;-><init>()V
+    invoke-direct {v1}, Landroid/widget/ExpandableListConnector$PositionMetadata;-><init>()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     monitor-exit v2
 
-    goto :goto_0
+    return-object v1
 
-    .line 1011
+    .line 1005
     :catchall_0
     move-exception v1
 
     monitor-exit v2
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v1
 .end method
 
 .method static obtain(IIIILandroid/widget/ExpandableListConnector$GroupMetadata;I)Landroid/widget/ExpandableListConnector$PositionMetadata;
     .locals 2
-    .parameter "flatListPos"
-    .parameter "type"
-    .parameter "groupPos"
-    .parameter "childPos"
-    .parameter "groupMetadata"
-    .parameter "groupInsertIndex"
+    .param p0, "flatListPos"    # I
+    .param p1, "type"    # I
+    .param p2, "groupPos"    # I
+    .param p3, "childPos"    # I
+    .param p4, "groupMetadata"    # Landroid/widget/ExpandableListConnector$GroupMetadata;
+    .param p5, "groupInsertIndex"    # I
 
     .prologue
     .line 996
@@ -147,7 +146,7 @@
     move-result-object v0
 
     .line 997
-    .local v0, pm:Landroid/widget/ExpandableListConnector$PositionMetadata;
+    .local v0, "pm":Landroid/widget/ExpandableListConnector$PositionMetadata;
     invoke-static {p1, p2, p3, p0}, Landroid/widget/ExpandableListPosition;->obtain(IIII)Landroid/widget/ExpandableListPosition;
 
     move-result-object v1
@@ -192,7 +191,7 @@
 
     iput v0, p0, Landroid/widget/ExpandableListConnector$PositionMetadata;->groupInsertIndex:I
 
-    .line 986
+    .line 979
     return-void
 .end method
 
@@ -246,21 +245,20 @@
     sget-object v0, Landroid/widget/ExpandableListConnector$PositionMetadata;->sPool:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1022
     :cond_0
     monitor-exit v1
 
-    .line 1023
+    .line 1016
     return-void
 
-    .line 1022
+    .line 1018
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

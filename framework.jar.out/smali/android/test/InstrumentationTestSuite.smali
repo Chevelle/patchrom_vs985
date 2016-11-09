@@ -10,7 +10,7 @@
 # direct methods
 .method public constructor <init>(Landroid/app/Instrumentation;)V
     .locals 0
-    .parameter "instr"
+    .param p1, "instr"    # Landroid/app/Instrumentation;
 
     .prologue
     .line 37
@@ -19,14 +19,14 @@
     .line 38
     iput-object p1, p0, Landroid/test/InstrumentationTestSuite;->mInstrumentation:Landroid/app/Instrumentation;
 
-    .line 39
+    .line 37
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/Class;Landroid/app/Instrumentation;)V
     .locals 0
-    .parameter "theClass"
-    .parameter "instr"
+    .param p1, "theClass"    # Ljava/lang/Class;
+    .param p2, "instr"    # Landroid/app/Instrumentation;
 
     .prologue
     .line 53
@@ -35,14 +35,14 @@
     .line 54
     iput-object p2, p0, Landroid/test/InstrumentationTestSuite;->mInstrumentation:Landroid/app/Instrumentation;
 
-    .line 55
+    .line 52
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Landroid/app/Instrumentation;)V
     .locals 0
-    .parameter "name"
-    .parameter "instr"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "instr"    # Landroid/app/Instrumentation;
 
     .prologue
     .line 43
@@ -51,7 +51,7 @@
     .line 44
     iput-object p2, p0, Landroid/test/InstrumentationTestSuite;->mInstrumentation:Landroid/app/Instrumentation;
 
-    .line 45
+    .line 42
     return-void
 .end method
 
@@ -59,7 +59,7 @@
 # virtual methods
 .method public addTestSuite(Ljava/lang/Class;)V
     .locals 2
-    .parameter "testClass"
+    .param p1, "testClass"    # Ljava/lang/Class;
 
     .prologue
     .line 60
@@ -71,14 +71,14 @@
 
     invoke-virtual {p0, v0}, Landroid/test/InstrumentationTestSuite;->addTest(Ljunit/framework/Test;)V
 
-    .line 61
+    .line 59
     return-void
 .end method
 
 .method public runTest(Ljunit/framework/Test;Ljunit/framework/TestResult;)V
     .locals 2
-    .parameter "test"
-    .parameter "result"
+    .param p1, "test"    # Ljunit/framework/Test;
+    .param p2, "result"    # Ljunit/framework/TestResult;
 
     .prologue
     .line 67
@@ -99,6 +99,6 @@
     :cond_0
     invoke-super {p0, p1, p2}, Ljunit/framework/TestSuite;->runTest(Ljunit/framework/Test;Ljunit/framework/TestResult;)V
 
-    .line 73
+    .line 65
     return-void
 .end method

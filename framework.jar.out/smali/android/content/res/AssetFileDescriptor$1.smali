@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/content/res/AssetFileDescriptor;
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 372
@@ -55,10 +55,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 370
+    .line 371
     invoke-virtual {p0, p1}, Landroid/content/res/AssetFileDescriptor$1;->createFromParcel(Landroid/os/Parcel;)Landroid/content/res/AssetFileDescriptor;
 
     move-result-object v0
@@ -68,7 +68,7 @@
 
 .method public newArray(I)[Landroid/content/res/AssetFileDescriptor;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 375
@@ -79,10 +79,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 370
+    .line 374
     invoke-virtual {p0, p1}, Landroid/content/res/AssetFileDescriptor$1;->newArray(I)[Landroid/content/res/AssetFileDescriptor;
 
     move-result-object v0

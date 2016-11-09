@@ -19,21 +19,20 @@
     .locals 0
 
     .prologue
-    .line 418
+    .line 494
     invoke-direct {p0}, Ljava/lang/RuntimeException;-><init>()V
 
-    .line 419
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 421
+    .line 497
     invoke-direct {p0, p1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
-    .line 422
+    .line 496
     return-void
 .end method

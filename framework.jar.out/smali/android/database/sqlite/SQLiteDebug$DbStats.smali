@@ -29,18 +29,18 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;JJIIII)V
     .locals 4
-    .parameter "dbName"
-    .parameter "pageCount"
-    .parameter "pageSize"
-    .parameter "lookaside"
-    .parameter "hits"
-    .parameter "misses"
-    .parameter "cachesize"
+    .param p1, "dbName"    # Ljava/lang/String;
+    .param p2, "pageCount"    # J
+    .param p4, "pageSize"    # J
+    .param p6, "lookaside"    # I
+    .param p7, "hits"    # I
+    .param p8, "misses"    # I
+    .param p9, "cachesize"    # I
 
     .prologue
     const-wide/16 v2, 0x400
 
-    .line 137
+    .line 136
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 138
@@ -70,7 +70,7 @@
 
     move-result-object v0
 
-    const-string v1, "/"
+    const-string/jumbo v1, "/"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -80,7 +80,7 @@
 
     move-result-object v0
 
-    const-string v1, "/"
+    const-string/jumbo v1, "/"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -96,6 +96,6 @@
 
     iput-object v0, p0, Landroid/database/sqlite/SQLiteDebug$DbStats;->cache:Ljava/lang/String;
 
-    .line 143
+    .line 137
     return-void
 .end method

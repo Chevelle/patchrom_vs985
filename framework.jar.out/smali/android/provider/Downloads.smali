@@ -28,12 +28,12 @@
 
 .method public static final removeAllDownloadsByPackage(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
     .locals 5
-    .parameter "context"
-    .parameter "notification_package"
-    .parameter "notification_class"
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "notification_package"    # Ljava/lang/String;
+    .param p2, "notification_class"    # Ljava/lang/String;
 
     .prologue
-    .line 812
+    .line 805
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v0
@@ -42,6 +42,7 @@
 
     const-string/jumbo v2, "notificationpackage=? AND notificationclass=?"
 
+    .line 806
     const/4 v3, 0x2
 
     new-array v3, v3, [Ljava/lang/String;
@@ -54,8 +55,9 @@
 
     aput-object p2, v3, v4
 
+    .line 805
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/ContentResolver;->delete(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
 
-    .line 814
+    .line 804
     return-void
 .end method

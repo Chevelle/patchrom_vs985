@@ -44,5 +44,6 @@
 
     iput-object v0, p0, Landroid/view/KeyCharacterMap$KeyData;->meta:[C
 
+    .line 524
     return-void
 .end method

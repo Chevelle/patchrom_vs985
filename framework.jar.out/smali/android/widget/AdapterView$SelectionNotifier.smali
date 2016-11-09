@@ -24,11 +24,11 @@
 # direct methods
 .method private constructor <init>(Landroid/widget/AdapterView;)V
     .locals 0
-    .parameter
 
     .prologue
-    .line 851
-    .local p0, this:Landroid/widget/AdapterView$SelectionNotifier;,"Landroid/widget/AdapterView<TT;>.SelectionNotifier;"
+    .line 877
+    .local p0, "this":Landroid/widget/AdapterView$SelectionNotifier;, "Landroid/widget/AdapterView<TT;>.SelectionNotifier;"
+    .local p1, "this$0":Landroid/widget/AdapterView;, "Landroid/widget/AdapterView<TT;>;"
     iput-object p1, p0, Landroid/widget/AdapterView$SelectionNotifier;->this$0:Landroid/widget/AdapterView;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -36,14 +36,12 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/widget/AdapterView;Landroid/widget/AdapterView$1;)V
+.method synthetic constructor <init>(Landroid/widget/AdapterView;Landroid/widget/AdapterView$SelectionNotifier;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Landroid/widget/AdapterView;
 
     .prologue
-    .line 851
-    .local p0, this:Landroid/widget/AdapterView$SelectionNotifier;,"Landroid/widget/AdapterView<TT;>.SelectionNotifier;"
+    .local p0, "this":Landroid/widget/AdapterView$SelectionNotifier;, "Landroid/widget/AdapterView<TT;>.SelectionNotifier;"
     invoke-direct {p0, p1}, Landroid/widget/AdapterView$SelectionNotifier;-><init>(Landroid/widget/AdapterView;)V
 
     return-void
@@ -52,18 +50,47 @@
 
 # virtual methods
 .method public run()V
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 853
-    .local p0, this:Landroid/widget/AdapterView$SelectionNotifier;,"Landroid/widget/AdapterView<TT;>.SelectionNotifier;"
+    .local p0, "this":Landroid/widget/AdapterView$SelectionNotifier;, "Landroid/widget/AdapterView<TT;>.SelectionNotifier;"
+    const/4 v1, 0x0
+
+    .line 879
+    iget-object v0, p0, Landroid/widget/AdapterView$SelectionNotifier;->this$0:Landroid/widget/AdapterView;
+
+    invoke-static {v0, v1}, Landroid/widget/AdapterView;->-set0(Landroid/widget/AdapterView;Landroid/widget/AdapterView$SelectionNotifier;)Landroid/widget/AdapterView$SelectionNotifier;
+
+    .line 881
     iget-object v0, p0, Landroid/widget/AdapterView$SelectionNotifier;->this$0:Landroid/widget/AdapterView;
 
     iget-boolean v0, v0, Landroid/widget/AdapterView;->mDataChanged:Z
 
     if-eqz v0, :cond_1
 
-    .line 857
+    iget-object v0, p0, Landroid/widget/AdapterView$SelectionNotifier;->this$0:Landroid/widget/AdapterView;
+
+    invoke-virtual {v0}, Landroid/widget/AdapterView;->getViewRootImpl()Landroid/view/ViewRootImpl;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_1
+
+    .line 882
+    iget-object v0, p0, Landroid/widget/AdapterView$SelectionNotifier;->this$0:Landroid/widget/AdapterView;
+
+    invoke-virtual {v0}, Landroid/widget/AdapterView;->getViewRootImpl()Landroid/view/ViewRootImpl;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/view/ViewRootImpl;->isLayoutRequested()Z
+
+    move-result v0
+
+    .line 881
+    if-eqz v0, :cond_1
+
+    .line 886
     iget-object v0, p0, Landroid/widget/AdapterView$SelectionNotifier;->this$0:Landroid/widget/AdapterView;
 
     invoke-virtual {v0}, Landroid/widget/AdapterView;->getAdapter()Landroid/widget/Adapter;
@@ -72,28 +99,21 @@
 
     if-eqz v0, :cond_0
 
-    .line 858
+    .line 887
     iget-object v0, p0, Landroid/widget/AdapterView$SelectionNotifier;->this$0:Landroid/widget/AdapterView;
 
-    invoke-virtual {v0, p0}, Landroid/widget/AdapterView;->post(Ljava/lang/Runnable;)Z
+    invoke-static {v0, p0}, Landroid/widget/AdapterView;->-set0(Landroid/widget/AdapterView;Landroid/widget/AdapterView$SelectionNotifier;)Landroid/widget/AdapterView$SelectionNotifier;
 
-    .line 864
+    .line 878
     :cond_0
     :goto_0
     return-void
 
-    .line 861
+    .line 890
     :cond_1
     iget-object v0, p0, Landroid/widget/AdapterView$SelectionNotifier;->this$0:Landroid/widget/AdapterView;
 
-    #calls: Landroid/widget/AdapterView;->fireOnSelected()V
-    invoke-static {v0}, Landroid/widget/AdapterView;->access$200(Landroid/widget/AdapterView;)V
-
-    .line 862
-    iget-object v0, p0, Landroid/widget/AdapterView$SelectionNotifier;->this$0:Landroid/widget/AdapterView;
-
-    #calls: Landroid/widget/AdapterView;->performAccessibilityActionsOnSelected()V
-    invoke-static {v0}, Landroid/widget/AdapterView;->access$300(Landroid/widget/AdapterView;)V
+    invoke-static {v0}, Landroid/widget/AdapterView;->-wrap1(Landroid/widget/AdapterView;)V
 
     goto :goto_0
 .end method

@@ -22,7 +22,7 @@
 
     iput-object v0, p0, Landroid/gesture/GestureLibrary;->mStore:Landroid/gesture/GestureStore;
 
-    .line 28
+    .line 26
     return-void
 .end method
 
@@ -30,8 +30,8 @@
 # virtual methods
 .method public addGesture(Ljava/lang/String;Landroid/gesture/Gesture;)V
     .locals 1
-    .parameter "entryName"
-    .parameter "gesture"
+    .param p1, "entryName"    # Ljava/lang/String;
+    .param p2, "gesture"    # Landroid/gesture/Gesture;
 
     .prologue
     .line 68
@@ -39,7 +39,7 @@
 
     invoke-virtual {v0, p1, p2}, Landroid/gesture/GestureStore;->addGesture(Ljava/lang/String;Landroid/gesture/Gesture;)V
 
-    .line 69
+    .line 67
     return-void
 .end method
 
@@ -68,7 +68,7 @@
 
 .method public getGestures(Ljava/lang/String;)Ljava/util/ArrayList;
     .locals 1
-    .parameter "entryName"
+    .param p1, "entryName"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -149,7 +149,7 @@
 
 .method public recognize(Landroid/gesture/Gesture;)Ljava/util/ArrayList;
     .locals 1
-    .parameter "gesture"
+    .param p1, "gesture"    # Landroid/gesture/Gesture;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -175,7 +175,7 @@
 
 .method public removeEntry(Ljava/lang/String;)V
     .locals 1
-    .parameter "entryName"
+    .param p1, "entryName"    # Ljava/lang/String;
 
     .prologue
     .line 76
@@ -183,14 +183,14 @@
 
     invoke-virtual {v0, p1}, Landroid/gesture/GestureStore;->removeEntry(Ljava/lang/String;)V
 
-    .line 77
+    .line 75
     return-void
 .end method
 
 .method public removeGesture(Ljava/lang/String;Landroid/gesture/Gesture;)V
     .locals 1
-    .parameter "entryName"
-    .parameter "gesture"
+    .param p1, "entryName"    # Ljava/lang/String;
+    .param p2, "gesture"    # Landroid/gesture/Gesture;
 
     .prologue
     .line 72
@@ -198,7 +198,7 @@
 
     invoke-virtual {v0, p1, p2}, Landroid/gesture/GestureStore;->removeGesture(Ljava/lang/String;Landroid/gesture/Gesture;)V
 
-    .line 73
+    .line 71
     return-void
 .end method
 
@@ -207,7 +207,7 @@
 
 .method public setOrientationStyle(I)V
     .locals 1
-    .parameter "style"
+    .param p1, "style"    # I
 
     .prologue
     .line 44
@@ -215,13 +215,13 @@
 
     invoke-virtual {v0, p1}, Landroid/gesture/GestureStore;->setOrientationStyle(I)V
 
-    .line 45
+    .line 43
     return-void
 .end method
 
 .method public setSequenceType(I)V
     .locals 1
-    .parameter "type"
+    .param p1, "type"    # I
 
     .prologue
     .line 52
@@ -229,6 +229,6 @@
 
     invoke-virtual {v0, p1}, Landroid/gesture/GestureStore;->setSequenceType(I)V
 
-    .line 53
+    .line 51
     return-void
 .end method

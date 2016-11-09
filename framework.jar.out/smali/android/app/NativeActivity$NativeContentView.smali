@@ -21,25 +21,25 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 0
-    .parameter "context"
+    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 120
+    .line 119
     invoke-direct {p0, p1}, Landroid/view/View;-><init>(Landroid/content/Context;)V
 
-    .line 121
+    .line 118
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
     .locals 0
-    .parameter "context"
-    .parameter "attrs"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "attrs"    # Landroid/util/AttributeSet;
 
     .prologue
-    .line 124
+    .line 123
     invoke-direct {p0, p1, p2}, Landroid/view/View;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    .line 125
+    .line 122
     return-void
 .end method

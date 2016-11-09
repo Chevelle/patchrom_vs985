@@ -16,10 +16,10 @@
 
 .method static from(Landroid/speech/tts/TextToSpeech$OnUtteranceCompletedListener;)Landroid/speech/tts/UtteranceProgressListener;
     .locals 1
-    .parameter "listener"
+    .param p0, "listener"    # Landroid/speech/tts/TextToSpeech$OnUtteranceCompletedListener;
 
     .prologue
-    .line 54
+    .line 84
     new-instance v0, Landroid/speech/tts/UtteranceProgressListener$1;
 
     invoke-direct {v0, p0}, Landroid/speech/tts/UtteranceProgressListener$1;-><init>(Landroid/speech/tts/TextToSpeech$OnUtteranceCompletedListener;)V
@@ -33,7 +33,32 @@
 .end method
 
 .method public abstract onError(Ljava/lang/String;)V
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end method
+
+.method public onError(Ljava/lang/String;I)V
+    .locals 0
+    .param p1, "utteranceId"    # Ljava/lang/String;
+    .param p2, "errorCode"    # I
+
+    .prologue
+    .line 59
+    invoke-virtual {p0, p1}, Landroid/speech/tts/UtteranceProgressListener;->onError(Ljava/lang/String;)V
+
+    .line 58
+    return-void
 .end method
 
 .method public abstract onStart(Ljava/lang/String;)V
+.end method
+
+.method public onStop(Ljava/lang/String;Z)V
+    .locals 0
+    .param p1, "utteranceId"    # Ljava/lang/String;
+    .param p2, "interrupted"    # Z
+
+    .prologue
+    .line 73
+    return-void
 .end method

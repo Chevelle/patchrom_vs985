@@ -12,54 +12,50 @@
     .locals 1
 
     .prologue
-    .line 231
-    const-string v0, "filterfw"
+    .line 229
+    const-string/jumbo v0, "filterfw"
 
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
-    .line 232
+    .line 32
     return-void
 .end method
 
 .method constructor <init>(Landroid/filterfw/core/FrameFormat;Landroid/filterfw/core/FrameManager;)V
-    .locals 2
-    .parameter "format"
-    .parameter "frameManager"
+    .locals 3
+    .param p1, "format"    # Landroid/filterfw/core/FrameFormat;
+    .param p2, "frameManager"    # Landroid/filterfw/core/FrameManager;
 
     .prologue
-    .line 39
+    const/4 v1, 0x0
+
+    .line 37
     invoke-direct {p0, p1, p2}, Landroid/filterfw/core/Frame;-><init>(Landroid/filterfw/core/FrameFormat;Landroid/filterfw/core/FrameManager;)V
 
-    .line 36
-    const/4 v1, -0x1
+    .line 34
+    const/4 v2, -0x1
 
-    iput v1, p0, Landroid/filterfw/core/NativeFrame;->nativeFrameId:I
+    iput v2, p0, Landroid/filterfw/core/NativeFrame;->nativeFrameId:I
 
-    .line 40
+    .line 38
     invoke-virtual {p1}, Landroid/filterfw/core/FrameFormat;->getSize()I
 
     move-result v0
 
-    .line 41
-    .local v0, capacity:I
+    .line 39
+    .local v0, "capacity":I
     invoke-direct {p0, v0}, Landroid/filterfw/core/NativeFrame;->nativeAllocate(I)Z
 
-    .line 42
+    .line 40
     if-eqz v0, :cond_0
 
     const/4 v1, 0x1
 
-    :goto_0
+    :cond_0
     invoke-virtual {p0, v1}, Landroid/filterfw/core/NativeFrame;->setReusable(Z)V
 
-    .line 43
+    .line 36
     return-void
-
-    .line 42
-    :cond_0
-    const/4 v1, 0x0
-
-    goto :goto_0
 .end method
 
 .method private native getNativeBitmap(Landroid/graphics/Bitmap;II)Z
@@ -116,7 +112,7 @@
     .locals 6
 
     .prologue
-    .line 189
+    .line 187
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v3
@@ -129,16 +125,16 @@
 
     if-eq v3, v4, :cond_0
 
-    .line 190
+    .line 188
     new-instance v3, Ljava/lang/RuntimeException;
 
-    const-string v4, "Attempting to get Bitmap for non 2-dimensional native frame!"
+    const-string/jumbo v4, "Attempting to get Bitmap for non 2-dimensional native frame!"
 
     invoke-direct {v3, v4}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v3
 
-    .line 192
+    .line 190
     :cond_0
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
@@ -148,6 +144,7 @@
 
     move-result v3
 
+    .line 191
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v4
@@ -156,20 +153,22 @@
 
     move-result v4
 
+    .line 192
     sget-object v5, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
+    .line 190
     invoke-static {v3, v4, v5}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
 
     move-result-object v2
 
-    .line 195
-    .local v2, result:Landroid/graphics/Bitmap;
+    .line 193
+    .local v2, "result":Landroid/graphics/Bitmap;
     invoke-virtual {v2}, Landroid/graphics/Bitmap;->getByteCount()I
 
     move-result v1
 
-    .line 196
-    .local v1, byteCount:I
+    .line 194
+    .local v1, "byteCount":I
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v3
@@ -178,24 +177,24 @@
 
     move-result v0
 
-    .line 197
-    .local v0, bps:I
+    .line 195
+    .local v0, "bps":I
     invoke-direct {p0, v2, v1, v0}, Landroid/filterfw/core/NativeFrame;->getNativeBitmap(Landroid/graphics/Bitmap;II)Z
 
     move-result v3
 
     if-nez v3, :cond_1
 
-    .line 198
+    .line 196
     new-instance v3, Ljava/lang/RuntimeException;
 
-    const-string v4, "Could not get bitmap data from native frame!"
+    const-string/jumbo v4, "Could not get bitmap data from native frame!"
 
     invoke-direct {v3, v4}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v3
 
-    .line 200
+    .line 198
     :cond_1
     return-object v2
 .end method
@@ -204,7 +203,7 @@
     .locals 1
 
     .prologue
-    .line 58
+    .line 56
     invoke-direct {p0}, Landroid/filterfw/core/NativeFrame;->getNativeCapacity()I
 
     move-result v0
@@ -213,27 +212,27 @@
 .end method
 
 .method public getData()Ljava/nio/ByteBuffer;
-    .locals 2
+    .locals 3
 
     .prologue
-    .line 165
+    const/4 v1, 0x0
+
+    .line 163
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
-    move-result-object v1
+    move-result-object v2
 
-    invoke-virtual {v1}, Landroid/filterfw/core/FrameFormat;->getSize()I
+    invoke-virtual {v2}, Landroid/filterfw/core/FrameFormat;->getSize()I
 
-    move-result v1
+    move-result v2
 
-    invoke-direct {p0, v1}, Landroid/filterfw/core/NativeFrame;->getNativeData(I)[B
+    invoke-direct {p0, v2}, Landroid/filterfw/core/NativeFrame;->getNativeData(I)[B
 
     move-result-object v0
 
-    .line 166
-    .local v0, data:[B
+    .line 164
+    .local v0, "data":[B
     if-nez v0, :cond_0
-
-    const/4 v1, 0x0
 
     :goto_0
     return-object v1
@@ -250,7 +249,7 @@
     .locals 1
 
     .prologue
-    .line 141
+    .line 139
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v0
@@ -270,7 +269,7 @@
     .locals 1
 
     .prologue
-    .line 124
+    .line 122
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v0
@@ -290,7 +289,7 @@
     .locals 6
 
     .prologue
-    .line 73
+    .line 71
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v3
@@ -303,16 +302,14 @@
 
     if-eq v3, v4, :cond_0
 
-    .line 74
+    .line 72
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getData()Ljava/nio/ByteBuffer;
 
-    move-result-object v2
+    move-result-object v3
 
-    .line 107
-    :goto_0
-    return-object v2
+    return-object v3
 
-    .line 78
+    .line 76
     :cond_0
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
@@ -322,20 +319,20 @@
 
     move-result-object v1
 
-    .line 79
-    .local v1, structClass:Ljava/lang/Class;
+    .line 77
+    .local v1, "structClass":Ljava/lang/Class;
     if-nez v1, :cond_1
 
-    .line 80
+    .line 78
     new-instance v3, Ljava/lang/RuntimeException;
 
-    const-string v4, "Attempting to get object data from frame that does not specify a structure object class!"
+    const-string/jumbo v4, "Attempting to get object data from frame that does not specify a structure object class!"
 
     invoke-direct {v3, v4}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v3
 
-    .line 85
+    .line 83
     :cond_1
     const-class v3, Landroid/filterfw/core/NativeBuffer;
 
@@ -345,62 +342,62 @@
 
     if-nez v3, :cond_2
 
-    .line 86
+    .line 84
     new-instance v3, Ljava/lang/RuntimeException;
 
-    const-string v4, "NativeFrame object class must be a subclass of NativeBuffer!"
+    const-string/jumbo v4, "NativeFrame object class must be a subclass of NativeBuffer!"
 
     invoke-direct {v3, v4}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v3
 
-    .line 91
+    .line 89
     :cond_2
     const/4 v2, 0x0
 
-    .line 93
-    .local v2, structData:Landroid/filterfw/core/NativeBuffer;
+    .line 91
+    .local v2, "structData":Landroid/filterfw/core/NativeBuffer;
     :try_start_0
     invoke-virtual {v1}, Ljava/lang/Class;->newInstance()Ljava/lang/Object;
 
     move-result-object v2
 
-    .end local v2           #structData:Landroid/filterfw/core/NativeBuffer;
+    .end local v2    # "structData":Landroid/filterfw/core/NativeBuffer;
     check-cast v2, Landroid/filterfw/core/NativeBuffer;
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 100
-    .restart local v2       #structData:Landroid/filterfw/core/NativeBuffer;
+    .line 98
+    .local v2, "structData":Landroid/filterfw/core/NativeBuffer;
     invoke-direct {p0, v2}, Landroid/filterfw/core/NativeFrame;->getNativeBuffer(Landroid/filterfw/core/NativeBuffer;)Z
 
     move-result v3
 
     if-nez v3, :cond_3
 
-    .line 101
+    .line 99
     new-instance v3, Ljava/lang/RuntimeException;
 
-    const-string v4, "Could not get the native structured data for frame!"
+    const-string/jumbo v4, "Could not get the native structured data for frame!"
 
     invoke-direct {v3, v4}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v3
 
-    .line 94
-    .end local v2           #structData:Landroid/filterfw/core/NativeBuffer;
+    .line 92
+    .end local v2    # "structData":Landroid/filterfw/core/NativeBuffer;
     :catch_0
     move-exception v0
 
-    .line 95
-    .local v0, e:Ljava/lang/Exception;
+    .line 93
+    .local v0, "e":Ljava/lang/Exception;
     new-instance v3, Ljava/lang/RuntimeException;
 
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v5, "Could not instantiate new structure instance of type \'"
+    const-string/jumbo v5, "Could not instantiate new structure instance of type \'"
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -410,8 +407,10 @@
 
     move-result-object v4
 
-    const-string v5, "\'!"
+    .line 94
+    const-string/jumbo v5, "\'!"
 
+    .line 93
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
@@ -424,22 +423,23 @@
 
     throw v3
 
-    .line 105
-    .end local v0           #e:Ljava/lang/Exception;
-    .restart local v2       #structData:Landroid/filterfw/core/NativeBuffer;
+    .line 103
+    .end local v0    # "e":Ljava/lang/Exception;
+    .restart local v2    # "structData":Landroid/filterfw/core/NativeBuffer;
     :cond_3
     invoke-virtual {v2, p0}, Landroid/filterfw/core/NativeBuffer;->attachToFrame(Landroid/filterfw/core/Frame;)V
 
-    goto :goto_0
+    .line 105
+    return-object v2
 .end method
 
 .method protected declared-synchronized hasNativeAllocation()Z
     .locals 2
 
     .prologue
-    .line 53
     monitor-enter p0
 
+    .line 51
     :try_start_0
     iget v0, p0, Landroid/filterfw/core/NativeFrame;->nativeFrameId:I
     :try_end_0
@@ -473,25 +473,24 @@
     .locals 1
 
     .prologue
-    .line 47
     monitor-enter p0
 
+    .line 45
     :try_start_0
     invoke-direct {p0}, Landroid/filterfw/core/NativeFrame;->nativeDeallocate()Z
 
-    .line 48
+    .line 46
     const/4 v0, -0x1
 
     iput v0, p0, Landroid/filterfw/core/NativeFrame;->nativeFrameId:I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 49
     monitor-exit p0
 
+    .line 44
     return-void
 
-    .line 47
     :catchall_0
     move-exception v0
 
@@ -502,13 +501,13 @@
 
 .method public setBitmap(Landroid/graphics/Bitmap;)V
     .locals 5
-    .parameter "bitmap"
+    .param p1, "bitmap"    # Landroid/graphics/Bitmap;
 
     .prologue
-    .line 171
+    .line 169
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->assertFrameMutable()V
 
-    .line 172
+    .line 170
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v3
@@ -521,16 +520,16 @@
 
     if-eq v3, v4, :cond_0
 
-    .line 173
+    .line 171
     new-instance v3, Ljava/lang/RuntimeException;
 
-    const-string v4, "Attempting to set Bitmap for non 2-dimensional native frame!"
+    const-string/jumbo v4, "Attempting to set Bitmap for non 2-dimensional native frame!"
 
     invoke-direct {v3, v4}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v3
 
-    .line 174
+    .line 172
     :cond_0
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
@@ -546,6 +545,7 @@
 
     if-ne v3, v4, :cond_1
 
+    .line 173
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v3
@@ -560,30 +560,30 @@
 
     if-eq v3, v4, :cond_2
 
-    .line 176
+    .line 174
     :cond_1
     new-instance v3, Ljava/lang/RuntimeException;
 
-    const-string v4, "Bitmap dimensions do not match native frame dimensions!"
+    const-string/jumbo v4, "Bitmap dimensions do not match native frame dimensions!"
 
     invoke-direct {v3, v4}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v3
 
-    .line 178
+    .line 176
     :cond_2
     invoke-static {p1}, Landroid/filterfw/core/NativeFrame;->convertBitmapToRGBA(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
 
     move-result-object v2
 
-    .line 179
-    .local v2, rgbaBitmap:Landroid/graphics/Bitmap;
+    .line 177
+    .local v2, "rgbaBitmap":Landroid/graphics/Bitmap;
     invoke-virtual {v2}, Landroid/graphics/Bitmap;->getByteCount()I
 
     move-result v1
 
-    .line 180
-    .local v1, byteCount:I
+    .line 178
+    .local v1, "byteCount":I
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v3
@@ -592,45 +592,45 @@
 
     move-result v0
 
-    .line 181
-    .local v0, bps:I
+    .line 179
+    .local v0, "bps":I
     invoke-direct {p0, v2, v1, v0}, Landroid/filterfw/core/NativeFrame;->setNativeBitmap(Landroid/graphics/Bitmap;II)Z
 
     move-result v3
 
     if-nez v3, :cond_3
 
-    .line 182
+    .line 180
     new-instance v3, Ljava/lang/RuntimeException;
 
-    const-string v4, "Could not set native frame bitmap data!"
+    const-string/jumbo v4, "Could not set native frame bitmap data!"
 
     invoke-direct {v3, v4}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v3
 
-    .line 185
+    .line 168
     :cond_3
     return-void
 .end method
 
 .method public setData(Ljava/nio/ByteBuffer;II)V
     .locals 4
-    .parameter "buffer"
-    .parameter "offset"
-    .parameter "length"
+    .param p1, "buffer"    # Ljava/nio/ByteBuffer;
+    .param p2, "offset"    # I
+    .param p3, "length"    # I
 
     .prologue
-    .line 148
+    .line 146
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->assertFrameMutable()V
 
-    .line 149
+    .line 147
     invoke-virtual {p1}, Ljava/nio/ByteBuffer;->array()[B
 
     move-result-object v0
 
-    .line 150
-    .local v0, bytes:[B
+    .line 148
+    .local v0, "bytes":[B
     add-int v1, p3, p2
 
     invoke-virtual {p1}, Ljava/nio/ByteBuffer;->limit()I
@@ -639,41 +639,49 @@
 
     if-le v1, v2, :cond_0
 
-    .line 151
+    .line 149
     new-instance v1, Ljava/lang/RuntimeException;
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Offset and length exceed buffer size in native setData: "
+    const-string/jumbo v3, "Offset and length exceed buffer size in native setData: "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
+    .line 150
     add-int v3, p3, p2
 
+    .line 149
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    const-string v3, " bytes given, but only "
+    .line 150
+    const-string/jumbo v3, " bytes given, but only "
 
+    .line 149
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
+    .line 150
     invoke-virtual {p1}, Ljava/nio/ByteBuffer;->limit()I
 
     move-result v3
 
+    .line 149
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    const-string v3, " bytes available!"
+    .line 151
+    const-string/jumbo v3, " bytes available!"
 
+    .line 149
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -686,7 +694,7 @@
 
     throw v1
 
-    .line 154
+    .line 152
     :cond_0
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
@@ -698,19 +706,20 @@
 
     if-eq v1, p3, :cond_1
 
-    .line 155
+    .line 153
     new-instance v1, Ljava/lang/RuntimeException;
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Data size in setData does not match native frame size: Frame size is "
+    const-string/jumbo v3, "Data size in setData does not match native frame size: Frame size is "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
+    .line 154
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v3
@@ -719,12 +728,15 @@
 
     move-result v3
 
+    .line 153
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    const-string v3, " bytes, but "
+    .line 154
+    const-string/jumbo v3, " bytes, but "
 
+    .line 153
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -733,8 +745,10 @@
 
     move-result-object v2
 
-    const-string v3, " bytes given!"
+    .line 155
+    const-string/jumbo v3, " bytes given!"
 
+    .line 153
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -747,7 +761,7 @@
 
     throw v1
 
-    .line 158
+    .line 156
     :cond_1
     invoke-direct {p0, v0, p2, p3}, Landroid/filterfw/core/NativeFrame;->setNativeData([BII)Z
 
@@ -755,26 +769,26 @@
 
     if-nez v1, :cond_2
 
-    .line 159
+    .line 157
     new-instance v1, Ljava/lang/RuntimeException;
 
-    const-string v2, "Could not set native frame data!"
+    const-string/jumbo v2, "Could not set native frame data!"
 
     invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 161
+    .line 145
     :cond_2
     return-void
 .end method
 
 .method public setDataFromFrame(Landroid/filterfw/core/Frame;)V
     .locals 3
-    .parameter "frame"
+    .param p1, "frame"    # Landroid/filterfw/core/Frame;
 
     .prologue
-    .line 206
+    .line 204
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v0
@@ -793,14 +807,15 @@
 
     if-ge v0, v1, :cond_0
 
-    .line 207
+    .line 205
     new-instance v0, Ljava/lang/RuntimeException;
 
+    .line 206
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Attempting to assign frame of size "
+    const-string/jumbo v2, "Attempting to assign frame of size "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -818,18 +833,21 @@
 
     move-result-object v1
 
-    const-string v2, " to "
+    const-string/jumbo v2, " to "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 207
     const-string/jumbo v2, "smaller native frame of size "
 
+    .line 206
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 207
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v2
@@ -838,12 +856,15 @@
 
     move-result v2
 
+    .line 206
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, "!"
+    .line 207
+    const-string/jumbo v2, "!"
 
+    .line 206
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -852,49 +873,50 @@
 
     move-result-object v1
 
+    .line 205
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 213
+    .line 211
     :cond_0
     instance-of v0, p1, Landroid/filterfw/core/NativeFrame;
 
     if-eqz v0, :cond_1
 
-    .line 214
+    .line 212
     check-cast p1, Landroid/filterfw/core/NativeFrame;
 
-    .end local p1
+    .end local p1    # "frame":Landroid/filterfw/core/Frame;
     invoke-direct {p0, p1}, Landroid/filterfw/core/NativeFrame;->nativeCopyFromNative(Landroid/filterfw/core/NativeFrame;)Z
 
-    .line 222
+    .line 202
     :goto_0
     return-void
 
-    .line 215
-    .restart local p1
+    .line 213
+    .restart local p1    # "frame":Landroid/filterfw/core/Frame;
     :cond_1
     instance-of v0, p1, Landroid/filterfw/core/GLFrame;
 
     if-eqz v0, :cond_2
 
-    .line 216
+    .line 214
     check-cast p1, Landroid/filterfw/core/GLFrame;
 
-    .end local p1
+    .end local p1    # "frame":Landroid/filterfw/core/Frame;
     invoke-direct {p0, p1}, Landroid/filterfw/core/NativeFrame;->nativeCopyFromGL(Landroid/filterfw/core/GLFrame;)Z
 
     goto :goto_0
 
-    .line 217
-    .restart local p1
+    .line 215
+    .restart local p1    # "frame":Landroid/filterfw/core/Frame;
     :cond_2
     instance-of v0, p1, Landroid/filterfw/core/SimpleFrame;
 
     if-eqz v0, :cond_3
 
-    .line 218
+    .line 216
     invoke-virtual {p1}, Landroid/filterfw/core/Frame;->getObjectValue()Ljava/lang/Object;
 
     move-result-object v0
@@ -903,7 +925,7 @@
 
     goto :goto_0
 
-    .line 220
+    .line 218
     :cond_3
     invoke-super {p0, p1}, Landroid/filterfw/core/Frame;->setDataFromFrame(Landroid/filterfw/core/Frame;)V
 
@@ -912,13 +934,13 @@
 
 .method public setFloats([F)V
     .locals 4
-    .parameter "floats"
+    .param p1, "floats"    # [F
 
     .prologue
-    .line 129
+    .line 127
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->assertFrameMutable()V
 
-    .line 130
+    .line 128
     array-length v0, p1
 
     invoke-static {}, Landroid/filterfw/core/NativeFrame;->nativeFloatSize()I
@@ -937,14 +959,15 @@
 
     if-le v0, v1, :cond_0
 
-    .line 131
+    .line 129
     new-instance v0, Ljava/lang/RuntimeException;
 
+    .line 130
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "NativeFrame cannot hold "
+    const-string/jumbo v2, "NativeFrame cannot hold "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -956,12 +979,13 @@
 
     move-result-object v1
 
-    const-string v2, " floats. (Can only hold "
+    const-string/jumbo v2, " floats. (Can only hold "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 131
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v2
@@ -976,12 +1000,15 @@
 
     div-int/2addr v2, v3
 
+    .line 130
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, " floats)."
+    .line 131
+    const-string/jumbo v2, " floats)."
 
+    .line 130
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -990,11 +1017,12 @@
 
     move-result-object v1
 
+    .line 129
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 134
+    .line 132
     :cond_0
     invoke-direct {p0, p1}, Landroid/filterfw/core/NativeFrame;->setNativeFloats([F)Z
 
@@ -1002,29 +1030,29 @@
 
     if-nez v0, :cond_1
 
-    .line 135
+    .line 133
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not set int values for native frame!"
+    const-string/jumbo v1, "Could not set int values for native frame!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 137
+    .line 126
     :cond_1
     return-void
 .end method
 
 .method public setInts([I)V
     .locals 4
-    .parameter "ints"
+    .param p1, "ints"    # [I
 
     .prologue
-    .line 112
+    .line 110
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->assertFrameMutable()V
 
-    .line 113
+    .line 111
     array-length v0, p1
 
     invoke-static {}, Landroid/filterfw/core/NativeFrame;->nativeIntSize()I
@@ -1043,14 +1071,15 @@
 
     if-le v0, v1, :cond_0
 
-    .line 114
+    .line 112
     new-instance v0, Ljava/lang/RuntimeException;
 
+    .line 113
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "NativeFrame cannot hold "
+    const-string/jumbo v2, "NativeFrame cannot hold "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1062,12 +1091,13 @@
 
     move-result-object v1
 
-    const-string v2, " integers. (Can only hold "
+    const-string/jumbo v2, " integers. (Can only hold "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 114
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v2
@@ -1082,12 +1112,15 @@
 
     div-int/2addr v2, v3
 
+    .line 113
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, " integers)."
+    .line 114
+    const-string/jumbo v2, " integers)."
 
+    .line 113
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -1096,11 +1129,12 @@
 
     move-result-object v1
 
+    .line 112
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 117
+    .line 115
     :cond_0
     invoke-direct {p0, p1}, Landroid/filterfw/core/NativeFrame;->setNativeInts([I)Z
 
@@ -1108,16 +1142,16 @@
 
     if-nez v0, :cond_1
 
-    .line 118
+    .line 116
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not set int values for native frame!"
+    const-string/jumbo v1, "Could not set int values for native frame!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 120
+    .line 109
     :cond_1
     return-void
 .end method
@@ -1126,12 +1160,12 @@
     .locals 2
 
     .prologue
-    .line 226
+    .line 224
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "NativeFrame id: "
+    const-string/jumbo v1, "NativeFrame id: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1143,7 +1177,7 @@
 
     move-result-object v0
 
-    const-string v1, " ("
+    const-string/jumbo v1, " ("
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1157,16 +1191,18 @@
 
     move-result-object v0
 
-    const-string v1, ") of size "
+    const-string/jumbo v1, ") of size "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 225
     invoke-virtual {p0}, Landroid/filterfw/core/NativeFrame;->getCapacity()I
 
     move-result v1
 
+    .line 224
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0

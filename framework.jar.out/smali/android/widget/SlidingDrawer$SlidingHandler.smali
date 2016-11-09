@@ -21,10 +21,10 @@
 # direct methods
 .method private constructor <init>(Landroid/widget/SlidingDrawer;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/SlidingDrawer;
 
     .prologue
-    .line 964
+    .line 977
     iput-object p1, p0, Landroid/widget/SlidingDrawer$SlidingHandler;->this$0:Landroid/widget/SlidingDrawer;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -32,13 +32,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/widget/SlidingDrawer;Landroid/widget/SlidingDrawer$1;)V
+.method synthetic constructor <init>(Landroid/widget/SlidingDrawer;Landroid/widget/SlidingDrawer$SlidingHandler;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Landroid/widget/SlidingDrawer;
 
     .prologue
-    .line 964
     invoke-direct {p0, p1}, Landroid/widget/SlidingDrawer$SlidingHandler;-><init>(Landroid/widget/SlidingDrawer;)V
 
     return-void
@@ -48,28 +46,27 @@
 # virtual methods
 .method public handleMessage(Landroid/os/Message;)V
     .locals 1
-    .parameter "m"
+    .param p1, "m"    # Landroid/os/Message;
 
     .prologue
-    .line 966
+    .line 979
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 971
+    .line 978
     :goto_0
     return-void
 
-    .line 968
+    .line 981
     :pswitch_0
     iget-object v0, p0, Landroid/widget/SlidingDrawer$SlidingHandler;->this$0:Landroid/widget/SlidingDrawer;
 
-    #calls: Landroid/widget/SlidingDrawer;->doAnimation()V
-    invoke-static {v0}, Landroid/widget/SlidingDrawer;->access$400(Landroid/widget/SlidingDrawer;)V
+    invoke-static {v0}, Landroid/widget/SlidingDrawer;->-wrap0(Landroid/widget/SlidingDrawer;)V
 
     goto :goto_0
 
-    .line 966
+    .line 979
     :pswitch_data_0
     .packed-switch 0x3e8
         :pswitch_0

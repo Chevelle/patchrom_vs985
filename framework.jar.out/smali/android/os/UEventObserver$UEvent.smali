@@ -30,10 +30,12 @@
 
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
-    .locals 7
-    .parameter "message"
+    .locals 8
+    .param p1, "message"    # Ljava/lang/String;
 
     .prologue
+    const/4 v7, 0x0
+
     .line 130
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -48,13 +50,13 @@
     const/4 v3, 0x0
 
     .line 132
-    .local v3, offset:I
+    .local v3, "offset":I
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
     move-result v2
 
     .line 134
-    .local v2, length:I
+    .local v2, "length":I
     :goto_0
     if-ge v3, v2, :cond_0
 
@@ -66,26 +68,24 @@
     move-result v1
 
     .line 136
-    .local v1, equals:I
-    const/4 v4, 0x0
-
-    invoke-virtual {p1, v4, v3}, Ljava/lang/String;->indexOf(II)I
+    .local v1, "equals":I
+    invoke-virtual {p1, v7, v3}, Ljava/lang/String;->indexOf(II)I
 
     move-result v0
 
     .line 137
-    .local v0, at:I
+    .local v0, "at":I
     if-gez v0, :cond_1
 
-    .line 147
-    .end local v0           #at:I
-    .end local v1           #equals:I
+    .line 130
+    .end local v0    # "at":I
+    .end local v1    # "equals":I
     :cond_0
     return-void
 
     .line 139
-    .restart local v0       #at:I
-    .restart local v1       #equals:I
+    .restart local v0    # "at":I
+    .restart local v1    # "equals":I
     :cond_1
     if-le v1, v3, :cond_2
 
@@ -98,19 +98,20 @@
 
     move-result-object v5
 
+    .line 142
     add-int/lit8 v6, v1, 0x1
 
     invoke-virtual {p1, v6, v0}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v6
 
+    .line 141
     invoke-virtual {v4, v5, v6}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 145
     :cond_2
     add-int/lit8 v3, v0, 0x1
 
-    .line 146
     goto :goto_0
 .end method
 
@@ -118,7 +119,7 @@
 # virtual methods
 .method public get(Ljava/lang/String;)Ljava/lang/String;
     .locals 1
-    .parameter "key"
+    .param p1, "key"    # Ljava/lang/String;
 
     .prologue
     .line 150
@@ -135,8 +136,8 @@
 
 .method public get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     .locals 2
-    .parameter "key"
-    .parameter "defaultValue"
+    .param p1, "key"    # Ljava/lang/String;
+    .param p2, "defaultValue"    # Ljava/lang/String;
 
     .prologue
     .line 154
@@ -149,14 +150,14 @@
     check-cast v0, Ljava/lang/String;
 
     .line 155
-    .local v0, result:Ljava/lang/String;
+    .local v0, "result":Ljava/lang/String;
     if-nez v0, :cond_0
 
-    .end local p2
+    .end local p2    # "defaultValue":Ljava/lang/String;
     :goto_0
     return-object p2
 
-    .restart local p2
+    .restart local p2    # "defaultValue":Ljava/lang/String;
     :cond_0
     move-object p2, v0
 

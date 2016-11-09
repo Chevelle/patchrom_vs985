@@ -12,8 +12,8 @@
 # direct methods
 .method constructor <init>(Landroid/print/PrintJobInfo;Landroid/print/PrintManager;)V
     .locals 0
-    .parameter "info"
-    .parameter "printManager"
+    .param p1, "info"    # Landroid/print/PrintJobInfo;
+    .param p2, "printManager"    # Landroid/print/PrintManager;
 
     .prologue
     .line 34
@@ -25,37 +25,40 @@
     .line 36
     iput-object p2, p0, Landroid/print/PrintJob;->mPrintManager:Landroid/print/PrintManager;
 
-    .line 37
+    .line 34
     return-void
 .end method
 
 .method private isInImmutableState()Z
-    .locals 2
+    .locals 3
 
     .prologue
-    .line 176
-    iget-object v1, p0, Landroid/print/PrintJob;->mCachedInfo:Landroid/print/PrintJobInfo;
+    const/4 v1, 0x1
 
-    invoke-virtual {v1}, Landroid/print/PrintJobInfo;->getState()I
+    .line 176
+    iget-object v2, p0, Landroid/print/PrintJob;->mCachedInfo:Landroid/print/PrintJobInfo;
+
+    invoke-virtual {v2}, Landroid/print/PrintJobInfo;->getState()I
 
     move-result v0
 
     .line 177
-    .local v0, state:I
-    const/4 v1, 0x5
+    .local v0, "state":I
+    const/4 v2, 0x5
 
-    if-eq v0, v1, :cond_0
+    if-eq v0, v2, :cond_0
 
-    const/4 v1, 0x7
+    .line 178
+    const/4 v2, 0x7
 
-    if-ne v0, v1, :cond_1
+    if-ne v0, v2, :cond_1
 
+    .line 177
     :cond_0
-    const/4 v1, 0x1
-
     :goto_0
     return v1
 
+    .line 178
     :cond_1
     const/4 v1, 0x0
 
@@ -78,25 +81,19 @@
     move-result v0
 
     .line 80
-    .local v0, state:I
+    .local v0, "state":I
     const/4 v1, 0x2
 
     if-eq v0, v1, :cond_0
 
+    .line 81
     const/4 v1, 0x3
 
-    if-eq v0, v1, :cond_0
-
-    const/4 v1, 0x4
-
-    if-eq v0, v1, :cond_0
-
-    const/4 v1, 0x6
-
-    if-ne v0, v1, :cond_1
+    if-ne v0, v1, :cond_2
 
     .line 84
     :cond_0
+    :goto_0
     iget-object v1, p0, Landroid/print/PrintJob;->mPrintManager:Landroid/print/PrintManager;
 
     iget-object v2, p0, Landroid/print/PrintJob;->mCachedInfo:Landroid/print/PrintJobInfo;
@@ -107,51 +104,69 @@
 
     invoke-virtual {v1, v2}, Landroid/print/PrintManager;->cancelPrintJob(Landroid/print/PrintJobId;)V
 
-    .line 86
+    .line 78
     :cond_1
     return-void
+
+    .line 82
+    :cond_2
+    const/4 v1, 0x4
+
+    if-eq v0, v1, :cond_0
+
+    .line 83
+    const/4 v1, 0x6
+
+    if-ne v0, v1, :cond_1
+
+    goto :goto_0
 .end method
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 4
-    .parameter "obj"
+    .param p1, "obj"    # Ljava/lang/Object;
 
     .prologue
-    const/4 v1, 0x0
+    const/4 v3, 0x0
 
     .line 183
-    if-ne p0, p1, :cond_1
+    if-ne p0, p1, :cond_0
 
     .line 184
     const/4 v1, 0x1
 
-    .line 193
-    :cond_0
-    :goto_0
     return v1
 
     .line 186
-    :cond_1
-    if-eqz p1, :cond_0
+    :cond_0
+    if-nez p1, :cond_1
+
+    .line 187
+    return v3
 
     .line 189
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    :cond_1
+    invoke-virtual {p0}, Landroid/print/PrintJob;->getClass()Ljava/lang/Class;
 
-    move-result-object v2
+    move-result-object v1
 
     invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    move-result-object v3
+    move-result-object v2
 
-    if-ne v2, v3, :cond_0
+    if-eq v1, v2, :cond_2
 
+    .line 190
+    return v3
+
+    :cond_2
     move-object v0, p1
 
     .line 192
     check-cast v0, Landroid/print/PrintJob;
 
     .line 193
-    .local v0, other:Landroid/print/PrintJob;
+    .local v0, "other":Landroid/print/PrintJob;
     iget-object v1, p0, Landroid/print/PrintJob;->mCachedInfo:Landroid/print/PrintJobInfo;
 
     invoke-virtual {v1}, Landroid/print/PrintJobInfo;->getId()Landroid/print/PrintJobId;
@@ -168,7 +183,7 @@
 
     move-result v1
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public getId()Landroid/print/PrintJobId;
@@ -199,8 +214,6 @@
     .line 60
     iget-object v1, p0, Landroid/print/PrintJob;->mCachedInfo:Landroid/print/PrintJobInfo;
 
-    .line 66
-    :goto_0
     return-object v1
 
     .line 62
@@ -218,7 +231,7 @@
     move-result-object v0
 
     .line 63
-    .local v0, info:Landroid/print/PrintJobInfo;
+    .local v0, "info":Landroid/print/PrintJobInfo;
     if-eqz v0, :cond_1
 
     .line 64
@@ -228,7 +241,7 @@
     :cond_1
     iget-object v1, p0, Landroid/print/PrintJob;->mCachedInfo:Landroid/print/PrintJobInfo;
 
-    goto :goto_0
+    return-object v1
 .end method
 
 .method public hashCode()I
@@ -439,7 +452,7 @@
 
     invoke-virtual {v0, v1}, Landroid/print/PrintManager;->restartPrintJob(Landroid/print/PrintJobId;)V
 
-    .line 98
+    .line 94
     :cond_0
     return-void
 .end method

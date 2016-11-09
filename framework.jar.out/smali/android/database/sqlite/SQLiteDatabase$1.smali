@@ -30,7 +30,7 @@
 # direct methods
 .method constructor <init>(Landroid/database/sqlite/SQLiteDatabase;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/database/sqlite/SQLiteDatabase;
 
     .prologue
     .line 81
@@ -61,7 +61,7 @@
     .locals 1
 
     .prologue
-    .line 81
+    .line 83
     invoke-virtual {p0}, Landroid/database/sqlite/SQLiteDatabase$1;->initialValue()Landroid/database/sqlite/SQLiteSession;
 
     move-result-object v0

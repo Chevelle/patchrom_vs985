@@ -23,6 +23,8 @@
 
 .field public static final MPEG_4_SP:I = 0x3
 
+.field public static final VP8:I = 0x4
+
 
 # instance fields
 .field final synthetic this$0:Landroid/media/MediaRecorder;
@@ -31,10 +33,10 @@
 # direct methods
 .method private constructor <init>(Landroid/media/MediaRecorder;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/media/MediaRecorder;
 
     .prologue
-    .line 306
+    .line 382
     iput-object p1, p0, Landroid/media/MediaRecorder$VideoEncoder;->this$0:Landroid/media/MediaRecorder;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

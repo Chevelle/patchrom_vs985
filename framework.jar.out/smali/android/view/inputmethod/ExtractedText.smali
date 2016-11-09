@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/view/inputmethod/ExtractedText$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -44,13 +52,15 @@
     .locals 1
 
     .prologue
-    .line 108
+    .line 109
     new-instance v0, Landroid/view/inputmethod/ExtractedText$1;
 
     invoke-direct {v0}, Landroid/view/inputmethod/ExtractedText$1;-><init>()V
 
+    .line 108
     sput-object v0, Landroid/view/inputmethod/ExtractedText;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 29
     return-void
 .end method
 
@@ -78,8 +88,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 96
@@ -117,6 +127,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 103
+    .line 95
     return-void
 .end method

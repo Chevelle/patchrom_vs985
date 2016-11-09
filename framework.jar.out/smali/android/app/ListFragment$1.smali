@@ -24,7 +24,7 @@
 # direct methods
 .method constructor <init>(Landroid/app/ListFragment;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/app/ListFragment;
 
     .prologue
     .line 151
@@ -52,6 +52,6 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ListView;->focusableViewAvailable(Landroid/view/View;)V
 
-    .line 154
+    .line 152
     return-void
 .end method

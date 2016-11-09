@@ -65,25 +65,25 @@
     .locals 1
 
     .prologue
-    .line 975
-    .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
+    .line 1110
+    .local p0, "this":Landroid/view/ViewTreeObserver$CopyOnWriteArray;, "Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 955
+    .line 1090
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mData:Ljava/util/ArrayList;
 
-    .line 958
+    .line 1093
     new-instance v0, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;
 
     invoke-direct {v0}, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;-><init>()V
 
     iput-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mAccess:Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;
 
-    .line 976
+    .line 1110
     return-void
 .end method
 
@@ -98,13 +98,13 @@
     .end annotation
 
     .prologue
-    .line 979
-    .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
+    .line 1114
+    .local p0, "this":Landroid/view/ViewTreeObserver$CopyOnWriteArray;, "Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
     iget-boolean v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mStart:Z
 
     if-eqz v0, :cond_1
 
-    .line 980
+    .line 1115
     iget-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mDataCopy:Ljava/util/ArrayList;
 
     if-nez v0, :cond_0
@@ -117,25 +117,23 @@
 
     iput-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mDataCopy:Ljava/util/ArrayList;
 
-    .line 981
+    .line 1116
     :cond_0
     iget-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mDataCopy:Ljava/util/ArrayList;
 
-    .line 983
-    :goto_0
     return-object v0
 
+    .line 1118
     :cond_1
     iget-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mData:Ljava/util/ArrayList;
 
-    goto :goto_0
+    return-object v0
 .end method
 
 
 # virtual methods
 .method add(Ljava/lang/Object;)V
     .locals 1
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TT;)V"
@@ -143,22 +141,21 @@
     .end annotation
 
     .prologue
-    .line 1011
-    .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
-    .local p1, item:Ljava/lang/Object;,"TT;"
+    .line 1146
+    .local p0, "this":Landroid/view/ViewTreeObserver$CopyOnWriteArray;, "Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
+    .local p1, "item":Ljava/lang/Object;, "TT;"
     invoke-direct {p0}, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->getArray()Ljava/util/ArrayList;
 
     move-result-object v0
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1012
+    .line 1145
     return-void
 .end method
 
 .method addAll(Landroid/view/ViewTreeObserver$CopyOnWriteArray;)V
     .locals 2
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -168,9 +165,9 @@
     .end annotation
 
     .prologue
-    .line 1015
-    .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
-    .local p1, array:Landroid/view/ViewTreeObserver$CopyOnWriteArray;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
+    .line 1150
+    .local p0, "this":Landroid/view/ViewTreeObserver$CopyOnWriteArray;, "Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
+    .local p1, "array":Landroid/view/ViewTreeObserver$CopyOnWriteArray;, "Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
     invoke-direct {p0}, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->getArray()Ljava/util/ArrayList;
 
     move-result-object v0
@@ -179,7 +176,7 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
 
-    .line 1016
+    .line 1149
     return-void
 .end method
 
@@ -187,81 +184,78 @@
     .locals 1
 
     .prologue
-    .line 1023
-    .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
+    .line 1158
+    .local p0, "this":Landroid/view/ViewTreeObserver$CopyOnWriteArray;, "Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
     invoke-direct {p0}, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->getArray()Ljava/util/ArrayList;
 
     move-result-object v0
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
-    .line 1024
+    .line 1157
     return-void
 .end method
 
 .method end()V
-    .locals 2
+    .locals 3
 
     .prologue
-    .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
+    .local p0, "this":Landroid/view/ViewTreeObserver$CopyOnWriteArray;, "Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
+    const/4 v2, 0x0
+
     const/4 v1, 0x0
 
-    .line 996
+    .line 1131
     iget-boolean v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mStart:Z
 
     if-nez v0, :cond_0
 
     new-instance v0, Ljava/lang/IllegalStateException;
 
-    const-string v1, "Iteration not started"
+    const-string/jumbo v1, "Iteration not started"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 997
+    .line 1132
     :cond_0
     iput-boolean v1, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mStart:Z
 
-    .line 998
+    .line 1133
     iget-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mDataCopy:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_1
 
-    .line 999
+    .line 1134
     iget-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mDataCopy:Ljava/util/ArrayList;
 
     iput-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mData:Ljava/util/ArrayList;
 
-    .line 1000
+    .line 1135
     iget-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mAccess:Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;
 
-    #getter for: Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->mData:Ljava/util/ArrayList;
-    invoke-static {v0}, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->access$000(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;)Ljava/util/ArrayList;
+    invoke-static {v0}, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->-get0(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;)Ljava/util/ArrayList;
 
     move-result-object v0
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
-    .line 1001
+    .line 1136
     iget-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mAccess:Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;
 
-    #setter for: Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->mSize:I
-    invoke-static {v0, v1}, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->access$102(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;I)I
+    invoke-static {v0, v1}, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->-set1(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;I)I
 
-    .line 1003
+    .line 1138
     :cond_1
-    const/4 v0, 0x0
+    iput-object v2, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mDataCopy:Ljava/util/ArrayList;
 
-    iput-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mDataCopy:Ljava/util/ArrayList;
-
-    .line 1004
+    .line 1130
     return-void
 .end method
 
 .method remove(Ljava/lang/Object;)V
     .locals 1
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TT;)V"
@@ -269,16 +263,16 @@
     .end annotation
 
     .prologue
-    .line 1019
-    .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
-    .local p1, item:Ljava/lang/Object;,"TT;"
+    .line 1154
+    .local p0, "this":Landroid/view/ViewTreeObserver$CopyOnWriteArray;, "Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
+    .local p1, "item":Ljava/lang/Object;, "TT;"
     invoke-direct {p0}, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->getArray()Ljava/util/ArrayList;
 
     move-result-object v0
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
-    .line 1020
+    .line 1153
     return-void
 .end method
 
@@ -286,8 +280,8 @@
     .locals 1
 
     .prologue
-    .line 1007
-    .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
+    .line 1142
+    .local p0, "this":Landroid/view/ViewTreeObserver$CopyOnWriteArray;, "Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
     invoke-direct {p0}, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->getArray()Ljava/util/ArrayList;
 
     move-result-object v0
@@ -310,40 +304,39 @@
     .end annotation
 
     .prologue
-    .line 987
-    .local p0, this:Landroid/view/ViewTreeObserver$CopyOnWriteArray;,"Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
+    .line 1122
+    .local p0, "this":Landroid/view/ViewTreeObserver$CopyOnWriteArray;, "Landroid/view/ViewTreeObserver$CopyOnWriteArray<TT;>;"
     iget-boolean v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mStart:Z
 
     if-eqz v0, :cond_0
 
     new-instance v0, Ljava/lang/IllegalStateException;
 
-    const-string v1, "Iteration already started"
+    const-string/jumbo v1, "Iteration already started"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 988
+    .line 1123
     :cond_0
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mStart:Z
 
-    .line 989
+    .line 1124
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mDataCopy:Ljava/util/ArrayList;
 
-    .line 990
+    .line 1125
     iget-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mAccess:Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;
 
     iget-object v1, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mData:Ljava/util/ArrayList;
 
-    #setter for: Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->mData:Ljava/util/ArrayList;
-    invoke-static {v0, v1}, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->access$002(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;Ljava/util/ArrayList;)Ljava/util/ArrayList;
+    invoke-static {v0, v1}, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->-set0(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;Ljava/util/ArrayList;)Ljava/util/ArrayList;
 
-    .line 991
+    .line 1126
     iget-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mAccess:Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;
 
     iget-object v1, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mData:Ljava/util/ArrayList;
@@ -352,10 +345,9 @@
 
     move-result v1
 
-    #setter for: Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->mSize:I
-    invoke-static {v0, v1}, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->access$102(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;I)I
+    invoke-static {v0, v1}, Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;->-set1(Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;I)I
 
-    .line 992
+    .line 1127
     iget-object v0, p0, Landroid/view/ViewTreeObserver$CopyOnWriteArray;->mAccess:Landroid/view/ViewTreeObserver$CopyOnWriteArray$Access;
 
     return-object v0

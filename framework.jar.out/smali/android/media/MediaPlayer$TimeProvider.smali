@@ -47,6 +47,8 @@
 # instance fields
 .field public DEBUG:Z
 
+.field private mBuffering:Z
+
 .field private mEventHandler:Landroid/os/Handler;
 
 .field private mHandlerThread:Landroid/os/HandlerThread;
@@ -77,9 +79,35 @@
 
 
 # direct methods
+.method static synthetic -wrap0(Landroid/media/MediaPlayer$TimeProvider;)V
+    .locals 0
+
+    invoke-direct {p0}, Landroid/media/MediaPlayer$TimeProvider;->notifySeek()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap1(Landroid/media/MediaPlayer$TimeProvider;)V
+    .locals 0
+
+    invoke-direct {p0}, Landroid/media/MediaPlayer$TimeProvider;->notifyStop()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap2(Landroid/media/MediaPlayer$TimeProvider;Z)V
+    .locals 0
+    .param p1, "refreshTime"    # Z
+
+    .prologue
+    invoke-direct {p0, p1}, Landroid/media/MediaPlayer$TimeProvider;->notifyTimedEvent(Z)V
+
+    return-void
+.end method
+
 .method public constructor <init>(Landroid/media/MediaPlayer;)V
     .locals 8
-    .parameter "mp"
+    .param p1, "mp"    # Landroid/media/MediaPlayer;
 
     .prologue
     const-wide/16 v6, 0x0
@@ -88,34 +116,34 @@
 
     const/4 v5, 0x0
 
-    .line 2830
+    .line 3489
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 2805
+    .line 3463
     iput-wide v6, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastTimeUs:J
 
-    .line 2807
+    .line 3465
     iput-boolean v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mPaused:Z
 
-    .line 2808
+    .line 3466
     iput-boolean v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mStopped:Z
 
-    .line 2817
+    .line 3476
     iput-boolean v5, p0, Landroid/media/MediaPlayer$TimeProvider;->mRefresh:Z
 
-    .line 2818
+    .line 3477
     iput-boolean v5, p0, Landroid/media/MediaPlayer$TimeProvider;->mPausing:Z
 
-    .line 2819
+    .line 3478
     iput-boolean v5, p0, Landroid/media/MediaPlayer$TimeProvider;->mSeeking:Z
 
-    .line 2828
+    .line 3487
     iput-boolean v5, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
 
-    .line 2831
+    .line 3490
     iput-object p1, p0, Landroid/media/MediaPlayer$TimeProvider;->mPlayer:Landroid/media/MediaPlayer;
 
-    .line 2833
+    .line 3492
     const/4 v2, 0x1
 
     const/4 v3, 0x0
@@ -125,45 +153,48 @@
     :try_end_0
     .catch Ljava/lang/IllegalStateException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 2840
+    .line 3499
     :goto_0
     invoke-static {}, Landroid/os/Looper;->myLooper()Landroid/os/Looper;
 
     move-result-object v1
 
-    .local v1, looper:Landroid/os/Looper;
+    .local v1, "looper":Landroid/os/Looper;
     if-nez v1, :cond_0
 
+    .line 3500
     invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
 
     move-result-object v1
 
     if-nez v1, :cond_0
 
-    .line 2843
+    .line 3502
     new-instance v2, Landroid/os/HandlerThread;
 
-    const-string v3, "MediaPlayerMTPEventThread"
+    const-string/jumbo v3, "MediaPlayerMTPEventThread"
 
+    .line 3503
     const/4 v4, -0x2
 
+    .line 3502
     invoke-direct {v2, v3, v4}, Landroid/os/HandlerThread;-><init>(Ljava/lang/String;I)V
 
     iput-object v2, p0, Landroid/media/MediaPlayer$TimeProvider;->mHandlerThread:Landroid/os/HandlerThread;
 
-    .line 2845
+    .line 3504
     iget-object v2, p0, Landroid/media/MediaPlayer$TimeProvider;->mHandlerThread:Landroid/os/HandlerThread;
 
     invoke-virtual {v2}, Landroid/os/HandlerThread;->start()V
 
-    .line 2846
+    .line 3505
     iget-object v2, p0, Landroid/media/MediaPlayer$TimeProvider;->mHandlerThread:Landroid/os/HandlerThread;
 
     invoke-virtual {v2}, Landroid/os/HandlerThread;->getLooper()Landroid/os/Looper;
 
     move-result-object v1
 
-    .line 2848
+    .line 3507
     :cond_0
     new-instance v2, Landroid/media/MediaPlayer$TimeProvider$EventHandler;
 
@@ -171,85 +202,51 @@
 
     iput-object v2, p0, Landroid/media/MediaPlayer$TimeProvider;->mEventHandler:Landroid/os/Handler;
 
-    .line 2850
+    .line 3509
     new-array v2, v5, [Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
     iput-object v2, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
-    .line 2851
+    .line 3510
     new-array v2, v5, [J
 
     iput-object v2, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
 
-    .line 2852
+    .line 3511
     iput-wide v6, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastTimeUs:J
 
-    .line 2853
+    .line 3512
     iput-wide v6, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimeAdjustment:J
 
-    .line 2854
+    .line 3489
     return-void
 
-    .line 2834
-    .end local v1           #looper:Landroid/os/Looper;
+    .line 3493
+    .end local v1    # "looper":Landroid/os/Looper;
     :catch_0
     move-exception v0
 
-    .line 2836
-    .local v0, e:Ljava/lang/IllegalStateException;
+    .line 3495
+    .local v0, "e":Ljava/lang/IllegalStateException;
     iput-boolean v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mRefresh:Z
 
     goto :goto_0
 .end method
 
-.method static synthetic access$2000(Landroid/media/MediaPlayer$TimeProvider;Z)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 2799
-    invoke-direct {p0, p1}, Landroid/media/MediaPlayer$TimeProvider;->notifyTimedEvent(Z)V
-
-    return-void
-.end method
-
-.method static synthetic access$2100(Landroid/media/MediaPlayer$TimeProvider;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 2799
-    invoke-direct {p0}, Landroid/media/MediaPlayer$TimeProvider;->notifyStop()V
-
-    return-void
-.end method
-
-.method static synthetic access$2200(Landroid/media/MediaPlayer$TimeProvider;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 2799
-    invoke-direct {p0}, Landroid/media/MediaPlayer$TimeProvider;->notifySeek()V
-
-    return-void
-.end method
-
 .method private getEstimatedTime(JZ)J
-    .locals 10
-    .parameter "nanoTime"
-    .parameter "monotonic"
+    .locals 11
+    .param p1, "nanoTime"    # J
+    .param p3, "monotonic"    # Z
 
     .prologue
     const-wide/16 v8, 0x0
 
-    .line 3100
+    .line 3768
     iget-boolean v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mPaused:Z
 
     if-eqz v4, :cond_1
 
-    .line 3101
+    .line 3769
     iget-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastTimeUs:J
 
     iget-wide v6, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimeAdjustment:J
@@ -258,14 +255,14 @@
 
     iput-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastReportedTime:J
 
-    .line 3115
+    .line 3783
     :cond_0
     :goto_0
     iget-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastReportedTime:J
 
     return-wide v4
 
-    .line 3103
+    .line 3771
     :cond_1
     iget-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastNanoTime:J
 
@@ -275,22 +272,22 @@
 
     div-long v2, v4, v6
 
-    .line 3104
-    .local v2, timeSinceRead:J
+    .line 3772
+    .local v2, "timeSinceRead":J
     iget-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastTimeUs:J
 
     add-long/2addr v4, v2
 
     iput-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastReportedTime:J
 
-    .line 3105
+    .line 3773
     iget-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimeAdjustment:J
 
     cmp-long v4, v4, v8
 
     if-lez v4, :cond_0
 
-    .line 3106
+    .line 3775
     iget-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimeAdjustment:J
 
     const-wide/16 v6, 0x2
@@ -299,18 +296,18 @@
 
     sub-long v0, v4, v6
 
-    .line 3108
-    .local v0, adjustment:J
+    .line 3776
+    .local v0, "adjustment":J
     cmp-long v4, v0, v8
 
     if-gtz v4, :cond_2
 
-    .line 3109
+    .line 3777
     iput-wide v8, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimeAdjustment:J
 
     goto :goto_0
 
-    .line 3111
+    .line 3779
     :cond_2
     iget-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastReportedTime:J
 
@@ -322,209 +319,136 @@
 .end method
 
 .method private declared-synchronized notifySeek()V
-    .locals 10
+    .locals 8
 
     .prologue
-    .line 2934
+    const/4 v4, 0x0
+
     monitor-enter p0
 
-    const/4 v7, 0x0
+    .line 3604
+    const/4 v5, 0x0
 
     :try_start_0
-    iput-boolean v7, p0, Landroid/media/MediaPlayer$TimeProvider;->mSeeking:Z
+    iput-boolean v5, p0, Landroid/media/MediaPlayer$TimeProvider;->mSeeking:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 2936
-    const/4 v7, 0x1
+    .line 3606
+    const/4 v5, 0x1
 
-    const/4 v8, 0x0
+    const/4 v6, 0x0
 
     :try_start_1
-    invoke-virtual {p0, v7, v8}, Landroid/media/MediaPlayer$TimeProvider;->getCurrentTimeUs(ZZ)J
+    invoke-virtual {p0, v5, v6}, Landroid/media/MediaPlayer$TimeProvider;->getCurrentTimeUs(ZZ)J
 
-    move-result-wide v5
+    move-result-wide v2
 
-    .line 2937
-    .local v5, timeUs:J
-    iget-boolean v7, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
+    .line 3607
+    .local v2, "timeUs":J
+    iget-boolean v5, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
 
-    if-eqz v7, :cond_0
+    if-eqz v5, :cond_0
 
-    const-string v7, "MTP"
+    const-string/jumbo v5, "MTP"
 
-    new-instance v8, Ljava/lang/StringBuilder;
+    new-instance v6, Ljava/lang/StringBuilder;
 
-    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v9, "onSeekComplete at "
+    const-string/jumbo v7, "onSeekComplete at "
 
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v8
+    move-result-object v6
 
-    invoke-virtual {v8, v5, v6}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    move-result-object v8
+    move-result-object v6
 
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v8
+    move-result-object v6
 
-    invoke-static {v7, v8}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v5, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2939
+    .line 3609
     :cond_0
-    iget-object v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    iget-object v5, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
-    .local v0, arr$:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    array-length v3, v0
+    array-length v6, v5
 
-    .local v3, len$:I
-    const/4 v2, 0x0
-
-    .local v2, i$:I
     :goto_0
-    if-ge v2, v3, :cond_1
+    if-ge v4, v6, :cond_1
 
-    aget-object v4, v0, v2
+    aget-object v1, v5, v4
     :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
     .catch Ljava/lang/IllegalStateException; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 2940
-    .local v4, listener:Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    if-nez v4, :cond_2
+    .line 3610
+    .local v1, "listener":Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    if-nez v1, :cond_2
 
-    .line 2951
-    .end local v0           #arr$:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    .end local v2           #i$:I
-    .end local v3           #len$:I
-    .end local v4           #listener:Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    .end local v5           #timeUs:J
+    .end local v1    # "listener":Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    .end local v2    # "timeUs":J
     :cond_1
     :goto_1
     monitor-exit p0
 
+    .line 3603
     return-void
 
-    .line 2943
-    .restart local v0       #arr$:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    .restart local v2       #i$:I
-    .restart local v3       #len$:I
-    .restart local v4       #listener:Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    .restart local v5       #timeUs:J
+    .line 3613
+    .restart local v1    # "listener":Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    .restart local v2    # "timeUs":J
     :cond_2
     :try_start_2
-    invoke-interface {v4, v5, v6}, Landroid/media/MediaTimeProvider$OnMediaTimeListener;->onSeek(J)V
+    invoke-interface {v1, v2, v3}, Landroid/media/MediaTimeProvider$OnMediaTimeListener;->onSeek(J)V
     :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
     .catch Ljava/lang/IllegalStateException; {:try_start_2 .. :try_end_2} :catch_0
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 2939
-    add-int/lit8 v2, v2, 0x1
+    .line 3609
+    add-int/lit8 v4, v4, 0x1
 
     goto :goto_0
 
-    .line 2945
-    .end local v0           #arr$:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    .end local v2           #i$:I
-    .end local v3           #len$:I
-    .end local v4           #listener:Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    .end local v5           #timeUs:J
+    .line 3615
+    .end local v1    # "listener":Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    .end local v2    # "timeUs":J
     :catch_0
-    move-exception v1
+    move-exception v0
 
-    .line 2947
-    .local v1, e:Ljava/lang/IllegalStateException;
+    .line 3617
+    .local v0, "e":Ljava/lang/IllegalStateException;
     :try_start_3
-    iget-boolean v7, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
+    iget-boolean v4, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
 
-    if-eqz v7, :cond_3
+    if-eqz v4, :cond_3
 
-    const-string v7, "MTP"
+    const-string/jumbo v4, "MTP"
 
-    const-string/jumbo v8, "onSeekComplete but no player"
+    const-string/jumbo v5, "onSeekComplete but no player"
 
-    invoke-static {v7, v8}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2948
+    .line 3618
     :cond_3
-    const/4 v7, 0x1
+    const/4 v4, 0x1
 
-    iput-boolean v7, p0, Landroid/media/MediaPlayer$TimeProvider;->mPausing:Z
+    iput-boolean v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mPausing:Z
 
-    .line 2949
-    const/4 v7, 0x0
+    .line 3619
+    const/4 v4, 0x0
 
-    invoke-direct {p0, v7}, Landroid/media/MediaPlayer$TimeProvider;->notifyTimedEvent(Z)V
+    invoke-direct {p0, v4}, Landroid/media/MediaPlayer$TimeProvider;->notifyTimedEvent(Z)V
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     goto :goto_1
 
-    .line 2934
-    .end local v1           #e:Ljava/lang/IllegalStateException;
-    :catchall_0
-    move-exception v7
-
-    monitor-exit p0
-
-    throw v7
-.end method
-
-.method private declared-synchronized notifyStop()V
-    .locals 5
-
-    .prologue
-    .line 2954
-    monitor-enter p0
-
-    :try_start_0
-    iget-object v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-
-    .local v0, arr$:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    array-length v2, v0
-
-    .local v2, len$:I
-    const/4 v1, 0x0
-
-    .local v1, i$:I
-    :goto_0
-    if-ge v1, v2, :cond_0
-
-    aget-object v3, v0, v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 2955
-    .local v3, listener:Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    if-nez v3, :cond_1
-
-    .line 2960
-    .end local v3           #listener:Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    :cond_0
-    monitor-exit p0
-
-    return-void
-
-    .line 2958
-    .restart local v3       #listener:Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    :cond_1
-    :try_start_1
-    invoke-interface {v3}, Landroid/media/MediaTimeProvider$OnMediaTimeListener;->onStop()V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    .line 2954
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_0
-
-    .end local v0           #arr$:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    .end local v1           #i$:I
-    .end local v2           #len$:I
-    .end local v3           #listener:Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    .end local v0    # "e":Ljava/lang/IllegalStateException;
     :catchall_0
     move-exception v4
 
@@ -533,533 +457,555 @@
     throw v4
 .end method
 
-.method private declared-synchronized notifyTimedEvent(Z)V
-    .locals 23
-    .parameter "refreshTime"
+.method private declared-synchronized notifyStop()V
+    .locals 4
 
     .prologue
-    .line 3037
     monitor-enter p0
 
-    const/16 v19, 0x1
+    .line 3624
+    :try_start_0
+    iget-object v2, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+
+    const/4 v1, 0x0
+
+    array-length v3, v2
+
+    :goto_0
+    if-ge v1, v3, :cond_0
+
+    aget-object v0, v2, v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 3625
+    .local v0, "listener":Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    if-nez v0, :cond_1
+
+    .end local v0    # "listener":Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    :cond_0
+    monitor-exit p0
+
+    .line 3623
+    return-void
+
+    .line 3628
+    .restart local v0    # "listener":Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    :cond_1
+    :try_start_1
+    invoke-interface {v0}, Landroid/media/MediaTimeProvider$OnMediaTimeListener;->onStop()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 3624
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    .end local v0    # "listener":Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    :catchall_0
+    move-exception v1
+
+    monitor-exit p0
+
+    throw v1
+.end method
+
+.method private declared-synchronized notifyTimedEvent(Z)V
+    .locals 22
+    .param p1, "refreshTime"    # Z
+
+    .prologue
+    monitor-enter p0
+
+    .line 3705
+    const/4 v15, 0x1
 
     :try_start_0
     move-object/from16 v0, p0
 
     move/from16 v1, p1
 
-    move/from16 v2, v19
-
-    invoke-virtual {v0, v1, v2}, Landroid/media/MediaPlayer$TimeProvider;->getCurrentTimeUs(ZZ)J
+    invoke-virtual {v0, v1, v15}, Landroid/media/MediaPlayer$TimeProvider;->getCurrentTimeUs(ZZ)J
     :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Ljava/lang/IllegalStateException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    move-result-wide v14
+    move-result-wide v12
 
-    .line 3044
-    .local v14, nowUs:J
+    .line 3712
+    .local v12, "nowUs":J
     :goto_0
-    move-wide v12, v14
+    move-wide v10, v12
 
-    .line 3046
-    .local v12, nextTimeUs:J
+    .line 3714
+    .local v10, "nextTimeUs":J
     :try_start_1
     move-object/from16 v0, p0
 
-    iget-boolean v0, v0, Landroid/media/MediaPlayer$TimeProvider;->mSeeking:Z
-
-    move/from16 v19, v0
+    iget-boolean v15, v0, Landroid/media/MediaPlayer$TimeProvider;->mSeeking:Z
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    if-eqz v19, :cond_1
+    if-eqz v15, :cond_0
 
-    .line 3097
-    :cond_0
     monitor-exit p0
 
+    .line 3716
     return-void
 
-    .line 3038
-    .end local v12           #nextTimeUs:J
-    .end local v14           #nowUs:J
+    .line 3706
+    .end local v10    # "nextTimeUs":J
+    .end local v12    # "nowUs":J
     :catch_0
-    move-exception v6
+    move-exception v5
 
-    .line 3040
-    .local v6, e:Ljava/lang/IllegalStateException;
-    const/16 v19, 0x1
+    .line 3708
+    .local v5, "e":Ljava/lang/IllegalStateException;
+    const/4 v15, 0x1
 
     :try_start_2
-    move/from16 v0, v19
+    move-object/from16 v0, p0
 
-    move-object/from16 v1, p0
+    iput-boolean v15, v0, Landroid/media/MediaPlayer$TimeProvider;->mRefresh:Z
 
-    iput-boolean v0, v1, Landroid/media/MediaPlayer$TimeProvider;->mRefresh:Z
+    .line 3709
+    const/4 v15, 0x1
 
-    .line 3041
-    const/16 v19, 0x1
+    move-object/from16 v0, p0
 
-    move/from16 v0, v19
+    iput-boolean v15, v0, Landroid/media/MediaPlayer$TimeProvider;->mPausing:Z
 
-    move-object/from16 v1, p0
-
-    iput-boolean v0, v1, Landroid/media/MediaPlayer$TimeProvider;->mPausing:Z
-
-    .line 3042
-    const/16 v19, 0x1
+    .line 3710
+    const/4 v15, 0x1
 
     move-object/from16 v0, p0
 
     move/from16 v1, p1
 
-    move/from16 v2, v19
+    invoke-virtual {v0, v1, v15}, Landroid/media/MediaPlayer$TimeProvider;->getCurrentTimeUs(ZZ)J
 
-    invoke-virtual {v0, v1, v2}, Landroid/media/MediaPlayer$TimeProvider;->getCurrentTimeUs(ZZ)J
+    move-result-wide v12
 
-    move-result-wide v14
-
-    .restart local v14       #nowUs:J
+    .restart local v12    # "nowUs":J
     goto :goto_0
 
-    .line 3051
-    .end local v6           #e:Ljava/lang/IllegalStateException;
-    .restart local v12       #nextTimeUs:J
-    :cond_1
+    .line 3719
+    .end local v5    # "e":Ljava/lang/IllegalStateException;
+    .restart local v10    # "nextTimeUs":J
+    :cond_0
     move-object/from16 v0, p0
 
-    iget-boolean v0, v0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
+    iget-boolean v15, v0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
 
-    move/from16 v19, v0
+    if-eqz v15, :cond_4
 
-    if-eqz v19, :cond_5
+    .line 3720
+    new-instance v14, Ljava/lang/StringBuilder;
 
-    .line 3052
-    new-instance v16, Ljava/lang/StringBuilder;
+    invoke-direct {v14}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
+    .line 3721
+    .local v14, "sb":Ljava/lang/StringBuilder;
+    const-string/jumbo v15, "notifyTimedEvent("
 
-    .line 3053
-    .local v16, sb:Ljava/lang/StringBuilder;
-    const-string/jumbo v19, "notifyTimedEvent("
+    invoke-virtual {v14, v15}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-object/from16 v0, v16
-
-    move-object/from16 v1, v19
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v19
+    move-result-object v15
 
     move-object/from16 v0, p0
 
     iget-wide v0, v0, Landroid/media/MediaPlayer$TimeProvider;->mLastTimeUs:J
 
-    move-wide/from16 v20, v0
+    move-wide/from16 v18, v0
 
-    invoke-virtual/range {v19 .. v21}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    move-wide/from16 v0, v18
 
-    move-result-object v19
+    invoke-virtual {v15, v0, v1}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    const-string v20, " -> "
+    move-result-object v15
 
-    invoke-virtual/range {v19 .. v20}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string/jumbo v18, " -> "
 
-    move-result-object v19
+    move-object/from16 v0, v18
 
-    move-object/from16 v0, v19
+    invoke-virtual {v15, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v14, v15}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    move-result-object v15
 
-    move-result-object v19
+    invoke-virtual {v15, v12, v13}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    const-string v20, ") from {"
+    move-result-object v15
 
-    invoke-virtual/range {v19 .. v20}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 3722
+    const-string/jumbo v18, ") from {"
 
-    .line 3055
-    const/4 v7, 0x1
+    .line 3721
+    move-object/from16 v0, v18
 
-    .line 3056
-    .local v7, first:Z
-    move-object/from16 v0, p0
+    invoke-virtual {v15, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-object v5, v0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
+    .line 3723
+    const/4 v6, 0x1
 
-    .local v5, arr$:[J
-    array-length v10, v5
-
-    .local v10, len$:I
-    const/4 v8, 0x0
-
-    .local v8, i$:I
-    :goto_1
-    if-ge v8, v10, :cond_4
-
-    aget-wide v17, v5, v8
-
-    .line 3057
-    .local v17, time:J
-    const-wide/16 v19, -0x1
-
-    cmp-long v19, v17, v19
-
-    if-nez v19, :cond_2
-
-    .line 3056
-    :goto_2
-    add-int/lit8 v8, v8, 0x1
-
-    goto :goto_1
-
-    .line 3060
-    :cond_2
-    if-nez v7, :cond_3
-
-    const-string v19, ", "
-
-    move-object/from16 v0, v16
-
-    move-object/from16 v1, v19
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 3061
-    :cond_3
-    invoke-virtual/range {v16 .. v18}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    .line 3062
-    const/4 v7, 0x0
-
-    goto :goto_2
-
-    .line 3064
-    .end local v17           #time:J
-    :cond_4
-    const-string/jumbo v19, "}"
-
-    move-object/from16 v0, v16
-
-    move-object/from16 v1, v19
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 3065
-    const-string v19, "MTP"
-
-    invoke-virtual/range {v16 .. v16}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v20
-
-    invoke-static/range {v19 .. v20}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 3068
-    .end local v5           #arr$:[J
-    .end local v7           #first:Z
-    .end local v8           #i$:I
-    .end local v10           #len$:I
-    .end local v16           #sb:Ljava/lang/StringBuilder;
-    :cond_5
-    new-instance v4, Ljava/util/Vector;
-
-    invoke-direct {v4}, Ljava/util/Vector;-><init>()V
-
-    .line 3070
-    .local v4, activatedListeners:Ljava/util/Vector;,"Ljava/util/Vector<Landroid/media/MediaTimeProvider$OnMediaTimeListener;>;"
-    const/4 v9, 0x0
-
-    .local v9, ix:I
-    :goto_3
+    .line 3724
+    .local v6, "first":Z
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
 
-    move-object/from16 v19, v0
+    move-object/from16 v18, v0
 
-    move-object/from16 v0, v19
+    const/4 v15, 0x0
+
+    move-object/from16 v0, v18
 
     array-length v0, v0
 
     move/from16 v19, v0
 
+    :goto_1
     move/from16 v0, v19
 
-    if-ge v9, v0, :cond_6
+    if-ge v15, v0, :cond_3
 
-    .line 3071
+    aget-wide v16, v18, v15
+
+    .line 3725
+    .local v16, "time":J
+    const-wide/16 v20, -0x1
+
+    cmp-long v20, v16, v20
+
+    if-nez v20, :cond_1
+
+    .line 3724
+    :goto_2
+    add-int/lit8 v15, v15, 0x1
+
+    goto :goto_1
+
+    .line 3728
+    :cond_1
+    if-nez v6, :cond_2
+
+    const-string/jumbo v20, ", "
+
+    move-object/from16 v0, v20
+
+    invoke-virtual {v14, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 3729
+    :cond_2
+    move-wide/from16 v0, v16
+
+    invoke-virtual {v14, v0, v1}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    .line 3730
+    const/4 v6, 0x0
+
+    goto :goto_2
+
+    .line 3732
+    .end local v16    # "time":J
+    :cond_3
+    const-string/jumbo v15, "}"
+
+    invoke-virtual {v14, v15}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 3733
+    const-string/jumbo v15, "MTP"
+
+    invoke-virtual {v14}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v18
+
+    move-object/from16 v0, v18
+
+    invoke-static {v15, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 3737
+    .end local v6    # "first":Z
+    .end local v14    # "sb":Ljava/lang/StringBuilder;
+    :cond_4
+    new-instance v4, Ljava/util/Vector;
+
+    invoke-direct {v4}, Ljava/util/Vector;-><init>()V
+
+    .line 3738
+    .local v4, "activatedListeners":Ljava/util/Vector;, "Ljava/util/Vector<Landroid/media/MediaTimeProvider$OnMediaTimeListener;>;"
+    const/4 v7, 0x0
+
+    .local v7, "ix":I
+    :goto_3
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    iget-object v15, v0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
 
-    move-object/from16 v19, v0
+    array-length v15, v15
 
-    aget-object v19, v19, v9
+    if-ge v7, v15, :cond_5
 
-    if-nez v19, :cond_8
+    .line 3739
+    move-object/from16 v0, p0
 
-    .line 3085
+    iget-object v15, v0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+
+    aget-object v15, v15, v7
+
+    if-nez v15, :cond_7
+
+    .line 3753
+    :cond_5
+    cmp-long v15, v10, v12
+
+    if-lez v15, :cond_6
+
+    move-object/from16 v0, p0
+
+    iget-boolean v15, v0, Landroid/media/MediaPlayer$TimeProvider;->mPaused:Z
+
+    if-eqz v15, :cond_d
+
+    .line 3758
     :cond_6
-    cmp-long v19, v12, v14
-
-    if-lez v19, :cond_e
-
     move-object/from16 v0, p0
 
-    iget-boolean v0, v0, Landroid/media/MediaPlayer$TimeProvider;->mPaused:Z
+    iget-object v15, v0, Landroid/media/MediaPlayer$TimeProvider;->mEventHandler:Landroid/os/Handler;
 
-    move/from16 v19, v0
+    const/16 v18, 0x1
 
-    if-nez v19, :cond_e
+    move/from16 v0, v18
 
-    .line 3087
-    move-object/from16 v0, p0
+    invoke-virtual {v15, v0}, Landroid/os/Handler;->removeMessages(I)V
 
-    iget-boolean v0, v0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
-
-    move/from16 v19, v0
-
-    if-eqz v19, :cond_7
-
-    const-string v19, "MTP"
-
-    new-instance v20, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v20 .. v20}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v21, "scheduling for "
-
-    invoke-virtual/range {v20 .. v21}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v20
-
-    move-object/from16 v0, v20
-
-    invoke-virtual {v0, v12, v13}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v20
-
-    const-string v21, " and "
-
-    invoke-virtual/range {v20 .. v21}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v20
-
-    move-object/from16 v0, v20
-
-    invoke-virtual {v0, v14, v15}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v20
-
-    invoke-virtual/range {v20 .. v20}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v20
-
-    invoke-static/range {v19 .. v20}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 3088
-    :cond_7
-    const/16 v19, 0x0
-
-    sub-long v20, v12, v14
-
-    move-object/from16 v0, p0
-
-    move/from16 v1, v19
-
-    move-wide/from16 v2, v20
-
-    invoke-direct {v0, v1, v2, v3}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
-
-    .line 3094
+    .line 3762
     :goto_4
-    invoke-virtual {v4}, Ljava/util/Vector;->iterator()Ljava/util/Iterator;
+    invoke-interface {v4}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    move-result-object v9
+
+    .local v9, "listener$iterator":Ljava/util/Iterator;
+    :goto_5
+    invoke-interface {v9}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v15
+
+    if-eqz v15, :cond_f
+
+    invoke-interface {v9}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v8
 
-    .local v8, i$:Ljava/util/Iterator;
-    :goto_5
-    invoke-interface {v8}, Ljava/util/Iterator;->hasNext()Z
+    check-cast v8, Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
-    move-result v19
-
-    if-eqz v19, :cond_0
-
-    invoke-interface {v8}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v11
-
-    check-cast v11, Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-
-    .line 3095
-    .local v11, listener:Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    invoke-interface {v11, v14, v15}, Landroid/media/MediaTimeProvider$OnMediaTimeListener;->onTimedEvent(J)V
+    .line 3763
+    .local v8, "listener":Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    invoke-interface {v8, v12, v13}, Landroid/media/MediaTimeProvider$OnMediaTimeListener;->onTimedEvent(J)V
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     goto :goto_5
 
-    .line 3037
-    .end local v4           #activatedListeners:Ljava/util/Vector;,"Ljava/util/Vector<Landroid/media/MediaTimeProvider$OnMediaTimeListener;>;"
-    .end local v8           #i$:Ljava/util/Iterator;
-    .end local v9           #ix:I
-    .end local v11           #listener:Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    .end local v12           #nextTimeUs:J
-    .end local v14           #nowUs:J
+    .end local v4    # "activatedListeners":Ljava/util/Vector;, "Ljava/util/Vector<Landroid/media/MediaTimeProvider$OnMediaTimeListener;>;"
+    .end local v7    # "ix":I
+    .end local v8    # "listener":Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    .end local v9    # "listener$iterator":Ljava/util/Iterator;
+    .end local v10    # "nextTimeUs":J
+    .end local v12    # "nowUs":J
     :catchall_0
-    move-exception v19
+    move-exception v15
 
     monitor-exit p0
 
-    throw v19
+    throw v15
 
-    .line 3074
-    .restart local v4       #activatedListeners:Ljava/util/Vector;,"Ljava/util/Vector<Landroid/media/MediaTimeProvider$OnMediaTimeListener;>;"
-    .restart local v9       #ix:I
-    .restart local v12       #nextTimeUs:J
-    .restart local v14       #nowUs:J
-    :cond_8
+    .line 3742
+    .restart local v4    # "activatedListeners":Ljava/util/Vector;, "Ljava/util/Vector<Landroid/media/MediaTimeProvider$OnMediaTimeListener;>;"
+    .restart local v7    # "ix":I
+    .restart local v10    # "nextTimeUs":J
+    .restart local v12    # "nowUs":J
+    :cond_7
     :try_start_3
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
+    iget-object v15, v0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
 
-    move-object/from16 v19, v0
-
-    aget-wide v19, v19, v9
-
-    const-wide/16 v21, -0x1
-
-    cmp-long v19, v19, v21
-
-    if-gtz v19, :cond_a
-
-    .line 3070
-    :cond_9
-    :goto_6
-    add-int/lit8 v9, v9, 0x1
-
-    goto/16 :goto_3
-
-    .line 3076
-    :cond_a
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
-
-    move-object/from16 v19, v0
-
-    aget-wide v19, v19, v9
-
-    const-wide/16 v21, 0x3e8
-
-    add-long v21, v21, v14
-
-    cmp-long v19, v19, v21
-
-    if-gtz v19, :cond_c
-
-    .line 3077
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-
-    move-object/from16 v19, v0
-
-    aget-object v19, v19, v9
-
-    move-object/from16 v0, v19
-
-    invoke-virtual {v4, v0}, Ljava/util/Vector;->add(Ljava/lang/Object;)Z
-
-    .line 3078
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
-
-    move/from16 v19, v0
-
-    if-eqz v19, :cond_b
-
-    const-string v19, "MTP"
-
-    const-string/jumbo v20, "removed"
-
-    invoke-static/range {v19 .. v20}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 3079
-    :cond_b
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
-
-    move-object/from16 v19, v0
+    aget-wide v18, v15, v7
 
     const-wide/16 v20, -0x1
 
-    aput-wide v20, v19, v9
+    cmp-long v15, v18, v20
+
+    if-gtz v15, :cond_9
+
+    .line 3738
+    :cond_8
+    :goto_6
+    add-int/lit8 v7, v7, 0x1
+
+    goto :goto_3
+
+    .line 3744
+    :cond_9
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
+
+    aget-wide v18, v15, v7
+
+    const-wide/16 v20, 0x3e8
+
+    add-long v20, v20, v12
+
+    cmp-long v15, v18, v20
+
+    if-gtz v15, :cond_b
+
+    .line 3745
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+
+    aget-object v15, v15, v7
+
+    invoke-virtual {v4, v15}, Ljava/util/Vector;->add(Ljava/lang/Object;)Z
+
+    .line 3746
+    move-object/from16 v0, p0
+
+    iget-boolean v15, v0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
+
+    if-eqz v15, :cond_a
+
+    const-string/jumbo v15, "MTP"
+
+    const-string/jumbo v18, "removed"
+
+    move-object/from16 v0, v18
+
+    invoke-static {v15, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 3747
+    :cond_a
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
+
+    const-wide/16 v18, -0x1
+
+    aput-wide v18, v15, v7
 
     goto :goto_6
 
-    .line 3080
-    :cond_c
-    cmp-long v19, v12, v14
+    .line 3748
+    :cond_b
+    cmp-long v15, v10, v12
 
-    if-eqz v19, :cond_d
+    if-eqz v15, :cond_c
 
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
+    iget-object v15, v0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
 
-    move-object/from16 v19, v0
+    aget-wide v18, v15, v7
 
-    aget-wide v19, v19, v9
+    cmp-long v15, v18, v10
 
-    cmp-long v19, v19, v12
+    if-gez v15, :cond_8
 
-    if-gez v19, :cond_9
+    .line 3749
+    :cond_c
+    move-object/from16 v0, p0
 
-    .line 3081
+    iget-object v15, v0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
+
+    aget-wide v10, v15, v7
+
+    goto :goto_6
+
+    .line 3755
     :cond_d
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
+    iget-boolean v15, v0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
 
-    move-object/from16 v19, v0
+    if-eqz v15, :cond_e
 
-    aget-wide v12, v19, v9
+    const-string/jumbo v15, "MTP"
 
-    goto :goto_6
+    new-instance v18, Ljava/lang/StringBuilder;
 
-    .line 3090
+    invoke-direct/range {v18 .. v18}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v19, "scheduling for "
+
+    invoke-virtual/range {v18 .. v19}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v18
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v10, v11}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v18
+
+    const-string/jumbo v19, " and "
+
+    invoke-virtual/range {v18 .. v19}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v18
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v12, v13}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v18
+
+    invoke-virtual/range {v18 .. v18}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v18
+
+    move-object/from16 v0, v18
+
+    invoke-static {v15, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 3756
     :cond_e
+    sub-long v18, v10, v12
+
+    const/4 v15, 0x0
+
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Landroid/media/MediaPlayer$TimeProvider;->mEventHandler:Landroid/os/Handler;
+    move-wide/from16 v1, v18
 
-    move-object/from16 v19, v0
-
-    const/16 v20, 0x1
-
-    invoke-virtual/range {v19 .. v20}, Landroid/os/Handler;->removeMessages(I)V
+    invoke-direct {v0, v15, v1, v2}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     goto/16 :goto_4
+
+    .restart local v9    # "listener$iterator":Ljava/util/Iterator;
+    :cond_f
+    monitor-exit p0
+
+    .line 3701
+    return-void
 .end method
 
 .method private registerListener(Landroid/media/MediaTimeProvider$OnMediaTimeListener;)I
     .locals 6
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
     .prologue
     const/4 v5, 0x0
 
-    .line 2963
+    .line 3633
     const/4 v0, 0x0
 
-    .line 2964
-    .local v0, i:I
+    .line 3634
+    .local v0, "i":I
     :goto_0
     iget-object v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
@@ -1067,7 +1013,7 @@
 
     if-ge v0, v3, :cond_0
 
-    .line 2965
+    .line 3635
     iget-object v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
     aget-object v3, v3, v0
@@ -1080,7 +1026,7 @@
 
     if-nez v3, :cond_3
 
-    .line 2971
+    .line 3641
     :cond_0
     iget-object v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
@@ -1088,19 +1034,19 @@
 
     if-lt v0, v3, :cond_1
 
-    .line 2972
+    .line 3643
     add-int/lit8 v3, v0, 0x1
 
     new-array v1, v3, [Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
-    .line 2974
-    .local v1, newListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    .line 3644
+    .local v1, "newListeners":[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
     add-int/lit8 v3, v0, 0x1
 
     new-array v2, v3, [J
 
-    .line 2975
-    .local v2, newTimes:[J
+    .line 3645
+    .local v2, "newTimes":[J
     iget-object v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
     iget-object v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
@@ -1109,24 +1055,24 @@
 
     invoke-static {v3, v5, v1, v5, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 2976
+    .line 3646
     iget-object v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
 
     iget-object v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
 
     array-length v4, v4
 
-    invoke-static {v3, v5, v2, v5, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v3, v5, v2, v5, v4}, Ljava/lang/System;->arraycopy([JI[JII)V
 
-    .line 2977
+    .line 3647
     iput-object v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
-    .line 2978
+    .line 3648
     iput-object v2, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
 
-    .line 2981
-    .end local v1           #newListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
-    .end local v2           #newTimes:[J
+    .line 3651
+    .end local v1    # "newListeners":[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
+    .end local v2    # "newTimes":[J
     :cond_1
     iget-object v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
@@ -1134,23 +1080,23 @@
 
     if-nez v3, :cond_2
 
-    .line 2982
+    .line 3652
     iget-object v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
     aput-object p1, v3, v0
 
-    .line 2983
+    .line 3653
     iget-object v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
 
     const-wide/16 v4, -0x1
 
     aput-wide v4, v3, v0
 
-    .line 2985
+    .line 3655
     :cond_2
     return v0
 
-    .line 2964
+    .line 3634
     :cond_3
     add-int/lit8 v0, v0, 0x1
 
@@ -1158,34 +1104,36 @@
 .end method
 
 .method private scheduleNotification(IJ)V
-    .locals 5
-    .parameter "type"
-    .parameter "delayUs"
+    .locals 6
+    .param p1, "type"    # I
+    .param p2, "delayUs"    # J
 
     .prologue
+    const/4 v5, 0x0
+
     const/4 v4, 0x1
 
-    .line 2858
+    .line 3517
     iget-boolean v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mSeeking:Z
 
     if-eqz v1, :cond_1
 
+    .line 3518
     if-eqz p1, :cond_0
 
     if-ne p1, v4, :cond_1
 
-    .line 2867
+    .line 3519
     :cond_0
-    :goto_0
     return-void
 
-    .line 2863
+    .line 3522
     :cond_1
     iget-boolean v1, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
 
     if-eqz v1, :cond_2
 
-    const-string v1, "MTP"
+    const-string/jumbo v1, "MTP"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -1201,7 +1149,7 @@
 
     move-result-object v2
 
-    const-string v3, " in "
+    const-string/jumbo v3, " in "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1217,23 +1165,21 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2864
+    .line 3523
     :cond_2
     iget-object v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mEventHandler:Landroid/os/Handler;
 
     invoke-virtual {v1, v4}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2865
+    .line 3524
     iget-object v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mEventHandler:Landroid/os/Handler;
 
-    const/4 v2, 0x0
-
-    invoke-virtual {v1, v4, p1, v2}, Landroid/os/Handler;->obtainMessage(III)Landroid/os/Message;
+    invoke-virtual {v1, v4, p1, v5}, Landroid/os/Handler;->obtainMessage(III)Landroid/os/Message;
 
     move-result-object v0
 
-    .line 2866
-    .local v0, msg:Landroid/os/Message;
+    .line 3525
+    .local v0, "msg":Landroid/os/Message;
     iget-object v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mEventHandler:Landroid/os/Handler;
 
     const-wide/16 v2, 0x3e8
@@ -1246,24 +1192,25 @@
 
     invoke-virtual {v1, v0, v2, v3}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
-    goto :goto_0
+    .line 3515
+    return-void
 .end method
 
 
 # virtual methods
 .method public cancelNotifications(Landroid/media/MediaTimeProvider$OnMediaTimeListener;)V
-    .locals 5
-    .parameter "listener"
+    .locals 6
+    .param p1, "listener"    # Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
     .prologue
-    .line 3013
+    .line 3681
     monitor-enter p0
 
-    .line 3014
+    .line 3682
     const/4 v0, 0x0
 
-    .line 3015
-    .local v0, i:I
+    .line 3683
+    .local v0, "i":I
     :goto_0
     :try_start_0
     iget-object v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
@@ -1272,18 +1219,19 @@
 
     if-ge v0, v1, :cond_0
 
-    .line 3016
+    .line 3684
     iget-object v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
     aget-object v1, v1, v0
 
     if-ne v1, p1, :cond_1
 
-    .line 3017
+    .line 3685
     iget-object v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
     add-int/lit8 v2, v0, 0x1
 
+    .line 3686
     iget-object v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
     iget-object v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
@@ -1294,13 +1242,15 @@
 
     add-int/lit8 v4, v4, -0x1
 
+    .line 3685
     invoke-static {v1, v2, v3, v0, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    .line 3019
+    .line 3687
     iget-object v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
 
     add-int/lit8 v2, v0, 0x1
 
+    .line 3688
     iget-object v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
 
     iget-object v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
@@ -1311,9 +1261,10 @@
 
     add-int/lit8 v4, v4, -0x1
 
-    invoke-static {v1, v2, v3, v0, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    .line 3687
+    invoke-static {v1, v2, v3, v0, v4}, Ljava/lang/System;->arraycopy([JI[JII)V
 
-    .line 3021
+    .line 3689
     iget-object v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
     iget-object v2, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
@@ -1326,7 +1277,7 @@
 
     aput-object v3, v1, v2
 
-    .line 3022
+    .line 3690
     iget-object v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
 
     iget-object v2, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
@@ -1335,75 +1286,77 @@
 
     add-int/lit8 v2, v2, -0x1
 
-    const-wide/16 v3, -0x1
+    const-wide/16 v4, -0x1
 
-    aput-wide v3, v1, v2
+    aput-wide v4, v1, v2
 
-    .line 3029
+    .line 3697
     :cond_0
-    const/4 v1, 0x0
-
     const-wide/16 v2, 0x0
 
-    invoke-direct {p0, v1, v2, v3}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    const/4 v1, 0x0
 
-    .line 3030
+    invoke-direct {p0, v1, v2, v3}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
     monitor-exit p0
 
-    .line 3031
+    .line 3680
     return-void
 
-    .line 3024
+    .line 3692
     :cond_1
+    :try_start_1
     iget-object v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mListeners:[Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
     aget-object v1, v1, v0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     if-eqz v1, :cond_0
 
-    .line 3015
+    .line 3683
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 3030
+    .line 3681
     :catchall_0
     move-exception v1
 
     monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
 
 .method public close()V
-    .locals 2
+    .locals 3
 
     .prologue
-    .line 2871
+    const/4 v2, 0x0
+
+    .line 3530
     iget-object v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mEventHandler:Landroid/os/Handler;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 2872
+    .line 3531
     iget-object v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mHandlerThread:Landroid/os/HandlerThread;
 
     if-eqz v0, :cond_0
 
-    .line 2873
+    .line 3532
     iget-object v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mHandlerThread:Landroid/os/HandlerThread;
 
     invoke-virtual {v0}, Landroid/os/HandlerThread;->quitSafely()Z
 
-    .line 2874
-    const/4 v0, 0x0
+    .line 3533
+    iput-object v2, p0, Landroid/media/MediaPlayer$TimeProvider;->mHandlerThread:Landroid/os/HandlerThread;
 
-    iput-object v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mHandlerThread:Landroid/os/HandlerThread;
-
-    .line 2876
+    .line 3529
     :cond_0
     return-void
 .end method
@@ -1412,25 +1365,25 @@
     .locals 1
 
     .prologue
-    .line 2880
+    .line 3539
     iget-object v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mHandlerThread:Landroid/os/HandlerThread;
 
     if-eqz v0, :cond_0
 
-    .line 2881
+    .line 3540
     iget-object v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mHandlerThread:Landroid/os/HandlerThread;
 
     invoke-virtual {v0}, Landroid/os/HandlerThread;->quitSafely()Z
 
-    .line 2883
+    .line 3538
     :cond_0
     return-void
 .end method
 
 .method public getCurrentTimeUs(ZZ)J
-    .locals 9
-    .parameter "refreshTime"
-    .parameter "monotonic"
+    .locals 8
+    .param p1, "refreshTime"    # Z
+    .param p2, "monotonic"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;
@@ -1438,258 +1391,247 @@
     .end annotation
 
     .prologue
-    const/4 v3, 0x1
+    const/4 v1, 0x1
 
-    const/4 v4, 0x0
-
-    .line 3120
+    .line 3788
     monitor-enter p0
 
-    .line 3123
+    .line 3791
     :try_start_0
-    iget-boolean v5, p0, Landroid/media/MediaPlayer$TimeProvider;->mPaused:Z
+    iget-boolean v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mPaused:Z
 
-    if-eqz v5, :cond_0
+    if-eqz v4, :cond_0
 
-    if-nez p1, :cond_0
+    if-eqz p1, :cond_5
 
-    .line 3124
-    iget-wide v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastReportedTime:J
-
-    monitor-exit p0
-
-    .line 3162
-    :goto_0
-    return-wide v3
-
-    .line 3127
+    .line 3795
     :cond_0
     invoke-static {}, Ljava/lang/System;->nanoTime()J
 
-    move-result-wide v1
+    move-result-wide v2
 
-    .line 3128
-    .local v1, nanoTime:J
+    .line 3796
+    .local v2, "nanoTime":J
     if-nez p1, :cond_1
 
-    iget-wide v5, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastNanoTime:J
+    .line 3797
+    iget-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastNanoTime:J
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    const-wide v7, 0x12a05f200L
+    const-wide v6, 0x12a05f200L
 
-    add-long/2addr v5, v7
+    add-long/2addr v4, v6
 
-    cmp-long v5, v1, v5
+    cmp-long v4, v2, v4
 
-    if-ltz v5, :cond_3
+    if-ltz v4, :cond_4
 
-    .line 3131
+    .line 3799
     :cond_1
     :try_start_1
-    iget-object v5, p0, Landroid/media/MediaPlayer$TimeProvider;->mPlayer:Landroid/media/MediaPlayer;
+    iget-object v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mPlayer:Landroid/media/MediaPlayer;
 
-    invoke-virtual {v5}, Landroid/media/MediaPlayer;->getCurrentPosition()I
+    invoke-virtual {v4}, Landroid/media/MediaPlayer;->getCurrentPosition()I
 
-    move-result v5
+    move-result v4
 
-    int-to-long v5, v5
+    int-to-long v4, v4
 
-    const-wide/16 v7, 0x3e8
+    const-wide/16 v6, 0x3e8
 
-    mul-long/2addr v5, v7
+    mul-long/2addr v4, v6
 
-    iput-wide v5, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastTimeUs:J
+    iput-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastTimeUs:J
 
-    .line 3132
-    iget-object v5, p0, Landroid/media/MediaPlayer$TimeProvider;->mPlayer:Landroid/media/MediaPlayer;
+    .line 3800
+    iget-object v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mPlayer:Landroid/media/MediaPlayer;
 
-    invoke-virtual {v5}, Landroid/media/MediaPlayer;->isPlaying()Z
+    invoke-virtual {v4}, Landroid/media/MediaPlayer;->isPlaying()Z
 
-    move-result v5
+    move-result v4
 
-    if-nez v5, :cond_4
+    if-eqz v4, :cond_2
 
-    :goto_1
-    iput-boolean v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mPaused:Z
+    iget-boolean v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mBuffering:Z
 
-    .line 3133
-    iget-boolean v3, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
+    :cond_2
+    iput-boolean v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mPaused:Z
 
-    if-eqz v3, :cond_2
+    .line 3801
+    iget-boolean v1, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
 
-    const-string v4, "MTP"
+    if-eqz v1, :cond_3
+
+    const-string/jumbo v4, "MTP"
 
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget-boolean v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mPaused:Z
+    iget-boolean v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mPaused:Z
 
-    if-eqz v3, :cond_5
+    if-eqz v1, :cond_6
 
-    const-string/jumbo v3, "paused"
+    const-string/jumbo v1, "paused"
 
-    :goto_2
-    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    :goto_0
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v3
+    move-result-object v1
 
-    const-string v5, " at "
+    const-string/jumbo v5, " at "
 
-    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v3
+    move-result-object v1
 
-    iget-wide v5, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastTimeUs:J
+    iget-wide v6, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastTimeUs:J
 
-    invoke-virtual {v3, v5, v6}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v6, v7}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    move-result-object v3
+    move-result-object v1
 
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v1
 
-    invoke-static {v4, v3}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v4, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
     :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
     .catch Ljava/lang/IllegalStateException; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 3146
-    :cond_2
+    .line 3814
+    :cond_3
     :try_start_2
-    iput-wide v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastNanoTime:J
+    iput-wide v2, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastNanoTime:J
 
-    .line 3147
-    if-eqz p2, :cond_8
+    .line 3815
+    if-eqz p2, :cond_9
 
-    iget-wide v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastTimeUs:J
+    iget-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastTimeUs:J
 
-    iget-wide v5, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastReportedTime:J
+    iget-wide v6, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastReportedTime:J
 
-    cmp-long v3, v3, v5
+    cmp-long v1, v4, v6
 
-    if-gez v3, :cond_8
+    if-gez v1, :cond_9
 
-    .line 3149
-    iget-wide v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastReportedTime:J
+    .line 3817
+    iget-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastReportedTime:J
 
-    iget-wide v5, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastTimeUs:J
+    iget-wide v6, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastTimeUs:J
 
-    sub-long/2addr v3, v5
+    sub-long/2addr v4, v6
 
-    iput-wide v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimeAdjustment:J
+    iput-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimeAdjustment:J
 
-    .line 3150
-    iget-wide v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimeAdjustment:J
+    .line 3818
+    iget-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimeAdjustment:J
 
-    const-wide/32 v5, 0xf4240
+    const-wide/32 v6, 0xf4240
 
-    cmp-long v3, v3, v5
+    cmp-long v1, v4, v6
 
-    if-lez v3, :cond_3
+    if-lez v1, :cond_4
 
-    .line 3153
-    const/4 v3, 0x0
+    .line 3821
+    const/4 v1, 0x0
 
-    iput-boolean v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mStopped:Z
+    iput-boolean v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mStopped:Z
 
-    .line 3154
-    const/4 v3, 0x1
+    .line 3822
+    const/4 v1, 0x1
 
-    iput-boolean v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mSeeking:Z
+    iput-boolean v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mSeeking:Z
 
-    .line 3155
-    const/4 v3, 0x3
-
+    .line 3823
     const-wide/16 v4, 0x0
 
-    invoke-direct {p0, v3, v4, v5}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    const/4 v1, 0x3
 
-    .line 3162
-    :cond_3
-    :goto_3
-    invoke-direct {p0, v1, v2, p2}, Landroid/media/MediaPlayer$TimeProvider;->getEstimatedTime(JZ)J
+    invoke-direct {p0, v1, v4, v5}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
 
-    move-result-wide v3
-
-    monitor-exit p0
-
-    goto :goto_0
-
-    .line 3163
-    .end local v1           #nanoTime:J
-    :catchall_0
-    move-exception v3
-
-    monitor-exit p0
+    .line 3830
+    :cond_4
+    :goto_1
+    invoke-direct {p0, v2, v3, p2}, Landroid/media/MediaPlayer$TimeProvider;->getEstimatedTime(JZ)J
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    throw v3
+    move-result-wide v4
 
-    .restart local v1       #nanoTime:J
-    :cond_4
-    move v3, v4
+    monitor-exit p0
 
-    .line 3132
-    goto :goto_1
+    return-wide v4
 
-    .line 3133
+    .line 3792
+    .end local v2    # "nanoTime":J
     :cond_5
     :try_start_3
-    const-string/jumbo v3, "playing"
+    iget-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastReportedTime:J
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
-    .catch Ljava/lang/IllegalStateException; {:try_start_3 .. :try_end_3} :catch_0
 
-    goto :goto_2
+    monitor-exit p0
 
-    .line 3134
+    return-wide v4
+
+    .line 3801
+    .restart local v2    # "nanoTime":J
+    :cond_6
+    :try_start_4
+    const-string/jumbo v1, "playing"
+    :try_end_4
+    .catch Ljava/lang/IllegalStateException; {:try_start_4 .. :try_end_4} :catch_0
+    .catchall {:try_start_4 .. :try_end_4} :catchall_0
+
+    goto :goto_0
+
+    .line 3802
     :catch_0
     move-exception v0
 
-    .line 3135
-    .local v0, e:Ljava/lang/IllegalStateException;
-    :try_start_4
-    iget-boolean v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mPausing:Z
+    .line 3803
+    .local v0, "e":Ljava/lang/IllegalStateException;
+    :try_start_5
+    iget-boolean v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mPausing:Z
 
-    if-eqz v3, :cond_7
+    if-eqz v1, :cond_8
 
-    .line 3137
-    const/4 v3, 0x0
+    .line 3805
+    const/4 v1, 0x0
 
-    iput-boolean v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mPausing:Z
+    iput-boolean v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mPausing:Z
 
-    .line 3138
-    invoke-direct {p0, v1, v2, p2}, Landroid/media/MediaPlayer$TimeProvider;->getEstimatedTime(JZ)J
+    .line 3806
+    invoke-direct {p0, v2, v3, p2}, Landroid/media/MediaPlayer$TimeProvider;->getEstimatedTime(JZ)J
 
-    .line 3139
-    const/4 v3, 0x1
+    .line 3807
+    const/4 v1, 0x1
 
-    iput-boolean v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mPaused:Z
+    iput-boolean v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mPaused:Z
 
-    .line 3140
-    iget-boolean v3, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
+    .line 3808
+    iget-boolean v1, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
 
-    if-eqz v3, :cond_6
+    if-eqz v1, :cond_7
 
-    const-string v3, "MTP"
+    const-string/jumbo v1, "MTP"
 
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v5, "illegal state, but pausing: estimating at "
+    const-string/jumbo v5, "illegal state, but pausing: estimating at "
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    iget-wide v5, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastReportedTime:J
+    iget-wide v6, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastReportedTime:J
 
-    invoke-virtual {v4, v5, v6}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v6, v7}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
@@ -1697,48 +1639,64 @@
 
     move-result-object v4
 
-    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v1, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3141
-    :cond_6
-    iget-wide v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastReportedTime:J
+    .line 3809
+    :cond_7
+    iget-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mLastReportedTime:J
+    :try_end_5
+    .catchall {:try_start_5 .. :try_end_5} :catchall_0
 
     monitor-exit p0
 
-    goto/16 :goto_0
+    return-wide v4
 
-    .line 3144
-    :cond_7
-    throw v0
-
-    .line 3158
-    .end local v0           #e:Ljava/lang/IllegalStateException;
+    .line 3812
     :cond_8
-    const-wide/16 v3, 0x0
+    :try_start_6
+    throw v0
+    :try_end_6
+    .catchall {:try_start_6 .. :try_end_6} :catchall_0
 
-    iput-wide v3, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimeAdjustment:J
-    :try_end_4
-    .catchall {:try_start_4 .. :try_end_4} :catchall_0
+    .line 3788
+    .end local v0    # "e":Ljava/lang/IllegalStateException;
+    .end local v2    # "nanoTime":J
+    :catchall_0
+    move-exception v1
 
-    goto :goto_3
+    monitor-exit p0
+
+    throw v1
+
+    .line 3826
+    .restart local v2    # "nanoTime":J
+    :cond_9
+    const-wide/16 v4, 0x0
+
+    :try_start_7
+    iput-wide v4, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimeAdjustment:J
+    :try_end_7
+    .catchall {:try_start_7 .. :try_end_7} :catchall_0
+
+    goto :goto_1
 .end method
 
 .method public notifyAt(JLandroid/media/MediaTimeProvider$OnMediaTimeListener;)V
     .locals 3
-    .parameter "timeUs"
-    .parameter "listener"
+    .param p1, "timeUs"    # J
+    .param p3, "listener"    # Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
     .prologue
-    .line 2990
+    .line 3660
     monitor-enter p0
 
-    .line 2991
+    .line 3661
     :try_start_0
     iget-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
 
     if-eqz v0, :cond_0
 
-    const-string v0, "MTP"
+    const-string/jumbo v0, "MTP"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -1760,7 +1718,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2992
+    .line 3662
     :cond_0
     iget-object v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
 
@@ -1770,26 +1728,88 @@
 
     aput-wide p1, v0, v1
 
-    .line 2993
-    const/4 v0, 0x0
+    .line 3663
+    const-wide/16 v0, 0x0
 
-    const-wide/16 v1, 0x0
+    const/4 v2, 0x0
 
-    invoke-direct {p0, v0, v1, v2}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    invoke-direct {p0, v2, v0, v1}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 2994
     monitor-exit p0
 
-    .line 2995
+    .line 3659
     return-void
 
-    .line 2994
+    .line 3660
     :catchall_0
     move-exception v0
 
     monitor-exit p0
+
+    throw v0
+.end method
+
+.method public onBuffering(Z)V
+    .locals 3
+    .param p1, "buffering"    # Z
+
+    .prologue
+    .line 3562
+    monitor-enter p0
+
+    .line 3563
+    :try_start_0
+    iget-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
+
+    if-eqz v0, :cond_0
+
+    const-string/jumbo v0, "MTP"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v2, "onBuffering: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 3564
+    :cond_0
+    iput-boolean p1, p0, Landroid/media/MediaPlayer$TimeProvider;->mBuffering:Z
+
+    .line 3565
+    const-wide/16 v0, 0x0
+
+    const/4 v2, 0x1
+
+    invoke-direct {p0, v2, v0, v1}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit p0
+
+    .line 3561
+    return-void
+
+    .line 3562
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
 
     throw v0
 .end method
@@ -1798,65 +1818,69 @@
     .locals 3
 
     .prologue
-    .line 2924
+    .line 3593
     iget-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mRefresh:Z
 
     if-eqz v0, :cond_0
 
-    .line 2925
+    .line 3594
     monitor-enter p0
 
-    .line 2926
+    .line 3595
     const/4 v0, 0x0
 
     :try_start_0
     iput-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mStopped:Z
 
-    .line 2927
+    .line 3596
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mSeeking:Z
 
-    .line 2928
-    const/4 v0, 0x3
+    .line 3597
+    const/4 v0, 0x0
 
-    const-wide/16 v1, 0x0
+    iput-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mBuffering:Z
 
-    invoke-direct {p0, v0, v1, v2}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    .line 3598
+    const-wide/16 v0, 0x0
 
-    .line 2929
+    const/4 v2, 0x3
+
+    invoke-direct {p0, v2, v0, v1}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
     monitor-exit p0
 
-    .line 2931
+    .line 3592
     :cond_0
     return-void
 
-    .line 2929
+    .line 3594
     :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public onPaused(Z)V
     .locals 3
-    .parameter "paused"
+    .param p1, "paused"    # Z
 
     .prologue
-    .line 2887
+    .line 3546
     monitor-enter p0
 
-    .line 2888
+    .line 3547
     :try_start_0
     iget-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
 
     if-eqz v0, :cond_0
 
-    const-string v0, "MTP"
+    const-string/jumbo v0, "MTP"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -1878,104 +1902,105 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2889
+    .line 3548
     :cond_0
     iget-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mStopped:Z
 
     if-eqz v0, :cond_1
 
-    .line 2890
+    .line 3549
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mStopped:Z
 
-    .line 2891
+    .line 3550
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mSeeking:Z
 
-    .line 2892
-    const/4 v0, 0x3
+    .line 3551
+    const-wide/16 v0, 0x0
 
-    const-wide/16 v1, 0x0
+    const/4 v2, 0x3
 
-    invoke-direct {p0, v0, v1, v2}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    invoke-direct {p0, v2, v0, v1}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 2898
     :goto_0
     monitor-exit p0
 
-    .line 2899
+    .line 3545
     return-void
 
-    .line 2894
+    .line 3553
     :cond_1
+    :try_start_1
     iput-boolean p1, p0, Landroid/media/MediaPlayer$TimeProvider;->mPausing:Z
 
-    .line 2895
+    .line 3554
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mSeeking:Z
 
-    .line 2896
-    const/4 v0, 0x1
+    .line 3555
+    const-wide/16 v0, 0x0
 
-    const-wide/16 v1, 0x0
+    const/4 v2, 0x1
 
-    invoke-direct {p0, v0, v1, v2}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    invoke-direct {p0, v2, v0, v1}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .line 2898
+    .line 3546
     :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public onSeekComplete(Landroid/media/MediaPlayer;)V
     .locals 3
-    .parameter "mp"
+    .param p1, "mp"    # Landroid/media/MediaPlayer;
 
     .prologue
-    .line 2915
+    .line 3584
     monitor-enter p0
 
-    .line 2916
+    .line 3585
     const/4 v0, 0x0
 
     :try_start_0
     iput-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mStopped:Z
 
-    .line 2917
+    .line 3586
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mSeeking:Z
 
-    .line 2918
-    const/4 v0, 0x3
+    .line 3587
+    const-wide/16 v0, 0x0
 
-    const-wide/16 v1, 0x0
+    const/4 v2, 0x3
 
-    invoke-direct {p0, v0, v1, v2}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    invoke-direct {p0, v2, v0, v1}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 2919
     monitor-exit p0
 
-    .line 2920
+    .line 3583
     return-void
 
-    .line 2919
+    .line 3584
     :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
@@ -1984,132 +2009,125 @@
     .locals 3
 
     .prologue
-    .line 2903
+    .line 3571
     monitor-enter p0
 
-    .line 2904
+    .line 3572
     :try_start_0
     iget-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
 
     if-eqz v0, :cond_0
 
-    const-string v0, "MTP"
+    const-string/jumbo v0, "MTP"
 
     const-string/jumbo v1, "onStopped"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2905
+    .line 3573
     :cond_0
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mPaused:Z
 
-    .line 2906
+    .line 3574
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mStopped:Z
 
-    .line 2907
+    .line 3575
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mSeeking:Z
 
-    .line 2908
-    const/4 v0, 0x2
+    .line 3576
+    const/4 v0, 0x0
 
-    const-wide/16 v1, 0x0
+    iput-boolean v0, p0, Landroid/media/MediaPlayer$TimeProvider;->mBuffering:Z
 
-    invoke-direct {p0, v0, v1, v2}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    .line 3577
+    const-wide/16 v0, 0x0
 
-    .line 2909
+    const/4 v2, 0x2
+
+    invoke-direct {p0, v2, v0, v1}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
     monitor-exit p0
 
-    .line 2910
+    .line 3570
     return-void
 
-    .line 2909
+    .line 3571
     :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public scheduleUpdate(Landroid/media/MediaTimeProvider$OnMediaTimeListener;)V
     .locals 4
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/media/MediaTimeProvider$OnMediaTimeListener;
 
     .prologue
-    .line 2998
+    .line 3668
     monitor-enter p0
 
-    .line 2999
+    .line 3669
     :try_start_0
     iget-boolean v1, p0, Landroid/media/MediaPlayer$TimeProvider;->DEBUG:Z
 
     if-eqz v1, :cond_0
 
-    const-string v1, "MTP"
+    const-string/jumbo v1, "MTP"
 
     const-string/jumbo v2, "scheduleUpdate"
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3000
+    .line 3670
     :cond_0
     invoke-direct {p0, p1}, Landroid/media/MediaPlayer$TimeProvider;->registerListener(Landroid/media/MediaTimeProvider$OnMediaTimeListener;)I
 
     move-result v0
 
-    .line 3002
-    .local v0, i:I
+    .line 3672
+    .local v0, "i":I
     iget-boolean v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mStopped:Z
 
-    if-eqz v1, :cond_1
+    if-nez v1, :cond_1
 
-    .line 3003
-    const/4 v1, 0x2
-
-    const-wide/16 v2, 0x0
-
-    invoke-direct {p0, v1, v2, v3}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
-
-    .line 3008
-    :goto_0
-    monitor-exit p0
-
-    .line 3009
-    return-void
-
-    .line 3005
-    :cond_1
+    .line 3673
     iget-object v1, p0, Landroid/media/MediaPlayer$TimeProvider;->mTimes:[J
 
     const-wide/16 v2, 0x0
 
     aput-wide v2, v1, v0
 
-    .line 3006
-    const/4 v1, 0x0
-
+    .line 3674
     const-wide/16 v2, 0x0
 
+    const/4 v1, 0x0
+
     invoke-direct {p0, v1, v2, v3}, Landroid/media/MediaPlayer$TimeProvider;->scheduleNotification(IJ)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    goto :goto_0
+    :cond_1
+    monitor-exit p0
 
-    .line 3008
-    .end local v0           #i:I
+    .line 3667
+    return-void
+
+    .line 3668
+    .end local v0    # "i":I
     :catchall_0
     move-exception v1
 
     monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method

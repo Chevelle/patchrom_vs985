@@ -1,14 +1,11 @@
 .class Landroid/accounts/AccountManager$12;
-.super Ljava/lang/Object;
+.super Landroid/accounts/AccountManager$AmsTask;
 .source "AccountManager.java"
-
-# interfaces
-.implements Ljava/lang/Runnable;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/accounts/AccountManager;->postToHandler(Landroid/os/Handler;Landroid/accounts/OnAccountsUpdateListener;[Landroid/accounts/Account;)V
+    value = Landroid/accounts/AccountManager;->addAccount(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Landroid/os/Bundle;Landroid/app/Activity;Landroid/accounts/AccountManagerCallback;Landroid/os/Handler;)Landroid/accounts/AccountManagerFuture;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,62 +17,95 @@
 # instance fields
 .field final synthetic this$0:Landroid/accounts/AccountManager;
 
-.field final synthetic val$accountsCopy:[Landroid/accounts/Account;
+.field final synthetic val$accountType:Ljava/lang/String;
 
-.field final synthetic val$listener:Landroid/accounts/OnAccountsUpdateListener;
+.field final synthetic val$activity:Landroid/app/Activity;
+
+.field final synthetic val$authTokenType:Ljava/lang/String;
+
+.field final synthetic val$optionsIn:Landroid/os/Bundle;
+
+.field final synthetic val$requiredFeatures:[Ljava/lang/String;
 
 
 # direct methods
-.method constructor <init>(Landroid/accounts/AccountManager;Landroid/accounts/OnAccountsUpdateListener;[Landroid/accounts/Account;)V
+.method constructor <init>(Landroid/accounts/AccountManager;Landroid/accounts/AccountManager;Landroid/app/Activity;Landroid/os/Handler;Landroid/accounts/AccountManagerCallback;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Landroid/app/Activity;Landroid/os/Bundle;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/accounts/AccountManager;
+    .param p2, "this$0_1"    # Landroid/accounts/AccountManager;
+    .param p3, "$anonymous0"    # Landroid/app/Activity;
+    .param p4, "$anonymous1"    # Landroid/os/Handler;
+    .param p6, "val$accountType"    # Ljava/lang/String;
+    .param p7, "val$authTokenType"    # Ljava/lang/String;
+    .param p8, "val$requiredFeatures"    # [Ljava/lang/String;
+    .param p9, "val$activity"    # Landroid/app/Activity;
+    .param p10, "val$optionsIn"    # Landroid/os/Bundle;
 
     .prologue
-    .line 1439
-    iput-object p1, p0, Landroid/accounts/AccountManager$12;->this$0:Landroid/accounts/AccountManager;
+    .line 1508
+    .local p5, "$anonymous2":Landroid/accounts/AccountManagerCallback;, "Landroid/accounts/AccountManagerCallback<Landroid/os/Bundle;>;"
+    iput-object p2, p0, Landroid/accounts/AccountManager$12;->this$0:Landroid/accounts/AccountManager;
 
-    iput-object p2, p0, Landroid/accounts/AccountManager$12;->val$listener:Landroid/accounts/OnAccountsUpdateListener;
+    iput-object p6, p0, Landroid/accounts/AccountManager$12;->val$accountType:Ljava/lang/String;
 
-    iput-object p3, p0, Landroid/accounts/AccountManager$12;->val$accountsCopy:[Landroid/accounts/Account;
+    iput-object p7, p0, Landroid/accounts/AccountManager$12;->val$authTokenType:Ljava/lang/String;
 
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p8, p0, Landroid/accounts/AccountManager$12;->val$requiredFeatures:[Ljava/lang/String;
+
+    iput-object p9, p0, Landroid/accounts/AccountManager$12;->val$activity:Landroid/app/Activity;
+
+    iput-object p10, p0, Landroid/accounts/AccountManager$12;->val$optionsIn:Landroid/os/Bundle;
+
+    invoke-direct {p0, p1, p3, p4, p5}, Landroid/accounts/AccountManager$AmsTask;-><init>(Landroid/accounts/AccountManager;Landroid/app/Activity;Landroid/os/Handler;Landroid/accounts/AccountManagerCallback;)V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public run()V
-    .locals 3
+.method public doWork()V
+    .locals 7
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
     .prologue
-    .line 1442
-    :try_start_0
-    iget-object v1, p0, Landroid/accounts/AccountManager$12;->val$listener:Landroid/accounts/OnAccountsUpdateListener;
+    .line 1510
+    iget-object v0, p0, Landroid/accounts/AccountManager$12;->this$0:Landroid/accounts/AccountManager;
 
-    iget-object v2, p0, Landroid/accounts/AccountManager$12;->val$accountsCopy:[Landroid/accounts/Account;
+    invoke-static {v0}, Landroid/accounts/AccountManager;->-get3(Landroid/accounts/AccountManager;)Landroid/accounts/IAccountManager;
 
-    invoke-interface {v1, v2}, Landroid/accounts/OnAccountsUpdateListener;->onAccountsUpdated([Landroid/accounts/Account;)V
-    :try_end_0
-    .catch Landroid/database/SQLException; {:try_start_0 .. :try_end_0} :catch_0
+    move-result-object v0
 
-    .line 1448
+    iget-object v1, p0, Landroid/accounts/AccountManager$12;->mResponse:Landroid/accounts/IAccountManagerResponse;
+
+    iget-object v2, p0, Landroid/accounts/AccountManager$12;->val$accountType:Ljava/lang/String;
+
+    iget-object v3, p0, Landroid/accounts/AccountManager$12;->val$authTokenType:Ljava/lang/String;
+
+    .line 1511
+    iget-object v4, p0, Landroid/accounts/AccountManager$12;->val$requiredFeatures:[Ljava/lang/String;
+
+    iget-object v5, p0, Landroid/accounts/AccountManager$12;->val$activity:Landroid/app/Activity;
+
+    if-eqz v5, :cond_0
+
+    const/4 v5, 0x1
+
     :goto_0
+    iget-object v6, p0, Landroid/accounts/AccountManager$12;->val$optionsIn:Landroid/os/Bundle;
+
+    .line 1510
+    invoke-interface/range {v0 .. v6}, Landroid/accounts/IAccountManager;->addAccount(Landroid/accounts/IAccountManagerResponse;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;ZLandroid/os/Bundle;)V
+
+    .line 1509
     return-void
 
-    .line 1443
-    :catch_0
-    move-exception v0
-
-    .line 1446
-    .local v0, e:Landroid/database/SQLException;
-    const-string v1, "AccountManager"
-
-    const-string v2, "Can\'t update accounts"
-
-    invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    .line 1511
+    :cond_0
+    const/4 v5, 0x0
 
     goto :goto_0
 .end method

@@ -6,10 +6,9 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/media/audiofx/EnvironmentalReverb$1;,
-        Landroid/media/audiofx/EnvironmentalReverb$Settings;,
+        Landroid/media/audiofx/EnvironmentalReverb$OnParameterChangeListener;,
         Landroid/media/audiofx/EnvironmentalReverb$BaseParameterListener;,
-        Landroid/media/audiofx/EnvironmentalReverb$OnParameterChangeListener;
+        Landroid/media/audiofx/EnvironmentalReverb$Settings;
     }
 .end annotation
 
@@ -51,22 +50,39 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/media/audiofx/EnvironmentalReverb;)Landroid/media/audiofx/EnvironmentalReverb$OnParameterChangeListener;
+    .locals 1
+
+    iget-object v0, p0, Landroid/media/audiofx/EnvironmentalReverb;->mParamListener:Landroid/media/audiofx/EnvironmentalReverb$OnParameterChangeListener;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Landroid/media/audiofx/EnvironmentalReverb;)Ljava/lang/Object;
+    .locals 1
+
+    iget-object v0, p0, Landroid/media/audiofx/EnvironmentalReverb;->mParamListenerLock:Ljava/lang/Object;
+
+    return-object v0
+.end method
+
 .method static constructor <clinit>()V
     .locals 1
 
     .prologue
-    .line 617
+    .line 609
     const/16 v0, 0x1a
 
     sput v0, Landroid/media/audiofx/EnvironmentalReverb;->PROPERTY_SIZE:I
 
+    .line 52
     return-void
 .end method
 
 .method public constructor <init>(II)V
     .locals 3
-    .parameter "priority"
-    .parameter "audioSession"
+    .param p1, "priority"    # I
+    .param p2, "audioSession"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;,
@@ -78,50 +94,28 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 146
+    .line 138
     sget-object v0, Landroid/media/audiofx/EnvironmentalReverb;->EFFECT_TYPE_ENV_REVERB:Ljava/util/UUID;
 
     sget-object v1, Landroid/media/audiofx/EnvironmentalReverb;->EFFECT_TYPE_NULL:Ljava/util/UUID;
 
     invoke-direct {p0, v0, v1, p1, p2}, Landroid/media/audiofx/AudioEffect;-><init>(Ljava/util/UUID;Ljava/util/UUID;II)V
 
-    .line 115
+    .line 107
     iput-object v2, p0, Landroid/media/audiofx/EnvironmentalReverb;->mParamListener:Landroid/media/audiofx/EnvironmentalReverb$OnParameterChangeListener;
 
-    .line 121
+    .line 113
     iput-object v2, p0, Landroid/media/audiofx/EnvironmentalReverb;->mBaseParamListener:Landroid/media/audiofx/EnvironmentalReverb$BaseParameterListener;
 
-    .line 126
+    .line 118
     new-instance v0, Ljava/lang/Object;
 
     invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     iput-object v0, p0, Landroid/media/audiofx/EnvironmentalReverb;->mParamListenerLock:Ljava/lang/Object;
 
-    .line 147
+    .line 137
     return-void
-.end method
-
-.method static synthetic access$000(Landroid/media/audiofx/EnvironmentalReverb;)Ljava/lang/Object;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 60
-    iget-object v0, p0, Landroid/media/audiofx/EnvironmentalReverb;->mParamListenerLock:Ljava/lang/Object;
-
-    return-object v0
-.end method
-
-.method static synthetic access$100(Landroid/media/audiofx/EnvironmentalReverb;)Landroid/media/audiofx/EnvironmentalReverb$OnParameterChangeListener;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 60
-    iget-object v0, p0, Landroid/media/audiofx/EnvironmentalReverb;->mParamListener:Landroid/media/audiofx/EnvironmentalReverb$OnParameterChangeListener;
-
-    return-object v0
 .end method
 
 
@@ -137,13 +131,13 @@
     .end annotation
 
     .prologue
-    .line 256
+    .line 248
     const/4 v1, 0x2
 
     new-array v0, v1, [B
 
-    .line 257
-    .local v0, param:[B
+    .line 249
+    .local v0, "param":[B
     const/4 v1, 0x3
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->getParameter(I[B)I
@@ -152,8 +146,8 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 258
-    invoke-virtual {p0, v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([B)S
+    .line 250
+    invoke-static {v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([B)S
 
     move-result v1
 
@@ -171,13 +165,13 @@
     .end annotation
 
     .prologue
-    .line 227
+    .line 219
     const/4 v1, 0x4
 
     new-array v0, v1, [B
 
-    .line 228
-    .local v0, param:[B
+    .line 220
+    .local v0, "param":[B
     const/4 v1, 0x2
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->getParameter(I[B)I
@@ -186,8 +180,8 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 229
-    invoke-virtual {p0, v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToInt([B)I
+    .line 221
+    invoke-static {v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToInt([B)I
 
     move-result v1
 
@@ -205,13 +199,13 @@
     .end annotation
 
     .prologue
-    .line 432
+    .line 424
     const/4 v1, 0x2
 
     new-array v0, v1, [B
 
-    .line 433
-    .local v0, param:[B
+    .line 425
+    .local v0, "param":[B
     const/16 v1, 0x9
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->getParameter(I[B)I
@@ -220,8 +214,8 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 434
-    invoke-virtual {p0, v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([B)S
+    .line 426
+    invoke-static {v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([B)S
 
     move-result v1
 
@@ -239,13 +233,13 @@
     .end annotation
 
     .prologue
-    .line 399
+    .line 391
     const/4 v1, 0x2
 
     new-array v0, v1, [B
 
-    .line 400
-    .local v0, param:[B
+    .line 392
+    .local v0, "param":[B
     const/16 v1, 0x8
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->getParameter(I[B)I
@@ -254,8 +248,8 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 401
-    invoke-virtual {p0, v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([B)S
+    .line 393
+    invoke-static {v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([B)S
 
     move-result v1
 
@@ -275,114 +269,114 @@
     .prologue
     const/16 v3, 0xa
 
-    .line 629
+    .line 621
     sget v2, Landroid/media/audiofx/EnvironmentalReverb;->PROPERTY_SIZE:I
 
     new-array v0, v2, [B
 
-    .line 630
-    .local v0, param:[B
+    .line 622
+    .local v0, "param":[B
     invoke-virtual {p0, v3, v0}, Landroid/media/audiofx/EnvironmentalReverb;->getParameter(I[B)I
 
     move-result v2
 
     invoke-virtual {p0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 631
+    .line 623
     new-instance v1, Landroid/media/audiofx/EnvironmentalReverb$Settings;
 
     invoke-direct {v1}, Landroid/media/audiofx/EnvironmentalReverb$Settings;-><init>()V
 
-    .line 632
-    .local v1, settings:Landroid/media/audiofx/EnvironmentalReverb$Settings;
+    .line 624
+    .local v1, "settings":Landroid/media/audiofx/EnvironmentalReverb$Settings;
     const/4 v2, 0x0
 
-    invoke-virtual {p0, v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([BI)S
+    invoke-static {v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([BI)S
 
     move-result v2
 
     iput-short v2, v1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->roomLevel:S
 
-    .line 633
+    .line 625
     const/4 v2, 0x2
 
-    invoke-virtual {p0, v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([BI)S
+    invoke-static {v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([BI)S
 
     move-result v2
 
     iput-short v2, v1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->roomHFLevel:S
 
-    .line 634
+    .line 626
     const/4 v2, 0x4
 
-    invoke-virtual {p0, v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToInt([BI)I
+    invoke-static {v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToInt([BI)I
 
     move-result v2
 
     iput v2, v1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->decayTime:I
 
-    .line 635
+    .line 627
     const/16 v2, 0x8
 
-    invoke-virtual {p0, v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([BI)S
+    invoke-static {v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([BI)S
 
     move-result v2
 
     iput-short v2, v1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->decayHFRatio:S
 
-    .line 636
-    invoke-virtual {p0, v0, v3}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([BI)S
+    .line 628
+    invoke-static {v0, v3}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([BI)S
 
     move-result v2
 
     iput-short v2, v1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->reflectionsLevel:S
 
-    .line 637
+    .line 629
     const/16 v2, 0xc
 
-    invoke-virtual {p0, v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToInt([BI)I
+    invoke-static {v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToInt([BI)I
 
     move-result v2
 
     iput v2, v1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->reflectionsDelay:I
 
-    .line 638
+    .line 630
     const/16 v2, 0x10
 
-    invoke-virtual {p0, v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([BI)S
+    invoke-static {v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([BI)S
 
     move-result v2
 
     iput-short v2, v1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->reverbLevel:S
 
-    .line 639
+    .line 631
     const/16 v2, 0x12
 
-    invoke-virtual {p0, v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToInt([BI)I
+    invoke-static {v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToInt([BI)I
 
     move-result v2
 
     iput v2, v1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->reverbDelay:I
 
-    .line 640
+    .line 632
     const/16 v2, 0x16
 
-    invoke-virtual {p0, v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([BI)S
+    invoke-static {v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([BI)S
 
     move-result v2
 
     iput-short v2, v1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->diffusion:S
 
-    .line 641
+    .line 633
     const/16 v2, 0x18
 
-    invoke-virtual {p0, v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([BI)S
+    invoke-static {v0, v2}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([BI)S
 
     move-result v2
 
     iput-short v2, v1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->density:S
 
-    .line 642
+    .line 634
     return-object v1
 .end method
 
@@ -397,13 +391,13 @@
     .end annotation
 
     .prologue
-    .line 314
+    .line 306
     const/4 v1, 0x4
 
     new-array v0, v1, [B
 
-    .line 315
-    .local v0, param:[B
+    .line 307
+    .local v0, "param":[B
     const/4 v1, 0x5
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->getParameter(I[B)I
@@ -412,8 +406,8 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 316
-    invoke-virtual {p0, v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToInt([B)I
+    .line 308
+    invoke-static {v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToInt([B)I
 
     move-result v1
 
@@ -431,13 +425,13 @@
     .end annotation
 
     .prologue
-    .line 285
+    .line 277
     const/4 v1, 0x2
 
     new-array v0, v1, [B
 
-    .line 286
-    .local v0, param:[B
+    .line 278
+    .local v0, "param":[B
     const/4 v1, 0x4
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->getParameter(I[B)I
@@ -446,8 +440,8 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 287
-    invoke-virtual {p0, v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([B)S
+    .line 279
+    invoke-static {v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([B)S
 
     move-result v1
 
@@ -465,13 +459,13 @@
     .end annotation
 
     .prologue
-    .line 369
+    .line 361
     const/4 v1, 0x4
 
     new-array v0, v1, [B
 
-    .line 370
-    .local v0, param:[B
+    .line 362
+    .local v0, "param":[B
     const/4 v1, 0x7
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->getParameter(I[B)I
@@ -480,8 +474,8 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 371
-    invoke-virtual {p0, v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToInt([B)I
+    .line 363
+    invoke-static {v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToInt([B)I
 
     move-result v1
 
@@ -499,13 +493,13 @@
     .end annotation
 
     .prologue
-    .line 342
+    .line 334
     const/4 v1, 0x2
 
     new-array v0, v1, [B
 
-    .line 343
-    .local v0, param:[B
+    .line 335
+    .local v0, "param":[B
     const/4 v1, 0x6
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->getParameter(I[B)I
@@ -514,8 +508,8 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 344
-    invoke-virtual {p0, v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([B)S
+    .line 336
+    invoke-static {v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([B)S
 
     move-result v1
 
@@ -533,13 +527,13 @@
     .end annotation
 
     .prologue
-    .line 200
+    .line 192
     const/4 v1, 0x2
 
     new-array v0, v1, [B
 
-    .line 201
-    .local v0, param:[B
+    .line 193
+    .local v0, "param":[B
     const/4 v1, 0x1
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->getParameter(I[B)I
@@ -548,8 +542,8 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 202
-    invoke-virtual {p0, v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([B)S
+    .line 194
+    invoke-static {v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([B)S
 
     move-result v1
 
@@ -567,13 +561,13 @@
     .end annotation
 
     .prologue
-    .line 171
+    .line 163
     const/4 v1, 0x2
 
     new-array v0, v1, [B
 
-    .line 172
-    .local v0, param:[B
+    .line 164
+    .local v0, "param":[B
     const/4 v1, 0x0
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->getParameter(I[B)I
@@ -582,8 +576,8 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 173
-    invoke-virtual {p0, v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([B)S
+    .line 165
+    invoke-static {v0}, Landroid/media/audiofx/EnvironmentalReverb;->byteArrayToShort([B)S
 
     move-result v1
 
@@ -592,7 +586,7 @@
 
 .method public setDecayHFRatio(S)V
     .locals 2
-    .parameter "decayHFRatio"
+    .param p1, "decayHFRatio"    # S
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -602,13 +596,13 @@
     .end annotation
 
     .prologue
-    .line 243
-    invoke-virtual {p0, p1}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
+    .line 235
+    invoke-static {p1}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
 
     move-result-object v0
 
-    .line 244
-    .local v0, param:[B
+    .line 236
+    .local v0, "param":[B
     const/4 v1, 0x3
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->setParameter(I[B)I
@@ -617,13 +611,13 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 245
+    .line 234
     return-void
 .end method
 
 .method public setDecayTime(I)V
     .locals 2
-    .parameter "decayTime"
+    .param p1, "decayTime"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -633,13 +627,13 @@
     .end annotation
 
     .prologue
-    .line 214
-    invoke-virtual {p0, p1}, Landroid/media/audiofx/EnvironmentalReverb;->intToByteArray(I)[B
+    .line 206
+    invoke-static {p1}, Landroid/media/audiofx/EnvironmentalReverb;->intToByteArray(I)[B
 
     move-result-object v0
 
-    .line 215
-    .local v0, param:[B
+    .line 207
+    .local v0, "param":[B
     const/4 v1, 0x2
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->setParameter(I[B)I
@@ -648,13 +642,13 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 216
+    .line 205
     return-void
 .end method
 
 .method public setDensity(S)V
     .locals 2
-    .parameter "density"
+    .param p1, "density"    # S
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -664,13 +658,13 @@
     .end annotation
 
     .prologue
-    .line 419
-    invoke-virtual {p0, p1}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
+    .line 411
+    invoke-static {p1}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
 
     move-result-object v0
 
-    .line 420
-    .local v0, param:[B
+    .line 412
+    .local v0, "param":[B
     const/16 v1, 0x9
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->setParameter(I[B)I
@@ -679,13 +673,13 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 421
+    .line 410
     return-void
 .end method
 
 .method public setDiffusion(S)V
     .locals 2
-    .parameter "diffusion"
+    .param p1, "diffusion"    # S
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -695,13 +689,13 @@
     .end annotation
 
     .prologue
-    .line 386
-    invoke-virtual {p0, p1}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
+    .line 378
+    invoke-static {p1}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
 
     move-result-object v0
 
-    .line 387
-    .local v0, param:[B
+    .line 379
+    .local v0, "param":[B
     const/16 v1, 0x8
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->setParameter(I[B)I
@@ -710,64 +704,63 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 388
+    .line 377
     return-void
 .end method
 
 .method public setParameterListener(Landroid/media/audiofx/EnvironmentalReverb$OnParameterChangeListener;)V
     .locals 3
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/media/audiofx/EnvironmentalReverb$OnParameterChangeListener;
 
     .prologue
-    .line 495
+    .line 487
     iget-object v1, p0, Landroid/media/audiofx/EnvironmentalReverb;->mParamListenerLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 496
+    .line 488
     :try_start_0
     iget-object v0, p0, Landroid/media/audiofx/EnvironmentalReverb;->mParamListener:Landroid/media/audiofx/EnvironmentalReverb$OnParameterChangeListener;
 
     if-nez v0, :cond_0
 
-    .line 497
+    .line 489
     iput-object p1, p0, Landroid/media/audiofx/EnvironmentalReverb;->mParamListener:Landroid/media/audiofx/EnvironmentalReverb$OnParameterChangeListener;
 
-    .line 498
+    .line 490
     new-instance v0, Landroid/media/audiofx/EnvironmentalReverb$BaseParameterListener;
 
     const/4 v2, 0x0
 
-    invoke-direct {v0, p0, v2}, Landroid/media/audiofx/EnvironmentalReverb$BaseParameterListener;-><init>(Landroid/media/audiofx/EnvironmentalReverb;Landroid/media/audiofx/EnvironmentalReverb$1;)V
+    invoke-direct {v0, p0, v2}, Landroid/media/audiofx/EnvironmentalReverb$BaseParameterListener;-><init>(Landroid/media/audiofx/EnvironmentalReverb;Landroid/media/audiofx/EnvironmentalReverb$BaseParameterListener;)V
 
     iput-object v0, p0, Landroid/media/audiofx/EnvironmentalReverb;->mBaseParamListener:Landroid/media/audiofx/EnvironmentalReverb$BaseParameterListener;
 
-    .line 499
+    .line 491
     iget-object v0, p0, Landroid/media/audiofx/EnvironmentalReverb;->mBaseParamListener:Landroid/media/audiofx/EnvironmentalReverb$BaseParameterListener;
 
     invoke-super {p0, v0}, Landroid/media/audiofx/AudioEffect;->setParameterListener(Landroid/media/audiofx/AudioEffect$OnParameterChangeListener;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 501
     :cond_0
     monitor-exit v1
 
-    .line 502
+    .line 486
     return-void
 
-    .line 501
+    .line 487
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public setProperties(Landroid/media/audiofx/EnvironmentalReverb$Settings;)V
     .locals 5
-    .parameter "settings"
+    .param p1, "settings"    # Landroid/media/audiofx/EnvironmentalReverb$Settings;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -779,128 +772,138 @@
     .prologue
     const/16 v4, 0xa
 
-    .line 656
+    .line 648
     new-array v1, v4, [[B
 
-    const/4 v2, 0x0
+    iget-short v2, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->roomLevel:S
 
-    iget-short v3, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->roomLevel:S
+    invoke-static {v2}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
 
-    invoke-virtual {p0, v3}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x0
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x1
+    .line 649
+    iget-short v2, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->roomHFLevel:S
 
-    iget-short v3, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->roomHFLevel:S
+    invoke-static {v2}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
 
-    invoke-virtual {p0, v3}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x1
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x2
+    .line 650
+    iget v2, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->decayTime:I
 
-    iget v3, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->decayTime:I
+    invoke-static {v2}, Landroid/media/audiofx/EnvironmentalReverb;->intToByteArray(I)[B
 
-    invoke-virtual {p0, v3}, Landroid/media/audiofx/EnvironmentalReverb;->intToByteArray(I)[B
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x2
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x3
+    .line 651
+    iget-short v2, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->decayHFRatio:S
 
-    iget-short v3, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->decayHFRatio:S
+    invoke-static {v2}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
 
-    invoke-virtual {p0, v3}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x3
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x4
+    .line 652
+    iget-short v2, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->reflectionsLevel:S
 
-    iget-short v3, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->reflectionsLevel:S
+    invoke-static {v2}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
 
-    invoke-virtual {p0, v3}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x4
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x5
+    .line 653
+    iget v2, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->reflectionsDelay:I
 
-    iget v3, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->reflectionsDelay:I
+    invoke-static {v2}, Landroid/media/audiofx/EnvironmentalReverb;->intToByteArray(I)[B
 
-    invoke-virtual {p0, v3}, Landroid/media/audiofx/EnvironmentalReverb;->intToByteArray(I)[B
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x5
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x6
+    .line 654
+    iget-short v2, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->reverbLevel:S
 
-    iget-short v3, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->reverbLevel:S
+    invoke-static {v2}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
 
-    invoke-virtual {p0, v3}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x6
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x7
+    .line 655
+    iget v2, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->reverbDelay:I
 
-    iget v3, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->reverbDelay:I
+    invoke-static {v2}, Landroid/media/audiofx/EnvironmentalReverb;->intToByteArray(I)[B
 
-    invoke-virtual {p0, v3}, Landroid/media/audiofx/EnvironmentalReverb;->intToByteArray(I)[B
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x7
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/16 v2, 0x8
+    .line 656
+    iget-short v2, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->diffusion:S
 
-    iget-short v3, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->diffusion:S
+    invoke-static {v2}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
 
-    invoke-virtual {p0, v3}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
+    move-result-object v2
 
-    move-result-object v3
+    const/16 v3, 0x8
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/16 v2, 0x9
+    .line 657
+    iget-short v2, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->density:S
 
-    iget-short v3, p1, Landroid/media/audiofx/EnvironmentalReverb$Settings;->density:S
+    invoke-static {v2}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
 
-    invoke-virtual {p0, v3}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
+    move-result-object v2
 
-    move-result-object v3
+    const/16 v3, 0x9
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->concatArrays([[B)[B
+    .line 648
+    invoke-static {v1}, Landroid/media/audiofx/EnvironmentalReverb;->concatArrays([[B)[B
 
     move-result-object v0
 
-    .line 667
-    .local v0, param:[B
+    .line 659
+    .local v0, "param":[B
     invoke-virtual {p0, v4, v0}, Landroid/media/audiofx/EnvironmentalReverb;->setParameter(I[B)I
 
     move-result v1
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 668
+    .line 646
     return-void
 .end method
 
 .method public setReflectionsDelay(I)V
     .locals 2
-    .parameter "reflectionsDelay"
+    .param p1, "reflectionsDelay"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -910,13 +913,13 @@
     .end annotation
 
     .prologue
-    .line 301
-    invoke-virtual {p0, p1}, Landroid/media/audiofx/EnvironmentalReverb;->intToByteArray(I)[B
+    .line 293
+    invoke-static {p1}, Landroid/media/audiofx/EnvironmentalReverb;->intToByteArray(I)[B
 
     move-result-object v0
 
-    .line 302
-    .local v0, param:[B
+    .line 294
+    .local v0, "param":[B
     const/4 v1, 0x5
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->setParameter(I[B)I
@@ -925,13 +928,13 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 303
+    .line 292
     return-void
 .end method
 
 .method public setReflectionsLevel(S)V
     .locals 2
-    .parameter "reflectionsLevel"
+    .param p1, "reflectionsLevel"    # S
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -941,13 +944,13 @@
     .end annotation
 
     .prologue
-    .line 272
-    invoke-virtual {p0, p1}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
+    .line 264
+    invoke-static {p1}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
 
     move-result-object v0
 
-    .line 273
-    .local v0, param:[B
+    .line 265
+    .local v0, "param":[B
     const/4 v1, 0x4
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->setParameter(I[B)I
@@ -956,13 +959,13 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 274
+    .line 263
     return-void
 .end method
 
 .method public setReverbDelay(I)V
     .locals 2
-    .parameter "reverbDelay"
+    .param p1, "reverbDelay"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -972,13 +975,13 @@
     .end annotation
 
     .prologue
-    .line 356
-    invoke-virtual {p0, p1}, Landroid/media/audiofx/EnvironmentalReverb;->intToByteArray(I)[B
+    .line 348
+    invoke-static {p1}, Landroid/media/audiofx/EnvironmentalReverb;->intToByteArray(I)[B
 
     move-result-object v0
 
-    .line 357
-    .local v0, param:[B
+    .line 349
+    .local v0, "param":[B
     const/4 v1, 0x7
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->setParameter(I[B)I
@@ -987,13 +990,13 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 358
+    .line 347
     return-void
 .end method
 
 .method public setReverbLevel(S)V
     .locals 2
-    .parameter "reverbLevel"
+    .param p1, "reverbLevel"    # S
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -1003,13 +1006,13 @@
     .end annotation
 
     .prologue
-    .line 329
-    invoke-virtual {p0, p1}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
+    .line 321
+    invoke-static {p1}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
 
     move-result-object v0
 
-    .line 330
-    .local v0, param:[B
+    .line 322
+    .local v0, "param":[B
     const/4 v1, 0x6
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->setParameter(I[B)I
@@ -1018,13 +1021,13 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 331
+    .line 320
     return-void
 .end method
 
 .method public setRoomHFLevel(S)V
     .locals 2
-    .parameter "roomHF"
+    .param p1, "roomHF"    # S
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -1034,13 +1037,13 @@
     .end annotation
 
     .prologue
-    .line 187
-    invoke-virtual {p0, p1}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
+    .line 179
+    invoke-static {p1}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
 
     move-result-object v0
 
-    .line 188
-    .local v0, param:[B
+    .line 180
+    .local v0, "param":[B
     const/4 v1, 0x1
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->setParameter(I[B)I
@@ -1049,13 +1052,13 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 189
+    .line 178
     return-void
 .end method
 
 .method public setRoomLevel(S)V
     .locals 2
-    .parameter "room"
+    .param p1, "room"    # S
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalStateException;,
@@ -1065,13 +1068,13 @@
     .end annotation
 
     .prologue
-    .line 158
-    invoke-virtual {p0, p1}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
+    .line 150
+    invoke-static {p1}, Landroid/media/audiofx/EnvironmentalReverb;->shortToByteArray(S)[B
 
     move-result-object v0
 
-    .line 159
-    .local v0, param:[B
+    .line 151
+    .local v0, "param":[B
     const/4 v1, 0x0
 
     invoke-virtual {p0, v1, v0}, Landroid/media/audiofx/EnvironmentalReverb;->setParameter(I[B)I
@@ -1080,6 +1083,6 @@
 
     invoke-virtual {p0, v1}, Landroid/media/audiofx/EnvironmentalReverb;->checkStatus(I)V
 
-    .line 160
+    .line 149
     return-void
 .end method

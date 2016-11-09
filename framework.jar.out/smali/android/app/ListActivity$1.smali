@@ -24,7 +24,7 @@
 # direct methods
 .method constructor <init>(Landroid/app/ListActivity;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/app/ListActivity;
 
     .prologue
     .line 190
@@ -52,6 +52,6 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ListView;->focusableViewAvailable(Landroid/view/View;)V
 
-    .line 193
+    .line 191
     return-void
 .end method

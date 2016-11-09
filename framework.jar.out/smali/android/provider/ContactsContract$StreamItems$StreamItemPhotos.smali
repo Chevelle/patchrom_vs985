@@ -17,23 +17,36 @@
     name = "StreamItemPhotos"
 .end annotation
 
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
 
 # static fields
 .field public static final CONTENT_DIRECTORY:Ljava/lang/String; = "photo"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public static final CONTENT_ITEM_TYPE:Ljava/lang/String; = "vnd.android.cursor.item/stream_item_photo"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field public static final CONTENT_TYPE:Ljava/lang/String; = "vnd.android.cursor.dir/stream_item_photo"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 
 # direct methods
 .method private constructor <init>()V
     .locals 0
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 3318
+    .line 3391
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 3319
     return-void
 .end method

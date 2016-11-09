@@ -19,14 +19,14 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 1
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
     .line 42
     invoke-direct {p0, p1}, Landroid/filterfw/core/Filter;-><init>(Ljava/lang/String;)V
 
-    .line 34
-    const v0, 0x3d4ccccd
+    .line 35
+    const v0, 0x3d4ccccd    # 0.05f
 
     iput v0, p0, Landroid/filterpacks/numeric/SinWaveFilter;->mStepSize:F
 
@@ -35,7 +35,7 @@
 
     iput v0, p0, Landroid/filterpacks/numeric/SinWaveFilter;->mValue:F
 
-    .line 43
+    .line 41
     return-void
 .end method
 
@@ -43,7 +43,7 @@
 # virtual methods
 .method public open(Landroid/filterfw/core/FilterContext;)V
     .locals 1
-    .parameter "env"
+    .param p1, "env"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
     .line 53
@@ -51,13 +51,13 @@
 
     iput v0, p0, Landroid/filterpacks/numeric/SinWaveFilter;->mValue:F
 
-    .line 54
+    .line 52
     return-void
 .end method
 
 .method public process(Landroid/filterfw/core/FilterContext;)V
-    .locals 3
-    .parameter "env"
+    .locals 4
+    .param p1, "env"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
     .line 58
@@ -72,22 +72,22 @@
     move-result-object v0
 
     .line 59
-    .local v0, output:Landroid/filterfw/core/Frame;
+    .local v0, "output":Landroid/filterfw/core/Frame;
     iget v1, p0, Landroid/filterpacks/numeric/SinWaveFilter;->mValue:F
 
-    float-to-double v1, v1
+    float-to-double v2, v1
 
-    invoke-static {v1, v2}, Ljava/lang/Math;->sin(D)D
+    invoke-static {v2, v3}, Ljava/lang/Math;->sin(D)D
 
-    move-result-wide v1
+    move-result-wide v2
 
-    double-to-float v1, v1
+    double-to-float v1, v2
 
-    const/high16 v2, 0x3f80
+    const/high16 v2, 0x3f800000    # 1.0f
 
     add-float/2addr v1, v2
 
-    const/high16 v2, 0x4000
+    const/high16 v2, 0x40000000    # 2.0f
 
     div-float/2addr v1, v2
 
@@ -114,7 +114,7 @@
     .line 62
     invoke-virtual {v0}, Landroid/filterfw/core/Frame;->release()Landroid/filterfw/core/Frame;
 
-    .line 63
+    .line 57
     return-void
 .end method
 
@@ -140,6 +140,6 @@
 
     invoke-virtual {p0, v0, v1}, Landroid/filterpacks/numeric/SinWaveFilter;->addOutputPort(Ljava/lang/String;Landroid/filterfw/core/FrameFormat;)V
 
-    .line 49
+    .line 46
     return-void
 .end method

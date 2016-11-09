@@ -21,7 +21,7 @@
 # direct methods
 .method constructor <init>(Landroid/hardware/LegacySensorManager;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/hardware/LegacySensorManager;
 
     .prologue
     .line 56
@@ -36,12 +36,12 @@
 # virtual methods
 .method public onRotationChanged(I)V
     .locals 0
-    .parameter "rotation"
+    .param p1, "rotation"    # I
 
     .prologue
     .line 58
     invoke-static {p1}, Landroid/hardware/LegacySensorManager;->onRotationChanged(I)V
 
-    .line 59
+    .line 57
     return-void
 .end method

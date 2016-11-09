@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/net/NetworkQuotaInfo$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -41,14 +49,15 @@
 
     sput-object v0, Landroid/net/NetworkQuotaInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 27
     return-void
 .end method
 
 .method public constructor <init>(JJJ)V
-    .locals 0
-    .parameter "estimatedBytes"
-    .parameter "softLimitBytes"
-    .parameter "hardLimitBytes"
+    .locals 1
+    .param p1, "estimatedBytes"    # J
+    .param p3, "softLimitBytes"    # J
+    .param p5, "hardLimitBytes"    # J
 
     .prologue
     .line 35
@@ -63,13 +72,13 @@
     .line 38
     iput-wide p5, p0, Landroid/net/NetworkQuotaInfo;->mHardLimitBytes:J
 
-    .line 39
+    .line 35
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 42
@@ -96,7 +105,7 @@
 
     iput-wide v0, p0, Landroid/net/NetworkQuotaInfo;->mHardLimitBytes:J
 
-    .line 46
+    .line 42
     return-void
 .end method
 
@@ -144,8 +153,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 2
-    .parameter "out"
-    .parameter "flags"
+    .param p1, "out"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 67
@@ -163,6 +172,6 @@
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 70
+    .line 66
     return-void
 .end method

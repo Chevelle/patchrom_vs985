@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/widget/SearchView;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/SearchView;
 
     .prologue
-    .line 150
+    .line 164
     iput-object p1, p0, Landroid/widget/SearchView$2;->this$0:Landroid/widget/SearchView;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,12 +41,11 @@
     .locals 1
 
     .prologue
-    .line 152
+    .line 166
     iget-object v0, p0, Landroid/widget/SearchView$2;->this$0:Landroid/widget/SearchView;
 
-    #calls: Landroid/widget/SearchView;->updateFocusedState()V
-    invoke-static {v0}, Landroid/widget/SearchView;->access$000(Landroid/widget/SearchView;)V
+    invoke-static {v0}, Landroid/widget/SearchView;->-wrap12(Landroid/widget/SearchView;)V
 
-    .line 153
+    .line 165
     return-void
 .end method

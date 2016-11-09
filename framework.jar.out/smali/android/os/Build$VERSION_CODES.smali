@@ -55,13 +55,23 @@
 
 .field public static final KITKAT:I = 0x13
 
+.field public static final KITKAT_WATCH:I = 0x14
+
+.field public static final L:I = 0x15
+
+.field public static final LOLLIPOP:I = 0x15
+
+.field public static final LOLLIPOP_MR1:I = 0x16
+
+.field public static final M:I = 0x17
+
 
 # direct methods
 .method public constructor <init>()V
     .locals 0
 
     .prologue
-    .line 129
+    .line 236
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

@@ -20,15 +20,18 @@
 
 # instance fields
 .field protected mClosed:Z
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 .field private final mContentObservable:Landroid/database/ContentObservable;
 
 .field protected mContentResolver:Landroid/content/ContentResolver;
-
-.field protected mCurrentRowID:Ljava/lang/Long;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 .end field
+
+.field protected mCurrentRowID:Ljava/lang/Long;
 
 .field private final mDataSetObservable:Landroid/database/DataSetObservable;
 
@@ -37,11 +40,11 @@
 .field private mNotifyUri:Landroid/net/Uri;
 
 .field protected mPos:I
-
-.field protected mRowIdColumnIndex:I
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 .end field
+
+.field protected mRowIdColumnIndex:I
 
 .field private mSelfObserver:Landroid/database/ContentObserver;
 
@@ -62,67 +65,49 @@
             ">;>;"
         }
     .end annotation
-
-    .annotation runtime Ljava/lang/Deprecated;
-    .end annotation
 .end field
 
 
 # direct methods
 .method public constructor <init>()V
-    .locals 2
+    .locals 1
 
     .prologue
-    const/4 v1, -0x1
-
-    .line 184
+    .line 207
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 68
+    .line 72
     new-instance v0, Ljava/lang/Object;
 
     invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     iput-object v0, p0, Landroid/database/AbstractCursor;->mSelfObserverLock:Ljava/lang/Object;
 
-    .line 72
+    .line 76
     new-instance v0, Landroid/database/DataSetObservable;
 
     invoke-direct {v0}, Landroid/database/DataSetObservable;-><init>()V
 
     iput-object v0, p0, Landroid/database/AbstractCursor;->mDataSetObservable:Landroid/database/DataSetObservable;
 
-    .line 73
+    .line 77
     new-instance v0, Landroid/database/ContentObservable;
 
     invoke-direct {v0}, Landroid/database/ContentObservable;-><init>()V
 
     iput-object v0, p0, Landroid/database/AbstractCursor;->mContentObservable:Landroid/database/ContentObservable;
 
-    .line 75
+    .line 79
     sget-object v0, Landroid/os/Bundle;->EMPTY:Landroid/os/Bundle;
 
     iput-object v0, p0, Landroid/database/AbstractCursor;->mExtras:Landroid/os/Bundle;
 
-    .line 185
-    iput v1, p0, Landroid/database/AbstractCursor;->mPos:I
+    .line 208
+    const/4 v0, -0x1
 
-    .line 186
-    iput v1, p0, Landroid/database/AbstractCursor;->mRowIdColumnIndex:I
+    iput v0, p0, Landroid/database/AbstractCursor;->mPos:I
 
-    .line 187
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Landroid/database/AbstractCursor;->mCurrentRowID:Ljava/lang/Long;
-
-    .line 188
-    new-instance v0, Ljava/util/HashMap;
-
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
-
-    iput-object v0, p0, Landroid/database/AbstractCursor;->mUpdatedRows:Ljava/util/HashMap;
-
-    .line 189
+    .line 207
     return-void
 .end method
 
@@ -132,12 +117,12 @@
     .locals 3
 
     .prologue
-    .line 425
-    const/4 v0, -0x1
+    .line 459
+    iget v0, p0, Landroid/database/AbstractCursor;->mPos:I
 
-    iget v1, p0, Landroid/database/AbstractCursor;->mPos:I
+    const/4 v1, -0x1
 
-    if-eq v0, v1, :cond_0
+    if-eq v1, v0, :cond_0
 
     invoke-virtual {p0}, Landroid/database/AbstractCursor;->getCount()I
 
@@ -147,7 +132,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 426
+    .line 460
     :cond_0
     new-instance v0, Landroid/database/CursorIndexOutOfBoundsException;
 
@@ -161,7 +146,7 @@
 
     throw v0
 
-    .line 428
+    .line 458
     :cond_1
     return-void
 .end method
@@ -170,45 +155,45 @@
     .locals 1
 
     .prologue
-    .line 146
+    .line 167
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/database/AbstractCursor;->mClosed:Z
 
-    .line 147
+    .line 168
     iget-object v0, p0, Landroid/database/AbstractCursor;->mContentObservable:Landroid/database/ContentObservable;
 
     invoke-virtual {v0}, Landroid/database/ContentObservable;->unregisterAll()V
 
-    .line 148
+    .line 169
     invoke-virtual {p0}, Landroid/database/AbstractCursor;->onDeactivateOrClose()V
 
-    .line 149
+    .line 166
     return-void
 .end method
 
 .method public copyStringToBuffer(ILandroid/database/CharArrayBuffer;)V
     .locals 5
-    .parameter "columnIndex"
-    .parameter "buffer"
+    .param p1, "columnIndex"    # I
+    .param p2, "buffer"    # Landroid/database/CharArrayBuffer;
 
     .prologue
     const/4 v4, 0x0
 
-    .line 168
+    .line 191
     invoke-virtual {p0, p1}, Landroid/database/AbstractCursor;->getString(I)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 169
-    .local v1, result:Ljava/lang/String;
+    .line 192
+    .local v1, "result":Ljava/lang/String;
     if-eqz v1, :cond_2
 
-    .line 170
+    .line 193
     iget-object v0, p2, Landroid/database/CharArrayBuffer;->data:[C
 
-    .line 171
-    .local v0, data:[C
+    .line 194
+    .local v0, "data":[C
     if-eqz v0, :cond_0
 
     array-length v2, v0
@@ -219,7 +204,7 @@
 
     if-ge v2, v3, :cond_1
 
-    .line 172
+    .line 195
     :cond_0
     invoke-virtual {v1}, Ljava/lang/String;->toCharArray()[C
 
@@ -227,7 +212,7 @@
 
     iput-object v2, p2, Landroid/database/CharArrayBuffer;->data:[C
 
-    .line 176
+    .line 199
     :goto_0
     invoke-virtual {v1}, Ljava/lang/String;->length()I
 
@@ -235,13 +220,13 @@
 
     iput v2, p2, Landroid/database/CharArrayBuffer;->sizeCopied:I
 
-    .line 180
-    .end local v0           #data:[C
+    .line 189
+    .end local v0    # "data":[C
     :goto_1
     return-void
 
-    .line 174
-    .restart local v0       #data:[C
+    .line 197
+    .restart local v0    # "data":[C
     :cond_1
     invoke-virtual {v1}, Ljava/lang/String;->length()I
 
@@ -251,8 +236,8 @@
 
     goto :goto_0
 
-    .line 178
-    .end local v0           #data:[C
+    .line 201
+    .end local v0    # "data":[C
     :cond_2
     iput v4, p2, Landroid/database/CharArrayBuffer;->sizeCopied:I
 
@@ -263,80 +248,79 @@
     .locals 0
 
     .prologue
-    .line 120
+    .line 138
     invoke-virtual {p0}, Landroid/database/AbstractCursor;->onDeactivateOrClose()V
 
-    .line 121
+    .line 137
     return-void
 .end method
 
 .method public fillWindow(ILandroid/database/CursorWindow;)V
     .locals 0
-    .parameter "position"
-    .parameter "window"
+    .param p1, "position"    # I
+    .param p2, "window"    # Landroid/database/CursorWindow;
 
     .prologue
-    .line 229
+    .line 248
     invoke-static {p0, p1, p2}, Landroid/database/DatabaseUtils;->cursorFillWindow(Landroid/database/Cursor;ILandroid/database/CursorWindow;)V
 
-    .line 230
+    .line 247
     return-void
 .end method
 
 .method protected finalize()V
-    .locals 2
+    .locals 3
 
     .prologue
-    .line 432
-    iget-object v0, p0, Landroid/database/AbstractCursor;->mSelfObserver:Landroid/database/ContentObserver;
-
-    if-eqz v0, :cond_0
-
-    iget-boolean v0, p0, Landroid/database/AbstractCursor;->mSelfObserverRegistered:Z
-
-    const/4 v1, 0x1
-
-    if-ne v0, v1, :cond_0
-
-    .line 433
-    iget-object v0, p0, Landroid/database/AbstractCursor;->mContentResolver:Landroid/content/ContentResolver;
-
+    .line 466
     iget-object v1, p0, Landroid/database/AbstractCursor;->mSelfObserver:Landroid/database/ContentObserver;
 
-    invoke-virtual {v0, v1}, Landroid/content/ContentResolver;->unregisterContentObserver(Landroid/database/ContentObserver;)V
+    if-eqz v1, :cond_0
 
-    .line 436
+    iget-boolean v1, p0, Landroid/database/AbstractCursor;->mSelfObserverRegistered:Z
+
+    if-eqz v1, :cond_0
+
+    .line 467
+    iget-object v1, p0, Landroid/database/AbstractCursor;->mContentResolver:Landroid/content/ContentResolver;
+
+    iget-object v2, p0, Landroid/database/AbstractCursor;->mSelfObserver:Landroid/database/ContentObserver;
+
+    invoke-virtual {v1, v2}, Landroid/content/ContentResolver;->unregisterContentObserver(Landroid/database/ContentObserver;)V
+
+    .line 470
     :cond_0
     :try_start_0
-    iget-boolean v0, p0, Landroid/database/AbstractCursor;->mClosed:Z
+    iget-boolean v1, p0, Landroid/database/AbstractCursor;->mClosed:Z
 
-    if-nez v0, :cond_1
+    if-nez v1, :cond_1
 
     invoke-virtual {p0}, Landroid/database/AbstractCursor;->close()V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 438
+    .line 465
     :cond_1
     :goto_0
     return-void
 
-    .line 437
+    .line 471
     :catch_0
     move-exception v0
 
+    .local v0, "e":Ljava/lang/Exception;
     goto :goto_0
 .end method
 
 .method public getBlob(I)[B
     .locals 2
-    .parameter "column"
+    .param p1, "column"    # I
 
     .prologue
-    .line 100
+    .line 115
     new-instance v0, Ljava/lang/UnsupportedOperationException;
 
-    const-string v1, "getBlob is not supported"
+    const-string/jumbo v1, "getBlob is not supported"
 
     invoke-direct {v0, v1}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
 
@@ -347,7 +331,7 @@
     .locals 1
 
     .prologue
-    .line 116
+    .line 133
     invoke-virtual {p0}, Landroid/database/AbstractCursor;->getColumnNames()[Ljava/lang/String;
 
     move-result-object v0
@@ -359,127 +343,122 @@
 
 .method public getColumnIndex(Ljava/lang/String;)I
     .locals 9
-    .parameter "columnName"
+    .param p1, "columnName"    # Ljava/lang/String;
 
     .prologue
-    const/4 v5, -0x1
+    const/4 v8, -0x1
 
-    .line 277
-    const/16 v6, 0x2e
+    .line 306
+    const/16 v5, 0x2e
 
-    invoke-virtual {p1, v6}, Ljava/lang/String;->lastIndexOf(I)I
+    invoke-virtual {p1, v5}, Ljava/lang/String;->lastIndexOf(I)I
 
     move-result v4
 
-    .line 278
-    .local v4, periodIndex:I
-    if-eq v4, v5, :cond_0
+    .line 307
+    .local v4, "periodIndex":I
+    if-eq v4, v8, :cond_0
 
-    .line 279
+    .line 308
     new-instance v1, Ljava/lang/Exception;
 
     invoke-direct {v1}, Ljava/lang/Exception;-><init>()V
 
-    .line 280
-    .local v1, e:Ljava/lang/Exception;
-    const-string v6, "Cursor"
+    .line 309
+    .local v1, "e":Ljava/lang/Exception;
+    const-string/jumbo v5, "Cursor"
 
-    new-instance v7, Ljava/lang/StringBuilder;
+    new-instance v6, Ljava/lang/StringBuilder;
 
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v8, "requesting column name with table name -- "
+    const-string/jumbo v7, "requesting column name with table name -- "
 
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v6
 
-    invoke-virtual {v7, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v6
 
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v7
+    move-result-object v6
 
-    invoke-static {v6, v7, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v5, v6, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 281
-    add-int/lit8 v6, v4, 0x1
+    .line 310
+    add-int/lit8 v5, v4, 0x1
 
-    invoke-virtual {p1, v6}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+    invoke-virtual {p1, v5}, Ljava/lang/String;->substring(I)Ljava/lang/String;
 
     move-result-object p1
 
-    .line 284
-    .end local v1           #e:Ljava/lang/Exception;
+    .line 313
+    .end local v1    # "e":Ljava/lang/Exception;
     :cond_0
     invoke-virtual {p0}, Landroid/database/AbstractCursor;->getColumnNames()[Ljava/lang/String;
 
     move-result-object v0
 
-    .line 285
-    .local v0, columnNames:[Ljava/lang/String;
+    .line 314
+    .local v0, "columnNames":[Ljava/lang/String;
     array-length v3, v0
 
-    .line 286
-    .local v3, length:I
+    .line 315
+    .local v3, "length":I
     const/4 v2, 0x0
 
-    .local v2, i:I
+    .local v2, "i":I
     :goto_0
     if-ge v2, v3, :cond_2
 
-    .line 287
-    aget-object v6, v0, v2
+    .line 316
+    aget-object v5, v0, v2
 
-    invoke-virtual {v6, p1}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+    invoke-virtual {v5, p1}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
-    move-result v6
+    move-result v5
 
-    if-eqz v6, :cond_1
+    if-eqz v5, :cond_1
 
-    .line 297
-    .end local v2           #i:I
-    :goto_1
+    .line 317
     return v2
 
-    .line 286
-    .restart local v2       #i:I
+    .line 315
     :cond_1
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
+    .line 326
     :cond_2
-    move v2, v5
-
-    .line 297
-    goto :goto_1
+    return v8
 .end method
 
 .method public getColumnIndexOrThrow(Ljava/lang/String;)I
     .locals 4
-    .parameter "columnName"
+    .param p1, "columnName"    # Ljava/lang/String;
 
     .prologue
-    .line 301
+    .line 331
     invoke-virtual {p0, p1}, Landroid/database/AbstractCursor;->getColumnIndex(Ljava/lang/String;)I
 
     move-result v0
 
-    .line 302
-    .local v0, index:I
+    .line 332
+    .local v0, "index":I
     if-gez v0, :cond_0
 
-    .line 303
+    .line 333
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "column \'"
+    const-string/jumbo v3, "column \'"
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -489,7 +468,7 @@
 
     move-result-object v2
 
-    const-string v3, "\' does not exist"
+    const-string/jumbo v3, "\' does not exist"
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -503,17 +482,17 @@
 
     throw v1
 
-    .line 305
+    .line 335
     :cond_0
     return v0
 .end method
 
 .method public getColumnName(I)Ljava/lang/String;
     .locals 1
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
 
     .prologue
-    .line 309
+    .line 340
     invoke-virtual {p0}, Landroid/database/AbstractCursor;->getColumnNames()[Ljava/lang/String;
 
     move-result-object v0
@@ -536,7 +515,7 @@
     .locals 1
 
     .prologue
-    .line 393
+    .line 426
     iget-object v0, p0, Landroid/database/AbstractCursor;->mExtras:Landroid/os/Bundle;
 
     return-object v0
@@ -555,35 +534,35 @@
     .locals 2
 
     .prologue
-    .line 372
-    iget-object v1, p0, Landroid/database/AbstractCursor;->mSelfObserverLock:Ljava/lang/Object;
+    .line 409
+    iget-object v0, p0, Landroid/database/AbstractCursor;->mSelfObserverLock:Ljava/lang/Object;
 
-    monitor-enter v1
+    monitor-enter v0
 
-    .line 373
+    .line 410
     :try_start_0
-    iget-object v0, p0, Landroid/database/AbstractCursor;->mNotifyUri:Landroid/net/Uri;
-
-    monitor-exit v1
-
-    return-object v0
-
-    .line 374
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v1
+    iget-object v1, p0, Landroid/database/AbstractCursor;->mNotifyUri:Landroid/net/Uri;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw v0
+    monitor-exit v0
+
+    return-object v1
+
+    .line 409
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+
+    throw v1
 .end method
 
 .method public final getPosition()I
     .locals 1
 
     .prologue
-    .line 192
+    .line 213
     iget v0, p0, Landroid/database/AbstractCursor;->mPos:I
 
     return v0
@@ -597,10 +576,10 @@
 
 .method public getType(I)I
     .locals 1
-    .parameter "column"
+    .param p1, "column"    # I
 
     .prologue
-    .line 95
+    .line 109
     const/4 v0, 0x3
 
     return v0
@@ -608,12 +587,12 @@
 
 .method protected getUpdatedField(I)Ljava/lang/Object;
     .locals 1
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
     .prologue
-    .line 413
+    .line 447
     const/4 v0, 0x0
 
     return-object v0
@@ -623,7 +602,7 @@
     .locals 1
 
     .prologue
-    .line 378
+    .line 416
     const/4 v0, 0x0
 
     return v0
@@ -633,70 +612,80 @@
     .locals 1
 
     .prologue
-    .line 112
+    .line 128
     const/4 v0, 0x0
 
     return-object v0
 .end method
 
 .method public final isAfterLast()Z
-    .locals 3
+    .locals 4
 
     .prologue
     const/4 v0, 0x1
 
-    .line 269
-    invoke-virtual {p0}, Landroid/database/AbstractCursor;->getCount()I
+    const/4 v1, 0x0
 
-    move-result v1
-
-    if-nez v1, :cond_1
-
-    .line 272
-    :cond_0
-    :goto_0
-    return v0
-
-    :cond_1
-    iget v1, p0, Landroid/database/AbstractCursor;->mPos:I
-
+    .line 297
     invoke-virtual {p0}, Landroid/database/AbstractCursor;->getCount()I
 
     move-result v2
 
-    if-eq v1, v2, :cond_0
+    if-nez v2, :cond_0
 
-    const/4 v0, 0x0
+    .line 298
+    return v0
+
+    .line 300
+    :cond_0
+    iget v2, p0, Landroid/database/AbstractCursor;->mPos:I
+
+    invoke-virtual {p0}, Landroid/database/AbstractCursor;->getCount()I
+
+    move-result v3
+
+    if-ne v2, v3, :cond_1
+
+    :goto_0
+    return v0
+
+    :cond_1
+    move v0, v1
 
     goto :goto_0
 .end method
 
 .method public final isBeforeFirst()Z
-    .locals 3
+    .locals 4
 
     .prologue
     const/4 v0, 0x1
 
-    .line 262
+    const/4 v1, 0x0
+
+    .line 289
     invoke-virtual {p0}, Landroid/database/AbstractCursor;->getCount()I
 
-    move-result v1
+    move-result v2
 
-    if-nez v1, :cond_1
+    if-nez v2, :cond_0
 
-    .line 265
+    .line 290
+    return v0
+
+    .line 292
     :cond_0
+    iget v2, p0, Landroid/database/AbstractCursor;->mPos:I
+
+    const/4 v3, -0x1
+
+    if-ne v2, v3, :cond_1
+
     :goto_0
     return v0
 
     :cond_1
-    iget v1, p0, Landroid/database/AbstractCursor;->mPos:I
-
-    const/4 v2, -0x1
-
-    if-eq v1, v2, :cond_0
-
-    const/4 v0, 0x0
+    move v0, v1
 
     goto :goto_0
 .end method
@@ -705,7 +694,7 @@
     .locals 1
 
     .prologue
-    .line 142
+    .line 162
     iget-boolean v0, p0, Landroid/database/AbstractCursor;->mClosed:Z
 
     return v0
@@ -713,71 +702,65 @@
 
 .method protected isFieldUpdated(I)Z
     .locals 1
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
     .prologue
-    .line 405
+    .line 439
     const/4 v0, 0x0
 
     return v0
 .end method
 
 .method public final isFirst()Z
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 253
-    iget v0, p0, Landroid/database/AbstractCursor;->mPos:I
+    const/4 v0, 0x0
 
-    if-nez v0, :cond_0
+    .line 278
+    iget v1, p0, Landroid/database/AbstractCursor;->mPos:I
+
+    if-nez v1, :cond_0
 
     invoke-virtual {p0}, Landroid/database/AbstractCursor;->getCount()I
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public final isLast()Z
-    .locals 3
+    .locals 4
 
     .prologue
-    .line 257
+    const/4 v1, 0x0
+
+    .line 283
     invoke-virtual {p0}, Landroid/database/AbstractCursor;->getCount()I
 
     move-result v0
 
-    .line 258
-    .local v0, cnt:I
-    iget v1, p0, Landroid/database/AbstractCursor;->mPos:I
+    .line 284
+    .local v0, "cnt":I
+    iget v2, p0, Landroid/database/AbstractCursor;->mPos:I
 
-    add-int/lit8 v2, v0, -0x1
+    add-int/lit8 v3, v0, -0x1
 
-    if-ne v1, v2, :cond_0
+    if-ne v2, v3, :cond_0
 
     if-eqz v0, :cond_0
 
     const/4 v1, 0x1
 
-    :goto_0
-    return v1
-
     :cond_0
-    const/4 v1, 0x0
-
-    goto :goto_0
+    return v1
 .end method
 
 .method public abstract isNull(I)Z
@@ -785,10 +768,10 @@
 
 .method public final move(I)Z
     .locals 1
-    .parameter "offset"
+    .param p1, "offset"    # I
 
     .prologue
-    .line 233
+    .line 253
     iget v0, p0, Landroid/database/AbstractCursor;->mPos:I
 
     add-int/2addr v0, p1
@@ -804,7 +787,7 @@
     .locals 1
 
     .prologue
-    .line 237
+    .line 258
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Landroid/database/AbstractCursor;->moveToPosition(I)Z
@@ -818,7 +801,7 @@
     .locals 1
 
     .prologue
-    .line 241
+    .line 263
     invoke-virtual {p0}, Landroid/database/AbstractCursor;->getCount()I
 
     move-result v0
@@ -836,7 +819,7 @@
     .locals 1
 
     .prologue
-    .line 245
+    .line 268
     iget v0, p0, Landroid/database/AbstractCursor;->mPos:I
 
     add-int/lit8 v0, v0, 0x1
@@ -850,88 +833,71 @@
 
 .method public final moveToPosition(I)Z
     .locals 4
-    .parameter "position"
+    .param p1, "position"    # I
 
     .prologue
-    const/4 v1, 0x0
-
     const/4 v3, -0x1
 
-    .line 197
+    const/4 v2, 0x0
+
+    .line 219
     invoke-virtual {p0}, Landroid/database/AbstractCursor;->getCount()I
 
     move-result v0
 
-    .line 198
-    .local v0, count:I
-    if-lt p1, v0, :cond_1
+    .line 220
+    .local v0, "count":I
+    if-lt p1, v0, :cond_0
 
-    .line 199
+    .line 221
     iput v0, p0, Landroid/database/AbstractCursor;->mPos:I
 
-    .line 224
+    .line 222
+    return v2
+
+    .line 226
     :cond_0
-    :goto_0
-    return v1
+    if-gez p1, :cond_1
 
-    .line 204
-    :cond_1
-    if-gez p1, :cond_2
-
-    .line 205
+    .line 227
     iput v3, p0, Landroid/database/AbstractCursor;->mPos:I
 
-    goto :goto_0
+    .line 228
+    return v2
 
-    .line 210
-    :cond_2
+    .line 232
+    :cond_1
     iget v2, p0, Landroid/database/AbstractCursor;->mPos:I
 
-    if-ne p1, v2, :cond_3
+    if-ne p1, v2, :cond_2
 
-    .line 211
-    const/4 v1, 0x1
+    .line 233
+    const/4 v2, 0x1
 
-    goto :goto_0
+    return v2
 
-    .line 214
-    :cond_3
+    .line 236
+    :cond_2
     iget v2, p0, Landroid/database/AbstractCursor;->mPos:I
 
     invoke-virtual {p0, v2, p1}, Landroid/database/AbstractCursor;->onMove(II)Z
 
     move-result v1
 
-    .line 215
-    .local v1, result:Z
-    if-nez v1, :cond_4
+    .line 237
+    .local v1, "result":Z
+    if-nez v1, :cond_3
 
-    .line 216
+    .line 238
     iput v3, p0, Landroid/database/AbstractCursor;->mPos:I
 
-    goto :goto_0
+    .line 243
+    :goto_0
+    return v1
 
-    .line 218
-    :cond_4
+    .line 240
+    :cond_3
     iput p1, p0, Landroid/database/AbstractCursor;->mPos:I
-
-    .line 219
-    iget v2, p0, Landroid/database/AbstractCursor;->mRowIdColumnIndex:I
-
-    if-eq v2, v3, :cond_0
-
-    .line 220
-    iget v2, p0, Landroid/database/AbstractCursor;->mRowIdColumnIndex:I
-
-    invoke-virtual {p0, v2}, Landroid/database/AbstractCursor;->getLong(I)J
-
-    move-result-wide v2
-
-    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
-
-    move-result-object v2
-
-    iput-object v2, p0, Landroid/database/AbstractCursor;->mCurrentRowID:Ljava/lang/Long;
 
     goto :goto_0
 .end method
@@ -940,7 +906,7 @@
     .locals 1
 
     .prologue
-    .line 249
+    .line 273
     iget v0, p0, Landroid/database/AbstractCursor;->mPos:I
 
     add-int/lit8 v0, v0, -0x1
@@ -954,15 +920,15 @@
 
 .method protected onChange(Z)V
     .locals 4
-    .parameter "selfChange"
+    .param p1, "selfChange"    # Z
 
     .prologue
-    .line 338
+    .line 373
     iget-object v1, p0, Landroid/database/AbstractCursor;->mSelfObserverLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 339
+    .line 374
     :try_start_0
     iget-object v0, p0, Landroid/database/AbstractCursor;->mContentObservable:Landroid/database/ContentObservable;
 
@@ -970,14 +936,14 @@
 
     invoke-virtual {v0, p1, v2}, Landroid/database/ContentObservable;->dispatchChange(ZLandroid/net/Uri;)V
 
-    .line 340
+    .line 375
     iget-object v0, p0, Landroid/database/AbstractCursor;->mNotifyUri:Landroid/net/Uri;
 
     if-eqz v0, :cond_0
 
     if-eqz p1, :cond_0
 
-    .line 341
+    .line 376
     iget-object v0, p0, Landroid/database/AbstractCursor;->mContentResolver:Landroid/content/ContentResolver;
 
     iget-object v2, p0, Landroid/database/AbstractCursor;->mNotifyUri:Landroid/net/Uri;
@@ -985,21 +951,20 @@
     iget-object v3, p0, Landroid/database/AbstractCursor;->mSelfObserver:Landroid/database/ContentObserver;
 
     invoke-virtual {v0, v2, v3}, Landroid/content/ContentResolver;->notifyChange(Landroid/net/Uri;Landroid/database/ContentObserver;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 343
     :cond_0
     monitor-exit v1
 
-    .line 344
+    .line 372
     return-void
 
-    .line 343
+    .line 373
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
@@ -1008,40 +973,40 @@
     .locals 2
 
     .prologue
-    .line 125
+    .line 143
     iget-object v0, p0, Landroid/database/AbstractCursor;->mSelfObserver:Landroid/database/ContentObserver;
 
     if-eqz v0, :cond_0
 
-    .line 126
+    .line 144
     iget-object v0, p0, Landroid/database/AbstractCursor;->mContentResolver:Landroid/content/ContentResolver;
 
     iget-object v1, p0, Landroid/database/AbstractCursor;->mSelfObserver:Landroid/database/ContentObserver;
 
     invoke-virtual {v0, v1}, Landroid/content/ContentResolver;->unregisterContentObserver(Landroid/database/ContentObserver;)V
 
-    .line 127
+    .line 145
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/database/AbstractCursor;->mSelfObserverRegistered:Z
 
-    .line 129
+    .line 147
     :cond_0
     iget-object v0, p0, Landroid/database/AbstractCursor;->mDataSetObservable:Landroid/database/DataSetObservable;
 
     invoke-virtual {v0}, Landroid/database/DataSetObservable;->notifyInvalidated()V
 
-    .line 130
+    .line 142
     return-void
 .end method
 
 .method public onMove(II)Z
     .locals 1
-    .parameter "oldPosition"
-    .parameter "newPosition"
+    .param p1, "oldPosition"    # I
+    .param p2, "newPosition"    # I
 
     .prologue
-    .line 162
+    .line 184
     const/4 v0, 0x1
 
     return v0
@@ -1049,29 +1014,29 @@
 
 .method public registerContentObserver(Landroid/database/ContentObserver;)V
     .locals 1
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/ContentObserver;
 
     .prologue
-    .line 313
+    .line 345
     iget-object v0, p0, Landroid/database/AbstractCursor;->mContentObservable:Landroid/database/ContentObservable;
 
     invoke-virtual {v0, p1}, Landroid/database/ContentObservable;->registerObserver(Landroid/database/ContentObserver;)V
 
-    .line 314
+    .line 344
     return-void
 .end method
 
 .method public registerDataSetObserver(Landroid/database/DataSetObserver;)V
     .locals 1
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/DataSetObserver;
 
     .prologue
-    .line 324
+    .line 358
     iget-object v0, p0, Landroid/database/AbstractCursor;->mDataSetObservable:Landroid/database/DataSetObservable;
 
     invoke-virtual {v0, p1}, Landroid/database/DataSetObservable;->registerObserver(Ljava/lang/Object;)V
 
-    .line 325
+    .line 357
     return-void
 .end method
 
@@ -1081,7 +1046,7 @@
     .prologue
     const/4 v3, 0x1
 
-    .line 133
+    .line 152
     iget-object v0, p0, Landroid/database/AbstractCursor;->mSelfObserver:Landroid/database/ContentObserver;
 
     if-eqz v0, :cond_0
@@ -1090,7 +1055,7 @@
 
     if-nez v0, :cond_0
 
-    .line 134
+    .line 153
     iget-object v0, p0, Landroid/database/AbstractCursor;->mContentResolver:Landroid/content/ContentResolver;
 
     iget-object v1, p0, Landroid/database/AbstractCursor;->mNotifyUri:Landroid/net/Uri;
@@ -1099,25 +1064,25 @@
 
     invoke-virtual {v0, v1, v3, v2}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 135
+    .line 154
     iput-boolean v3, p0, Landroid/database/AbstractCursor;->mSelfObserverRegistered:Z
 
-    .line 137
+    .line 156
     :cond_0
     iget-object v0, p0, Landroid/database/AbstractCursor;->mDataSetObservable:Landroid/database/DataSetObservable;
 
     invoke-virtual {v0}, Landroid/database/DataSetObservable;->notifyChanged()V
 
-    .line 138
+    .line 157
     return v3
 .end method
 
 .method public respond(Landroid/os/Bundle;)Landroid/os/Bundle;
     .locals 1
-    .parameter "extras"
+    .param p1, "extras"    # Landroid/os/Bundle;
 
     .prologue
-    .line 397
+    .line 431
     sget-object v0, Landroid/os/Bundle;->EMPTY:Landroid/os/Bundle;
 
     return-object v0
@@ -1125,71 +1090,71 @@
 
 .method public setExtras(Landroid/os/Bundle;)V
     .locals 0
-    .parameter "extras"
+    .param p1, "extras"    # Landroid/os/Bundle;
 
     .prologue
-    .line 389
+    .line 421
     if-nez p1, :cond_0
 
     sget-object p1, Landroid/os/Bundle;->EMPTY:Landroid/os/Bundle;
 
-    .end local p1
+    .end local p1    # "extras":Landroid/os/Bundle;
     :cond_0
     iput-object p1, p0, Landroid/database/AbstractCursor;->mExtras:Landroid/os/Bundle;
 
-    .line 390
+    .line 420
     return-void
 .end method
 
 .method public setNotificationUri(Landroid/content/ContentResolver;Landroid/net/Uri;)V
     .locals 1
-    .parameter "cr"
-    .parameter "notifyUri"
+    .param p1, "cr"    # Landroid/content/ContentResolver;
+    .param p2, "notifyUri"    # Landroid/net/Uri;
 
     .prologue
-    .line 354
+    .line 390
     invoke-static {}, Landroid/os/UserHandle;->myUserId()I
 
     move-result v0
 
     invoke-virtual {p0, p1, p2, v0}, Landroid/database/AbstractCursor;->setNotificationUri(Landroid/content/ContentResolver;Landroid/net/Uri;I)V
 
-    .line 355
+    .line 389
     return-void
 .end method
 
 .method public setNotificationUri(Landroid/content/ContentResolver;Landroid/net/Uri;I)V
     .locals 5
-    .parameter "cr"
-    .parameter "notifyUri"
-    .parameter "userHandle"
+    .param p1, "cr"    # Landroid/content/ContentResolver;
+    .param p2, "notifyUri"    # Landroid/net/Uri;
+    .param p3, "userHandle"    # I
 
     .prologue
-    .line 359
+    .line 395
     iget-object v1, p0, Landroid/database/AbstractCursor;->mSelfObserverLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 360
+    .line 396
     :try_start_0
     iput-object p2, p0, Landroid/database/AbstractCursor;->mNotifyUri:Landroid/net/Uri;
 
-    .line 361
+    .line 397
     iput-object p1, p0, Landroid/database/AbstractCursor;->mContentResolver:Landroid/content/ContentResolver;
 
-    .line 362
+    .line 398
     iget-object v0, p0, Landroid/database/AbstractCursor;->mSelfObserver:Landroid/database/ContentObserver;
 
     if-eqz v0, :cond_0
 
-    .line 363
+    .line 399
     iget-object v0, p0, Landroid/database/AbstractCursor;->mContentResolver:Landroid/content/ContentResolver;
 
     iget-object v2, p0, Landroid/database/AbstractCursor;->mSelfObserver:Landroid/database/ContentObserver;
 
     invoke-virtual {v0, v2}, Landroid/content/ContentResolver;->unregisterContentObserver(Landroid/database/ContentObserver;)V
 
-    .line 365
+    .line 401
     :cond_0
     new-instance v0, Landroid/database/AbstractCursor$SelfContentObserver;
 
@@ -1197,69 +1162,68 @@
 
     iput-object v0, p0, Landroid/database/AbstractCursor;->mSelfObserver:Landroid/database/ContentObserver;
 
-    .line 366
+    .line 402
     iget-object v0, p0, Landroid/database/AbstractCursor;->mContentResolver:Landroid/content/ContentResolver;
 
     iget-object v2, p0, Landroid/database/AbstractCursor;->mNotifyUri:Landroid/net/Uri;
 
-    const/4 v3, 0x1
+    iget-object v3, p0, Landroid/database/AbstractCursor;->mSelfObserver:Landroid/database/ContentObserver;
 
-    iget-object v4, p0, Landroid/database/AbstractCursor;->mSelfObserver:Landroid/database/ContentObserver;
+    const/4 v4, 0x1
 
-    invoke-virtual {v0, v2, v3, v4, p3}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
+    invoke-virtual {v0, v2, v4, v3, p3}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
 
-    .line 367
+    .line 403
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/database/AbstractCursor;->mSelfObserverRegistered:Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 368
     monitor-exit v1
 
-    .line 369
+    .line 394
     return-void
 
-    .line 368
+    .line 395
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public unregisterContentObserver(Landroid/database/ContentObserver;)V
     .locals 1
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/ContentObserver;
 
     .prologue
-    .line 318
+    .line 351
     iget-boolean v0, p0, Landroid/database/AbstractCursor;->mClosed:Z
 
     if-nez v0, :cond_0
 
-    .line 319
+    .line 352
     iget-object v0, p0, Landroid/database/AbstractCursor;->mContentObservable:Landroid/database/ContentObservable;
 
     invoke-virtual {v0, p1}, Landroid/database/ContentObservable;->unregisterObserver(Ljava/lang/Object;)V
 
-    .line 321
+    .line 349
     :cond_0
     return-void
 .end method
 
 .method public unregisterDataSetObserver(Landroid/database/DataSetObserver;)V
     .locals 1
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/DataSetObserver;
 
     .prologue
-    .line 328
+    .line 363
     iget-object v0, p0, Landroid/database/AbstractCursor;->mDataSetObservable:Landroid/database/DataSetObservable;
 
     invoke-virtual {v0, p1}, Landroid/database/DataSetObservable;->unregisterObserver(Ljava/lang/Object;)V
 
-    .line 329
+    .line 362
     return-void
 .end method

@@ -21,38 +21,39 @@
 # direct methods
 .method public constructor <init>(Landroid/database/ContentObserver;)V
     .locals 0
-    .parameter "contentObserver"
+    .param p1, "contentObserver"    # Landroid/database/ContentObserver;
 
     .prologue
-    .line 187
+    .line 223
     invoke-direct {p0}, Landroid/database/IContentObserver$Stub;-><init>()V
 
-    .line 188
+    .line 224
     iput-object p1, p0, Landroid/database/ContentObserver$Transport;->mContentObserver:Landroid/database/ContentObserver;
 
-    .line 189
+    .line 223
     return-void
 .end method
 
 
 # virtual methods
-.method public onChange(ZLandroid/net/Uri;)V
+.method public onChange(ZLandroid/net/Uri;I)V
     .locals 1
-    .parameter "selfChange"
-    .parameter "uri"
+    .param p1, "selfChange"    # Z
+    .param p2, "uri"    # Landroid/net/Uri;
+    .param p3, "userId"    # I
 
     .prologue
-    .line 193
+    .line 229
     iget-object v0, p0, Landroid/database/ContentObserver$Transport;->mContentObserver:Landroid/database/ContentObserver;
 
-    .line 194
-    .local v0, contentObserver:Landroid/database/ContentObserver;
+    .line 230
+    .local v0, "contentObserver":Landroid/database/ContentObserver;
     if-eqz v0, :cond_0
 
-    .line 195
-    invoke-virtual {v0, p1, p2}, Landroid/database/ContentObserver;->dispatchChange(ZLandroid/net/Uri;)V
+    .line 231
+    invoke-static {v0, p1, p2, p3}, Landroid/database/ContentObserver;->-wrap0(Landroid/database/ContentObserver;ZLandroid/net/Uri;I)V
 
-    .line 197
+    .line 228
     :cond_0
     return-void
 .end method
@@ -61,11 +62,11 @@
     .locals 1
 
     .prologue
-    .line 200
+    .line 236
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/database/ContentObserver$Transport;->mContentObserver:Landroid/database/ContentObserver;
 
-    .line 201
+    .line 235
     return-void
 .end method

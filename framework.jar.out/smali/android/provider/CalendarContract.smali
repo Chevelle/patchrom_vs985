@@ -6,34 +6,34 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/provider/CalendarContract$EventsRawTimes;,
-        Landroid/provider/CalendarContract$EventsRawTimesColumns;,
-        Landroid/provider/CalendarContract$SyncState;,
-        Landroid/provider/CalendarContract$ExtendedProperties;,
-        Landroid/provider/CalendarContract$ExtendedPropertiesColumns;,
-        Landroid/provider/CalendarContract$Colors;,
-        Landroid/provider/CalendarContract$ColorsColumns;,
-        Landroid/provider/CalendarContract$CalendarAlerts;,
-        Landroid/provider/CalendarContract$CalendarAlertsColumns;,
-        Landroid/provider/CalendarContract$Reminders;,
-        Landroid/provider/CalendarContract$RemindersColumns;,
-        Landroid/provider/CalendarContract$EventDays;,
-        Landroid/provider/CalendarContract$EventDaysColumns;,
-        Landroid/provider/CalendarContract$CalendarMetaData;,
-        Landroid/provider/CalendarContract$CalendarMetaDataColumns;,
-        Landroid/provider/CalendarContract$CalendarCache;,
-        Landroid/provider/CalendarContract$CalendarCacheColumns;,
-        Landroid/provider/CalendarContract$Instances;,
-        Landroid/provider/CalendarContract$Events;,
-        Landroid/provider/CalendarContract$EventsEntity;,
-        Landroid/provider/CalendarContract$EventsColumns;,
-        Landroid/provider/CalendarContract$Attendees;,
-        Landroid/provider/CalendarContract$AttendeesColumns;,
-        Landroid/provider/CalendarContract$Calendars;,
-        Landroid/provider/CalendarContract$CalendarEntity;,
-        Landroid/provider/CalendarContract$CalendarColumns;,
+        Landroid/provider/CalendarContract$CalendarSyncColumns;,
         Landroid/provider/CalendarContract$SyncColumns;,
-        Landroid/provider/CalendarContract$CalendarSyncColumns;
+        Landroid/provider/CalendarContract$CalendarColumns;,
+        Landroid/provider/CalendarContract$CalendarEntity;,
+        Landroid/provider/CalendarContract$Calendars;,
+        Landroid/provider/CalendarContract$AttendeesColumns;,
+        Landroid/provider/CalendarContract$Attendees;,
+        Landroid/provider/CalendarContract$EventsColumns;,
+        Landroid/provider/CalendarContract$EventsEntity;,
+        Landroid/provider/CalendarContract$Events;,
+        Landroid/provider/CalendarContract$Instances;,
+        Landroid/provider/CalendarContract$CalendarCacheColumns;,
+        Landroid/provider/CalendarContract$CalendarCache;,
+        Landroid/provider/CalendarContract$CalendarMetaDataColumns;,
+        Landroid/provider/CalendarContract$CalendarMetaData;,
+        Landroid/provider/CalendarContract$EventDaysColumns;,
+        Landroid/provider/CalendarContract$EventDays;,
+        Landroid/provider/CalendarContract$RemindersColumns;,
+        Landroid/provider/CalendarContract$Reminders;,
+        Landroid/provider/CalendarContract$CalendarAlertsColumns;,
+        Landroid/provider/CalendarContract$CalendarAlerts;,
+        Landroid/provider/CalendarContract$ColorsColumns;,
+        Landroid/provider/CalendarContract$Colors;,
+        Landroid/provider/CalendarContract$ExtendedPropertiesColumns;,
+        Landroid/provider/CalendarContract$ExtendedProperties;,
+        Landroid/provider/CalendarContract$SyncState;,
+        Landroid/provider/CalendarContract$EventsRawTimesColumns;,
+        Landroid/provider/CalendarContract$EventsRawTimes;
     }
 .end annotation
 
@@ -49,7 +49,7 @@
 
 .field public static final CALLER_IS_SYNCADAPTER:Ljava/lang/String; = "caller_is_syncadapter"
 
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
 
 .field public static final EXTRA_CUSTOM_APP_URI:Ljava/lang/String; = "customAppUri"
 
@@ -68,7 +68,7 @@
 
     .prologue
     .line 163
-    const-string v0, "content://com.android.calendar"
+    const-string/jumbo v0, "content://com.android.calendar"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
@@ -76,6 +76,7 @@
 
     sput-object v0, Landroid/provider/CalendarContract;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 90
     return-void
 .end method
 

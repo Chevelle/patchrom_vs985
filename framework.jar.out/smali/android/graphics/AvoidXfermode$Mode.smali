@@ -47,19 +47,19 @@
     .line 28
     new-instance v0, Landroid/graphics/AvoidXfermode$Mode;
 
-    const-string v1, "AVOID"
+    const-string/jumbo v1, "AVOID"
 
     invoke-direct {v0, v1, v2, v2}, Landroid/graphics/AvoidXfermode$Mode;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Landroid/graphics/AvoidXfermode$Mode;->AVOID:Landroid/graphics/AvoidXfermode$Mode;
 
-    .line 29
     new-instance v0, Landroid/graphics/AvoidXfermode$Mode;
 
-    const-string v1, "TARGET"
+    const-string/jumbo v1, "TARGET"
 
     invoke-direct {v0, v1, v3, v3}, Landroid/graphics/AvoidXfermode$Mode;-><init>(Ljava/lang/String;II)V
 
+    .line 29
     sput-object v0, Landroid/graphics/AvoidXfermode$Mode;->TARGET:Landroid/graphics/AvoidXfermode$Mode;
 
     .line 27
@@ -82,14 +82,7 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "nativeInt"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "nativeInt"    # I
 
     .prologue
     .line 31
@@ -98,13 +91,13 @@
     .line 32
     iput p3, p0, Landroid/graphics/AvoidXfermode$Mode;->nativeInt:I
 
-    .line 33
+    .line 31
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/graphics/AvoidXfermode$Mode;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 27
@@ -125,12 +118,6 @@
     .prologue
     .line 27
     sget-object v0, Landroid/graphics/AvoidXfermode$Mode;->$VALUES:[Landroid/graphics/AvoidXfermode$Mode;
-
-    invoke-virtual {v0}, [Landroid/graphics/AvoidXfermode$Mode;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/graphics/AvoidXfermode$Mode;
 
     return-object v0
 .end method

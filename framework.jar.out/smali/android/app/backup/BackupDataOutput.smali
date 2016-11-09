@@ -4,19 +4,19 @@
 
 
 # instance fields
-.field mBackupWriter:I
+.field mBackupWriter:J
 
 
 # direct methods
 .method public constructor <init>(Ljava/io/FileDescriptor;)V
-    .locals 3
-    .parameter "fd"
+    .locals 4
+    .param p1, "fd"    # Ljava/io/FileDescriptor;
 
     .prologue
-    .line 68
+    .line 69
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 69
+    .line 70
     if-nez p1, :cond_0
 
     new-instance v0, Ljava/lang/NullPointerException;
@@ -25,27 +25,31 @@
 
     throw v0
 
-    .line 70
-    :cond_0
-    invoke-static {p1}, Landroid/app/backup/BackupDataOutput;->ctor(Ljava/io/FileDescriptor;)I
-
-    move-result v0
-
-    iput v0, p0, Landroid/app/backup/BackupDataOutput;->mBackupWriter:I
-
     .line 71
-    iget v0, p0, Landroid/app/backup/BackupDataOutput;->mBackupWriter:I
+    :cond_0
+    invoke-static {p1}, Landroid/app/backup/BackupDataOutput;->ctor(Ljava/io/FileDescriptor;)J
+
+    move-result-wide v0
+
+    iput-wide v0, p0, Landroid/app/backup/BackupDataOutput;->mBackupWriter:J
+
+    .line 72
+    iget-wide v0, p0, Landroid/app/backup/BackupDataOutput;->mBackupWriter:J
+
+    const-wide/16 v2, 0x0
+
+    cmp-long v0, v0, v2
 
     if-nez v0, :cond_1
 
-    .line 72
+    .line 73
     new-instance v0, Ljava/lang/RuntimeException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Native initialization failed with fd="
+    const-string/jumbo v2, "Native initialization failed with fd="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -63,30 +67,30 @@
 
     throw v0
 
-    .line 74
+    .line 69
     :cond_1
     return-void
 .end method
 
-.method private static native ctor(Ljava/io/FileDescriptor;)I
+.method private static native ctor(Ljava/io/FileDescriptor;)J
 .end method
 
-.method private static native dtor(I)V
+.method private static native dtor(J)V
 .end method
 
-.method private static native setKeyPrefix_native(ILjava/lang/String;)V
+.method private static native setKeyPrefix_native(JLjava/lang/String;)V
 .end method
 
-.method private static native writeEntityData_native(I[BI)I
+.method private static native writeEntityData_native(J[BI)I
 .end method
 
-.method private static native writeEntityHeader_native(ILjava/lang/String;I)I
+.method private static native writeEntityHeader_native(JLjava/lang/String;I)I
 .end method
 
 
 # virtual methods
 .method protected finalize()V
-    .locals 1
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/Throwable;
@@ -94,38 +98,40 @@
     .end annotation
 
     .prologue
-    .line 118
+    .line 121
     :try_start_0
-    iget v0, p0, Landroid/app/backup/BackupDataOutput;->mBackupWriter:I
+    iget-wide v0, p0, Landroid/app/backup/BackupDataOutput;->mBackupWriter:J
 
-    invoke-static {v0}, Landroid/app/backup/BackupDataOutput;->dtor(I)V
+    invoke-static {v0, v1}, Landroid/app/backup/BackupDataOutput;->dtor(J)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 120
+    .line 123
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 122
+    .line 119
     return-void
 
-    .line 120
+    .line 122
     :catchall_0
     move-exception v0
 
+    .line 123
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
+    .line 122
     throw v0
 .end method
 
 .method public setKeyPrefix(Ljava/lang/String;)V
-    .locals 1
-    .parameter "keyPrefix"
+    .locals 2
+    .param p1, "keyPrefix"    # Ljava/lang/String;
 
     .prologue
-    .line 112
-    iget v0, p0, Landroid/app/backup/BackupDataOutput;->mBackupWriter:I
+    .line 114
+    iget-wide v0, p0, Landroid/app/backup/BackupDataOutput;->mBackupWriter:J
 
-    invoke-static {v0, p1}, Landroid/app/backup/BackupDataOutput;->setKeyPrefix_native(ILjava/lang/String;)V
+    invoke-static {v0, v1, p1}, Landroid/app/backup/BackupDataOutput;->setKeyPrefix_native(JLjava/lang/String;)V
 
     .line 113
     return-void
@@ -133,8 +139,8 @@
 
 .method public writeEntityData([BI)I
     .locals 4
-    .parameter "data"
-    .parameter "size"
+    .param p1, "data"    # [B
+    .param p2, "size"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -142,21 +148,21 @@
     .end annotation
 
     .prologue
-    .line 102
-    iget v1, p0, Landroid/app/backup/BackupDataOutput;->mBackupWriter:I
+    .line 104
+    iget-wide v2, p0, Landroid/app/backup/BackupDataOutput;->mBackupWriter:J
 
-    invoke-static {v1, p1, p2}, Landroid/app/backup/BackupDataOutput;->writeEntityData_native(I[BI)I
+    invoke-static {v2, v3, p1, p2}, Landroid/app/backup/BackupDataOutput;->writeEntityData_native(J[BI)I
 
     move-result v0
 
-    .line 103
-    .local v0, result:I
+    .line 105
+    .local v0, "result":I
     if-ltz v0, :cond_0
 
-    .line 104
+    .line 106
     return v0
 
-    .line 106
+    .line 108
     :cond_0
     new-instance v1, Ljava/io/IOException;
 
@@ -189,8 +195,8 @@
 
 .method public writeEntityHeader(Ljava/lang/String;I)I
     .locals 4
-    .parameter "key"
-    .parameter "dataSize"
+    .param p1, "key"    # Ljava/lang/String;
+    .param p2, "dataSize"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -198,21 +204,21 @@
     .end annotation
 
     .prologue
-    .line 86
-    iget v1, p0, Landroid/app/backup/BackupDataOutput;->mBackupWriter:I
+    .line 88
+    iget-wide v2, p0, Landroid/app/backup/BackupDataOutput;->mBackupWriter:J
 
-    invoke-static {v1, p1, p2}, Landroid/app/backup/BackupDataOutput;->writeEntityHeader_native(ILjava/lang/String;I)I
+    invoke-static {v2, v3, p1, p2}, Landroid/app/backup/BackupDataOutput;->writeEntityHeader_native(JLjava/lang/String;I)I
 
     move-result v0
 
-    .line 87
-    .local v0, result:I
+    .line 89
+    .local v0, "result":I
     if-ltz v0, :cond_0
 
-    .line 88
+    .line 90
     return v0
 
-    .line 90
+    .line 92
     :cond_0
     new-instance v1, Ljava/io/IOException;
 

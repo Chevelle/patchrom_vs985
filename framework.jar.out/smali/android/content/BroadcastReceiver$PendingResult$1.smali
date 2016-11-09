@@ -18,7 +18,7 @@
 
 
 # instance fields
-.field final synthetic this$0:Landroid/content/BroadcastReceiver$PendingResult;
+.field final synthetic this$1:Landroid/content/BroadcastReceiver$PendingResult;
 
 .field final synthetic val$mgr:Landroid/app/IActivityManager;
 
@@ -26,12 +26,12 @@
 # direct methods
 .method constructor <init>(Landroid/content/BroadcastReceiver$PendingResult;Landroid/app/IActivityManager;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$1"    # Landroid/content/BroadcastReceiver$PendingResult;
+    .param p2, "val$mgr"    # Landroid/app/IActivityManager;
 
     .prologue
-    .line 379
-    iput-object p1, p0, Landroid/content/BroadcastReceiver$PendingResult$1;->this$0:Landroid/content/BroadcastReceiver$PendingResult;
+    .line 381
+    iput-object p1, p0, Landroid/content/BroadcastReceiver$PendingResult$1;->this$1:Landroid/content/BroadcastReceiver$PendingResult;
 
     iput-object p2, p0, Landroid/content/BroadcastReceiver$PendingResult$1;->val$mgr:Landroid/app/IActivityManager;
 
@@ -46,13 +46,13 @@
     .locals 2
 
     .prologue
-    .line 383
-    iget-object v0, p0, Landroid/content/BroadcastReceiver$PendingResult$1;->this$0:Landroid/content/BroadcastReceiver$PendingResult;
+    .line 385
+    iget-object v0, p0, Landroid/content/BroadcastReceiver$PendingResult$1;->this$1:Landroid/content/BroadcastReceiver$PendingResult;
 
     iget-object v1, p0, Landroid/content/BroadcastReceiver$PendingResult$1;->val$mgr:Landroid/app/IActivityManager;
 
     invoke-virtual {v0, v1}, Landroid/content/BroadcastReceiver$PendingResult;->sendFinished(Landroid/app/IActivityManager;)V
 
-    .line 384
+    .line 382
     return-void
 .end method

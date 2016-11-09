@@ -6,12 +6,12 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "msg"
+    .param p1, "msg"    # Ljava/lang/String;
 
     .prologue
-    .line 123
+    .line 138
     invoke-direct {p0, p1}, Landroid/util/AndroidRuntimeException;-><init>(Ljava/lang/String;)V
 
-    .line 124
+    .line 137
     return-void
 .end method

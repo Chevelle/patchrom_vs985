@@ -26,6 +26,7 @@
 
     iput-object v0, p0, Landroid/widget/BaseExpandableListAdapter;->mDataSetObservable:Landroid/database/DataSetObservable;
 
+    .line 33
     return-void
 .end method
 
@@ -43,8 +44,8 @@
 
 .method public getChildType(II)I
     .locals 1
-    .parameter "groupPosition"
-    .parameter "childPosition"
+    .param p1, "groupPosition"    # I
+    .param p2, "childPosition"    # I
 
     .prologue
     .line 112
@@ -65,20 +66,20 @@
 
 .method public getCombinedChildId(JJ)J
     .locals 5
-    .parameter "groupId"
-    .parameter "childId"
+    .param p1, "groupId"    # J
+    .param p3, "childId"    # J
 
     .prologue
     .line 81
-    const-wide/high16 v0, -0x8000
+    const-wide/32 v0, 0x7fffffff
 
-    const-wide/32 v2, 0x7fffffff
+    and-long/2addr v0, p1
 
-    and-long/2addr v2, p1
+    const/16 v2, 0x20
 
-    const/16 v4, 0x20
+    shl-long/2addr v0, v2
 
-    shl-long/2addr v2, v4
+    const-wide/high16 v2, -0x8000000000000000L
 
     or-long/2addr v0, v2
 
@@ -93,7 +94,7 @@
 
 .method public getCombinedGroupId(J)J
     .locals 3
-    .parameter "groupId"
+    .param p1, "groupId"    # J
 
     .prologue
     .line 96
@@ -110,7 +111,7 @@
 
 .method public getGroupType(I)I
     .locals 1
-    .parameter "groupPosition"
+    .param p1, "groupPosition"    # I
 
     .prologue
     .line 128
@@ -130,25 +131,22 @@
 .end method
 
 .method public isEmpty()Z
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v0, 0x0
+
     .line 103
     invoke-virtual {p0}, Landroid/widget/BaseExpandableListAdapter;->getGroupCount()I
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public notifyDataSetChanged()V
@@ -160,7 +158,7 @@
 
     invoke-virtual {v0}, Landroid/database/DataSetObservable;->notifyChanged()V
 
-    .line 57
+    .line 55
     return-void
 .end method
 
@@ -173,31 +171,31 @@
 
     invoke-virtual {v0}, Landroid/database/DataSetObservable;->notifyInvalidated()V
 
-    .line 50
+    .line 48
     return-void
 .end method
 
 .method public onGroupCollapsed(I)V
     .locals 0
-    .parameter "groupPosition"
+    .param p1, "groupPosition"    # I
 
     .prologue
-    .line 64
+    .line 63
     return-void
 .end method
 
 .method public onGroupExpanded(I)V
     .locals 0
-    .parameter "groupPosition"
+    .param p1, "groupPosition"    # I
 
     .prologue
-    .line 67
+    .line 66
     return-void
 .end method
 
 .method public registerDataSetObserver(Landroid/database/DataSetObserver;)V
     .locals 1
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/DataSetObserver;
 
     .prologue
     .line 38
@@ -205,13 +203,13 @@
 
     invoke-virtual {v0, p1}, Landroid/database/DataSetObservable;->registerObserver(Ljava/lang/Object;)V
 
-    .line 39
+    .line 37
     return-void
 .end method
 
 .method public unregisterDataSetObserver(Landroid/database/DataSetObserver;)V
     .locals 1
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/DataSetObserver;
 
     .prologue
     .line 42
@@ -219,6 +217,6 @@
 
     invoke-virtual {v0, p1}, Landroid/database/DataSetObservable;->unregisterObserver(Ljava/lang/Object;)V
 
-    .line 43
+    .line 41
     return-void
 .end method

@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/view/textservice/SpellCheckerSubtype$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -61,21 +69,23 @@
 
     sput-object v0, Landroid/view/textservice/SpellCheckerSubtype;->TAG:Ljava/lang/String;
 
-    .line 206
+    .line 207
     new-instance v0, Landroid/view/textservice/SpellCheckerSubtype$1;
 
     invoke-direct {v0}, Landroid/view/textservice/SpellCheckerSubtype$1;-><init>()V
 
+    .line 206
     sput-object v0, Landroid/view/textservice/SpellCheckerSubtype;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 37
     return-void
 .end method
 
 .method public constructor <init>(ILjava/lang/String;Ljava/lang/String;)V
     .locals 2
-    .parameter "nameId"
-    .parameter "locale"
-    .parameter "extraValue"
+    .param p1, "nameId"    # I
+    .param p2, "locale"    # Ljava/lang/String;
+    .param p3, "extraValue"    # Ljava/lang/String;
 
     .prologue
     .line 54
@@ -87,14 +97,14 @@
     .line 56
     if-eqz p2, :cond_0
 
-    .end local p2
+    .end local p2    # "locale":Ljava/lang/String;
     :goto_0
     iput-object p2, p0, Landroid/view/textservice/SpellCheckerSubtype;->mSubtypeLocale:Ljava/lang/String;
 
     .line 57
     if-eqz p3, :cond_1
 
-    .end local p3
+    .end local p3    # "extraValue":Ljava/lang/String;
     :goto_1
     iput-object p3, p0, Landroid/view/textservice/SpellCheckerSubtype;->mSubtypeExtraValue:Ljava/lang/String;
 
@@ -109,28 +119,28 @@
 
     iput v0, p0, Landroid/view/textservice/SpellCheckerSubtype;->mSubtypeHashCode:I
 
-    .line 59
+    .line 54
     return-void
 
     .line 56
-    .restart local p2
-    .restart local p3
+    .restart local p2    # "locale":Ljava/lang/String;
+    .restart local p3    # "extraValue":Ljava/lang/String;
     :cond_0
-    const-string p2, ""
+    const-string/jumbo p2, ""
 
     goto :goto_0
 
     .line 57
-    .end local p2
+    .end local p2    # "locale":Ljava/lang/String;
     :cond_1
-    const-string p3, ""
+    const-string/jumbo p3, ""
 
     goto :goto_1
 .end method
 
 .method constructor <init>(Landroid/os/Parcel;)V
     .locals 3
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 61
@@ -149,10 +159,10 @@
     move-result-object v0
 
     .line 65
-    .local v0, s:Ljava/lang/String;
+    .local v0, "s":Ljava/lang/String;
     if-eqz v0, :cond_0
 
-    .end local v0           #s:Ljava/lang/String;
+    .end local v0    # "s":Ljava/lang/String;
     :goto_0
     iput-object v0, p0, Landroid/view/textservice/SpellCheckerSubtype;->mSubtypeLocale:Ljava/lang/String;
 
@@ -162,10 +172,10 @@
     move-result-object v0
 
     .line 67
-    .restart local v0       #s:Ljava/lang/String;
+    .restart local v0    # "s":Ljava/lang/String;
     if-eqz v0, :cond_1
 
-    .end local v0           #s:Ljava/lang/String;
+    .end local v0    # "s":Ljava/lang/String;
     :goto_1
     iput-object v0, p0, Landroid/view/textservice/SpellCheckerSubtype;->mSubtypeExtraValue:Ljava/lang/String;
 
@@ -180,112 +190,114 @@
 
     iput v1, p0, Landroid/view/textservice/SpellCheckerSubtype;->mSubtypeHashCode:I
 
-    .line 69
+    .line 61
     return-void
 
     .line 65
-    .restart local v0       #s:Ljava/lang/String;
+    .restart local v0    # "s":Ljava/lang/String;
     :cond_0
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     goto :goto_0
 
     .line 67
     :cond_1
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     goto :goto_1
 .end method
 
 .method public static constructLocaleFromString(Ljava/lang/String;)Ljava/util/Locale;
     .locals 7
-    .parameter "localeStr"
+    .param p0, "localeStr"    # Ljava/lang/String;
 
     .prologue
-    const/4 v1, 0x0
+    const/4 v6, 0x0
 
-    const/4 v6, 0x3
+    const/4 v5, 0x3
 
-    const/4 v5, 0x2
+    const/4 v4, 0x2
 
-    const/4 v4, 0x1
+    const/4 v3, 0x1
 
-    const/4 v3, 0x0
+    const/4 v2, 0x0
 
     .line 153
     invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v2
+    move-result v1
 
-    if-eqz v2, :cond_1
+    if-eqz v1, :cond_0
 
-    .line 165
-    :cond_0
-    :goto_0
-    return-object v1
+    .line 154
+    return-object v6
 
     .line 155
-    :cond_1
-    const-string v2, "_"
+    :cond_0
+    const-string/jumbo v1, "_"
 
-    invoke-virtual {p0, v2, v6}, Ljava/lang/String;->split(Ljava/lang/String;I)[Ljava/lang/String;
+    invoke-virtual {p0, v1, v5}, Ljava/lang/String;->split(Ljava/lang/String;I)[Ljava/lang/String;
 
     move-result-object v0
 
     .line 158
-    .local v0, localeParams:[Ljava/lang/String;
-    array-length v2, v0
+    .local v0, "localeParams":[Ljava/lang/String;
+    array-length v1, v0
 
-    if-ne v2, v4, :cond_2
+    if-ne v1, v3, :cond_1
 
     .line 159
     new-instance v1, Ljava/util/Locale;
 
-    aget-object v2, v0, v3
+    aget-object v2, v0, v2
 
     invoke-direct {v1, v2}, Ljava/util/Locale;-><init>(Ljava/lang/String;)V
 
-    goto :goto_0
+    return-object v1
 
     .line 160
-    :cond_2
-    array-length v2, v0
+    :cond_1
+    array-length v1, v0
 
-    if-ne v2, v5, :cond_3
+    if-ne v1, v4, :cond_2
 
     .line 161
     new-instance v1, Ljava/util/Locale;
 
-    aget-object v2, v0, v3
+    aget-object v2, v0, v2
 
-    aget-object v3, v0, v4
+    aget-object v3, v0, v3
 
     invoke-direct {v1, v2, v3}, Ljava/util/Locale;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    goto :goto_0
+    return-object v1
 
     .line 162
-    :cond_3
-    array-length v2, v0
+    :cond_2
+    array-length v1, v0
 
-    if-ne v2, v6, :cond_0
+    if-ne v1, v5, :cond_3
 
     .line 163
     new-instance v1, Ljava/util/Locale;
 
-    aget-object v2, v0, v3
+    aget-object v2, v0, v2
 
-    aget-object v3, v0, v4
+    aget-object v3, v0, v3
 
-    aget-object v4, v0, v5
+    aget-object v4, v0, v4
 
     invoke-direct {v1, v2, v3, v4}, Ljava/util/Locale;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
-    goto :goto_0
+    return-object v1
+
+    .line 165
+    :cond_3
+    return-object v6
 .end method
 
 .method private getExtraValueHashMap()Ljava/util/HashMap;
-    .locals 9
+    .locals 10
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -298,6 +310,8 @@
     .end annotation
 
     .prologue
+    const/4 v9, 0x0
+
     const/4 v8, 0x0
 
     const/4 v7, 0x1
@@ -317,35 +331,35 @@
     .line 95
     iget-object v4, p0, Landroid/view/textservice/SpellCheckerSubtype;->mSubtypeExtraValue:Ljava/lang/String;
 
-    const-string v5, ","
+    const-string/jumbo v5, ","
 
     invoke-virtual {v4, v5}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
 
     move-result-object v3
 
     .line 96
-    .local v3, pairs:[Ljava/lang/String;
+    .local v3, "pairs":[Ljava/lang/String;
     array-length v0, v3
 
     .line 97
-    .local v0, N:I
+    .local v0, "N":I
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_0
     if-ge v1, v0, :cond_3
 
     .line 98
     aget-object v4, v3, v1
 
-    const-string v5, "="
+    const-string/jumbo v5, "="
 
     invoke-virtual {v4, v5}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
 
     move-result-object v2
 
     .line 99
-    .local v2, pair:[Ljava/lang/String;
+    .local v2, "pair":[Ljava/lang/String;
     array-length v4, v2
 
     if-ne v4, v7, :cond_1
@@ -355,9 +369,7 @@
 
     aget-object v5, v2, v8
 
-    const/4 v6, 0x0
-
-    invoke-virtual {v4, v5, v6}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v4, v5, v9}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 97
     :cond_0
@@ -382,7 +394,7 @@
     .line 103
     sget-object v4, Landroid/view/textservice/SpellCheckerSubtype;->TAG:Ljava/lang/String;
 
-    const-string v5, "ExtraValue has two or more \'=\'s"
+    const-string/jumbo v5, "ExtraValue has two or more \'=\'s"
 
     invoke-static {v4, v5}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
@@ -399,10 +411,10 @@
     goto :goto_1
 
     .line 109
-    .end local v0           #N:I
-    .end local v1           #i:I
-    .end local v2           #pair:[Ljava/lang/String;
-    .end local v3           #pairs:[Ljava/lang/String;
+    .end local v0    # "N":I
+    .end local v1    # "i":I
+    .end local v2    # "pair":[Ljava/lang/String;
+    .end local v3    # "pairs":[Ljava/lang/String;
     :cond_3
     iget-object v4, p0, Landroid/view/textservice/SpellCheckerSubtype;->mExtraValueHashMapCache:Ljava/util/HashMap;
 
@@ -411,8 +423,8 @@
 
 .method private static hashCodeInternal(Ljava/lang/String;Ljava/lang/String;)I
     .locals 2
-    .parameter "locale"
-    .parameter "extraValue"
+    .param p0, "locale"    # Ljava/lang/String;
+    .param p1, "extraValue"    # Ljava/lang/String;
 
     .prologue
     .line 220
@@ -437,10 +449,9 @@
 
 .method public static sort(Landroid/content/Context;ILandroid/view/textservice/SpellCheckerInfo;Ljava/util/List;)Ljava/util/List;
     .locals 7
-    .parameter "context"
-    .parameter "flags"
-    .parameter "sci"
-    .parameter
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "flags"    # I
+    .param p2, "sci"    # Landroid/view/textservice/SpellCheckerInfo;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -460,106 +471,100 @@
 
     .prologue
     .line 234
-    .local p3, subtypeList:Ljava/util/List;,"Ljava/util/List<Landroid/view/textservice/SpellCheckerSubtype;>;"
+    .local p3, "subtypeList":Ljava/util/List;, "Ljava/util/List<Landroid/view/textservice/SpellCheckerSubtype;>;"
     if-nez p2, :cond_0
 
-    .line 251
-    .end local p3           #subtypeList:Ljava/util/List;,"Ljava/util/List<Landroid/view/textservice/SpellCheckerSubtype;>;"
-    :goto_0
     return-object p3
 
     .line 235
-    .restart local p3       #subtypeList:Ljava/util/List;,"Ljava/util/List<Landroid/view/textservice/SpellCheckerSubtype;>;"
     :cond_0
     new-instance v5, Ljava/util/HashSet;
 
     invoke-direct {v5, p3}, Ljava/util/HashSet;-><init>(Ljava/util/Collection;)V
 
     .line 237
-    .local v5, subtypesSet:Ljava/util/HashSet;,"Ljava/util/HashSet<Landroid/view/textservice/SpellCheckerSubtype;>;"
-    new-instance v3, Ljava/util/ArrayList;
+    .local v5, "subtypesSet":Ljava/util/HashSet;, "Ljava/util/HashSet<Landroid/view/textservice/SpellCheckerSubtype;>;"
+    new-instance v2, Ljava/util/ArrayList;
 
-    invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
+    invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
 
     .line 238
-    .local v3, sortedList:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Landroid/view/textservice/SpellCheckerSubtype;>;"
+    .local v2, "sortedList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/view/textservice/SpellCheckerSubtype;>;"
     invoke-virtual {p2}, Landroid/view/textservice/SpellCheckerInfo;->getSubtypeCount()I
 
     move-result v0
 
     .line 239
-    .local v0, N:I
+    .local v0, "N":I
     const/4 v1, 0x0
 
-    .local v1, i:I
-    :goto_1
+    .local v1, "i":I
+    :goto_0
     if-ge v1, v0, :cond_2
 
     .line 240
     invoke-virtual {p2, v1}, Landroid/view/textservice/SpellCheckerInfo;->getSubtypeAt(I)Landroid/view/textservice/SpellCheckerSubtype;
 
-    move-result-object v4
+    move-result-object v3
 
     .line 241
-    .local v4, subtype:Landroid/view/textservice/SpellCheckerSubtype;
-    invoke-virtual {v5, v4}, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z
+    .local v3, "subtype":Landroid/view/textservice/SpellCheckerSubtype;
+    invoke-virtual {v5, v3}, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z
 
     move-result v6
 
     if-eqz v6, :cond_1
 
     .line 242
-    invoke-virtual {v3, v4}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v2, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     .line 243
-    invoke-virtual {v5, v4}, Ljava/util/HashSet;->remove(Ljava/lang/Object;)Z
+    invoke-virtual {v5, v3}, Ljava/util/HashSet;->remove(Ljava/lang/Object;)Z
 
     .line 239
     :cond_1
     add-int/lit8 v1, v1, 0x1
 
-    goto :goto_1
+    goto :goto_0
 
     .line 248
-    .end local v4           #subtype:Landroid/view/textservice/SpellCheckerSubtype;
+    .end local v3    # "subtype":Landroid/view/textservice/SpellCheckerSubtype;
     :cond_2
-    invoke-virtual {v5}, Ljava/util/HashSet;->iterator()Ljava/util/Iterator;
+    invoke-interface {v5}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
-    move-result-object v2
+    move-result-object v4
 
-    .local v2, i$:Ljava/util/Iterator;
-    :goto_2
-    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+    .local v4, "subtype$iterator":Ljava/util/Iterator;
+    :goto_1
+    invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v6
 
     if-eqz v6, :cond_3
 
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    move-result-object v4
+    move-result-object v3
 
-    check-cast v4, Landroid/view/textservice/SpellCheckerSubtype;
+    check-cast v3, Landroid/view/textservice/SpellCheckerSubtype;
 
     .line 249
-    .restart local v4       #subtype:Landroid/view/textservice/SpellCheckerSubtype;
-    invoke-virtual {v3, v4}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    .restart local v3    # "subtype":Landroid/view/textservice/SpellCheckerSubtype;
+    invoke-virtual {v2, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    goto :goto_2
-
-    .end local v4           #subtype:Landroid/view/textservice/SpellCheckerSubtype;
-    :cond_3
-    move-object p3, v3
+    goto :goto_1
 
     .line 251
-    goto :goto_0
+    .end local v3    # "subtype":Landroid/view/textservice/SpellCheckerSubtype;
+    :cond_3
+    return-object v2
 .end method
 
 
 # virtual methods
 .method public containsExtraValueKey(Ljava/lang/String;)Z
     .locals 1
-    .parameter "key"
+    .param p1, "key"    # Ljava/lang/String;
 
     .prologue
     .line 119
@@ -586,7 +591,7 @@
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 4
-    .parameter "o"
+    .param p1, "o"    # Ljava/lang/Object;
 
     .prologue
     const/4 v1, 0x0
@@ -594,7 +599,7 @@
     .line 139
     instance-of v2, p1, Landroid/view/textservice/SpellCheckerSubtype;
 
-    if-eqz v2, :cond_0
+    if-eqz v2, :cond_1
 
     move-object v0, p1
 
@@ -602,7 +607,7 @@
     check-cast v0, Landroid/view/textservice/SpellCheckerSubtype;
 
     .line 141
-    .local v0, subtype:Landroid/view/textservice/SpellCheckerSubtype;
+    .local v0, "subtype":Landroid/view/textservice/SpellCheckerSubtype;
     invoke-virtual {v0}, Landroid/view/textservice/SpellCheckerSubtype;->hashCode()I
 
     move-result v2
@@ -613,6 +618,7 @@
 
     if-ne v2, v3, :cond_0
 
+    .line 142
     invoke-virtual {v0}, Landroid/view/textservice/SpellCheckerSubtype;->getNameResId()I
 
     move-result v2
@@ -623,6 +629,7 @@
 
     if-ne v2, v3, :cond_0
 
+    .line 143
     invoke-virtual {v0}, Landroid/view/textservice/SpellCheckerSubtype;->getLocale()Ljava/lang/String;
 
     move-result-object v2
@@ -635,37 +642,41 @@
 
     move-result v2
 
+    .line 141
     if-eqz v2, :cond_0
 
+    .line 144
     invoke-virtual {v0}, Landroid/view/textservice/SpellCheckerSubtype;->getExtraValue()Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v1
 
     invoke-virtual {p0}, Landroid/view/textservice/SpellCheckerSubtype;->getExtraValue()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v2
+    move-result v1
 
-    if-eqz v2, :cond_0
-
-    const/4 v1, 0x1
+    .line 141
+    :cond_0
+    return v1
 
     .line 146
-    .end local v0           #subtype:Landroid/view/textservice/SpellCheckerSubtype;
-    :cond_0
+    .end local v0    # "subtype":Landroid/view/textservice/SpellCheckerSubtype;
+    :cond_1
     return v1
 .end method
 
 .method public getDisplayName(Landroid/content/Context;Ljava/lang/String;Landroid/content/pm/ApplicationInfo;)Ljava/lang/CharSequence;
     .locals 6
-    .parameter "context"
-    .parameter "packageName"
-    .parameter "appInfo"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "packageName"    # Ljava/lang/String;
+    .param p3, "appInfo"    # Landroid/content/pm/ApplicationInfo;
 
     .prologue
+    const/4 v5, 0x0
+
     .line 180
     iget-object v3, p0, Landroid/view/textservice/SpellCheckerSubtype;->mSubtypeLocale:Ljava/lang/String;
 
@@ -674,55 +685,55 @@
     move-result-object v0
 
     .line 181
-    .local v0, locale:Ljava/util/Locale;
-    if-eqz v0, :cond_1
+    .local v0, "locale":Ljava/util/Locale;
+    if-eqz v0, :cond_0
 
     invoke-virtual {v0}, Ljava/util/Locale;->getDisplayName()Ljava/lang/String;
 
     move-result-object v1
 
     .line 182
-    .local v1, localeStr:Ljava/lang/String;
+    .local v1, "localeStr":Ljava/lang/String;
     :goto_0
     iget v3, p0, Landroid/view/textservice/SpellCheckerSubtype;->mSubtypeNameResId:I
 
-    if-nez v3, :cond_2
+    if-nez v3, :cond_1
 
-    .line 190
-    .end local v1           #localeStr:Ljava/lang/String;
-    :cond_0
-    :goto_1
+    .line 183
     return-object v1
 
     .line 181
-    :cond_1
+    .end local v1    # "localeStr":Ljava/lang/String;
+    :cond_0
     iget-object v1, p0, Landroid/view/textservice/SpellCheckerSubtype;->mSubtypeLocale:Ljava/lang/String;
 
+    .restart local v1    # "localeStr":Ljava/lang/String;
     goto :goto_0
 
     .line 185
-    .restart local v1       #localeStr:Ljava/lang/String;
-    :cond_2
+    :cond_1
     invoke-virtual {p1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
 
     move-result-object v3
 
+    .line 186
     iget v4, p0, Landroid/view/textservice/SpellCheckerSubtype;->mSubtypeNameResId:I
 
+    .line 185
     invoke-virtual {v3, p2, v4, p3}, Landroid/content/pm/PackageManager;->getText(Ljava/lang/String;ILandroid/content/pm/ApplicationInfo;)Ljava/lang/CharSequence;
 
     move-result-object v2
 
     .line 187
-    .local v2, subtypeName:Ljava/lang/CharSequence;
+    .local v2, "subtypeName":Ljava/lang/CharSequence;
     invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v3
 
-    if-nez v3, :cond_0
+    if-nez v3, :cond_2
 
     .line 188
-    invoke-virtual {v2}, Ljava/lang/Object;->toString()Ljava/lang/String;
+    invoke-interface {v2}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
 
     move-result-object v3
 
@@ -730,15 +741,17 @@
 
     new-array v4, v4, [Ljava/lang/Object;
 
-    const/4 v5, 0x0
-
     aput-object v1, v4, v5
 
     invoke-static {v3, v4}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v3
 
-    goto :goto_1
+    return-object v3
+
+    .line 190
+    :cond_2
+    return-object v1
 .end method
 
 .method public getExtraValue()Ljava/lang/String;
@@ -753,7 +766,7 @@
 
 .method public getExtraValueOf(Ljava/lang/String;)Ljava/lang/String;
     .locals 1
-    .parameter "key"
+    .param p1, "key"    # Ljava/lang/String;
 
     .prologue
     .line 129
@@ -802,8 +815,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "parcelableFlags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "parcelableFlags"    # I
 
     .prologue
     .line 201
@@ -821,6 +834,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 204
+    .line 200
     return-void
 .end method

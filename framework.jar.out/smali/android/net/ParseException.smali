@@ -10,7 +10,7 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "response"
+    .param p1, "response"    # Ljava/lang/String;
 
     .prologue
     .line 26
@@ -19,6 +19,6 @@
     .line 27
     iput-object p1, p0, Landroid/net/ParseException;->response:Ljava/lang/String;
 
-    .line 28
+    .line 26
     return-void
 .end method

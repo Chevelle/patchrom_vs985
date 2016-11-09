@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 79
+    .line 78
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 80
     iput-object p1, p0, Landroid/net/INetworkPolicyListener$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 81
+    .line 78
     return-void
 .end method
 
@@ -54,14 +54,14 @@
 
     .prologue
     .line 88
-    const-string v0, "android.net.INetworkPolicyListener"
+    const-string/jumbo v0, "android.net.INetworkPolicyListener"
 
     return-object v0
 .end method
 
 .method public onMeteredIfacesChanged([Ljava/lang/String;)V
     .locals 5
-    .parameter "meteredIfaces"
+    .param p1, "meteredIfaces"    # [Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -75,9 +75,9 @@
     move-result-object v0
 
     .line 107
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.net.INetworkPolicyListener"
+    const-string/jumbo v1, "android.net.INetworkPolicyListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -100,21 +100,23 @@
     .line 112
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 114
+    .line 103
     return-void
 
-    .line 112
+    .line 111
     :catchall_0
     move-exception v1
 
+    .line 112
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 111
     throw v1
 .end method
 
 .method public onRestrictBackgroundChanged(Z)V
     .locals 5
-    .parameter "restrictBackground"
+    .param p1, "restrictBackground"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -130,9 +132,9 @@
     move-result-object v0
 
     .line 119
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.net.INetworkPolicyListener"
+    const-string/jumbo v2, "android.net.INetworkPolicyListener"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -158,7 +160,7 @@
     .line 124
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 126
+    .line 115
     return-void
 
     .line 120
@@ -167,19 +169,21 @@
 
     goto :goto_0
 
-    .line 124
+    .line 123
     :catchall_0
     move-exception v1
 
+    .line 124
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 123
     throw v1
 .end method
 
 .method public onUidRulesChanged(II)V
     .locals 5
-    .parameter "uid"
-    .parameter "uidRules"
+    .param p1, "uid"    # I
+    .param p2, "uidRules"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -193,9 +197,9 @@
     move-result-object v0
 
     .line 94
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.net.INetworkPolicyListener"
+    const-string/jumbo v1, "android.net.INetworkPolicyListener"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -221,14 +225,16 @@
     .line 100
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 102
+    .line 90
     return-void
 
-    .line 100
+    .line 99
     :catchall_0
     move-exception v1
 
+    .line 100
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 99
     throw v1
 .end method

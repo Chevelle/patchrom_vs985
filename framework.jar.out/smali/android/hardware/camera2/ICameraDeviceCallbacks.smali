@@ -15,7 +15,7 @@
 
 
 # virtual methods
-.method public abstract onCameraError(I)V
+.method public abstract onCaptureStarted(Landroid/hardware/camera2/impl/CaptureResultExtras;J)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -23,7 +23,7 @@
     .end annotation
 .end method
 
-.method public abstract onCameraIdle()V
+.method public abstract onDeviceError(ILandroid/hardware/camera2/impl/CaptureResultExtras;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -31,7 +31,7 @@
     .end annotation
 .end method
 
-.method public abstract onCaptureStarted(IJ)V
+.method public abstract onDeviceIdle()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -39,7 +39,15 @@
     .end annotation
 .end method
 
-.method public abstract onResultReceived(ILandroid/hardware/camera2/impl/CameraMetadataNative;)V
+.method public abstract onPrepared(I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onResultReceived(Landroid/hardware/camera2/impl/CameraMetadataNative;Landroid/hardware/camera2/impl/CaptureResultExtras;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

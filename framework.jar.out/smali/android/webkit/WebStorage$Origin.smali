@@ -23,99 +23,39 @@
 
 
 # direct methods
-.method protected constructor <init>(Ljava/lang/String;)V
-    .locals 3
-    .parameter "origin"
-
-    .prologue
-    const-wide/16 v1, 0x0
-
-    .line 81
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 63
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Landroid/webkit/WebStorage$Origin;->mOrigin:Ljava/lang/String;
-
-    .line 64
-    iput-wide v1, p0, Landroid/webkit/WebStorage$Origin;->mQuota:J
-
-    .line 65
-    iput-wide v1, p0, Landroid/webkit/WebStorage$Origin;->mUsage:J
-
-    .line 82
-    iput-object p1, p0, Landroid/webkit/WebStorage$Origin;->mOrigin:Ljava/lang/String;
-
-    .line 83
-    return-void
-.end method
-
-.method protected constructor <init>(Ljava/lang/String;J)V
-    .locals 3
-    .parameter "origin"
-    .parameter "quota"
-
-    .prologue
-    const-wide/16 v1, 0x0
-
-    .line 75
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 63
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Landroid/webkit/WebStorage$Origin;->mOrigin:Ljava/lang/String;
-
-    .line 64
-    iput-wide v1, p0, Landroid/webkit/WebStorage$Origin;->mQuota:J
-
-    .line 65
-    iput-wide v1, p0, Landroid/webkit/WebStorage$Origin;->mUsage:J
-
-    .line 76
-    iput-object p1, p0, Landroid/webkit/WebStorage$Origin;->mOrigin:Ljava/lang/String;
-
-    .line 77
-    iput-wide p2, p0, Landroid/webkit/WebStorage$Origin;->mQuota:J
-
-    .line 78
-    return-void
-.end method
-
 .method protected constructor <init>(Ljava/lang/String;JJ)V
-    .locals 3
-    .parameter "origin"
-    .parameter "quota"
-    .parameter "usage"
+    .locals 4
+    .param p1, "origin"    # Ljava/lang/String;
+    .param p2, "quota"    # J
+    .param p4, "usage"    # J
 
     .prologue
-    const-wide/16 v1, 0x0
-
-    .line 68
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 63
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Landroid/webkit/WebStorage$Origin;->mOrigin:Ljava/lang/String;
-
-    .line 64
-    iput-wide v1, p0, Landroid/webkit/WebStorage$Origin;->mQuota:J
-
-    .line 65
-    iput-wide v1, p0, Landroid/webkit/WebStorage$Origin;->mUsage:J
-
-    .line 69
-    iput-object p1, p0, Landroid/webkit/WebStorage$Origin;->mOrigin:Ljava/lang/String;
-
-    .line 70
-    iput-wide p2, p0, Landroid/webkit/WebStorage$Origin;->mQuota:J
+    const-wide/16 v2, 0x0
 
     .line 71
-    iput-wide p4, p0, Landroid/webkit/WebStorage$Origin;->mUsage:J
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 65
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Landroid/webkit/WebStorage$Origin;->mOrigin:Ljava/lang/String;
+
+    .line 66
+    iput-wide v2, p0, Landroid/webkit/WebStorage$Origin;->mQuota:J
+
+    .line 67
+    iput-wide v2, p0, Landroid/webkit/WebStorage$Origin;->mUsage:J
 
     .line 72
+    iput-object p1, p0, Landroid/webkit/WebStorage$Origin;->mOrigin:Ljava/lang/String;
+
+    .line 73
+    iput-wide p2, p0, Landroid/webkit/WebStorage$Origin;->mQuota:J
+
+    .line 74
+    iput-wide p4, p0, Landroid/webkit/WebStorage$Origin;->mUsage:J
+
+    .line 71
     return-void
 .end method
 
@@ -125,7 +65,7 @@
     .locals 1
 
     .prologue
-    .line 96
+    .line 88
     iget-object v0, p0, Landroid/webkit/WebStorage$Origin;->mOrigin:Ljava/lang/String;
 
     return-object v0
@@ -135,7 +75,7 @@
     .locals 2
 
     .prologue
-    .line 107
+    .line 99
     iget-wide v0, p0, Landroid/webkit/WebStorage$Origin;->mQuota:J
 
     return-wide v0
@@ -145,7 +85,7 @@
     .locals 2
 
     .prologue
-    .line 117
+    .line 109
     iget-wide v0, p0, Landroid/webkit/WebStorage$Origin;->mUsage:J
 
     return-wide v0

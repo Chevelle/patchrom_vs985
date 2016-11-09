@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/content/SyncStatusInfo$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -80,12 +88,13 @@
 
     sput-object v0, Landroid/content/SyncStatusInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 26
     return-void
 .end method
 
 .method public constructor <init>(I)V
     .locals 0
-    .parameter "authorityId"
+    .param p1, "authorityId"    # I
 
     .prologue
     .line 52
@@ -94,13 +103,13 @@
     .line 53
     iput p1, p0, Landroid/content/SyncStatusInfo;->authorityId:I
 
-    .line 54
+    .line 52
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/SyncStatusInfo;)V
     .locals 2
-    .parameter "other"
+    .param p1, "other"    # Landroid/content/SyncStatusInfo;
 
     .prologue
     .line 132
@@ -200,21 +209,21 @@
 
     iput-object v0, p0, Landroid/content/SyncStatusInfo;->periodicSyncTimes:Ljava/util/ArrayList;
 
-    .line 152
+    .line 132
     :cond_0
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 9
-    .parameter "parcel"
+    .param p1, "parcel"    # Landroid/os/Parcel;
 
     .prologue
     const/4 v8, 0x0
 
-    const/4 v5, 0x0
-
     const/4 v4, 0x1
+
+    const/4 v5, 0x0
 
     .line 97
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -225,7 +234,7 @@
     move-result v2
 
     .line 99
-    .local v2, version:I
+    .local v2, "version":I
     const/4 v3, 0x2
 
     if-eq v2, v3, :cond_0
@@ -233,13 +242,13 @@
     if-eq v2, v4, :cond_0
 
     .line 100
-    const-string v3, "SyncStatusInfo"
+    const-string/jumbo v3, "SyncStatusInfo"
 
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v7, "Unknown version: "
+    const-string/jumbo v7, "Unknown version: "
 
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -377,7 +386,7 @@
     .line 118
     iput-object v8, p0, Landroid/content/SyncStatusInfo;->periodicSyncTimes:Ljava/util/ArrayList;
 
-    .line 130
+    .line 97
     :cond_2
     :goto_1
     return-void
@@ -395,7 +404,7 @@
     move-result v0
 
     .line 121
-    .local v0, N:I
+    .local v0, "N":I
     if-gez v0, :cond_5
 
     .line 122
@@ -414,7 +423,7 @@
     .line 125
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_2
     if-ge v1, v0, :cond_2
 
@@ -438,8 +447,8 @@
 .end method
 
 .method private ensurePeriodicSyncTimeSize(I)V
-    .locals 5
-    .parameter "index"
+    .locals 6
+    .param p1, "index"    # I
 
     .prologue
     .line 186
@@ -461,7 +470,7 @@
     add-int/lit8 v1, p1, 0x1
 
     .line 191
-    .local v1, requiredSize:I
+    .local v1, "requiredSize":I
     iget-object v2, p0, Landroid/content/SyncStatusInfo;->periodicSyncTimes:Ljava/util/ArrayList;
 
     invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
@@ -477,16 +486,16 @@
 
     move-result v0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-ge v0, v1, :cond_1
 
     .line 193
     iget-object v2, p0, Landroid/content/SyncStatusInfo;->periodicSyncTimes:Ljava/util/ArrayList;
 
-    const-wide/16 v3, 0x0
+    const-wide/16 v4, 0x0
 
-    invoke-static {v3, v4}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    invoke-static {v4, v5}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
     move-result-object v3
 
@@ -497,8 +506,8 @@
 
     goto :goto_0
 
-    .line 196
-    .end local v0           #i:I
+    .line 185
+    .end local v0    # "i":I
     :cond_1
     return-void
 .end method
@@ -517,7 +526,7 @@
 
 .method public getLastFailureMesgAsInt(I)I
     .locals 4
-    .parameter "def"
+    .param p1, "def"    # I
 
     .prologue
     .line 57
@@ -528,24 +537,21 @@
     move-result v0
 
     .line 58
-    .local v0, i:I
+    .local v0, "i":I
     if-lez v0, :cond_0
 
-    .line 62
-    .end local v0           #i:I
-    :goto_0
+    .line 59
     return v0
 
     .line 61
-    .restart local v0       #i:I
     :cond_0
-    const-string v1, "Sync"
+    const-string/jumbo v1, "Sync"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Unknown lastFailureMesg:"
+    const-string/jumbo v3, "Unknown lastFailureMesg:"
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -563,15 +569,13 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    move v0, p1
-
     .line 62
-    goto :goto_0
+    return p1
 .end method
 
 .method public getPeriodicSyncTime(I)J
     .locals 2
-    .parameter "index"
+    .param p1, "index"    # I
 
     .prologue
     .line 162
@@ -600,19 +604,18 @@
 
     move-result-wide v0
 
-    .line 165
-    :goto_0
     return-wide v0
 
+    .line 165
     :cond_0
     const-wide/16 v0, 0x0
 
-    goto :goto_0
+    return-wide v0
 .end method
 
 .method public removePeriodicSyncTime(I)V
     .locals 1
-    .parameter "index"
+    .param p1, "index"    # I
 
     .prologue
     .line 170
@@ -633,15 +636,15 @@
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
 
-    .line 173
+    .line 169
     :cond_0
     return-void
 .end method
 
 .method public setPeriodicSyncTime(IJ)V
     .locals 2
-    .parameter "index"
-    .parameter "when"
+    .param p1, "index"    # I
+    .param p2, "when"    # J
 
     .prologue
     .line 157
@@ -656,14 +659,14 @@
 
     invoke-virtual {v0, p1, v1}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
 
-    .line 159
+    .line 154
     return-void
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 8
-    .parameter "parcel"
-    .parameter "flags"
+    .param p1, "parcel"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     const/4 v4, 0x1
@@ -775,19 +778,19 @@
     .line 89
     iget-object v3, p0, Landroid/content/SyncStatusInfo;->periodicSyncTimes:Ljava/util/ArrayList;
 
-    invoke-virtual {v3}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
+    invoke-interface {v3}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
-    move-result-object v0
+    move-result-object v2
 
-    .local v0, i$:Ljava/util/Iterator;
+    .local v2, "periodicSyncTime$iterator":Ljava/util/Iterator;
     :goto_2
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v3
 
     if-eqz v3, :cond_3
 
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v3
 
@@ -795,16 +798,16 @@
 
     invoke-virtual {v3}, Ljava/lang/Long;->longValue()J
 
-    move-result-wide v1
+    move-result-wide v0
 
     .line 90
-    .local v1, periodicSyncTime:J
-    invoke-virtual {p1, v1, v2}, Landroid/os/Parcel;->writeLong(J)V
+    .local v0, "periodicSyncTime":J
+    invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
     goto :goto_2
 
-    .end local v0           #i$:Ljava/util/Iterator;
-    .end local v1           #periodicSyncTime:J
+    .end local v0    # "periodicSyncTime":J
+    .end local v2    # "periodicSyncTime$iterator":Ljava/util/Iterator;
     :cond_0
     move v3, v5
 
@@ -823,7 +826,7 @@
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 95
+    .line 70
     :cond_3
     return-void
 .end method

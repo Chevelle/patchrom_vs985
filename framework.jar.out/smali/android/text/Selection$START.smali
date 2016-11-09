@@ -22,18 +22,16 @@
     .locals 0
 
     .prologue
-    .line 458
+    .line 467
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/text/Selection$1;)V
+.method synthetic constructor <init>(Landroid/text/Selection$START;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 458
     invoke-direct {p0}, Landroid/text/Selection$START;-><init>()V
 
     return-void

@@ -39,6 +39,8 @@
 
 .field public static final emptyPhoneNumber:I = 0x1040006
 
+.field public static final fingerprint_icon_content_description:I = 0x1040018
+
 .field public static final httpErrorBadUrl:I = 0x1040007
 
 .field public static final httpErrorUnsupportedScheme:I = 0x1040008
@@ -69,7 +71,7 @@
     .locals 0
 
     .prologue
-    .line 11284
+    .line 13930
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

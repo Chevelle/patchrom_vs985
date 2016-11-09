@@ -25,23 +25,23 @@
 # direct methods
 .method public constructor <init>(Landroid/widget/TextView;II)V
     .locals 0
-    .parameter "sourceTextView"
-    .parameter "start"
-    .parameter "end"
+    .param p1, "sourceTextView"    # Landroid/widget/TextView;
+    .param p2, "start"    # I
+    .param p3, "end"    # I
 
     .prologue
-    .line 1821
+    .line 2143
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1822
+    .line 2144
     iput-object p1, p0, Landroid/widget/Editor$DragLocalState;->sourceTextView:Landroid/widget/TextView;
 
-    .line 1823
+    .line 2145
     iput p2, p0, Landroid/widget/Editor$DragLocalState;->start:I
 
-    .line 1824
+    .line 2146
     iput p3, p0, Landroid/widget/Editor$DragLocalState;->end:I
 
-    .line 1825
+    .line 2143
     return-void
 .end method

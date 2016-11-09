@@ -3,12 +3,12 @@
 .source "ViewGroup.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/animation/LayoutTransition$TransitionListener;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/view/ViewGroup;->notifyAnimationListener()V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroid/view/ViewGroup;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/view/ViewGroup;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/view/ViewGroup;
 
     .prologue
-    .line 3040
+    .line 6176
     iput-object p1, p0, Landroid/view/ViewGroup$2;->this$0:Landroid/view/ViewGroup;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,31 +37,88 @@
 
 
 # virtual methods
-.method public run()V
+.method public endTransition(Landroid/animation/LayoutTransition;Landroid/view/ViewGroup;Landroid/view/View;I)V
     .locals 2
+    .param p1, "transition"    # Landroid/animation/LayoutTransition;
+    .param p2, "container"    # Landroid/view/ViewGroup;
+    .param p3, "view"    # Landroid/view/View;
+    .param p4, "transitionType"    # I
 
     .prologue
-    .line 3042
+    .line 6190
     iget-object v0, p0, Landroid/view/ViewGroup$2;->this$0:Landroid/view/ViewGroup;
 
-    #getter for: Landroid/view/ViewGroup;->mAnimationListener:Landroid/view/animation/Animation$AnimationListener;
-    invoke-static {v0}, Landroid/view/ViewGroup;->access$200(Landroid/view/ViewGroup;)Landroid/view/animation/Animation$AnimationListener;
+    invoke-static {v0}, Landroid/view/ViewGroup;->-get2(Landroid/view/ViewGroup;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {p1}, Landroid/animation/LayoutTransition;->isChangingLayout()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_2
+
+    .line 6194
+    :cond_0
+    :goto_0
+    const/4 v0, 0x3
+
+    if-ne p4, v0, :cond_1
+
+    iget-object v0, p0, Landroid/view/ViewGroup$2;->this$0:Landroid/view/ViewGroup;
+
+    invoke-static {v0}, Landroid/view/ViewGroup;->-get3(Landroid/view/ViewGroup;)Ljava/util/ArrayList;
 
     move-result-object v0
 
-    iget-object v1, p0, Landroid/view/ViewGroup$2;->this$0:Landroid/view/ViewGroup;
+    if-eqz v0, :cond_1
 
-    #getter for: Landroid/view/ViewGroup;->mLayoutAnimationController:Landroid/view/animation/LayoutAnimationController;
-    invoke-static {v1}, Landroid/view/ViewGroup;->access$100(Landroid/view/ViewGroup;)Landroid/view/animation/LayoutAnimationController;
+    .line 6195
+    iget-object v0, p0, Landroid/view/ViewGroup$2;->this$0:Landroid/view/ViewGroup;
 
-    move-result-object v1
+    invoke-virtual {v0, p3}, Landroid/view/ViewGroup;->endViewTransition(Landroid/view/View;)V
 
-    invoke-virtual {v1}, Landroid/view/animation/LayoutAnimationController;->getAnimation()Landroid/view/animation/Animation;
+    .line 6189
+    :cond_1
+    return-void
 
-    move-result-object v1
+    .line 6191
+    :cond_2
+    iget-object v0, p0, Landroid/view/ViewGroup$2;->this$0:Landroid/view/ViewGroup;
 
-    invoke-interface {v0, v1}, Landroid/view/animation/Animation$AnimationListener;->onAnimationEnd(Landroid/view/animation/Animation;)V
+    invoke-virtual {v0}, Landroid/view/ViewGroup;->requestLayout()V
 
-    .line 3043
+    .line 6192
+    iget-object v0, p0, Landroid/view/ViewGroup$2;->this$0:Landroid/view/ViewGroup;
+
+    const/4 v1, 0x0
+
+    invoke-static {v0, v1}, Landroid/view/ViewGroup;->-set0(Landroid/view/ViewGroup;Z)Z
+
+    goto :goto_0
+.end method
+
+.method public startTransition(Landroid/animation/LayoutTransition;Landroid/view/ViewGroup;Landroid/view/View;I)V
+    .locals 1
+    .param p1, "transition"    # Landroid/animation/LayoutTransition;
+    .param p2, "container"    # Landroid/view/ViewGroup;
+    .param p3, "view"    # Landroid/view/View;
+    .param p4, "transitionType"    # I
+
+    .prologue
+    .line 6182
+    const/4 v0, 0x3
+
+    if-ne p4, v0, :cond_0
+
+    .line 6183
+    iget-object v0, p0, Landroid/view/ViewGroup$2;->this$0:Landroid/view/ViewGroup;
+
+    invoke-virtual {v0, p3}, Landroid/view/ViewGroup;->startViewTransition(Landroid/view/View;)V
+
+    .line 6179
+    :cond_0
     return-void
 .end method

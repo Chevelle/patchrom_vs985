@@ -26,13 +26,15 @@
     .locals 1
 
     .prologue
-    .line 74
+    .line 75
     new-instance v0, Landroid/app/ApplicationLoaders;
 
     invoke-direct {v0}, Landroid/app/ApplicationLoaders;-><init>()V
 
+    .line 74
     sput-object v0, Landroid/app/ApplicationLoaders;->gApplicationLoaders:Landroid/app/ApplicationLoaders;
 
+    .line 23
     return-void
 .end method
 
@@ -50,6 +52,7 @@
 
     iput-object v0, p0, Landroid/app/ApplicationLoaders;->mLoaders:Landroid/util/ArrayMap;
 
+    .line 23
     return-void
 .end method
 
@@ -66,10 +69,10 @@
 
 # virtual methods
 .method public getClassLoader(Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)Ljava/lang/ClassLoader;
-    .locals 7
-    .parameter "zip"
-    .parameter "libPath"
-    .parameter "parent"
+    .locals 8
+    .param p1, "zip"    # Ljava/lang/String;
+    .param p2, "libPath"    # Ljava/lang/String;
+    .param p3, "parent"    # Ljava/lang/ClassLoader;
 
     .prologue
     .line 38
@@ -82,7 +85,7 @@
     move-result-object v0
 
     .line 40
-    .local v0, baseParent:Ljava/lang/ClassLoader;
+    .local v0, "baseParent":Ljava/lang/ClassLoader;
     iget-object v4, p0, Landroid/app/ApplicationLoaders;->mLoaders:Landroid/util/ArrayMap;
 
     monitor-enter v4
@@ -106,67 +109,56 @@
     move-result-object v1
 
     check-cast v1, Ljava/lang/ClassLoader;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 52
-    .local v1, loader:Ljava/lang/ClassLoader;
+    .local v1, "loader":Ljava/lang/ClassLoader;
     if-eqz v1, :cond_1
 
-    .line 53
     monitor-exit v4
 
-    move-object v2, v1
-
-    .line 68
-    .end local v1           #loader:Ljava/lang/ClassLoader;
-    :goto_0
-    return-object v2
+    .line 53
+    return-object v1
 
     .line 56
-    .restart local v1       #loader:Ljava/lang/ClassLoader;
     :cond_1
-    const-wide/16 v5, 0x40
+    const-wide/16 v6, 0x40
 
-    invoke-static {v5, v6, p1}, Landroid/os/Trace;->traceBegin(JLjava/lang/String;)V
+    :try_start_1
+    invoke-static {v6, v7, p1}, Landroid/os/Trace;->traceBegin(JLjava/lang/String;)V
 
-    .line 57
+    .line 58
     new-instance v2, Ldalvik/system/PathClassLoader;
 
     invoke-direct {v2, p1, p2, p3}, Ldalvik/system/PathClassLoader;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V
 
     .line 59
-    .local v2, pathClassloader:Ldalvik/system/PathClassLoader;
-    const-wide/16 v5, 0x40
+    .local v2, "pathClassloader":Ldalvik/system/PathClassLoader;
+    const-wide/16 v6, 0x40
 
-    invoke-static {v5, v6}, Landroid/os/Trace;->traceEnd(J)V
+    invoke-static {v6, v7}, Landroid/os/Trace;->traceEnd(J)V
 
     .line 61
     iget-object v3, p0, Landroid/app/ApplicationLoaders;->mLoaders:Landroid/util/ArrayMap;
 
     invoke-virtual {v3, p1, v2}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    monitor-exit v4
 
     .line 62
-    monitor-exit v4
-
-    goto :goto_0
-
-    .line 69
-    .end local v1           #loader:Ljava/lang/ClassLoader;
-    .end local v2           #pathClassloader:Ldalvik/system/PathClassLoader;
-    :catchall_0
-    move-exception v3
-
-    monitor-exit v4
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    throw v3
+    return-object v2
 
     .line 65
+    .end local v1    # "loader":Ljava/lang/ClassLoader;
+    .end local v2    # "pathClassloader":Ldalvik/system/PathClassLoader;
     :cond_2
-    const-wide/16 v5, 0x40
+    const-wide/16 v6, 0x40
 
-    :try_start_1
-    invoke-static {v5, v6, p1}, Landroid/os/Trace;->traceBegin(JLjava/lang/String;)V
+    :try_start_2
+    invoke-static {v6, v7, p1}, Landroid/os/Trace;->traceBegin(JLjava/lang/String;)V
 
     .line 66
     new-instance v2, Ldalvik/system/PathClassLoader;
@@ -174,15 +166,24 @@
     invoke-direct {v2, p1, p3}, Ldalvik/system/PathClassLoader;-><init>(Ljava/lang/String;Ljava/lang/ClassLoader;)V
 
     .line 67
-    .restart local v2       #pathClassloader:Ldalvik/system/PathClassLoader;
-    const-wide/16 v5, 0x40
+    .restart local v2    # "pathClassloader":Ldalvik/system/PathClassLoader;
+    const-wide/16 v6, 0x40
 
-    invoke-static {v5, v6}, Landroid/os/Trace;->traceEnd(J)V
+    invoke-static {v6, v7}, Landroid/os/Trace;->traceEnd(J)V
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    monitor-exit v4
 
     .line 68
-    monitor-exit v4
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    return-object v2
 
-    goto :goto_0
+    .line 40
+    .end local v2    # "pathClassloader":Ldalvik/system/PathClassLoader;
+    :catchall_0
+    move-exception v3
+
+    monitor-exit v4
+
+    throw v3
 .end method

@@ -23,24 +23,26 @@
 
     sput-object v0, Landroid/text/method/TimeKeyListener;->CHARACTERS:[C
 
+    .line 29
     return-void
 
+    .line 56
     :array_0
-    .array-data 0x2
-        0x30t 0x0t
-        0x31t 0x0t
-        0x32t 0x0t
-        0x33t 0x0t
-        0x34t 0x0t
-        0x35t 0x0t
-        0x36t 0x0t
-        0x37t 0x0t
-        0x38t 0x0t
-        0x39t 0x0t
-        0x61t 0x0t
-        0x6dt 0x0t
-        0x70t 0x0t
-        0x3at 0x0t
+    .array-data 2
+        0x30s
+        0x31s
+        0x32s
+        0x33s
+        0x34s
+        0x35s
+        0x36s
+        0x37s
+        0x38s
+        0x39s
+        0x61s
+        0x6ds
+        0x70s
+        0x3as
     .end array-data
 .end method
 
@@ -66,8 +68,6 @@
     .line 44
     sget-object v0, Landroid/text/method/TimeKeyListener;->sInstance:Landroid/text/method/TimeKeyListener;
 
-    .line 47
-    :goto_0
     return-object v0
 
     .line 46
@@ -81,7 +81,7 @@
     .line 47
     sget-object v0, Landroid/text/method/TimeKeyListener;->sInstance:Landroid/text/method/TimeKeyListener;
 
-    goto :goto_0
+    return-object v0
 .end method
 
 

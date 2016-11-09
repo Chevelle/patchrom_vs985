@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/media/MediaActionSound;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/media/MediaActionSound;
 
     .prologue
-    .line 179
+    .line 176
     iput-object p1, p0, Landroid/media/MediaActionSound$1;->this$0:Landroid/media/MediaActionSound;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,23 +39,22 @@
 # virtual methods
 .method public onLoadComplete(Landroid/media/SoundPool;II)V
     .locals 7
-    .parameter "soundPool"
-    .parameter "sampleId"
-    .parameter "status"
+    .param p1, "soundPool"    # Landroid/media/SoundPool;
+    .param p2, "sampleId"    # I
+    .param p3, "status"    # I
 
     .prologue
     const/4 v4, 0x0
 
-    const/high16 v2, 0x3f80
+    const/high16 v2, 0x3f800000    # 1.0f
 
-    .line 182
+    .line 179
     if-nez p3, :cond_1
 
-    .line 183
+    .line 180
     iget-object v0, p0, Landroid/media/MediaActionSound$1;->this$0:Landroid/media/MediaActionSound;
 
-    #getter for: Landroid/media/MediaActionSound;->mSoundIdToPlay:I
-    invoke-static {v0}, Landroid/media/MediaActionSound;->access$000(Landroid/media/MediaActionSound;)I
+    invoke-static {v0}, Landroid/media/MediaActionSound;->-get0(Landroid/media/MediaActionSound;)I
 
     move-result v0
 
@@ -71,31 +70,30 @@
 
     move v6, v2
 
-    .line 184
+    .line 181
     invoke-virtual/range {v0 .. v6}, Landroid/media/SoundPool;->play(IFFIIF)I
 
-    .line 185
+    .line 182
     iget-object v0, p0, Landroid/media/MediaActionSound$1;->this$0:Landroid/media/MediaActionSound;
 
     const/4 v1, -0x1
 
-    #setter for: Landroid/media/MediaActionSound;->mSoundIdToPlay:I
-    invoke-static {v0, v1}, Landroid/media/MediaActionSound;->access$002(Landroid/media/MediaActionSound;I)I
+    invoke-static {v0, v1}, Landroid/media/MediaActionSound;->-set0(Landroid/media/MediaActionSound;I)I
 
-    .line 191
+    .line 178
     :cond_0
     :goto_0
     return-void
 
-    .line 188
+    .line 185
     :cond_1
-    const-string v0, "MediaActionSound"
+    const-string/jumbo v0, "MediaActionSound"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Unable to load sound for playback (status: "
+    const-string/jumbo v2, "Unable to load sound for playback (status: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -105,8 +103,10 @@
 
     move-result-object v1
 
-    const-string v2, ")"
+    .line 186
+    const-string/jumbo v2, ")"
 
+    .line 185
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1

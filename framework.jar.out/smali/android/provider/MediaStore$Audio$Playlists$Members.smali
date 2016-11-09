@@ -36,24 +36,24 @@
     .locals 0
 
     .prologue
-    .line 1600
+    .line 1668
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 .method public static final getContentUri(Ljava/lang/String;J)Landroid/net/Uri;
-    .locals 2
-    .parameter "volumeName"
-    .parameter "playlistId"
+    .locals 3
+    .param p0, "volumeName"    # Ljava/lang/String;
+    .param p1, "playlistId"    # J
 
     .prologue
-    .line 1603
+    .line 1671
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "content://media/"
+    const-string/jumbo v1, "content://media/"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -63,8 +63,10 @@
 
     move-result-object v0
 
-    const-string v1, "/audio/playlists/"
+    .line 1672
+    const-string/jumbo v1, "/audio/playlists/"
 
+    .line 1671
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -73,8 +75,10 @@
 
     move-result-object v0
 
-    const-string v1, "/members"
+    .line 1672
+    const-string/jumbo v1, "/members"
 
+    .line 1671
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -91,76 +95,77 @@
 .end method
 
 .method public static final moveItem(Landroid/content/ContentResolver;JII)Z
-    .locals 6
-    .parameter "res"
-    .parameter "playlistId"
-    .parameter "from"
-    .parameter "to"
+    .locals 7
+    .param p0, "res"    # Landroid/content/ContentResolver;
+    .param p1, "playlistId"    # J
+    .param p3, "from"    # I
+    .param p4, "to"    # I
 
     .prologue
-    const/4 v5, 0x0
+    const/4 v6, 0x0
 
-    .line 1617
-    const-string v2, "external"
+    const/4 v2, 0x0
 
-    invoke-static {v2, p1, p2}, Landroid/provider/MediaStore$Audio$Playlists$Members;->getContentUri(Ljava/lang/String;J)Landroid/net/Uri;
+    .line 1685
+    const-string/jumbo v3, "external"
 
-    move-result-object v2
-
-    invoke-virtual {v2}, Landroid/net/Uri;->buildUpon()Landroid/net/Uri$Builder;
-
-    move-result-object v2
-
-    invoke-static {p3}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+    invoke-static {v3, p1, p2}, Landroid/provider/MediaStore$Audio$Playlists$Members;->getContentUri(Ljava/lang/String;J)Landroid/net/Uri;
 
     move-result-object v3
 
-    invoke-virtual {v2, v3}, Landroid/net/Uri$Builder;->appendEncodedPath(Ljava/lang/String;)Landroid/net/Uri$Builder;
+    invoke-virtual {v3}, Landroid/net/Uri;->buildUpon()Landroid/net/Uri$Builder;
 
-    move-result-object v2
+    move-result-object v3
 
-    const-string v3, "move"
+    .line 1688
+    invoke-static {p3}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
 
-    const-string/jumbo v4, "true"
+    move-result-object v4
 
-    invoke-virtual {v2, v3, v4}, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
+    .line 1685
+    invoke-virtual {v3, v4}, Landroid/net/Uri$Builder;->appendEncodedPath(Ljava/lang/String;)Landroid/net/Uri$Builder;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-virtual {v2}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
+    .line 1689
+    const-string/jumbo v4, "move"
+
+    const-string/jumbo v5, "true"
+
+    .line 1685
+    invoke-virtual {v3, v4, v5}, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
 
     move-result-object v0
 
-    .line 1623
-    .local v0, uri:Landroid/net/Uri;
+    .line 1691
+    .local v0, "uri":Landroid/net/Uri;
     new-instance v1, Landroid/content/ContentValues;
 
     invoke-direct {v1}, Landroid/content/ContentValues;-><init>()V
 
-    .line 1624
-    .local v1, values:Landroid/content/ContentValues;
-    const-string/jumbo v2, "play_order"
+    .line 1692
+    .local v1, "values":Landroid/content/ContentValues;
+    const-string/jumbo v3, "play_order"
 
     invoke-static {p4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v3
+    move-result-object v4
 
-    invoke-virtual {v1, v2, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
+    invoke-virtual {v1, v3, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 1625
-    invoke-virtual {p0, v0, v1, v5, v5}, Landroid/content/ContentResolver;->update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    .line 1693
+    invoke-virtual {p0, v0, v1, v6, v6}, Landroid/content/ContentResolver;->update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
-    move-result v2
+    move-result v3
 
-    if-eqz v2, :cond_0
+    if-eqz v3, :cond_0
 
     const/4 v2, 0x1
 
-    :goto_0
-    return v2
-
     :cond_0
-    const/4 v2, 0x0
-
-    goto :goto_0
+    return v2
 .end method

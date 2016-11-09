@@ -12,7 +12,7 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 0
-    .parameter "context"
+    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
     .line 47
@@ -21,7 +21,7 @@
     .line 48
     iput-object p1, p0, Landroid/media/WebVttRenderer;->mContext:Landroid/content/Context;
 
-    .line 49
+    .line 47
     return-void
 .end method
 
@@ -29,7 +29,7 @@
 # virtual methods
 .method public createTrack(Landroid/media/MediaFormat;)Landroid/media/SubtitleTrack;
     .locals 2
-    .parameter "format"
+    .param p1, "format"    # Landroid/media/MediaFormat;
 
     .prologue
     .line 61
@@ -59,11 +59,11 @@
 
 .method public supports(Landroid/media/MediaFormat;)Z
     .locals 2
-    .parameter "format"
+    .param p1, "format"    # Landroid/media/MediaFormat;
 
     .prologue
     .line 53
-    const-string v0, "mime"
+    const-string/jumbo v0, "mime"
 
     invoke-virtual {p1, v0}, Landroid/media/MediaFormat;->containsKey(Ljava/lang/String;)Z
 
@@ -72,7 +72,7 @@
     if-eqz v0, :cond_0
 
     .line 54
-    const-string v0, "mime"
+    const-string/jumbo v0, "mime"
 
     invoke-virtual {p1, v0}, Landroid/media/MediaFormat;->getString(Ljava/lang/String;)Ljava/lang/String;
 
@@ -84,12 +84,11 @@
 
     move-result v0
 
-    .line 56
-    :goto_0
     return v0
 
+    .line 56
     :cond_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 .end method

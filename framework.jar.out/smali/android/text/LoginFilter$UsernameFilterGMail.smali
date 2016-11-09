@@ -24,19 +24,19 @@
 
     invoke-direct {p0, v0}, Landroid/text/LoginFilter;-><init>(Z)V
 
-    .line 138
+    .line 136
     return-void
 .end method
 
 .method public constructor <init>(Z)V
     .locals 0
-    .parameter "appendInvalid"
+    .param p1, "appendInvalid"    # Z
 
     .prologue
     .line 141
     invoke-direct {p0, p1}, Landroid/text/LoginFilter;-><init>(Z)V
 
-    .line 142
+    .line 140
     return-void
 .end method
 
@@ -44,53 +44,61 @@
 # virtual methods
 .method public isAllowed(C)Z
     .locals 2
-    .parameter "c"
+    .param p1, "c"    # C
 
     .prologue
-    const/4 v0, 0x1
+    const/4 v1, 0x1
 
     .line 147
-    const/16 v1, 0x30
+    const/16 v0, 0x30
 
-    if-gt v1, p1, :cond_1
+    if-gt v0, p1, :cond_0
 
-    const/16 v1, 0x39
+    const/16 v0, 0x39
 
-    if-gt p1, v1, :cond_1
+    if-gt p1, v0, :cond_0
 
-    .line 155
-    :cond_0
-    :goto_0
-    return v0
+    .line 148
+    return v1
 
     .line 149
-    :cond_1
-    const/16 v1, 0x61
+    :cond_0
+    const/16 v0, 0x61
 
-    if-gt v1, p1, :cond_2
+    if-gt v0, p1, :cond_1
 
-    const/16 v1, 0x7a
+    const/16 v0, 0x7a
 
-    if-le p1, v1, :cond_0
+    if-gt p1, v0, :cond_1
+
+    .line 150
+    return v1
 
     .line 151
-    :cond_2
-    const/16 v1, 0x41
+    :cond_1
+    const/16 v0, 0x41
 
-    if-gt v1, p1, :cond_3
+    if-gt v0, p1, :cond_2
 
-    const/16 v1, 0x5a
+    const/16 v0, 0x5a
 
-    if-le p1, v1, :cond_0
+    if-gt p1, v0, :cond_2
+
+    .line 152
+    return v1
 
     .line 153
-    :cond_3
-    const/16 v1, 0x2e
+    :cond_2
+    const/16 v0, 0x2e
 
-    if-eq v1, p1, :cond_0
+    if-ne v0, p1, :cond_3
+
+    .line 154
+    return v1
 
     .line 155
+    :cond_3
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 .end method

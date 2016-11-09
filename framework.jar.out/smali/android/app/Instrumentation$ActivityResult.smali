@@ -23,20 +23,20 @@
 # direct methods
 .method public constructor <init>(ILandroid/content/Intent;)V
     .locals 0
-    .parameter "resultCode"
-    .parameter "resultData"
+    .param p1, "resultCode"    # I
+    .param p2, "resultData"    # Landroid/content/Intent;
 
     .prologue
-    .line 1330
+    .line 1414
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1331
+    .line 1415
     iput p1, p0, Landroid/app/Instrumentation$ActivityResult;->mResultCode:I
 
-    .line 1332
+    .line 1416
     iput-object p2, p0, Landroid/app/Instrumentation$ActivityResult;->mResultData:Landroid/content/Intent;
 
-    .line 1333
+    .line 1414
     return-void
 .end method
 
@@ -46,7 +46,7 @@
     .locals 1
 
     .prologue
-    .line 1339
+    .line 1423
     iget v0, p0, Landroid/app/Instrumentation$ActivityResult;->mResultCode:I
 
     return v0
@@ -56,7 +56,7 @@
     .locals 1
 
     .prologue
-    .line 1346
+    .line 1430
     iget-object v0, p0, Landroid/app/Instrumentation$ActivityResult;->mResultData:Landroid/content/Intent;
 
     return-object v0

@@ -55,6 +55,22 @@
     .end annotation
 .end method
 
+.method public abstract onMtuChanged(Ljava/lang/String;I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onNotificationSent(Ljava/lang/String;I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract onScanResult(Ljava/lang/String;I[B)V
     .annotation system Ldalvik/annotation/Throws;
         value = {

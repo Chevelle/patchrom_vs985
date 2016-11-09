@@ -27,26 +27,26 @@
 # direct methods
 .method constructor <init>(Landroid/mtp/MtpPropertyGroup;III)V
     .locals 0
-    .parameter
-    .parameter "code"
-    .parameter "type"
-    .parameter "column"
+    .param p1, "this$0"    # Landroid/mtp/MtpPropertyGroup;
+    .param p2, "code"    # I
+    .param p3, "type"    # I
+    .param p4, "column"    # I
 
     .prologue
-    .line 44
+    .line 43
     iput-object p1, p0, Landroid/mtp/MtpPropertyGroup$Property;->this$0:Landroid/mtp/MtpPropertyGroup;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 45
+    .line 44
     iput p2, p0, Landroid/mtp/MtpPropertyGroup$Property;->code:I
 
-    .line 46
+    .line 45
     iput p3, p0, Landroid/mtp/MtpPropertyGroup$Property;->type:I
 
-    .line 47
+    .line 46
     iput p4, p0, Landroid/mtp/MtpPropertyGroup$Property;->column:I
 
-    .line 48
+    .line 43
     return-void
 .end method

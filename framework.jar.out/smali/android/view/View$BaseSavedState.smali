@@ -13,6 +13,12 @@
     name = "BaseSavedState"
 .end annotation
 
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/view/View$BaseSavedState$1;
+    }
+.end annotation
+
 
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
@@ -27,41 +33,74 @@
 .end field
 
 
+# instance fields
+.field mStartActivityRequestWhoSaved:Ljava/lang/String;
+
+
 # direct methods
 .method static constructor <clinit>()V
     .locals 1
 
     .prologue
-    .line 18680
+    .line 21479
     new-instance v0, Landroid/view/View$BaseSavedState$1;
 
     invoke-direct {v0}, Landroid/view/View$BaseSavedState$1;-><init>()V
 
+    .line 21478
     sput-object v0, Landroid/view/View$BaseSavedState;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 21450
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
-    .locals 0
-    .parameter "source"
+    .locals 1
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 18668
+    .line 21459
     invoke-direct {p0, p1}, Landroid/view/AbsSavedState;-><init>(Landroid/os/Parcel;)V
 
-    .line 18669
+    .line 21460
+    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v0
+
+    iput-object v0, p0, Landroid/view/View$BaseSavedState;->mStartActivityRequestWhoSaved:Ljava/lang/String;
+
+    .line 21458
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcelable;)V
     .locals 0
-    .parameter "superState"
+    .param p1, "superState"    # Landroid/os/Parcelable;
 
     .prologue
-    .line 18677
+    .line 21469
     invoke-direct {p0, p1}, Landroid/view/AbsSavedState;-><init>(Landroid/os/Parcelable;)V
 
-    .line 18678
+    .line 21468
+    return-void
+.end method
+
+
+# virtual methods
+.method public writeToParcel(Landroid/os/Parcel;I)V
+    .locals 1
+    .param p1, "out"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
+
+    .prologue
+    .line 21474
+    invoke-super {p0, p1, p2}, Landroid/view/AbsSavedState;->writeToParcel(Landroid/os/Parcel;I)V
+
+    .line 21475
+    iget-object v0, p0, Landroid/view/View$BaseSavedState;->mStartActivityRequestWhoSaved:Ljava/lang/String;
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    .line 21473
     return-void
 .end method

@@ -6,8 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/webkit/WebViewProvider$ScrollDelegate;,
-        Landroid/webkit/WebViewProvider$ViewDelegate;
+        Landroid/webkit/WebViewProvider$ViewDelegate;,
+        Landroid/webkit/WebViewProvider$ScrollDelegate;
     }
 .end annotation
 
@@ -55,7 +55,10 @@
 .method public abstract copyBackForwardList()Landroid/webkit/WebBackForwardList;
 .end method
 
-.method public abstract createPrintDocumentAdapter()Landroid/print/PrintDocumentAdapter;
+.method public abstract createPrintDocumentAdapter(Ljava/lang/String;)Landroid/print/PrintDocumentAdapter;
+.end method
+
+.method public abstract createWebMessageChannel()[Landroid/webkit/WebMessagePort;
 .end method
 
 .method public abstract destroy()V
@@ -171,6 +174,9 @@
     .end annotation
 .end method
 
+.method public abstract insertVisualStateCallback(JLandroid/webkit/WebView$VisualStateCallback;)V
+.end method
+
 .method public abstract invokeZoomPicker()V
 .end method
 
@@ -225,6 +231,9 @@
 .end method
 
 .method public abstract pauseTimers()V
+.end method
+
+.method public abstract postMessageToMainFrame(Landroid/webkit/WebMessage;Landroid/net/Uri;)V
 .end method
 
 .method public abstract postUrl(Ljava/lang/String;[B)V
@@ -317,6 +326,9 @@
 .end method
 
 .method public abstract stopLoading()V
+.end method
+
+.method public abstract zoomBy(F)Z
 .end method
 
 .method public abstract zoomIn()Z

@@ -4,41 +4,41 @@
 
 
 # instance fields
-.field private mNativeClient:I
+.field private mNativeClient:J
 
 
 # direct methods
 .method public constructor <init>()V
-    .locals 1
+    .locals 2
 
     .prologue
     .line 34
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 35
-    invoke-static {}, Landroid/view/SurfaceSession;->nativeCreate()I
+    invoke-static {}, Landroid/view/SurfaceSession;->nativeCreate()J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/view/SurfaceSession;->mNativeClient:I
+    iput-wide v0, p0, Landroid/view/SurfaceSession;->mNativeClient:J
 
-    .line 36
+    .line 34
     return-void
 .end method
 
-.method private static native nativeCreate()I
+.method private static native nativeCreate()J
 .end method
 
-.method private static native nativeDestroy(I)V
+.method private static native nativeDestroy(J)V
 .end method
 
-.method private static native nativeKill(I)V
+.method private static native nativeKill(J)V
 .end method
 
 
 # virtual methods
 .method protected finalize()V
-    .locals 1
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/Throwable;
@@ -48,14 +48,18 @@
     .prologue
     .line 42
     :try_start_0
-    iget v0, p0, Landroid/view/SurfaceSession;->mNativeClient:I
+    iget-wide v0, p0, Landroid/view/SurfaceSession;->mNativeClient:J
+
+    const-wide/16 v2, 0x0
+
+    cmp-long v0, v0, v2
 
     if-eqz v0, :cond_0
 
     .line 43
-    iget v0, p0, Landroid/view/SurfaceSession;->mNativeClient:I
+    iget-wide v0, p0, Landroid/view/SurfaceSession;->mNativeClient:J
 
-    invoke-static {v0}, Landroid/view/SurfaceSession;->nativeDestroy(I)V
+    invoke-static {v0, v1}, Landroid/view/SurfaceSession;->nativeDestroy(J)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -63,27 +67,29 @@
     :cond_0
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
-    .line 48
+    .line 40
     return-void
 
-    .line 46
+    .line 45
     :catchall_0
     move-exception v0
 
+    .line 46
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
 
+    .line 45
     throw v0
 .end method
 
 .method public kill()V
-    .locals 1
+    .locals 2
 
     .prologue
     .line 56
-    iget v0, p0, Landroid/view/SurfaceSession;->mNativeClient:I
+    iget-wide v0, p0, Landroid/view/SurfaceSession;->mNativeClient:J
 
-    invoke-static {v0}, Landroid/view/SurfaceSession;->nativeKill(I)V
+    invoke-static {v0, v1}, Landroid/view/SurfaceSession;->nativeKill(J)V
 
-    .line 57
+    .line 55
     return-void
 .end method

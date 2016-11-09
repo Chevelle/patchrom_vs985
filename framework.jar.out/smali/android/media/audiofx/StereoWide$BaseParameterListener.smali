@@ -24,7 +24,7 @@
 # direct methods
 .method private constructor <init>(Landroid/media/audiofx/StereoWide;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/media/audiofx/StereoWide;
 
     .prologue
     .line 162
@@ -32,17 +32,14 @@
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 164
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/media/audiofx/StereoWide;Landroid/media/audiofx/StereoWide$1;)V
+.method synthetic constructor <init>(Landroid/media/audiofx/StereoWide;Landroid/media/audiofx/StereoWide$BaseParameterListener;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Landroid/media/audiofx/StereoWide;
 
     .prologue
-    .line 161
     invoke-direct {p0, p1}, Landroid/media/audiofx/StereoWide$BaseParameterListener;-><init>(Landroid/media/audiofx/StereoWide;)V
 
     return-void
@@ -52,10 +49,10 @@
 # virtual methods
 .method public onParameterChange(Landroid/media/audiofx/AudioEffect;I[B[B)V
     .locals 7
-    .parameter "effect"
-    .parameter "status"
-    .parameter "param"
-    .parameter "value"
+    .param p1, "effect"    # Landroid/media/audiofx/AudioEffect;
+    .param p2, "status"    # I
+    .param p3, "param"    # [B
+    .param p4, "value"    # [B
 
     .prologue
     const/4 v6, 0x0
@@ -66,11 +63,10 @@
     const/4 v0, 0x0
 
     .line 168
-    .local v0, l:Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
+    .local v0, "l":Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
     iget-object v3, p0, Landroid/media/audiofx/StereoWide$BaseParameterListener;->this$0:Landroid/media/audiofx/StereoWide;
 
-    #getter for: Landroid/media/audiofx/StereoWide;->mParamListenerLock:Ljava/lang/Object;
-    invoke-static {v3}, Landroid/media/audiofx/StereoWide;->access$000(Landroid/media/audiofx/StereoWide;)Ljava/lang/Object;
+    invoke-static {v3}, Landroid/media/audiofx/StereoWide;->-get1(Landroid/media/audiofx/StereoWide;)Ljava/lang/Object;
 
     move-result-object v4
 
@@ -80,8 +76,7 @@
     :try_start_0
     iget-object v3, p0, Landroid/media/audiofx/StereoWide$BaseParameterListener;->this$0:Landroid/media/audiofx/StereoWide;
 
-    #getter for: Landroid/media/audiofx/StereoWide;->mParamListener:Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
-    invoke-static {v3}, Landroid/media/audiofx/StereoWide;->access$100(Landroid/media/audiofx/StereoWide;)Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
+    invoke-static {v3}, Landroid/media/audiofx/StereoWide;->-get0(Landroid/media/audiofx/StereoWide;)Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
 
     move-result-object v3
 
@@ -90,16 +85,15 @@
     .line 170
     iget-object v3, p0, Landroid/media/audiofx/StereoWide$BaseParameterListener;->this$0:Landroid/media/audiofx/StereoWide;
 
-    #getter for: Landroid/media/audiofx/StereoWide;->mParamListener:Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
-    invoke-static {v3}, Landroid/media/audiofx/StereoWide;->access$100(Landroid/media/audiofx/StereoWide;)Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
+    invoke-static {v3}, Landroid/media/audiofx/StereoWide;->-get0(Landroid/media/audiofx/StereoWide;)Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result-object v0
 
-    .line 172
+    .end local v0    # "l":Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
     :cond_0
     monitor-exit v4
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 173
     if-eqz v0, :cond_3
@@ -108,11 +102,11 @@
     const/4 v1, -0x1
 
     .line 175
-    .local v1, p:I
+    .local v1, "p":I
     const/4 v2, -0x1
 
     .line 177
-    .local v2, v:S
+    .local v2, "v":S
     array-length v3, p3
 
     const/4 v4, 0x4
@@ -120,9 +114,7 @@
     if-ne v3, v4, :cond_1
 
     .line 178
-    iget-object v3, p0, Landroid/media/audiofx/StereoWide$BaseParameterListener;->this$0:Landroid/media/audiofx/StereoWide;
-
-    invoke-virtual {v3, p3, v6}, Landroid/media/audiofx/StereoWide;->byteArrayToInt([BI)I
+    invoke-static {p3, v6}, Landroid/media/audiofx/StereoWide;->byteArrayToInt([BI)I
 
     move-result v1
 
@@ -135,13 +127,12 @@
     if-ne v3, v4, :cond_2
 
     .line 181
-    iget-object v3, p0, Landroid/media/audiofx/StereoWide$BaseParameterListener;->this$0:Landroid/media/audiofx/StereoWide;
-
-    invoke-virtual {v3, p4, v6}, Landroid/media/audiofx/StereoWide;->byteArrayToShort([BI)S
+    invoke-static {p4, v6}, Landroid/media/audiofx/StereoWide;->byteArrayToShort([BI)S
 
     move-result v2
 
     .line 183
+    .end local v2    # "v":S
     :cond_2
     if-eq v1, v5, :cond_3
 
@@ -152,20 +143,17 @@
 
     invoke-interface {v0, v3, p2, v1, v2}, Landroid/media/audiofx/StereoWide$OnParameterChangeListener;->onParameterChange(Landroid/media/audiofx/StereoWide;IIS)V
 
-    .line 187
-    .end local v1           #p:I
-    .end local v2           #v:S
+    .line 165
+    .end local v1    # "p":I
     :cond_3
     return-void
 
-    .line 172
+    .line 168
+    .restart local v0    # "l":Landroid/media/audiofx/StereoWide$OnParameterChangeListener;
     :catchall_0
     move-exception v3
 
-    :try_start_1
     monitor-exit v4
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v3
 .end method

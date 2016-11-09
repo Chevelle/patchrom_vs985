@@ -15,9 +15,17 @@
 
 
 # static fields
+.field public static final ACTIVE_CODENAMES:[Ljava/lang/String;
+
+.field private static final ALL_CODENAMES:[Ljava/lang/String;
+
+.field public static final BASE_OS:Ljava/lang/String;
+
 .field public static final CODENAME:Ljava/lang/String;
 
 .field public static final INCREMENTAL:Ljava/lang/String;
+
+.field public static final PREVIEW_SDK_INT:I
 
 .field public static final RELEASE:Ljava/lang/String;
 
@@ -30,85 +38,144 @@
 
 .field public static final SDK_INT:I
 
+.field public static final SECURITY_PATCH:Ljava/lang/String;
+
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 4
+    .locals 3
 
     .prologue
-    const/4 v0, 0x0
+    const/4 v2, 0x0
 
-    .line 85
-    const-string/jumbo v1, "ro.build.version.incremental"
+    .line 152
+    const-string/jumbo v0, "ro.build.version.incremental"
 
-    #calls: Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
-    invoke-static {v1}, Landroid/os/Build;->access$000(Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0}, Landroid/os/Build;->-wrap1(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    sput-object v1, Landroid/os/Build$VERSION;->INCREMENTAL:Ljava/lang/String;
+    sput-object v0, Landroid/os/Build$VERSION;->INCREMENTAL:Ljava/lang/String;
 
-    .line 90
-    const-string/jumbo v1, "ro.build.version.release"
+    .line 157
+    const-string/jumbo v0, "ro.build.version.release"
 
-    #calls: Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
-    invoke-static {v1}, Landroid/os/Build;->access$000(Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0}, Landroid/os/Build;->-wrap1(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    sput-object v1, Landroid/os/Build$VERSION;->RELEASE:Ljava/lang/String;
+    sput-object v0, Landroid/os/Build$VERSION;->RELEASE:Ljava/lang/String;
 
-    .line 99
-    const-string/jumbo v1, "ro.build.version.sdk"
+    .line 162
+    const-string/jumbo v0, "ro.build.version.base_os"
 
-    #calls: Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
-    invoke-static {v1}, Landroid/os/Build;->access$000(Ljava/lang/String;)Ljava/lang/String;
+    const-string/jumbo v1, ""
 
-    move-result-object v1
+    invoke-static {v0, v1}, Landroid/os/SystemProperties;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    sput-object v1, Landroid/os/Build$VERSION;->SDK:Ljava/lang/String;
+    move-result-object v0
 
-    .line 105
-    const-string/jumbo v1, "ro.build.version.sdk"
+    sput-object v0, Landroid/os/Build$VERSION;->BASE_OS:Ljava/lang/String;
 
-    invoke-static {v1, v0}, Landroid/os/SystemProperties;->getInt(Ljava/lang/String;I)I
+    .line 168
+    const-string/jumbo v0, "ro.build.version.security_patch"
 
-    move-result v1
+    const-string/jumbo v1, ""
 
-    sput v1, Landroid/os/Build$VERSION;->SDK_INT:I
+    .line 167
+    invoke-static {v0, v1}, Landroid/os/SystemProperties;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 112
-    const-string/jumbo v1, "ro.build.version.codename"
+    move-result-object v0
 
-    #calls: Landroid/os/Build;->getString(Ljava/lang/String;)Ljava/lang/String;
-    invoke-static {v1}, Landroid/os/Build;->access$000(Ljava/lang/String;)Ljava/lang/String;
+    sput-object v0, Landroid/os/Build$VERSION;->SECURITY_PATCH:Ljava/lang/String;
 
-    move-result-object v1
+    .line 177
+    const-string/jumbo v0, "ro.build.version.sdk"
 
-    sput-object v1, Landroid/os/Build$VERSION;->CODENAME:Ljava/lang/String;
+    invoke-static {v0}, Landroid/os/Build;->-wrap1(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 120
-    sget v1, Landroid/os/Build$VERSION;->SDK_INT:I
+    move-result-object v0
 
-    const-string v2, "REL"
+    sput-object v0, Landroid/os/Build$VERSION;->SDK:Ljava/lang/String;
 
-    sget-object v3, Landroid/os/Build$VERSION;->CODENAME:Ljava/lang/String;
+    .line 184
+    const-string/jumbo v0, "ro.build.version.sdk"
 
-    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    .line 183
+    invoke-static {v0, v2}, Landroid/os/SystemProperties;->getInt(Ljava/lang/String;I)I
 
-    move-result v2
+    move-result v0
 
-    if-eqz v2, :cond_0
+    sput v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
+    .line 205
+    const-string/jumbo v0, "ro.build.version.preview_sdk"
+
+    .line 204
+    invoke-static {v0, v2}, Landroid/os/SystemProperties;->getInt(Ljava/lang/String;I)I
+
+    move-result v0
+
+    sput v0, Landroid/os/Build$VERSION;->PREVIEW_SDK_INT:I
+
+    .line 211
+    const-string/jumbo v0, "ro.build.version.codename"
+
+    invoke-static {v0}, Landroid/os/Build;->-wrap1(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    sput-object v0, Landroid/os/Build$VERSION;->CODENAME:Ljava/lang/String;
+
+    .line 214
+    const-string/jumbo v0, "ro.build.version.all_codenames"
+
+    const-string/jumbo v1, ","
+
+    invoke-static {v0, v1}, Landroid/os/Build;->-wrap0(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 213
+    sput-object v0, Landroid/os/Build$VERSION;->ALL_CODENAMES:[Ljava/lang/String;
+
+    .line 219
+    const-string/jumbo v0, "REL"
+
+    sget-object v1, Landroid/os/Build$VERSION;->ALL_CODENAMES:[Ljava/lang/String;
+
+    aget-object v1, v1, v2
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 220
+    new-array v0, v2, [Ljava/lang/String;
+
+    .line 219
     :goto_0
+    sput-object v0, Landroid/os/Build$VERSION;->ACTIVE_CODENAMES:[Ljava/lang/String;
+
+    .line 228
+    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    sget-object v1, Landroid/os/Build$VERSION;->ACTIVE_CODENAMES:[Ljava/lang/String;
+
+    array-length v1, v1
+
     add-int/2addr v0, v1
 
     sput v0, Landroid/os/Build$VERSION;->RESOURCES_SDK_INT:I
 
+    .line 146
     return-void
 
+    .line 220
     :cond_0
-    const/4 v0, 0x1
+    sget-object v0, Landroid/os/Build$VERSION;->ALL_CODENAMES:[Ljava/lang/String;
 
     goto :goto_0
 .end method
@@ -117,7 +184,7 @@
     .locals 0
 
     .prologue
-    .line 79
+    .line 146
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

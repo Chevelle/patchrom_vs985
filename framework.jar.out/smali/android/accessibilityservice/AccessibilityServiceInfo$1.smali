@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 932
+    .line 965
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,29 +42,28 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/accessibilityservice/AccessibilityServiceInfo;
     .locals 1
-    .parameter "parcel"
+    .param p1, "parcel"    # Landroid/os/Parcel;
 
     .prologue
-    .line 934
+    .line 967
     new-instance v0, Landroid/accessibilityservice/AccessibilityServiceInfo;
 
     invoke-direct {v0}, Landroid/accessibilityservice/AccessibilityServiceInfo;-><init>()V
 
-    .line 935
-    .local v0, info:Landroid/accessibilityservice/AccessibilityServiceInfo;
-    #calls: Landroid/accessibilityservice/AccessibilityServiceInfo;->initFromParcel(Landroid/os/Parcel;)V
-    invoke-static {v0, p1}, Landroid/accessibilityservice/AccessibilityServiceInfo;->access$000(Landroid/accessibilityservice/AccessibilityServiceInfo;Landroid/os/Parcel;)V
+    .line 968
+    .local v0, "info":Landroid/accessibilityservice/AccessibilityServiceInfo;
+    invoke-static {v0, p1}, Landroid/accessibilityservice/AccessibilityServiceInfo;->-wrap0(Landroid/accessibilityservice/AccessibilityServiceInfo;Landroid/os/Parcel;)V
 
-    .line 936
+    .line 969
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "parcel"    # Landroid/os/Parcel;
 
     .prologue
-    .line 932
+    .line 966
     invoke-virtual {p0, p1}, Landroid/accessibilityservice/AccessibilityServiceInfo$1;->createFromParcel(Landroid/os/Parcel;)Landroid/accessibilityservice/AccessibilityServiceInfo;
 
     move-result-object v0
@@ -74,10 +73,10 @@
 
 .method public newArray(I)[Landroid/accessibilityservice/AccessibilityServiceInfo;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 940
+    .line 973
     new-array v0, p1, [Landroid/accessibilityservice/AccessibilityServiceInfo;
 
     return-object v0
@@ -85,10 +84,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 932
+    .line 972
     invoke-virtual {p0, p1}, Landroid/accessibilityservice/AccessibilityServiceInfo$1;->newArray(I)[Landroid/accessibilityservice/AccessibilityServiceInfo;
 
     move-result-object v0

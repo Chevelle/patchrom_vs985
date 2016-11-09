@@ -21,10 +21,10 @@
 # direct methods
 .method constructor <init>(Landroid/view/ScaleGestureDetector;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/view/ScaleGestureDetector;
 
     .prologue
-    .line 466
+    .line 485
     iput-object p1, p0, Landroid/view/ScaleGestureDetector$1;->this$0:Landroid/view/ScaleGestureDetector;
 
     invoke-direct {p0}, Landroid/view/GestureDetector$SimpleOnGestureListener;-><init>()V
@@ -35,24 +35,35 @@
 
 # virtual methods
 .method public onDoubleTap(Landroid/view/MotionEvent;)Z
-    .locals 2
-    .parameter "e"
+    .locals 3
+    .param p1, "e"    # Landroid/view/MotionEvent;
 
     .prologue
-    const/4 v1, 0x1
+    const/4 v2, 0x1
 
-    .line 470
+    .line 489
     iget-object v0, p0, Landroid/view/ScaleGestureDetector$1;->this$0:Landroid/view/ScaleGestureDetector;
 
-    #setter for: Landroid/view/ScaleGestureDetector;->mDoubleTapEvent:Landroid/view/MotionEvent;
-    invoke-static {v0, p1}, Landroid/view/ScaleGestureDetector;->access$002(Landroid/view/ScaleGestureDetector;Landroid/view/MotionEvent;)Landroid/view/MotionEvent;
+    invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
-    .line 471
+    move-result v1
+
+    invoke-static {v0, v1}, Landroid/view/ScaleGestureDetector;->-set1(Landroid/view/ScaleGestureDetector;F)F
+
+    .line 490
     iget-object v0, p0, Landroid/view/ScaleGestureDetector$1;->this$0:Landroid/view/ScaleGestureDetector;
 
-    #setter for: Landroid/view/ScaleGestureDetector;->mDoubleTapMode:I
-    invoke-static {v0, v1}, Landroid/view/ScaleGestureDetector;->access$102(Landroid/view/ScaleGestureDetector;I)I
+    invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
-    .line 472
-    return v1
+    move-result v1
+
+    invoke-static {v0, v1}, Landroid/view/ScaleGestureDetector;->-set2(Landroid/view/ScaleGestureDetector;F)F
+
+    .line 491
+    iget-object v0, p0, Landroid/view/ScaleGestureDetector$1;->this$0:Landroid/view/ScaleGestureDetector;
+
+    invoke-static {v0, v2}, Landroid/view/ScaleGestureDetector;->-set0(Landroid/view/ScaleGestureDetector;I)I
+
+    .line 492
+    return v2
 .end method

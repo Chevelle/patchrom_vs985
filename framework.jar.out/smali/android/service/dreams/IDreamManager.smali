@@ -31,7 +31,7 @@
     .end annotation
 .end method
 
-.method public abstract finishSelf(Landroid/os/IBinder;)V
+.method public abstract finishSelf(Landroid/os/IBinder;Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -55,6 +55,22 @@
     .end annotation
 .end method
 
+.method public abstract getLidState()I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isDozing()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract isDreaming()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -64,6 +80,30 @@
 .end method
 
 .method public abstract setDreamComponents([Landroid/content/ComponentName;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setLidState(I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract startDozing(Landroid/os/IBinder;II)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract stopDozing(Landroid/os/IBinder;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

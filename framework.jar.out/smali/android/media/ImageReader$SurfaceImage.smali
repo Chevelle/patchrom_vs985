@@ -21,9 +21,11 @@
 
 
 # instance fields
-.field private mIsImageValid:Z
+.field private mFormat:I
 
-.field private mLockedBuffer:J
+.field private mIsDetached:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+.field private mNativeBuffer:J
 
 .field private mPlanes:[Landroid/media/ImageReader$SurfaceImage$SurfacePlane;
 
@@ -33,83 +35,72 @@
 
 
 # direct methods
-.method public constructor <init>(Landroid/media/ImageReader;)V
+.method static synthetic -wrap0(Landroid/media/ImageReader$SurfaceImage;II)Ljava/nio/ByteBuffer;
     .locals 1
-    .parameter
+    .param p1, "idx"    # I
+    .param p2, "readerFormat"    # I
 
     .prologue
-    .line 547
-    iput-object p1, p0, Landroid/media/ImageReader$SurfaceImage;->this$0:Landroid/media/ImageReader;
-
-    invoke-direct {p0}, Landroid/media/Image;-><init>()V
-
-    .line 548
-    const/4 v0, 0x0
-
-    iput-boolean v0, p0, Landroid/media/ImageReader$SurfaceImage;->mIsImageValid:Z
-
-    .line 549
-    return-void
-.end method
-
-.method static synthetic access$000(Landroid/media/ImageReader$SurfaceImage;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 546
-    invoke-direct {p0}, Landroid/media/ImageReader$SurfaceImage;->createSurfacePlanes()V
-
-    return-void
-.end method
-
-.method static synthetic access$100(Landroid/media/ImageReader$SurfaceImage;Z)V
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 546
-    invoke-direct {p0, p1}, Landroid/media/ImageReader$SurfaceImage;->setImageValid(Z)V
-
-    return-void
-.end method
-
-.method static synthetic access$1100(Landroid/media/ImageReader$SurfaceImage;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 546
-    invoke-direct {p0}, Landroid/media/ImageReader$SurfaceImage;->isImageValid()Z
-
-    move-result v0
-
-    return v0
-.end method
-
-.method static synthetic access$1200(Landroid/media/ImageReader$SurfaceImage;I)Ljava/nio/ByteBuffer;
-    .locals 1
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 546
-    invoke-direct {p0, p1}, Landroid/media/ImageReader$SurfaceImage;->nativeImageGetBuffer(I)Ljava/nio/ByteBuffer;
+    invoke-direct {p0, p1, p2}, Landroid/media/ImageReader$SurfaceImage;->nativeImageGetBuffer(II)Ljava/nio/ByteBuffer;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method static synthetic access$200(Landroid/media/ImageReader$SurfaceImage;)V
+.method static synthetic -wrap1(Landroid/media/ImageReader$SurfaceImage;)V
     .locals 0
-    .parameter "x0"
 
-    .prologue
-    .line 546
     invoke-direct {p0}, Landroid/media/ImageReader$SurfaceImage;->clearSurfacePlanes()V
 
+    return-void
+.end method
+
+.method static synthetic -wrap2(Landroid/media/ImageReader$SurfaceImage;)V
+    .locals 0
+
+    invoke-direct {p0}, Landroid/media/ImageReader$SurfaceImage;->createSurfacePlanes()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap3(Landroid/media/ImageReader$SurfaceImage;Z)V
+    .locals 0
+    .param p1, "detached"    # Z
+
+    .prologue
+    invoke-direct {p0, p1}, Landroid/media/ImageReader$SurfaceImage;->setDetached(Z)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/media/ImageReader;I)V
+    .locals 2
+    .param p1, "this$0"    # Landroid/media/ImageReader;
+    .param p2, "format"    # I
+
+    .prologue
+    const/4 v1, 0x0
+
+    .line 654
+    iput-object p1, p0, Landroid/media/ImageReader$SurfaceImage;->this$0:Landroid/media/ImageReader;
+
+    invoke-direct {p0}, Landroid/media/Image;-><init>()V
+
+    .line 843
+    iput v1, p0, Landroid/media/ImageReader$SurfaceImage;->mFormat:I
+
+    .line 845
+    new-instance v0, Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
+
+    iput-object v0, p0, Landroid/media/ImageReader$SurfaceImage;->mIsDetached:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 655
+    iput p2, p0, Landroid/media/ImageReader$SurfaceImage;->mFormat:I
+
+    .line 654
     return-void
 .end method
 
@@ -117,15 +108,17 @@
     .locals 3
 
     .prologue
-    .line 626
+    const/4 v2, 0x0
+
+    .line 761
     iget-boolean v1, p0, Landroid/media/ImageReader$SurfaceImage;->mIsImageValid:Z
 
     if-eqz v1, :cond_1
 
-    .line 627
+    .line 762
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     iget-object v1, p0, Landroid/media/ImageReader$SurfaceImage;->mPlanes:[Landroid/media/ImageReader$SurfaceImage$SurfacePlane;
 
@@ -133,36 +126,33 @@
 
     if-ge v0, v1, :cond_1
 
-    .line 628
+    .line 763
     iget-object v1, p0, Landroid/media/ImageReader$SurfaceImage;->mPlanes:[Landroid/media/ImageReader$SurfaceImage$SurfacePlane;
 
     aget-object v1, v1, v0
 
     if-eqz v1, :cond_0
 
-    .line 629
+    .line 764
     iget-object v1, p0, Landroid/media/ImageReader$SurfaceImage;->mPlanes:[Landroid/media/ImageReader$SurfaceImage$SurfacePlane;
 
     aget-object v1, v1, v0
 
-    #calls: Landroid/media/ImageReader$SurfaceImage$SurfacePlane;->clearBuffer()V
-    invoke-static {v1}, Landroid/media/ImageReader$SurfaceImage$SurfacePlane;->access$900(Landroid/media/ImageReader$SurfaceImage$SurfacePlane;)V
+    invoke-static {v1}, Landroid/media/ImageReader$SurfaceImage$SurfacePlane;->-wrap0(Landroid/media/ImageReader$SurfaceImage$SurfacePlane;)V
 
-    .line 630
+    .line 765
     iget-object v1, p0, Landroid/media/ImageReader$SurfaceImage;->mPlanes:[Landroid/media/ImageReader$SurfaceImage$SurfacePlane;
-
-    const/4 v2, 0x0
 
     aput-object v2, v1, v0
 
-    .line 627
+    .line 762
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 634
-    .end local v0           #i:I
+    .line 760
+    .end local v0    # "i":I
     :cond_1
     return-void
 .end method
@@ -171,11 +161,10 @@
     .locals 3
 
     .prologue
-    .line 637
+    .line 772
     iget-object v1, p0, Landroid/media/ImageReader$SurfaceImage;->this$0:Landroid/media/ImageReader;
 
-    #getter for: Landroid/media/ImageReader;->mNumPlanes:I
-    invoke-static {v1}, Landroid/media/ImageReader;->access$1000(Landroid/media/ImageReader;)I
+    invoke-static {v1}, Landroid/media/ImageReader;->-get3(Landroid/media/ImageReader;)I
 
     move-result v1
 
@@ -183,64 +172,73 @@
 
     iput-object v1, p0, Landroid/media/ImageReader$SurfaceImage;->mPlanes:[Landroid/media/ImageReader$SurfaceImage$SurfacePlane;
 
-    .line 638
+    .line 773
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     iget-object v1, p0, Landroid/media/ImageReader$SurfaceImage;->this$0:Landroid/media/ImageReader;
 
-    #getter for: Landroid/media/ImageReader;->mNumPlanes:I
-    invoke-static {v1}, Landroid/media/ImageReader;->access$1000(Landroid/media/ImageReader;)I
+    invoke-static {v1}, Landroid/media/ImageReader;->-get3(Landroid/media/ImageReader;)I
 
     move-result v1
 
     if-ge v0, v1, :cond_0
 
-    .line 639
+    .line 774
     iget-object v1, p0, Landroid/media/ImageReader$SurfaceImage;->mPlanes:[Landroid/media/ImageReader$SurfaceImage$SurfacePlane;
 
-    invoke-direct {p0, v0}, Landroid/media/ImageReader$SurfaceImage;->nativeCreatePlane(I)Landroid/media/ImageReader$SurfaceImage$SurfacePlane;
+    iget-object v2, p0, Landroid/media/ImageReader$SurfaceImage;->this$0:Landroid/media/ImageReader;
+
+    invoke-static {v2}, Landroid/media/ImageReader;->-get0(Landroid/media/ImageReader;)I
+
+    move-result v2
+
+    invoke-direct {p0, v0, v2}, Landroid/media/ImageReader$SurfaceImage;->nativeCreatePlane(II)Landroid/media/ImageReader$SurfaceImage$SurfacePlane;
 
     move-result-object v2
 
     aput-object v2, v1, v0
 
-    .line 638
+    .line 773
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 641
+    .line 771
     :cond_0
     return-void
 .end method
 
-.method private isImageValid()Z
+.method private synchronized native declared-synchronized nativeCreatePlane(II)Landroid/media/ImageReader$SurfaceImage$SurfacePlane;
+.end method
+
+.method private synchronized native declared-synchronized nativeGetFormat(I)I
+.end method
+
+.method private synchronized native declared-synchronized nativeGetHeight(I)I
+.end method
+
+.method private synchronized native declared-synchronized nativeGetWidth(I)I
+.end method
+
+.method private synchronized native declared-synchronized nativeImageGetBuffer(II)Ljava/nio/ByteBuffer;
+.end method
+
+.method private setDetached(Z)V
     .locals 1
+    .param p1, "detached"    # Z
 
     .prologue
-    .line 622
-    iget-boolean v0, p0, Landroid/media/ImageReader$SurfaceImage;->mIsImageValid:Z
+    .line 756
+    invoke-virtual {p0}, Landroid/media/ImageReader$SurfaceImage;->throwISEIfImageIsInvalid()V
 
-    return v0
-.end method
+    .line 757
+    iget-object v0, p0, Landroid/media/ImageReader$SurfaceImage;->mIsDetached:Ljava/util/concurrent/atomic/AtomicBoolean;
 
-.method private synchronized native declared-synchronized nativeCreatePlane(I)Landroid/media/ImageReader$SurfaceImage$SurfacePlane;
-.end method
+    invoke-virtual {v0, p1}, Ljava/util/concurrent/atomic/AtomicBoolean;->getAndSet(Z)Z
 
-.method private synchronized native declared-synchronized nativeImageGetBuffer(I)Ljava/nio/ByteBuffer;
-.end method
-
-.method private setImageValid(Z)V
-    .locals 0
-    .parameter "isValid"
-
-    .prologue
-    .line 618
-    iput-boolean p1, p0, Landroid/media/ImageReader$SurfaceImage;->mIsImageValid:Z
-
-    .line 619
+    .line 755
     return-void
 .end method
 
@@ -250,18 +248,17 @@
     .locals 1
 
     .prologue
-    .line 553
+    .line 660
     iget-boolean v0, p0, Landroid/media/ImageReader$SurfaceImage;->mIsImageValid:Z
 
     if-eqz v0, :cond_0
 
-    .line 554
+    .line 661
     iget-object v0, p0, Landroid/media/ImageReader$SurfaceImage;->this$0:Landroid/media/ImageReader;
 
-    #calls: Landroid/media/ImageReader;->releaseImage(Landroid/media/Image;)V
-    invoke-static {v0, p0}, Landroid/media/ImageReader;->access$500(Landroid/media/ImageReader;Landroid/media/Image;)V
+    invoke-static {v0, p0}, Landroid/media/ImageReader;->-wrap0(Landroid/media/ImageReader;Landroid/media/Image;)V
 
-    .line 556
+    .line 659
     :cond_0
     return-void
 .end method
@@ -275,24 +272,26 @@
     .end annotation
 
     .prologue
-    .line 611
+    .line 731
     :try_start_0
     invoke-virtual {p0}, Landroid/media/ImageReader$SurfaceImage;->close()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 613
-    invoke-super {p0}, Ljava/lang/Object;->finalize()V
+    .line 733
+    invoke-super {p0}, Landroid/media/Image;->finalize()V
 
-    .line 615
+    .line 729
     return-void
 
-    .line 613
+    .line 732
     :catchall_0
     move-exception v0
 
-    invoke-super {p0}, Ljava/lang/Object;->finalize()V
+    .line 733
+    invoke-super {p0}, Landroid/media/Image;->finalize()V
 
+    .line 732
     throw v0
 .end method
 
@@ -300,98 +299,149 @@
     .locals 2
 
     .prologue
-    .line 564
-    iget-boolean v0, p0, Landroid/media/ImageReader$SurfaceImage;->mIsImageValid:Z
+    .line 671
+    invoke-virtual {p0}, Landroid/media/ImageReader$SurfaceImage;->throwISEIfImageIsInvalid()V
 
-    if-eqz v0, :cond_0
+    .line 672
+    iget-object v1, p0, Landroid/media/ImageReader$SurfaceImage;->this$0:Landroid/media/ImageReader;
 
-    .line 565
-    iget-object v0, p0, Landroid/media/ImageReader$SurfaceImage;->this$0:Landroid/media/ImageReader;
-
-    #getter for: Landroid/media/ImageReader;->mFormat:I
-    invoke-static {v0}, Landroid/media/ImageReader;->access$600(Landroid/media/ImageReader;)I
+    invoke-virtual {v1}, Landroid/media/ImageReader;->getImageFormat()I
 
     move-result v0
 
-    return v0
+    .line 674
+    .local v0, "readerFormat":I
+    const/16 v1, 0x22
 
-    .line 567
+    if-ne v0, v1, :cond_0
+
+    .end local v0    # "readerFormat":I
+    :goto_0
+    iput v0, p0, Landroid/media/ImageReader$SurfaceImage;->mFormat:I
+
+    .line 676
+    iget v1, p0, Landroid/media/ImageReader$SurfaceImage;->mFormat:I
+
+    return v1
+
+    .line 675
+    .restart local v0    # "readerFormat":I
     :cond_0
-    new-instance v0, Ljava/lang/IllegalStateException;
+    invoke-direct {p0, v0}, Landroid/media/ImageReader$SurfaceImage;->nativeGetFormat(I)I
 
-    const-string v1, "Image is already released"
+    move-result v0
 
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
+    goto :goto_0
 .end method
 
 .method public getHeight()I
     .locals 2
 
     .prologue
-    .line 582
-    iget-boolean v0, p0, Landroid/media/ImageReader$SurfaceImage;->mIsImageValid:Z
+    .line 696
+    invoke-virtual {p0}, Landroid/media/ImageReader$SurfaceImage;->throwISEIfImageIsInvalid()V
 
-    if-eqz v0, :cond_0
+    .line 698
+    invoke-virtual {p0}, Landroid/media/ImageReader$SurfaceImage;->getFormat()I
 
-    .line 583
-    iget-object v0, p0, Landroid/media/ImageReader$SurfaceImage;->this$0:Landroid/media/ImageReader;
+    move-result v1
 
-    #getter for: Landroid/media/ImageReader;->mHeight:I
-    invoke-static {v0}, Landroid/media/ImageReader;->access$800(Landroid/media/ImageReader;)I
+    packed-switch v1, :pswitch_data_0
+
+    .line 704
+    iget v1, p0, Landroid/media/ImageReader$SurfaceImage;->mFormat:I
+
+    invoke-direct {p0, v1}, Landroid/media/ImageReader$SurfaceImage;->nativeGetHeight(I)I
 
     move-result v0
 
+    .line 706
+    .local v0, "height":I
+    :goto_0
     return v0
 
-    .line 585
-    :cond_0
-    new-instance v0, Ljava/lang/IllegalStateException;
+    .line 701
+    .end local v0    # "height":I
+    :pswitch_0
+    iget-object v1, p0, Landroid/media/ImageReader$SurfaceImage;->this$0:Landroid/media/ImageReader;
 
-    const-string v1, "Image is already released"
+    invoke-virtual {v1}, Landroid/media/ImageReader;->getHeight()I
 
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+    move-result v0
 
-    throw v0
+    .restart local v0    # "height":I
+    goto :goto_0
+
+    .line 698
+    :pswitch_data_0
+    .packed-switch 0x100
+        :pswitch_0
+        :pswitch_0
+    .end packed-switch
 .end method
 
-.method public getPlanes()[Landroid/media/Image$Plane;
+.method getNativeContext()J
     .locals 2
 
     .prologue
-    .line 600
-    iget-boolean v0, p0, Landroid/media/ImageReader$SurfaceImage;->mIsImageValid:Z
+    .line 751
+    invoke-virtual {p0}, Landroid/media/ImageReader$SurfaceImage;->throwISEIfImageIsInvalid()V
 
-    if-eqz v0, :cond_0
+    .line 752
+    iget-wide v0, p0, Landroid/media/ImageReader$SurfaceImage;->mNativeBuffer:J
 
-    .line 602
+    return-wide v0
+.end method
+
+.method getOwner()Landroid/media/ImageReader;
+    .locals 1
+
+    .prologue
+    .line 745
+    invoke-virtual {p0}, Landroid/media/ImageReader$SurfaceImage;->throwISEIfImageIsInvalid()V
+
+    .line 746
+    iget-object v0, p0, Landroid/media/ImageReader$SurfaceImage;->this$0:Landroid/media/ImageReader;
+
+    return-object v0
+.end method
+
+.method bridge synthetic getOwner()Ljava/lang/Object;
+    .locals 1
+
+    .prologue
+    .line 744
+    invoke-virtual {p0}, Landroid/media/ImageReader$SurfaceImage;->getOwner()Landroid/media/ImageReader;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getPlanes()[Landroid/media/Image$Plane;
+    .locals 1
+
+    .prologue
+    .line 723
+    invoke-virtual {p0}, Landroid/media/ImageReader$SurfaceImage;->throwISEIfImageIsInvalid()V
+
+    .line 725
     iget-object v0, p0, Landroid/media/ImageReader$SurfaceImage;->mPlanes:[Landroid/media/ImageReader$SurfaceImage$SurfacePlane;
 
-    invoke-virtual {v0}, [Landroid/media/ImageReader$SurfaceImage$SurfacePlane;->clone()Ljava/lang/Object;
+    invoke-virtual {v0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, [Landroid/media/Image$Plane;
 
     return-object v0
-
-    .line 604
-    :cond_0
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    const-string v1, "Image is already released"
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
 .end method
 
 .method public getReader()Landroid/media/ImageReader;
     .locals 1
 
     .prologue
-    .line 559
+    .line 666
     iget-object v0, p0, Landroid/media/ImageReader$SurfaceImage;->this$0:Landroid/media/ImageReader;
 
     return-object v0
@@ -401,53 +451,89 @@
     .locals 2
 
     .prologue
-    .line 591
-    iget-boolean v0, p0, Landroid/media/ImageReader$SurfaceImage;->mIsImageValid:Z
+    .line 711
+    invoke-virtual {p0}, Landroid/media/ImageReader$SurfaceImage;->throwISEIfImageIsInvalid()V
 
-    if-eqz v0, :cond_0
-
-    .line 592
+    .line 712
     iget-wide v0, p0, Landroid/media/ImageReader$SurfaceImage;->mTimestamp:J
 
     return-wide v0
-
-    .line 594
-    :cond_0
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    const-string v1, "Image is already released"
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
 .end method
 
 .method public getWidth()I
     .locals 2
 
     .prologue
-    .line 573
-    iget-boolean v0, p0, Landroid/media/ImageReader$SurfaceImage;->mIsImageValid:Z
+    .line 681
+    invoke-virtual {p0}, Landroid/media/ImageReader$SurfaceImage;->throwISEIfImageIsInvalid()V
 
-    if-eqz v0, :cond_0
+    .line 683
+    invoke-virtual {p0}, Landroid/media/ImageReader$SurfaceImage;->getFormat()I
 
-    .line 574
-    iget-object v0, p0, Landroid/media/ImageReader$SurfaceImage;->this$0:Landroid/media/ImageReader;
+    move-result v1
 
-    #getter for: Landroid/media/ImageReader;->mWidth:I
-    invoke-static {v0}, Landroid/media/ImageReader;->access$700(Landroid/media/ImageReader;)I
+    packed-switch v1, :pswitch_data_0
+
+    .line 689
+    iget v1, p0, Landroid/media/ImageReader$SurfaceImage;->mFormat:I
+
+    invoke-direct {p0, v1}, Landroid/media/ImageReader$SurfaceImage;->nativeGetWidth(I)I
+
+    move-result v0
+
+    .line 691
+    .local v0, "width":I
+    :goto_0
+    return v0
+
+    .line 686
+    .end local v0    # "width":I
+    :pswitch_0
+    iget-object v1, p0, Landroid/media/ImageReader$SurfaceImage;->this$0:Landroid/media/ImageReader;
+
+    invoke-virtual {v1}, Landroid/media/ImageReader;->getWidth()I
+
+    move-result v0
+
+    .restart local v0    # "width":I
+    goto :goto_0
+
+    .line 683
+    :pswitch_data_0
+    .packed-switch 0x100
+        :pswitch_0
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method isAttachable()Z
+    .locals 1
+
+    .prologue
+    .line 739
+    invoke-virtual {p0}, Landroid/media/ImageReader$SurfaceImage;->throwISEIfImageIsInvalid()V
+
+    .line 740
+    iget-object v0, p0, Landroid/media/ImageReader$SurfaceImage;->mIsDetached:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
 
     move-result v0
 
     return v0
+.end method
 
-    .line 576
-    :cond_0
-    new-instance v0, Ljava/lang/IllegalStateException;
+.method public setTimestamp(J)V
+    .locals 1
+    .param p1, "timestampNs"    # J
 
-    const-string v1, "Image is already released"
+    .prologue
+    .line 717
+    invoke-virtual {p0}, Landroid/media/ImageReader$SurfaceImage;->throwISEIfImageIsInvalid()V
 
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+    .line 718
+    iput-wide p1, p0, Landroid/media/ImageReader$SurfaceImage;->mTimestamp:J
 
-    throw v0
+    .line 716
+    return-void
 .end method

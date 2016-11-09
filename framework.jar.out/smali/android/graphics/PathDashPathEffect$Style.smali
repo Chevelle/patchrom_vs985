@@ -51,28 +51,28 @@
     .line 22
     new-instance v0, Landroid/graphics/PathDashPathEffect$Style;
 
-    const-string v1, "TRANSLATE"
+    const-string/jumbo v1, "TRANSLATE"
 
     invoke-direct {v0, v1, v2, v2}, Landroid/graphics/PathDashPathEffect$Style;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Landroid/graphics/PathDashPathEffect$Style;->TRANSLATE:Landroid/graphics/PathDashPathEffect$Style;
 
-    .line 23
     new-instance v0, Landroid/graphics/PathDashPathEffect$Style;
 
-    const-string v1, "ROTATE"
+    const-string/jumbo v1, "ROTATE"
 
     invoke-direct {v0, v1, v3, v3}, Landroid/graphics/PathDashPathEffect$Style;-><init>(Ljava/lang/String;II)V
 
+    .line 23
     sput-object v0, Landroid/graphics/PathDashPathEffect$Style;->ROTATE:Landroid/graphics/PathDashPathEffect$Style;
 
-    .line 24
     new-instance v0, Landroid/graphics/PathDashPathEffect$Style;
 
-    const-string v1, "MORPH"
+    const-string/jumbo v1, "MORPH"
 
     invoke-direct {v0, v1, v4, v4}, Landroid/graphics/PathDashPathEffect$Style;-><init>(Ljava/lang/String;II)V
 
+    .line 24
     sput-object v0, Landroid/graphics/PathDashPathEffect$Style;->MORPH:Landroid/graphics/PathDashPathEffect$Style;
 
     .line 21
@@ -99,14 +99,7 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "value"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "value"    # I
 
     .prologue
     .line 26
@@ -115,13 +108,13 @@
     .line 27
     iput p3, p0, Landroid/graphics/PathDashPathEffect$Style;->native_style:I
 
-    .line 28
+    .line 26
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/graphics/PathDashPathEffect$Style;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 21
@@ -142,12 +135,6 @@
     .prologue
     .line 21
     sget-object v0, Landroid/graphics/PathDashPathEffect$Style;->$VALUES:[Landroid/graphics/PathDashPathEffect$Style;
-
-    invoke-virtual {v0}, [Landroid/graphics/PathDashPathEffect$Style;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/graphics/PathDashPathEffect$Style;
 
     return-object v0
 .end method

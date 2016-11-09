@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 87
+    .line 86
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 88
     iput-object p1, p0, Landroid/view/IInputFilter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 89
+    .line 86
     return-void
 .end method
 
@@ -51,8 +51,8 @@
 
 .method public filterInputEvent(Landroid/view/InputEvent;I)V
     .locals 5
-    .parameter "event"
-    .parameter "policyFlags"
+    .param p1, "event"    # Landroid/view/InputEvent;
+    .param p2, "policyFlags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -66,9 +66,9 @@
     move-result-object v0
 
     .line 125
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.view.IInputFilter"
+    const-string/jumbo v1, "android.view.IInputFilter"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -105,7 +105,7 @@
     .line 137
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 139
+    .line 121
     return-void
 
     .line 131
@@ -119,12 +119,14 @@
 
     goto :goto_0
 
-    .line 137
+    .line 136
     :catchall_0
     move-exception v1
 
+    .line 137
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 136
     throw v1
 .end method
 
@@ -133,14 +135,14 @@
 
     .prologue
     .line 96
-    const-string v0, "android.view.IInputFilter"
+    const-string/jumbo v0, "android.view.IInputFilter"
 
     return-object v0
 .end method
 
 .method public install(Landroid/view/IInputFilterHost;)V
     .locals 5
-    .parameter "host"
+    .param p1, "host"    # Landroid/view/IInputFilterHost;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -156,9 +158,9 @@
     move-result-object v0
 
     .line 102
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.view.IInputFilter"
+    const-string/jumbo v2, "android.view.IInputFilter"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -188,15 +190,17 @@
     .line 107
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 109
+    .line 98
     return-void
 
-    .line 107
+    .line 106
     :catchall_0
     move-exception v1
 
+    .line 107
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 106
     throw v1
 .end method
 
@@ -215,9 +219,9 @@
     move-result-object v0
 
     .line 114
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.view.IInputFilter"
+    const-string/jumbo v1, "android.view.IInputFilter"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -237,14 +241,16 @@
     .line 118
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 120
+    .line 110
     return-void
 
-    .line 118
+    .line 117
     :catchall_0
     move-exception v1
 
+    .line 118
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 117
     throw v1
 .end method

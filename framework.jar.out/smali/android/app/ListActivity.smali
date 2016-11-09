@@ -3,6 +3,15 @@
 .source "ListActivity.java"
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/app/ListActivity$1;,
+        Landroid/app/ListActivity$2;
+    }
+.end annotation
+
+
 # instance fields
 .field protected mAdapter:Landroid/widget/ListAdapter;
 
@@ -51,6 +60,7 @@
 
     iput-object v0, p0, Landroid/app/ListActivity;->mOnClickListener:Landroid/widget/AdapterView$OnItemClickListener;
 
+    .line 175
     return-void
 .end method
 
@@ -63,17 +73,17 @@
 
     if-eqz v0, :cond_0
 
-    .line 314
-    :goto_0
+    .line 310
     return-void
 
     .line 312
     :cond_0
-    const v0, 0x1090055
+    const v0, 0x1090073
 
     invoke-virtual {p0, v0}, Landroid/app/ListActivity;->setContentView(I)V
 
-    goto :goto_0
+    .line 308
+    return-void
 .end method
 
 
@@ -144,7 +154,7 @@
     move-result-object v0
 
     .line 241
-    .local v0, emptyView:Landroid/view/View;
+    .local v0, "emptyView":Landroid/view/View;
     const v1, 0x102000a
 
     invoke-virtual {p0, v1}, Landroid/app/ListActivity;->findViewById(I)Landroid/view/View;
@@ -163,8 +173,10 @@
     .line 243
     new-instance v1, Ljava/lang/RuntimeException;
 
-    const-string v2, "Your content must have a ListView whose id attribute is \'android.R.id.list\'"
+    .line 244
+    const-string/jumbo v2, "Your content must have a ListView whose id attribute is \'android.R.id.list\'"
 
+    .line 243
     invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v1
@@ -209,7 +221,7 @@
 
     iput-boolean v1, p0, Landroid/app/ListActivity;->mFinishedStart:Z
 
-    .line 256
+    .line 238
     return-void
 .end method
 
@@ -227,25 +239,25 @@
     .line 228
     invoke-super {p0}, Landroid/app/Activity;->onDestroy()V
 
-    .line 229
+    .line 226
     return-void
 .end method
 
 .method protected onListItemClick(Landroid/widget/ListView;Landroid/view/View;IJ)V
     .locals 0
-    .parameter "l"
-    .parameter "v"
-    .parameter "position"
-    .parameter "id"
+    .param p1, "l"    # Landroid/widget/ListView;
+    .param p2, "v"    # Landroid/view/View;
+    .param p3, "position"    # I
+    .param p4, "id"    # J
 
     .prologue
-    .line 208
+    .line 207
     return-void
 .end method
 
 .method protected onRestoreInstanceState(Landroid/os/Bundle;)V
     .locals 0
-    .parameter "state"
+    .param p1, "state"    # Landroid/os/Bundle;
 
     .prologue
     .line 218
@@ -254,13 +266,13 @@
     .line 219
     invoke-super {p0, p1}, Landroid/app/Activity;->onRestoreInstanceState(Landroid/os/Bundle;)V
 
-    .line 220
+    .line 217
     return-void
 .end method
 
 .method public setListAdapter(Landroid/widget/ListAdapter;)V
     .locals 1
-    .parameter "adapter"
+    .param p1, "adapter"    # Landroid/widget/ListAdapter;
 
     .prologue
     .line 262
@@ -277,27 +289,26 @@
     iget-object v0, p0, Landroid/app/ListActivity;->mList:Landroid/widget/ListView;
 
     invoke-virtual {v0, p1}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 266
     monitor-exit p0
 
-    .line 267
+    .line 261
     return-void
 
-    .line 266
+    .line 262
     :catchall_0
     move-exception v0
 
     monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public setSelection(I)V
     .locals 1
-    .parameter "position"
+    .param p1, "position"    # I
 
     .prologue
     .line 276
@@ -305,6 +316,6 @@
 
     invoke-virtual {v0, p1}, Landroid/widget/ListView;->setSelection(I)V
 
-    .line 277
+    .line 275
     return-void
 .end method

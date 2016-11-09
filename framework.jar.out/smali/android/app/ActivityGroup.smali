@@ -28,13 +28,13 @@
 
     invoke-direct {p0, v0}, Landroid/app/ActivityGroup;-><init>(Z)V
 
-    .line 44
+    .line 42
     return-void
 .end method
 
 .method public constructor <init>(Z)V
     .locals 1
-    .parameter "singleActivityMode"
+    .param p1, "singleActivityMode"    # Z
 
     .prologue
     .line 46
@@ -47,7 +47,7 @@
 
     iput-object v0, p0, Landroid/app/ActivityGroup;->mLocalActivityManager:Landroid/app/LocalActivityManager;
 
-    .line 48
+    .line 46
     return-void
 .end method
 
@@ -55,10 +55,10 @@
 # virtual methods
 .method dispatchActivityResult(Ljava/lang/String;IILandroid/content/Intent;)V
     .locals 2
-    .parameter "who"
-    .parameter "requestCode"
-    .parameter "resultCode"
-    .parameter "data"
+    .param p1, "who"    # Ljava/lang/String;
+    .param p2, "requestCode"    # I
+    .param p3, "resultCode"    # I
+    .param p4, "data"    # Landroid/content/Intent;
 
     .prologue
     .line 113
@@ -72,22 +72,22 @@
     move-result-object v0
 
     .line 121
-    .local v0, act:Landroid/app/Activity;
+    .local v0, "act":Landroid/app/Activity;
     if-eqz v0, :cond_0
 
     .line 122
     invoke-virtual {v0, p2, p3, p4}, Landroid/app/Activity;->onActivityResult(IILandroid/content/Intent;)V
 
-    .line 127
-    .end local v0           #act:Landroid/app/Activity;
-    :goto_0
+    .line 123
     return-void
 
     .line 126
+    .end local v0    # "act":Landroid/app/Activity;
     :cond_0
     invoke-super {p0, p1, p2, p3, p4}, Landroid/app/Activity;->dispatchActivityResult(Ljava/lang/String;IILandroid/content/Intent;)V
 
-    goto :goto_0
+    .line 112
+    return-void
 .end method
 
 .method public getCurrentActivity()Landroid/app/Activity;
@@ -116,7 +116,7 @@
 
 .method protected onCreate(Landroid/os/Bundle;)V
     .locals 2
-    .parameter "savedInstanceState"
+    .param p1, "savedInstanceState"    # Landroid/os/Bundle;
 
     .prologue
     .line 52
@@ -125,27 +125,27 @@
     .line 53
     if-eqz p1, :cond_0
 
-    const-string v1, "android:states"
+    .line 54
+    const-string/jumbo v1, "android:states"
 
     invoke-virtual {p1, v1}, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
 
     move-result-object v0
 
     .line 55
-    .local v0, states:Landroid/os/Bundle;
     :goto_0
     iget-object v1, p0, Landroid/app/ActivityGroup;->mLocalActivityManager:Landroid/app/LocalActivityManager;
 
     invoke-virtual {v1, v0}, Landroid/app/LocalActivityManager;->dispatchCreate(Landroid/os/Bundle;)V
 
-    .line 56
+    .line 51
     return-void
 
-    .line 53
-    .end local v0           #states:Landroid/os/Bundle;
+    .line 54
     :cond_0
     const/4 v0, 0x0
 
+    .local v0, "states":Landroid/os/Bundle;
     goto :goto_0
 .end method
 
@@ -165,7 +165,7 @@
 
     invoke-virtual {v0, v1}, Landroid/app/LocalActivityManager;->dispatchDestroy(Z)V
 
-    .line 89
+    .line 86
     return-void
 .end method
 
@@ -185,7 +185,7 @@
 
     invoke-virtual {v0, v1}, Landroid/app/LocalActivityManager;->dispatchPause(Z)V
 
-    .line 77
+    .line 74
     return-void
 .end method
 
@@ -201,7 +201,7 @@
 
     invoke-virtual {v0}, Landroid/app/LocalActivityManager;->dispatchResume()V
 
-    .line 62
+    .line 59
     return-void
 .end method
 
@@ -231,7 +231,7 @@
 
 .method protected onSaveInstanceState(Landroid/os/Bundle;)V
     .locals 2
-    .parameter "outState"
+    .param p1, "outState"    # Landroid/os/Bundle;
 
     .prologue
     .line 66
@@ -245,15 +245,15 @@
     move-result-object v0
 
     .line 68
-    .local v0, state:Landroid/os/Bundle;
+    .local v0, "state":Landroid/os/Bundle;
     if-eqz v0, :cond_0
 
     .line 69
-    const-string v1, "android:states"
+    const-string/jumbo v1, "android:states"
 
     invoke-virtual {p1, v1, v0}, Landroid/os/Bundle;->putBundle(Ljava/lang/String;Landroid/os/Bundle;)V
 
-    .line 71
+    .line 65
     :cond_0
     return-void
 .end method
@@ -270,6 +270,6 @@
 
     invoke-virtual {v0}, Landroid/app/LocalActivityManager;->dispatchStop()V
 
-    .line 83
+    .line 80
     return-void
 .end method

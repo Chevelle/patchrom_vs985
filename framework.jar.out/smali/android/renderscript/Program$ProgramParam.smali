@@ -55,7 +55,7 @@
     .line 58
     new-instance v0, Landroid/renderscript/Program$ProgramParam;
 
-    const-string v1, "INPUT"
+    const-string/jumbo v1, "INPUT"
 
     invoke-direct {v0, v1, v2, v2}, Landroid/renderscript/Program$ProgramParam;-><init>(Ljava/lang/String;II)V
 
@@ -64,7 +64,7 @@
     .line 59
     new-instance v0, Landroid/renderscript/Program$ProgramParam;
 
-    const-string v1, "OUTPUT"
+    const-string/jumbo v1, "OUTPUT"
 
     invoke-direct {v0, v1, v3, v3}, Landroid/renderscript/Program$ProgramParam;-><init>(Ljava/lang/String;II)V
 
@@ -73,7 +73,7 @@
     .line 60
     new-instance v0, Landroid/renderscript/Program$ProgramParam;
 
-    const-string v1, "CONSTANT"
+    const-string/jumbo v1, "CONSTANT"
 
     invoke-direct {v0, v1, v4, v4}, Landroid/renderscript/Program$ProgramParam;-><init>(Ljava/lang/String;II)V
 
@@ -82,7 +82,7 @@
     .line 61
     new-instance v0, Landroid/renderscript/Program$ProgramParam;
 
-    const-string v1, "TEXTURE_TYPE"
+    const-string/jumbo v1, "TEXTURE_TYPE"
 
     invoke-direct {v0, v1, v5, v5}, Landroid/renderscript/Program$ProgramParam;-><init>(Ljava/lang/String;II)V
 
@@ -116,14 +116,7 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "id"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "id"    # I
 
     .prologue
     .line 64
@@ -132,13 +125,13 @@
     .line 65
     iput p3, p0, Landroid/renderscript/Program$ProgramParam;->mID:I
 
-    .line 66
+    .line 64
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/renderscript/Program$ProgramParam;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 57
@@ -159,12 +152,6 @@
     .prologue
     .line 57
     sget-object v0, Landroid/renderscript/Program$ProgramParam;->$VALUES:[Landroid/renderscript/Program$ProgramParam;
-
-    invoke-virtual {v0}, [Landroid/renderscript/Program$ProgramParam;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/renderscript/Program$ProgramParam;
 
     return-object v0
 .end method

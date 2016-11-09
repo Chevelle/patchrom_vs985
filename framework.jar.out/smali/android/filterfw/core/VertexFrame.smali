@@ -13,18 +13,18 @@
 
     .prologue
     .line 129
-    const-string v0, "filterfw"
+    const-string/jumbo v0, "filterfw"
 
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
-    .line 130
+    .line 30
     return-void
 .end method
 
 .method constructor <init>(Landroid/filterfw/core/FrameFormat;Landroid/filterfw/core/FrameManager;)V
     .locals 2
-    .parameter "format"
-    .parameter "frameManager"
+    .param p1, "format"    # Landroid/filterfw/core/FrameFormat;
+    .param p2, "frameManager"    # Landroid/filterfw/core/FrameManager;
 
     .prologue
     .line 35
@@ -49,7 +49,7 @@
     .line 37
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "Initializing vertex frame with zero size!"
+    const-string/jumbo v1, "Initializing vertex frame with zero size!"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -74,13 +74,13 @@
     .line 40
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not allocate vertex frame!"
+    const-string/jumbo v1, "Could not allocate vertex frame!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 43
+    .line 34
     :cond_1
     return-void
 .end method
@@ -112,7 +112,7 @@
     .line 110
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Vertex frames do not support reading data!"
+    const-string/jumbo v1, "Vertex frames do not support reading data!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -126,7 +126,7 @@
     .line 100
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Vertex frames do not support reading data!"
+    const-string/jumbo v1, "Vertex frames do not support reading data!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -140,7 +140,7 @@
     .line 84
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Vertex frames do not support reading data!"
+    const-string/jumbo v1, "Vertex frames do not support reading data!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -154,7 +154,7 @@
     .line 71
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Vertex frames do not support reading data!"
+    const-string/jumbo v1, "Vertex frames do not support reading data!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -168,7 +168,7 @@
     .line 58
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Vertex frames do not support reading data!"
+    const-string/jumbo v1, "Vertex frames do not support reading data!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -191,9 +191,9 @@
     .locals 2
 
     .prologue
-    .line 47
     monitor-enter p0
 
+    .line 47
     :try_start_0
     iget v0, p0, Landroid/filterfw/core/VertexFrame;->vertexFrameId:I
     :try_end_0
@@ -227,9 +227,9 @@
     .locals 1
 
     .prologue
-    .line 52
     monitor-enter p0
 
+    .line 52
     :try_start_0
     invoke-direct {p0}, Landroid/filterfw/core/VertexFrame;->nativeDeallocate()Z
 
@@ -240,12 +240,11 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 54
     monitor-exit p0
 
+    .line 51
     return-void
 
-    .line 52
     :catchall_0
     move-exception v0
 
@@ -256,13 +255,13 @@
 
 .method public setBitmap(Landroid/graphics/Bitmap;)V
     .locals 2
-    .parameter "bitmap"
+    .param p1, "bitmap"    # Landroid/graphics/Bitmap;
 
     .prologue
     .line 105
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Unsupported: Cannot set vertex frame bitmap value!"
+    const-string/jumbo v1, "Unsupported: Cannot set vertex frame bitmap value!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -271,9 +270,9 @@
 
 .method public setData(Ljava/nio/ByteBuffer;II)V
     .locals 3
-    .parameter "buffer"
-    .parameter "offset"
-    .parameter "length"
+    .param p1, "buffer"    # Ljava/nio/ByteBuffer;
+    .param p2, "offset"    # I
+    .param p3, "length"    # I
 
     .prologue
     .line 89
@@ -285,7 +284,7 @@
     move-result-object v0
 
     .line 91
-    .local v0, bytes:[B
+    .local v0, "bytes":[B
     invoke-virtual {p0}, Landroid/filterfw/core/VertexFrame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v1
@@ -301,7 +300,7 @@
     .line 92
     new-instance v1, Ljava/lang/RuntimeException;
 
-    const-string v2, "Data size in setData does not match vertex frame size!"
+    const-string/jumbo v2, "Data size in setData does not match vertex frame size!"
 
     invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -318,32 +317,32 @@
     .line 94
     new-instance v1, Ljava/lang/RuntimeException;
 
-    const-string v2, "Could not set vertex frame data!"
+    const-string/jumbo v2, "Could not set vertex frame data!"
 
     invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 96
+    .line 88
     :cond_1
     return-void
 .end method
 
 .method public setDataFromFrame(Landroid/filterfw/core/Frame;)V
     .locals 0
-    .parameter "frame"
+    .param p1, "frame"    # Landroid/filterfw/core/Frame;
 
     .prologue
     .line 116
     invoke-super {p0, p1}, Landroid/filterfw/core/Frame;->setDataFromFrame(Landroid/filterfw/core/Frame;)V
 
-    .line 117
+    .line 114
     return-void
 .end method
 
 .method public setFloats([F)V
     .locals 2
-    .parameter "floats"
+    .param p1, "floats"    # [F
 
     .prologue
     .line 76
@@ -359,20 +358,20 @@
     .line 78
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not set int values for vertex frame!"
+    const-string/jumbo v1, "Could not set int values for vertex frame!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 80
+    .line 75
     :cond_0
     return-void
 .end method
 
 .method public setInts([I)V
     .locals 2
-    .parameter "ints"
+    .param p1, "ints"    # [I
 
     .prologue
     .line 63
@@ -388,13 +387,13 @@
     .line 65
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Could not set int values for vertex frame!"
+    const-string/jumbo v1, "Could not set int values for vertex frame!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 67
+    .line 62
     :cond_0
     return-void
 .end method
@@ -408,7 +407,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "VertexFrame ("
+    const-string/jumbo v1, "VertexFrame ("
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -422,7 +421,7 @@
 
     move-result-object v0
 
-    const-string v1, ") with VBO ID "
+    const-string/jumbo v1, ") with VBO ID "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

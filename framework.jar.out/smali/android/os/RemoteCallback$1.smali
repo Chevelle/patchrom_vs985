@@ -42,41 +42,40 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/os/RemoteCallback;
     .locals 3
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
+    const/4 v1, 0x0
+
     .line 98
     invoke-virtual {p1}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v0
 
     .line 99
-    .local v0, target:Landroid/os/IBinder;
+    .local v0, "target":Landroid/os/IBinder;
     if-eqz v0, :cond_0
 
     new-instance v1, Landroid/os/RemoteCallback$RemoteCallbackProxy;
 
+    .line 100
     invoke-static {v0}, Landroid/os/IRemoteCallback$Stub;->asInterface(Landroid/os/IBinder;)Landroid/os/IRemoteCallback;
 
     move-result-object v2
 
+    .line 99
     invoke-direct {v1, v2}, Landroid/os/RemoteCallback$RemoteCallbackProxy;-><init>(Landroid/os/IRemoteCallback;)V
 
-    :goto_0
-    return-object v1
-
     :cond_0
-    const/4 v1, 0x0
-
-    goto :goto_0
+    return-object v1
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 96
+    .line 97
     invoke-virtual {p0, p1}, Landroid/os/RemoteCallback$1;->createFromParcel(Landroid/os/Parcel;)Landroid/os/RemoteCallback;
 
     move-result-object v0
@@ -86,7 +85,7 @@
 
 .method public newArray(I)[Landroid/os/RemoteCallback;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 104
@@ -97,10 +96,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 96
+    .line 103
     invoke-virtual {p0, p1}, Landroid/os/RemoteCallback$1;->newArray(I)[Landroid/os/RemoteCallback;
 
     move-result-object v0

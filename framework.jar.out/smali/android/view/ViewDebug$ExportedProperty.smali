@@ -12,6 +12,8 @@
         category = ""
         deepExport = false
         flagMapping = {}
+        formatToHexString = false
+        hasAdjacentMapping = false
         indexMapping = {}
         mapping = {}
         prefix = ""
@@ -48,6 +50,12 @@
 .end method
 
 .method public abstract flagMapping()[Landroid/view/ViewDebug$FlagToString;
+.end method
+
+.method public abstract formatToHexString()Z
+.end method
+
+.method public abstract hasAdjacentMapping()Z
 .end method
 
 .method public abstract indexMapping()[Landroid/view/ViewDebug$IntToString;

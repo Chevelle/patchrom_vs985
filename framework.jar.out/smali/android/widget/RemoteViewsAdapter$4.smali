@@ -28,12 +28,12 @@
 # direct methods
 .method constructor <init>(Landroid/widget/RemoteViewsAdapter;ILandroid/widget/RemoteViews;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/RemoteViewsAdapter;
+    .param p2, "val$position"    # I
+    .param p3, "val$rv"    # Landroid/widget/RemoteViews;
 
     .prologue
-    .line 1074
+    .line 1060
     iput-object p1, p0, Landroid/widget/RemoteViewsAdapter$4;->this$0:Landroid/widget/RemoteViewsAdapter;
 
     iput p2, p0, Landroid/widget/RemoteViewsAdapter$4;->val$position:I
@@ -51,11 +51,10 @@
     .locals 3
 
     .prologue
-    .line 1077
+    .line 1063
     iget-object v0, p0, Landroid/widget/RemoteViewsAdapter$4;->this$0:Landroid/widget/RemoteViewsAdapter;
 
-    #getter for: Landroid/widget/RemoteViewsAdapter;->mRequestedViews:Landroid/widget/RemoteViewsAdapter$RemoteViewsFrameLayoutRefSet;
-    invoke-static {v0}, Landroid/widget/RemoteViewsAdapter;->access$1900(Landroid/widget/RemoteViewsAdapter;)Landroid/widget/RemoteViewsAdapter$RemoteViewsFrameLayoutRefSet;
+    invoke-static {v0}, Landroid/widget/RemoteViewsAdapter;->-get5(Landroid/widget/RemoteViewsAdapter;)Landroid/widget/RemoteViewsAdapter$RemoteViewsFrameLayoutRefSet;
 
     move-result-object v0
 
@@ -65,6 +64,6 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/widget/RemoteViewsAdapter$RemoteViewsFrameLayoutRefSet;->notifyOnRemoteViewsLoaded(ILandroid/widget/RemoteViews;)V
 
-    .line 1078
+    .line 1062
     return-void
 .end method

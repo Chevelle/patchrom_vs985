@@ -25,37 +25,37 @@
 .end method
 
 .method public static writeBrowserDoubleTapDuration(IJ)V
-    .locals 4
-    .parameter "duration"
-    .parameter "time"
+    .locals 3
+    .param p0, "duration"    # I
+    .param p1, "time"    # J
 
     .prologue
     .line 30
-    const v0, 0x111d6
+    const/4 v0, 0x2
 
-    const/4 v1, 0x2
-
-    new-array v1, v1, [Ljava/lang/Object;
-
-    const/4 v2, 0x0
+    new-array v0, v0, [Ljava/lang/Object;
 
     invoke-static {p0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v3
+    move-result-object v1
 
-    aput-object v3, v1, v2
+    const/4 v2, 0x0
 
-    const/4 v2, 0x1
+    aput-object v1, v0, v2
 
     invoke-static {p1, p2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v3
+    move-result-object v1
 
-    aput-object v3, v1, v2
+    const/4 v2, 0x1
 
-    invoke-static {v0, v1}, Landroid/util/EventLog;->writeEvent(I[Ljava/lang/Object;)I
+    aput-object v1, v0, v2
 
-    .line 31
+    const v1, 0x111d6
+
+    invoke-static {v1, v0}, Landroid/util/EventLog;->writeEvent(I[Ljava/lang/Object;)I
+
+    .line 29
     return-void
 .end method
 
@@ -64,65 +64,65 @@
 
     .prologue
     .line 34
-    const v0, 0x11206
+    const/4 v0, 0x0
 
-    const/4 v1, 0x0
+    new-array v0, v0, [Ljava/lang/Object;
 
-    new-array v1, v1, [Ljava/lang/Object;
+    const v1, 0x11206
 
-    invoke-static {v0, v1}, Landroid/util/EventLog;->writeEvent(I[Ljava/lang/Object;)I
+    invoke-static {v1, v0}, Landroid/util/EventLog;->writeEvent(I[Ljava/lang/Object;)I
 
-    .line 35
+    .line 33
     return-void
 .end method
 
 .method public static writeBrowserZoomLevelChange(IIJ)V
     .locals 4
-    .parameter "startLevel"
-    .parameter "endLevel"
-    .parameter "time"
+    .param p0, "startLevel"    # I
+    .param p1, "endLevel"    # I
+    .param p2, "time"    # J
 
     .prologue
     .line 26
-    const v0, 0x111d5
+    const/4 v0, 0x3
 
-    const/4 v1, 0x3
-
-    new-array v1, v1, [Ljava/lang/Object;
-
-    const/4 v2, 0x0
+    new-array v0, v0, [Ljava/lang/Object;
 
     invoke-static {p0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v3
+    move-result-object v1
 
-    aput-object v3, v1, v2
+    const/4 v2, 0x0
 
-    const/4 v2, 0x1
+    aput-object v1, v0, v2
 
     invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v3
+    move-result-object v1
 
-    aput-object v3, v1, v2
+    const/4 v2, 0x1
 
-    const/4 v2, 0x2
+    aput-object v1, v0, v2
 
     invoke-static {p2, p3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
-    move-result-object v3
+    move-result-object v1
 
-    aput-object v3, v1, v2
+    const/4 v2, 0x2
 
-    invoke-static {v0, v1}, Landroid/util/EventLog;->writeEvent(I[Ljava/lang/Object;)I
+    aput-object v1, v0, v2
 
-    .line 27
+    const v1, 0x111d5
+
+    invoke-static {v1, v0}, Landroid/util/EventLog;->writeEvent(I[Ljava/lang/Object;)I
+
+    .line 25
     return-void
 .end method
 
 .method public static writeExpDetAttemptToCallObjectGetclass(Ljava/lang/String;)V
     .locals 1
-    .parameter "appSignature"
+    .param p0, "appSignature"    # Ljava/lang/String;
 
     .prologue
     .line 38
@@ -130,6 +130,6 @@
 
     invoke-static {v0, p0}, Landroid/util/EventLog;->writeEvent(ILjava/lang/String;)I
 
-    .line 39
+    .line 37
     return-void
 .end method

@@ -21,16 +21,16 @@
 # direct methods
 .method public constructor <init>(Landroid/content/pm/PackageParser$Activity;)V
     .locals 0
-    .parameter "_activity"
+    .param p1, "_activity"    # Landroid/content/pm/PackageParser$Activity;
 
     .prologue
-    .line 4110
+    .line 5057
     invoke-direct {p0}, Landroid/content/pm/PackageParser$IntentInfo;-><init>()V
 
-    .line 4111
+    .line 5058
     iput-object p1, p0, Landroid/content/pm/PackageParser$ActivityIntentInfo;->activity:Landroid/content/pm/PackageParser$Activity;
 
-    .line 4112
+    .line 5057
     return-void
 .end method
 
@@ -40,20 +40,20 @@
     .locals 2
 
     .prologue
-    .line 4115
+    .line 5062
     new-instance v0, Ljava/lang/StringBuilder;
 
     const/16 v1, 0x80
 
     invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 4116
-    .local v0, sb:Ljava/lang/StringBuilder;
-    const-string v1, "ActivityIntentInfo{"
+    .line 5063
+    .local v0, "sb":Ljava/lang/StringBuilder;
+    const-string/jumbo v1, "ActivityIntentInfo{"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 4117
+    .line 5064
     invoke-static {p0}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     move-result v1
@@ -64,22 +64,22 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 4118
+    .line 5065
     const/16 v1, 0x20
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 4119
+    .line 5066
     iget-object v1, p0, Landroid/content/pm/PackageParser$ActivityIntentInfo;->activity:Landroid/content/pm/PackageParser$Activity;
 
     invoke-virtual {v1, v0}, Landroid/content/pm/PackageParser$Activity;->appendComponentShortName(Ljava/lang/StringBuilder;)V
 
-    .line 4120
+    .line 5067
     const/16 v1, 0x7d
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 4121
+    .line 5068
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1

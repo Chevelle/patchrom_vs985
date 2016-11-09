@@ -20,54 +20,70 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 1
-    .parameter "context"
+    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 68
+    .line 66
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Landroid/widget/ToggleButton;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-
-    .line 69
-    return-void
-.end method
-
-.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .locals 1
-    .parameter "context"
-    .parameter "attrs"
-
-    .prologue
-    .line 64
-    const v0, 0x101004b
-
-    invoke-direct {p0, p1, p2, v0}, Landroid/widget/ToggleButton;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
     .line 65
     return-void
 .end method
 
-.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
-    .locals 3
-    .parameter "context"
-    .parameter "attrs"
-    .parameter "defStyle"
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    .locals 1
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "attrs"    # Landroid/util/AttributeSet;
 
     .prologue
-    const/4 v2, 0x0
+    .line 62
+    const v0, 0x101004b
 
-    .line 51
-    invoke-direct {p0, p1, p2, p3}, Landroid/widget/CompoundButton;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+    invoke-direct {p0, p1, p2, v0}, Landroid/widget/ToggleButton;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 53
+    .line 61
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+    .locals 1
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "attrs"    # Landroid/util/AttributeSet;
+    .param p3, "defStyleAttr"    # I
+
+    .prologue
+    .line 58
+    const/4 v0, 0x0
+
+    invoke-direct {p0, p1, p2, p3, v0}, Landroid/widget/ToggleButton;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;II)V
+
+    .line 57
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;II)V
+    .locals 3
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "attrs"    # Landroid/util/AttributeSet;
+    .param p3, "defStyleAttr"    # I
+    .param p4, "defStyleRes"    # I
+
+    .prologue
+    .line 46
+    invoke-direct {p0, p1, p2, p3, p4}, Landroid/widget/CompoundButton;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;II)V
+
+    .line 49
     sget-object v1, Lcom/android/internal/R$styleable;->ToggleButton:[I
 
-    invoke-virtual {p1, p2, v1, p3, v2}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
+    .line 48
+    invoke-virtual {p1, p2, v1, p3, p4}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 56
-    .local v0, a:Landroid/content/res/TypedArray;
+    .line 50
+    .local v0, "a":Landroid/content/res/TypedArray;
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/content/res/TypedArray;->getText(I)Ljava/lang/CharSequence;
@@ -76,7 +92,7 @@
 
     iput-object v1, p0, Landroid/widget/ToggleButton;->mTextOn:Ljava/lang/CharSequence;
 
-    .line 57
+    .line 51
     const/4 v1, 0x2
 
     invoke-virtual {v0, v1}, Landroid/content/res/TypedArray;->getText(I)Ljava/lang/CharSequence;
@@ -85,22 +101,24 @@
 
     iput-object v1, p0, Landroid/widget/ToggleButton;->mTextOff:Ljava/lang/CharSequence;
 
-    .line 58
-    const/high16 v1, 0x3f00
+    .line 52
+    const/4 v1, 0x0
 
-    invoke-virtual {v0, v2, v1}, Landroid/content/res/TypedArray;->getFloat(IF)F
+    const/high16 v2, 0x3f000000    # 0.5f
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/res/TypedArray;->getFloat(IF)F
 
     move-result v1
 
     iput v1, p0, Landroid/widget/ToggleButton;->mDisabledAlpha:F
 
-    .line 59
+    .line 53
     invoke-direct {p0}, Landroid/widget/ToggleButton;->syncTextState()V
 
-    .line 60
+    .line 54
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 61
+    .line 45
     return-void
 .end method
 
@@ -108,30 +126,30 @@
     .locals 2
 
     .prologue
-    .line 79
+    .line 77
     invoke-virtual {p0}, Landroid/widget/ToggleButton;->isChecked()Z
 
     move-result v0
 
-    .line 80
-    .local v0, checked:Z
+    .line 78
+    .local v0, "checked":Z
     if-eqz v0, :cond_1
 
     iget-object v1, p0, Landroid/widget/ToggleButton;->mTextOn:Ljava/lang/CharSequence;
 
     if-eqz v1, :cond_1
 
-    .line 81
+    .line 79
     iget-object v1, p0, Landroid/widget/ToggleButton;->mTextOn:Ljava/lang/CharSequence;
 
     invoke-virtual {p0, v1}, Landroid/widget/ToggleButton;->setText(Ljava/lang/CharSequence;)V
 
-    .line 85
+    .line 76
     :cond_0
     :goto_0
     return-void
 
-    .line 82
+    .line 80
     :cond_1
     if-nez v0, :cond_0
 
@@ -139,7 +157,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 83
+    .line 81
     iget-object v1, p0, Landroid/widget/ToggleButton;->mTextOff:Ljava/lang/CharSequence;
 
     invoke-virtual {p0, v1}, Landroid/widget/ToggleButton;->setText(Ljava/lang/CharSequence;)V
@@ -149,35 +167,36 @@
 
 .method private updateReferenceToIndicatorDrawable(Landroid/graphics/drawable/Drawable;)V
     .locals 2
-    .parameter "backgroundDrawable"
+    .param p1, "backgroundDrawable"    # Landroid/graphics/drawable/Drawable;
 
     .prologue
-    .line 138
+    .line 136
     instance-of v1, p1, Landroid/graphics/drawable/LayerDrawable;
 
     if-eqz v1, :cond_0
 
     move-object v0, p1
 
-    .line 139
+    .line 137
     check-cast v0, Landroid/graphics/drawable/LayerDrawable;
 
-    .line 140
-    .local v0, layerDrawable:Landroid/graphics/drawable/LayerDrawable;
+    .line 139
+    .local v0, "layerDrawable":Landroid/graphics/drawable/LayerDrawable;
     const v1, 0x1020017
 
     invoke-virtual {v0, v1}, Landroid/graphics/drawable/LayerDrawable;->findDrawableByLayerId(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v1
 
+    .line 138
     iput-object v1, p0, Landroid/widget/ToggleButton;->mIndicatorDrawable:Landroid/graphics/drawable/Drawable;
 
-    .line 145
-    .end local v0           #layerDrawable:Landroid/graphics/drawable/LayerDrawable;
+    .line 135
+    .end local v0    # "layerDrawable":Landroid/graphics/drawable/LayerDrawable;
     :goto_0
     return-void
 
-    .line 143
+    .line 141
     :cond_0
     const/4 v1, 0x0
 
@@ -192,15 +211,15 @@
     .locals 3
 
     .prologue
-    .line 149
+    .line 147
     invoke-super {p0}, Landroid/widget/CompoundButton;->drawableStateChanged()V
 
-    .line 151
+    .line 149
     iget-object v0, p0, Landroid/widget/ToggleButton;->mIndicatorDrawable:Landroid/graphics/drawable/Drawable;
 
     if-eqz v0, :cond_0
 
-    .line 152
+    .line 150
     iget-object v1, p0, Landroid/widget/ToggleButton;->mIndicatorDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {p0}, Landroid/widget/ToggleButton;->isEnabled()Z
@@ -214,15 +233,15 @@
     :goto_0
     invoke-virtual {v1, v0}, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
 
-    .line 154
+    .line 146
     :cond_0
     return-void
 
-    .line 152
+    .line 150
     :cond_1
-    const/high16 v0, 0x437f
+    iget v0, p0, Landroid/widget/ToggleButton;->mDisabledAlpha:F
 
-    iget v2, p0, Landroid/widget/ToggleButton;->mDisabledAlpha:F
+    const/high16 v2, 0x437f0000    # 255.0f
 
     mul-float/2addr v0, v2
 
@@ -231,11 +250,25 @@
     goto :goto_0
 .end method
 
+.method public getAccessibilityClassName()Ljava/lang/CharSequence;
+    .locals 1
+
+    .prologue
+    .line 156
+    const-class v0, Landroid/widget/ToggleButton;
+
+    invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
 .method public getTextOff()Ljava/lang/CharSequence;
     .locals 1
 
     .prologue
-    .line 111
+    .line 109
     iget-object v0, p0, Landroid/widget/ToggleButton;->mTextOff:Ljava/lang/CharSequence;
 
     return-object v0
@@ -245,7 +278,7 @@
     .locals 1
 
     .prologue
-    .line 93
+    .line 91
     iget-object v0, p0, Landroid/widget/ToggleButton;->mTextOn:Ljava/lang/CharSequence;
 
     return-object v0
@@ -255,112 +288,70 @@
     .locals 1
 
     .prologue
-    .line 125
+    .line 123
     invoke-super {p0}, Landroid/widget/CompoundButton;->onFinishInflate()V
 
-    .line 127
+    .line 125
     invoke-virtual {p0}, Landroid/widget/ToggleButton;->getBackground()Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
     invoke-direct {p0, v0}, Landroid/widget/ToggleButton;->updateReferenceToIndicatorDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 128
-    return-void
-.end method
-
-.method public onInitializeAccessibilityEvent(Landroid/view/accessibility/AccessibilityEvent;)V
-    .locals 1
-    .parameter "event"
-
-    .prologue
-    .line 158
-    invoke-super {p0, p1}, Landroid/widget/CompoundButton;->onInitializeAccessibilityEvent(Landroid/view/accessibility/AccessibilityEvent;)V
-
-    .line 159
-    const-class v0, Landroid/widget/ToggleButton;
-
-    invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-virtual {p1, v0}, Landroid/view/accessibility/AccessibilityEvent;->setClassName(Ljava/lang/CharSequence;)V
-
-    .line 160
-    return-void
-.end method
-
-.method public onInitializeAccessibilityNodeInfo(Landroid/view/accessibility/AccessibilityNodeInfo;)V
-    .locals 1
-    .parameter "info"
-
-    .prologue
-    .line 164
-    invoke-super {p0, p1}, Landroid/widget/CompoundButton;->onInitializeAccessibilityNodeInfo(Landroid/view/accessibility/AccessibilityNodeInfo;)V
-
-    .line 165
-    const-class v0, Landroid/widget/ToggleButton;
-
-    invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-virtual {p1, v0}, Landroid/view/accessibility/AccessibilityNodeInfo;->setClassName(Ljava/lang/CharSequence;)V
-
-    .line 166
+    .line 122
     return-void
 .end method
 
 .method public setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
     .locals 0
-    .parameter "d"
+    .param p1, "d"    # Landroid/graphics/drawable/Drawable;
 
     .prologue
-    .line 132
+    .line 130
     invoke-super {p0, p1}, Landroid/widget/CompoundButton;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 134
+    .line 132
     invoke-direct {p0, p1}, Landroid/widget/ToggleButton;->updateReferenceToIndicatorDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 135
+    .line 129
     return-void
 .end method
 
 .method public setChecked(Z)V
     .locals 0
-    .parameter "checked"
+    .param p1, "checked"    # Z
 
     .prologue
-    .line 73
+    .line 71
     invoke-super {p0, p1}, Landroid/widget/CompoundButton;->setChecked(Z)V
 
-    .line 75
+    .line 73
     invoke-direct {p0}, Landroid/widget/ToggleButton;->syncTextState()V
 
-    .line 76
+    .line 70
     return-void
 .end method
 
 .method public setTextOff(Ljava/lang/CharSequence;)V
     .locals 0
-    .parameter "textOff"
+    .param p1, "textOff"    # Ljava/lang/CharSequence;
 
     .prologue
-    .line 120
+    .line 118
     iput-object p1, p0, Landroid/widget/ToggleButton;->mTextOff:Ljava/lang/CharSequence;
 
-    .line 121
+    .line 117
     return-void
 .end method
 
 .method public setTextOn(Ljava/lang/CharSequence;)V
     .locals 0
-    .parameter "textOn"
+    .param p1, "textOn"    # Ljava/lang/CharSequence;
 
     .prologue
-    .line 102
+    .line 100
     iput-object p1, p0, Landroid/widget/ToggleButton;->mTextOn:Ljava/lang/CharSequence;
 
-    .line 103
+    .line 99
     return-void
 .end method

@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/view/inputmethod/CorrectionInfo$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -32,21 +40,23 @@
     .locals 1
 
     .prologue
-    .line 91
+    .line 92
     new-instance v0, Landroid/view/inputmethod/CorrectionInfo$1;
 
     invoke-direct {v0}, Landroid/view/inputmethod/CorrectionInfo$1;-><init>()V
 
+    .line 91
     sput-object v0, Landroid/view/inputmethod/CorrectionInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 27
     return-void
 .end method
 
 .method public constructor <init>(ILjava/lang/CharSequence;Ljava/lang/CharSequence;)V
     .locals 0
-    .parameter "offset"
-    .parameter "oldText"
-    .parameter "newText"
+    .param p1, "offset"    # I
+    .param p2, "oldText"    # Ljava/lang/CharSequence;
+    .param p3, "newText"    # Ljava/lang/CharSequence;
 
     .prologue
     .line 37
@@ -61,13 +71,13 @@
     .line 40
     iput-object p3, p0, Landroid/view/inputmethod/CorrectionInfo;->mNewText:Ljava/lang/CharSequence;
 
-    .line 41
+    .line 37
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 43
@@ -102,17 +112,15 @@
 
     iput-object v0, p0, Landroid/view/inputmethod/CorrectionInfo;->mNewText:Ljava/lang/CharSequence;
 
-    .line 47
+    .line 43
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/view/inputmethod/CorrectionInfo$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/view/inputmethod/CorrectionInfo;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 27
     invoke-direct {p0, p1}, Landroid/view/inputmethod/CorrectionInfo;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -124,7 +132,7 @@
     .locals 1
 
     .prologue
-    .line 103
+    .line 102
     const/4 v0, 0x0
 
     return v0
@@ -169,7 +177,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "CorrectionInfo{#"
+    const-string/jumbo v1, "CorrectionInfo{#"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -181,7 +189,7 @@
 
     move-result-object v0
 
-    const-string v1, " \""
+    const-string/jumbo v1, " \""
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -189,11 +197,11 @@
 
     iget-object v1, p0, Landroid/view/inputmethod/CorrectionInfo;->mOldText:Ljava/lang/CharSequence;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "\" -> \""
+    const-string/jumbo v1, "\" -> \""
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -201,11 +209,11 @@
 
     iget-object v1, p0, Landroid/view/inputmethod/CorrectionInfo;->mNewText:Ljava/lang/CharSequence;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, "\"}"
+    const-string/jumbo v1, "\"}"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -220,8 +228,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 83
@@ -239,6 +247,6 @@
 
     invoke-static {v0, p1, p2}, Landroid/text/TextUtils;->writeToParcel(Ljava/lang/CharSequence;Landroid/os/Parcel;I)V
 
-    .line 86
+    .line 82
     return-void
 .end method

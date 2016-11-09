@@ -12,7 +12,7 @@
 # direct methods
 .method public constructor <init>(I)V
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 23
@@ -23,13 +23,13 @@
 
     iput-object v0, p0, Landroid/database/CharArrayBuffer;->data:[C
 
-    .line 25
+    .line 23
     return-void
 .end method
 
 .method public constructor <init>([C)V
     .locals 0
-    .parameter "buf"
+    .param p1, "buf"    # [C
 
     .prologue
     .line 27
@@ -38,6 +38,6 @@
     .line 28
     iput-object p1, p0, Landroid/database/CharArrayBuffer;->data:[C
 
-    .line 29
+    .line 27
     return-void
 .end method

@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/net/LinkQualityInfo$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -60,13 +68,15 @@
     .locals 1
 
     .prologue
-    .line 113
+    .line 114
     new-instance v0, Landroid/net/LinkQualityInfo$1;
 
     invoke-direct {v0}, Landroid/net/LinkQualityInfo$1;-><init>()V
 
+    .line 113
     sput-object v0, Landroid/net/LinkQualityInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 31
     return-void
 .end method
 
@@ -110,7 +120,7 @@
     .line 65
     iput v1, p0, Landroid/net/LinkQualityInfo;->mDataSampleDuration:I
 
-    .line 69
+    .line 67
     return-void
 .end method
 
@@ -218,7 +228,7 @@
 
 .method protected initializeFromParcel(Landroid/os/Parcel;)V
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 139
@@ -284,122 +294,122 @@
 
     iput v0, p0, Landroid/net/LinkQualityInfo;->mDataSampleDuration:I
 
-    .line 148
+    .line 138
     return-void
 .end method
 
 .method public setDataSampleDuration(I)V
     .locals 0
-    .parameter "dataSampleDuration"
+    .param p1, "dataSampleDuration"    # I
 
     .prologue
     .line 284
     iput p1, p0, Landroid/net/LinkQualityInfo;->mDataSampleDuration:I
 
-    .line 285
+    .line 283
     return-void
 .end method
 
 .method public setLastDataSampleTime(J)V
-    .locals 0
-    .parameter "lastDataSampleTime"
+    .locals 1
+    .param p1, "lastDataSampleTime"    # J
 
     .prologue
     .line 269
     iput-wide p1, p0, Landroid/net/LinkQualityInfo;->mLastDataSampleTime:J
 
-    .line 270
+    .line 268
     return-void
 .end method
 
 .method public setNetworkType(I)V
     .locals 0
-    .parameter "networkType"
+    .param p1, "networkType"    # I
 
     .prologue
     .line 163
     iput p1, p0, Landroid/net/LinkQualityInfo;->mNetworkType:I
 
-    .line 164
+    .line 162
     return-void
 .end method
 
 .method public setNormalizedSignalStrength(I)V
     .locals 0
-    .parameter "normalizedSignalStrength"
+    .param p1, "normalizedSignalStrength"    # I
 
     .prologue
     .line 178
     iput p1, p0, Landroid/net/LinkQualityInfo;->mNormalizedSignalStrength:I
 
-    .line 179
+    .line 177
     return-void
 .end method
 
 .method public setPacketCount(J)V
-    .locals 0
-    .parameter "packetCount"
+    .locals 1
+    .param p1, "packetCount"    # J
 
     .prologue
     .line 193
     iput-wide p1, p0, Landroid/net/LinkQualityInfo;->mPacketCount:J
 
-    .line 194
+    .line 192
     return-void
 .end method
 
 .method public setPacketErrorCount(J)V
-    .locals 0
-    .parameter "packetErrorCount"
+    .locals 1
+    .param p1, "packetErrorCount"    # J
 
     .prologue
     .line 208
     iput-wide p1, p0, Landroid/net/LinkQualityInfo;->mPacketErrorCount:J
 
-    .line 209
+    .line 207
     return-void
 .end method
 
 .method public setTheoreticalLatency(I)V
     .locals 0
-    .parameter "theoreticalLatency"
+    .param p1, "theoreticalLatency"    # I
 
     .prologue
     .line 253
     iput p1, p0, Landroid/net/LinkQualityInfo;->mTheoreticalLatency:I
 
-    .line 254
+    .line 252
     return-void
 .end method
 
 .method public setTheoreticalRxBandwidth(I)V
     .locals 0
-    .parameter "theoreticalRxBandwidth"
+    .param p1, "theoreticalRxBandwidth"    # I
 
     .prologue
     .line 238
     iput p1, p0, Landroid/net/LinkQualityInfo;->mTheoreticalRxBandwidth:I
 
-    .line 239
+    .line 237
     return-void
 .end method
 
 .method public setTheoreticalTxBandwidth(I)V
     .locals 0
-    .parameter "theoreticalTxBandwidth"
+    .param p1, "theoreticalTxBandwidth"    # I
 
     .prologue
     .line 223
     iput p1, p0, Landroid/net/LinkQualityInfo;->mTheoreticalTxBandwidth:I
 
-    .line 224
+    .line 222
     return-void
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 91
@@ -407,15 +417,15 @@
 
     invoke-virtual {p0, p1, p2, v0}, Landroid/net/LinkQualityInfo;->writeToParcel(Landroid/os/Parcel;II)V
 
-    .line 92
+    .line 90
     return-void
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;II)V
     .locals 2
-    .parameter "dest"
-    .parameter "flags"
-    .parameter "objectType"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
+    .param p3, "objectType"    # I
 
     .prologue
     .line 98
@@ -466,6 +476,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 108
+    .line 97
     return-void
 .end method

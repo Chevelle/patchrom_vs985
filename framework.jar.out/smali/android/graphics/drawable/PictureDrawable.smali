@@ -10,16 +10,16 @@
 # direct methods
 .method public constructor <init>(Landroid/graphics/Picture;)V
     .locals 0
-    .parameter "picture"
+    .param p1, "picture"    # Landroid/graphics/Picture;
 
     .prologue
-    .line 44
+    .line 40
     invoke-direct {p0}, Landroid/graphics/drawable/Drawable;-><init>()V
 
-    .line 45
+    .line 41
     iput-object p1, p0, Landroid/graphics/drawable/PictureDrawable;->mPicture:Landroid/graphics/Picture;
 
-    .line 46
+    .line 40
     return-void
 .end method
 
@@ -27,27 +27,27 @@
 # virtual methods
 .method public draw(Landroid/graphics/Canvas;)V
     .locals 3
-    .parameter "canvas"
+    .param p1, "canvas"    # Landroid/graphics/Canvas;
 
     .prologue
-    .line 68
+    .line 64
     iget-object v1, p0, Landroid/graphics/drawable/PictureDrawable;->mPicture:Landroid/graphics/Picture;
 
     if-eqz v1, :cond_0
 
-    .line 69
+    .line 65
     invoke-virtual {p0}, Landroid/graphics/drawable/PictureDrawable;->getBounds()Landroid/graphics/Rect;
 
     move-result-object v0
 
-    .line 70
-    .local v0, bounds:Landroid/graphics/Rect;
+    .line 66
+    .local v0, "bounds":Landroid/graphics/Rect;
     invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
 
-    .line 71
+    .line 67
     invoke-virtual {p1, v0}, Landroid/graphics/Canvas;->clipRect(Landroid/graphics/Rect;)Z
 
-    .line 72
+    .line 68
     iget v1, v0, Landroid/graphics/Rect;->left:I
 
     int-to-float v1, v1
@@ -58,16 +58,16 @@
 
     invoke-virtual {p1, v1, v2}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 73
+    .line 69
     iget-object v1, p0, Landroid/graphics/drawable/PictureDrawable;->mPicture:Landroid/graphics/Picture;
 
     invoke-virtual {p1, v1}, Landroid/graphics/Canvas;->drawPicture(Landroid/graphics/Picture;)V
 
-    .line 74
+    .line 70
     invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V
 
-    .line 76
-    .end local v0           #bounds:Landroid/graphics/Rect;
+    .line 63
+    .end local v0    # "bounds":Landroid/graphics/Rect;
     :cond_0
     return-void
 .end method
@@ -76,7 +76,7 @@
     .locals 1
 
     .prologue
-    .line 85
+    .line 81
     iget-object v0, p0, Landroid/graphics/drawable/PictureDrawable;->mPicture:Landroid/graphics/Picture;
 
     if-eqz v0, :cond_0
@@ -100,7 +100,7 @@
     .locals 1
 
     .prologue
-    .line 80
+    .line 76
     iget-object v0, p0, Landroid/graphics/drawable/PictureDrawable;->mPicture:Landroid/graphics/Picture;
 
     if-eqz v0, :cond_0
@@ -124,7 +124,7 @@
     .locals 1
 
     .prologue
-    .line 91
+    .line 87
     const/4 v0, -0x3
 
     return v0
@@ -134,7 +134,7 @@
     .locals 1
 
     .prologue
-    .line 54
+    .line 50
     iget-object v0, p0, Landroid/graphics/drawable/PictureDrawable;->mPicture:Landroid/graphics/Picture;
 
     return-object v0
@@ -142,48 +142,30 @@
 
 .method public setAlpha(I)V
     .locals 0
-    .parameter "alpha"
+    .param p1, "alpha"    # I
 
     .prologue
-    .line 104
+    .line 94
     return-void
 .end method
 
 .method public setColorFilter(Landroid/graphics/ColorFilter;)V
     .locals 0
-    .parameter "colorFilter"
+    .param p1, "colorFilter"    # Landroid/graphics/ColorFilter;
 
     .prologue
-    .line 101
-    return-void
-.end method
-
-.method public setDither(Z)V
-    .locals 0
-    .parameter "dither"
-
-    .prologue
-    .line 98
-    return-void
-.end method
-
-.method public setFilterBitmap(Z)V
-    .locals 0
-    .parameter "filter"
-
-    .prologue
-    .line 95
+    .line 91
     return-void
 .end method
 
 .method public setPicture(Landroid/graphics/Picture;)V
     .locals 0
-    .parameter "picture"
+    .param p1, "picture"    # Landroid/graphics/Picture;
 
     .prologue
-    .line 63
+    .line 59
     iput-object p1, p0, Landroid/graphics/drawable/PictureDrawable;->mPicture:Landroid/graphics/Picture;
 
-    .line 64
+    .line 58
     return-void
 .end method

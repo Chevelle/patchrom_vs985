@@ -27,7 +27,7 @@
     .locals 0
 
     .prologue
-    .line 384
+    .line 416
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -39,12 +39,12 @@
     .locals 2
 
     .prologue
-    .line 389
+    .line 421
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "BindServiceData{token="
+    const-string/jumbo v1, "BindServiceData{token="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -56,7 +56,7 @@
 
     move-result-object v0
 
-    const-string v1, " intent="
+    const-string/jumbo v1, " intent="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

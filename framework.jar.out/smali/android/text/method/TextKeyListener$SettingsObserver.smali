@@ -21,7 +21,7 @@
 # direct methods
 .method public constructor <init>(Landroid/text/method/TextKeyListener;)V
     .locals 1
-    .parameter
+    .param p1, "this$0"    # Landroid/text/method/TextKeyListener;
 
     .prologue
     .line 271
@@ -34,7 +34,7 @@
 
     invoke-direct {p0, v0}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
 
-    .line 273
+    .line 271
     return-void
 .end method
 
@@ -42,7 +42,7 @@
 # virtual methods
 .method public onChange(Z)V
     .locals 3
-    .parameter "selfChange"
+    .param p1, "selfChange"    # Z
 
     .prologue
     const/4 v2, 0x0
@@ -50,8 +50,7 @@
     .line 277
     iget-object v1, p0, Landroid/text/method/TextKeyListener$SettingsObserver;->this$0:Landroid/text/method/TextKeyListener;
 
-    #getter for: Landroid/text/method/TextKeyListener;->mResolver:Ljava/lang/ref/WeakReference;
-    invoke-static {v1}, Landroid/text/method/TextKeyListener;->access$000(Landroid/text/method/TextKeyListener;)Ljava/lang/ref/WeakReference;
+    invoke-static {v1}, Landroid/text/method/TextKeyListener;->-get0(Landroid/text/method/TextKeyListener;)Ljava/lang/ref/WeakReference;
 
     move-result-object v1
 
@@ -60,8 +59,7 @@
     .line 278
     iget-object v1, p0, Landroid/text/method/TextKeyListener$SettingsObserver;->this$0:Landroid/text/method/TextKeyListener;
 
-    #getter for: Landroid/text/method/TextKeyListener;->mResolver:Ljava/lang/ref/WeakReference;
-    invoke-static {v1}, Landroid/text/method/TextKeyListener;->access$000(Landroid/text/method/TextKeyListener;)Ljava/lang/ref/WeakReference;
+    invoke-static {v1}, Landroid/text/method/TextKeyListener;->-get0(Landroid/text/method/TextKeyListener;)Ljava/lang/ref/WeakReference;
 
     move-result-object v1
 
@@ -72,37 +70,34 @@
     check-cast v0, Landroid/content/ContentResolver;
 
     .line 279
-    .local v0, contentResolver:Landroid/content/ContentResolver;
+    .local v0, "contentResolver":Landroid/content/ContentResolver;
     if-nez v0, :cond_0
 
     .line 280
     iget-object v1, p0, Landroid/text/method/TextKeyListener$SettingsObserver;->this$0:Landroid/text/method/TextKeyListener;
 
-    #setter for: Landroid/text/method/TextKeyListener;->mPrefsInited:Z
-    invoke-static {v1, v2}, Landroid/text/method/TextKeyListener;->access$102(Landroid/text/method/TextKeyListener;Z)Z
+    invoke-static {v1, v2}, Landroid/text/method/TextKeyListener;->-set0(Landroid/text/method/TextKeyListener;Z)Z
 
-    .line 287
-    .end local v0           #contentResolver:Landroid/content/ContentResolver;
+    .line 276
+    .end local v0    # "contentResolver":Landroid/content/ContentResolver;
     :goto_0
     return-void
 
     .line 282
-    .restart local v0       #contentResolver:Landroid/content/ContentResolver;
+    .restart local v0    # "contentResolver":Landroid/content/ContentResolver;
     :cond_0
     iget-object v1, p0, Landroid/text/method/TextKeyListener$SettingsObserver;->this$0:Landroid/text/method/TextKeyListener;
 
-    #calls: Landroid/text/method/TextKeyListener;->updatePrefs(Landroid/content/ContentResolver;)V
-    invoke-static {v1, v0}, Landroid/text/method/TextKeyListener;->access$200(Landroid/text/method/TextKeyListener;Landroid/content/ContentResolver;)V
+    invoke-static {v1, v0}, Landroid/text/method/TextKeyListener;->-wrap0(Landroid/text/method/TextKeyListener;Landroid/content/ContentResolver;)V
 
     goto :goto_0
 
     .line 285
-    .end local v0           #contentResolver:Landroid/content/ContentResolver;
+    .end local v0    # "contentResolver":Landroid/content/ContentResolver;
     :cond_1
     iget-object v1, p0, Landroid/text/method/TextKeyListener$SettingsObserver;->this$0:Landroid/text/method/TextKeyListener;
 
-    #setter for: Landroid/text/method/TextKeyListener;->mPrefsInited:Z
-    invoke-static {v1, v2}, Landroid/text/method/TextKeyListener;->access$102(Landroid/text/method/TextKeyListener;Z)Z
+    invoke-static {v1, v2}, Landroid/text/method/TextKeyListener;->-set0(Landroid/text/method/TextKeyListener;Z)Z
 
     goto :goto_0
 .end method

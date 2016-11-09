@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 3135
+    .line 3300
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,13 +42,13 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/view/MotionEvent;
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 3137
+    .line 3302
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
-    .line 3138
+    .line 3303
     invoke-static {p1}, Landroid/view/MotionEvent;->createFromParcelBody(Landroid/os/Parcel;)Landroid/view/MotionEvent;
 
     move-result-object v0
@@ -58,10 +58,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 3135
+    .line 3301
     invoke-virtual {p0, p1}, Landroid/view/MotionEvent$1;->createFromParcel(Landroid/os/Parcel;)Landroid/view/MotionEvent;
 
     move-result-object v0
@@ -71,10 +71,10 @@
 
 .method public newArray(I)[Landroid/view/MotionEvent;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 3142
+    .line 3307
     new-array v0, p1, [Landroid/view/MotionEvent;
 
     return-object v0
@@ -82,10 +82,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 3135
+    .line 3306
     invoke-virtual {p0, p1}, Landroid/view/MotionEvent$1;->newArray(I)[Landroid/view/MotionEvent;
 
     move-result-object v0

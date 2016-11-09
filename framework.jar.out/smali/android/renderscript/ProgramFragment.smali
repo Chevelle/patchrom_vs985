@@ -12,15 +12,15 @@
 
 
 # direct methods
-.method constructor <init>(ILandroid/renderscript/RenderScript;)V
-    .locals 0
-    .parameter "id"
-    .parameter "rs"
+.method constructor <init>(JLandroid/renderscript/RenderScript;)V
+    .locals 1
+    .param p1, "id"    # J
+    .param p3, "rs"    # Landroid/renderscript/RenderScript;
 
     .prologue
-    .line 43
-    invoke-direct {p0, p1, p2}, Landroid/renderscript/Program;-><init>(ILandroid/renderscript/RenderScript;)V
+    .line 40
+    invoke-direct {p0, p1, p2, p3}, Landroid/renderscript/Program;-><init>(JLandroid/renderscript/RenderScript;)V
 
-    .line 44
+    .line 39
     return-void
 .end method

@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 103
+    .line 102
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 104
     iput-object p1, p0, Landroid/content/ISyncAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 105
+    .line 102
     return-void
 .end method
 
@@ -51,7 +51,7 @@
 
 .method public cancelSync(Landroid/content/ISyncContext;)V
     .locals 5
-    .parameter "syncContext"
+    .param p1, "syncContext"    # Landroid/content/ISyncContext;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -67,9 +67,9 @@
     move-result-object v0
 
     .line 160
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.content.ISyncAdapter"
+    const-string/jumbo v2, "android.content.ISyncAdapter"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -99,15 +99,17 @@
     .line 165
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 167
+    .line 156
     return-void
 
-    .line 165
+    .line 164
     :catchall_0
     move-exception v1
 
+    .line 165
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 164
     throw v1
 .end method
 
@@ -116,15 +118,15 @@
 
     .prologue
     .line 112
-    const-string v0, "android.content.ISyncAdapter"
+    const-string/jumbo v0, "android.content.ISyncAdapter"
 
     return-object v0
 .end method
 
 .method public initialize(Landroid/accounts/Account;Ljava/lang/String;)V
     .locals 5
-    .parameter "account"
-    .parameter "authority"
+    .param p1, "account"    # Landroid/accounts/Account;
+    .param p2, "authority"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -138,9 +140,9 @@
     move-result-object v0
 
     .line 178
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.content.ISyncAdapter"
+    const-string/jumbo v1, "android.content.ISyncAdapter"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -177,7 +179,7 @@
     .line 190
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 192
+    .line 174
     return-void
 
     .line 184
@@ -191,21 +193,23 @@
 
     goto :goto_0
 
-    .line 190
+    .line 189
     :catchall_0
     move-exception v1
 
+    .line 190
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 189
     throw v1
 .end method
 
 .method public startSync(Landroid/content/ISyncContext;Ljava/lang/String;Landroid/accounts/Account;Landroid/os/Bundle;)V
     .locals 5
-    .parameter "syncContext"
-    .parameter "authority"
-    .parameter "account"
-    .parameter "extras"
+    .param p1, "syncContext"    # Landroid/content/ISyncContext;
+    .param p2, "authority"    # Ljava/lang/String;
+    .param p3, "account"    # Landroid/accounts/Account;
+    .param p4, "extras"    # Landroid/os/Bundle;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -221,9 +225,9 @@
     move-result-object v0
 
     .line 128
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.content.ISyncAdapter"
+    const-string/jumbo v2, "android.content.ISyncAdapter"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -284,7 +288,7 @@
     .line 148
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 150
+    .line 124
     return-void
 
     .line 136
@@ -298,12 +302,14 @@
 
     goto :goto_0
 
-    .line 148
+    .line 147
     :catchall_0
     move-exception v1
 
+    .line 148
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 147
     throw v1
 
     .line 143

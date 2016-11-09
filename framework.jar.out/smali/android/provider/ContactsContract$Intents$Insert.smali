@@ -15,21 +15,21 @@
 
 
 # static fields
-.field public static final ACCOUNT:Ljava/lang/String; = "com.android.contacts.extra.ACCOUNT"
-
 .field public static final ACTION:Ljava/lang/String; = "android.intent.action.INSERT"
 
 .field public static final COMPANY:Ljava/lang/String; = "company"
 
 .field public static final DATA:Ljava/lang/String; = "data"
 
-.field public static final DATA_SET:Ljava/lang/String; = "com.android.contacts.extra.DATA_SET"
-
 .field public static final EMAIL:Ljava/lang/String; = "email"
 
 .field public static final EMAIL_ISPRIMARY:Ljava/lang/String; = "email_isprimary"
 
 .field public static final EMAIL_TYPE:Ljava/lang/String; = "email_type"
+
+.field public static final EXTRA_ACCOUNT:Ljava/lang/String; = "android.provider.extra.ACCOUNT"
+
+.field public static final EXTRA_DATA_SET:Ljava/lang/String; = "android.provider.extra.DATA_SET"
 
 .field public static final FULL_MODE:Ljava/lang/String; = "full_mode"
 
@@ -81,7 +81,7 @@
     .locals 0
 
     .prologue
-    .line 8376
+    .line 8719
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

@@ -25,18 +25,16 @@
     .locals 0
 
     .prologue
-    .line 940
+    .line 1062
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/app/LoadedApk$1;)V
+.method synthetic constructor <init>(Landroid/app/LoadedApk$ServiceDispatcher$ConnectionInfo;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 940
     invoke-direct {p0}, Landroid/app/LoadedApk$ServiceDispatcher$ConnectionInfo;-><init>()V
 
     return-void

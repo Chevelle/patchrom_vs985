@@ -15,7 +15,23 @@
 
 
 # virtual methods
+.method public abstract flushBatchedLocations()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getSupportedBatchSize()I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getVersion()I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

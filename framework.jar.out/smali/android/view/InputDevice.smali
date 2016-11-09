@@ -9,13 +9,14 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/view/InputDevice$MotionRange;
+        Landroid/view/InputDevice$MotionRange;,
+        Landroid/view/InputDevice$1;
     }
 .end annotation
 
 
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -79,6 +80,8 @@
 
 .field public static final SOURCE_ANY:I = -0x100
 
+.field public static final SOURCE_BLUETOOTH_STYLUS:I = 0xc002
+
 .field public static final SOURCE_CLASS_BUTTON:I = 0x1
 
 .field public static final SOURCE_CLASS_JOYSTICK:I = 0x10
@@ -97,11 +100,15 @@
 
 .field public static final SOURCE_GAMEPAD:I = 0x401
 
+.field public static final SOURCE_HDMI:I = 0x2000001
+
 .field public static final SOURCE_JOYSTICK:I = 0x1000010
 
 .field public static final SOURCE_KEYBOARD:I = 0x101
 
 .field public static final SOURCE_MOUSE:I = 0x2002
+
+.field public static final SOURCE_ROTARY_ENCODER:I = 0x400000
 
 .field public static final SOURCE_STYLUS:I = 0x4002
 
@@ -125,9 +132,13 @@
 
 .field private final mHasButtonUnderPad:Z
 
+.field private final mHasMicrophone:Z
+
 .field private final mHasVibrator:Z
 
 .field private final mId:I
+
+.field private final mIdentifier:Landroid/hardware/input/InputDeviceIdentifier;
 
 .field private final mIsExternal:Z
 
@@ -162,155 +173,168 @@
     .locals 1
 
     .prologue
-    .line 337
+    .line 387
     new-instance v0, Landroid/view/InputDevice$1;
 
     invoke-direct {v0}, Landroid/view/InputDevice$1;-><init>()V
 
+    .line 386
     sput-object v0, Landroid/view/InputDevice;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 45
     return-void
 .end method
 
-.method private constructor <init>(IIILjava/lang/String;IILjava/lang/String;ZIILandroid/view/KeyCharacterMap;ZZ)V
+.method private constructor <init>(IIILjava/lang/String;IILjava/lang/String;ZIILandroid/view/KeyCharacterMap;ZZZ)V
     .locals 1
-    .parameter "id"
-    .parameter "generation"
-    .parameter "controllerNumber"
-    .parameter "name"
-    .parameter "vendorId"
-    .parameter "productId"
-    .parameter "descriptor"
-    .parameter "isExternal"
-    .parameter "sources"
-    .parameter "keyboardType"
-    .parameter "keyCharacterMap"
-    .parameter "hasVibrator"
-    .parameter "hasButtonUnderPad"
+    .param p1, "id"    # I
+    .param p2, "generation"    # I
+    .param p3, "controllerNumber"    # I
+    .param p4, "name"    # Ljava/lang/String;
+    .param p5, "vendorId"    # I
+    .param p6, "productId"    # I
+    .param p7, "descriptor"    # Ljava/lang/String;
+    .param p8, "isExternal"    # Z
+    .param p9, "sources"    # I
+    .param p10, "keyboardType"    # I
+    .param p11, "keyCharacterMap"    # Landroid/view/KeyCharacterMap;
+    .param p12, "hasVibrator"    # Z
+    .param p13, "hasMicrophone"    # Z
+    .param p14, "hasButtonUnderPad"    # Z
 
     .prologue
-    .line 350
+    .line 397
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 58
+    .line 61
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Landroid/view/InputDevice;->mMotionRanges:Ljava/util/ArrayList;
 
-    .line 351
+    .line 401
     iput p1, p0, Landroid/view/InputDevice;->mId:I
 
-    .line 352
+    .line 402
     iput p2, p0, Landroid/view/InputDevice;->mGeneration:I
 
-    .line 353
+    .line 403
     iput p3, p0, Landroid/view/InputDevice;->mControllerNumber:I
 
-    .line 354
+    .line 404
     iput-object p4, p0, Landroid/view/InputDevice;->mName:Ljava/lang/String;
 
-    .line 355
+    .line 405
     iput p5, p0, Landroid/view/InputDevice;->mVendorId:I
 
-    .line 356
+    .line 406
     iput p6, p0, Landroid/view/InputDevice;->mProductId:I
 
-    .line 357
+    .line 407
     iput-object p7, p0, Landroid/view/InputDevice;->mDescriptor:Ljava/lang/String;
 
-    .line 358
+    .line 408
     iput-boolean p8, p0, Landroid/view/InputDevice;->mIsExternal:Z
 
-    .line 359
+    .line 409
     iput p9, p0, Landroid/view/InputDevice;->mSources:I
 
-    .line 360
+    .line 410
     iput p10, p0, Landroid/view/InputDevice;->mKeyboardType:I
 
-    .line 361
+    .line 411
     iput-object p11, p0, Landroid/view/InputDevice;->mKeyCharacterMap:Landroid/view/KeyCharacterMap;
 
-    .line 362
+    .line 412
     iput-boolean p12, p0, Landroid/view/InputDevice;->mHasVibrator:Z
 
-    .line 363
-    iput-boolean p13, p0, Landroid/view/InputDevice;->mHasButtonUnderPad:Z
+    .line 413
+    iput-boolean p13, p0, Landroid/view/InputDevice;->mHasMicrophone:Z
 
-    .line 364
+    .line 414
+    iput-boolean p14, p0, Landroid/view/InputDevice;->mHasButtonUnderPad:Z
+
+    .line 415
+    new-instance v0, Landroid/hardware/input/InputDeviceIdentifier;
+
+    invoke-direct {v0, p7, p5, p6}, Landroid/hardware/input/InputDeviceIdentifier;-><init>(Ljava/lang/String;II)V
+
+    iput-object v0, p0, Landroid/view/InputDevice;->mIdentifier:Landroid/hardware/input/InputDeviceIdentifier;
+
+    .line 400
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 8
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     const/4 v2, 0x1
 
     const/4 v3, 0x0
 
-    .line 366
+    .line 418
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 58
+    .line 61
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Landroid/view/InputDevice;->mMotionRanges:Ljava/util/ArrayList;
 
-    .line 367
+    .line 419
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/view/InputDevice;->mId:I
 
-    .line 368
+    .line 420
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/view/InputDevice;->mGeneration:I
 
-    .line 369
+    .line 421
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/view/InputDevice;->mControllerNumber:I
 
-    .line 370
+    .line 422
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/view/InputDevice;->mName:Ljava/lang/String;
 
-    .line 371
+    .line 423
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/view/InputDevice;->mVendorId:I
 
-    .line 372
+    .line 424
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/view/InputDevice;->mProductId:I
 
-    .line 373
+    .line 425
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/view/InputDevice;->mDescriptor:Ljava/lang/String;
 
-    .line 374
+    .line 426
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
@@ -322,21 +346,21 @@
     :goto_0
     iput-boolean v0, p0, Landroid/view/InputDevice;->mIsExternal:Z
 
-    .line 375
+    .line 427
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/view/InputDevice;->mSources:I
 
-    .line 376
+    .line 428
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/view/InputDevice;->mKeyboardType:I
 
-    .line 377
+    .line 429
     sget-object v0, Landroid/view/KeyCharacterMap;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v0, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -347,7 +371,7 @@
 
     iput-object v0, p0, Landroid/view/InputDevice;->mKeyCharacterMap:Landroid/view/KeyCharacterMap;
 
-    .line 378
+    .line 430
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
@@ -359,51 +383,82 @@
     :goto_1
     iput-boolean v0, p0, Landroid/view/InputDevice;->mHasVibrator:Z
 
-    .line 379
+    .line 431
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     if-eqz v0, :cond_2
 
+    move v0, v2
+
     :goto_2
+    iput-boolean v0, p0, Landroid/view/InputDevice;->mHasMicrophone:Z
+
+    .line 432
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    if-eqz v0, :cond_3
+
+    :goto_3
     iput-boolean v2, p0, Landroid/view/InputDevice;->mHasButtonUnderPad:Z
 
-    .line 382
-    :goto_3
+    .line 433
+    new-instance v0, Landroid/hardware/input/InputDeviceIdentifier;
+
+    iget-object v2, p0, Landroid/view/InputDevice;->mDescriptor:Ljava/lang/String;
+
+    iget v3, p0, Landroid/view/InputDevice;->mVendorId:I
+
+    iget v4, p0, Landroid/view/InputDevice;->mProductId:I
+
+    invoke-direct {v0, v2, v3, v4}, Landroid/hardware/input/InputDeviceIdentifier;-><init>(Ljava/lang/String;II)V
+
+    iput-object v0, p0, Landroid/view/InputDevice;->mIdentifier:Landroid/hardware/input/InputDeviceIdentifier;
+
+    .line 436
+    :goto_4
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
-    .line 383
-    .local v1, axis:I
-    if-gez v1, :cond_3
+    .line 437
+    .local v1, "axis":I
+    if-gez v1, :cond_4
 
-    .line 389
+    .line 418
     return-void
 
-    .end local v1           #axis:I
+    .end local v1    # "axis":I
     :cond_0
     move v0, v3
 
-    .line 374
+    .line 426
     goto :goto_0
 
     :cond_1
     move v0, v3
 
-    .line 378
+    .line 430
     goto :goto_1
 
     :cond_2
-    move v2, v3
+    move v0, v3
 
-    .line 379
+    .line 431
     goto :goto_2
 
-    .line 386
-    .restart local v1       #axis:I
     :cond_3
+    move v2, v3
+
+    .line 432
+    goto :goto_3
+
+    .line 440
+    .restart local v1    # "axis":I
+    :cond_4
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v2
@@ -420,6 +475,7 @@
 
     move-result v5
 
+    .line 441
     invoke-virtual {p1}, Landroid/os/Parcel;->readFloat()F
 
     move-result v6
@@ -430,18 +486,17 @@
 
     move-object v0, p0
 
+    .line 440
     invoke-direct/range {v0 .. v7}, Landroid/view/InputDevice;->addMotionRange(IIFFFFF)V
 
-    goto :goto_3
+    goto :goto_4
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/view/InputDevice$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/view/InputDevice;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 44
     invoke-direct {p0, p1}, Landroid/view/InputDevice;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -449,16 +504,16 @@
 
 .method private addMotionRange(IIFFFFF)V
     .locals 10
-    .parameter "axis"
-    .parameter "source"
-    .parameter "min"
-    .parameter "max"
-    .parameter "flat"
-    .parameter "fuzz"
-    .parameter "resolution"
+    .param p1, "axis"    # I
+    .param p2, "source"    # I
+    .param p3, "min"    # F
+    .param p4, "max"    # F
+    .param p5, "flat"    # F
+    .param p6, "fuzz"    # F
+    .param p7, "resolution"    # F
 
     .prologue
-    .line 654
+    .line 732
     iget-object v9, p0, Landroid/view/InputDevice;->mMotionRanges:Ljava/util/ArrayList;
 
     new-instance v0, Landroid/view/InputDevice$MotionRange;
@@ -479,47 +534,47 @@
 
     move/from16 v7, p7
 
-    invoke-direct/range {v0 .. v8}, Landroid/view/InputDevice$MotionRange;-><init>(IIFFFFFLandroid/view/InputDevice$1;)V
+    invoke-direct/range {v0 .. v8}, Landroid/view/InputDevice$MotionRange;-><init>(IIFFFFFLandroid/view/InputDevice$MotionRange;)V
 
     invoke-virtual {v9, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 655
+    .line 731
     return-void
 .end method
 
 .method private appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
     .locals 1
-    .parameter "description"
-    .parameter "source"
-    .parameter "sourceName"
+    .param p1, "description"    # Ljava/lang/StringBuilder;
+    .param p2, "source"    # I
+    .param p3, "sourceName"    # Ljava/lang/String;
 
     .prologue
-    .line 890
+    .line 979
     iget v0, p0, Landroid/view/InputDevice;->mSources:I
 
     and-int/2addr v0, p2
 
     if-ne v0, p2, :cond_0
 
-    .line 891
-    const-string v0, " "
+    .line 980
+    const-string/jumbo v0, " "
 
     invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 892
+    .line 981
     invoke-virtual {p1, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 894
+    .line 978
     :cond_0
     return-void
 .end method
 
 .method public static getDevice(I)Landroid/view/InputDevice;
     .locals 1
-    .parameter "id"
+    .param p0, "id"    # I
 
     .prologue
-    .line 397
+    .line 451
     invoke-static {}, Landroid/hardware/input/InputManager;->getInstance()Landroid/hardware/input/InputManager;
 
     move-result-object v0
@@ -535,7 +590,7 @@
     .locals 1
 
     .prologue
-    .line 405
+    .line 459
     invoke-static {}, Landroid/hardware/input/InputManager;->getInstance()Landroid/hardware/input/InputManager;
 
     move-result-object v0
@@ -553,7 +608,7 @@
     .locals 1
 
     .prologue
-    .line 834
+    .line 921
     const/4 v0, 0x0
 
     return v0
@@ -563,7 +618,7 @@
     .locals 1
 
     .prologue
-    .line 440
+    .line 494
     iget v0, p0, Landroid/view/InputDevice;->mControllerNumber:I
 
     return v0
@@ -573,7 +628,7 @@
     .locals 1
 
     .prologue
-    .line 506
+    .line 572
     iget-object v0, p0, Landroid/view/InputDevice;->mDescriptor:Ljava/lang/String;
 
     return-object v0
@@ -583,7 +638,7 @@
     .locals 1
 
     .prologue
-    .line 453
+    .line 519
     iget v0, p0, Landroid/view/InputDevice;->mGeneration:I
 
     return v0
@@ -593,17 +648,27 @@
     .locals 1
 
     .prologue
-    .line 421
+    .line 475
     iget v0, p0, Landroid/view/InputDevice;->mId:I
 
     return v0
+.end method
+
+.method public getIdentifier()Landroid/hardware/input/InputDeviceIdentifier;
+    .locals 1
+
+    .prologue
+    .line 506
+    iget-object v0, p0, Landroid/view/InputDevice;->mIdentifier:Landroid/hardware/input/InputDeviceIdentifier;
+
+    return-object v0
 .end method
 
 .method public getKeyCharacterMap()Landroid/view/KeyCharacterMap;
     .locals 1
 
     .prologue
-    .line 578
+    .line 656
     iget-object v0, p0, Landroid/view/InputDevice;->mKeyCharacterMap:Landroid/view/KeyCharacterMap;
 
     return-object v0
@@ -613,7 +678,7 @@
     .locals 1
 
     .prologue
-    .line 570
+    .line 648
     iget v0, p0, Landroid/view/InputDevice;->mKeyboardType:I
 
     return v0
@@ -621,25 +686,25 @@
 
 .method public getMotionRange(I)Landroid/view/InputDevice$MotionRange;
     .locals 4
-    .parameter "axis"
+    .param p1, "axis"    # I
 
     .prologue
-    .line 606
+    .line 684
     iget-object v3, p0, Landroid/view/InputDevice;->mMotionRanges:Ljava/util/ArrayList;
 
     invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
 
     move-result v1
 
-    .line 607
-    .local v1, numRanges:I
+    .line 685
+    .local v1, "numRanges":I
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-ge v0, v1, :cond_1
 
-    .line 608
+    .line 686
     iget-object v3, p0, Landroid/view/InputDevice;->mMotionRanges:Ljava/util/ArrayList;
 
     invoke-virtual {v3, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -648,57 +713,53 @@
 
     check-cast v2, Landroid/view/InputDevice$MotionRange;
 
-    .line 609
-    .local v2, range:Landroid/view/InputDevice$MotionRange;
-    #getter for: Landroid/view/InputDevice$MotionRange;->mAxis:I
-    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->access$100(Landroid/view/InputDevice$MotionRange;)I
+    .line 687
+    .local v2, "range":Landroid/view/InputDevice$MotionRange;
+    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->-get0(Landroid/view/InputDevice$MotionRange;)I
 
     move-result v3
 
     if-ne v3, p1, :cond_0
 
-    .line 613
-    .end local v2           #range:Landroid/view/InputDevice$MotionRange;
-    :goto_1
+    .line 688
     return-object v2
 
-    .line 607
-    .restart local v2       #range:Landroid/view/InputDevice$MotionRange;
+    .line 685
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 613
-    .end local v2           #range:Landroid/view/InputDevice$MotionRange;
+    .line 691
+    .end local v2    # "range":Landroid/view/InputDevice$MotionRange;
     :cond_1
-    const/4 v2, 0x0
+    const/4 v3, 0x0
 
-    goto :goto_1
+    return-object v3
 .end method
 
 .method public getMotionRange(II)Landroid/view/InputDevice$MotionRange;
     .locals 4
-    .parameter "axis"
-    .parameter "source"
+    .param p1, "axis"    # I
+    .param p2, "source"    # I
 
     .prologue
-    .line 631
+    .line 709
     iget-object v3, p0, Landroid/view/InputDevice;->mMotionRanges:Ljava/util/ArrayList;
 
     invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
 
     move-result v1
 
-    .line 632
-    .local v1, numRanges:I
+    .line 710
+    .local v1, "numRanges":I
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-ge v0, v1, :cond_1
 
-    .line 633
+    .line 711
     iget-object v3, p0, Landroid/view/InputDevice;->mMotionRanges:Ljava/util/ArrayList;
 
     invoke-virtual {v3, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -707,40 +768,35 @@
 
     check-cast v2, Landroid/view/InputDevice$MotionRange;
 
-    .line 634
-    .local v2, range:Landroid/view/InputDevice$MotionRange;
-    #getter for: Landroid/view/InputDevice$MotionRange;->mAxis:I
-    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->access$100(Landroid/view/InputDevice$MotionRange;)I
+    .line 712
+    .local v2, "range":Landroid/view/InputDevice$MotionRange;
+    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->-get0(Landroid/view/InputDevice$MotionRange;)I
 
     move-result v3
 
     if-ne v3, p1, :cond_0
 
-    #getter for: Landroid/view/InputDevice$MotionRange;->mSource:I
-    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->access$200(Landroid/view/InputDevice$MotionRange;)I
+    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->-get6(Landroid/view/InputDevice$MotionRange;)I
 
     move-result v3
 
     if-ne v3, p2, :cond_0
 
-    .line 638
-    .end local v2           #range:Landroid/view/InputDevice$MotionRange;
-    :goto_1
+    .line 713
     return-object v2
 
-    .line 632
-    .restart local v2       #range:Landroid/view/InputDevice$MotionRange;
+    .line 710
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 638
-    .end local v2           #range:Landroid/view/InputDevice$MotionRange;
+    .line 716
+    .end local v2    # "range":Landroid/view/InputDevice$MotionRange;
     :cond_1
-    const/4 v2, 0x0
+    const/4 v3, 0x0
 
-    goto :goto_1
+    return-object v3
 .end method
 
 .method public getMotionRanges()Ljava/util/List;
@@ -756,7 +812,7 @@
     .end annotation
 
     .prologue
-    .line 648
+    .line 726
     iget-object v0, p0, Landroid/view/InputDevice;->mMotionRanges:Ljava/util/ArrayList;
 
     return-object v0
@@ -766,7 +822,7 @@
     .locals 1
 
     .prologue
-    .line 554
+    .line 620
     iget-object v0, p0, Landroid/view/InputDevice;->mName:Ljava/lang/String;
 
     return-object v0
@@ -776,7 +832,7 @@
     .locals 1
 
     .prologue
-    .line 480
+    .line 546
     iget v0, p0, Landroid/view/InputDevice;->mProductId:I
 
     return v0
@@ -786,7 +842,7 @@
     .locals 1
 
     .prologue
-    .line 562
+    .line 628
     iget v0, p0, Landroid/view/InputDevice;->mSources:I
 
     return v0
@@ -796,7 +852,7 @@
     .locals 1
 
     .prologue
-    .line 466
+    .line 532
     iget v0, p0, Landroid/view/InputDevice;->mVendorId:I
 
     return v0
@@ -806,23 +862,23 @@
     .locals 3
 
     .prologue
-    .line 670
+    .line 748
     iget-object v1, p0, Landroid/view/InputDevice;->mMotionRanges:Ljava/util/ArrayList;
 
     monitor-enter v1
 
-    .line 671
+    .line 749
     :try_start_0
     iget-object v0, p0, Landroid/view/InputDevice;->mVibrator:Landroid/os/Vibrator;
 
     if-nez v0, :cond_0
 
-    .line 672
+    .line 750
     iget-boolean v0, p0, Landroid/view/InputDevice;->mHasVibrator:Z
 
     if-eqz v0, :cond_1
 
-    .line 673
+    .line 751
     invoke-static {}, Landroid/hardware/input/InputManager;->getInstance()Landroid/hardware/input/InputManager;
 
     move-result-object v0
@@ -835,32 +891,35 @@
 
     iput-object v0, p0, Landroid/view/InputDevice;->mVibrator:Landroid/os/Vibrator;
 
-    .line 678
+    .line 756
     :cond_0
     :goto_0
     iget-object v0, p0, Landroid/view/InputDevice;->mVibrator:Landroid/os/Vibrator;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit v1
 
     return-object v0
 
-    .line 675
+    .line 753
     :cond_1
+    :try_start_1
     invoke-static {}, Landroid/os/NullVibrator;->getInstance()Landroid/os/NullVibrator;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/view/InputDevice;->mVibrator:Landroid/os/Vibrator;
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .line 679
+    .line 748
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
@@ -869,7 +928,7 @@
     .locals 1
 
     .prologue
-    .line 688
+    .line 774
     iget-boolean v0, p0, Landroid/view/InputDevice;->mHasButtonUnderPad:Z
 
     return v0
@@ -877,10 +936,10 @@
 
 .method public varargs hasKeys([I)[Z
     .locals 2
-    .parameter "keys"
+    .param p1, "keys"    # [I
 
     .prologue
-    .line 588
+    .line 666
     invoke-static {}, Landroid/hardware/input/InputManager;->getInstance()Landroid/hardware/input/InputManager;
 
     move-result-object v0
@@ -894,54 +953,83 @@
     return-object v0
 .end method
 
+.method public hasMicrophone()Z
+    .locals 1
+
+    .prologue
+    .line 765
+    iget-boolean v0, p0, Landroid/view/InputDevice;->mHasMicrophone:Z
+
+    return v0
+.end method
+
 .method public isExternal()Z
     .locals 1
 
     .prologue
-    .line 534
+    .line 600
     iget-boolean v0, p0, Landroid/view/InputDevice;->mIsExternal:Z
 
     return v0
 .end method
 
 .method public isFullKeyboard()Z
-    .locals 2
+    .locals 3
 
     .prologue
-    .line 545
-    iget v0, p0, Landroid/view/InputDevice;->mSources:I
+    const/4 v0, 0x0
 
-    and-int/lit16 v0, v0, 0x101
+    .line 611
+    iget v1, p0, Landroid/view/InputDevice;->mSources:I
 
-    const/16 v1, 0x101
+    and-int/lit16 v1, v1, 0x101
 
-    if-ne v0, v1, :cond_0
+    const/16 v2, 0x101
 
-    iget v0, p0, Landroid/view/InputDevice;->mKeyboardType:I
+    if-ne v1, v2, :cond_0
 
-    const/4 v1, 0x2
+    .line 612
+    iget v1, p0, Landroid/view/InputDevice;->mKeyboardType:I
 
-    if-ne v0, v1, :cond_0
+    const/4 v2, 0x2
+
+    if-ne v1, v2, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
+    .line 611
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public isVirtual()Z
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 522
-    iget v0, p0, Landroid/view/InputDevice;->mId:I
+    const/4 v0, 0x0
 
-    if-gez v0, :cond_0
+    .line 588
+    iget v1, p0, Landroid/view/InputDevice;->mId:I
+
+    if-gez v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :cond_0
+    return v0
+.end method
+
+.method public supportsSource(I)Z
+    .locals 1
+    .param p1, "source"    # I
+
+    .prologue
+    .line 640
+    iget v0, p0, Landroid/view/InputDevice;->mSources:I
+
+    and-int/2addr v0, p1
+
+    if-ne v0, p1, :cond_0
 
     const/4 v0, 0x1
 
@@ -958,14 +1046,14 @@
     .locals 6
 
     .prologue
-    .line 839
+    .line 926
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 840
-    .local v0, description:Ljava/lang/StringBuilder;
-    const-string v4, "Input Device "
+    .line 927
+    .local v0, "description":Ljava/lang/StringBuilder;
+    const-string/jumbo v4, "Input Device "
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -977,7 +1065,7 @@
 
     move-result-object v4
 
-    const-string v5, ": "
+    const-string/jumbo v5, ": "
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -989,12 +1077,12 @@
 
     move-result-object v4
 
-    const-string v5, "\n"
+    const-string/jumbo v5, "\n"
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 841
-    const-string v4, "  Descriptor: "
+    .line 928
+    const-string/jumbo v4, "  Descriptor: "
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1006,12 +1094,12 @@
 
     move-result-object v4
 
-    const-string v5, "\n"
+    const-string/jumbo v5, "\n"
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 842
-    const-string v4, "  Generation: "
+    .line 929
+    const-string/jumbo v4, "  Generation: "
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1023,12 +1111,12 @@
 
     move-result-object v4
 
-    const-string v5, "\n"
+    const-string/jumbo v5, "\n"
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 843
-    const-string v4, "  Location: "
+    .line 930
+    const-string/jumbo v4, "  Location: "
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1038,35 +1126,35 @@
 
     if-eqz v4, :cond_0
 
-    const-string v4, "external"
+    const-string/jumbo v4, "external"
 
     :goto_0
     invoke-virtual {v5, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    const-string v5, "\n"
+    const-string/jumbo v5, "\n"
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 845
-    const-string v4, "  Keyboard Type: "
+    .line 932
+    const-string/jumbo v4, "  Keyboard Type: "
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 846
+    .line 933
     iget v4, p0, Landroid/view/InputDevice;->mKeyboardType:I
 
     packed-switch v4, :pswitch_data_0
 
-    .line 857
+    .line 944
     :goto_1
-    const-string v4, "\n"
+    const-string/jumbo v4, "\n"
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 859
-    const-string v4, "  Has Vibrator: "
+    .line 946
+    const-string/jumbo v4, "  Has Vibrator: "
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1078,12 +1166,29 @@
 
     move-result-object v4
 
-    const-string v5, "\n"
+    const-string/jumbo v5, "\n"
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 861
-    const-string v4, "  Sources: 0x"
+    .line 948
+    const-string/jumbo v4, "  Has mic: "
+
+    invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    iget-boolean v5, p0, Landroid/view/InputDevice;->mHasMicrophone:Z
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    const-string/jumbo v5, "\n"
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 950
+    const-string/jumbo v4, "  Sources: 0x"
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1099,94 +1204,94 @@
 
     move-result-object v4
 
-    const-string v5, " ("
+    const-string/jumbo v5, " ("
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 862
-    const/16 v4, 0x101
+    .line 951
+    const-string/jumbo v4, "keyboard"
 
-    const-string v5, "keyboard"
+    const/16 v5, 0x101
 
-    invoke-direct {p0, v0, v4, v5}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
+    invoke-direct {p0, v0, v5, v4}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
 
-    .line 863
-    const/16 v4, 0x201
+    .line 952
+    const-string/jumbo v4, "dpad"
 
-    const-string v5, "dpad"
+    const/16 v5, 0x201
 
-    invoke-direct {p0, v0, v4, v5}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
+    invoke-direct {p0, v0, v5, v4}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
 
-    .line 864
-    const/16 v4, 0x1002
+    .line 953
+    const-string/jumbo v4, "touchscreen"
 
-    const-string/jumbo v5, "touchscreen"
+    const/16 v5, 0x1002
 
-    invoke-direct {p0, v0, v4, v5}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
+    invoke-direct {p0, v0, v5, v4}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
 
-    .line 865
-    const/16 v4, 0x2002
+    .line 954
+    const-string/jumbo v4, "mouse"
 
-    const-string v5, "mouse"
+    const/16 v5, 0x2002
 
-    invoke-direct {p0, v0, v4, v5}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
+    invoke-direct {p0, v0, v5, v4}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
 
-    .line 866
-    const/16 v4, 0x4002
+    .line 955
+    const-string/jumbo v4, "stylus"
 
-    const-string/jumbo v5, "stylus"
+    const/16 v5, 0x4002
 
-    invoke-direct {p0, v0, v4, v5}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
+    invoke-direct {p0, v0, v5, v4}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
 
-    .line 867
-    const v4, 0x10004
+    .line 956
+    const-string/jumbo v4, "trackball"
 
-    const-string/jumbo v5, "trackball"
+    const v5, 0x10004
 
-    invoke-direct {p0, v0, v4, v5}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
+    invoke-direct {p0, v0, v5, v4}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
 
-    .line 868
-    const v4, 0x100008
+    .line 957
+    const-string/jumbo v4, "touchpad"
 
-    const-string/jumbo v5, "touchpad"
+    const v5, 0x100008
 
-    invoke-direct {p0, v0, v4, v5}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
+    invoke-direct {p0, v0, v5, v4}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
 
-    .line 869
-    const v4, 0x1000010
+    .line 958
+    const-string/jumbo v4, "joystick"
 
-    const-string v5, "joystick"
+    const v5, 0x1000010
 
-    invoke-direct {p0, v0, v4, v5}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
+    invoke-direct {p0, v0, v5, v4}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
 
-    .line 870
-    const/16 v4, 0x401
+    .line 959
+    const-string/jumbo v4, "gamepad"
 
-    const-string v5, "gamepad"
+    const/16 v5, 0x401
 
-    invoke-direct {p0, v0, v4, v5}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
+    invoke-direct {p0, v0, v5, v4}, Landroid/view/InputDevice;->appendSourceDescriptionIfApplicable(Ljava/lang/StringBuilder;ILjava/lang/String;)V
 
-    .line 871
-    const-string v4, " )\n"
+    .line 960
+    const-string/jumbo v4, " )\n"
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 873
+    .line 962
     iget-object v4, p0, Landroid/view/InputDevice;->mMotionRanges:Ljava/util/ArrayList;
 
     invoke-virtual {v4}, Ljava/util/ArrayList;->size()I
 
     move-result v2
 
-    .line 874
-    .local v2, numAxes:I
+    .line 963
+    .local v2, "numAxes":I
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_2
     if-ge v1, v2, :cond_1
 
-    .line 875
+    .line 964
     iget-object v4, p0, Landroid/view/InputDevice;->mMotionRanges:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -1195,16 +1300,15 @@
 
     check-cast v3, Landroid/view/InputDevice$MotionRange;
 
-    .line 876
-    .local v3, range:Landroid/view/InputDevice$MotionRange;
-    const-string v4, "    "
+    .line 965
+    .local v3, "range":Landroid/view/InputDevice$MotionRange;
+    const-string/jumbo v4, "    "
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    #getter for: Landroid/view/InputDevice$MotionRange;->mAxis:I
-    invoke-static {v3}, Landroid/view/InputDevice$MotionRange;->access$100(Landroid/view/InputDevice$MotionRange;)I
+    invoke-static {v3}, Landroid/view/InputDevice$MotionRange;->-get0(Landroid/view/InputDevice$MotionRange;)I
 
     move-result v5
 
@@ -1214,15 +1318,14 @@
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 877
-    const-string v4, ": source=0x"
+    .line 966
+    const-string/jumbo v4, ": source=0x"
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    #getter for: Landroid/view/InputDevice$MotionRange;->mSource:I
-    invoke-static {v3}, Landroid/view/InputDevice$MotionRange;->access$200(Landroid/view/InputDevice$MotionRange;)I
+    invoke-static {v3}, Landroid/view/InputDevice$MotionRange;->-get6(Landroid/view/InputDevice$MotionRange;)I
 
     move-result v5
 
@@ -1232,96 +1335,91 @@
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 878
-    const-string v4, " min="
+    .line 967
+    const-string/jumbo v4, " min="
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    #getter for: Landroid/view/InputDevice$MotionRange;->mMin:F
-    invoke-static {v3}, Landroid/view/InputDevice$MotionRange;->access$400(Landroid/view/InputDevice$MotionRange;)F
+    invoke-static {v3}, Landroid/view/InputDevice$MotionRange;->-get4(Landroid/view/InputDevice$MotionRange;)F
 
     move-result v5
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
 
-    .line 879
-    const-string v4, " max="
+    .line 968
+    const-string/jumbo v4, " max="
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    #getter for: Landroid/view/InputDevice$MotionRange;->mMax:F
-    invoke-static {v3}, Landroid/view/InputDevice$MotionRange;->access$500(Landroid/view/InputDevice$MotionRange;)F
+    invoke-static {v3}, Landroid/view/InputDevice$MotionRange;->-get3(Landroid/view/InputDevice$MotionRange;)F
 
     move-result v5
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
 
-    .line 880
-    const-string v4, " flat="
+    .line 969
+    const-string/jumbo v4, " flat="
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    #getter for: Landroid/view/InputDevice$MotionRange;->mFlat:F
-    invoke-static {v3}, Landroid/view/InputDevice$MotionRange;->access$600(Landroid/view/InputDevice$MotionRange;)F
+    invoke-static {v3}, Landroid/view/InputDevice$MotionRange;->-get1(Landroid/view/InputDevice$MotionRange;)F
 
     move-result v5
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
 
-    .line 881
-    const-string v4, " fuzz="
+    .line 970
+    const-string/jumbo v4, " fuzz="
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    #getter for: Landroid/view/InputDevice$MotionRange;->mFuzz:F
-    invoke-static {v3}, Landroid/view/InputDevice$MotionRange;->access$700(Landroid/view/InputDevice$MotionRange;)F
+    invoke-static {v3}, Landroid/view/InputDevice$MotionRange;->-get2(Landroid/view/InputDevice$MotionRange;)F
 
     move-result v5
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
 
-    .line 882
-    const-string v4, " resolution="
+    .line 971
+    const-string/jumbo v4, " resolution="
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    #getter for: Landroid/view/InputDevice$MotionRange;->mResolution:F
-    invoke-static {v3}, Landroid/view/InputDevice$MotionRange;->access$800(Landroid/view/InputDevice$MotionRange;)F
+    invoke-static {v3}, Landroid/view/InputDevice$MotionRange;->-get5(Landroid/view/InputDevice$MotionRange;)F
 
     move-result v5
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
 
-    .line 883
-    const-string v4, "\n"
+    .line 972
+    const-string/jumbo v4, "\n"
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 874
+    .line 963
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_2
 
-    .line 843
-    .end local v1           #i:I
-    .end local v2           #numAxes:I
-    .end local v3           #range:Landroid/view/InputDevice$MotionRange;
+    .line 930
+    .end local v1    # "i":I
+    .end local v2    # "numAxes":I
+    .end local v3    # "range":Landroid/view/InputDevice$MotionRange;
     :cond_0
-    const-string v4, "built-in"
+    const-string/jumbo v4, "built-in"
 
     goto/16 :goto_0
 
-    .line 848
+    .line 935
     :pswitch_0
     const-string/jumbo v4, "none"
 
@@ -1329,7 +1427,7 @@
 
     goto/16 :goto_1
 
-    .line 851
+    .line 938
     :pswitch_1
     const-string/jumbo v4, "non-alphabetic"
 
@@ -1337,17 +1435,17 @@
 
     goto/16 :goto_1
 
-    .line 854
+    .line 941
     :pswitch_2
-    const-string v4, "alphabetic"
+    const-string/jumbo v4, "alphabetic"
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     goto/16 :goto_1
 
-    .line 885
-    .restart local v1       #i:I
-    .restart local v2       #numAxes:I
+    .line 974
+    .restart local v1    # "i":I
+    .restart local v2    # "numAxes":I
     :cond_1
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -1355,9 +1453,7 @@
 
     return-object v4
 
-    .line 846
-    nop
-
+    .line 933
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -1368,50 +1464,50 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 6
-    .parameter "out"
-    .parameter "flags"
+    .param p1, "out"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     const/4 v4, 0x1
 
     const/4 v5, 0x0
 
-    .line 804
+    .line 890
     iget v3, p0, Landroid/view/InputDevice;->mId:I
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 805
+    .line 891
     iget v3, p0, Landroid/view/InputDevice;->mGeneration:I
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 806
+    .line 892
     iget v3, p0, Landroid/view/InputDevice;->mControllerNumber:I
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 807
+    .line 893
     iget-object v3, p0, Landroid/view/InputDevice;->mName:Ljava/lang/String;
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 808
+    .line 894
     iget v3, p0, Landroid/view/InputDevice;->mVendorId:I
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 809
+    .line 895
     iget v3, p0, Landroid/view/InputDevice;->mProductId:I
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 810
+    .line 896
     iget-object v3, p0, Landroid/view/InputDevice;->mDescriptor:Ljava/lang/String;
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 811
+    .line 897
     iget-boolean v3, p0, Landroid/view/InputDevice;->mIsExternal:Z
 
     if-eqz v3, :cond_0
@@ -1421,22 +1517,22 @@
     :goto_0
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 812
+    .line 898
     iget v3, p0, Landroid/view/InputDevice;->mSources:I
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 813
+    .line 899
     iget v3, p0, Landroid/view/InputDevice;->mKeyboardType:I
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 814
+    .line 900
     iget-object v3, p0, Landroid/view/InputDevice;->mKeyCharacterMap:Landroid/view/KeyCharacterMap;
 
     invoke-virtual {v3, p1, p2}, Landroid/view/KeyCharacterMap;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 815
+    .line 901
     iget-boolean v3, p0, Landroid/view/InputDevice;->mHasVibrator:Z
 
     if-eqz v3, :cond_1
@@ -1446,30 +1542,40 @@
     :goto_1
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 816
-    iget-boolean v3, p0, Landroid/view/InputDevice;->mHasButtonUnderPad:Z
+    .line 902
+    iget-boolean v3, p0, Landroid/view/InputDevice;->mHasMicrophone:Z
 
     if-eqz v3, :cond_2
 
+    move v3, v4
+
     :goto_2
+    invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 903
+    iget-boolean v3, p0, Landroid/view/InputDevice;->mHasButtonUnderPad:Z
+
+    if-eqz v3, :cond_3
+
+    :goto_3
     invoke-virtual {p1, v4}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 818
+    .line 905
     iget-object v3, p0, Landroid/view/InputDevice;->mMotionRanges:Ljava/util/ArrayList;
 
     invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
 
     move-result v1
 
-    .line 819
-    .local v1, numRanges:I
+    .line 906
+    .local v1, "numRanges":I
     const/4 v0, 0x0
 
-    .local v0, i:I
-    :goto_3
-    if-ge v0, v1, :cond_3
+    .local v0, "i":I
+    :goto_4
+    if-ge v0, v1, :cond_4
 
-    .line 820
+    .line 907
     iget-object v3, p0, Landroid/view/InputDevice;->mMotionRanges:Ljava/util/ArrayList;
 
     invoke-virtual {v3, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -1478,97 +1584,96 @@
 
     check-cast v2, Landroid/view/InputDevice$MotionRange;
 
-    .line 821
-    .local v2, range:Landroid/view/InputDevice$MotionRange;
-    #getter for: Landroid/view/InputDevice$MotionRange;->mAxis:I
-    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->access$100(Landroid/view/InputDevice$MotionRange;)I
+    .line 908
+    .local v2, "range":Landroid/view/InputDevice$MotionRange;
+    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->-get0(Landroid/view/InputDevice$MotionRange;)I
 
     move-result v3
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 822
-    #getter for: Landroid/view/InputDevice$MotionRange;->mSource:I
-    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->access$200(Landroid/view/InputDevice$MotionRange;)I
+    .line 909
+    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->-get6(Landroid/view/InputDevice$MotionRange;)I
 
     move-result v3
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 823
-    #getter for: Landroid/view/InputDevice$MotionRange;->mMin:F
-    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->access$400(Landroid/view/InputDevice$MotionRange;)F
+    .line 910
+    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->-get4(Landroid/view/InputDevice$MotionRange;)F
 
     move-result v3
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeFloat(F)V
 
-    .line 824
-    #getter for: Landroid/view/InputDevice$MotionRange;->mMax:F
-    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->access$500(Landroid/view/InputDevice$MotionRange;)F
+    .line 911
+    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->-get3(Landroid/view/InputDevice$MotionRange;)F
 
     move-result v3
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeFloat(F)V
 
-    .line 825
-    #getter for: Landroid/view/InputDevice$MotionRange;->mFlat:F
-    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->access$600(Landroid/view/InputDevice$MotionRange;)F
+    .line 912
+    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->-get1(Landroid/view/InputDevice$MotionRange;)F
 
     move-result v3
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeFloat(F)V
 
-    .line 826
-    #getter for: Landroid/view/InputDevice$MotionRange;->mFuzz:F
-    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->access$700(Landroid/view/InputDevice$MotionRange;)F
+    .line 913
+    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->-get2(Landroid/view/InputDevice$MotionRange;)F
 
     move-result v3
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeFloat(F)V
 
-    .line 827
-    #getter for: Landroid/view/InputDevice$MotionRange;->mResolution:F
-    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->access$800(Landroid/view/InputDevice$MotionRange;)F
+    .line 914
+    invoke-static {v2}, Landroid/view/InputDevice$MotionRange;->-get5(Landroid/view/InputDevice$MotionRange;)F
 
     move-result v3
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeFloat(F)V
 
-    .line 819
+    .line 906
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_3
+    goto :goto_4
 
-    .end local v0           #i:I
-    .end local v1           #numRanges:I
-    .end local v2           #range:Landroid/view/InputDevice$MotionRange;
+    .end local v0    # "i":I
+    .end local v1    # "numRanges":I
+    .end local v2    # "range":Landroid/view/InputDevice$MotionRange;
     :cond_0
     move v3, v5
 
-    .line 811
+    .line 897
     goto :goto_0
 
     :cond_1
     move v3, v5
 
-    .line 815
+    .line 901
     goto :goto_1
 
     :cond_2
-    move v4, v5
+    move v3, v5
 
-    .line 816
+    .line 902
     goto :goto_2
 
-    .line 829
-    .restart local v0       #i:I
-    .restart local v1       #numRanges:I
     :cond_3
+    move v4, v5
+
+    .line 903
+    goto :goto_3
+
+    .line 916
+    .restart local v0    # "i":I
+    .restart local v1    # "numRanges":I
+    :cond_4
     const/4 v3, -0x1
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 830
+    .line 889
     return-void
 .end method

@@ -35,20 +35,20 @@
     .line 139
     new-instance v0, Landroid/database/StaleDataException;
 
-    const-string v1, "Attempting to access a closed CursorWindow.Most probable cause: cursor is deactivated prior to calling this method."
+    const-string/jumbo v1, "Attempting to access a closed CursorWindow.Most probable cause: cursor is deactivated prior to calling this method."
 
     invoke-direct {v0, v1}, Landroid/database/StaleDataException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 142
+    .line 135
     :cond_0
     return-void
 .end method
 
 .method protected clearOrCreateWindow(Ljava/lang/String;)V
     .locals 1
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
     .line 197
@@ -63,7 +63,7 @@
 
     iput-object v0, p0, Landroid/database/AbstractWindowedCursor;->mWindow:Landroid/database/CursorWindow;
 
-    .line 202
+    .line 196
     :goto_0
     return-void
 
@@ -77,9 +77,11 @@
 .end method
 
 .method protected closeWindow()V
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v1, 0x0
+
     .line 183
     iget-object v0, p0, Landroid/database/AbstractWindowedCursor;->mWindow:Landroid/database/CursorWindow;
 
@@ -91,19 +93,17 @@
     invoke-virtual {v0}, Landroid/database/CursorWindow;->close()V
 
     .line 185
-    const/4 v0, 0x0
+    iput-object v1, p0, Landroid/database/AbstractWindowedCursor;->mWindow:Landroid/database/CursorWindow;
 
-    iput-object v0, p0, Landroid/database/AbstractWindowedCursor;->mWindow:Landroid/database/CursorWindow;
-
-    .line 187
+    .line 182
     :cond_0
     return-void
 .end method
 
 .method public copyStringToBuffer(ILandroid/database/CharArrayBuffer;)V
     .locals 2
-    .parameter "columnIndex"
-    .parameter "buffer"
+    .param p1, "columnIndex"    # I
+    .param p2, "buffer"    # Landroid/database/CharArrayBuffer;
 
     .prologue
     .line 56
@@ -116,13 +116,13 @@
 
     invoke-virtual {v0, v1, p1, p2}, Landroid/database/CursorWindow;->copyStringToBuffer(IILandroid/database/CharArrayBuffer;)V
 
-    .line 58
+    .line 55
     return-void
 .end method
 
 .method public getBlob(I)[B
     .locals 2
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
 
     .prologue
     .line 44
@@ -142,7 +142,7 @@
 
 .method public getDouble(I)D
     .locals 2
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
 
     .prologue
     .line 86
@@ -162,7 +162,7 @@
 
 .method public getFloat(I)F
     .locals 2
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
 
     .prologue
     .line 80
@@ -182,7 +182,7 @@
 
 .method public getInt(I)I
     .locals 2
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
 
     .prologue
     .line 68
@@ -202,7 +202,7 @@
 
 .method public getLong(I)J
     .locals 2
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
 
     .prologue
     .line 74
@@ -222,7 +222,7 @@
 
 .method public getShort(I)S
     .locals 2
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
 
     .prologue
     .line 62
@@ -242,7 +242,7 @@
 
 .method public getString(I)Ljava/lang/String;
     .locals 2
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
 
     .prologue
     .line 50
@@ -262,7 +262,7 @@
 
 .method public getType(I)I
     .locals 2
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
 
     .prologue
     .line 130
@@ -312,7 +312,7 @@
 
 .method public isBlob(I)Z
     .locals 2
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
@@ -339,7 +339,7 @@
 
 .method public isFloat(I)Z
     .locals 2
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
@@ -366,7 +366,7 @@
 
 .method public isLong(I)Z
     .locals 2
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
@@ -390,38 +390,35 @@
 .end method
 
 .method public isNull(I)Z
-    .locals 2
-    .parameter "columnIndex"
+    .locals 3
+    .param p1, "columnIndex"    # I
 
     .prologue
+    const/4 v0, 0x0
+
     .line 92
     invoke-virtual {p0}, Landroid/database/AbstractWindowedCursor;->checkPosition()V
 
     .line 93
-    iget-object v0, p0, Landroid/database/AbstractWindowedCursor;->mWindow:Landroid/database/CursorWindow;
+    iget-object v1, p0, Landroid/database/AbstractWindowedCursor;->mWindow:Landroid/database/CursorWindow;
 
-    iget v1, p0, Landroid/database/AbstractWindowedCursor;->mPos:I
+    iget v2, p0, Landroid/database/AbstractWindowedCursor;->mPos:I
 
-    invoke-virtual {v0, v1, p1}, Landroid/database/CursorWindow;->getType(II)I
+    invoke-virtual {v1, v2, p1}, Landroid/database/CursorWindow;->getType(II)I
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public isString(I)Z
     .locals 2
-    .parameter "columnIndex"
+    .param p1, "columnIndex"    # I
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
@@ -456,13 +453,13 @@
     .line 208
     invoke-virtual {p0}, Landroid/database/AbstractWindowedCursor;->closeWindow()V
 
-    .line 209
+    .line 206
     return-void
 .end method
 
 .method public setWindow(Landroid/database/CursorWindow;)V
     .locals 1
-    .parameter "window"
+    .param p1, "window"    # Landroid/database/CursorWindow;
 
     .prologue
     .line 163
@@ -476,7 +473,7 @@
     .line 165
     iput-object p1, p0, Landroid/database/AbstractWindowedCursor;->mWindow:Landroid/database/CursorWindow;
 
-    .line 167
+    .line 162
     :cond_0
     return-void
 .end method

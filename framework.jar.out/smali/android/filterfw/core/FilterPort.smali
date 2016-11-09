@@ -26,8 +26,8 @@
 # direct methods
 .method public constructor <init>(Landroid/filterfw/core/Filter;Ljava/lang/String;)V
     .locals 2
-    .parameter "filter"
-    .parameter "name"
+    .param p1, "filter"    # Landroid/filterfw/core/Filter;
+    .param p2, "name"    # Ljava/lang/String;
 
     .prologue
     const/4 v1, 0x0
@@ -53,7 +53,7 @@
     iput-object p1, p0, Landroid/filterfw/core/FilterPort;->mFilter:Landroid/filterfw/core/Filter;
 
     .line 41
-    const-string v0, "FilterPort"
+    const-string/jumbo v0, "FilterPort"
 
     const/4 v1, 0x2
 
@@ -63,7 +63,7 @@
 
     iput-boolean v0, p0, Landroid/filterfw/core/FilterPort;->mLogVerbose:Z
 
-    .line 42
+    .line 38
     return-void
 .end method
 
@@ -87,7 +87,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Illegal operation on closed "
+    const-string/jumbo v2, "Illegal operation on closed "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -97,7 +97,7 @@
 
     move-result-object v1
 
-    const-string v2, "!"
+    const-string/jumbo v2, "!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -111,15 +111,15 @@
 
     throw v0
 
-    .line 116
+    .line 112
     :cond_0
     return-void
 .end method
 
 .method protected checkFrameManager(Landroid/filterfw/core/Frame;Landroid/filterfw/core/FilterContext;)V
     .locals 3
-    .parameter "frame"
-    .parameter "context"
+    .param p1, "frame"    # Landroid/filterfw/core/Frame;
+    .param p2, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
     .line 128
@@ -129,6 +129,7 @@
 
     if-eqz v0, :cond_0
 
+    .line 129
     invoke-virtual {p1}, Landroid/filterfw/core/Frame;->getFrameManager()Landroid/filterfw/core/FrameManager;
 
     move-result-object v0
@@ -146,7 +147,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Frame "
+    const-string/jumbo v2, "Frame "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -156,7 +157,7 @@
 
     move-result-object v1
 
-    const-string v2, " is managed by foreign FrameManager! "
+    const-string/jumbo v2, " is managed by foreign FrameManager! "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -170,15 +171,15 @@
 
     throw v0
 
-    .line 132
+    .line 127
     :cond_0
     return-void
 .end method
 
 .method protected checkFrameType(Landroid/filterfw/core/Frame;Z)V
     .locals 3
-    .parameter "frame"
-    .parameter "forceCheck"
+    .param p1, "frame"    # Landroid/filterfw/core/Frame;
+    .param p2, "forceCheck"    # Z
 
     .prologue
     .line 119
@@ -188,11 +189,13 @@
 
     if-eqz p2, :cond_1
 
+    .line 120
     :cond_0
     iget-object v0, p0, Landroid/filterfw/core/FilterPort;->mPortFormat:Landroid/filterfw/core/FrameFormat;
 
     if-eqz v0, :cond_1
 
+    .line 121
     invoke-virtual {p1}, Landroid/filterfw/core/Frame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v0
@@ -203,16 +206,21 @@
 
     move-result v0
 
-    if-nez v0, :cond_1
+    if-eqz v0, :cond_2
+
+    .line 118
+    :cond_1
+    return-void
 
     .line 122
+    :cond_2
     new-instance v0, Ljava/lang/RuntimeException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Frame passed to "
+    const-string/jumbo v2, "Frame passed to "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -222,34 +230,42 @@
 
     move-result-object v1
 
-    const-string v2, " is of incorrect type! "
+    const-string/jumbo v2, " is of incorrect type! "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, "Expected "
+    .line 123
+    const-string/jumbo v2, "Expected "
 
+    .line 122
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 123
     iget-object v2, p0, Landroid/filterfw/core/FilterPort;->mPortFormat:Landroid/filterfw/core/FrameFormat;
 
+    .line 122
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, " but got "
+    .line 123
+    const-string/jumbo v2, " but got "
 
+    .line 122
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 123
     invoke-virtual {p1}, Landroid/filterfw/core/Frame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v2
 
+    .line 122
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -261,10 +277,6 @@
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
-
-    .line 125
-    :cond_1
-    return-void
 .end method
 
 .method public abstract clear()V
@@ -284,13 +296,13 @@
 
     if-eqz v0, :cond_0
 
-    const-string v0, "FilterPort"
+    const-string/jumbo v0, "FilterPort"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Closing "
+    const-string/jumbo v2, "Closing "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -312,7 +324,7 @@
 
     iput-boolean v0, p0, Landroid/filterfw/core/FilterPort;->mIsOpen:Z
 
-    .line 84
+    .line 79
     return-void
 .end method
 
@@ -409,13 +421,13 @@
 
     if-eqz v0, :cond_0
 
-    const-string v0, "FilterPort"
+    const-string/jumbo v0, "FilterPort"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Opening "
+    const-string/jumbo v2, "Opening "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -437,7 +449,7 @@
 
     iput-boolean v0, p0, Landroid/filterfw/core/FilterPort;->mIsOpen:Z
 
-    .line 77
+    .line 72
     return-void
 .end method
 
@@ -449,25 +461,25 @@
 
 .method public setBlocking(Z)V
     .locals 0
-    .parameter "blocking"
+    .param p1, "blocking"    # Z
 
     .prologue
     .line 65
     iput-boolean p1, p0, Landroid/filterfw/core/FilterPort;->mIsBlocking:Z
 
-    .line 66
+    .line 64
     return-void
 .end method
 
 .method public setChecksType(Z)V
     .locals 0
-    .parameter "checksType"
+    .param p1, "checksType"    # Z
 
     .prologue
     .line 69
     iput-boolean p1, p0, Landroid/filterfw/core/FilterPort;->mChecksType:Z
 
-    .line 70
+    .line 68
     return-void
 .end method
 
@@ -476,13 +488,13 @@
 
 .method public setPortFormat(Landroid/filterfw/core/FrameFormat;)V
     .locals 0
-    .parameter "format"
+    .param p1, "format"    # Landroid/filterfw/core/FrameFormat;
 
     .prologue
     .line 53
     iput-object p1, p0, Landroid/filterfw/core/FilterPort;->mPortFormat:Landroid/filterfw/core/FrameFormat;
 
-    .line 54
+    .line 52
     return-void
 .end method
 
@@ -507,7 +519,7 @@
 
     move-result-object v0
 
-    const-string v1, "\' of "
+    const-string/jumbo v1, "\' of "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

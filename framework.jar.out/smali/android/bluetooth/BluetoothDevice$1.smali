@@ -19,7 +19,7 @@
     .locals 0
 
     .prologue
-    .line 536
+    .line 615
     invoke-direct {p0}, Landroid/bluetooth/IBluetoothManagerCallback$Stub;-><init>()V
 
     return-void
@@ -36,37 +36,36 @@
     .end annotation
 
     .prologue
-    .line 547
-    const-class v1, Landroid/bluetooth/BluetoothDevice;
+    .line 628
+    const-class v0, Landroid/bluetooth/BluetoothDevice;
 
-    monitor-enter v1
+    monitor-enter v0
 
-    .line 548
-    const/4 v0, 0x0
+    .line 629
+    const/4 v1, 0x0
 
     :try_start_0
-    invoke-static {v0}, Landroid/bluetooth/BluetoothDevice;->access$002(Landroid/bluetooth/IBluetooth;)Landroid/bluetooth/IBluetooth;
-
-    .line 549
-    monitor-exit v1
-
-    .line 550
-    return-void
-
-    .line 549
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v1
+    invoke-static {v1}, Landroid/bluetooth/BluetoothDevice;->-set0(Landroid/bluetooth/IBluetooth;)Landroid/bluetooth/IBluetooth;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw v0
+    monitor-exit v0
+
+    .line 627
+    return-void
+
+    .line 628
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+
+    throw v1
 .end method
 
 .method public onBluetoothServiceUp(Landroid/bluetooth/IBluetooth;)V
     .locals 2
-    .parameter "bluetoothService"
+    .param p1, "bluetoothService"    # Landroid/bluetooth/IBluetooth;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -74,28 +73,43 @@
     .end annotation
 
     .prologue
-    .line 540
+    .line 619
     const-class v1, Landroid/bluetooth/BluetoothDevice;
 
     monitor-enter v1
 
-    .line 541
+    .line 620
     :try_start_0
-    invoke-static {p1}, Landroid/bluetooth/BluetoothDevice;->access$002(Landroid/bluetooth/IBluetooth;)Landroid/bluetooth/IBluetooth;
+    invoke-static {}, Landroid/bluetooth/BluetoothDevice;->-get0()Landroid/bluetooth/IBluetooth;
 
-    .line 542
+    move-result-object v0
+
+    if-nez v0, :cond_0
+
+    .line 621
+    invoke-static {p1}, Landroid/bluetooth/BluetoothDevice;->-set0(Landroid/bluetooth/IBluetooth;)Landroid/bluetooth/IBluetooth;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    :cond_0
     monitor-exit v1
 
-    .line 543
+    .line 618
     return-void
 
-    .line 542
+    .line 619
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
+.end method
+
+.method public onBrEdrDown()V
+    .locals 0
+
+    .prologue
+    .line 633
+    return-void
 .end method

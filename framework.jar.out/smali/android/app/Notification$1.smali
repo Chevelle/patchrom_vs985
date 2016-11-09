@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 979
+    .line 1781
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,10 +42,10 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/app/Notification;
     .locals 1
-    .parameter "parcel"
+    .param p1, "parcel"    # Landroid/os/Parcel;
 
     .prologue
-    .line 982
+    .line 1785
     new-instance v0, Landroid/app/Notification;
 
     invoke-direct {v0, p1}, Landroid/app/Notification;-><init>(Landroid/os/Parcel;)V
@@ -55,10 +55,10 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "parcel"    # Landroid/os/Parcel;
 
     .prologue
-    .line 979
+    .line 1783
     invoke-virtual {p0, p1}, Landroid/app/Notification$1;->createFromParcel(Landroid/os/Parcel;)Landroid/app/Notification;
 
     move-result-object v0
@@ -68,10 +68,10 @@
 
 .method public newArray(I)[Landroid/app/Notification;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 987
+    .line 1790
     new-array v0, p1, [Landroid/app/Notification;
 
     return-object v0
@@ -79,10 +79,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 979
+    .line 1788
     invoke-virtual {p0, p1}, Landroid/app/Notification$1;->newArray(I)[Landroid/app/Notification;
 
     move-result-object v0

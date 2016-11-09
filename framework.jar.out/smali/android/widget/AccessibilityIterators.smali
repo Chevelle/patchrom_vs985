@@ -6,8 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/widget/AccessibilityIterators$PageTextSegmentIterator;,
-        Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;
+        Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;,
+        Landroid/widget/AccessibilityIterators$PageTextSegmentIterator;
     }
 .end annotation
 
@@ -20,6 +20,5 @@
     .line 28
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 116
     return-void
 .end method

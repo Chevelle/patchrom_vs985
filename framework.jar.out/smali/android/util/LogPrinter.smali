@@ -17,8 +17,8 @@
 # direct methods
 .method public constructor <init>(ILjava/lang/String;)V
     .locals 1
-    .parameter "priority"
-    .parameter "tag"
+    .param p1, "priority"    # I
+    .param p2, "tag"    # Ljava/lang/String;
 
     .prologue
     .line 40
@@ -35,15 +35,15 @@
 
     iput v0, p0, Landroid/util/LogPrinter;->mBuffer:I
 
-    .line 44
+    .line 40
     return-void
 .end method
 
 .method public constructor <init>(ILjava/lang/String;I)V
     .locals 0
-    .parameter "priority"
-    .parameter "tag"
-    .parameter "buffer"
+    .param p1, "priority"    # I
+    .param p2, "tag"    # Ljava/lang/String;
+    .param p3, "buffer"    # I
 
     .prologue
     .line 50
@@ -58,7 +58,7 @@
     .line 53
     iput p3, p0, Landroid/util/LogPrinter;->mBuffer:I
 
-    .line 54
+    .line 50
     return-void
 .end method
 
@@ -66,7 +66,7 @@
 # virtual methods
 .method public println(Ljava/lang/String;)V
     .locals 3
-    .parameter "x"
+    .param p1, "x"    # Ljava/lang/String;
 
     .prologue
     .line 57
@@ -78,6 +78,6 @@
 
     invoke-static {v0, v1, v2, p1}, Landroid/util/Log;->println_native(IILjava/lang/String;Ljava/lang/String;)I
 
-    .line 58
+    .line 56
     return-void
 .end method

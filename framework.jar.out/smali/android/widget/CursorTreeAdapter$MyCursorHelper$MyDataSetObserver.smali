@@ -21,7 +21,7 @@
 # direct methods
 .method private constructor <init>(Landroid/widget/CursorTreeAdapter$MyCursorHelper;)V
     .locals 0
-    .parameter
+    .param p1, "this$1"    # Landroid/widget/CursorTreeAdapter$MyCursorHelper;
 
     .prologue
     .line 508
@@ -32,13 +32,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/widget/CursorTreeAdapter$MyCursorHelper;Landroid/widget/CursorTreeAdapter$1;)V
+.method synthetic constructor <init>(Landroid/widget/CursorTreeAdapter$MyCursorHelper;Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyDataSetObserver;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$1"    # Landroid/widget/CursorTreeAdapter$MyCursorHelper;
 
     .prologue
-    .line 508
     invoke-direct {p0, p1}, Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyDataSetObserver;-><init>(Landroid/widget/CursorTreeAdapter$MyCursorHelper;)V
 
     return-void
@@ -55,8 +53,7 @@
 
     const/4 v1, 0x1
 
-    #setter for: Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mDataValid:Z
-    invoke-static {v0, v1}, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->access$402(Landroid/widget/CursorTreeAdapter$MyCursorHelper;Z)Z
+    invoke-static {v0, v1}, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->-set0(Landroid/widget/CursorTreeAdapter$MyCursorHelper;Z)Z
 
     .line 512
     iget-object v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyDataSetObserver;->this$1:Landroid/widget/CursorTreeAdapter$MyCursorHelper;
@@ -65,7 +62,7 @@
 
     invoke-virtual {v0}, Landroid/widget/CursorTreeAdapter;->notifyDataSetChanged()V
 
-    .line 513
+    .line 510
     return-void
 .end method
 
@@ -78,8 +75,7 @@
 
     const/4 v1, 0x0
 
-    #setter for: Landroid/widget/CursorTreeAdapter$MyCursorHelper;->mDataValid:Z
-    invoke-static {v0, v1}, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->access$402(Landroid/widget/CursorTreeAdapter$MyCursorHelper;Z)Z
+    invoke-static {v0, v1}, Landroid/widget/CursorTreeAdapter$MyCursorHelper;->-set0(Landroid/widget/CursorTreeAdapter$MyCursorHelper;Z)Z
 
     .line 518
     iget-object v0, p0, Landroid/widget/CursorTreeAdapter$MyCursorHelper$MyDataSetObserver;->this$1:Landroid/widget/CursorTreeAdapter$MyCursorHelper;
@@ -88,6 +84,6 @@
 
     invoke-virtual {v0}, Landroid/widget/CursorTreeAdapter;->notifyDataSetInvalidated()V
 
-    .line 519
+    .line 516
     return-void
 .end method

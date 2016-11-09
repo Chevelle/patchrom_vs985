@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/media/RemoteDisplay;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/media/RemoteDisplay;
 
     .prologue
-    .line 137
+    .line 140
     iput-object p1, p0, Landroid/media/RemoteDisplay$2;->this$0:Landroid/media/RemoteDisplay;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,16 +41,15 @@
     .locals 1
 
     .prologue
-    .line 140
+    .line 143
     iget-object v0, p0, Landroid/media/RemoteDisplay$2;->this$0:Landroid/media/RemoteDisplay;
 
-    #getter for: Landroid/media/RemoteDisplay;->mListener:Landroid/media/RemoteDisplay$Listener;
-    invoke-static {v0}, Landroid/media/RemoteDisplay;->access$000(Landroid/media/RemoteDisplay;)Landroid/media/RemoteDisplay$Listener;
+    invoke-static {v0}, Landroid/media/RemoteDisplay;->-get0(Landroid/media/RemoteDisplay;)Landroid/media/RemoteDisplay$Listener;
 
     move-result-object v0
 
     invoke-interface {v0}, Landroid/media/RemoteDisplay$Listener;->onDisplayDisconnected()V
 
-    .line 141
+    .line 142
     return-void
 .end method

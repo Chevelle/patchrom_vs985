@@ -22,7 +22,7 @@
     .locals 0
 
     .prologue
-    .line 228
+    .line 235
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -32,9 +32,9 @@
 # virtual methods
 .method public println(Ljava/lang/String;)V
     .locals 0
-    .parameter "x"
+    .param p1, "x"    # Ljava/lang/String;
 
     .prologue
-    .line 231
+    .line 237
     return-void
 .end method

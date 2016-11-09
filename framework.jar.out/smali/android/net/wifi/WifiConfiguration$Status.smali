@@ -29,31 +29,32 @@
     .locals 3
 
     .prologue
-    .line 165
+    .line 181
     const/4 v0, 0x3
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const/4 v1, 0x0
+    const-string/jumbo v1, "current"
 
-    const-string v2, "current"
+    const/4 v2, 0x0
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x1
+    const-string/jumbo v1, "disabled"
 
-    const-string v2, "disabled"
+    const/4 v2, 0x1
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
-    const/4 v1, 0x2
+    const-string/jumbo v1, "enabled"
 
-    const-string v2, "enabled"
+    const/4 v2, 0x2
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     sput-object v0, Landroid/net/wifi/WifiConfiguration$Status;->strings:[Ljava/lang/String;
 
+    .line 171
     return-void
 .end method
 
@@ -61,7 +62,7 @@
     .locals 0
 
     .prologue
-    .line 156
+    .line 172
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 100
+    .line 101
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,10 +42,10 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/media/Rating;
     .locals 4
-    .parameter "p"
+    .param p1, "p"    # Landroid/os/Parcel;
 
     .prologue
-    .line 107
+    .line 109
     new-instance v0, Landroid/media/Rating;
 
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
@@ -58,17 +58,17 @@
 
     const/4 v3, 0x0
 
-    invoke-direct {v0, v1, v2, v3}, Landroid/media/Rating;-><init>(IFLandroid/media/Rating$1;)V
+    invoke-direct {v0, v1, v2, v3}, Landroid/media/Rating;-><init>(IFLandroid/media/Rating;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "p"    # Landroid/os/Parcel;
 
     .prologue
-    .line 100
+    .line 108
     invoke-virtual {p0, p1}, Landroid/media/Rating$1;->createFromParcel(Landroid/os/Parcel;)Landroid/media/Rating;
 
     move-result-object v0
@@ -78,10 +78,10 @@
 
 .method public newArray(I)[Landroid/media/Rating;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 110
+    .line 114
     new-array v0, p1, [Landroid/media/Rating;
 
     return-object v0
@@ -89,10 +89,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 100
+    .line 113
     invoke-virtual {p0, p1}, Landroid/media/Rating$1;->newArray(I)[Landroid/media/Rating;
 
     move-result-object v0

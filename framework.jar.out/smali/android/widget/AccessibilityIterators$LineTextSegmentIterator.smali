@@ -64,69 +64,107 @@
 # virtual methods
 .method public following(I)[I
     .locals 9
-    .parameter "offset"
+    .param p1, "offset"    # I
 
     .prologue
     const/4 v8, -0x1
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
+
+    const/4 v6, 0x0
 
     .line 52
-    iget-object v6, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mText:Ljava/lang/String;
+    iget-object v5, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mText:Ljava/lang/String;
 
-    invoke-virtual {v6}, Ljava/lang/String;->length()I
+    invoke-virtual {v5}, Ljava/lang/String;->length()I
 
     move-result v4
 
     .line 53
-    .local v4, textLegth:I
-    if-gtz v4, :cond_1
+    .local v4, "textLegth":I
+    if-gtz v4, :cond_0
 
-    .line 75
-    :cond_0
-    :goto_0
-    return-object v5
+    .line 54
+    return-object v7
 
     .line 56
-    :cond_1
-    iget-object v6, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mText:Ljava/lang/String;
+    :cond_0
+    iget-object v5, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mText:Ljava/lang/String;
 
-    invoke-virtual {v6}, Ljava/lang/String;->length()I
+    invoke-virtual {v5}, Ljava/lang/String;->length()I
 
-    move-result v6
+    move-result v5
 
-    if-ge p1, v6, :cond_0
+    if-lt p1, v5, :cond_1
+
+    .line 57
+    return-object v7
 
     .line 60
+    :cond_1
     if-gez p1, :cond_2
 
     .line 61
-    iget-object v6, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mLayout:Landroid/text/Layout;
+    iget-object v5, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mLayout:Landroid/text/Layout;
 
-    const/4 v7, 0x0
-
-    invoke-virtual {v6, v7}, Landroid/text/Layout;->getLineForOffset(I)I
+    invoke-virtual {v5, v6}, Landroid/text/Layout;->getLineForOffset(I)I
 
     move-result v2
 
     .line 70
-    .local v2, nextLine:I
-    :goto_1
-    iget-object v6, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mLayout:Landroid/text/Layout;
+    .local v2, "nextLine":I
+    :goto_0
+    iget-object v5, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mLayout:Landroid/text/Layout;
 
-    invoke-virtual {v6}, Landroid/text/Layout;->getLineCount()I
+    invoke-virtual {v5}, Landroid/text/Layout;->getLineCount()I
 
-    move-result v6
+    move-result v5
 
-    if-ge v2, v6, :cond_0
+    if-lt v2, v5, :cond_4
+
+    .line 71
+    return-object v7
+
+    .line 63
+    .end local v2    # "nextLine":I
+    :cond_2
+    iget-object v5, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mLayout:Landroid/text/Layout;
+
+    invoke-virtual {v5, p1}, Landroid/text/Layout;->getLineForOffset(I)I
+
+    move-result v0
+
+    .line 64
+    .local v0, "currentLine":I
+    invoke-virtual {p0, v0, v8}, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->getLineEdgeIndex(II)I
+
+    move-result v5
+
+    if-ne v5, p1, :cond_3
+
+    .line 65
+    move v2, v0
+
+    .restart local v2    # "nextLine":I
+    goto :goto_0
+
+    .line 67
+    .end local v2    # "nextLine":I
+    :cond_3
+    add-int/lit8 v2, v0, 0x1
+
+    .restart local v2    # "nextLine":I
+    goto :goto_0
 
     .line 73
+    .end local v0    # "currentLine":I
+    :cond_4
     invoke-virtual {p0, v2, v8}, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->getLineEdgeIndex(II)I
 
     move-result v3
 
     .line 74
-    .local v3, start:I
+    .local v3, "start":I
     const/4 v5, 0x1
 
     invoke-virtual {p0, v2, v5}, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->getLineEdgeIndex(II)I
@@ -136,51 +174,18 @@
     add-int/lit8 v1, v5, 0x1
 
     .line 75
-    .local v1, end:I
+    .local v1, "end":I
     invoke-virtual {p0, v3, v1}, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->getRange(II)[I
 
     move-result-object v5
 
-    goto :goto_0
-
-    .line 63
-    .end local v1           #end:I
-    .end local v2           #nextLine:I
-    .end local v3           #start:I
-    :cond_2
-    iget-object v6, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mLayout:Landroid/text/Layout;
-
-    invoke-virtual {v6, p1}, Landroid/text/Layout;->getLineForOffset(I)I
-
-    move-result v0
-
-    .line 64
-    .local v0, currentLine:I
-    invoke-virtual {p0, v0, v8}, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->getLineEdgeIndex(II)I
-
-    move-result v6
-
-    if-ne v6, p1, :cond_3
-
-    .line 65
-    move v2, v0
-
-    .restart local v2       #nextLine:I
-    goto :goto_1
-
-    .line 67
-    .end local v2           #nextLine:I
-    :cond_3
-    add-int/lit8 v2, v0, 0x1
-
-    .restart local v2       #nextLine:I
-    goto :goto_1
+    return-object v5
 .end method
 
 .method protected getLineEdgeIndex(II)I
     .locals 2
-    .parameter "lineNumber"
-    .parameter "direction"
+    .param p1, "lineNumber"    # I
+    .param p2, "direction"    # I
 
     .prologue
     .line 107
@@ -191,7 +196,7 @@
     move-result v0
 
     .line 108
-    .local v0, paragraphDirection:I
+    .local v0, "paragraphDirection":I
     mul-int v1, p2, v0
 
     if-gez v1, :cond_0
@@ -203,10 +208,9 @@
 
     move-result v1
 
-    .line 111
-    :goto_0
     return v1
 
+    .line 111
     :cond_0
     iget-object v1, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mLayout:Landroid/text/Layout;
 
@@ -216,17 +220,17 @@
 
     add-int/lit8 v1, v1, -0x1
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public initialize(Landroid/text/Spannable;Landroid/text/Layout;)V
     .locals 1
-    .parameter "text"
-    .parameter "layout"
+    .param p1, "text"    # Landroid/text/Spannable;
+    .param p2, "layout"    # Landroid/text/Layout;
 
     .prologue
     .line 46
-    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+    invoke-interface {p1}, Landroid/text/Spannable;->toString()Ljava/lang/String;
 
     move-result-object v0
 
@@ -235,67 +239,107 @@
     .line 47
     iput-object p2, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mLayout:Landroid/text/Layout;
 
-    .line 48
+    .line 45
     return-void
 .end method
 
 .method public preceding(I)[I
     .locals 9
-    .parameter "offset"
+    .param p1, "offset"    # I
 
     .prologue
     const/4 v8, 0x1
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
     .line 80
-    iget-object v6, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mText:Ljava/lang/String;
+    iget-object v5, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mText:Ljava/lang/String;
 
-    invoke-virtual {v6}, Ljava/lang/String;->length()I
+    invoke-virtual {v5}, Ljava/lang/String;->length()I
 
     move-result v4
 
     .line 81
-    .local v4, textLegth:I
-    if-gtz v4, :cond_1
+    .local v4, "textLegth":I
+    if-gtz v4, :cond_0
 
-    .line 103
-    :cond_0
-    :goto_0
-    return-object v5
+    .line 82
+    return-object v7
 
     .line 84
-    :cond_1
-    if-lez p1, :cond_0
+    :cond_0
+    if-gtz p1, :cond_1
+
+    .line 85
+    return-object v7
 
     .line 88
+    :cond_1
+    iget-object v5, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mText:Ljava/lang/String;
+
+    invoke-virtual {v5}, Ljava/lang/String;->length()I
+
+    move-result v5
+
+    if-le p1, v5, :cond_2
+
+    .line 89
+    iget-object v5, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mLayout:Landroid/text/Layout;
+
     iget-object v6, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mText:Ljava/lang/String;
 
     invoke-virtual {v6}, Ljava/lang/String;->length()I
 
     move-result v6
 
-    if-le p1, v6, :cond_2
-
-    .line 89
-    iget-object v6, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mLayout:Landroid/text/Layout;
-
-    iget-object v7, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mText:Ljava/lang/String;
-
-    invoke-virtual {v7}, Ljava/lang/String;->length()I
-
-    move-result v7
-
-    invoke-virtual {v6, v7}, Landroid/text/Layout;->getLineForOffset(I)I
+    invoke-virtual {v5, v6}, Landroid/text/Layout;->getLineForOffset(I)I
 
     move-result v2
 
     .line 98
-    .local v2, previousLine:I
-    :goto_1
-    if-ltz v2, :cond_0
+    .local v2, "previousLine":I
+    :goto_0
+    if-gez v2, :cond_4
+
+    .line 99
+    return-object v7
+
+    .line 91
+    .end local v2    # "previousLine":I
+    :cond_2
+    iget-object v5, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mLayout:Landroid/text/Layout;
+
+    invoke-virtual {v5, p1}, Landroid/text/Layout;->getLineForOffset(I)I
+
+    move-result v0
+
+    .line 92
+    .local v0, "currentLine":I
+    invoke-virtual {p0, v0, v8}, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->getLineEdgeIndex(II)I
+
+    move-result v5
+
+    add-int/lit8 v5, v5, 0x1
+
+    if-ne v5, p1, :cond_3
+
+    .line 93
+    move v2, v0
+
+    .restart local v2    # "previousLine":I
+    goto :goto_0
+
+    .line 95
+    .end local v2    # "previousLine":I
+    :cond_3
+    add-int/lit8 v2, v0, -0x1
+
+    .restart local v2    # "previousLine":I
+    goto :goto_0
 
     .line 101
+    .end local v0    # "currentLine":I
+    :cond_4
     const/4 v5, -0x1
 
     invoke-virtual {p0, v2, v5}, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->getLineEdgeIndex(II)I
@@ -303,7 +347,7 @@
     move-result v3
 
     .line 102
-    .local v3, start:I
+    .local v3, "start":I
     invoke-virtual {p0, v2, v8}, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->getLineEdgeIndex(II)I
 
     move-result v5
@@ -311,45 +355,10 @@
     add-int/lit8 v1, v5, 0x1
 
     .line 103
-    .local v1, end:I
+    .local v1, "end":I
     invoke-virtual {p0, v3, v1}, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->getRange(II)[I
 
     move-result-object v5
 
-    goto :goto_0
-
-    .line 91
-    .end local v1           #end:I
-    .end local v2           #previousLine:I
-    .end local v3           #start:I
-    :cond_2
-    iget-object v6, p0, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->mLayout:Landroid/text/Layout;
-
-    invoke-virtual {v6, p1}, Landroid/text/Layout;->getLineForOffset(I)I
-
-    move-result v0
-
-    .line 92
-    .local v0, currentLine:I
-    invoke-virtual {p0, v0, v8}, Landroid/widget/AccessibilityIterators$LineTextSegmentIterator;->getLineEdgeIndex(II)I
-
-    move-result v6
-
-    add-int/lit8 v6, v6, 0x1
-
-    if-ne v6, p1, :cond_3
-
-    .line 93
-    move v2, v0
-
-    .restart local v2       #previousLine:I
-    goto :goto_1
-
-    .line 95
-    .end local v2           #previousLine:I
-    :cond_3
-    add-int/lit8 v2, v0, -0x1
-
-    .restart local v2       #previousLine:I
-    goto :goto_1
+    return-object v5
 .end method

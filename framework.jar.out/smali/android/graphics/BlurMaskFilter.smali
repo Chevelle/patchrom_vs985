@@ -13,26 +13,26 @@
 
 # direct methods
 .method public constructor <init>(FLandroid/graphics/BlurMaskFilter$Blur;)V
-    .locals 1
-    .parameter "radius"
-    .parameter "style"
+    .locals 2
+    .param p1, "radius"    # F
+    .param p2, "style"    # Landroid/graphics/BlurMaskFilter$Blur;
 
     .prologue
-    .line 46
+    .line 61
     invoke-direct {p0}, Landroid/graphics/MaskFilter;-><init>()V
 
-    .line 47
+    .line 62
     iget v0, p2, Landroid/graphics/BlurMaskFilter$Blur;->native_int:I
 
-    invoke-static {p1, v0}, Landroid/graphics/BlurMaskFilter;->nativeConstructor(FI)I
+    invoke-static {p1, v0}, Landroid/graphics/BlurMaskFilter;->nativeConstructor(FI)J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/graphics/BlurMaskFilter;->native_instance:I
+    iput-wide v0, p0, Landroid/graphics/BlurMaskFilter;->native_instance:J
 
-    .line 48
+    .line 61
     return-void
 .end method
 
-.method private static native nativeConstructor(FI)I
+.method private static native nativeConstructor(FI)J
 .end method

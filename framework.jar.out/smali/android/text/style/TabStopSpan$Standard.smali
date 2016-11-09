@@ -24,7 +24,7 @@
 # direct methods
 .method public constructor <init>(I)V
     .locals 0
-    .parameter "where"
+    .param p1, "where"    # I
 
     .prologue
     .line 44
@@ -33,7 +33,7 @@
     .line 45
     iput p1, p0, Landroid/text/style/TabStopSpan$Standard;->mTab:I
 
-    .line 46
+    .line 44
     return-void
 .end method
 

@@ -8,10 +8,9 @@
     .locals 0
 
     .prologue
-    .line 33
+    .line 35
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
 
-    .line 34
     return-void
 .end method
 
@@ -21,17 +20,17 @@
     .locals 0
 
     .prologue
-    .line 53
+    .line 54
     return-void
 .end method
 
 .method public proceed(Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
-    .parameter "username"
-    .parameter "password"
+    .param p1, "username"    # Ljava/lang/String;
+    .param p2, "password"    # Ljava/lang/String;
 
     .prologue
-    .line 61
+    .line 62
     return-void
 .end method
 
@@ -39,7 +38,7 @@
     .locals 1
 
     .prologue
-    .line 70
+    .line 72
     const/4 v0, 0x0
 
     return v0
@@ -49,7 +48,7 @@
     .locals 1
 
     .prologue
-    .line 46
+    .line 48
     const/4 v0, 0x0
 
     return v0

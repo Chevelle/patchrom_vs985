@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/location/Geofence$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -32,6 +40,16 @@
 
 
 # direct methods
+.method static synthetic -wrap0(I)V
+    .locals 0
+    .param p0, "type"    # I
+
+    .prologue
+    invoke-static {p0}, Landroid/location/Geofence;->checkType(I)V
+
+    return-void
+.end method
+
 .method static constructor <clinit>()V
     .locals 1
 
@@ -43,14 +61,15 @@
 
     sput-object v0, Landroid/location/Geofence;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 29
     return-void
 .end method
 
 .method private constructor <init>(DDF)V
     .locals 1
-    .parameter "latitude"
-    .parameter "longitude"
-    .parameter "radius"
+    .param p1, "latitude"    # D
+    .param p3, "longitude"    # D
+    .param p5, "radius"    # F
 
     .prologue
     .line 51
@@ -76,35 +95,24 @@
     .line 57
     iput p5, p0, Landroid/location/Geofence;->mRadius:F
 
-    .line 58
-    return-void
-.end method
-
-.method static synthetic access$000(I)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 29
-    invoke-static {p0}, Landroid/location/Geofence;->checkType(I)V
-
+    .line 51
     return-void
 .end method
 
 .method private static checkLatLong(DD)V
-    .locals 3
-    .parameter "latitude"
-    .parameter "longitude"
+    .locals 4
+    .param p0, "latitude"    # D
+    .param p2, "longitude"    # D
 
     .prologue
     .line 87
-    const-wide v0, 0x4056800000000000L
+    const-wide v0, 0x4056800000000000L    # 90.0
 
     cmpl-double v0, p0, v0
 
     if-gtz v0, :cond_0
 
-    const-wide v0, -0x3fa9800000000000L
+    const-wide v0, -0x3fa9800000000000L    # -90.0
 
     cmpg-double v0, p0, v0
 
@@ -118,7 +126,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "invalid latitude: "
+    const-string/jumbo v2, "invalid latitude: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -138,13 +146,13 @@
 
     .line 90
     :cond_1
-    const-wide v0, 0x4066800000000000L
+    const-wide v0, 0x4066800000000000L    # 180.0
 
     cmpl-double v0, p2, v0
 
     if-gtz v0, :cond_2
 
-    const-wide v0, -0x3f99800000000000L
+    const-wide v0, -0x3f99800000000000L    # -180.0
 
     cmpg-double v0, p2, v0
 
@@ -158,7 +166,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "invalid longitude: "
+    const-string/jumbo v2, "invalid longitude: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -176,14 +184,14 @@
 
     throw v0
 
-    .line 93
+    .line 86
     :cond_3
     return-void
 .end method
 
 .method private static checkRadius(F)V
     .locals 3
-    .parameter "radius"
+    .param p0, "radius"    # F
 
     .prologue
     .line 81
@@ -200,7 +208,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "invalid radius: "
+    const-string/jumbo v2, "invalid radius: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -218,14 +226,14 @@
 
     throw v0
 
-    .line 84
+    .line 80
     :cond_0
     return-void
 .end method
 
 .method private static checkType(I)V
     .locals 3
-    .parameter "type"
+    .param p0, "type"    # I
 
     .prologue
     .line 96
@@ -240,7 +248,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "invalid type: "
+    const-string/jumbo v2, "invalid type: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -258,35 +266,35 @@
 
     throw v0
 
-    .line 99
+    .line 95
     :cond_0
     return-void
 .end method
 
 .method public static createCircle(DDF)Landroid/location/Geofence;
-    .locals 6
-    .parameter "latitude"
-    .parameter "longitude"
-    .parameter "radius"
+    .locals 8
+    .param p0, "latitude"    # D
+    .param p2, "longitude"    # D
+    .param p4, "radius"    # F
 
     .prologue
     .line 48
-    new-instance v0, Landroid/location/Geofence;
+    new-instance v1, Landroid/location/Geofence;
 
-    move-wide v1, p0
+    move-wide v2, p0
 
-    move-wide v3, p2
+    move-wide v4, p2
 
-    move v5, p4
+    move v6, p4
 
-    invoke-direct/range {v0 .. v5}, Landroid/location/Geofence;-><init>(DDF)V
+    invoke-direct/range {v1 .. v6}, Landroid/location/Geofence;-><init>(DDF)V
 
-    return-object v0
+    return-object v1
 .end method
 
 .method private static typeToString(I)Ljava/lang/String;
     .locals 1
-    .parameter "type"
+    .param p0, "type"    # I
 
     .prologue
     .line 131
@@ -298,18 +306,15 @@
     .line 136
     const/4 v0, 0x0
 
-    :goto_0
     return-object v0
 
     .line 133
     :pswitch_0
-    const-string v0, "CIRCLE"
+    const-string/jumbo v0, "CIRCLE"
 
-    goto :goto_0
+    return-object v0
 
     .line 131
-    nop
-
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0
@@ -329,105 +334,95 @@
 .end method
 
 .method public equals(Ljava/lang/Object;)Z
-    .locals 7
-    .parameter "obj"
+    .locals 8
+    .param p1, "obj"    # Ljava/lang/Object;
 
     .prologue
-    const/4 v1, 0x1
+    const/4 v7, 0x1
 
-    const/4 v2, 0x0
+    const/4 v6, 0x0
 
     .line 165
-    if-ne p0, p1, :cond_1
+    if-ne p0, p1, :cond_0
 
-    .line 180
-    :cond_0
-    :goto_0
-    return v1
+    .line 166
+    return v7
 
     .line 167
-    :cond_1
-    if-nez p1, :cond_2
-
-    move v1, v2
+    :cond_0
+    if-nez p1, :cond_1
 
     .line 168
-    goto :goto_0
+    return v6
 
     .line 169
-    :cond_2
-    instance-of v3, p1, Landroid/location/Geofence;
+    :cond_1
+    instance-of v1, p1, Landroid/location/Geofence;
 
-    if-nez v3, :cond_3
-
-    move v1, v2
+    if-nez v1, :cond_2
 
     .line 170
-    goto :goto_0
+    return v6
 
-    :cond_3
+    :cond_2
     move-object v0, p1
 
     .line 171
     check-cast v0, Landroid/location/Geofence;
 
     .line 172
-    .local v0, other:Landroid/location/Geofence;
-    iget v3, p0, Landroid/location/Geofence;->mRadius:F
+    .local v0, "other":Landroid/location/Geofence;
+    iget v1, p0, Landroid/location/Geofence;->mRadius:F
 
-    iget v4, v0, Landroid/location/Geofence;->mRadius:F
+    iget v2, v0, Landroid/location/Geofence;->mRadius:F
 
-    cmpl-float v3, v3, v4
+    cmpl-float v1, v1, v2
 
-    if-eqz v3, :cond_4
-
-    move v1, v2
+    if-eqz v1, :cond_3
 
     .line 173
-    goto :goto_0
+    return v6
 
     .line 174
-    :cond_4
-    iget-wide v3, p0, Landroid/location/Geofence;->mLatitude:D
+    :cond_3
+    iget-wide v2, p0, Landroid/location/Geofence;->mLatitude:D
 
-    iget-wide v5, v0, Landroid/location/Geofence;->mLatitude:D
+    iget-wide v4, v0, Landroid/location/Geofence;->mLatitude:D
 
-    cmpl-double v3, v3, v5
+    cmpl-double v1, v2, v4
 
-    if-eqz v3, :cond_5
-
-    move v1, v2
+    if-eqz v1, :cond_4
 
     .line 175
-    goto :goto_0
+    return v6
 
     .line 176
-    :cond_5
-    iget-wide v3, p0, Landroid/location/Geofence;->mLongitude:D
+    :cond_4
+    iget-wide v2, p0, Landroid/location/Geofence;->mLongitude:D
 
-    iget-wide v5, v0, Landroid/location/Geofence;->mLongitude:D
+    iget-wide v4, v0, Landroid/location/Geofence;->mLongitude:D
 
-    cmpl-double v3, v3, v5
+    cmpl-double v1, v2, v4
 
-    if-eqz v3, :cond_6
-
-    move v1, v2
+    if-eqz v1, :cond_5
 
     .line 177
-    goto :goto_0
+    return v6
 
     .line 178
-    :cond_6
-    iget v3, p0, Landroid/location/Geofence;->mType:I
+    :cond_5
+    iget v1, p0, Landroid/location/Geofence;->mType:I
 
-    iget v4, v0, Landroid/location/Geofence;->mType:I
+    iget v2, v0, Landroid/location/Geofence;->mType:I
 
-    if-eq v3, v4, :cond_0
-
-    move v1, v2
+    if-eq v1, v2, :cond_6
 
     .line 179
-    goto :goto_0
+    return v6
+
+    .line 180
+    :cond_6
+    return v7
 .end method
 
 .method public getLatitude()D
@@ -471,7 +466,7 @@
 .end method
 
 .method public hashCode()I
-    .locals 7
+    .locals 8
 
     .prologue
     const/16 v6, 0x20
@@ -479,12 +474,8 @@
     .line 148
     const/16 v0, 0x1f
 
-    .line 149
-    .local v0, prime:I
-    const/4 v1, 0x1
-
     .line 151
-    .local v1, result:I
+    .local v0, "prime":I
     iget-wide v4, p0, Landroid/location/Geofence;->mLatitude:D
 
     invoke-static {v4, v5}, Ljava/lang/Double;->doubleToLongBits(D)J
@@ -492,7 +483,7 @@
     move-result-wide v2
 
     .line 152
-    .local v2, temp:J
+    .local v2, "temp":J
     ushr-long v4, v2, v6
 
     xor-long/2addr v4, v2
@@ -502,6 +493,7 @@
     add-int/lit8 v1, v4, 0x1f
 
     .line 153
+    .local v1, "result":I
     iget-wide v4, p0, Landroid/location/Geofence;->mLongitude:D
 
     invoke-static {v4, v5}, Ljava/lang/Double;->doubleToLongBits(D)J
@@ -511,11 +503,11 @@
     .line 154
     mul-int/lit8 v4, v1, 0x1f
 
-    ushr-long v5, v2, v6
+    ushr-long v6, v2, v6
 
-    xor-long/2addr v5, v2
+    xor-long/2addr v6, v2
 
-    long-to-int v5, v5
+    long-to-int v5, v6
 
     add-int v1, v4, v5
 
@@ -542,56 +534,58 @@
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 5
+    .locals 4
 
     .prologue
     .line 142
-    const-string v0, "Geofence[%s %.6f, %.6f %.0fm]"
+    const-string/jumbo v0, "Geofence[%s %.6f, %.6f %.0fm]"
 
     const/4 v1, 0x4
 
     new-array v1, v1, [Ljava/lang/Object;
 
-    const/4 v2, 0x0
+    .line 143
+    iget v2, p0, Landroid/location/Geofence;->mType:I
 
-    iget v3, p0, Landroid/location/Geofence;->mType:I
+    invoke-static {v2}, Landroid/location/Geofence;->typeToString(I)Ljava/lang/String;
 
-    invoke-static {v3}, Landroid/location/Geofence;->typeToString(I)Ljava/lang/String;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x0
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x1
+    iget-wide v2, p0, Landroid/location/Geofence;->mLatitude:D
 
-    iget-wide v3, p0, Landroid/location/Geofence;->mLatitude:D
+    invoke-static {v2, v3}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
 
-    invoke-static {v3, v4}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x1
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x2
+    iget-wide v2, p0, Landroid/location/Geofence;->mLongitude:D
 
-    iget-wide v3, p0, Landroid/location/Geofence;->mLongitude:D
+    invoke-static {v2, v3}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
 
-    invoke-static {v3, v4}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x2
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
-    const/4 v2, 0x3
+    iget v2, p0, Landroid/location/Geofence;->mRadius:F
 
-    iget v3, p0, Landroid/location/Geofence;->mRadius:F
+    invoke-static {v2}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
-    invoke-static {v3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+    move-result-object v2
 
-    move-result-object v3
+    const/4 v3, 0x3
 
-    aput-object v3, v1, v2
+    aput-object v2, v1, v3
 
+    .line 142
     invoke-static {v0, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
@@ -601,8 +595,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 2
-    .parameter "parcel"
-    .parameter "flags"
+    .param p1, "parcel"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 124
@@ -625,6 +619,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeFloat(F)V
 
-    .line 128
+    .line 123
     return-void
 .end method

@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 92
+    .line 99
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,37 +42,34 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/os/Messenger;
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 94
+    const/4 v1, 0x0
+
+    .line 101
     invoke-virtual {p1}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v0
 
-    .line 95
-    .local v0, target:Landroid/os/IBinder;
+    .line 102
+    .local v0, "target":Landroid/os/IBinder;
     if-eqz v0, :cond_0
 
     new-instance v1, Landroid/os/Messenger;
 
     invoke-direct {v1, v0}, Landroid/os/Messenger;-><init>(Landroid/os/IBinder;)V
 
-    :goto_0
-    return-object v1
-
     :cond_0
-    const/4 v1, 0x0
-
-    goto :goto_0
+    return-object v1
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 92
+    .line 100
     invoke-virtual {p0, p1}, Landroid/os/Messenger$1;->createFromParcel(Landroid/os/Parcel;)Landroid/os/Messenger;
 
     move-result-object v0
@@ -82,10 +79,10 @@
 
 .method public newArray(I)[Landroid/os/Messenger;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 99
+    .line 106
     new-array v0, p1, [Landroid/os/Messenger;
 
     return-object v0
@@ -93,10 +90,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 92
+    .line 105
     invoke-virtual {p0, p1}, Landroid/os/Messenger$1;->newArray(I)[Landroid/os/Messenger;
 
     move-result-object v0

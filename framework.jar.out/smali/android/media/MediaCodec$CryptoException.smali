@@ -15,11 +15,15 @@
 
 
 # static fields
+.field public static final ERROR_INSUFFICIENT_OUTPUT_PROTECTION:I = 0x4
+
 .field public static final ERROR_KEY_EXPIRED:I = 0x2
 
 .field public static final ERROR_NO_KEY:I = 0x1
 
 .field public static final ERROR_RESOURCE_BUSY:I = 0x3
+
+.field public static final ERROR_SESSION_NOT_OPENED:I = 0x5
 
 
 # instance fields
@@ -29,17 +33,17 @@
 # direct methods
 .method public constructor <init>(ILjava/lang/String;)V
     .locals 0
-    .parameter "errorCode"
-    .parameter "detailMessage"
+    .param p1, "errorCode"    # I
+    .param p2, "detailMessage"    # Ljava/lang/String;
 
     .prologue
-    .line 304
+    .line 2037
     invoke-direct {p0, p2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
-    .line 305
+    .line 2038
     iput p1, p0, Landroid/media/MediaCodec$CryptoException;->mErrorCode:I
 
-    .line 306
+    .line 2036
     return-void
 .end method
 
@@ -49,7 +53,7 @@
     .locals 1
 
     .prologue
-    .line 330
+    .line 2093
     iget v0, p0, Landroid/media/MediaCodec$CryptoException;->mErrorCode:I
 
     return v0

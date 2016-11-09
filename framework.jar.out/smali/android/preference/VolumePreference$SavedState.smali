@@ -13,6 +13,12 @@
     name = "SavedState"
 .end annotation
 
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/preference/VolumePreference$SavedState$1;
+    }
+.end annotation
+
 
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
@@ -36,32 +42,34 @@
     .locals 1
 
     .prologue
-    .line 216
+    .line 228
     new-instance v0, Landroid/preference/VolumePreference$SavedState$1;
 
     invoke-direct {v0}, Landroid/preference/VolumePreference$SavedState$1;-><init>()V
 
+    .line 227
     sput-object v0, Landroid/preference/VolumePreference$SavedState;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 203
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 196
+    .line 207
     invoke-direct {p0, p1}, Landroid/preference/Preference$BaseSavedState;-><init>(Landroid/os/Parcel;)V
 
-    .line 193
+    .line 204
     new-instance v0, Landroid/preference/VolumePreference$VolumeStore;
 
     invoke-direct {v0}, Landroid/preference/VolumePreference$VolumeStore;-><init>()V
 
     iput-object v0, p0, Landroid/preference/VolumePreference$SavedState;->mVolumeStore:Landroid/preference/VolumePreference$VolumeStore;
 
-    .line 197
+    .line 208
     iget-object v0, p0, Landroid/preference/VolumePreference$SavedState;->mVolumeStore:Landroid/preference/VolumePreference$VolumeStore;
 
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
@@ -70,7 +78,7 @@
 
     iput v1, v0, Landroid/preference/VolumePreference$VolumeStore;->volume:I
 
-    .line 198
+    .line 209
     iget-object v0, p0, Landroid/preference/VolumePreference$SavedState;->mVolumeStore:Landroid/preference/VolumePreference$VolumeStore;
 
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
@@ -79,26 +87,26 @@
 
     iput v1, v0, Landroid/preference/VolumePreference$VolumeStore;->originalVolume:I
 
-    .line 199
+    .line 206
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcelable;)V
     .locals 1
-    .parameter "superState"
+    .param p1, "superState"    # Landroid/os/Parcelable;
 
     .prologue
-    .line 213
+    .line 224
     invoke-direct {p0, p1}, Landroid/preference/Preference$BaseSavedState;-><init>(Landroid/os/Parcelable;)V
 
-    .line 193
+    .line 204
     new-instance v0, Landroid/preference/VolumePreference$VolumeStore;
 
     invoke-direct {v0}, Landroid/preference/VolumePreference$VolumeStore;-><init>()V
 
     iput-object v0, p0, Landroid/preference/VolumePreference$SavedState;->mVolumeStore:Landroid/preference/VolumePreference$VolumeStore;
 
-    .line 214
+    .line 223
     return-void
 .end method
 
@@ -108,7 +116,7 @@
     .locals 1
 
     .prologue
-    .line 209
+    .line 220
     iget-object v0, p0, Landroid/preference/VolumePreference$SavedState;->mVolumeStore:Landroid/preference/VolumePreference$VolumeStore;
 
     return-object v0
@@ -116,27 +124,27 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 203
+    .line 214
     invoke-super {p0, p1, p2}, Landroid/preference/Preference$BaseSavedState;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 204
+    .line 215
     iget-object v0, p0, Landroid/preference/VolumePreference$SavedState;->mVolumeStore:Landroid/preference/VolumePreference$VolumeStore;
 
     iget v0, v0, Landroid/preference/VolumePreference$VolumeStore;->volume:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 205
+    .line 216
     iget-object v0, p0, Landroid/preference/VolumePreference$SavedState;->mVolumeStore:Landroid/preference/VolumePreference$VolumeStore;
 
     iget v0, v0, Landroid/preference/VolumePreference$VolumeStore;->originalVolume:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 206
+    .line 213
     return-void
 .end method

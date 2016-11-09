@@ -32,11 +32,11 @@
 # direct methods
 .method constructor <init>(Landroid/test/InstrumentationTestCase;Ljava/lang/reflect/Method;IZ[Ljava/lang/Throwable;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/test/InstrumentationTestCase;
+    .param p2, "val$testMethod"    # Ljava/lang/reflect/Method;
+    .param p3, "val$tolerance"    # I
+    .param p4, "val$repetitive"    # Z
+    .param p5, "val$exceptions"    # [Ljava/lang/Throwable;
 
     .prologue
     .line 186
@@ -71,12 +71,11 @@
 
     iget-boolean v4, p0, Landroid/test/InstrumentationTestCase$2;->val$repetitive:Z
 
-    #calls: Landroid/test/InstrumentationTestCase;->runMethod(Ljava/lang/reflect/Method;IZ)V
-    invoke-static {v1, v2, v3, v4}, Landroid/test/InstrumentationTestCase;->access$000(Landroid/test/InstrumentationTestCase;Ljava/lang/reflect/Method;IZ)V
+    invoke-static {v1, v2, v3, v4}, Landroid/test/InstrumentationTestCase;->-wrap0(Landroid/test/InstrumentationTestCase;Ljava/lang/reflect/Method;IZ)V
     :try_end_0
     .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 193
+    .line 187
     :goto_0
     return-void
 
@@ -85,7 +84,7 @@
     move-exception v0
 
     .line 191
-    .local v0, throwable:Ljava/lang/Throwable;
+    .local v0, "throwable":Ljava/lang/Throwable;
     iget-object v1, p0, Landroid/test/InstrumentationTestCase$2;->val$exceptions:[Ljava/lang/Throwable;
 
     const/4 v2, 0x0

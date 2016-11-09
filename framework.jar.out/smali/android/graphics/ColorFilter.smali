@@ -4,9 +4,7 @@
 
 
 # instance fields
-.field public nativeColorFilter:I
-
-.field native_instance:I
+.field public native_instance:J
 
 
 # direct methods
@@ -14,19 +12,19 @@
     .locals 0
 
     .prologue
-    .line 25
+    .line 29
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method private static native finalizer(II)V
+.method static native destroyFilter(J)V
 .end method
 
 
 # virtual methods
 .method protected finalize()V
-    .locals 3
+    .locals 4
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/Throwable;
@@ -34,31 +32,29 @@
     .end annotation
 
     .prologue
-    .line 35
+    .line 40
     :try_start_0
     invoke-super {p0}, Ljava/lang/Object;->finalize()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 37
-    iget v0, p0, Landroid/graphics/ColorFilter;->native_instance:I
+    .line 42
+    iget-wide v0, p0, Landroid/graphics/ColorFilter;->native_instance:J
 
-    iget v1, p0, Landroid/graphics/ColorFilter;->nativeColorFilter:I
+    invoke-static {v0, v1}, Landroid/graphics/ColorFilter;->destroyFilter(J)V
 
-    invoke-static {v0, v1}, Landroid/graphics/ColorFilter;->finalizer(II)V
-
-    .line 39
+    .line 38
     return-void
 
-    .line 37
+    .line 41
     :catchall_0
     move-exception v0
 
-    iget v1, p0, Landroid/graphics/ColorFilter;->native_instance:I
+    .line 42
+    iget-wide v2, p0, Landroid/graphics/ColorFilter;->native_instance:J
 
-    iget v2, p0, Landroid/graphics/ColorFilter;->nativeColorFilter:I
+    invoke-static {v2, v3}, Landroid/graphics/ColorFilter;->destroyFilter(J)V
 
-    invoke-static {v1, v2}, Landroid/graphics/ColorFilter;->finalizer(II)V
-
+    .line 41
     throw v0
 .end method

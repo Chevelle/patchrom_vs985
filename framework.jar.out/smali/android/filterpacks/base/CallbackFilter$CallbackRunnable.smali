@@ -32,31 +32,31 @@
 # direct methods
 .method public constructor <init>(Landroid/filterpacks/base/CallbackFilter;Landroid/filterfw/core/FilterContext$OnFrameReceivedListener;Landroid/filterfw/core/Filter;Landroid/filterfw/core/Frame;Ljava/lang/Object;)V
     .locals 0
-    .parameter
-    .parameter "listener"
-    .parameter "filter"
-    .parameter "frame"
-    .parameter "userData"
+    .param p1, "this$0"    # Landroid/filterpacks/base/CallbackFilter;
+    .param p2, "listener"    # Landroid/filterfw/core/FilterContext$OnFrameReceivedListener;
+    .param p3, "filter"    # Landroid/filterfw/core/Filter;
+    .param p4, "frame"    # Landroid/filterfw/core/Frame;
+    .param p5, "userData"    # Ljava/lang/Object;
 
     .prologue
-    .line 57
+    .line 52
     iput-object p1, p0, Landroid/filterpacks/base/CallbackFilter$CallbackRunnable;->this$0:Landroid/filterpacks/base/CallbackFilter;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 58
+    .line 53
     iput-object p2, p0, Landroid/filterpacks/base/CallbackFilter$CallbackRunnable;->mListener:Landroid/filterfw/core/FilterContext$OnFrameReceivedListener;
 
-    .line 59
+    .line 54
     iput-object p3, p0, Landroid/filterpacks/base/CallbackFilter$CallbackRunnable;->mFilter:Landroid/filterfw/core/Filter;
 
-    .line 60
+    .line 55
     iput-object p4, p0, Landroid/filterpacks/base/CallbackFilter$CallbackRunnable;->mFrame:Landroid/filterfw/core/Frame;
 
-    .line 61
+    .line 56
     iput-object p5, p0, Landroid/filterpacks/base/CallbackFilter$CallbackRunnable;->mUserData:Ljava/lang/Object;
 
-    .line 62
+    .line 52
     return-void
 .end method
 
@@ -66,7 +66,7 @@
     .locals 4
 
     .prologue
-    .line 65
+    .line 60
     iget-object v0, p0, Landroid/filterpacks/base/CallbackFilter$CallbackRunnable;->mListener:Landroid/filterfw/core/FilterContext$OnFrameReceivedListener;
 
     iget-object v1, p0, Landroid/filterpacks/base/CallbackFilter$CallbackRunnable;->mFilter:Landroid/filterfw/core/Filter;
@@ -77,11 +77,11 @@
 
     invoke-interface {v0, v1, v2, v3}, Landroid/filterfw/core/FilterContext$OnFrameReceivedListener;->onFrameReceived(Landroid/filterfw/core/Filter;Landroid/filterfw/core/Frame;Ljava/lang/Object;)V
 
-    .line 66
+    .line 61
     iget-object v0, p0, Landroid/filterpacks/base/CallbackFilter$CallbackRunnable;->mFrame:Landroid/filterfw/core/Frame;
 
     invoke-virtual {v0}, Landroid/filterfw/core/Frame;->release()Landroid/filterfw/core/Frame;
 
-    .line 67
+    .line 59
     return-void
 .end method

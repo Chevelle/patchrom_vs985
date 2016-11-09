@@ -44,8 +44,6 @@
     .line 236
     sget-object v0, Landroid/text/method/TextKeyListener$NullKeyListener;->sInstance:Landroid/text/method/TextKeyListener$NullKeyListener;
 
-    .line 239
-    :goto_0
     return-object v0
 
     .line 238
@@ -59,19 +57,19 @@
     .line 239
     sget-object v0, Landroid/text/method/TextKeyListener$NullKeyListener;->sInstance:Landroid/text/method/TextKeyListener$NullKeyListener;
 
-    goto :goto_0
+    return-object v0
 .end method
 
 
 # virtual methods
 .method public clearMetaKeyState(Landroid/view/View;Landroid/text/Editable;I)V
     .locals 0
-    .parameter "view"
-    .parameter "content"
-    .parameter "states"
+    .param p1, "view"    # Landroid/view/View;
+    .param p2, "content"    # Landroid/text/Editable;
+    .param p3, "states"    # I
 
     .prologue
-    .line 232
+    .line 231
     return-void
 .end method
 
@@ -87,10 +85,10 @@
 
 .method public onKeyDown(Landroid/view/View;Landroid/text/Editable;ILandroid/view/KeyEvent;)Z
     .locals 1
-    .parameter "view"
-    .parameter "content"
-    .parameter "keyCode"
-    .parameter "event"
+    .param p1, "view"    # Landroid/view/View;
+    .param p2, "content"    # Landroid/text/Editable;
+    .param p3, "keyCode"    # I
+    .param p4, "event"    # Landroid/view/KeyEvent;
 
     .prologue
     .line 219
@@ -101,9 +99,9 @@
 
 .method public onKeyOther(Landroid/view/View;Landroid/text/Editable;Landroid/view/KeyEvent;)Z
     .locals 1
-    .parameter "view"
-    .parameter "content"
-    .parameter "event"
+    .param p1, "view"    # Landroid/view/View;
+    .param p2, "content"    # Landroid/text/Editable;
+    .param p3, "event"    # Landroid/view/KeyEvent;
 
     .prologue
     .line 228
@@ -114,10 +112,10 @@
 
 .method public onKeyUp(Landroid/view/View;Landroid/text/Editable;ILandroid/view/KeyEvent;)Z
     .locals 1
-    .parameter "view"
-    .parameter "content"
-    .parameter "keyCode"
-    .parameter "event"
+    .param p1, "view"    # Landroid/view/View;
+    .param p2, "content"    # Landroid/text/Editable;
+    .param p3, "keyCode"    # I
+    .param p4, "event"    # Landroid/view/KeyEvent;
 
     .prologue
     .line 224

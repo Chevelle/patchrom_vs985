@@ -41,38 +41,38 @@
 
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/location/Country;
-    .locals 6
-    .parameter "in"
+    .locals 7
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 138
-    new-instance v0, Landroid/location/Country;
+    new-instance v1, Landroid/location/Country;
 
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v2
 
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
-    move-result v2
+    move-result v3
 
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
-    move-result-wide v3
+    move-result-wide v4
 
-    const/4 v5, 0x0
+    const/4 v6, 0x0
 
-    invoke-direct/range {v0 .. v5}, Landroid/location/Country;-><init>(Ljava/lang/String;IJLandroid/location/Country$1;)V
+    invoke-direct/range {v1 .. v6}, Landroid/location/Country;-><init>(Ljava/lang/String;IJLandroid/location/Country;)V
 
-    return-object v0
+    return-object v1
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 136
+    .line 137
     invoke-virtual {p0, p1}, Landroid/location/Country$1;->createFromParcel(Landroid/os/Parcel;)Landroid/location/Country;
 
     move-result-object v0
@@ -82,7 +82,7 @@
 
 .method public newArray(I)[Landroid/location/Country;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 142
@@ -93,10 +93,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 136
+    .line 141
     invoke-virtual {p0, p1}, Landroid/location/Country$1;->newArray(I)[Landroid/location/Country;
 
     move-result-object v0

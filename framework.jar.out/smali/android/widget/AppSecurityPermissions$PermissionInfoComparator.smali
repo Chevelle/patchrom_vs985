@@ -36,17 +36,17 @@
     .locals 1
 
     .prologue
-    .line 598
+    .line 580
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 597
+    .line 579
     invoke-static {}, Ljava/text/Collator;->getInstance()Ljava/text/Collator;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/widget/AppSecurityPermissions$PermissionInfoComparator;->sCollator:Ljava/text/Collator;
 
-    .line 599
+    .line 580
     return-void
 .end method
 
@@ -54,11 +54,11 @@
 # virtual methods
 .method public final compare(Landroid/widget/AppSecurityPermissions$MyPermissionInfo;Landroid/widget/AppSecurityPermissions$MyPermissionInfo;)I
     .locals 3
-    .parameter "a"
-    .parameter "b"
+    .param p1, "a"    # Landroid/widget/AppSecurityPermissions$MyPermissionInfo;
+    .param p2, "b"    # Landroid/widget/AppSecurityPermissions$MyPermissionInfo;
 
     .prologue
-    .line 601
+    .line 583
     iget-object v0, p0, Landroid/widget/AppSecurityPermissions$PermissionInfoComparator;->sCollator:Ljava/text/Collator;
 
     iget-object v1, p1, Landroid/widget/AppSecurityPermissions$MyPermissionInfo;->mLabel:Ljava/lang/CharSequence;
@@ -74,17 +74,17 @@
 
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
     .locals 1
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "a"    # Ljava/lang/Object;
+    .param p2, "b"    # Ljava/lang/Object;
 
     .prologue
-    .line 596
+    .line 582
     check-cast p1, Landroid/widget/AppSecurityPermissions$MyPermissionInfo;
 
-    .end local p1
+    .end local p1    # "a":Ljava/lang/Object;
     check-cast p2, Landroid/widget/AppSecurityPermissions$MyPermissionInfo;
 
-    .end local p2
+    .end local p2    # "b":Ljava/lang/Object;
     invoke-virtual {p0, p1, p2}, Landroid/widget/AppSecurityPermissions$PermissionInfoComparator;->compare(Landroid/widget/AppSecurityPermissions$MyPermissionInfo;Landroid/widget/AppSecurityPermissions$MyPermissionInfo;)I
 
     move-result v0

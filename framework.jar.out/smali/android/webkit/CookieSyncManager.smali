@@ -3,6 +3,11 @@
 .source "CookieSyncManager.java"
 
 
+# annotations
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
+
 # static fields
 .field private static sGetInstanceAllowed:Z
 
@@ -14,11 +19,12 @@
     .locals 1
 
     .prologue
-    .line 62
+    .line 67
     const/4 v0, 0x0
 
     sput-boolean v0, Landroid/webkit/CookieSyncManager;->sGetInstanceAllowed:Z
 
+    .line 64
     return-void
 .end method
 
@@ -26,12 +32,12 @@
     .locals 1
 
     .prologue
-    .line 65
-    const-string v0, "CookieSyncManager"
+    const/4 v0, 0x0
 
-    invoke-direct {p0, v0}, Landroid/webkit/WebSyncManager;-><init>(Ljava/lang/String;)V
+    .line 70
+    invoke-direct {p0, v0, v0}, Landroid/webkit/WebSyncManager;-><init>(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 66
+    .line 69
     return-void
 .end method
 
@@ -39,42 +45,44 @@
     .locals 2
 
     .prologue
-    .line 123
+    .line 154
     sget-boolean v0, Landroid/webkit/CookieSyncManager;->sGetInstanceAllowed:Z
 
     if-nez v0, :cond_0
 
-    .line 124
+    .line 155
     new-instance v0, Ljava/lang/IllegalStateException;
 
-    const-string v1, "CookieSyncManager::createInstance() needs to be called before CookieSyncManager::getInstance()"
+    .line 156
+    const-string/jumbo v1, "CookieSyncManager::createInstance() needs to be called before CookieSyncManager::getInstance()"
 
+    .line 155
     invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 128
+    .line 150
     :cond_0
     return-void
 .end method
 
 .method public static declared-synchronized createInstance(Landroid/content/Context;)Landroid/webkit/CookieSyncManager;
     .locals 3
-    .parameter "context"
+    .param p0, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 89
     const-class v1, Landroid/webkit/CookieSyncManager;
 
     monitor-enter v1
 
+    .line 94
     if-nez p0, :cond_0
 
-    .line 90
+    .line 95
     :try_start_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "Invalid context argument"
+    const-string/jumbo v2, "Invalid context argument"
 
     invoke-direct {v0, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -82,7 +90,6 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 89
     :catchall_0
     move-exception v0
 
@@ -90,12 +97,12 @@
 
     throw v0
 
-    .line 93
+    .line 97
     :cond_0
     :try_start_1
     invoke-static {}, Landroid/webkit/CookieSyncManager;->setGetInstanceIsAllowed()V
 
-    .line 94
+    .line 98
     invoke-static {}, Landroid/webkit/CookieSyncManager;->getInstance()Landroid/webkit/CookieSyncManager;
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
@@ -111,27 +118,27 @@
     .locals 2
 
     .prologue
-    .line 76
     const-class v1, Landroid/webkit/CookieSyncManager;
 
     monitor-enter v1
 
+    .line 81
     :try_start_0
     invoke-static {}, Landroid/webkit/CookieSyncManager;->checkInstanceIsAllowed()V
 
-    .line 77
+    .line 82
     sget-object v0, Landroid/webkit/CookieSyncManager;->sRef:Landroid/webkit/CookieSyncManager;
 
     if-nez v0, :cond_0
 
-    .line 78
+    .line 83
     new-instance v0, Landroid/webkit/CookieSyncManager;
 
     invoke-direct {v0}, Landroid/webkit/CookieSyncManager;-><init>()V
 
     sput-object v0, Landroid/webkit/CookieSyncManager;->sRef:Landroid/webkit/CookieSyncManager;
 
-    .line 80
+    .line 85
     :cond_0
     sget-object v0, Landroid/webkit/CookieSyncManager;->sRef:Landroid/webkit/CookieSyncManager;
     :try_end_0
@@ -141,7 +148,6 @@
 
     return-object v0
 
-    .line 76
     :catchall_0
     move-exception v0
 
@@ -154,24 +160,24 @@
     .locals 1
 
     .prologue
-    .line 116
+    .line 147
     const/4 v0, 0x1
 
     sput-boolean v0, Landroid/webkit/CookieSyncManager;->sGetInstanceAllowed:Z
 
-    .line 117
+    .line 146
     return-void
 .end method
 
 
 # virtual methods
-.method public bridge synthetic resetSync()V
+.method public resetSync()V
     .locals 0
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 58
-    invoke-super {p0}, Landroid/webkit/WebSyncManager;->resetSync()V
-
+    .line 124
     return-void
 .end method
 
@@ -179,66 +185,61 @@
     .locals 0
 
     .prologue
-    .line 58
     invoke-super {p0}, Landroid/webkit/WebSyncManager;->run()V
 
     return-void
 .end method
 
-.method public bridge synthetic startSync()V
+.method public startSync()V
     .locals 0
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 58
-    invoke-super {p0}, Landroid/webkit/WebSyncManager;->startSync()V
-
+    .line 133
     return-void
 .end method
 
-.method public bridge synthetic stopSync()V
+.method public stopSync()V
     .locals 0
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 58
-    invoke-super {p0}, Landroid/webkit/WebSyncManager;->stopSync()V
-
+    .line 143
     return-void
 .end method
 
-.method public bridge synthetic sync()V
-    .locals 0
+.method public sync()V
+    .locals 1
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 58
-    invoke-super {p0}, Landroid/webkit/WebSyncManager;->sync()V
-
-    return-void
-.end method
-
-.method protected syncFromRamToFlash()V
-    .locals 2
-
-    .prologue
-    .line 102
+    .line 107
     invoke-static {}, Landroid/webkit/CookieManager;->getInstance()Landroid/webkit/CookieManager;
 
     move-result-object v0
 
-    .line 104
-    .local v0, manager:Landroid/webkit/CookieManager;
-    invoke-virtual {v0}, Landroid/webkit/CookieManager;->acceptCookie()Z
+    invoke-virtual {v0}, Landroid/webkit/CookieManager;->flush()V
 
-    move-result v1
-
-    if-nez v1, :cond_0
-
-    .line 113
-    :goto_0
+    .line 106
     return-void
+.end method
 
-    .line 108
-    :cond_0
-    invoke-virtual {v0}, Landroid/webkit/CookieManager;->flushCookieStore()V
+.method protected syncFromRamToFlash()V
+    .locals 1
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
-    goto :goto_0
+    .prologue
+    .line 115
+    invoke-static {}, Landroid/webkit/CookieManager;->getInstance()Landroid/webkit/CookieManager;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/webkit/CookieManager;->flush()V
+
+    .line 114
+    return-void
 .end method

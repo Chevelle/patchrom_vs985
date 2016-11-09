@@ -91,44 +91,44 @@
 # direct methods
 .method constructor <init>(Landroid/bluetooth/BluetoothGattService;Ljava/util/UUID;III)V
     .locals 1
-    .parameter "service"
-    .parameter "uuid"
-    .parameter "instanceId"
-    .parameter "properties"
-    .parameter "permissions"
+    .param p1, "service"    # Landroid/bluetooth/BluetoothGattService;
+    .param p2, "uuid"    # Ljava/util/UUID;
+    .param p3, "instanceId"    # I
+    .param p4, "properties"    # I
+    .param p5, "permissions"    # I
 
     .prologue
-    .line 242
+    .line 239
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 198
+    .line 197
     const/16 v0, 0x10
 
     iput v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mKeySize:I
 
-    .line 243
+    .line 242
     invoke-direct/range {p0 .. p5}, Landroid/bluetooth/BluetoothGattCharacteristic;->initCharacteristic(Landroid/bluetooth/BluetoothGattService;Ljava/util/UUID;III)V
 
-    .line 244
+    .line 241
     return-void
 .end method
 
 .method public constructor <init>(Ljava/util/UUID;II)V
     .locals 6
-    .parameter "uuid"
-    .parameter "properties"
-    .parameter "permissions"
+    .param p1, "uuid"    # Ljava/util/UUID;
+    .param p2, "properties"    # I
+    .param p3, "permissions"    # I
 
     .prologue
-    .line 232
+    .line 231
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 198
+    .line 197
     const/16 v0, 0x10
 
     iput v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mKeySize:I
 
-    .line 233
+    .line 232
     const/4 v1, 0x0
 
     const/4 v3, 0x0
@@ -143,21 +143,22 @@
 
     invoke-direct/range {v0 .. v5}, Landroid/bluetooth/BluetoothGattCharacteristic;->initCharacteristic(Landroid/bluetooth/BluetoothGattService;Ljava/util/UUID;III)V
 
-    .line 234
+    .line 231
     return-void
 .end method
 
 .method private bytesToFloat(BB)F
     .locals 8
-    .parameter "b0"
-    .parameter "b1"
+    .param p1, "b0"    # B
+    .param p2, "b1"    # B
 
     .prologue
-    .line 660
+    .line 659
     invoke-direct {p0, p1}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedByteToInt(B)I
 
     move-result v2
 
+    .line 660
     invoke-direct {p0, p2}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedByteToInt(B)I
 
     move-result v3
@@ -166,16 +167,19 @@
 
     shl-int/lit8 v3, v3, 0x8
 
+    .line 659
     add-int/2addr v2, v3
 
+    .line 660
     const/16 v3, 0xc
 
+    .line 659
     invoke-direct {p0, v2, v3}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedToSigned(II)I
 
     move-result v1
 
-    .line 662
-    .local v1, mantissa:I
+    .line 661
+    .local v1, "mantissa":I
     invoke-direct {p0, p2}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedByteToInt(B)I
 
     move-result v2
@@ -188,11 +192,11 @@
 
     move-result v0
 
-    .line 663
-    .local v0, exponent:I
+    .line 662
+    .local v0, "exponent":I
     int-to-double v2, v1
 
-    const-wide/high16 v4, 0x4024
+    const-wide/high16 v4, 0x4024000000000000L    # 10.0
 
     int-to-double v6, v0
 
@@ -208,65 +212,71 @@
 .end method
 
 .method private bytesToFloat(BBBB)F
-    .locals 7
-    .parameter "b0"
-    .parameter "b1"
-    .parameter "b2"
-    .parameter "b3"
+    .locals 8
+    .param p1, "b0"    # B
+    .param p2, "b1"    # B
+    .param p3, "b2"    # B
+    .param p4, "b3"    # B
 
     .prologue
-    .line 670
+    .line 669
     invoke-direct {p0, p1}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedByteToInt(B)I
 
     move-result v1
 
+    .line 670
     invoke-direct {p0, p2}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedByteToInt(B)I
 
     move-result v2
 
     shl-int/lit8 v2, v2, 0x8
 
+    .line 669
     add-int/2addr v1, v2
 
+    .line 671
     invoke-direct {p0, p3}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedByteToInt(B)I
 
     move-result v2
 
     shl-int/lit8 v2, v2, 0x10
 
+    .line 669
     add-int/2addr v1, v2
 
+    .line 671
     const/16 v2, 0x18
 
+    .line 669
     invoke-direct {p0, v1, v2}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedToSigned(II)I
 
     move-result v0
 
-    .line 673
-    .local v0, mantissa:I
-    int-to-double v1, v0
+    .line 672
+    .local v0, "mantissa":I
+    int-to-double v2, v0
 
-    const-wide/high16 v3, 0x4024
+    const-wide/high16 v4, 0x4024000000000000L    # 10.0
 
-    int-to-double v5, p4
+    int-to-double v6, p4
 
-    invoke-static {v3, v4, v5, v6}, Ljava/lang/Math;->pow(DD)D
+    invoke-static {v4, v5, v6, v7}, Ljava/lang/Math;->pow(DD)D
 
-    move-result-wide v3
+    move-result-wide v4
 
-    mul-double/2addr v1, v3
+    mul-double/2addr v2, v4
 
-    double-to-float v1, v1
+    double-to-float v1, v2
 
     return v1
 .end method
 
 .method private getTypeLen(I)I
     .locals 1
-    .parameter "formatType"
+    .param p1, "formatType"    # I
 
     .prologue
-    .line 631
+    .line 630
     and-int/lit8 v0, p1, 0xf
 
     return v0
@@ -274,57 +284,57 @@
 
 .method private initCharacteristic(Landroid/bluetooth/BluetoothGattService;Ljava/util/UUID;III)V
     .locals 1
-    .parameter "service"
-    .parameter "uuid"
-    .parameter "instanceId"
-    .parameter "properties"
-    .parameter "permissions"
+    .param p1, "service"    # Landroid/bluetooth/BluetoothGattService;
+    .param p2, "uuid"    # Ljava/util/UUID;
+    .param p3, "instanceId"    # I
+    .param p4, "properties"    # I
+    .param p5, "permissions"    # I
 
     .prologue
-    .line 249
+    .line 248
     iput-object p2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mUuid:Ljava/util/UUID;
 
-    .line 250
+    .line 249
     iput p3, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mInstance:I
 
-    .line 251
+    .line 250
     iput p4, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mProperties:I
 
-    .line 252
+    .line 251
     iput p5, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mPermissions:I
 
-    .line 253
+    .line 252
     iput-object p1, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mService:Landroid/bluetooth/BluetoothGattService;
 
-    .line 254
+    .line 253
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
-    .line 255
+    .line 254
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mDescriptors:Ljava/util/List;
 
-    .line 257
+    .line 256
     iget v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mProperties:I
 
     and-int/lit8 v0, v0, 0x4
 
     if-eqz v0, :cond_0
 
-    .line 258
+    .line 257
     const/4 v0, 0x1
 
     iput v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mWriteType:I
 
-    .line 262
+    .line 247
     :goto_0
     return-void
 
-    .line 260
+    .line 259
     :cond_0
     const/4 v0, 0x2
 
@@ -335,16 +345,16 @@
 
 .method private intToSignedBits(II)I
     .locals 3
-    .parameter "i"
-    .parameter "size"
+    .param p1, "i"    # I
+    .param p2, "size"    # I
 
     .prologue
     const/4 v2, 0x1
 
-    .line 691
+    .line 690
     if-gez p1, :cond_0
 
-    .line 692
+    .line 691
     add-int/lit8 v0, p2, -0x1
 
     shl-int v0, v2, v0
@@ -359,17 +369,17 @@
 
     add-int p1, v0, v1
 
-    .line 694
+    .line 693
     :cond_0
     return p1
 .end method
 
 .method private unsignedByteToInt(B)I
     .locals 1
-    .parameter "b"
+    .param p1, "b"    # B
 
     .prologue
-    .line 638
+    .line 637
     and-int/lit16 v0, p1, 0xff
 
     return v0
@@ -377,11 +387,11 @@
 
 .method private unsignedBytesToInt(BB)I
     .locals 2
-    .parameter "b0"
-    .parameter "b1"
+    .param p1, "b0"    # B
+    .param p2, "b1"    # B
 
     .prologue
-    .line 645
+    .line 644
     invoke-direct {p0, p1}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedByteToInt(B)I
 
     move-result v0
@@ -399,13 +409,13 @@
 
 .method private unsignedBytesToInt(BBBB)I
     .locals 2
-    .parameter "b0"
-    .parameter "b1"
-    .parameter "b2"
-    .parameter "b3"
+    .param p1, "b0"    # B
+    .param p2, "b1"    # B
+    .param p3, "b2"    # B
+    .param p4, "b3"    # B
 
     .prologue
-    .line 652
+    .line 651
     invoke-direct {p0, p1}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedByteToInt(B)I
 
     move-result v0
@@ -418,20 +428,24 @@
 
     add-int/2addr v0, v1
 
+    .line 652
     invoke-direct {p0, p3}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedByteToInt(B)I
 
     move-result v1
 
     shl-int/lit8 v1, v1, 0x10
 
+    .line 651
     add-int/2addr v0, v1
 
+    .line 652
     invoke-direct {p0, p4}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedByteToInt(B)I
 
     move-result v1
 
     shl-int/lit8 v1, v1, 0x18
 
+    .line 651
     add-int/2addr v0, v1
 
     return v0
@@ -439,13 +453,13 @@
 
 .method private unsignedToSigned(II)I
     .locals 3
-    .parameter "unsigned"
-    .parameter "size"
+    .param p1, "unsigned"    # I
+    .param p2, "size"    # I
 
     .prologue
     const/4 v2, 0x1
 
-    .line 681
+    .line 680
     add-int/lit8 v0, p2, -0x1
 
     shl-int v0, v2, v0
@@ -454,7 +468,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 682
+    .line 681
     add-int/lit8 v0, p2, -0x1
 
     shl-int v0, v2, v0
@@ -471,7 +485,7 @@
 
     mul-int/lit8 p1, v0, -0x1
 
-    .line 684
+    .line 683
     :cond_0
     return p1
 .end method
@@ -480,18 +494,18 @@
 # virtual methods
 .method public addDescriptor(Landroid/bluetooth/BluetoothGattDescriptor;)Z
     .locals 1
-    .parameter "descriptor"
+    .param p1, "descriptor"    # Landroid/bluetooth/BluetoothGattDescriptor;
 
     .prologue
-    .line 280
+    .line 279
     iget-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mDescriptors:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 281
+    .line 280
     invoke-virtual {p1, p0}, Landroid/bluetooth/BluetoothGattDescriptor;->setCharacteristic(Landroid/bluetooth/BluetoothGattCharacteristic;)V
 
-    .line 282
+    .line 281
     const/4 v0, 0x1
 
     return v0
@@ -499,17 +513,17 @@
 
 .method public getDescriptor(Ljava/util/UUID;)Landroid/bluetooth/BluetoothGattDescriptor;
     .locals 3
-    .parameter "uuid"
+    .param p1, "uuid"    # Ljava/util/UUID;
 
     .prologue
-    .line 408
+    .line 407
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mDescriptors:Ljava/util/List;
 
-    invoke-interface {v2}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+    invoke-interface {v2}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
-    .local v1, i$:Ljava/util/Iterator;
+    .local v1, "descriptor$iterator":Ljava/util/Iterator;
     :cond_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
@@ -523,8 +537,8 @@
 
     check-cast v0, Landroid/bluetooth/BluetoothGattDescriptor;
 
-    .line 409
-    .local v0, descriptor:Landroid/bluetooth/BluetoothGattDescriptor;
+    .line 408
+    .local v0, "descriptor":Landroid/bluetooth/BluetoothGattDescriptor;
     invoke-virtual {v0}, Landroid/bluetooth/BluetoothGattDescriptor;->getUuid()Ljava/util/UUID;
 
     move-result-object v2
@@ -535,31 +549,31 @@
 
     if-eqz v2, :cond_0
 
-    .line 413
-    .end local v0           #descriptor:Landroid/bluetooth/BluetoothGattDescriptor;
-    :goto_0
+    .line 409
     return-object v0
 
+    .line 412
+    .end local v0    # "descriptor":Landroid/bluetooth/BluetoothGattDescriptor;
     :cond_1
-    const/4 v0, 0x0
+    const/4 v2, 0x0
 
-    goto :goto_0
+    return-object v2
 .end method
 
 .method getDescriptor(Ljava/util/UUID;I)Landroid/bluetooth/BluetoothGattDescriptor;
     .locals 3
-    .parameter "uuid"
-    .parameter "instanceId"
+    .param p1, "uuid"    # Ljava/util/UUID;
+    .param p2, "instanceId"    # I
 
     .prologue
-    .line 290
+    .line 289
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mDescriptors:Ljava/util/List;
 
-    invoke-interface {v2}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+    invoke-interface {v2}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
-    .local v1, i$:Ljava/util/Iterator;
+    .local v1, "descriptor$iterator":Ljava/util/Iterator;
     :cond_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
@@ -573,8 +587,8 @@
 
     check-cast v0, Landroid/bluetooth/BluetoothGattDescriptor;
 
-    .line 291
-    .local v0, descriptor:Landroid/bluetooth/BluetoothGattDescriptor;
+    .line 290
+    .local v0, "descriptor":Landroid/bluetooth/BluetoothGattDescriptor;
     invoke-virtual {v0}, Landroid/bluetooth/BluetoothGattDescriptor;->getUuid()Ljava/util/UUID;
 
     move-result-object v2
@@ -585,21 +599,22 @@
 
     if-eqz v2, :cond_0
 
+    .line 291
     invoke-virtual {v0}, Landroid/bluetooth/BluetoothGattDescriptor;->getInstanceId()I
 
     move-result v2
 
     if-ne v2, p2, :cond_0
 
-    .line 296
-    .end local v0           #descriptor:Landroid/bluetooth/BluetoothGattDescriptor;
-    :goto_0
+    .line 292
     return-object v0
 
+    .line 295
+    .end local v0    # "descriptor":Landroid/bluetooth/BluetoothGattDescriptor;
     :cond_1
-    const/4 v0, 0x0
+    const/4 v2, 0x0
 
-    goto :goto_0
+    return-object v2
 .end method
 
 .method public getDescriptors()Ljava/util/List;
@@ -615,7 +630,7 @@
     .end annotation
 
     .prologue
-    .line 397
+    .line 396
     iget-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mDescriptors:Ljava/util/List;
 
     return-object v0
@@ -623,37 +638,36 @@
 
 .method public getFloatValue(II)Ljava/lang/Float;
     .locals 5
-    .parameter "formatType"
-    .parameter "offset"
+    .param p1, "formatType"    # I
+    .param p2, "offset"    # I
 
     .prologue
-    const/4 v0, 0x0
+    const/4 v2, 0x0
 
-    .line 484
+    .line 483
     invoke-direct {p0, p1}, Landroid/bluetooth/BluetoothGattCharacteristic;->getTypeLen(I)I
 
-    move-result v1
+    move-result v0
 
-    add-int/2addr v1, p2
+    add-int/2addr v0, p2
 
-    iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
+    iget-object v1, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
-    array-length v2, v2
+    array-length v1, v1
 
-    if-le v1, v2, :cond_0
+    if-le v0, v1, :cond_0
 
-    .line 495
-    :goto_0
-    return-object v0
+    return-object v2
 
-    .line 486
+    .line 485
     :cond_0
     packed-switch p1, :pswitch_data_0
 
+    .line 494
     :pswitch_0
-    goto :goto_0
+    return-object v2
 
-    .line 488
+    .line 487
     :pswitch_1
     iget-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
@@ -673,9 +687,9 @@
 
     move-result-object v0
 
-    goto :goto_0
+    return-object v0
 
-    .line 491
+    .line 490
     :pswitch_2
     iget-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
@@ -687,6 +701,7 @@
 
     aget-byte v1, v1, v2
 
+    .line 491
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     add-int/lit8 v3, p2, 0x2
@@ -699,6 +714,7 @@
 
     aget-byte v3, v3, v4
 
+    .line 490
     invoke-direct {p0, v0, v1, v2, v3}, Landroid/bluetooth/BluetoothGattCharacteristic;->bytesToFloat(BBBB)F
 
     move-result v0
@@ -707,9 +723,9 @@
 
     move-result-object v0
 
-    goto :goto_0
+    return-object v0
 
-    .line 486
+    .line 485
     :pswitch_data_0
     .packed-switch 0x32
         :pswitch_1
@@ -722,7 +738,7 @@
     .locals 1
 
     .prologue
-    .line 333
+    .line 332
     iget v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mInstance:I
 
     return v0
@@ -730,36 +746,35 @@
 
 .method public getIntValue(II)Ljava/lang/Integer;
     .locals 5
-    .parameter "formatType"
-    .parameter "offset"
+    .param p1, "formatType"    # I
+    .param p2, "offset"    # I
 
     .prologue
-    const/4 v0, 0x0
+    const/4 v2, 0x0
 
-    .line 446
+    .line 445
     invoke-direct {p0, p1}, Landroid/bluetooth/BluetoothGattCharacteristic;->getTypeLen(I)I
 
-    move-result v1
+    move-result v0
 
-    add-int/2addr v1, p2
+    add-int/2addr v0, p2
 
-    iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
+    iget-object v1, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
-    array-length v2, v2
+    array-length v1, v1
 
-    if-le v1, v2, :cond_0
+    if-le v0, v1, :cond_0
 
-    .line 470
-    :goto_0
-    return-object v0
+    return-object v2
 
-    .line 448
+    .line 447
     :cond_0
     sparse-switch p1, :sswitch_data_0
 
-    goto :goto_0
+    .line 469
+    return-object v2
 
-    .line 450
+    .line 449
     :sswitch_0
     iget-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
@@ -773,9 +788,9 @@
 
     move-result-object v0
 
-    goto :goto_0
+    return-object v0
 
-    .line 453
+    .line 452
     :sswitch_1
     iget-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
@@ -795,9 +810,9 @@
 
     move-result-object v0
 
-    goto :goto_0
+    return-object v0
 
-    .line 456
+    .line 455
     :sswitch_2
     iget-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
@@ -809,6 +824,7 @@
 
     aget-byte v1, v1, v2
 
+    .line 456
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     add-int/lit8 v3, p2, 0x2
@@ -821,6 +837,7 @@
 
     aget-byte v3, v3, v4
 
+    .line 455
     invoke-direct {p0, v0, v1, v2, v3}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedBytesToInt(BBBB)I
 
     move-result v0
@@ -829,9 +846,9 @@
 
     move-result-object v0
 
-    goto :goto_0
+    return-object v0
 
-    .line 459
+    .line 458
     :sswitch_3
     iget-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
@@ -851,26 +868,30 @@
 
     move-result-object v0
 
-    goto :goto_0
+    return-object v0
 
-    .line 462
+    .line 461
     :sswitch_4
     iget-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     aget-byte v0, v0, p2
 
+    .line 462
     iget-object v1, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     add-int/lit8 v2, p2, 0x1
 
     aget-byte v1, v1, v2
 
+    .line 461
     invoke-direct {p0, v0, v1}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedBytesToInt(BB)I
 
     move-result v0
 
+    .line 462
     const/16 v1, 0x10
 
+    .line 461
     invoke-direct {p0, v0, v1}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedToSigned(II)I
 
     move-result v0
@@ -879,14 +900,15 @@
 
     move-result-object v0
 
-    goto :goto_0
+    return-object v0
 
-    .line 466
+    .line 465
     :sswitch_5
     iget-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     aget-byte v0, v0, p2
 
+    .line 466
     iget-object v1, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     add-int/lit8 v2, p2, 0x1
@@ -905,12 +927,15 @@
 
     aget-byte v3, v3, v4
 
+    .line 465
     invoke-direct {p0, v0, v1, v2, v3}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedBytesToInt(BBBB)I
 
     move-result v0
 
+    .line 466
     const/16 v1, 0x20
 
+    .line 465
     invoke-direct {p0, v0, v1}, Landroid/bluetooth/BluetoothGattCharacteristic;->unsignedToSigned(II)I
 
     move-result v0
@@ -919,11 +944,9 @@
 
     move-result-object v0
 
-    goto/16 :goto_0
+    return-object v0
 
-    .line 448
-    nop
-
+    .line 447
     :sswitch_data_0
     .sparse-switch
         0x11 -> :sswitch_0
@@ -939,7 +962,7 @@
     .locals 1
 
     .prologue
-    .line 269
+    .line 268
     iget v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mKeySize:I
 
     return v0
@@ -949,7 +972,7 @@
     .locals 1
 
     .prologue
-    .line 354
+    .line 353
     iget v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mPermissions:I
 
     return v0
@@ -959,7 +982,7 @@
     .locals 1
 
     .prologue
-    .line 345
+    .line 344
     iget v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mProperties:I
 
     return v0
@@ -969,7 +992,7 @@
     .locals 1
 
     .prologue
-    .line 304
+    .line 303
     iget-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mService:Landroid/bluetooth/BluetoothGattService;
 
     return-object v0
@@ -977,24 +1000,27 @@
 
 .method public getStringValue(I)Ljava/lang/String;
     .locals 4
-    .parameter "offset"
+    .param p1, "offset"    # I
 
     .prologue
-    .line 506
+    const/4 v3, 0x0
+
+    .line 505
+    iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
+
+    if-eqz v2, :cond_0
+
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     array-length v2, v2
 
-    if-le p1, v2, :cond_0
+    if-le p1, v2, :cond_1
 
-    const/4 v2, 0x0
-
-    .line 509
-    :goto_0
-    return-object v2
-
-    .line 507
     :cond_0
+    return-object v3
+
+    .line 506
+    :cond_1
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     array-length v2, v2
@@ -1003,19 +1029,19 @@
 
     new-array v1, v2, [B
 
-    .line 508
-    .local v1, strBytes:[B
+    .line 507
+    .local v1, "strBytes":[B
     const/4 v0, 0x0
 
-    .local v0, i:I
-    :goto_1
+    .local v0, "i":I
+    :goto_0
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     array-length v2, v2
 
     sub-int/2addr v2, p1
 
-    if-eq v0, v2, :cond_1
+    if-eq v0, v2, :cond_2
 
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
@@ -1027,22 +1053,22 @@
 
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_1
+    goto :goto_0
 
-    .line 509
-    :cond_1
+    .line 508
+    :cond_2
     new-instance v2, Ljava/lang/String;
 
     invoke-direct {v2, v1}, Ljava/lang/String;-><init>([B)V
 
-    goto :goto_0
+    return-object v2
 .end method
 
 .method public getUuid()Ljava/util/UUID;
     .locals 1
 
     .prologue
-    .line 321
+    .line 320
     iget-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mUuid:Ljava/util/UUID;
 
     return-object v0
@@ -1052,7 +1078,7 @@
     .locals 1
 
     .prologue
-    .line 427
+    .line 426
     iget-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     return-object v0
@@ -1062,7 +1088,7 @@
     .locals 1
 
     .prologue
-    .line 363
+    .line 362
     iget v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mWriteType:I
 
     return v0
@@ -1070,75 +1096,81 @@
 
 .method public setKeySize(I)V
     .locals 0
-    .parameter "keySize"
+    .param p1, "keySize"    # I
 
     .prologue
-    .line 388
+    .line 387
     iput p1, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mKeySize:I
 
-    .line 389
+    .line 386
     return-void
 .end method
 
 .method setService(Landroid/bluetooth/BluetoothGattService;)V
     .locals 0
-    .parameter "service"
+    .param p1, "service"    # Landroid/bluetooth/BluetoothGattService;
 
     .prologue
-    .line 312
+    .line 311
     iput-object p1, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mService:Landroid/bluetooth/BluetoothGattService;
 
-    .line 313
+    .line 310
     return-void
 .end method
 
 .method public setValue(III)Z
     .locals 4
-    .parameter "value"
-    .parameter "formatType"
-    .parameter "offset"
+    .param p1, "value"    # I
+    .param p2, "formatType"    # I
+    .param p3, "offset"    # I
 
     .prologue
-    const/4 v2, 0x0
+    const/4 v3, 0x0
 
-    .line 539
+    .line 538
     invoke-direct {p0, p2}, Landroid/bluetooth/BluetoothGattCharacteristic;->getTypeLen(I)I
 
-    move-result v3
+    move-result v2
 
-    add-int v0, p3, v3
+    add-int v0, p3, v2
+
+    .line 539
+    .local v0, "len":I
+    iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
+
+    if-nez v2, :cond_0
+
+    new-array v2, v0, [B
+
+    iput-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     .line 540
-    .local v0, len:I
-    iget-object v3, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
-
-    if-nez v3, :cond_0
-
-    new-array v3, v0, [B
-
-    iput-object v3, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
-
-    .line 541
     :cond_0
-    iget-object v3, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
+    iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
-    array-length v3, v3
+    array-length v2, v2
 
-    if-le v0, v3, :cond_1
+    if-le v0, v2, :cond_1
 
-    .line 572
-    :goto_0
-    return v2
+    return v3
 
-    .line 543
+    .line 542
     :cond_1
     sparse-switch p2, :sswitch_data_0
 
-    goto :goto_0
+    .line 569
+    return v3
 
-    .line 548
-    :goto_1
+    .line 544
     :sswitch_0
+    const/16 v2, 0x8
+
+    invoke-direct {p0, p1, v2}, Landroid/bluetooth/BluetoothGattCharacteristic;->intToSignedBits(II)I
+
+    move-result p1
+
+    .line 547
+    :sswitch_1
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     and-int/lit16 v3, p1, 0xff
@@ -1147,23 +1179,13 @@
 
     aput-byte v3, v2, p3
 
-    .line 572
-    :goto_2
+    .line 571
+    :goto_0
     const/4 v2, 0x1
 
-    goto :goto_0
+    return v2
 
-    .line 545
-    :sswitch_1
-    const/16 v2, 0x8
-
-    invoke-direct {p0, p1, v2}, Landroid/bluetooth/BluetoothGattCharacteristic;->intToSignedBits(II)I
-
-    move-result p1
-
-    goto :goto_1
-
-    .line 552
+    .line 551
     :sswitch_2
     const/16 v2, 0x10
 
@@ -1171,21 +1193,21 @@
 
     move-result p1
 
-    .line 555
+    .line 554
     :sswitch_3
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     add-int/lit8 v1, p3, 0x1
 
-    .end local p3
-    .local v1, offset:I
+    .end local p3    # "offset":I
+    .local v1, "offset":I
     and-int/lit16 v3, p1, 0xff
 
     int-to-byte v3, v3
 
     aput-byte v3, v2, p3
 
-    .line 556
+    .line 555
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     shr-int/lit8 v3, p1, 0x8
@@ -1198,12 +1220,12 @@
 
     move p3, v1
 
-    .line 557
-    .end local v1           #offset:I
-    .restart local p3
-    goto :goto_2
+    .line 556
+    .end local v1    # "offset":I
+    .restart local p3    # "offset":I
+    goto :goto_0
 
-    .line 560
+    .line 559
     :sswitch_4
     const/16 v2, 0x20
 
@@ -1211,27 +1233,27 @@
 
     move-result p1
 
-    .line 563
+    .line 562
     :sswitch_5
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     add-int/lit8 v1, p3, 0x1
 
-    .end local p3
-    .restart local v1       #offset:I
+    .end local p3    # "offset":I
+    .restart local v1    # "offset":I
     and-int/lit16 v3, p1, 0xff
 
     int-to-byte v3, v3
 
     aput-byte v3, v2, p3
 
-    .line 564
+    .line 563
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     add-int/lit8 p3, v1, 0x1
 
-    .end local v1           #offset:I
-    .restart local p3
+    .end local v1    # "offset":I
+    .restart local p3    # "offset":I
     shr-int/lit8 v3, p1, 0x8
 
     and-int/lit16 v3, v3, 0xff
@@ -1240,13 +1262,13 @@
 
     aput-byte v3, v2, v1
 
-    .line 565
+    .line 564
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     add-int/lit8 v1, p3, 0x1
 
-    .end local p3
-    .restart local v1       #offset:I
+    .end local p3    # "offset":I
+    .restart local v1    # "offset":I
     shr-int/lit8 v3, p1, 0x10
 
     and-int/lit16 v3, v3, 0xff
@@ -1255,7 +1277,7 @@
 
     aput-byte v3, v2, p3
 
-    .line 566
+    .line 565
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     shr-int/lit8 v3, p1, 0x18
@@ -1268,20 +1290,18 @@
 
     move p3, v1
 
-    .line 567
-    .end local v1           #offset:I
-    .restart local p3
-    goto :goto_2
+    .line 566
+    .end local v1    # "offset":I
+    .restart local p3    # "offset":I
+    goto :goto_0
 
-    .line 543
-    nop
-
+    .line 542
     :sswitch_data_0
     .sparse-switch
-        0x11 -> :sswitch_0
+        0x11 -> :sswitch_1
         0x12 -> :sswitch_3
         0x14 -> :sswitch_5
-        0x21 -> :sswitch_1
+        0x21 -> :sswitch_0
         0x22 -> :sswitch_2
         0x24 -> :sswitch_4
     .end sparse-switch
@@ -1289,51 +1309,50 @@
 
 .method public setValue(IIII)Z
     .locals 5
-    .parameter "mantissa"
-    .parameter "exponent"
-    .parameter "formatType"
-    .parameter "offset"
+    .param p1, "mantissa"    # I
+    .param p2, "exponent"    # I
+    .param p3, "formatType"    # I
+    .param p4, "offset"    # I
 
     .prologue
-    const/4 v2, 0x0
+    const/4 v3, 0x0
 
-    .line 586
+    .line 585
     invoke-direct {p0, p3}, Landroid/bluetooth/BluetoothGattCharacteristic;->getTypeLen(I)I
 
-    move-result v3
+    move-result v2
 
-    add-int v0, p4, v3
+    add-int v0, p4, v2
+
+    .line 586
+    .local v0, "len":I
+    iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
+
+    if-nez v2, :cond_0
+
+    new-array v2, v0, [B
+
+    iput-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     .line 587
-    .local v0, len:I
-    iget-object v3, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
-
-    if-nez v3, :cond_0
-
-    new-array v3, v0, [B
-
-    iput-object v3, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
-
-    .line 588
     :cond_0
-    iget-object v3, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
+    iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
-    array-length v3, v3
+    array-length v2, v2
 
-    if-le v0, v3, :cond_1
+    if-le v0, v2, :cond_1
 
-    .line 612
-    :goto_0
-    return v2
+    return v3
 
-    .line 590
+    .line 589
     :cond_1
     packed-switch p3, :pswitch_data_0
 
+    .line 608
     :pswitch_0
-    goto :goto_0
+    return v3
 
-    .line 592
+    .line 591
     :pswitch_1
     const/16 v2, 0xc
 
@@ -1341,27 +1360,27 @@
 
     move-result p1
 
-    .line 593
+    .line 592
     const/4 v2, 0x4
 
     invoke-direct {p0, p2, v2}, Landroid/bluetooth/BluetoothGattCharacteristic;->intToSignedBits(II)I
 
     move-result p2
 
-    .line 594
+    .line 593
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     add-int/lit8 v1, p4, 0x1
 
-    .end local p4
-    .local v1, offset:I
+    .end local p4    # "offset":I
+    .local v1, "offset":I
     and-int/lit16 v3, p1, 0xff
 
     int-to-byte v3, v3
 
     aput-byte v3, v2, p4
 
-    .line 595
+    .line 594
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     shr-int/lit8 v3, p1, 0x8
@@ -1372,7 +1391,7 @@
 
     aput-byte v3, v2, v1
 
-    .line 596
+    .line 595
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     aget-byte v3, v2, v1
@@ -1391,15 +1410,15 @@
 
     move p4, v1
 
-    .line 612
-    .end local v1           #offset:I
-    .restart local p4
-    :goto_1
+    .line 611
+    .end local v1    # "offset":I
+    .restart local p4    # "offset":I
+    :goto_0
     const/4 v2, 0x1
 
-    goto :goto_0
+    return v2
 
-    .line 600
+    .line 599
     :pswitch_2
     const/16 v2, 0x18
 
@@ -1407,33 +1426,33 @@
 
     move-result p1
 
-    .line 601
+    .line 600
     const/16 v2, 0x8
 
     invoke-direct {p0, p2, v2}, Landroid/bluetooth/BluetoothGattCharacteristic;->intToSignedBits(II)I
 
     move-result p2
 
-    .line 602
+    .line 601
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     add-int/lit8 v1, p4, 0x1
 
-    .end local p4
-    .restart local v1       #offset:I
+    .end local p4    # "offset":I
+    .restart local v1    # "offset":I
     and-int/lit16 v3, p1, 0xff
 
     int-to-byte v3, v3
 
     aput-byte v3, v2, p4
 
-    .line 603
+    .line 602
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     add-int/lit8 p4, v1, 0x1
 
-    .end local v1           #offset:I
-    .restart local p4
+    .end local v1    # "offset":I
+    .restart local p4    # "offset":I
     shr-int/lit8 v3, p1, 0x8
 
     and-int/lit16 v3, v3, 0xff
@@ -1442,13 +1461,13 @@
 
     aput-byte v3, v2, v1
 
-    .line 604
+    .line 603
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     add-int/lit8 v1, p4, 0x1
 
-    .end local p4
-    .restart local v1       #offset:I
+    .end local p4    # "offset":I
+    .restart local v1    # "offset":I
     shr-int/lit8 v3, p1, 0x10
 
     and-int/lit16 v3, v3, 0xff
@@ -1457,7 +1476,7 @@
 
     aput-byte v3, v2, p4
 
-    .line 605
+    .line 604
     iget-object v2, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
     aget-byte v3, v2, v1
@@ -1474,12 +1493,12 @@
 
     move p4, v1
 
-    .line 606
-    .end local v1           #offset:I
-    .restart local p4
-    goto :goto_1
+    .line 605
+    .end local v1    # "offset":I
+    .restart local p4    # "offset":I
+    goto :goto_0
 
-    .line 590
+    .line 589
     :pswitch_data_0
     .packed-switch 0x32
         :pswitch_1
@@ -1490,17 +1509,17 @@
 
 .method public setValue(Ljava/lang/String;)Z
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # Ljava/lang/String;
 
     .prologue
-    .line 623
+    .line 622
     invoke-virtual {p1}, Ljava/lang/String;->getBytes()[B
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
-    .line 624
+    .line 623
     const/4 v0, 0x1
 
     return v0
@@ -1508,13 +1527,13 @@
 
 .method public setValue([B)Z
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # [B
 
     .prologue
-    .line 525
+    .line 524
     iput-object p1, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mValue:[B
 
-    .line 526
+    .line 525
     const/4 v0, 0x1
 
     return v0
@@ -1522,12 +1541,12 @@
 
 .method public setWriteType(I)V
     .locals 0
-    .parameter "writeType"
+    .param p1, "writeType"    # I
 
     .prologue
-    .line 380
+    .line 379
     iput p1, p0, Landroid/bluetooth/BluetoothGattCharacteristic;->mWriteType:I
 
-    .line 381
+    .line 378
     return-void
 .end method

@@ -42,43 +42,41 @@
     .locals 1
 
     .prologue
-    .line 15
+    .line 14
     invoke-direct {p0}, Landroid/os/Binder;-><init>()V
 
     .line 16
-    const-string v0, "android.view.IApplicationToken"
+    const-string/jumbo v0, "android.view.IApplicationToken"
 
     invoke-virtual {p0, p0, v0}, Landroid/view/IApplicationToken$Stub;->attachInterface(Landroid/os/IInterface;Ljava/lang/String;)V
 
-    .line 17
+    .line 14
     return-void
 .end method
 
 .method public static asInterface(Landroid/os/IBinder;)Landroid/view/IApplicationToken;
     .locals 2
-    .parameter "obj"
+    .param p0, "obj"    # Landroid/os/IBinder;
 
     .prologue
+    const/4 v1, 0x0
+
     .line 24
     if-nez p0, :cond_0
 
     .line 25
-    const/4 v0, 0x0
-
-    .line 31
-    :goto_0
-    return-object v0
+    return-object v1
 
     .line 27
     :cond_0
-    const-string v1, "android.view.IApplicationToken"
+    const-string/jumbo v1, "android.view.IApplicationToken"
 
     invoke-interface {p0, v1}, Landroid/os/IBinder;->queryLocalInterface(Ljava/lang/String;)Landroid/os/IInterface;
 
     move-result-object v0
 
     .line 28
-    .local v0, iin:Landroid/os/IInterface;
+    .local v0, "iin":Landroid/os/IInterface;
     if-eqz v0, :cond_1
 
     instance-of v1, v0, Landroid/view/IApplicationToken;
@@ -88,16 +86,17 @@
     .line 29
     check-cast v0, Landroid/view/IApplicationToken;
 
-    goto :goto_0
+    .end local v0    # "iin":Landroid/os/IInterface;
+    return-object v0
 
     .line 31
+    .restart local v0    # "iin":Landroid/os/IInterface;
     :cond_1
-    new-instance v0, Landroid/view/IApplicationToken$Stub$Proxy;
+    new-instance v1, Landroid/view/IApplicationToken$Stub$Proxy;
 
-    .end local v0           #iin:Landroid/os/IInterface;
-    invoke-direct {v0, p0}, Landroid/view/IApplicationToken$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
+    invoke-direct {v1, p0}, Landroid/view/IApplicationToken$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
 
-    goto :goto_0
+    return-object v1
 .end method
 
 
@@ -111,11 +110,11 @@
 .end method
 
 .method public onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    .locals 5
-    .parameter "code"
-    .parameter "data"
-    .parameter "reply"
-    .parameter "flags"
+    .locals 6
+    .param p1, "code"    # I
+    .param p2, "data"    # Landroid/os/Parcel;
+    .param p3, "reply"    # Landroid/os/Parcel;
+    .param p4, "flags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -123,7 +122,7 @@
     .end annotation
 
     .prologue
-    const/4 v4, 0x1
+    const/4 v5, 0x1
 
     .line 39
     sparse-switch p1, :sswitch_data_0
@@ -133,22 +132,22 @@
 
     move-result v4
 
-    :goto_0
     return v4
 
     .line 43
     :sswitch_0
-    const-string v3, "android.view.IApplicationToken"
+    const-string/jumbo v4, "android.view.IApplicationToken"
 
-    invoke-virtual {p3, v3}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+    invoke-virtual {p3, v4}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    goto :goto_0
+    .line 44
+    return v5
 
     .line 48
     :sswitch_1
-    const-string v3, "android.view.IApplicationToken"
+    const-string/jumbo v4, "android.view.IApplicationToken"
 
-    invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 49
     invoke-virtual {p0}, Landroid/view/IApplicationToken$Stub;->windowsDrawn()V
@@ -156,13 +155,14 @@
     .line 50
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    goto :goto_0
+    .line 51
+    return v5
 
     .line 55
     :sswitch_2
-    const-string v3, "android.view.IApplicationToken"
+    const-string/jumbo v4, "android.view.IApplicationToken"
 
-    invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 56
     invoke-virtual {p0}, Landroid/view/IApplicationToken$Stub;->windowsVisible()V
@@ -170,13 +170,14 @@
     .line 57
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    goto :goto_0
+    .line 58
+    return v5
 
     .line 62
     :sswitch_3
-    const-string v3, "android.view.IApplicationToken"
+    const-string/jumbo v4, "android.view.IApplicationToken"
 
-    invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 63
     invoke-virtual {p0}, Landroid/view/IApplicationToken$Stub;->windowsGone()V
@@ -184,13 +185,14 @@
     .line 64
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
-    goto :goto_0
+    .line 65
+    return v5
 
     .line 69
     :sswitch_4
-    const-string v3, "android.view.IApplicationToken"
+    const-string/jumbo v4, "android.view.IApplicationToken"
 
-    invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 71
     invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
@@ -198,51 +200,54 @@
     move-result-object v0
 
     .line 72
-    .local v0, _arg0:Ljava/lang/String;
+    .local v0, "_arg0":Ljava/lang/String;
     invoke-virtual {p0, v0}, Landroid/view/IApplicationToken$Stub;->keyDispatchingTimedOut(Ljava/lang/String;)Z
 
     move-result v1
 
     .line 73
-    .local v1, _result:Z
+    .local v1, "_result":Z
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
     .line 74
     if-eqz v1, :cond_0
 
-    move v3, v4
+    move v4, v5
 
-    :goto_1
-    invoke-virtual {p3, v3}, Landroid/os/Parcel;->writeInt(I)V
+    :goto_0
+    invoke-virtual {p3, v4}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 75
+    return v5
+
+    .line 74
+    :cond_0
+    const/4 v4, 0x0
 
     goto :goto_0
 
-    :cond_0
-    const/4 v3, 0x0
-
-    goto :goto_1
-
     .line 79
-    .end local v0           #_arg0:Ljava/lang/String;
-    .end local v1           #_result:Z
+    .end local v0    # "_arg0":Ljava/lang/String;
+    .end local v1    # "_result":Z
     :sswitch_5
-    const-string v3, "android.view.IApplicationToken"
+    const-string/jumbo v4, "android.view.IApplicationToken"
 
-    invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 80
     invoke-virtual {p0}, Landroid/view/IApplicationToken$Stub;->getKeyDispatchingTimeout()J
 
-    move-result-wide v1
+    move-result-wide v2
 
     .line 81
-    .local v1, _result:J
+    .local v2, "_result":J
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
     .line 82
-    invoke-virtual {p3, v1, v2}, Landroid/os/Parcel;->writeLong(J)V
+    invoke-virtual {p3, v2, v3}, Landroid/os/Parcel;->writeLong(J)V
 
-    goto :goto_0
+    .line 83
+    return v5
 
     .line 39
     :sswitch_data_0

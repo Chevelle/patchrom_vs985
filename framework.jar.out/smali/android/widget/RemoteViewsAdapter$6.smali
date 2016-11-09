@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/widget/RemoteViewsAdapter;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/RemoteViewsAdapter;
 
     .prologue
-    .line 1369
+    .line 1351
     iput-object p1, p0, Landroid/widget/RemoteViewsAdapter$6;->this$0:Landroid/widget/RemoteViewsAdapter;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,12 +41,11 @@
     .locals 1
 
     .prologue
-    .line 1372
+    .line 1354
     iget-object v0, p0, Landroid/widget/RemoteViewsAdapter$6;->this$0:Landroid/widget/RemoteViewsAdapter;
 
-    #calls: Landroid/widget/RemoteViewsAdapter;->onNotifyDataSetChanged()V
-    invoke-static {v0}, Landroid/widget/RemoteViewsAdapter;->access$200(Landroid/widget/RemoteViewsAdapter;)V
+    invoke-static {v0}, Landroid/widget/RemoteViewsAdapter;->-wrap2(Landroid/widget/RemoteViewsAdapter;)V
 
-    .line 1373
+    .line 1353
     return-void
 .end method

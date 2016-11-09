@@ -39,7 +39,7 @@
     .line 35
     new-instance v0, Landroid/media/DecoderCapabilities$VideoDecoder;
 
-    const-string v1, "VIDEO_DECODER_WMV"
+    const-string/jumbo v1, "VIDEO_DECODER_WMV"
 
     invoke-direct {v0, v1, v2}, Landroid/media/DecoderCapabilities$VideoDecoder;-><init>(Ljava/lang/String;I)V
 
@@ -61,13 +61,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 34
@@ -78,7 +71,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Landroid/media/DecoderCapabilities$VideoDecoder;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 34
@@ -99,12 +92,6 @@
     .prologue
     .line 34
     sget-object v0, Landroid/media/DecoderCapabilities$VideoDecoder;->$VALUES:[Landroid/media/DecoderCapabilities$VideoDecoder;
-
-    invoke-virtual {v0}, [Landroid/media/DecoderCapabilities$VideoDecoder;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/media/DecoderCapabilities$VideoDecoder;
 
     return-object v0
 .end method

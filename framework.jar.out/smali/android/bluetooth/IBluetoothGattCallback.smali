@@ -15,7 +15,17 @@
 
 
 # virtual methods
-.method public abstract onAdvertiseStateChange(II)V
+.method public abstract onBatchScanResults(Ljava/util/List;)V
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/List",
+            "<",
+            "Landroid/bluetooth/le/ScanResult;",
+            ">;)V"
+        }
+    .end annotation
+
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -55,6 +65,14 @@
     .end annotation
 .end method
 
+.method public abstract onConfigureMTU(Ljava/lang/String;II)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract onDescriptorRead(Ljava/lang/String;IIILandroid/os/ParcelUuid;ILandroid/os/ParcelUuid;ILandroid/os/ParcelUuid;[B)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -72,6 +90,14 @@
 .end method
 
 .method public abstract onExecuteWrite(Ljava/lang/String;I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onFoundOrLost(ZLandroid/bluetooth/le/ScanResult;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -111,6 +137,14 @@
     .end annotation
 .end method
 
+.method public abstract onMultiAdvertiseCallback(IZLandroid/bluetooth/le/AdvertiseSettings;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract onNotify(Ljava/lang/String;IILandroid/os/ParcelUuid;ILandroid/os/ParcelUuid;[B)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -127,7 +161,15 @@
     .end annotation
 .end method
 
-.method public abstract onScanResult(Ljava/lang/String;I[B)V
+.method public abstract onScanManagerErrorCallback(I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onScanResult(Landroid/bluetooth/le/ScanResult;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

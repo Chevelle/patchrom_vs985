@@ -34,9 +34,8 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Ljava/util/ArrayList;I)V
     .locals 1
-    .parameter "context"
-    .parameter
-    .parameter "viewTypeCount"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p3, "viewTypeCount"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -49,8 +48,8 @@
     .end annotation
 
     .prologue
-    .line 36
-    .local p2, remoteViews:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Landroid/widget/RemoteViews;>;"
+    .line 35
+    .local p2, "remoteViews":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/widget/RemoteViews;>;"
     invoke-direct {p0}, Landroid/widget/BaseAdapter;-><init>()V
 
     .line 32
@@ -72,7 +71,7 @@
     .line 40
     invoke-direct {p0}, Landroid/widget/RemoteViewsListAdapter;->init()V
 
-    .line 41
+    .line 36
     return-void
 .end method
 
@@ -83,14 +82,12 @@
     .line 50
     iget-object v2, p0, Landroid/widget/RemoteViewsListAdapter;->mRemoteViewsList:Ljava/util/ArrayList;
 
-    if-nez v2, :cond_1
+    if-nez v2, :cond_0
 
-    .line 63
-    :cond_0
     return-void
 
     .line 52
-    :cond_1
+    :cond_0
     iget-object v2, p0, Landroid/widget/RemoteViewsListAdapter;->mViewTypes:Ljava/util/ArrayList;
 
     invoke-virtual {v2}, Ljava/util/ArrayList;->clear()V
@@ -98,30 +95,30 @@
     .line 53
     iget-object v2, p0, Landroid/widget/RemoteViewsListAdapter;->mRemoteViewsList:Ljava/util/ArrayList;
 
-    invoke-virtual {v2}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
-
-    move-result-object v0
-
-    .local v0, i$:Ljava/util/Iterator;
-    :cond_2
-    :goto_0
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v2
-
-    if-eqz v2, :cond_3
-
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v2}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
-    check-cast v1, Landroid/widget/RemoteViews;
+    .local v1, "rv$iterator":Ljava/util/Iterator;
+    :cond_1
+    :goto_0
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/RemoteViews;
 
     .line 54
-    .local v1, rv:Landroid/widget/RemoteViews;
+    .local v0, "rv":Landroid/widget/RemoteViews;
     iget-object v2, p0, Landroid/widget/RemoteViewsListAdapter;->mViewTypes:Ljava/util/ArrayList;
 
-    invoke-virtual {v1}, Landroid/widget/RemoteViews;->getLayoutId()I
+    invoke-virtual {v0}, Landroid/widget/RemoteViews;->getLayoutId()I
 
     move-result v3
 
@@ -133,12 +130,12 @@
 
     move-result v2
 
-    if-nez v2, :cond_2
+    if-nez v2, :cond_1
 
     .line 55
     iget-object v2, p0, Landroid/widget/RemoteViewsListAdapter;->mViewTypes:Ljava/util/ArrayList;
 
-    invoke-virtual {v1}, Landroid/widget/RemoteViews;->getLayoutId()I
+    invoke-virtual {v0}, Landroid/widget/RemoteViews;->getLayoutId()I
 
     move-result v3
 
@@ -151,8 +148,8 @@
     goto :goto_0
 
     .line 59
-    .end local v1           #rv:Landroid/widget/RemoteViews;
-    :cond_3
+    .end local v0    # "rv":Landroid/widget/RemoteViews;
+    :cond_2
     iget-object v2, p0, Landroid/widget/RemoteViewsListAdapter;->mViewTypes:Ljava/util/ArrayList;
 
     invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
@@ -161,23 +158,27 @@
 
     iget v3, p0, Landroid/widget/RemoteViewsListAdapter;->mViewTypeCount:I
 
-    if-gt v2, v3, :cond_4
+    if-gt v2, v3, :cond_3
 
     iget v2, p0, Landroid/widget/RemoteViewsListAdapter;->mViewTypeCount:I
 
     const/4 v3, 0x1
 
-    if-ge v2, v3, :cond_0
+    if-ge v2, v3, :cond_4
 
     .line 60
-    :cond_4
+    :cond_3
     new-instance v2, Ljava/lang/RuntimeException;
 
-    const-string v3, "Invalid view type count -- view type count must be >= 1and must be as large as the total number of distinct view types"
+    const-string/jumbo v3, "Invalid view type count -- view type count must be >= 1and must be as large as the total number of distinct view types"
 
     invoke-direct {v2, v3}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v2
+
+    .line 49
+    :cond_4
+    return-void
 .end method
 
 
@@ -198,19 +199,18 @@
 
     move-result v0
 
-    .line 70
-    :goto_0
     return v0
 
+    .line 70
     :cond_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public getItem(I)Ljava/lang/Object;
     .locals 1
-    .parameter "position"
+    .param p1, "position"    # I
 
     .prologue
     .line 76
@@ -221,7 +221,7 @@
 
 .method public getItemId(I)J
     .locals 2
-    .parameter "position"
+    .param p1, "position"    # I
 
     .prologue
     .line 81
@@ -232,7 +232,7 @@
 
 .method public getItemViewType(I)I
     .locals 3
-    .parameter "position"
+    .param p1, "position"    # I
 
     .prologue
     .line 105
@@ -256,7 +256,7 @@
     move-result v0
 
     .line 107
-    .local v0, layoutId:I
+    .local v0, "layoutId":I
     iget-object v1, p0, Landroid/widget/RemoteViewsListAdapter;->mViewTypes:Ljava/util/ArrayList;
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -267,24 +267,25 @@
 
     move-result v1
 
-    .line 109
-    .end local v0           #layoutId:I
-    :goto_0
     return v1
 
+    .line 109
+    .end local v0    # "layoutId":I
     :cond_0
     const/4 v1, 0x0
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
     .locals 4
-    .parameter "position"
-    .parameter "convertView"
-    .parameter "parent"
+    .param p1, "position"    # I
+    .param p2, "convertView"    # Landroid/view/View;
+    .param p3, "parent"    # Landroid/view/ViewGroup;
 
     .prologue
+    const/4 v3, 0x0
+
     .line 86
     invoke-virtual {p0}, Landroid/widget/RemoteViewsListAdapter;->getCount()I
 
@@ -302,7 +303,7 @@
     check-cast v0, Landroid/widget/RemoteViews;
 
     .line 88
-    .local v0, rv:Landroid/widget/RemoteViews;
+    .local v0, "rv":Landroid/widget/RemoteViews;
     const/4 v2, 0x1
 
     invoke-virtual {v0, v2}, Landroid/widget/RemoteViews;->setIsWidgetCollectionChild(Z)V
@@ -312,6 +313,7 @@
 
     if-eqz v0, :cond_0
 
+    .line 91
     invoke-virtual {p2}, Landroid/view/View;->getId()I
 
     move-result v2
@@ -326,19 +328,17 @@
     move-object v1, p2
 
     .line 93
-    .local v1, v:Landroid/view/View;
+    .local v1, "v":Landroid/view/View;
     iget-object v2, p0, Landroid/widget/RemoteViewsListAdapter;->mContext:Landroid/content/Context;
 
     invoke-virtual {v0, v2, v1}, Landroid/widget/RemoteViews;->reapply(Landroid/content/Context;Landroid/view/View;)V
 
-    .line 99
-    .end local v0           #rv:Landroid/widget/RemoteViews;
-    .end local v1           #v:Landroid/view/View;
+    .line 97
     :goto_0
     return-object v1
 
     .line 95
-    .restart local v0       #rv:Landroid/widget/RemoteViews;
+    .end local v1    # "v":Landroid/view/View;
     :cond_0
     iget-object v2, p0, Landroid/widget/RemoteViewsListAdapter;->mContext:Landroid/content/Context;
 
@@ -346,16 +346,14 @@
 
     move-result-object v1
 
-    .restart local v1       #v:Landroid/view/View;
+    .restart local v1    # "v":Landroid/view/View;
     goto :goto_0
 
     .line 99
-    .end local v0           #rv:Landroid/widget/RemoteViews;
-    .end local v1           #v:Landroid/view/View;
+    .end local v0    # "rv":Landroid/widget/RemoteViews;
+    .end local v1    # "v":Landroid/view/View;
     :cond_1
-    const/4 v1, 0x0
-
-    goto :goto_0
+    return-object v3
 .end method
 
 .method public getViewTypeCount()I
@@ -380,7 +378,6 @@
 
 .method public setViewsList(Ljava/util/ArrayList;)V
     .locals 0
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -393,7 +390,7 @@
 
     .prologue
     .line 44
-    .local p1, remoteViews:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Landroid/widget/RemoteViews;>;"
+    .local p1, "remoteViews":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/widget/RemoteViews;>;"
     iput-object p1, p0, Landroid/widget/RemoteViewsListAdapter;->mRemoteViewsList:Ljava/util/ArrayList;
 
     .line 45
@@ -402,6 +399,6 @@
     .line 46
     invoke-virtual {p0}, Landroid/widget/RemoteViewsListAdapter;->notifyDataSetChanged()V
 
-    .line 47
+    .line 43
     return-void
 .end method

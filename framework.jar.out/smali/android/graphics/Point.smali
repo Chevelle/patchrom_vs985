@@ -6,6 +6,14 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/graphics/Point$1;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
@@ -37,6 +45,7 @@
 
     sput-object v0, Landroid/graphics/Point;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 26
     return-void
 .end method
 
@@ -52,8 +61,8 @@
 
 .method public constructor <init>(II)V
     .locals 0
-    .parameter "x"
-    .parameter "y"
+    .param p1, "x"    # I
+    .param p2, "y"    # I
 
     .prologue
     .line 32
@@ -65,13 +74,13 @@
     .line 34
     iput p2, p0, Landroid/graphics/Point;->y:I
 
-    .line 35
+    .line 32
     return-void
 .end method
 
 .method public constructor <init>(Landroid/graphics/Point;)V
     .locals 1
-    .parameter "src"
+    .param p1, "src"    # Landroid/graphics/Point;
 
     .prologue
     .line 37
@@ -87,7 +96,7 @@
 
     iput v0, p0, Landroid/graphics/Point;->y:I
 
-    .line 40
+    .line 37
     return-void
 .end method
 
@@ -104,96 +113,88 @@
 .end method
 
 .method public final equals(II)Z
-    .locals 1
-    .parameter "x"
-    .parameter "y"
+    .locals 2
+    .param p1, "x"    # I
+    .param p2, "y"    # I
 
     .prologue
+    const/4 v0, 0x0
+
     .line 70
-    iget v0, p0, Landroid/graphics/Point;->x:I
+    iget v1, p0, Landroid/graphics/Point;->x:I
 
-    if-ne v0, p1, :cond_0
+    if-ne v1, p1, :cond_0
 
-    iget v0, p0, Landroid/graphics/Point;->y:I
+    iget v1, p0, Landroid/graphics/Point;->y:I
 
-    if-ne v0, p2, :cond_0
+    if-ne v1, p2, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 5
-    .parameter "o"
+    .param p1, "o"    # Ljava/lang/Object;
 
     .prologue
-    const/4 v1, 0x1
+    const/4 v4, 0x1
 
-    const/4 v2, 0x0
+    const/4 v3, 0x0
 
     .line 75
-    if-ne p0, p1, :cond_1
+    if-ne p0, p1, :cond_0
 
-    .line 83
-    :cond_0
-    :goto_0
-    return v1
+    return v4
 
     .line 76
-    :cond_1
-    if-eqz p1, :cond_2
+    :cond_0
+    if-eqz p1, :cond_1
 
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-virtual {p0}, Landroid/graphics/Point;->getClass()Ljava/lang/Class;
 
-    move-result-object v3
+    move-result-object v1
 
     invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    move-result-object v4
+    move-result-object v2
 
-    if-eq v3, v4, :cond_3
+    if-eq v1, v2, :cond_2
+
+    :cond_1
+    return v3
 
     :cond_2
-    move v1, v2
-
-    goto :goto_0
-
-    :cond_3
     move-object v0, p1
 
     .line 78
     check-cast v0, Landroid/graphics/Point;
 
     .line 80
-    .local v0, point:Landroid/graphics/Point;
-    iget v3, p0, Landroid/graphics/Point;->x:I
+    .local v0, "point":Landroid/graphics/Point;
+    iget v1, p0, Landroid/graphics/Point;->x:I
 
-    iget v4, v0, Landroid/graphics/Point;->x:I
+    iget v2, v0, Landroid/graphics/Point;->x:I
 
-    if-eq v3, v4, :cond_4
+    if-eq v1, v2, :cond_3
 
-    move v1, v2
-
-    goto :goto_0
+    return v3
 
     .line 81
+    :cond_3
+    iget v1, p0, Landroid/graphics/Point;->y:I
+
+    iget v2, v0, Landroid/graphics/Point;->y:I
+
+    if-eq v1, v2, :cond_4
+
+    return v3
+
+    .line 83
     :cond_4
-    iget v3, p0, Landroid/graphics/Point;->y:I
-
-    iget v4, v0, Landroid/graphics/Point;->y:I
-
-    if-eq v3, v4, :cond_0
-
-    move v1, v2
-
-    goto :goto_0
+    return v4
 .end method
 
 .method public hashCode()I
@@ -204,7 +205,7 @@
     iget v0, p0, Landroid/graphics/Point;->x:I
 
     .line 89
-    .local v0, result:I
+    .local v0, "result":I
     mul-int/lit8 v1, v0, 0x1f
 
     iget v2, p0, Landroid/graphics/Point;->y:I
@@ -233,14 +234,14 @@
 
     iput v0, p0, Landroid/graphics/Point;->y:I
 
-    .line 56
+    .line 53
     return-void
 .end method
 
 .method public final offset(II)V
     .locals 1
-    .parameter "dx"
-    .parameter "dy"
+    .param p1, "dx"    # I
+    .param p2, "dy"    # I
 
     .prologue
     .line 62
@@ -257,13 +258,13 @@
 
     iput v0, p0, Landroid/graphics/Point;->y:I
 
-    .line 64
+    .line 61
     return-void
 .end method
 
 .method public readFromParcel(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 142
@@ -280,14 +281,14 @@
 
     iput v0, p0, Landroid/graphics/Point;->y:I
 
-    .line 144
+    .line 141
     return-void
 .end method
 
 .method public set(II)V
     .locals 0
-    .parameter "x"
-    .parameter "y"
+    .param p1, "x"    # I
+    .param p2, "y"    # I
 
     .prologue
     .line 46
@@ -296,7 +297,7 @@
     .line 47
     iput p2, p0, Landroid/graphics/Point;->y:I
 
-    .line 48
+    .line 45
     return-void
 .end method
 
@@ -309,7 +310,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "Point("
+    const-string/jumbo v1, "Point("
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -321,7 +322,7 @@
 
     move-result-object v0
 
-    const-string v1, ", "
+    const-string/jumbo v1, ", "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -333,7 +334,7 @@
 
     move-result-object v0
 
-    const-string v1, ")"
+    const-string/jumbo v1, ")"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -348,8 +349,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "out"
-    .parameter "flags"
+    .param p1, "out"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 113
@@ -362,6 +363,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 115
+    .line 112
     return-void
 .end method

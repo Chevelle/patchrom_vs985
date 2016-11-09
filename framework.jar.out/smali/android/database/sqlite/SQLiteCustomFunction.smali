@@ -14,12 +14,12 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;ILandroid/database/sqlite/SQLiteDatabase$CustomFunction;)V
     .locals 2
-    .parameter "name"
-    .parameter "numArgs"
-    .parameter "callback"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "numArgs"    # I
+    .param p3, "callback"    # Landroid/database/sqlite/SQLiteDatabase$CustomFunction;
 
     .prologue
-    .line 38
+    .line 37
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 39
@@ -28,7 +28,7 @@
     .line 40
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "name must not be null."
+    const-string/jumbo v1, "name must not be null."
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -44,13 +44,13 @@
     .line 45
     iput-object p3, p0, Landroid/database/sqlite/SQLiteCustomFunction;->callback:Landroid/database/sqlite/SQLiteDatabase$CustomFunction;
 
-    .line 46
+    .line 38
     return-void
 .end method
 
 .method private dispatchCallback([Ljava/lang/String;)V
     .locals 1
-    .parameter "args"
+    .param p1, "args"    # [Ljava/lang/String;
 
     .prologue
     .line 51
@@ -58,6 +58,6 @@
 
     invoke-interface {v0, p1}, Landroid/database/sqlite/SQLiteDatabase$CustomFunction;->callback([Ljava/lang/String;)V
 
-    .line 52
+    .line 50
     return-void
 .end method

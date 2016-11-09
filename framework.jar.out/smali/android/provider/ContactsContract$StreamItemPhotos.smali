@@ -17,19 +17,26 @@
     name = "StreamItemPhotos"
 .end annotation
 
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
 
 # static fields
 .field public static final PHOTO:Ljava/lang/String; = "photo"
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
 
 
 # direct methods
 .method private constructor <init>()V
     .locals 0
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
 
     .prologue
-    .line 3658
+    .line 3836
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 3659
     return-void
 .end method

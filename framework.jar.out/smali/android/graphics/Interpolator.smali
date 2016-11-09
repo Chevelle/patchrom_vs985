@@ -16,13 +16,13 @@
 
 .field private mValueCount:I
 
-.field private final native_instance:I
+.field private final native_instance:J
 
 
 # direct methods
 .method public constructor <init>(I)V
-    .locals 1
-    .parameter "valueCount"
+    .locals 2
+    .param p1, "valueCount"    # I
 
     .prologue
     const/4 v0, 0x2
@@ -37,20 +37,20 @@
     iput v0, p0, Landroid/graphics/Interpolator;->mFrameCount:I
 
     .line 26
-    invoke-static {p1, v0}, Landroid/graphics/Interpolator;->nativeConstructor(II)I
+    invoke-static {p1, v0}, Landroid/graphics/Interpolator;->nativeConstructor(II)J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/graphics/Interpolator;->native_instance:I
+    iput-wide v0, p0, Landroid/graphics/Interpolator;->native_instance:J
 
-    .line 27
+    .line 23
     return-void
 .end method
 
 .method public constructor <init>(II)V
-    .locals 1
-    .parameter "valueCount"
-    .parameter "frameCount"
+    .locals 2
+    .param p1, "valueCount"    # I
+    .param p2, "frameCount"    # I
 
     .prologue
     .line 29
@@ -63,38 +63,38 @@
     iput p2, p0, Landroid/graphics/Interpolator;->mFrameCount:I
 
     .line 32
-    invoke-static {p1, p2}, Landroid/graphics/Interpolator;->nativeConstructor(II)I
+    invoke-static {p1, p2}, Landroid/graphics/Interpolator;->nativeConstructor(II)J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/graphics/Interpolator;->native_instance:I
+    iput-wide v0, p0, Landroid/graphics/Interpolator;->native_instance:J
 
-    .line 33
+    .line 29
     return-void
 .end method
 
-.method private static native nativeConstructor(II)I
+.method private static native nativeConstructor(II)J
 .end method
 
-.method private static native nativeDestructor(I)V
+.method private static native nativeDestructor(J)V
 .end method
 
-.method private static native nativeReset(III)V
+.method private static native nativeReset(JII)V
 .end method
 
-.method private static native nativeSetKeyFrame(III[F[F)V
+.method private static native nativeSetKeyFrame(JII[F[F)V
 .end method
 
-.method private static native nativeSetRepeatMirror(IFZ)V
+.method private static native nativeSetRepeatMirror(JFZ)V
 .end method
 
-.method private static native nativeTimeToValues(II[F)I
+.method private static native nativeTimeToValues(JI[F)I
 .end method
 
 
 # virtual methods
 .method protected finalize()V
-    .locals 1
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/Throwable;
@@ -103,11 +103,11 @@
 
     .prologue
     .line 149
-    iget v0, p0, Landroid/graphics/Interpolator;->native_instance:I
+    iget-wide v0, p0, Landroid/graphics/Interpolator;->native_instance:J
 
-    invoke-static {v0}, Landroid/graphics/Interpolator;->nativeDestructor(I)V
+    invoke-static {v0, v1}, Landroid/graphics/Interpolator;->nativeDestructor(J)V
 
-    .line 150
+    .line 148
     return-void
 .end method
 
@@ -133,7 +133,7 @@
 
 .method public reset(I)V
     .locals 1
-    .parameter "valueCount"
+    .param p1, "valueCount"    # I
 
     .prologue
     .line 41
@@ -141,14 +141,14 @@
 
     invoke-virtual {p0, p1, v0}, Landroid/graphics/Interpolator;->reset(II)V
 
-    .line 42
+    .line 40
     return-void
 .end method
 
 .method public reset(II)V
-    .locals 1
-    .parameter "valueCount"
-    .parameter "frameCount"
+    .locals 2
+    .param p1, "valueCount"    # I
+    .param p2, "frameCount"    # I
 
     .prologue
     .line 50
@@ -158,19 +158,19 @@
     iput p2, p0, Landroid/graphics/Interpolator;->mFrameCount:I
 
     .line 52
-    iget v0, p0, Landroid/graphics/Interpolator;->native_instance:I
+    iget-wide v0, p0, Landroid/graphics/Interpolator;->native_instance:J
 
-    invoke-static {v0, p1, p2}, Landroid/graphics/Interpolator;->nativeReset(III)V
+    invoke-static {v0, v1, p1, p2}, Landroid/graphics/Interpolator;->nativeReset(JII)V
 
-    .line 53
+    .line 49
     return-void
 .end method
 
 .method public setKeyFrame(II[F)V
     .locals 1
-    .parameter "index"
-    .parameter "msec"
-    .parameter "values"
+    .param p1, "index"    # I
+    .param p2, "msec"    # I
+    .param p3, "values"    # [F
 
     .prologue
     .line 74
@@ -178,16 +178,16 @@
 
     invoke-virtual {p0, p1, p2, p3, v0}, Landroid/graphics/Interpolator;->setKeyFrame(II[F[F)V
 
-    .line 75
+    .line 73
     return-void
 .end method
 
 .method public setKeyFrame(II[F[F)V
-    .locals 2
-    .parameter "index"
-    .parameter "msec"
-    .parameter "values"
-    .parameter "blend"
+    .locals 6
+    .param p1, "index"    # I
+    .param p2, "msec"    # I
+    .param p3, "values"    # [F
+    .param p4, "blend"    # [F
 
     .prologue
     .line 88
@@ -239,18 +239,26 @@
 
     .line 97
     :cond_3
-    iget v0, p0, Landroid/graphics/Interpolator;->native_instance:I
+    iget-wide v0, p0, Landroid/graphics/Interpolator;->native_instance:J
 
-    invoke-static {v0, p1, p2, p3, p4}, Landroid/graphics/Interpolator;->nativeSetKeyFrame(III[F[F)V
+    move v2, p1
 
-    .line 98
+    move v3, p2
+
+    move-object v4, p3
+
+    move-object v5, p4
+
+    invoke-static/range {v0 .. v5}, Landroid/graphics/Interpolator;->nativeSetKeyFrame(JII[F[F)V
+
+    .line 87
     return-void
 .end method
 
 .method public setRepeatMirror(FZ)V
-    .locals 1
-    .parameter "repeatCount"
-    .parameter "mirror"
+    .locals 2
+    .param p1, "repeatCount"    # F
+    .param p2, "mirror"    # Z
 
     .prologue
     .line 106
@@ -261,19 +269,19 @@
     if-ltz v0, :cond_0
 
     .line 107
-    iget v0, p0, Landroid/graphics/Interpolator;->native_instance:I
+    iget-wide v0, p0, Landroid/graphics/Interpolator;->native_instance:J
 
-    invoke-static {v0, p1, p2}, Landroid/graphics/Interpolator;->nativeSetRepeatMirror(IFZ)V
+    invoke-static {v0, v1, p1, p2}, Landroid/graphics/Interpolator;->nativeSetRepeatMirror(JFZ)V
 
-    .line 109
+    .line 105
     :cond_0
     return-void
 .end method
 
 .method public timeToValues(I[F)Landroid/graphics/Interpolator$Result;
     .locals 2
-    .parameter "msec"
-    .parameter "values"
+    .param p1, "msec"    # I
+    .param p2, "values"    # [F
 
     .prologue
     .line 137
@@ -294,9 +302,9 @@
 
     .line 140
     :cond_0
-    iget v0, p0, Landroid/graphics/Interpolator;->native_instance:I
+    iget-wide v0, p0, Landroid/graphics/Interpolator;->native_instance:J
 
-    invoke-static {v0, p1, p2}, Landroid/graphics/Interpolator;->nativeTimeToValues(II[F)I
+    invoke-static {v0, v1, p1, p2}, Landroid/graphics/Interpolator;->nativeTimeToValues(JI[F)I
 
     move-result v0
 
@@ -305,20 +313,19 @@
     .line 143
     sget-object v0, Landroid/graphics/Interpolator$Result;->FREEZE_END:Landroid/graphics/Interpolator$Result;
 
-    :goto_0
     return-object v0
 
     .line 141
     :pswitch_0
     sget-object v0, Landroid/graphics/Interpolator$Result;->NORMAL:Landroid/graphics/Interpolator$Result;
 
-    goto :goto_0
+    return-object v0
 
     .line 142
     :pswitch_1
     sget-object v0, Landroid/graphics/Interpolator$Result;->FREEZE_START:Landroid/graphics/Interpolator$Result;
 
-    goto :goto_0
+    return-object v0
 
     .line 140
     nop
@@ -332,7 +339,7 @@
 
 .method public timeToValues([F)Landroid/graphics/Interpolator$Result;
     .locals 2
-    .parameter "values"
+    .param p1, "values"    # [F
 
     .prologue
     .line 122

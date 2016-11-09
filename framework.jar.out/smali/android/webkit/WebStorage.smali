@@ -6,8 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/webkit/WebStorage$Origin;,
-        Landroid/webkit/WebStorage$QuotaUpdater;
+        Landroid/webkit/WebStorage$QuotaUpdater;,
+        Landroid/webkit/WebStorage$Origin;
     }
 .end annotation
 
@@ -17,7 +17,7 @@
     .locals 0
 
     .prologue
-    .line 213
+    .line 206
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -27,7 +27,7 @@
     .locals 1
 
     .prologue
-    .line 202
+    .line 194
     invoke-static {}, Landroid/webkit/WebViewFactory;->getProvider()Landroid/webkit/WebViewFactoryProvider;
 
     move-result-object v0
@@ -45,22 +45,21 @@
     .locals 0
 
     .prologue
-    .line 194
+    .line 184
     return-void
 .end method
 
 .method public deleteOrigin(Ljava/lang/String;)V
     .locals 0
-    .parameter "origin"
+    .param p1, "origin"    # Ljava/lang/String;
 
     .prologue
-    .line 185
+    .line 175
     return-void
 .end method
 
 .method public getOrigins(Landroid/webkit/ValueCallback;)V
     .locals 0
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -72,15 +71,14 @@
     .end annotation
 
     .prologue
-    .line 142
-    .local p1, callback:Landroid/webkit/ValueCallback;,"Landroid/webkit/ValueCallback<Ljava/util/Map;>;"
+    .line 132
+    .local p1, "callback":Landroid/webkit/ValueCallback;, "Landroid/webkit/ValueCallback<Ljava/util/Map;>;"
     return-void
 .end method
 
 .method public getQuotaForOrigin(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
     .locals 0
-    .parameter "origin"
-    .parameter
+    .param p1, "origin"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -93,15 +91,14 @@
     .end annotation
 
     .prologue
-    .line 164
-    .local p2, callback:Landroid/webkit/ValueCallback;,"Landroid/webkit/ValueCallback<Ljava/lang/Long;>;"
+    .line 154
+    .local p2, "callback":Landroid/webkit/ValueCallback;, "Landroid/webkit/ValueCallback<Ljava/lang/Long;>;"
     return-void
 .end method
 
 .method public getUsageForOrigin(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
     .locals 0
-    .parameter "origin"
-    .parameter
+    .param p1, "origin"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -114,19 +111,19 @@
     .end annotation
 
     .prologue
-    .line 153
-    .local p2, callback:Landroid/webkit/ValueCallback;,"Landroid/webkit/ValueCallback<Ljava/lang/Long;>;"
+    .line 143
+    .local p2, "callback":Landroid/webkit/ValueCallback;, "Landroid/webkit/ValueCallback<Ljava/lang/Long;>;"
     return-void
 .end method
 
 .method public setQuotaForOrigin(Ljava/lang/String;J)V
     .locals 0
-    .parameter "origin"
-    .parameter "quota"
+    .param p1, "origin"    # Ljava/lang/String;
+    .param p2, "quota"    # J
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
     .prologue
-    .line 176
+    .line 166
     return-void
 .end method

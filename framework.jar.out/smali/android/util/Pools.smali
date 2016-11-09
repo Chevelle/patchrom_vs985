@@ -6,9 +6,9 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/util/Pools$SynchronizedPool;,
+        Landroid/util/Pools$Pool;,
         Landroid/util/Pools$SimplePool;,
-        Landroid/util/Pools$Pool;
+        Landroid/util/Pools$SynchronizedPool;
     }
 .end annotation
 
@@ -21,6 +21,5 @@
     .line 68
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 70
     return-void
 .end method

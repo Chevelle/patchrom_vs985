@@ -1,11 +1,11 @@
 .class Landroid/accounts/AccountManager$13;
-.super Landroid/content/BroadcastReceiver;
+.super Landroid/accounts/AccountManager$AmsTask;
 .source "AccountManager.java"
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Landroid/accounts/AccountManager;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Landroid/accounts/AccountManager;->addAccountAsUser(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Landroid/os/Bundle;Landroid/app/Activity;Landroid/accounts/AccountManagerCallback;Landroid/os/Handler;Landroid/os/UserHandle;)Landroid/accounts/AccountManagerFuture;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -17,118 +17,106 @@
 # instance fields
 .field final synthetic this$0:Landroid/accounts/AccountManager;
 
+.field final synthetic val$accountType:Ljava/lang/String;
+
+.field final synthetic val$activity:Landroid/app/Activity;
+
+.field final synthetic val$authTokenType:Ljava/lang/String;
+
+.field final synthetic val$optionsIn:Landroid/os/Bundle;
+
+.field final synthetic val$requiredFeatures:[Ljava/lang/String;
+
+.field final synthetic val$userHandle:Landroid/os/UserHandle;
+
 
 # direct methods
-.method constructor <init>(Landroid/accounts/AccountManager;)V
+.method constructor <init>(Landroid/accounts/AccountManager;Landroid/accounts/AccountManager;Landroid/app/Activity;Landroid/os/Handler;Landroid/accounts/AccountManagerCallback;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Landroid/app/Activity;Landroid/os/Bundle;Landroid/os/UserHandle;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/accounts/AccountManager;
+    .param p2, "this$0_1"    # Landroid/accounts/AccountManager;
+    .param p3, "$anonymous0"    # Landroid/app/Activity;
+    .param p4, "$anonymous1"    # Landroid/os/Handler;
+    .param p6, "val$accountType"    # Ljava/lang/String;
+    .param p7, "val$authTokenType"    # Ljava/lang/String;
+    .param p8, "val$requiredFeatures"    # [Ljava/lang/String;
+    .param p9, "val$activity"    # Landroid/app/Activity;
+    .param p10, "val$optionsIn"    # Landroid/os/Bundle;
+    .param p11, "val$userHandle"    # Landroid/os/UserHandle;
 
     .prologue
-    .line 2012
-    iput-object p1, p0, Landroid/accounts/AccountManager$13;->this$0:Landroid/accounts/AccountManager;
+    .line 1532
+    .local p5, "$anonymous2":Landroid/accounts/AccountManagerCallback;, "Landroid/accounts/AccountManagerCallback<Landroid/os/Bundle;>;"
+    iput-object p2, p0, Landroid/accounts/AccountManager$13;->this$0:Landroid/accounts/AccountManager;
 
-    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
+    iput-object p6, p0, Landroid/accounts/AccountManager$13;->val$accountType:Ljava/lang/String;
+
+    iput-object p7, p0, Landroid/accounts/AccountManager$13;->val$authTokenType:Ljava/lang/String;
+
+    iput-object p8, p0, Landroid/accounts/AccountManager$13;->val$requiredFeatures:[Ljava/lang/String;
+
+    iput-object p9, p0, Landroid/accounts/AccountManager$13;->val$activity:Landroid/app/Activity;
+
+    iput-object p10, p0, Landroid/accounts/AccountManager$13;->val$optionsIn:Landroid/os/Bundle;
+
+    iput-object p11, p0, Landroid/accounts/AccountManager$13;->val$userHandle:Landroid/os/UserHandle;
+
+    invoke-direct {p0, p1, p3, p4, p5}, Landroid/accounts/AccountManager$AmsTask;-><init>(Landroid/accounts/AccountManager;Landroid/app/Activity;Landroid/os/Handler;Landroid/accounts/AccountManagerCallback;)V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 7
-    .parameter "context"
-    .parameter "intent"
+.method public doWork()V
+    .locals 8
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
 
     .prologue
-    .line 2014
-    iget-object v3, p0, Landroid/accounts/AccountManager$13;->this$0:Landroid/accounts/AccountManager;
+    .line 1534
+    iget-object v0, p0, Landroid/accounts/AccountManager$13;->this$0:Landroid/accounts/AccountManager;
 
-    invoke-virtual {v3}, Landroid/accounts/AccountManager;->getAccounts()[Landroid/accounts/Account;
+    invoke-static {v0}, Landroid/accounts/AccountManager;->-get3(Landroid/accounts/AccountManager;)Landroid/accounts/IAccountManager;
 
     move-result-object v0
 
-    .line 2016
-    .local v0, accounts:[Landroid/accounts/Account;
-    iget-object v3, p0, Landroid/accounts/AccountManager$13;->this$0:Landroid/accounts/AccountManager;
+    iget-object v1, p0, Landroid/accounts/AccountManager$13;->mResponse:Landroid/accounts/IAccountManagerResponse;
 
-    #getter for: Landroid/accounts/AccountManager;->mAccountsUpdatedListeners:Ljava/util/HashMap;
-    invoke-static {v3}, Landroid/accounts/AccountManager;->access$1300(Landroid/accounts/AccountManager;)Ljava/util/HashMap;
+    iget-object v2, p0, Landroid/accounts/AccountManager$13;->val$accountType:Ljava/lang/String;
 
-    move-result-object v5
+    iget-object v3, p0, Landroid/accounts/AccountManager$13;->val$authTokenType:Ljava/lang/String;
 
-    monitor-enter v5
+    .line 1535
+    iget-object v4, p0, Landroid/accounts/AccountManager$13;->val$requiredFeatures:[Ljava/lang/String;
 
-    .line 2018
-    :try_start_0
-    iget-object v3, p0, Landroid/accounts/AccountManager$13;->this$0:Landroid/accounts/AccountManager;
+    iget-object v5, p0, Landroid/accounts/AccountManager$13;->val$activity:Landroid/app/Activity;
 
-    #getter for: Landroid/accounts/AccountManager;->mAccountsUpdatedListeners:Ljava/util/HashMap;
-    invoke-static {v3}, Landroid/accounts/AccountManager;->access$1300(Landroid/accounts/AccountManager;)Ljava/util/HashMap;
+    if-eqz v5, :cond_0
 
-    move-result-object v3
+    const/4 v5, 0x1
 
-    invoke-virtual {v3}, Ljava/util/HashMap;->entrySet()Ljava/util/Set;
-
-    move-result-object v3
-
-    invoke-interface {v3}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
-
-    move-result-object v2
-
-    .local v2, i$:Ljava/util/Iterator;
     :goto_0
-    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+    iget-object v6, p0, Landroid/accounts/AccountManager$13;->val$optionsIn:Landroid/os/Bundle;
 
-    move-result v3
+    iget-object v7, p0, Landroid/accounts/AccountManager$13;->val$userHandle:Landroid/os/UserHandle;
 
-    if-eqz v3, :cond_0
+    invoke-virtual {v7}, Landroid/os/UserHandle;->getIdentifier()I
 
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    move-result v7
 
-    move-result-object v1
+    .line 1534
+    invoke-interface/range {v0 .. v7}, Landroid/accounts/IAccountManager;->addAccountAsUser(Landroid/accounts/IAccountManagerResponse;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;ZLandroid/os/Bundle;I)V
 
-    check-cast v1, Ljava/util/Map$Entry;
+    .line 1533
+    return-void
 
-    .line 2019
-    .local v1, entry:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Landroid/accounts/OnAccountsUpdateListener;Landroid/os/Handler;>;"
-    iget-object v6, p0, Landroid/accounts/AccountManager$13;->this$0:Landroid/accounts/AccountManager;
-
-    invoke-interface {v1}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Landroid/os/Handler;
-
-    invoke-interface {v1}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Landroid/accounts/OnAccountsUpdateListener;
-
-    #calls: Landroid/accounts/AccountManager;->postToHandler(Landroid/os/Handler;Landroid/accounts/OnAccountsUpdateListener;[Landroid/accounts/Account;)V
-    invoke-static {v6, v3, v4, v0}, Landroid/accounts/AccountManager;->access$1400(Landroid/accounts/AccountManager;Landroid/os/Handler;Landroid/accounts/OnAccountsUpdateListener;[Landroid/accounts/Account;)V
+    .line 1535
+    :cond_0
+    const/4 v5, 0x0
 
     goto :goto_0
-
-    .line 2021
-    .end local v1           #entry:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Landroid/accounts/OnAccountsUpdateListener;Landroid/os/Handler;>;"
-    .end local v2           #i$:Ljava/util/Iterator;
-    :catchall_0
-    move-exception v3
-
-    monitor-exit v5
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    throw v3
-
-    .restart local v2       #i$:Ljava/util/Iterator;
-    :cond_0
-    :try_start_1
-    monitor-exit v5
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    .line 2022
-    return-void
 .end method

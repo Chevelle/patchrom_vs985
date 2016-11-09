@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 244
+    .line 470
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -41,127 +41,76 @@
 
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/net/RouteInfo;
-    .locals 8
-    .parameter "in"
+    .locals 7
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    const/4 v7, 0x1
+    .line 472
+    const/4 v6, 0x0
 
-    .line 246
-    const/4 v2, 0x0
+    invoke-virtual {p1, v6}, Landroid/os/Parcel;->readParcelable(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
 
-    .line 247
-    .local v2, destAddr:Ljava/net/InetAddress;
-    const/4 v5, 0x0
+    move-result-object v1
 
-    .line 248
-    .local v5, prefix:I
+    check-cast v1, Landroid/net/IpPrefix;
+
+    .line 474
+    .local v1, "dest":Landroid/net/IpPrefix;
     const/4 v3, 0x0
 
-    .line 250
-    .local v3, gateway:Ljava/net/InetAddress;
-    invoke-virtual {p1}, Landroid/os/Parcel;->readByte()B
-
-    move-result v6
-
-    if-ne v6, v7, :cond_0
-
-    .line 251
+    .line 475
+    .local v3, "gateway":Ljava/net/InetAddress;
     invoke-virtual {p1}, Landroid/os/Parcel;->createByteArray()[B
 
     move-result-object v0
 
-    .line 252
-    .local v0, addr:[B
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
-
-    move-result v5
-
-    .line 255
+    .line 477
+    .local v0, "addr":[B
     :try_start_0
     invoke-static {v0}, Ljava/net/InetAddress;->getByAddress([B)Ljava/net/InetAddress;
     :try_end_0
     .catch Ljava/net/UnknownHostException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result-object v2
-
-    .line 259
-    .end local v0           #addr:[B
-    :cond_0
-    :goto_0
-    invoke-virtual {p1}, Landroid/os/Parcel;->readByte()B
-
-    move-result v6
-
-    if-ne v6, v7, :cond_1
-
-    .line 260
-    invoke-virtual {p1}, Landroid/os/Parcel;->createByteArray()[B
-
-    move-result-object v0
-
-    .line 263
-    .restart local v0       #addr:[B
-    :try_start_1
-    invoke-static {v0}, Ljava/net/InetAddress;->getByAddress([B)Ljava/net/InetAddress;
-    :try_end_1
-    .catch Ljava/net/UnknownHostException; {:try_start_1 .. :try_end_1} :catch_1
-
     move-result-object v3
 
-    .line 267
-    .end local v0           #addr:[B
-    :cond_1
-    :goto_1
+    .line 480
+    .end local v3    # "gateway":Ljava/net/InetAddress;
+    :goto_0
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v4
 
-    .line 269
-    .local v4, iface:Ljava/lang/String;
-    const/4 v1, 0x0
+    .line 481
+    .local v4, "iface":Ljava/lang/String;
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
-    .line 271
-    .local v1, dest:Landroid/net/LinkAddress;
-    if-eqz v2, :cond_2
+    move-result v5
 
-    .line 272
-    new-instance v1, Landroid/net/LinkAddress;
-
-    .end local v1           #dest:Landroid/net/LinkAddress;
-    invoke-direct {v1, v2, v5}, Landroid/net/LinkAddress;-><init>(Ljava/net/InetAddress;I)V
-
-    .line 275
-    .restart local v1       #dest:Landroid/net/LinkAddress;
-    :cond_2
+    .line 483
+    .local v5, "type":I
     new-instance v6, Landroid/net/RouteInfo;
 
-    invoke-direct {v6, v1, v3, v4}, Landroid/net/RouteInfo;-><init>(Landroid/net/LinkAddress;Ljava/net/InetAddress;Ljava/lang/String;)V
+    invoke-direct {v6, v1, v3, v4, v5}, Landroid/net/RouteInfo;-><init>(Landroid/net/IpPrefix;Ljava/net/InetAddress;Ljava/lang/String;I)V
 
     return-object v6
 
-    .line 256
-    .end local v1           #dest:Landroid/net/LinkAddress;
-    .end local v4           #iface:Ljava/lang/String;
-    .restart local v0       #addr:[B
+    .line 478
+    .end local v4    # "iface":Ljava/lang/String;
+    .end local v5    # "type":I
+    .restart local v3    # "gateway":Ljava/net/InetAddress;
     :catch_0
-    move-exception v6
+    move-exception v2
 
+    .local v2, "e":Ljava/net/UnknownHostException;
     goto :goto_0
-
-    .line 264
-    :catch_1
-    move-exception v6
-
-    goto :goto_1
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 244
+    .line 471
     invoke-virtual {p0, p1}, Landroid/net/RouteInfo$1;->createFromParcel(Landroid/os/Parcel;)Landroid/net/RouteInfo;
 
     move-result-object v0
@@ -171,10 +120,10 @@
 
 .method public newArray(I)[Landroid/net/RouteInfo;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 279
+    .line 487
     new-array v0, p1, [Landroid/net/RouteInfo;
 
     return-object v0
@@ -182,10 +131,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 244
+    .line 486
     invoke-virtual {p0, p1}, Landroid/net/RouteInfo$1;->newArray(I)[Landroid/net/RouteInfo;
 
     move-result-object v0

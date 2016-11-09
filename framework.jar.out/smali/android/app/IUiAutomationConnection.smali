@@ -15,6 +15,22 @@
 
 
 # virtual methods
+.method public abstract clearWindowAnimationFrameStats()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract clearWindowContentFrameStats(I)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract connect(Landroid/accessibilityservice/IAccessibilityServiceClient;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -31,7 +47,47 @@
     .end annotation
 .end method
 
+.method public abstract executeShellCommand(Ljava/lang/String;Landroid/os/ParcelFileDescriptor;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getWindowAnimationFrameStats()Landroid/view/WindowAnimationFrameStats;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getWindowContentFrameStats(I)Landroid/view/WindowContentFrameStats;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract grantRuntimePermission(Ljava/lang/String;Ljava/lang/String;I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract injectInputEvent(Landroid/view/InputEvent;Z)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract revokeRuntimePermission(Ljava/lang/String;Ljava/lang/String;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

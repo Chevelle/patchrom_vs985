@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/view/InputEvent$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -47,13 +55,15 @@
 
     sput-object v0, Landroid/view/InputEvent;->mNextSeq:Ljava/util/concurrent/atomic/AtomicInteger;
 
-    .line 218
+    .line 226
     new-instance v0, Landroid/view/InputEvent$1;
 
     invoke-direct {v0}, Landroid/view/InputEvent$1;-><init>()V
 
+    .line 225
     sput-object v0, Landroid/view/InputEvent;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 27
     return-void
 .end method
 
@@ -73,12 +83,15 @@
 
     iput v0, p0, Landroid/view/InputEvent;->mSeq:I
 
-    .line 47
+    .line 45
     return-void
 .end method
 
 
 # virtual methods
+.method public abstract cancel()V
+.end method
+
 .method public abstract copy()Landroid/view/InputEvent;
 .end method
 
@@ -86,7 +99,7 @@
     .locals 1
 
     .prologue
-    .line 215
+    .line 222
     const/4 v0, 0x0
 
     return v0
@@ -121,7 +134,7 @@
     .locals 1
 
     .prologue
-    .line 211
+    .line 218
     iget v0, p0, Landroid/view/InputEvent;->mSeq:I
 
     return v0
@@ -132,7 +145,7 @@
 
 .method public isFromSource(I)Z
     .locals 1
-    .parameter "source"
+    .param p1, "source"    # I
 
     .prologue
     .line 94
@@ -181,7 +194,7 @@
 
     iput v0, p0, Landroid/view/InputEvent;->mSeq:I
 
-    .line 149
+    .line 145
     return-void
 .end method
 
@@ -201,7 +214,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+    invoke-virtual {p0}, Landroid/view/InputEvent;->toString()Ljava/lang/String;
 
     move-result-object v2
 
@@ -209,7 +222,7 @@
 
     move-result-object v1
 
-    const-string v2, " recycled twice!"
+    const-string/jumbo v2, " recycled twice!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -229,7 +242,7 @@
 
     iput-boolean v0, p0, Landroid/view/InputEvent;->mRecycled:Z
 
-    .line 124
+    .line 112
     return-void
 .end method
 
@@ -240,7 +253,7 @@
     .line 138
     invoke-virtual {p0}, Landroid/view/InputEvent;->recycle()V
 
-    .line 139
+    .line 137
     return-void
 .end method
 

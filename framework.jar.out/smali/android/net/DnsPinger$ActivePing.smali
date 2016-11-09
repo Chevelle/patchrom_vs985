@@ -33,7 +33,7 @@
 # direct methods
 .method private constructor <init>(Landroid/net/DnsPinger;)V
     .locals 2
-    .parameter
+    .param p1, "this$0"    # Landroid/net/DnsPinger;
 
     .prologue
     .line 99
@@ -48,16 +48,15 @@
 
     iput-wide v0, p0, Landroid/net/DnsPinger$ActivePing;->start:J
 
+    .line 99
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/net/DnsPinger;Landroid/net/DnsPinger$1;)V
+.method synthetic constructor <init>(Landroid/net/DnsPinger;Landroid/net/DnsPinger$ActivePing;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Landroid/net/DnsPinger;
 
     .prologue
-    .line 99
     invoke-direct {p0, p1}, Landroid/net/DnsPinger$ActivePing;-><init>(Landroid/net/DnsPinger;)V
 
     return-void

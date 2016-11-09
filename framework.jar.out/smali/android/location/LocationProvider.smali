@@ -22,15 +22,15 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;Lcom/android/internal/location/ProviderProperties;)V
     .locals 3
-    .parameter "name"
-    .parameter "properties"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "properties"    # Lcom/android/internal/location/ProviderProperties;
 
     .prologue
     .line 59
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 60
-    const-string v0, "[^a-zA-Z0-9]"
+    const-string/jumbo v0, "[^a-zA-Z0-9]"
 
     invoke-virtual {p1, v0}, Ljava/lang/String;->matches(Ljava/lang/String;)Z
 
@@ -70,121 +70,146 @@
     .line 64
     iput-object p2, p0, Landroid/location/LocationProvider;->mProperties:Lcom/android/internal/location/ProviderProperties;
 
-    .line 65
+    .line 59
     return-void
 .end method
 
 .method public static propertiesMeetCriteria(Ljava/lang/String;Lcom/android/internal/location/ProviderProperties;Landroid/location/Criteria;)Z
     .locals 3
-    .parameter "name"
-    .parameter "properties"
-    .parameter "criteria"
+    .param p0, "name"    # Ljava/lang/String;
+    .param p1, "properties"    # Lcom/android/internal/location/ProviderProperties;
+    .param p2, "criteria"    # Landroid/location/Criteria;
 
     .prologue
-    const/4 v0, 0x0
+    const/4 v2, 0x0
 
     .line 87
-    const-string/jumbo v1, "passive"
+    const-string/jumbo v0, "passive"
 
-    invoke-virtual {v1, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_1
+    if-eqz v0, :cond_0
 
-    .line 117
-    :cond_0
-    :goto_0
-    return v0
+    .line 89
+    return v2
 
     .line 91
-    :cond_1
-    if-eqz p1, :cond_0
+    :cond_0
+    if-nez p1, :cond_1
+
+    .line 94
+    return v2
 
     .line 97
+    :cond_1
     invoke-virtual {p2}, Landroid/location/Criteria;->getAccuracy()I
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_2
+    if-eqz v0, :cond_2
 
+    .line 98
     invoke-virtual {p2}, Landroid/location/Criteria;->getAccuracy()I
 
-    move-result v1
+    move-result v0
 
-    iget v2, p1, Lcom/android/internal/location/ProviderProperties;->mAccuracy:I
+    iget v1, p1, Lcom/android/internal/location/ProviderProperties;->mAccuracy:I
 
-    if-lt v1, v2, :cond_0
+    if-ge v0, v1, :cond_2
+
+    .line 99
+    return v2
 
     .line 101
     :cond_2
     invoke-virtual {p2}, Landroid/location/Criteria;->getPowerRequirement()I
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_3
+    if-eqz v0, :cond_3
 
+    .line 102
     invoke-virtual {p2}, Landroid/location/Criteria;->getPowerRequirement()I
 
-    move-result v1
+    move-result v0
 
-    iget v2, p1, Lcom/android/internal/location/ProviderProperties;->mPowerRequirement:I
+    iget v1, p1, Lcom/android/internal/location/ProviderProperties;->mPowerRequirement:I
 
-    if-lt v1, v2, :cond_0
+    if-ge v0, v1, :cond_3
+
+    .line 103
+    return v2
 
     .line 105
     :cond_3
     invoke-virtual {p2}, Landroid/location/Criteria;->isAltitudeRequired()Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_4
+    if-eqz v0, :cond_4
 
-    iget-boolean v1, p1, Lcom/android/internal/location/ProviderProperties;->mSupportsAltitude:Z
+    iget-boolean v0, p1, Lcom/android/internal/location/ProviderProperties;->mSupportsAltitude:Z
 
-    if-eqz v1, :cond_0
+    if-eqz v0, :cond_7
 
     .line 108
     :cond_4
     invoke-virtual {p2}, Landroid/location/Criteria;->isSpeedRequired()Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_5
+    if-eqz v0, :cond_5
 
-    iget-boolean v1, p1, Lcom/android/internal/location/ProviderProperties;->mSupportsSpeed:Z
+    iget-boolean v0, p1, Lcom/android/internal/location/ProviderProperties;->mSupportsSpeed:Z
 
-    if-eqz v1, :cond_0
+    if-eqz v0, :cond_8
 
     .line 111
     :cond_5
     invoke-virtual {p2}, Landroid/location/Criteria;->isBearingRequired()Z
 
-    move-result v1
+    move-result v0
 
-    if-eqz v1, :cond_6
+    if-eqz v0, :cond_6
 
-    iget-boolean v1, p1, Lcom/android/internal/location/ProviderProperties;->mSupportsBearing:Z
+    iget-boolean v0, p1, Lcom/android/internal/location/ProviderProperties;->mSupportsBearing:Z
 
-    if-eqz v1, :cond_0
+    if-eqz v0, :cond_9
 
     .line 114
     :cond_6
     invoke-virtual {p2}, Landroid/location/Criteria;->isCostAllowed()Z
 
-    move-result v1
+    move-result v0
 
-    if-nez v1, :cond_7
+    if-nez v0, :cond_a
 
-    iget-boolean v1, p1, Lcom/android/internal/location/ProviderProperties;->mHasMonetaryCost:Z
+    iget-boolean v0, p1, Lcom/android/internal/location/ProviderProperties;->mHasMonetaryCost:Z
 
-    if-nez v1, :cond_0
+    if-eqz v0, :cond_a
+
+    .line 115
+    return v2
+
+    .line 106
+    :cond_7
+    return v2
+
+    .line 109
+    :cond_8
+    return v2
+
+    .line 112
+    :cond_9
+    return v2
 
     .line 117
-    :cond_7
+    :cond_a
     const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 .end method
 
 
@@ -237,7 +262,7 @@
 
 .method public meetsCriteria(Landroid/location/Criteria;)Z
     .locals 2
-    .parameter "criteria"
+    .param p1, "criteria"    # Landroid/location/Criteria;
 
     .prologue
     .line 79

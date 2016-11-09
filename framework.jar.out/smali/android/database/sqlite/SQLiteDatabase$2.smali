@@ -24,7 +24,7 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter
+    .param p1, "val$prefix"    # Ljava/lang/String;
 
     .prologue
     .line 741
@@ -39,7 +39,7 @@
 # virtual methods
 .method public accept(Ljava/io/File;)Z
     .locals 2
-    .parameter "candidate"
+    .param p1, "candidate"    # Ljava/io/File;
 
     .prologue
     .line 744

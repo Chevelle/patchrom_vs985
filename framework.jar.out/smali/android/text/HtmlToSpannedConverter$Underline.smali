@@ -19,18 +19,16 @@
     .locals 0
 
     .prologue
-    .line 820
+    .line 824
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/text/HtmlToSpannedConverter$1;)V
+.method synthetic constructor <init>(Landroid/text/HtmlToSpannedConverter$Underline;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 820
     invoke-direct {p0}, Landroid/text/HtmlToSpannedConverter$Underline;-><init>()V
 
     return-void

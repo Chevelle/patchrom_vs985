@@ -19,18 +19,16 @@
     .locals 0
 
     .prologue
-    .line 1695
+    .line 1901
     invoke-direct {p0}, Ljava/lang/Exception;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/StrictMode$1;)V
+.method synthetic constructor <init>(Landroid/os/StrictMode$LogStackTrace;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 1695
     invoke-direct {p0}, Landroid/os/StrictMode$LogStackTrace;-><init>()V
 
     return-void

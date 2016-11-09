@@ -15,13 +15,13 @@
 
     invoke-direct {p0, v0, v1}, Landroid/net/wifi/p2p/nsd/WifiP2pServiceRequest;-><init>(ILjava/lang/String;)V
 
-    .line 49
+    .line 47
     return-void
 .end method
 
 .method protected constructor <init>(Ljava/lang/String;)V
     .locals 1
-    .parameter "query"
+    .param p1, "query"    # Ljava/lang/String;
 
     .prologue
     .line 40
@@ -29,7 +29,7 @@
 
     invoke-direct {p0, v0, p1}, Landroid/net/wifi/p2p/nsd/WifiP2pServiceRequest;-><init>(ILjava/lang/String;)V
 
-    .line 41
+    .line 39
     return-void
 .end method
 
@@ -47,7 +47,7 @@
 
 .method public static newInstance(Ljava/lang/String;)Landroid/net/wifi/p2p/nsd/WifiP2pUpnpServiceRequest;
     .locals 6
-    .parameter "st"
+    .param p0, "st"    # Ljava/lang/String;
 
     .prologue
     .line 74
@@ -69,24 +69,24 @@
     invoke-direct {v0}, Ljava/lang/StringBuffer;-><init>()V
 
     .line 78
-    .local v0, sb:Ljava/lang/StringBuffer;
+    .local v0, "sb":Ljava/lang/StringBuffer;
     sget-object v1, Ljava/util/Locale;->US:Ljava/util/Locale;
 
-    const-string v2, "%02x"
+    const-string/jumbo v2, "%02x"
 
     const/4 v3, 0x1
 
     new-array v3, v3, [Ljava/lang/Object;
 
-    const/4 v4, 0x0
+    const/16 v4, 0x10
 
-    const/16 v5, 0x10
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    move-result-object v4
 
-    move-result-object v5
+    const/4 v5, 0x0
 
-    aput-object v5, v3, v4
+    aput-object v4, v3, v5
 
     invoke-static {v1, v2, v3}, Ljava/lang/String;->format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 

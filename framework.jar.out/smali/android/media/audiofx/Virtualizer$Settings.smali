@@ -23,36 +23,35 @@
     .locals 0
 
     .prologue
-    .line 226
+    .line 558
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 227
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 7
-    .parameter "settings"
+    .param p1, "settings"    # Ljava/lang/String;
 
     .prologue
-    .line 234
+    .line 566
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 235
+    .line 567
     new-instance v2, Ljava/util/StringTokenizer;
 
-    const-string v4, "=;"
+    const-string/jumbo v4, "=;"
 
     invoke-direct {v2, p1, v4}, Ljava/util/StringTokenizer;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 236
-    .local v2, st:Ljava/util/StringTokenizer;
+    .line 568
+    .local v2, "st":Ljava/util/StringTokenizer;
     invoke-virtual {v2}, Ljava/util/StringTokenizer;->countTokens()I
 
     move-result v3
 
-    .line 237
-    .local v3, tokens:I
+    .line 569
+    .local v3, "tokens":I
     invoke-virtual {v2}, Ljava/util/StringTokenizer;->countTokens()I
 
     move-result v4
@@ -61,7 +60,7 @@
 
     if-eq v4, v5, :cond_0
 
-    .line 238
+    .line 570
     new-instance v4, Ljava/lang/IllegalArgumentException;
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -86,15 +85,15 @@
 
     throw v4
 
-    .line 240
+    .line 572
     :cond_0
     invoke-virtual {v2}, Ljava/util/StringTokenizer;->nextToken()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 241
-    .local v0, key:Ljava/lang/String;
-    const-string v4, "Virtualizer"
+    .line 573
+    .local v0, "key":Ljava/lang/String;
+    const-string/jumbo v4, "Virtualizer"
 
     invoke-virtual {v0, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -102,14 +101,15 @@
 
     if-nez v4, :cond_1
 
-    .line 242
+    .line 574
     new-instance v4, Ljava/lang/IllegalArgumentException;
 
+    .line 575
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v6, "invalid settings for Virtualizer: "
+    const-string/jumbo v6, "invalid settings for Virtualizer: "
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -123,18 +123,19 @@
 
     move-result-object v5
 
+    .line 574
     invoke-direct {v4, v5}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v4
 
-    .line 246
+    .line 578
     :cond_1
     :try_start_0
     invoke-virtual {v2}, Ljava/util/StringTokenizer;->nextToken()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 247
+    .line 579
     const-string/jumbo v4, "strength"
 
     invoke-virtual {v0, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -143,14 +144,14 @@
 
     if-nez v4, :cond_2
 
-    .line 248
+    .line 580
     new-instance v4, Ljava/lang/IllegalArgumentException;
 
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v6, "invalid key name: "
+    const-string/jumbo v6, "invalid key name: "
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -170,19 +171,19 @@
     :try_end_0
     .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 251
+    .line 583
     :catch_0
     move-exception v1
 
-    .line 252
-    .local v1, nfe:Ljava/lang/NumberFormatException;
+    .line 584
+    .local v1, "nfe":Ljava/lang/NumberFormatException;
     new-instance v4, Ljava/lang/IllegalArgumentException;
 
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v6, "invalid value for key: "
+    const-string/jumbo v6, "invalid value for key: "
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -200,8 +201,8 @@
 
     throw v4
 
-    .line 250
-    .end local v1           #nfe:Ljava/lang/NumberFormatException;
+    .line 582
+    .end local v1    # "nfe":Ljava/lang/NumberFormatException;
     :cond_2
     :try_start_1
     invoke-virtual {v2}, Ljava/util/StringTokenizer;->nextToken()Ljava/lang/String;
@@ -216,7 +217,7 @@
     :try_end_1
     .catch Ljava/lang/NumberFormatException; {:try_start_1 .. :try_end_1} :catch_0
 
-    .line 254
+    .line 566
     return-void
 .end method
 
@@ -226,25 +227,28 @@
     .locals 3
 
     .prologue
-    .line 258
+    .line 590
     new-instance v0, Ljava/lang/String;
 
+    .line 591
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Virtualizer;strength="
+    const-string/jumbo v2, "Virtualizer;strength="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
+    .line 592
     iget-short v2, p0, Landroid/media/audiofx/Virtualizer$Settings;->strength:S
 
     invoke-static {v2}, Ljava/lang/Short;->toString(S)Ljava/lang/String;
 
     move-result-object v2
 
+    .line 591
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -253,9 +257,10 @@
 
     move-result-object v1
 
+    .line 590
     invoke-direct {v0, v1}, Ljava/lang/String;-><init>(Ljava/lang/String;)V
 
-    .line 262
-    .local v0, str:Ljava/lang/String;
+    .line 594
+    .local v0, "str":Ljava/lang/String;
     return-object v0
 .end method

@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 107
+    .line 106
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 108
     iput-object p1, p0, Landroid/media/IRemoteDisplayProvider$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 109
+    .line 106
     return-void
 .end method
 
@@ -41,8 +41,8 @@
 # virtual methods
 .method public adjustVolume(Ljava/lang/String;I)V
     .locals 5
-    .parameter "id"
-    .parameter "delta"
+    .param p1, "id"    # Ljava/lang/String;
+    .param p2, "delta"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -56,9 +56,9 @@
     move-result-object v0
 
     .line 183
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.media.IRemoteDisplayProvider"
+    const-string/jumbo v1, "android.media.IRemoteDisplayProvider"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -84,15 +84,17 @@
     .line 189
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 191
+    .line 179
     return-void
 
-    .line 189
+    .line 188
     :catchall_0
     move-exception v1
 
+    .line 189
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 188
     throw v1
 .end method
 
@@ -108,7 +110,7 @@
 
 .method public connect(Ljava/lang/String;)V
     .locals 5
-    .parameter "id"
+    .param p1, "id"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -122,9 +124,9 @@
     move-result-object v0
 
     .line 146
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.media.IRemoteDisplayProvider"
+    const-string/jumbo v1, "android.media.IRemoteDisplayProvider"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -147,21 +149,23 @@
     .line 151
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 153
+    .line 142
     return-void
 
-    .line 151
+    .line 150
     :catchall_0
     move-exception v1
 
+    .line 151
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 150
     throw v1
 .end method
 
 .method public disconnect(Ljava/lang/String;)V
     .locals 5
-    .parameter "id"
+    .param p1, "id"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -175,9 +179,9 @@
     move-result-object v0
 
     .line 158
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.media.IRemoteDisplayProvider"
+    const-string/jumbo v1, "android.media.IRemoteDisplayProvider"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -200,15 +204,17 @@
     .line 163
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 165
+    .line 154
     return-void
 
-    .line 163
+    .line 162
     :catchall_0
     move-exception v1
 
+    .line 163
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 162
     throw v1
 .end method
 
@@ -217,14 +223,14 @@
 
     .prologue
     .line 116
-    const-string v0, "android.media.IRemoteDisplayProvider"
+    const-string/jumbo v0, "android.media.IRemoteDisplayProvider"
 
     return-object v0
 .end method
 
 .method public setCallback(Landroid/media/IRemoteDisplayCallback;)V
     .locals 5
-    .parameter "callback"
+    .param p1, "callback"    # Landroid/media/IRemoteDisplayCallback;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -240,9 +246,9 @@
     move-result-object v0
 
     .line 122
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.media.IRemoteDisplayProvider"
+    const-string/jumbo v2, "android.media.IRemoteDisplayProvider"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -272,21 +278,23 @@
     .line 127
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 129
+    .line 118
     return-void
 
-    .line 127
+    .line 126
     :catchall_0
     move-exception v1
 
+    .line 127
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 126
     throw v1
 .end method
 
 .method public setDiscoveryMode(I)V
     .locals 5
-    .parameter "mode"
+    .param p1, "mode"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -300,9 +308,9 @@
     move-result-object v0
 
     .line 134
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.media.IRemoteDisplayProvider"
+    const-string/jumbo v1, "android.media.IRemoteDisplayProvider"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -325,22 +333,24 @@
     .line 139
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 141
+    .line 130
     return-void
 
-    .line 139
+    .line 138
     :catchall_0
     move-exception v1
 
+    .line 139
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 138
     throw v1
 .end method
 
 .method public setVolume(Ljava/lang/String;I)V
     .locals 5
-    .parameter "id"
-    .parameter "volume"
+    .param p1, "id"    # Ljava/lang/String;
+    .param p2, "volume"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -354,9 +364,9 @@
     move-result-object v0
 
     .line 170
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.media.IRemoteDisplayProvider"
+    const-string/jumbo v1, "android.media.IRemoteDisplayProvider"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -382,14 +392,16 @@
     .line 176
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 178
+    .line 166
     return-void
 
-    .line 176
+    .line 175
     :catchall_0
     move-exception v1
 
+    .line 176
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 175
     throw v1
 .end method

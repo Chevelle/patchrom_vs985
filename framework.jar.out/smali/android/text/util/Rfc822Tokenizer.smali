@@ -19,7 +19,7 @@
 
 .method private static crunch(Ljava/lang/StringBuilder;)V
     .locals 5
-    .parameter "sb"
+    .param p0, "sb"    # Ljava/lang/StringBuilder;
 
     .prologue
     const/16 v4, 0x20
@@ -28,13 +28,13 @@
     const/4 v1, 0x0
 
     .line 179
-    .local v1, i:I
+    .local v1, "i":I
     invoke-virtual {p0}, Ljava/lang/StringBuilder;->length()I
 
     move-result v2
 
     .line 181
-    .local v2, len:I
+    .local v2, "len":I
     :goto_0
     if-ge v1, v2, :cond_3
 
@@ -44,7 +44,7 @@
     move-result v0
 
     .line 184
-    .local v0, c:C
+    .local v0, "c":C
     if-nez v0, :cond_2
 
     .line 185
@@ -52,39 +52,7 @@
 
     add-int/lit8 v3, v2, -0x1
 
-    if-eq v1, v3, :cond_0
-
-    add-int/lit8 v3, v1, -0x1
-
-    invoke-virtual {p0, v3}, Ljava/lang/StringBuilder;->charAt(I)C
-
-    move-result v3
-
-    if-eq v3, v4, :cond_0
-
-    add-int/lit8 v3, v1, -0x1
-
-    invoke-virtual {p0, v3}, Ljava/lang/StringBuilder;->charAt(I)C
-
-    move-result v3
-
-    if-eqz v3, :cond_0
-
-    add-int/lit8 v3, v1, 0x1
-
-    invoke-virtual {p0, v3}, Ljava/lang/StringBuilder;->charAt(I)C
-
-    move-result v3
-
-    if-eq v3, v4, :cond_0
-
-    add-int/lit8 v3, v1, 0x1
-
-    invoke-virtual {p0, v3}, Ljava/lang/StringBuilder;->charAt(I)C
-
-    move-result v3
-
-    if-nez v3, :cond_1
+    if-ne v1, v3, :cond_1
 
     .line 190
     :cond_0
@@ -93,10 +61,47 @@
     .line 191
     add-int/lit8 v2, v2, -0x1
 
+    .line 189
     goto :goto_0
 
-    .line 193
+    .line 186
     :cond_1
+    add-int/lit8 v3, v1, -0x1
+
+    invoke-virtual {p0, v3}, Ljava/lang/StringBuilder;->charAt(I)C
+
+    move-result v3
+
+    if-eq v3, v4, :cond_0
+
+    .line 187
+    add-int/lit8 v3, v1, -0x1
+
+    invoke-virtual {p0, v3}, Ljava/lang/StringBuilder;->charAt(I)C
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    .line 188
+    add-int/lit8 v3, v1, 0x1
+
+    invoke-virtual {p0, v3}, Ljava/lang/StringBuilder;->charAt(I)C
+
+    move-result v3
+
+    if-eq v3, v4, :cond_0
+
+    .line 189
+    add-int/lit8 v3, v1, 0x1
+
+    invoke-virtual {p0, v3}, Ljava/lang/StringBuilder;->charAt(I)C
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    .line 193
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
@@ -108,7 +113,7 @@
     goto :goto_0
 
     .line 200
-    .end local v0           #c:C
+    .end local v0    # "c":C
     :cond_3
     const/4 v1, 0x0
 
@@ -131,15 +136,14 @@
 
     goto :goto_1
 
-    .line 205
+    .line 177
     :cond_5
     return-void
 .end method
 
 .method public static tokenize(Ljava/lang/CharSequence;Ljava/util/Collection;)V
     .locals 11
-    .parameter "text"
-    .parameter
+    .param p0, "text"    # Ljava/lang/CharSequence;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -153,35 +157,35 @@
 
     .prologue
     .line 46
-    .local p1, out:Ljava/util/Collection;,"Ljava/util/Collection<Landroid/text/util/Rfc822Token;>;"
+    .local p1, "out":Ljava/util/Collection;, "Ljava/util/Collection<Landroid/text/util/Rfc822Token;>;"
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 47
-    .local v6, name:Ljava/lang/StringBuilder;
+    .local v6, "name":Ljava/lang/StringBuilder;
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 48
-    .local v0, address:Ljava/lang/StringBuilder;
+    .local v0, "address":Ljava/lang/StringBuilder;
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 50
-    .local v2, comment:Ljava/lang/StringBuilder;
+    .local v2, "comment":Ljava/lang/StringBuilder;
     const/4 v4, 0x0
 
     .line 51
-    .local v4, i:I
+    .local v4, "i":I
     invoke-interface {p0}, Ljava/lang/CharSequence;->length()I
 
     move-result v3
 
     .line 53
-    .local v3, cursor:I
+    .local v3, "cursor":I
     :cond_0
     :goto_0
     if-ge v4, v3, :cond_13
@@ -192,7 +196,7 @@
     move-result v1
 
     .line 56
-    .local v1, c:C
+    .local v1, "c":C
     const/16 v7, 0x2c
 
     if-eq v1, v7, :cond_1
@@ -240,14 +244,17 @@
 
     move-result-object v8
 
+    .line 67
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v9
 
+    .line 68
     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v10
 
+    .line 66
     invoke-direct {v7, v8, v9, v10}, Landroid/text/util/Rfc822Token;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-interface {p1, v7}, Ljava/util/Collection;->add(Ljava/lang/Object;)Z
@@ -282,17 +289,20 @@
     .line 70
     new-instance v7, Landroid/text/util/Rfc822Token;
 
-    const/4 v8, 0x0
-
+    .line 71
     invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v8
+
+    .line 72
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v9
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    .line 70
+    const/4 v10, 0x0
 
-    move-result-object v10
-
-    invoke-direct {v7, v8, v9, v10}, Landroid/text/util/Rfc822Token;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-direct {v7, v10, v8, v9}, Landroid/text/util/Rfc822Token;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-interface {p1, v7}, Ljava/util/Collection;->add(Ljava/lang/Object;)Z
 
@@ -372,7 +382,7 @@
     const/4 v5, 0x1
 
     .line 99
-    .local v5, level:I
+    .local v5, "level":I
     add-int/lit8 v4, v4, 0x1
 
     .line 101
@@ -461,7 +471,7 @@
     goto :goto_4
 
     .line 125
-    .end local v5           #level:I
+    .end local v5    # "level":I
     :cond_f
     const/16 v7, 0x3c
 
@@ -525,7 +535,7 @@
     goto/16 :goto_0
 
     .line 148
-    .end local v1           #c:C
+    .end local v1    # "c":C
     :cond_13
     invoke-static {v6}, Landroid/text/util/Rfc822Tokenizer;->crunch(Ljava/lang/StringBuilder;)V
 
@@ -543,19 +553,22 @@
 
     move-result-object v8
 
+    .line 152
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v9
 
+    .line 153
     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v10
 
+    .line 151
     invoke-direct {v7, v8, v9, v10}, Landroid/text/util/Rfc822Token;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-interface {p1, v7}, Ljava/util/Collection;->add(Ljava/lang/Object;)Z
 
-    .line 159
+    .line 45
     :cond_14
     :goto_6
     return-void
@@ -571,17 +584,20 @@
     .line 155
     new-instance v7, Landroid/text/util/Rfc822Token;
 
-    const/4 v8, 0x0
-
+    .line 156
     invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v8
+
+    .line 157
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v9
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    .line 155
+    const/4 v10, 0x0
 
-    move-result-object v10
-
-    invoke-direct {v7, v8, v9, v10}, Landroid/text/util/Rfc822Token;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-direct {v7, v10, v8, v9}, Landroid/text/util/Rfc822Token;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-interface {p1, v7}, Ljava/util/Collection;->add(Ljava/lang/Object;)Z
 
@@ -590,7 +606,7 @@
 
 .method public static tokenize(Ljava/lang/CharSequence;)[Landroid/text/util/Rfc822Token;
     .locals 2
-    .parameter "text"
+    .param p0, "text"    # Ljava/lang/CharSequence;
 
     .prologue
     .line 172
@@ -599,7 +615,7 @@
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     .line 173
-    .local v0, out:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Landroid/text/util/Rfc822Token;>;"
+    .local v0, "out":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/text/util/Rfc822Token;>;"
     invoke-static {p0, v0}, Landroid/text/util/Rfc822Tokenizer;->tokenize(Ljava/lang/CharSequence;Ljava/util/Collection;)V
 
     .line 174
@@ -622,8 +638,8 @@
 # virtual methods
 .method public findTokenEnd(Ljava/lang/CharSequence;I)I
     .locals 8
-    .parameter "text"
-    .parameter "cursor"
+    .param p1, "text"    # Ljava/lang/CharSequence;
+    .param p2, "cursor"    # I
 
     .prologue
     const/16 v7, 0x5c
@@ -638,14 +654,14 @@
     move-result v2
 
     .line 243
-    .local v2, len:I
+    .local v2, "len":I
     move v1, p2
 
     .line 245
-    .local v1, i:I
+    .local v1, "i":I
     :cond_0
     :goto_0
-    if-ge v1, v2, :cond_1
+    if-ge v1, v2, :cond_c
 
     .line 246
     invoke-interface {p1, v1}, Ljava/lang/CharSequence;->charAt(I)C
@@ -653,7 +669,7 @@
     move-result v0
 
     .line 248
-    .local v0, c:C
+    .local v0, "c":C
     const/16 v4, 0x2c
 
     if-eq v0, v4, :cond_1
@@ -662,13 +678,11 @@
 
     if-ne v0, v4, :cond_2
 
-    .line 302
-    .end local v0           #c:C
+    .line 249
     :cond_1
     return v1
 
     .line 250
-    .restart local v0       #c:C
     :cond_2
     if-ne v0, v5, :cond_5
 
@@ -704,6 +718,7 @@
     .line 260
     add-int/lit8 v1, v1, 0x2
 
+    .line 259
     goto :goto_1
 
     .line 262
@@ -720,7 +735,7 @@
     const/4 v3, 0x1
 
     .line 267
-    .local v3, level:I
+    .local v3, "level":I
     add-int/lit8 v1, v1, 0x1
 
     .line 269
@@ -770,6 +785,7 @@
     .line 279
     add-int/lit8 v1, v1, 0x2
 
+    .line 278
     goto :goto_2
 
     .line 281
@@ -779,7 +795,7 @@
     goto :goto_2
 
     .line 284
-    .end local v3           #level:I
+    .end local v3    # "level":I
     :cond_9
     const/16 v4, 0x3c
 
@@ -819,23 +835,28 @@
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
+
+    .line 302
+    .end local v0    # "c":C
+    :cond_c
+    return v1
 .end method
 
 .method public findTokenStart(Ljava/lang/CharSequence;I)I
     .locals 4
-    .parameter "text"
-    .parameter "cursor"
+    .param p1, "text"    # Ljava/lang/CharSequence;
+    .param p2, "cursor"    # I
 
     .prologue
     .line 216
     const/4 v0, 0x0
 
     .line 217
-    .local v0, best:I
+    .local v0, "best":I
     const/4 v1, 0x0
 
     .line 219
-    .local v1, i:I
+    .local v1, "i":I
     :cond_0
     :goto_0
     if-ge v1, p2, :cond_2
@@ -884,7 +905,7 @@
 
 .method public terminateToken(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
     .locals 2
-    .parameter "text"
+    .param p1, "text"    # Ljava/lang/CharSequence;
 
     .prologue
     .line 312
@@ -892,11 +913,11 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    const-string v1, ", "
+    const-string/jumbo v1, ", "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

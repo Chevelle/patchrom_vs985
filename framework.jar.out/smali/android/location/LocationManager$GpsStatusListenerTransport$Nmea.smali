@@ -25,22 +25,22 @@
 # direct methods
 .method constructor <init>(Landroid/location/LocationManager$GpsStatusListenerTransport;JLjava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter "timestamp"
-    .parameter "nmea"
+    .param p1, "this$1"    # Landroid/location/LocationManager$GpsStatusListenerTransport;
+    .param p2, "timestamp"    # J
+    .param p4, "nmea"    # Ljava/lang/String;
 
     .prologue
-    .line 1377
+    .line 1405
     iput-object p1, p0, Landroid/location/LocationManager$GpsStatusListenerTransport$Nmea;->this$1:Landroid/location/LocationManager$GpsStatusListenerTransport;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1378
+    .line 1406
     iput-wide p2, p0, Landroid/location/LocationManager$GpsStatusListenerTransport$Nmea;->mTimestamp:J
 
-    .line 1379
+    .line 1407
     iput-object p4, p0, Landroid/location/LocationManager$GpsStatusListenerTransport$Nmea;->mNmea:Ljava/lang/String;
 
-    .line 1380
+    .line 1405
     return-void
 .end method

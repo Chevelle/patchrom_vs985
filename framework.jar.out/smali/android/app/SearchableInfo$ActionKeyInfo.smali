@@ -30,149 +30,153 @@
 # direct methods
 .method constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
     .locals 3
-    .parameter "activityContext"
-    .parameter "attr"
+    .param p1, "activityContext"    # Landroid/content/Context;
+    .param p2, "attr"    # Landroid/util/AttributeSet;
 
     .prologue
     const/4 v2, 0x0
 
-    .line 401
+    .line 402
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 402
+    .line 404
     sget-object v1, Lcom/android/internal/R$styleable;->SearchableActionKey:[I
 
+    .line 403
     invoke-virtual {p1, p2, v1}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 405
-    .local v0, a:Landroid/content/res/TypedArray;
+    .line 406
+    .local v0, "a":Landroid/content/res/TypedArray;
     invoke-virtual {v0, v2, v2}, Landroid/content/res/TypedArray;->getInt(II)I
 
     move-result v1
 
     iput v1, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mKeyCode:I
 
-    .line 407
+    .line 409
     const/4 v1, 0x1
 
+    .line 408
     invoke-virtual {v0, v1}, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mQueryActionMsg:Ljava/lang/String;
 
-    .line 409
+    .line 411
     const/4 v1, 0x2
 
+    .line 410
     invoke-virtual {v0, v1}, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mSuggestActionMsg:Ljava/lang/String;
 
-    .line 411
+    .line 413
     const/4 v1, 0x3
 
+    .line 412
     invoke-virtual {v0, v1}, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;
 
     move-result-object v1
 
     iput-object v1, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mSuggestActionMsgColumn:Ljava/lang/String;
 
-    .line 413
+    .line 414
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 416
+    .line 417
     iget v1, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mKeyCode:I
 
     if-nez v1, :cond_0
 
-    .line 417
+    .line 418
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "No keycode."
+    const-string/jumbo v2, "No keycode."
 
     invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 418
+    .line 419
     :cond_0
     iget-object v1, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mQueryActionMsg:Ljava/lang/String;
 
     if-nez v1, :cond_1
 
+    .line 420
     iget-object v1, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mSuggestActionMsg:Ljava/lang/String;
 
     if-nez v1, :cond_1
 
+    .line 421
     iget-object v1, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mSuggestActionMsgColumn:Ljava/lang/String;
 
     if-nez v1, :cond_1
 
-    .line 421
+    .line 422
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
-    const-string v2, "No message information."
+    const-string/jumbo v2, "No message information."
 
     invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 423
+    .line 402
     :cond_1
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 432
+    .line 433
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 433
+    .line 434
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     iput v0, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mKeyCode:I
 
-    .line 434
+    .line 435
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mQueryActionMsg:Ljava/lang/String;
 
-    .line 435
+    .line 436
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mSuggestActionMsg:Ljava/lang/String;
 
-    .line 436
+    .line 437
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mSuggestActionMsgColumn:Ljava/lang/String;
 
-    .line 437
+    .line 433
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/app/SearchableInfo$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/app/SearchableInfo$ActionKeyInfo;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 386
     invoke-direct {p0, p1}, Landroid/app/SearchableInfo$ActionKeyInfo;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -184,7 +188,7 @@
     .locals 1
 
     .prologue
-    .line 472
+    .line 473
     const/4 v0, 0x0
 
     return v0
@@ -194,7 +198,7 @@
     .locals 1
 
     .prologue
-    .line 444
+    .line 445
     iget v0, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mKeyCode:I
 
     return v0
@@ -204,7 +208,7 @@
     .locals 1
 
     .prologue
-    .line 452
+    .line 453
     iget-object v0, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mQueryActionMsg:Ljava/lang/String;
 
     return-object v0
@@ -214,7 +218,7 @@
     .locals 1
 
     .prologue
-    .line 460
+    .line 461
     iget-object v0, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mSuggestActionMsg:Ljava/lang/String;
 
     return-object v0
@@ -224,7 +228,7 @@
     .locals 1
 
     .prologue
-    .line 468
+    .line 469
     iget-object v0, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mSuggestActionMsgColumn:Ljava/lang/String;
 
     return-object v0
@@ -232,30 +236,30 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 476
+    .line 477
     iget v0, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mKeyCode:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 477
+    .line 478
     iget-object v0, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mQueryActionMsg:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 478
+    .line 479
     iget-object v0, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mSuggestActionMsg:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 479
+    .line 480
     iget-object v0, p0, Landroid/app/SearchableInfo$ActionKeyInfo;->mSuggestActionMsgColumn:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 480
+    .line 476
     return-void
 .end method

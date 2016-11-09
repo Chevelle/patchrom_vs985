@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 106
+    .line 117
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -41,54 +41,61 @@
 
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/location/FusedBatchOptions;
-    .locals 3
-    .parameter "parcel"
+    .locals 4
+    .param p1, "parcel"    # Landroid/os/Parcel;
 
     .prologue
-    .line 109
+    .line 120
     new-instance v0, Landroid/location/FusedBatchOptions;
 
     invoke-direct {v0}, Landroid/location/FusedBatchOptions;-><init>()V
 
-    .line 110
-    .local v0, options:Landroid/location/FusedBatchOptions;
+    .line 121
+    .local v0, "options":Landroid/location/FusedBatchOptions;
     invoke-virtual {p1}, Landroid/os/Parcel;->readDouble()D
 
-    move-result-wide v1
+    move-result-wide v2
 
-    invoke-virtual {v0, v1, v2}, Landroid/location/FusedBatchOptions;->setMaxPowerAllocationInMW(D)V
+    invoke-virtual {v0, v2, v3}, Landroid/location/FusedBatchOptions;->setMaxPowerAllocationInMW(D)V
 
-    .line 111
+    .line 122
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
-    move-result-wide v1
+    move-result-wide v2
 
-    invoke-virtual {v0, v1, v2}, Landroid/location/FusedBatchOptions;->setPeriodInNS(J)V
+    invoke-virtual {v0, v2, v3}, Landroid/location/FusedBatchOptions;->setPeriodInNS(J)V
 
-    .line 112
+    .line 123
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     invoke-virtual {v0, v1}, Landroid/location/FusedBatchOptions;->setSourceToUse(I)V
 
-    .line 113
+    .line 124
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     invoke-virtual {v0, v1}, Landroid/location/FusedBatchOptions;->setFlag(I)V
 
-    .line 114
+    .line 125
+    invoke-virtual {p1}, Landroid/os/Parcel;->readFloat()F
+
+    move-result v1
+
+    invoke-virtual {v0, v1}, Landroid/location/FusedBatchOptions;->setSmallestDisplacementMeters(F)V
+
+    .line 126
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "parcel"    # Landroid/os/Parcel;
 
     .prologue
-    .line 106
+    .line 119
     invoke-virtual {p0, p1}, Landroid/location/FusedBatchOptions$1;->createFromParcel(Landroid/os/Parcel;)Landroid/location/FusedBatchOptions;
 
     move-result-object v0
@@ -98,10 +105,10 @@
 
 .method public newArray(I)[Landroid/location/FusedBatchOptions;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 119
+    .line 131
     new-array v0, p1, [Landroid/location/FusedBatchOptions;
 
     return-object v0
@@ -109,10 +116,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 106
+    .line 130
     invoke-virtual {p0, p1}, Landroid/location/FusedBatchOptions$1;->newArray(I)[Landroid/location/FusedBatchOptions;
 
     move-result-object v0

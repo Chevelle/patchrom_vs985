@@ -62,7 +62,7 @@
 
     iput-object v0, p0, Landroid/filterfw/core/FilterContext;->mGraphs:Ljava/util/Set;
 
-    .line 68
+    .line 32
     return-void
 .end method
 
@@ -70,7 +70,7 @@
 # virtual methods
 .method final addGraph(Landroid/filterfw/core/FilterGraph;)V
     .locals 1
-    .parameter "graph"
+    .param p1, "graph"    # Landroid/filterfw/core/FilterGraph;
 
     .prologue
     .line 124
@@ -78,18 +78,18 @@
 
     invoke-interface {v0, p1}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
 
-    .line 125
+    .line 123
     return-void
 .end method
 
 .method public declared-synchronized fetchFrame(Ljava/lang/String;)Landroid/filterfw/core/Frame;
     .locals 2
-    .parameter "key"
+    .param p1, "key"    # Ljava/lang/String;
 
     .prologue
-    .line 82
     monitor-enter p0
 
+    .line 82
     :try_start_0
     iget-object v1, p0, Landroid/filterfw/core/FilterContext;->mStoredFrames:Ljava/util/HashMap;
 
@@ -100,7 +100,7 @@
     check-cast v0, Landroid/filterfw/core/Frame;
 
     .line 83
-    .local v0, frame:Landroid/filterfw/core/Frame;
+    .local v0, "frame":Landroid/filterfw/core/Frame;
     if-eqz v0, :cond_0
 
     .line 84
@@ -108,14 +108,13 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 86
     :cond_0
     monitor-exit p0
 
+    .line 86
     return-object v0
 
-    .line 82
-    .end local v0           #frame:Landroid/filterfw/core/Frame;
+    .end local v0    # "frame":Landroid/filterfw/core/Frame;
     :catchall_0
     move-exception v1
 
@@ -146,7 +145,7 @@
 
 .method public initGLEnvironment(Landroid/filterfw/core/GLEnvironment;)V
     .locals 2
-    .parameter "environment"
+    .param p1, "environment"    # Landroid/filterfw/core/GLEnvironment;
 
     .prologue
     .line 60
@@ -157,14 +156,14 @@
     .line 61
     iput-object p1, p0, Landroid/filterfw/core/FilterContext;->mGLEnvironment:Landroid/filterfw/core/GLEnvironment;
 
-    .line 66
+    .line 59
     return-void
 
     .line 63
     :cond_0
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Attempting to re-initialize GL Environment for FilterContext!"
+    const-string/jumbo v1, "Attempting to re-initialize GL Environment for FilterContext!"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -173,12 +172,12 @@
 
 .method public declared-synchronized removeFrame(Ljava/lang/String;)V
     .locals 2
-    .parameter "key"
+    .param p1, "key"    # Ljava/lang/String;
 
     .prologue
-    .line 90
     monitor-enter p0
 
+    .line 90
     :try_start_0
     iget-object v1, p0, Landroid/filterfw/core/FilterContext;->mStoredFrames:Ljava/util/HashMap;
 
@@ -189,7 +188,7 @@
     check-cast v0, Landroid/filterfw/core/Frame;
 
     .line 91
-    .local v0, frame:Landroid/filterfw/core/Frame;
+    .local v0, "frame":Landroid/filterfw/core/Frame;
     if-eqz v0, :cond_0
 
     .line 92
@@ -202,14 +201,13 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 95
     :cond_0
     monitor-exit p0
 
+    .line 89
     return-void
 
-    .line 90
-    .end local v0           #frame:Landroid/filterfw/core/Frame;
+    .end local v0    # "frame":Landroid/filterfw/core/Frame;
     :catchall_0
     move-exception v1
 
@@ -220,7 +218,7 @@
 
 .method public setFrameManager(Landroid/filterfw/core/FrameManager;)V
     .locals 2
-    .parameter "manager"
+    .param p1, "manager"    # Landroid/filterfw/core/FrameManager;
 
     .prologue
     .line 44
@@ -229,7 +227,7 @@
     .line 45
     new-instance v0, Ljava/lang/NullPointerException;
 
-    const-string v1, "Attempting to set null FrameManager!"
+    const-string/jumbo v1, "Attempting to set null FrameManager!"
 
     invoke-direct {v0, v1}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
@@ -246,7 +244,7 @@
     .line 47
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "Attempting to set FrameManager which is already bound to another FilterContext!"
+    const-string/jumbo v1, "Attempting to set FrameManager which is already bound to another FilterContext!"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
@@ -261,26 +259,26 @@
 
     invoke-virtual {v0, p0}, Landroid/filterfw/core/FrameManager;->setContext(Landroid/filterfw/core/FilterContext;)V
 
-    .line 53
+    .line 43
     return-void
 .end method
 
 .method public declared-synchronized storeFrame(Ljava/lang/String;Landroid/filterfw/core/Frame;)V
     .locals 3
-    .parameter "key"
-    .parameter "frame"
+    .param p1, "key"    # Ljava/lang/String;
+    .param p2, "frame"    # Landroid/filterfw/core/Frame;
 
     .prologue
-    .line 73
     monitor-enter p0
 
+    .line 73
     :try_start_0
     invoke-virtual {p0, p1}, Landroid/filterfw/core/FilterContext;->fetchFrame(Ljava/lang/String;)Landroid/filterfw/core/Frame;
 
     move-result-object v0
 
     .line 74
-    .local v0, storedFrame:Landroid/filterfw/core/Frame;
+    .local v0, "storedFrame":Landroid/filterfw/core/Frame;
     if-eqz v0, :cond_0
 
     .line 75
@@ -301,13 +299,12 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 79
     monitor-exit p0
 
+    .line 72
     return-void
 
-    .line 73
-    .end local v0           #storedFrame:Landroid/filterfw/core/Frame;
+    .end local v0    # "storedFrame":Landroid/filterfw/core/Frame;
     :catchall_0
     move-exception v1
 
@@ -317,132 +314,132 @@
 .end method
 
 .method public declared-synchronized tearDown()V
-    .locals 4
+    .locals 5
 
     .prologue
-    .line 99
     monitor-enter p0
 
+    .line 99
     :try_start_0
-    iget-object v3, p0, Landroid/filterfw/core/FilterContext;->mStoredFrames:Ljava/util/HashMap;
+    iget-object v4, p0, Landroid/filterfw/core/FilterContext;->mStoredFrames:Ljava/util/HashMap;
 
-    invoke-virtual {v3}, Ljava/util/HashMap;->values()Ljava/util/Collection;
+    invoke-virtual {v4}, Ljava/util/HashMap;->values()Ljava/util/Collection;
 
-    move-result-object v3
+    move-result-object v4
 
-    invoke-interface {v3}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+    invoke-interface {v4}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
-    move-result-object v2
+    move-result-object v1
 
-    .local v2, i$:Ljava/util/Iterator;
+    .local v1, "frame$iterator":Ljava/util/Iterator;
     :goto_0
-    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result v3
+    move-result v4
 
-    if-eqz v3, :cond_0
+    if-eqz v4, :cond_0
 
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/filterfw/core/Frame;
 
     .line 100
-    .local v0, frame:Landroid/filterfw/core/Frame;
+    .local v0, "frame":Landroid/filterfw/core/Frame;
     invoke-virtual {v0}, Landroid/filterfw/core/Frame;->release()Landroid/filterfw/core/Frame;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     goto :goto_0
 
-    .line 99
-    .end local v0           #frame:Landroid/filterfw/core/Frame;
-    .end local v2           #i$:Ljava/util/Iterator;
+    .end local v0    # "frame":Landroid/filterfw/core/Frame;
+    .end local v1    # "frame$iterator":Ljava/util/Iterator;
     :catchall_0
-    move-exception v3
+    move-exception v4
 
     monitor-exit p0
 
-    throw v3
+    throw v4
 
     .line 102
-    .restart local v2       #i$:Ljava/util/Iterator;
+    .restart local v1    # "frame$iterator":Ljava/util/Iterator;
     :cond_0
     :try_start_1
-    iget-object v3, p0, Landroid/filterfw/core/FilterContext;->mStoredFrames:Ljava/util/HashMap;
+    iget-object v4, p0, Landroid/filterfw/core/FilterContext;->mStoredFrames:Ljava/util/HashMap;
 
-    invoke-virtual {v3}, Ljava/util/HashMap;->clear()V
+    invoke-virtual {v4}, Ljava/util/HashMap;->clear()V
 
     .line 105
-    iget-object v3, p0, Landroid/filterfw/core/FilterContext;->mGraphs:Ljava/util/Set;
+    iget-object v4, p0, Landroid/filterfw/core/FilterContext;->mGraphs:Ljava/util/Set;
 
-    invoke-interface {v3}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+    invoke-interface {v4}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    move-result-object v3
+
+    .local v3, "graph$iterator":Ljava/util/Iterator;
+    :goto_1
+    invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_1
+
+    invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v2
 
-    :goto_1
-    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v3
-
-    if-eqz v3, :cond_1
-
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Landroid/filterfw/core/FilterGraph;
+    check-cast v2, Landroid/filterfw/core/FilterGraph;
 
     .line 106
-    .local v1, graph:Landroid/filterfw/core/FilterGraph;
-    invoke-virtual {v1, p0}, Landroid/filterfw/core/FilterGraph;->tearDown(Landroid/filterfw/core/FilterContext;)V
+    .local v2, "graph":Landroid/filterfw/core/FilterGraph;
+    invoke-virtual {v2, p0}, Landroid/filterfw/core/FilterGraph;->tearDown(Landroid/filterfw/core/FilterContext;)V
 
     goto :goto_1
 
     .line 108
-    .end local v1           #graph:Landroid/filterfw/core/FilterGraph;
+    .end local v2    # "graph":Landroid/filterfw/core/FilterGraph;
     :cond_1
-    iget-object v3, p0, Landroid/filterfw/core/FilterContext;->mGraphs:Ljava/util/Set;
+    iget-object v4, p0, Landroid/filterfw/core/FilterContext;->mGraphs:Ljava/util/Set;
 
-    invoke-interface {v3}, Ljava/util/Set;->clear()V
+    invoke-interface {v4}, Ljava/util/Set;->clear()V
 
     .line 111
-    iget-object v3, p0, Landroid/filterfw/core/FilterContext;->mFrameManager:Landroid/filterfw/core/FrameManager;
+    iget-object v4, p0, Landroid/filterfw/core/FilterContext;->mFrameManager:Landroid/filterfw/core/FrameManager;
 
-    if-eqz v3, :cond_2
+    if-eqz v4, :cond_2
 
     .line 112
-    iget-object v3, p0, Landroid/filterfw/core/FilterContext;->mFrameManager:Landroid/filterfw/core/FrameManager;
+    iget-object v4, p0, Landroid/filterfw/core/FilterContext;->mFrameManager:Landroid/filterfw/core/FrameManager;
 
-    invoke-virtual {v3}, Landroid/filterfw/core/FrameManager;->tearDown()V
+    invoke-virtual {v4}, Landroid/filterfw/core/FrameManager;->tearDown()V
 
     .line 113
-    const/4 v3, 0x0
+    const/4 v4, 0x0
 
-    iput-object v3, p0, Landroid/filterfw/core/FilterContext;->mFrameManager:Landroid/filterfw/core/FrameManager;
+    iput-object v4, p0, Landroid/filterfw/core/FilterContext;->mFrameManager:Landroid/filterfw/core/FrameManager;
 
     .line 117
     :cond_2
-    iget-object v3, p0, Landroid/filterfw/core/FilterContext;->mGLEnvironment:Landroid/filterfw/core/GLEnvironment;
+    iget-object v4, p0, Landroid/filterfw/core/FilterContext;->mGLEnvironment:Landroid/filterfw/core/GLEnvironment;
 
-    if-eqz v3, :cond_3
+    if-eqz v4, :cond_3
 
     .line 118
-    iget-object v3, p0, Landroid/filterfw/core/FilterContext;->mGLEnvironment:Landroid/filterfw/core/GLEnvironment;
+    iget-object v4, p0, Landroid/filterfw/core/FilterContext;->mGLEnvironment:Landroid/filterfw/core/GLEnvironment;
 
-    invoke-virtual {v3}, Landroid/filterfw/core/GLEnvironment;->tearDown()V
+    invoke-virtual {v4}, Landroid/filterfw/core/GLEnvironment;->tearDown()V
 
     .line 119
-    const/4 v3, 0x0
+    const/4 v4, 0x0
 
-    iput-object v3, p0, Landroid/filterfw/core/FilterContext;->mGLEnvironment:Landroid/filterfw/core/GLEnvironment;
+    iput-object v4, p0, Landroid/filterfw/core/FilterContext;->mGLEnvironment:Landroid/filterfw/core/GLEnvironment;
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 121
     :cond_3
     monitor-exit p0
 
+    .line 97
     return-void
 .end method

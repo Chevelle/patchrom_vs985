@@ -1,4 +1,4 @@
-.class Landroid/accounts/AccountManager$AmsTask$1;
+.class final Landroid/accounts/AccountManager$AmsTask$1;
 .super Ljava/lang/Object;
 .source "AccountManager.java"
 
@@ -12,7 +12,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x8
     name = null
 .end annotation
 
@@ -34,10 +34,10 @@
 # direct methods
 .method constructor <init>(Landroid/accounts/AccountManager;)V
     .locals 0
-    .parameter
+    .param p1, "val$this$0"    # Landroid/accounts/AccountManager;
 
     .prologue
-    .line 1458
+    .line 1877
     iput-object p1, p0, Landroid/accounts/AccountManager$AmsTask$1;->val$this$0:Landroid/accounts/AccountManager;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -56,7 +56,7 @@
     .end annotation
 
     .prologue
-    .line 1460
+    .line 1879
     new-instance v0, Ljava/lang/IllegalStateException;
 
     const-string/jumbo v1, "this should never be called"
@@ -75,7 +75,7 @@
     .end annotation
 
     .prologue
-    .line 1458
+    .line 1878
     invoke-virtual {p0}, Landroid/accounts/AccountManager$AmsTask$1;->call()Landroid/os/Bundle;
 
     move-result-object v0

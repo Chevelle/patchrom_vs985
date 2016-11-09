@@ -31,7 +31,23 @@
     .end annotation
 .end method
 
-.method public abstract cancelSync(Landroid/accounts/Account;Ljava/lang/String;)V
+.method public abstract cancelRequest(Landroid/content/SyncRequest;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract cancelSync(Landroid/accounts/Account;Ljava/lang/String;Landroid/content/ComponentName;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract cancelSyncAsUser(Landroid/accounts/Account;Ljava/lang/String;Landroid/content/ComponentName;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -57,7 +73,33 @@
     .end annotation
 .end method
 
+.method public abstract getCurrentSyncsAsUser(I)Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)",
+            "Ljava/util/List",
+            "<",
+            "Landroid/content/SyncInfo;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getIsSyncable(Landroid/accounts/Account;Ljava/lang/String;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getIsSyncableAsUser(Landroid/accounts/Account;Ljava/lang/String;I)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -73,12 +115,21 @@
     .end annotation
 .end method
 
-.method public abstract getPeriodicSyncs(Landroid/accounts/Account;Ljava/lang/String;)Ljava/util/List;
+.method public abstract getMasterSyncAutomaticallyAsUser(I)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getPeriodicSyncs(Landroid/accounts/Account;Ljava/lang/String;Landroid/content/ComponentName;)Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
             "Landroid/accounts/Account;",
             "Ljava/lang/String;",
+            "Landroid/content/ComponentName;",
             ")",
             "Ljava/util/List",
             "<",
@@ -94,7 +145,23 @@
     .end annotation
 .end method
 
+.method public abstract getSyncAdapterPackagesForAuthorityAsUser(Ljava/lang/String;I)[Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getSyncAdapterTypes()[Landroid/content/SyncAdapterType;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getSyncAdapterTypesAsUser(I)[Landroid/content/SyncAdapterType;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -110,7 +177,7 @@
     .end annotation
 .end method
 
-.method public abstract getSyncStatus(Landroid/accounts/Account;Ljava/lang/String;)Landroid/content/SyncStatusInfo;
+.method public abstract getSyncAutomaticallyAsUser(Landroid/accounts/Account;Ljava/lang/String;I)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -118,7 +185,7 @@
     .end annotation
 .end method
 
-.method public abstract isSyncActive(Landroid/accounts/Account;Ljava/lang/String;)Z
+.method public abstract getSyncStatus(Landroid/accounts/Account;Ljava/lang/String;Landroid/content/ComponentName;)Landroid/content/SyncStatusInfo;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -126,7 +193,31 @@
     .end annotation
 .end method
 
-.method public abstract isSyncPending(Landroid/accounts/Account;Ljava/lang/String;)Z
+.method public abstract getSyncStatusAsUser(Landroid/accounts/Account;Ljava/lang/String;Landroid/content/ComponentName;I)Landroid/content/SyncStatusInfo;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isSyncActive(Landroid/accounts/Account;Ljava/lang/String;Landroid/content/ComponentName;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isSyncPending(Landroid/accounts/Account;Ljava/lang/String;Landroid/content/ComponentName;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract isSyncPendingAsUser(Landroid/accounts/Account;Ljava/lang/String;Landroid/content/ComponentName;I)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -190,6 +281,14 @@
     .end annotation
 .end method
 
+.method public abstract setMasterSyncAutomaticallyAsUser(ZI)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract setSyncAutomatically(Landroid/accounts/Account;Ljava/lang/String;Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -198,7 +297,23 @@
     .end annotation
 .end method
 
+.method public abstract setSyncAutomaticallyAsUser(Landroid/accounts/Account;Ljava/lang/String;ZI)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract sync(Landroid/content/SyncRequest;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract syncAsUser(Landroid/content/SyncRequest;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

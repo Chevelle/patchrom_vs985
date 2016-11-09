@@ -20,20 +20,15 @@
 # instance fields
 .field final synthetic this$1:Landroid/print/PrintFileDocumentAdapter$WriteFileAsyncTask;
 
-.field final synthetic val$this$0:Landroid/print/PrintFileDocumentAdapter;
-
 
 # direct methods
-.method constructor <init>(Landroid/print/PrintFileDocumentAdapter$WriteFileAsyncTask;Landroid/print/PrintFileDocumentAdapter;)V
+.method constructor <init>(Landroid/print/PrintFileDocumentAdapter$WriteFileAsyncTask;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$1"    # Landroid/print/PrintFileDocumentAdapter$WriteFileAsyncTask;
 
     .prologue
     .line 107
     iput-object p1, p0, Landroid/print/PrintFileDocumentAdapter$WriteFileAsyncTask$1;->this$1:Landroid/print/PrintFileDocumentAdapter$WriteFileAsyncTask;
-
-    iput-object p2, p0, Landroid/print/PrintFileDocumentAdapter$WriteFileAsyncTask$1;->val$this$0:Landroid/print/PrintFileDocumentAdapter;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -53,6 +48,6 @@
 
     invoke-virtual {v0, v1}, Landroid/print/PrintFileDocumentAdapter$WriteFileAsyncTask;->cancel(Z)Z
 
-    .line 111
+    .line 109
     return-void
 .end method

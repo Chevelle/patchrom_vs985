@@ -39,7 +39,7 @@
     .line 42
     new-instance v0, Landroid/media/DecoderCapabilities$AudioDecoder;
 
-    const-string v1, "AUDIO_DECODER_WMA"
+    const-string/jumbo v1, "AUDIO_DECODER_WMA"
 
     invoke-direct {v0, v1, v2}, Landroid/media/DecoderCapabilities$AudioDecoder;-><init>(Ljava/lang/String;I)V
 
@@ -61,13 +61,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 41
@@ -78,7 +71,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Landroid/media/DecoderCapabilities$AudioDecoder;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 41
@@ -99,12 +92,6 @@
     .prologue
     .line 41
     sget-object v0, Landroid/media/DecoderCapabilities$AudioDecoder;->$VALUES:[Landroid/media/DecoderCapabilities$AudioDecoder;
-
-    invoke-virtual {v0}, [Landroid/media/DecoderCapabilities$AudioDecoder;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/media/DecoderCapabilities$AudioDecoder;
 
     return-object v0
 .end method

@@ -6,12 +6,8 @@
 .implements Ljava/io/Closeable;
 
 
-# annotations
-.annotation system Ldalvik/annotation/MemberClasses;
-    value = {
-        Landroid/util/JsonWriter$1;
-    }
-.end annotation
+# static fields
+.field private static synthetic -android_util_JsonScopeSwitchesValues:[I
 
 
 # instance fields
@@ -36,9 +32,186 @@
 
 
 # direct methods
+.method private static synthetic -getandroid_util_JsonScopeSwitchesValues()[I
+    .locals 3
+
+    sget-object v0, Landroid/util/JsonWriter;->-android_util_JsonScopeSwitchesValues:[I
+
+    if-eqz v0, :cond_0
+
+    sget-object v0, Landroid/util/JsonWriter;->-android_util_JsonScopeSwitchesValues:[I
+
+    return-object v0
+
+    :cond_0
+    invoke-static {}, Landroid/util/JsonScope;->values()[Landroid/util/JsonScope;
+
+    move-result-object v0
+
+    array-length v0, v0
+
+    new-array v0, v0, [I
+
+    :try_start_0
+    sget-object v1, Landroid/util/JsonScope;->CLOSED:Landroid/util/JsonScope;
+
+    invoke-virtual {v1}, Landroid/util/JsonScope;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x6
+
+    aput v2, v0, v1
+    :try_end_0
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_7
+
+    :goto_0
+    :try_start_1
+    sget-object v1, Landroid/util/JsonScope;->DANGLING_NAME:Landroid/util/JsonScope;
+
+    invoke-virtual {v1}, Landroid/util/JsonScope;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x1
+
+    aput v2, v0, v1
+    :try_end_1
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_6
+
+    :goto_1
+    :try_start_2
+    sget-object v1, Landroid/util/JsonScope;->EMPTY_ARRAY:Landroid/util/JsonScope;
+
+    invoke-virtual {v1}, Landroid/util/JsonScope;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x2
+
+    aput v2, v0, v1
+    :try_end_2
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_5
+
+    :goto_2
+    :try_start_3
+    sget-object v1, Landroid/util/JsonScope;->EMPTY_DOCUMENT:Landroid/util/JsonScope;
+
+    invoke-virtual {v1}, Landroid/util/JsonScope;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x3
+
+    aput v2, v0, v1
+    :try_end_3
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_3 .. :try_end_3} :catch_4
+
+    :goto_3
+    :try_start_4
+    sget-object v1, Landroid/util/JsonScope;->EMPTY_OBJECT:Landroid/util/JsonScope;
+
+    invoke-virtual {v1}, Landroid/util/JsonScope;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x7
+
+    aput v2, v0, v1
+    :try_end_4
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_4 .. :try_end_4} :catch_3
+
+    :goto_4
+    :try_start_5
+    sget-object v1, Landroid/util/JsonScope;->NONEMPTY_ARRAY:Landroid/util/JsonScope;
+
+    invoke-virtual {v1}, Landroid/util/JsonScope;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x4
+
+    aput v2, v0, v1
+    :try_end_5
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_5 .. :try_end_5} :catch_2
+
+    :goto_5
+    :try_start_6
+    sget-object v1, Landroid/util/JsonScope;->NONEMPTY_DOCUMENT:Landroid/util/JsonScope;
+
+    invoke-virtual {v1}, Landroid/util/JsonScope;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x5
+
+    aput v2, v0, v1
+    :try_end_6
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_6 .. :try_end_6} :catch_1
+
+    :goto_6
+    :try_start_7
+    sget-object v1, Landroid/util/JsonScope;->NONEMPTY_OBJECT:Landroid/util/JsonScope;
+
+    invoke-virtual {v1}, Landroid/util/JsonScope;->ordinal()I
+
+    move-result v1
+
+    const/16 v2, 0x8
+
+    aput v2, v0, v1
+    :try_end_7
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_7 .. :try_end_7} :catch_0
+
+    :goto_7
+    sput-object v0, Landroid/util/JsonWriter;->-android_util_JsonScopeSwitchesValues:[I
+
+    return-object v0
+
+    :catch_0
+    move-exception v1
+
+    goto :goto_7
+
+    :catch_1
+    move-exception v1
+
+    goto :goto_6
+
+    :catch_2
+    move-exception v1
+
+    goto :goto_5
+
+    :catch_3
+    move-exception v1
+
+    goto :goto_4
+
+    :catch_4
+    move-exception v1
+
+    goto :goto_3
+
+    :catch_5
+    move-exception v1
+
+    goto :goto_2
+
+    :catch_6
+    move-exception v1
+
+    goto :goto_1
+
+    :catch_7
+    move-exception v1
+
+    goto :goto_0
+.end method
+
 .method public constructor <init>(Ljava/io/Writer;)V
     .locals 2
-    .parameter "out"
+    .param p1, "out"    # Ljava/io/Writer;
 
     .prologue
     .line 148
@@ -59,7 +232,7 @@
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 139
-    const-string v0, ":"
+    const-string/jumbo v0, ":"
 
     iput-object v0, p0, Landroid/util/JsonWriter;->separator:Ljava/lang/String;
 
@@ -79,7 +252,7 @@
     :cond_0
     iput-object p1, p0, Landroid/util/JsonWriter;->out:Ljava/io/Writer;
 
-    .line 153
+    .line 148
     return-void
 .end method
 
@@ -98,7 +271,7 @@
     move-result-object v0
 
     .line 478
-    .local v0, context:Landroid/util/JsonScope;
+    .local v0, "context":Landroid/util/JsonScope;
     sget-object v1, Landroid/util/JsonScope;->NONEMPTY_OBJECT:Landroid/util/JsonScope;
 
     if-ne v0, v1, :cond_1
@@ -119,7 +292,7 @@
 
     invoke-direct {p0, v1}, Landroid/util/JsonWriter;->replaceTop(Landroid/util/JsonScope;)V
 
-    .line 485
+    .line 476
     return-void
 
     .line 480
@@ -135,7 +308,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Nesting problem: "
+    const-string/jumbo v3, "Nesting problem: "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -158,7 +331,7 @@
 
 .method private beforeValue(Z)V
     .locals 3
-    .parameter "root"
+    .param p1, "root"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -167,7 +340,9 @@
 
     .prologue
     .line 496
-    sget-object v0, Landroid/util/JsonWriter$1;->$SwitchMap$android$util$JsonScope:[I
+    invoke-static {}, Landroid/util/JsonWriter;->-getandroid_util_JsonScopeSwitchesValues()[I
+
+    move-result-object v0
 
     invoke-direct {p0}, Landroid/util/JsonWriter;->peek()Landroid/util/JsonScope;
 
@@ -188,7 +363,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Nesting problem: "
+    const-string/jumbo v2, "Nesting problem: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -214,16 +389,7 @@
 
     if-nez v0, :cond_0
 
-    if-nez p1, :cond_0
-
-    .line 499
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    const-string v1, "JSON must start with an array or an object."
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
+    if-eqz p1, :cond_1
 
     .line 502
     :cond_0
@@ -231,9 +397,21 @@
 
     invoke-direct {p0, v0}, Landroid/util/JsonWriter;->replaceTop(Landroid/util/JsonScope;)V
 
-    .line 527
+    .line 495
     :goto_0
     return-void
+
+    .line 499
+    :cond_1
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    .line 500
+    const-string/jumbo v1, "JSON must start with an array or an object."
+
+    .line 499
+    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v0
 
     .line 506
     :pswitch_1
@@ -278,30 +456,30 @@
     :pswitch_4
     new-instance v0, Ljava/lang/IllegalStateException;
 
-    const-string v1, "JSON must have only one top-level value."
+    .line 522
+    const-string/jumbo v1, "JSON must have only one top-level value."
 
+    .line 521
     invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
     .line 496
-    nop
-
     :pswitch_data_0
     .packed-switch 0x1
-        :pswitch_0
-        :pswitch_1
-        :pswitch_2
         :pswitch_3
+        :pswitch_1
+        :pswitch_0
+        :pswitch_2
         :pswitch_4
     .end packed-switch
 .end method
 
 .method private close(Landroid/util/JsonScope;Landroid/util/JsonScope;Ljava/lang/String;)Landroid/util/JsonWriter;
     .locals 4
-    .parameter "empty"
-    .parameter "nonempty"
-    .parameter "closeBracket"
+    .param p1, "empty"    # Landroid/util/JsonScope;
+    .param p2, "nonempty"    # Landroid/util/JsonScope;
+    .param p3, "closeBracket"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -315,7 +493,7 @@
     move-result-object v0
 
     .line 252
-    .local v0, context:Landroid/util/JsonScope;
+    .local v0, "context":Landroid/util/JsonScope;
     if-eq v0, p2, :cond_0
 
     if-eq v0, p1, :cond_0
@@ -327,7 +505,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Nesting problem: "
+    const-string/jumbo v3, "Nesting problem: "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -389,24 +567,23 @@
     .line 462
     iget-object v1, p0, Landroid/util/JsonWriter;->indent:Ljava/lang/String;
 
-    if-nez v1, :cond_1
+    if-nez v1, :cond_0
 
-    .line 470
-    :cond_0
+    .line 463
     return-void
 
     .line 466
-    :cond_1
+    :cond_0
     iget-object v1, p0, Landroid/util/JsonWriter;->out:Ljava/io/Writer;
 
-    const-string v2, "\n"
+    const-string/jumbo v2, "\n"
 
     invoke-virtual {v1, v2}, Ljava/io/Writer;->write(Ljava/lang/String;)V
 
     .line 467
     const/4 v0, 0x1
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     iget-object v1, p0, Landroid/util/JsonWriter;->stack:Ljava/util/List;
 
@@ -414,7 +591,7 @@
 
     move-result v1
 
-    if-ge v0, v1, :cond_0
+    if-ge v0, v1, :cond_1
 
     .line 468
     iget-object v1, p0, Landroid/util/JsonWriter;->out:Ljava/io/Writer;
@@ -427,12 +604,16 @@
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
+
+    .line 461
+    :cond_1
+    return-void
 .end method
 
 .method private open(Landroid/util/JsonScope;Ljava/lang/String;)Landroid/util/JsonWriter;
     .locals 1
-    .parameter "empty"
-    .parameter "openBracket"
+    .param p1, "empty"    # Landroid/util/JsonScope;
+    .param p2, "openBracket"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -485,7 +666,7 @@
 
 .method private replaceTop(Landroid/util/JsonScope;)V
     .locals 2
-    .parameter "topOfStack"
+    .param p1, "topOfStack"    # Landroid/util/JsonScope;
 
     .prologue
     .line 275
@@ -501,13 +682,13 @@
 
     invoke-interface {v0, v1, p1}, Ljava/util/List;->set(ILjava/lang/Object;)Ljava/lang/Object;
 
-    .line 276
+    .line 274
     return-void
 .end method
 
 .method private string(Ljava/lang/String;)V
     .locals 9
-    .parameter "value"
+    .param p1, "value"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -522,19 +703,19 @@
     .line 401
     iget-object v3, p0, Landroid/util/JsonWriter;->out:Ljava/io/Writer;
 
-    const-string v4, "\""
+    const-string/jumbo v4, "\""
 
     invoke-virtual {v3, v4}, Ljava/io/Writer;->write(Ljava/lang/String;)V
 
     .line 402
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
     move-result v2
 
-    .local v2, length:I
+    .local v2, "length":I
     :goto_0
     if-ge v1, v2, :cond_1
 
@@ -544,7 +725,7 @@
     move-result v0
 
     .line 416
-    .local v0, c:C
+    .local v0, "c":C
     sparse-switch v0, :sswitch_data_0
 
     .line 449
@@ -555,7 +736,7 @@
     .line 450
     iget-object v3, p0, Landroid/util/JsonWriter;->out:Ljava/io/Writer;
 
-    const-string v4, "\\u%04x"
+    const-string/jumbo v4, "\\u%04x"
 
     new-array v5, v8, [Ljava/lang/Object;
 
@@ -596,7 +777,7 @@
     :sswitch_1
     iget-object v3, p0, Landroid/util/JsonWriter;->out:Ljava/io/Writer;
 
-    const-string v4, "\\t"
+    const-string/jumbo v4, "\\t"
 
     invoke-virtual {v3, v4}, Ljava/io/Writer;->write(Ljava/lang/String;)V
 
@@ -606,7 +787,7 @@
     :sswitch_2
     iget-object v3, p0, Landroid/util/JsonWriter;->out:Ljava/io/Writer;
 
-    const-string v4, "\\b"
+    const-string/jumbo v4, "\\b"
 
     invoke-virtual {v3, v4}, Ljava/io/Writer;->write(Ljava/lang/String;)V
 
@@ -616,7 +797,7 @@
     :sswitch_3
     iget-object v3, p0, Landroid/util/JsonWriter;->out:Ljava/io/Writer;
 
-    const-string v4, "\\n"
+    const-string/jumbo v4, "\\n"
 
     invoke-virtual {v3, v4}, Ljava/io/Writer;->write(Ljava/lang/String;)V
 
@@ -626,7 +807,7 @@
     :sswitch_4
     iget-object v3, p0, Landroid/util/JsonWriter;->out:Ljava/io/Writer;
 
-    const-string v4, "\\r"
+    const-string/jumbo v4, "\\r"
 
     invoke-virtual {v3, v4}, Ljava/io/Writer;->write(Ljava/lang/String;)V
 
@@ -636,7 +817,7 @@
     :sswitch_5
     iget-object v3, p0, Landroid/util/JsonWriter;->out:Ljava/io/Writer;
 
-    const-string v4, "\\f"
+    const-string/jumbo v4, "\\f"
 
     invoke-virtual {v3, v4}, Ljava/io/Writer;->write(Ljava/lang/String;)V
 
@@ -646,7 +827,7 @@
     :sswitch_6
     iget-object v3, p0, Landroid/util/JsonWriter;->out:Ljava/io/Writer;
 
-    const-string v4, "\\u%04x"
+    const-string/jumbo v4, "\\u%04x"
 
     new-array v5, v8, [Ljava/lang/Object;
 
@@ -673,18 +854,20 @@
     goto :goto_1
 
     .line 458
-    .end local v0           #c:C
+    .end local v0    # "c":C
     :cond_1
     iget-object v3, p0, Landroid/util/JsonWriter;->out:Ljava/io/Writer;
 
-    const-string v4, "\""
+    const-string/jumbo v4, "\""
 
     invoke-virtual {v3, v4}, Ljava/io/Writer;->write(Ljava/lang/String;)V
 
-    .line 459
+    .line 400
     return-void
 
     .line 416
+    nop
+
     :sswitch_data_0
     .sparse-switch
         0x8 -> :sswitch_2
@@ -713,7 +896,7 @@
     .line 203
     sget-object v0, Landroid/util/JsonScope;->EMPTY_ARRAY:Landroid/util/JsonScope;
 
-    const-string v1, "["
+    const-string/jumbo v1, "["
 
     invoke-direct {p0, v0, v1}, Landroid/util/JsonWriter;->open(Landroid/util/JsonScope;Ljava/lang/String;)Landroid/util/JsonWriter;
 
@@ -769,13 +952,13 @@
     .line 396
     new-instance v0, Ljava/io/IOException;
 
-    const-string v1, "Incomplete document"
+    const-string/jumbo v1, "Incomplete document"
 
     invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 398
+    .line 392
     :cond_0
     return-void
 .end method
@@ -794,7 +977,7 @@
 
     sget-object v1, Landroid/util/JsonScope;->NONEMPTY_ARRAY:Landroid/util/JsonScope;
 
-    const-string v2, "]"
+    const-string/jumbo v2, "]"
 
     invoke-direct {p0, v0, v1, v2}, Landroid/util/JsonWriter;->close(Landroid/util/JsonScope;Landroid/util/JsonScope;Ljava/lang/String;)Landroid/util/JsonWriter;
 
@@ -840,7 +1023,7 @@
 
     invoke-virtual {v0}, Ljava/io/Writer;->flush()V
 
-    .line 385
+    .line 383
     return-void
 .end method
 
@@ -856,7 +1039,7 @@
 
 .method public name(Ljava/lang/String;)Landroid/util/JsonWriter;
     .locals 2
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -870,7 +1053,7 @@
     .line 286
     new-instance v0, Ljava/lang/NullPointerException;
 
-    const-string v1, "name == null"
+    const-string/jumbo v1, "name == null"
 
     invoke-direct {v0, v1}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
@@ -914,7 +1097,7 @@
 
 .method public setIndent(Ljava/lang/String;)V
     .locals 1
-    .parameter "indent"
+    .param p1, "indent"    # Ljava/lang/String;
 
     .prologue
     .line 164
@@ -930,11 +1113,11 @@
     iput-object v0, p0, Landroid/util/JsonWriter;->indent:Ljava/lang/String;
 
     .line 166
-    const-string v0, ":"
+    const-string/jumbo v0, ":"
 
     iput-object v0, p0, Landroid/util/JsonWriter;->separator:Ljava/lang/String;
 
-    .line 171
+    .line 163
     :goto_0
     return-void
 
@@ -943,7 +1126,7 @@
     iput-object p1, p0, Landroid/util/JsonWriter;->indent:Ljava/lang/String;
 
     .line 169
-    const-string v0, ": "
+    const-string/jumbo v0, ": "
 
     iput-object v0, p0, Landroid/util/JsonWriter;->separator:Ljava/lang/String;
 
@@ -952,19 +1135,19 @@
 
 .method public setLenient(Z)V
     .locals 0
-    .parameter "lenient"
+    .param p1, "lenient"    # Z
 
     .prologue
     .line 186
     iput-boolean p1, p0, Landroid/util/JsonWriter;->lenient:Z
 
-    .line 187
+    .line 185
     return-void
 .end method
 
 .method public value(D)Landroid/util/JsonWriter;
     .locals 3
-    .parameter "value"
+    .param p1, "value"    # D
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -997,7 +1180,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Numeric values must be finite, but was "
+    const-string/jumbo v2, "Numeric values must be finite, but was "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1035,8 +1218,8 @@
 .end method
 
 .method public value(J)Landroid/util/JsonWriter;
-    .locals 2
-    .parameter "value"
+    .locals 3
+    .param p1, "value"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1064,7 +1247,7 @@
 
 .method public value(Ljava/lang/Number;)Landroid/util/JsonWriter;
     .locals 4
-    .parameter "value"
+    .param p1, "value"    # Ljava/lang/Number;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1078,27 +1261,24 @@
     .line 366
     invoke-virtual {p0}, Landroid/util/JsonWriter;->nullValue()Landroid/util/JsonWriter;
 
-    move-result-object p0
+    move-result-object v1
 
-    .line 376
-    .end local p0
-    :goto_0
-    return-object p0
+    return-object v1
 
     .line 369
-    .restart local p0
     :cond_0
-    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+    invoke-virtual {p1}, Ljava/lang/Number;->toString()Ljava/lang/String;
 
     move-result-object v0
 
     .line 370
-    .local v0, string:Ljava/lang/String;
+    .local v0, "string":Ljava/lang/String;
     iget-boolean v1, p0, Landroid/util/JsonWriter;->lenient:Z
 
     if-nez v1, :cond_2
 
-    const-string v1, "-Infinity"
+    .line 371
+    const-string/jumbo v1, "-Infinity"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -1106,7 +1286,7 @@
 
     if-nez v1, :cond_1
 
-    const-string v1, "Infinity"
+    const-string/jumbo v1, "Infinity"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -1114,12 +1294,13 @@
 
     if-nez v1, :cond_1
 
-    const-string v1, "NaN"
+    const-string/jumbo v1, "NaN"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
+    .line 370
     if-eqz v1, :cond_2
 
     .line 372
@@ -1130,7 +1311,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Numeric values must be finite, but was "
+    const-string/jumbo v3, "Numeric values must be finite, but was "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1159,12 +1340,13 @@
 
     invoke-virtual {v1, v0}, Ljava/io/Writer;->append(Ljava/lang/CharSequence;)Ljava/io/Writer;
 
-    goto :goto_0
+    .line 376
+    return-object p0
 .end method
 
 .method public value(Ljava/lang/String;)Landroid/util/JsonWriter;
     .locals 1
-    .parameter "value"
+    .param p1, "value"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1178,15 +1360,11 @@
     .line 301
     invoke-virtual {p0}, Landroid/util/JsonWriter;->nullValue()Landroid/util/JsonWriter;
 
-    move-result-object p0
+    move-result-object v0
 
-    .line 305
-    .end local p0
-    :goto_0
-    return-object p0
+    return-object v0
 
     .line 303
-    .restart local p0
     :cond_0
     const/4 v0, 0x0
 
@@ -1195,12 +1373,13 @@
     .line 304
     invoke-direct {p0, p1}, Landroid/util/JsonWriter;->string(Ljava/lang/String;)V
 
-    goto :goto_0
+    .line 305
+    return-object p0
 .end method
 
 .method public value(Z)Landroid/util/JsonWriter;
     .locals 2
-    .parameter "value"
+    .param p1, "value"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -1228,7 +1407,7 @@
 
     .line 326
     :cond_0
-    const-string v0, "false"
+    const-string/jumbo v0, "false"
 
     goto :goto_0
 .end method

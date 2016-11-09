@@ -24,18 +24,18 @@
 # direct methods
 .method public constructor <init>(Landroid/view/ViewRootImpl;Landroid/view/ViewRootImpl$InputStage;Ljava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter "next"
-    .parameter "traceCounter"
+    .param p1, "this$0"    # Landroid/view/ViewRootImpl;
+    .param p2, "next"    # Landroid/view/ViewRootImpl$InputStage;
+    .param p3, "traceCounter"    # Ljava/lang/String;
 
     .prologue
-    .line 3624
+    .line 3901
     iput-object p1, p0, Landroid/view/ViewRootImpl$NativePreImeInputStage;->this$0:Landroid/view/ViewRootImpl;
 
-    .line 3625
+    .line 3902
     invoke-direct {p0, p1, p2, p3}, Landroid/view/ViewRootImpl$AsyncInputStage;-><init>(Landroid/view/ViewRootImpl;Landroid/view/ViewRootImpl$InputStage;Ljava/lang/String;)V
 
-    .line 3626
+    .line 3901
     return-void
 .end method
 
@@ -43,41 +43,41 @@
 # virtual methods
 .method public onFinishedInputEvent(Ljava/lang/Object;Z)V
     .locals 2
-    .parameter "token"
-    .parameter "handled"
+    .param p1, "token"    # Ljava/lang/Object;
+    .param p2, "handled"    # Z
 
     .prologue
-    .line 3639
     move-object v0, p1
 
+    .line 3916
     check-cast v0, Landroid/view/ViewRootImpl$QueuedInputEvent;
 
-    .line 3640
-    .local v0, q:Landroid/view/ViewRootImpl$QueuedInputEvent;
+    .line 3917
+    .local v0, "q":Landroid/view/ViewRootImpl$QueuedInputEvent;
     if-eqz p2, :cond_0
 
-    .line 3641
+    .line 3918
     const/4 v1, 0x1
 
     invoke-virtual {p0, v0, v1}, Landroid/view/ViewRootImpl$NativePreImeInputStage;->finish(Landroid/view/ViewRootImpl$QueuedInputEvent;Z)V
 
-    .line 3645
-    :goto_0
+    .line 3919
     return-void
 
-    .line 3644
+    .line 3921
     :cond_0
     invoke-virtual {p0, v0}, Landroid/view/ViewRootImpl$NativePreImeInputStage;->forward(Landroid/view/ViewRootImpl$QueuedInputEvent;)V
 
-    goto :goto_0
+    .line 3915
+    return-void
 .end method
 
 .method protected onProcess(Landroid/view/ViewRootImpl$QueuedInputEvent;)I
     .locals 3
-    .parameter "q"
+    .param p1, "q"    # Landroid/view/ViewRootImpl$QueuedInputEvent;
 
     .prologue
-    .line 3630
+    .line 3907
     iget-object v0, p0, Landroid/view/ViewRootImpl$NativePreImeInputStage;->this$0:Landroid/view/ViewRootImpl;
 
     iget-object v0, v0, Landroid/view/ViewRootImpl;->mInputQueue:Landroid/view/InputQueue;
@@ -90,7 +90,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 3631
+    .line 3908
     iget-object v0, p0, Landroid/view/ViewRootImpl$NativePreImeInputStage;->this$0:Landroid/view/ViewRootImpl;
 
     iget-object v0, v0, Landroid/view/ViewRootImpl;->mInputQueue:Landroid/view/InputQueue;
@@ -101,15 +101,14 @@
 
     invoke-virtual {v0, v1, p1, v2, p0}, Landroid/view/InputQueue;->sendInputEvent(Landroid/view/InputEvent;Ljava/lang/Object;ZLandroid/view/InputQueue$FinishedInputEventCallback;)V
 
-    .line 3632
+    .line 3909
     const/4 v0, 0x3
 
-    .line 3634
-    :goto_0
     return v0
 
+    .line 3911
     :cond_0
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 .end method

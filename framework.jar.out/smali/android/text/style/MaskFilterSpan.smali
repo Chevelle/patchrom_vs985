@@ -13,7 +13,7 @@
 # direct methods
 .method public constructor <init>(Landroid/graphics/MaskFilter;)V
     .locals 0
-    .parameter "filter"
+    .param p1, "filter"    # Landroid/graphics/MaskFilter;
 
     .prologue
     .line 26
@@ -22,7 +22,7 @@
     .line 27
     iput-object p1, p0, Landroid/text/style/MaskFilterSpan;->mFilter:Landroid/graphics/MaskFilter;
 
-    .line 28
+    .line 26
     return-void
 .end method
 
@@ -40,7 +40,7 @@
 
 .method public updateDrawState(Landroid/text/TextPaint;)V
     .locals 1
-    .parameter "ds"
+    .param p1, "ds"    # Landroid/text/TextPaint;
 
     .prologue
     .line 36
@@ -48,6 +48,6 @@
 
     invoke-virtual {p1, v0}, Landroid/text/TextPaint;->setMaskFilter(Landroid/graphics/MaskFilter;)Landroid/graphics/MaskFilter;
 
-    .line 37
+    .line 35
     return-void
 .end method

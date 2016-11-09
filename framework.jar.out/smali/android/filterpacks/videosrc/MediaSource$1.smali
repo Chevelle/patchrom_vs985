@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/filterpacks/videosrc/MediaSource;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/filterpacks/videosrc/MediaSource;
 
     .prologue
-    .line 520
+    .line 512
     iput-object p1, p0, Landroid/filterpacks/videosrc/MediaSource$1;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,28 +39,27 @@
 # virtual methods
 .method public onVideoSizeChanged(Landroid/media/MediaPlayer;II)V
     .locals 3
-    .parameter "mp"
-    .parameter "width"
-    .parameter "height"
+    .param p1, "mp"    # Landroid/media/MediaPlayer;
+    .param p2, "width"    # I
+    .param p3, "height"    # I
 
     .prologue
-    .line 522
+    .line 514
     iget-object v0, p0, Landroid/filterpacks/videosrc/MediaSource$1;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
-    #getter for: Landroid/filterpacks/videosrc/MediaSource;->mLogVerbose:Z
-    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->access$000(Landroid/filterpacks/videosrc/MediaSource;)Z
+    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->-get1(Landroid/filterpacks/videosrc/MediaSource;)Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    const-string v0, "MediaSource"
+    const-string/jumbo v0, "MediaSource"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "MediaPlayer sent dimensions: "
+    const-string/jumbo v2, "MediaPlayer sent dimensions: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -70,7 +69,7 @@
 
     move-result-object v1
 
-    const-string v2, " x "
+    const-string/jumbo v2, " x "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -86,22 +85,20 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 523
+    .line 515
     :cond_0
     iget-object v0, p0, Landroid/filterpacks/videosrc/MediaSource$1;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
-    #getter for: Landroid/filterpacks/videosrc/MediaSource;->mGotSize:Z
-    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->access$100(Landroid/filterpacks/videosrc/MediaSource;)Z
+    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->-get0(Landroid/filterpacks/videosrc/MediaSource;)Z
 
     move-result v0
 
     if-nez v0, :cond_4
 
-    .line 524
+    .line 516
     iget-object v0, p0, Landroid/filterpacks/videosrc/MediaSource$1;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
-    #getter for: Landroid/filterpacks/videosrc/MediaSource;->mOrientation:I
-    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->access$200(Landroid/filterpacks/videosrc/MediaSource;)I
+    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->-get2(Landroid/filterpacks/videosrc/MediaSource;)I
 
     move-result v0
 
@@ -109,8 +106,7 @@
 
     iget-object v0, p0, Landroid/filterpacks/videosrc/MediaSource$1;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
-    #getter for: Landroid/filterpacks/videosrc/MediaSource;->mOrientation:I
-    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->access$200(Landroid/filterpacks/videosrc/MediaSource;)I
+    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->-get2(Landroid/filterpacks/videosrc/MediaSource;)I
 
     move-result v0
 
@@ -118,65 +114,59 @@
 
     if-ne v0, v1, :cond_3
 
-    .line 525
+    .line 517
     :cond_1
     iget-object v0, p0, Landroid/filterpacks/videosrc/MediaSource$1;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
-    #getter for: Landroid/filterpacks/videosrc/MediaSource;->mOutputFormat:Landroid/filterfw/core/MutableFrameFormat;
-    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->access$300(Landroid/filterpacks/videosrc/MediaSource;)Landroid/filterfw/core/MutableFrameFormat;
+    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->-get3(Landroid/filterpacks/videosrc/MediaSource;)Landroid/filterfw/core/MutableFrameFormat;
 
     move-result-object v0
 
     invoke-virtual {v0, p2, p3}, Landroid/filterfw/core/MutableFrameFormat;->setDimensions(II)V
 
-    .line 529
+    .line 521
     :goto_0
     iget-object v0, p0, Landroid/filterpacks/videosrc/MediaSource$1;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
-    #setter for: Landroid/filterpacks/videosrc/MediaSource;->mWidth:I
-    invoke-static {v0, p2}, Landroid/filterpacks/videosrc/MediaSource;->access$402(Landroid/filterpacks/videosrc/MediaSource;I)I
+    invoke-static {v0, p2}, Landroid/filterpacks/videosrc/MediaSource;->-set5(Landroid/filterpacks/videosrc/MediaSource;I)I
 
-    .line 530
+    .line 522
     iget-object v0, p0, Landroid/filterpacks/videosrc/MediaSource$1;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
-    #setter for: Landroid/filterpacks/videosrc/MediaSource;->mHeight:I
-    invoke-static {v0, p3}, Landroid/filterpacks/videosrc/MediaSource;->access$502(Landroid/filterpacks/videosrc/MediaSource;I)I
+    invoke-static {v0, p3}, Landroid/filterpacks/videosrc/MediaSource;->-set2(Landroid/filterpacks/videosrc/MediaSource;I)I
 
-    .line 537
+    .line 529
     :cond_2
     :goto_1
     iget-object v1, p0, Landroid/filterpacks/videosrc/MediaSource$1;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
     monitor-enter v1
 
-    .line 538
+    .line 530
     :try_start_0
     iget-object v0, p0, Landroid/filterpacks/videosrc/MediaSource$1;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
     const/4 v2, 0x1
 
-    #setter for: Landroid/filterpacks/videosrc/MediaSource;->mGotSize:Z
-    invoke-static {v0, v2}, Landroid/filterpacks/videosrc/MediaSource;->access$102(Landroid/filterpacks/videosrc/MediaSource;Z)Z
+    invoke-static {v0, v2}, Landroid/filterpacks/videosrc/MediaSource;->-set1(Landroid/filterpacks/videosrc/MediaSource;Z)Z
 
-    .line 539
+    .line 531
     iget-object v0, p0, Landroid/filterpacks/videosrc/MediaSource$1;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
-    invoke-virtual {v0}, Ljava/lang/Object;->notify()V
-
-    .line 540
-    monitor-exit v1
+    invoke-virtual {v0}, Landroid/filterpacks/videosrc/MediaSource;->notify()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 541
+    monitor-exit v1
+
+    .line 513
     return-void
 
-    .line 527
+    .line 519
     :cond_3
     iget-object v0, p0, Landroid/filterpacks/videosrc/MediaSource$1;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
-    #getter for: Landroid/filterpacks/videosrc/MediaSource;->mOutputFormat:Landroid/filterfw/core/MutableFrameFormat;
-    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->access$300(Landroid/filterpacks/videosrc/MediaSource;)Landroid/filterfw/core/MutableFrameFormat;
+    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->-get3(Landroid/filterpacks/videosrc/MediaSource;)Landroid/filterfw/core/MutableFrameFormat;
 
     move-result-object v0
 
@@ -184,12 +174,11 @@
 
     goto :goto_0
 
-    .line 532
+    .line 524
     :cond_4
     iget-object v0, p0, Landroid/filterpacks/videosrc/MediaSource$1;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
-    #getter for: Landroid/filterpacks/videosrc/MediaSource;->mOutputFormat:Landroid/filterfw/core/MutableFrameFormat;
-    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->access$300(Landroid/filterpacks/videosrc/MediaSource;)Landroid/filterfw/core/MutableFrameFormat;
+    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->-get3(Landroid/filterpacks/videosrc/MediaSource;)Landroid/filterfw/core/MutableFrameFormat;
 
     move-result-object v0
 
@@ -199,10 +188,10 @@
 
     if-ne v0, p2, :cond_5
 
+    .line 525
     iget-object v0, p0, Landroid/filterpacks/videosrc/MediaSource$1;->this$0:Landroid/filterpacks/videosrc/MediaSource;
 
-    #getter for: Landroid/filterpacks/videosrc/MediaSource;->mOutputFormat:Landroid/filterfw/core/MutableFrameFormat;
-    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->access$300(Landroid/filterpacks/videosrc/MediaSource;)Landroid/filterfw/core/MutableFrameFormat;
+    invoke-static {v0}, Landroid/filterpacks/videosrc/MediaSource;->-get3(Landroid/filterpacks/videosrc/MediaSource;)Landroid/filterfw/core/MutableFrameFormat;
 
     move-result-object v0
 
@@ -212,24 +201,21 @@
 
     if-eq v0, p3, :cond_2
 
-    .line 534
+    .line 526
     :cond_5
-    const-string v0, "MediaSource"
+    const-string/jumbo v0, "MediaSource"
 
-    const-string v1, "Multiple video size change events received!"
+    const-string/jumbo v1, "Multiple video size change events received!"
 
     invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_1
 
-    .line 540
+    .line 529
     :catchall_0
     move-exception v0
 
-    :try_start_1
     monitor-exit v1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v0
 .end method

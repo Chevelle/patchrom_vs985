@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 74
+    .line 73
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 75
     iput-object p1, p0, Landroid/app/IStopUserCallback$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 76
+    .line 73
     return-void
 .end method
 
@@ -54,14 +54,14 @@
 
     .prologue
     .line 83
-    const-string v0, "android.app.IStopUserCallback"
+    const-string/jumbo v0, "android.app.IStopUserCallback"
 
     return-object v0
 .end method
 
 .method public userStopAborted(I)V
     .locals 5
-    .parameter "userId"
+    .param p1, "userId"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -75,15 +75,15 @@
     move-result-object v0
 
     .line 103
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 105
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.app.IStopUserCallback"
+    const-string/jumbo v2, "android.app.IStopUserCallback"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -110,24 +110,26 @@
     .line 112
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 114
+    .line 100
     return-void
 
-    .line 111
+    .line 110
     :catchall_0
     move-exception v2
 
+    .line 111
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 112
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 110
     throw v2
 .end method
 
 .method public userStopped(I)V
     .locals 5
-    .parameter "userId"
+    .param p1, "userId"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -141,15 +143,15 @@
     move-result-object v0
 
     .line 88
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 90
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.app.IStopUserCallback"
+    const-string/jumbo v2, "android.app.IStopUserCallback"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -176,17 +178,19 @@
     .line 97
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 99
+    .line 85
     return-void
 
-    .line 96
+    .line 95
     :catchall_0
     move-exception v2
 
+    .line 96
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 97
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 95
     throw v2
 .end method

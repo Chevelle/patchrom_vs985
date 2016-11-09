@@ -14,8 +14,8 @@
 # direct methods
 .method public constructor <init>(Ljavax/microedition/khronos/opengles/GL;I)V
     .locals 3
-    .parameter "gl"
-    .parameter "configFlags"
+    .param p1, "gl"    # Ljavax/microedition/khronos/opengles/GL;
+    .param p2, "configFlags"    # I
 
     .prologue
     const/4 v1, 0x1
@@ -43,7 +43,7 @@
     :goto_1
     iput-boolean v1, p0, Landroid/opengl/GLErrorWrapper;->mCheckThread:Z
 
-    .line 42
+    .line 38
     return-void
 
     :cond_0
@@ -75,7 +75,7 @@
 
     move-result v0
 
-    .local v0, glError:I
+    .local v0, "glError":I
     if-eqz v0, :cond_0
 
     .line 62
@@ -85,8 +85,8 @@
 
     throw v1
 
-    .line 65
-    .end local v0           #glError:I
+    .line 58
+    .end local v0    # "glError":I
     :cond_0
     return-void
 .end method
@@ -106,7 +106,7 @@
     move-result-object v0
 
     .line 47
-    .local v0, currentThread:Ljava/lang/Thread;
+    .local v0, "currentThread":Ljava/lang/Thread;
     iget-object v1, p0, Landroid/opengl/GLErrorWrapper;->mOurThread:Ljava/lang/Thread;
 
     if-nez v1, :cond_1
@@ -114,17 +114,17 @@
     .line 48
     iput-object v0, p0, Landroid/opengl/GLErrorWrapper;->mOurThread:Ljava/lang/Thread;
 
-    .line 56
-    .end local v0           #currentThread:Ljava/lang/Thread;
+    .line 44
+    .end local v0    # "currentThread":Ljava/lang/Thread;
     :cond_0
     return-void
 
     .line 50
-    .restart local v0       #currentThread:Ljava/lang/Thread;
+    .restart local v0    # "currentThread":Ljava/lang/Thread;
     :cond_1
     iget-object v1, p0, Landroid/opengl/GLErrorWrapper;->mOurThread:Ljava/lang/Thread;
 
-    invoke-virtual {v1, v0}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v0}, Ljava/lang/Thread;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
@@ -133,11 +133,13 @@
     .line 51
     new-instance v1, Landroid/opengl/GLException;
 
-    const/16 v2, 0x7000
+    .line 52
+    const-string/jumbo v2, "OpenGL method called from wrong thread."
 
-    const-string v3, "OpenGL method called from wrong thread."
+    .line 51
+    const/16 v3, 0x7000
 
-    invoke-direct {v1, v2, v3}, Landroid/opengl/GLException;-><init>(ILjava/lang/String;)V
+    invoke-direct {v1, v3, v2}, Landroid/opengl/GLException;-><init>(ILjava/lang/String;)V
 
     throw v1
 .end method
@@ -146,7 +148,7 @@
 # virtual methods
 .method public glActiveTexture(I)V
     .locals 1
-    .parameter "texture"
+    .param p1, "texture"    # I
 
     .prologue
     .line 71
@@ -160,14 +162,14 @@
     .line 73
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 74
+    .line 70
     return-void
 .end method
 
 .method public glAlphaFunc(IF)V
     .locals 1
-    .parameter "func"
-    .parameter "ref"
+    .param p1, "func"    # I
+    .param p2, "ref"    # F
 
     .prologue
     .line 77
@@ -181,14 +183,14 @@
     .line 79
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 80
+    .line 76
     return-void
 .end method
 
 .method public glAlphaFuncx(II)V
     .locals 1
-    .parameter "func"
-    .parameter "ref"
+    .param p1, "func"    # I
+    .param p2, "ref"    # I
 
     .prologue
     .line 83
@@ -202,14 +204,14 @@
     .line 85
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 86
+    .line 82
     return-void
 .end method
 
 .method public glBindBuffer(II)V
     .locals 1
-    .parameter "target"
-    .parameter "buffer"
+    .param p1, "target"    # I
+    .param p2, "buffer"    # I
 
     .prologue
     .line 963
@@ -223,14 +225,14 @@
     .line 965
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 966
+    .line 962
     return-void
 .end method
 
 .method public glBindFramebufferOES(II)V
     .locals 1
-    .parameter "target"
-    .parameter "framebuffer"
+    .param p1, "target"    # I
+    .param p2, "framebuffer"    # I
 
     .prologue
     .line 1382
@@ -244,14 +246,14 @@
     .line 1384
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1385
+    .line 1381
     return-void
 .end method
 
 .method public glBindRenderbufferOES(II)V
     .locals 1
-    .parameter "target"
-    .parameter "renderbuffer"
+    .param p1, "target"    # I
+    .param p2, "renderbuffer"    # I
 
     .prologue
     .line 1389
@@ -265,14 +267,14 @@
     .line 1391
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1392
+    .line 1388
     return-void
 .end method
 
 .method public glBindTexture(II)V
     .locals 1
-    .parameter "target"
-    .parameter "texture"
+    .param p1, "target"    # I
+    .param p2, "texture"    # I
 
     .prologue
     .line 89
@@ -286,13 +288,13 @@
     .line 91
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 92
+    .line 88
     return-void
 .end method
 
 .method public glBlendEquation(I)V
     .locals 1
-    .parameter "mode"
+    .param p1, "mode"    # I
 
     .prologue
     .line 1396
@@ -306,14 +308,14 @@
     .line 1398
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1399
+    .line 1395
     return-void
 .end method
 
 .method public glBlendEquationSeparate(II)V
     .locals 1
-    .parameter "modeRGB"
-    .parameter "modeAlpha"
+    .param p1, "modeRGB"    # I
+    .param p2, "modeAlpha"    # I
 
     .prologue
     .line 1403
@@ -327,14 +329,14 @@
     .line 1405
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1406
+    .line 1402
     return-void
 .end method
 
 .method public glBlendFunc(II)V
     .locals 1
-    .parameter "sfactor"
-    .parameter "dfactor"
+    .param p1, "sfactor"    # I
+    .param p2, "dfactor"    # I
 
     .prologue
     .line 95
@@ -348,16 +350,16 @@
     .line 97
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 98
+    .line 94
     return-void
 .end method
 
 .method public glBlendFuncSeparate(IIII)V
     .locals 1
-    .parameter "srcRGB"
-    .parameter "dstRGB"
-    .parameter "srcAlpha"
-    .parameter "dstAlpha"
+    .param p1, "srcRGB"    # I
+    .param p2, "dstRGB"    # I
+    .param p3, "srcAlpha"    # I
+    .param p4, "dstAlpha"    # I
 
     .prologue
     .line 1411
@@ -371,16 +373,16 @@
     .line 1413
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1414
+    .line 1410
     return-void
 .end method
 
 .method public glBufferData(IILjava/nio/Buffer;I)V
     .locals 1
-    .parameter "target"
-    .parameter "size"
-    .parameter "data"
-    .parameter "usage"
+    .param p1, "target"    # I
+    .param p2, "size"    # I
+    .param p3, "data"    # Ljava/nio/Buffer;
+    .param p4, "usage"    # I
 
     .prologue
     .line 969
@@ -394,16 +396,16 @@
     .line 971
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 972
+    .line 968
     return-void
 .end method
 
 .method public glBufferSubData(IIILjava/nio/Buffer;)V
     .locals 1
-    .parameter "target"
-    .parameter "offset"
-    .parameter "size"
-    .parameter "data"
+    .param p1, "target"    # I
+    .param p2, "offset"    # I
+    .param p3, "size"    # I
+    .param p4, "data"    # Ljava/nio/Buffer;
 
     .prologue
     .line 975
@@ -417,13 +419,13 @@
     .line 977
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 978
+    .line 974
     return-void
 .end method
 
 .method public glCheckFramebufferStatusOES(I)I
     .locals 2
-    .parameter "target"
+    .param p1, "target"    # I
 
     .prologue
     .line 1418
@@ -437,7 +439,7 @@
     move-result v0
 
     .line 1420
-    .local v0, result:I
+    .local v0, "result":I
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
     .line 1421
@@ -446,7 +448,7 @@
 
 .method public glClear(I)V
     .locals 1
-    .parameter "mask"
+    .param p1, "mask"    # I
 
     .prologue
     .line 101
@@ -460,16 +462,16 @@
     .line 103
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 104
+    .line 100
     return-void
 .end method
 
 .method public glClearColor(FFFF)V
     .locals 1
-    .parameter "red"
-    .parameter "green"
-    .parameter "blue"
-    .parameter "alpha"
+    .param p1, "red"    # F
+    .param p2, "green"    # F
+    .param p3, "blue"    # F
+    .param p4, "alpha"    # F
 
     .prologue
     .line 107
@@ -483,16 +485,16 @@
     .line 109
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 110
+    .line 106
     return-void
 .end method
 
 .method public glClearColorx(IIII)V
     .locals 1
-    .parameter "red"
-    .parameter "green"
-    .parameter "blue"
-    .parameter "alpha"
+    .param p1, "red"    # I
+    .param p2, "green"    # I
+    .param p3, "blue"    # I
+    .param p4, "alpha"    # I
 
     .prologue
     .line 113
@@ -506,13 +508,13 @@
     .line 115
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 116
+    .line 112
     return-void
 .end method
 
 .method public glClearDepthf(F)V
     .locals 1
-    .parameter "depth"
+    .param p1, "depth"    # F
 
     .prologue
     .line 119
@@ -526,13 +528,13 @@
     .line 121
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 122
+    .line 118
     return-void
 .end method
 
 .method public glClearDepthx(I)V
     .locals 1
-    .parameter "depth"
+    .param p1, "depth"    # I
 
     .prologue
     .line 125
@@ -546,13 +548,13 @@
     .line 127
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 128
+    .line 124
     return-void
 .end method
 
 .method public glClearStencil(I)V
     .locals 1
-    .parameter "s"
+    .param p1, "s"    # I
 
     .prologue
     .line 131
@@ -566,13 +568,13 @@
     .line 133
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 134
+    .line 130
     return-void
 .end method
 
 .method public glClientActiveTexture(I)V
     .locals 1
-    .parameter "texture"
+    .param p1, "texture"    # I
 
     .prologue
     .line 137
@@ -586,14 +588,14 @@
     .line 139
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 140
+    .line 136
     return-void
 .end method
 
 .method public glClipPlanef(ILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "plane"
-    .parameter "equation"
+    .param p1, "plane"    # I
+    .param p2, "equation"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 853
@@ -607,15 +609,15 @@
     .line 855
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 856
+    .line 852
     return-void
 .end method
 
 .method public glClipPlanef(I[FI)V
     .locals 1
-    .parameter "plane"
-    .parameter "equation"
-    .parameter "offset"
+    .param p1, "plane"    # I
+    .param p2, "equation"    # [F
+    .param p3, "offset"    # I
 
     .prologue
     .line 847
@@ -629,14 +631,14 @@
     .line 849
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 850
+    .line 846
     return-void
 .end method
 
 .method public glClipPlanex(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "plane"
-    .parameter "equation"
+    .param p1, "plane"    # I
+    .param p2, "equation"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 865
@@ -650,15 +652,15 @@
     .line 867
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 868
+    .line 864
     return-void
 .end method
 
 .method public glClipPlanex(I[II)V
     .locals 1
-    .parameter "plane"
-    .parameter "equation"
-    .parameter "offset"
+    .param p1, "plane"    # I
+    .param p2, "equation"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 859
@@ -672,16 +674,16 @@
     .line 861
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 862
+    .line 858
     return-void
 .end method
 
 .method public glColor4f(FFFF)V
     .locals 1
-    .parameter "red"
-    .parameter "green"
-    .parameter "blue"
-    .parameter "alpha"
+    .param p1, "red"    # F
+    .param p2, "green"    # F
+    .param p3, "blue"    # F
+    .param p4, "alpha"    # F
 
     .prologue
     .line 143
@@ -695,16 +697,16 @@
     .line 145
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 146
+    .line 142
     return-void
 .end method
 
 .method public glColor4ub(BBBB)V
     .locals 1
-    .parameter "red"
-    .parameter "green"
-    .parameter "blue"
-    .parameter "alpha"
+    .param p1, "red"    # B
+    .param p2, "green"    # B
+    .param p3, "blue"    # B
+    .param p4, "alpha"    # B
 
     .prologue
     .line 981
@@ -718,15 +720,16 @@
     .line 983
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
+    .line 980
     return-void
 .end method
 
 .method public glColor4x(IIII)V
     .locals 1
-    .parameter "red"
-    .parameter "green"
-    .parameter "blue"
-    .parameter "alpha"
+    .param p1, "red"    # I
+    .param p2, "green"    # I
+    .param p3, "blue"    # I
+    .param p4, "alpha"    # I
 
     .prologue
     .line 149
@@ -740,16 +743,16 @@
     .line 151
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 152
+    .line 148
     return-void
 .end method
 
 .method public glColorMask(ZZZZ)V
     .locals 1
-    .parameter "red"
-    .parameter "green"
-    .parameter "blue"
-    .parameter "alpha"
+    .param p1, "red"    # Z
+    .param p2, "green"    # Z
+    .param p3, "blue"    # Z
+    .param p4, "alpha"    # Z
 
     .prologue
     .line 156
@@ -763,16 +766,16 @@
     .line 158
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 159
+    .line 155
     return-void
 .end method
 
 .method public glColorPointer(IIII)V
     .locals 1
-    .parameter "size"
-    .parameter "type"
-    .parameter "stride"
-    .parameter "offset"
+    .param p1, "size"    # I
+    .param p2, "type"    # I
+    .param p3, "stride"    # I
+    .param p4, "offset"    # I
 
     .prologue
     .line 986
@@ -786,16 +789,16 @@
     .line 988
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 989
+    .line 985
     return-void
 .end method
 
 .method public glColorPointer(IIILjava/nio/Buffer;)V
     .locals 1
-    .parameter "size"
-    .parameter "type"
-    .parameter "stride"
-    .parameter "pointer"
+    .param p1, "size"    # I
+    .param p2, "type"    # I
+    .param p3, "stride"    # I
+    .param p4, "pointer"    # Ljava/nio/Buffer;
 
     .prologue
     .line 162
@@ -809,20 +812,20 @@
     .line 164
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 165
+    .line 161
     return-void
 .end method
 
 .method public glCompressedTexImage2D(IIIIIIILjava/nio/Buffer;)V
     .locals 9
-    .parameter "target"
-    .parameter "level"
-    .parameter "internalformat"
-    .parameter "width"
-    .parameter "height"
-    .parameter "border"
-    .parameter "imageSize"
-    .parameter "data"
+    .param p1, "target"    # I
+    .param p2, "level"    # I
+    .param p3, "internalformat"    # I
+    .param p4, "width"    # I
+    .param p5, "height"    # I
+    .param p6, "border"    # I
+    .param p7, "imageSize"    # I
+    .param p8, "data"    # Ljava/nio/Buffer;
 
     .prologue
     .line 170
@@ -852,21 +855,21 @@
     .line 173
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 174
+    .line 169
     return-void
 .end method
 
 .method public glCompressedTexSubImage2D(IIIIIIIILjava/nio/Buffer;)V
     .locals 10
-    .parameter "target"
-    .parameter "level"
-    .parameter "xoffset"
-    .parameter "yoffset"
-    .parameter "width"
-    .parameter "height"
-    .parameter "format"
-    .parameter "imageSize"
-    .parameter "data"
+    .param p1, "target"    # I
+    .param p2, "level"    # I
+    .param p3, "xoffset"    # I
+    .param p4, "yoffset"    # I
+    .param p5, "width"    # I
+    .param p6, "height"    # I
+    .param p7, "format"    # I
+    .param p8, "imageSize"    # I
+    .param p9, "data"    # Ljava/nio/Buffer;
 
     .prologue
     .line 179
@@ -898,20 +901,20 @@
     .line 182
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 183
+    .line 178
     return-void
 .end method
 
 .method public glCopyTexImage2D(IIIIIIII)V
     .locals 9
-    .parameter "target"
-    .parameter "level"
-    .parameter "internalformat"
-    .parameter "x"
-    .parameter "y"
-    .parameter "width"
-    .parameter "height"
-    .parameter "border"
+    .param p1, "target"    # I
+    .param p2, "level"    # I
+    .param p3, "internalformat"    # I
+    .param p4, "x"    # I
+    .param p5, "y"    # I
+    .param p6, "width"    # I
+    .param p7, "height"    # I
+    .param p8, "border"    # I
 
     .prologue
     .line 187
@@ -941,20 +944,20 @@
     .line 190
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 191
+    .line 186
     return-void
 .end method
 
 .method public glCopyTexSubImage2D(IIIIIIII)V
     .locals 9
-    .parameter "target"
-    .parameter "level"
-    .parameter "xoffset"
-    .parameter "yoffset"
-    .parameter "x"
-    .parameter "y"
-    .parameter "width"
-    .parameter "height"
+    .param p1, "target"    # I
+    .param p2, "level"    # I
+    .param p3, "xoffset"    # I
+    .param p4, "yoffset"    # I
+    .param p5, "x"    # I
+    .param p6, "y"    # I
+    .param p7, "width"    # I
+    .param p8, "height"    # I
 
     .prologue
     .line 195
@@ -984,13 +987,13 @@
     .line 198
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 199
+    .line 194
     return-void
 .end method
 
 .method public glCullFace(I)V
     .locals 1
-    .parameter "mode"
+    .param p1, "mode"    # I
 
     .prologue
     .line 202
@@ -1004,13 +1007,13 @@
     .line 204
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 205
+    .line 201
     return-void
 .end method
 
 .method public glCurrentPaletteMatrixOES(I)V
     .locals 1
-    .parameter "matrixpaletteindex"
+    .param p1, "matrixpaletteindex"    # I
 
     .prologue
     .line 1342
@@ -1024,14 +1027,14 @@
     .line 1344
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1345
+    .line 1341
     return-void
 .end method
 
 .method public glDeleteBuffers(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "n"
-    .parameter "buffers"
+    .param p1, "n"    # I
+    .param p2, "buffers"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 998
@@ -1045,15 +1048,15 @@
     .line 1000
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1001
+    .line 997
     return-void
 .end method
 
 .method public glDeleteBuffers(I[II)V
     .locals 1
-    .parameter "n"
-    .parameter "buffers"
-    .parameter "offset"
+    .param p1, "n"    # I
+    .param p2, "buffers"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 992
@@ -1067,14 +1070,14 @@
     .line 994
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 995
+    .line 991
     return-void
 .end method
 
 .method public glDeleteFramebuffersOES(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "n"
-    .parameter "framebuffers"
+    .param p1, "n"    # I
+    .param p2, "framebuffers"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1433
@@ -1088,15 +1091,15 @@
     .line 1435
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1436
+    .line 1432
     return-void
 .end method
 
 .method public glDeleteFramebuffersOES(I[II)V
     .locals 1
-    .parameter "n"
-    .parameter "framebuffers"
-    .parameter "offset"
+    .param p1, "n"    # I
+    .param p2, "framebuffers"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 1426
@@ -1110,14 +1113,14 @@
     .line 1428
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1429
+    .line 1425
     return-void
 .end method
 
 .method public glDeleteRenderbuffersOES(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "n"
-    .parameter "renderbuffers"
+    .param p1, "n"    # I
+    .param p2, "renderbuffers"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1447
@@ -1131,15 +1134,15 @@
     .line 1449
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1450
+    .line 1446
     return-void
 .end method
 
 .method public glDeleteRenderbuffersOES(I[II)V
     .locals 1
-    .parameter "n"
-    .parameter "renderbuffers"
-    .parameter "offset"
+    .param p1, "n"    # I
+    .param p2, "renderbuffers"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 1440
@@ -1153,14 +1156,14 @@
     .line 1442
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1443
+    .line 1439
     return-void
 .end method
 
 .method public glDeleteTextures(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "n"
-    .parameter "textures"
+    .param p1, "n"    # I
+    .param p2, "textures"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 214
@@ -1174,15 +1177,15 @@
     .line 216
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 217
+    .line 213
     return-void
 .end method
 
 .method public glDeleteTextures(I[II)V
     .locals 1
-    .parameter "n"
-    .parameter "textures"
-    .parameter "offset"
+    .param p1, "n"    # I
+    .param p2, "textures"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 208
@@ -1196,13 +1199,13 @@
     .line 210
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 211
+    .line 207
     return-void
 .end method
 
 .method public glDepthFunc(I)V
     .locals 1
-    .parameter "func"
+    .param p1, "func"    # I
 
     .prologue
     .line 220
@@ -1216,13 +1219,13 @@
     .line 222
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 223
+    .line 219
     return-void
 .end method
 
 .method public glDepthMask(Z)V
     .locals 1
-    .parameter "flag"
+    .param p1, "flag"    # Z
 
     .prologue
     .line 226
@@ -1236,14 +1239,14 @@
     .line 228
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 229
+    .line 225
     return-void
 .end method
 
 .method public glDepthRangef(FF)V
     .locals 1
-    .parameter "near"
-    .parameter "far"
+    .param p1, "near"    # F
+    .param p2, "far"    # F
 
     .prologue
     .line 232
@@ -1257,14 +1260,14 @@
     .line 234
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 235
+    .line 231
     return-void
 .end method
 
 .method public glDepthRangex(II)V
     .locals 1
-    .parameter "near"
-    .parameter "far"
+    .param p1, "near"    # I
+    .param p2, "far"    # I
 
     .prologue
     .line 238
@@ -1278,13 +1281,13 @@
     .line 240
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 241
+    .line 237
     return-void
 .end method
 
 .method public glDisable(I)V
     .locals 1
-    .parameter "cap"
+    .param p1, "cap"    # I
 
     .prologue
     .line 244
@@ -1298,13 +1301,13 @@
     .line 246
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 247
+    .line 243
     return-void
 .end method
 
 .method public glDisableClientState(I)V
     .locals 1
-    .parameter "array"
+    .param p1, "array"    # I
 
     .prologue
     .line 250
@@ -1318,15 +1321,15 @@
     .line 252
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 253
+    .line 249
     return-void
 .end method
 
 .method public glDrawArrays(III)V
     .locals 1
-    .parameter "mode"
-    .parameter "first"
-    .parameter "count"
+    .param p1, "mode"    # I
+    .param p2, "first"    # I
+    .param p3, "count"    # I
 
     .prologue
     .line 256
@@ -1340,16 +1343,16 @@
     .line 258
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 259
+    .line 255
     return-void
 .end method
 
 .method public glDrawElements(IIII)V
     .locals 1
-    .parameter "mode"
-    .parameter "count"
-    .parameter "type"
-    .parameter "offset"
+    .param p1, "mode"    # I
+    .param p2, "count"    # I
+    .param p3, "type"    # I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1004
@@ -1363,16 +1366,16 @@
     .line 1006
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1007
+    .line 1003
     return-void
 .end method
 
 .method public glDrawElements(IIILjava/nio/Buffer;)V
     .locals 1
-    .parameter "mode"
-    .parameter "count"
-    .parameter "type"
-    .parameter "indices"
+    .param p1, "mode"    # I
+    .param p2, "count"    # I
+    .param p3, "type"    # I
+    .param p4, "indices"    # Ljava/nio/Buffer;
 
     .prologue
     .line 262
@@ -1386,17 +1389,17 @@
     .line 264
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 265
+    .line 261
     return-void
 .end method
 
 .method public glDrawTexfOES(FFFFF)V
     .locals 6
-    .parameter "x"
-    .parameter "y"
-    .parameter "z"
-    .parameter "width"
-    .parameter "height"
+    .param p1, "x"    # F
+    .param p2, "y"    # F
+    .param p3, "z"    # F
+    .param p4, "width"    # F
+    .param p5, "height"    # F
 
     .prologue
     .line 874
@@ -1420,13 +1423,13 @@
     .line 876
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 877
+    .line 873
     return-void
 .end method
 
 .method public glDrawTexfvOES(Ljava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "coords"
+    .param p1, "coords"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 886
@@ -1440,14 +1443,14 @@
     .line 888
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 889
+    .line 885
     return-void
 .end method
 
 .method public glDrawTexfvOES([FI)V
     .locals 1
-    .parameter "coords"
-    .parameter "offset"
+    .param p1, "coords"    # [F
+    .param p2, "offset"    # I
 
     .prologue
     .line 880
@@ -1461,17 +1464,17 @@
     .line 882
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 883
+    .line 879
     return-void
 .end method
 
 .method public glDrawTexiOES(IIIII)V
     .locals 6
-    .parameter "x"
-    .parameter "y"
-    .parameter "z"
-    .parameter "width"
-    .parameter "height"
+    .param p1, "x"    # I
+    .param p2, "y"    # I
+    .param p3, "z"    # I
+    .param p4, "width"    # I
+    .param p5, "height"    # I
 
     .prologue
     .line 892
@@ -1495,13 +1498,13 @@
     .line 894
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 895
+    .line 891
     return-void
 .end method
 
 .method public glDrawTexivOES(Ljava/nio/IntBuffer;)V
     .locals 1
-    .parameter "coords"
+    .param p1, "coords"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 904
@@ -1515,14 +1518,14 @@
     .line 906
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 907
+    .line 903
     return-void
 .end method
 
 .method public glDrawTexivOES([II)V
     .locals 1
-    .parameter "coords"
-    .parameter "offset"
+    .param p1, "coords"    # [I
+    .param p2, "offset"    # I
 
     .prologue
     .line 898
@@ -1536,17 +1539,17 @@
     .line 900
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 901
+    .line 897
     return-void
 .end method
 
 .method public glDrawTexsOES(SSSSS)V
     .locals 6
-    .parameter "x"
-    .parameter "y"
-    .parameter "z"
-    .parameter "width"
-    .parameter "height"
+    .param p1, "x"    # S
+    .param p2, "y"    # S
+    .param p3, "z"    # S
+    .param p4, "width"    # S
+    .param p5, "height"    # S
 
     .prologue
     .line 911
@@ -1570,13 +1573,13 @@
     .line 913
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 914
+    .line 910
     return-void
 .end method
 
 .method public glDrawTexsvOES(Ljava/nio/ShortBuffer;)V
     .locals 1
-    .parameter "coords"
+    .param p1, "coords"    # Ljava/nio/ShortBuffer;
 
     .prologue
     .line 923
@@ -1590,14 +1593,14 @@
     .line 925
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 926
+    .line 922
     return-void
 .end method
 
 .method public glDrawTexsvOES([SI)V
     .locals 1
-    .parameter "coords"
-    .parameter "offset"
+    .param p1, "coords"    # [S
+    .param p2, "offset"    # I
 
     .prologue
     .line 917
@@ -1611,17 +1614,17 @@
     .line 919
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 920
+    .line 916
     return-void
 .end method
 
 .method public glDrawTexxOES(IIIII)V
     .locals 6
-    .parameter "x"
-    .parameter "y"
-    .parameter "z"
-    .parameter "width"
-    .parameter "height"
+    .param p1, "x"    # I
+    .param p2, "y"    # I
+    .param p3, "z"    # I
+    .param p4, "width"    # I
+    .param p5, "height"    # I
 
     .prologue
     .line 929
@@ -1645,13 +1648,13 @@
     .line 931
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 932
+    .line 928
     return-void
 .end method
 
 .method public glDrawTexxvOES(Ljava/nio/IntBuffer;)V
     .locals 1
-    .parameter "coords"
+    .param p1, "coords"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 941
@@ -1665,14 +1668,14 @@
     .line 943
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 944
+    .line 940
     return-void
 .end method
 
 .method public glDrawTexxvOES([II)V
     .locals 1
-    .parameter "coords"
-    .parameter "offset"
+    .param p1, "coords"    # [I
+    .param p2, "offset"    # I
 
     .prologue
     .line 935
@@ -1686,13 +1689,13 @@
     .line 937
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 938
+    .line 934
     return-void
 .end method
 
 .method public glEnable(I)V
     .locals 1
-    .parameter "cap"
+    .param p1, "cap"    # I
 
     .prologue
     .line 268
@@ -1706,13 +1709,13 @@
     .line 270
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 271
+    .line 267
     return-void
 .end method
 
 .method public glEnableClientState(I)V
     .locals 1
-    .parameter "array"
+    .param p1, "array"    # I
 
     .prologue
     .line 274
@@ -1726,7 +1729,7 @@
     .line 276
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 277
+    .line 273
     return-void
 .end method
 
@@ -1745,7 +1748,7 @@
     .line 282
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 283
+    .line 279
     return-void
 .end method
 
@@ -1764,14 +1767,14 @@
     .line 288
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 289
+    .line 285
     return-void
 .end method
 
 .method public glFogf(IF)V
     .locals 1
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "pname"    # I
+    .param p2, "param"    # F
 
     .prologue
     .line 292
@@ -1785,14 +1788,14 @@
     .line 294
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 295
+    .line 291
     return-void
 .end method
 
 .method public glFogfv(ILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "pname"    # I
+    .param p2, "params"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 304
@@ -1806,15 +1809,15 @@
     .line 306
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 307
+    .line 303
     return-void
 .end method
 
 .method public glFogfv(I[FI)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "pname"    # I
+    .param p2, "params"    # [F
+    .param p3, "offset"    # I
 
     .prologue
     .line 298
@@ -1828,14 +1831,14 @@
     .line 300
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 301
+    .line 297
     return-void
 .end method
 
 .method public glFogx(II)V
     .locals 1
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "pname"    # I
+    .param p2, "param"    # I
 
     .prologue
     .line 310
@@ -1849,14 +1852,14 @@
     .line 312
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 313
+    .line 309
     return-void
 .end method
 
 .method public glFogxv(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "pname"    # I
+    .param p2, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 322
@@ -1870,15 +1873,15 @@
     .line 324
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 325
+    .line 321
     return-void
 .end method
 
 .method public glFogxv(I[II)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "pname"    # I
+    .param p2, "params"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 316
@@ -1892,16 +1895,16 @@
     .line 318
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 319
+    .line 315
     return-void
 .end method
 
 .method public glFramebufferRenderbufferOES(IIII)V
     .locals 1
-    .parameter "target"
-    .parameter "attachment"
-    .parameter "renderbuffertarget"
-    .parameter "renderbuffer"
+    .param p1, "target"    # I
+    .param p2, "attachment"    # I
+    .param p3, "renderbuffertarget"    # I
+    .param p4, "renderbuffer"    # I
 
     .prologue
     .line 1455
@@ -1915,17 +1918,17 @@
     .line 1457
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1458
+    .line 1454
     return-void
 .end method
 
 .method public glFramebufferTexture2DOES(IIIII)V
     .locals 6
-    .parameter "target"
-    .parameter "attachment"
-    .parameter "textarget"
-    .parameter "texture"
-    .parameter "level"
+    .param p1, "target"    # I
+    .param p2, "attachment"    # I
+    .param p3, "textarget"    # I
+    .param p4, "texture"    # I
+    .param p5, "level"    # I
 
     .prologue
     .line 1463
@@ -1949,13 +1952,13 @@
     .line 1465
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1466
+    .line 1462
     return-void
 .end method
 
 .method public glFrontFace(I)V
     .locals 1
-    .parameter "mode"
+    .param p1, "mode"    # I
 
     .prologue
     .line 328
@@ -1969,18 +1972,18 @@
     .line 330
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 331
+    .line 327
     return-void
 .end method
 
 .method public glFrustumf(FFFFFF)V
     .locals 7
-    .parameter "left"
-    .parameter "right"
-    .parameter "bottom"
-    .parameter "top"
-    .parameter "near"
-    .parameter "far"
+    .param p1, "left"    # F
+    .param p2, "right"    # F
+    .param p3, "bottom"    # F
+    .param p4, "top"    # F
+    .param p5, "near"    # F
+    .param p6, "far"    # F
 
     .prologue
     .line 335
@@ -2006,18 +2009,18 @@
     .line 337
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 338
+    .line 334
     return-void
 .end method
 
 .method public glFrustumx(IIIIII)V
     .locals 7
-    .parameter "left"
-    .parameter "right"
-    .parameter "bottom"
-    .parameter "top"
-    .parameter "near"
-    .parameter "far"
+    .param p1, "left"    # I
+    .param p2, "right"    # I
+    .param p3, "bottom"    # I
+    .param p4, "top"    # I
+    .param p5, "near"    # I
+    .param p6, "far"    # I
 
     .prologue
     .line 342
@@ -2043,14 +2046,14 @@
     .line 344
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 345
+    .line 341
     return-void
 .end method
 
 .method public glGenBuffers(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "n"
-    .parameter "buffers"
+    .param p1, "n"    # I
+    .param p2, "buffers"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1016
@@ -2064,15 +2067,15 @@
     .line 1018
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1019
+    .line 1015
     return-void
 .end method
 
 .method public glGenBuffers(I[II)V
     .locals 1
-    .parameter "n"
-    .parameter "buffers"
-    .parameter "offset"
+    .param p1, "n"    # I
+    .param p2, "buffers"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 1010
@@ -2086,14 +2089,14 @@
     .line 1012
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1013
+    .line 1009
     return-void
 .end method
 
 .method public glGenFramebuffersOES(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "n"
-    .parameter "framebuffers"
+    .param p1, "n"    # I
+    .param p2, "framebuffers"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1484
@@ -2107,15 +2110,15 @@
     .line 1486
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1487
+    .line 1483
     return-void
 .end method
 
 .method public glGenFramebuffersOES(I[II)V
     .locals 1
-    .parameter "n"
-    .parameter "framebuffers"
-    .parameter "offset"
+    .param p1, "n"    # I
+    .param p2, "framebuffers"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 1477
@@ -2129,14 +2132,14 @@
     .line 1479
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1480
+    .line 1476
     return-void
 .end method
 
 .method public glGenRenderbuffersOES(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "n"
-    .parameter "renderbuffers"
+    .param p1, "n"    # I
+    .param p2, "renderbuffers"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1498
@@ -2150,15 +2153,15 @@
     .line 1500
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1501
+    .line 1497
     return-void
 .end method
 
 .method public glGenRenderbuffersOES(I[II)V
     .locals 1
-    .parameter "n"
-    .parameter "renderbuffers"
-    .parameter "offset"
+    .param p1, "n"    # I
+    .param p2, "renderbuffers"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 1491
@@ -2172,14 +2175,14 @@
     .line 1493
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1494
+    .line 1490
     return-void
 .end method
 
 .method public glGenTextures(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "n"
-    .parameter "textures"
+    .param p1, "n"    # I
+    .param p2, "textures"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 354
@@ -2193,15 +2196,15 @@
     .line 356
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 357
+    .line 353
     return-void
 .end method
 
 .method public glGenTextures(I[II)V
     .locals 1
-    .parameter "n"
-    .parameter "textures"
-    .parameter "offset"
+    .param p1, "n"    # I
+    .param p2, "textures"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 348
@@ -2215,13 +2218,13 @@
     .line 350
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 351
+    .line 347
     return-void
 .end method
 
 .method public glGenerateMipmapOES(I)V
     .locals 1
-    .parameter "target"
+    .param p1, "target"    # I
 
     .prologue
     .line 1470
@@ -2235,14 +2238,14 @@
     .line 1472
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1473
+    .line 1469
     return-void
 .end method
 
 .method public glGetBooleanv(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "pname"    # I
+    .param p2, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1028
@@ -2256,15 +2259,15 @@
     .line 1030
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1031
+    .line 1027
     return-void
 .end method
 
 .method public glGetBooleanv(I[ZI)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "pname"    # I
+    .param p2, "params"    # [Z
+    .param p3, "offset"    # I
 
     .prologue
     .line 1022
@@ -2278,15 +2281,15 @@
     .line 1024
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1025
+    .line 1021
     return-void
 .end method
 
 .method public glGetBufferParameteriv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1041
@@ -2300,16 +2303,16 @@
     .line 1043
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1044
+    .line 1040
     return-void
 .end method
 
 .method public glGetBufferParameteriv(II[II)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1035
@@ -2323,14 +2326,14 @@
     .line 1037
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1038
+    .line 1034
     return-void
 .end method
 
 .method public glGetClipPlanef(ILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "pname"
-    .parameter "eqn"
+    .param p1, "pname"    # I
+    .param p2, "eqn"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 1053
@@ -2344,15 +2347,15 @@
     .line 1055
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1056
+    .line 1052
     return-void
 .end method
 
 .method public glGetClipPlanef(I[FI)V
     .locals 1
-    .parameter "pname"
-    .parameter "eqn"
-    .parameter "offset"
+    .param p1, "pname"    # I
+    .param p2, "eqn"    # [F
+    .param p3, "offset"    # I
 
     .prologue
     .line 1047
@@ -2366,14 +2369,14 @@
     .line 1049
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1050
+    .line 1046
     return-void
 .end method
 
 .method public glGetClipPlanex(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "pname"
-    .parameter "eqn"
+    .param p1, "pname"    # I
+    .param p2, "eqn"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1065
@@ -2387,15 +2390,15 @@
     .line 1067
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1068
+    .line 1064
     return-void
 .end method
 
 .method public glGetClipPlanex(I[II)V
     .locals 1
-    .parameter "pname"
-    .parameter "eqn"
-    .parameter "offset"
+    .param p1, "pname"    # I
+    .param p2, "eqn"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 1059
@@ -2409,7 +2412,7 @@
     .line 1061
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1062
+    .line 1058
     return-void
 .end method
 
@@ -2428,14 +2431,14 @@
     move-result v0
 
     .line 362
-    .local v0, result:I
+    .local v0, "result":I
     return v0
 .end method
 
 .method public glGetFixedv(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "pname"    # I
+    .param p2, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1077
@@ -2449,15 +2452,15 @@
     .line 1079
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1080
+    .line 1076
     return-void
 .end method
 
 .method public glGetFixedv(I[II)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "pname"    # I
+    .param p2, "params"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 1071
@@ -2471,14 +2474,14 @@
     .line 1073
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1074
+    .line 1070
     return-void
 .end method
 
 .method public glGetFloatv(ILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "pname"    # I
+    .param p2, "params"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 1089
@@ -2492,15 +2495,15 @@
     .line 1091
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1092
+    .line 1088
     return-void
 .end method
 
 .method public glGetFloatv(I[FI)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "pname"    # I
+    .param p2, "params"    # [F
+    .param p3, "offset"    # I
 
     .prologue
     .line 1083
@@ -2514,16 +2517,16 @@
     .line 1085
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1086
+    .line 1082
     return-void
 .end method
 
 .method public glGetFramebufferAttachmentParameterivOES(IIILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "target"
-    .parameter "attachment"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "target"    # I
+    .param p2, "attachment"    # I
+    .param p3, "pname"    # I
+    .param p4, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1514
@@ -2537,17 +2540,17 @@
     .line 1516
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1517
+    .line 1513
     return-void
 .end method
 
 .method public glGetFramebufferAttachmentParameterivOES(III[II)V
     .locals 6
-    .parameter "target"
-    .parameter "attachment"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "target"    # I
+    .param p2, "attachment"    # I
+    .param p3, "pname"    # I
+    .param p4, "params"    # [I
+    .param p5, "offset"    # I
 
     .prologue
     .line 1506
@@ -2571,14 +2574,14 @@
     .line 1508
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1509
+    .line 1505
     return-void
 .end method
 
 .method public glGetIntegerv(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "pname"    # I
+    .param p2, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 372
@@ -2592,15 +2595,15 @@
     .line 374
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 375
+    .line 371
     return-void
 .end method
 
 .method public glGetIntegerv(I[II)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "pname"    # I
+    .param p2, "params"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 366
@@ -2614,15 +2617,15 @@
     .line 368
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 369
+    .line 365
     return-void
 .end method
 
 .method public glGetLightfv(IILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "light"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "light"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 1101
@@ -2636,16 +2639,16 @@
     .line 1103
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1104
+    .line 1100
     return-void
 .end method
 
 .method public glGetLightfv(II[FI)V
     .locals 1
-    .parameter "light"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "light"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [F
+    .param p4, "offset"    # I
 
     .prologue
     .line 1095
@@ -2659,15 +2662,15 @@
     .line 1097
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1098
+    .line 1094
     return-void
 .end method
 
 .method public glGetLightxv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "light"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "light"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1113
@@ -2681,16 +2684,16 @@
     .line 1115
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1116
+    .line 1112
     return-void
 .end method
 
 .method public glGetLightxv(II[II)V
     .locals 1
-    .parameter "light"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "light"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1107
@@ -2704,15 +2707,15 @@
     .line 1109
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1110
+    .line 1106
     return-void
 .end method
 
 .method public glGetMaterialfv(IILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "face"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "face"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 1125
@@ -2726,16 +2729,16 @@
     .line 1127
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1128
+    .line 1124
     return-void
 .end method
 
 .method public glGetMaterialfv(II[FI)V
     .locals 1
-    .parameter "face"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "face"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [F
+    .param p4, "offset"    # I
 
     .prologue
     .line 1119
@@ -2749,15 +2752,15 @@
     .line 1121
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1122
+    .line 1118
     return-void
 .end method
 
 .method public glGetMaterialxv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "face"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "face"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1137
@@ -2771,16 +2774,16 @@
     .line 1139
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1140
+    .line 1136
     return-void
 .end method
 
 .method public glGetMaterialxv(II[II)V
     .locals 1
-    .parameter "face"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "face"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1131
@@ -2794,14 +2797,14 @@
     .line 1133
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1134
+    .line 1130
     return-void
 .end method
 
 .method public glGetPointerv(I[Ljava/nio/Buffer;)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "pname"    # I
+    .param p2, "params"    # [Ljava/nio/Buffer;
 
     .prologue
     .line 1143
@@ -2815,15 +2818,15 @@
     .line 1145
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1146
+    .line 1142
     return-void
 .end method
 
 .method public glGetRenderbufferParameterivOES(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1530
@@ -2837,16 +2840,16 @@
     .line 1532
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1533
+    .line 1529
     return-void
 .end method
 
 .method public glGetRenderbufferParameterivOES(II[II)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1522
@@ -2860,13 +2863,13 @@
     .line 1524
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1525
+    .line 1521
     return-void
 .end method
 
 .method public glGetString(I)Ljava/lang/String;
     .locals 2
-    .parameter "name"
+    .param p1, "name"    # I
 
     .prologue
     .line 378
@@ -2880,7 +2883,7 @@
     move-result-object v0
 
     .line 380
-    .local v0, result:Ljava/lang/String;
+    .local v0, "result":Ljava/lang/String;
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
     .line 381
@@ -2889,9 +2892,9 @@
 
 .method public glGetTexEnviv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "env"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "env"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1155
@@ -2905,16 +2908,16 @@
     .line 1157
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1158
+    .line 1154
     return-void
 .end method
 
 .method public glGetTexEnviv(II[II)V
     .locals 1
-    .parameter "env"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "env"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1149
@@ -2928,15 +2931,15 @@
     .line 1151
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1152
+    .line 1148
     return-void
 .end method
 
 .method public glGetTexEnvxv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "env"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "env"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1167
@@ -2950,16 +2953,16 @@
     .line 1169
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1170
+    .line 1166
     return-void
 .end method
 
 .method public glGetTexEnvxv(II[II)V
     .locals 1
-    .parameter "env"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "env"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1161
@@ -2973,15 +2976,15 @@
     .line 1163
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1164
+    .line 1160
     return-void
 .end method
 
 .method public glGetTexGenfv(IILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 1544
@@ -2995,16 +2998,16 @@
     .line 1546
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1547
+    .line 1543
     return-void
 .end method
 
 .method public glGetTexGenfv(II[FI)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [F
+    .param p4, "offset"    # I
 
     .prologue
     .line 1537
@@ -3018,15 +3021,15 @@
     .line 1539
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1540
+    .line 1536
     return-void
 .end method
 
 .method public glGetTexGeniv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1558
@@ -3040,16 +3043,16 @@
     .line 1560
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1561
+    .line 1557
     return-void
 .end method
 
 .method public glGetTexGeniv(II[II)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1551
@@ -3063,15 +3066,15 @@
     .line 1553
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1554
+    .line 1550
     return-void
 .end method
 
 .method public glGetTexGenxv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1572
@@ -3085,16 +3088,16 @@
     .line 1574
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1575
+    .line 1571
     return-void
 .end method
 
 .method public glGetTexGenxv(II[II)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1565
@@ -3108,15 +3111,15 @@
     .line 1567
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1568
+    .line 1564
     return-void
 .end method
 
 .method public glGetTexParameterfv(IILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 1180
@@ -3130,16 +3133,16 @@
     .line 1182
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1183
+    .line 1179
     return-void
 .end method
 
 .method public glGetTexParameterfv(II[FI)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [F
+    .param p4, "offset"    # I
 
     .prologue
     .line 1174
@@ -3153,15 +3156,15 @@
     .line 1176
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1177
+    .line 1173
     return-void
 .end method
 
 .method public glGetTexParameteriv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1193
@@ -3175,16 +3178,16 @@
     .line 1195
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1196
+    .line 1192
     return-void
 .end method
 
 .method public glGetTexParameteriv(II[II)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1187
@@ -3198,15 +3201,15 @@
     .line 1189
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1190
+    .line 1186
     return-void
 .end method
 
 .method public glGetTexParameterxv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1206
@@ -3220,16 +3223,16 @@
     .line 1208
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1209
+    .line 1205
     return-void
 .end method
 
 .method public glGetTexParameterxv(II[II)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1200
@@ -3243,14 +3246,14 @@
     .line 1202
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1203
+    .line 1199
     return-void
 .end method
 
 .method public glHint(II)V
     .locals 1
-    .parameter "target"
-    .parameter "mode"
+    .param p1, "target"    # I
+    .param p2, "mode"    # I
 
     .prologue
     .line 385
@@ -3264,13 +3267,13 @@
     .line 387
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 388
+    .line 384
     return-void
 .end method
 
 .method public glIsBuffer(I)Z
     .locals 2
-    .parameter "buffer"
+    .param p1, "buffer"    # I
 
     .prologue
     .line 1212
@@ -3284,7 +3287,7 @@
     move-result v0
 
     .line 1214
-    .local v0, valid:Z
+    .local v0, "valid":Z
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
     .line 1215
@@ -3293,7 +3296,7 @@
 
 .method public glIsEnabled(I)Z
     .locals 2
-    .parameter "cap"
+    .param p1, "cap"    # I
 
     .prologue
     .line 1219
@@ -3307,7 +3310,7 @@
     move-result v0
 
     .line 1221
-    .local v0, valid:Z
+    .local v0, "valid":Z
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
     .line 1222
@@ -3316,7 +3319,7 @@
 
 .method public glIsFramebufferOES(I)Z
     .locals 2
-    .parameter "framebuffer"
+    .param p1, "framebuffer"    # I
 
     .prologue
     .line 1579
@@ -3330,7 +3333,7 @@
     move-result v0
 
     .line 1581
-    .local v0, result:Z
+    .local v0, "result":Z
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
     .line 1582
@@ -3339,7 +3342,7 @@
 
 .method public glIsRenderbufferOES(I)Z
     .locals 1
-    .parameter "renderbuffer"
+    .param p1, "renderbuffer"    # I
 
     .prologue
     .line 1587
@@ -3361,7 +3364,7 @@
 
 .method public glIsTexture(I)Z
     .locals 2
-    .parameter "texture"
+    .param p1, "texture"    # I
 
     .prologue
     .line 1226
@@ -3375,7 +3378,7 @@
     move-result v0
 
     .line 1228
-    .local v0, valid:Z
+    .local v0, "valid":Z
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
     .line 1229
@@ -3384,8 +3387,8 @@
 
 .method public glLightModelf(IF)V
     .locals 1
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "pname"    # I
+    .param p2, "param"    # F
 
     .prologue
     .line 391
@@ -3399,14 +3402,14 @@
     .line 393
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 394
+    .line 390
     return-void
 .end method
 
 .method public glLightModelfv(ILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "pname"    # I
+    .param p2, "params"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 403
@@ -3420,15 +3423,15 @@
     .line 405
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 406
+    .line 402
     return-void
 .end method
 
 .method public glLightModelfv(I[FI)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "pname"    # I
+    .param p2, "params"    # [F
+    .param p3, "offset"    # I
 
     .prologue
     .line 397
@@ -3442,14 +3445,14 @@
     .line 399
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 400
+    .line 396
     return-void
 .end method
 
 .method public glLightModelx(II)V
     .locals 1
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "pname"    # I
+    .param p2, "param"    # I
 
     .prologue
     .line 409
@@ -3463,14 +3466,14 @@
     .line 411
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 412
+    .line 408
     return-void
 .end method
 
 .method public glLightModelxv(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "pname"    # I
+    .param p2, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 421
@@ -3484,15 +3487,15 @@
     .line 423
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 424
+    .line 420
     return-void
 .end method
 
 .method public glLightModelxv(I[II)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "pname"    # I
+    .param p2, "params"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 415
@@ -3506,15 +3509,15 @@
     .line 417
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 418
+    .line 414
     return-void
 .end method
 
 .method public glLightf(IIF)V
     .locals 1
-    .parameter "light"
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "light"    # I
+    .param p2, "pname"    # I
+    .param p3, "param"    # F
 
     .prologue
     .line 427
@@ -3528,15 +3531,15 @@
     .line 429
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 430
+    .line 426
     return-void
 .end method
 
 .method public glLightfv(IILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "light"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "light"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 439
@@ -3550,16 +3553,16 @@
     .line 441
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 442
+    .line 438
     return-void
 .end method
 
 .method public glLightfv(II[FI)V
     .locals 1
-    .parameter "light"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "light"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [F
+    .param p4, "offset"    # I
 
     .prologue
     .line 433
@@ -3573,15 +3576,15 @@
     .line 435
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 436
+    .line 432
     return-void
 .end method
 
 .method public glLightx(III)V
     .locals 1
-    .parameter "light"
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "light"    # I
+    .param p2, "pname"    # I
+    .param p3, "param"    # I
 
     .prologue
     .line 445
@@ -3595,15 +3598,15 @@
     .line 447
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 448
+    .line 444
     return-void
 .end method
 
 .method public glLightxv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "light"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "light"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 457
@@ -3617,16 +3620,16 @@
     .line 459
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 460
+    .line 456
     return-void
 .end method
 
 .method public glLightxv(II[II)V
     .locals 1
-    .parameter "light"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "light"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 451
@@ -3640,13 +3643,13 @@
     .line 453
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 454
+    .line 450
     return-void
 .end method
 
 .method public glLineWidth(F)V
     .locals 1
-    .parameter "width"
+    .param p1, "width"    # F
 
     .prologue
     .line 463
@@ -3660,13 +3663,13 @@
     .line 465
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 466
+    .line 462
     return-void
 .end method
 
 .method public glLineWidthx(I)V
     .locals 1
-    .parameter "width"
+    .param p1, "width"    # I
 
     .prologue
     .line 469
@@ -3680,7 +3683,7 @@
     .line 471
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 472
+    .line 468
     return-void
 .end method
 
@@ -3699,13 +3702,13 @@
     .line 477
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 478
+    .line 474
     return-void
 .end method
 
 .method public glLoadMatrixf(Ljava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "m"
+    .param p1, "m"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 487
@@ -3719,14 +3722,14 @@
     .line 489
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 490
+    .line 486
     return-void
 .end method
 
 .method public glLoadMatrixf([FI)V
     .locals 1
-    .parameter "m"
-    .parameter "offset"
+    .param p1, "m"    # [F
+    .param p2, "offset"    # I
 
     .prologue
     .line 481
@@ -3740,13 +3743,13 @@
     .line 483
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 484
+    .line 480
     return-void
 .end method
 
 .method public glLoadMatrixx(Ljava/nio/IntBuffer;)V
     .locals 1
-    .parameter "m"
+    .param p1, "m"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 499
@@ -3760,14 +3763,14 @@
     .line 501
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 502
+    .line 498
     return-void
 .end method
 
 .method public glLoadMatrixx([II)V
     .locals 1
-    .parameter "m"
-    .parameter "offset"
+    .param p1, "m"    # [I
+    .param p2, "offset"    # I
 
     .prologue
     .line 493
@@ -3781,7 +3784,7 @@
     .line 495
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 496
+    .line 492
     return-void
 .end method
 
@@ -3800,13 +3803,13 @@
     .line 1350
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1351
+    .line 1347
     return-void
 .end method
 
 .method public glLogicOp(I)V
     .locals 1
-    .parameter "opcode"
+    .param p1, "opcode"    # I
 
     .prologue
     .line 505
@@ -3820,15 +3823,15 @@
     .line 507
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 508
+    .line 504
     return-void
 .end method
 
 .method public glMaterialf(IIF)V
     .locals 1
-    .parameter "face"
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "face"    # I
+    .param p2, "pname"    # I
+    .param p3, "param"    # F
 
     .prologue
     .line 511
@@ -3842,15 +3845,15 @@
     .line 513
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 514
+    .line 510
     return-void
 .end method
 
 .method public glMaterialfv(IILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "face"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "face"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 523
@@ -3864,16 +3867,16 @@
     .line 525
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 526
+    .line 522
     return-void
 .end method
 
 .method public glMaterialfv(II[FI)V
     .locals 1
-    .parameter "face"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "face"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [F
+    .param p4, "offset"    # I
 
     .prologue
     .line 517
@@ -3887,15 +3890,15 @@
     .line 519
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 520
+    .line 516
     return-void
 .end method
 
 .method public glMaterialx(III)V
     .locals 1
-    .parameter "face"
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "face"    # I
+    .param p2, "pname"    # I
+    .param p3, "param"    # I
 
     .prologue
     .line 529
@@ -3909,15 +3912,15 @@
     .line 531
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 532
+    .line 528
     return-void
 .end method
 
 .method public glMaterialxv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "face"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "face"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 541
@@ -3931,16 +3934,16 @@
     .line 543
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 544
+    .line 540
     return-void
 .end method
 
 .method public glMaterialxv(II[II)V
     .locals 1
-    .parameter "face"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "face"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 535
@@ -3954,16 +3957,16 @@
     .line 537
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 538
+    .line 534
     return-void
 .end method
 
 .method public glMatrixIndexPointerOES(IIII)V
     .locals 1
-    .parameter "size"
-    .parameter "type"
-    .parameter "stride"
-    .parameter "offset"
+    .param p1, "size"    # I
+    .param p2, "type"    # I
+    .param p3, "stride"    # I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1362
@@ -3977,16 +3980,16 @@
     .line 1364
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1365
+    .line 1361
     return-void
 .end method
 
 .method public glMatrixIndexPointerOES(IIILjava/nio/Buffer;)V
     .locals 1
-    .parameter "size"
-    .parameter "type"
-    .parameter "stride"
-    .parameter "pointer"
+    .param p1, "size"    # I
+    .param p2, "type"    # I
+    .param p3, "stride"    # I
+    .param p4, "pointer"    # Ljava/nio/Buffer;
 
     .prologue
     .line 1355
@@ -4000,13 +4003,13 @@
     .line 1357
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1358
+    .line 1354
     return-void
 .end method
 
 .method public glMatrixMode(I)V
     .locals 1
-    .parameter "mode"
+    .param p1, "mode"    # I
 
     .prologue
     .line 547
@@ -4020,13 +4023,13 @@
     .line 549
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 550
+    .line 546
     return-void
 .end method
 
 .method public glMultMatrixf(Ljava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "m"
+    .param p1, "m"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 559
@@ -4040,14 +4043,14 @@
     .line 561
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 562
+    .line 558
     return-void
 .end method
 
 .method public glMultMatrixf([FI)V
     .locals 1
-    .parameter "m"
-    .parameter "offset"
+    .param p1, "m"    # [F
+    .param p2, "offset"    # I
 
     .prologue
     .line 553
@@ -4061,13 +4064,13 @@
     .line 555
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 556
+    .line 552
     return-void
 .end method
 
 .method public glMultMatrixx(Ljava/nio/IntBuffer;)V
     .locals 1
-    .parameter "m"
+    .param p1, "m"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 571
@@ -4081,14 +4084,14 @@
     .line 573
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 574
+    .line 570
     return-void
 .end method
 
 .method public glMultMatrixx([II)V
     .locals 1
-    .parameter "m"
-    .parameter "offset"
+    .param p1, "m"    # [I
+    .param p2, "offset"    # I
 
     .prologue
     .line 565
@@ -4102,17 +4105,17 @@
     .line 567
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 568
+    .line 564
     return-void
 .end method
 
 .method public glMultiTexCoord4f(IFFFF)V
     .locals 6
-    .parameter "target"
-    .parameter "s"
-    .parameter "t"
-    .parameter "r"
-    .parameter "q"
+    .param p1, "target"    # I
+    .param p2, "s"    # F
+    .param p3, "t"    # F
+    .param p4, "r"    # F
+    .param p5, "q"    # F
 
     .prologue
     .line 578
@@ -4136,17 +4139,17 @@
     .line 580
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 581
+    .line 577
     return-void
 .end method
 
 .method public glMultiTexCoord4x(IIIII)V
     .locals 6
-    .parameter "target"
-    .parameter "s"
-    .parameter "t"
-    .parameter "r"
-    .parameter "q"
+    .param p1, "target"    # I
+    .param p2, "s"    # I
+    .param p3, "t"    # I
+    .param p4, "r"    # I
+    .param p5, "q"    # I
 
     .prologue
     .line 584
@@ -4170,15 +4173,15 @@
     .line 586
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 587
+    .line 583
     return-void
 .end method
 
 .method public glNormal3f(FFF)V
     .locals 1
-    .parameter "nx"
-    .parameter "ny"
-    .parameter "nz"
+    .param p1, "nx"    # F
+    .param p2, "ny"    # F
+    .param p3, "nz"    # F
 
     .prologue
     .line 590
@@ -4192,15 +4195,15 @@
     .line 592
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 593
+    .line 589
     return-void
 .end method
 
 .method public glNormal3x(III)V
     .locals 1
-    .parameter "nx"
-    .parameter "ny"
-    .parameter "nz"
+    .param p1, "nx"    # I
+    .param p2, "ny"    # I
+    .param p3, "nz"    # I
 
     .prologue
     .line 596
@@ -4214,15 +4217,15 @@
     .line 598
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 599
+    .line 595
     return-void
 .end method
 
 .method public glNormalPointer(III)V
     .locals 1
-    .parameter "type"
-    .parameter "stride"
-    .parameter "offset"
+    .param p1, "type"    # I
+    .param p2, "stride"    # I
+    .param p3, "offset"    # I
 
     .prologue
     .line 1233
@@ -4236,15 +4239,15 @@
     .line 1235
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1236
+    .line 1232
     return-void
 .end method
 
 .method public glNormalPointer(IILjava/nio/Buffer;)V
     .locals 1
-    .parameter "type"
-    .parameter "stride"
-    .parameter "pointer"
+    .param p1, "type"    # I
+    .param p2, "stride"    # I
+    .param p3, "pointer"    # Ljava/nio/Buffer;
 
     .prologue
     .line 602
@@ -4258,18 +4261,18 @@
     .line 604
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 605
+    .line 601
     return-void
 .end method
 
 .method public glOrthof(FFFFFF)V
     .locals 7
-    .parameter "left"
-    .parameter "right"
-    .parameter "bottom"
-    .parameter "top"
-    .parameter "near"
-    .parameter "far"
+    .param p1, "left"    # F
+    .param p2, "right"    # F
+    .param p3, "bottom"    # F
+    .param p4, "top"    # F
+    .param p5, "near"    # F
+    .param p6, "far"    # F
 
     .prologue
     .line 609
@@ -4295,18 +4298,18 @@
     .line 611
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 612
+    .line 608
     return-void
 .end method
 
 .method public glOrthox(IIIIII)V
     .locals 7
-    .parameter "left"
-    .parameter "right"
-    .parameter "bottom"
-    .parameter "top"
-    .parameter "near"
-    .parameter "far"
+    .param p1, "left"    # I
+    .param p2, "right"    # I
+    .param p3, "bottom"    # I
+    .param p4, "top"    # I
+    .param p5, "near"    # I
+    .param p6, "far"    # I
 
     .prologue
     .line 616
@@ -4332,14 +4335,14 @@
     .line 618
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 619
+    .line 615
     return-void
 .end method
 
 .method public glPixelStorei(II)V
     .locals 1
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "pname"    # I
+    .param p2, "param"    # I
 
     .prologue
     .line 622
@@ -4353,14 +4356,14 @@
     .line 624
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 625
+    .line 621
     return-void
 .end method
 
 .method public glPointParameterf(IF)V
     .locals 1
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "pname"    # I
+    .param p2, "param"    # F
 
     .prologue
     .line 1239
@@ -4374,14 +4377,14 @@
     .line 1241
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1242
+    .line 1238
     return-void
 .end method
 
 .method public glPointParameterfv(ILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "pname"    # I
+    .param p2, "params"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 1251
@@ -4395,15 +4398,15 @@
     .line 1253
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1254
+    .line 1250
     return-void
 .end method
 
 .method public glPointParameterfv(I[FI)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "pname"    # I
+    .param p2, "params"    # [F
+    .param p3, "offset"    # I
 
     .prologue
     .line 1245
@@ -4417,14 +4420,14 @@
     .line 1247
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1248
+    .line 1244
     return-void
 .end method
 
 .method public glPointParameterx(II)V
     .locals 1
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "pname"    # I
+    .param p2, "param"    # I
 
     .prologue
     .line 1257
@@ -4438,14 +4441,14 @@
     .line 1259
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1260
+    .line 1256
     return-void
 .end method
 
 .method public glPointParameterxv(ILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "pname"    # I
+    .param p2, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1269
@@ -4459,15 +4462,15 @@
     .line 1271
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1272
+    .line 1268
     return-void
 .end method
 
 .method public glPointParameterxv(I[II)V
     .locals 1
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "pname"    # I
+    .param p2, "params"    # [I
+    .param p3, "offset"    # I
 
     .prologue
     .line 1263
@@ -4481,13 +4484,13 @@
     .line 1265
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1266
+    .line 1262
     return-void
 .end method
 
 .method public glPointSize(F)V
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # F
 
     .prologue
     .line 628
@@ -4501,15 +4504,15 @@
     .line 630
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 631
+    .line 627
     return-void
 .end method
 
 .method public glPointSizePointerOES(IILjava/nio/Buffer;)V
     .locals 1
-    .parameter "type"
-    .parameter "stride"
-    .parameter "pointer"
+    .param p1, "type"    # I
+    .param p2, "stride"    # I
+    .param p3, "pointer"    # Ljava/nio/Buffer;
 
     .prologue
     .line 1275
@@ -4523,13 +4526,13 @@
     .line 1277
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1278
+    .line 1274
     return-void
 .end method
 
 .method public glPointSizex(I)V
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 634
@@ -4543,14 +4546,14 @@
     .line 636
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 637
+    .line 633
     return-void
 .end method
 
 .method public glPolygonOffset(FF)V
     .locals 1
-    .parameter "factor"
-    .parameter "units"
+    .param p1, "factor"    # F
+    .param p2, "units"    # F
 
     .prologue
     .line 640
@@ -4564,14 +4567,14 @@
     .line 642
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 643
+    .line 639
     return-void
 .end method
 
 .method public glPolygonOffsetx(II)V
     .locals 1
-    .parameter "factor"
-    .parameter "units"
+    .param p1, "factor"    # I
+    .param p2, "units"    # I
 
     .prologue
     .line 646
@@ -4585,7 +4588,7 @@
     .line 648
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 649
+    .line 645
     return-void
 .end method
 
@@ -4604,7 +4607,7 @@
     .line 654
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 655
+    .line 651
     return-void
 .end method
 
@@ -4623,14 +4626,14 @@
     .line 660
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 661
+    .line 657
     return-void
 .end method
 
 .method public glQueryMatrixxOES(Ljava/nio/IntBuffer;Ljava/nio/IntBuffer;)I
     .locals 2
-    .parameter "mantissa"
-    .parameter "exponent"
+    .param p1, "mantissa"    # Ljava/nio/IntBuffer;
+    .param p2, "exponent"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 956
@@ -4644,7 +4647,7 @@
     move-result v0
 
     .line 958
-    .local v0, valid:I
+    .local v0, "valid":I
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
     .line 959
@@ -4653,10 +4656,10 @@
 
 .method public glQueryMatrixxOES([II[II)I
     .locals 2
-    .parameter "mantissa"
-    .parameter "mantissaOffset"
-    .parameter "exponent"
-    .parameter "exponentOffset"
+    .param p1, "mantissa"    # [I
+    .param p2, "mantissaOffset"    # I
+    .param p3, "exponent"    # [I
+    .param p4, "exponentOffset"    # I
 
     .prologue
     .line 948
@@ -4670,7 +4673,7 @@
     move-result v0
 
     .line 951
-    .local v0, valid:I
+    .local v0, "valid":I
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
     .line 952
@@ -4679,13 +4682,13 @@
 
 .method public glReadPixels(IIIIIILjava/nio/Buffer;)V
     .locals 8
-    .parameter "x"
-    .parameter "y"
-    .parameter "width"
-    .parameter "height"
-    .parameter "format"
-    .parameter "type"
-    .parameter "pixels"
+    .param p1, "x"    # I
+    .param p2, "y"    # I
+    .param p3, "width"    # I
+    .param p4, "height"    # I
+    .param p5, "format"    # I
+    .param p6, "type"    # I
+    .param p7, "pixels"    # Ljava/nio/Buffer;
 
     .prologue
     .line 665
@@ -4713,16 +4716,16 @@
     .line 667
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 668
+    .line 664
     return-void
 .end method
 
 .method public glRenderbufferStorageOES(IIII)V
     .locals 1
-    .parameter "target"
-    .parameter "internalformat"
-    .parameter "width"
-    .parameter "height"
+    .param p1, "target"    # I
+    .param p2, "internalformat"    # I
+    .param p3, "width"    # I
+    .param p4, "height"    # I
 
     .prologue
     .line 1596
@@ -4736,16 +4739,16 @@
     .line 1598
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1599
+    .line 1595
     return-void
 .end method
 
 .method public glRotatef(FFFF)V
     .locals 1
-    .parameter "angle"
-    .parameter "x"
-    .parameter "y"
-    .parameter "z"
+    .param p1, "angle"    # F
+    .param p2, "x"    # F
+    .param p3, "y"    # F
+    .param p4, "z"    # F
 
     .prologue
     .line 671
@@ -4759,16 +4762,16 @@
     .line 673
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 674
+    .line 670
     return-void
 .end method
 
 .method public glRotatex(IIII)V
     .locals 1
-    .parameter "angle"
-    .parameter "x"
-    .parameter "y"
-    .parameter "z"
+    .param p1, "angle"    # I
+    .param p2, "x"    # I
+    .param p3, "y"    # I
+    .param p4, "z"    # I
 
     .prologue
     .line 677
@@ -4782,14 +4785,14 @@
     .line 679
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 680
+    .line 676
     return-void
 .end method
 
 .method public glSampleCoverage(FZ)V
     .locals 1
-    .parameter "value"
-    .parameter "invert"
+    .param p1, "value"    # F
+    .param p2, "invert"    # Z
 
     .prologue
     .line 683
@@ -4803,14 +4806,14 @@
     .line 685
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 686
+    .line 682
     return-void
 .end method
 
 .method public glSampleCoveragex(IZ)V
     .locals 1
-    .parameter "value"
-    .parameter "invert"
+    .param p1, "value"    # I
+    .param p2, "invert"    # Z
 
     .prologue
     .line 689
@@ -4824,15 +4827,15 @@
     .line 691
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 692
+    .line 688
     return-void
 .end method
 
 .method public glScalef(FFF)V
     .locals 1
-    .parameter "x"
-    .parameter "y"
-    .parameter "z"
+    .param p1, "x"    # F
+    .param p2, "y"    # F
+    .param p3, "z"    # F
 
     .prologue
     .line 695
@@ -4846,15 +4849,15 @@
     .line 697
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 698
+    .line 694
     return-void
 .end method
 
 .method public glScalex(III)V
     .locals 1
-    .parameter "x"
-    .parameter "y"
-    .parameter "z"
+    .param p1, "x"    # I
+    .param p2, "y"    # I
+    .param p3, "z"    # I
 
     .prologue
     .line 701
@@ -4868,16 +4871,16 @@
     .line 703
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 704
+    .line 700
     return-void
 .end method
 
 .method public glScissor(IIII)V
     .locals 1
-    .parameter "x"
-    .parameter "y"
-    .parameter "width"
-    .parameter "height"
+    .param p1, "x"    # I
+    .param p2, "y"    # I
+    .param p3, "width"    # I
+    .param p4, "height"    # I
 
     .prologue
     .line 707
@@ -4891,13 +4894,13 @@
     .line 709
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 710
+    .line 706
     return-void
 .end method
 
 .method public glShadeModel(I)V
     .locals 1
-    .parameter "mode"
+    .param p1, "mode"    # I
 
     .prologue
     .line 713
@@ -4911,15 +4914,15 @@
     .line 715
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 716
+    .line 712
     return-void
 .end method
 
 .method public glStencilFunc(III)V
     .locals 1
-    .parameter "func"
-    .parameter "ref"
-    .parameter "mask"
+    .param p1, "func"    # I
+    .param p2, "ref"    # I
+    .param p3, "mask"    # I
 
     .prologue
     .line 719
@@ -4933,13 +4936,13 @@
     .line 721
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 722
+    .line 718
     return-void
 .end method
 
 .method public glStencilMask(I)V
     .locals 1
-    .parameter "mask"
+    .param p1, "mask"    # I
 
     .prologue
     .line 725
@@ -4953,15 +4956,15 @@
     .line 727
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 728
+    .line 724
     return-void
 .end method
 
 .method public glStencilOp(III)V
     .locals 1
-    .parameter "fail"
-    .parameter "zfail"
-    .parameter "zpass"
+    .param p1, "fail"    # I
+    .param p2, "zfail"    # I
+    .param p3, "zpass"    # I
 
     .prologue
     .line 731
@@ -4975,16 +4978,16 @@
     .line 733
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 734
+    .line 730
     return-void
 .end method
 
 .method public glTexCoordPointer(IIII)V
     .locals 1
-    .parameter "size"
-    .parameter "type"
-    .parameter "stride"
-    .parameter "offset"
+    .param p1, "size"    # I
+    .param p2, "type"    # I
+    .param p3, "stride"    # I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1281
@@ -4998,16 +5001,16 @@
     .line 1283
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1284
+    .line 1280
     return-void
 .end method
 
 .method public glTexCoordPointer(IIILjava/nio/Buffer;)V
     .locals 1
-    .parameter "size"
-    .parameter "type"
-    .parameter "stride"
-    .parameter "pointer"
+    .param p1, "size"    # I
+    .param p2, "type"    # I
+    .param p3, "stride"    # I
+    .param p4, "pointer"    # Ljava/nio/Buffer;
 
     .prologue
     .line 738
@@ -5021,15 +5024,15 @@
     .line 740
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 741
+    .line 737
     return-void
 .end method
 
 .method public glTexEnvf(IIF)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "param"    # F
 
     .prologue
     .line 744
@@ -5043,15 +5046,15 @@
     .line 746
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 747
+    .line 743
     return-void
 .end method
 
 .method public glTexEnvfv(IILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 756
@@ -5065,16 +5068,16 @@
     .line 758
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 759
+    .line 755
     return-void
 .end method
 
 .method public glTexEnvfv(II[FI)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [F
+    .param p4, "offset"    # I
 
     .prologue
     .line 750
@@ -5088,15 +5091,15 @@
     .line 752
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 753
+    .line 749
     return-void
 .end method
 
 .method public glTexEnvi(III)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "param"    # I
 
     .prologue
     .line 1287
@@ -5110,15 +5113,15 @@
     .line 1289
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1290
+    .line 1286
     return-void
 .end method
 
 .method public glTexEnviv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1299
@@ -5132,16 +5135,16 @@
     .line 1301
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1302
+    .line 1298
     return-void
 .end method
 
 .method public glTexEnviv(II[II)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1293
@@ -5155,15 +5158,15 @@
     .line 1295
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1296
+    .line 1292
     return-void
 .end method
 
 .method public glTexEnvx(III)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "param"    # I
 
     .prologue
     .line 762
@@ -5177,15 +5180,15 @@
     .line 764
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 765
+    .line 761
     return-void
 .end method
 
 .method public glTexEnvxv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 774
@@ -5199,16 +5202,16 @@
     .line 776
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 777
+    .line 773
     return-void
 .end method
 
 .method public glTexEnvxv(II[II)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 768
@@ -5222,15 +5225,15 @@
     .line 770
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 771
+    .line 767
     return-void
 .end method
 
 .method public glTexGenf(IIF)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "param"    # F
 
     .prologue
     .line 1603
@@ -5244,15 +5247,15 @@
     .line 1605
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1606
+    .line 1602
     return-void
 .end method
 
 .method public glTexGenfv(IILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 1617
@@ -5266,16 +5269,16 @@
     .line 1619
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1620
+    .line 1616
     return-void
 .end method
 
 .method public glTexGenfv(II[FI)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [F
+    .param p4, "offset"    # I
 
     .prologue
     .line 1610
@@ -5289,15 +5292,15 @@
     .line 1612
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1613
+    .line 1609
     return-void
 .end method
 
 .method public glTexGeni(III)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "param"    # I
 
     .prologue
     .line 1624
@@ -5311,15 +5314,15 @@
     .line 1626
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1627
+    .line 1623
     return-void
 .end method
 
 .method public glTexGeniv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1638
@@ -5333,16 +5336,16 @@
     .line 1640
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1641
+    .line 1637
     return-void
 .end method
 
 .method public glTexGeniv(II[II)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1631
@@ -5356,15 +5359,15 @@
     .line 1633
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1634
+    .line 1630
     return-void
 .end method
 
 .method public glTexGenx(III)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "param"    # I
 
     .prologue
     .line 1645
@@ -5378,15 +5381,15 @@
     .line 1647
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1648
+    .line 1644
     return-void
 .end method
 
 .method public glTexGenxv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1659
@@ -5400,16 +5403,16 @@
     .line 1661
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1662
+    .line 1658
     return-void
 .end method
 
 .method public glTexGenxv(II[II)V
     .locals 1
-    .parameter "coord"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "coord"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1652
@@ -5423,21 +5426,21 @@
     .line 1654
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1655
+    .line 1651
     return-void
 .end method
 
 .method public glTexImage2D(IIIIIIIILjava/nio/Buffer;)V
     .locals 10
-    .parameter "target"
-    .parameter "level"
-    .parameter "internalformat"
-    .parameter "width"
-    .parameter "height"
-    .parameter "border"
-    .parameter "format"
-    .parameter "type"
-    .parameter "pixels"
+    .param p1, "target"    # I
+    .param p2, "level"    # I
+    .param p3, "internalformat"    # I
+    .param p4, "width"    # I
+    .param p5, "height"    # I
+    .param p6, "border"    # I
+    .param p7, "format"    # I
+    .param p8, "type"    # I
+    .param p9, "pixels"    # Ljava/nio/Buffer;
 
     .prologue
     .line 782
@@ -5469,15 +5472,15 @@
     .line 785
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 786
+    .line 781
     return-void
 .end method
 
 .method public glTexParameterf(IIF)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "param"    # F
 
     .prologue
     .line 789
@@ -5491,15 +5494,15 @@
     .line 791
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 792
+    .line 788
     return-void
 .end method
 
 .method public glTexParameterfv(IILjava/nio/FloatBuffer;)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/FloatBuffer;
 
     .prologue
     .line 1312
@@ -5513,16 +5516,16 @@
     .line 1314
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1315
+    .line 1311
     return-void
 .end method
 
 .method public glTexParameterfv(II[FI)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [F
+    .param p4, "offset"    # I
 
     .prologue
     .line 1306
@@ -5536,15 +5539,15 @@
     .line 1308
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1309
+    .line 1305
     return-void
 .end method
 
 .method public glTexParameteri(III)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "param"    # I
 
     .prologue
     .line 1318
@@ -5558,15 +5561,15 @@
     .line 1320
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1321
+    .line 1317
     return-void
 .end method
 
 .method public glTexParameteriv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 807
@@ -5580,16 +5583,16 @@
     .line 809
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 810
+    .line 806
     return-void
 .end method
 
 .method public glTexParameteriv(II[II)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 801
@@ -5603,15 +5606,15 @@
     .line 803
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 804
+    .line 800
     return-void
 .end method
 
 .method public glTexParameterx(III)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "param"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "param"    # I
 
     .prologue
     .line 795
@@ -5625,15 +5628,15 @@
     .line 797
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 798
+    .line 794
     return-void
 .end method
 
 .method public glTexParameterxv(IILjava/nio/IntBuffer;)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # Ljava/nio/IntBuffer;
 
     .prologue
     .line 1330
@@ -5647,16 +5650,16 @@
     .line 1332
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1333
+    .line 1329
     return-void
 .end method
 
 .method public glTexParameterxv(II[II)V
     .locals 1
-    .parameter "target"
-    .parameter "pname"
-    .parameter "params"
-    .parameter "offset"
+    .param p1, "target"    # I
+    .param p2, "pname"    # I
+    .param p3, "params"    # [I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1324
@@ -5670,21 +5673,21 @@
     .line 1326
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1327
+    .line 1323
     return-void
 .end method
 
 .method public glTexSubImage2D(IIIIIIIILjava/nio/Buffer;)V
     .locals 10
-    .parameter "target"
-    .parameter "level"
-    .parameter "xoffset"
-    .parameter "yoffset"
-    .parameter "width"
-    .parameter "height"
-    .parameter "format"
-    .parameter "type"
-    .parameter "pixels"
+    .param p1, "target"    # I
+    .param p2, "level"    # I
+    .param p3, "xoffset"    # I
+    .param p4, "yoffset"    # I
+    .param p5, "width"    # I
+    .param p6, "height"    # I
+    .param p7, "format"    # I
+    .param p8, "type"    # I
+    .param p9, "pixels"    # Ljava/nio/Buffer;
 
     .prologue
     .line 815
@@ -5716,15 +5719,15 @@
     .line 818
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 819
+    .line 814
     return-void
 .end method
 
 .method public glTranslatef(FFF)V
     .locals 1
-    .parameter "x"
-    .parameter "y"
-    .parameter "z"
+    .param p1, "x"    # F
+    .param p2, "y"    # F
+    .param p3, "z"    # F
 
     .prologue
     .line 822
@@ -5738,15 +5741,15 @@
     .line 824
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 825
+    .line 821
     return-void
 .end method
 
 .method public glTranslatex(III)V
     .locals 1
-    .parameter "x"
-    .parameter "y"
-    .parameter "z"
+    .param p1, "x"    # I
+    .param p2, "y"    # I
+    .param p3, "z"    # I
 
     .prologue
     .line 828
@@ -5760,16 +5763,16 @@
     .line 830
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 831
+    .line 827
     return-void
 .end method
 
 .method public glVertexPointer(IIII)V
     .locals 1
-    .parameter "size"
-    .parameter "type"
-    .parameter "stride"
-    .parameter "offset"
+    .param p1, "size"    # I
+    .param p2, "type"    # I
+    .param p3, "stride"    # I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1336
@@ -5783,16 +5786,16 @@
     .line 1338
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1339
+    .line 1335
     return-void
 .end method
 
 .method public glVertexPointer(IIILjava/nio/Buffer;)V
     .locals 1
-    .parameter "size"
-    .parameter "type"
-    .parameter "stride"
-    .parameter "pointer"
+    .param p1, "size"    # I
+    .param p2, "type"    # I
+    .param p3, "stride"    # I
+    .param p4, "pointer"    # Ljava/nio/Buffer;
 
     .prologue
     .line 835
@@ -5806,16 +5809,16 @@
     .line 837
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 838
+    .line 834
     return-void
 .end method
 
 .method public glViewport(IIII)V
     .locals 1
-    .parameter "x"
-    .parameter "y"
-    .parameter "width"
-    .parameter "height"
+    .param p1, "x"    # I
+    .param p2, "y"    # I
+    .param p3, "width"    # I
+    .param p4, "height"    # I
 
     .prologue
     .line 841
@@ -5829,16 +5832,16 @@
     .line 843
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 844
+    .line 840
     return-void
 .end method
 
 .method public glWeightPointerOES(IIII)V
     .locals 1
-    .parameter "size"
-    .parameter "type"
-    .parameter "stride"
-    .parameter "offset"
+    .param p1, "size"    # I
+    .param p2, "type"    # I
+    .param p3, "stride"    # I
+    .param p4, "offset"    # I
 
     .prologue
     .line 1375
@@ -5852,16 +5855,16 @@
     .line 1377
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1378
+    .line 1374
     return-void
 .end method
 
 .method public glWeightPointerOES(IIILjava/nio/Buffer;)V
     .locals 1
-    .parameter "size"
-    .parameter "type"
-    .parameter "stride"
-    .parameter "pointer"
+    .param p1, "size"    # I
+    .param p2, "type"    # I
+    .param p3, "stride"    # I
+    .param p4, "pointer"    # Ljava/nio/Buffer;
 
     .prologue
     .line 1369
@@ -5875,6 +5878,6 @@
     .line 1371
     invoke-direct {p0}, Landroid/opengl/GLErrorWrapper;->checkError()V
 
-    .line 1372
+    .line 1368
     return-void
 .end method

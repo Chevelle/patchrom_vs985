@@ -29,13 +29,7 @@
 # static fields
 .field public static final CONTENT_DIRECTORY:Ljava/lang/String; = "suggestions"
 
-.field public static final PARAMETER_MATCH_EMAIL:Ljava/lang/String; = "email"
-
 .field public static final PARAMETER_MATCH_NAME:Ljava/lang/String; = "name"
-
-.field public static final PARAMETER_MATCH_NICKNAME:Ljava/lang/String; = "nickname"
-
-.field public static final PARAMETER_MATCH_PHONE:Ljava/lang/String; = "phone"
 
 
 # direct methods
@@ -43,7 +37,7 @@
     .locals 0
 
     .prologue
-    .line 1758
+    .line 1807
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -53,7 +47,7 @@
     .locals 1
 
     .prologue
-    .line 1864
+    .line 1891
     new-instance v0, Landroid/provider/ContactsContract$Contacts$AggregationSuggestions$Builder;
 
     invoke-direct {v0}, Landroid/provider/ContactsContract$Contacts$AggregationSuggestions$Builder;-><init>()V

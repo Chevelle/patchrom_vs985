@@ -3,6 +3,10 @@
 .source "CantAddAccountActivity.java"
 
 
+# static fields
+.field public static final EXTRA_ERROR_CODE:Ljava/lang/String; = "android.accounts.extra.ERROR_CODE"
+
+
 # direct methods
 .method public constructor <init>()V
     .locals 0
@@ -18,29 +22,29 @@
 # virtual methods
 .method public onCancelButtonClicked(Landroid/view/View;)V
     .locals 0
-    .parameter "view"
+    .param p1, "view"    # Landroid/view/View;
 
     .prologue
-    .line 38
+    .line 39
     invoke-virtual {p0}, Landroid/accounts/CantAddAccountActivity;->onBackPressed()V
 
-    .line 39
+    .line 38
     return-void
 .end method
 
 .method public onCreate(Landroid/os/Bundle;)V
     .locals 1
-    .parameter "savedInstanceState"
+    .param p1, "savedInstanceState"    # Landroid/os/Bundle;
 
     .prologue
-    .line 33
+    .line 34
     invoke-super {p0, p1}, Landroid/app/Activity;->onCreate(Landroid/os/Bundle;)V
 
-    .line 34
-    const v0, 0x109002a
+    .line 35
+    const v0, 0x1090033
 
     invoke-virtual {p0, v0}, Landroid/accounts/CantAddAccountActivity;->setContentView(I)V
 
-    .line 35
+    .line 33
     return-void
 .end method

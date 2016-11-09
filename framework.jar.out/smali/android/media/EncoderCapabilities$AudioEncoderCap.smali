@@ -33,39 +33,39 @@
 # direct methods
 .method private constructor <init>(IIIIIII)V
     .locals 0
-    .parameter "codec"
-    .parameter "minBitRate"
-    .parameter "maxBitRate"
-    .parameter "minSampleRate"
-    .parameter "maxSampleRate"
-    .parameter "minChannels"
-    .parameter "maxChannels"
+    .param p1, "codec"    # I
+    .param p2, "minBitRate"    # I
+    .param p3, "maxBitRate"    # I
+    .param p4, "minSampleRate"    # I
+    .param p5, "maxSampleRate"    # I
+    .param p6, "minChannels"    # I
+    .param p7, "maxChannels"    # I
 
     .prologue
-    .line 92
+    .line 88
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 93
+    .line 92
     iput p1, p0, Landroid/media/EncoderCapabilities$AudioEncoderCap;->mCodec:I
 
-    .line 94
+    .line 93
     iput p2, p0, Landroid/media/EncoderCapabilities$AudioEncoderCap;->mMinBitRate:I
 
-    .line 95
+    .line 94
     iput p3, p0, Landroid/media/EncoderCapabilities$AudioEncoderCap;->mMaxBitRate:I
 
-    .line 96
+    .line 95
     iput p4, p0, Landroid/media/EncoderCapabilities$AudioEncoderCap;->mMinSampleRate:I
 
-    .line 97
+    .line 96
     iput p5, p0, Landroid/media/EncoderCapabilities$AudioEncoderCap;->mMaxSampleRate:I
 
-    .line 98
+    .line 97
     iput p6, p0, Landroid/media/EncoderCapabilities$AudioEncoderCap;->mMinChannels:I
 
-    .line 99
+    .line 98
     iput p7, p0, Landroid/media/EncoderCapabilities$AudioEncoderCap;->mMaxChannels:I
 
-    .line 100
+    .line 91
     return-void
 .end method

@@ -57,42 +57,42 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 3
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
     const/4 v2, 0x2
 
     const/4 v1, 0x1
 
-    .line 91
+    .line 83
     invoke-direct {p0, p1}, Landroid/filterfw/core/Filter;-><init>(Ljava/lang/String;)V
 
-    .line 49
+    .line 41
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->RENDERMODE_STRETCH:I
 
-    .line 50
+    .line 42
     iput v1, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->RENDERMODE_FIT:I
 
-    .line 51
+    .line 43
     iput v2, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->RENDERMODE_FILL_CROP:I
 
-    .line 82
+    .line 74
     iput v1, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mRenderMode:I
 
-    .line 83
-    const/high16 v0, 0x3f80
+    .line 75
+    const/high16 v0, 0x3f800000    # 1.0f
 
     iput v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mAspectRatio:F
 
-    .line 85
+    .line 77
     const/4 v0, -0x1
 
     iput v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mSurfaceId:I
 
-    .line 93
-    const-string v0, "SurfaceRenderFilter"
+    .line 85
+    const-string/jumbo v0, "SurfaceRenderFilter"
 
     invoke-static {v0, v2}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
 
@@ -100,7 +100,7 @@
 
     iput-boolean v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mLogVerbose:Z
 
-    .line 94
+    .line 82
     return-void
 .end method
 
@@ -108,7 +108,7 @@
     .locals 3
 
     .prologue
-    .line 245
+    .line 237
     iget-object v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mGlEnv:Landroid/filterfw/core/GLEnvironment;
 
     iget-object v1, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mSurface:Landroid/view/Surface;
@@ -119,19 +119,19 @@
 
     iput v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mSurfaceId:I
 
-    .line 246
+    .line 238
     iget v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mSurfaceId:I
 
     if-gez v0, :cond_0
 
-    .line 247
+    .line 239
     new-instance v0, Ljava/lang/RuntimeException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Could not register Surface: "
+    const-string/jumbo v2, "Could not register Surface: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -151,7 +151,7 @@
 
     throw v0
 
-    .line 249
+    .line 236
     :cond_0
     return-void
 .end method
@@ -160,19 +160,19 @@
     .locals 2
 
     .prologue
-    .line 252
+    .line 244
     iget v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mSurfaceId:I
 
     if-lez v0, :cond_0
 
-    .line 253
+    .line 245
     iget-object v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mGlEnv:Landroid/filterfw/core/GLEnvironment;
 
     iget v1, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mSurfaceId:I
 
     invoke-virtual {v0, v1}, Landroid/filterfw/core/GLEnvironment;->unregisterSurfaceId(I)V
 
-    .line 255
+    .line 243
     :cond_0
     return-void
 .end method
@@ -183,11 +183,11 @@
     .prologue
     const/4 v6, 0x0
 
-    const/high16 v4, 0x3f00
+    const/high16 v4, 0x3f000000    # 0.5f
 
-    const/high16 v5, 0x3f80
+    const/high16 v5, 0x3f800000    # 1.0f
 
-    .line 210
+    .line 202
     iget v2, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mScreenWidth:I
 
     if-lez v2, :cond_0
@@ -200,7 +200,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 211
+    .line 203
     iget v2, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mScreenWidth:I
 
     int-to-float v2, v2
@@ -211,28 +211,28 @@
 
     div-float v1, v2, v3
 
-    .line 212
-    .local v1, screenAspectRatio:F
+    .line 204
+    .local v1, "screenAspectRatio":F
     iget v2, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mAspectRatio:F
 
     div-float v0, v1, v2
 
-    .line 214
-    .local v0, relativeAspectRatio:F
+    .line 206
+    .local v0, "relativeAspectRatio":F
     iget v2, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mRenderMode:I
 
     packed-switch v2, :pswitch_data_0
 
-    .line 242
-    .end local v0           #relativeAspectRatio:F
-    .end local v1           #screenAspectRatio:F
+    .line 201
+    .end local v0    # "relativeAspectRatio":F
+    .end local v1    # "screenAspectRatio":F
     :cond_0
     :goto_0
     return-void
 
-    .line 216
-    .restart local v0       #relativeAspectRatio:F
-    .restart local v1       #screenAspectRatio:F
+    .line 208
+    .restart local v0    # "relativeAspectRatio":F
+    .restart local v1    # "screenAspectRatio":F
     :pswitch_0
     iget-object v2, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mProgram:Landroid/filterfw/core/ShaderProgram;
 
@@ -240,26 +240,28 @@
 
     goto :goto_0
 
-    .line 219
+    .line 211
     :pswitch_1
     cmpl-float v2, v0, v5
 
     if-lez v2, :cond_1
 
-    .line 221
+    .line 213
     iget-object v2, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mProgram:Landroid/filterfw/core/ShaderProgram;
 
     div-float v3, v4, v0
 
     sub-float v3, v4, v3
 
+    .line 214
     div-float v4, v5, v0
 
+    .line 213
     invoke-virtual {v2, v3, v6, v4, v5}, Landroid/filterfw/core/ShaderProgram;->setTargetRect(FFFF)V
 
     goto :goto_0
 
-    .line 225
+    .line 217
     :cond_1
     iget-object v2, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mProgram:Landroid/filterfw/core/ShaderProgram;
 
@@ -271,13 +273,13 @@
 
     goto :goto_0
 
-    .line 230
+    .line 222
     :pswitch_2
     cmpl-float v2, v0, v5
 
     if-lez v2, :cond_2
 
-    .line 232
+    .line 224
     iget-object v2, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mProgram:Landroid/filterfw/core/ShaderProgram;
 
     mul-float v3, v4, v0
@@ -288,7 +290,7 @@
 
     goto :goto_0
 
-    .line 236
+    .line 228
     :cond_2
     iget-object v2, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mProgram:Landroid/filterfw/core/ShaderProgram;
 
@@ -296,13 +298,15 @@
 
     sub-float v3, v4, v3
 
+    .line 229
     div-float v4, v5, v0
 
+    .line 228
     invoke-virtual {v2, v3, v6, v4, v5}, Landroid/filterfw/core/ShaderProgram;->setTargetRect(FFFF)V
 
     goto :goto_0
 
-    .line 214
+    .line 206
     nop
 
     :pswitch_data_0
@@ -317,25 +321,25 @@
 # virtual methods
 .method public close(Landroid/filterfw/core/FilterContext;)V
     .locals 0
-    .parameter "context"
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
-    .line 199
+    .line 191
     invoke-direct {p0}, Landroid/filterpacks/ui/SurfaceTargetFilter;->unregisterSurface()V
 
-    .line 200
+    .line 190
     return-void
 .end method
 
 .method public fieldPortValueUpdated(Ljava/lang/String;Landroid/filterfw/core/FilterContext;)V
     .locals 4
-    .parameter "name"
-    .parameter "context"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
     const/4 v3, 0x0
 
-    .line 193
+    .line 185
     iget-object v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mScreen:Landroid/filterfw/core/GLFrame;
 
     iget v1, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mScreenWidth:I
@@ -344,89 +348,94 @@
 
     invoke-virtual {v0, v3, v3, v1, v2}, Landroid/filterfw/core/GLFrame;->setViewport(IIII)V
 
-    .line 194
+    .line 186
     invoke-direct {p0}, Landroid/filterpacks/ui/SurfaceTargetFilter;->updateTargetRect()V
 
-    .line 195
+    .line 184
     return-void
 .end method
 
 .method public open(Landroid/filterfw/core/FilterContext;)V
     .locals 0
-    .parameter "context"
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
-    .line 147
+    .line 139
     invoke-direct {p0}, Landroid/filterpacks/ui/SurfaceTargetFilter;->registerSurface()V
 
-    .line 148
+    .line 138
     return-void
 .end method
 
 .method public prepare(Landroid/filterfw/core/FilterContext;)V
     .locals 6
-    .parameter "context"
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
     const/4 v5, 0x3
 
-    const/high16 v4, 0x3f80
+    const/high16 v4, 0x3f800000    # 1.0f
 
     const/4 v3, 0x0
 
-    .line 124
+    .line 116
     invoke-virtual {p1}, Landroid/filterfw/core/FilterContext;->getGLEnvironment()Landroid/filterfw/core/GLEnvironment;
 
     move-result-object v1
 
     iput-object v1, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mGlEnv:Landroid/filterfw/core/GLEnvironment;
 
-    .line 128
+    .line 120
     invoke-static {p1}, Landroid/filterfw/core/ShaderProgram;->createIdentity(Landroid/filterfw/core/FilterContext;)Landroid/filterfw/core/ShaderProgram;
 
     move-result-object v1
 
     iput-object v1, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mProgram:Landroid/filterfw/core/ShaderProgram;
 
-    .line 129
+    .line 121
     iget-object v1, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mProgram:Landroid/filterfw/core/ShaderProgram;
 
-    const/high16 v2, -0x4080
+    const/high16 v2, -0x40800000    # -1.0f
 
     invoke-virtual {v1, v3, v4, v4, v2}, Landroid/filterfw/core/ShaderProgram;->setSourceRect(FFFF)V
 
-    .line 130
+    .line 122
     iget-object v1, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mProgram:Landroid/filterfw/core/ShaderProgram;
 
     const/4 v2, 0x1
 
     invoke-virtual {v1, v2}, Landroid/filterfw/core/ShaderProgram;->setClearsOutput(Z)V
 
-    .line 131
+    .line 123
     iget-object v1, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mProgram:Landroid/filterfw/core/ShaderProgram;
 
     invoke-virtual {v1, v3, v3, v3}, Landroid/filterfw/core/ShaderProgram;->setClearColor(FFF)V
 
-    .line 133
+    .line 125
     iget v1, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mScreenWidth:I
 
+    .line 126
     iget v2, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mScreenHeight:I
 
+    .line 125
     invoke-static {v1, v2, v5, v5}, Landroid/filterfw/format/ImageFormat;->create(IIII)Landroid/filterfw/core/MutableFrameFormat;
 
     move-result-object v0
 
-    .line 137
-    .local v0, screenFormat:Landroid/filterfw/core/MutableFrameFormat;
+    .line 129
+    .local v0, "screenFormat":Landroid/filterfw/core/MutableFrameFormat;
     invoke-virtual {p1}, Landroid/filterfw/core/FilterContext;->getFrameManager()Landroid/filterfw/core/FrameManager;
 
     move-result-object v1
 
-    const/16 v2, 0x65
+    .line 131
+    const-wide/16 v2, 0x0
 
-    const-wide/16 v3, 0x0
+    .line 130
+    const/16 v4, 0x65
 
-    invoke-virtual {v1, v0, v2, v3, v4}, Landroid/filterfw/core/FrameManager;->newBoundFrame(Landroid/filterfw/core/FrameFormat;IJ)Landroid/filterfw/core/Frame;
+    .line 129
+    invoke-virtual {v1, v0, v4, v2, v3}, Landroid/filterfw/core/FrameManager;->newBoundFrame(Landroid/filterfw/core/FrameFormat;IJ)Landroid/filterfw/core/Frame;
 
     move-result-object v1
 
@@ -434,45 +443,45 @@
 
     iput-object v1, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mScreen:Landroid/filterfw/core/GLFrame;
 
-    .line 142
+    .line 134
     invoke-virtual {p0}, Landroid/filterpacks/ui/SurfaceTargetFilter;->updateRenderMode()V
 
-    .line 143
+    .line 115
     return-void
 .end method
 
 .method public process(Landroid/filterfw/core/FilterContext;)V
     .locals 9
-    .parameter "context"
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
     const/4 v8, 0x3
 
-    .line 152
+    .line 144
     iget-boolean v5, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mLogVerbose:Z
 
     if-eqz v5, :cond_0
 
-    const-string v5, "SurfaceRenderFilter"
+    const-string/jumbo v5, "SurfaceRenderFilter"
 
-    const-string v6, "Starting frame processing"
+    const-string/jumbo v6, "Starting frame processing"
 
     invoke-static {v5, v6}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 155
+    .line 147
     :cond_0
-    const-string v5, "frame"
+    const-string/jumbo v5, "frame"
 
     invoke-virtual {p0, v5}, Landroid/filterpacks/ui/SurfaceTargetFilter;->pullInput(Ljava/lang/String;)Landroid/filterfw/core/Frame;
 
     move-result-object v3
 
-    .line 156
-    .local v3, input:Landroid/filterfw/core/Frame;
+    .line 148
+    .local v3, "input":Landroid/filterfw/core/Frame;
     const/4 v0, 0x0
 
-    .line 158
-    .local v0, createdFrame:Z
+    .line 150
+    .local v0, "createdFrame":Z
     invoke-virtual {v3}, Landroid/filterfw/core/Frame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v5
@@ -495,26 +504,26 @@
 
     div-float v1, v5, v6
 
-    .line 159
-    .local v1, currentAspectRatio:F
+    .line 151
+    .local v1, "currentAspectRatio":F
     iget v5, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mAspectRatio:F
 
     cmpl-float v5, v1, v5
 
     if-eqz v5, :cond_2
 
-    .line 160
+    .line 152
     iget-boolean v5, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mLogVerbose:Z
 
     if-eqz v5, :cond_1
 
-    const-string v5, "SurfaceRenderFilter"
+    const-string/jumbo v5, "SurfaceRenderFilter"
 
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v7, "New aspect ratio: "
+    const-string/jumbo v7, "New aspect ratio: "
 
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -524,7 +533,7 @@
 
     move-result-object v6
 
-    const-string v7, ", previously: "
+    const-string/jumbo v7, ", previously: "
 
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -542,30 +551,30 @@
 
     invoke-static {v5, v6}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 161
+    .line 153
     :cond_1
     iput v1, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mAspectRatio:F
 
-    .line 162
+    .line 154
     invoke-direct {p0}, Landroid/filterpacks/ui/SurfaceTargetFilter;->updateTargetRect()V
 
-    .line 166
+    .line 158
     :cond_2
     const/4 v2, 0x0
 
-    .line 167
-    .local v2, gpuFrame:Landroid/filterfw/core/Frame;
+    .line 159
+    .local v2, "gpuFrame":Landroid/filterfw/core/Frame;
     iget-boolean v5, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mLogVerbose:Z
 
     if-eqz v5, :cond_3
 
-    const-string v5, "SurfaceRenderFilter"
+    const-string/jumbo v5, "SurfaceRenderFilter"
 
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v7, "Got input format: "
+    const-string/jumbo v7, "Got input format: "
 
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -585,7 +594,7 @@
 
     invoke-static {v5, v6}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 168
+    .line 160
     :cond_3
     invoke-virtual {v3}, Landroid/filterfw/core/Frame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
@@ -595,11 +604,11 @@
 
     move-result v4
 
-    .line 169
-    .local v4, target:I
+    .line 161
+    .local v4, "target":I
     if-eq v4, v8, :cond_5
 
-    .line 170
+    .line 162
     invoke-virtual {p1}, Landroid/filterfw/core/FilterContext;->getFrameManager()Landroid/filterfw/core/FrameManager;
 
     move-result-object v5
@@ -608,10 +617,11 @@
 
     move-result-object v2
 
-    .line 172
+    .line 164
+    .local v2, "gpuFrame":Landroid/filterfw/core/Frame;
     const/4 v0, 0x1
 
-    .line 178
+    .line 170
     :goto_0
     iget-object v5, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mGlEnv:Landroid/filterfw/core/GLEnvironment;
 
@@ -619,32 +629,34 @@
 
     invoke-virtual {v5, v6}, Landroid/filterfw/core/GLEnvironment;->activateSurfaceWithId(I)V
 
-    .line 181
+    .line 173
     iget-object v5, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mProgram:Landroid/filterfw/core/ShaderProgram;
 
     iget-object v6, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mScreen:Landroid/filterfw/core/GLFrame;
 
     invoke-virtual {v5, v2, v6}, Landroid/filterfw/core/ShaderProgram;->process(Landroid/filterfw/core/Frame;Landroid/filterfw/core/Frame;)V
 
-    .line 184
+    .line 176
     iget-object v5, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mGlEnv:Landroid/filterfw/core/GLEnvironment;
 
     invoke-virtual {v5}, Landroid/filterfw/core/GLEnvironment;->swapBuffers()V
 
-    .line 186
+    .line 178
     if-eqz v0, :cond_4
 
-    .line 187
+    .line 179
     invoke-virtual {v2}, Landroid/filterfw/core/Frame;->release()Landroid/filterfw/core/Frame;
 
-    .line 189
+    .line 143
     :cond_4
     return-void
 
-    .line 174
+    .line 166
+    .local v2, "gpuFrame":Landroid/filterfw/core/Frame;
     :cond_5
     move-object v2, v3
 
+    .local v2, "gpuFrame":Landroid/filterfw/core/Frame;
     goto :goto_0
 .end method
 
@@ -652,23 +664,23 @@
     .locals 2
 
     .prologue
-    .line 99
+    .line 91
     iget-object v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mSurface:Landroid/view/Surface;
 
     if-nez v0, :cond_0
 
-    .line 100
+    .line 92
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "NULL Surface passed to SurfaceTargetFilter"
+    const-string/jumbo v1, "NULL Surface passed to SurfaceTargetFilter"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 104
+    .line 96
     :cond_0
-    const-string v0, "frame"
+    const-string/jumbo v0, "frame"
 
     const/4 v1, 0x3
 
@@ -678,26 +690,26 @@
 
     invoke-virtual {p0, v0, v1}, Landroid/filterpacks/ui/SurfaceTargetFilter;->addMaskedInputPort(Ljava/lang/String;Landroid/filterfw/core/FrameFormat;)V
 
-    .line 105
+    .line 89
     return-void
 .end method
 
 .method public tearDown(Landroid/filterfw/core/FilterContext;)V
     .locals 1
-    .parameter "context"
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
-    .line 204
+    .line 196
     iget-object v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mScreen:Landroid/filterfw/core/GLFrame;
 
     if-eqz v0, :cond_0
 
-    .line 205
+    .line 197
     iget-object v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mScreen:Landroid/filterfw/core/GLFrame;
 
     invoke-virtual {v0}, Landroid/filterfw/core/GLFrame;->release()Landroid/filterfw/core/Frame;
 
-    .line 207
+    .line 195
     :cond_0
     return-void
 .end method
@@ -706,12 +718,12 @@
     .locals 3
 
     .prologue
-    .line 108
+    .line 100
     iget-object v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mRenderModeString:Ljava/lang/String;
 
     if-eqz v0, :cond_0
 
-    .line 109
+    .line 101
     iget-object v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mRenderModeString:Ljava/lang/String;
 
     const-string/jumbo v1, "stretch"
@@ -722,24 +734,24 @@
 
     if-eqz v0, :cond_1
 
-    .line 110
+    .line 102
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mRenderMode:I
 
-    .line 119
+    .line 111
     :cond_0
     :goto_0
     invoke-direct {p0}, Landroid/filterpacks/ui/SurfaceTargetFilter;->updateTargetRect()V
 
-    .line 120
+    .line 99
     return-void
 
-    .line 111
+    .line 103
     :cond_1
     iget-object v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mRenderModeString:Ljava/lang/String;
 
-    const-string v1, "fit"
+    const-string/jumbo v1, "fit"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -747,18 +759,18 @@
 
     if-eqz v0, :cond_2
 
-    .line 112
+    .line 104
     const/4 v0, 0x1
 
     iput v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mRenderMode:I
 
     goto :goto_0
 
-    .line 113
+    .line 105
     :cond_2
     iget-object v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mRenderModeString:Ljava/lang/String;
 
-    const-string v1, "fill_crop"
+    const-string/jumbo v1, "fill_crop"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -766,14 +778,14 @@
 
     if-eqz v0, :cond_3
 
-    .line 114
+    .line 106
     const/4 v0, 0x2
 
     iput v0, p0, Landroid/filterpacks/ui/SurfaceTargetFilter;->mRenderMode:I
 
     goto :goto_0
 
-    .line 116
+    .line 108
     :cond_3
     new-instance v0, Ljava/lang/RuntimeException;
 
@@ -781,7 +793,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Unknown render mode \'"
+    const-string/jumbo v2, "Unknown render mode \'"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -793,7 +805,7 @@
 
     move-result-object v1
 
-    const-string v2, "\'!"
+    const-string/jumbo v2, "\'!"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

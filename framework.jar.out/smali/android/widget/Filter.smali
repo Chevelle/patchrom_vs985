@@ -6,13 +6,12 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/widget/Filter$1;,
-        Landroid/widget/Filter$Delayer;,
-        Landroid/widget/Filter$RequestArguments;,
-        Landroid/widget/Filter$ResultsHandler;,
-        Landroid/widget/Filter$RequestHandler;,
+        Landroid/widget/Filter$FilterResults;,
         Landroid/widget/Filter$FilterListener;,
-        Landroid/widget/Filter$FilterResults;
+        Landroid/widget/Filter$RequestHandler;,
+        Landroid/widget/Filter$ResultsHandler;,
+        Landroid/widget/Filter$RequestArguments;,
+        Landroid/widget/Filter$Delayer;
     }
 .end annotation
 
@@ -38,6 +37,38 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/widget/Filter;)Ljava/lang/Object;
+    .locals 1
+
+    iget-object v0, p0, Landroid/widget/Filter;->mLock:Ljava/lang/Object;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Landroid/widget/Filter;)Landroid/os/Handler;
+    .locals 1
+
+    iget-object v0, p0, Landroid/widget/Filter;->mResultHandler:Landroid/os/Handler;
+
+    return-object v0
+.end method
+
+.method static synthetic -get2(Landroid/widget/Filter;)Landroid/os/Handler;
+    .locals 1
+
+    iget-object v0, p0, Landroid/widget/Filter;->mThreadHandler:Landroid/os/Handler;
+
+    return-object v0
+.end method
+
+.method static synthetic -set0(Landroid/widget/Filter;Landroid/os/Handler;)Landroid/os/Handler;
+    .locals 0
+
+    iput-object p1, p0, Landroid/widget/Filter;->mThreadHandler:Landroid/os/Handler;
+
+    return-object p1
+.end method
+
 .method public constructor <init>()V
     .locals 2
 
@@ -57,70 +88,25 @@
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p0, v1}, Landroid/widget/Filter$ResultsHandler;-><init>(Landroid/widget/Filter;Landroid/widget/Filter$1;)V
+    invoke-direct {v0, p0, v1}, Landroid/widget/Filter$ResultsHandler;-><init>(Landroid/widget/Filter;Landroid/widget/Filter$ResultsHandler;)V
 
     iput-object v0, p0, Landroid/widget/Filter;->mResultHandler:Landroid/os/Handler;
 
-    .line 58
+    .line 56
     return-void
-.end method
-
-.method static synthetic access$200(Landroid/widget/Filter;)Landroid/os/Handler;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 39
-    iget-object v0, p0, Landroid/widget/Filter;->mResultHandler:Landroid/os/Handler;
-
-    return-object v0
-.end method
-
-.method static synthetic access$300(Landroid/widget/Filter;)Ljava/lang/Object;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 39
-    iget-object v0, p0, Landroid/widget/Filter;->mLock:Ljava/lang/Object;
-
-    return-object v0
-.end method
-
-.method static synthetic access$400(Landroid/widget/Filter;)Landroid/os/Handler;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 39
-    iget-object v0, p0, Landroid/widget/Filter;->mThreadHandler:Landroid/os/Handler;
-
-    return-object v0
-.end method
-
-.method static synthetic access$402(Landroid/widget/Filter;Landroid/os/Handler;)Landroid/os/Handler;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 39
-    iput-object p1, p0, Landroid/widget/Filter;->mThreadHandler:Landroid/os/Handler;
-
-    return-object p1
 .end method
 
 
 # virtual methods
 .method public convertResultToString(Ljava/lang/Object;)Ljava/lang/CharSequence;
     .locals 1
-    .parameter "resultValue"
+    .param p1, "resultValue"    # Ljava/lang/Object;
 
     .prologue
     .line 173
     if-nez p1, :cond_0
 
-    const-string v0, ""
+    const-string/jumbo v0, ""
 
     :goto_0
     return-object v0
@@ -135,7 +121,7 @@
 
 .method public final filter(Ljava/lang/CharSequence;)V
     .locals 1
-    .parameter "constraint"
+    .param p1, "constraint"    # Ljava/lang/CharSequence;
 
     .prologue
     .line 84
@@ -143,14 +129,14 @@
 
     invoke-virtual {p0, p1, v0}, Landroid/widget/Filter;->filter(Ljava/lang/CharSequence;Landroid/widget/Filter$FilterListener;)V
 
-    .line 85
+    .line 83
     return-void
 .end method
 
 .method public final filter(Ljava/lang/CharSequence;Landroid/widget/Filter$FilterListener;)V
     .locals 9
-    .parameter "constraint"
-    .parameter "listener"
+    .param p1, "constraint"    # Ljava/lang/CharSequence;
+    .param p2, "listener"    # Landroid/widget/Filter$FilterListener;
 
     .prologue
     const/4 v5, 0x0
@@ -169,14 +155,16 @@
     .line 104
     new-instance v4, Landroid/os/HandlerThread;
 
-    const-string v7, "Filter"
+    .line 105
+    const-string/jumbo v7, "Filter"
 
     const/16 v8, 0xa
 
+    .line 104
     invoke-direct {v4, v7, v8}, Landroid/os/HandlerThread;-><init>(Ljava/lang/String;I)V
 
     .line 106
-    .local v4, thread:Landroid/os/HandlerThread;
+    .local v4, "thread":Landroid/os/HandlerThread;
     invoke-virtual {v4}, Landroid/os/HandlerThread;->start()V
 
     .line 107
@@ -191,16 +179,16 @@
     iput-object v7, p0, Landroid/widget/Filter;->mThreadHandler:Landroid/os/Handler;
 
     .line 110
-    .end local v4           #thread:Landroid/os/HandlerThread;
+    .end local v4    # "thread":Landroid/os/HandlerThread;
     :cond_0
     iget-object v7, p0, Landroid/widget/Filter;->mDelayer:Landroid/widget/Filter$Delayer;
 
     if-nez v7, :cond_2
 
-    const-wide/16 v1, 0x0
+    const-wide/16 v2, 0x0
 
     .line 112
-    .local v1, delay:J
+    .local v2, "delay":J
     :goto_0
     iget-object v7, p0, Landroid/widget/Filter;->mThreadHandler:Landroid/os/Handler;
 
@@ -208,21 +196,21 @@
 
     invoke-virtual {v7, v8}, Landroid/os/Handler;->obtainMessage(I)Landroid/os/Message;
 
-    move-result-object v3
+    move-result-object v1
 
     .line 114
-    .local v3, message:Landroid/os/Message;
+    .local v1, "message":Landroid/os/Message;
     new-instance v0, Landroid/widget/Filter$RequestArguments;
 
     const/4 v7, 0x0
 
-    invoke-direct {v0, v7}, Landroid/widget/Filter$RequestArguments;-><init>(Landroid/widget/Filter$1;)V
+    invoke-direct {v0, v7}, Landroid/widget/Filter$RequestArguments;-><init>(Landroid/widget/Filter$RequestArguments;)V
 
     .line 117
-    .local v0, args:Landroid/widget/Filter$RequestArguments;
+    .local v0, "args":Landroid/widget/Filter$RequestArguments;
     if-eqz p1, :cond_1
 
-    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+    invoke-interface {p1}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
 
     move-result-object v5
 
@@ -233,7 +221,7 @@
     iput-object p2, v0, Landroid/widget/Filter$RequestArguments;->listener:Landroid/widget/Filter$FilterListener;
 
     .line 119
-    iput-object v0, v3, Landroid/os/Message;->obj:Ljava/lang/Object;
+    iput-object v0, v1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     .line 121
     iget-object v5, p0, Landroid/widget/Filter;->mThreadHandler:Landroid/os/Handler;
@@ -252,34 +240,38 @@
     .line 123
     iget-object v5, p0, Landroid/widget/Filter;->mThreadHandler:Landroid/os/Handler;
 
-    invoke-virtual {v5, v3, v1, v2}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
+    invoke-virtual {v5, v1, v2, v3}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 124
     monitor-exit v6
 
-    .line 125
+    .line 101
     return-void
 
     .line 110
-    .end local v0           #args:Landroid/widget/Filter$RequestArguments;
-    .end local v1           #delay:J
-    .end local v3           #message:Landroid/os/Message;
+    .end local v0    # "args":Landroid/widget/Filter$RequestArguments;
+    .end local v1    # "message":Landroid/os/Message;
+    .end local v2    # "delay":J
     :cond_2
+    :try_start_1
     iget-object v7, p0, Landroid/widget/Filter;->mDelayer:Landroid/widget/Filter$Delayer;
 
     invoke-interface {v7, p1}, Landroid/widget/Filter$Delayer;->getPostingDelay(Ljava/lang/CharSequence;)J
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    move-result-wide v1
+    move-result-wide v2
 
+    .restart local v2    # "delay":J
     goto :goto_0
 
-    .line 124
+    .line 102
+    .end local v2    # "delay":J
     :catchall_0
     move-exception v5
 
     monitor-exit v6
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v5
 .end method
@@ -292,31 +284,30 @@
 
 .method public setDelayer(Landroid/widget/Filter$Delayer;)V
     .locals 2
-    .parameter "delayer"
+    .param p1, "delayer"    # Landroid/widget/Filter$Delayer;
 
     .prologue
     .line 69
-    iget-object v1, p0, Landroid/widget/Filter;->mLock:Ljava/lang/Object;
+    iget-object v0, p0, Landroid/widget/Filter;->mLock:Ljava/lang/Object;
 
-    monitor-enter v1
+    monitor-enter v0
 
     .line 70
     :try_start_0
     iput-object p1, p0, Landroid/widget/Filter;->mDelayer:Landroid/widget/Filter$Delayer;
-
-    .line 71
-    monitor-exit v1
-
-    .line 72
-    return-void
-
-    .line 71
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw v0
+    monitor-exit v0
+
+    .line 68
+    return-void
+
+    .line 69
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+
+    throw v1
 .end method

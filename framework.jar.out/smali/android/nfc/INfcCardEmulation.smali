@@ -15,6 +15,14 @@
 
 
 # virtual methods
+.method public abstract getAidGroupForService(ILandroid/content/ComponentName;Ljava/lang/String;)Landroid/nfc/cardemulation/AidGroup;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getServices(ILjava/lang/String;)Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -51,6 +59,22 @@
     .end annotation
 .end method
 
+.method public abstract registerAidGroupForService(ILandroid/content/ComponentName;Landroid/nfc/cardemulation/AidGroup;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract removeAidGroupForService(ILandroid/content/ComponentName;Ljava/lang/String;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract setDefaultForNextTap(ILandroid/content/ComponentName;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -60,6 +84,30 @@
 .end method
 
 .method public abstract setDefaultServiceForCategory(ILandroid/content/ComponentName;Ljava/lang/String;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setPreferredService(Landroid/content/ComponentName;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract supportsAidPrefixRegistration()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract unsetPreferredService()Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

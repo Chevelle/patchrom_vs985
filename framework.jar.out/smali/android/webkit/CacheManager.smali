@@ -15,7 +15,7 @@
 
 
 # static fields
-.field static final synthetic $assertionsDisabled:Z
+.field static final synthetic -assertionsDisabled:Z
 
 
 # direct methods
@@ -23,24 +23,24 @@
     .locals 1
 
     .prologue
-    .line 46
     const-class v0, Landroid/webkit/CacheManager;
 
     invoke-virtual {v0}, Ljava/lang/Class;->desiredAssertionStatus()Z
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_0
 
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
     :goto_0
-    sput-boolean v0, Landroid/webkit/CacheManager;->$assertionsDisabled:Z
+    sput-boolean v0, Landroid/webkit/CacheManager;->-assertionsDisabled:Z
 
+    .line 41
     return-void
 
     :cond_0
-    const/4 v0, 0x0
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method
@@ -49,10 +49,9 @@
     .locals 0
 
     .prologue
-    .line 47
+    .line 41
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 55
     return-void
 .end method
 
@@ -62,7 +61,7 @@
     .end annotation
 
     .prologue
-    .line 254
+    .line 248
     const/4 v0, 0x0
 
     return v0
@@ -74,7 +73,7 @@
     .end annotation
 
     .prologue
-    .line 279
+    .line 273
     const/4 v0, 0x0
 
     return v0
@@ -82,8 +81,7 @@
 
 .method public static getCacheFile(Ljava/lang/String;Ljava/util/Map;)Landroid/webkit/CacheManager$CacheResult;
     .locals 1
-    .parameter "url"
-    .parameter
+    .param p0, "url"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -101,8 +99,8 @@
     .end annotation
 
     .prologue
-    .line 298
-    .local p1, headers:Ljava/util/Map;,"Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
+    .line 292
+    .local p1, "headers":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     const/4 v0, 0x0
 
     return-object v0
@@ -114,7 +112,7 @@
     .end annotation
 
     .prologue
-    .line 243
+    .line 237
     const/4 v0, 0x0
 
     return-object v0
@@ -122,12 +120,12 @@
 
 .method static saveCacheFile(Ljava/lang/String;JLandroid/webkit/CacheManager$CacheResult;)V
     .locals 2
-    .parameter "url"
-    .parameter "postIdentifier"
-    .parameter "cacheRet"
+    .param p0, "url"    # Ljava/lang/String;
+    .param p1, "postIdentifier"    # J
+    .param p3, "cacheRet"    # Landroid/webkit/CacheManager$CacheResult;
 
     .prologue
-    .line 317
+    .line 311
     :try_start_0
     iget-object v1, p3, Landroid/webkit/CacheManager$CacheResult;->outStream:Ljava/io/OutputStream;
 
@@ -135,8 +133,8 @@
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 339
-    sget-boolean v1, Landroid/webkit/CacheManager;->$assertionsDisabled:Z
+    .line 333
+    sget-boolean v1, Landroid/webkit/CacheManager;->-assertionsDisabled:Z
 
     if-nez v1, :cond_0
 
@@ -146,29 +144,34 @@
 
     throw v1
 
-    .line 318
+    .line 312
     :catch_0
     move-exception v0
 
-    .line 340
+    .line 313
+    .local v0, "e":Ljava/io/IOException;
+    return-void
+
+    .line 309
+    .end local v0    # "e":Ljava/io/IOException;
     :cond_0
     return-void
 .end method
 
 .method public static saveCacheFile(Ljava/lang/String;Landroid/webkit/CacheManager$CacheResult;)V
     .locals 2
-    .parameter "url"
-    .parameter "cacheResult"
+    .param p0, "url"    # Ljava/lang/String;
+    .param p1, "cacheResult"    # Landroid/webkit/CacheManager$CacheResult;
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
     .prologue
-    .line 311
+    .line 305
     const-wide/16 v0, 0x0
 
     invoke-static {p0, v0, v1, p1}, Landroid/webkit/CacheManager;->saveCacheFile(Ljava/lang/String;JLandroid/webkit/CacheManager$CacheResult;)V
 
-    .line 312
+    .line 304
     return-void
 .end method
 
@@ -178,7 +181,7 @@
     .end annotation
 
     .prologue
-    .line 267
+    .line 261
     const/4 v0, 0x0
 
     return v0

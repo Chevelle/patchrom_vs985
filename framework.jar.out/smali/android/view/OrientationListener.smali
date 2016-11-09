@@ -28,7 +28,7 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 1
-    .parameter "context"
+    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
     .line 45
@@ -41,14 +41,14 @@
 
     iput-object v0, p0, Landroid/view/OrientationListener;->mOrientationEventLis:Landroid/view/OrientationEventListener;
 
-    .line 47
+    .line 45
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;I)V
     .locals 1
-    .parameter "context"
-    .parameter "rate"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "rate"    # I
 
     .prologue
     .line 58
@@ -61,7 +61,7 @@
 
     iput-object v0, p0, Landroid/view/OrientationListener;->mOrientationEventLis:Landroid/view/OrientationEventListener;
 
-    .line 60
+    .line 58
     return-void
 .end method
 
@@ -76,7 +76,7 @@
 
     invoke-virtual {v0}, Landroid/view/OrientationEventListener;->disable()V
 
-    .line 91
+    .line 89
     return-void
 .end method
 
@@ -89,17 +89,17 @@
 
     invoke-virtual {v0}, Landroid/view/OrientationEventListener;->enable()V
 
-    .line 84
+    .line 82
     return-void
 .end method
 
 .method public onAccuracyChanged(II)V
     .locals 0
-    .parameter "sensor"
-    .parameter "accuracy"
+    .param p1, "sensor"    # I
+    .param p2, "accuracy"    # I
 
     .prologue
-    .line 94
+    .line 93
     return-void
 .end method
 
@@ -108,10 +108,10 @@
 
 .method public onSensorChanged(I[F)V
     .locals 0
-    .parameter "sensor"
-    .parameter "values"
+    .param p1, "sensor"    # I
+    .param p2, "values"    # [F
 
     .prologue
-    .line 98
+    .line 96
     return-void
 .end method

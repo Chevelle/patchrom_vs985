@@ -21,375 +21,400 @@
 # direct methods
 .method constructor <init>(Landroid/net/nsd/NsdManager;Landroid/os/Looper;)V
     .locals 0
-    .parameter
-    .parameter "looper"
+    .param p1, "this$0"    # Landroid/net/nsd/NsdManager;
+    .param p2, "looper"    # Landroid/os/Looper;
 
     .prologue
-    .line 298
+    .line 297
     iput-object p1, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
 
-    .line 299
+    .line 298
     invoke-direct {p0, p2}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
-    .line 300
+    .line 297
     return-void
 .end method
 
 
 # virtual methods
 .method public handleMessage(Landroid/os/Message;)V
-    .locals 7
-    .parameter "message"
+    .locals 6
+    .param p1, "message"    # Landroid/os/Message;
 
     .prologue
-    .line 304
-    iget v4, p1, Landroid/os/Message;->what:I
+    .line 303
+    iget v3, p1, Landroid/os/Message;->what:I
 
-    packed-switch v4, :pswitch_data_0
+    packed-switch v3, :pswitch_data_0
 
-    .line 317
+    .line 316
     :pswitch_0
-    iget-object v4, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
 
-    iget v5, p1, Landroid/os/Message;->arg2:I
+    iget v4, p1, Landroid/os/Message;->arg2:I
 
-    #calls: Landroid/net/nsd/NsdManager;->getListener(I)Ljava/lang/Object;
-    invoke-static {v4, v5}, Landroid/net/nsd/NsdManager;->access$200(Landroid/net/nsd/NsdManager;I)Ljava/lang/Object;
+    invoke-static {v3, v4}, Landroid/net/nsd/NsdManager;->-wrap1(Landroid/net/nsd/NsdManager;I)Ljava/lang/Object;
 
     move-result-object v0
 
+    .line 317
+    .local v0, "listener":Ljava/lang/Object;
+    if-nez v0, :cond_0
+
     .line 318
-    .local v0, listener:Ljava/lang/Object;
-    if-nez v0, :cond_1
+    const-string/jumbo v3, "NsdManager"
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v5, "Stale key "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    iget v5, p1, Landroid/os/Message;->arg2:I
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 319
-    const-string v4, "NsdManager"
-
-    new-instance v5, Ljava/lang/StringBuilder;
-
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v6, "Stale key "
-
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    iget v6, p1, Landroid/os/Message;->arg2:I
-
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 380
-    .end local v0           #listener:Ljava/lang/Object;
-    :cond_0
-    :goto_0
     return-void
 
-    .line 306
+    .line 305
+    .end local v0    # "listener":Ljava/lang/Object;
     :pswitch_1
-    iget-object v4, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
 
-    #getter for: Landroid/net/nsd/NsdManager;->mAsyncChannel:Lcom/android/internal/util/AsyncChannel;
-    invoke-static {v4}, Landroid/net/nsd/NsdManager;->access$000(Landroid/net/nsd/NsdManager;)Lcom/android/internal/util/AsyncChannel;
-
-    move-result-object v4
-
-    const v5, 0x11001
-
-    invoke-virtual {v4, v5}, Lcom/android/internal/util/AsyncChannel;->sendMessage(I)V
-
-    goto :goto_0
-
-    .line 309
-    :pswitch_2
-    iget-object v4, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
-
-    #getter for: Landroid/net/nsd/NsdManager;->mConnected:Ljava/util/concurrent/CountDownLatch;
-    invoke-static {v4}, Landroid/net/nsd/NsdManager;->access$100(Landroid/net/nsd/NsdManager;)Ljava/util/concurrent/CountDownLatch;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/util/concurrent/CountDownLatch;->countDown()V
-
-    goto :goto_0
-
-    .line 312
-    :pswitch_3
-    const-string v4, "NsdManager"
-
-    const-string v5, "Channel lost"
-
-    invoke-static {v4, v5}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_0
-
-    .line 322
-    .restart local v0       #listener:Ljava/lang/Object;
-    :cond_1
-    const/4 v1, 0x1
-
-    .line 323
-    .local v1, listenerRemove:Z
-    iget-object v4, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
-
-    iget v5, p1, Landroid/os/Message;->arg2:I
-
-    #calls: Landroid/net/nsd/NsdManager;->getNsdService(I)Landroid/net/nsd/NsdServiceInfo;
-    invoke-static {v4, v5}, Landroid/net/nsd/NsdManager;->access$300(Landroid/net/nsd/NsdManager;I)Landroid/net/nsd/NsdServiceInfo;
-
-    move-result-object v2
-
-    .line 324
-    .local v2, ns:Landroid/net/nsd/NsdServiceInfo;
-    iget v4, p1, Landroid/os/Message;->what:I
-
-    packed-switch v4, :pswitch_data_1
-
-    .line 374
-    :pswitch_4
-    const-string v4, "NsdManager"
-
-    new-instance v5, Ljava/lang/StringBuilder;
-
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v6, "Ignored "
-
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    invoke-virtual {v5, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 377
-    .end local v0           #listener:Ljava/lang/Object;
-    :goto_1
-    if-eqz v1, :cond_0
-
-    .line 378
-    iget-object v4, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
-
-    iget v5, p1, Landroid/os/Message;->arg2:I
-
-    #calls: Landroid/net/nsd/NsdManager;->removeListener(I)V
-    invoke-static {v4, v5}, Landroid/net/nsd/NsdManager;->access$500(Landroid/net/nsd/NsdManager;I)V
-
-    goto :goto_0
-
-    .line 326
-    .restart local v0       #listener:Ljava/lang/Object;
-    :pswitch_5
-    iget-object v5, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
-
-    iget-object v4, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    check-cast v4, Landroid/net/nsd/NsdServiceInfo;
-
-    #calls: Landroid/net/nsd/NsdManager;->getNsdServiceInfoType(Landroid/net/nsd/NsdServiceInfo;)Ljava/lang/String;
-    invoke-static {v5, v4}, Landroid/net/nsd/NsdManager;->access$400(Landroid/net/nsd/NsdManager;Landroid/net/nsd/NsdServiceInfo;)Ljava/lang/String;
+    invoke-static {v3}, Landroid/net/nsd/NsdManager;->-get0(Landroid/net/nsd/NsdManager;)Lcom/android/internal/util/AsyncChannel;
 
     move-result-object v3
 
-    .line 327
-    .local v3, s:Ljava/lang/String;
-    check-cast v0, Landroid/net/nsd/NsdManager$DiscoveryListener;
+    const v4, 0x11001
 
-    .end local v0           #listener:Ljava/lang/Object;
-    invoke-interface {v0, v3}, Landroid/net/nsd/NsdManager$DiscoveryListener;->onDiscoveryStarted(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Lcom/android/internal/util/AsyncChannel;->sendMessage(I)V
 
-    .line 329
-    const/4 v1, 0x0
+    .line 306
+    return-void
 
-    .line 330
-    goto :goto_1
+    .line 308
+    :pswitch_2
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
 
-    .line 332
-    .end local v3           #s:Ljava/lang/String;
-    .restart local v0       #listener:Ljava/lang/Object;
-    :pswitch_6
-    check-cast v0, Landroid/net/nsd/NsdManager$DiscoveryListener;
+    invoke-static {v3}, Landroid/net/nsd/NsdManager;->-get1(Landroid/net/nsd/NsdManager;)Ljava/util/concurrent/CountDownLatch;
 
-    .end local v0           #listener:Ljava/lang/Object;
-    iget-object v4, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+    move-result-object v3
 
-    #calls: Landroid/net/nsd/NsdManager;->getNsdServiceInfoType(Landroid/net/nsd/NsdServiceInfo;)Ljava/lang/String;
-    invoke-static {v4, v2}, Landroid/net/nsd/NsdManager;->access$400(Landroid/net/nsd/NsdManager;Landroid/net/nsd/NsdServiceInfo;)Ljava/lang/String;
+    invoke-virtual {v3}, Ljava/util/concurrent/CountDownLatch;->countDown()V
+
+    .line 309
+    return-void
+
+    .line 311
+    :pswitch_3
+    const-string/jumbo v3, "NsdManager"
+
+    const-string/jumbo v4, "Channel lost"
+
+    invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 312
+    return-void
+
+    .line 321
+    .restart local v0    # "listener":Ljava/lang/Object;
+    :cond_0
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+
+    iget v4, p1, Landroid/os/Message;->arg2:I
+
+    invoke-static {v3, v4}, Landroid/net/nsd/NsdManager;->-wrap0(Landroid/net/nsd/NsdManager;I)Landroid/net/nsd/NsdServiceInfo;
+
+    move-result-object v1
+
+    .line 322
+    .local v1, "ns":Landroid/net/nsd/NsdServiceInfo;
+    iget v3, p1, Landroid/os/Message;->what:I
+
+    packed-switch v3, :pswitch_data_1
+
+    .line 372
+    :pswitch_4
+    const-string/jumbo v3, "NsdManager"
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v5, "Ignored "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    iget v5, p1, Landroid/os/Message;->arg1:I
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    invoke-interface {v0, v4, v5}, Landroid/net/nsd/NsdManager$DiscoveryListener;->onStartDiscoveryFailed(Ljava/lang/String;I)V
+    move-result-object v4
 
-    goto :goto_1
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    .line 336
-    .restart local v0       #listener:Ljava/lang/Object;
+    move-result-object v4
+
+    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 302
+    .end local v0    # "listener":Ljava/lang/Object;
+    :goto_0
+    return-void
+
+    .line 324
+    .restart local v0    # "listener":Ljava/lang/Object;
+    :pswitch_5
+    iget-object v4, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+
+    iget-object v3, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v3, Landroid/net/nsd/NsdServiceInfo;
+
+    invoke-static {v4, v3}, Landroid/net/nsd/NsdManager;->-wrap2(Landroid/net/nsd/NsdManager;Landroid/net/nsd/NsdServiceInfo;)Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 325
+    .local v2, "s":Ljava/lang/String;
+    check-cast v0, Landroid/net/nsd/NsdManager$DiscoveryListener;
+
+    .end local v0    # "listener":Ljava/lang/Object;
+    invoke-interface {v0, v2}, Landroid/net/nsd/NsdManager$DiscoveryListener;->onDiscoveryStarted(Ljava/lang/String;)V
+
+    goto :goto_0
+
+    .line 328
+    .end local v2    # "s":Ljava/lang/String;
+    .restart local v0    # "listener":Ljava/lang/Object;
+    :pswitch_6
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+
+    iget v4, p1, Landroid/os/Message;->arg2:I
+
+    invoke-static {v3, v4}, Landroid/net/nsd/NsdManager;->-wrap3(Landroid/net/nsd/NsdManager;I)V
+
+    .line 329
+    check-cast v0, Landroid/net/nsd/NsdManager$DiscoveryListener;
+
+    .end local v0    # "listener":Ljava/lang/Object;
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+
+    invoke-static {v3, v1}, Landroid/net/nsd/NsdManager;->-wrap2(Landroid/net/nsd/NsdManager;Landroid/net/nsd/NsdServiceInfo;)Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 330
+    iget v4, p1, Landroid/os/Message;->arg1:I
+
+    .line 329
+    invoke-interface {v0, v3, v4}, Landroid/net/nsd/NsdManager$DiscoveryListener;->onStartDiscoveryFailed(Ljava/lang/String;I)V
+
+    goto :goto_0
+
+    .line 333
+    .restart local v0    # "listener":Ljava/lang/Object;
     :pswitch_7
     check-cast v0, Landroid/net/nsd/NsdManager$DiscoveryListener;
 
-    .end local v0           #listener:Ljava/lang/Object;
-    iget-object v4, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+    .end local v0    # "listener":Ljava/lang/Object;
+    iget-object v3, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    check-cast v4, Landroid/net/nsd/NsdServiceInfo;
+    check-cast v3, Landroid/net/nsd/NsdServiceInfo;
 
-    invoke-interface {v0, v4}, Landroid/net/nsd/NsdManager$DiscoveryListener;->onServiceFound(Landroid/net/nsd/NsdServiceInfo;)V
+    invoke-interface {v0, v3}, Landroid/net/nsd/NsdManager$DiscoveryListener;->onServiceFound(Landroid/net/nsd/NsdServiceInfo;)V
 
-    .line 338
-    const/4 v1, 0x0
+    goto :goto_0
 
-    .line 339
-    goto :goto_1
-
-    .line 341
-    .restart local v0       #listener:Ljava/lang/Object;
+    .line 336
+    .restart local v0    # "listener":Ljava/lang/Object;
     :pswitch_8
     check-cast v0, Landroid/net/nsd/NsdManager$DiscoveryListener;
 
-    .end local v0           #listener:Ljava/lang/Object;
-    iget-object v4, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+    .end local v0    # "listener":Ljava/lang/Object;
+    iget-object v3, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    check-cast v4, Landroid/net/nsd/NsdServiceInfo;
+    check-cast v3, Landroid/net/nsd/NsdServiceInfo;
 
-    invoke-interface {v0, v4}, Landroid/net/nsd/NsdManager$DiscoveryListener;->onServiceLost(Landroid/net/nsd/NsdServiceInfo;)V
+    invoke-interface {v0, v3}, Landroid/net/nsd/NsdManager$DiscoveryListener;->onServiceLost(Landroid/net/nsd/NsdServiceInfo;)V
 
-    .line 343
-    const/4 v1, 0x0
+    goto :goto_0
 
-    .line 344
-    goto :goto_1
-
-    .line 346
-    .restart local v0       #listener:Ljava/lang/Object;
+    .line 339
+    .restart local v0    # "listener":Ljava/lang/Object;
     :pswitch_9
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+
+    iget v4, p1, Landroid/os/Message;->arg2:I
+
+    invoke-static {v3, v4}, Landroid/net/nsd/NsdManager;->-wrap3(Landroid/net/nsd/NsdManager;I)V
+
+    .line 340
     check-cast v0, Landroid/net/nsd/NsdManager$DiscoveryListener;
 
-    .end local v0           #listener:Ljava/lang/Object;
-    iget-object v4, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+    .end local v0    # "listener":Ljava/lang/Object;
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
 
-    #calls: Landroid/net/nsd/NsdManager;->getNsdServiceInfoType(Landroid/net/nsd/NsdServiceInfo;)Ljava/lang/String;
-    invoke-static {v4, v2}, Landroid/net/nsd/NsdManager;->access$400(Landroid/net/nsd/NsdManager;Landroid/net/nsd/NsdServiceInfo;)Ljava/lang/String;
+    invoke-static {v3, v1}, Landroid/net/nsd/NsdManager;->-wrap2(Landroid/net/nsd/NsdManager;Landroid/net/nsd/NsdServiceInfo;)Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v3
 
-    iget v5, p1, Landroid/os/Message;->arg1:I
-
-    invoke-interface {v0, v4, v5}, Landroid/net/nsd/NsdManager$DiscoveryListener;->onStopDiscoveryFailed(Ljava/lang/String;I)V
-
-    goto :goto_1
-
-    .line 350
-    .restart local v0       #listener:Ljava/lang/Object;
-    :pswitch_a
-    check-cast v0, Landroid/net/nsd/NsdManager$DiscoveryListener;
-
-    .end local v0           #listener:Ljava/lang/Object;
-    iget-object v4, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
-
-    #calls: Landroid/net/nsd/NsdManager;->getNsdServiceInfoType(Landroid/net/nsd/NsdServiceInfo;)Ljava/lang/String;
-    invoke-static {v4, v2}, Landroid/net/nsd/NsdManager;->access$400(Landroid/net/nsd/NsdManager;Landroid/net/nsd/NsdServiceInfo;)Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-interface {v0, v4}, Landroid/net/nsd/NsdManager$DiscoveryListener;->onDiscoveryStopped(Ljava/lang/String;)V
-
-    goto :goto_1
-
-    .line 353
-    .restart local v0       #listener:Ljava/lang/Object;
-    :pswitch_b
-    check-cast v0, Landroid/net/nsd/NsdManager$RegistrationListener;
-
-    .end local v0           #listener:Ljava/lang/Object;
+    .line 341
     iget v4, p1, Landroid/os/Message;->arg1:I
 
-    invoke-interface {v0, v2, v4}, Landroid/net/nsd/NsdManager$RegistrationListener;->onRegistrationFailed(Landroid/net/nsd/NsdServiceInfo;I)V
+    .line 340
+    invoke-interface {v0, v3, v4}, Landroid/net/nsd/NsdManager$DiscoveryListener;->onStopDiscoveryFailed(Ljava/lang/String;I)V
 
-    goto :goto_1
+    goto :goto_0
 
-    .line 356
-    .restart local v0       #listener:Ljava/lang/Object;
+    .line 344
+    .restart local v0    # "listener":Ljava/lang/Object;
+    :pswitch_a
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+
+    iget v4, p1, Landroid/os/Message;->arg2:I
+
+    invoke-static {v3, v4}, Landroid/net/nsd/NsdManager;->-wrap3(Landroid/net/nsd/NsdManager;I)V
+
+    .line 345
+    check-cast v0, Landroid/net/nsd/NsdManager$DiscoveryListener;
+
+    .end local v0    # "listener":Ljava/lang/Object;
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+
+    invoke-static {v3, v1}, Landroid/net/nsd/NsdManager;->-wrap2(Landroid/net/nsd/NsdManager;Landroid/net/nsd/NsdServiceInfo;)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-interface {v0, v3}, Landroid/net/nsd/NsdManager$DiscoveryListener;->onDiscoveryStopped(Ljava/lang/String;)V
+
+    goto :goto_0
+
+    .line 348
+    .restart local v0    # "listener":Ljava/lang/Object;
+    :pswitch_b
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+
+    iget v4, p1, Landroid/os/Message;->arg2:I
+
+    invoke-static {v3, v4}, Landroid/net/nsd/NsdManager;->-wrap3(Landroid/net/nsd/NsdManager;I)V
+
+    .line 349
+    check-cast v0, Landroid/net/nsd/NsdManager$RegistrationListener;
+
+    .end local v0    # "listener":Ljava/lang/Object;
+    iget v3, p1, Landroid/os/Message;->arg1:I
+
+    invoke-interface {v0, v1, v3}, Landroid/net/nsd/NsdManager$RegistrationListener;->onRegistrationFailed(Landroid/net/nsd/NsdServiceInfo;I)V
+
+    goto :goto_0
+
+    .line 352
+    .restart local v0    # "listener":Ljava/lang/Object;
     :pswitch_c
     check-cast v0, Landroid/net/nsd/NsdManager$RegistrationListener;
 
-    .end local v0           #listener:Ljava/lang/Object;
-    iget-object v4, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+    .line 353
+    .end local v0    # "listener":Ljava/lang/Object;
+    iget-object v3, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    check-cast v4, Landroid/net/nsd/NsdServiceInfo;
+    check-cast v3, Landroid/net/nsd/NsdServiceInfo;
 
-    invoke-interface {v0, v4}, Landroid/net/nsd/NsdManager$RegistrationListener;->onServiceRegistered(Landroid/net/nsd/NsdServiceInfo;)V
+    .line 352
+    invoke-interface {v0, v3}, Landroid/net/nsd/NsdManager$RegistrationListener;->onServiceRegistered(Landroid/net/nsd/NsdServiceInfo;)V
 
-    .line 359
-    const/4 v1, 0x0
+    goto :goto_0
+
+    .line 356
+    .restart local v0    # "listener":Ljava/lang/Object;
+    :pswitch_d
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+
+    iget v4, p1, Landroid/os/Message;->arg2:I
+
+    invoke-static {v3, v4}, Landroid/net/nsd/NsdManager;->-wrap3(Landroid/net/nsd/NsdManager;I)V
+
+    .line 357
+    check-cast v0, Landroid/net/nsd/NsdManager$RegistrationListener;
+
+    .end local v0    # "listener":Ljava/lang/Object;
+    iget v3, p1, Landroid/os/Message;->arg1:I
+
+    invoke-interface {v0, v1, v3}, Landroid/net/nsd/NsdManager$RegistrationListener;->onUnregistrationFailed(Landroid/net/nsd/NsdServiceInfo;I)V
+
+    goto/16 :goto_0
 
     .line 360
-    goto :goto_1
+    .restart local v0    # "listener":Ljava/lang/Object;
+    :pswitch_e
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
 
-    .line 362
-    .restart local v0       #listener:Ljava/lang/Object;
-    :pswitch_d
+    iget v4, p1, Landroid/os/Message;->arg2:I
+
+    invoke-static {v3, v4}, Landroid/net/nsd/NsdManager;->-wrap3(Landroid/net/nsd/NsdManager;I)V
+
+    .line 361
     check-cast v0, Landroid/net/nsd/NsdManager$RegistrationListener;
 
-    .end local v0           #listener:Ljava/lang/Object;
-    iget v4, p1, Landroid/os/Message;->arg1:I
+    .end local v0    # "listener":Ljava/lang/Object;
+    invoke-interface {v0, v1}, Landroid/net/nsd/NsdManager$RegistrationListener;->onServiceUnregistered(Landroid/net/nsd/NsdServiceInfo;)V
 
-    invoke-interface {v0, v2, v4}, Landroid/net/nsd/NsdManager$RegistrationListener;->onUnregistrationFailed(Landroid/net/nsd/NsdServiceInfo;I)V
+    goto/16 :goto_0
 
-    goto :goto_1
+    .line 364
+    .restart local v0    # "listener":Ljava/lang/Object;
+    :pswitch_f
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+
+    iget v4, p1, Landroid/os/Message;->arg2:I
+
+    invoke-static {v3, v4}, Landroid/net/nsd/NsdManager;->-wrap3(Landroid/net/nsd/NsdManager;I)V
 
     .line 365
-    .restart local v0       #listener:Ljava/lang/Object;
-    :pswitch_e
-    check-cast v0, Landroid/net/nsd/NsdManager$RegistrationListener;
+    check-cast v0, Landroid/net/nsd/NsdManager$ResolveListener;
 
-    .end local v0           #listener:Ljava/lang/Object;
-    invoke-interface {v0, v2}, Landroid/net/nsd/NsdManager$RegistrationListener;->onServiceUnregistered(Landroid/net/nsd/NsdServiceInfo;)V
+    .end local v0    # "listener":Ljava/lang/Object;
+    iget v3, p1, Landroid/os/Message;->arg1:I
 
-    goto :goto_1
+    invoke-interface {v0, v1, v3}, Landroid/net/nsd/NsdManager$ResolveListener;->onResolveFailed(Landroid/net/nsd/NsdServiceInfo;I)V
+
+    goto/16 :goto_0
 
     .line 368
-    .restart local v0       #listener:Ljava/lang/Object;
-    :pswitch_f
-    check-cast v0, Landroid/net/nsd/NsdManager$ResolveListener;
-
-    .end local v0           #listener:Ljava/lang/Object;
-    iget v4, p1, Landroid/os/Message;->arg1:I
-
-    invoke-interface {v0, v2, v4}, Landroid/net/nsd/NsdManager$ResolveListener;->onResolveFailed(Landroid/net/nsd/NsdServiceInfo;I)V
-
-    goto/16 :goto_1
-
-    .line 371
-    .restart local v0       #listener:Ljava/lang/Object;
+    .restart local v0    # "listener":Ljava/lang/Object;
     :pswitch_10
+    iget-object v3, p0, Landroid/net/nsd/NsdManager$ServiceHandler;->this$0:Landroid/net/nsd/NsdManager;
+
+    iget v4, p1, Landroid/os/Message;->arg2:I
+
+    invoke-static {v3, v4}, Landroid/net/nsd/NsdManager;->-wrap3(Landroid/net/nsd/NsdManager;I)V
+
+    .line 369
     check-cast v0, Landroid/net/nsd/NsdManager$ResolveListener;
 
-    .end local v0           #listener:Ljava/lang/Object;
-    iget-object v4, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+    .end local v0    # "listener":Ljava/lang/Object;
+    iget-object v3, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    check-cast v4, Landroid/net/nsd/NsdServiceInfo;
+    check-cast v3, Landroid/net/nsd/NsdServiceInfo;
 
-    invoke-interface {v0, v4}, Landroid/net/nsd/NsdManager$ResolveListener;->onServiceResolved(Landroid/net/nsd/NsdServiceInfo;)V
+    invoke-interface {v0, v3}, Landroid/net/nsd/NsdManager$ResolveListener;->onServiceResolved(Landroid/net/nsd/NsdServiceInfo;)V
 
-    goto/16 :goto_1
+    goto/16 :goto_0
 
-    .line 304
+    .line 303
     nop
 
     :pswitch_data_0
@@ -401,7 +426,7 @@
         :pswitch_3
     .end packed-switch
 
-    .line 324
+    .line 322
     :pswitch_data_1
     .packed-switch 0x60002
         :pswitch_5

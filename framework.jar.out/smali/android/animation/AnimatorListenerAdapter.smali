@@ -22,54 +22,54 @@
 # virtual methods
 .method public onAnimationCancel(Landroid/animation/Animator;)V
     .locals 0
-    .parameter "animation"
+    .param p1, "animation"    # Landroid/animation/Animator;
 
     .prologue
-    .line 32
+    .line 31
     return-void
 .end method
 
 .method public onAnimationEnd(Landroid/animation/Animator;)V
     .locals 0
-    .parameter "animation"
+    .param p1, "animation"    # Landroid/animation/Animator;
 
     .prologue
-    .line 39
+    .line 38
     return-void
 .end method
 
 .method public onAnimationPause(Landroid/animation/Animator;)V
     .locals 0
-    .parameter "animation"
+    .param p1, "animation"    # Landroid/animation/Animator;
 
     .prologue
-    .line 60
+    .line 59
     return-void
 .end method
 
 .method public onAnimationRepeat(Landroid/animation/Animator;)V
     .locals 0
-    .parameter "animation"
+    .param p1, "animation"    # Landroid/animation/Animator;
 
     .prologue
-    .line 46
+    .line 45
     return-void
 .end method
 
 .method public onAnimationResume(Landroid/animation/Animator;)V
     .locals 0
-    .parameter "animation"
+    .param p1, "animation"    # Landroid/animation/Animator;
 
     .prologue
-    .line 67
+    .line 66
     return-void
 .end method
 
 .method public onAnimationStart(Landroid/animation/Animator;)V
     .locals 0
-    .parameter "animation"
+    .param p1, "animation"    # Landroid/animation/Animator;
 
     .prologue
-    .line 53
+    .line 52
     return-void
 .end method

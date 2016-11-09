@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/content/pm/VerifierDeviceIdentity;
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
     .line 233
@@ -50,17 +50,17 @@
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p1, v1}, Landroid/content/pm/VerifierDeviceIdentity;-><init>(Landroid/os/Parcel;Landroid/content/pm/VerifierDeviceIdentity$1;)V
+    invoke-direct {v0, p1, v1}, Landroid/content/pm/VerifierDeviceIdentity;-><init>(Landroid/os/Parcel;Landroid/content/pm/VerifierDeviceIdentity;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 231
+    .line 232
     invoke-virtual {p0, p1}, Landroid/content/pm/VerifierDeviceIdentity$1;->createFromParcel(Landroid/os/Parcel;)Landroid/content/pm/VerifierDeviceIdentity;
 
     move-result-object v0
@@ -70,7 +70,7 @@
 
 .method public newArray(I)[Landroid/content/pm/VerifierDeviceIdentity;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 237
@@ -81,10 +81,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 231
+    .line 236
     invoke-virtual {p0, p1}, Landroid/content/pm/VerifierDeviceIdentity$1;->newArray(I)[Landroid/content/pm/VerifierDeviceIdentity;
 
     move-result-object v0

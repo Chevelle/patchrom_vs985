@@ -44,16 +44,16 @@
 # direct methods
 .method constructor <init>(Landroid/content/ContentProvider;Landroid/content/ContentProvider$PipeDataWriter;[Landroid/os/ParcelFileDescriptor;Landroid/net/Uri;Ljava/lang/String;Landroid/os/Bundle;Ljava/lang/Object;)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/content/ContentProvider;
+    .param p3, "val$fds"    # [Landroid/os/ParcelFileDescriptor;
+    .param p4, "val$uri"    # Landroid/net/Uri;
+    .param p5, "val$mimeType"    # Ljava/lang/String;
+    .param p6, "val$opts"    # Landroid/os/Bundle;
 
     .prologue
-    .line 1507
+    .line 1668
+    .local p2, "val$func":Landroid/content/ContentProvider$PipeDataWriter;, "Landroid/content/ContentProvider$PipeDataWriter<TT;>;"
+    .local p7, "val$args":Ljava/lang/Object;, "TT;"
     iput-object p1, p0, Landroid/content/ContentProvider$1;->this$0:Landroid/content/ContentProvider;
 
     iput-object p2, p0, Landroid/content/ContentProvider$1;->val$func:Landroid/content/ContentProvider$PipeDataWriter;
@@ -77,12 +77,12 @@
 # virtual methods
 .method protected varargs doInBackground([Ljava/lang/Object;)Ljava/lang/Object;
     .locals 7
-    .parameter "params"
+    .param p1, "params"    # [Ljava/lang/Object;
 
     .prologue
     const/4 v2, 0x1
 
-    .line 1510
+    .line 1671
     iget-object v0, p0, Landroid/content/ContentProvider$1;->val$func:Landroid/content/ContentProvider$PipeDataWriter;
 
     iget-object v1, p0, Landroid/content/ContentProvider$1;->val$fds:[Landroid/os/ParcelFileDescriptor;
@@ -99,7 +99,7 @@
 
     invoke-interface/range {v0 .. v5}, Landroid/content/ContentProvider$PipeDataWriter;->writeDataToPipe(Landroid/os/ParcelFileDescriptor;Landroid/net/Uri;Ljava/lang/String;Landroid/os/Bundle;Ljava/lang/Object;)V
 
-    .line 1512
+    .line 1673
     :try_start_0
     iget-object v0, p0, Landroid/content/ContentProvider$1;->val$fds:[Landroid/os/ParcelFileDescriptor;
 
@@ -111,21 +111,21 @@
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1516
+    .line 1677
     :goto_0
     const/4 v0, 0x0
 
     return-object v0
 
-    .line 1513
+    .line 1674
     :catch_0
     move-exception v6
 
-    .line 1514
-    .local v6, e:Ljava/io/IOException;
-    const-string v0, "ContentProvider"
+    .line 1675
+    .local v6, "e":Ljava/io/IOException;
+    const-string/jumbo v0, "ContentProvider"
 
-    const-string v1, "Failure closing pipe"
+    const-string/jumbo v1, "Failure closing pipe"
 
     invoke-static {v0, v1, v6}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 

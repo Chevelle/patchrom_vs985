@@ -41,67 +41,67 @@
 
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/view/GraphicBuffer;
-    .locals 7
-    .parameter "in"
+    .locals 9
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
     .line 270
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
-    move-result v1
-
-    .line 271
-    .local v1, width:I
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
-
     move-result v2
 
-    .line 272
-    .local v2, height:I
+    .line 271
+    .local v2, "width":I
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v3
 
-    .line 273
-    .local v3, format:I
+    .line 272
+    .local v3, "height":I
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v4
 
-    .line 274
-    .local v4, usage:I
-    #calls: Landroid/view/GraphicBuffer;->nReadGraphicBufferFromParcel(Landroid/os/Parcel;)I
-    invoke-static {p1}, Landroid/view/GraphicBuffer;->access$000(Landroid/os/Parcel;)I
+    .line 273
+    .local v4, "format":I
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v5
 
+    .line 274
+    .local v5, "usage":I
+    invoke-static {p1}, Landroid/view/GraphicBuffer;->-wrap0(Landroid/os/Parcel;)J
+
+    move-result-wide v6
+
     .line 275
-    .local v5, nativeObject:I
-    if-eqz v5, :cond_0
+    .local v6, "nativeObject":J
+    const-wide/16 v0, 0x0
+
+    cmp-long v0, v6, v0
+
+    if-eqz v0, :cond_0
 
     .line 276
-    new-instance v0, Landroid/view/GraphicBuffer;
+    new-instance v1, Landroid/view/GraphicBuffer;
 
-    invoke-direct/range {v0 .. v6}, Landroid/view/GraphicBuffer;-><init>(IIIIILandroid/view/GraphicBuffer$1;)V
+    invoke-direct/range {v1 .. v8}, Landroid/view/GraphicBuffer;-><init>(IIIIJLandroid/view/GraphicBuffer;)V
+
+    return-object v1
 
     .line 278
-    :goto_0
-    return-object v0
-
     :cond_0
-    move-object v0, v6
-
-    goto :goto_0
+    return-object v8
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 268
+    .line 269
     invoke-virtual {p0, p1}, Landroid/view/GraphicBuffer$1;->createFromParcel(Landroid/os/Parcel;)Landroid/view/GraphicBuffer;
 
     move-result-object v0
@@ -111,7 +111,7 @@
 
 .method public newArray(I)[Landroid/view/GraphicBuffer;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 282
@@ -122,10 +122,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 268
+    .line 281
     invoke-virtual {p0, p1}, Landroid/view/GraphicBuffer$1;->newArray(I)[Landroid/view/GraphicBuffer;
 
     move-result-object v0

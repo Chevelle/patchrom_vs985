@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/app/LauncherActivity;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/app/LauncherActivity;
 
     .prologue
-    .line 373
+    .line 377
     iput-object p1, p0, Landroid/app/LauncherActivity$1;->this$0:Landroid/app/LauncherActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,14 +39,14 @@
 # virtual methods
 .method public onClick(Landroid/view/View;)V
     .locals 1
-    .parameter "v"
+    .param p1, "v"    # Landroid/view/View;
 
     .prologue
-    .line 375
+    .line 379
     iget-object v0, p0, Landroid/app/LauncherActivity$1;->this$0:Landroid/app/LauncherActivity;
 
     invoke-virtual {v0}, Landroid/app/LauncherActivity;->finish()V
 
-    .line 376
+    .line 378
     return-void
 .end method

@@ -15,7 +15,7 @@
 
 
 # virtual methods
-.method public abstract addCircularFence(IIDDDIIIILandroid/hardware/location/IGeofenceHardwareCallback;)Z
+.method public abstract addCircularFence(ILandroid/hardware/location/GeofenceHardwareRequestParcelable;Landroid/hardware/location/IGeofenceHardwareCallback;)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

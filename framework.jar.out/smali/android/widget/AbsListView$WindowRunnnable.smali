@@ -23,10 +23,10 @@
 # direct methods
 .method private constructor <init>(Landroid/widget/AbsListView;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/AbsListView;
 
     .prologue
-    .line 2883
+    .line 3038
     iput-object p1, p0, Landroid/widget/AbsListView$WindowRunnnable;->this$0:Landroid/widget/AbsListView;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -34,13 +34,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/widget/AbsListView;Landroid/widget/AbsListView$1;)V
+.method synthetic constructor <init>(Landroid/widget/AbsListView;Landroid/widget/AbsListView$WindowRunnnable;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Landroid/widget/AbsListView;
 
     .prologue
-    .line 2883
     invoke-direct {p0, p1}, Landroid/widget/AbsListView$WindowRunnnable;-><init>(Landroid/widget/AbsListView;)V
 
     return-void
@@ -52,17 +50,16 @@
     .locals 1
 
     .prologue
-    .line 2887
+    .line 3042
     iget-object v0, p0, Landroid/widget/AbsListView$WindowRunnnable;->this$0:Landroid/widget/AbsListView;
 
-    #calls: Landroid/widget/AbsListView;->getWindowAttachCount()I
-    invoke-static {v0}, Landroid/widget/AbsListView;->access$400(Landroid/widget/AbsListView;)I
+    invoke-static {v0}, Landroid/widget/AbsListView;->-wrap3(Landroid/widget/AbsListView;)I
 
     move-result v0
 
     iput v0, p0, Landroid/widget/AbsListView$WindowRunnnable;->mOriginalAttachCount:I
 
-    .line 2888
+    .line 3041
     return-void
 .end method
 
@@ -70,11 +67,10 @@
     .locals 2
 
     .prologue
-    .line 2891
+    .line 3046
     iget-object v0, p0, Landroid/widget/AbsListView$WindowRunnnable;->this$0:Landroid/widget/AbsListView;
 
-    #calls: Landroid/widget/AbsListView;->getWindowAttachCount()I
-    invoke-static {v0}, Landroid/widget/AbsListView;->access$500(Landroid/widget/AbsListView;)I
+    invoke-static {v0}, Landroid/widget/AbsListView;->-wrap3(Landroid/widget/AbsListView;)I
 
     move-result v0
 

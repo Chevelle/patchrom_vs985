@@ -21,37 +21,37 @@
 # direct methods
 .method public constructor <init>(Landroid/appwidget/AppWidgetHost;Landroid/os/Looper;)V
     .locals 0
-    .parameter
-    .parameter "looper"
+    .param p1, "this$0"    # Landroid/appwidget/AppWidgetHost;
+    .param p2, "looper"    # Landroid/os/Looper;
 
     .prologue
-    .line 97
+    .line 124
     iput-object p1, p0, Landroid/appwidget/AppWidgetHost$UpdateHandler;->this$0:Landroid/appwidget/AppWidgetHost;
 
-    .line 98
+    .line 125
     invoke-direct {p0, p2}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
-    .line 99
+    .line 124
     return-void
 .end method
 
 
 # virtual methods
 .method public handleMessage(Landroid/os/Message;)V
-    .locals 4
-    .parameter "msg"
+    .locals 3
+    .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
-    .line 102
+    .line 129
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 120
+    .line 128
     :goto_0
     return-void
 
-    .line 104
+    .line 131
     :pswitch_0
     iget-object v1, p0, Landroid/appwidget/AppWidgetHost$UpdateHandler;->this$0:Landroid/appwidget/AppWidgetHost;
 
@@ -61,13 +61,11 @@
 
     check-cast v0, Landroid/widget/RemoteViews;
 
-    iget v3, p1, Landroid/os/Message;->arg2:I
-
-    invoke-virtual {v1, v2, v0, v3}, Landroid/appwidget/AppWidgetHost;->updateAppWidgetView(ILandroid/widget/RemoteViews;I)V
+    invoke-virtual {v1, v2, v0}, Landroid/appwidget/AppWidgetHost;->updateAppWidgetView(ILandroid/widget/RemoteViews;)V
 
     goto :goto_0
 
-    .line 108
+    .line 135
     :pswitch_1
     iget-object v1, p0, Landroid/appwidget/AppWidgetHost$UpdateHandler;->this$0:Landroid/appwidget/AppWidgetHost;
 
@@ -81,7 +79,7 @@
 
     goto :goto_0
 
-    .line 112
+    .line 139
     :pswitch_2
     iget-object v0, p0, Landroid/appwidget/AppWidgetHost$UpdateHandler;->this$0:Landroid/appwidget/AppWidgetHost;
 
@@ -89,27 +87,19 @@
 
     goto :goto_0
 
-    .line 116
+    .line 143
     :pswitch_3
-    iget-object v1, p0, Landroid/appwidget/AppWidgetHost$UpdateHandler;->this$0:Landroid/appwidget/AppWidgetHost;
+    iget-object v0, p0, Landroid/appwidget/AppWidgetHost$UpdateHandler;->this$0:Landroid/appwidget/AppWidgetHost;
 
-    iget v2, p1, Landroid/os/Message;->arg1:I
+    iget v1, p1, Landroid/os/Message;->arg1:I
 
-    iget v3, p1, Landroid/os/Message;->arg2:I
+    iget v2, p1, Landroid/os/Message;->arg2:I
 
-    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    check-cast v0, Ljava/lang/Integer;
-
-    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
-
-    move-result v0
-
-    invoke-virtual {v1, v2, v3, v0}, Landroid/appwidget/AppWidgetHost;->viewDataChanged(III)V
+    invoke-virtual {v0, v1, v2}, Landroid/appwidget/AppWidgetHost;->viewDataChanged(II)V
 
     goto :goto_0
 
-    .line 102
+    .line 129
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0

@@ -26,10 +26,10 @@
 # direct methods
 .method constructor <init>(Ljava/lang/String;)V
     .locals 0
-    .parameter "x0"
+    .param p1, "$anonymous0"    # Ljava/lang/String;
 
     .prologue
-    .line 18129
+    .line 20825
     invoke-direct {p0, p1}, Landroid/util/FloatProperty;-><init>(Ljava/lang/String;)V
 
     return-void
@@ -39,11 +39,11 @@
 # virtual methods
 .method public get(Landroid/view/View;)Ljava/lang/Float;
     .locals 1
-    .parameter "object"
+    .param p1, "object"    # Landroid/view/View;
 
     .prologue
-    .line 18137
-    invoke-virtual {p1}, Landroid/view/View;->getTranslationX()F
+    .line 20833
+    invoke-virtual {p1}, Landroid/view/View;->getTranslationZ()F
 
     move-result v0
 
@@ -56,13 +56,13 @@
 
 .method public bridge synthetic get(Ljava/lang/Object;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "object"    # Ljava/lang/Object;
 
     .prologue
-    .line 18129
+    .line 20832
     check-cast p1, Landroid/view/View;
 
-    .end local p1
+    .end local p1    # "object":Ljava/lang/Object;
     invoke-virtual {p0, p1}, Landroid/view/View$4;->get(Landroid/view/View;)Ljava/lang/Float;
 
     move-result-object v0
@@ -72,27 +72,27 @@
 
 .method public setValue(Landroid/view/View;F)V
     .locals 0
-    .parameter "object"
-    .parameter "value"
+    .param p1, "object"    # Landroid/view/View;
+    .param p2, "value"    # F
 
     .prologue
-    .line 18132
-    invoke-virtual {p1, p2}, Landroid/view/View;->setTranslationX(F)V
+    .line 20828
+    invoke-virtual {p1, p2}, Landroid/view/View;->setTranslationZ(F)V
 
-    .line 18133
+    .line 20827
     return-void
 .end method
 
 .method public bridge synthetic setValue(Ljava/lang/Object;F)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "object"    # Ljava/lang/Object;
+    .param p2, "value"    # F
 
     .prologue
-    .line 18129
+    .line 20827
     check-cast p1, Landroid/view/View;
 
-    .end local p1
+    .end local p1    # "object":Ljava/lang/Object;
     invoke-virtual {p0, p1, p2}, Landroid/view/View$4;->setValue(Landroid/view/View;F)V
 
     return-void

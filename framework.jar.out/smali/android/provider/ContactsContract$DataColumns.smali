@@ -15,6 +15,10 @@
 
 
 # static fields
+.field public static final CARRIER_PRESENCE:Ljava/lang/String; = "carrier_presence"
+
+.field public static final CARRIER_PRESENCE_VT_CAPABLE:I = 0x1
+
 .field public static final DATA1:Ljava/lang/String; = "data1"
 
 .field public static final DATA10:Ljava/lang/String; = "data10"
@@ -46,6 +50,8 @@
 .field public static final DATA9:Ljava/lang/String; = "data9"
 
 .field public static final DATA_VERSION:Ljava/lang/String; = "data_version"
+
+.field public static final HASH_ID:Ljava/lang/String; = "hash_id"
 
 .field public static final IS_PRIMARY:Ljava/lang/String; = "is_primary"
 

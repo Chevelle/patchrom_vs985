@@ -10,7 +10,7 @@
 # direct methods
 .method constructor <init>(Landroid/bluetooth/BluetoothSocket;)V
     .locals 0
-    .parameter "s"
+    .param p1, "s"    # Landroid/bluetooth/BluetoothSocket;
 
     .prologue
     .line 32
@@ -19,7 +19,7 @@
     .line 33
     iput-object p1, p0, Landroid/bluetooth/BluetoothOutputStream;->mSocket:Landroid/bluetooth/BluetoothSocket;
 
-    .line 34
+    .line 32
     return-void
 .end method
 
@@ -39,7 +39,7 @@
 
     invoke-virtual {v0}, Landroid/bluetooth/BluetoothSocket;->close()V
 
-    .line 41
+    .line 39
     return-void
 .end method
 
@@ -57,13 +57,13 @@
 
     invoke-virtual {v0}, Landroid/bluetooth/BluetoothSocket;->flush()V
 
-    .line 97
+    .line 95
     return-void
 .end method
 
 .method public write(I)V
     .locals 4
-    .parameter "oneByte"
+    .param p1, "oneByte"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -79,7 +79,7 @@
     new-array v0, v3, [B
 
     .line 55
-    .local v0, b:[B
+    .local v0, "b":[B
     int-to-byte v1, p1
 
     aput-byte v1, v0, v2
@@ -89,15 +89,15 @@
 
     invoke-virtual {v1, v0, v2, v3}, Landroid/bluetooth/BluetoothSocket;->write([BII)I
 
-    .line 57
+    .line 53
     return-void
 .end method
 
 .method public write([BII)V
     .locals 2
-    .parameter "b"
-    .parameter "offset"
-    .parameter "count"
+    .param p1, "b"    # [B
+    .param p2, "offset"    # I
+    .param p3, "count"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -111,7 +111,7 @@
     .line 80
     new-instance v0, Ljava/lang/NullPointerException;
 
-    const-string v1, "buffer is null"
+    const-string/jumbo v1, "buffer is null"
 
     invoke-direct {v0, v1}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
@@ -133,7 +133,7 @@
     :cond_1
     new-instance v0, Ljava/lang/IndexOutOfBoundsException;
 
-    const-string v1, "invalid offset or length"
+    const-string/jumbo v1, "invalid offset or length"
 
     invoke-direct {v0, v1}, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
 
@@ -145,6 +145,6 @@
 
     invoke-virtual {v0, p1, p2, p3}, Landroid/bluetooth/BluetoothSocket;->write([BII)I
 
-    .line 86
+    .line 78
     return-void
 .end method

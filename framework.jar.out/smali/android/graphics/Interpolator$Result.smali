@@ -47,7 +47,7 @@
     .line 112
     new-instance v0, Landroid/graphics/Interpolator$Result;
 
-    const-string v1, "NORMAL"
+    const-string/jumbo v1, "NORMAL"
 
     invoke-direct {v0, v1, v2}, Landroid/graphics/Interpolator$Result;-><init>(Ljava/lang/String;I)V
 
@@ -56,7 +56,7 @@
     .line 113
     new-instance v0, Landroid/graphics/Interpolator$Result;
 
-    const-string v1, "FREEZE_START"
+    const-string/jumbo v1, "FREEZE_START"
 
     invoke-direct {v0, v1, v3}, Landroid/graphics/Interpolator$Result;-><init>(Ljava/lang/String;I)V
 
@@ -65,7 +65,7 @@
     .line 114
     new-instance v0, Landroid/graphics/Interpolator$Result;
 
-    const-string v1, "FREEZE_END"
+    const-string/jumbo v1, "FREEZE_END"
 
     invoke-direct {v0, v1, v4}, Landroid/graphics/Interpolator$Result;-><init>(Ljava/lang/String;I)V
 
@@ -95,13 +95,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 111
@@ -112,7 +105,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Landroid/graphics/Interpolator$Result;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 111
@@ -133,12 +126,6 @@
     .prologue
     .line 111
     sget-object v0, Landroid/graphics/Interpolator$Result;->$VALUES:[Landroid/graphics/Interpolator$Result;
-
-    invoke-virtual {v0}, [Landroid/graphics/Interpolator$Result;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/graphics/Interpolator$Result;
 
     return-object v0
 .end method

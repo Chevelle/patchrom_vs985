@@ -11,7 +11,7 @@
     .line 25
     invoke-static {}, Landroid/opengl/GLES10Ext;->_nativeClassInit()V
 
-    .line 26
+    .line 22
     return-void
 .end method
 

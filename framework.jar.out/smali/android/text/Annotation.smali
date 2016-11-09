@@ -15,7 +15,7 @@
 # direct methods
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 1
-    .parameter "src"
+    .param p1, "src"    # Landroid/os/Parcel;
 
     .prologue
     .line 35
@@ -35,14 +35,14 @@
 
     iput-object v0, p0, Landroid/text/Annotation;->mValue:Ljava/lang/String;
 
-    .line 38
+    .line 35
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
-    .parameter "key"
-    .parameter "value"
+    .param p1, "key"    # Ljava/lang/String;
+    .param p2, "value"    # Ljava/lang/String;
 
     .prologue
     .line 30
@@ -54,7 +54,7 @@
     .line 32
     iput-object p2, p0, Landroid/text/Annotation;->mValue:Ljava/lang/String;
 
-    .line 33
+    .line 30
     return-void
 .end method
 
@@ -64,7 +64,7 @@
     .locals 1
 
     .prologue
-    .line 45
+    .line 50
     const/4 v0, 0x0
 
     return v0
@@ -74,7 +74,7 @@
     .locals 1
 
     .prologue
-    .line 54
+    .line 64
     iget-object v0, p0, Landroid/text/Annotation;->mKey:Ljava/lang/String;
 
     return-object v0
@@ -85,6 +85,18 @@
 
     .prologue
     .line 41
+    invoke-virtual {p0}, Landroid/text/Annotation;->getSpanTypeIdInternal()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getSpanTypeIdInternal()I
+    .locals 1
+
+    .prologue
+    .line 46
     const/16 v0, 0x12
 
     return v0
@@ -94,28 +106,41 @@
     .locals 1
 
     .prologue
-    .line 58
+    .line 68
     iget-object v0, p0, Landroid/text/Annotation;->mValue:Ljava/lang/String;
 
     return-object v0
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
-    .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .locals 0
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 49
+    .line 54
+    invoke-virtual {p0, p1, p2}, Landroid/text/Annotation;->writeToParcelInternal(Landroid/os/Parcel;I)V
+
+    .line 53
+    return-void
+.end method
+
+.method public writeToParcelInternal(Landroid/os/Parcel;I)V
+    .locals 1
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
+
+    .prologue
+    .line 59
     iget-object v0, p0, Landroid/text/Annotation;->mKey:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 50
+    .line 60
     iget-object v0, p0, Landroid/text/Annotation;->mValue:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 51
+    .line 58
     return-void
 .end method

@@ -23,67 +23,68 @@
 # direct methods
 .method public constructor <init>(Landroid/media/MediaDrm;Landroid/media/MediaDrm;Landroid/os/Looper;)V
     .locals 0
-    .parameter
-    .parameter "md"
-    .parameter "looper"
+    .param p1, "this$0"    # Landroid/media/MediaDrm;
+    .param p2, "md"    # Landroid/media/MediaDrm;
+    .param p3, "looper"    # Landroid/os/Looper;
 
     .prologue
-    .line 226
+    .line 510
     iput-object p1, p0, Landroid/media/MediaDrm$EventHandler;->this$0:Landroid/media/MediaDrm;
 
-    .line 227
+    .line 511
     invoke-direct {p0, p3}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
-    .line 228
+    .line 512
     iput-object p2, p0, Landroid/media/MediaDrm$EventHandler;->mMediaDrm:Landroid/media/MediaDrm;
 
-    .line 229
+    .line 510
     return-void
 .end method
 
 
 # virtual methods
 .method public handleMessage(Landroid/os/Message;)V
-    .locals 7
-    .parameter "msg"
+    .locals 14
+    .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
-    .line 233
+    .line 517
     iget-object v0, p0, Landroid/media/MediaDrm$EventHandler;->mMediaDrm:Landroid/media/MediaDrm;
 
-    #getter for: Landroid/media/MediaDrm;->mNativeContext:I
-    invoke-static {v0}, Landroid/media/MediaDrm;->access$000(Landroid/media/MediaDrm;)I
+    invoke-static {v0}, Landroid/media/MediaDrm;->-get0(Landroid/media/MediaDrm;)J
 
-    move-result v0
+    move-result-wide v0
 
-    if-nez v0, :cond_1
+    const-wide/16 v12, 0x0
 
-    .line 234
-    const-string v0, "MediaDrm"
+    cmp-long v0, v0, v12
 
-    const-string v1, "MediaDrm went away with unhandled events"
+    if-nez v0, :cond_0
+
+    .line 518
+    const-string/jumbo v0, "MediaDrm"
+
+    const-string/jumbo v1, "MediaDrm went away with unhandled events"
 
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 260
-    :cond_0
-    :goto_0
+    .line 519
     return-void
 
-    .line 237
-    :cond_1
+    .line 521
+    :cond_0
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 259
-    const-string v0, "MediaDrm"
+    .line 576
+    const-string/jumbo v0, "MediaDrm"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Unknown message type "
+    const-string/jumbo v3, "Unknown message type "
 
     invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -101,17 +102,76 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_0
+    .line 577
+    return-void
 
-    .line 240
+    .line 524
     :pswitch_0
-    const-string v0, "MediaDrm"
+    iget-object v0, p0, Landroid/media/MediaDrm$EventHandler;->this$0:Landroid/media/MediaDrm;
+
+    invoke-static {v0}, Landroid/media/MediaDrm;->-get1(Landroid/media/MediaDrm;)Landroid/media/MediaDrm$OnEventListener;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_3
+
+    .line 525
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    if-eqz v0, :cond_3
+
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    instance-of v0, v0, Landroid/os/Parcel;
+
+    if-eqz v0, :cond_3
+
+    .line 526
+    iget-object v10, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v10, Landroid/os/Parcel;
+
+    .line 527
+    .local v10, "parcel":Landroid/os/Parcel;
+    invoke-virtual {v10}, Landroid/os/Parcel;->createByteArray()[B
+
+    move-result-object v2
+
+    .line 528
+    .local v2, "sessionId":[B
+    array-length v0, v2
+
+    if-nez v0, :cond_1
+
+    .line 529
+    const/4 v2, 0x0
+
+    .line 531
+    .end local v2    # "sessionId":[B
+    :cond_1
+    invoke-virtual {v10}, Landroid/os/Parcel;->createByteArray()[B
+
+    move-result-object v5
+
+    .line 532
+    .local v5, "data":[B
+    array-length v0, v5
+
+    if-nez v0, :cond_2
+
+    .line 533
+    const/4 v5, 0x0
+
+    .line 536
+    .end local v5    # "data":[B
+    :cond_2
+    const-string/jumbo v0, "MediaDrm"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Drm event ("
+    const-string/jumbo v3, "Drm event ("
 
     invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -123,7 +183,7 @@
 
     move-result-object v1
 
-    const-string v3, ","
+    const-string/jumbo v3, ","
 
     invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -135,7 +195,7 @@
 
     move-result-object v1
 
-    const-string v3, ")"
+    const-string/jumbo v3, ")"
 
     invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -147,68 +207,10 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 242
+    .line 537
     iget-object v0, p0, Landroid/media/MediaDrm$EventHandler;->this$0:Landroid/media/MediaDrm;
 
-    #getter for: Landroid/media/MediaDrm;->mOnEventListener:Landroid/media/MediaDrm$OnEventListener;
-    invoke-static {v0}, Landroid/media/MediaDrm;->access$100(Landroid/media/MediaDrm;)Landroid/media/MediaDrm$OnEventListener;
-
-    move-result-object v0
-
-    if-eqz v0, :cond_0
-
-    .line 243
-    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    instance-of v0, v0, Landroid/os/Parcel;
-
-    if-eqz v0, :cond_0
-
-    .line 244
-    iget-object v6, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
-
-    check-cast v6, Landroid/os/Parcel;
-
-    .line 245
-    .local v6, parcel:Landroid/os/Parcel;
-    invoke-virtual {v6}, Landroid/os/Parcel;->createByteArray()[B
-
-    move-result-object v2
-
-    .line 246
-    .local v2, sessionId:[B
-    array-length v0, v2
-
-    if-nez v0, :cond_2
-
-    .line 247
-    const/4 v2, 0x0
-
-    .line 249
-    :cond_2
-    invoke-virtual {v6}, Landroid/os/Parcel;->createByteArray()[B
-
-    move-result-object v5
-
-    .line 250
-    .local v5, data:[B
-    array-length v0, v5
-
-    if-nez v0, :cond_3
-
-    .line 251
-    const/4 v5, 0x0
-
-    .line 253
-    :cond_3
-    iget-object v0, p0, Landroid/media/MediaDrm$EventHandler;->this$0:Landroid/media/MediaDrm;
-
-    #getter for: Landroid/media/MediaDrm;->mOnEventListener:Landroid/media/MediaDrm$OnEventListener;
-    invoke-static {v0}, Landroid/media/MediaDrm;->access$100(Landroid/media/MediaDrm;)Landroid/media/MediaDrm$OnEventListener;
+    invoke-static {v0}, Landroid/media/MediaDrm;->-get1(Landroid/media/MediaDrm;)Landroid/media/MediaDrm$OnEventListener;
 
     move-result-object v0
 
@@ -220,13 +222,198 @@
 
     invoke-interface/range {v0 .. v5}, Landroid/media/MediaDrm$OnEventListener;->onEvent(Landroid/media/MediaDrm;[BII[B)V
 
-    goto/16 :goto_0
+    .line 540
+    .end local v10    # "parcel":Landroid/os/Parcel;
+    :cond_3
+    return-void
 
-    .line 237
-    nop
+    .line 543
+    :pswitch_1
+    iget-object v0, p0, Landroid/media/MediaDrm$EventHandler;->this$0:Landroid/media/MediaDrm;
 
+    invoke-static {v0}, Landroid/media/MediaDrm;->-get3(Landroid/media/MediaDrm;)Landroid/media/MediaDrm$OnKeyStatusChangeListener;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_4
+
+    .line 544
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    if-eqz v0, :cond_4
+
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    instance-of v0, v0, Landroid/os/Parcel;
+
+    if-eqz v0, :cond_4
+
+    .line 545
+    iget-object v10, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v10, Landroid/os/Parcel;
+
+    .line 546
+    .restart local v10    # "parcel":Landroid/os/Parcel;
+    invoke-virtual {v10}, Landroid/os/Parcel;->createByteArray()[B
+
+    move-result-object v2
+
+    .line 547
+    .restart local v2    # "sessionId":[B
+    array-length v0, v2
+
+    if-lez v0, :cond_4
+
+    .line 548
+    iget-object v0, p0, Landroid/media/MediaDrm$EventHandler;->this$0:Landroid/media/MediaDrm;
+
+    invoke-static {v0, v10}, Landroid/media/MediaDrm;->-wrap4(Landroid/media/MediaDrm;Landroid/os/Parcel;)Ljava/util/List;
+
+    move-result-object v9
+
+    .line 549
+    .local v9, "keyStatusList":Ljava/util/List;, "Ljava/util/List<Landroid/media/MediaDrm$KeyStatus;>;"
+    invoke-virtual {v10}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    if-eqz v0, :cond_5
+
+    const/4 v8, 0x1
+
+    .line 551
+    .local v8, "hasNewUsableKey":Z
+    :goto_0
+    const-string/jumbo v0, "MediaDrm"
+
+    const-string/jumbo v1, "Drm key status changed"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 552
+    iget-object v0, p0, Landroid/media/MediaDrm$EventHandler;->this$0:Landroid/media/MediaDrm;
+
+    invoke-static {v0}, Landroid/media/MediaDrm;->-get3(Landroid/media/MediaDrm;)Landroid/media/MediaDrm$OnKeyStatusChangeListener;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/media/MediaDrm$EventHandler;->mMediaDrm:Landroid/media/MediaDrm;
+
+    invoke-interface {v0, v1, v2, v9, v8}, Landroid/media/MediaDrm$OnKeyStatusChangeListener;->onKeyStatusChange(Landroid/media/MediaDrm;[BLjava/util/List;Z)V
+
+    .line 557
+    .end local v2    # "sessionId":[B
+    .end local v8    # "hasNewUsableKey":Z
+    .end local v9    # "keyStatusList":Ljava/util/List;, "Ljava/util/List<Landroid/media/MediaDrm$KeyStatus;>;"
+    .end local v10    # "parcel":Landroid/os/Parcel;
+    :cond_4
+    return-void
+
+    .line 549
+    .restart local v2    # "sessionId":[B
+    .restart local v9    # "keyStatusList":Ljava/util/List;, "Ljava/util/List<Landroid/media/MediaDrm$KeyStatus;>;"
+    .restart local v10    # "parcel":Landroid/os/Parcel;
+    :cond_5
+    const/4 v8, 0x0
+
+    .restart local v8    # "hasNewUsableKey":Z
+    goto :goto_0
+
+    .line 560
+    .end local v2    # "sessionId":[B
+    .end local v8    # "hasNewUsableKey":Z
+    .end local v9    # "keyStatusList":Ljava/util/List;, "Ljava/util/List<Landroid/media/MediaDrm$KeyStatus;>;"
+    .end local v10    # "parcel":Landroid/os/Parcel;
+    :pswitch_2
+    iget-object v0, p0, Landroid/media/MediaDrm$EventHandler;->this$0:Landroid/media/MediaDrm;
+
+    invoke-static {v0}, Landroid/media/MediaDrm;->-get2(Landroid/media/MediaDrm;)Landroid/media/MediaDrm$OnExpirationUpdateListener;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_6
+
+    .line 561
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    if-eqz v0, :cond_6
+
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    instance-of v0, v0, Landroid/os/Parcel;
+
+    if-eqz v0, :cond_6
+
+    .line 562
+    iget-object v10, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v10, Landroid/os/Parcel;
+
+    .line 563
+    .restart local v10    # "parcel":Landroid/os/Parcel;
+    invoke-virtual {v10}, Landroid/os/Parcel;->createByteArray()[B
+
+    move-result-object v2
+
+    .line 564
+    .restart local v2    # "sessionId":[B
+    array-length v0, v2
+
+    if-lez v0, :cond_6
+
+    .line 565
+    invoke-virtual {v10}, Landroid/os/Parcel;->readLong()J
+
+    move-result-wide v6
+
+    .line 567
+    .local v6, "expirationTime":J
+    const-string/jumbo v0, "MediaDrm"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v3, "Drm key expiration update: "
+
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v6, v7}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 568
+    iget-object v0, p0, Landroid/media/MediaDrm$EventHandler;->this$0:Landroid/media/MediaDrm;
+
+    invoke-static {v0}, Landroid/media/MediaDrm;->-get2(Landroid/media/MediaDrm;)Landroid/media/MediaDrm$OnExpirationUpdateListener;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/media/MediaDrm$EventHandler;->mMediaDrm:Landroid/media/MediaDrm;
+
+    invoke-interface {v0, v1, v2, v6, v7}, Landroid/media/MediaDrm$OnExpirationUpdateListener;->onExpirationUpdate(Landroid/media/MediaDrm;[BJ)V
+
+    .line 573
+    .end local v2    # "sessionId":[B
+    .end local v6    # "expirationTime":J
+    .end local v10    # "parcel":Landroid/os/Parcel;
+    :cond_6
+    return-void
+
+    .line 521
     :pswitch_data_0
     .packed-switch 0xc8
         :pswitch_0
+        :pswitch_2
+        :pswitch_1
     .end packed-switch
 .end method

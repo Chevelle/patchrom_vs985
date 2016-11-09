@@ -18,7 +18,7 @@
 # direct methods
 .method constructor <init>(Landroid/widget/CursorFilter$CursorFilterClient;)V
     .locals 0
-    .parameter "client"
+    .param p1, "client"    # Landroid/widget/CursorFilter$CursorFilterClient;
 
     .prologue
     .line 38
@@ -27,7 +27,7 @@
     .line 39
     iput-object p1, p0, Landroid/widget/CursorFilter;->mClient:Landroid/widget/CursorFilter$CursorFilterClient;
 
-    .line 40
+    .line 38
     return-void
 .end method
 
@@ -35,7 +35,7 @@
 # virtual methods
 .method public convertResultToString(Ljava/lang/Object;)Ljava/lang/CharSequence;
     .locals 1
-    .parameter "resultValue"
+    .param p1, "resultValue"    # Ljava/lang/Object;
 
     .prologue
     .line 44
@@ -43,7 +43,7 @@
 
     check-cast p1, Landroid/database/Cursor;
 
-    .end local p1
+    .end local p1    # "resultValue":Ljava/lang/Object;
     invoke-interface {v0, p1}, Landroid/widget/CursorFilter$CursorFilterClient;->convertToString(Landroid/database/Cursor;)Ljava/lang/CharSequence;
 
     move-result-object v0
@@ -52,10 +52,12 @@
 .end method
 
 .method protected performFiltering(Ljava/lang/CharSequence;)Landroid/widget/Filter$FilterResults;
-    .locals 3
-    .parameter "constraint"
+    .locals 4
+    .param p1, "constraint"    # Ljava/lang/CharSequence;
 
     .prologue
+    const/4 v3, 0x0
+
     .line 49
     iget-object v2, p0, Landroid/widget/CursorFilter;->mClient:Landroid/widget/CursorFilter$CursorFilterClient;
 
@@ -64,13 +66,13 @@
     move-result-object v0
 
     .line 51
-    .local v0, cursor:Landroid/database/Cursor;
+    .local v0, "cursor":Landroid/database/Cursor;
     new-instance v1, Landroid/widget/Filter$FilterResults;
 
     invoke-direct {v1}, Landroid/widget/Filter$FilterResults;-><init>()V
 
     .line 52
-    .local v1, results:Landroid/widget/Filter$FilterResults;
+    .local v1, "results":Landroid/widget/Filter$FilterResults;
     if-eqz v0, :cond_0
 
     .line 53
@@ -94,17 +96,15 @@
     iput v2, v1, Landroid/widget/Filter$FilterResults;->count:I
 
     .line 57
-    const/4 v2, 0x0
-
-    iput-object v2, v1, Landroid/widget/Filter$FilterResults;->values:Ljava/lang/Object;
+    iput-object v3, v1, Landroid/widget/Filter$FilterResults;->values:Ljava/lang/Object;
 
     goto :goto_0
 .end method
 
 .method protected publishResults(Ljava/lang/CharSequence;Landroid/widget/Filter$FilterResults;)V
     .locals 3
-    .parameter "constraint"
-    .parameter "results"
+    .param p1, "constraint"    # Ljava/lang/CharSequence;
+    .param p2, "results"    # Landroid/widget/Filter$FilterResults;
 
     .prologue
     .line 64
@@ -115,7 +115,7 @@
     move-result-object v0
 
     .line 66
-    .local v0, oldCursor:Landroid/database/Cursor;
+    .local v0, "oldCursor":Landroid/database/Cursor;
     iget-object v1, p2, Landroid/widget/Filter$FilterResults;->values:Ljava/lang/Object;
 
     if-eqz v1, :cond_0
@@ -133,7 +133,7 @@
 
     invoke-interface {v2, v1}, Landroid/widget/CursorFilter$CursorFilterClient;->changeCursor(Landroid/database/Cursor;)V
 
-    .line 69
+    .line 63
     :cond_0
     return-void
 .end method

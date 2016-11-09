@@ -6,12 +6,11 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/view/AccessibilityIterators$1;,
-        Landroid/view/AccessibilityIterators$ParagraphTextSegmentIterator;,
-        Landroid/view/AccessibilityIterators$WordTextSegmentIterator;,
-        Landroid/view/AccessibilityIterators$CharacterTextSegmentIterator;,
+        Landroid/view/AccessibilityIterators$TextSegmentIterator;,
         Landroid/view/AccessibilityIterators$AbstractTextSegmentIterator;,
-        Landroid/view/AccessibilityIterators$TextSegmentIterator;
+        Landroid/view/AccessibilityIterators$CharacterTextSegmentIterator;,
+        Landroid/view/AccessibilityIterators$WordTextSegmentIterator;,
+        Landroid/view/AccessibilityIterators$ParagraphTextSegmentIterator;
     }
 .end annotation
 
@@ -21,9 +20,8 @@
     .locals 0
 
     .prologue
-    .line 36
+    .line 34
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 257
     return-void
 .end method

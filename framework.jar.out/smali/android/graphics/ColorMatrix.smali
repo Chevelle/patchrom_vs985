@@ -12,74 +12,74 @@
     .locals 1
 
     .prologue
-    .line 44
+    .line 68
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 38
+    .line 62
     const/16 v0, 0x14
 
     new-array v0, v0, [F
 
     iput-object v0, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    .line 45
+    .line 69
     invoke-virtual {p0}, Landroid/graphics/ColorMatrix;->reset()V
 
-    .line 46
+    .line 68
     return-void
 .end method
 
 .method public constructor <init>(Landroid/graphics/ColorMatrix;)V
     .locals 4
-    .parameter "src"
+    .param p1, "src"    # Landroid/graphics/ColorMatrix;
 
     .prologue
     const/16 v3, 0x14
 
     const/4 v2, 0x0
 
-    .line 58
+    .line 82
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 38
+    .line 62
     new-array v0, v3, [F
 
     iput-object v0, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    .line 59
+    .line 83
     iget-object v0, p1, Landroid/graphics/ColorMatrix;->mArray:[F
 
     iget-object v1, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    invoke-static {v0, v2, v1, v2, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v0, v2, v1, v2, v3}, Ljava/lang/System;->arraycopy([FI[FII)V
 
-    .line 60
+    .line 82
     return-void
 .end method
 
 .method public constructor <init>([F)V
     .locals 3
-    .parameter "src"
+    .param p1, "src"    # [F
 
     .prologue
     const/16 v2, 0x14
 
     const/4 v1, 0x0
 
-    .line 51
+    .line 75
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 38
+    .line 62
     new-array v0, v2, [F
 
     iput-object v0, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    .line 52
+    .line 76
     iget-object v0, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    invoke-static {p1, v1, v0, v1, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {p1, v1, v0, v1, v2}, Ljava/lang/System;->arraycopy([FI[FII)V
 
-    .line 53
+    .line 75
     return-void
 .end method
 
@@ -89,7 +89,7 @@
     .locals 1
 
     .prologue
-    .line 65
+    .line 89
     iget-object v0, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
     return-object v0
@@ -97,119 +97,106 @@
 
 .method public postConcat(Landroid/graphics/ColorMatrix;)V
     .locals 0
-    .parameter "postmatrix"
+    .param p1, "postmatrix"    # Landroid/graphics/ColorMatrix;
 
     .prologue
-    .line 195
+    .line 224
     invoke-virtual {p0, p1, p0}, Landroid/graphics/ColorMatrix;->setConcat(Landroid/graphics/ColorMatrix;Landroid/graphics/ColorMatrix;)V
 
-    .line 196
+    .line 223
     return-void
 .end method
 
 .method public preConcat(Landroid/graphics/ColorMatrix;)V
     .locals 0
-    .parameter "prematrix"
+    .param p1, "prematrix"    # Landroid/graphics/ColorMatrix;
 
     .prologue
-    .line 187
+    .line 214
     invoke-virtual {p0, p0, p1}, Landroid/graphics/ColorMatrix;->setConcat(Landroid/graphics/ColorMatrix;Landroid/graphics/ColorMatrix;)V
 
-    .line 188
+    .line 213
     return-void
 .end method
 
 .method public reset()V
-    .locals 7
+    .locals 3
 
     .prologue
-    .line 75
+    const/high16 v2, 0x3f800000    # 1.0f
+
+    .line 101
     iget-object v0, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    .line 77
-    .local v0, a:[F
-    const/16 v1, 0x13
+    .line 102
+    .local v0, "a":[F
+    const/4 v1, 0x0
 
-    .local v1, i:I
-    :goto_0
-    if-lez v1, :cond_0
+    invoke-static {v0, v1}, Ljava/util/Arrays;->fill([FF)V
 
-    .line 78
-    const/4 v2, 0x0
+    .line 103
+    const/16 v1, 0x12
 
     aput v2, v0, v1
 
-    .line 77
-    add-int/lit8 v1, v1, -0x1
+    const/16 v1, 0xc
 
-    goto :goto_0
+    aput v2, v0, v1
 
-    .line 80
-    :cond_0
-    const/4 v2, 0x0
+    const/4 v1, 0x6
 
-    const/4 v3, 0x6
+    aput v2, v0, v1
 
-    const/16 v4, 0xc
+    const/4 v1, 0x0
 
-    const/16 v5, 0x12
+    aput v2, v0, v1
 
-    const/high16 v6, 0x3f80
-
-    aput v6, v0, v5
-
-    aput v6, v0, v4
-
-    aput v6, v0, v3
-
-    aput v6, v0, v2
-
-    .line 81
+    .line 100
     return-void
 .end method
 
 .method public set(Landroid/graphics/ColorMatrix;)V
     .locals 4
-    .parameter "src"
+    .param p1, "src"    # Landroid/graphics/ColorMatrix;
 
     .prologue
     const/4 v3, 0x0
 
-    .line 87
+    .line 110
     iget-object v0, p1, Landroid/graphics/ColorMatrix;->mArray:[F
 
     iget-object v1, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
     const/16 v2, 0x14
 
-    invoke-static {v0, v3, v1, v3, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v0, v3, v1, v3, v2}, Ljava/lang/System;->arraycopy([FI[FII)V
 
-    .line 88
+    .line 109
     return-void
 .end method
 
 .method public set([F)V
     .locals 3
-    .parameter "src"
+    .param p1, "src"    # [F
 
     .prologue
     const/4 v2, 0x0
 
-    .line 94
+    .line 117
     iget-object v0, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
     const/16 v1, 0x14
 
-    invoke-static {p1, v2, v0, v2, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {p1, v2, v0, v2, v1}, Ljava/lang/System;->arraycopy([FI[FII)V
 
-    .line 95
+    .line 116
     return-void
 .end method
 
 .method public setConcat(Landroid/graphics/ColorMatrix;Landroid/graphics/ColorMatrix;)V
     .locals 13
-    .parameter "matA"
-    .parameter "matB"
+    .param p1, "matA"    # Landroid/graphics/ColorMatrix;
+    .param p2, "matB"    # Landroid/graphics/ColorMatrix;
 
     .prologue
     const/4 v12, 0x4
@@ -218,55 +205,52 @@
 
     const/16 v10, 0x14
 
-    .line 155
-    const/4 v6, 0x0
-
-    .line 157
-    .local v6, tmp:[F
+    .line 183
     if-eq p1, p0, :cond_0
 
     if-ne p2, p0, :cond_1
 
-    .line 158
+    .line 184
     :cond_0
     new-array v6, v10, [F
 
-    .line 164
+    .line 189
+    .local v6, "tmp":[F
     :goto_0
     iget-object v0, p1, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    .line 165
-    .local v0, a:[F
+    .line 190
+    .local v0, "a":[F
     iget-object v1, p2, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    .line 166
-    .local v1, b:[F
+    .line 191
+    .local v1, "b":[F
     const/4 v3, 0x0
 
-    .line 167
-    .local v3, index:I
+    .line 192
+    .local v3, "index":I
     const/4 v5, 0x0
 
-    .local v5, j:I
+    .local v5, "j":I
     :goto_1
     if-ge v5, v10, :cond_3
 
-    .line 168
+    .line 193
     const/4 v2, 0x0
 
-    .local v2, i:I
+    .local v2, "i":I
     move v4, v3
 
-    .end local v3           #index:I
-    .local v4, index:I
+    .end local v3    # "index":I
+    .local v4, "index":I
     :goto_2
     if-ge v2, v12, :cond_2
 
-    .line 169
+    .line 194
     add-int/lit8 v3, v4, 0x1
 
-    .end local v4           #index:I
-    .restart local v3       #index:I
+    .end local v4    # "index":I
+    .restart local v3    # "index":I
     add-int/lit8 v7, v5, 0x0
 
     aget v7, v0, v7
@@ -289,6 +273,7 @@
 
     add-float/2addr v7, v8
 
+    .line 195
     add-int/lit8 v8, v5, 0x2
 
     aget v8, v0, v8
@@ -299,8 +284,10 @@
 
     mul-float/2addr v8, v9
 
+    .line 194
     add-float/2addr v7, v8
 
+    .line 195
     add-int/lit8 v8, v5, 0x3
 
     aget v8, v0, v8
@@ -311,41 +298,44 @@
 
     mul-float/2addr v8, v9
 
+    .line 194
     add-float/2addr v7, v8
 
     aput v7, v6, v4
 
-    .line 168
+    .line 193
     add-int/lit8 v2, v2, 0x1
 
     move v4, v3
 
-    .end local v3           #index:I
-    .restart local v4       #index:I
+    .end local v3    # "index":I
+    .restart local v4    # "index":I
     goto :goto_2
 
-    .line 161
-    .end local v0           #a:[F
-    .end local v1           #b:[F
-    .end local v2           #i:I
-    .end local v4           #index:I
-    .end local v5           #j:I
+    .line 186
+    .end local v0    # "a":[F
+    .end local v1    # "b":[F
+    .end local v2    # "i":I
+    .end local v4    # "index":I
+    .end local v5    # "j":I
+    .end local v6    # "tmp":[F
     :cond_1
     iget-object v6, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
+    .restart local v6    # "tmp":[F
     goto :goto_0
 
-    .line 172
-    .restart local v0       #a:[F
-    .restart local v1       #b:[F
-    .restart local v2       #i:I
-    .restart local v4       #index:I
-    .restart local v5       #j:I
+    .line 197
+    .restart local v0    # "a":[F
+    .restart local v1    # "b":[F
+    .restart local v2    # "i":I
+    .restart local v4    # "index":I
+    .restart local v5    # "j":I
     :cond_2
     add-int/lit8 v3, v4, 0x1
 
-    .end local v4           #index:I
-    .restart local v3       #index:I
+    .end local v4    # "index":I
+    .restart local v3    # "index":I
     add-int/lit8 v7, v5, 0x0
 
     aget v7, v0, v7
@@ -366,6 +356,7 @@
 
     add-float/2addr v7, v8
 
+    .line 198
     add-int/lit8 v8, v5, 0x2
 
     aget v8, v0, v8
@@ -376,8 +367,10 @@
 
     mul-float/2addr v8, v9
 
+    .line 197
     add-float/2addr v7, v8
 
+    .line 198
     add-int/lit8 v8, v5, 0x3
 
     aget v8, v0, v8
@@ -388,34 +381,37 @@
 
     mul-float/2addr v8, v9
 
+    .line 197
     add-float/2addr v7, v8
 
+    .line 199
     add-int/lit8 v8, v5, 0x4
 
     aget v8, v0, v8
 
+    .line 197
     add-float/2addr v7, v8
 
     aput v7, v6, v4
 
-    .line 167
+    .line 192
     add-int/lit8 v5, v5, 0x5
 
     goto :goto_1
 
-    .line 177
-    .end local v2           #i:I
+    .line 202
+    .end local v2    # "i":I
     :cond_3
     iget-object v7, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
     if-eq v6, v7, :cond_4
 
-    .line 178
+    .line 203
     iget-object v7, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    invoke-static {v6, v11, v7, v11, v10}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v6, v11, v7, v11, v10}, Ljava/lang/System;->arraycopy([FI[FII)V
 
-    .line 180
+    .line 181
     :cond_4
     return-void
 .end method
@@ -424,206 +420,212 @@
     .locals 4
 
     .prologue
-    const/high16 v3, 0x3f00
+    const/high16 v3, 0x3f000000    # 0.5f
 
-    .line 222
+    .line 252
     invoke-virtual {p0}, Landroid/graphics/ColorMatrix;->reset()V
 
-    .line 223
+    .line 253
     iget-object v0, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    .line 225
-    .local v0, m:[F
-    const/4 v1, 0x0
+    .line 255
+    .local v0, "m":[F
+    const v1, 0x3e991687    # 0.299f
 
-    const v2, 0x3e991687
+    const/4 v2, 0x0
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
-    const/4 v1, 0x1
+    const v1, 0x3f1645a2    # 0.587f
 
-    const v2, 0x3f1645a2
+    const/4 v2, 0x1
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
-    const/4 v1, 0x2
+    const v1, 0x3de978d5    # 0.114f
 
-    const v2, 0x3de978d5
+    const/4 v2, 0x2
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
-    .line 226
-    const/4 v1, 0x5
+    .line 256
+    const v1, -0x41d335d2    # -0.16874f
 
-    const v2, -0x41d335d2
+    const/4 v2, 0x5
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
-    const/4 v1, 0x6
+    const v1, -0x41566517    # -0.33126f
 
-    const v2, -0x41566517
+    const/4 v2, 0x6
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
     const/4 v1, 0x7
 
     aput v3, v0, v1
 
-    .line 227
+    .line 257
     const/16 v1, 0xa
 
     aput v3, v0, v1
 
-    const/16 v1, 0xb
+    const v1, -0x4129a177    # -0.41869f
 
-    const v2, -0x4129a177
+    const/16 v2, 0xb
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
-    const/16 v1, 0xc
+    const v1, -0x42597a25    # -0.08131f
 
-    const v2, -0x42597a25
+    const/16 v2, 0xc
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
-    .line 228
+    .line 251
     return-void
 .end method
 
 .method public setRotate(IF)V
-    .locals 8
-    .parameter "axis"
-    .parameter "degrees"
+    .locals 11
+    .param p1, "axis"    # I
+    .param p2, "degrees"    # F
 
     .prologue
-    const/16 v7, 0xc
+    const/16 v10, 0xc
 
-    const/4 v6, 0x6
+    const/4 v9, 0x6
 
-    const/4 v5, 0x0
+    const/4 v8, 0x0
 
-    .line 120
+    .line 145
     invoke-virtual {p0}, Landroid/graphics/ColorMatrix;->reset()V
 
-    .line 121
-    const v3, 0x40490fdb
+    .line 146
+    float-to-double v4, p2
 
-    mul-float/2addr v3, p2
+    const-wide v6, 0x400921fb54442d18L    # Math.PI
 
-    const/high16 v4, 0x4334
+    mul-double/2addr v4, v6
 
-    div-float v1, v3, v4
+    const-wide v6, 0x4066800000000000L    # 180.0
 
-    .line 122
-    .local v1, radians:F
-    invoke-static {v1}, Landroid/util/FloatMath;->cos(F)F
+    div-double v2, v4, v6
 
-    move-result v0
+    .line 147
+    .local v2, "radians":D
+    invoke-static {v2, v3}, Ljava/lang/Math;->cos(D)D
 
-    .line 123
-    .local v0, cosine:F
-    invoke-static {v1}, Landroid/util/FloatMath;->sin(F)F
+    move-result-wide v4
 
-    move-result v2
+    double-to-float v0, v4
 
-    .line 124
-    .local v2, sine:F
+    .line 148
+    .local v0, "cosine":F
+    invoke-static {v2, v3}, Ljava/lang/Math;->sin(D)D
+
+    move-result-wide v4
+
+    double-to-float v1, v4
+
+    .line 149
+    .local v1, "sine":F
     packed-switch p1, :pswitch_data_0
 
-    .line 144
-    new-instance v3, Ljava/lang/RuntimeException;
+    .line 169
+    new-instance v4, Ljava/lang/RuntimeException;
 
-    invoke-direct {v3}, Ljava/lang/RuntimeException;-><init>()V
+    invoke-direct {v4}, Ljava/lang/RuntimeException;-><init>()V
 
-    throw v3
+    throw v4
 
-    .line 127
+    .line 152
     :pswitch_0
-    iget-object v3, p0, Landroid/graphics/ColorMatrix;->mArray:[F
-
     iget-object v4, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    aput v0, v4, v7
+    iget-object v5, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    aput v0, v3, v6
+    aput v0, v5, v10
 
-    .line 128
-    iget-object v3, p0, Landroid/graphics/ColorMatrix;->mArray:[F
+    aput v0, v4, v9
 
-    const/4 v4, 0x7
+    .line 153
+    iget-object v4, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    aput v2, v3, v4
+    const/4 v5, 0x7
 
-    .line 129
-    iget-object v3, p0, Landroid/graphics/ColorMatrix;->mArray:[F
+    aput v1, v4, v5
 
-    const/16 v4, 0xb
+    .line 154
+    iget-object v4, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    neg-float v5, v2
+    neg-float v5, v1
 
-    aput v5, v3, v4
+    const/16 v6, 0xb
 
-    .line 146
+    aput v5, v4, v6
+
+    .line 144
     :goto_0
     return-void
 
-    .line 133
+    .line 158
     :pswitch_1
-    iget-object v3, p0, Landroid/graphics/ColorMatrix;->mArray:[F
-
     iget-object v4, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    aput v0, v4, v7
+    iget-object v5, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    aput v0, v3, v5
+    aput v0, v5, v10
 
-    .line 134
-    iget-object v3, p0, Landroid/graphics/ColorMatrix;->mArray:[F
+    aput v0, v4, v8
 
-    const/4 v4, 0x2
+    .line 159
+    iget-object v4, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    neg-float v5, v2
+    neg-float v5, v1
 
-    aput v5, v3, v4
+    const/4 v6, 0x2
 
-    .line 135
-    iget-object v3, p0, Landroid/graphics/ColorMatrix;->mArray:[F
+    aput v5, v4, v6
 
-    const/16 v4, 0xa
+    .line 160
+    iget-object v4, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    aput v2, v3, v4
+    const/16 v5, 0xa
+
+    aput v1, v4, v5
 
     goto :goto_0
 
-    .line 139
+    .line 164
     :pswitch_2
-    iget-object v3, p0, Landroid/graphics/ColorMatrix;->mArray:[F
-
     iget-object v4, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    aput v0, v4, v6
+    iget-object v5, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    aput v0, v3, v5
+    aput v0, v5, v9
 
-    .line 140
-    iget-object v3, p0, Landroid/graphics/ColorMatrix;->mArray:[F
+    aput v0, v4, v8
 
-    const/4 v4, 0x1
+    .line 165
+    iget-object v4, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    aput v2, v3, v4
+    const/4 v5, 0x1
 
-    .line 141
-    iget-object v3, p0, Landroid/graphics/ColorMatrix;->mArray:[F
+    aput v1, v4, v5
 
-    const/4 v4, 0x5
+    .line 166
+    iget-object v4, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    neg-float v5, v2
+    neg-float v5, v1
 
-    aput v5, v3, v4
+    const/4 v6, 0x5
+
+    aput v5, v4, v6
 
     goto :goto_0
 
-    .line 124
+    .line 149
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -634,46 +636,46 @@
 
 .method public setSaturation(F)V
     .locals 7
-    .parameter "sat"
+    .param p1, "sat"    # F
 
     .prologue
-    .line 205
+    .line 235
     invoke-virtual {p0}, Landroid/graphics/ColorMatrix;->reset()V
 
-    .line 206
+    .line 236
     iget-object v4, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    .line 208
-    .local v4, m:[F
-    const/high16 v5, 0x3f80
+    .line 238
+    .local v4, "m":[F
+    const/high16 v5, 0x3f800000    # 1.0f
 
     sub-float v3, v5, p1
 
-    .line 209
-    .local v3, invSat:F
-    const v5, 0x3e5a1cac
+    .line 239
+    .local v3, "invSat":F
+    const v5, 0x3e5a1cac    # 0.213f
 
     mul-float v2, v5, v3
 
-    .line 210
-    .local v2, R:F
-    const v5, 0x3f370a3d
+    .line 240
+    .local v2, "R":F
+    const v5, 0x3f370a3d    # 0.715f
 
     mul-float v1, v5, v3
 
-    .line 211
-    .local v1, G:F
-    const v5, 0x3d9374bc
+    .line 241
+    .local v1, "G":F
+    const v5, 0x3d9374bc    # 0.072f
 
     mul-float v0, v5, v3
 
-    .line 213
-    .local v0, B:F
-    const/4 v5, 0x0
+    .line 243
+    .local v0, "B":F
+    add-float v5, v2, p1
 
-    add-float v6, v2, p1
+    const/4 v6, 0x0
 
-    aput v6, v4, v5
+    aput v5, v4, v6
 
     const/4 v5, 0x1
 
@@ -683,22 +685,22 @@
 
     aput v0, v4, v5
 
-    .line 214
+    .line 244
     const/4 v5, 0x5
 
     aput v2, v4, v5
 
-    const/4 v5, 0x6
+    add-float v5, v1, p1
 
-    add-float v6, v1, p1
+    const/4 v6, 0x6
 
-    aput v6, v4, v5
+    aput v5, v4, v6
 
     const/4 v5, 0x7
 
     aput v0, v4, v5
 
-    .line 215
+    .line 245
     const/16 v5, 0xa
 
     aput v2, v4, v5
@@ -707,67 +709,67 @@
 
     aput v1, v4, v5
 
-    const/16 v5, 0xc
+    add-float v5, v0, p1
 
-    add-float v6, v0, p1
+    const/16 v6, 0xc
 
-    aput v6, v4, v5
+    aput v5, v4, v6
 
-    .line 216
+    .line 234
     return-void
 .end method
 
 .method public setScale(FFFF)V
-    .locals 3
-    .parameter "rScale"
-    .parameter "gScale"
-    .parameter "bScale"
-    .parameter "aScale"
+    .locals 4
+    .param p1, "rScale"    # F
+    .param p2, "gScale"    # F
+    .param p3, "bScale"    # F
+    .param p4, "aScale"    # F
 
     .prologue
-    .line 102
+    const/4 v3, 0x0
+
+    .line 125
     iget-object v0, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    .line 104
-    .local v0, a:[F
+    .line 127
+    .local v0, "a":[F
     const/16 v1, 0x13
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_0
     if-lez v1, :cond_0
 
-    .line 105
+    .line 128
     const/4 v2, 0x0
 
     aput v2, v0, v1
 
-    .line 104
+    .line 127
     add-int/lit8 v1, v1, -0x1
 
     goto :goto_0
 
-    .line 107
+    .line 130
     :cond_0
-    const/4 v2, 0x0
+    aput p1, v0, v3
 
-    aput p1, v0, v2
-
-    .line 108
+    .line 131
     const/4 v2, 0x6
 
     aput p2, v0, v2
 
-    .line 109
+    .line 132
     const/16 v2, 0xc
 
     aput p3, v0, v2
 
-    .line 110
+    .line 133
     const/16 v2, 0x12
 
     aput p4, v0, v2
 
-    .line 111
+    .line 124
     return-void
 .end method
 
@@ -775,56 +777,56 @@
     .locals 4
 
     .prologue
-    const/high16 v3, 0x3f80
+    const/high16 v3, 0x3f800000    # 1.0f
 
-    .line 234
+    .line 264
     invoke-virtual {p0}, Landroid/graphics/ColorMatrix;->reset()V
 
-    .line 235
+    .line 265
     iget-object v0, p0, Landroid/graphics/ColorMatrix;->mArray:[F
 
-    .line 237
-    .local v0, m:[F
-    const/4 v1, 0x2
+    .line 267
+    .local v0, "m":[F
+    const v1, 0x3fb374bc    # 1.402f
 
-    const v2, 0x3fb374bc
+    const/4 v2, 0x2
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
-    .line 238
+    .line 268
     const/4 v1, 0x5
 
     aput v3, v0, v1
 
-    const/4 v1, 0x6
+    const v1, -0x414fcce2    # -0.34414f
 
-    const v2, -0x414fcce2
+    const/4 v2, 0x6
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
-    const/4 v1, 0x7
+    const v1, -0x40c92e1f    # -0.71414f
 
-    const v2, -0x40c92e1f
+    const/4 v2, 0x7
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
-    .line 239
+    .line 269
     const/16 v1, 0xa
 
     aput v3, v0, v1
 
-    const/16 v1, 0xb
+    const v1, 0x3fe2d0e5    # 1.772f
 
-    const v2, 0x3fe2d0e5
+    const/16 v2, 0xb
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
-    const/16 v1, 0xc
+    const/4 v1, 0x0
 
-    const/4 v2, 0x0
+    const/16 v2, 0xc
 
-    aput v2, v0, v1
+    aput v1, v0, v2
 
-    .line 240
+    .line 263
     return-void
 .end method

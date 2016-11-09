@@ -26,6 +26,7 @@
 
     iput-object v0, p0, Landroid/widget/BaseAdapter;->mDataSetObservable:Landroid/database/DataSetObservable;
 
+    .line 30
     return-void
 .end method
 
@@ -43,9 +44,9 @@
 
 .method public getDropDownView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
     .locals 1
-    .parameter "position"
-    .parameter "convertView"
-    .parameter "parent"
+    .param p1, "position"    # I
+    .param p2, "convertView"    # Landroid/view/View;
+    .param p3, "parent"    # Landroid/view/ViewGroup;
 
     .prologue
     .line 71
@@ -58,7 +59,7 @@
 
 .method public getItemViewType(I)I
     .locals 1
-    .parameter "position"
+    .param p1, "position"    # I
 
     .prologue
     .line 75
@@ -88,30 +89,27 @@
 .end method
 
 .method public isEmpty()Z
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v0, 0x0
+
     .line 83
     invoke-virtual {p0}, Landroid/widget/BaseAdapter;->getCount()I
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public isEnabled(I)Z
     .locals 1
-    .parameter "position"
+    .param p1, "position"    # I
 
     .prologue
     .line 67
@@ -129,7 +127,7 @@
 
     invoke-virtual {v0}, Landroid/database/DataSetObservable;->notifyChanged()V
 
-    .line 51
+    .line 49
     return-void
 .end method
 
@@ -142,13 +140,13 @@
 
     invoke-virtual {v0}, Landroid/database/DataSetObservable;->notifyInvalidated()V
 
-    .line 60
+    .line 58
     return-void
 .end method
 
 .method public registerDataSetObserver(Landroid/database/DataSetObserver;)V
     .locals 1
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/DataSetObserver;
 
     .prologue
     .line 38
@@ -156,13 +154,13 @@
 
     invoke-virtual {v0, p1}, Landroid/database/DataSetObservable;->registerObserver(Ljava/lang/Object;)V
 
-    .line 39
+    .line 37
     return-void
 .end method
 
 .method public unregisterDataSetObserver(Landroid/database/DataSetObserver;)V
     .locals 1
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/DataSetObserver;
 
     .prologue
     .line 42
@@ -170,6 +168,6 @@
 
     invoke-virtual {v0, p1}, Landroid/database/DataSetObservable;->unregisterObserver(Ljava/lang/Object;)V
 
-    .line 43
+    .line 41
     return-void
 .end method

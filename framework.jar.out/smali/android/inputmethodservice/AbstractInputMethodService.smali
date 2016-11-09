@@ -9,8 +9,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodSessionImpl;,
-        Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodImpl;
+        Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodImpl;,
+        Landroid/inputmethodservice/AbstractInputMethodService$AbstractInputMethodSessionImpl;
     }
 .end annotation
 
@@ -29,14 +29,15 @@
     .line 44
     invoke-direct {p0}, Landroid/app/Service;-><init>()V
 
-    .line 48
+    .line 49
     new-instance v0, Landroid/view/KeyEvent$DispatcherState;
 
     invoke-direct {v0}, Landroid/view/KeyEvent$DispatcherState;-><init>()V
 
+    .line 48
     iput-object v0, p0, Landroid/inputmethodservice/AbstractInputMethodService;->mDispatcherState:Landroid/view/KeyEvent$DispatcherState;
 
-    .line 90
+    .line 44
     return-void
 .end method
 
@@ -44,12 +45,12 @@
 # virtual methods
 .method protected dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
     .locals 0
-    .parameter "fd"
-    .parameter "fout"
-    .parameter "args"
+    .param p1, "fd"    # Ljava/io/FileDescriptor;
+    .param p2, "fout"    # Ljava/io/PrintWriter;
+    .param p3, "args"    # [Ljava/lang/String;
 
     .prologue
-    .line 196
+    .line 195
     return-void
 .end method
 
@@ -65,7 +66,7 @@
 
 .method public final onBind(Landroid/content/Intent;)Landroid/os/IBinder;
     .locals 2
-    .parameter "intent"
+    .param p1, "intent"    # Landroid/content/Intent;
 
     .prologue
     .line 200
@@ -99,7 +100,7 @@
 
 .method public onGenericMotionEvent(Landroid/view/MotionEvent;)Z
     .locals 1
-    .parameter "event"
+    .param p1, "event"    # Landroid/view/MotionEvent;
 
     .prologue
     .line 225
@@ -110,7 +111,7 @@
 
 .method public onTrackballEvent(Landroid/view/MotionEvent;)Z
     .locals 1
-    .parameter "event"
+    .param p1, "event"    # Landroid/view/MotionEvent;
 
     .prologue
     .line 214

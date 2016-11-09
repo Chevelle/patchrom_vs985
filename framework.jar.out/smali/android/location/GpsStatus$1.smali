@@ -34,10 +34,10 @@
 # direct methods
 .method constructor <init>(Landroid/location/GpsStatus;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/location/GpsStatus;
 
     .prologue
-    .line 67
+    .line 74
     iput-object p1, p0, Landroid/location/GpsStatus$1;->this$0:Landroid/location/GpsStatus;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -60,19 +60,18 @@
     .end annotation
 
     .prologue
-    .line 69
+    .line 76
     new-instance v0, Landroid/location/GpsStatus$SatelliteIterator;
 
     iget-object v1, p0, Landroid/location/GpsStatus$1;->this$0:Landroid/location/GpsStatus;
 
     iget-object v2, p0, Landroid/location/GpsStatus$1;->this$0:Landroid/location/GpsStatus;
 
-    #getter for: Landroid/location/GpsStatus;->mSatellites:[Landroid/location/GpsSatellite;
-    invoke-static {v2}, Landroid/location/GpsStatus;->access$000(Landroid/location/GpsStatus;)[Landroid/location/GpsSatellite;
+    invoke-static {v2}, Landroid/location/GpsStatus;->-get0(Landroid/location/GpsStatus;)Landroid/util/SparseArray;
 
     move-result-object v2
 
-    invoke-direct {v0, v1, v2}, Landroid/location/GpsStatus$SatelliteIterator;-><init>(Landroid/location/GpsStatus;[Landroid/location/GpsSatellite;)V
+    invoke-direct {v0, v1, v2}, Landroid/location/GpsStatus$SatelliteIterator;-><init>(Landroid/location/GpsStatus;Landroid/util/SparseArray;)V
 
     return-object v0
 .end method

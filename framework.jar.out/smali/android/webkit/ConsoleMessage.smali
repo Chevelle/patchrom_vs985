@@ -24,10 +24,10 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;Ljava/lang/String;ILandroid/webkit/ConsoleMessage$MessageLevel;)V
     .locals 0
-    .parameter "message"
-    .parameter "sourceId"
-    .parameter "lineNumber"
-    .parameter "msgLevel"
+    .param p1, "message"    # Ljava/lang/String;
+    .param p2, "sourceId"    # Ljava/lang/String;
+    .param p3, "lineNumber"    # I
+    .param p4, "msgLevel"    # Landroid/webkit/ConsoleMessage$MessageLevel;
 
     .prologue
     .line 42
@@ -45,7 +45,7 @@
     .line 46
     iput-object p4, p0, Landroid/webkit/ConsoleMessage;->mLevel:Landroid/webkit/ConsoleMessage$MessageLevel;
 
-    .line 47
+    .line 42
     return-void
 .end method
 

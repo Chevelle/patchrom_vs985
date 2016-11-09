@@ -28,23 +28,23 @@
     .locals 1
 
     .prologue
-    .line 46
+    .line 42
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 47
+    .line 43
     new-instance v0, Landroid/net/wifi/p2p/WifiP2pDevice;
 
     invoke-direct {v0}, Landroid/net/wifi/p2p/WifiP2pDevice;-><init>()V
 
     iput-object v0, p0, Landroid/net/wifi/p2p/WifiP2pProvDiscEvent;->device:Landroid/net/wifi/p2p/WifiP2pDevice;
 
-    .line 48
+    .line 42
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 7
-    .parameter "string"
+    .param p1, "string"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/lang/IllegalArgumentException;
@@ -60,30 +60,30 @@
 
     const/4 v3, 0x0
 
-    .line 61
+    .line 57
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 62
-    const-string v1, " "
+    .line 58
+    const-string/jumbo v1, " "
 
     invoke-virtual {p1, v1}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
 
     move-result-object v0
 
-    .line 64
-    .local v0, tokens:[Ljava/lang/String;
+    .line 60
+    .local v0, "tokens":[Ljava/lang/String;
     array-length v1, v0
 
     if-ge v1, v4, :cond_0
 
-    .line 65
+    .line 61
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Malformed event "
+    const-string/jumbo v3, "Malformed event "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -101,11 +101,11 @@
 
     throw v1
 
-    .line 68
+    .line 64
     :cond_0
     aget-object v1, v0, v3
 
-    const-string v2, "PBC-REQ"
+    const-string/jumbo v2, "PBC-REQ"
 
     invoke-virtual {v1, v2}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
 
@@ -115,7 +115,7 @@
 
     iput v5, p0, Landroid/net/wifi/p2p/WifiP2pProvDiscEvent;->event:I
 
-    .line 75
+    .line 71
     :goto_0
     new-instance v1, Landroid/net/wifi/p2p/WifiP2pDevice;
 
@@ -123,32 +123,32 @@
 
     iput-object v1, p0, Landroid/net/wifi/p2p/WifiP2pProvDiscEvent;->device:Landroid/net/wifi/p2p/WifiP2pDevice;
 
-    .line 76
+    .line 72
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pProvDiscEvent;->device:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     aget-object v2, v0, v5
 
     iput-object v2, v1, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceAddress:Ljava/lang/String;
 
-    .line 78
+    .line 74
     iget v1, p0, Landroid/net/wifi/p2p/WifiP2pProvDiscEvent;->event:I
 
     if-ne v1, v6, :cond_1
 
-    .line 79
+    .line 75
     aget-object v1, v0, v4
 
     iput-object v1, p0, Landroid/net/wifi/p2p/WifiP2pProvDiscEvent;->pin:Ljava/lang/String;
 
-    .line 81
+    .line 57
     :cond_1
     return-void
 
-    .line 69
+    .line 65
     :cond_2
     aget-object v1, v0, v3
 
-    const-string v2, "PBC-RESP"
+    const-string/jumbo v2, "PBC-RESP"
 
     invoke-virtual {v1, v2}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
 
@@ -160,11 +160,11 @@
 
     goto :goto_0
 
-    .line 70
+    .line 66
     :cond_3
     aget-object v1, v0, v3
 
-    const-string v2, "ENTER-PIN"
+    const-string/jumbo v2, "ENTER-PIN"
 
     invoke-virtual {v1, v2}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
 
@@ -178,11 +178,11 @@
 
     goto :goto_0
 
-    .line 71
+    .line 67
     :cond_4
     aget-object v1, v0, v3
 
-    const-string v2, "SHOW-PIN"
+    const-string/jumbo v2, "SHOW-PIN"
 
     invoke-virtual {v1, v2}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
 
@@ -194,7 +194,7 @@
 
     goto :goto_0
 
-    .line 72
+    .line 68
     :cond_5
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
@@ -202,7 +202,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Malformed event "
+    const-string/jumbo v3, "Malformed event "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -227,19 +227,19 @@
     .locals 3
 
     .prologue
-    .line 84
+    .line 80
     new-instance v0, Ljava/lang/StringBuffer;
 
     invoke-direct {v0}, Ljava/lang/StringBuffer;-><init>()V
 
-    .line 85
-    .local v0, sbuf:Ljava/lang/StringBuffer;
+    .line 81
+    .local v0, "sbuf":Ljava/lang/StringBuffer;
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pProvDiscEvent;->device:Landroid/net/wifi/p2p/WifiP2pDevice;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/Object;)Ljava/lang/StringBuffer;
 
-    .line 86
-    const-string v1, "\n event: "
+    .line 82
+    const-string/jumbo v1, "\n event: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -249,8 +249,8 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuffer;->append(I)Ljava/lang/StringBuffer;
 
-    .line 87
-    const-string v1, "\n pin: "
+    .line 83
+    const-string/jumbo v1, "\n pin: "
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
@@ -260,7 +260,7 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    .line 88
+    .line 84
     invoke-virtual {v0}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
 
     move-result-object v1

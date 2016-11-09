@@ -44,31 +44,34 @@
 
     const/4 v2, 0x0
 
-    .line 60
+    .line 59
     new-instance v0, Landroid/database/CursorJoiner$Result;
 
-    const-string v1, "RIGHT"
+    const-string/jumbo v1, "RIGHT"
 
     invoke-direct {v0, v1, v2}, Landroid/database/CursorJoiner$Result;-><init>(Ljava/lang/String;I)V
 
+    .line 60
     sput-object v0, Landroid/database/CursorJoiner$Result;->RIGHT:Landroid/database/CursorJoiner$Result;
 
-    .line 62
+    .line 61
     new-instance v0, Landroid/database/CursorJoiner$Result;
 
-    const-string v1, "LEFT"
+    const-string/jumbo v1, "LEFT"
 
     invoke-direct {v0, v1, v3}, Landroid/database/CursorJoiner$Result;-><init>(Ljava/lang/String;I)V
 
+    .line 62
     sput-object v0, Landroid/database/CursorJoiner$Result;->LEFT:Landroid/database/CursorJoiner$Result;
 
-    .line 64
+    .line 63
     new-instance v0, Landroid/database/CursorJoiner$Result;
 
-    const-string v1, "BOTH"
+    const-string/jumbo v1, "BOTH"
 
     invoke-direct {v0, v1, v4}, Landroid/database/CursorJoiner$Result;-><init>(Ljava/lang/String;I)V
 
+    .line 64
     sput-object v0, Landroid/database/CursorJoiner$Result;->BOTH:Landroid/database/CursorJoiner$Result;
 
     .line 58
@@ -95,13 +98,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 58
@@ -112,7 +108,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Landroid/database/CursorJoiner$Result;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 58
@@ -133,12 +129,6 @@
     .prologue
     .line 58
     sget-object v0, Landroid/database/CursorJoiner$Result;->$VALUES:[Landroid/database/CursorJoiner$Result;
-
-    invoke-virtual {v0}, [Landroid/database/CursorJoiner$Result;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/database/CursorJoiner$Result;
 
     return-object v0
 .end method

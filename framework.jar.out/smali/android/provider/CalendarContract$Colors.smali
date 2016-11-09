@@ -18,7 +18,7 @@
 
 
 # static fields
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
 
 .field public static final TABLE_NAME:Ljava/lang/String; = "Colors"
 
@@ -29,7 +29,7 @@
 
     .prologue
     .line 2497
-    const-string v0, "content://com.android.calendar/colors"
+    const-string/jumbo v0, "content://com.android.calendar/colors"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
@@ -37,6 +37,7 @@
 
     sput-object v0, Landroid/provider/CalendarContract$Colors;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 2488
     return-void
 .end method
 
@@ -47,6 +48,5 @@
     .line 2502
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 2503
     return-void
 .end method

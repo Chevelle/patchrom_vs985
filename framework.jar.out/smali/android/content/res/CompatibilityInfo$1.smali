@@ -22,7 +22,7 @@
     .line 39
     const/4 v0, 0x0
 
-    invoke-direct {p0, v0}, Landroid/content/res/CompatibilityInfo;-><init>(Landroid/content/res/CompatibilityInfo$1;)V
+    invoke-direct {p0, v0}, Landroid/content/res/CompatibilityInfo;-><init>(Landroid/content/res/CompatibilityInfo;)V
 
     return-void
 .end method

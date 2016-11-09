@@ -1,4 +1,4 @@
-.class public Landroid/webkit/WebViewDatabase;
+.class public abstract Landroid/webkit/WebViewDatabase;
 .super Ljava/lang/Object;
 .source "WebViewDatabase.java"
 
@@ -8,23 +8,22 @@
 
 
 # direct methods
-.method protected constructor <init>()V
+.method public constructor <init>()V
     .locals 0
 
     .prologue
-    .line 40
+    .line 31
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 41
     return-void
 .end method
 
 .method public static getInstance(Landroid/content/Context;)Landroid/webkit/WebViewDatabase;
     .locals 1
-    .parameter "context"
+    .param p0, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 44
+    .line 38
     invoke-static {}, Landroid/webkit/WebViewFactory;->getProvider()Landroid/webkit/WebViewFactoryProvider;
 
     move-result-object v0
@@ -38,78 +37,24 @@
 
 
 # virtual methods
-.method public clearFormData()V
-    .locals 1
-
-    .prologue
-    .line 113
-    new-instance v0, Landroid/webkit/MustOverrideException;
-
-    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
-
-    throw v0
+.method public abstract clearFormData()V
 .end method
 
-.method public clearHttpAuthUsernamePassword()V
-    .locals 1
-
-    .prologue
-    .line 94
-    new-instance v0, Landroid/webkit/MustOverrideException;
-
-    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
-
-    throw v0
+.method public abstract clearHttpAuthUsernamePassword()V
 .end method
 
-.method public clearUsernamePassword()V
-    .locals 1
+.method public abstract clearUsernamePassword()V
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
-
-    .prologue
-    .line 71
-    new-instance v0, Landroid/webkit/MustOverrideException;
-
-    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
-
-    throw v0
 .end method
 
-.method public hasFormData()Z
-    .locals 1
-
-    .prologue
-    .line 104
-    new-instance v0, Landroid/webkit/MustOverrideException;
-
-    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
-
-    throw v0
+.method public abstract hasFormData()Z
 .end method
 
-.method public hasHttpAuthUsernamePassword()Z
-    .locals 1
-
-    .prologue
-    .line 83
-    new-instance v0, Landroid/webkit/MustOverrideException;
-
-    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
-
-    throw v0
+.method public abstract hasHttpAuthUsernamePassword()Z
 .end method
 
-.method public hasUsernamePassword()Z
-    .locals 1
+.method public abstract hasUsernamePassword()Z
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
-
-    .prologue
-    .line 58
-    new-instance v0, Landroid/webkit/MustOverrideException;
-
-    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
-
-    throw v0
 .end method

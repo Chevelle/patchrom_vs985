@@ -25,10 +25,9 @@
     .locals 0
 
     .prologue
-    .line 341
+    .line 499
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 343
     return-void
 .end method
 
@@ -43,14 +42,20 @@
 .method public abstract getForegroundTime(I)J
 .end method
 
+.method public abstract getNumAnrs(I)I
+.end method
+
+.method public abstract getNumCrashes(I)I
+.end method
+
 .method public abstract getStarts(I)I
 .end method
 
 .method public abstract getSystemTime(I)J
 .end method
 
-.method public abstract getTimeAtCpuSpeedStep(II)J
+.method public abstract getUserTime(I)J
 .end method
 
-.method public abstract getUserTime(I)J
+.method public abstract isActive()Z
 .end method

@@ -57,7 +57,7 @@
     .line 52
     new-instance v0, Landroid/net/NetworkInfo$State;
 
-    const-string v1, "CONNECTING"
+    const-string/jumbo v1, "CONNECTING"
 
     invoke-direct {v0, v1, v3}, Landroid/net/NetworkInfo$State;-><init>(Ljava/lang/String;I)V
 
@@ -65,7 +65,7 @@
 
     new-instance v0, Landroid/net/NetworkInfo$State;
 
-    const-string v1, "CONNECTED"
+    const-string/jumbo v1, "CONNECTED"
 
     invoke-direct {v0, v1, v4}, Landroid/net/NetworkInfo$State;-><init>(Ljava/lang/String;I)V
 
@@ -73,7 +73,7 @@
 
     new-instance v0, Landroid/net/NetworkInfo$State;
 
-    const-string v1, "SUSPENDED"
+    const-string/jumbo v1, "SUSPENDED"
 
     invoke-direct {v0, v1, v5}, Landroid/net/NetworkInfo$State;-><init>(Ljava/lang/String;I)V
 
@@ -81,7 +81,7 @@
 
     new-instance v0, Landroid/net/NetworkInfo$State;
 
-    const-string v1, "DISCONNECTING"
+    const-string/jumbo v1, "DISCONNECTING"
 
     invoke-direct {v0, v1, v6}, Landroid/net/NetworkInfo$State;-><init>(Ljava/lang/String;I)V
 
@@ -89,7 +89,7 @@
 
     new-instance v0, Landroid/net/NetworkInfo$State;
 
-    const-string v1, "DISCONNECTED"
+    const-string/jumbo v1, "DISCONNECTED"
 
     invoke-direct {v0, v1, v7}, Landroid/net/NetworkInfo$State;-><init>(Ljava/lang/String;I)V
 
@@ -97,7 +97,7 @@
 
     new-instance v0, Landroid/net/NetworkInfo$State;
 
-    const-string v1, "UNKNOWN"
+    const-string/jumbo v1, "UNKNOWN"
 
     const/4 v2, 0x5
 
@@ -130,11 +130,11 @@
 
     aput-object v1, v0, v7
 
-    const/4 v1, 0x5
+    sget-object v1, Landroid/net/NetworkInfo$State;->UNKNOWN:Landroid/net/NetworkInfo$State;
 
-    sget-object v2, Landroid/net/NetworkInfo$State;->UNKNOWN:Landroid/net/NetworkInfo$State;
+    const/4 v2, 0x5
 
-    aput-object v2, v0, v1
+    aput-object v1, v0, v2
 
     sput-object v0, Landroid/net/NetworkInfo$State;->$VALUES:[Landroid/net/NetworkInfo$State;
 
@@ -143,13 +143,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .parameter
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
 
     .prologue
     .line 51
@@ -160,7 +153,7 @@
 
 .method public static valueOf(Ljava/lang/String;)Landroid/net/NetworkInfo$State;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
     .line 51
@@ -181,12 +174,6 @@
     .prologue
     .line 51
     sget-object v0, Landroid/net/NetworkInfo$State;->$VALUES:[Landroid/net/NetworkInfo$State;
-
-    invoke-virtual {v0}, [Landroid/net/NetworkInfo$State;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/net/NetworkInfo$State;
 
     return-object v0
 .end method

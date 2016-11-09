@@ -6,8 +6,8 @@
 # direct methods
 .method public constructor <init>([FF)V
     .locals 2
-    .parameter "intervals"
-    .parameter "phase"
+    .param p1, "intervals"    # [F
+    .param p2, "phase"    # F
 
     .prologue
     .line 34
@@ -29,15 +29,15 @@
 
     .line 38
     :cond_0
-    invoke-static {p1, p2}, Landroid/graphics/DashPathEffect;->nativeCreate([FF)I
+    invoke-static {p1, p2}, Landroid/graphics/DashPathEffect;->nativeCreate([FF)J
 
-    move-result v0
+    move-result-wide v0
 
-    iput v0, p0, Landroid/graphics/DashPathEffect;->native_instance:I
+    iput-wide v0, p0, Landroid/graphics/DashPathEffect;->native_instance:J
 
-    .line 39
+    .line 34
     return-void
 .end method
 
-.method private static native nativeCreate([FF)I
+.method private static native nativeCreate([FF)J
 .end method

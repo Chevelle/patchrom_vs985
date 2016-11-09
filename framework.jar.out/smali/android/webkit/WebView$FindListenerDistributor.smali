@@ -26,12 +26,28 @@
 
 
 # direct methods
+.method static synthetic -set0(Landroid/webkit/WebView$FindListenerDistributor;Landroid/webkit/WebView$FindListener;)Landroid/webkit/WebView$FindListener;
+    .locals 0
+
+    iput-object p1, p0, Landroid/webkit/WebView$FindListenerDistributor;->mFindDialogFindListener:Landroid/webkit/WebView$FindListener;
+
+    return-object p1
+.end method
+
+.method static synthetic -set1(Landroid/webkit/WebView$FindListenerDistributor;Landroid/webkit/WebView$FindListener;)Landroid/webkit/WebView$FindListener;
+    .locals 0
+
+    iput-object p1, p0, Landroid/webkit/WebView$FindListenerDistributor;->mUserFindListener:Landroid/webkit/WebView$FindListener;
+
+    return-object p1
+.end method
+
 .method private constructor <init>(Landroid/webkit/WebView;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/webkit/WebView;
 
     .prologue
-    .line 2026
+    .line 2240
     iput-object p1, p0, Landroid/webkit/WebView$FindListenerDistributor;->this$0:Landroid/webkit/WebView;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,73 +55,47 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/webkit/WebView;Landroid/webkit/WebView$1;)V
+.method synthetic constructor <init>(Landroid/webkit/WebView;Landroid/webkit/WebView$FindListenerDistributor;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Landroid/webkit/WebView;
 
     .prologue
-    .line 2026
     invoke-direct {p0, p1}, Landroid/webkit/WebView$FindListenerDistributor;-><init>(Landroid/webkit/WebView;)V
 
     return-void
-.end method
-
-.method static synthetic access$002(Landroid/webkit/WebView$FindListenerDistributor;Landroid/webkit/WebView$FindListener;)Landroid/webkit/WebView$FindListener;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 2026
-    iput-object p1, p0, Landroid/webkit/WebView$FindListenerDistributor;->mUserFindListener:Landroid/webkit/WebView$FindListener;
-
-    return-object p1
-.end method
-
-.method static synthetic access$2202(Landroid/webkit/WebView$FindListenerDistributor;Landroid/webkit/WebView$FindListener;)Landroid/webkit/WebView$FindListener;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 2026
-    iput-object p1, p0, Landroid/webkit/WebView$FindListenerDistributor;->mFindDialogFindListener:Landroid/webkit/WebView$FindListener;
-
-    return-object p1
 .end method
 
 
 # virtual methods
 .method public onFindResultReceived(IIZ)V
     .locals 1
-    .parameter "activeMatchOrdinal"
-    .parameter "numberOfMatches"
-    .parameter "isDoneCounting"
+    .param p1, "activeMatchOrdinal"    # I
+    .param p2, "numberOfMatches"    # I
+    .param p3, "isDoneCounting"    # Z
 
     .prologue
-    .line 2033
+    .line 2247
     iget-object v0, p0, Landroid/webkit/WebView$FindListenerDistributor;->mFindDialogFindListener:Landroid/webkit/WebView$FindListener;
 
     if-eqz v0, :cond_0
 
-    .line 2034
+    .line 2248
     iget-object v0, p0, Landroid/webkit/WebView$FindListenerDistributor;->mFindDialogFindListener:Landroid/webkit/WebView$FindListener;
 
     invoke-interface {v0, p1, p2, p3}, Landroid/webkit/WebView$FindListener;->onFindResultReceived(IIZ)V
 
-    .line 2038
+    .line 2252
     :cond_0
     iget-object v0, p0, Landroid/webkit/WebView$FindListenerDistributor;->mUserFindListener:Landroid/webkit/WebView$FindListener;
 
     if-eqz v0, :cond_1
 
-    .line 2039
+    .line 2253
     iget-object v0, p0, Landroid/webkit/WebView$FindListenerDistributor;->mUserFindListener:Landroid/webkit/WebView$FindListener;
 
     invoke-interface {v0, p1, p2, p3}, Landroid/webkit/WebView$FindListener;->onFindResultReceived(IIZ)V
 
-    .line 2042
+    .line 2246
     :cond_1
     return-void
 .end method

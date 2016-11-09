@@ -9,9 +9,9 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/view/WindowManager$LayoutParams;,
+        Landroid/view/WindowManager$BadTokenException;,
         Landroid/view/WindowManager$InvalidDisplayException;,
-        Landroid/view/WindowManager$BadTokenException;
+        Landroid/view/WindowManager$LayoutParams;
     }
 .end annotation
 

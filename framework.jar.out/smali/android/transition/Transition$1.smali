@@ -1,83 +1,52 @@
-.class Landroid/transition/Transition$1;
-.super Landroid/animation/AnimatorListenerAdapter;
+.class final Landroid/transition/Transition$1;
+.super Landroid/transition/PathMotion;
 .source "Transition.java"
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Landroid/transition/Transition;->runAnimator(Landroid/animation/Animator;Landroid/util/ArrayMap;)V
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroid/transition/Transition;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x8
     name = null
 .end annotation
 
 
-# instance fields
-.field final synthetic this$0:Landroid/transition/Transition;
-
-.field final synthetic val$runningAnimators:Landroid/util/ArrayMap;
-
-
 # direct methods
-.method constructor <init>(Landroid/transition/Transition;Landroid/util/ArrayMap;)V
+.method constructor <init>()V
     .locals 0
-    .parameter
-    .parameter
 
     .prologue
-    .line 594
-    iput-object p1, p0, Landroid/transition/Transition$1;->this$0:Landroid/transition/Transition;
-
-    iput-object p2, p0, Landroid/transition/Transition$1;->val$runningAnimators:Landroid/util/ArrayMap;
-
-    invoke-direct {p0}, Landroid/animation/AnimatorListenerAdapter;-><init>()V
+    .line 166
+    invoke-direct {p0}, Landroid/transition/PathMotion;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public onAnimationEnd(Landroid/animation/Animator;)V
+.method public getPath(FFFF)Landroid/graphics/Path;
     .locals 1
-    .parameter "animation"
+    .param p1, "startX"    # F
+    .param p2, "startY"    # F
+    .param p3, "endX"    # F
+    .param p4, "endY"    # F
 
     .prologue
-    .line 601
-    iget-object v0, p0, Landroid/transition/Transition$1;->val$runningAnimators:Landroid/util/ArrayMap;
+    .line 169
+    new-instance v0, Landroid/graphics/Path;
 
-    invoke-virtual {v0, p1}, Landroid/util/ArrayMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-direct {v0}, Landroid/graphics/Path;-><init>()V
 
-    .line 602
-    iget-object v0, p0, Landroid/transition/Transition$1;->this$0:Landroid/transition/Transition;
+    .line 170
+    .local v0, "path":Landroid/graphics/Path;
+    invoke-virtual {v0, p1, p2}, Landroid/graphics/Path;->moveTo(FF)V
 
-    #getter for: Landroid/transition/Transition;->mCurrentAnimators:Ljava/util/ArrayList;
-    invoke-static {v0}, Landroid/transition/Transition;->access$000(Landroid/transition/Transition;)Ljava/util/ArrayList;
+    .line 171
+    invoke-virtual {v0, p3, p4}, Landroid/graphics/Path;->lineTo(FF)V
 
-    move-result-object v0
-
-    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
-
-    .line 603
-    return-void
-.end method
-
-.method public onAnimationStart(Landroid/animation/Animator;)V
-    .locals 1
-    .parameter "animation"
-
-    .prologue
-    .line 597
-    iget-object v0, p0, Landroid/transition/Transition$1;->this$0:Landroid/transition/Transition;
-
-    #getter for: Landroid/transition/Transition;->mCurrentAnimators:Ljava/util/ArrayList;
-    invoke-static {v0}, Landroid/transition/Transition;->access$000(Landroid/transition/Transition;)Ljava/util/ArrayList;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 598
-    return-void
+    .line 172
+    return-object v0
 .end method

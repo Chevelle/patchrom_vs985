@@ -26,11 +26,11 @@
 # direct methods
 .method constructor <init>(Landroid/app/SharedPreferencesImpl$EditorImpl;Landroid/app/SharedPreferencesImpl$MemoryCommitResult;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$1"    # Landroid/app/SharedPreferencesImpl$EditorImpl;
+    .param p2, "val$mcr"    # Landroid/app/SharedPreferencesImpl$MemoryCommitResult;
 
     .prologue
-    .line 361
+    .line 363
     iput-object p1, p0, Landroid/app/SharedPreferencesImpl$EditorImpl$1;->this$1:Landroid/app/SharedPreferencesImpl$EditorImpl;
 
     iput-object p2, p0, Landroid/app/SharedPreferencesImpl$EditorImpl$1;->val$mcr:Landroid/app/SharedPreferencesImpl$MemoryCommitResult;
@@ -43,26 +43,27 @@
 
 # virtual methods
 .method public run()V
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 364
+    .line 366
     :try_start_0
-    iget-object v0, p0, Landroid/app/SharedPreferencesImpl$EditorImpl$1;->val$mcr:Landroid/app/SharedPreferencesImpl$MemoryCommitResult;
+    iget-object v1, p0, Landroid/app/SharedPreferencesImpl$EditorImpl$1;->val$mcr:Landroid/app/SharedPreferencesImpl$MemoryCommitResult;
 
-    iget-object v0, v0, Landroid/app/SharedPreferencesImpl$MemoryCommitResult;->writtenToDiskLatch:Ljava/util/concurrent/CountDownLatch;
+    iget-object v1, v1, Landroid/app/SharedPreferencesImpl$MemoryCommitResult;->writtenToDiskLatch:Ljava/util/concurrent/CountDownLatch;
 
-    invoke-virtual {v0}, Ljava/util/concurrent/CountDownLatch;->await()V
+    invoke-virtual {v1}, Ljava/util/concurrent/CountDownLatch;->await()V
     :try_end_0
     .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 367
+    .line 364
     :goto_0
     return-void
 
-    .line 365
+    .line 367
     :catch_0
     move-exception v0
 
+    .local v0, "ignored":Ljava/lang/InterruptedException;
     goto :goto_0
 .end method

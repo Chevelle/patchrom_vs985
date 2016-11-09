@@ -19,18 +19,16 @@
     .locals 0
 
     .prologue
-    .line 163
+    .line 158
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/graphics/Atlas$1;)V
+.method synthetic constructor <init>(Landroid/graphics/Atlas$Policy;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 163
     invoke-direct {p0}, Landroid/graphics/Atlas$Policy;-><init>()V
 
     return-void

@@ -15,8 +15,8 @@
 
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/provider/Contacts$Intents$Insert;,
-        Landroid/provider/Contacts$Intents$UI;
+        Landroid/provider/Contacts$Intents$UI;,
+        Landroid/provider/Contacts$Intents$Insert;
     }
 .end annotation
 
@@ -73,9 +73,8 @@
     .end annotation
 
     .prologue
-    .line 1980
+    .line 1979
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1981
     return-void
 .end method

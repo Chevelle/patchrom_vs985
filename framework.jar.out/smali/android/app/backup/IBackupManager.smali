@@ -71,7 +71,7 @@
     .end annotation
 .end method
 
-.method public abstract fullBackup(Landroid/os/ParcelFileDescriptor;ZZZZZ[Ljava/lang/String;)V
+.method public abstract fullBackup(Landroid/os/ParcelFileDescriptor;ZZZZZZZ[Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -80,6 +80,22 @@
 .end method
 
 .method public abstract fullRestore(Landroid/os/ParcelFileDescriptor;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract fullTransportBackup([Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getAvailableRestoreToken(Ljava/lang/String;)J
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -96,6 +112,22 @@
 .end method
 
 .method public abstract getCurrentTransport()Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getDataManagementIntent(Ljava/lang/String;)Landroid/content/Intent;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getDataManagementLabel(Ljava/lang/String;)Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -127,6 +159,14 @@
     .end annotation
 .end method
 
+.method public abstract isBackupServiceActive(I)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract listAllTransports()[Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -135,7 +175,7 @@
     .end annotation
 .end method
 
-.method public abstract opComplete(I)V
+.method public abstract opComplete(IJ)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -184,6 +224,14 @@
 .end method
 
 .method public abstract setBackupProvisioned(Z)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setBackupServiceActive(IZ)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

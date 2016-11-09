@@ -6,8 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/provider/VoicemailContract$Status;,
-        Landroid/provider/VoicemailContract$Voicemails;
+        Landroid/provider/VoicemailContract$Voicemails;,
+        Landroid/provider/VoicemailContract$Status;
     }
 .end annotation
 
@@ -31,9 +31,8 @@
     .locals 0
 
     .prologue
-    .line 67
+    .line 77
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 68
     return-void
 .end method

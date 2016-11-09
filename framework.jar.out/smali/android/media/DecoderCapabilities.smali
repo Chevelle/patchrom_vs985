@@ -6,8 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/media/DecoderCapabilities$AudioDecoder;,
-        Landroid/media/DecoderCapabilities$VideoDecoder;
+        Landroid/media/DecoderCapabilities$VideoDecoder;,
+        Landroid/media/DecoderCapabilities$AudioDecoder;
     }
 .end annotation
 
@@ -18,14 +18,14 @@
 
     .prologue
     .line 46
-    const-string v0, "media_jni"
+    const-string/jumbo v0, "media_jni"
 
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
     .line 47
     invoke-static {}, Landroid/media/DecoderCapabilities;->native_init()V
 
-    .line 48
+    .line 28
     return-void
 .end method
 
@@ -58,16 +58,16 @@
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     .line 69
-    .local v0, decoderList:Ljava/util/List;,"Ljava/util/List<Landroid/media/DecoderCapabilities$AudioDecoder;>;"
+    .local v0, "decoderList":Ljava/util/List;, "Ljava/util/List<Landroid/media/DecoderCapabilities$AudioDecoder;>;"
     invoke-static {}, Landroid/media/DecoderCapabilities;->native_get_num_audio_decoders()I
 
     move-result v2
 
     .line 70
-    .local v2, nDecoders:I
+    .local v2, "nDecoders":I
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_0
     if-ge v1, v2, :cond_0
 
@@ -113,16 +113,16 @@
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     .line 56
-    .local v0, decoderList:Ljava/util/List;,"Ljava/util/List<Landroid/media/DecoderCapabilities$VideoDecoder;>;"
+    .local v0, "decoderList":Ljava/util/List;, "Ljava/util/List<Landroid/media/DecoderCapabilities$VideoDecoder;>;"
     invoke-static {}, Landroid/media/DecoderCapabilities;->native_get_num_video_decoders()I
 
     move-result v2
 
     .line 57
-    .local v2, nDecoders:I
+    .local v2, "nDecoders":I
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_0
     if-ge v1, v2, :cond_0
 

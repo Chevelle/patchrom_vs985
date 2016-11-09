@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/accounts/ChooseTypeAndAccountActivity;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/accounts/ChooseTypeAndAccountActivity;
 
     .prologue
-    .line 568
+    .line 563
     iput-object p1, p0, Landroid/accounts/ChooseTypeAndAccountActivity$1;->this$0:Landroid/accounts/ChooseTypeAndAccountActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,10 +39,9 @@
 # virtual methods
 .method public onItemClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
     .locals 2
-    .parameter
-    .parameter "v"
-    .parameter "position"
-    .parameter "id"
+    .param p2, "v"    # Landroid/view/View;
+    .param p3, "position"    # I
+    .param p4, "id"    # J
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -54,18 +53,16 @@
     .end annotation
 
     .prologue
-    .line 571
-    .local p1, parent:Landroid/widget/AdapterView;,"Landroid/widget/AdapterView<*>;"
+    .line 566
+    .local p1, "parent":Landroid/widget/AdapterView;, "Landroid/widget/AdapterView<*>;"
     iget-object v0, p0, Landroid/accounts/ChooseTypeAndAccountActivity$1;->this$0:Landroid/accounts/ChooseTypeAndAccountActivity;
 
-    #setter for: Landroid/accounts/ChooseTypeAndAccountActivity;->mSelectedItemIndex:I
-    invoke-static {v0, p3}, Landroid/accounts/ChooseTypeAndAccountActivity;->access$002(Landroid/accounts/ChooseTypeAndAccountActivity;I)I
+    invoke-static {v0, p3}, Landroid/accounts/ChooseTypeAndAccountActivity;->-set0(Landroid/accounts/ChooseTypeAndAccountActivity;I)I
 
-    .line 572
+    .line 567
     iget-object v0, p0, Landroid/accounts/ChooseTypeAndAccountActivity$1;->this$0:Landroid/accounts/ChooseTypeAndAccountActivity;
 
-    #getter for: Landroid/accounts/ChooseTypeAndAccountActivity;->mOkButton:Landroid/widget/Button;
-    invoke-static {v0}, Landroid/accounts/ChooseTypeAndAccountActivity;->access$100(Landroid/accounts/ChooseTypeAndAccountActivity;)Landroid/widget/Button;
+    invoke-static {v0}, Landroid/accounts/ChooseTypeAndAccountActivity;->-get0(Landroid/accounts/ChooseTypeAndAccountActivity;)Landroid/widget/Button;
 
     move-result-object v0
 
@@ -73,6 +70,6 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/Button;->setEnabled(Z)V
 
-    .line 573
+    .line 565
     return-void
 .end method

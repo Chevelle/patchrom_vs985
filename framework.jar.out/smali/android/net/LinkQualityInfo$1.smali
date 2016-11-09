@@ -42,7 +42,7 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/net/LinkQualityInfo;
     .locals 3
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 116
@@ -51,7 +51,7 @@
     move-result v1
 
     .line 117
-    .local v1, objectType:I
+    .local v1, "objectType":I
     const/4 v2, 0x1
 
     if-ne v1, v2, :cond_0
@@ -62,15 +62,14 @@
     invoke-direct {v0}, Landroid/net/LinkQualityInfo;-><init>()V
 
     .line 119
-    .local v0, li:Landroid/net/LinkQualityInfo;
+    .local v0, "li":Landroid/net/LinkQualityInfo;
     invoke-virtual {v0, p1}, Landroid/net/LinkQualityInfo;->initializeFromParcel(Landroid/os/Parcel;)V
 
-    .line 126
-    .end local v0           #li:Landroid/net/LinkQualityInfo;
-    :goto_0
+    .line 120
     return-object v0
 
     .line 121
+    .end local v0    # "li":Landroid/net/LinkQualityInfo;
     :cond_0
     const/4 v2, 0x2
 
@@ -79,9 +78,9 @@
     .line 122
     invoke-static {p1}, Landroid/net/WifiLinkQualityInfo;->createFromParcelBody(Landroid/os/Parcel;)Landroid/net/WifiLinkQualityInfo;
 
-    move-result-object v0
+    move-result-object v2
 
-    goto :goto_0
+    return-object v2
 
     .line 123
     :cond_1
@@ -92,23 +91,23 @@
     .line 124
     invoke-static {p1}, Landroid/net/MobileLinkQualityInfo;->createFromParcelBody(Landroid/os/Parcel;)Landroid/net/MobileLinkQualityInfo;
 
-    move-result-object v0
+    move-result-object v2
 
-    goto :goto_0
+    return-object v2
 
     .line 126
     :cond_2
-    const/4 v0, 0x0
+    const/4 v2, 0x0
 
-    goto :goto_0
+    return-object v2
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
-    .line 114
+    .line 115
     invoke-virtual {p0, p1}, Landroid/net/LinkQualityInfo$1;->createFromParcel(Landroid/os/Parcel;)Landroid/net/LinkQualityInfo;
 
     move-result-object v0
@@ -118,7 +117,7 @@
 
 .method public newArray(I)[Landroid/net/LinkQualityInfo;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
     .line 131
@@ -129,10 +128,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 114
+    .line 130
     invoke-virtual {p0, p1}, Landroid/net/LinkQualityInfo$1;->newArray(I)[Landroid/net/LinkQualityInfo;
 
     move-result-object v0

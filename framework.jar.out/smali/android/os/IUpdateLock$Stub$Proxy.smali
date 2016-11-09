@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 77
+    .line 76
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 78
     iput-object p1, p0, Landroid/os/IUpdateLock$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 79
+    .line 76
     return-void
 .end method
 
@@ -41,8 +41,8 @@
 # virtual methods
 .method public acquireUpdateLock(Landroid/os/IBinder;Ljava/lang/String;)V
     .locals 5
-    .parameter "token"
-    .parameter "tag"
+    .param p1, "token"    # Landroid/os/IBinder;
+    .param p2, "tag"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -56,15 +56,15 @@
     move-result-object v0
 
     .line 91
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 93
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.os.IUpdateLock"
+    const-string/jumbo v2, "android.os.IUpdateLock"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -94,18 +94,20 @@
     .line 101
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 103
+    .line 88
     return-void
 
-    .line 100
+    .line 99
     :catchall_0
     move-exception v2
 
+    .line 100
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 101
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 99
     throw v2
 .end method
 
@@ -124,14 +126,14 @@
 
     .prologue
     .line 86
-    const-string v0, "android.os.IUpdateLock"
+    const-string/jumbo v0, "android.os.IUpdateLock"
 
     return-object v0
 .end method
 
 .method public releaseUpdateLock(Landroid/os/IBinder;)V
     .locals 5
-    .parameter "token"
+    .param p1, "token"    # Landroid/os/IBinder;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -145,15 +147,15 @@
     move-result-object v0
 
     .line 107
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 109
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.os.IUpdateLock"
+    const-string/jumbo v2, "android.os.IUpdateLock"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -180,17 +182,19 @@
     .line 116
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 118
+    .line 104
     return-void
 
-    .line 115
+    .line 114
     :catchall_0
     move-exception v2
 
+    .line 115
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 116
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 114
     throw v2
 .end method

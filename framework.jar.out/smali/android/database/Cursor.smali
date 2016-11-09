@@ -137,6 +137,9 @@
 .method public abstract respond(Landroid/os/Bundle;)Landroid/os/Bundle;
 .end method
 
+.method public abstract setExtras(Landroid/os/Bundle;)V
+.end method
+
 .method public abstract setNotificationUri(Landroid/content/ContentResolver;Landroid/net/Uri;)V
 .end method
 

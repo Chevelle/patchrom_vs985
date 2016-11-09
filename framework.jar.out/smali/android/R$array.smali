@@ -15,6 +15,8 @@
 
 
 # static fields
+.field public static final config_keySystemUuidMapping:I = 0x1070005
+
 .field public static final emailAddressTypes:I = 0x1070000
 
 .field public static final imProtocols:I = 0x1070001

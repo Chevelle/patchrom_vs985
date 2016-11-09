@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 679
+    .line 683
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -42,25 +42,25 @@
 # virtual methods
 .method public createFromParcel(Landroid/os/Parcel;)Landroid/database/CursorWindow;
     .locals 2
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 681
+    .line 685
     new-instance v0, Landroid/database/CursorWindow;
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p1, v1}, Landroid/database/CursorWindow;-><init>(Landroid/os/Parcel;Landroid/database/CursorWindow$1;)V
+    invoke-direct {v0, p1, v1}, Landroid/database/CursorWindow;-><init>(Landroid/os/Parcel;Landroid/database/CursorWindow;)V
 
     return-object v0
 .end method
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 679
+    .line 684
     invoke-virtual {p0, p1}, Landroid/database/CursorWindow$1;->createFromParcel(Landroid/os/Parcel;)Landroid/database/CursorWindow;
 
     move-result-object v0
@@ -70,10 +70,10 @@
 
 .method public newArray(I)[Landroid/database/CursorWindow;
     .locals 1
-    .parameter "size"
+    .param p1, "size"    # I
 
     .prologue
-    .line 685
+    .line 689
     new-array v0, p1, [Landroid/database/CursorWindow;
 
     return-object v0
@@ -81,10 +81,10 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .locals 1
-    .parameter "x0"
+    .param p1, "size"    # I
 
     .prologue
-    .line 679
+    .line 688
     invoke-virtual {p0, p1}, Landroid/database/CursorWindow$1;->newArray(I)[Landroid/database/CursorWindow;
 
     move-result-object v0

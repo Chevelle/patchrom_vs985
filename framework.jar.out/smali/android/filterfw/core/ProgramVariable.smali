@@ -12,8 +12,8 @@
 # direct methods
 .method public constructor <init>(Landroid/filterfw/core/Program;Ljava/lang/String;)V
     .locals 0
-    .parameter "program"
-    .parameter "varName"
+    .param p1, "program"    # Landroid/filterfw/core/Program;
+    .param p2, "varName"    # Ljava/lang/String;
 
     .prologue
     .line 28
@@ -25,7 +25,7 @@
     .line 30
     iput-object p2, p0, Landroid/filterfw/core/ProgramVariable;->mVarName:Ljava/lang/String;
 
-    .line 31
+    .line 28
     return-void
 .end method
 
@@ -57,7 +57,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Attempting to get program variable \'"
+    const-string/jumbo v2, "Attempting to get program variable \'"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -69,8 +69,10 @@
 
     move-result-object v1
 
-    const-string v2, "\' but the program is null!"
+    .line 52
+    const-string/jumbo v2, "\' but the program is null!"
 
+    .line 51
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -108,7 +110,7 @@
 
 .method public setValue(Ljava/lang/Object;)V
     .locals 3
-    .parameter "value"
+    .param p1, "value"    # Ljava/lang/Object;
 
     .prologue
     .line 42
@@ -123,7 +125,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Attempting to set program variable \'"
+    const-string/jumbo v2, "Attempting to set program variable \'"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -135,8 +137,10 @@
 
     move-result-object v1
 
-    const-string v2, "\' but the program is null!"
+    .line 44
+    const-string/jumbo v2, "\' but the program is null!"
 
+    .line 43
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -157,6 +161,6 @@
 
     invoke-virtual {v0, v1, p1}, Landroid/filterfw/core/Program;->setHostValue(Ljava/lang/String;Ljava/lang/Object;)V
 
-    .line 47
+    .line 41
     return-void
 .end method

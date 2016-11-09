@@ -15,7 +15,15 @@
 
 
 # virtual methods
-.method public abstract checkRestrictionsChallenge(Ljava/lang/String;)I
+.method public abstract canAddMoreManagedProfiles()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract createProfileForUser(Ljava/lang/String;II)Landroid/content/pm/UserInfo;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -47,6 +55,56 @@
     .end annotation
 .end method
 
+.method public abstract getCredentialOwnerProfile(I)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getDefaultGuestRestrictions()Landroid/os/Bundle;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getProfileParent(I)Landroid/content/pm/UserInfo;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getProfiles(IZ)Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(IZ)",
+            "Ljava/util/List",
+            "<",
+            "Landroid/content/pm/UserInfo;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getUserCreationTime(I)J
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getUserHandle(I)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -55,7 +113,7 @@
     .end annotation
 .end method
 
-.method public abstract getUserIcon(I)Landroid/graphics/Bitmap;
+.method public abstract getUserIcon(I)Landroid/os/ParcelFileDescriptor;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -105,15 +163,7 @@
     .end annotation
 .end method
 
-.method public abstract hasRestrictionsChallenge()Z
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract isGuestEnabled()Z
+.method public abstract hasUserRestriction(Ljava/lang/String;I)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -122,6 +172,14 @@
 .end method
 
 .method public abstract isRestricted()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract markGuestForDeletion(I)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -153,7 +211,7 @@
     .end annotation
 .end method
 
-.method public abstract setGuestEnabled(Z)V
+.method public abstract setDefaultGuestRestrictions(Landroid/os/Bundle;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -161,7 +219,15 @@
     .end annotation
 .end method
 
-.method public abstract setRestrictionsChallenge(Ljava/lang/String;)Z
+.method public abstract setSystemControlledUserRestriction(Ljava/lang/String;ZI)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setUserEnabled(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -185,7 +251,7 @@
     .end annotation
 .end method
 
-.method public abstract setUserRestrictions(Landroid/os/Bundle;I)V
+.method public abstract setUserRestriction(Ljava/lang/String;ZI)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -193,7 +259,7 @@
     .end annotation
 .end method
 
-.method public abstract wipeUser(I)V
+.method public abstract setUserRestrictions(Landroid/os/Bundle;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

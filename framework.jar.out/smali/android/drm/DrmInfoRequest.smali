@@ -38,8 +38,8 @@
 # direct methods
 .method public constructor <init>(ILjava/lang/String;)V
     .locals 3
-    .parameter "infoType"
-    .parameter "mimeType"
+    .param p1, "infoType"    # I
+    .param p2, "mimeType"    # Ljava/lang/String;
 
     .prologue
     .line 67
@@ -70,7 +70,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "infoType: "
+    const-string/jumbo v2, "infoType: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -80,14 +80,16 @@
 
     move-result-object v1
 
-    const-string v2, ","
+    const-string/jumbo v2, ","
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, "mimeType: "
+    .line 72
+    const-string/jumbo v2, "mimeType: "
 
+    .line 71
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -101,29 +103,29 @@
     move-result-object v0
 
     .line 73
-    .local v0, msg:Ljava/lang/String;
+    .local v0, "msg":Ljava/lang/String;
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     invoke-direct {v1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 75
-    .end local v0           #msg:Ljava/lang/String;
+    .line 67
+    .end local v0    # "msg":Ljava/lang/String;
     :cond_0
     return-void
 .end method
 
 .method static isValidType(I)Z
     .locals 1
-    .parameter "infoType"
+    .param p0, "infoType"    # I
 
     .prologue
     .line 150
     const/4 v0, 0x0
 
     .line 152
-    .local v0, isValid:Z
+    .local v0, "isValid":Z
     packed-switch p0, :pswitch_data_0
 
     .line 160
@@ -134,6 +136,7 @@
     :pswitch_0
     const/4 v0, 0x1
 
+    .line 158
     goto :goto_0
 
     .line 152
@@ -152,7 +155,7 @@
 # virtual methods
 .method public get(Ljava/lang/String;)Ljava/lang/Object;
     .locals 1
-    .parameter "key"
+    .param p1, "key"    # Ljava/lang/String;
 
     .prologue
     .line 114
@@ -196,14 +199,22 @@
 
     iget-object v0, p0, Landroid/drm/DrmInfoRequest;->mMimeType:Ljava/lang/String;
 
-    const-string v1, ""
+    const-string/jumbo v1, ""
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_1
 
+    :cond_0
+    const/4 v0, 0x0
+
+    :goto_0
+    return v0
+
+    .line 146
+    :cond_1
     iget-object v0, p0, Landroid/drm/DrmInfoRequest;->mRequestInformation:Ljava/util/HashMap;
 
     if-eqz v0, :cond_0
@@ -213,16 +224,6 @@
     invoke-static {v0}, Landroid/drm/DrmInfoRequest;->isValidType(I)Z
 
     move-result v0
-
-    if-eqz v0, :cond_0
-
-    const/4 v0, 0x1
-
-    :goto_0
-    return v0
-
-    :cond_0
-    const/4 v0, 0x0
 
     goto :goto_0
 .end method
@@ -283,8 +284,8 @@
 
 .method public put(Ljava/lang/String;Ljava/lang/Object;)V
     .locals 1
-    .parameter "key"
-    .parameter "value"
+    .param p1, "key"    # Ljava/lang/String;
+    .param p2, "value"    # Ljava/lang/Object;
 
     .prologue
     .line 102
@@ -292,6 +293,6 @@
 
     invoke-virtual {v0, p1, p2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 103
+    .line 101
     return-void
 .end method

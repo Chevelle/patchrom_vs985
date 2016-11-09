@@ -4,6 +4,10 @@
 
 
 # static fields
+.field public static final CURSOR_UPDATE_IMMEDIATE:I = 0x1
+
+.field public static final CURSOR_UPDATE_MONITOR:I = 0x2
+
 .field public static final GET_EXTRACTED_TEXT_MONITOR:I = 0x1
 
 .field public static final GET_TEXT_WITH_STYLES:I = 0x1
@@ -59,6 +63,9 @@
 .end method
 
 .method public abstract reportFullscreenMode(Z)Z
+.end method
+
+.method public abstract requestCursorUpdates(I)Z
 .end method
 
 .method public abstract sendKeyEvent(Landroid/view/KeyEvent;)Z

@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/widget/MediaController;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/MediaController;
 
     .prologue
-    .line 618
+    .line 651
     iput-object p1, p0, Landroid/widget/MediaController$6;->this$0:Landroid/widget/MediaController;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -39,14 +39,13 @@
 # virtual methods
 .method public onClick(Landroid/view/View;)V
     .locals 3
-    .parameter "v"
+    .param p1, "v"    # Landroid/view/View;
 
     .prologue
-    .line 620
+    .line 654
     iget-object v1, p0, Landroid/widget/MediaController$6;->this$0:Landroid/widget/MediaController;
 
-    #getter for: Landroid/widget/MediaController;->mPlayer:Landroid/widget/MediaController$MediaPlayerControl;
-    invoke-static {v1}, Landroid/widget/MediaController;->access$700(Landroid/widget/MediaController;)Landroid/widget/MediaController$MediaPlayerControl;
+    invoke-static {v1}, Landroid/widget/MediaController;->-get5(Landroid/widget/MediaController;)Landroid/widget/MediaController$MediaPlayerControl;
 
     move-result-object v1
 
@@ -54,31 +53,31 @@
 
     move-result v0
 
-    .local v0, pos:I
-    add-int/lit16 v0, v0, -0x3a98
+    .line 655
+    .local v0, "pos":I
+    add-int/lit16 v0, v0, -0x1388
 
+    .line 656
     iget-object v1, p0, Landroid/widget/MediaController$6;->this$0:Landroid/widget/MediaController;
 
-    #getter for: Landroid/widget/MediaController;->mPlayer:Landroid/widget/MediaController$MediaPlayerControl;
-    invoke-static {v1}, Landroid/widget/MediaController;->access$700(Landroid/widget/MediaController;)Landroid/widget/MediaController$MediaPlayerControl;
+    invoke-static {v1}, Landroid/widget/MediaController;->-get5(Landroid/widget/MediaController;)Landroid/widget/MediaController$MediaPlayerControl;
 
     move-result-object v1
 
     invoke-interface {v1, v0}, Landroid/widget/MediaController$MediaPlayerControl;->seekTo(I)V
 
-    .line 623
+    .line 657
     iget-object v1, p0, Landroid/widget/MediaController$6;->this$0:Landroid/widget/MediaController;
 
-    #calls: Landroid/widget/MediaController;->setProgress()I
-    invoke-static {v1}, Landroid/widget/MediaController;->access$500(Landroid/widget/MediaController;)I
+    invoke-static {v1}, Landroid/widget/MediaController;->-wrap0(Landroid/widget/MediaController;)I
 
-    .line 625
+    .line 659
     iget-object v1, p0, Landroid/widget/MediaController$6;->this$0:Landroid/widget/MediaController;
 
     const/16 v2, 0xbb8
 
     invoke-virtual {v1, v2}, Landroid/widget/MediaController;->show(I)V
 
-    .line 626
+    .line 653
     return-void
 .end method

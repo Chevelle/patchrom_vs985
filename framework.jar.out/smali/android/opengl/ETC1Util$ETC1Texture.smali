@@ -25,9 +25,9 @@
 # direct methods
 .method public constructor <init>(IILjava/nio/ByteBuffer;)V
     .locals 0
-    .parameter "width"
-    .parameter "height"
-    .parameter "data"
+    .param p1, "width"    # I
+    .param p2, "height"    # I
+    .param p3, "data"    # Ljava/nio/ByteBuffer;
 
     .prologue
     .line 117
@@ -42,7 +42,7 @@
     .line 120
     iput-object p3, p0, Landroid/opengl/ETC1Util$ETC1Texture;->mData:Ljava/nio/ByteBuffer;
 
-    .line 121
+    .line 117
     return-void
 .end method
 

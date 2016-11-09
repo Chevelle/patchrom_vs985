@@ -25,18 +25,16 @@
     .locals 0
 
     .prologue
-    .line 670
+    .line 697
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/app/Activity$1;)V
+.method synthetic constructor <init>(Landroid/app/Activity$ManagedDialog;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 670
     invoke-direct {p0}, Landroid/app/Activity$ManagedDialog;-><init>()V
 
     return-void

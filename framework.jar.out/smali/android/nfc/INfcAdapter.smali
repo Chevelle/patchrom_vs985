@@ -15,6 +15,14 @@
 
 
 # virtual methods
+.method public abstract addNfcUnlockHandler(Landroid/nfc/INfcUnlockHandler;[I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract disable(Z)Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -63,6 +71,14 @@
     .end annotation
 .end method
 
+.method public abstract getNfcAdapterVendorInterface(Ljava/lang/String;)Landroid/os/IBinder;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract getNfcCardEmulationInterface()Landroid/nfc/INfcCardEmulation;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -87,7 +103,47 @@
     .end annotation
 .end method
 
+.method public abstract invokeBeam()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract invokeBeamInternal(Landroid/nfc/BeamShareData;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract isNdefPushEnabled()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract pausePolling(I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract removeNfcUnlockHandler(Landroid/nfc/INfcUnlockHandler;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract resumePolling()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -120,6 +176,14 @@
 .end method
 
 .method public abstract setReaderMode(Landroid/os/IBinder;Landroid/nfc/IAppCallback;ILandroid/os/Bundle;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract verifyNfcPermission()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

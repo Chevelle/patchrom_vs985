@@ -33,15 +33,14 @@
 
     iput-object v0, p0, Landroid/os/CancellationSignal$Transport;->mCancellationSignal:Landroid/os/CancellationSignal;
 
+    .line 201
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/CancellationSignal$1;)V
+.method synthetic constructor <init>(Landroid/os/CancellationSignal$Transport;)V
     .locals 0
-    .parameter "x0"
 
     .prologue
-    .line 201
     invoke-direct {p0}, Landroid/os/CancellationSignal$Transport;-><init>()V
 
     return-void
@@ -63,6 +62,6 @@
 
     invoke-virtual {v0}, Landroid/os/CancellationSignal;->cancel()V
 
-    .line 207
+    .line 205
     return-void
 .end method

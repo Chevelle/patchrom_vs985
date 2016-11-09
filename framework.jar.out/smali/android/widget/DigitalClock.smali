@@ -29,88 +29,76 @@
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;)V
+.method static synthetic -get0(Landroid/widget/DigitalClock;)Landroid/os/Handler;
     .locals 1
-    .parameter "context"
 
-    .prologue
-    .line 53
-    invoke-direct {p0, p1}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
-
-    .line 48
-    const/4 v0, 0x0
-
-    iput-boolean v0, p0, Landroid/widget/DigitalClock;->mTickerStopped:Z
-
-    .line 54
-    invoke-direct {p0}, Landroid/widget/DigitalClock;->initClock()V
-
-    .line 55
-    return-void
-.end method
-
-.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .locals 1
-    .parameter "context"
-    .parameter "attrs"
-
-    .prologue
-    .line 58
-    invoke-direct {p0, p1, p2}, Landroid/widget/TextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-
-    .line 48
-    const/4 v0, 0x0
-
-    iput-boolean v0, p0, Landroid/widget/DigitalClock;->mTickerStopped:Z
-
-    .line 59
-    invoke-direct {p0}, Landroid/widget/DigitalClock;->initClock()V
-
-    .line 60
-    return-void
-.end method
-
-.method static synthetic access$000(Landroid/widget/DigitalClock;)Z
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 37
-    iget-boolean v0, p0, Landroid/widget/DigitalClock;->mTickerStopped:Z
-
-    return v0
-.end method
-
-.method static synthetic access$100(Landroid/widget/DigitalClock;)Ljava/lang/Runnable;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 37
-    iget-object v0, p0, Landroid/widget/DigitalClock;->mTicker:Ljava/lang/Runnable;
-
-    return-object v0
-.end method
-
-.method static synthetic access$200(Landroid/widget/DigitalClock;)Landroid/os/Handler;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 37
     iget-object v0, p0, Landroid/widget/DigitalClock;->mHandler:Landroid/os/Handler;
 
     return-object v0
 .end method
 
-.method static synthetic access$300(Landroid/widget/DigitalClock;)V
-    .locals 0
-    .parameter "x0"
+.method static synthetic -get1(Landroid/widget/DigitalClock;)Ljava/lang/Runnable;
+    .locals 1
 
-    .prologue
-    .line 37
+    iget-object v0, p0, Landroid/widget/DigitalClock;->mTicker:Ljava/lang/Runnable;
+
+    return-object v0
+.end method
+
+.method static synthetic -get2(Landroid/widget/DigitalClock;)Z
+    .locals 1
+
+    iget-boolean v0, p0, Landroid/widget/DigitalClock;->mTickerStopped:Z
+
+    return v0
+.end method
+
+.method static synthetic -wrap0(Landroid/widget/DigitalClock;)V
+    .locals 0
+
     invoke-direct {p0}, Landroid/widget/DigitalClock;->setFormat()V
 
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/content/Context;)V
+    .locals 1
+    .param p1, "context"    # Landroid/content/Context;
+
+    .prologue
+    .line 50
+    invoke-direct {p0, p1}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
+
+    .line 45
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Landroid/widget/DigitalClock;->mTickerStopped:Z
+
+    .line 51
+    invoke-direct {p0}, Landroid/widget/DigitalClock;->initClock()V
+
+    .line 49
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    .locals 1
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "attrs"    # Landroid/util/AttributeSet;
+
+    .prologue
+    .line 55
+    invoke-direct {p0, p1, p2}, Landroid/widget/TextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+
+    .line 45
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Landroid/widget/DigitalClock;->mTickerStopped:Z
+
+    .line 56
+    invoke-direct {p0}, Landroid/widget/DigitalClock;->initClock()V
+
+    .line 54
     return-void
 .end method
 
@@ -118,19 +106,19 @@
     .locals 4
 
     .prologue
-    .line 63
+    .line 60
     iget-object v0, p0, Landroid/widget/DigitalClock;->mCalendar:Ljava/util/Calendar;
 
     if-nez v0, :cond_0
 
-    .line 64
+    .line 61
     invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/widget/DigitalClock;->mCalendar:Ljava/util/Calendar;
 
-    .line 67
+    .line 64
     :cond_0
     new-instance v0, Landroid/widget/DigitalClock$FormatChangeObserver;
 
@@ -138,7 +126,7 @@
 
     iput-object v0, p0, Landroid/widget/DigitalClock;->mFormatChangeObserver:Landroid/widget/DigitalClock$FormatChangeObserver;
 
-    .line 68
+    .line 65
     invoke-virtual {p0}, Landroid/widget/DigitalClock;->getContext()Landroid/content/Context;
 
     move-result-object v0
@@ -147,18 +135,20 @@
 
     move-result-object v0
 
+    .line 66
     sget-object v1, Landroid/provider/Settings$System;->CONTENT_URI:Landroid/net/Uri;
 
-    const/4 v2, 0x1
+    iget-object v2, p0, Landroid/widget/DigitalClock;->mFormatChangeObserver:Landroid/widget/DigitalClock$FormatChangeObserver;
 
-    iget-object v3, p0, Landroid/widget/DigitalClock;->mFormatChangeObserver:Landroid/widget/DigitalClock$FormatChangeObserver;
+    const/4 v3, 0x1
 
-    invoke-virtual {v0, v1, v2, v3}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
+    .line 65
+    invoke-virtual {v0, v1, v3, v2}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;)V
 
-    .line 71
+    .line 68
     invoke-direct {p0}, Landroid/widget/DigitalClock;->setFormat()V
 
-    .line 72
+    .line 59
     return-void
 .end method
 
@@ -166,7 +156,7 @@
     .locals 1
 
     .prologue
-    .line 104
+    .line 101
     invoke-virtual {p0}, Landroid/widget/DigitalClock;->getContext()Landroid/content/Context;
 
     move-result-object v0
@@ -177,44 +167,58 @@
 
     iput-object v0, p0, Landroid/widget/DigitalClock;->mFormat:Ljava/lang/String;
 
-    .line 105
+    .line 100
     return-void
 .end method
 
 
 # virtual methods
+.method public getAccessibilityClassName()Ljava/lang/CharSequence;
+    .locals 1
+
+    .prologue
+    .line 118
+    const-class v0, Landroid/widget/DigitalClock;
+
+    invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
 .method protected onAttachedToWindow()V
     .locals 1
 
     .prologue
-    .line 76
+    .line 73
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/widget/DigitalClock;->mTickerStopped:Z
 
-    .line 77
+    .line 74
     invoke-super {p0}, Landroid/widget/TextView;->onAttachedToWindow()V
 
-    .line 78
+    .line 75
     new-instance v0, Landroid/os/Handler;
 
     invoke-direct {v0}, Landroid/os/Handler;-><init>()V
 
     iput-object v0, p0, Landroid/widget/DigitalClock;->mHandler:Landroid/os/Handler;
 
-    .line 83
+    .line 80
     new-instance v0, Landroid/widget/DigitalClock$1;
 
     invoke-direct {v0, p0}, Landroid/widget/DigitalClock$1;-><init>(Landroid/widget/DigitalClock;)V
 
     iput-object v0, p0, Landroid/widget/DigitalClock;->mTicker:Ljava/lang/Runnable;
 
-    .line 94
+    .line 91
     iget-object v0, p0, Landroid/widget/DigitalClock;->mTicker:Ljava/lang/Runnable;
 
     invoke-interface {v0}, Ljava/lang/Runnable;->run()V
 
-    .line 95
+    .line 72
     return-void
 .end method
 
@@ -222,56 +226,14 @@
     .locals 1
 
     .prologue
-    .line 99
+    .line 96
     invoke-super {p0}, Landroid/widget/TextView;->onDetachedFromWindow()V
 
-    .line 100
+    .line 97
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/widget/DigitalClock;->mTickerStopped:Z
 
-    .line 101
-    return-void
-.end method
-
-.method public onInitializeAccessibilityEvent(Landroid/view/accessibility/AccessibilityEvent;)V
-    .locals 1
-    .parameter "event"
-
-    .prologue
-    .line 120
-    invoke-super {p0, p1}, Landroid/widget/TextView;->onInitializeAccessibilityEvent(Landroid/view/accessibility/AccessibilityEvent;)V
-
-    .line 122
-    const-class v0, Landroid/widget/DigitalClock;
-
-    invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-virtual {p1, v0}, Landroid/view/accessibility/AccessibilityEvent;->setClassName(Ljava/lang/CharSequence;)V
-
-    .line 123
-    return-void
-.end method
-
-.method public onInitializeAccessibilityNodeInfo(Landroid/view/accessibility/AccessibilityNodeInfo;)V
-    .locals 1
-    .parameter "info"
-
-    .prologue
-    .line 127
-    invoke-super {p0, p1}, Landroid/widget/TextView;->onInitializeAccessibilityNodeInfo(Landroid/view/accessibility/AccessibilityNodeInfo;)V
-
-    .line 129
-    const-class v0, Landroid/widget/DigitalClock;
-
-    invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-virtual {p1, v0}, Landroid/view/accessibility/AccessibilityNodeInfo;->setClassName(Ljava/lang/CharSequence;)V
-
-    .line 130
+    .line 95
     return-void
 .end method

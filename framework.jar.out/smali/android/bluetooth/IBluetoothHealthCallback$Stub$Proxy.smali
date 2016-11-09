@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 105
+    .line 104
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 106
     iput-object p1, p0, Landroid/bluetooth/IBluetoothHealthCallback$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 107
+    .line 104
     return-void
 .end method
 
@@ -54,15 +54,15 @@
 
     .prologue
     .line 114
-    const-string v0, "android.bluetooth.IBluetoothHealthCallback"
+    const-string/jumbo v0, "android.bluetooth.IBluetoothHealthCallback"
 
     return-object v0
 .end method
 
 .method public onHealthAppConfigurationStatusChange(Landroid/bluetooth/BluetoothHealthAppConfiguration;I)V
     .locals 5
-    .parameter "config"
-    .parameter "status"
+    .param p1, "config"    # Landroid/bluetooth/BluetoothHealthAppConfiguration;
+    .param p2, "status"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -76,15 +76,15 @@
     move-result-object v0
 
     .line 119
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 121
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.bluetooth.IBluetoothHealthCallback"
+    const-string/jumbo v2, "android.bluetooth.IBluetoothHealthCallback"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -125,7 +125,7 @@
     .line 135
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 137
+    .line 116
     return-void
 
     .line 127
@@ -139,26 +139,28 @@
 
     goto :goto_0
 
-    .line 134
+    .line 133
     :catchall_0
     move-exception v2
 
+    .line 134
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 135
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 133
     throw v2
 .end method
 
 .method public onHealthChannelStateChange(Landroid/bluetooth/BluetoothHealthAppConfiguration;Landroid/bluetooth/BluetoothDevice;IILandroid/os/ParcelFileDescriptor;I)V
     .locals 5
-    .parameter "config"
-    .parameter "device"
-    .parameter "prevState"
-    .parameter "newState"
-    .parameter "fd"
-    .parameter "id"
+    .param p1, "config"    # Landroid/bluetooth/BluetoothHealthAppConfiguration;
+    .param p2, "device"    # Landroid/bluetooth/BluetoothDevice;
+    .param p3, "prevState"    # I
+    .param p4, "newState"    # I
+    .param p5, "fd"    # Landroid/os/ParcelFileDescriptor;
+    .param p6, "id"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -172,15 +174,15 @@
     move-result-object v0
 
     .line 141
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
     .line 143
-    .local v1, _reply:Landroid/os/Parcel;
+    .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "android.bluetooth.IBluetoothHealthCallback"
+    const-string/jumbo v2, "android.bluetooth.IBluetoothHealthCallback"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -255,7 +257,7 @@
     .line 173
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 175
+    .line 138
     return-void
 
     .line 149
@@ -269,15 +271,17 @@
 
     goto :goto_0
 
-    .line 172
+    .line 171
     :catchall_0
     move-exception v2
 
+    .line 172
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
     .line 173
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 171
     throw v2
 
     .line 156

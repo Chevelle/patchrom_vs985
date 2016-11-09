@@ -21,6 +21,8 @@
 
 .field public static final HAS_PHONE_NUMBER:Ljava/lang/String; = "has_phone_number"
 
+.field public static final IN_DEFAULT_DIRECTORY:Ljava/lang/String; = "in_default_directory"
+
 .field public static final IN_VISIBLE_GROUP:Ljava/lang/String; = "in_visible_group"
 
 .field public static final IS_USER_PROFILE:Ljava/lang/String; = "is_user_profile"

@@ -16,6 +16,12 @@
     name = "PackageOps"
 .end annotation
 
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/app/AppOpsManager$PackageOps$1;
+    }
+.end annotation
+
 
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
@@ -52,84 +58,86 @@
     .locals 1
 
     .prologue
-    .line 636
+    .line 1093
     new-instance v0, Landroid/app/AppOpsManager$PackageOps$1;
 
     invoke-direct {v0}, Landroid/app/AppOpsManager$PackageOps$1;-><init>()V
 
     sput-object v0, Landroid/app/AppOpsManager$PackageOps;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 1045
     return-void
 .end method
 
 .method constructor <init>(Landroid/os/Parcel;)V
     .locals 4
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 626
+    .line 1083
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 627
+    .line 1084
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v2
 
     iput-object v2, p0, Landroid/app/AppOpsManager$PackageOps;->mPackageName:Ljava/lang/String;
 
-    .line 628
+    .line 1085
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v2
 
     iput v2, p0, Landroid/app/AppOpsManager$PackageOps;->mUid:I
 
-    .line 629
+    .line 1086
     new-instance v2, Ljava/util/ArrayList;
 
     invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v2, p0, Landroid/app/AppOpsManager$PackageOps;->mEntries:Ljava/util/List;
 
-    .line 630
+    .line 1087
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    .line 631
-    .local v0, N:I
+    .line 1088
+    .local v0, "N":I
     const/4 v1, 0x0
 
-    .local v1, i:I
+    .local v1, "i":I
     :goto_0
     if-ge v1, v0, :cond_0
 
-    .line 632
-    iget-object v2, p0, Landroid/app/AppOpsManager$PackageOps;->mEntries:Ljava/util/List;
+    .line 1089
+    iget-object v3, p0, Landroid/app/AppOpsManager$PackageOps;->mEntries:Ljava/util/List;
 
-    sget-object v3, Landroid/app/AppOpsManager$OpEntry;->CREATOR:Landroid/os/Parcelable$Creator;
+    sget-object v2, Landroid/app/AppOpsManager$OpEntry;->CREATOR:Landroid/os/Parcelable$Creator;
 
-    invoke-interface {v3, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+    invoke-interface {v2, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-interface {v2, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    check-cast v2, Landroid/app/AppOpsManager$OpEntry;
 
-    .line 631
+    invoke-interface {v3, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    .line 1088
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 634
+    .line 1083
     :cond_0
     return-void
 .end method
 
 .method public constructor <init>(Ljava/lang/String;ILjava/util/List;)V
     .locals 0
-    .parameter "packageName"
-    .parameter "uid"
-    .parameter
+    .param p1, "packageName"    # Ljava/lang/String;
+    .param p2, "uid"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -143,20 +151,20 @@
     .end annotation
 
     .prologue
-    .line 593
-    .local p3, entries:Ljava/util/List;,"Ljava/util/List<Landroid/app/AppOpsManager$OpEntry;>;"
+    .line 1050
+    .local p3, "entries":Ljava/util/List;, "Ljava/util/List<Landroid/app/AppOpsManager$OpEntry;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 594
+    .line 1051
     iput-object p1, p0, Landroid/app/AppOpsManager$PackageOps;->mPackageName:Ljava/lang/String;
 
-    .line 595
+    .line 1052
     iput p2, p0, Landroid/app/AppOpsManager$PackageOps;->mUid:I
 
-    .line 596
+    .line 1053
     iput-object p3, p0, Landroid/app/AppOpsManager$PackageOps;->mEntries:Ljava/util/List;
 
-    .line 597
+    .line 1050
     return-void
 .end method
 
@@ -166,7 +174,7 @@
     .locals 1
 
     .prologue
-    .line 613
+    .line 1070
     const/4 v0, 0x0
 
     return v0
@@ -185,7 +193,7 @@
     .end annotation
 
     .prologue
-    .line 608
+    .line 1065
     iget-object v0, p0, Landroid/app/AppOpsManager$PackageOps;->mEntries:Ljava/util/List;
 
     return-object v0
@@ -195,7 +203,7 @@
     .locals 1
 
     .prologue
-    .line 600
+    .line 1057
     iget-object v0, p0, Landroid/app/AppOpsManager$PackageOps;->mPackageName:Ljava/lang/String;
 
     return-object v0
@@ -205,7 +213,7 @@
     .locals 1
 
     .prologue
-    .line 604
+    .line 1061
     iget v0, p0, Landroid/app/AppOpsManager$PackageOps;->mUid:I
 
     return v0
@@ -213,21 +221,21 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 2
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 618
+    .line 1075
     iget-object v1, p0, Landroid/app/AppOpsManager$PackageOps;->mPackageName:Ljava/lang/String;
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 619
+    .line 1076
     iget v1, p0, Landroid/app/AppOpsManager$PackageOps;->mUid:I
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 620
+    .line 1077
     iget-object v1, p0, Landroid/app/AppOpsManager$PackageOps;->mEntries:Ljava/util/List;
 
     invoke-interface {v1}, Ljava/util/List;->size()I
@@ -236,10 +244,10 @@
 
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 621
+    .line 1078
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     iget-object v1, p0, Landroid/app/AppOpsManager$PackageOps;->mEntries:Ljava/util/List;
 
@@ -249,7 +257,7 @@
 
     if-ge v0, v1, :cond_0
 
-    .line 622
+    .line 1079
     iget-object v1, p0, Landroid/app/AppOpsManager$PackageOps;->mEntries:Ljava/util/List;
 
     invoke-interface {v1, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -260,12 +268,12 @@
 
     invoke-virtual {v1, p1, p2}, Landroid/app/AppOpsManager$OpEntry;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 621
+    .line 1078
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 624
+    .line 1074
     :cond_0
     return-void
 .end method

@@ -46,7 +46,7 @@
 
     add-int/lit8 v0, v1, -0x1
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-ltz v0, :cond_0
 
@@ -60,27 +60,26 @@
     check-cast v1, Landroid/database/DataSetObserver;
 
     invoke-virtual {v1}, Landroid/database/DataSetObserver;->onChanged()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 36
     add-int/lit8 v0, v0, -0x1
 
     goto :goto_0
 
-    .line 39
     :cond_0
     monitor-exit v2
 
-    .line 40
+    .line 30
     return-void
 
-    .line 39
-    .end local v0           #i:I
+    .line 31
+    .end local v0    # "i":I
     :catchall_0
     move-exception v1
 
     monitor-exit v2
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
@@ -104,7 +103,7 @@
 
     add-int/lit8 v0, v1, -0x1
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     if-ltz v0, :cond_0
 
@@ -118,27 +117,26 @@
     check-cast v1, Landroid/database/DataSetObserver;
 
     invoke-virtual {v1}, Landroid/database/DataSetObserver;->onInvalidated()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 49
     add-int/lit8 v0, v0, -0x1
 
     goto :goto_0
 
-    .line 52
     :cond_0
     monitor-exit v2
 
-    .line 53
+    .line 47
     return-void
 
-    .line 52
-    .end local v0           #i:I
+    .line 48
+    .end local v0    # "i":I
     :catchall_0
     move-exception v1
 
     monitor-exit v2
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method

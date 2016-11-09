@@ -48,34 +48,37 @@
 
     const/4 v2, 0x0
 
-    .line 146
+    .line 166
     new-instance v0, Landroid/renderscript/RenderScript$ContextType;
 
-    const-string v1, "NORMAL"
+    const-string/jumbo v1, "NORMAL"
 
     invoke-direct {v0, v1, v2, v2}, Landroid/renderscript/RenderScript$ContextType;-><init>(Ljava/lang/String;II)V
 
+    .line 170
     sput-object v0, Landroid/renderscript/RenderScript$ContextType;->NORMAL:Landroid/renderscript/RenderScript$ContextType;
 
-    .line 153
+    .line 172
     new-instance v0, Landroid/renderscript/RenderScript$ContextType;
 
-    const-string v1, "DEBUG"
+    const-string/jumbo v1, "DEBUG"
 
     invoke-direct {v0, v1, v3, v3}, Landroid/renderscript/RenderScript$ContextType;-><init>(Ljava/lang/String;II)V
 
+    .line 177
     sput-object v0, Landroid/renderscript/RenderScript$ContextType;->DEBUG:Landroid/renderscript/RenderScript$ContextType;
 
-    .line 160
+    .line 179
     new-instance v0, Landroid/renderscript/RenderScript$ContextType;
 
-    const-string v1, "PROFILE"
+    const-string/jumbo v1, "PROFILE"
 
     invoke-direct {v0, v1, v4, v4}, Landroid/renderscript/RenderScript$ContextType;-><init>(Ljava/lang/String;II)V
 
+    .line 184
     sput-object v0, Landroid/renderscript/RenderScript$ContextType;->PROFILE:Landroid/renderscript/RenderScript$ContextType;
 
-    .line 141
+    .line 165
     const/4 v0, 0x3
 
     new-array v0, v0, [Landroid/renderscript/RenderScript$ContextType;
@@ -99,32 +102,25 @@
 
 .method private constructor <init>(Ljava/lang/String;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter "id"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(I)V"
-        }
-    .end annotation
+    .param p3, "id"    # I
 
     .prologue
-    .line 163
+    .line 187
     invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
-    .line 164
+    .line 188
     iput p3, p0, Landroid/renderscript/RenderScript$ContextType;->mID:I
 
-    .line 165
+    .line 187
     return-void
 .end method
 
 .method public static valueOf(Ljava/lang/String;)Landroid/renderscript/RenderScript$ContextType;
     .locals 1
-    .parameter "name"
+    .param p0, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 141
+    .line 165
     const-class v0, Landroid/renderscript/RenderScript$ContextType;
 
     invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
@@ -140,14 +136,8 @@
     .locals 1
 
     .prologue
-    .line 141
+    .line 165
     sget-object v0, Landroid/renderscript/RenderScript$ContextType;->$VALUES:[Landroid/renderscript/RenderScript$ContextType;
-
-    invoke-virtual {v0}, [Landroid/renderscript/RenderScript$ContextType;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, [Landroid/renderscript/RenderScript$ContextType;
 
     return-object v0
 .end method

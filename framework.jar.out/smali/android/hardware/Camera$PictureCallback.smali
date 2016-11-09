@@ -13,6 +13,9 @@
     name = "PictureCallback"
 .end annotation
 
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
 
 # virtual methods
 .method public abstract onPictureTaken([BLandroid/hardware/Camera;)V

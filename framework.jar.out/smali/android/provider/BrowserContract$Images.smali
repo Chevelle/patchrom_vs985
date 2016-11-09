@@ -22,7 +22,7 @@
 
 .field public static final CONTENT_TYPE:Ljava/lang/String; = "vnd.android.cursor.dir/images"
 
-.field public static final CONTENT_URI:Landroid/net/Uri; = null
+.field public static final CONTENT_URI:Landroid/net/Uri;
 
 .field public static final DATA:Ljava/lang/String; = "data"
 
@@ -45,7 +45,7 @@
     .line 576
     sget-object v0, Landroid/provider/BrowserContract;->AUTHORITY_URI:Landroid/net/Uri;
 
-    const-string v1, "images"
+    const-string/jumbo v1, "images"
 
     invoke-static {v0, v1}, Landroid/net/Uri;->withAppendedPath(Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;
 
@@ -53,6 +53,7 @@
 
     sput-object v0, Landroid/provider/BrowserContract$Images;->CONTENT_URI:Landroid/net/Uri;
 
+    .line 567
     return-void
 .end method
 

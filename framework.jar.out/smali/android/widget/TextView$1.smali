@@ -26,11 +26,11 @@
 # direct methods
 .method constructor <init>(Landroid/widget/TextView;Ljava/lang/CharSequence;)V
     .locals 0
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/TextView;
+    .param p2, "val$error"    # Ljava/lang/CharSequence;
 
     .prologue
-    .line 3577
+    .line 4103
     iput-object p1, p0, Landroid/widget/TextView$1;->this$0:Landroid/widget/TextView;
 
     iput-object p2, p0, Landroid/widget/TextView$1;->val$error:Ljava/lang/CharSequence;
@@ -46,13 +46,36 @@
     .locals 2
 
     .prologue
-    .line 3579
+    .line 4105
+    iget-object v0, p0, Landroid/widget/TextView$1;->this$0:Landroid/widget/TextView;
+
+    invoke-static {v0}, Landroid/widget/TextView;->-get1(Landroid/widget/TextView;)Landroid/widget/Editor;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Landroid/widget/TextView$1;->this$0:Landroid/widget/TextView;
+
+    invoke-static {v0}, Landroid/widget/TextView;->-get1(Landroid/widget/TextView;)Landroid/widget/Editor;
+
+    move-result-object v0
+
+    iget-boolean v0, v0, Landroid/widget/Editor;->mErrorWasChanged:Z
+
+    if-eqz v0, :cond_0
+
+    .line 4104
+    :goto_0
+    return-void
+
+    .line 4106
+    :cond_0
     iget-object v0, p0, Landroid/widget/TextView$1;->this$0:Landroid/widget/TextView;
 
     iget-object v1, p0, Landroid/widget/TextView$1;->val$error:Ljava/lang/CharSequence;
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setError(Ljava/lang/CharSequence;)V
 
-    .line 3580
-    return-void
+    goto :goto_0
 .end method

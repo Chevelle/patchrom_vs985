@@ -15,7 +15,7 @@
 
 
 # virtual methods
-.method public abstract onMonitoringSystemChange(IZLandroid/location/Location;)V
+.method public abstract onMonitoringSystemChange(Landroid/hardware/location/GeofenceHardwareMonitorEvent;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

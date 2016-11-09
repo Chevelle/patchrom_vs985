@@ -45,7 +45,7 @@
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, v1}, Landroid/view/FocusFinder;-><init>(Landroid/view/FocusFinder$1;)V
+    invoke-direct {v0, v1}, Landroid/view/FocusFinder;-><init>(Landroid/view/FocusFinder;)V
 
     return-object v0
 .end method
@@ -54,7 +54,7 @@
     .locals 1
 
     .prologue
-    .line 32
+    .line 34
     invoke-virtual {p0}, Landroid/view/FocusFinder$1;->initialValue()Landroid/view/FocusFinder;
 
     move-result-object v0

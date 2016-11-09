@@ -25,10 +25,10 @@
 # direct methods
 .method constructor <init>(Landroid/provider/SearchRecentSuggestions;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter "x0"
-    .parameter
-    .parameter
+    .param p1, "this$0"    # Landroid/provider/SearchRecentSuggestions;
+    .param p2, "$anonymous0"    # Ljava/lang/String;
+    .param p3, "val$queryString"    # Ljava/lang/String;
+    .param p4, "val$line2"    # Ljava/lang/String;
 
     .prologue
     .line 169
@@ -56,16 +56,15 @@
 
     iget-object v2, p0, Landroid/provider/SearchRecentSuggestions$1;->val$line2:Ljava/lang/String;
 
-    #calls: Landroid/provider/SearchRecentSuggestions;->saveRecentQueryBlocking(Ljava/lang/String;Ljava/lang/String;)V
-    invoke-static {v0, v1, v2}, Landroid/provider/SearchRecentSuggestions;->access$000(Landroid/provider/SearchRecentSuggestions;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1, v2}, Landroid/provider/SearchRecentSuggestions;->-wrap0(Landroid/provider/SearchRecentSuggestions;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 173
-    invoke-static {}, Landroid/provider/SearchRecentSuggestions;->access$100()Ljava/util/concurrent/Semaphore;
+    invoke-static {}, Landroid/provider/SearchRecentSuggestions;->-get0()Ljava/util/concurrent/Semaphore;
 
     move-result-object v0
 
     invoke-virtual {v0}, Ljava/util/concurrent/Semaphore;->release()V
 
-    .line 174
+    .line 171
     return-void
 .end method

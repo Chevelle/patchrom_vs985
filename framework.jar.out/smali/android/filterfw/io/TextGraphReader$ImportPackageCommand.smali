@@ -26,8 +26,8 @@
 # direct methods
 .method public constructor <init>(Landroid/filterfw/io/TextGraphReader;Ljava/lang/String;)V
     .locals 0
-    .parameter
-    .parameter "packageName"
+    .param p1, "this$0"    # Landroid/filterfw/io/TextGraphReader;
+    .param p2, "packageName"    # Ljava/lang/String;
 
     .prologue
     .line 55
@@ -38,7 +38,7 @@
     .line 56
     iput-object p2, p0, Landroid/filterfw/io/TextGraphReader$ImportPackageCommand;->mPackageName:Ljava/lang/String;
 
-    .line 57
+    .line 55
     return-void
 .end method
 
@@ -46,7 +46,7 @@
 # virtual methods
 .method public execute(Landroid/filterfw/io/TextGraphReader;)V
     .locals 3
-    .parameter "reader"
+    .param p1, "reader"    # Landroid/filterfw/io/TextGraphReader;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/filterfw/io/GraphIOException;
@@ -56,8 +56,7 @@
     .prologue
     .line 62
     :try_start_0
-    #getter for: Landroid/filterfw/io/TextGraphReader;->mFactory:Landroid/filterfw/core/FilterFactory;
-    invoke-static {p1}, Landroid/filterfw/io/TextGraphReader;->access$000(Landroid/filterfw/io/TextGraphReader;)Landroid/filterfw/core/FilterFactory;
+    invoke-static {p1}, Landroid/filterfw/io/TextGraphReader;->-get2(Landroid/filterfw/io/TextGraphReader;)Landroid/filterfw/core/FilterFactory;
 
     move-result-object v1
 
@@ -67,7 +66,7 @@
     :try_end_0
     .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 66
+    .line 60
     return-void
 
     .line 63
@@ -75,7 +74,7 @@
     move-exception v0
 
     .line 64
-    .local v0, e:Ljava/lang/IllegalArgumentException;
+    .local v0, "e":Ljava/lang/IllegalArgumentException;
     new-instance v1, Landroid/filterfw/io/GraphIOException;
 
     invoke-virtual {v0}, Ljava/lang/IllegalArgumentException;->getMessage()Ljava/lang/String;

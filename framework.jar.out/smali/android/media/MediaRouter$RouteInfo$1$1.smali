@@ -18,7 +18,7 @@
 
 
 # instance fields
-.field final synthetic this$1:Landroid/media/MediaRouter$RouteInfo$1;
+.field final synthetic this$2:Landroid/media/MediaRouter$RouteInfo$1;
 
 .field final synthetic val$direction:I
 
@@ -28,13 +28,13 @@
 # direct methods
 .method constructor <init>(Landroid/media/MediaRouter$RouteInfo$1;II)V
     .locals 0
-    .parameter
-    .parameter
-    .parameter
+    .param p1, "this$2"    # Landroid/media/MediaRouter$RouteInfo$1;
+    .param p2, "val$direction"    # I
+    .param p3, "val$value"    # I
 
     .prologue
-    .line 1944
-    iput-object p1, p0, Landroid/media/MediaRouter$RouteInfo$1$1;->this$1:Landroid/media/MediaRouter$RouteInfo$1;
+    .line 1953
+    iput-object p1, p0, Landroid/media/MediaRouter$RouteInfo$1$1;->this$2:Landroid/media/MediaRouter$RouteInfo$1;
 
     iput p2, p0, Landroid/media/MediaRouter$RouteInfo$1$1;->val$direction:I
 
@@ -51,32 +51,32 @@
     .locals 3
 
     .prologue
-    .line 1947
-    iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo$1$1;->this$1:Landroid/media/MediaRouter$RouteInfo$1;
+    .line 1956
+    iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo$1$1;->this$2:Landroid/media/MediaRouter$RouteInfo$1;
 
-    iget-object v0, v0, Landroid/media/MediaRouter$RouteInfo$1;->this$0:Landroid/media/MediaRouter$RouteInfo;
+    iget-object v0, v0, Landroid/media/MediaRouter$RouteInfo$1;->this$1:Landroid/media/MediaRouter$RouteInfo;
 
     iget-object v0, v0, Landroid/media/MediaRouter$RouteInfo;->mVcb:Landroid/media/MediaRouter$VolumeCallbackInfo;
 
     if-eqz v0, :cond_0
 
-    .line 1948
+    .line 1957
     iget v0, p0, Landroid/media/MediaRouter$RouteInfo$1$1;->val$direction:I
 
     if-eqz v0, :cond_1
 
-    .line 1949
-    iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo$1$1;->this$1:Landroid/media/MediaRouter$RouteInfo$1;
+    .line 1958
+    iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo$1$1;->this$2:Landroid/media/MediaRouter$RouteInfo$1;
 
-    iget-object v0, v0, Landroid/media/MediaRouter$RouteInfo$1;->this$0:Landroid/media/MediaRouter$RouteInfo;
+    iget-object v0, v0, Landroid/media/MediaRouter$RouteInfo$1;->this$1:Landroid/media/MediaRouter$RouteInfo;
 
     iget-object v0, v0, Landroid/media/MediaRouter$RouteInfo;->mVcb:Landroid/media/MediaRouter$VolumeCallbackInfo;
 
     iget-object v0, v0, Landroid/media/MediaRouter$VolumeCallbackInfo;->vcb:Landroid/media/MediaRouter$VolumeCallback;
 
-    iget-object v1, p0, Landroid/media/MediaRouter$RouteInfo$1$1;->this$1:Landroid/media/MediaRouter$RouteInfo$1;
+    iget-object v1, p0, Landroid/media/MediaRouter$RouteInfo$1$1;->this$2:Landroid/media/MediaRouter$RouteInfo$1;
 
-    iget-object v1, v1, Landroid/media/MediaRouter$RouteInfo$1;->this$0:Landroid/media/MediaRouter$RouteInfo;
+    iget-object v1, v1, Landroid/media/MediaRouter$RouteInfo$1;->this$1:Landroid/media/MediaRouter$RouteInfo;
 
     iget-object v1, v1, Landroid/media/MediaRouter$RouteInfo;->mVcb:Landroid/media/MediaRouter$VolumeCallbackInfo;
 
@@ -86,24 +86,24 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/media/MediaRouter$VolumeCallback;->onVolumeUpdateRequest(Landroid/media/MediaRouter$RouteInfo;I)V
 
-    .line 1954
+    .line 1955
     :cond_0
     :goto_0
     return-void
 
-    .line 1951
+    .line 1960
     :cond_1
-    iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo$1$1;->this$1:Landroid/media/MediaRouter$RouteInfo$1;
+    iget-object v0, p0, Landroid/media/MediaRouter$RouteInfo$1$1;->this$2:Landroid/media/MediaRouter$RouteInfo$1;
 
-    iget-object v0, v0, Landroid/media/MediaRouter$RouteInfo$1;->this$0:Landroid/media/MediaRouter$RouteInfo;
+    iget-object v0, v0, Landroid/media/MediaRouter$RouteInfo$1;->this$1:Landroid/media/MediaRouter$RouteInfo;
 
     iget-object v0, v0, Landroid/media/MediaRouter$RouteInfo;->mVcb:Landroid/media/MediaRouter$VolumeCallbackInfo;
 
     iget-object v0, v0, Landroid/media/MediaRouter$VolumeCallbackInfo;->vcb:Landroid/media/MediaRouter$VolumeCallback;
 
-    iget-object v1, p0, Landroid/media/MediaRouter$RouteInfo$1$1;->this$1:Landroid/media/MediaRouter$RouteInfo$1;
+    iget-object v1, p0, Landroid/media/MediaRouter$RouteInfo$1$1;->this$2:Landroid/media/MediaRouter$RouteInfo$1;
 
-    iget-object v1, v1, Landroid/media/MediaRouter$RouteInfo$1;->this$0:Landroid/media/MediaRouter$RouteInfo;
+    iget-object v1, v1, Landroid/media/MediaRouter$RouteInfo$1;->this$1:Landroid/media/MediaRouter$RouteInfo;
 
     iget-object v1, v1, Landroid/media/MediaRouter$RouteInfo;->mVcb:Landroid/media/MediaRouter$VolumeCallbackInfo;
 

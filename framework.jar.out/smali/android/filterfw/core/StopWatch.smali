@@ -20,7 +20,7 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 2
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
     .line 36
@@ -32,7 +32,7 @@
     iput v0, p0, Landroid/filterfw/core/StopWatch;->STOP_WATCH_LOGGING_PERIOD:I
 
     .line 29
-    const-string v0, "MFF"
+    const-string/jumbo v0, "MFF"
 
     iput-object v0, p0, Landroid/filterfw/core/StopWatch;->TAG:Ljava/lang/String;
 
@@ -54,7 +54,7 @@
 
     iput v0, p0, Landroid/filterfw/core/StopWatch;->mNumCalls:I
 
-    .line 41
+    .line 36
     return-void
 .end method
 
@@ -76,8 +76,10 @@
     .line 45
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Calling start with StopWatch already running"
+    .line 46
+    const-string/jumbo v1, "Calling start with StopWatch already running"
 
+    .line 45
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
@@ -90,7 +92,7 @@
 
     iput-wide v0, p0, Landroid/filterfw/core/StopWatch;->mStartTime:J
 
-    .line 49
+    .line 43
     return-void
 .end method
 
@@ -112,8 +114,10 @@
     .line 53
     new-instance v2, Ljava/lang/RuntimeException;
 
-    const-string v3, "Calling stop with StopWatch already stopped"
+    .line 54
+    const-string/jumbo v3, "Calling stop with StopWatch already stopped"
 
+    .line 53
     invoke-direct {v2, v3}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v2
@@ -125,7 +129,7 @@
     move-result-wide v0
 
     .line 57
-    .local v0, stopTime:J
+    .local v0, "stopTime":J
     iget-wide v2, p0, Landroid/filterfw/core/StopWatch;->mTotalTime:J
 
     iget-wide v4, p0, Landroid/filterfw/core/StopWatch;->mStartTime:J
@@ -162,7 +166,7 @@
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v4, "AVG ms/call "
+    const-string/jumbo v4, "AVG ms/call "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -174,13 +178,14 @@
 
     move-result-object v3
 
-    const-string v4, ": "
+    const-string/jumbo v4, ": "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
-    const-string v4, "%.1f"
+    .line 62
+    const-string/jumbo v4, "%.1f"
 
     const/4 v5, 0x1
 
@@ -190,7 +195,7 @@
 
     long-to-float v6, v6
 
-    const/high16 v7, 0x3f80
+    const/high16 v7, 0x3f800000    # 1.0f
 
     mul-float/2addr v6, v7
 
@@ -210,6 +215,7 @@
 
     move-result-object v4
 
+    .line 61
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
@@ -228,7 +234,7 @@
     .line 64
     iput v8, p0, Landroid/filterfw/core/StopWatch;->mNumCalls:I
 
-    .line 66
+    .line 51
     :cond_1
     return-void
 .end method

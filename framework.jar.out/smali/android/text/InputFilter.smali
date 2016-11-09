@@ -6,8 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/text/InputFilter$LengthFilter;,
-        Landroid/text/InputFilter$AllCaps;
+        Landroid/text/InputFilter$AllCaps;,
+        Landroid/text/InputFilter$LengthFilter;
     }
 .end annotation
 

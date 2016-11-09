@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -47,19 +55,20 @@
     .locals 1
 
     .prologue
-    .line 169
+    .line 170
     new-instance v0, Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo$1;
 
     invoke-direct {v0}, Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo$1;-><init>()V
 
+    .line 169
     sput-object v0, Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 32
     return-void
 .end method
 
 .method protected constructor <init>(Ljava/util/List;)V
     .locals 2
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -72,7 +81,7 @@
 
     .prologue
     .line 94
-    .local p1, queryList:Ljava/util/List;,"Ljava/util/List<Ljava/lang/String;>;"
+    .local p1, "queryList":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 95
@@ -91,98 +100,94 @@
     :cond_0
     iput-object p1, p0, Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;->mQueryList:Ljava/util/List;
 
-    .line 99
+    .line 94
     return-void
 .end method
 
 .method static bin2HexStr([B)Ljava/lang/String;
-    .locals 9
-    .parameter "data"
+    .locals 8
+    .param p0, "data"    # [B
 
     .prologue
     .line 119
-    new-instance v6, Ljava/lang/StringBuffer;
+    new-instance v3, Ljava/lang/StringBuffer;
 
-    invoke-direct {v6}, Ljava/lang/StringBuffer;-><init>()V
+    invoke-direct {v3}, Ljava/lang/StringBuffer;-><init>()V
 
     .line 121
-    .local v6, sb:Ljava/lang/StringBuffer;
-    move-object v0, p0
+    .local v3, "sb":Ljava/lang/StringBuffer;
+    const/4 v4, 0x0
 
-    .local v0, arr$:[B
-    array-length v4, v0
+    array-length v5, p0
 
-    .local v4, len$:I
-    const/4 v3, 0x0
-
-    .local v3, i$:I
     :goto_0
-    if-ge v3, v4, :cond_1
+    if-ge v4, v5, :cond_1
 
-    aget-byte v1, v0, v3
+    aget-byte v0, p0, v4
 
     .line 122
-    .local v1, b:B
-    const/4 v5, 0x0
+    .local v0, "b":B
+    const/4 v2, 0x0
 
     .line 124
-    .local v5, s:Ljava/lang/String;
-    and-int/lit16 v7, v1, 0xff
+    .local v2, "s":Ljava/lang/String;
+    and-int/lit16 v6, v0, 0xff
 
     :try_start_0
-    invoke-static {v7}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
+    invoke-static {v6}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result-object v5
+    move-result-object v2
 
     .line 130
-    invoke-virtual {v5}, Ljava/lang/String;->length()I
+    .local v2, "s":Ljava/lang/String;
+    invoke-virtual {v2}, Ljava/lang/String;->length()I
 
-    move-result v7
+    move-result v6
 
-    const/4 v8, 0x1
+    const/4 v7, 0x1
 
-    if-ne v7, v8, :cond_0
+    if-ne v6, v7, :cond_0
 
     .line 131
-    const/16 v7, 0x30
+    const/16 v6, 0x30
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
+    invoke-virtual {v3, v6}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
 
     .line 133
     :cond_0
-    invoke-virtual {v6, v5}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     .line 121
-    add-int/lit8 v3, v3, 0x1
+    add-int/lit8 v4, v4, 0x1
 
     goto :goto_0
 
     .line 125
+    .local v2, "s":Ljava/lang/String;
     :catch_0
-    move-exception v2
+    move-exception v1
 
     .line 126
-    .local v2, e:Ljava/lang/Exception;
-    invoke-virtual {v2}, Ljava/lang/Exception;->printStackTrace()V
+    .local v1, "e":Ljava/lang/Exception;
+    invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
 
     .line 127
-    const/4 v7, 0x0
+    const/4 v4, 0x0
+
+    return-object v4
 
     .line 135
-    .end local v1           #b:B
-    .end local v2           #e:Ljava/lang/Exception;
-    .end local v5           #s:Ljava/lang/String;
-    :goto_1
-    return-object v7
-
+    .end local v0    # "b":B
+    .end local v1    # "e":Ljava/lang/Exception;
+    .end local v2    # "s":Ljava/lang/String;
     :cond_1
-    invoke-virtual {v6}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
+    invoke-virtual {v3}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
 
-    move-result-object v7
+    move-result-object v4
 
-    goto :goto_1
+    return-object v4
 .end method
 
 
@@ -199,7 +204,7 @@
 
 .method public equals(Ljava/lang/Object;)Z
     .locals 3
-    .parameter "o"
+    .param p1, "o"    # Ljava/lang/Object;
 
     .prologue
     .line 140
@@ -208,8 +213,6 @@
     .line 141
     const/4 v1, 0x1
 
-    .line 148
-    :goto_0
     return v1
 
     .line 143
@@ -221,7 +224,7 @@
     .line 144
     const/4 v1, 0x0
 
-    goto :goto_0
+    return v1
 
     :cond_1
     move-object v0, p1
@@ -230,16 +233,16 @@
     check-cast v0, Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;
 
     .line 148
-    .local v0, servInfo:Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;
+    .local v0, "servInfo":Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;
     iget-object v1, p0, Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;->mQueryList:Ljava/util/List;
 
     iget-object v2, v0, Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;->mQueryList:Ljava/util/List;
 
-    invoke-virtual {v1, v2}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    invoke-interface {v1, v2}, Ljava/util/List;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public getSupplicantQueryList()Ljava/util/List;
@@ -265,11 +268,7 @@
     .locals 2
 
     .prologue
-    .line 153
-    const/16 v0, 0x11
-
     .line 154
-    .local v0, result:I
     iget-object v1, p0, Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;->mQueryList:Ljava/util/List;
 
     if-nez v1, :cond_0
@@ -280,13 +279,15 @@
     add-int/lit16 v0, v1, 0x20f
 
     .line 155
+    .local v0, "result":I
     return v0
 
     .line 154
+    .end local v0    # "result":I
     :cond_0
     iget-object v1, p0, Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;->mQueryList:Ljava/util/List;
 
-    invoke-virtual {v1}, Ljava/lang/Object;->hashCode()I
+    invoke-interface {v1}, Ljava/util/List;->hashCode()I
 
     move-result v1
 
@@ -295,8 +296,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 1
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 165
@@ -304,6 +305,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeStringList(Ljava/util/List;)V
 
-    .line 166
+    .line 164
     return-void
 .end method

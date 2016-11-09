@@ -32,62 +32,63 @@
 # direct methods
 .method public constructor <init>(Ljava/lang/String;)V
     .locals 2
-    .parameter "name"
+    .param p1, "name"    # Ljava/lang/String;
 
     .prologue
     const/4 v1, 0x0
 
-    .line 74
+    .line 69
     invoke-direct {p0, p1}, Landroid/filterfw/core/Filter;-><init>(Ljava/lang/String;)V
 
-    .line 35
+    .line 31
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mScale:F
 
-    .line 38
+    .line 34
     const/16 v0, 0x280
 
     iput v0, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mTileSize:I
 
-    .line 43
+    .line 38
     iput v1, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mWidth:I
 
-    .line 44
+    .line 39
     iput v1, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mHeight:I
 
-    .line 45
+    .line 40
     iput v1, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mTarget:I
 
-    .line 47
+    .line 43
     const-string/jumbo v0, "precision mediump float;\nuniform sampler2D tex_sampler_0;\nuniform float scale;\nuniform float stepsizeX;\nuniform float stepsizeY;\nvarying vec2 v_texcoord;\nvoid main() {\n  vec3 nbr_color = vec3(0.0, 0.0, 0.0);\n  vec2 coord;\n  vec4 color = texture2D(tex_sampler_0, v_texcoord);\n  coord.x = v_texcoord.x - 0.5 * stepsizeX;\n  coord.y = v_texcoord.y - stepsizeY;\n  nbr_color += texture2D(tex_sampler_0, coord).rgb - color.rgb;\n  coord.x = v_texcoord.x - stepsizeX;\n  coord.y = v_texcoord.y + 0.5 * stepsizeY;\n  nbr_color += texture2D(tex_sampler_0, coord).rgb - color.rgb;\n  coord.x = v_texcoord.x + stepsizeX;\n  coord.y = v_texcoord.y - 0.5 * stepsizeY;\n  nbr_color += texture2D(tex_sampler_0, coord).rgb - color.rgb;\n  coord.x = v_texcoord.x + stepsizeX;\n  coord.y = v_texcoord.y + 0.5 * stepsizeY;\n  nbr_color += texture2D(tex_sampler_0, coord).rgb - color.rgb;\n  gl_FragColor = vec4(color.rgb - 2.0 * scale * nbr_color, color.a);\n}\n"
 
+    .line 42
     iput-object v0, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mSharpenShader:Ljava/lang/String;
 
-    .line 75
+    .line 68
     return-void
 .end method
 
 .method private updateFrameSize(II)V
     .locals 4
-    .parameter "width"
-    .parameter "height"
+    .param p1, "width"    # I
+    .param p2, "height"    # I
 
     .prologue
-    const/high16 v3, 0x3f80
+    const/high16 v3, 0x3f800000    # 1.0f
 
-    .line 133
+    .line 128
     iput p1, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mWidth:I
 
-    .line 134
+    .line 129
     iput p2, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mHeight:I
 
-    .line 136
+    .line 131
     iget-object v0, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mProgram:Landroid/filterfw/core/Program;
 
     if-eqz v0, :cond_0
 
-    .line 137
+    .line 132
     iget-object v0, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mProgram:Landroid/filterfw/core/Program;
 
     const-string/jumbo v1, "stepsizeX"
@@ -104,7 +105,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/filterfw/core/Program;->setHostValue(Ljava/lang/String;Ljava/lang/Object;)V
 
-    .line 138
+    .line 133
     iget-object v0, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mProgram:Landroid/filterfw/core/Program;
 
     const-string/jumbo v1, "stepsizeY"
@@ -121,10 +122,10 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/filterfw/core/Program;->setHostValue(Ljava/lang/String;Ljava/lang/Object;)V
 
-    .line 139
+    .line 134
     invoke-direct {p0}, Landroid/filterpacks/imageproc/SharpenFilter;->updateParameters()V
 
-    .line 141
+    .line 127
     :cond_0
     return-void
 .end method
@@ -133,7 +134,7 @@
     .locals 3
 
     .prologue
-    .line 144
+    .line 139
     iget-object v0, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mProgram:Landroid/filterfw/core/Program;
 
     const-string/jumbo v1, "scale"
@@ -146,7 +147,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/filterfw/core/Program;->setHostValue(Ljava/lang/String;Ljava/lang/Object;)V
 
-    .line 145
+    .line 138
     return-void
 .end method
 
@@ -154,50 +155,50 @@
 # virtual methods
 .method public fieldPortValueUpdated(Ljava/lang/String;Landroid/filterfw/core/FilterContext;)V
     .locals 1
-    .parameter "name"
-    .parameter "context"
+    .param p1, "name"    # Ljava/lang/String;
+    .param p2, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
-    .line 149
+    .line 144
     iget-object v0, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mProgram:Landroid/filterfw/core/Program;
 
     if-eqz v0, :cond_0
 
-    .line 150
+    .line 145
     invoke-direct {p0}, Landroid/filterpacks/imageproc/SharpenFilter;->updateParameters()V
 
-    .line 152
+    .line 143
     :cond_0
     return-void
 .end method
 
 .method public getOutputFormat(Ljava/lang/String;Landroid/filterfw/core/FrameFormat;)Landroid/filterfw/core/FrameFormat;
     .locals 0
-    .parameter "portName"
-    .parameter "inputFormat"
+    .param p1, "portName"    # Ljava/lang/String;
+    .param p2, "inputFormat"    # Landroid/filterfw/core/FrameFormat;
 
     .prologue
-    .line 85
+    .line 80
     return-object p2
 .end method
 
 .method public initProgram(Landroid/filterfw/core/FilterContext;I)V
     .locals 4
-    .parameter "context"
-    .parameter "target"
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
+    .param p2, "target"    # I
 
     .prologue
-    .line 89
+    .line 84
     packed-switch p2, :pswitch_data_0
 
-    .line 97
+    .line 92
     new-instance v1, Ljava/lang/RuntimeException;
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Filter Sharpen does not support frames of target "
+    const-string/jumbo v3, "Filter Sharpen does not support frames of target "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -207,8 +208,10 @@
 
     move-result-object v2
 
-    const-string v3, "!"
+    .line 93
+    const-string/jumbo v3, "!"
 
+    .line 92
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -221,7 +224,7 @@
 
     throw v1
 
-    .line 91
+    .line 86
     :pswitch_0
     new-instance v0, Landroid/filterfw/core/ShaderProgram;
 
@@ -229,22 +232,22 @@
 
     invoke-direct {v0, p1, v1}, Landroid/filterfw/core/ShaderProgram;-><init>(Landroid/filterfw/core/FilterContext;Ljava/lang/String;)V
 
-    .line 92
-    .local v0, shaderProgram:Landroid/filterfw/core/ShaderProgram;
+    .line 87
+    .local v0, "shaderProgram":Landroid/filterfw/core/ShaderProgram;
     iget v1, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mTileSize:I
 
     invoke-virtual {v0, v1}, Landroid/filterfw/core/ShaderProgram;->setMaximumTileSize(I)V
 
-    .line 93
+    .line 88
     iput-object v0, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mProgram:Landroid/filterfw/core/Program;
 
-    .line 100
+    .line 95
     iput p2, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mTarget:I
 
-    .line 101
+    .line 83
     return-void
 
-    .line 89
+    .line 84
     :pswitch_data_0
     .packed-switch 0x3
         :pswitch_0
@@ -253,24 +256,24 @@
 
 .method public process(Landroid/filterfw/core/FilterContext;)V
     .locals 5
-    .parameter "context"
+    .param p1, "context"    # Landroid/filterfw/core/FilterContext;
 
     .prologue
-    .line 106
-    const-string v3, "image"
+    .line 101
+    const-string/jumbo v3, "image"
 
     invoke-virtual {p0, v3}, Landroid/filterpacks/imageproc/SharpenFilter;->pullInput(Ljava/lang/String;)Landroid/filterfw/core/Frame;
 
     move-result-object v0
 
-    .line 107
-    .local v0, input:Landroid/filterfw/core/Frame;
+    .line 102
+    .local v0, "input":Landroid/filterfw/core/Frame;
     invoke-virtual {v0}, Landroid/filterfw/core/Frame;->getFormat()Landroid/filterfw/core/FrameFormat;
 
     move-result-object v1
 
-    .line 110
-    .local v1, inputFormat:Landroid/filterfw/core/FrameFormat;
+    .line 105
+    .local v1, "inputFormat":Landroid/filterfw/core/FrameFormat;
     invoke-virtual {p1}, Landroid/filterfw/core/FilterContext;->getFrameManager()Landroid/filterfw/core/FrameManager;
 
     move-result-object v3
@@ -279,8 +282,8 @@
 
     move-result-object v2
 
-    .line 113
-    .local v2, output:Landroid/filterfw/core/Frame;
+    .line 108
+    .local v2, "output":Landroid/filterfw/core/Frame;
     iget-object v3, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mProgram:Landroid/filterfw/core/Program;
 
     if-eqz v3, :cond_0
@@ -293,7 +296,7 @@
 
     if-eq v3, v4, :cond_1
 
-    .line 114
+    .line 109
     :cond_0
     invoke-virtual {v1}, Landroid/filterfw/core/FrameFormat;->getTarget()I
 
@@ -301,7 +304,7 @@
 
     invoke-virtual {p0, p1, v3}, Landroid/filterpacks/imageproc/SharpenFilter;->initProgram(Landroid/filterfw/core/FilterContext;I)V
 
-    .line 118
+    .line 113
     :cond_1
     invoke-virtual {v1}, Landroid/filterfw/core/FrameFormat;->getWidth()I
 
@@ -319,7 +322,7 @@
 
     if-eq v3, v4, :cond_3
 
-    .line 119
+    .line 114
     :cond_2
     invoke-virtual {v1}, Landroid/filterfw/core/FrameFormat;->getWidth()I
 
@@ -331,21 +334,21 @@
 
     invoke-direct {p0, v3, v4}, Landroid/filterpacks/imageproc/SharpenFilter;->updateFrameSize(II)V
 
-    .line 123
+    .line 118
     :cond_3
     iget-object v3, p0, Landroid/filterpacks/imageproc/SharpenFilter;->mProgram:Landroid/filterfw/core/Program;
 
     invoke-virtual {v3, v0, v2}, Landroid/filterfw/core/Program;->process(Landroid/filterfw/core/Frame;Landroid/filterfw/core/Frame;)V
 
-    .line 126
-    const-string v3, "image"
+    .line 121
+    const-string/jumbo v3, "image"
 
     invoke-virtual {p0, v3, v2}, Landroid/filterpacks/imageproc/SharpenFilter;->pushOutput(Ljava/lang/String;Landroid/filterfw/core/Frame;)V
 
-    .line 129
+    .line 124
     invoke-virtual {v2}, Landroid/filterfw/core/Frame;->release()Landroid/filterfw/core/Frame;
 
-    .line 130
+    .line 99
     return-void
 .end method
 
@@ -353,8 +356,8 @@
     .locals 2
 
     .prologue
-    .line 79
-    const-string v0, "image"
+    .line 74
+    const-string/jumbo v0, "image"
 
     const/4 v1, 0x3
 
@@ -364,13 +367,13 @@
 
     invoke-virtual {p0, v0, v1}, Landroid/filterpacks/imageproc/SharpenFilter;->addMaskedInputPort(Ljava/lang/String;Landroid/filterfw/core/FrameFormat;)V
 
-    .line 80
-    const-string v0, "image"
+    .line 75
+    const-string/jumbo v0, "image"
 
-    const-string v1, "image"
+    const-string/jumbo v1, "image"
 
     invoke-virtual {p0, v0, v1}, Landroid/filterpacks/imageproc/SharpenFilter;->addOutputBasedOnInput(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 81
+    .line 73
     return-void
 .end method

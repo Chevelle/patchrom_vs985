@@ -10,7 +10,7 @@
 # direct methods
 .method constructor <init>(Landroid/filterfw/core/FilterGraph;)V
     .locals 0
-    .parameter "graph"
+    .param p1, "graph"    # Landroid/filterfw/core/FilterGraph;
 
     .prologue
     .line 31
@@ -19,7 +19,7 @@
     .line 32
     iput-object p1, p0, Landroid/filterfw/core/Scheduler;->mGraph:Landroid/filterfw/core/FilterGraph;
 
-    .line 33
+    .line 31
     return-void
 .end method
 

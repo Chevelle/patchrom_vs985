@@ -33,55 +33,54 @@
 # direct methods
 .method public constructor <init>(Landroid/database/Cursor;Landroid/database/IContentObserver;Ljava/lang/String;)V
     .locals 2
-    .parameter "cursor"
-    .parameter "observer"
-    .parameter "providerName"
+    .param p1, "cursor"    # Landroid/database/Cursor;
+    .param p2, "observer"    # Landroid/database/IContentObserver;
+    .param p3, "providerName"    # Ljava/lang/String;
 
     .prologue
-    .line 92
+    .line 88
     invoke-direct {p0}, Landroid/database/BulkCursorNative;-><init>()V
 
-    .line 41
+    .line 38
     new-instance v0, Ljava/lang/Object;
 
     invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     iput-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mLock:Ljava/lang/Object;
 
-    .line 93
+    .line 90
     instance-of v0, p1, Landroid/database/CrossProcessCursor;
 
     if-eqz v0, :cond_0
 
-    .line 94
+    .line 91
     check-cast p1, Landroid/database/CrossProcessCursor;
 
-    .end local p1
+    .end local p1    # "cursor":Landroid/database/Cursor;
     iput-object p1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
-    .line 98
+    .line 95
     :goto_0
     iput-object p3, p0, Landroid/database/CursorToBulkCursorAdaptor;->mProviderName:Ljava/lang/String;
 
-    .line 100
-    iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mLock:Ljava/lang/Object;
+    .line 97
+    iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mLock:Ljava/lang/Object;
 
-    monitor-enter v1
+    monitor-enter v0
 
-    .line 101
+    .line 98
     :try_start_0
     invoke-direct {p0, p2}, Landroid/database/CursorToBulkCursorAdaptor;->createAndRegisterObserverProxyLocked(Landroid/database/IContentObserver;)V
-
-    .line 102
-    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 103
+    monitor-exit v0
+
+    .line 89
     return-void
 
-    .line 96
-    .restart local p1
+    .line 93
+    .restart local p1    # "cursor":Landroid/database/Cursor;
     :cond_0
     new-instance v0, Landroid/database/CrossProcessCursorWrapper;
 
@@ -91,63 +90,60 @@
 
     goto :goto_0
 
-    .line 102
-    .end local p1
+    .line 97
+    .end local p1    # "cursor":Landroid/database/Cursor;
     :catchall_0
-    move-exception v0
+    move-exception v1
 
-    :try_start_1
-    monitor-exit v1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    monitor-exit v0
 
-    throw v0
+    throw v1
 .end method
 
 .method private closeFilledWindowLocked()V
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 106
+    const/4 v1, 0x0
+
+    .line 103
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mFilledWindow:Landroid/database/CursorWindow;
 
     if-eqz v0, :cond_0
 
-    .line 107
+    .line 104
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mFilledWindow:Landroid/database/CursorWindow;
 
     invoke-virtual {v0}, Landroid/database/CursorWindow;->close()V
 
-    .line 108
-    const/4 v0, 0x0
+    .line 105
+    iput-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mFilledWindow:Landroid/database/CursorWindow;
 
-    iput-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mFilledWindow:Landroid/database/CursorWindow;
-
-    .line 110
+    .line 102
     :cond_0
     return-void
 .end method
 
 .method private createAndRegisterObserverProxyLocked(Landroid/database/IContentObserver;)V
     .locals 2
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/IContentObserver;
 
     .prologue
-    .line 252
+    .line 249
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mObserver:Landroid/database/CursorToBulkCursorAdaptor$ContentObserverProxy;
 
     if-eqz v0, :cond_0
 
-    .line 253
+    .line 250
     new-instance v0, Ljava/lang/IllegalStateException;
 
-    const-string v1, "an observer is already registered"
+    const-string/jumbo v1, "an observer is already registered"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 255
+    .line 252
     :cond_0
     new-instance v0, Landroid/database/CursorToBulkCursorAdaptor$ContentObserverProxy;
 
@@ -155,44 +151,44 @@
 
     iput-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mObserver:Landroid/database/CursorToBulkCursorAdaptor$ContentObserverProxy;
 
-    .line 256
+    .line 253
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mObserver:Landroid/database/CursorToBulkCursorAdaptor$ContentObserverProxy;
 
     invoke-interface {v0, v1}, Landroid/database/CrossProcessCursor;->registerContentObserver(Landroid/database/ContentObserver;)V
 
-    .line 257
+    .line 248
     return-void
 .end method
 
 .method private disposeLocked()V
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 113
+    const/4 v1, 0x0
+
+    .line 110
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     if-eqz v0, :cond_0
 
-    .line 114
+    .line 111
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->unregisterObserverProxyLocked()V
 
-    .line 115
+    .line 112
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v0}, Landroid/database/CrossProcessCursor;->close()V
 
+    .line 113
+    iput-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
+
     .line 116
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
-
-    .line 119
     :cond_0
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->closeFilledWindowLocked()V
 
-    .line 120
+    .line 109
     return-void
 .end method
 
@@ -200,52 +196,52 @@
     .locals 2
 
     .prologue
-    .line 123
+    .line 120
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     if-nez v0, :cond_0
 
-    .line 124
+    .line 121
     new-instance v0, Landroid/database/StaleDataException;
 
-    const-string v1, "Attempted to access a cursor after it has been closed."
+    const-string/jumbo v1, "Attempted to access a cursor after it has been closed."
 
     invoke-direct {v0, v1}, Landroid/database/StaleDataException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 126
+    .line 119
     :cond_0
     return-void
 .end method
 
 .method private unregisterObserverProxyLocked()V
-    .locals 2
+    .locals 3
 
     .prologue
-    .line 261
+    const/4 v2, 0x0
+
+    .line 258
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mObserver:Landroid/database/CursorToBulkCursorAdaptor$ContentObserverProxy;
 
     if-eqz v0, :cond_0
 
-    .line 262
+    .line 259
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mObserver:Landroid/database/CursorToBulkCursorAdaptor$ContentObserverProxy;
 
     invoke-interface {v0, v1}, Landroid/database/CrossProcessCursor;->unregisterContentObserver(Landroid/database/ContentObserver;)V
 
-    .line 263
+    .line 260
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mObserver:Landroid/database/CursorToBulkCursorAdaptor$ContentObserverProxy;
 
     invoke-virtual {v0, p0}, Landroid/database/CursorToBulkCursorAdaptor$ContentObserverProxy;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient;)Z
 
-    .line 264
-    const/4 v0, 0x0
+    .line 261
+    iput-object v2, p0, Landroid/database/CursorToBulkCursorAdaptor;->mObserver:Landroid/database/CursorToBulkCursorAdaptor$ContentObserverProxy;
 
-    iput-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mObserver:Landroid/database/CursorToBulkCursorAdaptor$ContentObserverProxy;
-
-    .line 266
+    .line 257
     :cond_0
     return-void
 .end method
@@ -256,102 +252,99 @@
     .locals 2
 
     .prologue
-    .line 130
-    iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mLock:Ljava/lang/Object;
+    .line 127
+    iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mLock:Ljava/lang/Object;
 
-    monitor-enter v1
+    monitor-enter v0
 
-    .line 131
+    .line 128
     :try_start_0
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->disposeLocked()V
-
-    .line 132
-    monitor-exit v1
-
-    .line 133
-    return-void
-
-    .line 132
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw v0
+    monitor-exit v0
+
+    .line 126
+    return-void
+
+    .line 127
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+
+    throw v1
 .end method
 
 .method public close()V
     .locals 2
 
     .prologue
-    .line 216
-    iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mLock:Ljava/lang/Object;
+    .line 213
+    iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mLock:Ljava/lang/Object;
 
-    monitor-enter v1
+    monitor-enter v0
 
-    .line 217
+    .line 214
     :try_start_0
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->disposeLocked()V
-
-    .line 218
-    monitor-exit v1
-
-    .line 219
-    return-void
-
-    .line 218
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    throw v0
+    monitor-exit v0
+
+    .line 212
+    return-void
+
+    .line 213
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v0
+
+    throw v1
 .end method
 
 .method public deactivate()V
     .locals 2
 
     .prologue
-    .line 204
+    .line 201
     iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 205
+    .line 202
     :try_start_0
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     if-eqz v0, :cond_0
 
-    .line 206
+    .line 203
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->unregisterObserverProxyLocked()V
 
-    .line 207
+    .line 204
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v0}, Landroid/database/CrossProcessCursor;->deactivate()V
 
-    .line 210
+    .line 207
     :cond_0
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->closeFilledWindowLocked()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 211
     monitor-exit v1
 
-    .line 212
+    .line 200
     return-void
 
-    .line 211
+    .line 201
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
@@ -360,25 +353,25 @@
     .locals 3
 
     .prologue
-    .line 141
+    .line 138
     iget-object v2, p0, Landroid/database/CursorToBulkCursorAdaptor;->mLock:Ljava/lang/Object;
 
     monitor-enter v2
 
-    .line 142
+    .line 139
     :try_start_0
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->throwIfCursorIsClosed()V
 
-    .line 144
+    .line 141
     new-instance v0, Landroid/database/BulkCursorDescriptor;
 
     invoke-direct {v0}, Landroid/database/BulkCursorDescriptor;-><init>()V
 
-    .line 145
-    .local v0, d:Landroid/database/BulkCursorDescriptor;
+    .line 142
+    .local v0, "d":Landroid/database/BulkCursorDescriptor;
     iput-object p0, v0, Landroid/database/BulkCursorDescriptor;->cursor:Landroid/database/IBulkCursor;
 
-    .line 146
+    .line 143
     iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v1}, Landroid/database/CrossProcessCursor;->getColumnNames()[Ljava/lang/String;
@@ -387,7 +380,7 @@
 
     iput-object v1, v0, Landroid/database/BulkCursorDescriptor;->columnNames:[Ljava/lang/String;
 
-    .line 147
+    .line 144
     iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v1}, Landroid/database/CrossProcessCursor;->getWantsAllOnMoveCalls()Z
@@ -396,7 +389,7 @@
 
     iput-boolean v1, v0, Landroid/database/BulkCursorDescriptor;->wantsAllOnMoveCalls:Z
 
-    .line 148
+    .line 145
     iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v1}, Landroid/database/CrossProcessCursor;->getCount()I
@@ -405,7 +398,7 @@
 
     iput v1, v0, Landroid/database/BulkCursorDescriptor;->count:I
 
-    .line 149
+    .line 146
     iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v1}, Landroid/database/CrossProcessCursor;->getWindow()Landroid/database/CursorWindow;
@@ -414,30 +407,30 @@
 
     iput-object v1, v0, Landroid/database/BulkCursorDescriptor;->window:Landroid/database/CursorWindow;
 
-    .line 150
+    .line 147
     iget-object v1, v0, Landroid/database/BulkCursorDescriptor;->window:Landroid/database/CursorWindow;
 
     if-eqz v1, :cond_0
 
-    .line 153
+    .line 150
     iget-object v1, v0, Landroid/database/BulkCursorDescriptor;->window:Landroid/database/CursorWindow;
 
     invoke-virtual {v1}, Landroid/database/CursorWindow;->acquireReference()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 155
     :cond_0
     monitor-exit v2
 
+    .line 152
     return-object v0
 
-    .line 156
-    .end local v0           #d:Landroid/database/BulkCursorDescriptor;
+    .line 138
+    .end local v0    # "d":Landroid/database/BulkCursorDescriptor;
     :catchall_0
     move-exception v1
 
     monitor-exit v2
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 .end method
@@ -446,19 +439,21 @@
     .locals 2
 
     .prologue
-    .line 270
+    .line 267
     iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 271
+    .line 268
     :try_start_0
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->throwIfCursorIsClosed()V
 
-    .line 273
+    .line 270
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v0}, Landroid/database/CrossProcessCursor;->getExtras()Landroid/os/Bundle;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result-object v0
 
@@ -466,32 +461,32 @@
 
     return-object v0
 
-    .line 274
+    .line 267
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public getWindow(I)Landroid/database/CursorWindow;
     .locals 4
-    .parameter "position"
+    .param p1, "position"    # I
 
     .prologue
-    .line 161
+    const/4 v3, 0x0
+
+    .line 158
     iget-object v2, p0, Landroid/database/CursorToBulkCursorAdaptor;->mLock:Ljava/lang/Object;
 
     monitor-enter v2
 
-    .line 162
+    .line 159
     :try_start_0
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->throwIfCursorIsClosed()V
 
-    .line 164
+    .line 161
     iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v1, p1}, Landroid/database/CrossProcessCursor;->moveToPosition(I)Z
@@ -500,67 +495,56 @@
 
     if-nez v1, :cond_0
 
-    .line 165
+    .line 162
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->closeFilledWindowLocked()V
-
-    .line 166
-    const/4 v0, 0x0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit v2
 
-    .line 189
-    :goto_0
-    return-object v0
+    .line 163
+    return-object v3
 
-    .line 169
+    .line 166
     :cond_0
+    :try_start_1
     iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v1}, Landroid/database/CrossProcessCursor;->getWindow()Landroid/database/CursorWindow;
 
     move-result-object v0
 
-    .line 170
-    .local v0, window:Landroid/database/CursorWindow;
+    .line 167
+    .local v0, "window":Landroid/database/CursorWindow;
     if-eqz v0, :cond_2
 
-    .line 171
+    .line 168
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->closeFilledWindowLocked()V
 
-    .line 184
-    :goto_1
+    .line 181
+    :goto_0
     if-eqz v0, :cond_1
 
-    .line 187
+    .line 184
     invoke-virtual {v0}, Landroid/database/CursorWindow;->acquireReference()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 189
     :cond_1
     monitor-exit v2
 
-    goto :goto_0
+    .line 186
+    return-object v0
 
-    .line 190
-    .end local v0           #window:Landroid/database/CursorWindow;
-    :catchall_0
-    move-exception v1
-
-    monitor-exit v2
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    throw v1
-
-    .line 173
-    .restart local v0       #window:Landroid/database/CursorWindow;
+    .line 170
     :cond_2
-    :try_start_1
+    :try_start_2
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mFilledWindow:Landroid/database/CursorWindow;
 
-    .line 174
+    .line 171
     if-nez v0, :cond_4
 
-    .line 175
+    .line 172
     new-instance v1, Landroid/database/CursorWindow;
 
     iget-object v3, p0, Landroid/database/CursorToBulkCursorAdaptor;->mProviderName:Ljava/lang/String;
@@ -569,26 +553,40 @@
 
     iput-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mFilledWindow:Landroid/database/CursorWindow;
 
-    .line 176
+    .line 173
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mFilledWindow:Landroid/database/CursorWindow;
 
-    .line 181
+    .line 178
     :cond_3
-    :goto_2
+    :goto_1
     iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v1, p1, v0}, Landroid/database/CrossProcessCursor;->fillWindow(ILandroid/database/CursorWindow;)V
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    goto :goto_1
+    goto :goto_0
 
-    .line 177
+    .line 158
+    .end local v0    # "window":Landroid/database/CursorWindow;
+    :catchall_0
+    move-exception v1
+
+    monitor-exit v2
+
+    throw v1
+
+    .line 174
+    .restart local v0    # "window":Landroid/database/CursorWindow;
     :cond_4
+    :try_start_3
     invoke-virtual {v0}, Landroid/database/CursorWindow;->getStartPosition()I
 
     move-result v1
 
     if-lt p1, v1, :cond_5
 
+    .line 175
     invoke-virtual {v0}, Landroid/database/CursorWindow;->getStartPosition()I
 
     move-result v1
@@ -601,30 +599,30 @@
 
     if-lt p1, v1, :cond_3
 
-    .line 179
+    .line 176
     :cond_5
     invoke-virtual {v0}, Landroid/database/CursorWindow;->clear()V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    goto :goto_2
+    goto :goto_1
 .end method
 
 .method public onMove(I)V
     .locals 3
-    .parameter "position"
+    .param p1, "position"    # I
 
     .prologue
-    .line 195
+    .line 192
     iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 196
+    .line 193
     :try_start_0
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->throwIfCursorIsClosed()V
 
-    .line 198
+    .line 195
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     iget-object v2, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
@@ -634,74 +632,72 @@
     move-result v2
 
     invoke-interface {v0, v2, p1}, Landroid/database/CrossProcessCursor;->onMove(II)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 199
     monitor-exit v1
 
-    .line 200
+    .line 191
     return-void
 
-    .line 199
+    .line 192
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
 .method public requery(Landroid/database/IContentObserver;)I
     .locals 5
-    .parameter "observer"
+    .param p1, "observer"    # Landroid/database/IContentObserver;
 
     .prologue
-    .line 223
+    .line 220
     iget-object v3, p0, Landroid/database/CursorToBulkCursorAdaptor;->mLock:Ljava/lang/Object;
 
     monitor-enter v3
 
-    .line 224
+    .line 221
     :try_start_0
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->throwIfCursorIsClosed()V
 
-    .line 226
+    .line 223
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->closeFilledWindowLocked()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 229
+    .line 226
     :try_start_1
     iget-object v2, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v2}, Landroid/database/CrossProcessCursor;->requery()Z
     :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
     .catch Ljava/lang/IllegalStateException; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     move-result v2
 
     if-nez v2, :cond_0
 
-    .line 230
+    .line 227
     const/4 v2, -0x1
 
-    :try_start_2
     monitor-exit v3
 
-    .line 241
-    :goto_0
     return v2
 
-    .line 232
+    .line 229
     :catch_0
     move-exception v0
 
-    .line 233
-    .local v0, e:Ljava/lang/IllegalStateException;
+    .line 230
+    .local v0, "e":Ljava/lang/IllegalStateException;
+    :try_start_2
     new-instance v1, Ljava/lang/IllegalStateException;
 
+    .line 231
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -712,18 +708,20 @@
 
     move-result-object v2
 
-    const-string v4, " Requery misuse db, mCursor isClosed:"
+    const-string/jumbo v4, " Requery misuse db, mCursor isClosed:"
 
     invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
+    .line 232
     iget-object v4, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v4}, Landroid/database/CrossProcessCursor;->isClosed()Z
 
     move-result v4
 
+    .line 231
     invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -732,64 +730,67 @@
 
     move-result-object v2
 
+    .line 230
     invoke-direct {v1, v2, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    .line 236
-    .local v1, leakProgram:Ljava/lang/IllegalStateException;
+    .line 233
+    .local v1, "leakProgram":Ljava/lang/IllegalStateException;
     throw v1
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 242
-    .end local v0           #e:Ljava/lang/IllegalStateException;
-    .end local v1           #leakProgram:Ljava/lang/IllegalStateException;
+    .line 220
+    .end local v0    # "e":Ljava/lang/IllegalStateException;
+    .end local v1    # "leakProgram":Ljava/lang/IllegalStateException;
     :catchall_0
     move-exception v2
 
     monitor-exit v3
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     throw v2
 
-    .line 239
+    .line 236
     :cond_0
     :try_start_3
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->unregisterObserverProxyLocked()V
 
-    .line 240
+    .line 237
     invoke-direct {p0, p1}, Landroid/database/CursorToBulkCursorAdaptor;->createAndRegisterObserverProxyLocked(Landroid/database/IContentObserver;)V
 
-    .line 241
+    .line 238
     iget-object v2, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v2}, Landroid/database/CrossProcessCursor;->getCount()I
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     move-result v2
 
     monitor-exit v3
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    goto :goto_0
+    return v2
 .end method
 
 .method public respond(Landroid/os/Bundle;)Landroid/os/Bundle;
     .locals 2
-    .parameter "extras"
+    .param p1, "extras"    # Landroid/os/Bundle;
 
     .prologue
-    .line 279
+    .line 276
     iget-object v1, p0, Landroid/database/CursorToBulkCursorAdaptor;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 280
+    .line 277
     :try_start_0
     invoke-direct {p0}, Landroid/database/CursorToBulkCursorAdaptor;->throwIfCursorIsClosed()V
 
-    .line 282
+    .line 279
     iget-object v0, p0, Landroid/database/CursorToBulkCursorAdaptor;->mCursor:Landroid/database/CrossProcessCursor;
 
     invoke-interface {v0, p1}, Landroid/database/CrossProcessCursor;->respond(Landroid/os/Bundle;)Landroid/os/Bundle;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result-object v0
 
@@ -797,13 +798,11 @@
 
     return-object v0
 
-    .line 283
+    .line 276
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

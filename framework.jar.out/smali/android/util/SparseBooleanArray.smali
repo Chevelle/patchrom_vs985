@@ -19,58 +19,59 @@
     .locals 1
 
     .prologue
-    .line 48
+    .line 51
     const/16 v0, 0xa
 
     invoke-direct {p0, v0}, Landroid/util/SparseBooleanArray;-><init>(I)V
 
-    .line 49
+    .line 50
     return-void
 .end method
 
 .method public constructor <init>(I)V
-    .locals 1
-    .parameter "initialCapacity"
+    .locals 2
+    .param p1, "initialCapacity"    # I
 
     .prologue
-    .line 58
+    const/4 v1, 0x0
+
+    .line 61
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 59
+    .line 62
     if-nez p1, :cond_0
 
-    .line 60
-    sget-object v0, Landroid/util/ContainerHelpers;->EMPTY_INTS:[I
+    .line 63
+    sget-object v0, Llibcore/util/EmptyArray;->INT:[I
 
     iput-object v0, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
 
-    .line 61
-    sget-object v0, Landroid/util/ContainerHelpers;->EMPTY_BOOLEANS:[Z
+    .line 64
+    sget-object v0, Llibcore/util/EmptyArray;->BOOLEAN:[Z
 
     iput-object v0, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
 
-    .line 67
+    .line 69
     :goto_0
-    const/4 v0, 0x0
+    iput v1, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
-    iput v0, p0, Landroid/util/SparseBooleanArray;->mSize:I
-
-    .line 68
+    .line 61
     return-void
 
-    .line 63
+    .line 66
     :cond_0
-    invoke-static {p1}, Lcom/android/internal/util/ArrayUtils;->idealIntArraySize(I)I
+    invoke-static {p1}, Lcom/android/internal/util/ArrayUtils;->newUnpaddedIntArray(I)[I
 
-    move-result p1
-
-    .line 64
-    new-array v0, p1, [I
+    move-result-object v0
 
     iput-object v0, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
 
-    .line 65
-    new-array v0, p1, [Z
+    .line 67
+    iget-object v0, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
+
+    array-length v0, v0
+
+    new-array v0, v0, [Z
 
     iput-object v0, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
 
@@ -80,115 +81,59 @@
 
 # virtual methods
 .method public append(IZ)V
-    .locals 7
-    .parameter "key"
-    .parameter "value"
+    .locals 2
+    .param p1, "key"    # I
+    .param p2, "value"    # Z
 
     .prologue
-    const/4 v6, 0x0
+    .line 225
+    iget v0, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
-    .line 231
-    iget v4, p0, Landroid/util/SparseBooleanArray;->mSize:I
+    if-eqz v0, :cond_0
 
-    if-eqz v4, :cond_0
+    iget-object v0, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
 
-    iget-object v4, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
+    iget v1, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
-    iget v5, p0, Landroid/util/SparseBooleanArray;->mSize:I
+    add-int/lit8 v1, v1, -0x1
 
-    add-int/lit8 v5, v5, -0x1
+    aget v0, v0, v1
 
-    aget v4, v4, v5
+    if-gt p1, v0, :cond_0
 
-    if-gt p1, v4, :cond_0
-
-    .line 232
+    .line 226
     invoke-virtual {p0, p1, p2}, Landroid/util/SparseBooleanArray;->put(IZ)V
 
-    .line 254
-    :goto_0
+    .line 227
     return-void
 
-    .line 236
+    .line 230
     :cond_0
-    iget v3, p0, Landroid/util/SparseBooleanArray;->mSize:I
+    iget-object v0, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
 
-    .line 237
-    .local v3, pos:I
-    iget-object v4, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
+    iget v1, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
-    array-length v4, v4
+    invoke-static {v0, v1, p1}, Lcom/android/internal/util/GrowingArrayUtils;->append([III)[I
 
-    if-lt v3, v4, :cond_1
+    move-result-object v0
 
-    .line 238
-    add-int/lit8 v4, v3, 0x1
+    iput-object v0, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
 
-    invoke-static {v4}, Lcom/android/internal/util/ArrayUtils;->idealIntArraySize(I)I
+    .line 231
+    iget-object v0, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
 
-    move-result v0
+    iget v1, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
-    .line 240
-    .local v0, n:I
-    new-array v1, v0, [I
+    invoke-static {v0, v1, p2}, Lcom/android/internal/util/GrowingArrayUtils;->append([ZIZ)[Z
 
-    .line 241
-    .local v1, nkeys:[I
-    new-array v2, v0, [Z
+    move-result-object v0
 
-    .line 244
-    .local v2, nvalues:[Z
-    iget-object v4, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
+    iput-object v0, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
 
-    iget-object v5, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
+    .line 232
+    iget v0, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
-    array-length v5, v5
-
-    invoke-static {v4, v6, v1, v6, v5}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 245
-    iget-object v4, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
-
-    iget-object v5, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
-
-    array-length v5, v5
-
-    invoke-static {v4, v6, v2, v6, v5}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 247
-    iput-object v1, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
-
-    .line 248
-    iput-object v2, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
-
-    .line 251
-    .end local v0           #n:I
-    .end local v1           #nkeys:[I
-    .end local v2           #nvalues:[Z
-    :cond_1
-    iget-object v4, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
-
-    aput p1, v4, v3
-
-    .line 252
-    iget-object v4, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
-
-    aput-boolean p2, v4, v3
-
-    .line 253
-    add-int/lit8 v4, v3, 0x1
-
-    iput v4, p0, Landroid/util/SparseBooleanArray;->mSize:I
-
-    goto :goto_0
-.end method
-
-.method public clear()V
-    .locals 1
-
-    .prologue
-    .line 223
-    const/4 v0, 0x0
+    add-int/lit8 v0, v0, 0x1
 
     iput v0, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
@@ -196,58 +141,74 @@
     return-void
 .end method
 
-.method public clone()Landroid/util/SparseBooleanArray;
-    .locals 3
+.method public clear()V
+    .locals 1
 
     .prologue
-    .line 72
+    .line 217
+    const/4 v0, 0x0
+
+    iput v0, p0, Landroid/util/SparseBooleanArray;->mSize:I
+
+    .line 216
+    return-void
+.end method
+
+.method public clone()Landroid/util/SparseBooleanArray;
+    .locals 4
+
+    .prologue
+    .line 74
     const/4 v1, 0x0
 
-    .line 74
-    .local v1, clone:Landroid/util/SparseBooleanArray;
+    .line 76
+    .local v1, "clone":Landroid/util/SparseBooleanArray;
     :try_start_0
     invoke-super {p0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v3
 
-    move-object v0, v2
+    move-object v0, v3
 
     check-cast v0, Landroid/util/SparseBooleanArray;
 
     move-object v1, v0
 
-    .line 75
-    iget-object v2, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
+    .line 77
+    .local v1, "clone":Landroid/util/SparseBooleanArray;
+    iget-object v3, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
 
-    invoke-virtual {v2}, [I->clone()Ljava/lang/Object;
+    invoke-virtual {v3}, Ljava/lang/Object;->clone()Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v3
 
-    check-cast v2, [I
+    check-cast v3, [I
 
-    iput-object v2, v1, Landroid/util/SparseBooleanArray;->mKeys:[I
+    iput-object v3, v1, Landroid/util/SparseBooleanArray;->mKeys:[I
 
-    .line 76
-    iget-object v2, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
+    .line 78
+    iget-object v3, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
 
-    invoke-virtual {v2}, [Z->clone()Ljava/lang/Object;
+    invoke-virtual {v3}, Ljava/lang/Object;->clone()Ljava/lang/Object;
 
-    move-result-object v2
+    move-result-object v3
 
-    check-cast v2, [Z
+    check-cast v3, [Z
 
-    iput-object v2, v1, Landroid/util/SparseBooleanArray;->mValues:[Z
+    iput-object v3, v1, Landroid/util/SparseBooleanArray;->mValues:[Z
     :try_end_0
     .catch Ljava/lang/CloneNotSupportedException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 80
+    .line 82
+    .end local v1    # "clone":Landroid/util/SparseBooleanArray;
     :goto_0
     return-object v1
 
-    .line 77
+    .line 79
     :catch_0
     move-exception v2
 
+    .local v2, "cnse":Ljava/lang/CloneNotSupportedException;
     goto :goto_0
 .end method
 
@@ -260,7 +221,7 @@
     .end annotation
 
     .prologue
-    .line 43
+    .line 73
     invoke-virtual {p0}, Landroid/util/SparseBooleanArray;->clone()Landroid/util/SparseBooleanArray;
 
     move-result-object v0
@@ -270,10 +231,10 @@
 
 .method public delete(I)V
     .locals 6
-    .parameter "key"
+    .param p1, "key"    # I
 
     .prologue
-    .line 109
+    .line 111
     iget-object v1, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
 
     iget v2, p0, Landroid/util/SparseBooleanArray;->mSize:I
@@ -282,11 +243,11 @@
 
     move-result v0
 
-    .line 111
-    .local v0, i:I
+    .line 113
+    .local v0, "i":I
     if-ltz v0, :cond_0
 
-    .line 112
+    .line 114
     iget-object v1, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
 
     add-int/lit8 v2, v0, 0x1
@@ -299,9 +260,9 @@
 
     sub-int/2addr v4, v5
 
-    invoke-static {v1, v2, v3, v0, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v1, v2, v3, v0, v4}, Ljava/lang/System;->arraycopy([II[III)V
 
-    .line 113
+    .line 115
     iget-object v1, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
 
     add-int/lit8 v2, v0, 0x1
@@ -314,26 +275,26 @@
 
     sub-int/2addr v4, v5
 
-    invoke-static {v1, v2, v3, v0, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v1, v2, v3, v0, v4}, Ljava/lang/System;->arraycopy([ZI[ZII)V
 
-    .line 114
+    .line 116
     iget v1, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
     add-int/lit8 v1, v1, -0x1
 
     iput v1, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
-    .line 116
+    .line 110
     :cond_0
     return-void
 .end method
 
 .method public get(I)Z
     .locals 1
-    .parameter "key"
+    .param p1, "key"    # I
 
     .prologue
-    .line 88
+    .line 90
     const/4 v0, 0x0
 
     invoke-virtual {p0, p1, v0}, Landroid/util/SparseBooleanArray;->get(IZ)Z
@@ -345,11 +306,11 @@
 
 .method public get(IZ)Z
     .locals 3
-    .parameter "key"
-    .parameter "valueIfKeyNotFound"
+    .param p1, "key"    # I
+    .param p2, "valueIfKeyNotFound"    # Z
 
     .prologue
-    .line 96
+    .line 98
     iget-object v1, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
 
     iget v2, p0, Landroid/util/SparseBooleanArray;->mSize:I
@@ -358,30 +319,28 @@
 
     move-result v0
 
-    .line 98
-    .local v0, i:I
+    .line 100
+    .local v0, "i":I
     if-gez v0, :cond_0
 
     .line 101
-    .end local p2
-    :goto_0
     return p2
 
-    .restart local p2
+    .line 103
     :cond_0
     iget-object v1, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
 
-    aget-boolean p2, v1, v0
+    aget-boolean v1, v1, v0
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public indexOfKey(I)I
     .locals 2
-    .parameter "key"
+    .param p1, "key"    # I
 
     .prologue
-    .line 200
+    .line 194
     iget-object v0, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
 
     iget v1, p0, Landroid/util/SparseBooleanArray;->mSize:I
@@ -395,50 +354,47 @@
 
 .method public indexOfValue(Z)I
     .locals 2
-    .parameter "value"
+    .param p1, "value"    # Z
 
     .prologue
-    .line 212
+    .line 206
     const/4 v0, 0x0
 
-    .local v0, i:I
+    .local v0, "i":I
     :goto_0
     iget v1, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
     if-ge v0, v1, :cond_1
 
-    .line 213
+    .line 207
     iget-object v1, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
 
     aget-boolean v1, v1, v0
 
     if-ne v1, p1, :cond_0
 
-    .line 216
-    .end local v0           #i:I
-    :goto_1
+    .line 208
     return v0
 
-    .line 212
-    .restart local v0       #i:I
+    .line 206
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 216
+    .line 210
     :cond_1
-    const/4 v0, -0x1
+    const/4 v1, -0x1
 
-    goto :goto_1
+    return v1
 .end method
 
 .method public keyAt(I)I
     .locals 1
-    .parameter "index"
+    .param p1, "index"    # I
 
     .prologue
-    .line 176
+    .line 165
     iget-object v0, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
 
     aget v0, v0, p1
@@ -447,153 +403,135 @@
 .end method
 
 .method public put(IZ)V
-    .locals 8
-    .parameter "key"
-    .parameter "value"
+    .locals 3
+    .param p1, "key"    # I
+    .param p2, "value"    # Z
 
     .prologue
-    const/4 v6, 0x0
+    .line 133
+    iget-object v1, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
 
-    .line 124
-    iget-object v4, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
+    iget v2, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
-    iget v5, p0, Landroid/util/SparseBooleanArray;->mSize:I
-
-    invoke-static {v4, v5, p1}, Landroid/util/ContainerHelpers;->binarySearch([III)I
+    invoke-static {v1, v2, p1}, Landroid/util/ContainerHelpers;->binarySearch([III)I
 
     move-result v0
 
-    .line 126
-    .local v0, i:I
+    .line 135
+    .local v0, "i":I
     if-ltz v0, :cond_0
 
-    .line 127
-    iget-object v4, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
+    .line 136
+    iget-object v1, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
 
-    aput-boolean p2, v4, v0
+    aput-boolean p2, v1, v0
 
-    .line 155
+    .line 132
     :goto_0
     return-void
 
-    .line 129
-    :cond_0
-    xor-int/lit8 v0, v0, -0x1
-
-    .line 131
-    iget v4, p0, Landroid/util/SparseBooleanArray;->mSize:I
-
-    iget-object v5, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
-
-    array-length v5, v5
-
-    if-lt v4, v5, :cond_1
-
-    .line 132
-    iget v4, p0, Landroid/util/SparseBooleanArray;->mSize:I
-
-    add-int/lit8 v4, v4, 0x1
-
-    invoke-static {v4}, Lcom/android/internal/util/ArrayUtils;->idealIntArraySize(I)I
-
-    move-result v1
-
-    .line 134
-    .local v1, n:I
-    new-array v2, v1, [I
-
-    .line 135
-    .local v2, nkeys:[I
-    new-array v3, v1, [Z
-
     .line 138
-    .local v3, nvalues:[Z
-    iget-object v4, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
+    :cond_0
+    not-int v0, v0
 
-    iget-object v5, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
+    .line 140
+    iget-object v1, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
 
-    array-length v5, v5
+    iget v2, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
-    invoke-static {v4, v6, v2, v6, v5}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v1, v2, v0, p1}, Lcom/android/internal/util/GrowingArrayUtils;->insert([IIII)[I
 
-    .line 139
-    iget-object v4, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
+    move-result-object v1
 
-    iget-object v5, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
-
-    array-length v5, v5
-
-    invoke-static {v4, v6, v3, v6, v5}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    iput-object v1, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
 
     .line 141
-    iput-object v2, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
+    iget-object v1, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
+
+    iget v2, p0, Landroid/util/SparseBooleanArray;->mSize:I
+
+    invoke-static {v1, v2, v0, p2}, Lcom/android/internal/util/GrowingArrayUtils;->insert([ZIIZ)[Z
+
+    move-result-object v1
+
+    iput-object v1, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
 
     .line 142
-    iput-object v3, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
+    iget v1, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
-    .line 145
-    .end local v1           #n:I
-    .end local v2           #nkeys:[I
-    .end local v3           #nvalues:[Z
-    :cond_1
-    iget v4, p0, Landroid/util/SparseBooleanArray;->mSize:I
+    add-int/lit8 v1, v1, 0x1
 
-    sub-int/2addr v4, v0
-
-    if-eqz v4, :cond_2
-
-    .line 147
-    iget-object v4, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
-
-    iget-object v5, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
-
-    add-int/lit8 v6, v0, 0x1
-
-    iget v7, p0, Landroid/util/SparseBooleanArray;->mSize:I
-
-    sub-int/2addr v7, v0
-
-    invoke-static {v4, v0, v5, v6, v7}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 148
-    iget-object v4, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
-
-    iget-object v5, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
-
-    add-int/lit8 v6, v0, 0x1
-
-    iget v7, p0, Landroid/util/SparseBooleanArray;->mSize:I
-
-    sub-int/2addr v7, v0
-
-    invoke-static {v4, v0, v5, v6, v7}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 151
-    :cond_2
-    iget-object v4, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
-
-    aput p1, v4, v0
-
-    .line 152
-    iget-object v4, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
-
-    aput-boolean p2, v4, v0
-
-    .line 153
-    iget v4, p0, Landroid/util/SparseBooleanArray;->mSize:I
-
-    add-int/lit8 v4, v4, 0x1
-
-    iput v4, p0, Landroid/util/SparseBooleanArray;->mSize:I
+    iput v1, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
     goto :goto_0
+.end method
+
+.method public removeAt(I)V
+    .locals 5
+    .param p1, "index"    # I
+
+    .prologue
+    .line 122
+    iget-object v0, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
+
+    add-int/lit8 v1, p1, 0x1
+
+    iget-object v2, p0, Landroid/util/SparseBooleanArray;->mKeys:[I
+
+    iget v3, p0, Landroid/util/SparseBooleanArray;->mSize:I
+
+    add-int/lit8 v4, p1, 0x1
+
+    sub-int/2addr v3, v4
+
+    invoke-static {v0, v1, v2, p1, v3}, Ljava/lang/System;->arraycopy([II[III)V
+
+    .line 123
+    iget-object v0, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
+
+    add-int/lit8 v1, p1, 0x1
+
+    iget-object v2, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
+
+    iget v3, p0, Landroid/util/SparseBooleanArray;->mSize:I
+
+    add-int/lit8 v4, p1, 0x1
+
+    sub-int/2addr v3, v4
+
+    invoke-static {v0, v1, v2, p1, v3}, Ljava/lang/System;->arraycopy([ZI[ZII)V
+
+    .line 124
+    iget v0, p0, Landroid/util/SparseBooleanArray;->mSize:I
+
+    add-int/lit8 v0, v0, -0x1
+
+    iput v0, p0, Landroid/util/SparseBooleanArray;->mSize:I
+
+    .line 121
+    return-void
+.end method
+
+.method public setValueAt(IZ)V
+    .locals 1
+    .param p1, "index"    # I
+    .param p2, "value"    # Z
+
+    .prologue
+    .line 185
+    iget-object v0, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
+
+    aput-boolean p2, v0, p1
+
+    .line 184
+    return-void
 .end method
 
 .method public size()I
     .locals 1
 
     .prologue
-    .line 162
+    .line 151
     iget v0, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
     return v0
@@ -603,21 +541,19 @@
     .locals 5
 
     .prologue
-    .line 263
+    .line 242
     invoke-virtual {p0}, Landroid/util/SparseBooleanArray;->size()I
 
     move-result v4
 
     if-gtz v4, :cond_0
 
-    .line 264
+    .line 243
     const-string/jumbo v4, "{}"
 
-    .line 280
-    :goto_0
     return-object v4
 
-    .line 267
+    .line 246
     :cond_0
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -627,80 +563,80 @@
 
     invoke-direct {v0, v4}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 268
-    .local v0, buffer:Ljava/lang/StringBuilder;
+    .line 247
+    .local v0, "buffer":Ljava/lang/StringBuilder;
     const/16 v4, 0x7b
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 269
+    .line 248
     const/4 v1, 0x0
 
-    .local v1, i:I
-    :goto_1
+    .local v1, "i":I
+    :goto_0
     iget v4, p0, Landroid/util/SparseBooleanArray;->mSize:I
 
     if-ge v1, v4, :cond_2
 
-    .line 270
+    .line 249
     if-lez v1, :cond_1
 
-    .line 271
-    const-string v4, ", "
+    .line 250
+    const-string/jumbo v4, ", "
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 273
+    .line 252
     :cond_1
     invoke-virtual {p0, v1}, Landroid/util/SparseBooleanArray;->keyAt(I)I
 
     move-result v2
 
-    .line 274
-    .local v2, key:I
+    .line 253
+    .local v2, "key":I
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    .line 275
+    .line 254
     const/16 v4, 0x3d
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 276
+    .line 255
     invoke-virtual {p0, v1}, Landroid/util/SparseBooleanArray;->valueAt(I)Z
 
     move-result v3
 
-    .line 277
-    .local v3, value:Z
+    .line 256
+    .local v3, "value":Z
     invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    .line 269
+    .line 248
     add-int/lit8 v1, v1, 0x1
 
-    goto :goto_1
+    goto :goto_0
 
-    .line 279
-    .end local v2           #key:I
-    .end local v3           #value:Z
+    .line 258
+    .end local v2    # "key":I
+    .end local v3    # "value":Z
     :cond_2
     const/16 v4, 0x7d
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 280
+    .line 259
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v4
 
-    goto :goto_0
+    return-object v4
 .end method
 
 .method public valueAt(I)Z
     .locals 1
-    .parameter "index"
+    .param p1, "index"    # I
 
     .prologue
-    .line 191
+    .line 180
     iget-object v0, p0, Landroid/util/SparseBooleanArray;->mValues:[Z
 
     aget-boolean v0, v0, p1

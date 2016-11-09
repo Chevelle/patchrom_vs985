@@ -6,8 +6,16 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/content/UriPermission$1;
+    }
+.end annotation
+
+
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator; = null
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Landroid/os/Parcelable$Creator",
@@ -41,14 +49,15 @@
 
     sput-object v0, Landroid/content/UriPermission;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 31
     return-void
 .end method
 
 .method public constructor <init>(Landroid/net/Uri;IJ)V
-    .locals 0
-    .parameter "uri"
-    .parameter "modeFlags"
-    .parameter "persistedTime"
+    .locals 1
+    .param p1, "uri"    # Landroid/net/Uri;
+    .param p2, "modeFlags"    # I
+    .param p3, "persistedTime"    # J
 
     .prologue
     .line 42
@@ -63,13 +72,13 @@
     .line 45
     iput-wide p3, p0, Landroid/content/UriPermission;->mPersistedTime:J
 
-    .line 46
+    .line 42
     return-void
 .end method
 
 .method public constructor <init>(Landroid/os/Parcel;)V
     .locals 2
-    .parameter "in"
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 49
@@ -100,7 +109,7 @@
 
     iput-wide v0, p0, Landroid/content/UriPermission;->mPersistedTime:J
 
-    .line 53
+    .line 49
     return-void
 .end method
 
@@ -137,51 +146,45 @@
 .end method
 
 .method public isReadPermission()Z
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v0, 0x0
+
     .line 66
-    iget v0, p0, Landroid/content/UriPermission;->mModeFlags:I
+    iget v1, p0, Landroid/content/UriPermission;->mModeFlags:I
 
-    and-int/lit8 v0, v0, 0x1
+    and-int/lit8 v1, v1, 0x1
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public isWritePermission()Z
-    .locals 1
+    .locals 2
 
     .prologue
+    const/4 v0, 0x0
+
     .line 73
-    iget v0, p0, Landroid/content/UriPermission;->mModeFlags:I
+    iget v1, p0, Landroid/content/UriPermission;->mModeFlags:I
 
-    and-int/lit8 v0, v0, 0x2
+    and-int/lit8 v1, v1, 0x2
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
-    return v0
-
     :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
+    return v0
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 3
+    .locals 4
 
     .prologue
     .line 90
@@ -189,7 +192,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "UriPermission {uri="
+    const-string/jumbo v1, "UriPermission {uri="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -201,7 +204,7 @@
 
     move-result-object v0
 
-    const-string v1, ", modeFlags="
+    const-string/jumbo v1, ", modeFlags="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -213,20 +216,24 @@
 
     move-result-object v0
 
-    const-string v1, ", persistedTime="
+    const-string/jumbo v1, ", persistedTime="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    iget-wide v1, p0, Landroid/content/UriPermission;->mPersistedTime:J
+    .line 91
+    iget-wide v2, p0, Landroid/content/UriPermission;->mPersistedTime:J
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    .line 90
+    invoke-virtual {v0, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
+    .line 91
     const-string/jumbo v1, "}"
 
+    .line 90
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
@@ -240,8 +247,8 @@
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 2
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
     .line 101
@@ -259,6 +266,6 @@
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 104
+    .line 100
     return-void
 .end method

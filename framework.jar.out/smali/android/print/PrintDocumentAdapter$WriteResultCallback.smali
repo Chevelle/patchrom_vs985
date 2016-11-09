@@ -22,7 +22,6 @@
     .line 263
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 265
     return-void
 .end method
 
@@ -32,24 +31,24 @@
     .locals 0
 
     .prologue
-    .line 292
+    .line 290
     return-void
 .end method
 
 .method public onWriteFailed(Ljava/lang/CharSequence;)V
     .locals 0
-    .parameter "error"
+    .param p1, "error"    # Ljava/lang/CharSequence;
 
     .prologue
-    .line 285
+    .line 283
     return-void
 .end method
 
 .method public onWriteFinished([Landroid/print/PageRange;)V
     .locals 0
-    .parameter "pages"
+    .param p1, "pages"    # [Landroid/print/PageRange;
 
     .prologue
-    .line 275
+    .line 273
     return-void
 .end method

@@ -15,13 +15,17 @@
 
 
 # static fields
+.field public static final AUDIO_SOURCE_INVALID:I = -0x1
+
 .field public static final CAMCORDER:I = 0x5
 
 .field public static final DEFAULT:I = 0x0
 
-.field protected static final HOTWORD:I = 0x7cf
+.field public static final HOTWORD:I = 0x7cf
 
 .field public static final MIC:I = 0x1
+
+.field public static final RADIO_TUNER:I = 0x7ce
 
 .field public static final REMOTE_SUBMIX:I = 0x8
 
@@ -43,10 +47,10 @@
 # direct methods
 .method private constructor <init>(Landroid/media/MediaRecorder;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/media/MediaRecorder;
 
     .prologue
-    .line 151
+    .line 194
     iput-object p1, p0, Landroid/media/MediaRecorder$AudioSource;->this$0:Landroid/media/MediaRecorder;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

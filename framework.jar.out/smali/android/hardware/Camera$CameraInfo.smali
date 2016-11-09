@@ -13,6 +13,9 @@
     name = "CameraInfo"
 .end annotation
 
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
 
 # static fields
 .field public static final CAMERA_FACING_BACK:I = 0x0
@@ -37,7 +40,7 @@
     .locals 0
 
     .prologue
-    .line 235
+    .line 266
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

@@ -32,7 +32,7 @@
 # direct methods
 .method constructor <init>(Landroid/view/OrientationEventListener;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/view/OrientationEventListener;
 
     .prologue
     .line 113
@@ -47,166 +47,161 @@
 # virtual methods
 .method public onAccuracyChanged(Landroid/hardware/Sensor;I)V
     .locals 0
-    .parameter "sensor"
-    .parameter "accuracy"
+    .param p1, "sensor"    # Landroid/hardware/Sensor;
+    .param p2, "accuracy"    # I
 
     .prologue
-    .line 149
+    .line 147
     return-void
 .end method
 
 .method public onSensorChanged(Landroid/hardware/SensorEvent;)V
     .locals 13
-    .parameter "event"
+    .param p1, "event"    # Landroid/hardware/SensorEvent;
 
     .prologue
     const/4 v12, 0x1
 
+    const/4 v7, 0x0
+
     .line 119
-    iget-object v7, p1, Landroid/hardware/SensorEvent;->values:[F
+    iget-object v6, p1, Landroid/hardware/SensorEvent;->values:[F
 
     .line 120
-    .local v7, values:[F
-    const/4 v6, -0x1
+    .local v6, "values":[F
+    const/4 v5, -0x1
 
     .line 121
-    .local v6, orientation:I
-    const/4 v8, 0x0
+    .local v5, "orientation":I
+    aget v7, v6, v7
 
-    aget v8, v7, v8
-
-    neg-float v1, v8
+    neg-float v0, v7
 
     .line 122
-    .local v1, X:F
-    aget v8, v7, v12
+    .local v0, "X":F
+    aget v7, v6, v12
 
-    neg-float v2, v8
+    neg-float v1, v7
 
     .line 123
-    .local v2, Y:F
-    const/4 v8, 0x2
+    .local v1, "Y":F
+    const/4 v7, 0x2
 
-    aget v8, v7, v8
+    aget v7, v6, v7
 
-    neg-float v3, v8
+    neg-float v2, v7
 
     .line 124
-    .local v3, Z:F
+    .local v2, "Z":F
+    mul-float v7, v0, v0
+
     mul-float v8, v1, v1
 
-    mul-float v9, v2, v2
-
-    add-float v5, v8, v9
+    add-float v4, v7, v8
 
     .line 126
-    .local v5, magnitude:F
-    const/high16 v8, 0x4080
+    .local v4, "magnitude":F
+    const/high16 v7, 0x40800000    # 4.0f
 
-    mul-float/2addr v8, v5
+    mul-float/2addr v7, v4
 
-    mul-float v9, v3, v3
+    mul-float v8, v2, v2
 
-    cmpl-float v8, v8, v9
+    cmpl-float v7, v7, v8
 
-    if-ltz v8, :cond_1
-
-    .line 127
-    const v0, 0x42652ee1
+    if-ltz v7, :cond_1
 
     .line 128
-    .local v0, OneEightyOverPi:F
-    neg-float v8, v2
+    neg-float v7, v1
 
-    float-to-double v8, v8
+    float-to-double v8, v7
 
-    float-to-double v10, v1
+    float-to-double v10, v0
 
     invoke-static {v8, v9, v10, v11}, Ljava/lang/Math;->atan2(DD)D
 
     move-result-wide v8
 
-    double-to-float v8, v8
+    double-to-float v7, v8
 
-    mul-float v4, v8, v0
+    .line 127
+    const v8, 0x42652ee1
+
+    .line 128
+    mul-float v3, v7, v8
 
     .line 129
-    .local v4, angle:F
-    invoke-static {v4}, Ljava/lang/Math;->round(F)I
+    .local v3, "angle":F
+    invoke-static {v3}, Ljava/lang/Math;->round(F)I
 
-    move-result v8
+    move-result v7
 
-    rsub-int/lit8 v6, v8, 0x5a
+    rsub-int/lit8 v5, v7, 0x5a
 
     .line 131
     :goto_0
-    const/16 v8, 0x168
+    const/16 v7, 0x168
 
-    if-lt v6, v8, :cond_0
+    if-lt v5, v7, :cond_0
 
     .line 132
-    add-int/lit16 v6, v6, -0x168
+    add-int/lit16 v5, v5, -0x168
 
     goto :goto_0
 
     .line 134
     :cond_0
     :goto_1
-    if-gez v6, :cond_1
+    if-gez v5, :cond_1
 
     .line 135
-    add-int/lit16 v6, v6, 0x168
+    add-int/lit16 v5, v5, 0x168
 
     goto :goto_1
 
     .line 138
-    .end local v0           #OneEightyOverPi:F
-    .end local v4           #angle:F
+    .end local v3    # "angle":F
     :cond_1
-    iget-object v8, p0, Landroid/view/OrientationEventListener$SensorEventListenerImpl;->this$0:Landroid/view/OrientationEventListener;
+    iget-object v7, p0, Landroid/view/OrientationEventListener$SensorEventListenerImpl;->this$0:Landroid/view/OrientationEventListener;
 
-    #getter for: Landroid/view/OrientationEventListener;->mOldListener:Landroid/view/OrientationListener;
-    invoke-static {v8}, Landroid/view/OrientationEventListener;->access$000(Landroid/view/OrientationEventListener;)Landroid/view/OrientationListener;
+    invoke-static {v7}, Landroid/view/OrientationEventListener;->-get0(Landroid/view/OrientationEventListener;)Landroid/view/OrientationListener;
 
-    move-result-object v8
+    move-result-object v7
 
-    if-eqz v8, :cond_2
+    if-eqz v7, :cond_2
 
     .line 139
-    iget-object v8, p0, Landroid/view/OrientationEventListener$SensorEventListenerImpl;->this$0:Landroid/view/OrientationEventListener;
+    iget-object v7, p0, Landroid/view/OrientationEventListener$SensorEventListenerImpl;->this$0:Landroid/view/OrientationEventListener;
 
-    #getter for: Landroid/view/OrientationEventListener;->mOldListener:Landroid/view/OrientationListener;
-    invoke-static {v8}, Landroid/view/OrientationEventListener;->access$000(Landroid/view/OrientationEventListener;)Landroid/view/OrientationListener;
+    invoke-static {v7}, Landroid/view/OrientationEventListener;->-get0(Landroid/view/OrientationEventListener;)Landroid/view/OrientationListener;
 
-    move-result-object v8
+    move-result-object v7
 
-    iget-object v9, p1, Landroid/hardware/SensorEvent;->values:[F
+    iget-object v8, p1, Landroid/hardware/SensorEvent;->values:[F
 
-    invoke-virtual {v8, v12, v9}, Landroid/view/OrientationListener;->onSensorChanged(I[F)V
+    invoke-virtual {v7, v12, v8}, Landroid/view/OrientationListener;->onSensorChanged(I[F)V
 
     .line 141
     :cond_2
-    iget-object v8, p0, Landroid/view/OrientationEventListener$SensorEventListenerImpl;->this$0:Landroid/view/OrientationEventListener;
+    iget-object v7, p0, Landroid/view/OrientationEventListener$SensorEventListenerImpl;->this$0:Landroid/view/OrientationEventListener;
 
-    #getter for: Landroid/view/OrientationEventListener;->mOrientation:I
-    invoke-static {v8}, Landroid/view/OrientationEventListener;->access$100(Landroid/view/OrientationEventListener;)I
+    invoke-static {v7}, Landroid/view/OrientationEventListener;->-get1(Landroid/view/OrientationEventListener;)I
 
-    move-result v8
+    move-result v7
 
-    if-eq v6, v8, :cond_3
+    if-eq v5, v7, :cond_3
 
     .line 142
-    iget-object v8, p0, Landroid/view/OrientationEventListener$SensorEventListenerImpl;->this$0:Landroid/view/OrientationEventListener;
+    iget-object v7, p0, Landroid/view/OrientationEventListener$SensorEventListenerImpl;->this$0:Landroid/view/OrientationEventListener;
 
-    #setter for: Landroid/view/OrientationEventListener;->mOrientation:I
-    invoke-static {v8, v6}, Landroid/view/OrientationEventListener;->access$102(Landroid/view/OrientationEventListener;I)I
+    invoke-static {v7, v5}, Landroid/view/OrientationEventListener;->-set0(Landroid/view/OrientationEventListener;I)I
 
     .line 143
-    iget-object v8, p0, Landroid/view/OrientationEventListener$SensorEventListenerImpl;->this$0:Landroid/view/OrientationEventListener;
+    iget-object v7, p0, Landroid/view/OrientationEventListener$SensorEventListenerImpl;->this$0:Landroid/view/OrientationEventListener;
 
-    invoke-virtual {v8, v6}, Landroid/view/OrientationEventListener;->onOrientationChanged(I)V
+    invoke-virtual {v7, v5}, Landroid/view/OrientationEventListener;->onOrientationChanged(I)V
 
-    .line 145
+    .line 118
     :cond_3
     return-void
 .end method

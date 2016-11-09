@@ -16,6 +16,12 @@
     name = "MemoryInfo"
 .end annotation
 
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/app/ActivityManager$MemoryInfo$1;
+    }
+.end annotation
+
 
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
@@ -53,13 +59,15 @@
     .locals 1
 
     .prologue
-    .line 1267
+    .line 1744
     new-instance v0, Landroid/app/ActivityManager$MemoryInfo$1;
 
     invoke-direct {v0}, Landroid/app/ActivityManager$MemoryInfo$1;-><init>()V
 
+    .line 1743
     sput-object v0, Landroid/app/ActivityManager$MemoryInfo;->CREATOR:Landroid/os/Parcelable$Creator;
 
+    .line 1676
     return-void
 .end method
 
@@ -67,35 +75,32 @@
     .locals 0
 
     .prologue
-    .line 1238
+    .line 1714
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1239
     return-void
 .end method
 
 .method private constructor <init>(Landroid/os/Parcel;)V
     .locals 0
-    .parameter "source"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 1277
+    .line 1753
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1278
+    .line 1754
     invoke-virtual {p0, p1}, Landroid/app/ActivityManager$MemoryInfo;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 1279
+    .line 1753
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/app/ActivityManager$1;)V
+.method synthetic constructor <init>(Landroid/os/Parcel;Landroid/app/ActivityManager$MemoryInfo;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 1200
     invoke-direct {p0, p1}, Landroid/app/ActivityManager$MemoryInfo;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -107,110 +112,106 @@
     .locals 1
 
     .prologue
-    .line 1242
+    .line 1718
     const/4 v0, 0x0
 
     return v0
 .end method
 
 .method public readFromParcel(Landroid/os/Parcel;)V
-    .locals 2
-    .parameter "source"
+    .locals 4
+    .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 1257
+    const/4 v0, 0x0
+
+    .line 1733
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
-    move-result-wide v0
+    move-result-wide v2
 
-    iput-wide v0, p0, Landroid/app/ActivityManager$MemoryInfo;->availMem:J
+    iput-wide v2, p0, Landroid/app/ActivityManager$MemoryInfo;->availMem:J
 
-    .line 1258
+    .line 1734
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
-    move-result-wide v0
+    move-result-wide v2
 
-    iput-wide v0, p0, Landroid/app/ActivityManager$MemoryInfo;->totalMem:J
+    iput-wide v2, p0, Landroid/app/ActivityManager$MemoryInfo;->totalMem:J
 
-    .line 1259
+    .line 1735
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
-    move-result-wide v0
+    move-result-wide v2
 
-    iput-wide v0, p0, Landroid/app/ActivityManager$MemoryInfo;->threshold:J
+    iput-wide v2, p0, Landroid/app/ActivityManager$MemoryInfo;->threshold:J
 
-    .line 1260
+    .line 1736
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
     const/4 v0, 0x1
 
-    :goto_0
+    :cond_0
     iput-boolean v0, p0, Landroid/app/ActivityManager$MemoryInfo;->lowMemory:Z
 
-    .line 1261
+    .line 1737
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Landroid/app/ActivityManager$MemoryInfo;->hiddenAppThreshold:J
 
-    .line 1262
+    .line 1738
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Landroid/app/ActivityManager$MemoryInfo;->secondaryServerThreshold:J
 
-    .line 1263
+    .line 1739
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Landroid/app/ActivityManager$MemoryInfo;->visibleAppThreshold:J
 
-    .line 1264
+    .line 1740
     invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Landroid/app/ActivityManager$MemoryInfo;->foregroundAppThreshold:J
 
-    .line 1265
+    .line 1732
     return-void
-
-    .line 1260
-    :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 2
-    .parameter "dest"
-    .parameter "flags"
+    .param p1, "dest"    # Landroid/os/Parcel;
+    .param p2, "flags"    # I
 
     .prologue
-    .line 1246
+    .line 1722
     iget-wide v0, p0, Landroid/app/ActivityManager$MemoryInfo;->availMem:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 1247
+    .line 1723
     iget-wide v0, p0, Landroid/app/ActivityManager$MemoryInfo;->totalMem:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 1248
+    .line 1724
     iget-wide v0, p0, Landroid/app/ActivityManager$MemoryInfo;->threshold:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 1249
+    .line 1725
     iget-boolean v0, p0, Landroid/app/ActivityManager$MemoryInfo;->lowMemory:Z
 
     if-eqz v0, :cond_0
@@ -220,30 +221,30 @@
     :goto_0
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 1250
+    .line 1726
     iget-wide v0, p0, Landroid/app/ActivityManager$MemoryInfo;->hiddenAppThreshold:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 1251
+    .line 1727
     iget-wide v0, p0, Landroid/app/ActivityManager$MemoryInfo;->secondaryServerThreshold:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 1252
+    .line 1728
     iget-wide v0, p0, Landroid/app/ActivityManager$MemoryInfo;->visibleAppThreshold:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 1253
+    .line 1729
     iget-wide v0, p0, Landroid/app/ActivityManager$MemoryInfo;->foregroundAppThreshold:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 1254
+    .line 1721
     return-void
 
-    .line 1249
+    .line 1725
     :cond_0
     const/4 v0, 0x0
 

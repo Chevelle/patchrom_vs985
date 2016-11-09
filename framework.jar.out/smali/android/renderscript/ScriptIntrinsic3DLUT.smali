@@ -10,86 +10,110 @@
 
 
 # direct methods
-.method private constructor <init>(ILandroid/renderscript/RenderScript;Landroid/renderscript/Element;)V
-    .locals 0
-    .parameter "id"
-    .parameter "rs"
-    .parameter "e"
+.method private constructor <init>(JLandroid/renderscript/RenderScript;Landroid/renderscript/Element;)V
+    .locals 1
+    .param p1, "id"    # J
+    .param p3, "rs"    # Landroid/renderscript/RenderScript;
+    .param p4, "e"    # Landroid/renderscript/Element;
 
     .prologue
-    .line 34
-    invoke-direct {p0, p1, p2}, Landroid/renderscript/ScriptIntrinsic;-><init>(ILandroid/renderscript/RenderScript;)V
+    .line 32
+    invoke-direct {p0, p1, p2, p3}, Landroid/renderscript/ScriptIntrinsic;-><init>(JLandroid/renderscript/RenderScript;)V
 
-    .line 35
-    iput-object p3, p0, Landroid/renderscript/ScriptIntrinsic3DLUT;->mElement:Landroid/renderscript/Element;
+    .line 33
+    iput-object p4, p0, Landroid/renderscript/ScriptIntrinsic3DLUT;->mElement:Landroid/renderscript/Element;
 
-    .line 36
+    .line 31
     return-void
 .end method
 
 .method public static create(Landroid/renderscript/RenderScript;Landroid/renderscript/Element;)Landroid/renderscript/ScriptIntrinsic3DLUT;
-    .locals 3
-    .parameter "rs"
-    .parameter "e"
+    .locals 5
+    .param p0, "rs"    # Landroid/renderscript/RenderScript;
+    .param p1, "e"    # Landroid/renderscript/Element;
 
     .prologue
-    .line 49
-    const/16 v1, 0x8
+    .line 47
+    invoke-virtual {p1, p0}, Landroid/renderscript/Element;->getID(Landroid/renderscript/RenderScript;)J
 
-    invoke-virtual {p1, p0}, Landroid/renderscript/Element;->getID(Landroid/renderscript/RenderScript;)I
+    move-result-wide v2
+
+    const/16 v4, 0x8
+
+    invoke-virtual {p0, v4, v2, v3}, Landroid/renderscript/RenderScript;->nScriptIntrinsicCreate(IJ)J
+
+    move-result-wide v0
+
+    .line 49
+    .local v0, "id":J
+    invoke-static {p0}, Landroid/renderscript/Element;->U8_4(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+
+    move-result-object v2
+
+    invoke-virtual {p1, v2}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
 
     move-result v2
 
-    invoke-virtual {p0, v1, v2}, Landroid/renderscript/RenderScript;->nScriptIntrinsicCreate(II)I
+    if-nez v2, :cond_0
 
-    move-result v0
+    .line 50
+    new-instance v2, Landroid/renderscript/RSIllegalArgumentException;
 
-    .line 51
-    .local v0, id:I
-    invoke-static {p0}, Landroid/renderscript/Element;->U8_4(Landroid/renderscript/RenderScript;)Landroid/renderscript/Element;
+    const-string/jumbo v3, "Element must be compatible with uchar4."
 
-    move-result-object v1
+    invoke-direct {v2, v3}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    invoke-virtual {p1, v1}, Landroid/renderscript/Element;->isCompatible(Landroid/renderscript/Element;)Z
+    throw v2
 
-    move-result v1
-
-    if-nez v1, :cond_0
-
-    .line 52
-    new-instance v1, Landroid/renderscript/RSIllegalArgumentException;
-
-    const-string v2, "Element must be compatible with uchar4."
-
-    invoke-direct {v1, v2}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw v1
-
-    .line 55
+    .line 53
     :cond_0
-    new-instance v1, Landroid/renderscript/ScriptIntrinsic3DLUT;
+    new-instance v2, Landroid/renderscript/ScriptIntrinsic3DLUT;
 
-    invoke-direct {v1, v0, p0, p1}, Landroid/renderscript/ScriptIntrinsic3DLUT;-><init>(ILandroid/renderscript/RenderScript;Landroid/renderscript/Element;)V
+    invoke-direct {v2, v0, v1, p0, p1}, Landroid/renderscript/ScriptIntrinsic3DLUT;-><init>(JLandroid/renderscript/RenderScript;Landroid/renderscript/Element;)V
 
-    return-object v1
+    return-object v2
 .end method
 
 
 # virtual methods
 .method public forEach(Landroid/renderscript/Allocation;Landroid/renderscript/Allocation;)V
-    .locals 2
-    .parameter "ain"
-    .parameter "aout"
+    .locals 1
+    .param p1, "ain"    # Landroid/renderscript/Allocation;
+    .param p2, "aout"    # Landroid/renderscript/Allocation;
 
     .prologue
-    .line 89
+    .line 87
     const/4 v0, 0x0
 
+    invoke-virtual {p0, p1, p2, v0}, Landroid/renderscript/ScriptIntrinsic3DLUT;->forEach(Landroid/renderscript/Allocation;Landroid/renderscript/Allocation;Landroid/renderscript/Script$LaunchOptions;)V
+
+    .line 86
+    return-void
+.end method
+
+.method public forEach(Landroid/renderscript/Allocation;Landroid/renderscript/Allocation;Landroid/renderscript/Script$LaunchOptions;)V
+    .locals 6
+    .param p1, "ain"    # Landroid/renderscript/Allocation;
+    .param p2, "aout"    # Landroid/renderscript/Allocation;
+    .param p3, "opt"    # Landroid/renderscript/Script$LaunchOptions;
+
+    .prologue
+    .line 99
     const/4 v1, 0x0
 
-    invoke-virtual {p0, v0, p1, p2, v1}, Landroid/renderscript/ScriptIntrinsic3DLUT;->forEach(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;Landroid/renderscript/FieldPacker;)V
+    const/4 v4, 0x0
 
-    .line 90
+    move-object v0, p0
+
+    move-object v2, p1
+
+    move-object v3, p2
+
+    move-object v5, p3
+
+    invoke-virtual/range {v0 .. v5}, Landroid/renderscript/ScriptIntrinsic3DLUT;->forEach(ILandroid/renderscript/Allocation;Landroid/renderscript/Allocation;Landroid/renderscript/FieldPacker;Landroid/renderscript/Script$LaunchOptions;)V
+
+    .line 98
     return-void
 .end method
 
@@ -99,7 +123,7 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 98
+    .line 109
     const/4 v0, 0x0
 
     const/4 v1, 0x3
@@ -112,33 +136,35 @@
 .end method
 
 .method public setLUT(Landroid/renderscript/Allocation;)V
-    .locals 3
-    .parameter "lut"
+    .locals 4
+    .param p1, "lut"    # Landroid/renderscript/Allocation;
 
     .prologue
-    .line 66
+    const/4 v3, 0x0
+
+    .line 64
     invoke-virtual {p1}, Landroid/renderscript/Allocation;->getType()Landroid/renderscript/Type;
 
     move-result-object v0
 
-    .line 68
-    .local v0, t:Landroid/renderscript/Type;
+    .line 66
+    .local v0, "t":Landroid/renderscript/Type;
     invoke-virtual {v0}, Landroid/renderscript/Type;->getZ()I
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    .line 69
+    .line 67
     new-instance v1, Landroid/renderscript/RSIllegalArgumentException;
 
-    const-string v2, "LUT must be 3d."
+    const-string/jumbo v2, "LUT must be 3d."
 
     invoke-direct {v1, v2}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 72
+    .line 70
     :cond_0
     invoke-virtual {v0}, Landroid/renderscript/Type;->getElement()Landroid/renderscript/Element;
 
@@ -152,26 +178,24 @@
 
     if-nez v1, :cond_1
 
-    .line 73
+    .line 71
     new-instance v1, Landroid/renderscript/RSIllegalArgumentException;
 
-    const-string v2, "LUT element type must match."
+    const-string/jumbo v2, "LUT element type must match."
 
     invoke-direct {v1, v2}, Landroid/renderscript/RSIllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 76
+    .line 74
     :cond_1
     iput-object p1, p0, Landroid/renderscript/ScriptIntrinsic3DLUT;->mLUT:Landroid/renderscript/Allocation;
 
-    .line 77
-    const/4 v1, 0x0
+    .line 75
+    iget-object v1, p0, Landroid/renderscript/ScriptIntrinsic3DLUT;->mLUT:Landroid/renderscript/Allocation;
 
-    iget-object v2, p0, Landroid/renderscript/ScriptIntrinsic3DLUT;->mLUT:Landroid/renderscript/Allocation;
+    invoke-virtual {p0, v3, v1}, Landroid/renderscript/ScriptIntrinsic3DLUT;->setVar(ILandroid/renderscript/BaseObj;)V
 
-    invoke-virtual {p0, v1, v2}, Landroid/renderscript/ScriptIntrinsic3DLUT;->setVar(ILandroid/renderscript/BaseObj;)V
-
-    .line 78
+    .line 63
     return-void
 .end method

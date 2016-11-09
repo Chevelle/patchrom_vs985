@@ -27,24 +27,25 @@
 
 # direct methods
 .method public constructor <init>(Landroid/view/View;IJ)V
-    .locals 0
-    .parameter "targetView"
-    .parameter "position"
-    .parameter "id"
+    .locals 1
+    .param p1, "targetView"    # Landroid/view/View;
+    .param p2, "position"    # I
+    .param p3, "id"    # J
 
     .prologue
-    .line 404
+    .line 421
+    .local p0, "this":Landroid/widget/AdapterView$AdapterContextMenuInfo;, "Landroid/widget/AdapterView<TT;>.AdapterContextMenuInfo;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 405
+    .line 422
     iput-object p1, p0, Landroid/widget/AdapterView$AdapterContextMenuInfo;->targetView:Landroid/view/View;
 
-    .line 406
+    .line 423
     iput p2, p0, Landroid/widget/AdapterView$AdapterContextMenuInfo;->position:I
 
-    .line 407
+    .line 424
     iput-wide p3, p0, Landroid/widget/AdapterView$AdapterContextMenuInfo;->id:J
 
-    .line 408
+    .line 421
     return-void
 .end method

@@ -10,7 +10,7 @@
 # direct methods
 .method public constructor <init>(I)V
     .locals 1
-    .parameter "error"
+    .param p1, "error"    # I
 
     .prologue
     .line 26
@@ -23,14 +23,14 @@
     .line 27
     iput p1, p0, Landroid/opengl/GLException;->mError:I
 
-    .line 28
+    .line 25
     return-void
 .end method
 
 .method public constructor <init>(ILjava/lang/String;)V
     .locals 0
-    .parameter "error"
-    .parameter "string"
+    .param p1, "error"    # I
+    .param p2, "string"    # Ljava/lang/String;
 
     .prologue
     .line 31
@@ -39,13 +39,13 @@
     .line 32
     iput p1, p0, Landroid/opengl/GLException;->mError:I
 
-    .line 33
+    .line 30
     return-void
 .end method
 
 .method private static getErrorString(I)Ljava/lang/String;
     .locals 3
-    .parameter "error"
+    .param p0, "error"    # I
 
     .prologue
     .line 36
@@ -54,7 +54,7 @@
     move-result-object v0
 
     .line 37
-    .local v0, errorString:Ljava/lang/String;
+    .local v0, "errorString":Ljava/lang/String;
     if-nez v0, :cond_0
 
     .line 38
@@ -62,7 +62,7 @@
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Unknown error 0x"
+    const-string/jumbo v2, "Unknown error 0x"
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

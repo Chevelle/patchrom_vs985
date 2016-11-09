@@ -45,26 +45,26 @@
     .locals 3
 
     .prologue
-    .line 540
+    .line 606
     new-instance v0, Landroid/os/StrictMode$VmPolicy;
 
-    const/4 v1, 0x0
+    invoke-static {}, Landroid/os/StrictMode;->-get0()Ljava/util/HashMap;
 
-    invoke-static {}, Landroid/os/StrictMode;->access$100()Ljava/util/HashMap;
+    move-result-object v1
 
-    move-result-object v2
+    const/4 v2, 0x0
 
-    invoke-direct {v0, v1, v2}, Landroid/os/StrictMode$VmPolicy;-><init>(ILjava/util/HashMap;)V
+    invoke-direct {v0, v2, v1}, Landroid/os/StrictMode$VmPolicy;-><init>(ILjava/util/HashMap;)V
 
     sput-object v0, Landroid/os/StrictMode$VmPolicy;->LAX:Landroid/os/StrictMode$VmPolicy;
 
+    .line 602
     return-void
 .end method
 
 .method private constructor <init>(ILjava/util/HashMap;)V
     .locals 2
-    .parameter "mask"
-    .parameter
+    .param p1, "mask"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I",
@@ -77,41 +77,39 @@
     .end annotation
 
     .prologue
-    .line 547
-    .local p2, classInstanceLimit:Ljava/util/HashMap;,"Ljava/util/HashMap<Ljava/lang/Class;Ljava/lang/Integer;>;"
+    .line 613
+    .local p2, "classInstanceLimit":Ljava/util/HashMap;, "Ljava/util/HashMap<Ljava/lang/Class;Ljava/lang/Integer;>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 548
+    .line 614
     if-nez p2, :cond_0
 
-    .line 549
+    .line 615
     new-instance v0, Ljava/lang/NullPointerException;
 
-    const-string v1, "classInstanceLimit == null"
+    const-string/jumbo v1, "classInstanceLimit == null"
 
     invoke-direct {v0, v1}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 551
+    .line 617
     :cond_0
     iput p1, p0, Landroid/os/StrictMode$VmPolicy;->mask:I
 
-    .line 552
+    .line 618
     iput-object p2, p0, Landroid/os/StrictMode$VmPolicy;->classInstanceLimit:Ljava/util/HashMap;
 
-    .line 553
+    .line 613
     return-void
 .end method
 
-.method synthetic constructor <init>(ILjava/util/HashMap;Landroid/os/StrictMode$1;)V
+.method synthetic constructor <init>(ILjava/util/HashMap;Landroid/os/StrictMode$VmPolicy;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
-    .parameter "x2"
+    .param p1, "mask"    # I
+    .param p2, "classInstanceLimit"    # Ljava/util/HashMap;
 
     .prologue
-    .line 536
     invoke-direct {p0, p1, p2}, Landroid/os/StrictMode$VmPolicy;-><init>(ILjava/util/HashMap;)V
 
     return-void
@@ -123,12 +121,12 @@
     .locals 2
 
     .prologue
-    .line 557
+    .line 623
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "[StrictMode.VmPolicy; mask="
+    const-string/jumbo v1, "[StrictMode.VmPolicy; mask="
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -140,7 +138,7 @@
 
     move-result-object v0
 
-    const-string v1, "]"
+    const-string/jumbo v1, "]"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

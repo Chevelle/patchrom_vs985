@@ -6,8 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/view/ActionProvider$VisibilityListener;,
-        Landroid/view/ActionProvider$SubUiVisibilityListener;
+        Landroid/view/ActionProvider$SubUiVisibilityListener;,
+        Landroid/view/ActionProvider$VisibilityListener;
     }
 .end annotation
 
@@ -25,13 +25,12 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 0
-    .parameter "context"
+    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
     .line 69
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 70
     return-void
 .end method
 
@@ -62,7 +61,7 @@
 
 .method public onCreateActionView(Landroid/view/MenuItem;)Landroid/view/View;
     .locals 1
-    .parameter "forItem"
+    .param p1, "forItem"    # Landroid/view/MenuItem;
 
     .prologue
     .line 98
@@ -85,10 +84,10 @@
 
 .method public onPrepareSubMenu(Landroid/view/SubMenu;)V
     .locals 0
-    .parameter "subMenu"
+    .param p1, "subMenu"    # Landroid/view/SubMenu;
 
     .prologue
-    .line 202
+    .line 201
     return-void
 .end method
 
@@ -126,26 +125,42 @@
 
     invoke-interface {v0, v1}, Landroid/view/ActionProvider$VisibilityListener;->onActionProviderVisibilityChanged(Z)V
 
-    .line 137
+    .line 133
     :cond_0
+    return-void
+.end method
+
+.method public reset()V
+    .locals 1
+
+    .prologue
+    const/4 v0, 0x0
+
+    .line 243
+    iput-object v0, p0, Landroid/view/ActionProvider;->mVisibilityListener:Landroid/view/ActionProvider$VisibilityListener;
+
+    .line 244
+    iput-object v0, p0, Landroid/view/ActionProvider;->mSubUiVisibilityListener:Landroid/view/ActionProvider$SubUiVisibilityListener;
+
+    .line 242
     return-void
 .end method
 
 .method public setSubUiVisibilityListener(Landroid/view/ActionProvider$SubUiVisibilityListener;)V
     .locals 0
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/view/ActionProvider$SubUiVisibilityListener;
 
     .prologue
     .line 221
     iput-object p1, p0, Landroid/view/ActionProvider;->mSubUiVisibilityListener:Landroid/view/ActionProvider$SubUiVisibilityListener;
 
-    .line 222
+    .line 220
     return-void
 .end method
 
 .method public setVisibilityListener(Landroid/view/ActionProvider$VisibilityListener;)V
     .locals 3
-    .parameter "listener"
+    .param p1, "listener"    # Landroid/view/ActionProvider$VisibilityListener;
 
     .prologue
     .line 231
@@ -154,7 +169,7 @@
     if-eqz v0, :cond_0
 
     .line 232
-    const-string v0, "ActionProvider"
+    const-string/jumbo v0, "ActionProvider"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -166,7 +181,8 @@
 
     move-result-object v1
 
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    .line 233
+    invoke-virtual {p0}, Landroid/view/ActionProvider;->getClass()Ljava/lang/Class;
 
     move-result-object v2
 
@@ -174,12 +190,15 @@
 
     move-result-object v2
 
+    .line 232
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v2, " instance while it is still in use somewhere else?"
+    .line 234
+    const-string/jumbo v2, " instance while it is still in use somewhere else?"
 
+    .line 232
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -194,13 +213,13 @@
     :cond_0
     iput-object p1, p0, Landroid/view/ActionProvider;->mVisibilityListener:Landroid/view/ActionProvider$VisibilityListener;
 
-    .line 237
+    .line 230
     return-void
 .end method
 
 .method public subUiVisibilityChanged(Z)V
     .locals 1
-    .parameter "isVisible"
+    .param p1, "isVisible"    # Z
 
     .prologue
     .line 212
@@ -213,7 +232,7 @@
 
     invoke-interface {v0, p1}, Landroid/view/ActionProvider$SubUiVisibilityListener;->onSubUiVisibilityChanged(Z)V
 
-    .line 215
+    .line 211
     :cond_0
     return-void
 .end method

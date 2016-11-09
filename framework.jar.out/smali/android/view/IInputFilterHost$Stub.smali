@@ -34,43 +34,41 @@
     .locals 1
 
     .prologue
-    .line 19
+    .line 18
     invoke-direct {p0}, Landroid/os/Binder;-><init>()V
 
     .line 20
-    const-string v0, "android.view.IInputFilterHost"
+    const-string/jumbo v0, "android.view.IInputFilterHost"
 
     invoke-virtual {p0, p0, v0}, Landroid/view/IInputFilterHost$Stub;->attachInterface(Landroid/os/IInterface;Ljava/lang/String;)V
 
-    .line 21
+    .line 18
     return-void
 .end method
 
 .method public static asInterface(Landroid/os/IBinder;)Landroid/view/IInputFilterHost;
     .locals 2
-    .parameter "obj"
+    .param p0, "obj"    # Landroid/os/IBinder;
 
     .prologue
+    const/4 v1, 0x0
+
     .line 28
     if-nez p0, :cond_0
 
     .line 29
-    const/4 v0, 0x0
-
-    .line 35
-    :goto_0
-    return-object v0
+    return-object v1
 
     .line 31
     :cond_0
-    const-string v1, "android.view.IInputFilterHost"
+    const-string/jumbo v1, "android.view.IInputFilterHost"
 
     invoke-interface {p0, v1}, Landroid/os/IBinder;->queryLocalInterface(Ljava/lang/String;)Landroid/os/IInterface;
 
     move-result-object v0
 
     .line 32
-    .local v0, iin:Landroid/os/IInterface;
+    .local v0, "iin":Landroid/os/IInterface;
     if-eqz v0, :cond_1
 
     instance-of v1, v0, Landroid/view/IInputFilterHost;
@@ -80,16 +78,17 @@
     .line 33
     check-cast v0, Landroid/view/IInputFilterHost;
 
-    goto :goto_0
+    .end local v0    # "iin":Landroid/os/IInterface;
+    return-object v0
 
     .line 35
+    .restart local v0    # "iin":Landroid/os/IInterface;
     :cond_1
-    new-instance v0, Landroid/view/IInputFilterHost$Stub$Proxy;
+    new-instance v1, Landroid/view/IInputFilterHost$Stub$Proxy;
 
-    .end local v0           #iin:Landroid/os/IInterface;
-    invoke-direct {v0, p0}, Landroid/view/IInputFilterHost$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
+    invoke-direct {v1, p0}, Landroid/view/IInputFilterHost$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
 
-    goto :goto_0
+    return-object v1
 .end method
 
 
@@ -104,10 +103,10 @@
 
 .method public onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
     .locals 4
-    .parameter "code"
-    .parameter "data"
-    .parameter "reply"
-    .parameter "flags"
+    .param p1, "code"    # I
+    .param p2, "data"    # Landroid/os/Parcel;
+    .param p3, "reply"    # Landroid/os/Parcel;
+    .param p4, "flags"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -115,7 +114,7 @@
     .end annotation
 
     .prologue
-    const/4 v2, 0x1
+    const/4 v3, 0x1
 
     .line 43
     sparse-switch p1, :sswitch_data_0
@@ -125,60 +124,59 @@
 
     move-result v2
 
-    :goto_0
     return v2
 
     .line 47
     :sswitch_0
-    const-string v3, "android.view.IInputFilterHost"
+    const-string/jumbo v2, "android.view.IInputFilterHost"
 
-    invoke-virtual {p3, v3}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+    invoke-virtual {p3, v2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    goto :goto_0
+    .line 48
+    return v3
 
     .line 52
     :sswitch_1
-    const-string v3, "android.view.IInputFilterHost"
+    const-string/jumbo v2, "android.view.IInputFilterHost"
 
-    invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+    invoke-virtual {p2, v2}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 54
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
-    move-result v3
+    move-result v2
 
-    if-eqz v3, :cond_0
+    if-eqz v2, :cond_0
 
     .line 55
-    sget-object v3, Landroid/view/InputEvent;->CREATOR:Landroid/os/Parcelable$Creator;
+    sget-object v2, Landroid/view/InputEvent;->CREATOR:Landroid/os/Parcelable$Creator;
 
-    invoke-interface {v3, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+    invoke-interface {v2, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/view/InputEvent;
 
     .line 61
-    .local v0, _arg0:Landroid/view/InputEvent;
-    :goto_1
+    :goto_0
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     .line 62
-    .local v1, _arg1:I
+    .local v1, "_arg1":I
     invoke-virtual {p0, v0, v1}, Landroid/view/IInputFilterHost$Stub;->sendInputEvent(Landroid/view/InputEvent;I)V
 
-    goto :goto_0
+    .line 63
+    return v3
 
     .line 58
-    .end local v0           #_arg0:Landroid/view/InputEvent;
-    .end local v1           #_arg1:I
+    .end local v1    # "_arg1":I
     :cond_0
     const/4 v0, 0x0
 
-    .restart local v0       #_arg0:Landroid/view/InputEvent;
-    goto :goto_1
+    .local v0, "_arg0":Landroid/view/InputEvent;
+    goto :goto_0
 
     .line 43
     :sswitch_data_0

@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 68
+    .line 67
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 69
     iput-object p1, p0, Landroid/app/IServiceConnection$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 70
+    .line 67
     return-void
 .end method
 
@@ -51,8 +51,8 @@
 
 .method public connected(Landroid/content/ComponentName;Landroid/os/IBinder;)V
     .locals 5
-    .parameter "name"
-    .parameter "service"
+    .param p1, "name"    # Landroid/content/ComponentName;
+    .param p2, "service"    # Landroid/os/IBinder;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -66,9 +66,9 @@
     move-result-object v0
 
     .line 83
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.app.IServiceConnection"
+    const-string/jumbo v1, "android.app.IServiceConnection"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -105,7 +105,7 @@
     .line 95
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 97
+    .line 79
     return-void
 
     .line 89
@@ -119,12 +119,14 @@
 
     goto :goto_0
 
-    .line 95
+    .line 94
     :catchall_0
     move-exception v1
 
+    .line 95
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 94
     throw v1
 .end method
 
@@ -133,7 +135,7 @@
 
     .prologue
     .line 77
-    const-string v0, "android.app.IServiceConnection"
+    const-string/jumbo v0, "android.app.IServiceConnection"
 
     return-object v0
 .end method

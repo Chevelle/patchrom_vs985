@@ -41,24 +41,27 @@
     .locals 1
 
     .prologue
-    .line 1572
-    const-string v0, "internal"
+    .line 1641
+    const-string/jumbo v0, "internal"
 
     invoke-static {v0}, Landroid/provider/MediaStore$Audio$Playlists;->getContentUri(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 1640
     sput-object v0, Landroid/provider/MediaStore$Audio$Playlists;->INTERNAL_CONTENT_URI:Landroid/net/Uri;
 
-    .line 1579
-    const-string v0, "external"
+    .line 1648
+    const-string/jumbo v0, "external"
 
     invoke-static {v0}, Landroid/provider/MediaStore$Audio$Playlists;->getContentUri(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
+    .line 1647
     sput-object v0, Landroid/provider/MediaStore$Audio$Playlists;->EXTERNAL_CONTENT_URI:Landroid/net/Uri;
 
+    .line 1623
     return-void
 .end method
 
@@ -66,24 +69,23 @@
     .locals 0
 
     .prologue
-    .line 1555
+    .line 1623
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1600
     return-void
 .end method
 
 .method public static getContentUri(Ljava/lang/String;)Landroid/net/Uri;
     .locals 2
-    .parameter "volumeName"
+    .param p0, "volumeName"    # Ljava/lang/String;
 
     .prologue
-    .line 1565
+    .line 1633
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, "content://media/"
+    const-string/jumbo v1, "content://media/"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -93,8 +95,10 @@
 
     move-result-object v0
 
-    const-string v1, "/audio/playlists"
+    .line 1634
+    const-string/jumbo v1, "/audio/playlists"
 
+    .line 1633
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0

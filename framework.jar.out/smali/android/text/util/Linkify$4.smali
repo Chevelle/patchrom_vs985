@@ -21,7 +21,7 @@
         "Ljava/lang/Object;",
         "Ljava/util/Comparator",
         "<",
-        "Landroid/text/util/Linkify$LinkSpec;",
+        "Landroid/text/util/LinkSpec;",
         ">;"
     }
 .end annotation
@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 498
+    .line 508
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -40,91 +40,82 @@
 
 
 # virtual methods
-.method public final compare(Landroid/text/util/Linkify$LinkSpec;Landroid/text/util/Linkify$LinkSpec;)I
+.method public final compare(Landroid/text/util/LinkSpec;Landroid/text/util/LinkSpec;)I
     .locals 4
-    .parameter "a"
-    .parameter "b"
+    .param p1, "a"    # Landroid/text/util/LinkSpec;
+    .param p2, "b"    # Landroid/text/util/LinkSpec;
 
     .prologue
-    const/4 v1, 0x1
+    const/4 v3, 0x1
 
-    const/4 v0, -0x1
+    const/4 v2, -0x1
 
-    iget v2, p1, Landroid/text/util/Linkify$LinkSpec;->start:I
+    .line 510
+    iget v0, p1, Landroid/text/util/LinkSpec;->start:I
 
-    iget v3, p2, Landroid/text/util/Linkify$LinkSpec;->start:I
+    iget v1, p2, Landroid/text/util/LinkSpec;->start:I
 
-    if-ge v2, v3, :cond_1
+    if-ge v0, v1, :cond_0
 
+    .line 511
+    return v2
+
+    .line 514
     :cond_0
-    :goto_0
-    return v0
+    iget v0, p1, Landroid/text/util/LinkSpec;->start:I
 
+    iget v1, p2, Landroid/text/util/LinkSpec;->start:I
+
+    if-le v0, v1, :cond_1
+
+    .line 515
+    return v3
+
+    .line 518
     :cond_1
-    iget v2, p1, Landroid/text/util/Linkify$LinkSpec;->start:I
+    iget v0, p1, Landroid/text/util/LinkSpec;->end:I
 
-    iget v3, p2, Landroid/text/util/Linkify$LinkSpec;->start:I
+    iget v1, p2, Landroid/text/util/LinkSpec;->end:I
 
-    if-le v2, v3, :cond_2
+    if-ge v0, v1, :cond_2
 
-    move v0, v1
+    .line 519
+    return v3
 
-    .line 505
-    goto :goto_0
-
-    .line 508
+    .line 522
     :cond_2
-    iget v2, p1, Landroid/text/util/Linkify$LinkSpec;->end:I
+    iget v0, p1, Landroid/text/util/LinkSpec;->end:I
 
-    iget v3, p2, Landroid/text/util/Linkify$LinkSpec;->end:I
+    iget v1, p2, Landroid/text/util/LinkSpec;->end:I
 
-    if-ge v2, v3, :cond_3
+    if-le v0, v1, :cond_3
 
-    move v0, v1
+    .line 523
+    return v2
 
-    .line 509
-    goto :goto_0
-
-    .line 512
+    .line 526
     :cond_3
-    iget v1, p1, Landroid/text/util/Linkify$LinkSpec;->end:I
-
-    iget v2, p2, Landroid/text/util/Linkify$LinkSpec;->end:I
-
-    if-gt v1, v2, :cond_0
-
-    .line 516
     const/4 v0, 0x0
 
-    goto :goto_0
+    return v0
 .end method
 
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
     .locals 1
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "a"    # Ljava/lang/Object;
+    .param p2, "b"    # Ljava/lang/Object;
 
     .prologue
-    check-cast p1, Landroid/text/util/Linkify$LinkSpec;
+    .line 509
+    check-cast p1, Landroid/text/util/LinkSpec;
 
-    .end local p1
-    check-cast p2, Landroid/text/util/Linkify$LinkSpec;
+    .end local p1    # "a":Ljava/lang/Object;
+    check-cast p2, Landroid/text/util/LinkSpec;
 
-    .end local p2
-    invoke-virtual {p0, p1, p2}, Landroid/text/util/Linkify$4;->compare(Landroid/text/util/Linkify$LinkSpec;Landroid/text/util/Linkify$LinkSpec;)I
+    .end local p2    # "b":Ljava/lang/Object;
+    invoke-virtual {p0, p1, p2}, Landroid/text/util/Linkify$4;->compare(Landroid/text/util/LinkSpec;Landroid/text/util/LinkSpec;)I
 
     move-result v0
-
-    return v0
-.end method
-
-.method public final equals(Ljava/lang/Object;)Z
-    .locals 1
-    .parameter "o"
-
-    .prologue
-    .line 520
-    const/4 v0, 0x0
 
     return v0
 .end method

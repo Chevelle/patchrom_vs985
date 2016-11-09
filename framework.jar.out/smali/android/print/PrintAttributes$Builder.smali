@@ -23,16 +23,17 @@
     .locals 1
 
     .prologue
-    .line 1186
+    .line 1362
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1187
+    .line 1363
     new-instance v0, Landroid/print/PrintAttributes;
 
     invoke-direct {v0}, Landroid/print/PrintAttributes;-><init>()V
 
     iput-object v0, p0, Landroid/print/PrintAttributes$Builder;->mAttributes:Landroid/print/PrintAttributes;
 
+    .line 1362
     return-void
 .end method
 
@@ -42,83 +43,78 @@
     .locals 1
 
     .prologue
-    .line 1246
+    .line 1438
     iget-object v0, p0, Landroid/print/PrintAttributes$Builder;->mAttributes:Landroid/print/PrintAttributes;
 
     return-object v0
 .end method
 
 .method public setColorMode(I)Landroid/print/PrintAttributes$Builder;
-    .locals 2
-    .parameter "colorMode"
+    .locals 1
+    .param p1, "colorMode"    # I
 
     .prologue
-    .line 1233
-    invoke-static {p1}, Ljava/lang/Integer;->bitCount(I)I
-
-    move-result v0
-
-    const/4 v1, 0x1
-
-    if-le v0, v1, :cond_0
-
-    .line 1234
-    new-instance v0, Ljava/lang/IllegalArgumentException;
-
-    const-string v1, "can specify at most one colorMode bit."
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    .line 1236
-    :cond_0
+    .line 1409
     iget-object v0, p0, Landroid/print/PrintAttributes$Builder;->mAttributes:Landroid/print/PrintAttributes;
 
     invoke-virtual {v0, p1}, Landroid/print/PrintAttributes;->setColorMode(I)V
 
-    .line 1237
+    .line 1410
+    return-object p0
+.end method
+
+.method public setDuplexMode(I)Landroid/print/PrintAttributes$Builder;
+    .locals 1
+    .param p1, "duplexMode"    # I
+
+    .prologue
+    .line 1424
+    iget-object v0, p0, Landroid/print/PrintAttributes$Builder;->mAttributes:Landroid/print/PrintAttributes;
+
+    invoke-virtual {v0, p1}, Landroid/print/PrintAttributes;->setDuplexMode(I)V
+
+    .line 1425
     return-object p0
 .end method
 
 .method public setMediaSize(Landroid/print/PrintAttributes$MediaSize;)Landroid/print/PrintAttributes$Builder;
     .locals 1
-    .parameter "mediaSize"
+    .param p1, "mediaSize"    # Landroid/print/PrintAttributes$MediaSize;
 
     .prologue
-    .line 1196
+    .line 1372
     iget-object v0, p0, Landroid/print/PrintAttributes$Builder;->mAttributes:Landroid/print/PrintAttributes;
 
     invoke-virtual {v0, p1}, Landroid/print/PrintAttributes;->setMediaSize(Landroid/print/PrintAttributes$MediaSize;)V
 
-    .line 1197
+    .line 1373
     return-object p0
 .end method
 
 .method public setMinMargins(Landroid/print/PrintAttributes$Margins;)Landroid/print/PrintAttributes$Builder;
     .locals 1
-    .parameter "margins"
+    .param p1, "margins"    # Landroid/print/PrintAttributes$Margins;
 
     .prologue
-    .line 1219
+    .line 1395
     iget-object v0, p0, Landroid/print/PrintAttributes$Builder;->mAttributes:Landroid/print/PrintAttributes;
 
     invoke-virtual {v0, p1}, Landroid/print/PrintAttributes;->setMinMargins(Landroid/print/PrintAttributes$Margins;)V
 
-    .line 1220
+    .line 1396
     return-object p0
 .end method
 
 .method public setResolution(Landroid/print/PrintAttributes$Resolution;)Landroid/print/PrintAttributes$Builder;
     .locals 1
-    .parameter "resolution"
+    .param p1, "resolution"    # Landroid/print/PrintAttributes$Resolution;
 
     .prologue
-    .line 1207
+    .line 1383
     iget-object v0, p0, Landroid/print/PrintAttributes$Builder;->mAttributes:Landroid/print/PrintAttributes;
 
     invoke-virtual {v0, p1}, Landroid/print/PrintAttributes;->setResolution(Landroid/print/PrintAttributes$Resolution;)V
 
-    .line 1208
+    .line 1384
     return-object p0
 .end method

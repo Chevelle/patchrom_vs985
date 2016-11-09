@@ -36,6 +36,9 @@
 .method public abstract updateCursor(Landroid/graphics/Rect;)V
 .end method
 
+.method public abstract updateCursorAnchorInfo(Landroid/view/inputmethod/CursorAnchorInfo;)V
+.end method
+
 .method public abstract updateExtractedText(ILandroid/view/inputmethod/ExtractedText;)V
 .end method
 

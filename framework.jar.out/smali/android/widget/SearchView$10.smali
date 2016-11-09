@@ -3,12 +3,12 @@
 .source "SearchView.java"
 
 # interfaces
-.implements Landroid/widget/AdapterView$OnItemSelectedListener;
+.implements Landroid/view/View$OnFocusChangeListener;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Landroid/widget/SearchView;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Landroid/widget/SearchView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;II)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/widget/SearchView;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/widget/SearchView;
 
     .prologue
-    .line 1338
+    .line 320
     iput-object p1, p0, Landroid/widget/SearchView$10;->this$0:Landroid/widget/SearchView;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,47 +37,33 @@
 
 
 # virtual methods
-.method public onItemSelected(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
-    .locals 1
-    .parameter
-    .parameter "view"
-    .parameter "position"
-    .parameter "id"
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Landroid/widget/AdapterView",
-            "<*>;",
-            "Landroid/view/View;",
-            "IJ)V"
-        }
-    .end annotation
+.method public onFocusChange(Landroid/view/View;Z)V
+    .locals 2
+    .param p1, "v"    # Landroid/view/View;
+    .param p2, "hasFocus"    # Z
 
     .prologue
-    .line 1345
-    .local p1, parent:Landroid/widget/AdapterView;,"Landroid/widget/AdapterView<*>;"
+    .line 323
     iget-object v0, p0, Landroid/widget/SearchView$10;->this$0:Landroid/widget/SearchView;
 
-    #calls: Landroid/widget/SearchView;->onItemSelected(I)Z
-    invoke-static {v0, p3}, Landroid/widget/SearchView;->access$1900(Landroid/widget/SearchView;I)Z
+    invoke-static {v0}, Landroid/widget/SearchView;->-get2(Landroid/widget/SearchView;)Landroid/view/View$OnFocusChangeListener;
 
-    .line 1346
-    return-void
-.end method
+    move-result-object v0
 
-.method public onNothingSelected(Landroid/widget/AdapterView;)V
-    .locals 0
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Landroid/widget/AdapterView",
-            "<*>;)V"
-        }
-    .end annotation
+    if-eqz v0, :cond_0
 
-    .prologue
-    .line 1354
-    .local p1, parent:Landroid/widget/AdapterView;,"Landroid/widget/AdapterView<*>;"
+    .line 324
+    iget-object v0, p0, Landroid/widget/SearchView$10;->this$0:Landroid/widget/SearchView;
+
+    invoke-static {v0}, Landroid/widget/SearchView;->-get2(Landroid/widget/SearchView;)Landroid/view/View$OnFocusChangeListener;
+
+    move-result-object v0
+
+    iget-object v1, p0, Landroid/widget/SearchView$10;->this$0:Landroid/widget/SearchView;
+
+    invoke-interface {v0, v1, p2}, Landroid/view/View$OnFocusChangeListener;->onFocusChange(Landroid/view/View;Z)V
+
+    .line 322
+    :cond_0
     return-void
 .end method

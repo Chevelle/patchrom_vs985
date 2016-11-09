@@ -24,16 +24,16 @@
 # direct methods
 .method constructor <init>(Landroid/os/IBinder;)V
     .locals 0
-    .parameter "remote"
+    .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 67
+    .line 66
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 68
     iput-object p1, p0, Landroid/media/IAudioFocusDispatcher$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 69
+    .line 66
     return-void
 .end method
 
@@ -51,8 +51,8 @@
 
 .method public dispatchAudioFocusChange(ILjava/lang/String;)V
     .locals 5
-    .parameter "focusChange"
-    .parameter "clientId"
+    .param p1, "focusChange"    # I
+    .param p2, "clientId"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -66,9 +66,9 @@
     move-result-object v0
 
     .line 82
-    .local v0, _data:Landroid/os/Parcel;
+    .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v1, "android.media.IAudioFocusDispatcher"
+    const-string/jumbo v1, "android.media.IAudioFocusDispatcher"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
@@ -94,15 +94,17 @@
     .line 88
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 90
+    .line 78
     return-void
 
-    .line 88
+    .line 87
     :catchall_0
     move-exception v1
 
+    .line 88
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
+    .line 87
     throw v1
 .end method
 
@@ -111,7 +113,7 @@
 
     .prologue
     .line 76
-    const-string v0, "android.media.IAudioFocusDispatcher"
+    const-string/jumbo v0, "android.media.IAudioFocusDispatcher"
 
     return-object v0
 .end method

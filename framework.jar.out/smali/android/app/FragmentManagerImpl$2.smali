@@ -24,10 +24,10 @@
 # direct methods
 .method constructor <init>(Landroid/app/FragmentManagerImpl;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/app/FragmentManagerImpl;
 
     .prologue
-    .line 484
+    .line 567
     iput-object p1, p0, Landroid/app/FragmentManagerImpl$2;->this$0:Landroid/app/FragmentManagerImpl;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,14 +41,16 @@
     .locals 5
 
     .prologue
-    .line 486
+    .line 569
     iget-object v0, p0, Landroid/app/FragmentManagerImpl$2;->this$0:Landroid/app/FragmentManagerImpl;
 
     iget-object v1, p0, Landroid/app/FragmentManagerImpl$2;->this$0:Landroid/app/FragmentManagerImpl;
 
-    iget-object v1, v1, Landroid/app/FragmentManagerImpl;->mActivity:Landroid/app/Activity;
+    iget-object v1, v1, Landroid/app/FragmentManagerImpl;->mHost:Landroid/app/FragmentHostCallback;
 
-    iget-object v1, v1, Landroid/app/Activity;->mHandler:Landroid/os/Handler;
+    invoke-virtual {v1}, Landroid/app/FragmentHostCallback;->getHandler()Landroid/os/Handler;
+
+    move-result-object v1
 
     const/4 v2, 0x0
 
@@ -58,6 +60,6 @@
 
     invoke-virtual {v0, v1, v2, v3, v4}, Landroid/app/FragmentManagerImpl;->popBackStackState(Landroid/os/Handler;Ljava/lang/String;II)Z
 
-    .line 487
+    .line 568
     return-void
 .end method

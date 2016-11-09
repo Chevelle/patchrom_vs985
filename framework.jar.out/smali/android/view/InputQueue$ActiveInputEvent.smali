@@ -25,10 +25,10 @@
 # direct methods
 .method private constructor <init>(Landroid/view/InputQueue;)V
     .locals 0
-    .parameter
+    .param p1, "this$0"    # Landroid/view/InputQueue;
 
     .prologue
-    .line 130
+    .line 129
     iput-object p1, p0, Landroid/view/InputQueue$ActiveInputEvent;->this$0:Landroid/view/InputQueue;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -36,13 +36,11 @@
     return-void
 .end method
 
-.method synthetic constructor <init>(Landroid/view/InputQueue;Landroid/view/InputQueue$1;)V
+.method synthetic constructor <init>(Landroid/view/InputQueue;Landroid/view/InputQueue$ActiveInputEvent;)V
     .locals 0
-    .parameter "x0"
-    .parameter "x1"
+    .param p1, "this$0"    # Landroid/view/InputQueue;
 
     .prologue
-    .line 130
     invoke-direct {p0, p1}, Landroid/view/InputQueue$ActiveInputEvent;-><init>(Landroid/view/InputQueue;)V
 
     return-void
@@ -56,12 +54,12 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 135
+    .line 134
     iput-object v0, p0, Landroid/view/InputQueue$ActiveInputEvent;->mToken:Ljava/lang/Object;
 
-    .line 136
+    .line 135
     iput-object v0, p0, Landroid/view/InputQueue$ActiveInputEvent;->mCallback:Landroid/view/InputQueue$FinishedInputEventCallback;
 
-    .line 137
+    .line 133
     return-void
 .end method

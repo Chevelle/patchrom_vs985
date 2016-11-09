@@ -25,10 +25,9 @@
     .locals 0
 
     .prologue
-    .line 324
+    .line 454
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 325
     return-void
 .end method
 
@@ -38,7 +37,7 @@
     .locals 1
 
     .prologue
-    .line 336
+    .line 466
     iget-object v0, p0, Landroid/renderscript/Script$FieldBase;->mAllocation:Landroid/renderscript/Allocation;
 
     return-object v0
@@ -48,7 +47,7 @@
     .locals 1
 
     .prologue
-    .line 328
+    .line 458
     iget-object v0, p0, Landroid/renderscript/Script$FieldBase;->mElement:Landroid/renderscript/Element;
 
     return-object v0
@@ -58,7 +57,7 @@
     .locals 1
 
     .prologue
-    .line 332
+    .line 462
     iget-object v0, p0, Landroid/renderscript/Script$FieldBase;->mAllocation:Landroid/renderscript/Allocation;
 
     invoke-virtual {v0}, Landroid/renderscript/Allocation;->getType()Landroid/renderscript/Type;
@@ -70,44 +69,49 @@
 
 .method protected init(Landroid/renderscript/RenderScript;I)V
     .locals 2
-    .parameter "rs"
-    .parameter "dimx"
+    .param p1, "rs"    # Landroid/renderscript/RenderScript;
+    .param p2, "dimx"    # I
 
     .prologue
-    .line 317
+    .line 444
     iget-object v0, p0, Landroid/renderscript/Script$FieldBase;->mElement:Landroid/renderscript/Element;
 
+    .line 445
     const/4 v1, 0x1
 
+    .line 444
     invoke-static {p1, v0, p2, v1}, Landroid/renderscript/Allocation;->createSized(Landroid/renderscript/RenderScript;Landroid/renderscript/Element;II)Landroid/renderscript/Allocation;
 
     move-result-object v0
 
     iput-object v0, p0, Landroid/renderscript/Script$FieldBase;->mAllocation:Landroid/renderscript/Allocation;
 
-    .line 318
+    .line 443
     return-void
 .end method
 
 .method protected init(Landroid/renderscript/RenderScript;II)V
     .locals 2
-    .parameter "rs"
-    .parameter "dimx"
-    .parameter "usages"
+    .param p1, "rs"    # Landroid/renderscript/RenderScript;
+    .param p2, "dimx"    # I
+    .param p3, "usages"    # I
 
     .prologue
-    .line 321
+    .line 450
     iget-object v0, p0, Landroid/renderscript/Script$FieldBase;->mElement:Landroid/renderscript/Element;
 
+    .line 451
     or-int/lit8 v1, p3, 0x1
 
+    .line 450
     invoke-static {p1, v0, p2, v1}, Landroid/renderscript/Allocation;->createSized(Landroid/renderscript/RenderScript;Landroid/renderscript/Element;II)Landroid/renderscript/Allocation;
 
     move-result-object v0
 
+    .line 449
     iput-object v0, p0, Landroid/renderscript/Script$FieldBase;->mAllocation:Landroid/renderscript/Allocation;
 
-    .line 322
+    .line 448
     return-void
 .end method
 
@@ -115,6 +119,6 @@
     .locals 0
 
     .prologue
-    .line 341
+    .line 470
     return-void
 .end method

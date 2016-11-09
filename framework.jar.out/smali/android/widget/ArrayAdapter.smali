@@ -4,12 +4,12 @@
 
 # interfaces
 .implements Landroid/widget/Filterable;
+.implements Landroid/widget/ThemedSpinnerAdapter;
 
 
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/widget/ArrayAdapter$1;,
         Landroid/widget/ArrayAdapter$ArrayFilter;
     }
 .end annotation
@@ -20,13 +20,16 @@
         "Ljava/lang/Object;",
         ">",
         "Landroid/widget/BaseAdapter;",
-        "Landroid/widget/Filterable;"
+        "Landroid/widget/Filterable;",
+        "Landroid/widget/ThemedSpinnerAdapter;"
     }
 .end annotation
 
 
 # instance fields
 .field private mContext:Landroid/content/Context;
+
+.field private mDropDownInflater:Landroid/view/LayoutInflater;
 
 .field private mDropDownResource:I
 
@@ -41,7 +44,7 @@
     .end annotation
 .end field
 
-.field private mInflater:Landroid/view/LayoutInflater;
+.field private final mInflater:Landroid/view/LayoutInflater;
 
 .field private final mLock:Ljava/lang/Object;
 
@@ -69,89 +72,90 @@
 
 
 # direct methods
+.method static synthetic -get0(Landroid/widget/ArrayAdapter;)Ljava/lang/Object;
+    .locals 1
+
+    iget-object v0, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
+
+    return-object v0
+.end method
+
+.method static synthetic -get1(Landroid/widget/ArrayAdapter;)Ljava/util/List;
+    .locals 1
+
+    iget-object v0, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
+
+    return-object v0
+.end method
+
+.method static synthetic -get2(Landroid/widget/ArrayAdapter;)Ljava/util/ArrayList;
+    .locals 1
+
+    iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
+
+    return-object v0
+.end method
+
+.method static synthetic -set0(Landroid/widget/ArrayAdapter;Ljava/util/List;)Ljava/util/List;
+    .locals 0
+
+    iput-object p1, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
+
+    return-object p1
+.end method
+
+.method static synthetic -set1(Landroid/widget/ArrayAdapter;Ljava/util/ArrayList;)Ljava/util/ArrayList;
+    .locals 0
+
+    iput-object p1, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
+
+    return-object p1
+.end method
+
 .method public constructor <init>(Landroid/content/Context;I)V
     .locals 2
-    .parameter "context"
-    .parameter "resource"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "resource"    # I
 
     .prologue
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    const/4 v1, 0x0
-
-    .line 103
-    invoke-direct {p0}, Landroid/widget/BaseAdapter;-><init>()V
-
-    .line 60
-    new-instance v0, Ljava/lang/Object;
-
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
-
-    iput-object v0, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
-
-    .line 79
-    iput v1, p0, Landroid/widget/ArrayAdapter;->mFieldId:I
-
-    .line 85
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
-
-    .line 104
+    .line 113
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    invoke-direct {p0, p1, p2, v1, v0}, Landroid/widget/ArrayAdapter;->init(Landroid/content/Context;IILjava/util/List;)V
+    const/4 v1, 0x0
 
-    .line 105
+    invoke-direct {p0, p1, p2, v1, v0}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;IILjava/util/List;)V
+
+    .line 112
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;II)V
     .locals 1
-    .parameter "context"
-    .parameter "resource"
-    .parameter "textViewResourceId"
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "resource"    # I
+    .param p3, "textViewResourceId"    # I
 
     .prologue
-    .line 115
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    invoke-direct {p0}, Landroid/widget/BaseAdapter;-><init>()V
-
-    .line 60
-    new-instance v0, Ljava/lang/Object;
-
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
-
-    iput-object v0, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
-
-    .line 79
-    const/4 v0, 0x0
-
-    iput v0, p0, Landroid/widget/ArrayAdapter;->mFieldId:I
-
-    .line 85
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
-
-    .line 116
+    .line 125
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    invoke-direct {p0, p1, p2, p3, v0}, Landroid/widget/ArrayAdapter;->init(Landroid/content/Context;IILjava/util/List;)V
+    invoke-direct {p0, p1, p2, p3, v0}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;IILjava/util/List;)V
 
-    .line 117
+    .line 124
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;IILjava/util/List;)V
     .locals 1
-    .parameter "context"
-    .parameter "resource"
-    .parameter "textViewResourceId"
-    .parameter
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "resource"    # I
+    .param p3, "textViewResourceId"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -163,9 +167,9 @@
     .end annotation
 
     .prologue
-    .line 165
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    .local p4, objects:Ljava/util/List;,"Ljava/util/List<TT;>;"
+    .line 175
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    .local p4, "objects":Ljava/util/List;, "Ljava/util/List<TT;>;"
     invoke-direct {p0}, Landroid/widget/BaseAdapter;-><init>()V
 
     .line 60
@@ -175,29 +179,46 @@
 
     iput-object v0, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
 
-    .line 79
+    .line 87
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/widget/ArrayAdapter;->mFieldId:I
 
-    .line 85
+    .line 93
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
 
-    .line 166
-    invoke-direct {p0, p1, p2, p3, p4}, Landroid/widget/ArrayAdapter;->init(Landroid/content/Context;IILjava/util/List;)V
+    .line 177
+    iput-object p1, p0, Landroid/widget/ArrayAdapter;->mContext:Landroid/content/Context;
 
-    .line 167
+    .line 178
+    invoke-static {p1}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+
+    move-result-object v0
+
+    iput-object v0, p0, Landroid/widget/ArrayAdapter;->mInflater:Landroid/view/LayoutInflater;
+
+    .line 179
+    iput p2, p0, Landroid/widget/ArrayAdapter;->mDropDownResource:I
+
+    iput p2, p0, Landroid/widget/ArrayAdapter;->mResource:I
+
+    .line 180
+    iput-object p4, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
+
+    .line 181
+    iput p3, p0, Landroid/widget/ArrayAdapter;->mFieldId:I
+
+    .line 176
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;II[Ljava/lang/Object;)V
     .locals 1
-    .parameter "context"
-    .parameter "resource"
-    .parameter "textViewResourceId"
-    .parameter
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "resource"    # I
+    .param p3, "textViewResourceId"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -207,44 +228,23 @@
     .end annotation
 
     .prologue
-    .line 140
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    .local p4, objects:[Ljava/lang/Object;,"[TT;"
-    invoke-direct {p0}, Landroid/widget/BaseAdapter;-><init>()V
-
-    .line 60
-    new-instance v0, Ljava/lang/Object;
-
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
-
-    iput-object v0, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
-
-    .line 79
-    const/4 v0, 0x0
-
-    iput v0, p0, Landroid/widget/ArrayAdapter;->mFieldId:I
-
-    .line 85
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
-
-    .line 141
+    .line 151
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    .local p4, "objects":[Ljava/lang/Object;, "[TT;"
     invoke-static {p4}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
 
     move-result-object v0
 
-    invoke-direct {p0, p1, p2, p3, v0}, Landroid/widget/ArrayAdapter;->init(Landroid/content/Context;IILjava/util/List;)V
+    invoke-direct {p0, p1, p2, p3, v0}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;IILjava/util/List;)V
 
-    .line 142
+    .line 150
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;ILjava/util/List;)V
-    .locals 2
-    .parameter "context"
-    .parameter "resource"
-    .parameter
+    .locals 1
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "resource"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -256,40 +256,21 @@
     .end annotation
 
     .prologue
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    .local p3, objects:Ljava/util/List;,"Ljava/util/List<TT;>;"
-    const/4 v1, 0x0
+    .line 163
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    .local p3, "objects":Ljava/util/List;, "Ljava/util/List<TT;>;"
+    const/4 v0, 0x0
 
-    .line 152
-    invoke-direct {p0}, Landroid/widget/BaseAdapter;-><init>()V
+    invoke-direct {p0, p1, p2, v0, p3}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;IILjava/util/List;)V
 
-    .line 60
-    new-instance v0, Ljava/lang/Object;
-
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
-
-    iput-object v0, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
-
-    .line 79
-    iput v1, p0, Landroid/widget/ArrayAdapter;->mFieldId:I
-
-    .line 85
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
-
-    .line 153
-    invoke-direct {p0, p1, p2, v1, p3}, Landroid/widget/ArrayAdapter;->init(Landroid/content/Context;IILjava/util/List;)V
-
-    .line 154
+    .line 162
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;I[Ljava/lang/Object;)V
     .locals 2
-    .parameter "context"
-    .parameter "resource"
-    .parameter
+    .param p1, "context"    # Landroid/content/Context;
+    .param p2, "resource"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -299,101 +280,26 @@
     .end annotation
 
     .prologue
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    .local p3, objects:[Ljava/lang/Object;,"[TT;"
-    const/4 v1, 0x0
-
-    .line 127
-    invoke-direct {p0}, Landroid/widget/BaseAdapter;-><init>()V
-
-    .line 60
-    new-instance v0, Ljava/lang/Object;
-
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
-
-    iput-object v0, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
-
-    .line 79
-    iput v1, p0, Landroid/widget/ArrayAdapter;->mFieldId:I
-
-    .line 85
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
-
-    .line 128
+    .line 137
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    .local p3, "objects":[Ljava/lang/Object;, "[TT;"
     invoke-static {p3}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
 
     move-result-object v0
 
-    invoke-direct {p0, p1, p2, v1, v0}, Landroid/widget/ArrayAdapter;->init(Landroid/content/Context;IILjava/util/List;)V
+    const/4 v1, 0x0
 
-    .line 129
+    invoke-direct {p0, p1, p2, v1, v0}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;IILjava/util/List;)V
+
+    .line 136
     return-void
-.end method
-
-.method static synthetic access$100(Landroid/widget/ArrayAdapter;)Ljava/util/ArrayList;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 47
-    iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
-
-    return-object v0
-.end method
-
-.method static synthetic access$102(Landroid/widget/ArrayAdapter;Ljava/util/ArrayList;)Ljava/util/ArrayList;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 47
-    iput-object p1, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
-
-    return-object p1
-.end method
-
-.method static synthetic access$200(Landroid/widget/ArrayAdapter;)Ljava/lang/Object;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 47
-    iget-object v0, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
-
-    return-object v0
-.end method
-
-.method static synthetic access$300(Landroid/widget/ArrayAdapter;)Ljava/util/List;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 47
-    iget-object v0, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
-
-    return-object v0
-.end method
-
-.method static synthetic access$302(Landroid/widget/ArrayAdapter;Ljava/util/List;)Ljava/util/List;
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 47
-    iput-object p1, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
-
-    return-object p1
 .end method
 
 .method public static createFromResource(Landroid/content/Context;II)Landroid/widget/ArrayAdapter;
     .locals 2
-    .parameter "context"
-    .parameter "textArrayResId"
-    .parameter "textViewResId"
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "textArrayResId"    # I
+    .param p2, "textViewResId"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -407,7 +313,7 @@
     .end annotation
 
     .prologue
-    .line 430
+    .line 463
     invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v1
@@ -416,8 +322,8 @@
 
     move-result-object v0
 
-    .line 431
-    .local v0, strings:[Ljava/lang/CharSequence;
+    .line 464
+    .local v0, "strings":[Ljava/lang/CharSequence;
     new-instance v1, Landroid/widget/ArrayAdapter;
 
     invoke-direct {v1, p0, p2, v0}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;I[Ljava/lang/Object;)V
@@ -425,36 +331,35 @@
     return-object v1
 .end method
 
-.method private createViewFromResource(ILandroid/view/View;Landroid/view/ViewGroup;I)Landroid/view/View;
+.method private createViewFromResource(Landroid/view/LayoutInflater;ILandroid/view/View;Landroid/view/ViewGroup;I)Landroid/view/View;
     .locals 7
-    .parameter "position"
-    .parameter "convertView"
-    .parameter "parent"
-    .parameter "resource"
+    .param p1, "inflater"    # Landroid/view/LayoutInflater;
+    .param p2, "position"    # I
+    .param p3, "convertView"    # Landroid/view/View;
+    .param p4, "parent"    # Landroid/view/ViewGroup;
+    .param p5, "resource"    # I
 
     .prologue
-    .line 370
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    if-nez p2, :cond_0
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    const/4 v5, 0x0
 
-    .line 371
-    iget-object v5, p0, Landroid/widget/ArrayAdapter;->mInflater:Landroid/view/LayoutInflater;
+    .line 377
+    if-nez p3, :cond_0
 
-    const/4 v6, 0x0
-
-    invoke-virtual {v5, p4, p3, v6}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
+    .line 378
+    invoke-virtual {p1, p5, p4, v5}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
     move-result-object v4
 
-    .line 377
-    .local v4, view:Landroid/view/View;
+    .line 384
+    .local v4, "view":Landroid/view/View;
     :goto_0
     :try_start_0
     iget v5, p0, Landroid/widget/ArrayAdapter;->mFieldId:I
 
     if-nez v5, :cond_1
 
-    .line 379
+    .line 386
     move-object v0, v4
 
     check-cast v0, Landroid/widget/TextView;
@@ -463,39 +368,39 @@
     :try_end_0
     .catch Ljava/lang/ClassCastException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 390
-    .local v3, text:Landroid/widget/TextView;
+    .line 397
+    .local v3, "text":Landroid/widget/TextView;
     :goto_1
-    invoke-virtual {p0, p1}, Landroid/widget/ArrayAdapter;->getItem(I)Ljava/lang/Object;
+    invoke-virtual {p0, p2}, Landroid/widget/ArrayAdapter;->getItem(I)Ljava/lang/Object;
 
     move-result-object v2
 
-    .line 391
-    .local v2, item:Ljava/lang/Object;,"TT;"
+    .line 398
+    .local v2, "item":Ljava/lang/Object;, "TT;"
     instance-of v5, v2, Ljava/lang/CharSequence;
 
     if-eqz v5, :cond_2
 
-    .line 392
+    .line 399
     check-cast v2, Ljava/lang/CharSequence;
 
-    .end local v2           #item:Ljava/lang/Object;,"TT;"
+    .end local v2    # "item":Ljava/lang/Object;, "TT;"
     invoke-virtual {v3, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 397
+    .line 404
     :goto_2
     return-object v4
 
-    .line 373
-    .end local v3           #text:Landroid/widget/TextView;
-    .end local v4           #view:Landroid/view/View;
+    .line 380
+    .end local v3    # "text":Landroid/widget/TextView;
+    .end local v4    # "view":Landroid/view/View;
     :cond_0
-    move-object v4, p2
+    move-object v4, p3
 
-    .restart local v4       #view:Landroid/view/View;
+    .restart local v4    # "view":Landroid/view/View;
     goto :goto_0
 
-    .line 382
+    .line 389
     :cond_1
     :try_start_1
     iget v5, p0, Landroid/widget/ArrayAdapter;->mFieldId:I
@@ -508,35 +413,37 @@
     :try_end_1
     .catch Ljava/lang/ClassCastException; {:try_start_1 .. :try_end_1} :catch_0
 
-    .restart local v3       #text:Landroid/widget/TextView;
+    .restart local v3    # "text":Landroid/widget/TextView;
     goto :goto_1
 
-    .line 384
-    .end local v3           #text:Landroid/widget/TextView;
+    .line 391
+    .end local v3    # "text":Landroid/widget/TextView;
     :catch_0
     move-exception v1
 
-    .line 385
-    .local v1, e:Ljava/lang/ClassCastException;
-    const-string v5, "ArrayAdapter"
+    .line 392
+    .local v1, "e":Ljava/lang/ClassCastException;
+    const-string/jumbo v5, "ArrayAdapter"
 
-    const-string v6, "You must supply a resource ID for a TextView"
+    const-string/jumbo v6, "You must supply a resource ID for a TextView"
 
     invoke-static {v5, v6}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 386
+    .line 393
     new-instance v5, Ljava/lang/IllegalStateException;
 
-    const-string v6, "ArrayAdapter requires the resource ID to be a TextView"
+    .line 394
+    const-string/jumbo v6, "ArrayAdapter requires the resource ID to be a TextView"
 
+    .line 393
     invoke-direct {v5, v6, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
     throw v5
 
-    .line 394
-    .end local v1           #e:Ljava/lang/ClassCastException;
-    .restart local v2       #item:Ljava/lang/Object;,"TT;"
-    .restart local v3       #text:Landroid/widget/TextView;
+    .line 401
+    .end local v1    # "e":Ljava/lang/ClassCastException;
+    .restart local v2    # "item":Ljava/lang/Object;, "TT;"
+    .restart local v3    # "text":Landroid/widget/TextView;
     :cond_2
     invoke-virtual {v2}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
@@ -547,59 +454,10 @@
     goto :goto_2
 .end method
 
-.method private init(Landroid/content/Context;IILjava/util/List;)V
-    .locals 1
-    .parameter "context"
-    .parameter "resource"
-    .parameter "textViewResourceId"
-    .parameter
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "(",
-            "Landroid/content/Context;",
-            "II",
-            "Ljava/util/List",
-            "<TT;>;)V"
-        }
-    .end annotation
-
-    .prologue
-    .line 309
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    .local p4, objects:Ljava/util/List;,"Ljava/util/List<TT;>;"
-    iput-object p1, p0, Landroid/widget/ArrayAdapter;->mContext:Landroid/content/Context;
-
-    .line 310
-    const-string v0, "layout_inflater"
-
-    invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/view/LayoutInflater;
-
-    iput-object v0, p0, Landroid/widget/ArrayAdapter;->mInflater:Landroid/view/LayoutInflater;
-
-    .line 311
-    iput p2, p0, Landroid/widget/ArrayAdapter;->mDropDownResource:I
-
-    iput p2, p0, Landroid/widget/ArrayAdapter;->mResource:I
-
-    .line 312
-    iput-object p4, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
-
-    .line 313
-    iput p3, p0, Landroid/widget/ArrayAdapter;->mFieldId:I
-
-    .line 314
-    return-void
-.end method
-
 
 # virtual methods
 .method public add(Ljava/lang/Object;)V
     .locals 2
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TT;)V"
@@ -607,64 +465,62 @@
     .end annotation
 
     .prologue
-    .line 175
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    .local p1, object:Ljava/lang/Object;,"TT;"
+    .line 190
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    .local p1, "object":Ljava/lang/Object;, "TT;"
     iget-object v1, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 176
+    .line 191
     :try_start_0
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_1
 
-    .line 177
+    .line 192
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 181
-    :goto_0
-    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 182
+    :goto_0
+    monitor-exit v1
+
+    .line 197
     iget-boolean v0, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
 
     if-eqz v0, :cond_0
 
     invoke-virtual {p0}, Landroid/widget/ArrayAdapter;->notifyDataSetChanged()V
 
-    .line 183
+    .line 189
     :cond_0
     return-void
 
-    .line 179
+    .line 194
     :cond_1
     :try_start_1
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .line 181
+    .line 190
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v0
 .end method
 
 .method public addAll(Ljava/util/Collection;)V
     .locals 2
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -674,64 +530,62 @@
     .end annotation
 
     .prologue
-    .line 191
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    .local p1, collection:Ljava/util/Collection;,"Ljava/util/Collection<+TT;>;"
+    .line 206
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    .local p1, "collection":Ljava/util/Collection;, "Ljava/util/Collection<+TT;>;"
     iget-object v1, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 192
+    .line 207
     :try_start_0
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_1
 
-    .line 193
+    .line 208
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
-
-    .line 197
-    :goto_0
-    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 198
+    :goto_0
+    monitor-exit v1
+
+    .line 213
     iget-boolean v0, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
 
     if-eqz v0, :cond_0
 
     invoke-virtual {p0}, Landroid/widget/ArrayAdapter;->notifyDataSetChanged()V
 
-    .line 199
+    .line 205
     :cond_0
     return-void
 
-    .line 195
+    .line 210
     :cond_1
     :try_start_1
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .line 197
+    .line 206
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v0
 .end method
 
 .method public varargs addAll([Ljava/lang/Object;)V
     .locals 2
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "([TT;)V"
@@ -739,57 +593,56 @@
     .end annotation
 
     .prologue
-    .line 207
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    .local p1, items:[Ljava/lang/Object;,"[TT;"
+    .line 222
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    .local p1, "items":[Ljava/lang/Object;, "[TT;"
     iget-object v1, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 208
+    .line 223
     :try_start_0
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_1
 
-    .line 209
+    .line 224
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
 
     invoke-static {v0, p1}, Ljava/util/Collections;->addAll(Ljava/util/Collection;[Ljava/lang/Object;)Z
-
-    .line 213
-    :goto_0
-    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 214
+    :goto_0
+    monitor-exit v1
+
+    .line 229
     iget-boolean v0, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
 
     if-eqz v0, :cond_0
 
     invoke-virtual {p0}, Landroid/widget/ArrayAdapter;->notifyDataSetChanged()V
 
-    .line 215
+    .line 221
     :cond_0
     return-void
 
-    .line 211
+    .line 226
     :cond_1
     :try_start_1
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
 
     invoke-static {v0, p1}, Ljava/util/Collections;->addAll(Ljava/util/Collection;[Ljava/lang/Object;)Z
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .line 213
+    .line 222
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v0
 .end method
@@ -798,56 +651,55 @@
     .locals 2
 
     .prologue
-    .line 254
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
+    .line 269
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
     iget-object v1, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 255
+    .line 270
     :try_start_0
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_1
 
-    .line 256
+    .line 271
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
-
-    .line 260
-    :goto_0
-    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 261
+    :goto_0
+    monitor-exit v1
+
+    .line 276
     iget-boolean v0, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
 
     if-eqz v0, :cond_0
 
     invoke-virtual {p0}, Landroid/widget/ArrayAdapter;->notifyDataSetChanged()V
 
-    .line 262
+    .line 268
     :cond_0
     return-void
 
-    .line 258
+    .line 273
     :cond_1
     :try_start_1
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->clear()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .line 260
+    .line 269
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v0
 .end method
@@ -856,8 +708,8 @@
     .locals 1
 
     .prologue
-    .line 323
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
+    .line 330
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mContext:Landroid/content/Context;
 
     return-object v0
@@ -867,8 +719,8 @@
     .locals 1
 
     .prologue
-    .line 330
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
+    .line 337
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->size()I
@@ -879,43 +731,97 @@
 .end method
 
 .method public getDropDownView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
-    .locals 1
-    .parameter "position"
-    .parameter "convertView"
-    .parameter "parent"
+    .locals 6
+    .param p1, "position"    # I
+    .param p2, "convertView"    # Landroid/view/View;
+    .param p3, "parent"    # Landroid/view/ViewGroup;
 
     .prologue
-    .line 415
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    iget v0, p0, Landroid/widget/ArrayAdapter;->mDropDownResource:I
+    .line 447
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    iget-object v0, p0, Landroid/widget/ArrayAdapter;->mDropDownInflater:Landroid/view/LayoutInflater;
 
-    invoke-direct {p0, p1, p2, p3, v0}, Landroid/widget/ArrayAdapter;->createViewFromResource(ILandroid/view/View;Landroid/view/ViewGroup;I)Landroid/view/View;
+    if-nez v0, :cond_0
+
+    iget-object v1, p0, Landroid/widget/ArrayAdapter;->mInflater:Landroid/view/LayoutInflater;
+
+    .line 448
+    .local v1, "inflater":Landroid/view/LayoutInflater;
+    :goto_0
+    iget v5, p0, Landroid/widget/ArrayAdapter;->mDropDownResource:I
+
+    move-object v0, p0
+
+    move v2, p1
+
+    move-object v3, p2
+
+    move-object v4, p3
+
+    invoke-direct/range {v0 .. v5}, Landroid/widget/ArrayAdapter;->createViewFromResource(Landroid/view/LayoutInflater;ILandroid/view/View;Landroid/view/ViewGroup;I)Landroid/view/View;
 
     move-result-object v0
 
     return-object v0
+
+    .line 447
+    .end local v1    # "inflater":Landroid/view/LayoutInflater;
+    :cond_0
+    iget-object v1, p0, Landroid/widget/ArrayAdapter;->mDropDownInflater:Landroid/view/LayoutInflater;
+
+    .restart local v1    # "inflater":Landroid/view/LayoutInflater;
+    goto :goto_0
+.end method
+
+.method public getDropDownViewTheme()Landroid/content/res/Resources$Theme;
+    .locals 2
+
+    .prologue
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    const/4 v0, 0x0
+
+    .line 442
+    iget-object v1, p0, Landroid/widget/ArrayAdapter;->mDropDownInflater:Landroid/view/LayoutInflater;
+
+    if-nez v1, :cond_0
+
+    :goto_0
+    return-object v0
+
+    :cond_0
+    iget-object v0, p0, Landroid/widget/ArrayAdapter;->mDropDownInflater:Landroid/view/LayoutInflater;
+
+    invoke-virtual {v0}, Landroid/view/LayoutInflater;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
+
+    move-result-object v0
+
+    goto :goto_0
 .end method
 
 .method public getFilter()Landroid/widget/Filter;
     .locals 2
 
     .prologue
-    .line 438
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    const/4 v1, 0x0
+
+    .line 471
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mFilter:Landroid/widget/ArrayAdapter$ArrayFilter;
 
     if-nez v0, :cond_0
 
-    .line 439
+    .line 472
     new-instance v0, Landroid/widget/ArrayAdapter$ArrayFilter;
 
-    const/4 v1, 0x0
-
-    invoke-direct {v0, p0, v1}, Landroid/widget/ArrayAdapter$ArrayFilter;-><init>(Landroid/widget/ArrayAdapter;Landroid/widget/ArrayAdapter$1;)V
+    invoke-direct {v0, p0, v1}, Landroid/widget/ArrayAdapter$ArrayFilter;-><init>(Landroid/widget/ArrayAdapter;Landroid/widget/ArrayAdapter$ArrayFilter;)V
 
     iput-object v0, p0, Landroid/widget/ArrayAdapter;->mFilter:Landroid/widget/ArrayAdapter$ArrayFilter;
 
-    .line 441
+    .line 474
     :cond_0
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mFilter:Landroid/widget/ArrayAdapter$ArrayFilter;
 
@@ -924,7 +830,7 @@
 
 .method public getItem(I)Ljava/lang/Object;
     .locals 1
-    .parameter "position"
+    .param p1, "position"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(I)TT;"
@@ -932,8 +838,8 @@
     .end annotation
 
     .prologue
-    .line 337
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
+    .line 344
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -945,11 +851,11 @@
 
 .method public getItemId(I)J
     .locals 2
-    .parameter "position"
+    .param p1, "position"    # I
 
     .prologue
-    .line 355
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
+    .line 362
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
     int-to-long v0, p1
 
     return-wide v0
@@ -957,7 +863,6 @@
 
 .method public getPosition(Ljava/lang/Object;)I
     .locals 1
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TT;)I"
@@ -965,9 +870,9 @@
     .end annotation
 
     .prologue
-    .line 348
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    .local p1, item:Ljava/lang/Object;,"TT;"
+    .line 355
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    .local p1, "item":Ljava/lang/Object;, "TT;"
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->indexOf(Ljava/lang/Object;)I
@@ -978,17 +883,27 @@
 .end method
 
 .method public getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
-    .locals 1
-    .parameter "position"
-    .parameter "convertView"
-    .parameter "parent"
+    .locals 6
+    .param p1, "position"    # I
+    .param p2, "convertView"    # Landroid/view/View;
+    .param p3, "parent"    # Landroid/view/ViewGroup;
 
     .prologue
-    .line 362
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    iget v0, p0, Landroid/widget/ArrayAdapter;->mResource:I
+    .line 369
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    iget-object v1, p0, Landroid/widget/ArrayAdapter;->mInflater:Landroid/view/LayoutInflater;
 
-    invoke-direct {p0, p1, p2, p3, v0}, Landroid/widget/ArrayAdapter;->createViewFromResource(ILandroid/view/View;Landroid/view/ViewGroup;I)Landroid/view/View;
+    iget v5, p0, Landroid/widget/ArrayAdapter;->mResource:I
+
+    move-object v0, p0
+
+    move v2, p1
+
+    move-object v3, p2
+
+    move-object v4, p3
+
+    invoke-direct/range {v0 .. v5}, Landroid/widget/ArrayAdapter;->createViewFromResource(Landroid/view/LayoutInflater;ILandroid/view/View;Landroid/view/ViewGroup;I)Landroid/view/View;
 
     move-result-object v0
 
@@ -997,8 +912,7 @@
 
 .method public insert(Ljava/lang/Object;I)V
     .locals 2
-    .parameter
-    .parameter "index"
+    .param p2, "index"    # I
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TT;I)V"
@@ -1006,57 +920,56 @@
     .end annotation
 
     .prologue
-    .line 224
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    .local p1, object:Ljava/lang/Object;,"TT;"
+    .line 239
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    .local p1, "object":Ljava/lang/Object;, "TT;"
     iget-object v1, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 225
+    .line 240
     :try_start_0
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_1
 
-    .line 226
+    .line 241
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p2, p1}, Ljava/util/ArrayList;->add(ILjava/lang/Object;)V
-
-    .line 230
-    :goto_0
-    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 231
+    :goto_0
+    monitor-exit v1
+
+    .line 246
     iget-boolean v0, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
 
     if-eqz v0, :cond_0
 
     invoke-virtual {p0}, Landroid/widget/ArrayAdapter;->notifyDataSetChanged()V
 
-    .line 232
+    .line 238
     :cond_0
     return-void
 
-    .line 228
+    .line 243
     :cond_1
     :try_start_1
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
 
     invoke-interface {v0, p2, p1}, Ljava/util/List;->add(ILjava/lang/Object;)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .line 230
+    .line 239
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v0
 .end method
@@ -1065,22 +978,21 @@
     .locals 1
 
     .prologue
-    .line 286
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
+    .line 301
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
     invoke-super {p0}, Landroid/widget/BaseAdapter;->notifyDataSetChanged()V
 
-    .line 287
+    .line 302
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
 
-    .line 288
+    .line 300
     return-void
 .end method
 
 .method public remove(Ljava/lang/Object;)V
     .locals 2
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(TT;)V"
@@ -1088,90 +1000,146 @@
     .end annotation
 
     .prologue
-    .line 240
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    .local p1, object:Ljava/lang/Object;,"TT;"
+    .line 255
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    .local p1, "object":Ljava/lang/Object;, "TT;"
     iget-object v1, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 241
+    .line 256
     :try_start_0
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_1
 
-    .line 242
+    .line 257
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
-
-    .line 246
-    :goto_0
-    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 247
+    :goto_0
+    monitor-exit v1
+
+    .line 262
     iget-boolean v0, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
 
     if-eqz v0, :cond_0
 
     invoke-virtual {p0}, Landroid/widget/ArrayAdapter;->notifyDataSetChanged()V
 
-    .line 248
+    .line 254
     :cond_0
     return-void
 
-    .line 244
+    .line 259
     :cond_1
     :try_start_1
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .line 246
+    .line 255
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v0
 .end method
 
 .method public setDropDownViewResource(I)V
     .locals 0
-    .parameter "resource"
+    .param p1, "resource"    # I
 
     .prologue
-    .line 407
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
+    .line 414
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
     iput p1, p0, Landroid/widget/ArrayAdapter;->mDropDownResource:I
 
-    .line 408
+    .line 413
     return-void
+.end method
+
+.method public setDropDownViewTheme(Landroid/content/res/Resources$Theme;)V
+    .locals 2
+    .param p1, "theme"    # Landroid/content/res/Resources$Theme;
+
+    .prologue
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    const/4 v1, 0x0
+
+    .line 430
+    if-nez p1, :cond_0
+
+    .line 431
+    iput-object v1, p0, Landroid/widget/ArrayAdapter;->mDropDownInflater:Landroid/view/LayoutInflater;
+
+    .line 429
+    :goto_0
+    return-void
+
+    .line 432
+    :cond_0
+    iget-object v1, p0, Landroid/widget/ArrayAdapter;->mInflater:Landroid/view/LayoutInflater;
+
+    invoke-virtual {v1}, Landroid/view/LayoutInflater;->getContext()Landroid/content/Context;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
+
+    move-result-object v1
+
+    if-ne p1, v1, :cond_1
+
+    .line 433
+    iget-object v1, p0, Landroid/widget/ArrayAdapter;->mInflater:Landroid/view/LayoutInflater;
+
+    iput-object v1, p0, Landroid/widget/ArrayAdapter;->mDropDownInflater:Landroid/view/LayoutInflater;
+
+    goto :goto_0
+
+    .line 435
+    :cond_1
+    new-instance v0, Landroid/view/ContextThemeWrapper;
+
+    iget-object v1, p0, Landroid/widget/ArrayAdapter;->mContext:Landroid/content/Context;
+
+    invoke-direct {v0, v1, p1}, Landroid/view/ContextThemeWrapper;-><init>(Landroid/content/Context;Landroid/content/res/Resources$Theme;)V
+
+    .line 436
+    .local v0, "context":Landroid/content/Context;
+    invoke-static {v0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+
+    move-result-object v1
+
+    iput-object v1, p0, Landroid/widget/ArrayAdapter;->mDropDownInflater:Landroid/view/LayoutInflater;
+
+    goto :goto_0
 .end method
 
 .method public setNotifyOnChange(Z)V
     .locals 0
-    .parameter "notifyOnChange"
+    .param p1, "notifyOnChange"    # Z
 
     .prologue
-    .line 305
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
+    .line 320
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
     iput-boolean p1, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
 
-    .line 306
+    .line 319
     return-void
 .end method
 
 .method public sort(Ljava/util/Comparator;)V
     .locals 2
-    .parameter
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -1181,57 +1149,56 @@
     .end annotation
 
     .prologue
-    .line 271
-    .local p0, this:Landroid/widget/ArrayAdapter;,"Landroid/widget/ArrayAdapter<TT;>;"
-    .local p1, comparator:Ljava/util/Comparator;,"Ljava/util/Comparator<-TT;>;"
+    .line 286
+    .local p0, "this":Landroid/widget/ArrayAdapter;, "Landroid/widget/ArrayAdapter<TT;>;"
+    .local p1, "comparator":Ljava/util/Comparator;, "Ljava/util/Comparator<-TT;>;"
     iget-object v1, p0, Landroid/widget/ArrayAdapter;->mLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 272
+    .line 287
     :try_start_0
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_1
 
-    .line 273
+    .line 288
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mOriginalValues:Ljava/util/ArrayList;
 
     invoke-static {v0, p1}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V
-
-    .line 277
-    :goto_0
-    monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 278
+    :goto_0
+    monitor-exit v1
+
+    .line 293
     iget-boolean v0, p0, Landroid/widget/ArrayAdapter;->mNotifyOnChange:Z
 
     if-eqz v0, :cond_0
 
     invoke-virtual {p0}, Landroid/widget/ArrayAdapter;->notifyDataSetChanged()V
 
-    .line 279
+    .line 285
     :cond_0
     return-void
 
-    .line 275
+    .line 290
     :cond_1
     :try_start_1
     iget-object v0, p0, Landroid/widget/ArrayAdapter;->mObjects:Ljava/util/List;
 
     invoke-static {v0, p1}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .line 277
+    .line 286
     :catchall_0
     move-exception v0
 
     monitor-exit v1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v0
 .end method
