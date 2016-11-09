@@ -5,31 +5,27 @@
 # The original zip file, MUST be specified by each product
 local-zip-file     := stockrom.zip
 
+PORT_PRODUCT := vs985_chevelle
+
+#BUILD_NUMBER := $(shell date +%y.%m.%d | cut -c2-)
+
 # The output zip file of MIUI rom, the default is porting_miui.zip if not specified
-local-out-zip-file := miui_$(PORT_PRODUCT)_$(BUILD_NUMBER)_4.4.zip
+local-out-zip-file := miui_$(PORT_PRODUCT)_$(BUILD_NUMBER)_6.0.zip
 
 # the location for local-ota to save target-file
-local-previous-target-dir := ~/workspace/ota_base/4.4/vs985
+local-previous-target-dir := 
 
 # All apps from original ZIP, but has smali files chanded
-local-modified-apps :=
+local-modified-apps := 
 
 local-modified-jars :=
 
 # All apks from MIUI
-local-miui-removed-apps := 	BaiduNetworkLocation \
-				VoiceAssist \
-				GameCenter \
-				GameCenterSDKService \
-				SuperMarket \
-				O2O \
-				Weather \
-				WeatherProvider
+local-miui-removed-apps := FM GameCenter KSICibaEngine SogouInput MiGameCenterSDKService
 
 local-miui-removed-priv-apps :=
 
-local-miui-modified-apps :=	Mms \
-				Phone
+local-miui-modified-apps := TeleService InCallUI MiuiCamera
 
 local-modified-priv-apps :=	
 
@@ -39,6 +35,11 @@ local-density := XXHDPI
 
 # Config for files to include from original zip
 include phoneapps.mk
+
+# The certificate for release version
+local-certificate-dir := security
+
+local-target-bit := 32
 
 # To include the local targets before and after zip the final ZIP file, 
 # and the local-targets should:
@@ -53,18 +54,25 @@ local-after-zip:= local-put-to-phone
 include $(PORT_BUILD)/porting.mk
 
 # To define any local-target
-updater := $(ZIP_DIR)/META-INF/com/google/android/updater-script
-pre_install_data_packages := out/pre_install_apk_pkgname.txt
+#updater := $(ZIP_DIR)/META-INF/com/google/android/updater-script
+#pre_install_data_packages := $(TMP_DIR)/pre_install_apk_pkgname.txt
 local-pre-zip-misc:
-	cp other/build.prop $(ZIP_DIR)/system/build.prop
-# replace spn
-	cp other/spn-conf.xml $(ZIP_DIR)/system/etc/spn-conf.xml
-# replace kernel
-	cp other/boot.img $(ZIP_DIR)/boot.img
-	cp other/installd $(ZIP_DIR)/system/bin/installd
-	cp other/lbesec $(ZIP_DIR)/system/xbin/lbesec
-	cp other/libimageutilities_jni.so $(ZIP_DIR)/system/lib/libimageutilities_jni.so
-	cp other/apns-conf.xml $(ZIP_DIR)/system/etc/apns-conf.xml
+	@echo ==========Fixing WebViewGoogle=====
+	7za x $(ZIP_DIR)/system/app/WebViewGoogle/WebViewGoogle.apk *.so -r -o$(ZIP_DIR)/system/app/WebViewGoogle/ > /dev/null
+	mv $(ZIP_DIR)/system/app/WebViewGoogle/lib/armeabi-v7a/libwebviewchromium.so $(ZIP_DIR)/system/lib/
+	rm -rf $(ZIP_DIR)/system/app/WebViewGoogle/lib/arm*
+	7za -tzip d $(ZIP_DIR)/system/app/WebViewGoogle/WebViewGoogle.apk *.so -r > /dev/null
+	@echo ==========Fixing Browser===========
+	7za x $(ZIP_DIR)/system/priv-app/Browser/Browser.apk *.so -r -o$(ZIP_DIR)/system/priv-app/Browser/ > /dev/null
+	mv $(ZIP_DIR)/system/priv-app/Browser/lib/armeabi-v7a/*.so $(ZIP_DIR)/system/lib/
+	mv $(ZIP_DIR)/system/priv-app/Browser/lib/armeabi/*.so $(ZIP_DIR)/system/lib/
+	rm -rf $(ZIP_DIR)/system/priv-app/Browser/lib/arm*
+	rm -rf $(ZIP_DIR)/system/priv-app/Browser/res/
+	7za -tzip d $(ZIP_DIR)/system/priv-app/Browser/Browser.apk *.so -r > /dev/null
+	cp -rf other/system $(ZIP_DIR)/
+	@echo goodbye! MIUI prebuilt binaries!
+	rm -rf $(ZIP_DIR)/system/bin/app_process32_vendor
+	cp -rf stockrom/system/bin/app_process32 $(ZIP_DIR)/system/bin/app_process32
 	@echo Remove usless stuff
 	rm -rf $(ZIP_DIR)/system/media/video/*.mp4
 	rm -rf $(ZIP_DIR)/system/tts/lang_pico/*.bin

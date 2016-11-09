@@ -1,32 +1,39 @@
-# For apps in /system/app
-local-phone-apps :=		BasicDreams \
-				Bluetooth \
-				Camera2 \
-				CellBroadcastReceiver \
-				CertInstaller \
-				DashClock \
-				DocumentsUI \
-				DSPManager \
-				Galaxy4 \
-				HTMLViewer \
-				HoloSpiralWallpaper \
-				KeyChain \
-				LatinIME \
-				LiveWallpapers \
-				LiveWallpapersPicker \
-				MagicSmokeWallpapers \
-				NfcNci \
-				PacProcessor \
-				PhaseBeam \
-				PrintSpooler \
-				UserDictionaryProvider
+local-phone-apps = $(private-phone-apps)
+local-phone-priv-apps = $(private-phone-priv-apps)
 
-# For app in /system/priv-app
-local-phone-priv-apps :=	BackupRestoreConfirmation \
-				DefaultContainerService \
-				ExternalStorageProvider \
-				InputDevices \
-				ProxyHandler \
-				SharedStorageBackup \
-				Shell \
-				Tag
+private-phone-apps := \
+	BasicDreams \
+	Bluetooth \
+	CertInstaller \
+	Galaxy4 \
+	HoloSpiralWallpaper \
+	KeyChain \
+	LatinIME \
+	LiveWallpapers \
+	LiveWallpapersPicker \
+	NfcNci \
+	NoiseField \
+	PacProcessor \
+	PhaseBeam \
+	PhotoTable \
+	PicoTts \
+	PrintSpooler \
+	qcrilmsgtunnel \
+	shutdownlistener \
+	SnapdragonCamera \
+	Stk \
+	TimeService \
+	telresources \
+	UserDictionaryProvider \
+	WAPPushManager
+
+private-phone-priv-apps := \
+	BackupRestoreConfirmation \
+	CellBroadcastReceiver \
+	ExternalStorageProvider \
+	FusedLocation \
+	InputDevices \
+	ProxyHandler \
+	SharedStorageBackup \
+	Shell \
+	Tag

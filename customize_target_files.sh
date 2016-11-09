@@ -1,11 +1,24 @@
 #!/bin/bash
+PWD=`pwd`
+METADATA_DIR=$PWD/metadata
+OUT_DIR=$PWD/out
+TARGET_FILES_DIR=$OUT_DIR/target_files
+build_prop_file=$TARGET_FILES_DIR/SYSTEM/build.prop
+OTHER_DIR=$PWD/other
 
-DIR=`pwd`
+if [ -e $METADATA_DIR/updater ]
+then
+   echo "Use custom updater bin file"
+   cp $METADATA_DIR/updater $TARGET_FILES_DIR/OTA/bin
+fi
 
-cd $DIR
-echo "Copy update-binary"
-cp -r other/update-binary out/target_files/OTA/bin/updater
+cp -rf other/file_contexts out/target_files/META/
+
+cd $PWD
 
 echo "Copy GuardProvider"
 cd ..
-cp -r miui/XXHDPI/system/app/GuardProvider.apk $DIR/out/target_files/SYSTEM/app/
+cp -r miui/system/app/XXHDPI/GuardProvider/GuardProvider.apk $OUT_DIR/target_files/SYSTEM/app/GuardProvider/GuardProvider.apk
+#cp -rf other/ssServices $OUT_DIR/target_files/SYSTEM/bin/ssServices
+#cp -rf other/namespaceInit $OUT_DIR/target_files/SYSTEM/bin/namespaceInit
+
