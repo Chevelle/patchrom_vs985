@@ -1,4 +1,4 @@
-Patchrom MIUI V5 for VS985 (WIP)
+Patchrom MIUI V8 for VS985 (WIP)
 ========================================
 
 Get started
@@ -13,14 +13,14 @@ $ mkdir patchrom
 
 $ cd patchrom
 
-$ repo init -u git://github.com/MiCode/patchrom.git -b kitkat
+$ repo init -u git://github.com/MiCode/patchrom.git -b marshmallow
 
 Then to sync up:
 
 $ repo sync
 
 
--Build MIUI V5
+-Build MIUI V8
  --------------
 
 use this command
@@ -29,8 +29,8 @@ $ . build/envsetup.sh
 
 $ cd vs985
 
-$ make fullota PORT_PRODUCT=vs985_chevelle BUILD_NUMBER=4.X.XX
+$ make fullota PORT_PRODUCT=vs985_chevelle BUILD_NUMBER=6.X.XX
 
 or
 
-$ make zipfile PORT_PRODUCT=vs985_chevelle BUILD_NUMBER=4.X.XX
+$ make zipfile PORT_PRODUCT=vs985_chevelle BUILD_NUMBER=6.X.XX
